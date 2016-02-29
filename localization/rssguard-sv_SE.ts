@@ -1620,14 +1620,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Ingen papperskorg</translation>
     </message>
     <message>
-        <source>Restore recycle bin</source>
-        <translation>Återställ papperskorgen</translation>
-    </message>
-    <message>
-        <source>Empty recycle bin</source>
-        <translation>Töm papperskorgen</translation>
-    </message>
-    <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Flöden &amp;&amp; kategorier</translation>
     </message>
@@ -1670,6 +1662,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Stop running update</source>
         <translation>Avbryt uppdatering</translation>
+    </message>
+    <message>
+        <source>No actions possible</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2242,10 +2238,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Ta bort alla lästa meddelanden från alla flöden vid programavslut</translation>
     </message>
     <message>
-        <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
-        <translation>När nytt meddelande tas emot och dubblett finns, skall innehållet uppdateras och det nya meddelandet tas bort.</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Nedladdningar</translation>
     </message>
@@ -2408,10 +2400,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Change</source>
         <translation>Ändra</translation>
-    </message>
-    <message>
-        <source>Remove duplicate messages (standard account only)</source>
-        <translation>Ta bort dubblettmeddelanden (endast standardkonto)</translation>
     </message>
 </context>
 <context>
@@ -3224,6 +3212,14 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>Custom ID of the message</source>
         <translation>Anpassat ID för meddelandet</translation>
     </message>
+    <message>
+        <source>Custom hash</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom hash of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3473,6 +3469,14 @@ Minst API-nivå %1 krävs.</translation>
         <translation>Papperskorg
 
 %1</translation>
+    </message>
+    <message>
+        <source>Restore recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty recycle bin</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

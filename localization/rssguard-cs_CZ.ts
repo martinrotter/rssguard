@@ -1620,14 +1620,6 @@ or this functionality is not implemented yet.</source>
         <translation>Žádný koš</translation>
     </message>
     <message>
-        <source>Restore recycle bin</source>
-        <translation>Obnovit koš</translation>
-    </message>
-    <message>
-        <source>Empty recycle bin</source>
-        <translation>Vysypat koš</translation>
-    </message>
-    <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Kanály &amp;&amp; kategorie</translation>
     </message>
@@ -1669,6 +1661,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Stop running update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No actions possible</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2241,10 +2237,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Vymazat všechny přečtené zprávy, když se aplikace vypíná</translation>
     </message>
     <message>
-        <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
-        <translation>Když se v kanálu objeví nová zpráva a existuje v databázi duplikát, pak jeho obsah je aktualizován a nová zpráva je zahozena.</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Stahování</translation>
     </message>
@@ -2407,10 +2399,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Change</source>
         <translation>Změnit</translation>
-    </message>
-    <message>
-        <source>Remove duplicate messages (standard account only)</source>
-        <translation>Smazat duplicitní zprávy (pouze standardní účet)</translation>
     </message>
 </context>
 <context>
@@ -3221,6 +3209,14 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <source>Custom ID of the message</source>
         <translation>Custom ID of the message</translation>
     </message>
+    <message>
+        <source>Custom hash</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom hash of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3474,6 +3470,14 @@ Je vyžadování verze API minimálně %1.</translation>
         <translation>Odpadkový koš
 
 %1</translation>
+    </message>
+    <message>
+        <source>Restore recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty recycle bin</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

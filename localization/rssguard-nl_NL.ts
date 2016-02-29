@@ -1621,14 +1621,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Geeen vuilnisbak</translation>
     </message>
     <message>
-        <source>Restore recycle bin</source>
-        <translation>Hestel vuilnisbak</translation>
-    </message>
-    <message>
-        <source>Empty recycle bin</source>
-        <translation>Leeg vuilnisbak</translation>
-    </message>
-    <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Feeds &amp;&amp; categorieën</translation>
     </message>
@@ -1671,6 +1663,10 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Stop running update</source>
         <translation>Stop met updaten</translation>
+    </message>
+    <message>
+        <source>No actions possible</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2243,11 +2239,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Verwijder de gelezen berichten van alle feeds als rssguard sluit</translation>
     </message>
     <message>
-        <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
-        <translation>
-Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud bijgewerkt en nieuw bericht wordt verwijderd.</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Downloads</translation>
     </message>
@@ -2414,10 +2405,6 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     <message>
         <source>Change</source>
         <translation>Verander</translation>
-    </message>
-    <message>
-        <source>Remove duplicate messages (standard account only)</source>
-        <translation>Verwijder dubbele berichten (Alleen in standaard account)</translation>
     </message>
 </context>
 <context>
@@ -3231,6 +3218,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>Custom ID of the message</source>
         <translation>Handmatig ID van het bericht</translation>
     </message>
+    <message>
+        <source>Custom hash</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom hash of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3482,6 +3477,14 @@ Een API niveau van tenminste %1 is vereist.</translation>
         <translation>Prullenbak
 
 %1</translation>
+    </message>
+    <message>
+        <source>Restore recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty recycle bin</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

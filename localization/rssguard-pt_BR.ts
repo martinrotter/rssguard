@@ -1620,14 +1620,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Nenhuma lixeira</translation>
     </message>
     <message>
-        <source>Restore recycle bin</source>
-        <translation>Restaurar lixeira</translation>
-    </message>
-    <message>
-        <source>Empty recycle bin</source>
-        <translation>Esvaziar lixeira</translation>
-    </message>
-    <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Feeds &amp;&amp; categorias</translation>
     </message>
@@ -1670,6 +1662,10 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Stop running update</source>
         <translation>Parar atualização</translation>
+    </message>
+    <message>
+        <source>No actions possible</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2241,10 +2237,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Remover todas as mensagens lidas de todos os feeds ao sair do aplicativo</translation>
     </message>
     <message>
-        <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
-        <translation>Quando novas mensagens chegarem no feed e existir um duplicado, então seu conteúdo será atualizado e a nova mensagem será exibida.</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Downloads</translation>
     </message>
@@ -2407,10 +2399,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Change</source>
         <translation>Alterar</translation>
-    </message>
-    <message>
-        <source>Remove duplicate messages (standard account only)</source>
-        <translation>Remover mensagens duplicadas (só a conta padrão)</translation>
     </message>
 </context>
 <context>
@@ -3224,6 +3212,14 @@ Vá até o site do aplicativo para obter manualmente.</translation>
         <source>Custom ID of the message</source>
         <translation>ID personalizada da mensagem</translation>
     </message>
+    <message>
+        <source>Custom hash</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom hash of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3475,6 +3471,14 @@ Pelo menos o API nível %1 é necessário.</translation>
         <translation>Lixeira
 
 %1</translation>
+    </message>
+    <message>
+        <source>Restore recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty recycle bin</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

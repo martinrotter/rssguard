@@ -1614,14 +1614,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Restore recycle bin</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation type="unfinished"/>
     </message>
@@ -1663,6 +1655,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Stop running update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No actions possible</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2221,10 +2217,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation type="unfinished"/>
     </message>
@@ -2380,10 +2372,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Change</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Remove duplicate messages (standard account only)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3194,6 +3182,14 @@ Go to application website to obtain it manually.</source>
         <source>Custom ID of the message</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Custom hash</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom hash of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3431,6 +3427,14 @@ At least API level %1 is required.</source>
         <source>Recycle bin
 
 %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Restore recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty recycle bin</source>
         <translation type="unfinished"/>
     </message>
 </context>
