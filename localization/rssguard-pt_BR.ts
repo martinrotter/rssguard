@@ -3474,11 +3474,11 @@ Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Restaurar lixeira</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Esvaziar lixeira</translation>
     </message>
 </context>
 <context>

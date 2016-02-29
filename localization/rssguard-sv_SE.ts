@@ -1665,7 +1665,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Inga åtgärder möjliga</translation>
     </message>
 </context>
 <context>
@@ -3214,11 +3214,11 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation>Anpassad hash</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Anpassad hash-summa för meddelandet.</translation>
     </message>
 </context>
 <context>
@@ -3472,11 +3472,11 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Återställ papperskorgen</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Töm papperskorgen</translation>
     </message>
 </context>
 <context>

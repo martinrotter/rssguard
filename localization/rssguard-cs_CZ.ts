@@ -3473,11 +3473,11 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Obnovit koš</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Vysypat koš</translation>
     </message>
 </context>
 <context>

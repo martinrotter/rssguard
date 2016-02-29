@@ -3480,11 +3480,11 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Hestel vuilnisbak</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Leeg vuilnisbak</translation>
     </message>
 </context>
 <context>

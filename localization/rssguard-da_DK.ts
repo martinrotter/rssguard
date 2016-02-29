@@ -3436,7 +3436,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Tøm skraldespand</translation>
     </message>
 </context>
 <context>
