@@ -382,9 +382,9 @@ file( GLOB APP_HEADERS
   "src/gui/notifications/*.h"
   "src/gui/*.h"
   "src/dynamic-shortcuts/*.h"
+  "src/exceptions/*.h"
   "src/miscellaneous/*.h"
   "src/miscellaneous/simplecrypt/*.h"
-  "src/exceptions/*.h"
   "src/core/*.h"
   "src/services/abstract/*.h"
   "src/services/standard/*.h"
@@ -416,7 +416,7 @@ file( GLOB APP_TRANSLATIONS_WO_QT
   "localization/rssguard*.ts")
 
 file( GLOB APP_TEXT
-  "resources/text/*")
+  "resources/text/C*")
 
 if(WIN32)
   file( GLOB APP_DLLS_QT4_MSVC2013
