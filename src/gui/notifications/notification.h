@@ -52,7 +52,7 @@ class Notification : public QWidget {
     void loadSettings();
 
 #if defined(Q_OS_LINUX)
-  private slots:
+  public slots:
     void notificationClosed(uint id, uint reason);
 #endif
 

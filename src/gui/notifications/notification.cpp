@@ -50,11 +50,16 @@ Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString())
                                        QDBusConnection::sessionBus(), this);
 
   if (m_dBusInterface->isValid()) {
-    m_dBusInterface->connection().connect("org.freedesktop.Notifications",
-                                          "/org/freedesktop/Notifications",
-                                          "org.freedesktop.Notifications",
-                                          "NotificationClosed",
-                                          this, SLOT(notificationClosed(uint,uint)));
+    QDBusConnection conn = m_dBusInterface->connection();
+
+    if (!conn.connect("org.freedesktop.Notifications",
+                      "/org/freedesktop/Notifications",
+                      "org.freedesktop.Notifications",
+                      "NotificationClosed",
+                      this, SLOT(notificationClosed(uint,uint)))) {
+      qWarning("Failed to connec notifications to 'NotificationClosed' signal, last error: '%s'.",
+               qPrintable(conn.lastError().name()));
+    }
   }
 #endif
 
