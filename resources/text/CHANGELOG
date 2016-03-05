@@ -7,6 +7,13 @@ PLEASE, FILL THIS SURVEY.
 http://goo.gl/forms/GcvPYgS2a8
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+Fixed:
+
+▪ Fixed little problem with feed list hiding. (bug #163)
+
+3.1.0
+—————
+
 Added:
 
 ▪ NEW ACCOUNT PLUGIN: OwnCloud News API 1.2 is now supported. Note that the support in this version is experimental and relatively basic. So far only syncing of feeds/messages is supported. Feed/category adding/removing is not yet supported yet. The OwnCloud plugin will be enhanced in future RSS Guard versions.

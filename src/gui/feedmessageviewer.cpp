@@ -159,7 +159,14 @@ void FeedMessageViewer::setListHeadersEnabled(bool enable) {
 }
 
 void FeedMessageViewer::switchFeedComponentVisibility() {
-  m_feedsWidget->setVisible(!m_feedsWidget->isVisible());
+  QAction *sen = qobject_cast<QAction*>(sender());
+
+  if (sen != NULL) {
+    m_feedsWidget->setVisible(sen->isChecked());
+  }
+  else {
+    m_feedsWidget->setVisible(!m_feedsWidget->isVisible());
+  }
 }
 
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
@@ -430,7 +437,7 @@ void FeedMessageViewer::showDbCleanupAssistant() {
 
 void FeedMessageViewer::refreshVisualProperties() {
   const Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(GROUP(GUI),
-                                                                                              SETTING(GUI::ToolbarStyle)).toInt());
+                                                                                                    SETTING(GUI::ToolbarStyle)).toInt());
   
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);

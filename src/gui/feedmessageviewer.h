@@ -96,7 +96,6 @@ class FeedMessageViewer : public TabContent {
   private slots:
     // Called when feed update finishes.
     void onFeedsUpdateFinished();
-
     void onFeedsUpdateStarted();
 
     // Switches visibility of feed list and related
