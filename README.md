@@ -38,6 +38,7 @@ People who donated:
 
 * Zdenek S. (Sweden)
 * Eloi Garibaldi B.
+* Jacob S.
 
 I say "thank you" for all your support, donators.
 
