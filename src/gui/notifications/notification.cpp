@@ -57,7 +57,7 @@ Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString())
                       "org.freedesktop.Notifications",
                       "NotificationClosed",
                       this, SLOT(notificationClosed(uint,uint)))) {
-      qWarning("Failed to connec notifications to 'NotificationClosed' signal, last error: '%s'.",
+      qWarning("Failed to connect notifications to 'NotificationClosed' signal, last error: '%s'.",
                qPrintable(conn.lastError().name()));
     }
   }
