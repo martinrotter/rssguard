@@ -7,6 +7,10 @@ PLEASE, FILL THIS SURVEY.
 http://goo.gl/forms/GcvPYgS2a8
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+Added:
+
+▪ Opening of download manager when new file download starts is now optional. (issue #165)
+
 Fixed:
 
 ▪ Fixed little problem with feed list hiding. (bug #163)

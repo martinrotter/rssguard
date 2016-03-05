@@ -525,7 +525,8 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply *reply) {
   DownloadItem *item = new DownloadItem(reply, this);
   addItem(item);
 
-  if (!item->m_canceledFileSelect) {
+  if (!item->m_canceledFileSelect && qApp->settings()->value(GROUP(Downloads),
+                                                             SETTING(Downloads::ShowDownloadsWhenNewDownloadStarts)).toBool()) {
     qApp->mainForm()->tabWidget()->showDownloadManager();
   }
 }

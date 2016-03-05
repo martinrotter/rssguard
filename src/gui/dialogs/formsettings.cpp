@@ -176,6 +176,8 @@ void FormSettings::selectNewNotificationColor() {
 }
 
 void FormSettings::loadDownloads() {
+  m_ui->m_checkOpenManagerWhenDownloadStarts->setChecked(m_settings->value(GROUP(Downloads),
+                                                                           SETTING(Downloads::ShowDownloadsWhenNewDownloadStarts)).toBool());
   m_ui->m_txtDownloadsTargetDirectory->setText(QDir::toNativeSeparators(m_settings->value(GROUP(Downloads),
                                                                                           SETTING(Downloads::TargetDirectory)).toString()));
   m_ui->m_rbDownloadsAskEachFile->setChecked(m_settings->value(GROUP(Downloads),
@@ -183,6 +185,7 @@ void FormSettings::loadDownloads() {
 }
 
 void FormSettings::saveDownloads() {
+  m_settings->setValue(GROUP(Downloads), Downloads::ShowDownloadsWhenNewDownloadStarts, m_ui->m_checkOpenManagerWhenDownloadStarts->isChecked());
   m_settings->setValue(GROUP(Downloads), Downloads::TargetDirectory, m_ui->m_txtDownloadsTargetDirectory->text());
   m_settings->setValue(GROUP(Downloads), Downloads::AlwaysPromptForFilename, m_ui->m_rbDownloadsAskEachFile->isChecked());
   qApp->downloadManager()->setDownloadDirectory(m_ui->m_txtDownloadsTargetDirectory->text());

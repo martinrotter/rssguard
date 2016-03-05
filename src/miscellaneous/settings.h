@@ -207,6 +207,9 @@ namespace Downloads {
   KEY TargetExplicitDirectory;
   VALUE(QString) TargetExplicitDirectoryDef;
 
+  KEY ShowDownloadsWhenNewDownloadStarts;
+  VALUE(bool) ShowDownloadsWhenNewDownloadStartsDef;
+
   KEY ItemUrl;
   KEY ItemLocation;
   KEY ItemDone;
