@@ -21,6 +21,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "network-web/webpage.h"
 #include "network-web/webfactory.h"
 #include "gui/messagebox.h"
@@ -330,7 +331,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
   }
 
   if (!selectedText().isEmpty()) {
-    m_actionLookupText->setText(tr("Search \"%1\" via Google...").arg(selectedText()));
+    m_actionLookupText->setText(tr("Search \"%1\" via Google...").arg(TextFactory::shorten(selectedText())));
     context_menu.addAction(m_actionLookupText);
   }
 
