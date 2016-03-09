@@ -13,6 +13,7 @@ Added:
 
 Fixed:
 
+▪ MySQL scripts improved. (bug #170)
 ▪ Fixed little problem with feed list hiding. (bug #163)
 ▪ Web browser search context menu item now trims the searched string. (bug #168)
 
