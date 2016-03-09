@@ -110,9 +110,12 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &
     database.close();
     return MySQLOk;
   }
-  else {
+  else if (database.lastError().isValid()) {
     // Connection failed, do cleanup and return specific error code.
     return static_cast<MySQLError>(database.lastError().number());
+  }
+  else {
+    return MySQLUnknownError;
   }
 }
 
@@ -122,7 +125,7 @@ QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) const {
       return tr("MySQL server works as expected.");
 
     case MySQLUnknownDatabase:
-      return tr("Selected database does not exist (yet).");
+      return tr("Selected database does not exist (yet). It will be created. It's okay.");
 
     case MySQLCantConnect:
     case MySQLConnectionError:

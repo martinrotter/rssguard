@@ -591,6 +591,7 @@ void FormSettings::mysqlTestConnection() {
 
   switch (error_code) {
     case DatabaseFactory::MySQLOk:
+    case DatabaseFactory::MySQLUnknownDatabase:
       m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Ok, interpretation, interpretation);
       break;
 

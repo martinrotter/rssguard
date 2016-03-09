@@ -43,6 +43,7 @@ class DatabaseFactory : public QObject {
     // Describes possible MySQL-specific errors.
     enum MySQLError {
       MySQLOk               = 0,
+      MySQLUnknownError     = 1,
       MySQLAccessDenied     = 1045,
       MySQLUnknownDatabase  = 1049,
       MySQLConnectionError  = 2002,
