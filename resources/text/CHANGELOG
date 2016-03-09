@@ -1,4 +1,4 @@
-3.1.0
+3.1.1
 —————
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -14,6 +14,7 @@ Added:
 Fixed:
 
 ▪ Fixed little problem with feed list hiding. (bug #163)
+▪ Web browser search context menu item now trims the searched string. (bug #168)
 
 3.1.0
 —————
