@@ -105,7 +105,7 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &
   database.setPassword(password);
   database.setDatabaseName(w_database);
 
-  if (database.open()) {
+  if (database.open() && !database.lastError().isValid()) {
     // Connection succeeded, clean up the mess and return OK status.
     database.close();
     return MySQLOk;
