@@ -171,34 +171,6 @@ RecycleBin *StandardServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
 
-bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus read) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(db_handle);
-  query_read_msg.setForwardOnly(true);
-
-  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))));
-
-  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
-
-  if (query_read_msg.exec()) {
-    // Messages are switched, now inform model about need to reload data.
-    QList<RootItem*> itemss;
-
-    foreach (Feed *feed, items) {
-      feed->updateCounts(false);
-      itemss.append(feed);
-    }
-
-    itemChanged(itemss);
-    requestReloadMessageList(read == RootItem::Read);
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
 void StandardServiceRoot::loadFromDatabase(){
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   Assignment categories;

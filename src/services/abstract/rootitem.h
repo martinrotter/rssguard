@@ -247,6 +247,7 @@ class RootItem : public QObject {
       m_boldFont = bold_font;
     }
 
+    // NOTE: For standard feed, this WILL equal to id().
     int customId() const;
     void setCustomId(int custom_id);
 

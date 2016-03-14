@@ -33,7 +33,6 @@ class TtRssFeed : public Feed {
     explicit TtRssFeed(const QSqlRecord &record);
     virtual ~TtRssFeed();
 
-    int messageForeignKeyId() const;
     TtRssServiceRoot *serviceRoot() const;
     QVariant data(int column, int role) const;
     bool canBeEdited() const;

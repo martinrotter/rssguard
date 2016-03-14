@@ -48,7 +48,7 @@ QList<Message> Feed::undeletedMessages() const {
                          "FROM Messages "
                          "WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;");
 
-  query_read_msg.bindValue(QSL(":feed"), messageForeignKeyId());
+  query_read_msg.bindValue(QSL(":feed"), customId());
   query_read_msg.bindValue(QSL(":account_id"), account_id);
 
   if (query_read_msg.exec()) {

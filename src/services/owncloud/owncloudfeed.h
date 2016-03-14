@@ -35,7 +35,6 @@ class OwnCloudFeed : public Feed {
     bool cleanMessages(bool clear_only_read);
 
     OwnCloudServiceRoot *serviceRoot() const;
-    int messageForeignKeyId() const;
 
   private:
     QList<Message> obtainNewMessages();

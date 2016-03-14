@@ -400,7 +400,7 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*> &feeds) const {
   stringy_ids.reserve(feeds.size());
 
   foreach (const Feed *feed, feeds) {
-    stringy_ids.append(QString("'%1'").arg(QString::number(feed->messageForeignKeyId())));
+    stringy_ids.append(QString("'%1'").arg(QString::number(feed->customId())));
   }
 
   return stringy_ids;

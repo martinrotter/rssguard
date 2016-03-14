@@ -69,8 +69,6 @@ class StandardServiceRoot : public ServiceRoot {
     // NOTE: This is used for import/export of the model.
     bool mergeImportExportModel(FeedsImportExportModel *model, RootItem *target_root_node, QString &output_message);
 
-    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
-
     void loadFromDatabase();
     void checkArgumentForFeedAdding(const QString &argument);
 

@@ -57,10 +57,6 @@ OwnCloudServiceRoot *OwnCloudFeed::serviceRoot() const {
   return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
 }
 
-int OwnCloudFeed::messageForeignKeyId() const {
-  return customId();
-}
-
 QList<Message> OwnCloudFeed::obtainNewMessages() {
   OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customId());
 

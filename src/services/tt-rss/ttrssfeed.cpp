@@ -50,10 +50,6 @@ TtRssFeed::TtRssFeed(const QSqlRecord &record) : Feed(NULL) {
 TtRssFeed::~TtRssFeed() {
 }
 
-int TtRssFeed::messageForeignKeyId() const {
-  return customId();
-}
-
 TtRssServiceRoot *TtRssFeed::serviceRoot() const {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }

@@ -501,10 +501,6 @@ bool StandardFeed::editItself(StandardFeed *new_feed_data) {
   return true;
 }
 
-int StandardFeed::messageForeignKeyId() const {
-  return id();
-}
-
 QList<Message> StandardFeed::obtainNewMessages() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
