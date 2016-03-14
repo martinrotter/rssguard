@@ -242,6 +242,11 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
       new_message.m_url = new_message.m_enclosures.first().m_url;
     }
 
+    if (new_message.m_url.isEmpty()) {
+      // Try to get "href" attribute.
+      new_message.m_url = message_item.namedItem(QSL("link")).toElement().attribute(QSL("href"));
+    }
+
     new_message.m_author = message_item.namedItem(QSL("author")).toElement().text();
 
     if (new_message.m_author.isEmpty()) {

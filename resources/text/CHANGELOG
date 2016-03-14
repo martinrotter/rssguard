@@ -13,6 +13,7 @@ Added:
 
 Fixed:
 
+▪ Now title of the RSS/ATOM message is taken into account when deciding message "uniqueness". (bug #171)
 ▪ MySQL scripts improved. (bug #170)
 ▪ Fixed little problem with feed list hiding. (bug #163)
 ▪ Web browser search context menu item now trims the searched string. (bug #168)

@@ -192,7 +192,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
   //   3) they have same AUTHOR.
   query_select_with_url.setForwardOnly(true);
   query_select_with_url.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
-                                "WHERE feed = :feed AND url = :url AND author = :author AND account_id = :account_id;");
+                                "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
 
   // When we have custom ID of the message, we can check directly for existence
   // of that particular message.
@@ -242,6 +242,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
       // We need to recognize existing messages according URL & AUTHOR.
       // NOTE: This concerns messages from standard account.
       query_select_with_url.bindValue(QSL(":feed"), custom_id);
+      query_select_with_url.bindValue(QSL(":title"), message.m_title);
       query_select_with_url.bindValue(QSL(":url"), message.m_url);
       query_select_with_url.bindValue(QSL(":author"), message.m_author);
       query_select_with_url.bindValue(QSL(":account_id"), account_id);
@@ -293,7 +294,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
 
         anything_updated = true;
 
-        if (query_update.exec()) {
+        if (query_update.exec() && !message.m_isRead) {
           updated_messages++;
         }
 
