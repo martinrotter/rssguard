@@ -78,8 +78,11 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
+  const int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
+  const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
+
   // Reload the model now.
-  m_sourceModel->sort(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  m_sourceModel->sort(col, ord);
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
@@ -230,6 +233,7 @@ void MessagesView::loadItem(RootItem *item) {
   const int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
   const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
+  scrollToTop();
   m_sourceModel->setSort(col, ord);
   m_sourceModel->loadMessages(item);
 
