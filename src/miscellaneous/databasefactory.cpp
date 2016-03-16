@@ -106,9 +106,19 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &
   database.setDatabaseName(w_database);
 
   if (database.open() && !database.lastError().isValid()) {
-    // Connection succeeded, clean up the mess and return OK status.
-    database.close();
-    return MySQLOk;
+    QSqlQuery query(QSL("SELECT version();"), database);
+
+    if (!query.lastError().isValid() && query.next()) {
+      qDebug("Checked MySQL database, version is '%s'.", qPrintable(query.value(0).toString()));
+
+      // Connection succeeded, clean up the mess and return OK status.
+      database.close();
+      return MySQLOk;
+    }
+    else {
+      database.close();
+      return MySQLUnknownError;
+    }
   }
   else if (database.lastError().isValid()) {
     // Connection failed, do cleanup and return specific error code.
