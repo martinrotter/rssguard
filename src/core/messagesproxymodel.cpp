@@ -74,14 +74,10 @@ bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &ri
   // V případě, že do messagelistu budu zobrazovat řekněme
   // více než 4 000 zpráv, tak tady vracet automaticky false,
   // neprovádět skutečně porovnávání.
+  Q_UNUSED(left)
+  Q_UNUSED(right)
 
-  if (left.column() == MSG_DB_TITLE_INDEX && right.column() == MSG_DB_TITLE_INDEX) {
-    return QString::localeAwareCompare(m_sourceModel->data(left, Qt::EditRole).toString(),
-                                       m_sourceModel->data(right, Qt::EditRole).toString()) < 0;
-  }
-  else {
-    return QSortFilterProxyModel::lessThan(left, right);
-  }
+  return false;
 }
 
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &indexes, bool deep) const {
@@ -182,6 +178,12 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
   }
 
   return result;
+}
+
+void MessagesProxyModel::sort(int column, Qt::SortOrder order) {
+  // NOTE: Ignore here, sort is done elsewhere.
+  Q_UNUSED(column)
+  Q_UNUSED(order)
 }
 
 QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &indexes) const {

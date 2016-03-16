@@ -51,9 +51,9 @@ MessagesView::~MessagesView() {
 }
 
 void MessagesView::setSortingEnabled(bool enable) {
-  disconnect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+  disconnect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(onSortIndicatorChanged(int,Qt::SortOrder)));
   QTreeView::setSortingEnabled(enable);
-  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(onSortIndicatorChanged(int,Qt::SortOrder)));
 }
 
 void MessagesView::createConnections() {
@@ -61,7 +61,7 @@ void MessagesView::createConnections() {
 
   // Adjust columns when layout gets changed.
   connect(header(), SIGNAL(geometriesChanged()), this, SLOT(adjustColumns()));
-  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(onSortIndicatorChanged(int,Qt::SortOrder)));
 }
 
 void MessagesView::keyboardSearch(const QString &search) {
@@ -79,8 +79,7 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   // Reload the model now.
-  m_sourceModel->fetchAllData();
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  m_sourceModel->sort(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
@@ -228,12 +227,11 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
 }
 
 void MessagesView::loadItem(RootItem *item) {
-  m_sourceModel->loadMessages(item);
-
   const int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
   const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
-  sortByColumn(col, ord);
+  m_sourceModel->setSort(col, ord);
+  m_sourceModel->loadMessages(item);
 
 #if QT_VERSION >= 0x050000
   // Messages are loaded, make sure that previously
@@ -242,18 +240,6 @@ void MessagesView::loadItem(RootItem *item) {
   // should be cleared automatically when SQL model is reset.
   emit currentMessagesRemoved();
 #endif
-}
-
-void MessagesView::sortByColumn(int column, Qt::SortOrder order) {
-  const int old_column = header()->sortIndicatorSection();
-  const Qt::SortOrder old_order = header()->sortIndicatorOrder();
-
-  if (column == old_column && order == old_order) {
-    m_proxyModel->sort(column, order);
-  }
-  else {
-    QTreeView::sortByColumn(column, order);
-  }
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {
@@ -350,7 +336,6 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRead(mapped_indexes, read);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
@@ -378,9 +363,8 @@ void MessagesView::deleteSelectedMessages() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesDeleted(mapped_indexes);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
-  const int row_count = m_sourceModel->rowCount();
+  const int row_count = m_proxyModel->rowCount();
 
   if (row_count > 0) {
     const QModelIndex last_item = current_index.row() < row_count ?
@@ -407,9 +391,8 @@ void MessagesView::restoreSelectedMessages() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRestored(mapped_indexes);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
-  int row_count = m_sourceModel->rowCount();
+  const int row_count = m_sourceModel->rowCount();
 
   if (row_count > 0) {
     const QModelIndex last_item = current_index.row() < row_count ?
@@ -437,7 +420,6 @@ void MessagesView::switchSelectedMessagesImportance() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->switchBatchMessageImportance(mapped_indexes);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
@@ -570,8 +552,13 @@ void MessagesView::adjustColumns() {
   }
 }
 
-void MessagesView::saveSortState(int column, Qt::SortOrder order) {
+void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
+  // Save current setup.
   qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortColumnMessages, column);
   qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortOrderMessages, order);
   qApp->settings()->sync();
+
+  // Repopulate the shit.
+  m_sourceModel->sort(column, order);
+  emit currentMessagesRemoved();
 }

@@ -13,6 +13,7 @@ Added:
 
 Fixed:
 
+▪ Ordering of messages is now done on SQL server (stands for both MySQL and SQLite). (bug #172)
 ▪ Now title of the RSS/ATOM message is taken into account when deciding message "uniqueness". (bug #171)
 ▪ MySQL scripts improved. (bug #170)
 ▪ Fixed little problem with feed list hiding. (bug #163)
