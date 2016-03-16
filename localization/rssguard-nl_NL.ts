@@ -261,16 +261,16 @@ Gelezen berichten gewist...</translation>
         <translation>Onbekende fout.</translation>
     </message>
     <message>
-        <source>Selected database does not exist (yet).</source>
-        <translation>Geselekteerde database bestaat (nog) niet.</translation>
-    </message>
-    <message>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation>MySQL/MariaDB (specifieke database)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (ingesloten database)</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1606,7 +1606,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation>&amp;Hestel alle prullenbakken</translation>
+        <translation>&amp;Herstel alle prullenbakken</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
@@ -1666,14 +1666,14 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Acties niet mogelijk</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation>Hestel database/instellingen</translation>
+        <translation>Herstel database/instellingen</translation>
     </message>
     <message>
         <source>Operation results</source>
@@ -2405,6 +2405,10 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     <message>
         <source>Change</source>
         <translation>Verander</translation>
+    </message>
+    <message>
+        <source>Open download manager when new download is started</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3208,7 +3212,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation>Handmatig ID</translation>
+        <translation>Aangepaste ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
@@ -3216,15 +3220,15 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation>Handmatig ID van het bericht</translation>
+        <translation>Aangepaste ID van het bericht</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste hash</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste hash van bericht.</translation>
     </message>
 </context>
 <context>
@@ -3480,7 +3484,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation>Hestel vuilnisbak</translation>
+        <translation>Herstel vuilnisbak</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>

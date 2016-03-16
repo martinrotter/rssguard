@@ -260,15 +260,15 @@ Also note that some resources are cached by internal web browser. Thus, after ch
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Selected database does not exist (yet).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2392,6 +2392,10 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open download manager when new download is started</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

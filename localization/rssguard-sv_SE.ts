@@ -260,16 +260,16 @@ Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du 
         <translation>Okänt fel.</translation>
     </message>
     <message>
-        <source>Selected database does not exist (yet).</source>
-        <translation>Den valda databasen finns inte (än).</translation>
-    </message>
-    <message>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation>MySQL/MariaDB (dedikerad databas)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (inbäddad databas)</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2400,6 +2400,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Change</source>
         <translation>Ändra</translation>
+    </message>
+    <message>
+        <source>Open download manager when new download is started</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

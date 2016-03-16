@@ -260,16 +260,16 @@ Note também que alguns recursos são armazenados pelo navegador interno. Sendo 
         <translation>Erro desconhecido.</translation>
     </message>
     <message>
-        <source>Selected database does not exist (yet).</source>
-        <translation>Banco de dados selecionado não existe (ainda).</translation>
-    </message>
-    <message>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation>MySQL/MariaDB (banco de dados dedicado)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (banco de dados incorporado)</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1665,7 +1665,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Nenhuma ação possível</translation>
     </message>
 </context>
 <context>
@@ -2399,6 +2399,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Change</source>
         <translation>Alterar</translation>
+    </message>
+    <message>
+        <source>Open download manager when new download is started</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3214,11 +3218,11 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation>Hash personalizado</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Hash personalizado da mensagem,</translation>
     </message>
 </context>
 <context>

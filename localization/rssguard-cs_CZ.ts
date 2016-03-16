@@ -260,16 +260,16 @@ Berte také na paměti, že některé prostředky webových stránek jsou intern
         <translation>Neznámá chyba.</translation>
     </message>
     <message>
-        <source>Selected database does not exist (yet).</source>
-        <translation>Zvolená databáze (zatím) neexistuje.</translation>
-    </message>
-    <message>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation>MySQL/MariaDB (dedikovaná database)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (embedded databáze)</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2399,6 +2399,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Change</source>
         <translation>Změnit</translation>
+    </message>
+    <message>
+        <source>Open download manager when new download is started</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

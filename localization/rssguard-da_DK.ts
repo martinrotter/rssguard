@@ -27,7 +27,7 @@
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Address</source>
@@ -258,16 +258,16 @@ Also note that some resources are cached by internal web browser. Thus, after ch
         <translation>Ukendt fejl.</translation>
     </message>
     <message>
-        <source>Selected database does not exist (yet).</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation>MySQL/MariaDB (dedikeret database)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (indlejret database)</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -346,7 +346,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke åbne fil</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
@@ -673,7 +673,7 @@ or this functionality is not implemented yet.</source>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj ny konto</translation>
     </message>
     <message>
         <source>Details</source>
@@ -685,7 +685,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished"/>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Author</source>
@@ -898,7 +898,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn til din TT-RSS konto</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
@@ -934,7 +934,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Valgte Tiny Tiny RSS server bruger en ikke understøttet version af API (%1). Der kræves mindst version %2.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
@@ -966,11 +966,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord kan ikke være tomt.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord er okay.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
@@ -994,7 +994,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL er okay.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
@@ -1021,7 +1021,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditFeed</name>
     <message>
         <source>Edit feed</source>
-        <translation type="unfinished"/>
+        <translation>Rediger feed</translation>
     </message>
     <message>
         <source>Parent category</source>
@@ -1180,7 +1180,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn til din TT-RSS konto</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
@@ -1240,11 +1240,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord kan ikke være tomt.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord er okay.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
@@ -1252,7 +1252,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL er okay.</translation>
     </message>
 </context>
 <context>
@@ -1507,7 +1507,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="unfinished"/>
+        <translation>Ajourfør &amp;alle poster</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
@@ -1747,7 +1747,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Proxy</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
@@ -1804,7 +1804,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished"/>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Author</source>
@@ -2042,7 +2042,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"/>
+        <translation>Værtsnavn på din MySQL-server</translation>
     </message>
     <message>
         <source>Username to login with</source>
@@ -2297,7 +2297,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"/>
+        <translation>Gem alle hentede filer i</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
@@ -2361,7 +2361,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"/>
+        <translation>E-post</translation>
     </message>
     <message>
         <source>Enable notifications</source>
@@ -2369,10 +2369,14 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Background color</source>
-        <translation type="unfinished"/>
+        <translation>Baggrundsfarve</translation>
     </message>
     <message>
         <source>Change</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open download manager when new download is started</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2412,7 +2416,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke tilføje kategori</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
@@ -2444,7 +2448,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon-fil for kategorien</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -2693,7 +2697,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Ikon hentet succesfuldt.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
@@ -2884,7 +2888,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation type="unfinished"/>
+        <translation>Parser data...</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
@@ -3012,7 +3016,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"/>
+        <translation>Henter opdatering...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
@@ -3097,7 +3101,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Oprettet den</translation>
     </message>
     <message>
         <source>Contents</source>
@@ -3534,7 +3538,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Import was completely successfull.</source>
-        <translation type="unfinished"/>
+        <translation>Import udført succesfuldt.</translation>
     </message>
     <message>
         <source>Export feeds</source>
@@ -3556,7 +3560,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Kam ikke tilføje post</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
@@ -3564,7 +3568,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke tilføje kategori</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
@@ -3746,7 +3750,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Kam ikke tilføje post</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
@@ -3861,7 +3865,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Image</source>
-        <translation type="unfinished"/>
+        <translation>Billede</translation>
     </message>
     <message>
         <source>Hyperlink</source>
