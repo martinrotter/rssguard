@@ -71,8 +71,8 @@ QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_
 
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   if (left.column() == MSG_DB_TITLE_INDEX && right.column() == MSG_DB_TITLE_INDEX) {
-    return QString::localeAwareCompare(m_sourceModel->data(left).toString(),
-                                       m_sourceModel->data(right).toString()) < 0;
+    return QString::localeAwareCompare(m_sourceModel->data(left, Qt::EditRole).toString(),
+                                       m_sourceModel->data(right, Qt::EditRole).toString()) < 0;
   }
   else {
     return QSortFilterProxyModel::lessThan(left, right);
