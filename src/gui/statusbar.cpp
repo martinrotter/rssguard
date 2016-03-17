@@ -152,17 +152,26 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
       widget_to_add->setVisible(false);
     }
     else {
-      // Add originally toolbar action.
-      PlainToolButton *tool_button = new PlainToolButton(this);
+      if (action_name == SEPARATOR_ACTION_NAME) {
+        QLabel *lbl = new QLabel(QSL("•"));
 
-      tool_button->reactOnActionChange(matching_action);
+        widget_to_add = lbl;
+        action_to_add = new QAction(this);
+        action_to_add->setProperty("should_remove_action", true);
+      }
+      else {
+        // Add originally toolbar action.
+        PlainToolButton *tool_button = new PlainToolButton(this);
+        tool_button->reactOnActionChange(matching_action);
 
-      action_to_add = matching_action;
-      widget_to_add = tool_button;
+        widget_to_add = tool_button;
+        action_to_add = matching_action;
 
-      matching_action->setProperty("should_remove", true);
-      connect(tool_button, SIGNAL(clicked(bool)), matching_action, SLOT(trigger()));
-      connect(matching_action, SIGNAL(changed()), tool_button, SLOT(reactOnActionChange()));
+        connect(tool_button, SIGNAL(clicked(bool)), matching_action, SLOT(trigger()));
+        connect(matching_action, SIGNAL(changed()), tool_button, SLOT(reactOnActionChange()));
+      }
+
+      action_to_add->setProperty("should_remove_widget", true);
     }
 
     action_to_add->setProperty("widget", QVariant::fromValue((void*) widget_to_add));
@@ -185,18 +194,23 @@ void StatusBar::clear() {
   while (!actions().isEmpty()) {
     QAction *act = actions().at(0);
     QWidget *widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : NULL;
-    bool should_remove = act->property("remove_widget").isValid();
+    bool should_remove_widget = act->property("should_remove_widget").isValid();
+    bool should_remove_action = act->property("should_remove_action").isValid();
+
+    removeAction(act);
 
     if (widget != NULL) {
       removeWidget(widget);
       widget->setVisible(false);
 
-      if (should_remove) {
+      if (should_remove_widget) {
         widget->deleteLater();
       }
-    }
 
-    removeAction(act);
+      if (should_remove_action) {
+        act->deleteLater();
+      }
+    }
   }
 }
 
