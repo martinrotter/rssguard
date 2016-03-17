@@ -9,6 +9,7 @@ http://goo.gl/forms/GcvPYgS2a8
 
 Added:
 
+▪ Added experimental support for tweakable statusbar. (issue #158)
 ▪ Opening of download manager when new file download starts is now optional. (issue #165)
 
 Fixed:

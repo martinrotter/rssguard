@@ -41,6 +41,7 @@
 #include "gui/basetoolbar.h"
 #include "gui/messagestoolbar.h"
 #include "gui/messagesview.h"
+#include "gui/statusbar.h"
 #include "gui/dialogs/formmain.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 
@@ -803,6 +804,7 @@ void FormSettings::loadInterface() {
   // Load toolbars.
   m_ui->m_editorFeedsToolbar->loadFromToolBar(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsToolBar());
   m_ui->m_editorMessagesToolbar->loadFromToolBar(qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesToolBar());
+  m_ui->m_editorStatusbar->loadFromToolBar(qApp->mainForm()->statusBar());
 }
 
 void FormSettings::saveInterface() {
@@ -858,6 +860,7 @@ void FormSettings::saveInterface() {
 
   m_ui->m_editorFeedsToolbar->saveToolBar();
   m_ui->m_editorMessagesToolbar->saveToolBar();
+  m_ui->m_editorStatusbar->saveToolBar();
 
   qApp->mainForm()->tabWidget()->checkTabBarVisibility();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();

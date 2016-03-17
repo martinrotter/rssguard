@@ -22,6 +22,7 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <QStyleOption>
+#include <QAction>
 
 
 PlainToolButton::PlainToolButton(QWidget *parent) : QToolButton(parent), m_padding(0) {
@@ -39,9 +40,13 @@ void PlainToolButton::paintEvent(QPaintEvent *e) {
   // Set padding.
   rect.adjust(m_padding, m_padding, -m_padding, -m_padding);
 
-  // Paint the icon.
-  if (underMouse() || isChecked()) {
-    p.setOpacity(0.7);
+  if (isEnabled()) {
+    if (underMouse() || isChecked()) {
+      p.setOpacity(0.7);
+    }
+  }
+  else {
+    p.setOpacity(0.3);
   }
 
   icon().paint(&p, rect);
@@ -59,4 +64,14 @@ void PlainToolButton::setPadding(int padding) {
 void PlainToolButton::setChecked(bool checked) {
   QToolButton::setChecked(checked);
   repaint();
+}
+
+void PlainToolButton::reactOnActionChange(QAction *action) {
+  QAction *real_action = action == NULL ? qobject_cast<QAction*>(sender()) : action;
+
+  setEnabled(real_action->isEnabled());
+  setCheckable(real_action->isCheckable());
+  setChecked(real_action->isChecked());
+  setIcon(real_action->icon());
+  setToolTip(real_action->toolTip());
 }

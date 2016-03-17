@@ -27,7 +27,7 @@ namespace Ui {
   class ToolBarEditor;
 }
 
-class BaseToolBar;
+class BaseBar;
 
 class ToolBarEditor : public QWidget {
     Q_OBJECT
@@ -38,7 +38,7 @@ class ToolBarEditor : public QWidget {
     virtual ~ToolBarEditor();
 
     // Toolbar operations.
-    void loadFromToolBar(BaseToolBar *tool_bar);
+    void loadFromToolBar(BaseBar *tool_bar);
     void saveToolBar();
 
     inline QListWidget *activeItemsWidget() const {
@@ -68,7 +68,7 @@ class ToolBarEditor : public QWidget {
 
   private:
     QScopedPointer<Ui::ToolBarEditor> m_ui;
-    BaseToolBar *m_toolBar;
+    BaseBar *m_toolBar;
 };
 
 #endif // TOOLBAREDITOR_H

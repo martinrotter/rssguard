@@ -21,14 +21,8 @@
 #include <QToolBar>
 
 
-class BaseToolBar : public QToolBar {
-    Q_OBJECT
-
+class BaseBar {
   public:
-    // Constructors and destructors.
-    explicit BaseToolBar(const QString &title, QWidget *parent = 0);
-    virtual ~BaseToolBar();
-
     // Returns all actions which can be added to the toolbar.
     virtual QList<QAction*> availableActions() const = 0;
 
@@ -45,6 +39,15 @@ class BaseToolBar : public QToolBar {
 
   protected:
     QAction *findMatchingAction(const QString &action, const QList<QAction*> actions) const;
+};
+
+class BaseToolBar : public QToolBar, public BaseBar {
+    Q_OBJECT
+
+  public:
+    // Constructors and destructors.
+    explicit BaseToolBar(const QString &title, QWidget *parent = 0);
+    virtual ~BaseToolBar();
 };
 
 #endif // TOOLBAR_H

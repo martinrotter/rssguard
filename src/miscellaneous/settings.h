@@ -101,6 +101,9 @@ namespace GUI {
   KEY FeedsToolbarActions;
   VALUE(char*) FeedsToolbarActionsDef;
 
+  KEY StatusbarActions;
+  VALUE(char*) StatusbarActionsDef;
+
   KEY MainWindowInitialSize;
   KEY MainWindowInitialPosition;
 

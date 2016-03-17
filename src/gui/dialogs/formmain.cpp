@@ -83,6 +83,8 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   setupIcons();
   loadSize();
 
+  m_statusBar->loadChangeableActions();
+
   // Initialize the web factory.
   WebFactory::instance()->loadState();
 }
@@ -475,9 +477,6 @@ void FormMain::saveSize() {
 
 void FormMain::createConnections() {
   // Status bar connections.
-  connect(m_statusBar->fullscreenSwitcher(), SIGNAL(toggled(bool)), m_ui->m_actionFullscreen, SLOT(setChecked(bool)));
-  connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
-
   connect(m_ui->m_menuAddItem, SIGNAL(aboutToShow()), this, SLOT(updateAddItemMenu()));
   connect(m_ui->m_menuRecycleBin, SIGNAL(aboutToShow()), this, SLOT(updateRecycleBinMenu()));
   connect(m_ui->m_menuAccounts, SIGNAL(aboutToShow()), this, SLOT(updateAccountsMenu()));

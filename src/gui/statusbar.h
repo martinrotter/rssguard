@@ -20,13 +20,14 @@
 
 #include <QStatusBar>
 
+#include "gui/basetoolbar.h"
 
 class QProgressBar;
 class PlainToolButton;
 class QLabel;
 class AdBlockIcon;
 
-class StatusBar : public QStatusBar {
+class StatusBar : public QStatusBar, public BaseBar {
     Q_OBJECT
 
   public:
@@ -34,13 +35,10 @@ class StatusBar : public QStatusBar {
     explicit StatusBar(QWidget *parent = 0);
     virtual ~StatusBar();
 
-    inline PlainToolButton *fullscreenSwitcher() const {
-      return m_fullscreenSwitcher;
-    }
-
-    inline AdBlockIcon *adBlockIcon() {
-      return m_adBlockIcon;
-    }
+    QList<QAction*> availableActions() const;
+    QList<QAction*> changeableActions() const;
+    void saveChangeableActions(const QStringList &actions);
+    void loadChangeableActions();
 
   public slots:
     // Progress bar operations
@@ -54,12 +52,23 @@ class StatusBar : public QStatusBar {
     bool eventFilter(QObject *watched, QEvent *event);
 
   private:
+    void clear();
+    void loadChangeableActions(const QStringList &action_names);
+
     QProgressBar *m_barProgressFeeds;
+    QAction *m_barProgressFeedsAction;
+
     QLabel *m_lblProgressFeeds;
+    QAction *m_lblProgressFeedsAction;
+
     QProgressBar *m_barProgressDownload;
+    QAction *m_barProgressDownloadAction;
+
     QLabel *m_lblProgressDownload;
-    PlainToolButton *m_fullscreenSwitcher;
+    QAction *m_lblProgressDownloadAction;
+
     AdBlockIcon* m_adBlockIcon;
+    QAction *m_adBlockIconAction;
 };
 
 #endif // STATUSBAR_H

@@ -31,51 +31,144 @@
 
 StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   setSizeGripEnabled(false);
-  setContentsMargins(0, 0, 0, 0);
+  setContentsMargins(2, 2, 2, 2);
 
   m_adBlockIcon = new AdBlockIcon(this);
   m_adBlockIcon->activate();
+  m_adBlockIcon->setObjectName(QSL("m_adBlockIcon"));
 
-  // Initializations of widgets for status bar.
-  m_fullscreenSwitcher = new PlainToolButton(this);
-  m_fullscreenSwitcher->setCheckable(true);
-  m_fullscreenSwitcher->setIcon(qApp->icons()->fromTheme(QSL("view-fullscreen")));
-  m_fullscreenSwitcher->setText(tr("Fullscreen mode"));
-  m_fullscreenSwitcher->setToolTip(tr("Switch application between fulscreen/normal states right from this status bar icon."));
+  m_adBlockIconAction = new QAction(qApp->icons()->fromTheme("web-adblock"), tr("Adblock"), this);
+  m_adBlockIconAction->setObjectName(QSL("m_adBlockIconAction"));
 
   m_barProgressFeeds = new QProgressBar(this);
   m_barProgressFeeds->setTextVisible(false);
   m_barProgressFeeds->setFixedWidth(100);
   m_barProgressFeeds->setVisible(false);
+  m_barProgressFeeds->setObjectName(QSL("m_barProgressFeeds"));
+
+  m_barProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("folder-feed")), tr("Feed update progress bar"), this);
+  m_barProgressFeedsAction->setObjectName(QSL("m_barProgressFeedsAction"));
 
   m_lblProgressFeeds = new QLabel(this);
   m_lblProgressFeeds->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
   m_lblProgressFeeds->setVisible(false);
+  m_lblProgressFeeds->setObjectName(QSL("m_lblProgressFeeds"));
+
+  m_lblProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("folder-feed")), tr("Feed update label"), this);
+  m_lblProgressFeedsAction->setObjectName(QSL("m_lblProgressFeedsAction"));
 
   m_barProgressDownload = new QProgressBar(this);
   m_barProgressDownload->setTextVisible(true);
   m_barProgressDownload->setFixedWidth(100);
   m_barProgressDownload->setVisible(false);
+  m_barProgressDownload->setObjectName(QSL("m_barProgressDownload"));
+
+  m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("download-manager")), tr("File download progress bar"), this);
+  m_barProgressDownloadAction->setObjectName(QSL("m_barProgressDownloadAction"));
 
   m_lblProgressDownload = new QLabel(this);
   m_lblProgressDownload->setText("Downloading files in background");
   m_lblProgressDownload->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
   m_lblProgressDownload->setVisible(false);
+  m_lblProgressDownload->setObjectName(QSL("m_lblProgressDownload"));
+
+  m_lblProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("download-manager")), tr("File download label"), this);
+  m_lblProgressDownloadAction->setObjectName(QSL("m_lblProgressDownloadAction"));
 
   m_lblProgressDownload->installEventFilter(this);
   m_barProgressDownload->installEventFilter(this);
-
-  // Add widgets.
-  addPermanentWidget(m_lblProgressFeeds);
-  addPermanentWidget(m_barProgressFeeds);
-  addPermanentWidget(m_lblProgressDownload);
-  addPermanentWidget(m_barProgressDownload);
-  addPermanentWidget(m_adBlockIcon);
-  addPermanentWidget(m_fullscreenSwitcher);
 }
 
 StatusBar::~StatusBar() {
+  clear();
   qDebug("Destroying StatusBar instance.");
+}
+
+QList<QAction*> StatusBar::availableActions() const {
+  QList<QAction*> actions = qApp->userActions();
+
+  // Now, add placeholder actions for custom stuff.
+  actions << m_adBlockIconAction << m_barProgressDownloadAction << m_barProgressFeedsAction <<
+             m_lblProgressDownloadAction << m_lblProgressFeedsAction;
+
+  return actions;
+}
+
+QList<QAction*> StatusBar::changeableActions() const {
+  return actions();
+}
+
+void StatusBar::saveChangeableActions(const QStringList &actions) {
+  qApp->settings()->setValue(GROUP(GUI), GUI::StatusbarActions, actions.join(QSL(",")));
+  loadChangeableActions(actions);
+}
+
+void StatusBar::loadChangeableActions() {
+  QStringList action_names = qApp->settings()->value(GROUP(GUI), SETTING(GUI::StatusbarActions)).toString().split(',',
+                                                                                                                  QString::SkipEmptyParts);
+
+  loadChangeableActions(action_names);
+}
+
+void StatusBar::loadChangeableActions(const QStringList &action_names) {
+  clear();
+
+  QList<QAction*> available_actions = availableActions();
+
+  // Iterate action names and add respectable actions into the toolbar.
+  foreach (const QString &action_name, action_names) {
+    QAction *matching_action = findMatchingAction(action_name, available_actions);
+    QAction *action_to_add;
+    QWidget *widget_to_add;
+
+    if (matching_action == m_adBlockIconAction) {
+      widget_to_add = m_adBlockIcon;
+      action_to_add = m_adBlockIconAction;
+
+      widget_to_add->setVisible(true);
+    }
+    else if (matching_action == m_barProgressDownloadAction) {
+      widget_to_add = m_barProgressDownload;
+      action_to_add = m_barProgressDownloadAction;
+
+      widget_to_add->setVisible(false);
+    }
+    else if (matching_action == m_barProgressFeedsAction) {
+      widget_to_add = m_barProgressFeeds;
+      action_to_add = m_barProgressFeedsAction;
+
+      widget_to_add->setVisible(false);
+    }
+    else if (matching_action == m_lblProgressDownloadAction) {
+      widget_to_add = m_lblProgressDownload;
+      action_to_add = m_lblProgressDownloadAction;
+
+      widget_to_add->setVisible(false);
+    }
+    else if (matching_action == m_lblProgressFeedsAction) {
+      widget_to_add = m_lblProgressFeeds;
+      action_to_add = m_lblProgressFeedsAction;
+
+      widget_to_add->setVisible(false);
+    }
+    else {
+      // Add originally toolbar action.
+      PlainToolButton *tool_button = new PlainToolButton(this);
+
+      tool_button->reactOnActionChange(matching_action);
+
+      action_to_add = matching_action;
+      widget_to_add = tool_button;
+
+      matching_action->setProperty("should_remove", true);
+      connect(tool_button, SIGNAL(clicked(bool)), matching_action, SLOT(trigger()));
+      connect(matching_action, SIGNAL(changed()), tool_button, SLOT(reactOnActionChange()));
+    }
+
+    action_to_add->setProperty("widget", QVariant::fromValue((void*) widget_to_add));
+    addPermanentWidget(widget_to_add);
+    addAction(action_to_add);
+  }
 }
 
 bool StatusBar::eventFilter(QObject *watched, QEvent *event) {
@@ -88,12 +181,33 @@ bool StatusBar::eventFilter(QObject *watched, QEvent *event) {
   return false;
 }
 
-void StatusBar::showProgressFeeds(int progress, const QString &label) {
-  m_lblProgressFeeds->setVisible(true);
-  m_barProgressFeeds->setVisible(true);
+void StatusBar::clear() {
+  while (!actions().isEmpty()) {
+    QAction *act = actions().at(0);
+    QWidget *widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : NULL;
+    bool should_remove = act->property("remove_widget").isValid();
 
-  m_lblProgressFeeds->setText(label);
-  m_barProgressFeeds->setValue(progress);
+    if (widget != NULL) {
+      removeWidget(widget);
+      widget->setVisible(false);
+
+      if (should_remove) {
+        widget->deleteLater();
+      }
+    }
+
+    removeAction(act);
+  }
+}
+
+void StatusBar::showProgressFeeds(int progress, const QString &label) {
+  if (actions().contains(m_barProgressFeedsAction)) {
+    m_lblProgressFeeds->setVisible(true);
+    m_barProgressFeeds->setVisible(true);
+
+    m_lblProgressFeeds->setText(label);
+    m_barProgressFeeds->setValue(progress);
+  }
 }
 
 void StatusBar::clearProgressFeeds() {
@@ -102,11 +216,13 @@ void StatusBar::clearProgressFeeds() {
 }
 
 void StatusBar::showProgressDownload(int progress, const QString &tooltip) {
-  m_lblProgressDownload->setVisible(true);
-  m_barProgressDownload->setVisible(true);
-  m_barProgressDownload->setValue(progress);
-  m_barProgressDownload->setToolTip(tooltip);
-  m_lblProgressDownload->setToolTip(tooltip);
+  if (actions().contains(m_barProgressDownloadAction)) {
+    m_lblProgressDownload->setVisible(true);
+    m_barProgressDownload->setVisible(true);
+    m_barProgressDownload->setValue(progress);
+    m_barProgressDownload->setToolTip(tooltip);
+    m_lblProgressDownload->setToolTip(tooltip);
+  }
 }
 
 void StatusBar::clearProgressDownload() {

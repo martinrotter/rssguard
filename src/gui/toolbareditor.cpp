@@ -49,7 +49,7 @@ ToolBarEditor::~ToolBarEditor() {
   qDebug("Destroying ToolBarEditor instance.");
 }
 
-void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
+void ToolBarEditor::loadFromToolBar(BaseBar *tool_bar) {
   m_toolBar = tool_bar;
 
   QList<QAction*> activated_actions = m_toolBar->changeableActions();

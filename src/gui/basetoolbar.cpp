@@ -35,7 +35,7 @@ BaseToolBar::~BaseToolBar() {
   qDebug("Destroying BaseToolBar instance.");
 }
 
-QAction *BaseToolBar::findMatchingAction(const QString &action, const QList<QAction*> actions) const {
+QAction *BaseBar::findMatchingAction(const QString &action, const QList<QAction*> actions) const {
   foreach (QAction *act, actions) {
     if (act->objectName() == action) {
       return act;

@@ -84,6 +84,9 @@ DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef  = Qt::ToolButtonIconOnly;
 DKEY GUI::FeedsToolbarActions                     = "feeds_toolbar";
 DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead";
 
+DKEY GUI::StatusbarActions              = "status_bar";
+DVALUE(char*) GUI::StatusbarActionsDef  = "m_lblProgressFeedsAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_adBlockIconAction,m_actionFullscreen,m_actionQuit";
+
 DKEY GUI::MainWindowInitialSize        = "window_size";
 DKEY GUI::MainWindowInitialPosition    = "window_position";
 
