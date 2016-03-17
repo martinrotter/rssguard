@@ -154,10 +154,21 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
     else {
       if (action_name == SEPARATOR_ACTION_NAME) {
         QLabel *lbl = new QLabel(QSL("•"));
-
         widget_to_add = lbl;
+
+        action_to_add = new QAction(this);
+        action_to_add->setSeparator(true);
+        action_to_add->setProperty("should_remove_action", true);
+      }
+      else if (action_name == SPACER_ACTION_NAME) {
+        QLabel *lbl = new QLabel(QSL("\t\t"));
+        widget_to_add = lbl;
+
         action_to_add = new QAction(this);
         action_to_add->setProperty("should_remove_action", true);
+        action_to_add->setIcon(qApp->icons()->fromTheme(QSL("application-search")));
+        action_to_add->setProperty("type", SPACER_ACTION_NAME);
+        action_to_add->setProperty("name", tr("Toolbar spacer"));
       }
       else {
         // Add originally toolbar action.
