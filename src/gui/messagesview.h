@@ -36,8 +36,6 @@ class MessagesView : public QTreeView {
     explicit MessagesView(QWidget *parent = 0);
     virtual ~MessagesView();
 
-    void setSortingEnabled(bool enable);
-
     // Model accessors.
     inline MessagesProxyModel *model() const {
       return m_proxyModel;

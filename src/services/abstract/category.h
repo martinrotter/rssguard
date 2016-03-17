@@ -27,6 +27,8 @@ class Category : public RootItem {
   public:
     explicit Category(RootItem *parent = NULL);
     virtual ~Category();
+
+    void updateCounts(bool including_total_count);
 };
 
 #endif // CATEGORY_H

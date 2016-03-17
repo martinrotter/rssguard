@@ -99,9 +99,11 @@ RecycleBin *OwnCloudServiceRoot::recycleBin() const {
 }
 
 void OwnCloudServiceRoot::start(bool freshly_activated) {
+  Q_UNUSED(freshly_activated)
+
   loadFromDatabase();
 
-  if (childCount() == 1 && child(0)->kind() == RootItemKind::Bin) {
+  if (qApp->isFirstRun(QSL("3.1.1")) || (childCount() == 1 && child(0)->kind() == RootItemKind::Bin)) {
     syncIn();
   }
 }
@@ -345,5 +347,5 @@ void OwnCloudServiceRoot::loadFromDatabase() {
 
   // As the last item, add recycle bin, which is needed.
   appendChild(m_recycleBin);
-  m_recycleBin->updateCounts(true);
+  updateCounts(true);
 }

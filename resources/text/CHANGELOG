@@ -20,6 +20,10 @@ Fixed:
 ▪ Fixed little problem with feed list hiding. (bug #163)
 ▪ Web browser search context menu item now trims the searched string. (bug #168)
 
+Changed:
+
+▪ Better performance when recalculating counts of all/unread messages in categories with many feeds.
+
 3.1.0
 —————
 

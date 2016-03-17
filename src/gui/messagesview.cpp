@@ -50,12 +50,6 @@ MessagesView::~MessagesView() {
   qDebug("Destroying MessagesView instance.");
 }
 
-void MessagesView::setSortingEnabled(bool enable) {
-  disconnect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(onSortIndicatorChanged(int,Qt::SortOrder)));
-  QTreeView::setSortingEnabled(enable);
-  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(onSortIndicatorChanged(int,Qt::SortOrder)));
-}
-
 void MessagesView::createConnections() {
   connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesInternallyNoNewTab()));
 

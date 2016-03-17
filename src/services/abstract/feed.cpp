@@ -101,6 +101,10 @@ void Feed::setCountOfAllMessages(int count_all_messages) {
 }
 
 void Feed::setCountOfUnreadMessages(int count_unread_messages) {
+  if (status() == NewMessages && count_unread_messages < countOfUnreadMessages()) {
+    setStatus(Normal);
+  }
+
   m_unreadCount = count_unread_messages;
 }
 
@@ -156,13 +160,7 @@ void Feed::updateCounts(bool including_total_count) {
 
   // Obtain count of unread messages.
   if (query_all.exec() && query_all.next()) {
-    int new_unread_count = query_all.value(0).toInt();
-
-    if (status() == NewMessages && new_unread_count < countOfUnreadMessages()) {
-      setStatus(Normal);
-    }
-
-    setCountOfUnreadMessages(new_unread_count);
+    setCountOfUnreadMessages(query_all.value(0).toInt());
   }
 }
 

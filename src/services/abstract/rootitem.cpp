@@ -310,7 +310,7 @@ QHash<int,Category*> RootItem::getHashedSubTreeCategories() const {
     RootItem *active_item = traversable_items.takeFirst();
 
     if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->id())) {
-      children.insert(active_item->id(), active_item->toCategory());
+      children.insert(active_item->customId(), active_item->toCategory());
     }
 
     traversable_items.append(active_item->childItems());

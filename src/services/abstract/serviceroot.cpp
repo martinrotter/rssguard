@@ -209,7 +209,7 @@ void ServiceRoot::storeNewFeedTree(RootItem *root) {
 
       query_feed.bindValue(QSL(":title"), feed->title());
       query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
-      query_feed.bindValue(QSL(":category"), feed->parent()->id());
+      query_feed.bindValue(QSL(":category"), feed->parent()->customId());
       query_feed.bindValue(QSL(":protected"), 0);
       query_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
       query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
@@ -535,12 +535,10 @@ void ServiceRoot::assembleFeeds(Assignment feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
       // This is top-level feed, add it to the root item.
       appendChild(feed.second);
-      feed.second->updateCounts(true);
     }
     else if (categories.contains(feed.first)) {
       // This feed belongs to this category.
       categories.value(feed.first)->appendChild(feed.second);
-      feed.second->updateCounts(true);
     }
     else {
       qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
