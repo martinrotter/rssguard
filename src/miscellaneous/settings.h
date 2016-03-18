@@ -302,6 +302,12 @@ namespace Browser {
   KEY PluginsEnabled;
   VALUE(bool) PluginsEnabledDef;
 
+  KEY RememberBrowserTabs;
+  VALUE(bool)RememberBrowserTabsDef;
+
+  KEY OpenedBrowserTabs;
+  VALUE(QString)OpenedBrowserTabsDef;
+
   KEY CustomExternalBrowserEnabled;
   VALUE(bool) CustomExternalBrowserEnabledDef;
 

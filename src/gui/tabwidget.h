@@ -75,6 +75,8 @@ class TabWidget : public QTabWidget {
       return m_feedMessageViewer;
     }
 
+    void quit();
+
   protected:
     // Creates necesary connections.
     void createConnections();

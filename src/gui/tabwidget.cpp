@@ -153,11 +153,18 @@ void TabWidget::createConnections() {
 void TabWidget::initializeTabs() {
   // Create widget for "Feeds" page and add it.
   m_feedMessageViewer = new FeedMessageViewer(this);
-  const int index_of_browser = addTab(static_cast<TabContent*>(m_feedMessageViewer),
+  const int index_of_browser = addTab(m_feedMessageViewer,
                                       QIcon(),
                                       tr("Feeds"),
                                       TabBar::FeedReader);
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
+
+  if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::RememberBrowserTabs)).toBool()) {
+    foreach (const QString &url, qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenedBrowserTabs)).toString().split('##',
+                                                                                                                               QString::SkipEmptyParts)) {
+      addBrowser(true, false, QUrl::fromUserInput(url));
+    }
+  }
 }
 
 void TabWidget::setupIcons() {
@@ -182,6 +189,25 @@ void TabWidget::setupIcons() {
 
   // Setup corner button icon.
   m_btnAddTab->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
+}
+
+void TabWidget::quit() {
+  if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::RememberBrowserTabs)).toBool()) {
+    QStringList store_urls;
+
+    for (int i = 0; i < count(); i++) {
+      if (tabBar()->tabType(i) == TabBar::Closable) {
+        // We have tab with web browser.
+        QUrl url = widget(i)->webBrowser()->view()->url();
+
+        if (url.isValid() && !url.isEmpty()) {
+          store_urls.append(url.toString());
+        }
+      }
+    }
+
+    qApp->settings()->setValue(GROUP(Browser), Browser::OpenedBrowserTabs, store_urls.join(QSL("##")));
+  }
 }
 
 bool TabWidget::closeTab(int index) {

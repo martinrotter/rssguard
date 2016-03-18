@@ -410,6 +410,7 @@ void FormSettings::loadBrowser() {
   m_ui->m_checkAutoLoadImages->setChecked(WebFactory::instance()->autoloadImages());
   m_ui->m_checkEnableJavascript->setChecked(WebFactory::instance()->javascriptEnabled());
   m_ui->m_checkEnablePlugins->setChecked(WebFactory::instance()->pluginsEnabled());
+  m_ui->m_checkRememberOpenedTabs->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::RememberBrowserTabs)).toBool());
 
   // Load settings of e-mail.
   m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), QSL("-compose \"subject='%1',body='%2'\""));
@@ -425,6 +426,7 @@ void FormSettings::saveBrowser() {
   m_settings->setValue(GROUP(Browser), Browser::QueueTabs, m_ui->m_checkQueueTabs->isChecked());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserExecutable, m_ui->m_txtExternalBrowserExecutable->text());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserArguments, m_ui->m_txtExternalBrowserArguments->text());
+  m_settings->setValue(GROUP(Browser), Browser::RememberBrowserTabs, m_ui->m_checkRememberOpenedTabs->isChecked());
 
   // Save settings of e-mail.
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalEmailExecutable, m_ui->m_txtExternalEmailExecutable->text());

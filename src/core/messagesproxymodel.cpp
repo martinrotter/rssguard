@@ -181,7 +181,7 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
 }
 
 void MessagesProxyModel::sort(int column, Qt::SortOrder order) {
-  // NOTE: Ignore here, sort is done elsewhere.
+  // NOTE: Ignore here, sort is done elsewhere (server-side).
   Q_UNUSED(column)
   Q_UNUSED(order)
 }

@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -122,6 +122,13 @@
         <widget class="QCheckBox" name="m_checkRemoveTrolltechJunk">
          <property name="text">
           <string>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="m_checkRememberOpenedTabs">
+         <property name="text">
+          <string>Remember opened web browser tabs</string>
          </property>
         </widget>
        </item>
@@ -1366,7 +1373,7 @@ Authors of this application are NOT responsible for lost data.</string>
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">
@@ -1565,6 +1572,13 @@ Authors of this application are NOT responsible for lost data.</string>
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="m_checkOpenManagerWhenDownloadStarts">
+         <property name="text">
+          <string>Open download manager when new download is started</string>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox_3">
          <property name="title">
@@ -1610,13 +1624,6 @@ Authors of this application are NOT responsible for lost data.</string>
            </layout>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QCheckBox" name="m_checkOpenManagerWhenDownloadStarts">
-         <property name="text">
-          <string>Open download manager when new download is started</string>
-         </property>
         </widget>
        </item>
       </layout>

@@ -271,6 +271,12 @@ DVALUE(bool) Browser::ImagesEnabledDef      = true;
 DKEY Browser::PluginsEnabled                = "enable_plugins";
 DVALUE(bool) Browser::PluginsEnabledDef     = false;
 
+DKEY Browser::RememberBrowserTabs                 = "remember_browser_tabs";
+DVALUE(bool)Browser::RememberBrowserTabsDef       = false;
+
+DKEY Browser::OpenedBrowserTabs                 = "opened_browser_tabs";
+DVALUE(QString)Browser::OpenedBrowserTabsDef    = QString();
+
 DKEY Browser::CustomExternalBrowserEnabled                = "custom_external_browser";
 DVALUE(bool) Browser::CustomExternalBrowserEnabledDef     = false;
 

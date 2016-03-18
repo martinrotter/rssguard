@@ -9,6 +9,7 @@ http://goo.gl/forms/GcvPYgS2a8
 
 Added:
 
+▪ Opened web browser tabs now can be saved. (issue #126)
 ▪ Added experimental support for tweakable statusbar. (issue #158)
 ▪ Opening of download manager when new file download starts is now optional. (issue #165)
 
