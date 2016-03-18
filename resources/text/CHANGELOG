@@ -15,6 +15,7 @@ Added:
 
 Fixed:
 
+▪ When user selects "Save as..." for some file from internal web browser, file selection dialog is always shown. (bug #174)
 ▪ Better detection of MySQL server status. (bug #169)
 ▪ Ordering of messages is now done on SQL server (stands for both MySQL and SQLite). (bug #172)
 ▪ Now title of the RSS/ATOM message is taken into account when deciding message "uniqueness". (bug #171)
