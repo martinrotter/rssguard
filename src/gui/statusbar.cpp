@@ -153,7 +153,7 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
     }
     else {
       if (action_name == SEPARATOR_ACTION_NAME) {
-        QLabel *lbl = new QLabel(QSL("•"));
+        QLabel *lbl = new QLabel(QString::fromUtf8("•"));
         widget_to_add = lbl;
 
         action_to_add = new QAction(this);
