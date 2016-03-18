@@ -44,7 +44,10 @@ QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl &url, const 
       QString href_attribute = rx_href.capturedTexts().at(0);
       QString feed_link = href_attribute.mid(6, href_attribute.size() - 7);
 
-      if (feed_link.startsWith(QL1C('/'))) {
+      if (feed_link.startsWith(QL1S("//"))) {
+        feed_link = QString(URI_SCHEME_HTTP) + feed_link.mid(2);
+      }
+      else if (feed_link.startsWith(QL1C('/'))) {
         feed_link = url.toString(QUrl::RemovePath | QUrl::RemoveQuery | QUrl::StripTrailingSlash) + feed_link;
       }
 

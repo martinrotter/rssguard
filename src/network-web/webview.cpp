@@ -208,7 +208,6 @@ void WebView::initializeActions() {
 
   m_actionSaveImageAs = pageAction(QWebPage::DownloadImageToDisk);
   m_actionSaveImageAs->setParent(this);
-
   m_actionSavePageAs = new QAction(qApp->icons()->fromTheme(QSL("document-download")), tr("Save page as..."), this);
 
 #if QT_VERSION >= 0x040800
