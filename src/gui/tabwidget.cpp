@@ -160,7 +160,7 @@ void TabWidget::initializeTabs() {
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
 
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::RememberBrowserTabs)).toBool()) {
-    foreach (const QString &url, qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenedBrowserTabs)).toString().split('##',
+    foreach (const QString &url, qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenedBrowserTabs)).toString().split(QL1S("##"),
                                                                                                                                QString::SkipEmptyParts)) {
       addBrowser(true, false, QUrl::fromUserInput(url));
     }
