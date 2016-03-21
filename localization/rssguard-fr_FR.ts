@@ -269,6 +269,14 @@ Also note that some resources are cached by internal web browser. Thus, after ch
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>MySQL database not available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
@@ -2390,6 +2398,14 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Open download manager when new download is started</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Remember opened web browser tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Statusbar</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -3334,11 +3350,6 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
         <translation>serveur proxy non trouvé</translation>
     </message>
     <message>
-        <source>uknown content</source>
-        <extracomment>Network status.</extracomment>
-        <translation>contenu inconnu</translation>
-    </message>
-    <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
         <translation>Contenu  non trouvé</translation>
@@ -3359,6 +3370,11 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>unknown content</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3593,12 +3609,28 @@ Account ID: %1</source>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Fullscreen mode</source>
-        <translation>Mode plein écran</translation>
+        <source>Adblock</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
-        <translation>Changer l&apos;état de l&apos;application entre plein écran/normal depuis l&apos;icône de la barre des status.</translation>
+        <source>Feed update progress bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File download progress bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File download label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3819,10 +3851,6 @@ Last login on: %5</source>
         <translation>Écrit par</translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>auteur inconnu</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Vue journal</translation>
     </message>
@@ -3841,6 +3869,10 @@ Last login on: %5</source>
     <message>
         <source>Stop web page loading.</source>
         <translation>Arrêter le chargement de la page</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

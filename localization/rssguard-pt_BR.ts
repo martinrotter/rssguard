@@ -269,6 +269,14 @@ Note também que alguns recursos são armazenados pelo navegador interno. Sendo 
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation>O banco de dados selecionado não existe (ainda). Ele será criado agora.</translation>
+    </message>
+    <message>
+        <source>MySQL database not available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2402,6 +2410,14 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
+        <translation>Abrir gerenciador de download ao iniciar um novo download</translation>
+    </message>
+    <message>
+        <source>Remember opened web browser tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Statusbar</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3348,11 +3364,6 @@ Vá até o site do aplicativo para obter manualmente.</translation>
         <translation>servidor proxy não encontrado</translation>
     </message>
     <message>
-        <source>uknown content</source>
-        <extracomment>Network status.</extracomment>
-        <translation>conteúdo desconhecido</translation>
-    </message>
-    <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
         <translation>conteúdo não encontrado</translation>
@@ -3374,6 +3385,11 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     <message>
         <source>connection timed out or was cancelled</source>
         <translation>o tempo limite da conexão esgotou ou foi cancelada</translation>
+    </message>
+    <message>
+        <source>unknown content</source>
+        <extracomment>Network status.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3627,12 +3643,28 @@ ID da Conta: %1</translation>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Fullscreen mode</source>
-        <translation>Modo tela cheia</translation>
+        <source>Adblock</source>
+        <translation>Adblock</translation>
     </message>
     <message>
-        <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
-        <translation>Altere o aplicativo entre os estados tela cheia/normal por meio deste ícone na barra de status.</translation>
+        <source>Feed update progress bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File download progress bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File download label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation>Espaçador da barra de ferramentas</translation>
     </message>
 </context>
 <context>
@@ -3862,10 +3894,6 @@ Servidor: %2
         <translation>Escrito por </translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>autor desconhecido</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Visualização da publicação</translation>
     </message>
@@ -3884,6 +3912,10 @@ Servidor: %2
     <message>
         <source>Stop web page loading.</source>
         <translation>Interrompe o carregamento da página.</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

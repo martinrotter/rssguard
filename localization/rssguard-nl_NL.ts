@@ -270,6 +270,14 @@ Gelezen berichten gewist...</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation>Geselekteerde database bestaat (nog) niet. Het wordt aangemaakt. Dat is normaal.</translation>
+    </message>
+    <message>
+        <source>MySQL database not available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2408,6 +2416,14 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
+        <translation>Open de download manager wanneer een nieuwe download start</translation>
+    </message>
+    <message>
+        <source>Remember opened web browser tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Statusbar</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3354,11 +3370,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <translation>proxy server niet gevonden</translation>
     </message>
     <message>
-        <source>uknown content</source>
-        <extracomment>Network status.</extracomment>
-        <translation>onbekende inhoud</translation>
-    </message>
-    <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
         <translation>inhoud niet gevonden</translation>
@@ -3380,6 +3391,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>connection timed out or was cancelled</source>
         <translation>verbinding verlopen of werd geannuleerd</translation>
+    </message>
+    <message>
+        <source>unknown content</source>
+        <extracomment>Network status.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3633,12 +3649,28 @@ Account ID: %1</translation>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Fullscreen mode</source>
-        <translation>Beeldvullende modus</translation>
+        <source>Adblock</source>
+        <translation>Adblock</translation>
     </message>
     <message>
-        <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
-        <translation>Wissel Rssguard tussen volledige scherm/normale staat vanaf deze statusbar pictogram.</translation>
+        <source>Feed update progress bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File download progress bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File download label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation>Werkbalkruimte</translation>
     </message>
 </context>
 <context>
@@ -3869,10 +3901,6 @@ Laatste login: %5</translation>
         <translation>Geschreven door </translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>Onbekende auteur</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Krantweergave</translation>
     </message>
@@ -3891,6 +3919,10 @@ Laatste login: %5</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stop het laden van pagina.</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

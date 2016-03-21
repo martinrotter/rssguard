@@ -116,7 +116,7 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
 
     case QNetworkReply::UnknownContentError:
       //: Network status.
-      return tr("uknown content");
+      return tr("unknown content");
 
     case QNetworkReply::ContentNotFoundError:
       //: Network status.

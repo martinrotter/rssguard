@@ -269,6 +269,14 @@ Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du 
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation>Den valda databasen finns inte (än). Den kommer att skapas.</translation>
+    </message>
+    <message>
+        <source>MySQL database not available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2403,6 +2411,14 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
+        <translation>Öppna nedladdningshanteraren när ny nedladdning startas</translation>
+    </message>
+    <message>
+        <source>Remember opened web browser tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Statusbar</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3348,11 +3364,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <translation>Proxyservern hittades inte</translation>
     </message>
     <message>
-        <source>uknown content</source>
-        <extracomment>Network status.</extracomment>
-        <translation>Okänt innehåll</translation>
-    </message>
-    <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
         <translation>Inget innehåll hittades</translation>
@@ -3374,6 +3385,11 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>connection timed out or was cancelled</source>
         <translation>anslutningstiden överskreds, eller avbröts</translation>
+    </message>
+    <message>
+        <source>unknown content</source>
+        <extracomment>Network status.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3625,12 +3641,28 @@ Konto-ID: %1</translation>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Fullscreen mode</source>
-        <translation>Fullskärmsläge</translation>
+        <source>Adblock</source>
+        <translation>Adblock</translation>
     </message>
     <message>
-        <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
-        <translation>Växla mellan fullskärmsläge och fönsterläge.</translation>
+        <source>Feed update progress bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File download progress bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File download label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation>Mellanrum</translation>
     </message>
 </context>
 <context>
@@ -3860,10 +3892,6 @@ Senast inloggad: %5</translation>
         <translation>Skriven av </translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>okänd författare</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Tidningsvy</translation>
     </message>
@@ -3882,6 +3910,10 @@ Senast inloggad: %5</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stoppa inläsning av webbsidan.</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
