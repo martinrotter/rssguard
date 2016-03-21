@@ -20,6 +20,7 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
+#include "gui/messagebox.h"
 
 #include <QDir>
 #include <QSqlQuery>
@@ -638,8 +639,17 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
   database.setPassword(TextFactory::decrypt(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString()));
 
   if (!database.open()) {
-    qFatal("MySQL database was NOT opened. Delivered error message: '%s'",
-           qPrintable(database.lastError().text()));
+    qCritical("MySQL database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
+
+    // Now, we will display error warning and return SQLite connection.
+    // Also, we set the SQLite driver as active one.
+    qApp->settings()->setValue(GROUP(Database), Database::ActiveDriver, APP_DB_SQLITE_DRIVER);
+    determineDriver();
+    MessageBox::show(NULL, QMessageBox::Critical, tr("MySQL database not available"),
+                     tr("%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server "
+                        "and make adjustments in application settings.").arg(APP_NAME), QString(), QString());
+
+    return connection(objectName(), FromSettings);
   }
   else {
     QSqlQuery query_db(database);
