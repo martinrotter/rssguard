@@ -31,11 +31,7 @@ IOFactory::IOFactory() {
 }
 
 QString IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location) {
-#if QT_VERSION >= 0x050000
   return SYSTEM_FOLDER_ENUM::writableLocation(location);
-#else
-  return SYSTEM_FOLDER_ENUM::storageLocation(location);
-#endif
 }
 
 QString IOFactory::ensureUniqueFilename(const QString &name, const QString &append_format) {

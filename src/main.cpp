@@ -56,11 +56,7 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Setup debug output system.
-#if QT_VERSION >= 0x050000
   qInstallMessageHandler(Debugging::debugHandler);
-#else
-  qInstallMsgHandler(Debugging::debugHandler);
-#endif
 
   // Instantiate base application object.
   Application application(APP_LOW_NAME, argc, argv);

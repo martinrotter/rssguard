@@ -152,16 +152,12 @@
 #define APP_THEME_SUFFIX    ".png"
 
 #ifndef QSL
-#if QT_VERSION >= 0x050000
 // Thin macro wrapper for literal strings.
 // They are much more memory efficient and faster.
 // Use it for all literals except for two cases:
 //  a) Methods which take QLatin1String (use QLatin1String for literal argument too),
 //  b) Construction of empty literals "", use QString() instead of QStringLiteral("").
 #define QSL(x) QStringLiteral(x)
-#else
-#define QSL(x) QLatin1String(x)
-#endif
 #endif
 
 #ifndef QL1S

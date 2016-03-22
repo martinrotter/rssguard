@@ -104,11 +104,7 @@ class WebView : public QWebEngineView {
     QAction *m_actionSavePageAs;
     QAction *m_actionSaveHyperlinkAs;
     QAction *m_actionSaveImageAs;
-
-#if QT_VERSION >= 0x040800
     QAction *m_actionCopyImageUrl;
-#endif
-
     QAction *m_actionOpenLinkThisTab;
     QAction *m_actionOpenLinkNewTab;
     QAction *m_actionOpenLinkExternally;

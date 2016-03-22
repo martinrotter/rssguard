@@ -25,12 +25,7 @@ class Debugging {
   public:
     // Specifies format of output console messages.
     // NOTE: QT_NO_DEBUG_OUTPUT - disables debug outputs completely!!!
-#if QT_VERSION >= 0x050000
     static void debugHandler(QtMsgType type, const QMessageLogContext &placement, const QString &message);
-#else
-    static void debugHandler(QtMsgType type, const char *message);
-#endif
-
     static void performLog(const char *message, QtMsgType type, const char *file = 0, const char *function = 0, int line = -1);
     static const char *typeToString(QtMsgType type);
 

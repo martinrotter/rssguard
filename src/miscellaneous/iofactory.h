@@ -22,13 +22,8 @@
 
 #include "definitions/definitions.h"
 
-#if QT_VERSION >= 0x050000
 #include <QStandardPaths>
 #define SYSTEM_FOLDER_ENUM QStandardPaths
-#else
-#include <QDesktopServices>
-#define SYSTEM_FOLDER_ENUM QDesktopServices
-#endif
 
 
 class IOFactory {

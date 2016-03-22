@@ -221,11 +221,7 @@ void Notification::paintEvent(QPaintEvent *event) {
   }
 
   // Draw background.
-#if QT_VERSION >= 0x050000
   painter.setRenderHints(QPainter::HighQualityAntialiasing | QPainter::Qt4CompatiblePainting);
-#else
-  painter.setRenderHints(QPainter::HighQualityAntialiasing);
-#endif
   painter.setBrush(m_backgroundColor);
 
   painter.setPen(Qt::NoPen);
@@ -287,9 +283,7 @@ void Notification::setupWidget() {
   Qt::WindowFlags window_flags = Qt::FramelessWindowHint | Qt::WindowSystemMenuHint |
                                  Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint;
 
-#if QT_VERSION >= 0x050000
   window_flags |= Qt::WindowDoesNotAcceptFocus;
-#endif
 
 #if defined (Q_OS_MAC)
   window_flags |= Qt::SubWindow;

@@ -132,11 +132,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &u
   QNetworkReply::NetworkError network_result;
 
   foreach (const QString &url, urls) {
-#if QT_VERSION >= 0x050000
     const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
-#else
-    const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(Qt::escape(url));
-#endif
     QByteArray icon_data;
     network_result =  downloadFile(google_s2_with_url, timeout, icon_data).first;
 

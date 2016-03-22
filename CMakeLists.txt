@@ -234,7 +234,7 @@ message(STATUS "[${APP_LOW_NAME}] Enabling fast QString concatenation.")
 add_definitions(-DQT_USE_FAST_CONCATENATION)
 add_definitions(-DQT_USE_FAST_OPERATOR_PLUS)
 
-# Configure executable "properties" for Windows or OS2.
+# Configure executable "properties" for Windows.
 if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for Windows.")
   configure_file (
@@ -248,7 +248,7 @@ if(WIN32 AND MSVC)
   set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS,5.01" )
 endif(WIN32 AND MSVC)
 
-# Compile application icon if compiling with MinGW on WIN32 or with OS2.
+# Compile application icon if compiling with MinGW on WIN32.
 if(WIN32 AND MINGW)
   enable_language(RC)
   set(CMAKE_RC_COMPILER_INIT windres)

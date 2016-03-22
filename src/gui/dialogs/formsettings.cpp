@@ -85,7 +85,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
                                      << tr("Author")
                                      << tr("E-mail"));
 
-#if QT_VERSION >= 0x050000
   // Setup languages.
   m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
@@ -98,20 +97,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
-#else
-  // Setup languages.
-  m_ui->m_treeLanguages->header()->setResizeMode(0, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setResizeMode(2, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setResizeMode(3, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setResizeMode(4, QHeaderView::ResizeToContents);
-
-  // Setup skins.
-  m_ui->m_treeSkins->header()->setResizeMode(0, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setResizeMode(2, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setResizeMode(3, QHeaderView::ResizeToContents);
-#endif
 
   // Establish needed connections.
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(saveSettings()));
@@ -749,15 +734,7 @@ void FormSettings::loadInterface() {
     m_ui->m_cmbIconTheme->setCurrentIndex(0);
   }
   else {
-#if QT_VERSION >= 0x050000
     m_ui->m_cmbIconTheme->setCurrentText(current_theme);
-#else
-    int theme_index = m_ui->m_cmbIconTheme->findText(current_theme);
-
-    if (theme_index >= 0) {
-      m_ui->m_cmbIconTheme->setCurrentIndex(theme_index);
-    }
-#endif
   }
 
   // Load skin.

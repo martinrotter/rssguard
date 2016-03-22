@@ -231,13 +231,11 @@ void MessagesView::loadItem(RootItem *item) {
   m_sourceModel->setSort(col, ord);
   m_sourceModel->loadMessages(item);
 
-#if QT_VERSION >= 0x050000
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
   // BUG: Qt 5 is probably bugged here. Selections
   // should be cleared automatically when SQL model is reset.
   emit currentMessagesRemoved();
-#endif
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {
@@ -506,7 +504,6 @@ void MessagesView::adjustColumns() {
   if (header()->count() > 0 && !m_columnsAdjusted) {
     m_columnsAdjusted = true;
 
-#if QT_VERSION >= 0x050000
     // Setup column resize strategies.
     header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
@@ -519,20 +516,6 @@ void MessagesView::adjustColumns() {
     header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
-#else
-    // Setup column resize strategies.
-    header()->setResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
-    header()->setResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
-    header()->setResizeMode(MSG_DB_FEED_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
-    header()->setResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
-#endif
 
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);

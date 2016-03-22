@@ -146,7 +146,6 @@ QString WebFactory::deEscapeHtml(const QString &text) {
 }
 
 QString WebFactory::toSecondLevelDomain(const QUrl &url) {
-#if QT_VERSION >= 0x040800
   const QString top_level_domain = url.topLevelDomain();
   const QString url_host = url.host();
 
@@ -165,19 +164,6 @@ QString WebFactory::toSecondLevelDomain(const QUrl &url) {
   }
 
   return domain + top_level_domain;
-#else
-  QString domain = url.host();
-
-  if (domain.count(QL1C('.')) == 0) {
-    return QString();
-  }
-
-  while (domain.count(QL1C('.')) != 1) {
-    domain = domain.mid(domain.indexOf(QL1C('.')) + 1);
-  }
-
-  return domain;
-#endif
 }
 
 void WebFactory::generetaEscapes() {

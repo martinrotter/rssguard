@@ -37,12 +37,7 @@
 #include <QDateTime>
 #include <QClipboard>
 #include <QFileDialog>
-
-#if QT_VERSION >= 0x050000
 #include <QtPrintSupport/QPrintPreviewDialog>
-#else
-#include <QPrintPreviewDialog>
-#endif
 
 
 WebView::WebView(QWidget *parent)
@@ -168,11 +163,7 @@ void WebView::setupIcons() {
   m_actionCopyImage->setIcon(qApp->icons()->fromTheme(QSL("edit-copy-image")));
   m_actionSaveHyperlinkAs->setIcon(qApp->icons()->fromTheme(QSL("document-download")));
   m_actionSaveImageAs->setIcon(qApp->icons()->fromTheme(QSL("document-download")));
-
-#if QT_VERSION >= 0x040800
   m_actionCopyImageUrl->setIcon(qApp->icons()->fromTheme(QSL("edit-copy")));
-#endif
-
   m_actionOpenLinkThisTab->setIcon(qApp->icons()->fromTheme(QSL("item-open-internal")));
   m_actionOpenLinkNewTab->setIcon(qApp->icons()->fromTheme(QSL("item-open-internal")));
   m_actionOpenLinkExternally->setIcon(qApp->icons()->fromTheme(QSL("item-open-external")));
@@ -192,11 +183,6 @@ void WebView::initializeActions() {
   m_actionCopySelectedItem = pageAction(QWebEnginePage::Copy);
   m_actionCopySelectedItem->setParent(this);
 
-#if defined(Q_OS_OS2)
-  m_actionCopySelectedItem->setShortcut(QKeySequence::Copy);
-  addAction(m_actionCopySelectedItem);
-#endif
-
   m_actionSaveHyperlinkAs = pageAction(QWebEnginePage::DownloadLinkToDisk);
   m_actionSaveHyperlinkAs->setParent(this);
 
@@ -210,10 +196,8 @@ void WebView::initializeActions() {
   m_actionSaveImageAs->setParent(this);
   m_actionSavePageAs = new QAction(qApp->icons()->fromTheme(QSL("document-download")), tr("Save page as..."), this);
 
-#if QT_VERSION >= 0x040800
   m_actionCopyImageUrl = pageAction(QWebEnginePage::CopyImageUrlToClipboard);
   m_actionCopyImageUrl->setParent(this);
-#endif
 
   m_actionOpenLinkNewTab = pageAction(QWebEnginePage::OpenLinkInNewTab);
   m_actionOpenLinkNewTab->setParent(this);
@@ -244,10 +228,8 @@ void WebView::setActionTexts() {
   m_actionSaveImageAs->setText(tr("Save image as..."));
   m_actionSaveImageAs->setToolTip(tr("Save image to disk."));
 
-#if QT_VERSION >= 0x040800
   m_actionCopyImageUrl->setText(tr("Copy image url"));
   m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard."));
-#endif
 
   m_actionOpenLinkNewTab->setText(tr("Open link in new tab"));
   m_actionOpenLinkNewTab->setToolTip(tr("Open this hyperlink in new tab."));

@@ -62,7 +62,6 @@ const char *Debugging::typeToString(QtMsgType type) {
   }
 }
 
-#if QT_VERSION >= 0x050000
 void Debugging::debugHandler(QtMsgType type, const QMessageLogContext &placement, const QString &message) {
 #ifndef QT_NO_DEBUG_OUTPUT
   performLog(qPrintable(message), type, placement.file, placement.function, placement.line);
@@ -72,13 +71,3 @@ void Debugging::debugHandler(QtMsgType type, const QMessageLogContext &placement
   Q_UNUSED(message)
 #endif
 }
-#else
-void Debugging::debugHandler(QtMsgType type, const char *message) {
-#ifndef QT_NO_DEBUG_OUTPUT
-  performLog(message, type);
-#else
-  Q_UNUSED(type)
-  Q_UNUSED(message)
-#endif
-}
-#endif
