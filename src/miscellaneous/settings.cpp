@@ -23,7 +23,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QPointer>
-#include <QWebSettings>
+#include <QWebEngineSettings>
 #include <QLocale>
 
 
@@ -304,7 +304,7 @@ DKEY CategoriesExpandStates::ID                         = "categories_expand_sta
 Settings::Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
   // Perform last-minute initializations.
-  Messages::PreviewerFontStandardDef = QWebSettings::globalSettings()->fontFamily(QWebSettings::StandardFont);
+  Messages::PreviewerFontStandardDef = QWebEngineSettings::globalSettings()->fontFamily(QWebEngineSettings::StandardFont);
 }
 
 Settings::~Settings() {  
@@ -356,11 +356,6 @@ Settings *Settings::setupSettings(QObject *parent) {
 
   // Portable settings are available, use them.
   new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
-
-  // Construct icon cache in the same path.
-  const QString web_path = properties.m_baseDirectory + QDir::separator() + QString(APP_DB_WEB_PATH);
-  QDir(web_path).mkpath(web_path);
-  QWebSettings::setIconDatabasePath(web_path);
 
   // Check if portable settings are available.
   if (properties.m_type == SettingsProperties::Portable) {

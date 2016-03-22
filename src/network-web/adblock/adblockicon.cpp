@@ -30,7 +30,7 @@
 
 #include <QMenu>
 #include <QMouseEvent>
-#include <QWebFrame>
+#include <QWebEnginePage>
 
 
 AdBlockIcon::AdBlockIcon(QWidget *window, QWidget *parent)
@@ -71,7 +71,7 @@ void AdBlockIcon::createMenu(QMenu *menu) {
   AdBlockCustomList *custom_list = manager->customList();
 
   WebPage *page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->view()->page();
-  const QUrl page_url = page->mainFrame()->url();
+  const QUrl page_url = page->url();
 
   menu->addAction(tr("Show Adblock &settings"), manager, SLOT(showDialog()));
   menu->addSeparator();

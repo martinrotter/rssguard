@@ -32,7 +32,7 @@
 #include <QMenu>
 #include <QDir>
 #include <QFile>
-#include <QWebFrame>
+#include <QWebEnginePage>
 #include <QContextMenuEvent>
 #include <QDateTime>
 #include <QClipboard>
@@ -46,7 +46,7 @@
 
 
 WebView::WebView(QWidget *parent)
-  : QWebView(parent), m_page(new WebPage(this)) {
+  : QWebEngineView(parent), m_page(new WebPage(this)) {
   setPage(m_page);
   setContextMenuPolicy(Qt::CustomContextMenu);
   initializeActions();
@@ -133,7 +133,7 @@ void WebView::saveCurrentPageToFile() {
     QFile selected_file_handle(selected_file);
 
     if (selected_file_handle.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
-      const QString html_text = page()->mainFrame()->toHtml();
+      const QString html_text = page()->toHtml();
       QTextStream str(&selected_file_handle);
 
       str.setCodec("UTF-16");
@@ -183,13 +183,13 @@ void WebView::setupIcons() {
 
 void WebView::initializeActions() {
   // Create needed actions.
-  m_actionReload = pageAction(QWebPage::Reload);
+  m_actionReload = pageAction(QWebEnginePage::Reload);
   m_actionReload->setParent(this);
 
   m_actionPrint = new QAction(tr("Print"), this);
   m_actionPrint->setToolTip(tr("Print current web page."));
 
-  m_actionCopySelectedItem = pageAction(QWebPage::Copy);
+  m_actionCopySelectedItem = pageAction(QWebEnginePage::Copy);
   m_actionCopySelectedItem->setParent(this);
 
 #if defined(Q_OS_OS2)
@@ -197,33 +197,34 @@ void WebView::initializeActions() {
   addAction(m_actionCopySelectedItem);
 #endif
 
-  m_actionSaveHyperlinkAs = pageAction(QWebPage::DownloadLinkToDisk);
+  m_actionSaveHyperlinkAs = pageAction(QWebEnginePage::DownloadLinkToDisk);
   m_actionSaveHyperlinkAs->setParent(this);
 
-  m_actionCopyLink = pageAction(QWebPage::CopyLinkToClipboard);
+  m_actionCopyLink = pageAction(QWebEnginePage::CopyLinkToClipboard);
   m_actionCopyLink->setParent(this);
 
-  m_actionCopyImage = pageAction(QWebPage::CopyImageToClipboard);
+  m_actionCopyImage = pageAction(QWebEnginePage::CopyImageToClipboard);
   m_actionCopyImage->setParent(this);
 
-  m_actionSaveImageAs = pageAction(QWebPage::DownloadImageToDisk);
+  m_actionSaveImageAs = pageAction(QWebEnginePage::DownloadImageToDisk);
   m_actionSaveImageAs->setParent(this);
   m_actionSavePageAs = new QAction(qApp->icons()->fromTheme(QSL("document-download")), tr("Save page as..."), this);
 
 #if QT_VERSION >= 0x040800
-  m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
+  m_actionCopyImageUrl = pageAction(QWebEnginePage::CopyImageUrlToClipboard);
   m_actionCopyImageUrl->setParent(this);
 #endif
 
-  m_actionOpenLinkNewTab = pageAction(QWebPage::OpenLinkInNewWindow);
+  m_actionOpenLinkNewTab = pageAction(QWebEnginePage::OpenLinkInNewTab);
   m_actionOpenLinkNewTab->setParent(this);
 
-  m_actionOpenLinkThisTab = pageAction(QWebPage::OpenLink);
+  m_actionOpenLinkThisTab = pageAction(QWebEnginePage::OpenLinkInThisWindow);
   m_actionOpenLinkThisTab->setParent(this);
 
   m_actionOpenLinkExternally = new QAction(tr("Open link in external browser"), this);
 
-  m_actionOpenImageNewTab = pageAction(QWebPage::OpenImageInNewWindow);
+  // TODO: bude fungovat?
+  m_actionOpenImageNewTab = pageAction(QWebEnginePage::OpenLinkInNewTab);
   m_actionOpenImageNewTab->setParent(this);
 
   m_actionLookupText = new QAction("", this);
@@ -275,68 +276,8 @@ void WebView::displayErrorPage() {
   */
 }
 
-void WebView::popupContextMenu(const QPoint &pos) {
-  QMenu context_menu(tr("Web browser"), this);
-  QMenu image_submenu(tr("Image"), &context_menu);
-  QMenu link_submenu(tr("Hyperlink"), this);
-  QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
-
-  image_submenu.setIcon(qApp->icons()->fromTheme(QSL("image-generic")));
-  link_submenu.setIcon(qApp->icons()->fromTheme(QSL("text-html")));
-
-  // Assemble the menu from actions.
-
-  QString current_url = url().toString();
-
-  if (!current_url.isEmpty() && current_url != INTERNAL_URL_EMPTY && current_url != INTERNAL_URL_BLANK) {
-    context_menu.addAction(m_actionPrint);
-
-    if (current_url != INTERNAL_URL_NEWSPAPER) {
-      context_menu.addAction(m_actionReload);
-    }
-  }
-
-  context_menu.addAction(m_actionCopySelectedItem);
-  context_menu.addAction(m_actionSavePageAs);
-
-  const QUrl hit_url = hit_result.linkUrl();
-  const QUrl hit_image_url = hit_result.imageUrl();
-
-  if (hit_url.isValid()) {
-    m_contextLinkUrl = hit_url;
-
-    context_menu.addMenu(&link_submenu);
-    link_submenu.addAction(m_actionOpenLinkThisTab);
-    link_submenu.addAction(m_actionOpenLinkNewTab);
-    link_submenu.addAction(m_actionOpenLinkExternally);
-    link_submenu.addAction(m_actionCopyLink);
-    link_submenu.addAction(m_actionSaveHyperlinkAs);
-  }
-
-  if (!hit_result.pixmap().isNull()) {
-    // Add 'Image' menu, because if user clicked image it needs to be visible.
-    context_menu.addMenu(&image_submenu);
-
-    if (hit_image_url.isValid()) {
-      m_contextImageUrl = hit_image_url;
-      image_submenu.addAction(m_actionOpenImageNewTab);
-
-#if QT_VERSION >= 0x040800
-      image_submenu.addAction(m_actionCopyImageUrl);
-#endif
-    }
-    image_submenu.addAction(m_actionCopyImage);
-    image_submenu.addAction(m_actionSaveImageAs);
-  }
-
-  if (!selectedText().isEmpty()) {
-    m_actionLookupText->setText(tr("Search \"%1\" via Google...").arg(TextFactory::shorten(selectedText())));
-    context_menu.addAction(m_actionLookupText);
-  }
-
-  // Display the menu.
-  setActionTexts();
-  context_menu.exec(mapToGlobal(pos));
+void WebView::popupContextMenu(const QPoint &pos) {  
+  page()->createStandardContextMenu()->exec(mapToGlobal(pos));
 }
 
 void WebView::printCurrentPage() {
@@ -350,7 +291,8 @@ void WebView::downloadLink(const QNetworkRequest &request) {
 }
 
 void WebView::mousePressEvent(QMouseEvent *event) {
-  if (event->button() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) {
+  // TODO: TODO
+  /*if (event->button() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) {
     QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
 
     // Check if user clicked with middle mouse button on some
@@ -367,12 +309,12 @@ void WebView::mousePressEvent(QMouseEvent *event) {
       return;
     }
   }
-  else if (event->button() & Qt::MiddleButton) {
+  else */if (event->button() & Qt::MiddleButton) {
     m_gestureOrigin = event->pos();
     return;
   }
 
-  QWebView::mousePressEvent(event);
+  QWebEngineView::mousePressEvent(event);
 }
 
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
@@ -402,7 +344,7 @@ void WebView::mouseReleaseEvent(QMouseEvent *event) {
     }
   }
 
-  QWebView::mouseReleaseEvent(event);
+  QWebEngineView::mouseReleaseEvent(event);
 }
 
 void WebView::wheelEvent(QWheelEvent *event) {
@@ -419,7 +361,7 @@ void WebView::wheelEvent(QWheelEvent *event) {
     }
   }
 
-  QWebView::wheelEvent(event);
+  QWebEngineView::wheelEvent(event);
 }
 
 bool WebView::increaseWebPageZoom() {

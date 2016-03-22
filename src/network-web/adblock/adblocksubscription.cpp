@@ -57,7 +57,7 @@
 #include <QTimer>
 #include <QNetworkReply>
 #include <QDir>
-#include <QWebPage>
+#include <QWebEnginePage>
 
 
 AdBlockSubscription::AdBlockSubscription(const QString &title, QObject *parent)

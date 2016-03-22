@@ -38,7 +38,7 @@
 #include <QProcess>
 #include <QSettings>
 #include <QDebug>
-#include <QWebSettings>
+#include <QWebEngineSettings>
 
 
 DownloadItem::DownloadItem(bool is_direct_download, QNetworkReply *reply, QWidget *parent) : QWidget(parent),
@@ -603,14 +603,12 @@ void DownloadManager::updateRow(DownloadItem *item) {
 
   int old_height = m_ui->m_viewDownloads->rowHeight(row);
   m_ui->m_viewDownloads->setRowHeight(row, qMax(old_height, item->minimumSizeHint().height()));
-  QWebSettings *globalSettings = QWebSettings::globalSettings();
 
   // Remove the item if:
   // a) It is not downloading and private browsing is enabled.
   // OR
   // b) Item is already downloaded and it should be remove from downloader list.
-  bool remove = (!item->downloading() && globalSettings->testAttribute(QWebSettings::PrivateBrowsingEnabled)) ||
-                (item->downloadedSuccessfully() && removePolicy() == DownloadManager::OnSuccessfullDownload);
+  bool remove = item->downloadedSuccessfully() && removePolicy() == DownloadManager::OnSuccessfullDownload;
 
   if (remove) {
     m_model->removeRow(row);

@@ -9,7 +9,7 @@
 #include <QMap>
 
 
-class QWebSettings;
+class QWebEngineSettings;
 
 class WebFactory : public QObject {
     Q_OBJECT
@@ -67,7 +67,7 @@ class WebFactory : public QObject {
 
     QMap<QString, QString> m_escapes;
     QMap<QString, QString> m_deEscapes;
-    QWebSettings *m_globalSettings;
+    QWebEngineSettings *m_globalSettings;
 
     // Singleton.
     static QPointer<WebFactory> s_instance;

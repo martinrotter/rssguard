@@ -3,7 +3,7 @@
 #include "miscellaneous/application.h"
 
 #include <QRegExp>
-#include <QWebSettings>
+#include <QWebEngineSettings>
 #include <QProcess>
 #include <QUrl>
 #include <QDesktopServices>
@@ -14,7 +14,7 @@ QPointer<WebFactory> WebFactory::s_instance;
 WebFactory::WebFactory(QObject *parent)
   : QObject(parent), m_escapes(QMap<QString, QString>()),
     m_deEscapes(QMap<QString, QString>()),
-    m_globalSettings(QWebSettings::globalSettings()) {
+    m_globalSettings(QWebEngineSettings::globalSettings()) {
 }
 
 WebFactory::~WebFactory() {
@@ -34,7 +34,7 @@ bool WebFactory::sendMessageViaEmail(const Message &message) {
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
 
     return QProcess::startDetached(QString("\"") + browser + QSL("\" ") + arguments.arg(message.m_title,
-                                                                                   stripTags(message.m_contents)));
+                                                                                        stripTags(message.m_contents)));
   }
   else {
     // Send it via mailto protocol.
@@ -71,7 +71,7 @@ void WebFactory::switchJavascript(bool enable, bool save_settings) {
     qApp->settings()->setValue(GROUP(Browser), Browser::JavascriptEnabled, enable);
   }
 
-  m_globalSettings->setAttribute(QWebSettings::JavascriptEnabled, enable);
+  m_globalSettings->setAttribute(QWebEngineSettings::JavascriptEnabled, enable);
   emit javascriptSwitched(enable);
 }
 
@@ -80,7 +80,7 @@ void WebFactory::switchPlugins(bool enable, bool save_settings) {
     qApp->settings()->setValue(GROUP(Browser), Browser::PluginsEnabled, enable);
   }
 
-  m_globalSettings->setAttribute(QWebSettings::PluginsEnabled, enable);
+  m_globalSettings->setAttribute(QWebEngineSettings::PluginsEnabled, enable);
   emit pluginsSwitched(enable);
 }
 
@@ -89,7 +89,7 @@ void WebFactory::switchImages(bool enable, bool save_settings) {
     qApp->settings()->setValue(GROUP(Browser), Browser::ImagesEnabled, enable);
   }
 
-  m_globalSettings->setAttribute(QWebSettings::AutoLoadImages, enable);
+  m_globalSettings->setAttribute(QWebEngineSettings::AutoLoadImages, enable);
   emit imagesLoadingSwitched(enable);
 }
 
@@ -102,15 +102,15 @@ WebFactory *WebFactory::instance() {
 }
 
 bool WebFactory::javascriptEnabled() const {
-  return m_globalSettings->testAttribute(QWebSettings::JavascriptEnabled);
+  return m_globalSettings->testAttribute(QWebEngineSettings::JavascriptEnabled);
 }
 
 bool WebFactory::pluginsEnabled() const {
-  return m_globalSettings->testAttribute(QWebSettings::PluginsEnabled);
+  return m_globalSettings->testAttribute(QWebEngineSettings::PluginsEnabled);
 }
 
 bool WebFactory::autoloadImages() const {
-  return m_globalSettings->testAttribute(QWebSettings::AutoLoadImages);
+  return m_globalSettings->testAttribute(QWebEngineSettings::AutoLoadImages);
 }
 
 QString WebFactory::stripTags(QString text) {

@@ -34,7 +34,7 @@
 #include <QTextStream>
 #include <QDir>
 #include <QTimer>
-#include <QWebFrame>
+#include <QWebEnginePage>
 
 
 AdBlockManager *AdBlockManager::s_adBlockManager = NULL;
@@ -90,7 +90,7 @@ QNetworkReply *AdBlockManager::block(const QNetworkRequest &request) {
     WebPage *web_page = static_cast<WebPage*>(v.value<void*>());
 
     if (WebPage::isPointerSafeToUse(web_page)) {
-      if (!canBeBlocked(web_page->mainFrame()->url())) {
+      if (!canBeBlocked(web_page->url())) {
         return NULL;
       }
 

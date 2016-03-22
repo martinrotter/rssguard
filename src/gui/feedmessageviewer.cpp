@@ -53,6 +53,7 @@
 #include <QThread>
 #include <QProgressBar>
 #include <QStatusBar>
+#include <QWebEngineSettings>
 #include <QPointer>
 
 
@@ -118,9 +119,9 @@ void FeedMessageViewer::loadSize() {
 
 void FeedMessageViewer::loadMessageViewerFonts() {
   const Settings *settings = qApp->settings();
-  QWebSettings *view_settings = m_messagesBrowser->view()->settings();
+  QWebEngineSettings *view_settings = m_messagesBrowser->view()->settings();
   
-  view_settings->setFontFamily(QWebSettings::StandardFont, settings->value(GROUP(Messages),
+  view_settings->setFontFamily(QWebEngineSettings::StandardFont, settings->value(GROUP(Messages),
                                                                            SETTING(Messages::PreviewerFontStandard)).toString());
 }
 

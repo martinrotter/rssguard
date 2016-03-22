@@ -18,7 +18,6 @@
 #include "network-web/webbrowser.h"
 
 #include "definitions/definitions.h"
-#include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/webpage.h"
 #include "network-web/webview.h"
 #include "network-web/networkfactory.h"
@@ -33,7 +32,7 @@
 #include <QHBoxLayout>
 #include <QToolBar>
 #include <QAction>
-#include <QWebFrame>
+#include <QWebEnginePage>
 #include <QWidgetAction>
 #include <QSlider>
 #include <QLabel>
@@ -50,10 +49,10 @@ WebBrowser::WebBrowser(QWidget *parent)
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(new WebView(this)),
     m_txtLocation(new LocationLineEdit(this)),
-    m_actionBack(m_webView->pageAction(QWebPage::Back)),
-    m_actionForward(m_webView->pageAction(QWebPage::Forward)),
-    m_actionReload(m_webView->pageAction(QWebPage::Reload)),
-    m_actionStop(m_webView->pageAction(QWebPage::Stop)) {
+    m_actionBack(m_webView->pageAction(QWebEnginePage::Back)),
+    m_actionForward(m_webView->pageAction(QWebEnginePage::Forward)),
+    m_actionReload(m_webView->pageAction(QWebEnginePage::Reload)),
+    m_actionStop(m_webView->pageAction(QWebEnginePage::Stop)) {
   // Add this new instance to the global list of web browsers.
   // NOTE: This is used primarily for dynamic icon theme switching.
   m_runningWebBrowsers.append(this);
@@ -168,7 +167,8 @@ void WebBrowser::onLoadingStarted() {
 
 void WebBrowser::onLoadingProgress(int progress) {
   m_loadingProgress->setValue(progress);
-  m_lblProgress->setText(QString(QSL(" %1 kB / %2 kB")).arg(m_webView->page()->bytesReceived() / 1000).arg(m_webView->page()->totalBytes() / 1000));
+  // TODO: TODO
+  //m_lblProgress->setText(QString(QSL(" %1 kB / %2 kB")).arg(m_webView->page()-> / 1000).arg(m_webView->page()->totalBytes() / 1000));
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
@@ -209,7 +209,8 @@ void WebBrowser::createConnections() {
 }
 
 void WebBrowser::onIconChanged() {
-  emit iconChanged(m_index, m_webView->icon());
+  // TODO: todo
+  //emit iconChanged(m_index, m_webView->icon());
 }
 
 void WebBrowser::onTitleChanged(const QString &new_title) {
@@ -318,4 +319,12 @@ void WebBrowser::setupIcons() {
   m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("go-refresh")));
   m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("go-stop")));
   m_webView->setupIcons();
+}
+
+QIcon WebBrowser::icon() const {
+
+  return QIcon();
+
+  // TODO: TODO.
+  //return m_webView->iconUrl();
 }

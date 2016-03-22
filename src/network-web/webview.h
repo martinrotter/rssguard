@@ -18,14 +18,14 @@
 #ifndef BASEWEBVIEW_H
 #define BASEWEBVIEW_H
 
-#include <QWebView>
+#include <QWebEngineView>
 
 
 class QAction;
 class QPaintEvent;
 class WebPage;
 
-class WebView : public QWebView {
+class WebView : public QWebEngineView {
     Q_OBJECT
 
   public:

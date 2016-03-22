@@ -37,7 +37,6 @@ class QHBoxLayout;
 class QProgressBar;
 class QMenu;
 class QLabel;
-class WebBrowserNetworkAccessManager;
 class TabWidget;
 
 class WebBrowser : public TabContent {
@@ -52,9 +51,7 @@ class WebBrowser : public TabContent {
     void setupIcons();
 
     // Returns icon associated with currently loaded website.
-    inline QIcon icon() const {
-      return m_webView->icon();
-    }
+    QIcon icon() const;
 
     inline WebView *view() const {
       return m_webView;

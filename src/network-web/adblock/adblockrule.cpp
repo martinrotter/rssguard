@@ -56,8 +56,7 @@
 #include <QString>
 #include <QStringList>
 #include <QNetworkRequest>
-#include <QWebFrame>
-#include <QWebPage>
+#include <QWebEnginePage>
 
 
 AdBlockRule::AdBlockRule(const QString &filter, AdBlockSubscription* subscription)
@@ -289,21 +288,7 @@ bool AdBlockRule::matchObject(const QNetworkRequest &request) const {
 }
 
 bool AdBlockRule::matchSubdocument(const QNetworkRequest &request) const {
-  QWebFrame *originatingFrame = static_cast<QWebFrame*>(request.originatingObject());
-
-  if (originatingFrame == NULL) {
-    return false;
-  }
-
-  QWebPage *page = originatingFrame->page();
-
-  if (page == NULL) {
-    return false;
-  }
-
-  bool match = !(originatingFrame == page->mainFrame());
-
-  return hasException(SubdocumentOption) ? !match : match;
+  return false;
 }
 
 bool AdBlockRule::matchXmlHttpRequest(const QNetworkRequest &request) const {

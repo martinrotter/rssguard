@@ -17,29 +17,21 @@
 
 #include "network-web/webpage.h"
 
-#include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/webbrowser.h"
 #include "miscellaneous/application.h"
 
 #include "network-web/adblock/adblockmanager.h"
 
 #include <QNetworkReply>
-#include <QWebElement>
-#include <QWebFrame>
 
 
 QList<WebPage*> WebPage::s_livingPages;
 
 WebPage::WebPage(QObject *parent)
-  : QWebPage(parent), m_loadProgress(-1) {
-  // Setup global network access manager.
-  // NOTE: This makes network settings easy for all web browsers.
-  setNetworkAccessManager(new WebBrowserNetworkAccessManager(this, this));
-  setForwardUnsupportedContent(true);
-  connect(this, SIGNAL(unsupportedContent(QNetworkReply*)), this, SLOT(handleUnsupportedContent(QNetworkReply*)));
-
+  : QWebEnginePage(parent), m_loadProgress(-1) {
   connect(this, SIGNAL(loadProgress(int)), this, SLOT(progress(int)));
   connect(this, SIGNAL(loadFinished(bool)), this, SLOT(finished()));
+  connect(this, SIGNAL(urlChanged(QUrl)), this, SLOT(urlChanged(QUrl)));
 
   s_livingPages.append(this);
 }
@@ -58,65 +50,6 @@ void WebPage::progress(int prog) {
 
 void WebPage::finished() {
   progress(100);
-  cleanBlockedObjects();
-}
-
-void WebPage::cleanBlockedObjects() {
-  AdBlockManager *manager = AdBlockManager::instance();
-
-  if (!manager->isEnabled()) {
-    return;
-  }
-
-  const QWebElement doc_element = mainFrame()->documentElement();
-
-  foreach (const AdBlockedEntry &entry, m_adBlockedEntries) {
-    const QString url_string = entry.url.toString();
-    if (url_string.endsWith(QL1S(".js")) || url_string.endsWith(QL1S(".css"))) {
-      continue;
-    }
-
-    QString url_end;
-
-    int pos = url_string.lastIndexOf(QL1C('/'));
-    if (pos > 8) {
-      url_end = url_string.mid(pos + 1);
-    }
-
-    if (url_string.endsWith(QL1C('/'))) {
-      url_end = url_string.left(url_string.size() - 1);
-    }
-
-    QString selector(QSL("img[src$=\"%1\"], iframe[src$=\"%1\"],embed[src$=\"%1\"]"));
-    QWebElementCollection elements = doc_element.findAll(selector.arg(url_end));
-
-    foreach (QWebElement element, elements) {
-      QString src = element.attribute(QSL("src"));
-      src.remove(QL1S("../"));
-
-      if (url_string.contains(src)) {
-        element.setStyleProperty(QSL("display"), QSL("none"));
-      }
-    }
-  }
-
-  // Apply domain-specific element hiding rules
-  QString element_hiding = manager->elementHidingRulesForDomain(mainFrame()->url());
-
-  if (element_hiding.isEmpty()) {
-    return;
-  }
-
-  element_hiding.append(QL1S("\n</style>"));
-
-  QWebElement body_element = doc_element.findFirst(QSL("body"));
-  body_element.appendInside(QSL("<style type=\"text/css\">\n/* AdBlock for RSS Guard */\n") + element_hiding);
-
-  // When hiding some elements, scroll position of page will change
-  // If user loaded anchor link in background tab (and didn't show it yet), fix the scroll position
-  if (view() && !view()->isVisible() && !mainFrame()->url().fragment().isEmpty()) {
-    mainFrame()->scrollToAnchor(mainFrame()->url().fragment());
-  }
 }
 
 void WebPage::urlChanged(const QUrl &url) {
@@ -150,10 +83,6 @@ bool WebPage::isPointerSafeToUse(WebPage *page) {
   return page == 0 ? false : s_livingPages.contains(page);
 }
 
-QString WebPage::toPlainText() const {
-  return mainFrame()->toPlainText();
-}
-
 void WebPage::populateNetworkRequest(QNetworkRequest &request) {
   WebPage *page_pointer = this;
 
@@ -161,48 +90,8 @@ void WebPage::populateNetworkRequest(QNetworkRequest &request) {
   request.setAttribute((QNetworkRequest::Attribute)(QNetworkRequest::User + 100), variant);
 }
 
-void WebPage::handleUnsupportedContent(QNetworkReply *reply) {
-  if (reply != NULL) {
-    const QUrl reply_url = reply->url();
-
-    if (reply_url.scheme() == QL1S("abp")) {
-      return;
-    }
-
-    switch (reply->error()) {
-      case QNetworkReply::NoError:
-        if (reply->header(QNetworkRequest::ContentTypeHeader).isValid()) {
-          qApp->downloadManager()->handleUnsupportedContent(reply, true);
-          return;
-        }
-
-      default:
-        return;
-    }
-  }
-}
-
 QString WebPage::toHtml() const {
-  return mainFrame()->toHtml();
-}
-
-bool WebPage::acceptNavigationRequest(QWebFrame *frame,
-                                      const QNetworkRequest &request,
-                                      QWebPage::NavigationType type) {
-  const QString scheme = request.url().scheme();
-
-  if (scheme == QL1S("mailto") || scheme == QL1S("ftp")) {
-    qWarning("Received request with scheme '%s', blocking it.", qPrintable(scheme));
-    return false;
-  }
-
-  if (type == QWebPage::NavigationTypeLinkClicked &&
-      frame == mainFrame()) {
-    // Make sure that appropriate signal is emitted even if
-    // no delegation is enabled.
-    emit linkClicked(request.url());
-  }
-
-  qDebug("Accepting request '%s'.", qPrintable(request.url().toString()));
-  return QWebPage::acceptNavigationRequest(frame, request, type);
+  return QString();
+  // TODO: TODO
+  //return mainFrame()->toHtml();
 }

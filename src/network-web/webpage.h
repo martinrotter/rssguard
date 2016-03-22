@@ -18,13 +18,13 @@
 #ifndef WEBPAGE_H
 #define WEBPAGE_H
 
-#include <QWebPage>
+#include <QWebEnginePage>
 #include <QNetworkAccessManager>
 
 
 class AdBlockRule;
 
-class WebPage : public QWebPage {
+class WebPage : public QWebEnginePage {
     Q_OBJECT
 
   public:
@@ -42,7 +42,6 @@ class WebPage : public QWebPage {
     virtual ~WebPage();
 
     QString toHtml() const;
-    QString toPlainText() const;
     bool isLoading() const;
     QVector<AdBlockedEntry> adBlockedEntries() const;
 
@@ -54,13 +53,7 @@ class WebPage : public QWebPage {
   private slots:
     void progress(int prog);
     void finished();
-    void cleanBlockedObjects();
     void urlChanged(const QUrl &url);
-
-    void handleUnsupportedContent(QNetworkReply *reply);
-
-  protected:
-    bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
 
   private:
     QVector<AdBlockedEntry> m_adBlockedEntries;
