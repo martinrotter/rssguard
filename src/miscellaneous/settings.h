@@ -269,23 +269,6 @@ namespace Keyboard {
   KEY ID;
 }
 
-// Adblock.
-namespace AdBlock {
-  KEY ID;
-
-  KEY Enabled;
-  VALUE(bool) EnabledDef;
-
-  KEY UseLimitedEasyList;
-  VALUE(bool) UseLimitedEasyListDef;
-
-  KEY DisabledRules;
-  VALUE(QStringList) DisabledRulesDef;
-
-  KEY LastUpdated;
-  VALUE(QDateTime) LastUpdatedDef;
-}
-
 // Web browser.
 namespace Browser {
   KEY ID;

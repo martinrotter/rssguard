@@ -25,7 +25,6 @@
 class QProgressBar;
 class PlainToolButton;
 class QLabel;
-class AdBlockIcon;
 
 class StatusBar : public QStatusBar, public BaseBar {
     Q_OBJECT

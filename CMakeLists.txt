@@ -330,8 +330,7 @@ file( GLOB APP_FORMS
   "src/services/standard/gui/*.ui"
   "src/services/tt-rss/gui/*.ui"
   "src/services/owncloud/gui/*.ui"
-  "src/network-web/*.ui"
-  "src/network-web/adblock/*.ui")
+  "src/network-web/*.ui")
 
 # APP translations.
 file( GLOB APP_TRANSLATIONS
@@ -383,7 +382,6 @@ include_directories (
   ${CMAKE_SOURCE_DIR}/src/gui/dialogs
   ${CMAKE_SOURCE_DIR}/src/gui/notifications
   ${CMAKE_SOURCE_DIR}/src/network-web
-  ${CMAKE_SOURCE_DIR}/src/network-web/adblock
   ${CMAKE_SOURCE_DIR}/src/dynamic-shortcuts
   ${CMAKE_BINARY_DIR}/src
 )

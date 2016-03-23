@@ -156,7 +156,7 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
         action_to_add->setProperty("type", SPACER_ACTION_NAME);
         action_to_add->setProperty("name", tr("Toolbar spacer"));
       }
-      else {
+      else if (matching_action != NULL) {
         // Add originally toolbar action.
         PlainToolButton *tool_button = new PlainToolButton(this);
         tool_button->reactOnActionChange(matching_action);
@@ -167,13 +167,21 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
         connect(tool_button, SIGNAL(clicked(bool)), matching_action, SLOT(trigger()));
         connect(matching_action, SIGNAL(changed()), tool_button, SLOT(reactOnActionChange()));
       }
+      else {
+        action_to_add = NULL;
+        widget_to_add = NULL;
+      }
 
-      action_to_add->setProperty("should_remove_widget", true);
+      if (action_to_add != NULL) {
+        action_to_add->setProperty("should_remove_widget", true);
+      }
     }
 
-    action_to_add->setProperty("widget", QVariant::fromValue((void*) widget_to_add));
-    addPermanentWidget(widget_to_add);
-    addAction(action_to_add);
+    if (action_to_add != NULL && widget_to_add != NULL) {
+      action_to_add->setProperty("widget", QVariant::fromValue((void*) widget_to_add));
+      addPermanentWidget(widget_to_add);
+      addAction(action_to_add);
+    }
   }
 }
 

@@ -163,19 +163,18 @@ void WebBrowser::initializeLayout() {
 void WebBrowser::onLoadingStarted() {
   m_loadingProgress->setValue(0);
   m_loadingWidget->show();
+  m_btnDiscoverFeeds->setEnabled(false);
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
   m_loadingProgress->setValue(progress);
-  // TODO: TODO
-  //m_lblProgress->setText(QString(QSL(" %1 kB / %2 kB")).arg(m_webView->page()-> / 1000).arg(m_webView->page()->totalBytes() / 1000));
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
   if (success) {
-    // Let's check if there are any feeds defined on the web and eventually
-    // display "Add feeds" button.
-    m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(), m_webView->page()->toHtml()));
+    m_webView->page()->toHtml([this](const QString &html) {
+      this->m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(), html));
+    });
   }
   else {
     m_btnDiscoverFeeds->clearFeedAddresses();

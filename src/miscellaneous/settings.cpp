@@ -85,7 +85,7 @@ DKEY GUI::FeedsToolbarActions                     = "feeds_toolbar";
 DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead";
 
 DKEY GUI::StatusbarActions              = "status_bar";
-DVALUE(char*) GUI::StatusbarActionsDef  = "m_lblProgressFeedsAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_adBlockIconAction,m_actionFullscreen,m_actionQuit";
+DVALUE(char*) GUI::StatusbarActionsDef  = "m_lblProgressFeedsAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_actionFullscreen,m_actionQuit";
 
 DKEY GUI::MainWindowInitialSize        = "window_size";
 DKEY GUI::MainWindowInitialPosition    = "window_position";
@@ -240,21 +240,6 @@ DVALUE(char*) Database::ActiveDriverDef   = APP_DB_SQLITE_DRIVER;
 
 // Keyboard.
 DKEY Keyboard::ID = "keyboard";
-
-// Adblock.
-DKEY AdBlock::ID                                = "adblock";
-
-DKEY AdBlock::Enabled                           = "enabled";
-DVALUE(bool) AdBlock::EnabledDef                = false;
-
-DKEY AdBlock::UseLimitedEasyList                = "use_limited_easylist";
-DVALUE(bool) AdBlock::UseLimitedEasyListDef     = true;
-
-DKEY AdBlock::DisabledRules                     = "disabled_rules";
-DVALUE(QStringList) AdBlock::DisabledRulesDef   = QStringList();
-
-DKEY AdBlock::LastUpdated                       = "last_updated";
-DVALUE(QDateTime) AdBlock::LastUpdatedDef       = QDateTime();
 
 // Web browser.
 DKEY Browser::ID                            = "browser";

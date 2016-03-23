@@ -125,20 +125,21 @@ void WebView::saveCurrentPageToFile() {
   }*/
 
   if (!selected_file.isEmpty()) {
-    QFile selected_file_handle(selected_file);
+    page()->toHtml([this, selected_file](const QString &html) {
+      QFile selected_file_handle(selected_file);
 
-    if (selected_file_handle.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
-      const QString html_text = page()->toHtml();
-      QTextStream str(&selected_file_handle);
+      if (selected_file_handle.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
+        QTextStream str(&selected_file_handle);
 
-      str.setCodec("UTF-16");
-      str << html_text;
-      selected_file_handle.close();
-    }
-    else {
-      MessageBox::show(this, QMessageBox::Critical, tr("Cannot save web page"),
-                       tr("Web page cannot be saved because destination file is not writtable."));
-    }
+        str.setCodec("UTF-16");
+        str << html;
+        selected_file_handle.close();
+      }
+      else {
+        MessageBox::show(this, QMessageBox::Critical, tr("Cannot save web page"),
+                         tr("Web page cannot be saved because destination file is not writtable."));
+      }
+    });
   }
 }
 

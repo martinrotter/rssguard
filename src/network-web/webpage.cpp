@@ -31,6 +31,7 @@ WebPage::~WebPage() {
 }
 
 bool WebPage::isLoading() const {
+  // TODO: nepouzivany?
   return m_loadProgress < 100;
 }
 
@@ -40,10 +41,4 @@ void WebPage::progress(int prog) {
 
 void WebPage::finished() {
   progress(100);
-}
-
-QString WebPage::toHtml() const {
-  return QString();
-  // TODO: TODO
-  //return mainFrame()->toHtml();
 }

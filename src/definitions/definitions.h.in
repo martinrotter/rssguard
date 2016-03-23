@@ -104,11 +104,6 @@
 #define PLACEHOLDER_UNREAD_COUNTS   "%unread"
 #define PLACEHOLDER_ALL_COUNTS      "%all"
 
-#define ADBLOCK_CUSTOM_LIST_FILENAME    "custom_rules.txt"
-#define ADBLOCK_BASE_DIRECTORY_NAME     "data/adblock"
-#define ADBLOCK_FILTERS_HELP            "https://adblockplus.org/en/filters"
-#define ADBLOCK_EASYLIST_URL            "https://easylist-downloads.adblockplus.org/easylist.txt"
-
 #define BACKUP_NAME_SETTINGS    "config"
 #define BACKUP_SUFFIX_SETTINGS  ".ini.backup"
 #define BACKUP_NAME_DATABASE    "database"

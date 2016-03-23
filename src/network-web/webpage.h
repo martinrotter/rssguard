@@ -22,8 +22,6 @@
 #include <QNetworkAccessManager>
 
 
-class AdBlockRule;
-
 class WebPage : public QWebEnginePage {
     Q_OBJECT
 
@@ -32,7 +30,6 @@ class WebPage : public QWebEnginePage {
     explicit WebPage(QObject *parent = 0);
     virtual ~WebPage();
 
-    QString toHtml() const;
     bool isLoading() const;
 
   private slots:
