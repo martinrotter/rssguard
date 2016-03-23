@@ -28,35 +28,18 @@ class WebPage : public QWebEnginePage {
     Q_OBJECT
 
   public:
-    struct AdBlockedEntry {
-        const AdBlockRule *rule;
-        QUrl url;
-
-        bool operator==(const AdBlockedEntry &other) const {
-          return (this->rule == other.rule && this->url == other.url);
-        }
-    };
-
     // Constructors and destructors.
     explicit WebPage(QObject *parent = 0);
     virtual ~WebPage();
 
     QString toHtml() const;
     bool isLoading() const;
-    QVector<AdBlockedEntry> adBlockedEntries() const;
-
-    void populateNetworkRequest(QNetworkRequest &request);
-    void addAdBlockRule(const AdBlockRule *rule, const QUrl &url);
-
-    static bool isPointerSafeToUse(WebPage *page);
 
   private slots:
     void progress(int prog);
     void finished();
-    void urlChanged(const QUrl &url);
 
   private:
-    QVector<AdBlockedEntry> m_adBlockedEntries;
     int m_loadProgress;
 
     static QList<WebPage*> s_livingPages;

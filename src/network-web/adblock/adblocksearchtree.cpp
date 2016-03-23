@@ -65,8 +65,9 @@ bool AdBlockSearchTree::add(const AdBlockRule *rule) {
   return true;
 }
 
-const AdBlockRule *AdBlockSearchTree::find(const QNetworkRequest &request, const QString &domain,
-                                           const QString &url_string) const {
+const AdBlockRule *AdBlockSearchTree::find(const QUrl &url, const QString &domain,
+                                           const QString &url_string, const QString &referer,
+                                           QWebEngineUrlRequestInfo::ResourceType resource_type) const {
   const int len = url_string.size();
 
   if (len <= 0) {
@@ -76,7 +77,7 @@ const AdBlockRule *AdBlockSearchTree::find(const QNetworkRequest &request, const
   const QChar *string = url_string.constData();
 
   for (int i = 0; i < len; i++) {
-    const AdBlockRule *rule = prefixSearch(request, domain, url_string, string++, len - i);
+    const AdBlockRule *rule = prefixSearch(url, domain, url_string, string++, referer, resource_type, len - i);
 
     if (rule != NULL) {
       return rule;
@@ -86,8 +87,10 @@ const AdBlockRule *AdBlockSearchTree::find(const QNetworkRequest &request, const
   return NULL;
 }
 
-const AdBlockRule *AdBlockSearchTree::prefixSearch(const QNetworkRequest &request, const QString &domain,
-                                                   const QString &url_string, const QChar* string, int len) const {
+const AdBlockRule *AdBlockSearchTree::prefixSearch(const QUrl &url, const QString &domain,
+                                                   const QString &url_string, const QChar* string,
+                                                   const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type,
+                                                   int len) const {
   if (len <= 0) {
     return NULL;
   }
@@ -103,7 +106,7 @@ const AdBlockRule *AdBlockSearchTree::prefixSearch(const QNetworkRequest &reques
   for (int i = 1; i < len; i++) {
     const QChar c = (++string)[0];
 
-    if (node->rule && node->rule->networkMatch(request, domain, url_string)) {
+    if (node->rule && node->rule->networkMatch(url, domain, url_string, referer, resource_type)) {
       return node->rule;
     }
 
@@ -114,7 +117,7 @@ const AdBlockRule *AdBlockSearchTree::prefixSearch(const QNetworkRequest &reques
     node = node->children[c];
   }
 
-  if (node->rule && node->rule->networkMatch(request, domain, url_string)) {
+  if (node->rule && node->rule->networkMatch(url, domain, url_string, referer, resource_type)) {
     return node->rule;
   }
 

@@ -111,14 +111,6 @@ void AdBlockRule::setFilter(const QString &filter) {
   parseFilter();
 }
 
-bool AdBlockRule::isCssRule() const {
-  return m_type == CssRule;
-}
-
-QString AdBlockRule::cssSelector() const {
-  return m_matchString;
-}
-
 bool AdBlockRule::isDocument() const {
   return hasOption(DocumentOption);
 }
@@ -155,17 +147,19 @@ bool AdBlockRule::isInternalDisabled() const {
   return m_isInternalDisabled;
 }
 
-bool AdBlockRule::urlMatch(const QUrl &url) const {
+bool AdBlockRule::urlMatch(const QUrl &url, const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type) const {
   if (!hasOption(DocumentOption) && !hasOption(ElementHideOption)) {
     return false;
   }
   else {
-    return networkMatch(QNetworkRequest(url), url.host(), url.toEncoded());
+    return networkMatch(url, url.host(), url.toEncoded(), referer, resource_type);
   }
 }
 
-bool AdBlockRule::networkMatch(const QNetworkRequest &request, const QString &domain, const QString &encoded_url) const {
-  if (m_type == CssRule || !m_isEnabled || m_isInternalDisabled) {
+bool AdBlockRule::networkMatch(const QUrl &url, const QString &domain,
+                               const QString &encoded_url, const QString &referer,
+                               QWebEngineUrlRequestInfo::ResourceType resource_type) const {
+  if (!m_isEnabled || m_isInternalDisabled) {
     return false;
   }
 
@@ -195,22 +189,22 @@ bool AdBlockRule::networkMatch(const QNetworkRequest &request, const QString &do
     }
 
     // Check third-party restriction.
-    if (hasOption(ThirdPartyOption) && !matchThirdParty(request)) {
+    if (hasOption(ThirdPartyOption) && !matchThirdParty(referer, url)) {
       return false;
     }
 
     // Check object restrictions.
-    if (hasOption(ObjectOption) && !matchObject(request)) {
+    if (hasOption(ObjectOption) && !matchObject(resource_type)) {
       return false;
     }
 
     // Check subdocument restriction.
-    if (hasOption(SubdocumentOption) && !matchSubdocument(request)) {
+    if (hasOption(SubdocumentOption)) {
       return false;
     }
 
     // Check xmlhttprequest restriction
-    if (hasOption(XMLHttpRequestOption) && !matchXmlHttpRequest(request)) {
+    if (hasOption(XMLHttpRequestOption)) {
       return false;
     }
 
@@ -265,36 +259,24 @@ bool AdBlockRule::matchDomain(const QString &domain) const {
   return false;
 }
 
-bool AdBlockRule::matchThirdParty(const QNetworkRequest &request) const {
-  const QString referer = request.attribute(QNetworkRequest::Attribute(QNetworkRequest::User + 151), QString()).toString();
-
+bool AdBlockRule::matchThirdParty(const QString &referer, const QUrl &url) const {
   if (referer.isEmpty()) {
     return false;
   }
 
   // Third-party matching should be performed on second-level domains.
   const QString refererHost = WebFactory::instance()->toSecondLevelDomain(QUrl(referer));
-  const QString host = WebFactory::instance()->toSecondLevelDomain(request.url());
+  const QString host = WebFactory::instance()->toSecondLevelDomain(url);
 
   bool match = refererHost != host;
 
   return hasException(ThirdPartyOption) ? !match : match;
 }
 
-bool AdBlockRule::matchObject(const QNetworkRequest &request) const {
-  bool match = request.attribute(QNetworkRequest::Attribute(QNetworkRequest::User + 150)).toString() == QL1S("object");
+bool AdBlockRule::matchObject(QWebEngineUrlRequestInfo::ResourceType type) const {
+  bool match = type == QWebEngineUrlRequestInfo::ResourceTypeObject;
 
   return hasException(ObjectOption) ? !match : match;
-}
-
-bool AdBlockRule::matchSubdocument(const QNetworkRequest &request) const {
-  return false;
-}
-
-bool AdBlockRule::matchXmlHttpRequest(const QNetworkRequest &request) const {
-  bool match = request.rawHeader("X-Requested-With") == QByteArray("XMLHttpRequest");
-
-  return hasException(XMLHttpRequestOption) ? !match : match;
 }
 
 bool AdBlockRule::matchImage(const QString &encoded_url) const {
@@ -321,19 +303,7 @@ void AdBlockRule::parseFilter() {
 
   // CSS Element hiding rule.
   if (parsed_line.contains(QL1S("##")) || parsed_line.contains(QL1S("#@#"))) {
-    m_type = CssRule;
-    int pos = parsed_line.indexOf(QL1C('#'));
-
-    // Domain restricted rule
-    if (!parsed_line.startsWith(QL1S("##"))) {
-      QString domains = parsed_line.left(pos);
-      parseDomains(domains, QL1C(','));
-    }
-
-    m_isException = parsed_line.at(pos + 1) == QL1C('@');
-    m_matchString = parsed_line.mid(m_isException ? pos + 3 : pos + 2);
-
-    // CSS rule cannot have more options -> stop parsing.
+    // Do not parse CSS rules.
     return;
   }
 

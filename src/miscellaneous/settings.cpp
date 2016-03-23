@@ -19,12 +19,14 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
+#include "network-web/adblock/requestinterceptor.h"
 
 #include <QDebug>
 #include <QDir>
 #include <QPointer>
 #include <QWebEngineSettings>
 #include <QLocale>
+#include <QWebEngineProfile>
 
 
 // Feeds.
@@ -356,6 +358,9 @@ Settings *Settings::setupSettings(QObject *parent) {
 
   // Portable settings are available, use them.
   new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
+
+  // Set Blick communication interceptor for simple Adblocking.
+  QWebEngineProfile::defaultProfile()->setRequestInterceptor(new RequestInterceptor(new_settings));
 
   // Check if portable settings are available.
   if (properties.m_type == SettingsProperties::Portable) {

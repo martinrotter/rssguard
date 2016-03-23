@@ -203,10 +203,6 @@ void AdBlockTreeWidget::adjustItemFeatures(QTreeWidgetItem *item, const AdBlockR
     item->setForeground(0, QColor(Qt::darkGreen));
     item->setFont(0, QFont());
   }
-  else if (rule->isCssRule()) {
-    item->setForeground(0, QColor(Qt::darkBlue));
-    item->setFont(0, QFont());
-  }
   else {
     item->setForeground(0, QColor());
     item->setFont(0, QFont());

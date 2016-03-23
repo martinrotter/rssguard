@@ -49,6 +49,7 @@
 
 #include <QObject>
 #include <QStringList>
+#include <QWebEngineUrlRequestInfo>
 
 class QNetworkRequest;
 class QUrl;
@@ -72,9 +73,6 @@ class AdBlockRule {
     QString filter() const;
     void setFilter(const QString &filter);
 
-    bool isCssRule() const;
-    QString cssSelector() const;
-
     bool isDocument() const;
     bool isElemhide() const;
 
@@ -88,14 +86,13 @@ class AdBlockRule {
     bool isSlow() const;
     bool isInternalDisabled() const;
 
-    bool urlMatch(const QUrl &url) const;
-    bool networkMatch(const QNetworkRequest &request, const QString &domain, const QString &encoded_url) const;
+    bool urlMatch(const QUrl &url, const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type) const;
+    bool networkMatch(const QUrl &url, const QString &domain, const QString &encoded_url,
+                      const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type) const;
 
     bool matchDomain(const QString &domain) const;
-    bool matchThirdParty(const QNetworkRequest &request) const;
-    bool matchObject(const QNetworkRequest &request) const;
-    bool matchSubdocument(const QNetworkRequest &request) const;
-    bool matchXmlHttpRequest(const QNetworkRequest &request) const;
+    bool matchThirdParty(const QString &referer, const QUrl &url) const;
+    bool matchObject(QWebEngineUrlRequestInfo::ResourceType type) const;
     bool matchImage(const QString &encoded_url) const;
 
   protected:
@@ -105,7 +102,6 @@ class AdBlockRule {
 
   private:
     enum RuleType {
-      CssRule = 0,
       DomainMatchRule = 1,
       RegExpMatchRule = 2,
       StringEndsMatchRule = 3,

@@ -21,6 +21,8 @@
 
 #include <QChar>
 #include <QHash>
+#include <QUrl>
+#include <QWebEngineUrlRequestInfo>
 
 
 class QNetworkRequest;
@@ -34,7 +36,8 @@ class AdBlockSearchTree {
     void clear();
 
     bool add(const AdBlockRule *rule);
-    const AdBlockRule *find(const QNetworkRequest &request, const QString &domain, const QString &url_string) const;
+    const AdBlockRule *find(const QUrl &url, const QString &domain, const QString &url_string,
+                            const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type) const;
 
   private:
     struct Node {
@@ -48,8 +51,9 @@ class AdBlockSearchTree {
     };
 
     void deleteNode(Node *node);
-    const AdBlockRule *prefixSearch(const QNetworkRequest &request, const QString &domain,
-                                    const QString &url_string, const QChar* string, int len) const;
+    const AdBlockRule *prefixSearch(const QUrl &url, const QString &domain,
+                                    const QString &url_string, const QChar* string, const QString &referer,
+                                    QWebEngineUrlRequestInfo::ResourceType resource_type, int len) const;
 
     Node *m_root;
 };

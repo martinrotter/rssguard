@@ -21,10 +21,8 @@
 #include "network-web/adblock/adblockdialog.h"
 #include "network-web/adblock/adblockmatcher.h"
 #include "network-web/adblock/adblocksubscription.h"
-#include "network-web/adblock/adblockblockednetworkreply.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/webpage.h"
-#include "network-web/silentnetworkaccessmanager.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "definitions/definitions.h"
@@ -34,7 +32,6 @@
 #include <QTextStream>
 #include <QDir>
 #include <QTimer>
-#include <QWebEnginePage>
 
 
 AdBlockManager *AdBlockManager::s_adBlockManager = NULL;
@@ -51,7 +48,7 @@ AdBlockManager::~AdBlockManager() {
 
 AdBlockManager *AdBlockManager::instance() {
   if (s_adBlockManager == NULL) {
-    s_adBlockManager = new AdBlockManager(SilentNetworkAccessManager::instance());
+    s_adBlockManager = new AdBlockManager(qApp);
   }
 
   return s_adBlockManager;
@@ -74,36 +71,27 @@ QList<AdBlockSubscription*> AdBlockManager::subscriptions() const {
   return m_subscriptions;
 }
 
-QNetworkReply *AdBlockManager::block(const QNetworkRequest &request) {
-  const QString url_string = request.url().toEncoded().toLower();
-  const QString url_domain = request.url().host().toLower();
-  const QString url_scheme = request.url().scheme().toLower();
+bool AdBlockManager::shouldBlock(const QUrl &url, const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type) {
+  const QString url_string = url.toEncoded().toLower();
+  const QString url_domain = url.host().toLower();
+  const QString url_scheme = url.scheme().toLower();
 
   if (!isEnabled() || !canRunOnScheme(url_scheme)) {
     return NULL;
   }
 
-  const AdBlockRule *blocked_rule = m_matcher->match(request, url_domain, url_string);
+  const AdBlockRule *blocked_rule = m_matcher->match(url, url_domain, url_string, referer, resource_type);
 
   if (blocked_rule != NULL) {
-    QVariant v = request.attribute((QNetworkRequest::Attribute)(QNetworkRequest::User + 100));
-    WebPage *web_page = static_cast<WebPage*>(v.value<void*>());
-
-    if (WebPage::isPointerSafeToUse(web_page)) {
-      if (!canBeBlocked(web_page->url())) {
-        return NULL;
-      }
-
-      web_page->addAdBlockRule(blocked_rule, request.url());
+    if (!canBeBlocked(url, referer, resource_type)) {
+      return false;
     }
-
-    AdBlockBlockedNetworkReply *reply = new AdBlockBlockedNetworkReply(blocked_rule, this);
-    reply->setRequest(request);
-
-    return reply;
+    else {
+      return true;
+    }
   }
 
-  return NULL;
+  return false;
 }
 
 QStringList AdBlockManager::disabledRules() const {
@@ -306,25 +294,8 @@ void AdBlockManager::setUseLimitedEasyList(bool use_limited) {
   }
 }
 
-bool AdBlockManager::canBeBlocked(const QUrl &url) const {
-  return !m_matcher->adBlockDisabledForUrl(url);
-}
-
-QString AdBlockManager::elementHidingRules() const {
-  return m_matcher->elementHidingRules();
-}
-
-QString AdBlockManager::elementHidingRulesForDomain(const QUrl &url) const {
-  if (!isEnabled() || !canRunOnScheme(url.scheme()) || !canBeBlocked(url)) {
-    return QString();
-  }
-  // Acid3 doesn't like the way element hiding rules are embedded into page
-  else if (url.host() == QL1S("acid3.acidtests.org")) {
-    return QString();
-  }
-  else {
-    return m_matcher->elementHidingRulesForDomain(url.host());
-  }
+bool AdBlockManager::canBeBlocked(const QUrl &url, const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type) const {
+  return !m_matcher->adBlockDisabledForUrl(url, referer, resource_type);
 }
 
 AdBlockSubscription *AdBlockManager::subscriptionByName(const QString &name) const {

@@ -23,12 +23,10 @@
 
 #include <QStringList>
 #include <QPointer>
+#include <QWebEngineUrlRequestInfo>
 
 
 class QUrl;
-class QNetworkReply;
-class QNetworkRequest;
-
 class AdBlockRule;
 class AdBlockDialog;
 class AdBlockMatcher;
@@ -52,13 +50,10 @@ class AdBlockManager : public QObject {
     bool useLimitedEasyList() const;
     void setUseLimitedEasyList(bool use_limited);
 
-    QString elementHidingRules() const;
-    QString elementHidingRulesForDomain(const QUrl &url) const;
-
     AdBlockSubscription *subscriptionByName(const QString &name) const;
     QList<AdBlockSubscription*> subscriptions() const;
 
-    QNetworkReply *block(const QNetworkRequest &request);
+    bool shouldBlock(const QUrl &url, const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type);
 
     QStringList disabledRules() const;
     void addDisabledRule(const QString &filter);
@@ -74,9 +69,6 @@ class AdBlockManager : public QObject {
     static QString baseSubscriptionDirectory();
     static AdBlockManager *instance();
 
-  signals:
-    void enabledChanged(bool enabled);
-
   public slots:
     void setEnabled(bool enabled);
     void showRule();
@@ -84,8 +76,11 @@ class AdBlockManager : public QObject {
 
     AdBlockDialog *showDialog();
 
+  signals:
+    void enabledChanged(bool enabled);
+
   private:
-    bool canBeBlocked(const QUrl &url) const;
+    bool canBeBlocked(const QUrl &url, const QString &referer, QWebEngineUrlRequestInfo::ResourceType resource_type) const;
 
     bool m_loaded;
     bool m_enabled;

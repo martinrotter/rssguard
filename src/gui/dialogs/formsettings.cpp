@@ -30,7 +30,6 @@
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
-#include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webbrowser.h"
 #include "gui/systemtrayicon.h"
@@ -448,7 +447,6 @@ void FormSettings::saveProxy() {
 
   // Reload settings for all network access managers.
   SilentNetworkAccessManager::instance()->loadSettings();
-  WebBrowserNetworkAccessManager::instance()->loadSettings();
 }
 
 void FormSettings::loadLanguage() {

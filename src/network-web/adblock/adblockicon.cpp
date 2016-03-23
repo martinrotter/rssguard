@@ -30,7 +30,6 @@
 
 #include <QMenu>
 #include <QMouseEvent>
-#include <QWebEnginePage>
 
 
 AdBlockIcon::AdBlockIcon(QWidget *window, QWidget *parent)
@@ -77,9 +76,9 @@ void AdBlockIcon::createMenu(QMenu *menu) {
   menu->addSeparator();
 
   if (!page_url.host().isEmpty() && m_enabled && manager->canRunOnScheme(page_url.scheme())) {
-    const QString host = page_url.host().contains(QLatin1String("www.")) ? page_url.host().mid(4) : page_url.host();
-    const QString host_filter = QString("@@||%1^$document").arg(host);
-    const QString page_filter = QString("@@|%1|$document").arg(page_url.toString());
+    const QString host = page_url.host().contains(QSL("www.")) ? page_url.host().mid(4) : page_url.host();
+    const QString host_filter = QString(QSL("@@||%1^$document")).arg(host);
+    const QString page_filter = QString(QSL("@@|%1|$document")).arg(page_url.toString());
 
     QAction *act;
 
@@ -96,41 +95,6 @@ void AdBlockIcon::createMenu(QMenu *menu) {
     connect(act, SIGNAL(triggered()), this, SLOT(toggleCustomFilter()));
 
     menu->addSeparator();
-  }
-
-  if (!m_blockedPopups.isEmpty()) {
-    menu->addAction(tr("Blocked popup windows"))->setEnabled(false);
-
-    for (int i = 0; i < m_blockedPopups.count(); i++) {
-      const QPair<AdBlockRule*,QUrl> &pair = m_blockedPopups.at(i);
-
-      const QString address = pair.second.toString().right(55);
-      QString action_text = tr("%1 with (%2)").arg(address,
-                                                   pair.first->filter()).replace(QLatin1Char('&'), QLatin1String("&&"));
-
-      QAction *action = menu->addAction(action_text, manager, SLOT(showRule()));
-      action->setData(QVariant::fromValue((void*)pair.first));
-    }
-  }
-
-  menu->addSeparator();
-
-  const QVector<WebPage::AdBlockedEntry> entries = page->adBlockedEntries();
-
-  if (entries.isEmpty()) {
-    menu->addAction(tr("No content blocked"))->setEnabled(false);
-  }
-  else {
-    menu->addAction(tr("Blocked some content - click to edit rule"))->setEnabled(false);
-
-    foreach (const WebPage::AdBlockedEntry &entry, entries) {
-      QString address = entry.url.toString().right(55);
-      QString action_text = tr("%1 with (%2)").arg(address,
-                                                   entry.rule->filter()).replace(QLatin1Char('&'), QLatin1String("&&"));
-
-      QAction *action = menu->addAction(action_text, manager, SLOT(showRule()));
-      action->setData(QVariant::fromValue((void*)entry.rule));
-    }
   }
 }
 

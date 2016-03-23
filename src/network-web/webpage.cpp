@@ -20,24 +20,14 @@
 #include "network-web/webbrowser.h"
 #include "miscellaneous/application.h"
 
-#include "network-web/adblock/adblockmanager.h"
-
-#include <QNetworkReply>
-
-
-QList<WebPage*> WebPage::s_livingPages;
 
 WebPage::WebPage(QObject *parent)
   : QWebEnginePage(parent), m_loadProgress(-1) {
   connect(this, SIGNAL(loadProgress(int)), this, SLOT(progress(int)));
   connect(this, SIGNAL(loadFinished(bool)), this, SLOT(finished()));
-  connect(this, SIGNAL(urlChanged(QUrl)), this, SLOT(urlChanged(QUrl)));
-
-  s_livingPages.append(this);
 }
 
 WebPage::~WebPage() {
-  s_livingPages.removeOne(this);
 }
 
 bool WebPage::isLoading() const {
@@ -50,44 +40,6 @@ void WebPage::progress(int prog) {
 
 void WebPage::finished() {
   progress(100);
-}
-
-void WebPage::urlChanged(const QUrl &url) {
-  Q_UNUSED(url)
-
-  if (isLoading()) {
-    m_adBlockedEntries.clear();
-  }
-}
-
-void WebPage::addAdBlockRule(const AdBlockRule *rule, const QUrl &url) {
-  AdBlockedEntry entry;
-
-  entry.rule = rule;
-  entry.url = url;
-
-  if (!m_adBlockedEntries.contains(entry)) {
-    m_adBlockedEntries.append(entry);
-  }
-}
-
-QVector<WebPage::AdBlockedEntry> WebPage::adBlockedEntries() const {
-  return m_adBlockedEntries;
-}
-
-bool WebPage::isPointerSafeToUse(WebPage *page) {
-  // Pointer to WebPage is passed with every QNetworkRequest casted to void*
-  // So there is no way to test whether pointer is still valid or not, except
-  // this hack.
-
-  return page == 0 ? false : s_livingPages.contains(page);
-}
-
-void WebPage::populateNetworkRequest(QNetworkRequest &request) {
-  WebPage *page_pointer = this;
-
-  QVariant variant = QVariant::fromValue((void*) page_pointer);
-  request.setAttribute((QNetworkRequest::Attribute)(QNetworkRequest::User + 100), variant);
 }
 
 QString WebPage::toHtml() const {
