@@ -66,9 +66,6 @@ class StatusBar : public QStatusBar, public BaseBar {
 
     QLabel *m_lblProgressDownload;
     QAction *m_lblProgressDownloadAction;
-
-    AdBlockIcon* m_adBlockIcon;
-    QAction *m_adBlockIconAction;
 };
 
 #endif // STATUSBAR_H

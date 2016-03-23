@@ -291,7 +291,6 @@ file( GLOB APP_SOURCES_GL
   "src/services/owncloud/network/*.cpp"
   "src/services/owncloud/gui/*.cpp"
   "src/network-web/*.cpp"
-  "src/network-web/adblock/*.cpp"
   "src/*.cpp")
 
 set(APP_SOURCES
@@ -322,8 +321,7 @@ file( GLOB APP_HEADERS
   "src/services/owncloud/*.h"
   "src/services/owncloud/network/*.h"
   "src/services/owncloud/gui/*.h"
-  "src/network-web/*.h"
-  "src/network-web/adblock/*.h")
+  "src/network-web/*.h")
 
 # APP forms.
 file( GLOB APP_FORMS

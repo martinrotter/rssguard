@@ -20,7 +20,6 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "gui/plaintoolbutton.h"
-#include "network-web/adblock/adblockicon.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QToolButton>
@@ -32,13 +31,6 @@
 StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   setSizeGripEnabled(false);
   setContentsMargins(2, 2, 2, 2);
-
-  m_adBlockIcon = new AdBlockIcon(this);
-  m_adBlockIcon->activate();
-  m_adBlockIcon->setObjectName(QSL("m_adBlockIcon"));
-
-  m_adBlockIconAction = new QAction(qApp->icons()->fromTheme("web-adblock"), tr("Adblock"), this);
-  m_adBlockIconAction->setObjectName(QSL("m_adBlockIconAction"));
 
   m_barProgressFeeds = new QProgressBar(this);
   m_barProgressFeeds->setTextVisible(false);
@@ -88,7 +80,7 @@ QList<QAction*> StatusBar::availableActions() const {
   QList<QAction*> actions = qApp->userActions();
 
   // Now, add placeholder actions for custom stuff.
-  actions << m_adBlockIconAction << m_barProgressDownloadAction << m_barProgressFeedsAction <<
+  actions << m_barProgressDownloadAction << m_barProgressFeedsAction <<
              m_lblProgressDownloadAction << m_lblProgressFeedsAction;
 
   return actions;
@@ -121,13 +113,7 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
     QAction *action_to_add;
     QWidget *widget_to_add;
 
-    if (matching_action == m_adBlockIconAction) {
-      widget_to_add = m_adBlockIcon;
-      action_to_add = m_adBlockIconAction;
-
-      widget_to_add->setVisible(true);
-    }
-    else if (matching_action == m_barProgressDownloadAction) {
+    if (matching_action == m_barProgressDownloadAction) {
       widget_to_add = m_barProgressDownload;
       action_to_add = m_barProgressDownloadAction;
 

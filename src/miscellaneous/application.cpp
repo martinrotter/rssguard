@@ -26,7 +26,6 @@
 #include "gui/statusbar.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
-#include "adblock/adblockmanager.h"
 
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardserviceroot.h"
@@ -279,7 +278,6 @@ void Application::onAboutToQuit() {
   mainForm()->tabWidget()->feedMessageViewer()->quit();
   database()->saveDatabase();
   mainForm()->saveSize();
-  AdBlockManager::instance()->save();
 
   if (locked_safely) {
     // Application obtained permission to close in a safe way.
