@@ -201,15 +201,14 @@ void WebBrowser::createConnections() {
 
   // Forward title/icon changes.
   connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
-  connect(m_webView, SIGNAL(iconChanged()), this, SLOT(onIconChanged()));
+  connect(m_webView, SIGNAL(iconUrlChanged(QUrl)), this, SLOT(onIconChanged()));
 
   // Misc connections.
   connect(m_webView, SIGNAL(zoomFactorChanged()), this, SLOT(updateZoomGui()));
 }
 
 void WebBrowser::onIconChanged() {
-  // TODO: todo
-  //emit iconChanged(m_index, m_webView->icon());
+  emit iconChanged(m_index, icon());
 }
 
 void WebBrowser::onTitleChanged(const QString &new_title) {
@@ -321,9 +320,16 @@ void WebBrowser::setupIcons() {
 }
 
 QIcon WebBrowser::icon() const {
+  QUrl url = m_webView->iconUrl();
+
+  if (url.isValid()) {
+    QByteArray output;
+    if (NetworkFactory::downloadFile(url.toString(), DOWNLOAD_TIMEOUT, output).first == QNetworkReply::NoError) {
+      QPixmap icon_pixmap;
+      icon_pixmap.loadFromData(output);
+      return QIcon(icon_pixmap);
+    }
+  }
 
   return QIcon();
-
-  // TODO: TODO.
-  //return m_webView->iconUrl();
 }

@@ -57,9 +57,6 @@ class WebView : public QWebEngineView {
     bool decreaseWebPageZoom();
     bool resetWebPageZoom();
 
-    // Executes if loading of any page is done.
-    void onLoadFinished(bool ok);
-
     void copySelectedText();
     void openLinkInNewTab();
     void openLinkExternally();
@@ -67,9 +64,6 @@ class WebView : public QWebEngineView {
     void searchTextViaGoogle();
     void saveCurrentPageToFile();
     void printCurrentPage();
-
-    // Provides custom context menu.
-    void popupContextMenu(const QPoint &pos);
 
   private slots:
     void downloadLink(const QNetworkRequest &request);
@@ -83,9 +77,6 @@ class WebView : public QWebEngineView {
     // Creates necessary connections.
     void createConnections();
 
-    // Displays custom error page.
-    void displayErrorPage();
-
     // Customize mouse wheeling.
     void wheelEvent(QWheelEvent *event);
 
@@ -93,10 +84,11 @@ class WebView : public QWebEngineView {
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
 
+    void contextMenuEvent(QContextMenuEvent *event);
+
   private:
     WebPage *m_page;
 
-    QAction *m_actionReload;
     QAction *m_actionPrint;
     QAction *m_actionCopySelectedItem;
     QAction *m_actionCopyLink;

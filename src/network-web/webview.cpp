@@ -43,20 +43,12 @@
 WebView::WebView(QWidget *parent)
   : QWebEngineView(parent), m_page(new WebPage(this)) {
   setPage(m_page);
-  setContextMenuPolicy(Qt::CustomContextMenu);
   initializeActions();
   createConnections();
 }
 
 WebView::~WebView() {
   qDebug("Destroying WebView.");
-}
-
-void WebView::onLoadFinished(bool ok) {
-  // If page was not loaded, then display custom error page.
-  if (!ok) {
-    displayErrorPage();
-  }
 }
 
 void WebView::copySelectedText() {
@@ -158,7 +150,6 @@ void WebView::createConnections() {
 
 void WebView::setupIcons() {
   m_actionPrint->setIcon(qApp->icons()->fromTheme(QSL("print-web-page")));
-  m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("go-refresh")));
   m_actionCopySelectedItem->setIcon(qApp->icons()->fromTheme(QSL("edit-copy")));
   m_actionCopyLink->setIcon(qApp->icons()->fromTheme(QSL("edit-copy")));
   m_actionCopyImage->setIcon(qApp->icons()->fromTheme(QSL("edit-copy-image")));
@@ -173,11 +164,7 @@ void WebView::setupIcons() {
   m_actionLookupText->setIcon(qApp->icons()->fromTheme(QSL("item-search-google")));
 }
 
-void WebView::initializeActions() {
-  // Create needed actions.
-  m_actionReload = pageAction(QWebEnginePage::Reload);
-  m_actionReload->setParent(this);
-
+void WebView::initializeActions() {  
   m_actionPrint = new QAction(tr("Print"), this);
   m_actionPrint->setToolTip(tr("Print current web page."));
 
@@ -216,8 +203,6 @@ void WebView::initializeActions() {
 }
 
 void WebView::setActionTexts() {
-  m_actionReload->setText(tr("Reload web page"));
-  m_actionReload->setToolTip(tr("Reload current web page."));
   m_actionCopySelectedItem->setText(tr("Copy selection"));
   m_actionCopySelectedItem->setToolTip(tr("Copies current selection into the clipboard."));
   m_actionSaveHyperlinkAs->setText(tr("Save target as..."));
@@ -241,28 +226,6 @@ void WebView::setActionTexts() {
   m_actionOpenImageNewTab->setToolTip(tr("Open this image in this tab."));
 }
 
-void WebView::displayErrorPage() {
-  /*
-  setHtml(qApp->skins()->currentMarkupLayout().arg(
-            tr("Error page"),
-            qApp->skins()->currentMarkup().arg(tr("Page not found"),
-                                               tr("Check your internet connection or website address"),
-                                               QString(),
-                                               tr("This failure can be caused by:<br><ul>"
-                                                  "<li>non-functional internet connection,</li>"
-                                                  "<li>incorrect website address,</li>"
-                                                  "<li>bad proxy server settings,</li>"
-                                                  "<li>target destination outage,</li>"
-                                                  "<li>many other things.</li>"
-                                                  "</ul>"),
-                                               QDateTime::currentDateTime().toString(Qt::DefaultLocaleShortDate))));
-  */
-}
-
-void WebView::popupContextMenu(const QPoint &pos) {  
-  page()->createStandardContextMenu()->exec(mapToGlobal(pos));
-}
-
 void WebView::printCurrentPage() {
   QScopedPointer<QPrintPreviewDialog> print_preview(new QPrintPreviewDialog(this));
   connect(print_preview.data(), SIGNAL(paintRequested(QPrinter*)), this, SLOT(print(QPrinter*)));
@@ -274,30 +237,12 @@ void WebView::downloadLink(const QNetworkRequest &request) {
 }
 
 void WebView::mousePressEvent(QMouseEvent *event) {
-  // TODO: TODO
-  /*if (event->button() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) {
-    QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
-
-    // Check if user clicked with middle mouse button on some
-    // hyperlink.
-    const QUrl link_url = hit_result.linkUrl();
-    const QUrl image_url = hit_result.imageUrl();
-
-    if (link_url.isValid()) {
-      emit linkMiddleClicked(link_url);
-      return;
-    }
-    else if (image_url.isValid()) {
-      emit linkMiddleClicked(image_url);
-      return;
-    }
-  }
-  else */if (event->button() & Qt::MiddleButton) {
+  if (event->button() & Qt::MiddleButton) {
     m_gestureOrigin = event->pos();
-    return;
   }
-
-  QWebEngineView::mousePressEvent(event);
+  else {
+    QWebEngineView::mousePressEvent(event);
+  }
 }
 
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
@@ -328,6 +273,10 @@ void WebView::mouseReleaseEvent(QMouseEvent *event) {
   }
 
   QWebEngineView::mouseReleaseEvent(event);
+}
+
+void WebView::contextMenuEvent(QContextMenuEvent *event) {
+  QWebEngineView::contextMenuEvent(event);
 }
 
 void WebView::wheelEvent(QWheelEvent *event) {

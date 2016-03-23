@@ -17,28 +17,9 @@
 
 #include "network-web/webpage.h"
 
-#include "network-web/webbrowser.h"
-#include "miscellaneous/application.h"
 
-
-WebPage::WebPage(QObject *parent)
-  : QWebEnginePage(parent), m_loadProgress(-1) {
-  connect(this, SIGNAL(loadProgress(int)), this, SLOT(progress(int)));
-  connect(this, SIGNAL(loadFinished(bool)), this, SLOT(finished()));
+WebPage::WebPage(QObject *parent) : QWebEnginePage(parent) {
 }
 
 WebPage::~WebPage() {
-}
-
-bool WebPage::isLoading() const {
-  // TODO: nepouzivany?
-  return m_loadProgress < 100;
-}
-
-void WebPage::progress(int prog) {
-  m_loadProgress = prog;
-}
-
-void WebPage::finished() {
-  progress(100);
 }

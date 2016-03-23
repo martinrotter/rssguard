@@ -19,7 +19,6 @@
 #define WEBPAGE_H
 
 #include <QWebEnginePage>
-#include <QNetworkAccessManager>
 
 
 class WebPage : public QWebEnginePage {
@@ -29,17 +28,6 @@ class WebPage : public QWebEnginePage {
     // Constructors and destructors.
     explicit WebPage(QObject *parent = 0);
     virtual ~WebPage();
-
-    bool isLoading() const;
-
-  private slots:
-    void progress(int prog);
-    void finished();
-
-  private:
-    int m_loadProgress;
-
-    static QList<WebPage*> s_livingPages;
 };
 
 #endif // WEBPAGE_H
