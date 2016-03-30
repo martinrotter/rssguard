@@ -70,7 +70,7 @@ set(APP_URL_ISSUES_NEW_GITHUB "https://github.com/martinrotter/rssguard/issues/n
 set(APP_URL_ISSUES_NEW_BITBUCKET "http://bitbucket.org/skunkos/rssguard/issues/new")
 set(APP_URL_WIKI "https://bitbucket.org/skunkos/rssguard/wiki/Home")
 set(APP_EMAIL "rotter.martinos@gmail.com")
-set(MINIMUM_QT_VERSION 5.6)
+set(MINIMUM_QT_VERSION 5.6.0)
 set(EXE_NAME ${APP_LOW_NAME})
 
 if(APPLE)
@@ -227,6 +227,12 @@ if(UNIX)
 else(UNIX)
   find_package(Qt5 REQUIRED Sql WebEngineCore WebEngineWidgets Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
 endif(UNIX)
+
+message(STATUS "[${APP_LOW_NAME}] Found Qt version: '${Qt5_VERSION}'.")
+
+if(Qt5_VERSION VERSION_LESS MINIMUM_QT_VERSION)
+  message(FATAL_ERROR "[${APP_LOW_NAME}] Installed Qt has lower version than needed. You need at least '${MINIMUM_QT_VERSION}'.")
+endif(Qt5_VERSION VERSION_LESS MINIMUM_QT_VERSION)
 
 # Configure QStringBuilder behavior.
 message(STATUS "[${APP_LOW_NAME}] Enabling fast QString concatenation.")
