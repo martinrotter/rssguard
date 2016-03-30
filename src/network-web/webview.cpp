@@ -136,10 +136,6 @@ void WebView::saveCurrentPageToFile() {
 }
 
 void WebView::createConnections() {
-  connect(this, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
-  connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(popupContextMenu(QPoint)));
-  connect(page(), SIGNAL(downloadRequested(QNetworkRequest)), this, SLOT(downloadLink(QNetworkRequest)));
-
   connect(m_actionSavePageAs, SIGNAL(triggered()), this, SLOT(saveCurrentPageToFile()));
   connect(m_actionPrint, SIGNAL(triggered()), this, SLOT(printCurrentPage()));
   connect(m_actionOpenLinkNewTab, SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
@@ -230,10 +226,6 @@ void WebView::printCurrentPage() {
   QScopedPointer<QPrintPreviewDialog> print_preview(new QPrintPreviewDialog(this));
   connect(print_preview.data(), SIGNAL(paintRequested(QPrinter*)), this, SLOT(print(QPrinter*)));
   print_preview.data()->exec();
-}
-
-void WebView::downloadLink(const QNetworkRequest &request) {
-  qApp->downloadManager()->download(request);
 }
 
 void WebView::mousePressEvent(QMouseEvent *event) {

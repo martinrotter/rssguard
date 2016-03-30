@@ -32,6 +32,7 @@ class AutoSaver;
 class DownloadModel;
 class QFileIconProvider;
 class QMimeData;
+class QWebEngineDownloadItem;
 
 class DownloadItem : public QWidget {
     Q_OBJECT
@@ -127,6 +128,7 @@ class DownloadManager : public TabContent {
   public slots:
     void download(const QNetworkRequest &request, bool direct_download = false);
     void download(const QUrl &url, bool direct_download = false);
+    void download(QWebEngineDownloadItem *down);
     void handleUnsupportedContent(QNetworkReply *reply, bool direct_download = false);
     void cleanup();
 

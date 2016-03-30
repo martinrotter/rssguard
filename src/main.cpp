@@ -36,6 +36,7 @@
 #include <QTranslator>
 #include <QDebug>
 #include <QTimer>
+#include <QWebEngineProfile>
 
 
 int main(int argc, char *argv[]) {
@@ -96,7 +97,7 @@ int main(int argc, char *argv[]) {
   main_window.setWindowTitle(APP_LONG_NAME);
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(qApp->userActions());  
+  DynamicShortcuts::load(qApp->userActions());
 
   // Display main window.
   if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
@@ -133,6 +134,8 @@ int main(int argc, char *argv[]) {
     QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
   }
 
+  QObject::connect(QWebEngineProfile::defaultProfile(), SIGNAL(downloadRequested(QWebEngineDownloadItem*)),
+                   qApp->downloadManager(), SLOT(download(QWebEngineDownloadItem*)));
 
   // Enter global event loop.
   return Application::exec();

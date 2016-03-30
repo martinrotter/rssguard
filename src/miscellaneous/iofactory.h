@@ -23,7 +23,6 @@
 #include "definitions/definitions.h"
 
 #include <QStandardPaths>
-#define SYSTEM_FOLDER_ENUM QStandardPaths
 
 
 class IOFactory {
@@ -34,7 +33,7 @@ class IOFactory {
 
   public:   
     // Returns system-wide folder according to type.
-    static QString getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location);
+    static QString getSystemFolder(QStandardPaths::StandardLocation location);
 
     // Checks given file if it exists and if it does, then generates non-existing new file
     // according to format.

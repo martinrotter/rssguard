@@ -30,8 +30,8 @@
 IOFactory::IOFactory() {
 }
 
-QString IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location) {
-  return SYSTEM_FOLDER_ENUM::writableLocation(location);
+QString IOFactory::getSystemFolder(QStandardPaths::StandardLocation location) {
+  return QStandardPaths::writableLocation(location);
 }
 
 QString IOFactory::ensureUniqueFilename(const QString &name, const QString &append_format) {

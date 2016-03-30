@@ -65,9 +65,6 @@ class WebView : public QWebEngineView {
     void saveCurrentPageToFile();
     void printCurrentPage();
 
-  private slots:
-    void downloadLink(const QNetworkRequest &request);
-
   protected:
     // Initializes all actions.
     void initializeActions();
