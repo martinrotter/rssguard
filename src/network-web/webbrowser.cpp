@@ -18,7 +18,6 @@
 #include "network-web/webbrowser.h"
 
 #include "definitions/definitions.h"
-#include "network-web/webpage.h"
 #include "network-web/webview.h"
 #include "network-web/networkfactory.h"
 #include "miscellaneous/skinfactory.h"
@@ -191,8 +190,6 @@ void WebBrowser::createConnections() {
 
   // Connect this WebBrowser to global TabWidget.
   TabWidget *tab_widget = qApp->mainForm()->tabWidget();
-  connect(m_webView, SIGNAL(newTabRequested()), tab_widget, SLOT(addEmptyBrowser()));
-  connect(m_webView, SIGNAL(linkMiddleClicked(QUrl)), tab_widget, SLOT(addLinkedBrowser(QUrl)));
 
   // Change location textbox status according to webpage status.
   connect(m_webView, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));
@@ -316,7 +313,6 @@ void WebBrowser::setupIcons() {
   m_actionForward->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
   m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("go-refresh")));
   m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("go-stop")));
-  m_webView->setupIcons();
 }
 
 QIcon WebBrowser::icon() const {

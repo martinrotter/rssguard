@@ -267,9 +267,6 @@ namespace Keyboard {
 namespace Browser {
   KEY ID;
 
-  KEY GesturesEnabled;
-  VALUE(bool) GesturesEnabledDef;
-
   KEY JavascriptEnabled;
   VALUE(bool) JavascriptEnabledDef;
 

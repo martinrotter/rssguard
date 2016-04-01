@@ -3,7 +3,7 @@
 
 Main:
 
-▪ Internal web browser and message preview window now use component based on Chromium/Blink (QtWebEngine).
+▪ Internal web browser and message preview window now use component based on Chromium/Blink (QtWebEngine). Note that new QtWebEngine lacks some features and those were thus removed from RSS Guard, including Adblock, mouse gestures and some other features. Note that I was force to switch to this component because old Qt WebKit component will be removed from Qt.
 ▪ RSS Guard now uses only Qt 5.6 or higher.
 
 Added:

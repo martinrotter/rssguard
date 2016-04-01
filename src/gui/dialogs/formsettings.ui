@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>3</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -470,7 +470,7 @@ Authors of this application are NOT responsible for lost data.</string>
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -913,7 +913,7 @@ Authors of this application are NOT responsible for lost data.</string>
            <item row="2" column="0">
             <widget class="QCheckBox" name="m_checkEnablePlugins">
              <property name="text">
-              <string>Enable external plugins based on NPAPI</string>
+              <string>Enable external plugins</string>
              </property>
             </widget>
            </item>
@@ -921,32 +921,6 @@ Authors of this application are NOT responsible for lost data.</string>
             <widget class="QCheckBox" name="m_checkAutoLoadImages">
              <property name="text">
               <string>Auto-load images</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0" colspan="2">
-            <widget class="QCheckBox" name="m_checkMouseGestures">
-             <property name="text">
-              <string>Enable mouse gestures</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="2">
-            <widget class="QLabel" name="m_lblMouseGestures">
-             <property name="font">
-              <font>
-               <italic>true</italic>
-              </font>
-             </property>
-             <property name="text">
-              <string>Mouse gestures work with middle mouse button. Possible gestures are:
- • previous web page (drag mouse left),
- • next web page (drag mouse right),
- • reload current web page (drag mouse up),
- • open new web browser tab (drag mouse down).</string>
-             </property>
-             <property name="indent">
-              <number>20</number>
              </property>
             </widget>
            </item>
@@ -1639,7 +1613,6 @@ Authors of this application are NOT responsible for lost data.</string>
   <tabstop>m_checkEnableJavascript</tabstop>
   <tabstop>m_checkEnablePlugins</tabstop>
   <tabstop>m_checkAutoLoadImages</tabstop>
-  <tabstop>m_checkMouseGestures</tabstop>
   <tabstop>m_grpCustomExternalBrowser</tabstop>
   <tabstop>m_txtExternalBrowserExecutable</tabstop>
   <tabstop>m_btnExternalBrowserExecutable</tabstop>

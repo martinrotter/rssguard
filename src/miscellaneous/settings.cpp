@@ -238,9 +238,6 @@ DKEY Keyboard::ID = "keyboard";
 // Web browser.
 DKEY Browser::ID                            = "browser";
 
-DKEY Browser::GesturesEnabled               = "gestures_enabled";
-DVALUE(bool) Browser::GesturesEnabledDef    = true;
-
 DKEY Browser::JavascriptEnabled             = "enable_javascript";
 DVALUE(bool) Browser::JavascriptEnabledDef  = true;
 

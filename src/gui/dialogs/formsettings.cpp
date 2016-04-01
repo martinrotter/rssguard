@@ -382,7 +382,6 @@ void FormSettings::onProxyTypeChanged(int index) {
 
 void FormSettings::loadBrowser() {
   // Load settings of web browser GUI.
-  m_ui->m_checkMouseGestures->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::GesturesEnabled)).toBool());
   m_ui->m_checkQueueTabs->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::QueueTabs)).toBool());
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
   m_ui->m_txtExternalBrowserExecutable->setText(m_settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString());
@@ -403,7 +402,6 @@ void FormSettings::loadBrowser() {
 void FormSettings::saveBrowser() {
   // Save settings of GUI of web browser.
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserEnabled, m_ui->m_grpCustomExternalBrowser->isChecked());
-  m_settings->setValue(GROUP(Browser), Browser::GesturesEnabled, m_ui->m_checkMouseGestures->isChecked());
   m_settings->setValue(GROUP(Browser), Browser::QueueTabs, m_ui->m_checkQueueTabs->isChecked());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserExecutable, m_ui->m_txtExternalBrowserExecutable->text());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserArguments, m_ui->m_txtExternalBrowserArguments->text());

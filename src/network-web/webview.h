@@ -21,10 +21,6 @@
 #include <QWebEngineView>
 
 
-class QAction;
-class QPaintEvent;
-class WebPage;
-
 class WebView : public QWebEngineView {
     Q_OBJECT
 
@@ -34,20 +30,11 @@ class WebView : public QWebEngineView {
     virtual ~WebView();
 
     // Page accessor.
-    inline WebPage *page() const {
+    inline QWebEnginePage *page() const {
       return m_page;
     }
 
-    void setupIcons();
-
   signals:
-    // Is emitted if user wants to open some hyperlink in new
-    // web browser tab.
-    void linkMiddleClicked(const QUrl &link_url);
-
-    // User wants to open new empty web browser tab.
-    void newTabRequested();
-
     // Emitted if user changes zoom factor via CTRL + mouse wheel combo.
     void zoomFactorChanged();
 
@@ -57,52 +44,12 @@ class WebView : public QWebEngineView {
     bool decreaseWebPageZoom();
     bool resetWebPageZoom();
 
-    void copySelectedText();
-    void openLinkInNewTab();
-    void openLinkExternally();
-    void openImageInNewTab();
-    void searchTextViaGoogle();
-    void saveCurrentPageToFile();
-    void printCurrentPage();
-
   protected:
-    // Initializes all actions.
-    void initializeActions();
-
-    void setActionTexts();
-
-    // Creates necessary connections.
-    void createConnections();
-
     // Customize mouse wheeling.
     void wheelEvent(QWheelEvent *event);
 
-    // Provides custom mouse actions.
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-
-    void contextMenuEvent(QContextMenuEvent *event);
-
   private:
-    WebPage *m_page;
-
-    QAction *m_actionPrint;
-    QAction *m_actionCopySelectedItem;
-    QAction *m_actionCopyLink;
-    QAction *m_actionCopyImage;
-    QAction *m_actionSavePageAs;
-    QAction *m_actionSaveHyperlinkAs;
-    QAction *m_actionSaveImageAs;
-    QAction *m_actionCopyImageUrl;
-    QAction *m_actionOpenLinkThisTab;
-    QAction *m_actionOpenLinkNewTab;
-    QAction *m_actionOpenLinkExternally;
-    QAction *m_actionOpenImageNewTab;
-    QAction *m_actionLookupText;
-
-    QPoint m_gestureOrigin;
-    QUrl m_contextLinkUrl;
-    QUrl m_contextImageUrl;
+    QWebEnginePage *m_page;
 };
 
 #endif // BASEWEBVIEW_H
