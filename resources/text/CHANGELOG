@@ -3,8 +3,8 @@
 
 Main:
 
-▪ Internal web browser and message preview window now use component based on Chromium/Blink (QtWebEngine). Note that new QtWebEngine lacks some features and those were thus removed from RSS Guard, including Adblock, mouse gestures and some other features. Note that I was force to switch to this component because old Qt WebKit component will be removed from Qt.
-▪ RSS Guard now uses only Qt 5.6 or higher.
+▪ Internal web browser was REMOVED. This is because old Qt WebKit web component will be removed from Qt and new Qt component for web viewing is based on Chromium, which is fucking joke. Some people hate Chromium because of many (technocal, philosophical, etical) reasons. Moreover, it lacks some useful features and is memory hungry. It is also very buggy in Qt now. Therefore now internal web browser is gone. Message preview component now uses much lighter solution and still can display certain HTML subset. RSS Guard was tweaked to be more friendly to external web browser. Double-clicking any message results in it being opened via external web browser.
+▪ RSS Guard now depends only Qt 5.6 or higher.
 
 Added:
 
@@ -16,13 +16,11 @@ Added:
 Fixed:
 
 ▪ Download manager now correctly displays download progress/info.
-▪ When user selects "Save as..." for some file from internal web browser, file selection dialog is always shown. (bug #174)
 ▪ Better detection of MySQL server status. (bug #169)
 ▪ Ordering of messages is now done on SQL server (stands for both MySQL and SQLite). (bug #172)
 ▪ Now title of the RSS/ATOM message is taken into account when deciding message "uniqueness". (bug #171)
 ▪ MySQL scripts improved. (bug #170)
 ▪ Fixed little problem with feed list hiding. (bug #163)
-▪ Web browser search context menu item now trims the searched string. (bug #168)
 
 Changed:
 

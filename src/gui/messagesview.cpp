@@ -203,7 +203,7 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
       m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::Read);
     }
 
-    emit currentMessageChanged(message);
+    emit currentMessageChanged(message, m_sourceModel->loadedItem());
   }
   else {
     emit currentMessageRemoved();

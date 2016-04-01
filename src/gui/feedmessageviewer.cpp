@@ -240,9 +240,9 @@ void FeedMessageViewer::createConnections() {
   
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessageRemoved()), m_messagesBrowser, SLOT(clear()));
-  connect(m_messagesView, SIGNAL(currentMessageChanged(Message)), m_messagesBrowser, SLOT(loadMessage(Message)));
+  connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), m_messagesBrowser, SLOT(loadMessage(Message,RootItem*)));
   connect(m_messagesView, SIGNAL(currentMessageRemoved()), this, SLOT(updateMessageButtonsAvailability()));
-  connect(m_messagesView, SIGNAL(currentMessageChanged(Message)), this, SLOT(updateMessageButtonsAvailability()));
+  connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), this, SLOT(updateMessageButtonsAvailability()));
   
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(locked()), this, SLOT(updateFeedButtonsAvailability()));
@@ -253,16 +253,14 @@ void FeedMessageViewer::createConnections() {
   
   // State of many messages is changed, then we need
   // to reload selections.
-  connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)), m_messagesView, SLOT(reloadSelections(bool)));
+  connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)),
+          m_messagesView, SLOT(reloadSelections(bool)));
   connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateFinished()), this, SLOT(onFeedsUpdateFinished()));
   connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateStarted()), this, SLOT(onFeedsUpdateStarted()));
 
   // Message openers.
-  connect(m_messagesView, SIGNAL(openLinkMiniBrowser(QString)), m_messagesBrowser, SLOT(navigateToUrl(QString)));
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
-  connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
-          form_main->m_ui->m_tabWidget, SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
   

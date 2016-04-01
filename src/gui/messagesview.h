@@ -95,7 +95,7 @@ class MessagesView : public QTreeView {
     void openMessagesInNewspaperView(const QList<Message> &messages);
 
     // Notify others about message selections.
-    void currentMessageChanged(const Message &message);
+    void currentMessageChanged(const Message &message, RootItem *root);
     void currentMessageRemoved();
 
   private:

@@ -23,11 +23,16 @@
 #include "ui_messagepreviewer.h"
 
 #include "core/message.h"
+#include "services/abstract/rootitem.h"
+
+#include <QPointer>
 
 
 namespace Ui {
   class MessagePreviewer;
 }
+
+class QToolBar;
 
 class MessagePreviewer : public QWidget {
     Q_OBJECT
@@ -38,12 +43,24 @@ class MessagePreviewer : public QWidget {
 
   public slots:
     void clear();
-    void loadMessage(const Message &message);
+    void loadMessage(const Message &message, RootItem *root);
+
+  private slots:
+    void markMessageAsRead();
+    void markMessageAsUnread();
+    void switchMessageImportance(bool checked);
 
   private:
     QString prepareHtmlForMessage(const Message &message);
 
-    Ui::MessagePreviewer *m_ui;
+    QToolBar *m_toolBar;
+    QScopedPointer<Ui::MessagePreviewer> m_ui;
+    Message m_message;
+    QPointer<RootItem> m_root;
+
+    QAction *m_actionMarkRead;
+    QAction *m_actionMarkUnread;
+    QAction *m_actionSwitchImportance;
 };
 
 #endif // MESSAGEPREVIEWER_H

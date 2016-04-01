@@ -23,6 +23,7 @@
 #include "gui/dialogs/formmain.h"
 
 #include <QScrollBar>
+#include <QToolBar>
 
 
 MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
@@ -49,12 +50,29 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
     }
   });
 
+  m_toolBar = new QToolBar(this);
+  m_toolBar->setOrientation(Qt::Vertical);
+  m_ui->m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
+
+  connect(m_actionMarkRead = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-read"), tr("Mark message as read")),
+          &QAction::triggered,
+          this,
+          &MessagePreviewer::markMessageAsRead);
+  connect(m_actionMarkUnread = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-unread"), tr("Mark message as unread")),
+          &QAction::triggered,
+          this,
+          &MessagePreviewer::markMessageAsUnread);
+  connect(m_actionSwitchImportance = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-favorite"), tr("Switch message importance")),
+          &QAction::triggered,
+          this,
+          &MessagePreviewer::switchMessageImportance);
+
+  m_actionSwitchImportance->setCheckable(true);
+
   clear();
 }
 
-
 MessagePreviewer::~MessagePreviewer() {
-  delete m_ui;
 }
 
 void MessagePreviewer::clear() {
@@ -64,19 +82,40 @@ void MessagePreviewer::clear() {
   hide();
 }
 
-void MessagePreviewer::loadMessage(const Message &message) {
-  m_ui->m_lblTitle->setText(message.m_title);
-  m_ui->m_txtMessage->setHtml(prepareHtmlForMessage(message));
-  show();
+void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
+  m_message = message;
+  m_root = root;
 
-  m_ui->m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
+  m_actionMarkRead->setEnabled(!message.m_isRead);
+  m_actionMarkUnread->setEnabled(message.m_isRead);
+  m_actionSwitchImportance->setChecked(message.m_isImportant);
+
+  if (!m_root.isNull()) {
+    m_ui->m_lblTitle->setText(message.m_title);
+    m_ui->m_txtMessage->setHtml(prepareHtmlForMessage(message));
+    show();
+
+    m_ui->m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
+  }
+}
+
+void MessagePreviewer::markMessageAsRead() {
+
+}
+
+void MessagePreviewer::markMessageAsUnread() {
+
+}
+
+void MessagePreviewer::switchMessageImportance(bool checked) {
+
 }
 
 QString MessagePreviewer::prepareHtmlForMessage(const Message &message) {
-  QString html = QString("<p><a href=\"%1\">%1</a><p/>").arg(message.m_url);
+  QString html = QString("<p>[url] <a href=\"%1\">%1</a></p>").arg(message.m_url);
 
   foreach (const Enclosure &enc, message.m_enclosures) {
-    html += QString("<p>[%2] <a href=\"%1\">%1</a><p/>").arg(enc.m_url, enc.m_mimeType);
+    html += QString("<p>[%2] <a href=\"%1\">%1</a></p>").arg(enc.m_url, enc.m_mimeType);
   }
 
   if (!message.m_enclosures.isEmpty()) {
