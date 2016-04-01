@@ -14,10 +14,9 @@ Core features are:
     * Tiny Tiny RSS (from RSS Guard 3.0.0),
     * ownCloud News (from RSS Guard 3.1.0).
 * multiplatformity,
-* multiple data backend support,
+* multiple data backend support.
     * SQLite (in-memory DBs too),
     * MySQL.
-* Adblock.
 
 See below for more information about features and other RSS Guard aspects.
 
