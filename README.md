@@ -2,7 +2,7 @@ RSS Guard
 =========
 Welcome to RSS Guard website. You can find here basic information.
 
-RSS Guard is simple and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.
+RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.
 
 #####################
 # **PLEASE, ALL USERS -> fill [this survey](http://goo.gl/forms/GcvPYgS2a8).**
@@ -80,7 +80,6 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 
 * Windows XP and newer,
 * GNU/Linux,
-* OS/2 (eComStation),
 * Mac OS X,
 * xBSD (possibly),
 * Android (possibly),
@@ -98,9 +97,9 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * downloader with own tab and support for up to 6 parallel downloads,
 * message filter with regular expressions,
 * feed metadata fetching including icons,
-* simple Adblock functionality,
-* customized popup notifications,
-* Google-based auto-completion for internal web browser location bar,
+* no crazy dependencies,
+* small memory footprint,
+* small installation package,
 * ability to cleanup internal message database with various options,
 * enhanced feed auto-updating with separate time intervals,
 * multiple data backend support,
@@ -111,11 +110,9 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * feed categorization,
 * drap-n-drop for feed list,
 * automatic checking for updates,
-* ability to discover existing feeds on websites,
 * full support of podcasts (both RSS & ATOM),
 * ability to backup/restore database or settings,
 * fully-featured recycle bin,
-* printing of messages and any web pages,
 * can be fully controlled via keyboard,
 * feed authentication (Digest-MD5, BASIC, NTLM-2),
 * handles tons of messages & feeds,
@@ -131,8 +128,6 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * ability to hide list of feeds/categories,
 * open-source development model based on GNU GPL license, version 3,
 * tabbed interface,
-* integrated web browser with adjustable behavior + external browser support,
-* internal web browser mouse gestures support,
 * desktop integration via tray icon,
 * localizations to some languages,
 * Qt library is the only dependency,
