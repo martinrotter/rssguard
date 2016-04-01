@@ -50,6 +50,9 @@ class MessagePreviewer : public QWidget {
     void markMessageAsUnread();
     void switchMessageImportance(bool checked);
 
+  signals:
+    void requestMessageListReload(bool mark_current_as_read);
+
   private:
     QString prepareHtmlForMessage(const Message &message);
 

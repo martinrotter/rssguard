@@ -201,6 +201,7 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
       // Set this message as read only if current item
       // wasn't changed by "mark selected messages unread" action.
       m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::Read);
+      message.m_isRead = true;
     }
 
     emit currentMessageChanged(message, m_sourceModel->loadedItem());
