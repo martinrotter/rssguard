@@ -40,16 +40,14 @@
 #include <QDebug>
 
 
-DownloadItem::DownloadItem(bool is_direct_download, QNetworkReply *reply, QWidget *parent) : QWidget(parent),
+DownloadItem::DownloadItem(QNetworkReply *reply, QWidget *parent) : QWidget(parent),
   m_ui(new Ui::DownloadItem), m_reply(reply),
   m_bytesReceived(0), m_requestFileName(false), m_startedSaving(false), m_finishedDownloading(false),
   m_gettingFileName(false), m_canceledFileSelect(false) {
   m_ui->setupUi(this);
   m_ui->m_btnTryAgain->hide();
 
-  m_requestFileName = is_direct_download ?
-                        qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool() :
-                        true;
+  m_requestFileName = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool();
 
   connect(m_ui->m_btnStopDownload, SIGNAL(clicked()), this, SLOT(stop()));
   connect(m_ui->m_btnOpenFile, SIGNAL(clicked()), this, SLOT(openFile()));
@@ -501,17 +499,17 @@ int DownloadManager::downloadProgress() const {
   }
 }
 
-void DownloadManager::download(const QNetworkRequest &request, bool direct_download) {
+void DownloadManager::download(const QNetworkRequest &request) {
   if (!request.url().isEmpty()) {
-    handleUnsupportedContent(m_networkManager->get(request), direct_download);
+    handleUnsupportedContent(m_networkManager->get(request));
   }
 }
 
-void DownloadManager::download(const QUrl &url, bool direct_download) {
-  download(QNetworkRequest(url), direct_download);
+void DownloadManager::download(const QUrl &url) {
+  download(QNetworkRequest(url));
 }
 
-void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool direct_download) {
+void DownloadManager::handleUnsupportedContent(QNetworkReply *reply) {
   if (reply == NULL || reply->url().isEmpty()) {
     return;
   }
@@ -524,7 +522,7 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool direct
     return;
   }
 
-  DownloadItem *item = new DownloadItem(direct_download, reply, this);
+  DownloadItem *item = new DownloadItem(reply, this);
   addItem(item);
 
   if (!item->m_canceledFileSelect && qApp->settings()->value(GROUP(Downloads),
@@ -670,7 +668,7 @@ void DownloadManager::load() {
     bool done = settings->value(GROUP(Downloads), QString(Downloads::ItemDone).arg(i), true).toBool();
 
     if (!url.isEmpty() && !file_name.isEmpty()) {
-      DownloadItem *item = new DownloadItem(false, 0, this);
+      DownloadItem *item = new DownloadItem(0, this);
       item->m_output.setFileName(file_name);
       item->m_url = url;
 

@@ -36,6 +36,7 @@
 #include "gui/messagebox.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
+#include "gui/messagepreviewer.h"
 #include "gui/dialogs/formdatabasecleanup.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
@@ -63,7 +64,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
-    m_messagesBrowser(new QTextBrowser(this)) {
+    m_messagesBrowser(new MessagePreviewer(this)) {
   initialize();
   initializeViews();
   loadMessageViewerFonts();
@@ -238,10 +239,10 @@ void FeedMessageViewer::createConnections() {
   connect(m_toolBarMessages, SIGNAL(messageFilterChanged(MessagesModel::MessageHighlighter)), m_messagesView, SLOT(filterMessages(MessagesModel::MessageHighlighter)));
   
   // Message changers.
-  connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));
-  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(navigateToMessages(QList<Message>)));
-  connect(m_messagesView, SIGNAL(currentMessagesRemoved()), this, SLOT(updateMessageButtonsAvailability()));
-  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(updateMessageButtonsAvailability()));
+  connect(m_messagesView, SIGNAL(currentMessageRemoved()), m_messagesBrowser, SLOT(clear()));
+  connect(m_messagesView, SIGNAL(currentMessageChanged(Message)), m_messagesBrowser, SLOT(loadMessage(Message)));
+  connect(m_messagesView, SIGNAL(currentMessageRemoved()), this, SLOT(updateMessageButtonsAvailability()));
+  connect(m_messagesView, SIGNAL(currentMessageChanged(Message)), this, SLOT(updateMessageButtonsAvailability()));
   
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(locked()), this, SLOT(updateFeedButtonsAvailability()));
@@ -436,43 +437,6 @@ void FeedMessageViewer::refreshVisualProperties() {
   
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);
-}
-
-void FeedMessageViewer::navigateToMessages(const QList<Message> &messages) {
-  Skin skin = qApp->skins()->currentSkin();
-  QString messages_layout;
-  QString single_message_layout = skin.m_layoutMarkup;
-
-  foreach (const Message &message, messages) {
-    QString enclosures;
-
-    foreach (const Enclosure &enclosure, message.m_enclosures) {
-      enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url);
-
-      if (!enclosure.m_mimeType.isEmpty()) {
-        enclosures += QL1S(" [") + enclosure.m_mimeType + QL1S("]");
-      }
-
-      enclosures += QL1S("<br>");
-    }
-
-    if (!enclosures.isEmpty()) {
-      enclosures = enclosures.prepend(QSL("<br>"));
-    }
-
-    messages_layout.append(single_message_layout.arg(message.m_title,
-                                                     tr("Written by ") + (message.m_author.isEmpty() ?
-                                                                            tr("unknown author") :
-                                                                            message.m_author),
-                                                     message.m_url,
-                                                     message.m_contents,
-                                                     message.m_created.toString(Qt::DefaultLocaleShortDate),
-                                                     enclosures));
-  }
-
-  QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"), messages_layout);
-
-  m_messagesBrowser->setHtml(layout_wrapper);
 }
 
 void FeedMessageViewer::onFeedsUpdateFinished() {

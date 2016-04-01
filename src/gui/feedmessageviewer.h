@@ -30,6 +30,7 @@ class WebBrowser;
 class MessagesView;
 class MessagesToolBar;
 class FeedsToolBar;
+class MessagePreviewer;
 class FeedsView;
 class StandardFeed;
 class QToolBar;
@@ -95,8 +96,6 @@ class FeedMessageViewer : public TabContent {
     // Reloads some changeable visual settings.
     void refreshVisualProperties();
 
-    void navigateToMessages(const QList<Message> &messages);
-
   private slots:
     // Called when feed update finishes.
     void onFeedsUpdateFinished();
@@ -135,7 +134,7 @@ class FeedMessageViewer : public TabContent {
     FeedsView *m_feedsView;
     QWidget *m_feedsWidget;
     QWidget *m_messagesWidget;
-    QTextBrowser *m_messagesBrowser;
+    MessagePreviewer *m_messagesBrowser;
 };
 
 #endif // FEEDMESSAGEVIEWER_H

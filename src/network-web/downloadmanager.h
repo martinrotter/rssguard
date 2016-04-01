@@ -42,7 +42,7 @@ class DownloadItem : public QWidget {
 
   public:
     // Constructors.
-    explicit DownloadItem(bool is_direct_download, QNetworkReply *reply = 0, QWidget *parent = 0);
+    explicit DownloadItem(QNetworkReply *reply = 0, QWidget *parent = 0);
     virtual ~DownloadItem();
 
     bool downloading() const;
@@ -124,9 +124,9 @@ class DownloadManager : public TabContent {
     static QString dataString(qint64 size);
 
   public slots:
-    void download(const QNetworkRequest &request, bool direct_download = false);
-    void download(const QUrl &url, bool direct_download = false);
-    void handleUnsupportedContent(QNetworkReply *reply, bool direct_download = false);
+    void download(const QNetworkRequest &request);
+    void download(const QUrl &url);
+    void handleUnsupportedContent(QNetworkReply *reply);
     void cleanup();
 
   private slots:

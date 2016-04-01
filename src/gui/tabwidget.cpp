@@ -241,7 +241,6 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label, const
 
 int TabWidget::addBrowserWithMessages(const QList<Message> &messages) {
   // TODO: TODO - volano kdyz se maji zobrazit zpravy v novinovem nahledu
-
   return 0; /* new index */
 }
 

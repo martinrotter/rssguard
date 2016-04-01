@@ -96,7 +96,7 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   else {
     // Messages were probably removed from the model, nothing can
     // be selected and no message can be displayed.
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
 }
 
@@ -203,10 +203,10 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
       m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::Read);
     }
 
-    emit currentMessagesChanged(QList<Message>() << message);
+    emit currentMessageChanged(message);
   }
   else {
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()) {
@@ -228,7 +228,7 @@ void MessagesView::loadItem(RootItem *item) {
   // active message is not shown in browser.
   // BUG: Qt 5 is probably bugged here. Selections
   // should be cleared automatically when SQL model is reset.
-  emit currentMessagesRemoved();
+  emit currentMessageRemoved();
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {
@@ -337,7 +337,7 @@ void MessagesView::deleteSelectedMessages() {
     reselectIndexes(QModelIndexList() << last_item);
   }
   else {
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
 }
 
@@ -365,7 +365,7 @@ void MessagesView::restoreSelectedMessages() {
     reselectIndexes(QModelIndexList() << last_item);
   }
   else {
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
 }
 
@@ -453,7 +453,7 @@ void MessagesView::searchMessages(const QString &pattern) {
   m_proxyModel->setFilterRegExp(pattern);
 
   if (selectionModel()->selectedRows().size() == 0) {
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
   else {
     // Scroll to selected message, it could become scrolled out due to filter change.
@@ -506,5 +506,5 @@ void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
 
   // Repopulate the shit.
   m_sourceModel->sort(column, order);
-  emit currentMessagesRemoved();
+  emit currentMessageRemoved();
 }
