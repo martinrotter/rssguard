@@ -106,8 +106,6 @@ void MessagePreviewer::markMessageAsRead() {
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Read)) {
-
-      // TODO: upravit v db.
       QSqlQuery query_read_msg(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings));
       query_read_msg.setForwardOnly(true);
 
@@ -130,12 +128,19 @@ void MessagePreviewer::markMessageAsUnread() {
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Unread)) {
+      QSqlQuery query_read_msg(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings));
+      query_read_msg.setForwardOnly(true);
 
-      // TODO: upravit v db.
+      query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE id = :id;"));
+      query_read_msg.bindValue(QSL(":id"), m_message.m_id);
+      query_read_msg.bindValue(QSL(":read"), 0);
+      query_read_msg.exec();
 
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
                                                              QList<Message>() << m_message,
                                                              RootItem::Unread);
+
+      emit requestMessageListReload(false);
     }
   }
 }
@@ -147,14 +152,21 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
                                                                                                                       m_message.m_isImportant ?
                                                                                                                       RootItem::NotImportant :
                                                                                                                       RootItem::Important))) {
+      QSqlQuery query_read_msg(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings));
+      query_read_msg.setForwardOnly(true);
 
-      // TODO: upravit v db.
+      query_read_msg.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"));
+      query_read_msg.bindValue(QSL(":id"), m_message.m_id);
+      query_read_msg.bindValue(QSL(":important"), (int) checked);
+      query_read_msg.exec();
 
       m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
                                                                       QList<ImportanceChange>() << ImportanceChange(m_message,
                                                                                                                     m_message.m_isImportant ?
                                                                                                                     RootItem::NotImportant :
                                                                                                                     RootItem::Important));
+
+      emit requestMessageListReload(false);
     }
   }
 }
