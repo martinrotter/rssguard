@@ -36,7 +36,9 @@ class Notification : public QObject {
     explicit Notification(QObject *parent = 0);
     virtual ~Notification();
 
+#if defined(Q_OS_LINUX)
     static bool areDBusNotificationsEnabled();
+#endif
     static bool areNotificationsEnabled();
 
   public slots:

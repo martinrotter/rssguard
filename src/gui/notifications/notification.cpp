@@ -60,9 +60,11 @@ Notification::~Notification() {
   qDebug("Destroying Notification instance.");
 }
 
+#if defined(Q_OS_LINUX)
 bool Notification::areDBusNotificationsEnabled() {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool();
 }
+#endif
 
 bool Notification::areNotificationsEnabled() {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();

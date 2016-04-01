@@ -219,6 +219,7 @@ void Application::showGuiMessage(const QString &title, const QString &message,
                                  bool show_at_least_msgbox, const QIcon &custom_icon,
                                  QObject *invokation_target, const char *invokation_slot) {
   if (Notification::areNotificationsEnabled()) {
+#if defined(Q_OS_LINUX)
     if (Notification::areDBusNotificationsEnabled()) {
       // Show OSD instead if tray icon bubble, depending on settings.
       if (custom_icon.isNull()) {
@@ -234,6 +235,12 @@ void Application::showGuiMessage(const QString &title, const QString &message,
       trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
       return;
     }
+#else
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
+      return;
+    }
+#endif
   }
 
   if (show_at_least_msgbox) {
