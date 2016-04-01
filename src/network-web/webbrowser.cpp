@@ -199,9 +199,6 @@ void WebBrowser::createConnections() {
   // Forward title/icon changes.
   connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
   connect(m_webView, SIGNAL(iconUrlChanged(QUrl)), this, SLOT(onIconChanged()));
-
-  // Misc connections.
-  connect(m_webView, SIGNAL(zoomFactorChanged()), this, SLOT(updateZoomGui()));
 }
 
 void WebBrowser::onIconChanged() {

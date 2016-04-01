@@ -32,23 +32,6 @@ WebView::~WebView() {
   qDebug("Destroying WebView.");
 }
 
-void WebView::wheelEvent(QWheelEvent *event) {
-  if (event->modifiers() & Qt::ControlModifier) {
-    if (event->delta() > 0) {
-      increaseWebPageZoom();
-      emit zoomFactorChanged();
-      return;
-    }
-    else if (event->delta() < 0) {
-      decreaseWebPageZoom();
-      emit zoomFactorChanged();
-      return;
-    }
-  }
-
-  QWebEngineView::wheelEvent(event);
-}
-
 bool WebView::increaseWebPageZoom() {
   const qreal new_factor = zoomFactor() + 0.1;
 

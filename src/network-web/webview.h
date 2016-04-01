@@ -34,19 +34,11 @@ class WebView : public QWebEngineView {
       return m_page;
     }
 
-  signals:
-    // Emitted if user changes zoom factor via CTRL + mouse wheel combo.
-    void zoomFactorChanged();
-
   public slots:
     // Page zoom modifiers.
     bool increaseWebPageZoom();
     bool decreaseWebPageZoom();
     bool resetWebPageZoom();
-
-  protected:
-    // Customize mouse wheeling.
-    void wheelEvent(QWheelEvent *event);
 
   private:
     QWebEnginePage *m_page;
