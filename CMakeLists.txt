@@ -141,7 +141,7 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
       COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
       OUTPUT_VARIABLE GIT_REVISION
-    )
+      )
 
     string(REGEX REPLACE "\n" "" GIT_REVISION "${GIT_REVISION}")
     set(APP_REVISION ${GIT_REVISION})
@@ -163,7 +163,7 @@ if(UNIX)
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/desktop/rssguard.desktop.in
     ${CMAKE_BINARY_DIR}/resources/desktop/rssguard.desktop
-  )
+    )
   set(DESKTOP_ENTRY_PATH ${CMAKE_INSTALL_PREFIX}/share/applications)
 endif(UNIX)
 
@@ -171,7 +171,7 @@ endif(UNIX)
 configure_file (
   ${PROJECT_SOURCE_DIR}/src/definitions/definitions.h.in
   ${CMAKE_BINARY_DIR}/src/definitions/definitions.h
-)
+  )
 
 # Define some useful DEBUG for, ehrm, debug build.
 if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
@@ -183,15 +183,15 @@ else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" 
   add_definitions(-DDEBUG)
   set(CMAKE_BUILD_TYPE Debug)
 
-# Enable compiler warnings.
-# See http://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake
-message(STATUS "[${APP_LOW_NAME}] Enabling verbose makefile and full warning reports.")
-if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
-  add_definitions(-pedantic -Wall)  # -Wextra -Wno-unused-variable
-endif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+  # Enable compiler warnings.
+  # See http://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake
+  message(STATUS "[${APP_LOW_NAME}] Enabling verbose makefile and full warning reports.")
+  if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+    add_definitions(-pedantic -Wall)  # -Wextra -Wno-unused-variable
+  endif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 
-# Verbose compiling outputs.
-set(CMAKE_VERBOSE_MAKEFILE ON)
+  # Verbose compiling outputs.
+  set(CMAKE_VERBOSE_MAKEFILE ON)
 endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
 
 # Force Qt to use string builders.
@@ -205,7 +205,7 @@ add_definitions(-DUNICODE -D_UNICODE)
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU")
   execute_process(
     COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION
-  )
+    )
   if(${GCC_VERSION} VERSION_GREATER 4.7 OR ${GCC_VERSION} VERSION_EQUAL 4.7)
     add_definitions(-std=c++11)
   elseif(GCC_VERSION VERSION_GREATER 4.3 OR GCC_VERSION VERSION_EQUAL 4.3)
@@ -246,7 +246,7 @@ if(WIN32)
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
     ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
-  )
+    )
 endif(WIN32)
 
 # Set special linker flag for Windows XP & MSVC++ 2013 support.
@@ -261,11 +261,11 @@ if(WIN32 AND MINGW)
   message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for Windows.")
   message(STATUS "[${APP_LOW_NAME}] Used tool is: ${CMAKE_RC_COMPILER}")
   set(CMAKE_RC_COMPILE_OBJECT
-      "<CMAKE_RC_COMPILER> -i <SOURCE> -o <OBJECT>")
+    "<CMAKE_RC_COMPILER> -i <SOURCE> -o <OBJECT>")
 
   set(APP_SOURCES
-      ${APP_SOURCES}
-      ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
+    ${APP_SOURCES}
+    ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 elseif(WIN32 AND MSVC)
   # MSVC takes care of this automatically - no need to use windres.exe
   # for MSVC compilers.
@@ -302,7 +302,7 @@ file( GLOB APP_SOURCES_GL
 set(APP_SOURCES
   ${APP_SOURCES}
   ${APP_SOURCES_GL}
-)
+  )
 
 # APP headers.
 file( GLOB APP_HEADERS
@@ -352,6 +352,12 @@ if(WIN32)
   file( GLOB APP_DLLS_QT5_MSVC2013
     "resources/binaries/windows/qt5-msvc2013/*.dll")
 
+  file( GLOB APP_DLLS_QT5_MSVC2013_BEARER
+    "resources/binaries/windows/qt5-msvc2013/bearer/*.dll")
+
+  file( GLOB APP_DLLS_QT5_MSVC2013_ICONENGINES
+    "resources/binaries/windows/qt5-msvc2013/iconengines/*.dll")
+
   file( GLOB APP_DLLS_QT5_MSVC2013_IMAGEFORMATS
     "resources/binaries/windows/qt5-msvc2013/imageformats/*.dll")
 
@@ -360,9 +366,6 @@ if(WIN32)
 
   file( GLOB APP_DLLS_QT5_MSVC2013_PLATFORMS
     "resources/binaries/windows/qt5-msvc2013/platforms/*.dll")
-
-  file( GLOB APP_DLLS_QT5_MSVC2013_PRINTSUPPORT
-    "resources/binaries/windows/qt5-msvc2013/printsupport/*.dll")
 endif(WIN32)
 
 # Add custom icon on Mac OS X.
@@ -390,7 +393,7 @@ include_directories (
   ${CMAKE_SOURCE_DIR}/src/network-web
   ${CMAKE_SOURCE_DIR}/src/dynamic-shortcuts
   ${CMAKE_BINARY_DIR}/src
-)
+  )
 
 # Compile "rssguard"
 add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
@@ -398,7 +401,7 @@ add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
   ${APP_FORMS}
   ${APP_RCC}
   ${APP_QM}
-)
+  )
 
 if(WIN32)
   target_link_libraries(${EXE_NAME} Qt5::WinMain)
@@ -414,9 +417,9 @@ if(UNIX)
     Network
     Xml
     PrintSupport
-  )
+    )
 else(UNIX)
-# Use modules from Qt.
+  # Use modules from Qt.
   qt5_use_modules(${EXE_NAME}
     Core
     Widgets
@@ -424,7 +427,7 @@ else(UNIX)
     Network
     Xml
     PrintSupport
-  )
+    )
 endif(UNIX)
 
 # Installation stage.
@@ -435,10 +438,11 @@ if(WIN32)
   # Copy DLLs and other binary files for main installation.
   if(WIN32)
     install(FILES ${APP_DLLS_QT5_MSVC2013} DESTINATION ./)
+    install(FILES ${APP_DLLS_QT5_MSVC2013_BEARER} DESTINATION ./bearer)
+    install(FILES ${APP_DLLS_QT5_MSVC2013_ICONENGINES} DESTINATION ./iconengines)
     install(FILES ${APP_DLLS_QT5_MSVC2013_IMAGEFORMATS} DESTINATION ./imageformats)
-    install(FILES ${APP_DLLS_QT5_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
     install(FILES ${APP_DLLS_QT5_MSVC2013_PLATFORMS} DESTINATION ./platforms)
-    install(FILES ${APP_DLLS_QT5_MSVC2013_PRINTSUPPORT} DESTINATION ./printsupport)
+    install(FILES ${APP_DLLS_QT5_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
   endif(WIN32)
 
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ./icons)
@@ -450,33 +454,33 @@ if(WIN32)
   endif(ENABLE_ADDITIONAL_ICONS)
 
   install(DIRECTORY resources/skins/base
-          DESTINATION ./skins)
+    DESTINATION ./skins)
   install(DIRECTORY resources/misc
-          DESTINATION ./)
+    DESTINATION ./)
   install(DIRECTORY resources/initial_feeds
-          DESTINATION ./)
+    DESTINATION ./)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
-          DESTINATION ./
-          RENAME ${APP_LOW_NAME}.png)
+    DESTINATION ./
+    RENAME ${APP_LOW_NAME}.png)
   install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
-          DESTINATION ./
-          RENAME ${APP_LOW_NAME}_plain.png)
+    DESTINATION ./
+    RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES resources/graphics/${APP_LOW_NAME}.ico
-          DESTINATION ./)
+    DESTINATION ./)
   install(FILES ${APP_QM}
-          DESTINATION ./l10n)
+    DESTINATION ./l10n)
   install(FILES ${APP_TEXT}
-          DESTINATION ./)
+    DESTINATION ./)
 elseif(APPLE)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Mac OS X.")
 
   set_target_properties(${EXE_NAME}
-                        PROPERTIES
-                        MACOSX_BUNDLE_INFO_PLIST
-                        "${CMAKE_SOURCE_DIR}/resources/macosx/Info.plist.in")
+    PROPERTIES
+    MACOSX_BUNDLE_INFO_PLIST
+    "${CMAKE_SOURCE_DIR}/resources/macosx/Info.plist.in")
 
   set_source_files_properties(${CMAKE_SOURCE_DIR}/resources/macosx/${APP_LOW_NAME}.icns
-                              PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+    PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
   set(MACOSX_BUNDLE_ICON_FILE ${APP_LOW_NAME}.icns)
   set(MACOSX_BUNDLE_INFO_STRING "${EXE_NAME} ${APP_VERSION}")
@@ -546,30 +550,30 @@ set(CPACK_PACKAGE_VERSION_PATCH "0")
 set(CPACK_PACKAGE_VENDOR ${APP_AUTHOR})
 set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY ${APP_NAME})
 set(CPACK_IGNORE_FILES "/resources/aur/;\\\\.psd$;/resources/deployment;/CVS/;/\\\\.svn/;/\\\\.git/;\\\\.swp$;/CMakeLists.txt.user;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;\\\\.qm$;/build/;\\\\.diff$;.DS_Store'")
-set(CPACK_SOURCE_GENERATOR "TGZ")
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}")
-set(CPACK_SOURCE_IGNORE_FILES ${CPACK_IGNORE_FILES})
+  set(CPACK_SOURCE_GENERATOR "TGZ")
+  set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}")
+  set(CPACK_SOURCE_IGNORE_FILES ${CPACK_IGNORE_FILES})
 
-set(CPACK_NSIS_INSTALLED_ICON_NAME "${APP_LOW_NAME}.ico")
-set(CPACK_NSIS_HELP_LINK ${APP_URL})
-set(CPACK_NSIS_URL_INFO_ABOUT ${APP_URL})
-set(CPACK_NSIS_CONTACT ${APP_EMAIL})
+  set(CPACK_NSIS_INSTALLED_ICON_NAME "${APP_LOW_NAME}.ico")
+  set(CPACK_NSIS_HELP_LINK ${APP_URL})
+  set(CPACK_NSIS_URL_INFO_ABOUT ${APP_URL})
+  set(CPACK_NSIS_CONTACT ${APP_EMAIL})
 
-# Load packaging facilities.
-include(CPack)
+  # Load packaging facilities.
+  include(CPack)
 
-# Configure file with custom definitions for NSIS.
-configure_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/nsis/NSIS.definitions.nsh.in
-  ${CMAKE_CURRENT_BINARY_DIR}/resources/nsis/NSIS.definitions.nsh
-)
+  # Configure file with custom definitions for NSIS.
+  configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/resources/nsis/NSIS.definitions.nsh.in
+    ${CMAKE_CURRENT_BINARY_DIR}/resources/nsis/NSIS.definitions.nsh
+    )
 
-# make dist implementation.
-add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
+  # make dist implementation.
+  add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
 
-# make lupdate implementation.
-add_custom_target(lupdate
-  ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
+  # make lupdate implementation.
+  add_custom_target(lupdate
+    ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
     COMMAND ${Qt5_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-)
+    )
