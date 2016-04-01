@@ -1,9 +1,25 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #include "network-web/webfactory.h"
 
 #include "miscellaneous/application.h"
 
 #include <QRegExp>
-#include <QWebEngineSettings>
 #include <QProcess>
 #include <QUrl>
 #include <QDesktopServices>
@@ -13,19 +29,10 @@ QPointer<WebFactory> WebFactory::s_instance;
 
 WebFactory::WebFactory(QObject *parent)
   : QObject(parent), m_escapes(QMap<QString, QString>()),
-    m_deEscapes(QMap<QString, QString>()),
-    m_globalSettings(QWebEngineSettings::globalSettings()) {
+    m_deEscapes(QMap<QString, QString>()) {
 }
 
 WebFactory::~WebFactory() {
-}
-
-void WebFactory::loadState() {
-  const Settings *settings = qApp->settings();
-
-  switchJavascript(settings->value(GROUP(Browser), SETTING(Browser::JavascriptEnabled)).toBool(), false);
-  switchImages(settings->value(GROUP(Browser), SETTING(Browser::ImagesEnabled)).toBool(), false);
-  switchPlugins(settings->value(GROUP(Browser), SETTING(Browser::PluginsEnabled)).toBool(), false);
 }
 
 bool WebFactory::sendMessageViaEmail(const Message &message) {
@@ -66,51 +73,12 @@ bool WebFactory::openUrlInExternalBrowser(const QString &url) {
   }
 }
 
-void WebFactory::switchJavascript(bool enable, bool save_settings) {
-  if (save_settings) {
-    qApp->settings()->setValue(GROUP(Browser), Browser::JavascriptEnabled, enable);
-  }
-
-  m_globalSettings->setAttribute(QWebEngineSettings::JavascriptEnabled, enable);
-  emit javascriptSwitched(enable);
-}
-
-void WebFactory::switchPlugins(bool enable, bool save_settings) {
-  if (save_settings) {
-    qApp->settings()->setValue(GROUP(Browser), Browser::PluginsEnabled, enable);
-  }
-
-  m_globalSettings->setAttribute(QWebEngineSettings::PluginsEnabled, enable);
-  emit pluginsSwitched(enable);
-}
-
-void WebFactory::switchImages(bool enable, bool save_settings) {
-  if (save_settings) {
-    qApp->settings()->setValue(GROUP(Browser), Browser::ImagesEnabled, enable);
-  }
-
-  m_globalSettings->setAttribute(QWebEngineSettings::AutoLoadImages, enable);
-  emit imagesLoadingSwitched(enable);
-}
-
 WebFactory *WebFactory::instance() {
   if (s_instance.isNull()) {
     s_instance = new WebFactory(qApp);
   }
 
   return s_instance;
-}
-
-bool WebFactory::javascriptEnabled() const {
-  return m_globalSettings->testAttribute(QWebEngineSettings::JavascriptEnabled);
-}
-
-bool WebFactory::pluginsEnabled() const {
-  return m_globalSettings->testAttribute(QWebEngineSettings::PluginsEnabled);
-}
-
-bool WebFactory::autoloadImages() const {
-  return m_globalSettings->testAttribute(QWebEngineSettings::AutoLoadImages);
 }
 
 QString WebFactory::stripTags(QString text) {

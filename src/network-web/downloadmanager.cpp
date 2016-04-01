@@ -38,8 +38,6 @@
 #include <QProcess>
 #include <QSettings>
 #include <QDebug>
-#include <QWebEngineSettings>
-#include <QWebEngineDownloadItem>
 
 
 DownloadItem::DownloadItem(bool is_direct_download, QNetworkReply *reply, QWidget *parent) : QWidget(parent),
@@ -513,10 +511,6 @@ void DownloadManager::download(const QUrl &url, bool direct_download) {
   download(QNetworkRequest(url), direct_download);
 }
 
-void DownloadManager::download(QWebEngineDownloadItem *down) {
-  download(down->url(), true);
-}
-
 void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool direct_download) {
   if (reply == NULL || reply->url().isEmpty()) {
     return;
@@ -831,8 +825,4 @@ QMimeData *DownloadModel::mimeData(const QModelIndexList &indexes) const {
 
   mimeData->setUrls(urls);
   return mimeData;
-}
-
-WebBrowser *DownloadManager::webBrowser() const {
-  return NULL;
 }

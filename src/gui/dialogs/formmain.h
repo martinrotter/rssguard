@@ -78,9 +78,6 @@ class FormMain : public QMainWindow {
     void updateRecycleBinMenu();
     void updateAccountsMenu();
 
-    // Loads web browser menu if user selects to change tabs.
-    void loadWebBrowserMenu(int index);
-
     // Displays various dialogs.
     void backupDatabaseSettings();
     void restoreDatabaseSettings();

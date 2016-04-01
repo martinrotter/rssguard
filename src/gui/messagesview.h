@@ -59,8 +59,6 @@ class MessagesView : public QTreeView {
 
     // Message manipulators.
     void openSelectedSourceMessagesExternally();
-    void openSelectedSourceMessagesInternally();
-    void openSelectedSourceMessagesInternallyNoNewTab();
     void openSelectedMessagesInternally();
     void sendSelectedMessageViaEmail();
 

@@ -22,9 +22,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QPointer>
-#include <QWebEngineSettings>
 #include <QLocale>
-#include <QWebEngineProfile>
 
 
 // Feeds.
@@ -238,21 +236,6 @@ DKEY Keyboard::ID = "keyboard";
 // Web browser.
 DKEY Browser::ID                            = "browser";
 
-DKEY Browser::JavascriptEnabled             = "enable_javascript";
-DVALUE(bool) Browser::JavascriptEnabledDef  = true;
-
-DKEY Browser::ImagesEnabled                 = "enable_images";
-DVALUE(bool) Browser::ImagesEnabledDef      = true;
-
-DKEY Browser::PluginsEnabled                = "enable_plugins";
-DVALUE(bool) Browser::PluginsEnabledDef     = false;
-
-DKEY Browser::RememberBrowserTabs                 = "remember_browser_tabs";
-DVALUE(bool)Browser::RememberBrowserTabsDef       = false;
-
-DKEY Browser::OpenedBrowserTabs                 = "opened_browser_tabs";
-DVALUE(QString)Browser::OpenedBrowserTabsDef    = QString();
-
 DKEY Browser::CustomExternalBrowserEnabled                = "custom_external_browser";
 DVALUE(bool) Browser::CustomExternalBrowserEnabledDef     = false;
 
@@ -271,8 +254,6 @@ DVALUE(QString) Browser::CustomExternalEmailExecutableDef   = QString();
 DKEY Browser::CustomExternalEmailArguments                = "external_email_arguments";
 DVALUE(char*) Browser::CustomExternalEmailArgumentsDef    = "";
 
-DKEY Browser::QueueTabs             = "queue_tabs";
-DVALUE(bool) Browser::QueueTabsDef  = true;
 
 // Categories.
 DKEY CategoriesExpandStates::ID                         = "categories_expand_states";
@@ -280,7 +261,7 @@ DKEY CategoriesExpandStates::ID                         = "categories_expand_sta
 Settings::Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
   // Perform last-minute initializations.
-  Messages::PreviewerFontStandardDef = QWebEngineSettings::globalSettings()->fontFamily(QWebEngineSettings::StandardFont);
+  Messages::PreviewerFontStandardDef = qApp->font().family();
 }
 
 Settings::~Settings() {  

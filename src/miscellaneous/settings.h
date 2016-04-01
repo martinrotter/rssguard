@@ -267,21 +267,6 @@ namespace Keyboard {
 namespace Browser {
   KEY ID;
 
-  KEY JavascriptEnabled;
-  VALUE(bool) JavascriptEnabledDef;
-
-  KEY ImagesEnabled;
-  VALUE(bool) ImagesEnabledDef;
-
-  KEY PluginsEnabled;
-  VALUE(bool) PluginsEnabledDef;
-
-  KEY RememberBrowserTabs;
-  VALUE(bool)RememberBrowserTabsDef;
-
-  KEY OpenedBrowserTabs;
-  VALUE(QString)OpenedBrowserTabsDef;
-
   KEY CustomExternalBrowserEnabled;
   VALUE(bool) CustomExternalBrowserEnabledDef;
 
@@ -299,9 +284,6 @@ namespace Browser {
 
   KEY CustomExternalEmailArguments;
   VALUE(char*) CustomExternalEmailArgumentsDef;
-
-  KEY QueueTabs;
-  VALUE(bool) QueueTabsDef;
 }
 
 // Categories.

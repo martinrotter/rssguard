@@ -29,7 +29,6 @@
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
-#include "network-web/webbrowser.h"
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
 #include "gui/statusbar.h"
@@ -53,7 +52,6 @@
 #include <QThread>
 #include <QProgressBar>
 #include <QStatusBar>
-#include <QWebEngineSettings>
 #include <QPointer>
 
 
@@ -65,7 +63,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
-    m_messagesBrowser(new WebBrowser(this)) {
+    m_messagesBrowser(new QTextBrowser(this)) {
   initialize();
   initializeViews();
   loadMessageViewerFonts();
@@ -119,10 +117,12 @@ void FeedMessageViewer::loadSize() {
 
 void FeedMessageViewer::loadMessageViewerFonts() {
   const Settings *settings = qApp->settings();
-  QWebEngineSettings *view_settings = m_messagesBrowser->view()->settings();
+
+  // TODO: TODO
+  //QWebEngineSettings *view_settings = m_messagesBrowser->view()->settings();
   
-  view_settings->setFontFamily(QWebEngineSettings::StandardFont, settings->value(GROUP(Messages),
-                                                                           SETTING(Messages::PreviewerFontStandard)).toString());
+  //view_settings->setFontFamily(QWebEngineSettings::StandardFont, settings->value(GROUP(Messages),
+  //                                                                         SETTING(Messages::PreviewerFontStandard)).toString());
 }
 
 void FeedMessageViewer::quit() {
@@ -193,7 +193,6 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
   form_main->m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
-  form_main->m_ui->m_actionOpenSelectedSourceArticlesInternally->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
   form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages->setEnabled(atleast_one_message_selected);
 }
@@ -240,7 +239,7 @@ void FeedMessageViewer::createConnections() {
   
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));
-  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
+  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(navigateToMessages(QList<Message>)));
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), this, SLOT(updateMessageButtonsAvailability()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(updateMessageButtonsAvailability()));
   
@@ -283,8 +282,6 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesUnread()));
   connect(form_main->m_ui->m_actionOpenSelectedSourceArticlesExternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesExternally()));
-  connect(form_main->m_ui->m_actionOpenSelectedSourceArticlesInternally,
-          SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
   connect(form_main->m_ui->m_actionOpenSelectedMessagesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
   connect(form_main->m_ui->m_actionSendMessageViaEmail,
@@ -352,10 +349,7 @@ void FeedMessageViewer::initialize() {
   m_toolBarMessages->setMovable(false);
   m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBarMessages->loadChangeableActions();
-  
-  // Finish web/message browser setup.
-  m_messagesBrowser->setNavigationBarVisible(false);
-  
+   
   // Now refresh visual setup.
   refreshVisualProperties();
 }
@@ -442,6 +436,43 @@ void FeedMessageViewer::refreshVisualProperties() {
   
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);
+}
+
+void FeedMessageViewer::navigateToMessages(const QList<Message> &messages) {
+  Skin skin = qApp->skins()->currentSkin();
+  QString messages_layout;
+  QString single_message_layout = skin.m_layoutMarkup;
+
+  foreach (const Message &message, messages) {
+    QString enclosures;
+
+    foreach (const Enclosure &enclosure, message.m_enclosures) {
+      enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url);
+
+      if (!enclosure.m_mimeType.isEmpty()) {
+        enclosures += QL1S(" [") + enclosure.m_mimeType + QL1S("]");
+      }
+
+      enclosures += QL1S("<br>");
+    }
+
+    if (!enclosures.isEmpty()) {
+      enclosures = enclosures.prepend(QSL("<br>"));
+    }
+
+    messages_layout.append(single_message_layout.arg(message.m_title,
+                                                     tr("Written by ") + (message.m_author.isEmpty() ?
+                                                                            tr("unknown author") :
+                                                                            message.m_author),
+                                                     message.m_url,
+                                                     message.m_contents,
+                                                     message.m_created.toString(Qt::DefaultLocaleShortDate),
+                                                     enclosures));
+  }
+
+  QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"), messages_layout);
+
+  m_messagesBrowser->setHtml(layout_wrapper);
 }
 
 void FeedMessageViewer::onFeedsUpdateFinished() {

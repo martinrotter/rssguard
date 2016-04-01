@@ -223,9 +223,9 @@ endif(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU")
 # Setup libraries.
 if(UNIX)
   # On Unices, enable D-Bus support.
-  find_package(Qt5 REQUIRED DBus Sql WebEngineCore WebEngineWidgets Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
+  find_package(Qt5 REQUIRED DBus Sql Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
 else(UNIX)
-  find_package(Qt5 REQUIRED Sql WebEngineCore WebEngineWidgets Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
+  find_package(Qt5 REQUIRED Sql Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
 endif(UNIX)
 
 message(STATUS "[${APP_LOW_NAME}] Found Qt version: '${Qt5_VERSION}'.")
@@ -413,8 +413,6 @@ if(UNIX)
     Sql
     Network
     Xml
-    WebEngineCore
-    WebEngineWidgets
     PrintSupport
   )
 else(UNIX)
@@ -425,8 +423,6 @@ else(UNIX)
     Sql
     Network
     Xml
-    WebEngineCore
-    WebEngineWidgets
     PrintSupport
   )
 endif(UNIX)

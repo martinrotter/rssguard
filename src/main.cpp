@@ -36,7 +36,6 @@
 #include <QTranslator>
 #include <QDebug>
 #include <QTimer>
-#include <QWebEngineProfile>
 
 
 int main(int argc, char *argv[]) {
@@ -133,10 +132,6 @@ int main(int argc, char *argv[]) {
   if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
     QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
   }
-
-  // Make sure that all download requests from web views are handled.
-  QObject::connect(QWebEngineProfile::defaultProfile(), SIGNAL(downloadRequested(QWebEngineDownloadItem*)),
-                   qApp->downloadManager(), SLOT(download(QWebEngineDownloadItem*)));
 
   // Enter global event loop.
   return Application::exec();

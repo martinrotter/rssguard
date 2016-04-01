@@ -22,7 +22,6 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
-#include "network-web/webbrowser.h"
 #include "gui/tabbar.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"
@@ -34,23 +33,12 @@
 
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent), m_menuMain(NULL) {
   setTabBar(new TabBar(this));
-  setupCornerButton();
   setupMainMenuButton();
   createConnections();
 }
 
 TabWidget::~TabWidget() {
   qDebug("Destroying TabWidget instance.");
-}
-
-void TabWidget::setupCornerButton() {
-  m_btnAddTab = new PlainToolButton(this);
-  m_btnAddTab->setAutoRaise(true);
-  m_btnAddTab->setPadding(3);
-  m_btnAddTab->setToolTip(tr("Open new web browser tab."));
-  m_btnAddTab->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
-
-  connect(m_btnAddTab, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
 }
 
 void TabWidget::setupMainMenuButton() {
@@ -71,7 +59,6 @@ void TabWidget::openMainMenu() {
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuView);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFeeds);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuMessages);
-    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuWebBrowser);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuTools);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuHelp);
   }
@@ -104,17 +91,12 @@ void TabWidget::checkTabBarVisibility() {
 
   if (should_be_visible) {
     setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
-    setCornerWidget(m_btnAddTab, Qt::TopRightCorner);
-
     m_btnMainMenu->setVisible(true);
-    m_btnAddTab->setVisible(true);
   }
   else {
     setCornerWidget(0, Qt::TopLeftCorner);
     setCornerWidget(0, Qt::TopRightCorner);
-
     m_btnMainMenu->setVisible(false);
-    m_btnAddTab->setVisible(false);
   }
 
   tabBar()->setVisible(should_be_visible);
@@ -158,13 +140,6 @@ void TabWidget::initializeTabs() {
                                       tr("Feeds"),
                                       TabBar::FeedReader);
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
-
-  if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::RememberBrowserTabs)).toBool()) {
-    foreach (const QString &url, qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenedBrowserTabs)).toString().split(QL1S("##"),
-                                                                                                                               QString::SkipEmptyParts)) {
-      addBrowser(true, false, QUrl::fromUserInput(url));
-    }
-  }
 }
 
 void TabWidget::setupIcons() {
@@ -175,38 +150,6 @@ void TabWidget::setupIcons() {
     if (tabBar()->tabType(index) == TabBar::FeedReader) {
       setTabIcon(index, qApp->icons()->fromTheme(QSL("folder-feed")));
     }
-    // Other indexes probably contain WebBrowsers.
-    else {
-      const WebBrowser *active_browser = widget(index)->webBrowser();
-
-      if (active_browser != NULL && active_browser->icon().isNull()) {
-        // We found WebBrowser instance of this tab page, which
-        // has no suitable icon, load a new one from the icon theme.
-        setTabIcon(index, qApp->icons()->fromTheme(QSL("text-html")));
-      }
-    }
-  }
-
-  // Setup corner button icon.
-  m_btnAddTab->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
-}
-
-void TabWidget::quit() {
-  if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::RememberBrowserTabs)).toBool()) {
-    QStringList store_urls;
-
-    for (int i = 0; i < count(); i++) {
-      if (tabBar()->tabType(i) == TabBar::Closable) {
-        // We have tab with web browser.
-        QUrl url = widget(i)->webBrowser()->view()->url();
-
-        if (url.isValid() && !url.isEmpty()) {
-          store_urls.append(url.toString());
-        }
-      }
-    }
-
-    qApp->settings()->setValue(GROUP(Browser), Browser::OpenedBrowserTabs, store_urls.join(QSL("##")));
   }
 }
 
@@ -297,66 +240,9 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label, const
 }
 
 int TabWidget::addBrowserWithMessages(const QList<Message> &messages) {
-  const int new_index = addBrowser(false, true);
-  WebBrowser *browser = static_cast<WebBrowser*>(widget(new_index));
+  // TODO: TODO - volano kdyz se maji zobrazit zpravy v novinovem nahledu
 
-  browser->setNavigationBarVisible(false);
-  browser->navigateToMessages(messages);
-
-  return new_index;
-}
-
-int TabWidget::addEmptyBrowser() {
-  return addBrowser(false, true);
-}
-
-int TabWidget::addLinkedBrowser(const QString &initial_url) {
-  return addLinkedBrowser(QUrl(initial_url));
-}
-
-int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
-  return addBrowser(qApp->settings()->value(GROUP(Browser), SETTING(Browser::QueueTabs)).toBool(), false, initial_url);
-}
-
-int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl &initial_url) {
-  // Create new WebBrowser.
-  WebBrowser *browser = new WebBrowser(this);
-  browser->setupIcons();
-
-  int final_index;
-
-  if (move_after_current) {
-    // Insert web browser after current tab.
-    final_index = insertTab(currentIndex() + 1, browser, qApp->icons()->fromTheme(QSL("text-html")),
-                            tr("Web browser"), TabBar::Closable);
-  }
-  else {
-    // Add new browser as the last tab.
-    final_index = addTab(browser, qApp->icons()->fromTheme(QSL("text-html")),
-                         //: Web browser default tab title.
-                         tr("Web browser"),
-                         TabBar::Closable);
-  }
-
-  // Make connections.
-  connect(browser, SIGNAL(titleChanged(int,QString)), this, SLOT(changeTitle(int,QString)));
-  connect(browser, SIGNAL(iconChanged(int,QIcon)), this, SLOT(changeIcon(int,QIcon)));
-
-  // Setup the tab index.
-  browser->setIndex(final_index);
-
-  // Load initial web page if desired.
-  if (initial_url.isValid()) {
-    browser->navigateToUrl(initial_url);
-  }
-
-  // Make new web browser active if desired.
-  if (make_active) {
-    setCurrentIndex(final_index);
-    browser->setFocus(Qt::OtherFocusReason);
-  }
-
-  return final_index;
+  return 0; /* new index */
 }
 
 void TabWidget::changeIcon(int index, const QIcon &new_icon) {

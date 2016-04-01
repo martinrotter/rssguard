@@ -31,7 +31,6 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/silentnetworkaccessmanager.h"
-#include "network-web/webbrowser.h"
 #include "gui/systemtrayicon.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
@@ -382,15 +381,10 @@ void FormSettings::onProxyTypeChanged(int index) {
 
 void FormSettings::loadBrowser() {
   // Load settings of web browser GUI.
-  m_ui->m_checkQueueTabs->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::QueueTabs)).toBool());
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
   m_ui->m_txtExternalBrowserExecutable->setText(m_settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString());
   m_ui->m_txtExternalBrowserArguments->setText(m_settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString());
   m_ui->m_grpCustomExternalBrowser->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool());
-  m_ui->m_checkAutoLoadImages->setChecked(WebFactory::instance()->autoloadImages());
-  m_ui->m_checkEnableJavascript->setChecked(WebFactory::instance()->javascriptEnabled());
-  m_ui->m_checkEnablePlugins->setChecked(WebFactory::instance()->pluginsEnabled());
-  m_ui->m_checkRememberOpenedTabs->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::RememberBrowserTabs)).toBool());
 
   // Load settings of e-mail.
   m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), QSL("-compose \"subject='%1',body='%2'\""));
@@ -402,19 +396,13 @@ void FormSettings::loadBrowser() {
 void FormSettings::saveBrowser() {
   // Save settings of GUI of web browser.
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserEnabled, m_ui->m_grpCustomExternalBrowser->isChecked());
-  m_settings->setValue(GROUP(Browser), Browser::QueueTabs, m_ui->m_checkQueueTabs->isChecked());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserExecutable, m_ui->m_txtExternalBrowserExecutable->text());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserArguments, m_ui->m_txtExternalBrowserArguments->text());
-  m_settings->setValue(GROUP(Browser), Browser::RememberBrowserTabs, m_ui->m_checkRememberOpenedTabs->isChecked());
 
   // Save settings of e-mail.
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalEmailExecutable, m_ui->m_txtExternalEmailExecutable->text());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalEmailArguments, m_ui->m_txtExternalEmailArguments->text());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalEmailEnabled, m_ui->m_grpCustomExternalEmail->isChecked());
-
-  WebFactory::instance()->switchImages(m_ui->m_checkAutoLoadImages->isChecked());
-  WebFactory::instance()->switchJavascript(m_ui->m_checkEnableJavascript->isChecked());
-  WebFactory::instance()->switchPlugins(m_ui->m_checkEnablePlugins->isChecked());
 }
 
 void FormSettings::loadProxy() {

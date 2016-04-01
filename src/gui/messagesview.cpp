@@ -51,7 +51,7 @@ MessagesView::~MessagesView() {
 }
 
 void MessagesView::createConnections() {
-  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesInternallyNoNewTab()));
+  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesExternally()));
 
   // Adjust columns when layout gets changed.
   connect(header(), SIGNAL(geometriesChanged()), this, SLOT(adjustColumns()));
@@ -149,7 +149,6 @@ void MessagesView::initializeContextMenu() {
   m_contextMenu->addActions(QList<QAction*>() <<
                             qApp->mainForm()->m_ui->m_actionSendMessageViaEmail <<
                             qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
-                            qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesInternally <<
                             qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally <<
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead <<
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
@@ -178,12 +177,6 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
         }
       }
 
-      break;
-    }
-
-    case Qt::MiddleButton: {
-      // Open selected messages in new tab on mouse middle button click.
-      openSelectedSourceMessagesInternally();
       break;
     }
 
@@ -253,34 +246,6 @@ void MessagesView::openSelectedSourceMessagesExternally() {
   // Finally, mark opened messages as read.
   if (!selectionModel()->selectedRows().isEmpty()) {
     QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
-  }
-}
-
-void MessagesView::openSelectedSourceMessagesInternally() {
-  foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
-    const Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
-
-    if (message.m_url.isEmpty()) {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Meesage without URL"),
-                       tr("Message '%s' does not contain URL.").arg(message.m_title));
-    }
-    else {
-      emit openLinkNewTab(message.m_url);
-    }
-  }
-
-  // Finally, mark opened messages as read.
-  if (!selectionModel()->selectedRows().isEmpty()) {
-    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
-  }
-}
-
-void MessagesView::openSelectedSourceMessagesInternallyNoNewTab() {
-  if (selectionModel()->selectedRows().size() == 1) {
-    emit openLinkMiniBrowser(
-          m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row()).m_url);
   }
 }
 

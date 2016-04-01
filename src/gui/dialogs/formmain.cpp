@@ -25,7 +25,6 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
-#include "network-web/webbrowser.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
@@ -84,9 +83,6 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   loadSize();
 
   m_statusBar->loadChangeableActions();
-
-  // Initialize the web factory.
-  WebFactory::instance()->loadState();
 }
 
 FormMain::~FormMain() {
@@ -113,14 +109,8 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSwitchStatusBar;
   actions << m_ui->m_actionSwitchMessageListOrientation;
 
-  // Add web browser actions.
-  actions << m_ui->m_actionAddBrowser;
-  actions << m_ui->m_actionCloseCurrentTab;
-  actions << m_ui->m_actionCloseAllTabs;
-
   // Add feeds/messages actions.
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
-  actions << m_ui->m_actionOpenSelectedSourceArticlesInternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
   actions << m_ui->m_actionMarkAllItemsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsRead;
@@ -362,16 +352,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-layout-direction")));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-switch")));
 
-  // Web browser.
-  m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
-  m_ui->m_actionCloseCurrentTab->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
-  m_ui->m_actionCloseAllTabs->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
-  m_ui->m_menuCurrentTab->setIcon(icon_theme_factory->fromTheme(QSL("list-current")));
-  m_ui->m_menuWebSettings->setIcon(icon_theme_factory->fromTheme(QSL("application-settings")));
-  m_ui->m_actionWebAutoloadImages->setIcon(icon_theme_factory->fromTheme(QSL("image-generic")));
-  m_ui->m_actionWebEnableExternalPlugins->setIcon(icon_theme_factory->fromTheme(QSL("web-flash")));
-  m_ui->m_actionWebEnableJavascript->setIcon(icon_theme_factory->fromTheme(QSL("web-javascript")));
-
   // Feeds/messages.
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
   m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("go-stop")));
@@ -388,7 +368,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-favorite")));
-  m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-internal")));
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-external")));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-internal")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("item-send-email")));
@@ -408,11 +387,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
   m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder-feed")));
   m_ui->m_actionAddCategoryIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder-category")));
-
-  // Setup icons for underlying components: opened web browsers...
-  foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
-    browser->setupIcons();
-  }
 
   // Setup icons on TabWidget too.
   m_ui->m_tabWidget->setupIcons();
@@ -508,39 +482,6 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionReportBugBitBucket, SIGNAL(triggered()), this, SLOT(reportABugOnBitBucket()));
   connect(m_ui->m_actionDonate, SIGNAL(triggered()), this, SLOT(donate()));
   connect(m_ui->m_actionDisplayWiki, SIGNAL(triggered()), this, SLOT(showWiki()));
-
-  // Menu "Web browser" connections.
-  connect(m_ui->m_tabWidget, SIGNAL(currentChanged(int)), this, SLOT(loadWebBrowserMenu(int)));
-  connect(m_ui->m_actionCloseCurrentTab, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(closeCurrentTab()));
-  connect(m_ui->m_actionAddBrowser, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(addEmptyBrowser()));
-  connect(m_ui->m_actionCloseAllTabs, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(closeAllTabsExceptCurrent()));
-  connect(m_ui->m_actionWebAutoloadImages, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchImages(bool)));
-  connect(m_ui->m_actionWebEnableExternalPlugins, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchPlugins(bool)));
-  connect(m_ui->m_actionWebEnableJavascript, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchJavascript(bool)));
-
-  connect(WebFactory::instance(), SIGNAL(imagesLoadingSwitched(bool)), m_ui->m_actionWebAutoloadImages, SLOT(setChecked(bool)));
-  connect(WebFactory::instance(), SIGNAL(javascriptSwitched(bool)), m_ui->m_actionWebEnableJavascript, SLOT(setChecked(bool)));
-  connect(WebFactory::instance(), SIGNAL(pluginsSwitched(bool)), m_ui->m_actionWebEnableExternalPlugins, SLOT(setChecked(bool)));
-}
-
-void FormMain::loadWebBrowserMenu(int index) {
-  const WebBrowser *active_browser = m_ui->m_tabWidget->widget(index)->webBrowser();
-
-  m_ui->m_menuCurrentTab->clear();
-
-  if (active_browser != NULL) {
-    m_ui->m_menuCurrentTab->setEnabled(true);
-    m_ui->m_menuCurrentTab->addActions(active_browser->globalMenu());
-
-    if (m_ui->m_menuCurrentTab->actions().size() == 0) {
-      m_ui->m_menuCurrentTab->insertAction(NULL, m_ui->m_actionNoActions);
-    }
-  }
-  else {
-    m_ui->m_menuCurrentTab->setEnabled(false);
-  }
-
-  m_ui->m_actionCloseCurrentTab->setEnabled(m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::Closable);
 }
 
 void FormMain::backupDatabaseSettings() {

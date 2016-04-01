@@ -888,44 +888,6 @@ Authors of this application are NOT responsible for lost data.</string>
          <property name="currentIndex">
           <number>0</number>
          </property>
-         <widget class="QWidget" name="m_tabInternalBrowser">
-          <attribute name="title">
-           <string>Internal web browser</string>
-          </attribute>
-          <layout class="QFormLayout" name="formLayout_4">
-           <property name="fieldGrowthPolicy">
-            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-           </property>
-           <item row="0" column="0" colspan="2">
-            <widget class="QCheckBox" name="m_checkQueueTabs">
-             <property name="text">
-              <string>Queue new tabs (with hyperlinks) after the active tab</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QCheckBox" name="m_checkEnableJavascript">
-             <property name="text">
-              <string>Enable JavaScript</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QCheckBox" name="m_checkEnablePlugins">
-             <property name="text">
-              <string>Enable external plugins</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QCheckBox" name="m_checkAutoLoadImages">
-             <property name="text">
-              <string>Auto-load images</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
          <widget class="QWidget" name="m_tabExternalBrowser">
           <attribute name="title">
            <string>External web browser</string>
@@ -1609,10 +1571,6 @@ Authors of this application are NOT responsible for lost data.</string>
   <tabstop>m_cmbSelectToolBar</tabstop>
   <tabstop>m_treeLanguages</tabstop>
   <tabstop>m_tabBrowserProxy</tabstop>
-  <tabstop>m_checkQueueTabs</tabstop>
-  <tabstop>m_checkEnableJavascript</tabstop>
-  <tabstop>m_checkEnablePlugins</tabstop>
-  <tabstop>m_checkAutoLoadImages</tabstop>
   <tabstop>m_grpCustomExternalBrowser</tabstop>
   <tabstop>m_txtExternalBrowserExecutable</tabstop>
   <tabstop>m_btnExternalBrowserExecutable</tabstop>
