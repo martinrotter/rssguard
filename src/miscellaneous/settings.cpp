@@ -75,9 +75,6 @@ DVALUE(char*) GUI::SplitterFeedsDef               = "";
 DKEY GUI::SplitterMessages                        = "splitter_messages";
 DVALUE(char*) GUI::SplitterMessagesDef            = "";
 
-DKEY GUI::NotificationBackgroundColor               = "notification_background_color";
-DVALUE(QColor) GUI::NotificationBackgroundColorDef  = QColor(220, 220, 220);
-
 DKEY GUI::ToolbarStyle                            = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef  = Qt::ToolButtonIconOnly;
 
@@ -122,9 +119,6 @@ DVALUE(bool) GUI::EnableNotificationsDef        = true;
 
 DKEY GUI::UseFancyNotifications                         = "use_fancy_notifications";
 DVALUE(bool) GUI::UseFancyNotificationsDef              = true;
-
-DKEY GUI::FancyNotificationsPosition                    = "fancy_notifications_position";
-DVALUE(Qt::Corner) GUI::FancyNotificationsPositionDef   = Qt::BottomRightCorner;
 
 DKEY GUI::TabCloseMiddleClick                  = "tab_close_mid_button";
 DVALUE(bool) GUI::TabCloseMiddleClickDef       = true;

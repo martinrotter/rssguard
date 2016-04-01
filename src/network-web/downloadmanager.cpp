@@ -320,7 +320,7 @@ void DownloadItem::metaDataChanged() {
 void DownloadItem::downloadProgress(qint64 bytes_received, qint64 bytes_total) {
   QTime now = QTime::currentTime();
 
-  if (m_lastProgressTime.msecsTo(now) < 25) {
+  if (m_lastProgressTime.isValid() && m_lastProgressTime.msecsTo(now) < 25) {
     return;
   }
 

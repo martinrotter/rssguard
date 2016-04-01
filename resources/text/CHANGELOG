@@ -1,11 +1,10 @@
 3.1.1
 —————
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-PLEASE, FILL THIS SURVEY.
+Main:
 
-http://goo.gl/forms/GcvPYgS2a8
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+▪ Internal web browser and message preview window now use component based on Chromium/Blink (QtWebEngine).
+▪ RSS Guard now uses only Qt 5.6 or higher.
 
 Added:
 
@@ -16,6 +15,7 @@ Added:
 
 Fixed:
 
+▪ Download manager now correctly displays download progress/info.
 ▪ When user selects "Save as..." for some file from internal web browser, file selection dialog is always shown. (bug #174)
 ▪ Better detection of MySQL server status. (bug #169)
 ▪ Ordering of messages is now done on SQL server (stands for both MySQL and SQLite). (bug #172)
@@ -27,6 +27,7 @@ Fixed:
 Changed:
 
 ▪ Better performance when recalculating counts of all/unread messages in categories with many feeds.
+▪ Custom notification popup window is now removed, it was buggy on Windows 10. Windows 10 offers good built-in alternative. On Linux, we rely on D-Bus notifications.
 
 3.1.0
 —————

@@ -119,7 +119,12 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_cmbDatabaseDriver, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSqlBackend(int)));
   connect(m_ui->m_btnDownloadsTargetDirectory, SIGNAL(clicked()), this, SLOT(selectDownloadsDirectory()));
   connect(m_ui->m_checkMysqlShowPassword, SIGNAL(toggled(bool)), this, SLOT(switchMysqlPasswordVisiblity(bool)));
-  connect(m_ui->m_btnChangeNotificationColor, SIGNAL(clicked()), this, SLOT(selectNewNotificationColor()));
+
+  connect(m_ui->m_checkEnableNotifications, &QCheckBox::toggled, [=](bool checked) {
+    if (!checked) {
+      m_ui->m_checkEnableDBusNotifications->setChecked(false);
+    }
+  });
 
   // Load all settings.
   loadGeneral();
@@ -149,14 +154,6 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *pre
   if (current != NULL) {
     const Skin skin = current->data(0, Qt::UserRole).value<Skin>();
     m_ui->m_lblSelectedContents->setText(skin.m_visibleName);
-  }
-}
-
-void FormSettings::selectNewNotificationColor() {
-  QColorDialog dialog(m_ui->m_lblNotificationColor->color(), this);
-
-  if (dialog.exec() == QDialog::Accepted) {
-    m_ui->m_lblNotificationColor->setColor(dialog.selectedColor());
   }
 }
 
@@ -703,14 +700,14 @@ void FormSettings::loadInterface() {
   m_ui->m_checkHideWhenMinimized->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool());
 
   // Load fancy notification settings.
-  m_ui->m_grpNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool());
-  m_ui->m_cmbNotificationPosition->addItem(tr("Bottom-left corner"), Qt::BottomLeftCorner);
-  m_ui->m_cmbNotificationPosition->addItem(tr("Top-left corner"), Qt::TopLeftCorner);
-  m_ui->m_cmbNotificationPosition->addItem(tr("Bottom-right corner"), Qt::BottomRightCorner);
-  m_ui->m_cmbNotificationPosition->addItem(tr("Top-right corner"), Qt::TopRightCorner);
-  m_ui->m_cmbNotificationPosition->setCurrentIndex(m_ui->m_cmbNotificationPosition->findData(static_cast<Qt::Corner>(m_settings->value(GROUP(GUI), SETTING(GUI::FancyNotificationsPosition)).toInt())));
-  m_ui->m_grpBaseNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
-  m_ui->m_lblNotificationColor->setColor(m_settings->value(GROUP(GUI), SETTING(GUI::NotificationBackgroundColor)).value<QColor>());
+  m_ui->m_checkEnableNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
+
+#if defined(Q_OS_LINUX)
+  m_ui->m_checkEnableDBusNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool());
+#else
+  m_ui->m_checkEnableDBusNotifications->setText(m_ui->m_checkEnableDBusNotifications->text() + tr(" (not available)"));
+  m_ui->m_checkEnableDBusNotifications->setEnabled(false);
+#endif
 
   // Load settings of icon theme.
   const QString current_theme = qApp->icons()->currentIconTheme();
@@ -804,10 +801,8 @@ void FormSettings::saveInterface() {
   m_settings->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
 
   // Save notifications.
-  m_settings->setValue(GROUP(GUI), GUI::UseFancyNotifications, m_ui->m_grpNotifications->isChecked());
-  m_settings->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_grpBaseNotifications->isChecked());
-  m_settings->setValue(GROUP(GUI), GUI::FancyNotificationsPosition, static_cast<Qt::Corner>(m_ui->m_cmbNotificationPosition->itemData(m_ui->m_cmbNotificationPosition->currentIndex()).toInt()));
-  m_settings->setValue(GROUP(GUI), GUI::NotificationBackgroundColor, m_ui->m_lblNotificationColor->color());
+  m_settings->setValue(GROUP(GUI), GUI::UseFancyNotifications, m_ui->m_checkEnableDBusNotifications->isChecked());
+  m_settings->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_checkEnableNotifications->isChecked());
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
@@ -841,7 +836,6 @@ void FormSettings::saveInterface() {
 
   qApp->mainForm()->tabWidget()->checkTabBarVisibility();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
-  qApp->notification()->loadSettings();
 }
 
 bool FormSettings::eventFilter(QObject *obj, QEvent *e) {

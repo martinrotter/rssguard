@@ -62,7 +62,6 @@ class FormSettings : public QDialog {
     void loadInterface();
     void saveInterface();
     void onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-    void selectNewNotificationColor();
 
     void loadDownloads();
     void saveDownloads();

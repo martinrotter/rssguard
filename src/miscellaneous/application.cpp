@@ -219,7 +219,7 @@ void Application::showGuiMessage(const QString &title, const QString &message,
                                  bool show_at_least_msgbox, const QIcon &custom_icon,
                                  QObject *invokation_target, const char *invokation_slot) {
   if (Notification::areNotificationsEnabled()) {
-    if (Notification::areFancyNotificationsEnabled()) {
+    if (Notification::areDBusNotificationsEnabled()) {
       // Show OSD instead if tray icon bubble, depending on settings.
       if (custom_icon.isNull()) {
         notification()->notify(message, title, message_type, invokation_target, invokation_slot);

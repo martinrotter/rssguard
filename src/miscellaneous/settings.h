@@ -92,9 +92,6 @@ namespace GUI {
   KEY SplitterMessages;
   VALUE(char*) SplitterMessagesDef;
 
-  KEY NotificationBackgroundColor;
-  VALUE(QColor) NotificationBackgroundColorDef;
-
   KEY ToolbarStyle;
   VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;
 
@@ -139,9 +136,6 @@ namespace GUI {
 
   KEY UseFancyNotifications;
   VALUE(bool) UseFancyNotificationsDef;
-
-  KEY FancyNotificationsPosition;
-  VALUE(Qt::Corner) FancyNotificationsPositionDef;
 
   KEY TabCloseMiddleClick;
   VALUE(bool) TabCloseMiddleClickDef;

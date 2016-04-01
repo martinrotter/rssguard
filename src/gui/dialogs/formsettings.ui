@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -470,7 +470,7 @@ Authors of this application are NOT responsible for lost data.</string>
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -613,7 +613,14 @@ Authors of this application are NOT responsible for lost data.</string>
            <string>Tray area &amp;&amp; notifications</string>
           </attribute>
           <layout class="QFormLayout" name="formLayout_3">
-           <item row="1" column="0" colspan="2">
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="m_checkEnableNotifications">
+             <property name="text">
+              <string>Enable notifications</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
             <widget class="QGroupBox" name="m_grpTray">
              <property name="title">
               <string>Tray icon</string>
@@ -642,79 +649,14 @@ Authors of this application are NOT responsible for lost data.</string>
              </layout>
             </widget>
            </item>
-           <item row="0" column="0" colspan="2">
-            <widget class="QGroupBox" name="m_grpBaseNotifications">
-             <property name="title">
-              <string>Enable notifications</string>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="m_checkEnableDBusNotifications">
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
-             <property name="flat">
-              <bool>false</bool>
+             <property name="text">
+              <string>Enable D-Bus notifications</string>
              </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_16">
-              <item>
-               <widget class="QGroupBox" name="m_grpNotifications">
-                <property name="title">
-                 <string>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <layout class="QFormLayout" name="formLayout_23">
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="m_lblNotificationPosition">
-                   <property name="text">
-                    <string>Notification position</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QComboBox" name="m_cmbNotificationPosition"/>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_13">
-                   <property name="text">
-                    <string>Background color</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <layout class="QHBoxLayout" name="horizontalLayout_17">
-                   <item>
-                    <widget class="ColorLabel" name="m_lblNotificationColor">
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="m_btnChangeNotificationColor">
-                     <property name="text">
-                      <string>Change</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
             </widget>
            </item>
           </layout>
@@ -1667,11 +1609,6 @@ Authors of this application are NOT responsible for lost data.</string>
    <header>toolbareditor.h</header>
    <container>1</container>
   </customwidget>
-  <customwidget>
-   <class>ColorLabel</class>
-   <extends>QLabel</extends>
-   <header>colorlabel.h</header>
-  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>m_cmbDatabaseDriver</tabstop>
@@ -1812,38 +1749,6 @@ Authors of this application are NOT responsible for lost data.</string>
    </hints>
   </connection>
   <connection>
-   <sender>m_grpNotifications</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_lblNotificationPosition</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>625</x>
-     <y>77</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>326</x>
-     <y>84</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_grpNotifications</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_cmbNotificationPosition</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>625</x>
-     <y>77</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>696</x>
-     <y>84</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>m_rbDownloadsAskEachFile</sender>
    <signal>toggled(bool)</signal>
    <receiver>m_btnDownloadsTargetDirectory</receiver>
@@ -1856,22 +1761,6 @@ Authors of this application are NOT responsible for lost data.</string>
     <hint type="destinationlabel">
      <x>968</x>
      <y>50</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_grpBaseNotifications</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_grpNotifications</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>624</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>624</x>
-     <y>89</y>
     </hint>
    </hints>
   </connection>
