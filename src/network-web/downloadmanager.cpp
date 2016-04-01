@@ -404,7 +404,7 @@ void DownloadItem::updateDownloadInfoLabel() {
     }
     else {
       info = tr("%1 of %2 - download completed").arg(DownloadManager::dataString(m_bytesReceived),
-                                                     DownloadManager::dataString(bytes_total));
+                                                     DownloadManager::dataString(m_bytesReceived));
     }
   }
 
