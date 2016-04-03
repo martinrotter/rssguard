@@ -2073,10 +2073,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Statusbar</source>
         <translation type="unfinished"/>
     </message>

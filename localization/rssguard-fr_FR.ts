@@ -2083,10 +2083,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Statusbar</source>
         <translation type="unfinished"/>
     </message>
@@ -3014,7 +3010,7 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Vue journal</translation>
     </message>
 </context>
 <context>

@@ -2088,10 +2088,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Statusbar</source>
         <translation type="unfinished"></translation>
     </message>

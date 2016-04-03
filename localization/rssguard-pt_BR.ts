@@ -2089,10 +2089,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Abrir gerenciador de download ao iniciar um novo download</translation>
     </message>
     <message>
-        <source>Remember opened web browser tabs</source>
-        <translation>Lembrar abas abertas do navegador</translation>
-    </message>
-    <message>
         <source>Statusbar</source>
         <translation>Barra de status</translation>
     </message>

@@ -2085,11 +2085,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"/>
+        <translation>Při začátku stahování otevírat správce stahování</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -2097,15 +2093,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
+        <translation>Povolit D-Bus notifikace</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Změnit písmo</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"/>
+        <translation>Náhled písma</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
@@ -2113,7 +2109,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source> (not available)</source>
-        <translation type="unfinished"/>
+        <translation>(není k dispozici)</translation>
     </message>
 </context>
 <context>
@@ -3016,7 +3012,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Novinový náhled</translation>
     </message>
 </context>
 <context>

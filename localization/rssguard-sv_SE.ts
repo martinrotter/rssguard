@@ -2090,32 +2090,28 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Öppna nedladdningshanteraren när ny nedladdning startas</translation>
     </message>
     <message>
-        <source>Remember opened web browser tabs</source>
-        <translation>Kom ihåg öppnade webbläsarflikar</translation>
-    </message>
-    <message>
         <source>Statusbar</source>
         <translation>Statusfält</translation>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
+        <translation>Aktivera D-bus-aviseringar</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ändra teckensnitt</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"/>
+        <translation>Teckengranskning</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
+        <translation>Välj nytt teckensnitt för meddelandevyn</translation>
     </message>
     <message>
         <source> (not available)</source>
-        <translation type="unfinished"/>
+        <translation>(ej tillgänglig)</translation>
     </message>
 </context>
 <context>
@@ -2799,31 +2795,31 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation>Du klickade på länken &quot;%1&quot;. Du kan ladda ner länkinnehållet eller öppna den i extern webbläsare.</translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation>Vad vill du göra?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna i extern webbläsare</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>Markera meddelandet som läst</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>Markera meddelandet som oläst</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>Växla meddelandeprioritet</translation>
     </message>
 </context>
 <context>
@@ -3112,15 +3108,15 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Visa fler meddelande (% återstår)</numerusform><numerusform>Visa fler meddelanden (% återstår)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte visa fler meddelanden</translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte visa fler meddelanden eftersom överordnat flöde tagits bort.</translation>
     </message>
 </context>
 <context>
@@ -3454,15 +3450,15 @@ Olästa nyheter: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"/>
+        <translation>och</translation>
     </message>
 </context>
 <context>

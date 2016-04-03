@@ -2091,10 +2091,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Open de download manager wanneer een nieuwe download start</translation>
     </message>
     <message>
-        <source>Remember opened web browser tabs</source>
-        <translation>Onthoud de geopende browser tabbladen</translation>
-    </message>
-    <message>
         <source>Statusbar</source>
         <translation>Statusbalk</translation>
     </message>
