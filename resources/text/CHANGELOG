@@ -8,6 +8,7 @@ Main:
 
 Added:
 
+▪ Global auto-update feed interval spinbox now has better format. (issue #176)
 ▪ Message preview's font is now fully adjustable in settings. (issue #177)
 ▪ RSS Guard now automatically switches to SQLite backend if MySQL is not available on program startup.
 ▪ Newspaper view now allows marking individual messages read/unread/starred/unstarred.

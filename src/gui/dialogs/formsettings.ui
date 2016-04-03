@@ -1251,7 +1251,7 @@ Authors of this application are NOT responsible for lost data.</string>
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">
@@ -1272,25 +1272,6 @@ Authors of this application are NOT responsible for lost data.</string>
             <widget class="QCheckBox" name="m_checkAutoUpdate">
              <property name="text">
               <string>Auto-update all feeds every</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QSpinBox" name="m_spinAutoUpdateInterval">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="suffix">
-              <string> minutes</string>
-             </property>
-             <property name="minimum">
-              <number>5</number>
-             </property>
-             <property name="maximum">
-              <number>240</number>
-             </property>
-             <property name="value">
-              <number>15</number>
              </property>
             </widget>
            </item>
@@ -1351,6 +1332,19 @@ Authors of this application are NOT responsible for lost data.</string>
               <set>Qt::AlignCenter</set>
              </property>
              <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+             <property name="accelerated">
               <bool>true</bool>
              </property>
             </widget>
@@ -1549,6 +1543,11 @@ Authors of this application are NOT responsible for lost data.</string>
    <header>toolbareditor.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>TimeSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>timespinbox.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>m_cmbDatabaseDriver</tabstop>
@@ -1636,22 +1635,6 @@ Authors of this application are NOT responsible for lost data.</string>
    </hints>
   </connection>
   <connection>
-   <sender>m_checkAutoUpdate</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_spinAutoUpdateInterval</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>324</x>
-     <y>48</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>597</x>
-     <y>49</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>m_checkMessagesDateTimeFormat</sender>
    <signal>toggled(bool)</signal>
    <receiver>m_cmbMessagesDateTimeFormat</receiver>
@@ -1696,6 +1679,22 @@ Authors of this application are NOT responsible for lost data.</string>
     <hint type="destinationlabel">
      <x>968</x>
      <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkAutoUpdate</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_spinAutoUpdateInterval</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>707</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
