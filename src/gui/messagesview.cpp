@@ -258,7 +258,7 @@ void MessagesView::openSelectedMessagesInternally() {
   }
 
   if (!messages.isEmpty()) {
-    emit openMessagesInNewspaperView(messages);
+    emit openMessagesInNewspaperView(m_sourceModel->loadedItem(), messages);
 
     // Finally, mark opened messages as read.
     QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));

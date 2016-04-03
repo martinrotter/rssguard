@@ -28,6 +28,7 @@
 class QMenu;
 class PlainToolButton;
 class Message;
+class RootItem;
 class FeedMessageViewer;
 
 class TabWidget : public QTabWidget {
@@ -111,7 +112,7 @@ class TabWidget : public QTabWidget {
     void closeAllTabsExceptCurrent();
 
     // Open single or multiple (newspaper mode) messages in new tab.
-    int addBrowserWithMessages(const QList<Message> &messages);
+    int addBrowserWithMessages(RootItem *root, const QList<Message> &messages);
 
   private:
     PlainToolButton *m_btnMainMenu;

@@ -261,8 +261,8 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateStarted()), this, SLOT(onFeedsUpdateStarted()));
 
   // Message openers.
-  connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
+  connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
+          form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(RootItem*,QList<Message>)));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
   

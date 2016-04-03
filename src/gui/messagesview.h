@@ -92,7 +92,7 @@ class MessagesView : public QTreeView {
     // Link/message openers.
     void openLinkNewTab(const QString &link);
     void openLinkMiniBrowser(const QString &link);
-    void openMessagesInNewspaperView(const QList<Message> &messages);
+    void openMessagesInNewspaperView(RootItem *root, const QList<Message> &messages);
 
     // Notify others about message selections.
     void currentMessageChanged(const Message &message, RootItem *root);
