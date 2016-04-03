@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
 <context>
     <name>Application</name>
     <message>
@@ -105,11 +103,11 @@
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"></translation>
+        <translation>MySQL databas inte tillgänglig</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 kan inte använda MySQL-lagringen, den är inte tillgänglig. %1 växlar nu till SQLite databas. Starta din MySQL-server och justera programinställningarna.</translation>
     </message>
 </context>
 <context>
@@ -187,7 +185,7 @@
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; är nedlladdad.
 Klicka här för att öppna målmappen.</translation>
@@ -213,17 +211,11 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minut kvar</numerusform>
-            <numerusform>%n minuter kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n sekund kvar</numerusform>
-            <numerusform>%n sekunder kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -243,10 +235,7 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Laddar ner %n fil...</numerusform>
-            <numerusform>Laddar ner %n filer...</numerusform>
-        </translation>
+        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -309,10 +298,7 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Jag uppdaterar %n flöde automatiskt</numerusform>
-            <numerusform>Jag uppdaterar %n flöden automatiskt</numerusform>
-        </translation>
+        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -623,10 +609,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>dag</numerusform>
-            <numerusform>dagar</numerusform>
-        </translation>
+        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -2108,31 +2091,31 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Kom ihåg öppnade webbläsarflikar</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Statusfält</translation>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (not available)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2816,31 +2799,31 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3037,7 +3020,7 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished">Tidningsvy</translation>
+        <translation>Tidningsvy</translation>
     </message>
 </context>
 <context>
@@ -3118,29 +3101,26 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>okänt innehåll</translation>
     </message>
 </context>
 <context>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Format</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3180,12 +3160,9 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n annat flöde.</numerusform>
-            <numerusform>
+        <translation><numerusform>+ %n annat flöde.</numerusform><numerusform>
 
-+ %n andra flöden.</numerusform>
-        </translation>
++ %n andra flöden.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3234,10 +3211,7 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n borttaget meddelande.</numerusform>
-            <numerusform>%n borttagna meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3261,10 +3235,7 @@ Minst API-nivå %1 krävs.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n oläst meddelande.</numerusform>
-            <numerusform>%n olästa meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3319,10 +3290,7 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform>
-            <numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform>
-        </translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3405,19 +3373,19 @@ Konto-ID: %1</translation>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Förloppsindikator för flödesuppdatering</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"></translation>
+        <translation>Flödesuppdateringsetikett</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Förloppsindikator för nedladdning</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedladdningsetikett</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3486,21 +3454,15 @@ Olästa nyheter: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3572,10 +3534,7 @@ Olästa nyheter: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform>
-            <numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
-        </translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

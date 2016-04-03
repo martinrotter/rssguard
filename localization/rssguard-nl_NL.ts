@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
 <context>
     <name>Application</name>
     <message>
@@ -106,11 +104,11 @@ Gelezen berichten gewist...</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"></translation>
+        <translation>MySQL database is niet beschikbaar</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 kan geen gebruik maken van MySQL opslag, het is niet beschikbaar. %1 switch nu over naar de SQLite database. Start je MySQL server en maak aanpassingen in de programma-instellingen.</translation>
     </message>
 </context>
 <context>
@@ -188,7 +186,7 @@ Gelezen berichten gewist...</translation>
         <translation>Download klaar</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Bestand &apos;%1&apos; is klaar
 Klik hier om map te openen.</translation>
@@ -214,17 +212,11 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n resterende minuut</numerusform>
-            <numerusform>%n resterende minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n resterende seconde</numerusform>
-            <numerusform>%n resterende seconden</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -244,10 +236,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Dowloading %n bestand...</numerusform>
-            <numerusform>Downloading %n bestanden...</numerusform>
-        </translation>
+        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -310,10 +299,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Auto-update van %n feed.</numerusform>
-            <numerusform>Auto-update van %n feeds.</numerusform>
-        </translation>
+        <translation><numerusform>Auto-update van %n feed.</numerusform><numerusform>Auto-update van %n feeds.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -624,10 +610,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> dag</numerusform>
-            <numerusform> dagen</numerusform>
-        </translation>
+        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -2109,31 +2092,31 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Onthoud de geopende browser tabbladen</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Statusbalk</translation>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (not available)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2818,31 +2801,31 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3039,7 +3022,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished">Krantweergave</translation>
+        <translation>Krantweergave</translation>
     </message>
 </context>
 <context>
@@ -3120,29 +3103,26 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>onbekende inhoud</translation>
     </message>
 </context>
 <context>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3182,14 +3162,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n andere feed.</numerusform>
-            <numerusform>
++ %n andere feed.</numerusform><numerusform>
 
-+ %n andere feeds.</numerusform>
-        </translation>
++ %n andere feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3238,10 +3215,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-        </translation>
+        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3265,10 +3239,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3323,10 +3294,7 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3409,19 +3377,19 @@ Account ID: %1</translation>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed update progresbalk</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed update label</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsdownload progresbar</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsdownload label</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3491,21 +3459,15 @@ Ongelezen nieuws: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3577,10 +3539,7 @@ Ongelezen nieuws: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
