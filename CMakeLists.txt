@@ -70,7 +70,7 @@ set(APP_URL_ISSUES_NEW_GITHUB "https://github.com/martinrotter/rssguard/issues/n
 set(APP_URL_ISSUES_NEW_BITBUCKET "http://bitbucket.org/skunkos/rssguard/issues/new")
 set(APP_URL_WIKI "https://bitbucket.org/skunkos/rssguard/wiki/Home")
 set(APP_EMAIL "rotter.martinos@gmail.com")
-set(MINIMUM_QT_VERSION 5.6.0)
+set(MINIMUM_QT_VERSION 5.2.0)
 set(EXE_NAME ${APP_LOW_NAME})
 
 if(APPLE)
