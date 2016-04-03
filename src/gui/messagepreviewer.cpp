@@ -71,10 +71,21 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
 
   m_actionSwitchImportance->setCheckable(true);
 
+  reloadFontSettings();
   clear();
 }
 
 MessagePreviewer::~MessagePreviewer() {
+}
+
+void MessagePreviewer::reloadFontSettings() {
+  const Settings *settings = qApp->settings();
+  QFont fon;
+
+  fon.fromString(settings->value(GROUP(Messages),
+                                 SETTING(Messages::PreviewerFontStandard)).toString());
+
+  m_ui->m_txtMessage->setFont(fon);
 }
 
 void MessagePreviewer::clear() {

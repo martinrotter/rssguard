@@ -102,6 +102,7 @@ class FormSettings : public QDialog {
 
     void loadFeedsMessages();
     void initializeMessageDateFormats();
+    void changeMessagesFont();
     void saveFeedsMessages();
     
   private:

@@ -41,6 +41,8 @@ class MessagePreviewer : public QWidget {
     explicit MessagePreviewer(QWidget *parent = 0);
     virtual ~MessagePreviewer();
 
+    void reloadFontSettings();
+
   public slots:
     void clear();
     void loadMessage(const Message &message, RootItem *root);

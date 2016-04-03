@@ -8,6 +8,7 @@ Main:
 
 Added:
 
+▪ Message preview's font is now fully adjustable in settings. (issue #177)
 ▪ RSS Guard now automatically switches to SQLite backend if MySQL is not available on program startup.
 ▪ Newspaper view now allows marking individual messages read/unread/starred/unstarred.
 ▪ Added experimental support for tweakable statusbar. (issue #158)

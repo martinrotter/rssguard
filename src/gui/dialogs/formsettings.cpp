@@ -48,6 +48,7 @@
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QKeyEvent>
+#include <QFontDialog>
 #include <QDir>
 
 
@@ -118,6 +119,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_cmbDatabaseDriver, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSqlBackend(int)));
   connect(m_ui->m_btnDownloadsTargetDirectory, SIGNAL(clicked()), this, SLOT(selectDownloadsDirectory()));
   connect(m_ui->m_checkMysqlShowPassword, SIGNAL(toggled(bool)), this, SLOT(switchMysqlPasswordVisiblity(bool)));
+  connect(m_ui->m_btnChangeMessagesFont, SIGNAL(clicked()), this, SLOT(changeMessagesFont()));
 
   connect(m_ui->m_checkEnableNotifications, &QCheckBox::toggled, [=](bool checked) {
     if (!checked) {
@@ -242,8 +244,12 @@ void FormSettings::loadFeedsMessages() {
     m_ui->m_cmbMessagesDateTimeFormat->setCurrentIndex(index_format);
   }
 
-  m_ui->m_cmbMessageFontStandard->setCurrentIndex(m_ui->m_cmbMessageFontStandard->findText(m_settings->value(GROUP(Messages),
-                                                                                                             SETTING(Messages::PreviewerFontStandard)).toString()));
+  m_ui->m_lblMessagesFont->setText(tr("Font preview"));
+  QFont fon;
+  fon.fromString(m_settings->value(GROUP(Messages),
+                                   SETTING(Messages::PreviewerFontStandard)).toString());
+  m_ui->m_lblMessagesFont->setFont(fon);
+
 }
 
 void FormSettings::initializeMessageDateFormats() {
@@ -255,6 +261,17 @@ void FormSettings::initializeMessageDateFormats() {
 
   foreach (const QString &format, best_formats) {
     m_ui->m_cmbMessagesDateTimeFormat->addItem(current_locale.toString(current_dt, format), format);
+  }
+}
+
+void FormSettings::changeMessagesFont() {
+  bool ok;
+  QFont new_font = QFontDialog::getFont(&ok, m_ui->m_lblMessagesFont->font(),
+                                        this, tr("Select new font for message viewer"),
+                                        QFontDialog::DontUseNativeDialog);
+
+  if (ok) {
+    m_ui->m_lblMessagesFont->setFont(new_font);
   }
 }
 
@@ -271,7 +288,7 @@ void FormSettings::saveFeedsMessages() {
                        m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
 
   // Save fonts.
-  m_settings->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_cmbMessageFontStandard->currentFont().family());
+  m_settings->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());
 
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->updateAutoUpdateStatus();

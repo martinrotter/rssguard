@@ -116,12 +116,12 @@ void FeedMessageViewer::loadSize() {
                                                                         default_msg_section_size).toInt());
 }
 
-void FeedMessageViewer::loadMessageViewerFonts() {
-  const Settings *settings = qApp->settings();
+void FeedMessageViewer::loadMessageViewerFonts() {  
+  m_messagesBrowser->reloadFontSettings();
 
   // TODO: TODO
   //QWebEngineSettings *view_settings = m_messagesBrowser->view()->settings();
-  
+
   //view_settings->setFontFamily(QWebEngineSettings::StandardFont, settings->value(GROUP(Messages),
   //                                                                         SETTING(Messages::PreviewerFontStandard)).toString());
 }
@@ -350,7 +350,7 @@ void FeedMessageViewer::initialize() {
   m_toolBarMessages->setMovable(false);
   m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBarMessages->loadChangeableActions();
-   
+
   // Now refresh visual setup.
   refreshVisualProperties();
 }

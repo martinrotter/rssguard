@@ -62,7 +62,7 @@ DKEY Messages::KeepCursorInCenter               = "keep_cursor_center";
 DVALUE(bool) Messages::KeepCursorInCenterDef    = false;
 
 DKEY Messages::PreviewerFontStandard                                    = "previewer_font_standard";
-NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QString();
+NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QFont().toString();
 
 // GUI.
 DKEY GUI::ID                                      = "gui";
