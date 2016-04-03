@@ -41,7 +41,9 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
     box.setInformativeText(tr("What action do you want to take?"));
     QAbstractButton *btn_open = box.addButton(tr("Open in external browser"), QMessageBox::AcceptRole);
     QAbstractButton *btn_download = box.addButton(tr("Download"), QMessageBox::RejectRole);
+    QAbstractButton *btn_cancel = box.addButton(QMessageBox::Cancel);
 
+    box.setDefaultButton(QMessageBox::Cancel);
     box.exec();
 
     if (box.clickedButton() == btn_open) {
@@ -50,6 +52,13 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
     else if (box.clickedButton() == btn_download) {
       qApp->downloadManager()->download(url);
     }
+    else {
+
+    }
+
+    btn_download->deleteLater();
+    btn_open->deleteLater();
+    btn_cancel->deleteLater();
   });
 
   m_toolBar = new QToolBar(this);

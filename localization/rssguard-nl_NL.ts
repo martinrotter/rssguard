@@ -1,174 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
-<context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Voeg subscriptie toe</translation>
-    </message>
-    <message>
-        <source>Another subscription</source>
-        <translation>Een andere subscriptie</translation>
-    </message>
-    <message>
-        <source>Entered title is okay.</source>
-        <translation>Ingevoerde titel is oke.</translation>
-    </message>
-    <message>
-        <source>Entered title is empty.</source>
-        <translation>Ingevoerde titel is leeg.</translation>
-    </message>
-    <message>
-        <source>Entered url is okay.</source>
-        <translation>Ingevoerde url is oke.</translation>
-    </message>
-    <message>
-        <source>Entered url is empty.</source>
-        <translation>Ingevoerde url is leeg.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Adres</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Aangepaste regels</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockDialog</name>
-    <message>
-        <source>Adblock settings</source>
-        <translation>Adblock instellingen</translation>
-    </message>
-    <message>
-        <source>Enable Adblock</source>
-        <translation>Schakel Adblock in</translation>
-    </message>
-    <message>
-        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
-
-Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
-        <translation>Merk op dat Adblock deze applicatie aanzienlijk kan vertragen als je eenmaal enorme subscripties activeert. Te veel regels zijn niet goed voor de prestaties. Zorg er ook voor dat je de toepassing opnieuw opstart nadat u Adblock heeft uitgeschakeld als u laag geheugen footprint wilt te hebben. Van Adblock is bekend dat het veel systeemgeheugen gebruikt.
-
-Merk ook op dat sommige hulpbronnen worden gecached door de interne web browser. Zo, na het veranderen van een aantal regels of abonnementen zullen ze volledig gelden alleen voor nieuwe applicatie instances. Voor de beste Adblock ervaring moet je RSSguard herstarten.</translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation>Opties</translation>
-    </message>
-    <message>
-        <source>Filter rules</source>
-        <translation>Filter regels</translation>
-    </message>
-    <message>
-        <source>Use only essential part of EasyList (for performance reasons)</source>
-        <translation>Gebruik alleen essentieel onderdelen van EasyList (voor prestaties redenen)</translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation>Een regel toevoegen</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Een regel verwijderen</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Voeg subscriptie toe</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Verwijder subscriptie</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Update subscriptie</translation>
-    </message>
-    <message>
-        <source>Rules writing guide</source>
-        <translation>De regels gids</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockIcon</name>
-    <message>
-        <source>Adblock</source>
-        <translation>Adblock</translation>
-    </message>
-    <message>
-        <source>Show Adblock &amp;settings</source>
-        <translation>Toon Adblock &amp;instellingen</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Schakel %1 uit</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Schakel het alleen op deze pagina uit</translation>
-    </message>
-    <message>
-        <source>Blocked popup windows</source>
-        <translation>Geblokkeerde pop-upvensters</translation>
-    </message>
-    <message>
-        <source>%1 with (%2)</source>
-        <translation>%1 met (%2)</translation>
-    </message>
-    <message>
-        <source>No content blocked</source>
-        <translation>Geen inhoud geblokkeerd</translation>
-    </message>
-    <message>
-        <source>Blocked some content - click to edit rule</source>
-        <translation>Bepaalde inhoud geblokkeerd - klik om de regel te bewerken</translation>
-    </message>
-    <message>
-        <source>Adblock - up and running</source>
-        <translation>Adblock - Staat aan en werkt</translation>
-    </message>
-    <message>
-        <source>Adblock - not running</source>
-        <translation>Adblock - werkt niet</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Kan supscriptie niet laden!</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Please write your rule here</source>
-        <translation>Schrijf aub je regels hier</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (onlangs bijgewerkt)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (fout: %2)</translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation>Een regel toevoegen</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Een regel verwijderen</translation>
-    </message>
-</context>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl_NL">
 <context>
     <name>Application</name>
     <message>
@@ -274,33 +106,11 @@ Gelezen berichten gewist...</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>DiscoverFeedsButton</name>
-    <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Deze website bevat geen feeds.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>Klik hier om feeds van deze website toe tevoegen.
-Deze website bevat %n feed.</numerusform><numerusform>Klik hier om feeds van deze website toe tevoegen.
-Deze website bevat %n feeds.</numerusform></translation>
-    </message>
-    <message>
-        <source>Not supported</source>
-        <translation>Niet ondersteund</translation>
-    </message>
-    <message>
-        <source>Given account does not support adding feeds.</source>
-        <translation>Dit account ondersteunt geen toevoeging van feeds.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -378,7 +188,7 @@ Deze website bevat %n feeds.</numerusform></translation>
         <translation>Download klaar</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Bestand &apos;%1&apos; is klaar
 Klik hier om map te openen.</translation>
@@ -404,11 +214,17 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende minuut</numerusform>
+            <numerusform>%n resterende minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende seconde</numerusform>
+            <numerusform>%n resterende seconden</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -428,7 +244,10 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
+        <translation>
+            <numerusform>Dowloading %n bestand...</numerusform>
+            <numerusform>Downloading %n bestanden...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -491,7 +310,10 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-update van %n feed.</numerusform><numerusform>Auto-update van %n feeds.</numerusform></translation>
+        <translation>
+            <numerusform>Auto-update van %n feed.</numerusform>
+            <numerusform>Auto-update van %n feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -802,7 +624,10 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
+        <translation>
+            <numerusform> dag</numerusform>
+            <numerusform> dagen</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1059,10 +884,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
     </message>
     <message>
-        <source> minutes</source>
-        <translation> minuten</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
@@ -1297,20 +1118,8 @@ of deze functie bestaat nog niet.</translation>
         <translation>&amp;Instellingen</translation>
     </message>
     <message>
-        <source>&amp;Current tab</source>
-        <translation>&amp;Huidig tabblad</translation>
-    </message>
-    <message>
-        <source>&amp;Add tab</source>
-        <translation>&amp;Tabblad toevoegen</translation>
-    </message>
-    <message>
         <source>&amp;Messages</source>
         <translation>&amp;Berichten</translation>
-    </message>
-    <message>
-        <source>&amp;Web browser</source>
-        <translation>&amp;Webbrowser</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
@@ -1327,14 +1136,6 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Switch fullscreen mode.</source>
         <translation>Schakel beeldvullende modus.</translation>
-    </message>
-    <message>
-        <source>Add new web browser tab.</source>
-        <translation>Voeg nieuw webbrowser tabblad toe.</translation>
-    </message>
-    <message>
-        <source>Close current web browser tab.</source>
-        <translation>Sluit huidige webbrowser tabblad.</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -1369,20 +1170,8 @@ of deze functie bestaat nog niet.</translation>
         <translation>Verwij&amp;der geselecteerde berichten</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Instellingen</translation>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
         <translation>Verberg of toon het hoofdmenu.</translation>
-    </message>
-    <message>
-        <source>&amp;Close all tabs except current one</source>
-        <translation>&amp;Sluit alle tabbladen behalve deze</translation>
-    </message>
-    <message>
-        <source>&amp;Close current tab</source>
-        <translation>&amp;Sluit huidig tabblad</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
@@ -1401,10 +1190,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Open geselecteerde berichten met &amp;ingebouwde webbrowser</translation>
     </message>
     <message>
-        <source>Open selected source articles in &amp;internal browser</source>
-        <translation>Open geselecteerde bron artikelen met &amp;ingebouwde webbrowser</translation>
-    </message>
-    <message>
         <source>Select &amp;next message</source>
         <translation>Selecteer volge&amp;nd bericht</translation>
     </message>
@@ -1415,18 +1200,6 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Check for &amp;updates</source>
         <translation>Controleer op &amp;updates</translation>
-    </message>
-    <message>
-        <source>Enable &amp;JavaScript</source>
-        <translation>&amp;Javascript aanzetten</translation>
-    </message>
-    <message>
-        <source>Enable external &amp;plugins</source>
-        <translation>Externe &amp;plugins aanzetten</translation>
-    </message>
-    <message>
-        <source>Auto-load &amp;images</source>
-        <translation>Automatisch afbeeld&amp;ingen laden</translation>
     </message>
     <message>
         <source>Show/hide</source>
@@ -1467,10 +1240,6 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>&amp;Feed/message list headers</source>
         <translation>&amp;Feed/bericht  kopteksten</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one.</source>
-        <translation>Sluit alle tabbladen behalve deze.</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1858,14 +1627,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Open nieuwe tabbladen met linker muisknop dubbel-klik op tabblad</translation>
     </message>
     <message>
-        <source>Enable mouse gestures</source>
-        <translation>Muisbewegingen aanzetten</translation>
-    </message>
-    <message>
-        <source>Queue new tabs (with hyperlinks) after the active tab</source>
-        <translation>Wachtrij nieuwe tabbladen (met koppelingen) na de actieve tabblad</translation>
-    </message>
-    <message>
         <source>no icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation>Geen pictogram thema</translation>
@@ -2012,10 +1773,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>in-geheugen database overgeschakeld</translation>
     </message>
     <message>
-        <source>Internal web browser</source>
-        <translation>Interne webbrowser</translation>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Externe webbrowser</translation>
     </message>
@@ -2042,10 +1799,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     <message>
         <source>Auto-update all feeds every</source>
         <translation>Alle feeds automatisch bijwerken elke</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minuten</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -2168,18 +1921,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Laad %1 als systeem opstart</translation>
     </message>
     <message>
-        <source>Enable JavaScript</source>
-        <translation>Javascript aanzetten</translation>
-    </message>
-    <message>
-        <source>Enable external plugins based on NPAPI</source>
-        <translation>Externe plugins gebaseerd op NPAPI aanzetten</translation>
-    </message>
-    <message>
-        <source>Auto-load images</source>
-        <translation>Automatisch afbeeldingen laden</translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Indien aangevinkt, wordt standaard de systeem  webbrowser gebruikt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2287,22 +2028,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Werkende database</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
- • previous web page (drag mouse left),
- • next web page (drag mouse right),
- • reload current web page (drag mouse up),
- • open new web browser tab (drag mouse down).</source>
-        <translation>Muisbeweging werkt met middelste muisknop. Mogelijke muisbewegingen zijn:
-
-. vorige webpagina (sleep muis links),
-
-.volgende webpagina(sleep muis rechts),
-
-.herlaad huidige webpagina(sleep muis omhoog),
-
-Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
-    </message>
-    <message>
         <source>Use custom external web browser</source>
         <translation>Gebruik aangepaste externe webbrowser</translation>
     </message>
@@ -2359,44 +2084,16 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <translation>Werkende database is ok.</translation>
     </message>
     <message>
-        <source>Notification position</source>
-        <translation>Melding maken van</translation>
-    </message>
-    <message>
         <source>(Tray icon is not available.)</source>
         <translation>(Pictogram in systeemvak is niet beschikbaar.)</translation>
-    </message>
-    <message>
-        <source>Bottom-left corner</source>
-        <translation>Linkerbenedenhoek</translation>
-    </message>
-    <message>
-        <source>Top-left corner</source>
-        <translation>Linkerbovenenhoek</translation>
-    </message>
-    <message>
-        <source>Bottom-right corner</source>
-        <translation>Rechterbenedenhoek</translation>
-    </message>
-    <message>
-        <source>Top-right corner</source>
-        <translation>Rechterbovenhoek</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
         <translation>Intern bericht browser lettertypen</translation>
     </message>
     <message>
-        <source>Standard font</source>
-        <translation>Standaard lettertype</translation>
-    </message>
-    <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Merk op dat de snelheid van de gebruikte MySQL server en wachttijd van de gebruikte verbinding ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing. Met langzame database connecties leidt dit tot slechte prestaties tijdens het browsen feeds of berichten.</translation>
-    </message>
-    <message>
-        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
-        <translation>Fancy &amp;&amp; moderne popup meldingen (Dit gebruikt OS natieve meldingen via D-Bus indien beschikbaar.)</translation>
     </message>
     <message>
         <source>E-mail</source>
@@ -2407,24 +2104,36 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <translation>Meldingen aanzetten</translation>
     </message>
     <message>
-        <source>Background color</source>
-        <translation>Achtergrondkleur</translation>
-    </message>
-    <message>
-        <source>Change</source>
-        <translation>Verander</translation>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Open de download manager wanneer een nieuwe download start</translation>
     </message>
     <message>
         <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable D-Bus notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Change font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select new font for message viewer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (not available)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2588,10 +2297,6 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minuten</translation>
     </message>
     <message>
         <source>Title</source>
@@ -3110,10 +2815,34 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
 </context>
 <context>
-    <name>LocationLineEdit</name>
+    <name>MessagePreviewer</name>
     <message>
-        <source>Website address goes here</source>
-        <translation>Tik Website adres hier</translation>
+        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3293,14 +3022,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <translation>Contextmenu voor berichten</translation>
     </message>
     <message>
-        <source>Meesage without URL</source>
-        <translation>Berischt zonder URL</translation>
-    </message>
-    <message>
-        <source>Message &apos;%s&apos; does not contain URL.</source>
-        <translation>Bericht &apos;%s&apos; bevat geen geldige URL.</translation>
-    </message>
-    <message>
         <source>Problem with starting external web browser</source>
         <translation>Probleem om externe webbrowser te starten</translation>
     </message>
@@ -3315,6 +3036,10 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>External e-mail client could not be started.</source>
         <translation>Externe e-mail client kon niet worden gestart.</translation>
+    </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished">Krantweergave</translation>
     </message>
 </context>
 <context>
@@ -3395,7 +3120,29 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3435,11 +3182,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n andere feed.</numerusform><numerusform>
++ %n andere feed.</numerusform>
+            <numerusform>
 
-+ %n andere feeds.</numerusform></translation>
++ %n andere feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3488,7 +3238,10 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3512,7 +3265,10 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3567,7 +3323,10 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3649,24 +3408,20 @@ Account ID: %1</translation>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Adblock</source>
-        <translation>Adblock</translation>
-    </message>
-    <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3720,11 +3475,6 @@ Ongelezen nieuws: %2</translation>
         <translation>Blader door feeds en berichten</translation>
     </message>
     <message>
-        <source>Web browser</source>
-        <extracomment>Web browser default tab title.</extracomment>
-        <translation>Webbrowser</translation>
-    </message>
-    <message>
         <source>Displays main menu.</source>
         <translation>Toont het hoofdmenu.</translation>
     </message>
@@ -3733,12 +3483,29 @@ Ongelezen nieuws: %2</translation>
         <translation>Hoofdmenu</translation>
     </message>
     <message>
-        <source>Open new web browser tab.</source>
-        <translation>Open een nieuw webbrowser tabblad.</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Downloads</translation>
+    </message>
+</context>
+<context>
+    <name>TimeSpinBox</name>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source> and </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3810,7 +3577,10 @@ Ongelezen nieuws: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
@@ -3851,217 +3621,6 @@ Laatste login: %5</translation>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
-    </message>
-</context>
-<context>
-    <name>WebBrowser</name>
-    <message>
-        <source>Navigation panel</source>
-        <translation>Navigatie venster</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>Terug</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>Vooruit</translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation>Herlaad</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stop</translation>
-    </message>
-    <message>
-        <source>Zoom  </source>
-        <translation>Zoom</translation>
-    </message>
-    <message>
-        <source>No title</source>
-        <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>Geen titel</translation>
-    </message>
-    <message>
-        <source>Decrease zoom.</source>
-        <translation>Zoom verlagen.</translation>
-    </message>
-    <message>
-        <source>Reset zoom to default.</source>
-        <translation>Reset zoom naar standaard.</translation>
-    </message>
-    <message>
-        <source>Increase zoom.</source>
-        <translation>Zoom verhogen.</translation>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation>Geschreven door </translation>
-    </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Krantweergave</translation>
-    </message>
-    <message>
-        <source>Go back.</source>
-        <translation>Ga terug.</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Ga vooruit.</translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation>Vernieuw huidige webpagina.</translation>
-    </message>
-    <message>
-        <source>Stop web page loading.</source>
-        <translation>Stop het laden van pagina.</translation>
-    </message>
-    <message>
-        <source>unknown author</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>WebView</name>
-    <message>
-        <source>Reload web page</source>
-        <translation>Herlaad webpagina</translation>
-    </message>
-    <message>
-        <source>Copy link url</source>
-        <translation>URL kopiëren</translation>
-    </message>
-    <message>
-        <source>Copy image</source>
-        <translation>Kopiëer afbeelding</translation>
-    </message>
-    <message>
-        <source>Copy image url</source>
-        <translation>URL afbeelding kopiëren</translation>
-    </message>
-    <message>
-        <source>Open link in new tab</source>
-        <translation>Open link in nieuw tabblad</translation>
-    </message>
-    <message>
-        <source>Follow link</source>
-        <translation>Volg koppeling</translation>
-    </message>
-    <message>
-        <source>Open image in new tab</source>
-        <translation>Open afbeelding in nieuw tabblad</translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation>Webbrowser</translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation>Afbeelding</translation>
-    </message>
-    <message>
-        <source>Hyperlink</source>
-        <translation>Koppeling</translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation>Vernieuw huidige webpagina.</translation>
-    </message>
-    <message>
-        <source>Copy selection</source>
-        <translation>Selectie kopiëren</translation>
-    </message>
-    <message>
-        <source>Copies current selection into the clipboard.</source>
-        <translation>Kopiëer huidige selectie naar het klembord.</translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard.</source>
-        <translation>Kopiëer link url naar klembord.</translation>
-    </message>
-    <message>
-        <source>Copy image to clipboard.</source>
-        <translation>Kopiëer afbeelding naar klembord.</translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard.</source>
-        <translation>Kopiëer afbeeldings url naar klembord.</translation>
-    </message>
-    <message>
-        <source>Open this hyperlink in new tab.</source>
-        <translation>Open deze link in nieuw tabblad.</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in this tab.</source>
-        <translation>Open link in dit tabblad.</translation>
-    </message>
-    <message>
-        <source>Open this image in this tab.</source>
-        <translation>Open deze afbeelding in dit tabblad.</translation>
-    </message>
-    <message>
-        <source>Open link in external browser</source>
-        <translation>Open koppeling in externe browser</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in external browser.</source>
-        <translation>Open de hyperlink in externe browser.</translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation>Print</translation>
-    </message>
-    <message>
-        <source>Print current web page.</source>
-        <translation>Print huidige webpagina.</translation>
-    </message>
-    <message>
-        <source>HTML web pages (*.html)</source>
-        <translation>HTML web paginas (*.html)</translation>
-    </message>
-    <message>
-        <source>Select destination file for web page</source>
-        <translation>Kies bestemming bestand voor de web pagina</translation>
-    </message>
-    <message>
-        <source>Cannot save web page</source>
-        <translation>Kan webpagina niet opslaan</translation>
-    </message>
-    <message>
-        <source>Web page cannot be saved because destination file is not writtable.</source>
-        <translation>Kan webpagina niet opslaan omdat bestand niet beschrijfbaar is.</translation>
-    </message>
-    <message>
-        <source>Save target as...</source>
-        <translation>Doel opslaan als...</translation>
-    </message>
-    <message>
-        <source>Download content from the hyperlink.</source>
-        <translation>Download inhoud van de koppeling.</translation>
-    </message>
-    <message>
-        <source>Save page as...</source>
-        <translation>Pagina opslaan als...</translation>
-    </message>
-    <message>
-        <source>Save image to disk.</source>
-        <translation>Afbeelding opslaan op schijf.</translation>
-    </message>
-    <message>
-        <source>Save image as...</source>
-        <translation>Afbeelding opslaan als...</translation>
-    </message>
-    <message>
-        <source>source_page</source>
-        <translation>Bron_pagina</translation>
-    </message>
-    <message>
-        <source>Search &quot;%1&quot; via Google...</source>
-        <translation>Zoek &quot;%1&quot; met google...</translation>
     </message>
 </context>
 </TS>

@@ -1,174 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.1">
-<context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Adicionar assinatura</translation>
-    </message>
-    <message>
-        <source>Another subscription</source>
-        <translation>Outra assinatura</translation>
-    </message>
-    <message>
-        <source>Entered title is okay.</source>
-        <translation>O título escolhido está correto.</translation>
-    </message>
-    <message>
-        <source>Entered title is empty.</source>
-        <translation>O título escolhido está vazio.</translation>
-    </message>
-    <message>
-        <source>Entered url is okay.</source>
-        <translation>A URL fornecida está correta.</translation>
-    </message>
-    <message>
-        <source>Entered url is empty.</source>
-        <translation>A URL fornecida está vazia.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Título</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Endereço</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Regras personalizadas</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockDialog</name>
-    <message>
-        <source>Adblock settings</source>
-        <translation>Configurações do Adblock</translation>
-    </message>
-    <message>
-        <source>Enable Adblock</source>
-        <translation>Ativar o Adblock</translation>
-    </message>
-    <message>
-        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
-
-Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
-        <translation>Note que o Adblock pode deixar o aplicativo um pouco lento caso você tenha muitas inscrições. Muitas regras não são boas para o desempenho. Também, certifique-se de reiniciar o aplicativo após desativar o Adblock para reduzir o uso de memória. O Adblock é conhecido por usar muita memória do sistema.
-
-Note também que alguns recursos são armazenados pelo navegador interno. Sendo assim, após alterar algumas regras ou inscrições, elas serão totalmente aplicadas somente para novas instâncias do aplicativo. Certifique-se de reiniciar o RSS Guard para uma melhor experiência com o Adblock.</translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation>Opções</translation>
-    </message>
-    <message>
-        <source>Filter rules</source>
-        <translation>Regras do filtro</translation>
-    </message>
-    <message>
-        <source>Use only essential part of EasyList (for performance reasons)</source>
-        <translation>Usar somente parte essencial do Easylist (para melhor desempenho)</translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation>Adicionar regra</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Remover regra</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Adicionar inscrição</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Remover inscrição</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Atualizar inscrições</translation>
-    </message>
-    <message>
-        <source>Rules writing guide</source>
-        <translation>Guia de criação de regras</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockIcon</name>
-    <message>
-        <source>Adblock</source>
-        <translation>Adblock</translation>
-    </message>
-    <message>
-        <source>Show Adblock &amp;settings</source>
-        <translation>Exibir configuraçõe&amp;s do Adblock</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Desativar em %1</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Desativar somente nesta página</translation>
-    </message>
-    <message>
-        <source>Blocked popup windows</source>
-        <translation>Janelas popup bloqueadas</translation>
-    </message>
-    <message>
-        <source>%1 with (%2)</source>
-        <translation>%1 com (%2)</translation>
-    </message>
-    <message>
-        <source>No content blocked</source>
-        <translation>Nenhum conteúdo bloqueado</translation>
-    </message>
-    <message>
-        <source>Blocked some content - click to edit rule</source>
-        <translation>Algum conteúdo bloqueado - clique para editar regra</translation>
-    </message>
-    <message>
-        <source>Adblock - up and running</source>
-        <translation>Adblock - ativo e em execução</translation>
-    </message>
-    <message>
-        <source>Adblock - not running</source>
-        <translation>Adblock - não está em execução</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Não foi possível carregar a inscrição!</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Please write your rule here</source>
-        <translation>Por favor, digite sua regra aqui</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (atualizado recentemente)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (erro: %2)</translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation>Adicionar regra</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Remover regra</translation>
-    </message>
-</context>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt_BR">
 <context>
     <name>Application</name>
     <message>
@@ -273,33 +105,11 @@ Note também que alguns recursos são armazenados pelo navegador interno. Sendo 
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>DiscoverFeedsButton</name>
-    <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Este site não contém nenhum feed.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>Clique para adicionar deste site.
-Este site contém %n feed.</numerusform><numerusform>Clique para adicionar deste site.
-Este site contêm %n feeds.</numerusform></translation>
-    </message>
-    <message>
-        <source>Not supported</source>
-        <translation>Não suportado</translation>
-    </message>
-    <message>
-        <source>Given account does not support adding feeds.</source>
-        <translation>A conta fornecida não suporta adicionar feeds.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -377,7 +187,7 @@ Este site contêm %n feeds.</numerusform></translation>
         <translation>Download concluído</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Arquivo &apos;%1&apos; foi baixado.
 Clique para abrir a pasta de destino.</translation>
@@ -403,11 +213,17 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minuto restante</numerusform><numerusform>%n minutos restantes</numerusform></translation>
+        <translation>
+            <numerusform>%n minuto restante</numerusform>
+            <numerusform>%n minutos restantes</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n segundo restante</numerusform><numerusform>%n segundos restantes</numerusform></translation>
+        <translation>
+            <numerusform>%n segundo restante</numerusform>
+            <numerusform>%n segundos restantes</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -427,7 +243,10 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Baixando %n arquivo...</numerusform><numerusform>Baixando %n arquivos...</numerusform></translation>
+        <translation>
+            <numerusform>Baixando %n arquivo...</numerusform>
+            <numerusform>Baixando %n arquivos...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -490,7 +309,10 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>%n feed será atualizado automaticamente.</numerusform><numerusform>%n feeds serão atualizados automaticamente.</numerusform></translation>
+        <translation>
+            <numerusform>%n feed será atualizado automaticamente.</numerusform>
+            <numerusform>%n feeds serão atualizados automaticamente.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -801,7 +623,10 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>%n dia</numerusform><numerusform>%n dias</numerusform></translation>
+        <translation>
+            <numerusform>%n dia</numerusform>
+            <numerusform>%n dias</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1058,10 +883,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Selecione a estratégia de atualização automática para este feed. A estratégia padrão significa que o feed será atualizado em intervalos de tempo definidos nas configurações do aplicativo.</translation>
     </message>
     <message>
-        <source> minutes</source>
-        <translation> minutos</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Alguns feeds necessitam de autenticação, incluindo feeds do GMail. Esquemas de autenticação BASIC, NTLM-2 e DIGEST-MD5 são suportados.</translation>
     </message>
@@ -1296,20 +1117,8 @@ ou esta função ainda não foi implementada.</translation>
         <translation>&amp;Configurações</translation>
     </message>
     <message>
-        <source>&amp;Current tab</source>
-        <translation>A&amp;ba atual</translation>
-    </message>
-    <message>
-        <source>&amp;Add tab</source>
-        <translation>&amp;Adicionar aba</translation>
-    </message>
-    <message>
         <source>&amp;Messages</source>
         <translation>&amp;Mensagens</translation>
-    </message>
-    <message>
-        <source>&amp;Web browser</source>
-        <translation>Navegador da &amp;Web</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
@@ -1326,14 +1135,6 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Switch fullscreen mode.</source>
         <translation>Altera para o modo tela cheia.</translation>
-    </message>
-    <message>
-        <source>Add new web browser tab.</source>
-        <translation>Adiciona uma nova aba ao navegador.</translation>
-    </message>
-    <message>
-        <source>Close current web browser tab.</source>
-        <translation>Fecha a aba atual do navegador.</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -1368,20 +1169,8 @@ ou esta função ainda não foi implementada.</translation>
         <translation>&amp;Excluir mensagens selecionadas</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Configurações</translation>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
         <translation>Oculta ou exibe o menu principal.</translation>
-    </message>
-    <message>
-        <source>&amp;Close all tabs except current one</source>
-        <translation>&amp;Fechar todas as abas, exceto a atual</translation>
-    </message>
-    <message>
-        <source>&amp;Close current tab</source>
-        <translation>&amp;Fechar aba atual</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
@@ -1400,10 +1189,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Abrir mensagens selecionadas no navegador &amp;interno</translation>
     </message>
     <message>
-        <source>Open selected source articles in &amp;internal browser</source>
-        <translation>Abrir artigos fonte selecionados no navegador &amp;interno</translation>
-    </message>
-    <message>
         <source>Select &amp;next message</source>
         <translation>Selecionar &amp;próxima mensagem</translation>
     </message>
@@ -1414,18 +1199,6 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Check for &amp;updates</source>
         <translation>Verificar por at&amp;ualizações</translation>
-    </message>
-    <message>
-        <source>Enable &amp;JavaScript</source>
-        <translation>Ativar &amp;JavaScript</translation>
-    </message>
-    <message>
-        <source>Enable external &amp;plugins</source>
-        <translation>Ativar &amp;plugins externos</translation>
-    </message>
-    <message>
-        <source>Auto-load &amp;images</source>
-        <translation>Carregar &amp;imagens automaticamente</translation>
     </message>
     <message>
         <source>Show/hide</source>
@@ -1466,10 +1239,6 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>&amp;Feed/message list headers</source>
         <translation>Cabeçalhos da lista de &amp;feeds/mensagens</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one.</source>
-        <translation>Fecha todas as abas, exceto a atual.</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1857,14 +1626,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Abrir novas abas como clique duplo do botão esquerdo do mouse na barra de abas</translation>
     </message>
     <message>
-        <source>Enable mouse gestures</source>
-        <translation>Ativar gestos do mouse</translation>
-    </message>
-    <message>
-        <source>Queue new tabs (with hyperlinks) after the active tab</source>
-        <translation>Adicionar novas abas (com links) após a aba ativa</translation>
-    </message>
-    <message>
         <source>no icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation>sem tema de ícones</translation>
@@ -2010,10 +1771,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>banco de dados na memória alterado</translation>
     </message>
     <message>
-        <source>Internal web browser</source>
-        <translation>Navegador da web interno</translation>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Navegador da web externo</translation>
     </message>
@@ -2040,10 +1797,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Auto-update all feeds every</source>
         <translation>Atualizar todos os feeds a cada</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minutos</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -2166,18 +1919,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Executar o %1 na inicialização do sistema operacional</translation>
     </message>
     <message>
-        <source>Enable JavaScript</source>
-        <translation>Ativar JavaScript</translation>
-    </message>
-    <message>
-        <source>Enable external plugins based on NPAPI</source>
-        <translation>Ativar plugins externos baseados em NPAPI</translation>
-    </message>
-    <message>
-        <source>Auto-load images</source>
-        <translation>Carregar imagens automaticamente</translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se desmarcado, então o navegador padrão do sistema será usado.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2285,18 +2026,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Banco de dados ativo</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
- • previous web page (drag mouse left),
- • next web page (drag mouse right),
- • reload current web page (drag mouse up),
- • open new web browser tab (drag mouse down).</source>
-        <translation>Os gestos do mouse funcionam o o botão do meio. Os gestos possíveis são:
- • página anterior (arraste o mouse para a esquerda),
- • próxima página (arraste o mouse para a direita),
- • recarregar página atual (arraste o mouse para cima),
- • abrir nova aba no navegador (arraste o mouse para baixo).</translation>
-    </message>
-    <message>
         <source>Use custom external web browser</source>
         <translation>Usar navegador externo personalizado</translation>
     </message>
@@ -2353,44 +2082,16 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>O banco de dados ativo está correto.</translation>
     </message>
     <message>
-        <source>Notification position</source>
-        <translation>Posição da notificação</translation>
-    </message>
-    <message>
         <source>(Tray icon is not available.)</source>
         <translation>(Ícone na área de notificação não está disponível.)</translation>
-    </message>
-    <message>
-        <source>Bottom-left corner</source>
-        <translation>Canto inferior esquerdo</translation>
-    </message>
-    <message>
-        <source>Top-left corner</source>
-        <translation>Canto superior esquerdo</translation>
-    </message>
-    <message>
-        <source>Bottom-right corner</source>
-        <translation>Canto inferior direito</translation>
-    </message>
-    <message>
-        <source>Top-right corner</source>
-        <translation>Canto superior direito</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
         <translation>Fontes do navegador de mensagens interno</translation>
     </message>
     <message>
-        <source>Standard font</source>
-        <translation>Fonte padrão</translation>
-    </message>
-    <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Note que a velocidade do servidor MySQL usado e a latência da conexão influenciam FORTEMENTE no desempenho final deste aplicativo. Usar conexões lentas ao banco de dados ocasionam um desempenho ruim ao navegar por feeds ou mensagens.</translation>
-    </message>
-    <message>
-        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
-        <translation>Notificações popup modernas (Isto usa as notificações nativas do sistema via D-Bus, se disponível.)</translation>
     </message>
     <message>
         <source>E-mail</source>
@@ -2401,24 +2102,36 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Ativar notificações</translation>
     </message>
     <message>
-        <source>Background color</source>
-        <translation>Cor de fundo</translation>
-    </message>
-    <message>
-        <source>Change</source>
-        <translation>Alterar</translation>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Abrir gerenciador de download ao iniciar um novo download</translation>
     </message>
     <message>
         <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable D-Bus notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Change font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select new font for message viewer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (not available)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2582,10 +2295,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation>Selecione a estratégia de atualização automática para este feed. A estratégia padrão significa que o feed será atualizado em intervalos de tempo definidos nas configurações do aplicativo.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minutos</translation>
     </message>
     <message>
         <source>Title</source>
@@ -3104,10 +2813,34 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     </message>
 </context>
 <context>
-    <name>LocationLineEdit</name>
+    <name>MessagePreviewer</name>
     <message>
-        <source>Website address goes here</source>
-        <translation>O endereço do site vai aqui</translation>
+        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3287,14 +3020,6 @@ Vá até o site do aplicativo para obter manualmente.</translation>
         <translation>Menu de contexto para mensagens</translation>
     </message>
     <message>
-        <source>Meesage without URL</source>
-        <translation>Mensagem sem URL</translation>
-    </message>
-    <message>
-        <source>Message &apos;%s&apos; does not contain URL.</source>
-        <translation>A mensagem &apos;%s&apos; não possui URL.</translation>
-    </message>
-    <message>
         <source>Problem with starting external web browser</source>
         <translation>Problema ao iniciar o navegador externo</translation>
     </message>
@@ -3309,6 +3034,10 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     <message>
         <source>External e-mail client could not be started.</source>
         <translation>O cliente de e-mail externo não pôde ser iniciado.</translation>
+    </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished">Visualização da publicação</translation>
     </message>
 </context>
 <context>
@@ -3389,7 +3118,29 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3429,11 +3180,14 @@ Vá até o site do aplicativo para obter manualmente.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n outro feed.</numerusform><numerusform>
++ %n outro feed.</numerusform>
+            <numerusform>
 
-+ %n outros feeds.</numerusform></translation>
++ %n outros feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3482,7 +3236,10 @@ Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n mensagem excluída.</numerusform><numerusform>%n mensagens excluídas.</numerusform></translation>
+        <translation>
+            <numerusform>%n mensagem excluída.</numerusform>
+            <numerusform>%n mensagens excluídas.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3506,7 +3263,10 @@ Pelo menos o API nível %1 é necessário.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n mensagem não lida.</numerusform><numerusform>%n mensagem(ns) não lidas.</numerusform></translation>
+        <translation>
+            <numerusform>%n mensagem não lida.</numerusform>
+            <numerusform>%n mensagem(ns) não lidas.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3561,7 +3321,10 @@ Esta categoria nenhum possui itens aninhados.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform></translation>
+        <translation>
+            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
+            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3643,24 +3406,20 @@ ID da Conta: %1</translation>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Adblock</source>
-        <translation>Adblock</translation>
-    </message>
-    <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3713,11 +3472,6 @@ Notícias não lidas: %2</translation>
         <translation>Navegue pelo seus feeds e mensagens</translation>
     </message>
     <message>
-        <source>Web browser</source>
-        <extracomment>Web browser default tab title.</extracomment>
-        <translation>Navegador da web</translation>
-    </message>
-    <message>
         <source>Displays main menu.</source>
         <translation>Exibe o menu principal.</translation>
     </message>
@@ -3726,12 +3480,29 @@ Notícias não lidas: %2</translation>
         <translation>Menu principal</translation>
     </message>
     <message>
-        <source>Open new web browser tab.</source>
-        <translation>Abre uma nova aba no navegador.</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Downloads</translation>
+    </message>
+</context>
+<context>
+    <name>TimeSpinBox</name>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source> and </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3803,7 +3574,10 @@ Notícias não lidas: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>usa configurações específicas (%n minuto para a próxima atualização automática)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform></translation>
+        <translation>
+            <numerusform>usa configurações específicas (%n minuto para a próxima atualização automática)</numerusform>
+            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
@@ -3844,217 +3618,6 @@ Servidor: %2
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Não é possível adicionar feeds porque outra operação crítica está em curso.</translation>
-    </message>
-</context>
-<context>
-    <name>WebBrowser</name>
-    <message>
-        <source>Navigation panel</source>
-        <translation>Painel de navegação</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>Voltar</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>Avançar</translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation>Recarregar</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Parar</translation>
-    </message>
-    <message>
-        <source>Zoom  </source>
-        <translation>Zoom  </translation>
-    </message>
-    <message>
-        <source>No title</source>
-        <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>Sem título</translation>
-    </message>
-    <message>
-        <source>Decrease zoom.</source>
-        <translation>Diminui o zoom.</translation>
-    </message>
-    <message>
-        <source>Reset zoom to default.</source>
-        <translation>Restaura o zoom para o padrão.</translation>
-    </message>
-    <message>
-        <source>Increase zoom.</source>
-        <translation>Aumenta o zoom.</translation>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation>Escrito por </translation>
-    </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Visualização da publicação</translation>
-    </message>
-    <message>
-        <source>Go back.</source>
-        <translation>Volta.</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Avança.</translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation>Recarrega a página atual.</translation>
-    </message>
-    <message>
-        <source>Stop web page loading.</source>
-        <translation>Interrompe o carregamento da página.</translation>
-    </message>
-    <message>
-        <source>unknown author</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>WebView</name>
-    <message>
-        <source>Reload web page</source>
-        <translation>Recarregar página</translation>
-    </message>
-    <message>
-        <source>Copy link url</source>
-        <translation>Copiar URL do link</translation>
-    </message>
-    <message>
-        <source>Copy image</source>
-        <translation>Copiar imagem</translation>
-    </message>
-    <message>
-        <source>Copy image url</source>
-        <translation>Copiar URL da imagem</translation>
-    </message>
-    <message>
-        <source>Open link in new tab</source>
-        <translation>Abrir link em uma nova aba</translation>
-    </message>
-    <message>
-        <source>Follow link</source>
-        <translation>Seguir link</translation>
-    </message>
-    <message>
-        <source>Open image in new tab</source>
-        <translation>Abrir imagem em um nova aba</translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation>Navegador da web</translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation>Imagem</translation>
-    </message>
-    <message>
-        <source>Hyperlink</source>
-        <translation>Hyperlink</translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation>Recarrega a página atual.</translation>
-    </message>
-    <message>
-        <source>Copy selection</source>
-        <translation>Copiar seleção</translation>
-    </message>
-    <message>
-        <source>Copies current selection into the clipboard.</source>
-        <translation>Copia a seleção atual para a área de transferência.</translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard.</source>
-        <translation>Copia a URL do link para a área de transferência.</translation>
-    </message>
-    <message>
-        <source>Copy image to clipboard.</source>
-        <translation>Copia a imagem para a área de transferência.</translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard.</source>
-        <translation>Copia a URL da imagem para a área de transferência.</translation>
-    </message>
-    <message>
-        <source>Open this hyperlink in new tab.</source>
-        <translation>Abre este hyperlink em uma nova aba.</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in this tab.</source>
-        <translation>Abre o hyperlink em uma nova aba.</translation>
-    </message>
-    <message>
-        <source>Open this image in this tab.</source>
-        <translation>Abre esta imagem em uma nova aba.</translation>
-    </message>
-    <message>
-        <source>Open link in external browser</source>
-        <translation>Abrir link no navegador externo</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in external browser.</source>
-        <translation>Abre o hyperlink no navegador externo.</translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation>Imprimir</translation>
-    </message>
-    <message>
-        <source>Print current web page.</source>
-        <translation>Imprime a página atual.</translation>
-    </message>
-    <message>
-        <source>HTML web pages (*.html)</source>
-        <translation>Páginas HTML (*.html)</translation>
-    </message>
-    <message>
-        <source>Select destination file for web page</source>
-        <translation>Selecione o arquivo de destino para a página da web</translation>
-    </message>
-    <message>
-        <source>Cannot save web page</source>
-        <translation>Não foi possível salvar a página da web</translation>
-    </message>
-    <message>
-        <source>Web page cannot be saved because destination file is not writtable.</source>
-        <translation>A página não pôde ser salva pois o arquivo de destino não possui permissão de escrita.</translation>
-    </message>
-    <message>
-        <source>Save target as...</source>
-        <translation>Salvar destino como...</translation>
-    </message>
-    <message>
-        <source>Download content from the hyperlink.</source>
-        <translation>Baixa o conteúdo do hyperlink.</translation>
-    </message>
-    <message>
-        <source>Save page as...</source>
-        <translation>Salvar página como...</translation>
-    </message>
-    <message>
-        <source>Save image to disk.</source>
-        <translation>Salva a imagem em disco.</translation>
-    </message>
-    <message>
-        <source>Save image as...</source>
-        <translation>Salvar imagem como...</translation>
-    </message>
-    <message>
-        <source>source_page</source>
-        <translation>página_de_origem</translation>
-    </message>
-    <message>
-        <source>Search &quot;%1&quot; via Google...</source>
-        <translation>Pesquisar &quot;%1&quot; no Google...</translation>
     </message>
 </context>
 </TS>
