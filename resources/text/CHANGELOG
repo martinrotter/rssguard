@@ -9,7 +9,7 @@ Main:
 Added:
 
 ▪ RSS Guard now automatically switches to SQLite backend if MySQL is not available on program startup.
-▪ Opened web browser tabs now can be saved. (issue #126)
+▪ Newspaper view now allows marking individual messages read/unread/starred/unstarred.
 ▪ Added experimental support for tweakable statusbar. (issue #158)
 ▪ Opening of download manager when new file download starts is now optional. (issue #165)
 

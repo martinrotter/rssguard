@@ -111,9 +111,6 @@ class TabWidget : public QTabWidget {
     // Closes all "closable" tabs except the active tab.
     void closeAllTabsExceptCurrent();
 
-    // Open single or multiple (newspaper mode) messages in new tab.
-    int addBrowserWithMessages(RootItem *root, const QList<Message> &messages);
-
   private:
     PlainToolButton *m_btnMainMenu;
     QMenu *m_menuMain;

@@ -78,6 +78,8 @@ class MessagesView : public QTreeView {
     void searchMessages(const QString &pattern);
     void filterMessages(MessagesModel::MessageHighlighter filter);
 
+    void createNewspaperView(RootItem *selected_item, const QList<Message> &messages);
+
   private slots:
     // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);

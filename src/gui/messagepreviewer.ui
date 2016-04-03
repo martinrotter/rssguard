@@ -46,7 +46,7 @@
       <bool>true</bool>
      </property>
      <property name="margin">
-      <number>0</number>
+      <number>5</number>
      </property>
      <property name="textInteractionFlags">
       <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>

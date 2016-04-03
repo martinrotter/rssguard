@@ -26,7 +26,6 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/newspaperpreviewer.h"
 
 #include <QMenu>
 #include <QToolButton>
@@ -238,11 +237,6 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label, const
   tabBar()->setTabType(tab_index, type);
 
   return tab_index;
-}
-
-int TabWidget::addBrowserWithMessages(RootItem *root, const QList<Message> &messages) {
-  NewspaperPreviewer *prev = new NewspaperPreviewer(root, messages, this);
-  return addTab(prev, qApp->icons()->fromTheme(QSL("item-newspaper")), tr("Newspaper view"), TabBar::Closable);
 }
 
 void TabWidget::changeIcon(int index, const QIcon &new_icon) {

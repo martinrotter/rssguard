@@ -99,7 +99,7 @@ class FeedsView : public QTreeView {
     void itemSelected(RootItem *item);
 
     // Requests opening of given messages in newspaper mode.
-    void openMessagesInNewspaperView(const QList<Message> &messages);
+    void openMessagesInNewspaperView(RootItem *root, const QList<Message> &messages);
 
   private slots:
     void markSelectedItemReadStatus(RootItem::ReadStatus read);

@@ -319,10 +319,11 @@ void FeedsView::markAllItemsRead() {
 }
 
 void FeedsView::openSelectedItemsInNewspaperMode() {
-  const QList<Message> messages = m_sourceModel->messagesForItem(selectedItem());
+  RootItem *selected_item = selectedItem();
+  const QList<Message> messages = m_sourceModel->messagesForItem(selected_item);
 
   if (!messages.isEmpty()) {
-    emit openMessagesInNewspaperView(messages);
+    emit openMessagesInNewspaperView(selected_item, messages);
   }
 }
 

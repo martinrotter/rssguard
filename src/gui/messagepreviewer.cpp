@@ -88,13 +88,14 @@ void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
   m_message = message;
   m_root = root;
 
-  m_actionMarkRead->setEnabled(!message.m_isRead);
-  m_actionMarkUnread->setEnabled(message.m_isRead);
-  m_actionSwitchImportance->setChecked(message.m_isImportant);
-
   if (!m_root.isNull()) {
-    m_ui->m_lblTitle->setText(message.m_title);
-    m_ui->m_txtMessage->setHtml(prepareHtmlForMessage(message));
+    updateButtons();
+    m_actionSwitchImportance->setChecked(m_message.m_isImportant);
+
+    m_ui->m_lblTitle->setText(m_message.m_title);
+    m_ui->m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
+
+    updateTitle();
     show();
 
     m_ui->m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
@@ -119,6 +120,9 @@ void MessagePreviewer::markMessageAsRead() {
                                                              RootItem::Read);
 
       emit requestMessageListReload(false);
+      m_message.m_isRead = true;
+      updateButtons();
+      updateTitle();
     }
   }
 }
@@ -141,6 +145,9 @@ void MessagePreviewer::markMessageAsUnread() {
                                                              RootItem::Unread);
 
       emit requestMessageListReload(false);
+      m_message.m_isRead = false;
+      updateButtons();
+      updateTitle();
     }
   }
 }
@@ -163,12 +170,24 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
       m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
                                                                       QList<ImportanceChange>() << ImportanceChange(m_message,
                                                                                                                     m_message.m_isImportant ?
-                                                                                                                    RootItem::NotImportant :
-                                                                                                                    RootItem::Important));
+                                                                                                                      RootItem::NotImportant :
+                                                                                                                      RootItem::Important));
 
       emit requestMessageListReload(false);
+      m_message.m_isImportant = checked;
     }
   }
+}
+
+void MessagePreviewer::updateButtons() {
+  m_actionMarkRead->setEnabled(!m_message.m_isRead);
+  m_actionMarkUnread->setEnabled(m_message.m_isRead);
+}
+
+void MessagePreviewer::updateTitle() {
+  QFont fon = m_ui->m_lblTitle->font();
+  fon.setBold(!m_message.m_isRead);
+  m_ui->m_lblTitle->setFont(fon);
 }
 
 QString MessagePreviewer::prepareHtmlForMessage(const Message &message) {
