@@ -52,9 +52,6 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
     else if (box.clickedButton() == btn_download) {
       qApp->downloadManager()->download(url);
     }
-    else {
-
-    }
 
     btn_download->deleteLater();
     btn_open->deleteLater();
