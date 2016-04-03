@@ -18,6 +18,9 @@
 #include "services/owncloud/owncloudrecyclebin.h"
 
 #include "services/owncloud/owncloudserviceroot.h"
+#include "services/owncloud/network/owncloudnetworkfactory.h"
+
+#include <QNetworkReply>
 
 
 OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem *parent) : RecycleBin(parent) {
@@ -31,17 +34,13 @@ OwnCloudServiceRoot *OwnCloudRecycleBin::serviceRoot() {
 }
 
 bool OwnCloudRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  // TODO: proved zmenu online.
-  /*QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
-  TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
-                                                                                 status == RootItem::Unread ?
-                                                                                   UpdateArticle::SetToTrue :
-                                                                                   UpdateArticle::SetToFalse);
+  QStringList ids = getParentServiceRoot()->customIDSOfMessagesForItem(this);
+  QNetworkReply::NetworkError response = serviceRoot()->network()->markMessagesRead(status, ids);
 
-  if (serviceRoot()->network()->lastError() != QNetworkReply::NoError || response.updateStatus() != STATUS_OK) {
+  if (response != QNetworkReply::NoError) {
     return false;
   }
-  else {*/
+  else {
     return RecycleBin::markAsReadUnread(status);
-  //}
+  }
 }
