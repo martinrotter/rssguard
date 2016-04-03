@@ -2,174 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_GB">
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Another subscription</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Entered title is okay.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Entered title is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Entered url is okay.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Entered url is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockDialog</name>
-    <message>
-        <source>Adblock settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable Adblock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
-
-Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filter rules</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use only essential part of EasyList (for performance reasons)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rules writing guide</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockIcon</name>
-    <message>
-        <source>Adblock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show Adblock &amp;settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Blocked popup windows</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 with (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No content blocked</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Blocked some content - click to edit rule</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Adblock - up and running</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Adblock - not running</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Please write your rule here</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -277,29 +109,6 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DiscoverFeedsButton</name>
-    <message>
-        <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Not supported</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Given account does not support adding feeds.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1072,10 +881,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1310,19 +1115,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Current tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Add tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1339,14 +1132,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new web browser tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close current web browser tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1382,19 +1167,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Close all tabs except current one</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Close current tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1414,10 +1187,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open selected source articles in &amp;internal browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select &amp;next message</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1427,18 +1196,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable &amp;JavaScript</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable external &amp;plugins</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-load &amp;images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1479,10 +1236,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1871,14 +1624,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable mouse gestures</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Queue new tabs (with hyperlinks) after the active tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>no icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation type="unfinished"></translation>
@@ -2012,10 +1757,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Internal web browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2041,10 +1782,6 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2168,18 +1905,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable JavaScript</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable external plugins based on NPAPI</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-load images</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2285,14 +2010,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
- • previous web page (drag mouse left),
- • next web page (drag mouse right),
- • reload current web page (drag mouse up),
- • open new web browser tab (drag mouse down).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Use custom external web browser</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2347,27 +2064,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Notification position</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Bottom-left corner</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Top-left corner</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Bottom-right corner</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Top-right corner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2375,15 +2072,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Standard font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2395,23 +2084,31 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Background color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Change</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remember opened web browser tabs</source>
+        <source>Statusbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Statusbar</source>
+        <source>Enable D-Bus notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Change font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select new font for message viewer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (not available)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2575,10 +2272,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3094,9 +2787,33 @@ Go to application website to obtain it manually.</source>
     </message>
 </context>
 <context>
-    <name>LocationLineEdit</name>
+    <name>MessagePreviewer</name>
     <message>
-        <source>Website address goes here</source>
+        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch message importance</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3277,14 +2994,6 @@ Go to application website to obtain it manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Meesage without URL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Message &apos;%s&apos; does not contain URL.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Problem with starting external web browser</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3298,6 +3007,10 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Newspaper view</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3379,6 +3092,28 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3625,10 +3360,6 @@ Account ID: %1</source>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Adblock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Feed update progress bar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3694,11 +3425,6 @@ Unread news: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Web browser</source>
-        <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Displays main menu.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3707,11 +3433,28 @@ Unread news: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open new web browser tab.</source>
+        <source>Downloads</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>TimeSpinBox</name>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <source>Downloads</source>
+        <source> and </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3819,217 +3562,6 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>WebBrowser</name>
-    <message>
-        <source>Navigation panel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Zoom  </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No title</source>
-        <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease zoom.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset zoom to default.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Increase zoom.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Go back.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stop web page loading.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>unknown author</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>WebView</name>
-    <message>
-        <source>Reload web page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy link url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open link in new tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Follow link</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open image in new tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hyperlink</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy selection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copies current selection into the clipboard.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image to clipboard.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open this hyperlink in new tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in this tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open this image in this tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open link in external browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in external browser.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Print current web page.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>HTML web pages (*.html)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select destination file for web page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot save web page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Web page cannot be saved because destination file is not writtable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save target as...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download content from the hyperlink.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save page as...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save image to disk.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save image as...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>source_page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Search &quot;%1&quot; via Google...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

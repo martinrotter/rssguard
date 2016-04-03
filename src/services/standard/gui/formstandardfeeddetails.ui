@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>517</width>
+    <width>622</width>
     <height>442</height>
    </rect>
   </property>
@@ -96,27 +96,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="m_spinAutoUpdateInterval">
+        <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
          <property name="enabled">
           <bool>false</bool>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>130</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="suffix">
-          <string> minutes</string>
-         </property>
-         <property name="minimum">
-          <number>5</number>
-         </property>
-         <property name="maximum">
-          <number>240</number>
-         </property>
-         <property name="value">
-          <number>15</number>
          </property>
         </widget>
        </item>
@@ -308,16 +290,21 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>LabelWithStatus</class>
-   <extends>QWidget</extends>
-   <header>labelwithstatus.h</header>
-   <container>1</container>
+   <class>TimeSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>timespinbox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

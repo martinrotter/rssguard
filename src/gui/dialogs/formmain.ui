@@ -100,30 +100,6 @@
     <addaction name="m_actionCleanupDatabase"/>
     <addaction name="m_actionDownloadManager"/>
    </widget>
-   <widget class="QMenu" name="m_menuWebBrowser">
-    <property name="title">
-     <string>&amp;Web browser</string>
-    </property>
-    <widget class="QMenu" name="m_menuCurrentTab">
-     <property name="title">
-      <string>&amp;Current tab</string>
-     </property>
-    </widget>
-    <widget class="QMenu" name="m_menuWebSettings">
-     <property name="title">
-      <string>Settings</string>
-     </property>
-     <addaction name="m_actionWebEnableJavascript"/>
-     <addaction name="m_actionWebEnableExternalPlugins"/>
-     <addaction name="m_actionWebAutoloadImages"/>
-    </widget>
-    <addaction name="m_actionAddBrowser"/>
-    <addaction name="m_actionCloseCurrentTab"/>
-    <addaction name="m_actionCloseAllTabs"/>
-    <addaction name="separator"/>
-    <addaction name="m_menuWebSettings"/>
-    <addaction name="m_menuCurrentTab"/>
-   </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
      <string>Feeds &amp;&amp; categories</string>
@@ -160,7 +136,6 @@
      <string>&amp;Messages</string>
     </property>
     <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
-    <addaction name="m_actionOpenSelectedSourceArticlesInternally"/>
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
     <addaction name="m_actionSendMessageViaEmail"/>
     <addaction name="separator"/>
@@ -195,7 +170,6 @@
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
    <addaction name="m_menuRecycleBin"/>
-   <addaction name="m_menuWebBrowser"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>
@@ -250,39 +224,6 @@
    </property>
    <property name="shortcut">
     <string notr="true">F</string>
-   </property>
-  </action>
-  <action name="m_actionAddBrowser">
-   <property name="text">
-    <string>&amp;Add tab</string>
-   </property>
-   <property name="toolTip">
-    <string>Add new web browser tab.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+T</string>
-   </property>
-  </action>
-  <action name="m_actionCloseAllTabs">
-   <property name="text">
-    <string>&amp;Close all tabs except current one</string>
-   </property>
-   <property name="toolTip">
-    <string>Close all tabs except current one.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
-  </action>
-  <action name="m_actionCloseCurrentTab">
-   <property name="text">
-    <string>&amp;Close current tab</string>
-   </property>
-   <property name="toolTip">
-    <string>Close current web browser tab.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionUpdateAllItems">
@@ -393,14 +334,6 @@
   <action name="m_actionOpenSelectedMessagesInternally">
    <property name="text">
     <string>Open selected messages in &amp;internal browser</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
-  </action>
-  <action name="m_actionOpenSelectedSourceArticlesInternally">
-   <property name="text">
-    <string>Open selected source articles in &amp;internal browser</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -542,39 +475,6 @@
    </property>
    <property name="shortcut">
     <string notr="true">M</string>
-   </property>
-  </action>
-  <action name="m_actionWebEnableJavascript">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Enable &amp;JavaScript</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">J</string>
-   </property>
-  </action>
-  <action name="m_actionWebEnableExternalPlugins">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Enable external &amp;plugins</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">P</string>
-   </property>
-  </action>
-  <action name="m_actionWebAutoloadImages">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Auto-load &amp;images</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">I</string>
    </property>
   </action>
   <action name="m_actionReportBugGitHub">

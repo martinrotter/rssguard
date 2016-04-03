@@ -319,11 +319,11 @@ void FeedsView::markAllItemsRead() {
 }
 
 void FeedsView::openSelectedItemsInNewspaperMode() {
-  const QList<Message> messages = m_sourceModel->messagesForItem(selectedItem());
+  RootItem *selected_item = selectedItem();
+  const QList<Message> messages = m_sourceModel->messagesForItem(selected_item);
 
   if (!messages.isEmpty()) {
-    emit openMessagesInNewspaperView(messages);
-    QTimer::singleShot(150, this, SLOT(markSelectedItemRead()));
+    emit openMessagesInNewspaperView(selected_item, messages);
   }
 }
 
@@ -433,15 +433,9 @@ QMenu *FeedsView::initializeContextMenuOtherItem(RootItem *clicked_item) {
 }
 
 void FeedsView::setupAppearance() {
-#if QT_VERSION >= 0x050000
   // Setup column resize strategies.
   header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::Stretch);
   header()->setSectionResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeToContents);
-#else
-  // Setup column resize strategies.
-  header()->setResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::Stretch);
-  header()->setResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeToContents);
-#endif
 
   setUniformRowHeights(true);
   setAnimated(true);

@@ -38,19 +38,16 @@
 #include <QProcess>
 #include <QSettings>
 #include <QDebug>
-#include <QWebSettings>
 
 
-DownloadItem::DownloadItem(bool is_direct_download, QNetworkReply *reply, QWidget *parent) : QWidget(parent),
+DownloadItem::DownloadItem(QNetworkReply *reply, QWidget *parent) : QWidget(parent),
   m_ui(new Ui::DownloadItem), m_reply(reply),
   m_bytesReceived(0), m_requestFileName(false), m_startedSaving(false), m_finishedDownloading(false),
   m_gettingFileName(false), m_canceledFileSelect(false) {
   m_ui->setupUi(this);
   m_ui->m_btnTryAgain->hide();
 
-  m_requestFileName = is_direct_download ?
-                        qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool() :
-                        true;
+  m_requestFileName = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool();
 
   connect(m_ui->m_btnStopDownload, SIGNAL(clicked()), this, SLOT(stop()));
   connect(m_ui->m_btnOpenFile, SIGNAL(clicked()), this, SLOT(openFile()));
@@ -319,7 +316,7 @@ void DownloadItem::metaDataChanged() {
 void DownloadItem::downloadProgress(qint64 bytes_received, qint64 bytes_total) {
   QTime now = QTime::currentTime();
 
-  if (m_lastProgressTime.msecsTo(now) < 25) {
+  if (m_lastProgressTime.isValid() && m_lastProgressTime.msecsTo(now) < 25) {
     return;
   }
 
@@ -403,7 +400,7 @@ void DownloadItem::updateDownloadInfoLabel() {
     }
     else {
       info = tr("%1 of %2 - download completed").arg(DownloadManager::dataString(m_bytesReceived),
-                                                     DownloadManager::dataString(bytes_total));
+                                                     DownloadManager::dataString(m_bytesReceived));
     }
   }
 
@@ -502,17 +499,17 @@ int DownloadManager::downloadProgress() const {
   }
 }
 
-void DownloadManager::download(const QNetworkRequest &request, bool direct_download) {
+void DownloadManager::download(const QNetworkRequest &request) {
   if (!request.url().isEmpty()) {
-    handleUnsupportedContent(m_networkManager->get(request), direct_download);
+    handleUnsupportedContent(m_networkManager->get(request));
   }
 }
 
-void DownloadManager::download(const QUrl &url, bool direct_download) {
-  download(QNetworkRequest(url), direct_download);
+void DownloadManager::download(const QUrl &url) {
+  download(QNetworkRequest(url));
 }
 
-void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool direct_download) {
+void DownloadManager::handleUnsupportedContent(QNetworkReply *reply) {
   if (reply == NULL || reply->url().isEmpty()) {
     return;
   }
@@ -525,7 +522,7 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool direct
     return;
   }
 
-  DownloadItem *item = new DownloadItem(direct_download, reply, this);
+  DownloadItem *item = new DownloadItem(reply, this);
   addItem(item);
 
   if (!item->m_canceledFileSelect && qApp->settings()->value(GROUP(Downloads),
@@ -603,14 +600,12 @@ void DownloadManager::updateRow(DownloadItem *item) {
 
   int old_height = m_ui->m_viewDownloads->rowHeight(row);
   m_ui->m_viewDownloads->setRowHeight(row, qMax(old_height, item->minimumSizeHint().height()));
-  QWebSettings *globalSettings = QWebSettings::globalSettings();
 
   // Remove the item if:
   // a) It is not downloading and private browsing is enabled.
   // OR
   // b) Item is already downloaded and it should be remove from downloader list.
-  bool remove = (!item->downloading() && globalSettings->testAttribute(QWebSettings::PrivateBrowsingEnabled)) ||
-                (item->downloadedSuccessfully() && removePolicy() == DownloadManager::OnSuccessfullDownload);
+  bool remove = item->downloadedSuccessfully() && removePolicy() == DownloadManager::OnSuccessfullDownload;
 
   if (remove) {
     m_model->removeRow(row);
@@ -673,7 +668,7 @@ void DownloadManager::load() {
     bool done = settings->value(GROUP(Downloads), QString(Downloads::ItemDone).arg(i), true).toBool();
 
     if (!url.isEmpty() && !file_name.isEmpty()) {
-      DownloadItem *item = new DownloadItem(false, 0, this);
+      DownloadItem *item = new DownloadItem(0, this);
       item->m_output.setFileName(file_name);
       item->m_url = url;
 
@@ -828,8 +823,4 @@ QMimeData *DownloadModel::mimeData(const QModelIndexList &indexes) const {
 
   mimeData->setUrls(urls);
   return mimeData;
-}
-
-WebBrowser *DownloadManager::webBrowser() const {
-  return NULL;
 }

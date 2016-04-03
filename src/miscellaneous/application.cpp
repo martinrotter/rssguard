@@ -26,7 +26,6 @@
 #include "gui/statusbar.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
-#include "adblock/adblockmanager.h"
 
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardserviceroot.h"
@@ -220,7 +219,8 @@ void Application::showGuiMessage(const QString &title, const QString &message,
                                  bool show_at_least_msgbox, const QIcon &custom_icon,
                                  QObject *invokation_target, const char *invokation_slot) {
   if (Notification::areNotificationsEnabled()) {
-    if (Notification::areFancyNotificationsEnabled()) {
+#if defined(Q_OS_LINUX)
+    if (Notification::areDBusNotificationsEnabled()) {
       // Show OSD instead if tray icon bubble, depending on settings.
       if (custom_icon.isNull()) {
         notification()->notify(message, title, message_type, invokation_target, invokation_slot);
@@ -235,6 +235,12 @@ void Application::showGuiMessage(const QString &title, const QString &message,
       trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
       return;
     }
+#else
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
+      return;
+    }
+#endif
   }
 
   if (show_at_least_msgbox) {
@@ -275,11 +281,9 @@ void Application::onAboutToQuit() {
   system()->removeTrolltechJunkRegistryKeys();
 #endif
 
-  mainForm()->tabWidget()->quit();
   mainForm()->tabWidget()->feedMessageViewer()->quit();
   database()->saveDatabase();
   mainForm()->saveSize();
-  AdBlockManager::instance()->save();
 
   if (locked_safely) {
     // Application obtained permission to close in a safe way.

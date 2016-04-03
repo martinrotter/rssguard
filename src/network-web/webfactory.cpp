@@ -1,9 +1,25 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #include "network-web/webfactory.h"
 
 #include "miscellaneous/application.h"
 
 #include <QRegExp>
-#include <QWebSettings>
 #include <QProcess>
 #include <QUrl>
 #include <QDesktopServices>
@@ -13,19 +29,10 @@ QPointer<WebFactory> WebFactory::s_instance;
 
 WebFactory::WebFactory(QObject *parent)
   : QObject(parent), m_escapes(QMap<QString, QString>()),
-    m_deEscapes(QMap<QString, QString>()),
-    m_globalSettings(QWebSettings::globalSettings()) {
+    m_deEscapes(QMap<QString, QString>()) {
 }
 
 WebFactory::~WebFactory() {
-}
-
-void WebFactory::loadState() {
-  const Settings *settings = qApp->settings();
-
-  switchJavascript(settings->value(GROUP(Browser), SETTING(Browser::JavascriptEnabled)).toBool(), false);
-  switchImages(settings->value(GROUP(Browser), SETTING(Browser::ImagesEnabled)).toBool(), false);
-  switchPlugins(settings->value(GROUP(Browser), SETTING(Browser::PluginsEnabled)).toBool(), false);
 }
 
 bool WebFactory::sendMessageViaEmail(const Message &message) {
@@ -34,7 +41,7 @@ bool WebFactory::sendMessageViaEmail(const Message &message) {
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
 
     return QProcess::startDetached(QString("\"") + browser + QSL("\" ") + arguments.arg(message.m_title,
-                                                                                   stripTags(message.m_contents)));
+                                                                                        stripTags(message.m_contents)));
   }
   else {
     // Send it via mailto protocol.
@@ -66,51 +73,12 @@ bool WebFactory::openUrlInExternalBrowser(const QString &url) {
   }
 }
 
-void WebFactory::switchJavascript(bool enable, bool save_settings) {
-  if (save_settings) {
-    qApp->settings()->setValue(GROUP(Browser), Browser::JavascriptEnabled, enable);
-  }
-
-  m_globalSettings->setAttribute(QWebSettings::JavascriptEnabled, enable);
-  emit javascriptSwitched(enable);
-}
-
-void WebFactory::switchPlugins(bool enable, bool save_settings) {
-  if (save_settings) {
-    qApp->settings()->setValue(GROUP(Browser), Browser::PluginsEnabled, enable);
-  }
-
-  m_globalSettings->setAttribute(QWebSettings::PluginsEnabled, enable);
-  emit pluginsSwitched(enable);
-}
-
-void WebFactory::switchImages(bool enable, bool save_settings) {
-  if (save_settings) {
-    qApp->settings()->setValue(GROUP(Browser), Browser::ImagesEnabled, enable);
-  }
-
-  m_globalSettings->setAttribute(QWebSettings::AutoLoadImages, enable);
-  emit imagesLoadingSwitched(enable);
-}
-
 WebFactory *WebFactory::instance() {
   if (s_instance.isNull()) {
     s_instance = new WebFactory(qApp);
   }
 
   return s_instance;
-}
-
-bool WebFactory::javascriptEnabled() const {
-  return m_globalSettings->testAttribute(QWebSettings::JavascriptEnabled);
-}
-
-bool WebFactory::pluginsEnabled() const {
-  return m_globalSettings->testAttribute(QWebSettings::PluginsEnabled);
-}
-
-bool WebFactory::autoloadImages() const {
-  return m_globalSettings->testAttribute(QWebSettings::AutoLoadImages);
 }
 
 QString WebFactory::stripTags(QString text) {
@@ -146,7 +114,6 @@ QString WebFactory::deEscapeHtml(const QString &text) {
 }
 
 QString WebFactory::toSecondLevelDomain(const QUrl &url) {
-#if QT_VERSION >= 0x040800
   const QString top_level_domain = url.topLevelDomain();
   const QString url_host = url.host();
 
@@ -165,19 +132,6 @@ QString WebFactory::toSecondLevelDomain(const QUrl &url) {
   }
 
   return domain + top_level_domain;
-#else
-  QString domain = url.host();
-
-  if (domain.count(QL1C('.')) == 0) {
-    return QString();
-  }
-
-  while (domain.count(QL1C('.')) != 1) {
-    domain = domain.mid(domain.indexOf(QL1C('.')) + 1);
-  }
-
-  return domain;
-#endif
 }
 
 void WebFactory::generetaEscapes() {

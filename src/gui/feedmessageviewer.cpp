@@ -29,7 +29,6 @@
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
-#include "network-web/webbrowser.h"
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
 #include "gui/statusbar.h"
@@ -37,6 +36,7 @@
 #include "gui/messagebox.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
+#include "gui/messagepreviewer.h"
 #include "gui/dialogs/formdatabasecleanup.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
@@ -64,7 +64,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
-    m_messagesBrowser(new WebBrowser(this)) {
+    m_messagesBrowser(new MessagePreviewer(this)) {
   initialize();
   initializeViews();
   loadMessageViewerFonts();
@@ -116,12 +116,14 @@ void FeedMessageViewer::loadSize() {
                                                                         default_msg_section_size).toInt());
 }
 
-void FeedMessageViewer::loadMessageViewerFonts() {
-  const Settings *settings = qApp->settings();
-  QWebSettings *view_settings = m_messagesBrowser->view()->settings();
-  
-  view_settings->setFontFamily(QWebSettings::StandardFont, settings->value(GROUP(Messages),
-                                                                           SETTING(Messages::PreviewerFontStandard)).toString());
+void FeedMessageViewer::loadMessageViewerFonts() {  
+  m_messagesBrowser->reloadFontSettings();
+
+  // TODO: TODO
+  //QWebEngineSettings *view_settings = m_messagesBrowser->view()->settings();
+
+  //view_settings->setFontFamily(QWebEngineSettings::StandardFont, settings->value(GROUP(Messages),
+  //                                                                         SETTING(Messages::PreviewerFontStandard)).toString());
 }
 
 void FeedMessageViewer::quit() {
@@ -192,7 +194,6 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
   form_main->m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
-  form_main->m_ui->m_actionOpenSelectedSourceArticlesInternally->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
   form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages->setEnabled(atleast_one_message_selected);
 }
@@ -238,11 +239,13 @@ void FeedMessageViewer::createConnections() {
   connect(m_toolBarMessages, SIGNAL(messageFilterChanged(MessagesModel::MessageHighlighter)), m_messagesView, SLOT(filterMessages(MessagesModel::MessageHighlighter)));
   
   // Message changers.
-  connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));
-  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
-  connect(m_messagesView, SIGNAL(currentMessagesRemoved()), this, SLOT(updateMessageButtonsAvailability()));
-  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(updateMessageButtonsAvailability()));
-  
+  connect(m_messagesView, SIGNAL(currentMessageRemoved()), m_messagesBrowser, SLOT(clear()));
+  connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), m_messagesBrowser, SLOT(loadMessage(Message,RootItem*)));
+  connect(m_messagesView, SIGNAL(currentMessageRemoved()), this, SLOT(updateMessageButtonsAvailability()));
+  connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), this, SLOT(updateMessageButtonsAvailability()));
+  connect(m_messagesBrowser, SIGNAL(requestMessageListReload(bool)), m_messagesView, SLOT(reloadSelections(bool)));
+
+
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(locked()), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(unlocked()), this, SLOT(updateFeedButtonsAvailability()));
@@ -252,18 +255,16 @@ void FeedMessageViewer::createConnections() {
   
   // State of many messages is changed, then we need
   // to reload selections.
-  connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)), m_messagesView, SLOT(reloadSelections(bool)));
+  connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)),
+          m_messagesView, SLOT(reloadSelections(bool)));
   connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateFinished()), this, SLOT(onFeedsUpdateFinished()));
   connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateStarted()), this, SLOT(onFeedsUpdateStarted()));
 
   // Message openers.
-  connect(m_messagesView, SIGNAL(openLinkMiniBrowser(QString)), m_messagesBrowser, SLOT(navigateToUrl(QString)));
-  connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
-  connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
-          form_main->m_ui->m_tabWidget, SLOT(addLinkedBrowser(QString)));
-  connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
+  connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
+          m_messagesView, SLOT(createNewspaperView(RootItem*,QList<Message>)));
+  connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
+          m_messagesView, SLOT(createNewspaperView(RootItem*,QList<Message>)));
   
   // Toolbar forwardings.
   connect(form_main->m_ui->m_actionAddFeedIntoSelectedAccount, SIGNAL(triggered()),
@@ -282,8 +283,6 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesUnread()));
   connect(form_main->m_ui->m_actionOpenSelectedSourceArticlesExternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesExternally()));
-  connect(form_main->m_ui->m_actionOpenSelectedSourceArticlesInternally,
-          SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
   connect(form_main->m_ui->m_actionOpenSelectedMessagesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
   connect(form_main->m_ui->m_actionSendMessageViaEmail,
@@ -351,10 +350,7 @@ void FeedMessageViewer::initialize() {
   m_toolBarMessages->setMovable(false);
   m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBarMessages->loadChangeableActions();
-  
-  // Finish web/message browser setup.
-  m_messagesBrowser->setNavigationBarVisible(false);
-  
+
   // Now refresh visual setup.
   refreshVisualProperties();
 }

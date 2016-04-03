@@ -15,30 +15,44 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef LOCATIONLINEEDIT_H
-#define LOCATIONLINEEDIT_H
+#ifndef NEWSPAPERPREVIEWER_H
+#define NEWSPAPERPREVIEWER_H
 
-#include "gui/baselineedit.h"
+#include <QWidget>
+
+#include "gui/tabcontent.h"
+
+#include "ui_newspaperpreviewer.h"
+
+#include "core/message.h"
+#include "services/abstract/rootitem.h"
+
+#include <QPointer>
 
 
-class WebBrowser;
-class GoogleSuggest;
+namespace Ui {
+  class NewspaperPreviewer;
+}
 
-class LocationLineEdit : public BaseLineEdit {
+class RootItem;
+
+class NewspaperPreviewer : public TabContent {
     Q_OBJECT
 
   public:
-    // Constructors and destructors.
-    explicit LocationLineEdit(QWidget *parent = 0);
-    virtual ~LocationLineEdit();
+    explicit NewspaperPreviewer(RootItem *root, QList<Message> messages, QWidget *parent = 0);
+    virtual ~NewspaperPreviewer();
 
-  protected:
-    void focusOutEvent(QFocusEvent *event);
-    void mousePressEvent(QMouseEvent *event);
+  private slots:
+    void showMoreMessages();
+
+  signals:
+    void requestMessageListReload(bool mark_current_as_read);
 
   private:
-    bool m_mouseSelectsAllText;
-    GoogleSuggest *m_googleSuggest;
+    QScopedPointer<Ui::NewspaperPreviewer> m_ui;
+    QPointer<RootItem> m_root;
+    QList<Message> m_messages;
 };
 
-#endif // LOCATIONLINEEDIT_H
+#endif // NEWSPAPERPREVIEWER_H

@@ -18,7 +18,7 @@
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
 
-#include <QWidget>
+#include <QObject>
 
 #include <QSystemTrayIcon>
 
@@ -27,15 +27,18 @@
 class QDBusInterface;
 #endif
 
-class Notification : public QWidget {
+// Wraps D-Bus notifications.
+class Notification : public QObject {
     Q_OBJECT
 
   public:
     // Constructors.
-    explicit Notification();
+    explicit Notification(QObject *parent = 0);
     virtual ~Notification();
 
-    static bool areFancyNotificationsEnabled();
+#if defined(Q_OS_LINUX)
+    static bool areDBusNotificationsEnabled();
+#endif
     static bool areNotificationsEnabled();
 
   public slots:
@@ -48,42 +51,18 @@ class Notification : public QWidget {
     // Cancels display of the notification.
     void cancel();
 
-    // Loads settings.
-    void loadSettings();
-
 #if defined(Q_OS_LINUX)
   public slots:
     void notificationClosed(uint id, uint reason);
 #endif
 
   protected:
-    void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void enterEvent(QEvent *event);
-    void leaveEvent(QEvent *event);
     void timerEvent(QTimerEvent *event);
 
-  signals:
-    void clicked();
-
   private:
-    void setupWidget();
-    void updateGeometries();
-
-    QColor m_backgroundColor;
     QString m_title;
     QString m_text;
     QPixmap m_icon;
-
-    // Defaults to -1, which means "default" (primary) screen.
-    int m_screen;
-    Qt::Corner m_position;
-
-    // Is calculated according to contents.
-    int m_width;
-    int m_height;
-    int m_padding;
-    int m_widgetMargin;
     int m_timerId;
 
     QObject *m_clickTarget;

@@ -25,7 +25,6 @@
 class QProgressBar;
 class PlainToolButton;
 class QLabel;
-class AdBlockIcon;
 
 class StatusBar : public QStatusBar, public BaseBar {
     Q_OBJECT
@@ -66,9 +65,6 @@ class StatusBar : public QStatusBar, public BaseBar {
 
     QLabel *m_lblProgressDownload;
     QAction *m_lblProgressDownloadAction;
-
-    AdBlockIcon* m_adBlockIcon;
-    QAction *m_adBlockIconAction;
 };
 
 #endif // STATUSBAR_H

@@ -59,8 +59,6 @@ class MessagesView : public QTreeView {
 
     // Message manipulators.
     void openSelectedSourceMessagesExternally();
-    void openSelectedSourceMessagesInternally();
-    void openSelectedSourceMessagesInternallyNoNewTab();
     void openSelectedMessagesInternally();
     void sendSelectedMessageViaEmail();
 
@@ -80,6 +78,8 @@ class MessagesView : public QTreeView {
     void searchMessages(const QString &pattern);
     void filterMessages(MessagesModel::MessageHighlighter filter);
 
+    void createNewspaperView(RootItem *selected_item, const QList<Message> &messages);
+
   private slots:
     // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);
@@ -94,11 +94,11 @@ class MessagesView : public QTreeView {
     // Link/message openers.
     void openLinkNewTab(const QString &link);
     void openLinkMiniBrowser(const QString &link);
-    void openMessagesInNewspaperView(const QList<Message> &messages);
+    void openMessagesInNewspaperView(RootItem *root, const QList<Message> &messages);
 
     // Notify others about message selections.
-    void currentMessagesChanged(const QList<Message> &messages);
-    void currentMessagesRemoved();
+    void currentMessageChanged(const Message &message, RootItem *root);
+    void currentMessageRemoved();
 
   private:
     // Creates needed connections.

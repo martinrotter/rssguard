@@ -1,175 +1,5 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="cs_CZ" version="2.1">
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Přidat skupinu filtrů</translation>
-    </message>
-    <message>
-        <source>Another subscription</source>
-        <translation>Vlastní seznam filtrů</translation>
-    </message>
-    <message>
-        <source>Entered title is okay.</source>
-        <translation>Zadaný název je v pořádku.</translation>
-    </message>
-    <message>
-        <source>Entered title is empty.</source>
-        <translation>Zadaný název je prázdný.</translation>
-    </message>
-    <message>
-        <source>Entered url is okay.</source>
-        <translation>Zadaná adresa je v pořádku.</translation>
-    </message>
-    <message>
-        <source>Entered url is empty.</source>
-        <translation>Zadaná adresa je prázdná.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Nadpis</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Adresa</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Vlastní pravidla</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockDialog</name>
-    <message>
-        <source>Adblock settings</source>
-        <translation>Nastavení Adblocku</translation>
-    </message>
-    <message>
-        <source>Enable Adblock</source>
-        <translation>Povolit Adblock</translation>
-    </message>
-    <message>
-        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
-
-Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
-        <translation>Berte v potaz, že Adblock může tuto aplikaci podstatně zpomalit, pokud si aktivujete veliké skupiny filtrů. Příliš mnoho pravidel škodí výkonu. Také se ujistěte, že po významných úpravach nastavení Adblocku restartujete aplikaci. Adblock je znám tím, že může žrát hodně paměti.
-
-Berte také na paměti, že některé prostředky webových stránek jsou interním webovým prohlížečem cachovány.</translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation>Možnosti</translation>
-    </message>
-    <message>
-        <source>Filter rules</source>
-        <translation>Filtrovat pravidla</translation>
-    </message>
-    <message>
-        <source>Use only essential part of EasyList (for performance reasons)</source>
-        <translation>Použít pouze základní části EasyListu (z výkonnostních důvodů)</translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation>Přidat pravidlo</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Smazat pravidlo</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Přidat skupinu filtrů</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Smazat skupinu filtrů</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Aktualizovat skupinu filtrů</translation>
-    </message>
-    <message>
-        <source>Rules writing guide</source>
-        <translation>Jak psát filtry</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockIcon</name>
-    <message>
-        <source>Adblock</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Show Adblock &amp;settings</source>
-        <translation>Zobrazit &amp;nastavení Adblocku</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Zakázat pro %1</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Zakázat pouze pro tuto stránku</translation>
-    </message>
-    <message>
-        <source>Blocked popup windows</source>
-        <translation>Zablokovaná vyskakovací okna</translation>
-    </message>
-    <message>
-        <source>%1 with (%2)</source>
-        <translation>%1 skrze (%2)</translation>
-    </message>
-    <message>
-        <source>No content blocked</source>
-        <translation>Nic se aktuálně neblokuje</translation>
-    </message>
-    <message>
-        <source>Blocked some content - click to edit rule</source>
-        <translation>Nějaký obsah zablokován - klikněte pro editaci pravidla</translation>
-    </message>
-    <message>
-        <source>Adblock - up and running</source>
-        <translation>Adblock - jsem vzhůru a makám</translation>
-    </message>
-    <message>
-        <source>Adblock - not running</source>
-        <translation>Adblock - nemakám</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Nelze načíst sadu pravidel!</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Please write your rule here</source>
-        <translation>Zadejte své pravidlo sem</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (aktualizováno)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (chyba: %2)</translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation>Přidat pravidlo</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Smazat  pravidlo</translation>
-    </message>
-</context>
-<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -269,38 +99,15 @@ Berte také na paměti, že některé prostředky webových stránek jsou intern
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Vybraná databáze doposud neexistuje, ale bude vytvořena při prvním použití.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"/>
+        <translation>MySQL databáze není k dispozici</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>DiscoverFeedsButton</name>
-    <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Tato stránka bohužel neobsahuje žádné kanály.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanál.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanály.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanálů.</numerusform></translation>
-    </message>
-    <message>
-        <source>Not supported</source>
-        <translation>Nepodporováno</translation>
-    </message>
-    <message>
-        <source>Given account does not support adding feeds.</source>
-        <translation>Tento účet nepodporuje přidávání kanálů.</translation>
+        <translation>%1 nemůže použít MySQL databází, není k dispozici. %1 se nyní přepne pro použití SQLite databáze. Pokud chcete opět použít MySQL, přepněte si to v nastavení.</translation>
     </message>
 </context>
 <context>
@@ -1024,11 +831,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Vynutit aktualizace kanálů na straně serveru</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Zapnutí této položky může výrazně zpomalit aktualizaci kanálů.</translation>
     </message>
 </context>
 <context>
@@ -1056,10 +863,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation>Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minut</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1154,7 +957,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Vynutit aktualizace kanálů na straně serveru.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1182,11 +985,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Zapnutí této položky může výrazně zpomalit aktualizaci kanálů.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Je vyžadována minimálně verze %1.</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
@@ -1198,7 +1001,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL vašeho ownCloud serveru, bez jakýchkoliv API koncovek.</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -1210,19 +1013,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový ownCloud News účet</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Upravit existující účet ownCloudNews</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Vybraný server pro ownCloud News běží na nepodporované verzi (%1). Je třeba minimálně verze %2.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Vybraný ownCloud News server běží na nepodporované verzi.</translation>
     </message>
     <message>
         <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
@@ -1296,20 +1099,8 @@ or this functionality is not implemented yet.</source>
         <translation>Na&amp;stavení</translation>
     </message>
     <message>
-        <source>&amp;Current tab</source>
-        <translation>&amp;Aktivní panel</translation>
-    </message>
-    <message>
-        <source>&amp;Add tab</source>
-        <translation>&amp;Přidat panel</translation>
-    </message>
-    <message>
         <source>&amp;Messages</source>
         <translation>&amp;Zprávy</translation>
-    </message>
-    <message>
-        <source>&amp;Web browser</source>
-        <translation>&amp;Webovy prohlížeč</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
@@ -1326,14 +1117,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Switch fullscreen mode.</source>
         <translation>Přepnout režim celé obrazovky.</translation>
-    </message>
-    <message>
-        <source>Add new web browser tab.</source>
-        <translation>Přidat nový panel webového prohlížeče.</translation>
-    </message>
-    <message>
-        <source>Close current web browser tab.</source>
-        <translation>Zavřít aktuální panel webového prohlížeče..</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -1368,20 +1151,8 @@ or this functionality is not implemented yet.</source>
         <translation>Sma&amp;zat vybrané zprávy</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Nastavení</translation>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
         <translation>Skryje či zobrazí hlavní menu.</translation>
-    </message>
-    <message>
-        <source>&amp;Close all tabs except current one</source>
-        <translation>&amp;Zavřít všechny taby až na ten aktivní</translation>
-    </message>
-    <message>
-        <source>&amp;Close current tab</source>
-        <translation>&amp;Zavřít aktivní tab</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
@@ -1400,10 +1171,6 @@ or this functionality is not implemented yet.</source>
         <translation>&amp;Otevřít vybrané krátké články v interním prohlížeči</translation>
     </message>
     <message>
-        <source>Open selected source articles in &amp;internal browser</source>
-        <translation>&amp;Otevřít vybrané zdrojové články v interním prohlížeči</translation>
-    </message>
-    <message>
         <source>Select &amp;next message</source>
         <translation>Vybrat &amp;další zprávu</translation>
     </message>
@@ -1414,18 +1181,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Check for &amp;updates</source>
         <translation>Ověřit dostupnost &amp;aktualizace</translation>
-    </message>
-    <message>
-        <source>Enable &amp;JavaScript</source>
-        <translation>Povolit &amp;JavaScript</translation>
-    </message>
-    <message>
-        <source>Enable external &amp;plugins</source>
-        <translation>Povolit externí &amp;pluginy</translation>
-    </message>
-    <message>
-        <source>Auto-load &amp;images</source>
-        <translation>Automaticky načítat &amp;obrázky</translation>
     </message>
     <message>
         <source>Show/hide</source>
@@ -1466,10 +1221,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>&amp;Feed/message list headers</source>
         <translation>&amp;Hlavičky seznamů zpráv/kanálů</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one.</source>
-        <translation>Zavřít všechny taby kromě aktivního.</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1669,11 +1420,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation type="unfinished"/>
+        <translation>Zastavit probíhající aktualizaci kanálů</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Žádná možná akce</translation>
     </message>
 </context>
 <context>
@@ -1857,14 +1608,6 @@ or this functionality is not implemented yet.</source>
         <translation>Otevírat nové panely poklepáním na panelový pruh</translation>
     </message>
     <message>
-        <source>Enable mouse gestures</source>
-        <translation>Povolit gesta myši</translation>
-    </message>
-    <message>
-        <source>Queue new tabs (with hyperlinks) after the active tab</source>
-        <translation>Zařadit nově otevíraný panel za ten aktuální</translation>
-    </message>
-    <message>
         <source>no icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation>žádné téma ikon</translation>
@@ -2010,10 +1753,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>paměťová databáze přepnuta</translation>
     </message>
     <message>
-        <source>Internal web browser</source>
-        <translation>Interní webový prohlížeč</translation>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Externí webový prohlížeč</translation>
     </message>
@@ -2040,10 +1779,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <source>Auto-update all feeds every</source>
         <translation>Auto-aktualizovat všechny kanály každých</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minut</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -2166,18 +1901,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Spustit %1 při spuštění operačního systému</translation>
     </message>
     <message>
-        <source>Enable JavaScript</source>
-        <translation>Povolit JavaScript</translation>
-    </message>
-    <message>
-        <source>Enable external plugins based on NPAPI</source>
-        <translation>Povolit externí NPAPI pluginy</translation>
-    </message>
-    <message>
-        <source>Auto-load images</source>
-        <translation>Načítat obrázky ve webových stránkách</translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pokud bude nezaškrtnuto, pak se použije výchozí systémový webový prohlížeč.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2285,18 +2008,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Pracovní databáze</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
- • previous web page (drag mouse left),
- • next web page (drag mouse right),
- • reload current web page (drag mouse up),
- • open new web browser tab (drag mouse down).</source>
-        <translation>Gesta myši se aktivují kliknutím prostředního tlačítka myši, mezi gesta patří:
- • předchozí stránka (táhnutí myši vlevo),
- • následující stránka (táhnutí myši vpravo),
- • obnovení aktuální stránky (táhnutí myši nahoru),
- • otevření nového tabu (táhnutí myši dolu).</translation>
-    </message>
-    <message>
         <source>Use custom external web browser</source>
         <translation>Použít vlastní webový prohlížeč</translation>
     </message>
@@ -2353,44 +2064,16 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Pracovní databáze je ok.</translation>
     </message>
     <message>
-        <source>Notification position</source>
-        <translation>Pozice notifikací</translation>
-    </message>
-    <message>
         <source>(Tray icon is not available.)</source>
         <translation>(Tray ikona není dostupná.)</translation>
-    </message>
-    <message>
-        <source>Bottom-left corner</source>
-        <translation>Levý-dolní roh</translation>
-    </message>
-    <message>
-        <source>Top-left corner</source>
-        <translation>Levý-horní roh</translation>
-    </message>
-    <message>
-        <source>Bottom-right corner</source>
-        <translation>Pravý-dolní roh</translation>
-    </message>
-    <message>
-        <source>Top-right corner</source>
-        <translation>Pravý-horní roh</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
         <translation>Písma interního prohlížeče zpráv</translation>
     </message>
     <message>
-        <source>Standard font</source>
-        <translation>Standardní písmo</translation>
-    </message>
-    <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Mějte na paměti, že rychlost a latence použitého MySQL serveru těžce ovlivňuje svižnost aplikace. Použití pomalého databázového spojení může vést ke špatnému výkonu aplikace např. při prohlížení zpráv.</translation>
-    </message>
-    <message>
-        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
-        <translation>Moderní notifikace (Toto používá nativní notifikace přes D-Bus, jsou-li dostupné.)</translation>
     </message>
     <message>
         <source>E-mail</source>
@@ -2401,24 +2084,32 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Povolit notifikace</translation>
     </message>
     <message>
-        <source>Background color</source>
-        <translation>Barva pozadí</translation>
-    </message>
-    <message>
-        <source>Change</source>
-        <translation>Změnit</translation>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"/>
+        <translation>Při začátku stahování otevírat správce stahování</translation>
     </message>
     <message>
         <source>Statusbar</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable D-Bus notifications</source>
+        <translation>Povolit D-Bus notifikace</translation>
+    </message>
+    <message>
+        <source>&amp;Change font</source>
+        <translation>&amp;Změnit písmo</translation>
+    </message>
+    <message>
+        <source>Font preview</source>
+        <translation>Náhled písma</translation>
+    </message>
+    <message>
+        <source>Select new font for message viewer</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (not available)</source>
+        <translation>(není k dispozici)</translation>
     </message>
 </context>
 <context>
@@ -2582,10 +2273,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation>Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minut</translation>
     </message>
     <message>
         <source>Title</source>
@@ -3101,10 +2788,34 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
 </context>
 <context>
-    <name>LocationLineEdit</name>
+    <name>MessagePreviewer</name>
     <message>
-        <source>Website address goes here</source>
-        <translation>Adresu webové stránky zadejte sem</translation>
+        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3284,14 +2995,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <translation>Kontextové menu pro zprávy</translation>
     </message>
     <message>
-        <source>Meesage without URL</source>
-        <translation>Zpráva bez URL</translation>
-    </message>
-    <message>
-        <source>Message &apos;%s&apos; does not contain URL.</source>
-        <translation>Zpráva &apos;%s&apos; neobsahuje URL.</translation>
-    </message>
-    <message>
         <source>Problem with starting external web browser</source>
         <translation>PRoblém s externím webovým prohlížečem</translation>
     </message>
@@ -3306,6 +3009,10 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>External e-mail client could not be started.</source>
         <translation>Externí e-mailový klient nemohl být úspěšně spuštěn.</translation>
+    </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation>Novinový náhled</translation>
     </message>
 </context>
 <context>
@@ -3386,6 +3093,25 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
+        <translation>neznámý obsah</translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3642,10 +3368,6 @@ ID účtu: %1</translation>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Adblock</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Feed update progress bar</source>
         <translation type="unfinished"/>
     </message>
@@ -3663,7 +3385,7 @@ ID účtu: %1</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Mezera</translation>
     </message>
 </context>
 <context>
@@ -3712,11 +3434,6 @@ Nepřečtené zprávy: %2</translation>
         <translation>Procházet kanály a zprávy</translation>
     </message>
     <message>
-        <source>Web browser</source>
-        <extracomment>Web browser default tab title.</extracomment>
-        <translation>Webový prohlížeč</translation>
-    </message>
-    <message>
         <source>Displays main menu.</source>
         <translation>ZObrazí hlavní menu.</translation>
     </message>
@@ -3725,12 +3442,23 @@ Nepřečtené zprávy: %2</translation>
         <translation>Hlavní menu</translation>
     </message>
     <message>
-        <source>Open new web browser tab.</source>
-        <translation>Otevřít nový tab webového prohlížeče.</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Stahování</translation>
+    </message>
+</context>
+<context>
+    <name>TimeSpinBox</name>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source> and </source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3843,217 +3571,6 @@ Poslední přihlášení: %5</translation>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
-    </message>
-</context>
-<context>
-    <name>WebBrowser</name>
-    <message>
-        <source>Navigation panel</source>
-        <translation>Navigační panel</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>Zpět</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>Vpřed</translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation>Obnovit</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Zastavit</translation>
-    </message>
-    <message>
-        <source>Zoom  </source>
-        <translation>Přiblížení</translation>
-    </message>
-    <message>
-        <source>No title</source>
-        <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>Bez názvu</translation>
-    </message>
-    <message>
-        <source>Decrease zoom.</source>
-        <translation>Oddálit aktivní webovou stránku.</translation>
-    </message>
-    <message>
-        <source>Reset zoom to default.</source>
-        <translation>Obnovit zoom na 100%.</translation>
-    </message>
-    <message>
-        <source>Increase zoom.</source>
-        <translation>Přiblížit aktivní webovou stránku.</translation>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation>Napsal </translation>
-    </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Novinový náhled</translation>
-    </message>
-    <message>
-        <source>Go back.</source>
-        <translation>Jít zpět.</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Jít vpřed.</translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation>Opět načíst aktuální webovou stránku.</translation>
-    </message>
-    <message>
-        <source>Stop web page loading.</source>
-        <translation>Zastavit načítání aktuální webové stránky.</translation>
-    </message>
-    <message>
-        <source>unknown author</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>WebView</name>
-    <message>
-        <source>Reload web page</source>
-        <translation>Obnovit stránku</translation>
-    </message>
-    <message>
-        <source>Copy link url</source>
-        <translation>Kopírovat adresu odkazu</translation>
-    </message>
-    <message>
-        <source>Copy image</source>
-        <translation>Kopírovat obrázek</translation>
-    </message>
-    <message>
-        <source>Copy image url</source>
-        <translation>Kopírovat adresu obrázku</translation>
-    </message>
-    <message>
-        <source>Open link in new tab</source>
-        <translation>Otevřít odkaz v novém panelu</translation>
-    </message>
-    <message>
-        <source>Follow link</source>
-        <translation>Přejít</translation>
-    </message>
-    <message>
-        <source>Open image in new tab</source>
-        <translation>Otevřít obrázek v novém panelu</translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation>Webový prohlížeč</translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation>Obrázek</translation>
-    </message>
-    <message>
-        <source>Hyperlink</source>
-        <translation>Hypertextový odkaz</translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation>Opět načíst aktuální webovou stránku.</translation>
-    </message>
-    <message>
-        <source>Copy selection</source>
-        <translation>Kopírovat výběr</translation>
-    </message>
-    <message>
-        <source>Copies current selection into the clipboard.</source>
-        <translation>Zkopíruje aktuální výběr do schránky.</translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard.</source>
-        <translation>Kopírovat adresu odkazu do schránky.</translation>
-    </message>
-    <message>
-        <source>Copy image to clipboard.</source>
-        <translation>Kopírovat obrázek do schránky.</translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard.</source>
-        <translation>Kopírovat adresu obrázku do schránky.</translation>
-    </message>
-    <message>
-        <source>Open this hyperlink in new tab.</source>
-        <translation>Otevřít tento odkaz v novém tabu.</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in this tab.</source>
-        <translation>Otevřít tento odkaz v aktuálním tabu.</translation>
-    </message>
-    <message>
-        <source>Open this image in this tab.</source>
-        <translation>Otevřít tento obrázek v aktuálním tabu.</translation>
-    </message>
-    <message>
-        <source>Open link in external browser</source>
-        <translation>Otevřít odkaz v externím prohlížeči</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in external browser.</source>
-        <translation>Otevřít hypertextový odkaz v externím prohlížeči.</translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation>Vytisknout</translation>
-    </message>
-    <message>
-        <source>Print current web page.</source>
-        <translation>Vytisknout aktuální webovou stránku.</translation>
-    </message>
-    <message>
-        <source>HTML web pages (*.html)</source>
-        <translation>HTML stránky (*.html)</translation>
-    </message>
-    <message>
-        <source>Select destination file for web page</source>
-        <translation>Zvolte cílový soubor pro webovou stránku</translation>
-    </message>
-    <message>
-        <source>Cannot save web page</source>
-        <translation>Nelze uložit webovou stránku</translation>
-    </message>
-    <message>
-        <source>Web page cannot be saved because destination file is not writtable.</source>
-        <translation>Webová stránka nemůže být uložena, protože do cíle nelze zapisovat.</translation>
-    </message>
-    <message>
-        <source>Save target as...</source>
-        <translation>Uložit cíl jako...</translation>
-    </message>
-    <message>
-        <source>Download content from the hyperlink.</source>
-        <translation>Stáhnout cíl odkazu.</translation>
-    </message>
-    <message>
-        <source>Save page as...</source>
-        <translation>Uložit stránku jako...</translation>
-    </message>
-    <message>
-        <source>Save image to disk.</source>
-        <translation>Uloží obrázek na disk.</translation>
-    </message>
-    <message>
-        <source>Save image as...</source>
-        <translation>Uložit obrázek jako...</translation>
-    </message>
-    <message>
-        <source>source_page</source>
-        <translation>zdrojova_stranka</translation>
-    </message>
-    <message>
-        <source>Search &quot;%1&quot; via Google...</source>
-        <translation>Hledat &quot;%1&quot; přes Google...</translation>
     </message>
 </context>
 </TS>

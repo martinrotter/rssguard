@@ -162,12 +162,7 @@ void MessagesModel::setupHeaderData() {
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
   Q_UNUSED(index)
 
-#if QT_VERSION >= 0x050000
   return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
-#else
-
-  return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable;
-#endif
 }
 
 QVariant MessagesModel::data(int row, int column, int role) const {

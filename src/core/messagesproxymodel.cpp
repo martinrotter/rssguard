@@ -70,13 +70,10 @@ QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_
 }
 
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
-  // FIXME: V případě hodně položke je to pomalé.
-  // V případě, že do messagelistu budu zobrazovat řekněme
-  // více než 4 000 zpráv, tak tady vracet automaticky false,
-  // neprovádět skutečně porovnávání.
   Q_UNUSED(left)
   Q_UNUSED(right)
 
+  // NOTE: Porovnání se provádí již při dotazu v databázi, netřeba řešit zde.
   return false;
 }
 

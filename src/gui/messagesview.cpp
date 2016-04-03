@@ -24,6 +24,7 @@
 #include "network-web/webfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
+#include "gui/newspaperpreviewer.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
 
 #include <QKeyEvent>
@@ -51,7 +52,7 @@ MessagesView::~MessagesView() {
 }
 
 void MessagesView::createConnections() {
-  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesInternallyNoNewTab()));
+  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesExternally()));
 
   // Adjust columns when layout gets changed.
   connect(header(), SIGNAL(geometriesChanged()), this, SLOT(adjustColumns()));
@@ -96,7 +97,7 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   else {
     // Messages were probably removed from the model, nothing can
     // be selected and no message can be displayed.
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
 }
 
@@ -149,7 +150,6 @@ void MessagesView::initializeContextMenu() {
   m_contextMenu->addActions(QList<QAction*>() <<
                             qApp->mainForm()->m_ui->m_actionSendMessageViaEmail <<
                             qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
-                            qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesInternally <<
                             qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally <<
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead <<
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
@@ -181,12 +181,6 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
       break;
     }
 
-    case Qt::MiddleButton: {
-      // Open selected messages in new tab on mouse middle button click.
-      openSelectedSourceMessagesInternally();
-      break;
-    }
-
     default:
       break;
   }
@@ -208,12 +202,13 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
       // Set this message as read only if current item
       // wasn't changed by "mark selected messages unread" action.
       m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::Read);
+      message.m_isRead = true;
     }
 
-    emit currentMessagesChanged(QList<Message>() << message);
+    emit currentMessageChanged(message, m_sourceModel->loadedItem());
   }
   else {
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()) {
@@ -231,13 +226,11 @@ void MessagesView::loadItem(RootItem *item) {
   m_sourceModel->setSort(col, ord);
   m_sourceModel->loadMessages(item);
 
-#if QT_VERSION >= 0x050000
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
   // BUG: Qt 5 is probably bugged here. Selections
   // should be cleared automatically when SQL model is reset.
-  emit currentMessagesRemoved();
-#endif
+  emit currentMessageRemoved();
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {
@@ -258,34 +251,6 @@ void MessagesView::openSelectedSourceMessagesExternally() {
   }
 }
 
-void MessagesView::openSelectedSourceMessagesInternally() {
-  foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
-    const Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
-
-    if (message.m_url.isEmpty()) {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Meesage without URL"),
-                       tr("Message '%s' does not contain URL.").arg(message.m_title));
-    }
-    else {
-      emit openLinkNewTab(message.m_url);
-    }
-  }
-
-  // Finally, mark opened messages as read.
-  if (!selectionModel()->selectedRows().isEmpty()) {
-    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
-  }
-}
-
-void MessagesView::openSelectedSourceMessagesInternallyNoNewTab() {
-  if (selectionModel()->selectedRows().size() == 1) {
-    emit openLinkMiniBrowser(
-          m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row()).m_url);
-  }
-}
-
 void MessagesView::openSelectedMessagesInternally() {
   QList<Message> messages;
 
@@ -294,7 +259,7 @@ void MessagesView::openSelectedMessagesInternally() {
   }
 
   if (!messages.isEmpty()) {
-    emit openMessagesInNewspaperView(messages);
+    emit openMessagesInNewspaperView(m_sourceModel->loadedItem(), messages);
 
     // Finally, mark opened messages as read.
     QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
@@ -374,7 +339,7 @@ void MessagesView::deleteSelectedMessages() {
     reselectIndexes(QModelIndexList() << last_item);
   }
   else {
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
 }
 
@@ -402,7 +367,7 @@ void MessagesView::restoreSelectedMessages() {
     reselectIndexes(QModelIndexList() << last_item);
   }
   else {
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
 }
 
@@ -490,7 +455,7 @@ void MessagesView::searchMessages(const QString &pattern) {
   m_proxyModel->setFilterRegExp(pattern);
 
   if (selectionModel()->selectedRows().size() == 0) {
-    emit currentMessagesRemoved();
+    emit currentMessageRemoved();
   }
   else {
     // Scroll to selected message, it could become scrolled out due to filter change.
@@ -502,11 +467,21 @@ void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
   m_sourceModel->highlightMessages(filter);
 }
 
+void MessagesView::createNewspaperView(RootItem *selected_item, const QList<Message> &messages) {
+  NewspaperPreviewer *prev = new NewspaperPreviewer(selected_item, messages, this);
+  int index = qApp->mainForm()->tabWidget()->addTab(prev,
+                                                    qApp->icons()->fromTheme(QSL("item-newspaper")),
+                                                    tr("Newspaper view"),
+                                                    TabBar::Closable);
+  qApp->mainForm()->tabWidget()->setCurrentIndex(index);
+
+  connect(prev, SIGNAL(requestMessageListReload(bool)), this, SLOT(reloadSelections(bool)));
+}
+
 void MessagesView::adjustColumns() {
   if (header()->count() > 0 && !m_columnsAdjusted) {
     m_columnsAdjusted = true;
 
-#if QT_VERSION >= 0x050000
     // Setup column resize strategies.
     header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
@@ -519,20 +494,6 @@ void MessagesView::adjustColumns() {
     header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
-#else
-    // Setup column resize strategies.
-    header()->setResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
-    header()->setResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
-    header()->setResizeMode(MSG_DB_FEED_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
-    header()->setResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
-#endif
 
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);
@@ -558,5 +519,5 @@ void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
 
   // Repopulate the shit.
   m_sourceModel->sort(column, order);
-  emit currentMessagesRemoved();
+  emit currentMessageRemoved();
 }

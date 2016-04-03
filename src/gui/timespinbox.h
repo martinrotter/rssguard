@@ -15,23 +15,20 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef DEBUGGING_H
-#define DEBUGGING_H
+#ifndef TIMESPINBOX_H
+#define TIMESPINBOX_H
 
-#include <QtGlobal>
+#include <QDoubleSpinBox>
 
 
-class Debugging {
+class TimeSpinBox : public QDoubleSpinBox {
   public:
-    // Specifies format of output console messages.
-    // NOTE: QT_NO_DEBUG_OUTPUT - disables debug outputs completely!!!
-    static void debugHandler(QtMsgType type, const QMessageLogContext &placement, const QString &message);
-    static void performLog(const char *message, QtMsgType type, const char *file = 0, const char *function = 0, int line = -1);
-    static const char *typeToString(QtMsgType type);
+    explicit TimeSpinBox(QWidget *parent = 0);
+    virtual ~TimeSpinBox();
 
-  private:
-    // Constructor.
-    explicit Debugging();
+    double valueFromText(const QString &text) const;
+    QString textFromValue(double val) const;
+    void fixup(QString &input) const;
 };
 
-#endif // DEBUGGING_H
+#endif // TIMESPINBOX_H

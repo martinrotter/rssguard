@@ -30,9 +30,7 @@
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
-#include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/silentnetworkaccessmanager.h"
-#include "network-web/webbrowser.h"
 #include "gui/systemtrayicon.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
@@ -50,6 +48,7 @@
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QKeyEvent>
+#include <QFontDialog>
 #include <QDir>
 
 
@@ -85,7 +84,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
                                      << tr("Author")
                                      << tr("E-mail"));
 
-#if QT_VERSION >= 0x050000
   // Setup languages.
   m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
@@ -98,20 +96,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
-#else
-  // Setup languages.
-  m_ui->m_treeLanguages->header()->setResizeMode(0, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setResizeMode(2, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setResizeMode(3, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setResizeMode(4, QHeaderView::ResizeToContents);
-
-  // Setup skins.
-  m_ui->m_treeSkins->header()->setResizeMode(0, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setResizeMode(2, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setResizeMode(3, QHeaderView::ResizeToContents);
-#endif
 
   // Establish needed connections.
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(saveSettings()));
@@ -135,7 +119,13 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_cmbDatabaseDriver, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSqlBackend(int)));
   connect(m_ui->m_btnDownloadsTargetDirectory, SIGNAL(clicked()), this, SLOT(selectDownloadsDirectory()));
   connect(m_ui->m_checkMysqlShowPassword, SIGNAL(toggled(bool)), this, SLOT(switchMysqlPasswordVisiblity(bool)));
-  connect(m_ui->m_btnChangeNotificationColor, SIGNAL(clicked()), this, SLOT(selectNewNotificationColor()));
+  connect(m_ui->m_btnChangeMessagesFont, SIGNAL(clicked()), this, SLOT(changeMessagesFont()));
+
+  connect(m_ui->m_checkEnableNotifications, &QCheckBox::toggled, [=](bool checked) {
+    if (!checked) {
+      m_ui->m_checkEnableDBusNotifications->setChecked(false);
+    }
+  });
 
   // Load all settings.
   loadGeneral();
@@ -165,14 +155,6 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *pre
   if (current != NULL) {
     const Skin skin = current->data(0, Qt::UserRole).value<Skin>();
     m_ui->m_lblSelectedContents->setText(skin.m_visibleName);
-  }
-}
-
-void FormSettings::selectNewNotificationColor() {
-  QColorDialog dialog(m_ui->m_lblNotificationColor->color(), this);
-
-  if (dialog.exec() == QDialog::Accepted) {
-    m_ui->m_lblNotificationColor->setColor(dialog.selectedColor());
   }
 }
 
@@ -262,8 +244,12 @@ void FormSettings::loadFeedsMessages() {
     m_ui->m_cmbMessagesDateTimeFormat->setCurrentIndex(index_format);
   }
 
-  m_ui->m_cmbMessageFontStandard->setCurrentIndex(m_ui->m_cmbMessageFontStandard->findText(m_settings->value(GROUP(Messages),
-                                                                                                             SETTING(Messages::PreviewerFontStandard)).toString()));
+  m_ui->m_lblMessagesFont->setText(tr("Font preview"));
+  QFont fon;
+  fon.fromString(m_settings->value(GROUP(Messages),
+                                   SETTING(Messages::PreviewerFontStandard)).toString());
+  m_ui->m_lblMessagesFont->setFont(fon);
+
 }
 
 void FormSettings::initializeMessageDateFormats() {
@@ -275,6 +261,17 @@ void FormSettings::initializeMessageDateFormats() {
 
   foreach (const QString &format, best_formats) {
     m_ui->m_cmbMessagesDateTimeFormat->addItem(current_locale.toString(current_dt, format), format);
+  }
+}
+
+void FormSettings::changeMessagesFont() {
+  bool ok;
+  QFont new_font = QFontDialog::getFont(&ok, m_ui->m_lblMessagesFont->font(),
+                                        this, tr("Select new font for message viewer"),
+                                        QFontDialog::DontUseNativeDialog);
+
+  if (ok) {
+    m_ui->m_lblMessagesFont->setFont(new_font);
   }
 }
 
@@ -291,7 +288,7 @@ void FormSettings::saveFeedsMessages() {
                        m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
 
   // Save fonts.
-  m_settings->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_cmbMessageFontStandard->currentFont().family());
+  m_settings->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());
 
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->updateAutoUpdateStatus();
@@ -401,16 +398,10 @@ void FormSettings::onProxyTypeChanged(int index) {
 
 void FormSettings::loadBrowser() {
   // Load settings of web browser GUI.
-  m_ui->m_checkMouseGestures->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::GesturesEnabled)).toBool());
-  m_ui->m_checkQueueTabs->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::QueueTabs)).toBool());
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
   m_ui->m_txtExternalBrowserExecutable->setText(m_settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString());
   m_ui->m_txtExternalBrowserArguments->setText(m_settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString());
   m_ui->m_grpCustomExternalBrowser->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool());
-  m_ui->m_checkAutoLoadImages->setChecked(WebFactory::instance()->autoloadImages());
-  m_ui->m_checkEnableJavascript->setChecked(WebFactory::instance()->javascriptEnabled());
-  m_ui->m_checkEnablePlugins->setChecked(WebFactory::instance()->pluginsEnabled());
-  m_ui->m_checkRememberOpenedTabs->setChecked(m_settings->value(GROUP(Browser), SETTING(Browser::RememberBrowserTabs)).toBool());
 
   // Load settings of e-mail.
   m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), QSL("-compose \"subject='%1',body='%2'\""));
@@ -422,20 +413,13 @@ void FormSettings::loadBrowser() {
 void FormSettings::saveBrowser() {
   // Save settings of GUI of web browser.
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserEnabled, m_ui->m_grpCustomExternalBrowser->isChecked());
-  m_settings->setValue(GROUP(Browser), Browser::GesturesEnabled, m_ui->m_checkMouseGestures->isChecked());
-  m_settings->setValue(GROUP(Browser), Browser::QueueTabs, m_ui->m_checkQueueTabs->isChecked());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserExecutable, m_ui->m_txtExternalBrowserExecutable->text());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserArguments, m_ui->m_txtExternalBrowserArguments->text());
-  m_settings->setValue(GROUP(Browser), Browser::RememberBrowserTabs, m_ui->m_checkRememberOpenedTabs->isChecked());
 
   // Save settings of e-mail.
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalEmailExecutable, m_ui->m_txtExternalEmailExecutable->text());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalEmailArguments, m_ui->m_txtExternalEmailArguments->text());
   m_settings->setValue(GROUP(Browser), Browser::CustomExternalEmailEnabled, m_ui->m_grpCustomExternalEmail->isChecked());
-
-  WebFactory::instance()->switchImages(m_ui->m_checkAutoLoadImages->isChecked());
-  WebFactory::instance()->switchJavascript(m_ui->m_checkEnableJavascript->isChecked());
-  WebFactory::instance()->switchPlugins(m_ui->m_checkEnablePlugins->isChecked());
 }
 
 void FormSettings::loadProxy() {
@@ -463,7 +447,6 @@ void FormSettings::saveProxy() {
 
   // Reload settings for all network access managers.
   SilentNetworkAccessManager::instance()->loadSettings();
-  WebBrowserNetworkAccessManager::instance()->loadSettings();
 }
 
 void FormSettings::loadLanguage() {
@@ -720,14 +703,14 @@ void FormSettings::loadInterface() {
   m_ui->m_checkHideWhenMinimized->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool());
 
   // Load fancy notification settings.
-  m_ui->m_grpNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool());
-  m_ui->m_cmbNotificationPosition->addItem(tr("Bottom-left corner"), Qt::BottomLeftCorner);
-  m_ui->m_cmbNotificationPosition->addItem(tr("Top-left corner"), Qt::TopLeftCorner);
-  m_ui->m_cmbNotificationPosition->addItem(tr("Bottom-right corner"), Qt::BottomRightCorner);
-  m_ui->m_cmbNotificationPosition->addItem(tr("Top-right corner"), Qt::TopRightCorner);
-  m_ui->m_cmbNotificationPosition->setCurrentIndex(m_ui->m_cmbNotificationPosition->findData(static_cast<Qt::Corner>(m_settings->value(GROUP(GUI), SETTING(GUI::FancyNotificationsPosition)).toInt())));
-  m_ui->m_grpBaseNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
-  m_ui->m_lblNotificationColor->setColor(m_settings->value(GROUP(GUI), SETTING(GUI::NotificationBackgroundColor)).value<QColor>());
+  m_ui->m_checkEnableNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
+
+#if defined(Q_OS_LINUX)
+  m_ui->m_checkEnableDBusNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool());
+#else
+  m_ui->m_checkEnableDBusNotifications->setText(m_ui->m_checkEnableDBusNotifications->text() + tr(" (not available)"));
+  m_ui->m_checkEnableDBusNotifications->setEnabled(false);
+#endif
 
   // Load settings of icon theme.
   const QString current_theme = qApp->icons()->currentIconTheme();
@@ -749,15 +732,7 @@ void FormSettings::loadInterface() {
     m_ui->m_cmbIconTheme->setCurrentIndex(0);
   }
   else {
-#if QT_VERSION >= 0x050000
     m_ui->m_cmbIconTheme->setCurrentText(current_theme);
-#else
-    int theme_index = m_ui->m_cmbIconTheme->findText(current_theme);
-
-    if (theme_index >= 0) {
-      m_ui->m_cmbIconTheme->setCurrentIndex(theme_index);
-    }
-#endif
   }
 
   // Load skin.
@@ -829,10 +804,8 @@ void FormSettings::saveInterface() {
   m_settings->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
 
   // Save notifications.
-  m_settings->setValue(GROUP(GUI), GUI::UseFancyNotifications, m_ui->m_grpNotifications->isChecked());
-  m_settings->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_grpBaseNotifications->isChecked());
-  m_settings->setValue(GROUP(GUI), GUI::FancyNotificationsPosition, static_cast<Qt::Corner>(m_ui->m_cmbNotificationPosition->itemData(m_ui->m_cmbNotificationPosition->currentIndex()).toInt()));
-  m_settings->setValue(GROUP(GUI), GUI::NotificationBackgroundColor, m_ui->m_lblNotificationColor->color());
+  m_settings->setValue(GROUP(GUI), GUI::UseFancyNotifications, m_ui->m_checkEnableDBusNotifications->isChecked());
+  m_settings->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_checkEnableNotifications->isChecked());
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
@@ -866,7 +839,6 @@ void FormSettings::saveInterface() {
 
   qApp->mainForm()->tabWidget()->checkTabBarVisibility();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
-  qApp->notification()->loadSettings();
 }
 
 bool FormSettings::eventFilter(QObject *obj, QEvent *e) {

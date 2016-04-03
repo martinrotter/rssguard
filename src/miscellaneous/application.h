@@ -131,15 +131,15 @@ class Application : public QtSingleApplication {
     }
 
     inline QString tempFolderPath() {
-      return IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::TempLocation);
+      return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
     }
 
     inline QString documentsFolderPath() {
-      return IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::DocumentsLocation);
+      return IOFactory::getSystemFolder(QStandardPaths::DocumentsLocation);
     }
 
     inline QString homeFolderPath() {
-      return IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::HomeLocation);
+      return IOFactory::getSystemFolder(QStandardPaths::HomeLocation);
     }
 
     void backupDatabaseSettings(bool backup_database, bool backup_settings,

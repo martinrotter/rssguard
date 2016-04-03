@@ -56,11 +56,7 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Setup debug output system.
-#if QT_VERSION >= 0x050000
   qInstallMessageHandler(Debugging::debugHandler);
-#else
-  qInstallMsgHandler(Debugging::debugHandler);
-#endif
 
   // Instantiate base application object.
   Application application(APP_LOW_NAME, argc, argv);
@@ -100,7 +96,7 @@ int main(int argc, char *argv[]) {
   main_window.setWindowTitle(APP_LONG_NAME);
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(qApp->userActions());  
+  DynamicShortcuts::load(qApp->userActions());
 
   // Display main window.
   if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
@@ -136,7 +132,6 @@ int main(int argc, char *argv[]) {
   if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
     QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
   }
-
 
   // Enter global event loop.
   return Application::exec();

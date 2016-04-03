@@ -1,175 +1,5 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Lägg till prenumeration</translation>
-    </message>
-    <message>
-        <source>Another subscription</source>
-        <translation>En prenumeration till</translation>
-    </message>
-    <message>
-        <source>Entered title is okay.</source>
-        <translation>Angivet namn är okay.</translation>
-    </message>
-    <message>
-        <source>Entered title is empty.</source>
-        <translation>Namn saknas.</translation>
-    </message>
-    <message>
-        <source>Entered url is okay.</source>
-        <translation>Angiven URL är okay.</translation>
-    </message>
-    <message>
-        <source>Entered url is empty.</source>
-        <translation>URL saknas.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Adress</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Anpassade regler</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockDialog</name>
-    <message>
-        <source>Adblock settings</source>
-        <translation>Adblock-inställningar</translation>
-    </message>
-    <message>
-        <source>Enable Adblock</source>
-        <translation>Aktivera Adblock</translation>
-    </message>
-    <message>
-        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
-
-Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
-        <translation>Notera att Adblock kan göra programmet märkbart långsammare vid aktivering av stora prenumerationer. För många regler är inte bra för prestanda. Tillse också att programmet startas om efter att Adblock inaktiveras, om du vill minska minnesanvändningen. Adblock är känt för att använda mycket systemminne.
-
-Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du ändrar några filterregler eller prenumerationer, verkställs ändringarna till fullo, först i nya programinstanser. Starta därför om RSS Guard, för bästa Adblock-upplevelse.</translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation>Alternativ</translation>
-    </message>
-    <message>
-        <source>Filter rules</source>
-        <translation>Filterregler</translation>
-    </message>
-    <message>
-        <source>Use only essential part of EasyList (for performance reasons)</source>
-        <translation>Använd endast viktiga delar av EasyList (av prestandaskäl)</translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation>Lägg till regel</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Ta bort regel</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Lägg till prenumeration</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Ta bort prenumeration</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Uppdatera prenumerationer</translation>
-    </message>
-    <message>
-        <source>Rules writing guide</source>
-        <translation>Regelguide</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockIcon</name>
-    <message>
-        <source>Adblock</source>
-        <translation>Adblock</translation>
-    </message>
-    <message>
-        <source>Show Adblock &amp;settings</source>
-        <translation>Visa Adblock-&amp;inställningar</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Inaktivera för %1</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Inaktivera endast på denna sida</translation>
-    </message>
-    <message>
-        <source>Blocked popup windows</source>
-        <translation>Blockerade popup-fönster</translation>
-    </message>
-    <message>
-        <source>%1 with (%2)</source>
-        <translation>%1 med (%2)</translation>
-    </message>
-    <message>
-        <source>No content blocked</source>
-        <translation>Inget innehåll blockerat</translation>
-    </message>
-    <message>
-        <source>Blocked some content - click to edit rule</source>
-        <translation>Blockerade visst innehåll - Klicka för att redigera regel</translation>
-    </message>
-    <message>
-        <source>Adblock - up and running</source>
-        <translation>Adblock - Aktiverat</translation>
-    </message>
-    <message>
-        <source>Adblock - not running</source>
-        <translation>Adblock - Inaktiverat</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Kan inte läsa in prenumeration!</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Please write your rule here</source>
-        <translation>Ange din regel här</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (nyligen uppdaterad)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (Fel: %2)</translation>
-    </message>
-    <message>
-        <source>Add rule</source>
-        <translation>Lägg till regel</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Ta bort regel</translation>
-    </message>
-</context>
-<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -273,33 +103,11 @@ Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du 
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"/>
+        <translation>MySQL databas inte tillgänglig</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>DiscoverFeedsButton</name>
-    <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Webbsidan innehåller inga flöden.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform></translation>
-    </message>
-    <message>
-        <source>Not supported</source>
-        <translation>Stöds ej</translation>
-    </message>
-    <message>
-        <source>Given account does not support adding feeds.</source>
-        <translation>Angivet kontot stöder inte tillägg av nya flöden.</translation>
+        <translation>%1 kan inte använda MySQL-lagringen, den är inte tillgänglig. %1 växlar nu till SQLite databas. Starta din MySQL-server och justera programinställningarna.</translation>
     </message>
 </context>
 <context>
@@ -1058,10 +866,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Välj uppdateringsstrategi för flödet. Standard autouppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
     </message>
     <message>
-        <source> minutes</source>
-        <translation>minuter </translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
@@ -1296,20 +1100,8 @@ att funktionen inte är implementerad än.</translation>
         <translation>&amp;Inställningar</translation>
     </message>
     <message>
-        <source>&amp;Current tab</source>
-        <translation>Aktuell &amp;flik</translation>
-    </message>
-    <message>
-        <source>&amp;Add tab</source>
-        <translation>&amp;Lägg till flik</translation>
-    </message>
-    <message>
         <source>&amp;Messages</source>
         <translation>&amp;Meddelanden</translation>
-    </message>
-    <message>
-        <source>&amp;Web browser</source>
-        <translation>&amp;Webbläsare</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
@@ -1326,14 +1118,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Switch fullscreen mode.</source>
         <translation>Växla fönster-/fullskärmsläge.</translation>
-    </message>
-    <message>
-        <source>Add new web browser tab.</source>
-        <translation>Lägg till ny webbläsarflik.</translation>
-    </message>
-    <message>
-        <source>Close current web browser tab.</source>
-        <translation>Stäng aktuell webbläsarflik.</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -1368,20 +1152,8 @@ att funktionen inte är implementerad än.</translation>
         <translation>&amp;Ta bort markerade meddelanden</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Inställningar</translation>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
         <translation>Dölj/Visa huvudmenyn.</translation>
-    </message>
-    <message>
-        <source>&amp;Close all tabs except current one</source>
-        <translation>&amp;Stäng alla flikar utom den aktuella</translation>
-    </message>
-    <message>
-        <source>&amp;Close current tab</source>
-        <translation>&amp;Stäng aktuell flik</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
@@ -1400,10 +1172,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Öppna markerade meddelanden i &amp;intern webbläsare</translation>
     </message>
     <message>
-        <source>Open selected source articles in &amp;internal browser</source>
-        <translation>Öppna markerade källartiklar i &amp;intern webbläsare</translation>
-    </message>
-    <message>
         <source>Select &amp;next message</source>
         <translation>Gå till &amp;nästa meddelande</translation>
     </message>
@@ -1414,18 +1182,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Check for &amp;updates</source>
         <translation>Sök efter &amp;uppdateringar</translation>
-    </message>
-    <message>
-        <source>Enable &amp;JavaScript</source>
-        <translation>Aktivera &amp;JavaScript</translation>
-    </message>
-    <message>
-        <source>Enable external &amp;plugins</source>
-        <translation>Aktivera externa &amp;tillägg</translation>
-    </message>
-    <message>
-        <source>Auto-load &amp;images</source>
-        <translation>Läs in &amp;bilder automatiskt</translation>
     </message>
     <message>
         <source>Show/hide</source>
@@ -1466,10 +1222,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>&amp;Feed/message list headers</source>
         <translation>&amp;Kolumnrubriker</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one.</source>
-        <translation>Stäng alla flikar utom aktuell.</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1857,14 +1609,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Öppna nya flikar med dubbelklick i flikfältet</translation>
     </message>
     <message>
-        <source>Enable mouse gestures</source>
-        <translation>Aktivera musgester</translation>
-    </message>
-    <message>
-        <source>Queue new tabs (with hyperlinks) after the active tab</source>
-        <translation>Öppna nya flikar (med hyperlänkar) efter aktuell flik</translation>
-    </message>
-    <message>
         <source>no icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation>Inget ikontema</translation>
@@ -2011,10 +1755,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Minnesdatabas växlad</translation>
     </message>
     <message>
-        <source>Internal web browser</source>
-        <translation>Intern webbläsare</translation>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Extern webbläsare</translation>
     </message>
@@ -2041,10 +1781,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Auto-update all feeds every</source>
         <translation>Auto-uppdatera alla flöden varje</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation>minuter</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -2167,18 +1903,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Starta %1 vid systemstart</translation>
     </message>
     <message>
-        <source>Enable JavaScript</source>
-        <translation>Aktivera JavaScript</translation>
-    </message>
-    <message>
-        <source>Enable external plugins based on NPAPI</source>
-        <translation>Aktivera externa tillägg baserade på NPAPI</translation>
-    </message>
-    <message>
-        <source>Auto-load images</source>
-        <translation>Läs in bilder automatiskt</translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Om kryssrutan lämnas omarkerad, används systemets standardwebbläsare.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2286,18 +2010,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Arbetsdatabas</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
- • previous web page (drag mouse left),
- • next web page (drag mouse right),
- • reload current web page (drag mouse up),
- • open new web browser tab (drag mouse down).</source>
-        <translation>Musgester aktiveras med mushjulsknappen. Aktuella musgester är:
- • föregående sida (dra musen åt vänster)
- • nästa sida (dra musen åt höger)
- • uppdatera aktuell webbsida (dra musen uppåt)
- • öppna ny webbläsarflik (dra musen neråt)</translation>
-    </message>
-    <message>
         <source>Use custom external web browser</source>
         <translation>Använd anpassad extern webbläsare</translation>
     </message>
@@ -2354,44 +2066,16 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Arbetsdatabasen är OK.</translation>
     </message>
     <message>
-        <source>Notification position</source>
-        <translation>Aviseringsposition</translation>
-    </message>
-    <message>
         <source>(Tray icon is not available.)</source>
         <translation>(meddelandefältsikon ej tillgänglig)</translation>
-    </message>
-    <message>
-        <source>Bottom-left corner</source>
-        <translation>Vänster nederkant</translation>
-    </message>
-    <message>
-        <source>Top-left corner</source>
-        <translation>Vänster överkant</translation>
-    </message>
-    <message>
-        <source>Bottom-right corner</source>
-        <translation>Höger nederkant</translation>
-    </message>
-    <message>
-        <source>Top-right corner</source>
-        <translation>Höger överkant</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
         <translation>Teckensnitt för intern meddelandeläsare</translation>
     </message>
     <message>
-        <source>Standard font</source>
-        <translation>Standardteckensnitt</translation>
-    </message>
-    <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Notera att hastigheten på den använda MySQL-servern och latensen för aktuellt anslutningsmedium, KRAFTIGT påverkar detta programs prestanda. Användning av långsamma databasanslutningar leder till dålig prestanda vid navigering bland flöden och meddelanden.</translation>
-    </message>
-    <message>
-        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
-        <translation>Tjusiga &amp;&amp; moderna popup-aviseringar (Använder systemets integrerade aviseringar via D-Bus, om tillgängligt.)</translation>
     </message>
     <message>
         <source>E-mail</source>
@@ -2402,24 +2086,32 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Aktivera aviseringar</translation>
     </message>
     <message>
-        <source>Background color</source>
-        <translation>Bakgrundsfärg</translation>
-    </message>
-    <message>
-        <source>Change</source>
-        <translation>Ändra</translation>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Öppna nedladdningshanteraren när ny nedladdning startas</translation>
     </message>
     <message>
-        <source>Remember opened web browser tabs</source>
-        <translation type="unfinished"/>
+        <source>Statusbar</source>
+        <translation>Statusfält</translation>
     </message>
     <message>
-        <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <source>Enable D-Bus notifications</source>
+        <translation>Aktivera D-bus-aviseringar</translation>
+    </message>
+    <message>
+        <source>&amp;Change font</source>
+        <translation>&amp;Ändra teckensnitt</translation>
+    </message>
+    <message>
+        <source>Font preview</source>
+        <translation>Teckengranskning</translation>
+    </message>
+    <message>
+        <source>Select new font for message viewer</source>
+        <translation>Välj nytt teckensnitt för meddelandevyn</translation>
+    </message>
+    <message>
+        <source> (not available)</source>
+        <translation>(ej tillgänglig)</translation>
     </message>
 </context>
 <context>
@@ -2583,10 +2275,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation>Välj uppdateringsstrategi för flödet. Global auto-uppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation>minuter</translation>
     </message>
     <message>
         <source>Title</source>
@@ -3104,10 +2792,34 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
 </context>
 <context>
-    <name>LocationLineEdit</name>
+    <name>MessagePreviewer</name>
     <message>
-        <source>Website address goes here</source>
-        <translation>Webbadress anges här</translation>
+        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
+        <translation>Du klickade på länken &quot;%1&quot;. Du kan ladda ner länkinnehållet eller öppna den i extern webbläsare.</translation>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation>Vad vill du göra?</translation>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation>Öppna i extern webbläsare</translation>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation>Ladda ner</translation>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation>Markera meddelandet som läst</translation>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation>Markera meddelandet som oläst</translation>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation>Växla meddelandeprioritet</translation>
     </message>
 </context>
 <context>
@@ -3287,14 +2999,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <translation>Kontextmeny för meddelanden</translation>
     </message>
     <message>
-        <source>Meesage without URL</source>
-        <translation>Meddelande utan URL</translation>
-    </message>
-    <message>
-        <source>Message &apos;%s&apos; does not contain URL.</source>
-        <translation>Meddelande &apos;%s&apos; innehåller ingen URL.</translation>
-    </message>
-    <message>
         <source>Problem with starting external web browser</source>
         <translation>Problem med att starta extern webbläsare</translation>
     </message>
@@ -3309,6 +3013,10 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>External e-mail client could not be started.</source>
         <translation>Extern e-postklient kunde inte startas.</translation>
+    </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation>Tidningsvy</translation>
     </message>
 </context>
 <context>
@@ -3389,7 +3097,26 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>okänt innehåll</translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation>Format</translation>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation><numerusform>Visa fler meddelande (% återstår)</numerusform><numerusform>Visa fler meddelanden (% återstår)</numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation>Kan inte visa fler meddelanden</translation>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
+        <translation>Kan inte visa fler meddelanden eftersom överordnat flöde tagits bort.</translation>
     </message>
 </context>
 <context>
@@ -3641,24 +3368,20 @@ Konto-ID: %1</translation>
 <context>
     <name>StatusBar</name>
     <message>
-        <source>Adblock</source>
-        <translation>Adblock</translation>
-    </message>
-    <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Förloppsindikator för flödesuppdatering</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation>Flödesuppdateringsetikett</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Förloppsindikator för nedladdning</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation>Nedladdningsetikett</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3711,11 +3434,6 @@ Olästa nyheter: %2</translation>
         <translation>Bläddra bland dina flöden och meddelanden</translation>
     </message>
     <message>
-        <source>Web browser</source>
-        <extracomment>Web browser default tab title.</extracomment>
-        <translation>Webbläsare</translation>
-    </message>
-    <message>
         <source>Displays main menu.</source>
         <translation>Visar den primära menyn.</translation>
     </message>
@@ -3724,12 +3442,23 @@ Olästa nyheter: %2</translation>
         <translation>Huvudmeny</translation>
     </message>
     <message>
-        <source>Open new web browser tab.</source>
-        <translation>Öppna ny webbläsarflik.</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Nedladdningar</translation>
+    </message>
+</context>
+<context>
+    <name>TimeSpinBox</name>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
+    </message>
+    <message>
+        <source> and </source>
+        <translation>och</translation>
     </message>
 </context>
 <context>
@@ -3842,217 +3571,6 @@ Senast inloggad: %5</translation>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
-    </message>
-</context>
-<context>
-    <name>WebBrowser</name>
-    <message>
-        <source>Navigation panel</source>
-        <translation>Navigationspanel</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>Tillbaka</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>Framåt</translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation>Uppdatera</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stopp</translation>
-    </message>
-    <message>
-        <source>Zoom  </source>
-        <translation>Zoom </translation>
-    </message>
-    <message>
-        <source>No title</source>
-        <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>Ingen titel</translation>
-    </message>
-    <message>
-        <source>Decrease zoom.</source>
-        <translation>Mindre zoom.</translation>
-    </message>
-    <message>
-        <source>Reset zoom to default.</source>
-        <translation>Återställ zoomläget till standard.</translation>
-    </message>
-    <message>
-        <source>Increase zoom.</source>
-        <translation>Ökad zoom.</translation>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation>Skriven av </translation>
-    </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Tidningsvy</translation>
-    </message>
-    <message>
-        <source>Go back.</source>
-        <translation>Gå tillbaka.</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Gå framåt.</translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation>Uppdatera aktuell webbsida.</translation>
-    </message>
-    <message>
-        <source>Stop web page loading.</source>
-        <translation>Stoppa inläsning av webbsidan.</translation>
-    </message>
-    <message>
-        <source>unknown author</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>WebView</name>
-    <message>
-        <source>Reload web page</source>
-        <translation>Uppdatera webbsidan</translation>
-    </message>
-    <message>
-        <source>Copy link url</source>
-        <translation>Kopiera länk</translation>
-    </message>
-    <message>
-        <source>Copy image</source>
-        <translation>Kopiera bild</translation>
-    </message>
-    <message>
-        <source>Copy image url</source>
-        <translation>Kopiera bildadress</translation>
-    </message>
-    <message>
-        <source>Open link in new tab</source>
-        <translation>Öppna länk i ny flik</translation>
-    </message>
-    <message>
-        <source>Follow link</source>
-        <translation>Följ länk</translation>
-    </message>
-    <message>
-        <source>Open image in new tab</source>
-        <translation>Öppna bild i ny flik</translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation>Webbläsare</translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation>Bild</translation>
-    </message>
-    <message>
-        <source>Hyperlink</source>
-        <translation>Hyperlänk</translation>
-    </message>
-    <message>
-        <source>Reload current web page.</source>
-        <translation>Uppdatera aktuell webbsida.</translation>
-    </message>
-    <message>
-        <source>Copy selection</source>
-        <translation>Kopiera markerat</translation>
-    </message>
-    <message>
-        <source>Copies current selection into the clipboard.</source>
-        <translation>Kopiera aktuell markering till Urklipp.</translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard.</source>
-        <translation>Kopiera länkadress till Urklipp.</translation>
-    </message>
-    <message>
-        <source>Copy image to clipboard.</source>
-        <translation>Kopiera bild till Urklipp.</translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard.</source>
-        <translation>Kopiera bildadress till Urklipp.</translation>
-    </message>
-    <message>
-        <source>Open this hyperlink in new tab.</source>
-        <translation>Öppna länken i ny flik.</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in this tab.</source>
-        <translation>Öppna länken i samma flik.</translation>
-    </message>
-    <message>
-        <source>Open this image in this tab.</source>
-        <translation>Öppna bilden i samma flik.</translation>
-    </message>
-    <message>
-        <source>Open link in external browser</source>
-        <translation>Öppna länk i extern webbläsare</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in external browser.</source>
-        <translation>Öppna länken i extern webbläsare.</translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation>Skriv ut</translation>
-    </message>
-    <message>
-        <source>Print current web page.</source>
-        <translation>Skriv ut aktuell webbsida</translation>
-    </message>
-    <message>
-        <source>HTML web pages (*.html)</source>
-        <translation>HTML-webbsidor (*.html)</translation>
-    </message>
-    <message>
-        <source>Select destination file for web page</source>
-        <translation>Ange målfil för webbsidan</translation>
-    </message>
-    <message>
-        <source>Cannot save web page</source>
-        <translation>Kan inte spara webbsidan</translation>
-    </message>
-    <message>
-        <source>Web page cannot be saved because destination file is not writtable.</source>
-        <translation>Webbsidan kan inte sparas eftersom målfilen inte är skrivbar.</translation>
-    </message>
-    <message>
-        <source>Save target as...</source>
-        <translation>Spara målet som...</translation>
-    </message>
-    <message>
-        <source>Download content from the hyperlink.</source>
-        <translation>Ladda ner innehåll från hyperlänk.</translation>
-    </message>
-    <message>
-        <source>Save page as...</source>
-        <translation>Spara sida som...</translation>
-    </message>
-    <message>
-        <source>Save image to disk.</source>
-        <translation>Spara bild på disk.</translation>
-    </message>
-    <message>
-        <source>Save image as...</source>
-        <translation>Spara bild som...</translation>
-    </message>
-    <message>
-        <source>source_page</source>
-        <translation>source_page</translation>
-    </message>
-    <message>
-        <source>Search &quot;%1&quot; via Google...</source>
-        <translation>Sök &quot;%1&quot; via Google...</translation>
     </message>
 </context>
 </TS>

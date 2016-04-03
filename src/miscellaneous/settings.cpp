@@ -19,11 +19,9 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
-
 #include <QDebug>
 #include <QDir>
 #include <QPointer>
-#include <QWebSettings>
 #include <QLocale>
 
 
@@ -64,7 +62,7 @@ DKEY Messages::KeepCursorInCenter               = "keep_cursor_center";
 DVALUE(bool) Messages::KeepCursorInCenterDef    = false;
 
 DKEY Messages::PreviewerFontStandard                                    = "previewer_font_standard";
-NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QString();
+NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QFont().toString();
 
 // GUI.
 DKEY GUI::ID                                      = "gui";
@@ -75,9 +73,6 @@ DVALUE(char*) GUI::SplitterFeedsDef               = "";
 DKEY GUI::SplitterMessages                        = "splitter_messages";
 DVALUE(char*) GUI::SplitterMessagesDef            = "";
 
-DKEY GUI::NotificationBackgroundColor               = "notification_background_color";
-DVALUE(QColor) GUI::NotificationBackgroundColorDef  = QColor(220, 220, 220);
-
 DKEY GUI::ToolbarStyle                            = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef  = Qt::ToolButtonIconOnly;
 
@@ -85,7 +80,7 @@ DKEY GUI::FeedsToolbarActions                     = "feeds_toolbar";
 DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead";
 
 DKEY GUI::StatusbarActions              = "status_bar";
-DVALUE(char*) GUI::StatusbarActionsDef  = "m_lblProgressFeedsAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_adBlockIconAction,m_actionFullscreen,m_actionQuit";
+DVALUE(char*) GUI::StatusbarActionsDef  = "m_lblProgressFeedsAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_actionFullscreen,m_actionQuit";
 
 DKEY GUI::MainWindowInitialSize        = "window_size";
 DKEY GUI::MainWindowInitialPosition    = "window_position";
@@ -122,9 +117,6 @@ DVALUE(bool) GUI::EnableNotificationsDef        = true;
 
 DKEY GUI::UseFancyNotifications                         = "use_fancy_notifications";
 DVALUE(bool) GUI::UseFancyNotificationsDef              = true;
-
-DKEY GUI::FancyNotificationsPosition                    = "fancy_notifications_position";
-DVALUE(Qt::Corner) GUI::FancyNotificationsPositionDef   = Qt::BottomRightCorner;
 
 DKEY GUI::TabCloseMiddleClick                  = "tab_close_mid_button";
 DVALUE(bool) GUI::TabCloseMiddleClickDef       = true;
@@ -181,13 +173,13 @@ DKEY Downloads::AlwaysPromptForFilename               = "prompt_for_filename";
 DVALUE(bool) Downloads::AlwaysPromptForFilenameDef    = false;
 
 DKEY Downloads::TargetDirectory                       = "target_directory";
-DVALUE(QString) Downloads::TargetDirectoryDef         = IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::DesktopLocation);
+DVALUE(QString) Downloads::TargetDirectoryDef         = IOFactory::getSystemFolder(QStandardPaths::DesktopLocation);
 
 DKEY Downloads::RemovePolicy             = "remove_policy";
 DVALUE(int) Downloads::RemovePolicyDef   = DownloadManager::Never;
 
 DKEY Downloads::TargetExplicitDirectory                  = "target_explicit_directory";
-DVALUE(QString) Downloads::TargetExplicitDirectoryDef    = IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::DesktopLocation);
+DVALUE(QString) Downloads::TargetExplicitDirectoryDef    = IOFactory::getSystemFolder(QStandardPaths::DesktopLocation);
 
 DKEY Downloads::ShowDownloadsWhenNewDownloadStarts = "show_downloads_on_new_download_start";
 DVALUE(bool) Downloads::ShowDownloadsWhenNewDownloadStartsDef = true;
@@ -241,41 +233,8 @@ DVALUE(char*) Database::ActiveDriverDef   = APP_DB_SQLITE_DRIVER;
 // Keyboard.
 DKEY Keyboard::ID = "keyboard";
 
-// Adblock.
-DKEY AdBlock::ID                                = "adblock";
-
-DKEY AdBlock::Enabled                           = "enabled";
-DVALUE(bool) AdBlock::EnabledDef                = false;
-
-DKEY AdBlock::UseLimitedEasyList                = "use_limited_easylist";
-DVALUE(bool) AdBlock::UseLimitedEasyListDef     = true;
-
-DKEY AdBlock::DisabledRules                     = "disabled_rules";
-DVALUE(QStringList) AdBlock::DisabledRulesDef   = QStringList();
-
-DKEY AdBlock::LastUpdated                       = "last_updated";
-DVALUE(QDateTime) AdBlock::LastUpdatedDef       = QDateTime();
-
 // Web browser.
 DKEY Browser::ID                            = "browser";
-
-DKEY Browser::GesturesEnabled               = "gestures_enabled";
-DVALUE(bool) Browser::GesturesEnabledDef    = true;
-
-DKEY Browser::JavascriptEnabled             = "enable_javascript";
-DVALUE(bool) Browser::JavascriptEnabledDef  = true;
-
-DKEY Browser::ImagesEnabled                 = "enable_images";
-DVALUE(bool) Browser::ImagesEnabledDef      = true;
-
-DKEY Browser::PluginsEnabled                = "enable_plugins";
-DVALUE(bool) Browser::PluginsEnabledDef     = false;
-
-DKEY Browser::RememberBrowserTabs                 = "remember_browser_tabs";
-DVALUE(bool)Browser::RememberBrowserTabsDef       = false;
-
-DKEY Browser::OpenedBrowserTabs                 = "opened_browser_tabs";
-DVALUE(QString)Browser::OpenedBrowserTabsDef    = QString();
 
 DKEY Browser::CustomExternalBrowserEnabled                = "custom_external_browser";
 DVALUE(bool) Browser::CustomExternalBrowserEnabledDef     = false;
@@ -295,8 +254,6 @@ DVALUE(QString) Browser::CustomExternalEmailExecutableDef   = QString();
 DKEY Browser::CustomExternalEmailArguments                = "external_email_arguments";
 DVALUE(char*) Browser::CustomExternalEmailArgumentsDef    = "";
 
-DKEY Browser::QueueTabs             = "queue_tabs";
-DVALUE(bool) Browser::QueueTabsDef  = true;
 
 // Categories.
 DKEY CategoriesExpandStates::ID                         = "categories_expand_states";
@@ -304,7 +261,7 @@ DKEY CategoriesExpandStates::ID                         = "categories_expand_sta
 Settings::Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
   // Perform last-minute initializations.
-  Messages::PreviewerFontStandardDef = QWebSettings::globalSettings()->fontFamily(QWebSettings::StandardFont);
+  Messages::PreviewerFontStandardDef = qApp->font().family();
 }
 
 Settings::~Settings() {  
@@ -356,11 +313,6 @@ Settings *Settings::setupSettings(QObject *parent) {
 
   // Portable settings are available, use them.
   new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
-
-  // Construct icon cache in the same path.
-  const QString web_path = properties.m_baseDirectory + QDir::separator() + QString(APP_DB_WEB_PATH);
-  QDir(web_path).mkpath(web_path);
-  QWebSettings::setIconDatabasePath(web_path);
 
   // Check if portable settings are available.
   if (properties.m_type == SettingsProperties::Portable) {

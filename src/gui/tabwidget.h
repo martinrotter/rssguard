@@ -28,6 +28,7 @@
 class QMenu;
 class PlainToolButton;
 class Message;
+class RootItem;
 class FeedMessageViewer;
 
 class TabWidget : public QTabWidget {
@@ -75,14 +76,11 @@ class TabWidget : public QTabWidget {
       return m_feedMessageViewer;
     }
 
-    void quit();
-
   protected:
     // Creates necesary connections.
     void createConnections();
 
     // Sets up properties of custom corner button.
-    void setupCornerButton();
     void setupMainMenuButton();
 
     // Handlers of insertin/removing of tabs.
@@ -113,22 +111,7 @@ class TabWidget : public QTabWidget {
     // Closes all "closable" tabs except the active tab.
     void closeAllTabsExceptCurrent();
 
-    // Open single or multiple (newspaper mode) messages in new tab.
-    int addBrowserWithMessages(const QList<Message> &messages);
-
-    // Adds new WebBrowser tab to global TabWidget.
-    int addEmptyBrowser();
-
-    // Adds new WebBrowser with link. This is used when user
-    // selects to "Open link in new tab.".
-    int addLinkedBrowser(const QUrl &initial_url = QUrl());
-    int addLinkedBrowser(const QString &initial_url);
-
-    // General method for adding WebBrowsers.
-    int addBrowser(bool move_after_current, bool make_active, const QUrl &initial_url = QUrl());
-
   private:
-    PlainToolButton *m_btnAddTab;
     PlainToolButton *m_btnMainMenu;
     QMenu *m_menuMain;
     FeedMessageViewer *m_feedMessageViewer;

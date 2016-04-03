@@ -92,9 +92,6 @@ namespace GUI {
   KEY SplitterMessages;
   VALUE(char*) SplitterMessagesDef;
 
-  KEY NotificationBackgroundColor;
-  VALUE(QColor) NotificationBackgroundColorDef;
-
   KEY ToolbarStyle;
   VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;
 
@@ -139,9 +136,6 @@ namespace GUI {
 
   KEY UseFancyNotifications;
   VALUE(bool) UseFancyNotificationsDef;
-
-  KEY FancyNotificationsPosition;
-  VALUE(Qt::Corner) FancyNotificationsPositionDef;
 
   KEY TabCloseMiddleClick;
   VALUE(bool) TabCloseMiddleClickDef;
@@ -269,44 +263,9 @@ namespace Keyboard {
   KEY ID;
 }
 
-// Adblock.
-namespace AdBlock {
-  KEY ID;
-
-  KEY Enabled;
-  VALUE(bool) EnabledDef;
-
-  KEY UseLimitedEasyList;
-  VALUE(bool) UseLimitedEasyListDef;
-
-  KEY DisabledRules;
-  VALUE(QStringList) DisabledRulesDef;
-
-  KEY LastUpdated;
-  VALUE(QDateTime) LastUpdatedDef;
-}
-
 // Web browser.
 namespace Browser {
   KEY ID;
-
-  KEY GesturesEnabled;
-  VALUE(bool) GesturesEnabledDef;
-
-  KEY JavascriptEnabled;
-  VALUE(bool) JavascriptEnabledDef;
-
-  KEY ImagesEnabled;
-  VALUE(bool) ImagesEnabledDef;
-
-  KEY PluginsEnabled;
-  VALUE(bool) PluginsEnabledDef;
-
-  KEY RememberBrowserTabs;
-  VALUE(bool)RememberBrowserTabsDef;
-
-  KEY OpenedBrowserTabs;
-  VALUE(QString)OpenedBrowserTabsDef;
 
   KEY CustomExternalBrowserEnabled;
   VALUE(bool) CustomExternalBrowserEnabledDef;
@@ -325,9 +284,6 @@ namespace Browser {
 
   KEY CustomExternalEmailArguments;
   VALUE(char*) CustomExternalEmailArgumentsDef;
-
-  KEY QueueTabs;
-  VALUE(bool) QueueTabsDef;
 }
 
 // Categories.
