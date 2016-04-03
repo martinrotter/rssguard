@@ -69,7 +69,9 @@ Downloads
 * [development releases (based on Qt 5)](https://software.opensuse.org/download.html?project=home%3Askunkos%3Arssguard&package=rssguard-qt5-git),
 + alternative downloads:
     * Archlinux AUR packages - [stable-qt5](https://aur.archlinux.org/packages/rssguard/).
-
+    
+Note that packages from OBS are not meant to be used in production. Rely on "official" packages for you Linux distro made by your Linux distro maintainers.
+    
 ![RSS Guard is 100% clean.](http://www.softpedia.com/_img/softpedia_100_free.png)
 
 - - -
