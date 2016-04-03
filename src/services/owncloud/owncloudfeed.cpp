@@ -15,11 +15,15 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "owncloudfeed.h"
+#include "services/owncloud/owncloudfeed.h"
 
 #include "miscellaneous/iconfactory.h"
 #include "services/owncloud/owncloudserviceroot.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/gui/formeditowncloudfeed.h"
+#include "gui/dialogs/formmain.h"
+
+#include <QPointer>
 
 
 OwnCloudFeed::OwnCloudFeed(RootItem *parent) : Feed(parent) {
@@ -35,6 +39,18 @@ OwnCloudFeed::OwnCloudFeed(const QSqlRecord &record) : Feed(NULL) {
 }
 
 OwnCloudFeed::~OwnCloudFeed() {
+}
+
+bool OwnCloudFeed::canBeEdited() const {
+  return true;
+}
+
+bool OwnCloudFeed::editViaGui() {
+  QPointer<FormEditOwnCloudFeed> form_pointer = new FormEditOwnCloudFeed(serviceRoot(), qApp->mainForm());
+
+  form_pointer.data()->execForEdit(this);
+  delete form_pointer.data();
+  return false;
 }
 
 bool OwnCloudFeed::markAsReadUnread(RootItem::ReadStatus status) {

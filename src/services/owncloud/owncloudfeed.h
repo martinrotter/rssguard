@@ -31,6 +31,9 @@ class OwnCloudFeed : public Feed {
     explicit OwnCloudFeed(const QSqlRecord &record);
     virtual ~OwnCloudFeed();
 
+    bool canBeEdited() const;
+    bool editViaGui();
+
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
 
