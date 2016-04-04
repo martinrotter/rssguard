@@ -29,6 +29,7 @@ class TimeSpinBox : public QDoubleSpinBox {
     double valueFromText(const QString &text) const;
     QString textFromValue(double val) const;
     void fixup(QString &input) const;
+    QValidator::State validate(QString &input, int &pos) const;
 };
 
 #endif // TIMESPINBOX_H

@@ -17,6 +17,8 @@
 
 #include "gui/timespinbox.h"
 
+#include <QStringList>
+
 
 TimeSpinBox::TimeSpinBox(QWidget *parent) : QDoubleSpinBox(parent) {
   setMinimum(5.0);
@@ -36,7 +38,26 @@ double TimeSpinBox::valueFromText(const QString &text) const {
     return value;
   }
   else {
-    return 0.0;
+    QRegExp rx("\\b[0-9]{1,}\\b");
+    QStringList numbers;
+    int pos = 0;
+    int count = 0;
+
+    while ((pos = rx.indexIn(text, pos)) != -1) {
+      numbers.append(rx.cap(0));
+
+      if (pos >= 0) {
+        ++pos;
+        ++count;
+      }
+    }
+
+    if (numbers.size() == 2) {
+      return (numbers.at(0).toDouble() * 60.0) + numbers.at(1).toDouble();
+    }
+    else {
+      return -1.0;
+    }
   }
 }
 
@@ -58,4 +79,8 @@ void TimeSpinBox::fixup(QString &input) const {
   if (ok) {
     input = textFromValue(value);
   }
+}
+
+QValidator::State TimeSpinBox::validate(QString &input, int &pos) const {
+  return (valueFromText(input) != -1.0) ? QValidator::Acceptable : QValidator::Intermediate;
 }
