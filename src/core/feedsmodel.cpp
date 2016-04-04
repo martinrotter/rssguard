@@ -35,7 +35,6 @@
 
 #include <QThread>
 #include <QSqlError>
-#include <QSqlQuery>
 #include <QSqlRecord>
 #include <QPair>
 #include <QStack>

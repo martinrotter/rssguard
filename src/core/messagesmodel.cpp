@@ -24,6 +24,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "services/abstract/serviceroot.h"
+#include "miscellaneous/databasequeries.h"
 
 #include <QSqlRecord>
 #include <QSqlError>
@@ -258,18 +259,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return false;
   }
 
-  QSqlQuery query_read_msg(database());
-  query_read_msg.setForwardOnly(true);
-
-  if (!query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE id = :id;"))) {
-    qWarning("Query preparation failed for message read change.");
-    return false;
-  }
-
-  query_read_msg.bindValue(QSL(":id"), message.m_id);
-  query_read_msg.bindValue(QSL(":read"), (int) read);
-
-  if (query_read_msg.exec()) {
+  if (DatabaseQueries::markMessageReadUnread(database(), message.m_id, read)) {
     return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<Message>() << message, read);
   }
   else {

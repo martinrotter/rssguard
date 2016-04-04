@@ -383,7 +383,7 @@ bool StandardFeed::removeItself() {
 
   // Remove all messages from this standard feed.
   query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
-  query_remove.bindValue(QSL(":feed"), id());
+  query_remove.bindValue(QSL(":feed"), customId());
 
   if (!query_remove.exec()) {
     return false;

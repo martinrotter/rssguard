@@ -213,14 +213,13 @@ bool TtRssFeed::removeItself() {
     }
 
     // Remove feed itself.
-    query_remove.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :feed;"));
-    query_remove.bindValue(QSL(":feed"), customId());
+    query_remove.prepare(QSL("DELETE FROM Feeds WHERE id = :feed;"));
+    query_remove.bindValue(QSL(":feed"), id());
 
     return query_remove.exec();
   }
   else {
     qWarning("TT-RSS: Unsubscribing from feed failed, received JSON: '%s'", qPrintable(response.toString()));
-
     return false;
   }
 }
