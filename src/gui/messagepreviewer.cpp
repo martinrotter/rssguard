@@ -26,6 +26,7 @@
 #include <QScrollBar>
 #include <QToolBar>
 #include <QSqlQuery>
+#include <QToolTip>
 
 
 MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
@@ -74,6 +75,13 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
+  connect(m_ui->m_txtMessage,
+          static_cast<void (QTextBrowser::*)(const QString&)>(&QTextBrowser::highlighted),
+          [=](const QString &text) {
+    Q_UNUSED(text)
+
+    QToolTip::showText(QCursor::pos(), tr("Click this link to download it or open it with external browser."), this);
+  });
 
   m_actionSwitchImportance->setCheckable(true);
 
@@ -92,6 +100,10 @@ void MessagePreviewer::reloadFontSettings() {
                                  SETTING(Messages::PreviewerFontStandard)).toString());
 
   m_ui->m_txtMessage->setFont(fon);
+
+  fon.setPointSize(fon.pointSize() + 5);
+
+  m_ui->m_lblTitle->setFont(fon);
 }
 
 void MessagePreviewer::clear() {

@@ -55,9 +55,9 @@ class OwnCloudServiceRoot : public ServiceRoot {
     void addNewFeed(const QString &url);
     void addNewCategory();
 
-    void syncIn();
-
   private:
+    RootItem *obtainNewTreeForSyncIn() const;
+
     void loadFromDatabase();
 
     OwnCloudRecycleBin *m_recycleBin;

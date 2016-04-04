@@ -164,8 +164,13 @@ class ServiceRoot : public RootItem {
   public slots:
     virtual void addNewFeed(const QString &url = QString()) = 0;
     virtual void addNewCategory() = 0;
+    virtual void syncIn();
 
   protected:
+    // This method should obtain new tree of feed/messages/etc to perform
+    // sync in.
+    virtual RootItem *obtainNewTreeForSyncIn() const;
+
     // Removes all messages/categories/feeds which are
     // associated with this account.
     void removeOldFeedTree(bool including_messages);

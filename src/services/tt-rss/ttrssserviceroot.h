@@ -61,9 +61,10 @@ class TtRssServiceRoot : public ServiceRoot {
   public slots:
     void addNewFeed(const QString &url = QString());
     void addNewCategory();
-    void syncIn();
 
   private:
+    RootItem *obtainNewTreeForSyncIn() const;
+
     void loadFromDatabase();
 
     TtRssRecycleBin *m_recycleBin;

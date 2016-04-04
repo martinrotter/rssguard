@@ -297,6 +297,65 @@ void ServiceRoot::requestItemRemoval(RootItem *item) {
   emit itemRemovalRequested(item);
 }
 
+void ServiceRoot::syncIn() {
+  QIcon original_icon = icon();
+
+  setIcon(qApp->icons()->fromTheme(QSL("item-sync")));
+  itemChanged(QList<RootItem*>() << this);
+
+  RootItem *new_tree = obtainNewTreeForSyncIn();
+
+  if (new_tree != NULL) {
+    // Purge old data from SQL and clean all model items.
+    requestItemExpandStateSave(this);
+    removeOldFeedTree(false);
+    cleanAllItems();
+
+    // Model is clean, now store new tree into DB and
+    // set primary IDs of the items.
+    storeNewFeedTree(new_tree);
+
+    // We have new feed, some feeds were maybe removed,
+    // so remove left over messages.
+    removeLeftOverMessages();
+
+    foreach (RootItem *top_level_item, new_tree->childItems()) {
+      top_level_item->setParent(NULL);
+      requestItemReassignment(top_level_item, this);
+    }
+
+    updateCounts(true);
+
+    new_tree->clearChildren();
+    new_tree->deleteLater();
+
+    QList<RootItem*> all_items = getSubTree();
+
+    itemChanged(all_items);
+    requestReloadMessageList(true);
+
+    // Now we must refresh expand states.
+    QList<RootItem*> items_to_expand;
+
+    foreach (RootItem *item, all_items) {
+      if (qApp->settings()->value(GROUP(CategoriesExpandStates), item->hashCode(), item->childCount() > 0).toBool()) {
+        items_to_expand.append(item);
+      }
+    }
+
+    items_to_expand.append(this);
+
+    requestItemExpand(items_to_expand, true);
+  }
+
+  setIcon(original_icon);
+  itemChanged(QList<RootItem*>() << this);
+}
+
+RootItem *ServiceRoot::obtainNewTreeForSyncIn() const {
+  return NULL;
+}
+
 QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
   if (item->getParentServiceRoot() != this) {
     // Not item from this account.
