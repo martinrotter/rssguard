@@ -27,9 +27,11 @@ class DatabaseQueries {
   public:
     static bool markMessagesRead(QSqlDatabase db, const QStringList &ids, RootItem::ReadStatus read);
     static bool markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance);
+    static bool markBinReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read);
     static bool switchMessagesImportance(QSqlDatabase db, const QStringList &ids);
     static bool permanentlyDeleteMessages(QSqlDatabase db, const QStringList &ids);
     static bool deleteOrRestoreMessagesToFromBin(QSqlDatabase db, const QStringList &ids, bool deleted);
+    static bool restoreBin(QSqlDatabase db, int account_id);
     static bool purgeImportantMessages(QSqlDatabase db);
     static bool purgeReadMessages(QSqlDatabase db);
     static bool purgeOldMessages(QSqlDatabase db, int older_than_days);
@@ -39,9 +41,11 @@ class DatabaseQueries {
     static int getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id, int account_id,
                                        bool including_total_counts, bool *ok = NULL);
     static int getMessageCountsForBin(QSqlDatabase db, int account_id, bool including_total_counts, bool *ok = NULL);
-    static QList<Message> getUndeletedMessages(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = NULL);
+    static QList<Message> getUndeletedMessagesForFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = NULL);
+    static QList<Message> getUndeletedMessagesForBin(QSqlDatabase db, int account_id, bool *ok = NULL);
     static int updateMessages(QSqlDatabase db, const QList<Message> &messages, int feed_custom_id,
                               int account_id, const QString &url, bool *any_message_changed, bool *ok = NULL);
+    static bool cleanMessagesFromBin(QSqlDatabase db, bool clear_only_read, int account_id);
 
   private:
     explicit DatabaseQueries();

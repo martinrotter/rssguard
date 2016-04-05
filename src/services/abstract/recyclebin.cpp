@@ -84,48 +84,18 @@ QList<QAction*> RecycleBin::contextMenu() {
 }
 
 QList<Message> RecycleBin::undeletedMessages() const {
-  QList<Message> messages;
   const int account_id = getParentServiceRoot()->accountId();
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(database);
 
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT * "
-                         "FROM Messages "
-                         "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
-  query_read_msg.bindValue(QSL(":account_id"), account_id);
-
-  if (query_read_msg.exec()) {
-    while (query_read_msg.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(query_read_msg.record(), &decoded);
-
-      if (decoded) {
-        messages.append(message);
-      }
-
-      messages.append(message);
-    }
-  }
-
-  return messages;
+  return DatabaseQueries::getUndeletedMessagesForBin(database, account_id);
 }
 
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(db_handle);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   ServiceRoot *parent_root = getParentServiceRoot();
 
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("UPDATE Messages SET is_read = :read "
-                         "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
-
-  query_read_msg.bindValue(QSL(":read"), status == RootItem::Read ? 1 : 0);
-  query_read_msg.bindValue(QSL(":account_id"), parent_root->accountId());
-
-  if (query_read_msg.exec()) {
+  if (DatabaseQueries::markBinReadUnread(database, parent_root->accountId(), status)) {
     updateCounts(false);
-
     parent_root->itemChanged(QList<RootItem*>() << this);
     parent_root->requestReloadMessageList(status == RootItem::Read);
     return true;
@@ -136,23 +106,10 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
 }
 
 bool RecycleBin::cleanMessages(bool clear_only_read) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   ServiceRoot *parent_root = getParentServiceRoot();
-  QSqlQuery query_empty_bin(db_handle);
 
-  query_empty_bin.setForwardOnly(true);
-
-  if (clear_only_read) {
-    query_empty_bin.prepare("UPDATE Messages SET is_pdeleted = 1 "
-                            "WHERE is_read = 1 AND is_deleted = 1 AND account_id = :account_id;");
-  }
-  else {
-    query_empty_bin.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));
-  }
-
-  query_empty_bin.bindValue(QSL(":account_id"), parent_root->accountId());
-
-  if (query_empty_bin.exec()) {
+  if (DatabaseQueries::cleanMessagesFromBin(database, clear_only_read, parent_root->accountId())) {
     updateCounts(true);
     parent_root->itemChanged(QList<RootItem*>() << this);
     parent_root->requestReloadMessageList(true);
@@ -168,16 +125,10 @@ bool RecycleBin::empty() {
 }
 
 bool RecycleBin::restore() {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   ServiceRoot *parent_root = getParentServiceRoot();
-  QSqlQuery query_empty_bin(db_handle);
 
-  query_empty_bin.setForwardOnly(true);
-  query_empty_bin.prepare("UPDATE Messages SET is_deleted = 0 "
-                          "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
-  query_empty_bin.bindValue(QSL(":account_id"), parent_root->accountId());
-
-  if (query_empty_bin.exec()) {
+  if (DatabaseQueries::restoreBin(database, parent_root->accountId())) {
     parent_root->updateCounts(true);
     parent_root->itemChanged(parent_root->getSubTree());
     parent_root->requestReloadMessageList(true);

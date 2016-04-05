@@ -23,15 +23,15 @@
 
 
 bool DatabaseQueries::markMessagesRead(QSqlDatabase db, const QStringList &ids, RootItem::ReadStatus read) {
-  QSqlQuery query_read_msg(db);
-  query_read_msg.setForwardOnly(true);
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
 
-  return query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
-                             .arg(ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")));
+  return q.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
+                .arg(ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")));
 }
 
 bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance) {
-  QSqlQuery q;(db);
+  QSqlQuery q(db);
   q.setForwardOnly(true);
 
   if (!q.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
@@ -43,6 +43,18 @@ bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Im
   q.bindValue(QSL(":important"), (int) importance);
 
   // Commit changes.
+  return q.exec();
+}
+
+bool DatabaseQueries::markBinReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare("UPDATE Messages SET is_read = :read "
+            "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+
+  q.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  q.bindValue(QSL(":account_id"), account_id);
+
   return q.exec();
 }
 
@@ -68,41 +80,51 @@ bool DatabaseQueries::deleteOrRestoreMessagesToFromBin(QSqlDatabase db, const QS
                                                                                           QString::number(deleted ? 1 : 0)));
 }
 
-bool DatabaseQueries::purgeImportantMessages(QSqlDatabase db) {
-  QSqlQuery query = QSqlQuery(db);
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE is_important = 1;"));
+bool DatabaseQueries::restoreBin(QSqlDatabase db, int account_id) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare("UPDATE Messages SET is_deleted = 0 "
+            "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+  q.bindValue(QSL(":account_id"), account_id);
 
-  return query.exec();
+  return q.exec();
+}
+
+bool DatabaseQueries::purgeImportantMessages(QSqlDatabase db) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Messages WHERE is_important = 1;"));
+
+  return q.exec();
 }
 
 bool DatabaseQueries::purgeReadMessages(QSqlDatabase db) {
-  QSqlQuery query = QSqlQuery(db);
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted AND is_read = :is_read;"));
-  query.bindValue(QSL(":is_read"), 1);
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted AND is_read = :is_read;"));
+  q.bindValue(QSL(":is_read"), 1);
 
   // Remove only messages which are NOT in recycle bin.
-  query.bindValue(QSL(":is_deleted"), 0);
+  q.bindValue(QSL(":is_deleted"), 0);
 
   // Remove only messages which are NOT starred.
-  query.bindValue(QSL(":is_important"), 0);
+  q.bindValue(QSL(":is_important"), 0);
 
-  return query.exec();
+  return q.exec();
 }
 
 bool DatabaseQueries::purgeOldMessages(QSqlDatabase db, int older_than_days) {
-  QSqlQuery query = QSqlQuery(db);
+  QSqlQuery q = QSqlQuery(db);
   const qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-older_than_days).toMSecsSinceEpoch();
 
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND date_created < :date_created;"));
-  query.bindValue(QSL(":date_created"), since_epoch);
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND date_created < :date_created;"));
+  q.bindValue(QSL(":date_created"), since_epoch);
 
   // Remove only messages which are NOT starred.
-  query.bindValue(QSL(":is_important"), 0);
+  q.bindValue(QSL(":is_important"), 0);
 
-  return query.exec();
+  return q.exec();
 }
 
 bool DatabaseQueries::purgeRecycleBin(QSqlDatabase db) {
@@ -223,7 +245,7 @@ int DatabaseQueries::getMessageCountsForBin(QSqlDatabase db, int account_id, boo
   }
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessages(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok) {
   QList<Message> messages;
   QSqlQuery q(db);
   q.setForwardOnly(true);
@@ -232,6 +254,39 @@ QList<Message> DatabaseQueries::getUndeletedMessages(QSqlDatabase db, int feed_c
             "WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;");
 
   q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    while (q.next()) {
+      bool decoded;
+      Message message = Message::fromSqlRecord(q.record(), &decoded);
+
+      if (decoded) {
+        messages.append(message);
+      }
+    }
+
+    if (ok != NULL) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  return messages;
+}
+
+QList<Message> DatabaseQueries::getUndeletedMessagesForBin(QSqlDatabase db, int account_id, bool *ok) {
+  QList<Message> messages;
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare("SELECT * "
+            "FROM Messages "
+            "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -442,6 +497,23 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   }
 
   return updated_messages;
+}
+
+bool DatabaseQueries::cleanMessagesFromBin(QSqlDatabase db, bool clear_only_read, int account_id) {
+  QSqlQuery query_empty_bin(db);
+  query_empty_bin.setForwardOnly(true);
+
+  if (clear_only_read) {
+    query_empty_bin.prepare("UPDATE Messages SET is_pdeleted = 1 "
+                            "WHERE is_read = 1 AND is_deleted = 1 AND account_id = :account_id;");
+  }
+  else {
+    query_empty_bin.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));
+  }
+
+  query_empty_bin.bindValue(QSL(":account_id"), account_id);
+
+  return query_empty_bin.exec();
 }
 
 DatabaseQueries::DatabaseQueries() {

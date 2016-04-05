@@ -36,7 +36,7 @@ Feed::~Feed() {
 
 QList<Message> Feed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  return DatabaseQueries::getUndeletedMessages(database, customId(), getParentServiceRoot()->accountId());
+  return DatabaseQueries::getUndeletedMessagesForFeed(database, customId(), getParentServiceRoot()->accountId());
 }
 
 QVariant Feed::data(int column, int role) const {
