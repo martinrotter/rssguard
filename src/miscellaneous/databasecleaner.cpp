@@ -18,11 +18,9 @@
 #include "miscellaneous/databasecleaner.h"
 
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasequeries.h"
 
 #include <QDebug>
-#include <QSqlError>
-#include <QSqlQuery>
 #include <QThread>
 
 
@@ -90,55 +88,18 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
   emit purgeFinished(result);
 }
 
-bool DatabaseCleaner::purgeStarredMessages(const QSqlDatabase &database) {
-  QSqlQuery query = QSqlQuery(database);
-
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important;"));
-  query.bindValue(QSL(":is_important"), 1);
-
-  return query.exec();
+bool DatabaseCleaner::purgeStarredMessages(const QSqlDatabase &database) {  
+  return DatabaseQueries::purgeImportantMessages(database);
 }
 
-bool DatabaseCleaner::purgeReadMessages(const QSqlDatabase &database) {
-  QSqlQuery query = QSqlQuery(database);
-
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted AND is_read = :is_read;"));
-  query.bindValue(QSL(":is_read"), 1);
-
-  // Remove only messages which are NOT in recycle bin.
-  query.bindValue(QSL(":is_deleted"), 0);
-
-  // Remove only messages which are NOT starred.
-  query.bindValue(QSL(":is_important"), 0);
-
-  return query.exec();
+bool DatabaseCleaner::purgeReadMessages(const QSqlDatabase &database) {  
+  return DatabaseQueries::purgeReadMessages(database);
 }
 
 bool DatabaseCleaner::purgeOldMessages(const QSqlDatabase &database, int days) {
-  QSqlQuery query = QSqlQuery(database);
-  const qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-days).toMSecsSinceEpoch();
-
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND date_created < :date_created;"));
-  query.bindValue(QSL(":date_created"), since_epoch);
-
-  // Remove only messages which are NOT starred.
-  query.bindValue(QSL(":is_important"), 0);
-
-  return query.exec();
+  return DatabaseQueries::purgeOldMessages(database, days);
 }
 
 bool DatabaseCleaner::purgeRecycleBin(const QSqlDatabase &database) {
-  QSqlQuery query = QSqlQuery(database);
-
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted;"));
-  query.bindValue(QSL(":is_deleted"), 1);
-
-  // Remove only messages which are NOT starred.
-  query.bindValue(QSL(":is_important"), 0);
-
-  return query.exec();
+  return DatabaseQueries::purgeRecycleBin(database);
 }

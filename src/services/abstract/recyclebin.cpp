@@ -20,9 +20,8 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "services/abstract/serviceroot.h"
-
-#include <QSqlQuery>
 
 
 RecycleBin::RecycleBin(RootItem *parent_item) : RootItem(parent_item), m_contextMenu(QList<QAction*>()) {
@@ -47,33 +46,11 @@ int RecycleBin::countOfAllMessages() const {
 
 void RecycleBin::updateCounts(bool update_total_count) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_all(database);
-  const ServiceRoot *parent_root = getParentServiceRoot();
 
-  query_all.setForwardOnly(true);
-  query_all.prepare("SELECT count(*) FROM Messages "
-                    "WHERE is_read = 0 AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
-  query_all.bindValue(QSL(":account_id"), parent_root->accountId());
-
-
-  if (query_all.exec() && query_all.next()) {
-    m_unreadCount = query_all.value(0).toInt();
-  }
-  else {
-    m_unreadCount = 0;
-  }
+  m_unreadCount = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId(), false);
 
   if (update_total_count) {
-    query_all.prepare("SELECT count(*) FROM Messages "
-                      "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
-    query_all.bindValue(QSL(":account_id"), parent_root->accountId());
-
-    if (query_all.exec() && query_all.next()) {
-      m_totalCount = query_all.value(0).toInt();
-    }
-    else {
-      m_totalCount = 0;
-    }
+    m_totalCount = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId(), true);
   }
 }
 
