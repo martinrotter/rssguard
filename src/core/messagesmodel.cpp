@@ -259,7 +259,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return false;
   }
 
-  if (DatabaseQueries::markMessageReadUnread(database(), message.m_id, read)) {
+  if (DatabaseQueries::markMessageRead(database(), message.m_id, read)) {
     return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<Message>() << message, read);
   }
   else {
@@ -289,19 +289,8 @@ bool MessagesModel::switchMessageImportance(int row_index) {
     return false;
   }
 
-  QSqlQuery query_importance_msg(database());
-  query_importance_msg.setForwardOnly(true);
-
-  if (!query_importance_msg.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
-    qWarning("Query preparation failed for message importance switch.");
-    return false;
-  }
-
-  query_importance_msg.bindValue(QSL(":id"), message.m_id);
-  query_importance_msg.bindValue(QSL(":important"), (int) next_importance);
-
   // Commit changes.
-  if (query_importance_msg.exec()) {
+  if (DatabaseQueries::markMessageImportant(database(), message.m_id, next_importance)) {
     return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem,
                                                                                   QList<QPair<Message,RootItem::Importance> >() << pair);
   }

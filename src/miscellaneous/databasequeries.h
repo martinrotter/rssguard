@@ -25,8 +25,8 @@
 
 class DatabaseQueries {
   public:
-    static bool markMessageReadUnread(QSqlDatabase db, int id, RootItem::ReadStatus read);
-
+    static bool markMessageRead(QSqlDatabase db, int id, RootItem::ReadStatus read);
+    static bool markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance);
 
   private:
     explicit DatabaseQueries();

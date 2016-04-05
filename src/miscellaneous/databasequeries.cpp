@@ -20,7 +20,7 @@
 #include <QVariant>
 
 
-bool DatabaseQueries::markMessageReadUnread(QSqlDatabase db, int id, RootItem::ReadStatus read) {
+bool DatabaseQueries::markMessageRead(QSqlDatabase db, int id, RootItem::ReadStatus read) {
   QSqlQuery query_read_msg(db);
   query_read_msg.setForwardOnly(true);
 
@@ -33,6 +33,22 @@ bool DatabaseQueries::markMessageReadUnread(QSqlDatabase db, int id, RootItem::R
   query_read_msg.bindValue(QSL(":read"), (int) read);
 
   return query_read_msg.exec();
+}
+
+bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance) {
+  QSqlQuery query_importance_msg(db);
+  query_importance_msg.setForwardOnly(true);
+
+  if (!query_importance_msg.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
+    qWarning("Query preparation failed for message importance switch.");
+    return false;
+  }
+
+  query_importance_msg.bindValue(QSL(":id"), id);
+  query_importance_msg.bindValue(QSL(":important"), (int) importance);
+
+  // Commit changes.
+  return query_importance_msg.exec();
 }
 
 DatabaseQueries::DatabaseQueries() {
