@@ -21,13 +21,12 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
 
 #include <QSqlTableModel>
-#include <QSqlQuery>
-#include <QSqlError>
 
 
 ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent), m_accountId(NO_PARENT_CATEGORY) {
@@ -39,44 +38,21 @@ ServiceRoot::~ServiceRoot() {
 }
 
 bool ServiceRoot::deleteViaGui() {
-  QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(connection);
-  const int account_id = accountId();
-  query.setForwardOnly(true);
+  QSqlDatabase database= qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  QStringList queries;
-  queries << QSL("DELETE FROM Messages WHERE account_id = :account_id;") <<
-             QSL("DELETE FROM Feeds WHERE account_id = :account_id;") <<
-             QSL("DELETE FROM Categories WHERE account_id = :account_id;") <<
-             QSL("DELETE FROM Accounts WHERE id = :account_id;");
-
-  foreach (const QString &q, queries) {
-    query.prepare(q);
-    query.bindValue(QSL(":account_id"), account_id);
-
-    if (!query.exec()) {
-      qCritical("Removing of account from DB failed, this is critical: '%s'.", qPrintable(query.lastError().text()));
-      return false;
-    }
-    else {
-      query.finish();
-    }
+  if (DatabaseQueries::deleteAccount(database, accountId())) {
+    requestItemRemoval(this);
+    return true;
   }
-
-  requestItemRemoval(this);
-  return true;
+  else {
+    return false;
+  }
 }
 
 bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(db_handle);
-  query.setForwardOnly(true);
-  query.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  query.bindValue(QSL(":account_id"), accountId());
-  query.bindValue(QSL(":read"), status == RootItem::Read ? 1 : 0);
-
-  if (query.exec()) {
+  if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
     updateCounts(false);
     itemChanged(getSubTree());
     requestReloadMessageList(status == RootItem::Read);
@@ -110,22 +86,8 @@ void ServiceRoot::completelyRemoveAllData() {
 
 void ServiceRoot::removeOldFeedTree(bool including_messages) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
-  query.setForwardOnly(true);
 
-  query.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), accountId());
-  query.exec();
-
-  query.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), accountId());
-  query.exec();
-
-  if (including_messages) {
-    query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
-    query.bindValue(QSL(":account_id"), accountId());
-    query.exec();
-  }
+  DatabaseQueries::deleteAccountData(database, accountId(), including_messages);
 }
 
 void ServiceRoot::cleanAllItems() {
@@ -136,27 +98,10 @@ void ServiceRoot::cleanAllItems() {
   }
 }
 
-bool ServiceRoot::cleanFeeds(QList<Feed *> items, bool clean_read_only) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_delete_msg(db_handle);
-  int account_id = accountId();
-  query_delete_msg.setForwardOnly(true);
+bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  if (clean_read_only) {
-    query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = :account_id;")
-                             .arg(textualFeedIds(items).join(QSL(", "))));
-  }
-  else {
-    query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
-                             .arg(textualFeedIds(items).join(QSL(", "))));
-  }
-
-  query_delete_msg.bindValue(QSL(":deleted"), 1);
-  query_delete_msg.bindValue(QSL(":account_id"), account_id);
-
-  if (query_delete_msg.exec()) {
+  if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
     // Messages are cleared, now inform model about need to reload data.
     QList<RootItem*> itemss;
 
@@ -177,7 +122,6 @@ bool ServiceRoot::cleanFeeds(QList<Feed *> items, bool clean_read_only) {
     return true;
   }
   else {
-    qDebug("Cleaning of feeds failed: '%s'.", qPrintable(query_delete_msg.lastError().text()));
     return false;
   }
 }
@@ -233,44 +177,14 @@ void ServiceRoot::storeNewFeedTree(RootItem *root) {
 
 void ServiceRoot::removeLeftOverMessages() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
-  int account_id = accountId();
 
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
-  query.bindValue(QSL(":account_id"), account_id);
-
-  if (!query.exec()) {
-    qWarning("Removing of left over messages failed: '%s'.", qPrintable(query.lastError().text()));
-  }
+  DatabaseQueries::deleteLeftoverMessages(database, accountId());
 }
 
 QList<Message> ServiceRoot::undeletedMessages() const {
-  QList<Message> messages;
-  const int account_id = accountId();
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
 
-  query.setForwardOnly(true);
-  query.prepare("SELECT * "
-                "FROM Messages "
-                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
-  query.bindValue(QSL(":account_id"), account_id);
-
-  if (query.exec()) {
-    while (query.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(query.record(), &decoded);
-
-      if (decoded) {
-        messages.append(message);
-      }
-
-      messages.append(message);
-    }
-  }
-
-  return messages;
+  return DatabaseQueries::getUndeletedMessagesForAccount(database, accountId());
 }
 
 void ServiceRoot::itemChanged(const QList<RootItem*> &items) {

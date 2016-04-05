@@ -136,7 +136,7 @@ void MessagePreviewer::markMessageAsRead() {
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Read)) {
-      DatabaseQueries::markMessagesRead(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
                                         QStringList() << QString::number(m_message.m_id),
                                         RootItem::Read);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
@@ -156,7 +156,7 @@ void MessagePreviewer::markMessageAsUnread() {
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Unread)) {
-      DatabaseQueries::markMessagesRead(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
                                         QStringList() << QString::number(m_message.m_id),
                                         RootItem::Unread);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),

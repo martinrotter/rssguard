@@ -22,7 +22,7 @@
 #include <QSqlError>
 
 
-bool DatabaseQueries::markMessagesRead(QSqlDatabase db, const QStringList &ids, RootItem::ReadStatus read) {
+bool DatabaseQueries::markMessagesReadUnread(QSqlDatabase db, const QStringList &ids, RootItem::ReadStatus read) {
   QSqlQuery q(db);
   q.setForwardOnly(true);
 
@@ -54,6 +54,17 @@ bool DatabaseQueries::markBinReadUnread(QSqlDatabase db, int account_id, RootIte
 
   q.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
   q.bindValue(QSL(":account_id"), account_id);
+
+  return q.exec();
+}
+
+bool DatabaseQueries::markAccountReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
+
+  q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
 
   return q.exec();
 }
@@ -312,6 +323,38 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(QSqlDatabase db, int 
   return messages;
 }
 
+QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(QSqlDatabase db, int account_id, bool *ok) {
+  QList<Message> messages;
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare("SELECT * "
+                "FROM Messages "
+                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    while (q.next()) {
+      bool decoded;
+      Message message = Message::fromSqlRecord(q.record(), &decoded);
+
+      if (decoded) {
+        messages.append(message);
+      }
+    }
+
+    if (ok != NULL) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  return messages;
+}
+
 int DatabaseQueries::updateMessages(QSqlDatabase db,
                                     const QList<Message> &messages,
                                     int feed_custom_id,
@@ -514,6 +557,100 @@ bool DatabaseQueries::cleanMessagesFromBin(QSqlDatabase db, bool clear_only_read
   query_empty_bin.bindValue(QSL(":account_id"), account_id);
 
   return query_empty_bin.exec();
+}
+
+bool DatabaseQueries::deleteAccount(QSqlDatabase db, int account_id) {
+  QSqlQuery query(db);
+  query.setForwardOnly(true);
+
+  QStringList queries;
+  queries << QSL("DELETE FROM Messages WHERE account_id = :account_id;") <<
+             QSL("DELETE FROM Feeds WHERE account_id = :account_id;") <<
+             QSL("DELETE FROM Categories WHERE account_id = :account_id;") <<
+             QSL("DELETE FROM Accounts WHERE id = :account_id;");
+
+  foreach (const QString &q, queries) {
+    query.prepare(q);
+    query.bindValue(QSL(":account_id"), account_id);
+
+    if (!query.exec()) {
+      qCritical("Removing of account from DB failed, this is critical: '%s'.", qPrintable(query.lastError().text()));
+      return false;
+    }
+    else {
+      query.finish();
+    }
+  }
+
+  return true;
+}
+
+bool DatabaseQueries::deleteAccountData(QSqlDatabase db, int account_id, bool delete_messages_too) {
+  bool result = true;
+  QSqlQuery query(db);
+  query.setForwardOnly(true);
+
+  if (delete_messages_too) {
+    query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
+    query.bindValue(QSL(":account_id"), account_id);
+
+    result &= query.exec();
+  }
+
+  query.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), account_id);
+
+  result &= query.exec();
+
+  query.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), account_id);
+
+  result &= query.exec();
+
+  return result;
+}
+
+bool DatabaseQueries::cleanFeeds(QSqlDatabase db, const QStringList &ids, bool clean_read_only, int account_id) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+
+  if (clean_read_only) {
+    q.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = :account_id;")
+                             .arg(ids.join(QSL(", "))));
+  }
+  else {
+    q.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
+                             .arg(ids.join(QSL(", "))));
+  }
+
+  q.bindValue(QSL(":deleted"), 1);
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qDebug("Cleaning of feeds failed: '%s'.", qPrintable(q.lastError().text()));
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+bool DatabaseQueries::deleteLeftoverMessages(QSqlDatabase db, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qWarning("Removing of left over messages failed: '%s'.", qPrintable(q.lastError().text()));
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 DatabaseQueries::DatabaseQueries() {

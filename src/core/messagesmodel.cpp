@@ -255,7 +255,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return false;
   }
 
-  if (DatabaseQueries::markMessagesRead(database(), QStringList() << QString::number(message.m_id), read)) {
+  if (DatabaseQueries::markMessagesReadUnread(database(), QStringList() << QString::number(message.m_id), read)) {
     return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<Message>() << message, read);
   }
   else {
@@ -373,7 +373,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
     return false;
   }
 
-  if (DatabaseQueries::markMessagesRead(database(), message_ids, read)) {
+  if (DatabaseQueries::markMessagesReadUnread(database(), message_ids, read)) {
     fetchAllData();
     return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
   }
