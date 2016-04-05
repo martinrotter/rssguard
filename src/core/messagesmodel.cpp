@@ -26,10 +26,6 @@
 #include "services/abstract/serviceroot.h"
 #include "miscellaneous/databasequeries.h"
 
-#include <QSqlRecord>
-#include <QSqlError>
-#include <QSqlQuery>
-
 
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
@@ -259,7 +255,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return false;
   }
 
-  if (DatabaseQueries::markMessageRead(database(), message.m_id, read)) {
+  if (DatabaseQueries::markMessagesRead(database(), QStringList() << QString::number(message.m_id), read)) {
     return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<Message>() << message, read);
   }
   else {
@@ -300,11 +296,8 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 }
 
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages) {
-  QSqlQuery query_read_msg(database());
   QStringList message_ids;
   QList<QPair<Message,RootItem::Importance> > message_states;
-
-  query_read_msg.setForwardOnly(true);
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
@@ -321,8 +314,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
     return false;
   }
 
-  if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);"))
-                          .arg(message_ids.join(QSL(", "))))) {
+  if (DatabaseQueries::switchMessagesImportance(database(), message_ids)) {
     fetchAllData();
     return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
   }
@@ -347,19 +339,16 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages) {
     return false;
   }
 
-  QSqlQuery query_read_msg(database());
-  QString sql_delete_query;
-
-  query_read_msg.setForwardOnly(true);
+  bool deleted;
 
   if (m_selectedItem->kind() != RootItemKind::Bin) {
-    sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = 1 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
+    deleted = DatabaseQueries::deleteOrRestoreMessagesToFromBin(database(), message_ids, true);
   }
   else {
-    sql_delete_query = QString(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
+    deleted = DatabaseQueries::permanentlyDeleteMessages(database(), message_ids);
   }
 
-  if (query_read_msg.exec(sql_delete_query)) {
+  if (deleted) {
     fetchAllData();
     return m_selectedItem->getParentServiceRoot()->onAfterMessagesDelete(m_selectedItem, msgs);
   }
@@ -384,13 +373,8 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
     return false;
   }
 
-  QSqlQuery query_read_msg(database());
-  query_read_msg.setForwardOnly(true);
-
-  if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
-                          .arg(message_ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")))) {
+  if (DatabaseQueries::markMessagesRead(database(), message_ids, read)) {
     fetchAllData();
-
     return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
   }
   else {
@@ -414,14 +398,8 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
     return false;
   }
 
-  QSqlQuery query_read_msg(database());
-  QString sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = 0 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
-
-  query_read_msg.setForwardOnly(true);
-
-  if (query_read_msg.exec(sql_delete_query)) {
+  if (DatabaseQueries::deleteOrRestoreMessagesToFromBin(database(), message_ids, false)) {
     fetchAllData();
-
     return m_selectedItem->getParentServiceRoot()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
   }
   else {

@@ -25,8 +25,11 @@
 
 class DatabaseQueries {
   public:
-    static bool markMessageRead(QSqlDatabase db, int id, RootItem::ReadStatus read);
+    static bool markMessagesRead(QSqlDatabase db, const QStringList &ids, RootItem::ReadStatus read);
     static bool markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance);
+    static bool switchMessagesImportance(QSqlDatabase db, const QStringList &ids);
+    static bool permanentlyDeleteMessages(QSqlDatabase db, const QStringList &ids);
+    static bool deleteOrRestoreMessagesToFromBin(QSqlDatabase db, const QStringList &ids, bool deleted);
 
   private:
     explicit DatabaseQueries();

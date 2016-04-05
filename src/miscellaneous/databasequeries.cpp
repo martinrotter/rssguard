@@ -20,35 +20,50 @@
 #include <QVariant>
 
 
-bool DatabaseQueries::markMessageRead(QSqlDatabase db, int id, RootItem::ReadStatus read) {
+bool DatabaseQueries::markMessagesRead(QSqlDatabase db, const QStringList &ids, RootItem::ReadStatus read) {
   QSqlQuery query_read_msg(db);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE id = :id;"))) {
-    qWarning("Query preparation failed for message read change.");
-    return false;
-  }
-
-  query_read_msg.bindValue(QSL(":id"), id);
-  query_read_msg.bindValue(QSL(":read"), (int) read);
-
-  return query_read_msg.exec();
+  return query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
+                             .arg(ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")));
 }
 
 bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance) {
-  QSqlQuery query_importance_msg(db);
-  query_importance_msg.setForwardOnly(true);
+  QSqlQuery q;(db);
+  q.setForwardOnly(true);
 
-  if (!query_importance_msg.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
+  if (!q.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
     qWarning("Query preparation failed for message importance switch.");
     return false;
   }
 
-  query_importance_msg.bindValue(QSL(":id"), id);
-  query_importance_msg.bindValue(QSL(":important"), (int) importance);
+  q.bindValue(QSL(":id"), id);
+  q.bindValue(QSL(":important"), (int) importance);
 
   // Commit changes.
-  return query_importance_msg.exec();
+  return q.exec();
+}
+
+bool DatabaseQueries::switchMessagesImportance(QSqlDatabase db, const QStringList &ids) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+
+  return q.exec(QString(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);")).arg(ids.join(QSL(", "))));
+}
+
+bool DatabaseQueries::permanentlyDeleteMessages(QSqlDatabase db, const QStringList &ids) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+
+  return q.exec(QString(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);")).arg(ids.join(QSL(", "))));
+}
+
+bool DatabaseQueries::deleteOrRestoreMessagesToFromBin(QSqlDatabase db, const QStringList &ids, bool deleted) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+
+  return q.exec(QString(QSL("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);")).arg(ids.join(QSL(", ")),
+                                                                                          QString::number(deleted ? 1 : 0)));
 }
 
 DatabaseQueries::DatabaseQueries() {

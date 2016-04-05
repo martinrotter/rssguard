@@ -19,13 +19,13 @@
 
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "gui/messagebox.h"
 #include "gui/dialogs/formmain.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QScrollBar>
 #include <QToolBar>
-#include <QSqlQuery>
 #include <QToolTip>
 
 
@@ -136,14 +136,9 @@ void MessagePreviewer::markMessageAsRead() {
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Read)) {
-      QSqlQuery query_read_msg(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings));
-      query_read_msg.setForwardOnly(true);
-
-      query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE id = :id;"));
-      query_read_msg.bindValue(QSL(":id"), m_message.m_id);
-      query_read_msg.bindValue(QSL(":read"), 1);
-      query_read_msg.exec();
-
+      DatabaseQueries::markMessagesRead(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+                                        QStringList() << QString::number(m_message.m_id),
+                                        RootItem::Read);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
                                                              QList<Message>() << m_message,
                                                              RootItem::Read);
@@ -161,14 +156,9 @@ void MessagePreviewer::markMessageAsUnread() {
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Unread)) {
-      QSqlQuery query_read_msg(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings));
-      query_read_msg.setForwardOnly(true);
-
-      query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE id = :id;"));
-      query_read_msg.bindValue(QSL(":id"), m_message.m_id);
-      query_read_msg.bindValue(QSL(":read"), 0);
-      query_read_msg.exec();
-
+      DatabaseQueries::markMessagesRead(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+                                        QStringList() << QString::number(m_message.m_id),
+                                        RootItem::Unread);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
                                                              QList<Message>() << m_message,
                                                              RootItem::Unread);
@@ -188,13 +178,8 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
                                                                                                                       m_message.m_isImportant ?
                                                                                                                       RootItem::NotImportant :
                                                                                                                       RootItem::Important))) {
-      QSqlQuery query_read_msg(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings));
-      query_read_msg.setForwardOnly(true);
-
-      query_read_msg.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"));
-      query_read_msg.bindValue(QSL(":id"), m_message.m_id);
-      query_read_msg.bindValue(QSL(":important"), (int) checked);
-      query_read_msg.exec();
+      DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+                                                QStringList() << QString::number(m_message.m_id));
 
       m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
                                                                       QList<ImportanceChange>() << ImportanceChange(m_message,
