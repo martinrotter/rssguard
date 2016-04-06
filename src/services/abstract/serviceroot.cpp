@@ -279,16 +279,9 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
 }
 
 bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(db_handle);
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;").arg(textualFeedIds(items).join(QSL(", "))));
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
-  query_read_msg.bindValue(QSL(":account_id"), accountId());
-
-  if (query_read_msg.exec()) {
+  if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     QList<RootItem*> itemss;
 
     foreach (Feed *feed, items) {

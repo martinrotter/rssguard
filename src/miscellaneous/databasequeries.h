@@ -27,6 +27,7 @@ class DatabaseQueries {
   public:
     static bool markMessagesReadUnread(QSqlDatabase db, const QStringList &ids, RootItem::ReadStatus read);
     static bool markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance);
+    static bool markFeedsReadUnread(QSqlDatabase db, const QStringList &ids, int account_id, RootItem::ReadStatus read);
     static bool markBinReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read);
     static bool markAccountReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read);
     static bool switchMessagesImportance(QSqlDatabase db, const QStringList &ids);

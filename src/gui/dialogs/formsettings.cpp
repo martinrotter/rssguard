@@ -68,7 +68,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Setup behavior.
   m_ui->m_listSettings->setCurrentRow(0);
-  m_ui->m_treeLanguages->setColumnCount(5);
+  m_ui->m_treeLanguages->setColumnCount(4);
   m_ui->m_treeLanguages->setHeaderHidden(false);
   m_ui->m_treeLanguages->setHeaderLabels(QStringList()
                                          << /*: Language column of language list. */ tr("Language")
@@ -89,7 +89,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
 
   // Setup skins.
   m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);

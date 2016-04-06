@@ -51,6 +51,18 @@ bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Im
   return q.exec();
 }
 
+bool DatabaseQueries::markFeedsReadUnread(QSqlDatabase db, const QStringList &ids, int account_id, RootItem::ReadStatus read) {
+  QSqlQuery query_read_msg(db);
+  query_read_msg.setForwardOnly(true);
+  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
+                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;").arg(ids.join(QSL(", "))));
+
+  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  query_read_msg.bindValue(QSL(":account_id"), account_id);
+
+  return query_read_msg.exec();
+}
+
 bool DatabaseQueries::markBinReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read) {
   QSqlQuery q(db);
   q.setForwardOnly(true);
