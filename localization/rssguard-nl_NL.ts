@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
 <context>
     <name>Application</name>
     <message>
@@ -188,7 +186,7 @@ Gelezen berichten gewist...</translation>
         <translation>Download klaar</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Bestand &apos;%1&apos; is klaar
 Klik hier om map te openen.</translation>
@@ -214,17 +212,11 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n resterende minuut</numerusform>
-            <numerusform>%n resterende minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n resterende seconde</numerusform>
-            <numerusform>%n resterende seconden</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -244,10 +236,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Dowloading %n bestand...</numerusform>
-            <numerusform>Downloading %n bestanden...</numerusform>
-        </translation>
+        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -310,10 +299,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Auto-update van %n feed.</numerusform>
-            <numerusform>Auto-update van %n feeds.</numerusform>
-        </translation>
+        <translation><numerusform>Auto-update van %n feed.</numerusform><numerusform>Auto-update van %n feeds.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -624,10 +610,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> dag</numerusform>
-            <numerusform> dagen</numerusform>
-        </translation>
+        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1076,114 +1059,114 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudFeed</name>
     <message>
         <source>Edit feed</source>
-        <translation type="unfinished">Bewerk feed</translation>
+        <translation>Bewerk feed</translation>
     </message>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished">Oudere categorie</translation>
+        <translation>Oudere categorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished">Kies hoofd item voor je feed.</translation>
+        <translation>Kies hoofd item voor je feed.</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished">URL</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished">Automatische-update</translation>
+        <translation>Automatische-update</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished">Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
+        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished">Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
         <source>Requires authentication</source>
-        <translation type="unfinished">Vereist verificatie</translation>
+        <translation>Vereist verificatie</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Gebruikersnaam</translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Paswoord</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>De URL is ok.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished">De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>De URL is leeg.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished">Gebruikersnaam is ok of het is niet nodig.</translation>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished">Gebruikersnaam is leeg.</translation>
+        <translation>Gebruikersnaam is leeg.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished">Paswoord is ok of het is niet nodig.</translation>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished">Paswoord is leeg.</translation>
+        <translation>Paswoord is leeg.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished">Automatisch bijwerken met behulp van globale interval</translation>
+        <translation>Automatisch bijwerken met behulp van globale interval</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished">Automatisch bijwerken elke</translation>
+        <translation>Automatisch bijwerken elke</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished">Niet automatisch bijwerken </translation>
+        <translation>Niet automatisch bijwerken </translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished">Volledige feed url inclusief schema</translation>
+        <translation>Volledige feed url inclusief schema</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
-        <translation type="unfinished">Bewerk bestaande feed</translation>
+        <translation>Bewerk bestaande feed</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished">Voeg nieuw feed toe</translation>
+        <translation>Voeg nieuw feed toe</translation>
     </message>
 </context>
 <context>
@@ -2208,23 +2191,23 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (not available)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2909,35 +2892,35 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagePreviewer</name>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3222,22 +3205,19 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3277,14 +3257,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n andere feed.</numerusform>
-            <numerusform>
++ %n andere feed.</numerusform><numerusform>
 
-+ %n andere feeds.</numerusform>
-        </translation>
++ %n andere feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3322,15 +3299,15 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>Not yet supported</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This plugin allows you to view and manager your wallabag articles.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3345,10 +3322,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-        </translation>
+        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3372,10 +3346,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3430,10 +3401,7 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3598,21 +3566,15 @@ Ongelezen nieuws: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3684,10 +3646,7 @@ Ongelezen nieuws: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
