@@ -38,8 +38,9 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
     // User clicked some URL. Open it in external browser or download?
     MessageBox box(qApp->mainForm());
 
-    box.setText(tr("You clicked link \"%1\". You can download the link contents or open it in external web browser.").arg(url.toString()));
+    box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
     box.setInformativeText(tr("What action do you want to take?"));
+    box.setDetailedText(url.toString());
     QAbstractButton *btn_open = box.addButton(tr("Open in external browser"), QMessageBox::AcceptRole);
     QAbstractButton *btn_download = box.addButton(tr("Download"), QMessageBox::RejectRole);
     QAbstractButton *btn_cancel = box.addButton(QMessageBox::Cancel);
