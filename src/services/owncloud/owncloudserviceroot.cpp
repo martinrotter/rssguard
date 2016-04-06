@@ -195,7 +195,7 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
       itemChanged(QList<RootItem*>() << this);
     }
     else {
-      qWarning("OwnCloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+      qWarning("ownCloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
     }
   }
   else {
@@ -205,7 +205,7 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
 
     // First obtain the ID, which can be assigned to this new account.
     if (!query.exec("SELECT max(id) FROM Accounts;") || !query.next()) {
-      qWarning("OwnCloud: Getting max ID from Accounts table failed: '%s'.", qPrintable(query.lastError().text()));
+      qWarning("ownCloud: Getting max ID from Accounts table failed: '%s'.", qPrintable(query.lastError().text()));
       return;
     }
 
@@ -234,7 +234,7 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
       updateTitle();
     }
     else {
-      qWarning("OwnCloud: Saving of new account failed: '%s'.", qPrintable(query.lastError().text()));
+      qWarning("ownCloud: Saving of new account failed: '%s'.", qPrintable(query.lastError().text()));
     }
   }
 }
