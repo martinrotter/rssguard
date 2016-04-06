@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs_CZ" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -185,7 +187,7 @@
         <translation>Stahování dokončeno</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Soubor &apos;%1&apos; je stažen.
 Klikněte sem pro otevření nadřazeného adresáře.</translation>
@@ -211,11 +213,19 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minuta do konce</numerusform><numerusform>%n minuty do konce</numerusform><numerusform>%n minut do konce</numerusform></translation>
+        <translation>
+            <numerusform>%n minuta do konce</numerusform>
+            <numerusform>%n minuty do konce</numerusform>
+            <numerusform>%n minut do konce</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n vteřina do konce</numerusform><numerusform>%n vteřiny do konce</numerusform><numerusform>%n vteřin do konce</numerusform></translation>
+        <translation>
+            <numerusform>%n vteřina do konce</numerusform>
+            <numerusform>%n vteřiny do konce</numerusform>
+            <numerusform>%n vteřin do konce</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -223,19 +233,23 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Stahuji %n soubor...</numerusform><numerusform>Stahuji %n soubory...</numerusform><numerusform>Stahuji %n souborů...</numerusform></translation>
+        <translation>
+            <numerusform>Stahuji %n soubor...</numerusform>
+            <numerusform>Stahuji %n soubory...</numerusform>
+            <numerusform>Stahuji %n souborů...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -298,7 +312,11 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Budu aktualizovat %n kanál.</numerusform><numerusform>Budu aktualizovat %n kanály.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
+        <translation>
+            <numerusform>Budu aktualizovat %n kanál.</numerusform>
+            <numerusform>Budu aktualizovat %n kanály.</numerusform>
+            <numerusform>Budu aktualizovat %n kanálů.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -608,7 +626,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> den</numerusform><numerusform> dny</numerusform><numerusform> dnů</numerusform></translation>
+        <translation>
+            <numerusform> den</numerusform>
+            <numerusform> dny</numerusform>
+            <numerusform> dnů</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -699,7 +721,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -854,7 +876,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto-update</source>
@@ -953,7 +975,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -992,14 +1014,6 @@ or this functionality is not implemented yet.</source>
         <translation>Je vyžadována minimálně verze %1.</translation>
     </message>
     <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Heslo pro TT-RSS účet</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Uživatelské jméno pro TT-RSS účet</translation>
-    </message>
-    <message>
         <source>URL of your ownCloud server, without any API path</source>
         <translation>URL vašeho ownCloud serveru, bez jakýchkoliv API koncovek.</translation>
     </message>
@@ -1028,20 +1042,12 @@ or this functionality is not implemented yet.</source>
         <translation>Vybraný ownCloud News server běží na nepodporované verzi.</translation>
     </message>
     <message>
-        <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>OwnCloud News server is okay.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Síťová chyba: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1070,6 +1076,117 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>URL is okay.</source>
         <translation>URL je v pořádku.</translation>
+    </message>
+    <message>
+        <source>Password for your ownCloud account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username for your ownCloud account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ownCloud News server is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormEditOwnCloudFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation type="unfinished">Upravit kanál</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished">Nadřazená kategorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished">Zvolte nadřazenou kategorii pro Váš kanál.</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation type="unfinished">Auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation type="unfinished">Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished">Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation type="unfinished">Vyžaduje autentizaci</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Heslo</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished">URL je v pořádku.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished">URL nemá standardní tvar. Začíná vaše URL na &quot;http://&quot; či &quot;https://&quot;?</translation>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished">URL je prázdná.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished">Uživatelské jméno je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Uživatelské jméno je prázdné.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished">Heslo je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Heslo je prázdné.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation type="unfinished">Auto-aktualizovat dle hlavního nastavení</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation type="unfinished">Auto-aktualizovat každých</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation type="unfinished">Zakázat auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished">Plné url kanálu včetně schématu</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation type="unfinished">Upravit existující kanál</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished">Přidat nový kanál</translation>
     </message>
 </context>
 <context>
@@ -1512,7 +1629,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
@@ -1541,7 +1658,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Username</source>
@@ -1577,11 +1694,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
@@ -1790,7 +1907,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
@@ -2049,7 +2166,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
@@ -2077,7 +2194,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable notifications</source>
@@ -2089,7 +2206,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
@@ -2105,7 +2222,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> (not available)</source>
@@ -2284,7 +2401,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fetch it now</source>
@@ -2790,39 +2907,43 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
 <context>
     <name>MessagePreviewer</name>
     <message>
-        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Read</source>
@@ -2846,7 +2967,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Url</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Author</source>
@@ -2942,11 +3063,11 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3100,19 +3221,23 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3152,13 +3277,17 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n další kanál.</numerusform><numerusform>
++ %n další kanál.</numerusform>
+            <numerusform>
 
-+ %n další kanály.</numerusform><numerusform>
++ %n další kanály.</numerusform>
+            <numerusform>
 
-+ %n dalších kanálů.</numerusform></translation>
++ %n dalších kanálů.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3192,7 +3321,19 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not yet supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This plugin allows you to view and manager your wallabag articles.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3207,7 +3348,11 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n smazaná zpráva.</numerusform><numerusform>%n smazané zprávy.</numerusform><numerusform>%n smazaných zpráv.</numerusform></translation>
+        <translation>
+            <numerusform>%n smazaná zpráva.</numerusform>
+            <numerusform>%n smazané zprávy.</numerusform>
+            <numerusform>%n smazaných zpráv.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3231,7 +3376,11 @@ Je vyžadování verze API minimálně %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
+        <translation>
+            <numerusform>%n nepřečtená zpráva.</numerusform>
+            <numerusform>%n nepřečtené zprávy.</numerusform>
+            <numerusform>%n nepřečtených zpráv.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3286,7 +3435,11 @@ Tato kategorie neobsahuje žádné položky.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation>
+            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3369,19 +3522,19 @@ ID účtu: %1</translation>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3450,15 +3603,23 @@ Nepřečtené zprávy: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3530,7 +3691,11 @@ Nepřečtené zprávy: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation>
+            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
