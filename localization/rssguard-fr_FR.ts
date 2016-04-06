@@ -991,14 +991,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>URL of your ownCloud server, without any API path</source>
         <translation type="unfinished"/>
     </message>
@@ -1024,14 +1016,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>OwnCloud News server is okay.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1069,6 +1053,117 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>URL is okay.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password for your ownCloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your ownCloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ownCloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormEditOwnCloudFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Catégorie parente</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Mise à jour automatique</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Sélectionner la stratégie des mises à jour automatique pour ce flux. Par défaut, cette stratégie signifie que le flux sera mis à jour par intervalle de temps défini dans les paramètres de l&apos;application.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Authentification requise</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Nom d&apos;utilisateur</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Mot de passe</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Le nom d&apos;utilisateur est correct ou non nécessaire.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Le nom d&apos;utilisateur est vide.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Le mot de passe  est correct ou non nécessaire.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Le mot de passe est vide.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Mise à jour automatique utilisant l&apos;intervalle global</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Tout mettre à jour</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Ne pas mettre tout à jour automatiquement</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>URL du flux complet incluant le préfixe</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Ajouter un nouveau flux</translation>
     </message>
 </context>
 <context>
@@ -2788,10 +2883,6 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
 <context>
     <name>MessagePreviewer</name>
     <message>
-        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>What action do you want to take?</source>
         <translation type="unfinished"/>
     </message>
@@ -2813,6 +2904,14 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3177,6 +3276,18 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not yet supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This plugin allows you to view and manager your wallabag articles.</source>
         <translation type="unfinished"/>
     </message>
 </context>

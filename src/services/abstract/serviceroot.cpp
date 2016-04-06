@@ -128,50 +128,15 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 
 void ServiceRoot::storeNewFeedTree(RootItem *root) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_category(database);
-  QSqlQuery query_feed(database);
 
-  query_category.prepare("INSERT INTO Categories (parent_id, title, account_id, custom_id) "
-                         "VALUES (:parent_id, :title, :account_id, :custom_id);");
-  query_feed.prepare("INSERT INTO Feeds (title, icon, category, protected, update_type, update_interval, account_id, custom_id) "
-                     "VALUES (:title, :icon, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
+  if (DatabaseQueries::storeAccountTree(database, root, accountId())) {
+    RecycleBin *bin = recycleBin();
 
-  // Iterate all children.
-  foreach (RootItem *child, root->getSubTree()) {
-    if (child->kind() == RootItemKind::Category) {
-      query_category.bindValue(QSL(":parent_id"), child->parent()->id());
-      query_category.bindValue(QSL(":title"), child->title());
-      query_category.bindValue(QSL(":account_id"), accountId());
-      query_category.bindValue(QSL(":custom_id"), QString::number(child->toCategory()->customId()));
-
-      if (query_category.exec()) {
-        child->setId(query_category.lastInsertId().toInt());
-      }
+    if (bin != NULL && !childItems().contains(bin)) {
+      // As the last item, add recycle bin, which is needed.
+      appendChild(bin);
+      bin->updateCounts(true);
     }
-    else if (child->kind() == RootItemKind::Feed) {
-      Feed *feed = child->toFeed();
-
-      query_feed.bindValue(QSL(":title"), feed->title());
-      query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
-      query_feed.bindValue(QSL(":category"), feed->parent()->customId());
-      query_feed.bindValue(QSL(":protected"), 0);
-      query_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
-      query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
-      query_feed.bindValue(QSL(":account_id"), accountId());
-      query_feed.bindValue(QSL(":custom_id"), feed->customId());
-
-      if (query_feed.exec()) {
-        feed->setId(query_feed.lastInsertId().toInt());
-      }
-    }
-  }
-
-  RecycleBin *bin = recycleBin();
-
-  if (bin != NULL && !childItems().contains(bin)) {
-    // As the last item, add recycle bin, which is needed.
-    appendChild(bin);
-    bin->updateCounts(true);
   }
 }
 
@@ -289,47 +254,19 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
 
       case RootItemKind::ServiceRoot: {
         QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-        QSqlQuery query(database);
-
-        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
-        query.bindValue(QSL(":account_id"), accountId());
-        query.exec();
-
-        while (query.next()) {
-          list.append(query.value(0).toString());
-        }
-
+        list = DatabaseQueries::customIdsOfMessagesFromAccount(database, accountId());
         break;
       }
 
       case RootItemKind::Bin: {
         QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-        QSqlQuery query(database);
-
-        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
-        query.bindValue(QSL(":account_id"), accountId());
-        query.exec();
-
-        while (query.next()) {
-          list.append(query.value(0).toString());
-        }
-
+        list = DatabaseQueries::customIdsOfMessagesFromBin(database, accountId());
         break;
       }
 
       case RootItemKind::Feed: {
         QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-        QSqlQuery query(database);
-
-        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;"));
-        query.bindValue(QSL(":account_id"), accountId());
-        query.bindValue(QSL(":feed"), item->customId());
-        query.exec();
-
-        while (query.next()) {
-          list.append(query.value(0).toString());
-        }
-
+        list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->customId(), accountId());
         break;
       }
 
@@ -342,16 +279,9 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
 }
 
 bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(db_handle);
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;").arg(textualFeedIds(items).join(QSL(", "))));
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
-  query_read_msg.bindValue(QSL(":account_id"), accountId());
-
-  if (query_read_msg.exec()) {
+  if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     QList<RootItem*> itemss;
 
     foreach (Feed *feed, items) {

@@ -993,14 +993,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Notera att lägst version %1 är ett krav.</translation>
     </message>
     <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Lösenord för ditt TT RSS-konto</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Användarnamn för ditt TT RSS-konto</translation>
-    </message>
-    <message>
         <source>URL of your ownCloud server, without any API path</source>
         <translation>URL för din ownCloud-server, utan API-sökväg</translation>
     </message>
@@ -1027,14 +1019,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
         <translation>Den valda ownCloud News-servern kör en version som inte stöds. </translation>
-    </message>
-    <message>
-        <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>OwnCloud News-servern är OK, kör version %1, medan lägst version %2 krävs.</translation>
-    </message>
-    <message>
-        <source>OwnCloud News server is okay.</source>
-        <translation>OwnCloud News-servern är OK.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1071,6 +1055,117 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>URL is okay.</source>
         <translation>URL okay.</translation>
+    </message>
+    <message>
+        <source>Password for your ownCloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your ownCloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ownCloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormEditOwnCloudFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation>Redigera flöde</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Överordnad kategori</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Välj övergripande objekt för ditt flöde.</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL </translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Autouppdatering </translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Välj uppdateringsstrategi för flödet. Standard autouppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Kräver autentisering </translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Användarnamn </translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Lösenord </translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation>URL:en är OK.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation>URL saknas.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Användarnamnet är ok, eller behövs inte. </translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Användarnamn saknas. </translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Lösenordet är ok, eller behövs inte. </translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Lösenord saknas. </translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Autouppdatering med globala intervall</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Uppdatera automatiskt varje</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Uppdatera inte automatiskt</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Flödets fullständiga URL inklusive schema</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation>Redigera befintligt flöde </translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Lägg till nytt flöde</translation>
     </message>
 </context>
 <context>
@@ -2794,10 +2889,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
 <context>
     <name>MessagePreviewer</name>
     <message>
-        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
-        <translation>Du klickade på länken &quot;%1&quot;. Du kan ladda ner länkinnehållet eller öppna den i extern webbläsare.</translation>
-    </message>
-    <message>
         <source>What action do you want to take?</source>
         <translation>Vad vill du göra?</translation>
     </message>
@@ -2820,6 +2911,14 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>Switch message importance</source>
         <translation>Växla meddelandeprioritet</translation>
+    </message>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3193,6 +3292,18 @@ Minst API-nivå %1 krävs.</translation>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>Nyhetsappen är en RSS-/Atom-flödesaggregator. Den är en del av ownCloud-sviten. Denna insticksmodul implementerar API:n %1.</translation>
+    </message>
+    <message>
+        <source>Not yet supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This plugin allows you to view and manager your wallabag articles.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

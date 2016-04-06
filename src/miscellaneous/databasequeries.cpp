@@ -17,6 +17,11 @@
 
 #include "miscellaneous/databasequeries.h"
 
+#include "services/abstract/category.h"
+#include "services/abstract/feed.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
+
 #include <QVariant>
 #include <QUrl>
 #include <QSqlError>
@@ -44,6 +49,18 @@ bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Im
 
   // Commit changes.
   return q.exec();
+}
+
+bool DatabaseQueries::markFeedsReadUnread(QSqlDatabase db, const QStringList &ids, int account_id, RootItem::ReadStatus read) {
+  QSqlQuery query_read_msg(db);
+  query_read_msg.setForwardOnly(true);
+  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
+                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;").arg(ids.join(QSL(", "))));
+
+  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  query_read_msg.bindValue(QSL(":account_id"), account_id);
+
+  return query_read_msg.exec();
 }
 
 bool DatabaseQueries::markBinReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read) {
@@ -328,8 +345,8 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(QSqlDatabase db, 
   QSqlQuery q(db);
   q.setForwardOnly(true);
   q.prepare("SELECT * "
-                "FROM Messages "
-                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+            "FROM Messages "
+            "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -616,13 +633,13 @@ bool DatabaseQueries::cleanFeeds(QSqlDatabase db, const QStringList &ids, bool c
 
   if (clean_read_only) {
     q.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = :account_id;")
-                             .arg(ids.join(QSL(", "))));
+                      "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = :account_id;")
+              .arg(ids.join(QSL(", "))));
   }
   else {
     q.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
-                             .arg(ids.join(QSL(", "))));
+                      "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
+              .arg(ids.join(QSL(", "))));
   }
 
   q.bindValue(QSL(":deleted"), 1);
@@ -651,6 +668,119 @@ bool DatabaseQueries::deleteLeftoverMessages(QSqlDatabase db, int account_id) {
   else {
     return true;
   }
+}
+
+bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem *tree_root, int account_id) {
+  QSqlQuery query_category(db);
+  QSqlQuery query_feed(db);
+  query_category.setForwardOnly(true);
+  query_feed.setForwardOnly(true);
+  query_category.prepare("INSERT INTO Categories (parent_id, title, account_id, custom_id) "
+                         "VALUES (:parent_id, :title, :account_id, :custom_id);");
+  query_feed.prepare("INSERT INTO Feeds (title, icon, category, protected, update_type, update_interval, account_id, custom_id) "
+                     "VALUES (:title, :icon, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
+
+  // Iterate all children.
+  foreach (RootItem *child, tree_root->getSubTree()) {
+    if (child->kind() == RootItemKind::Category) {
+      query_category.bindValue(QSL(":parent_id"), child->parent()->id());
+      query_category.bindValue(QSL(":title"), child->title());
+      query_category.bindValue(QSL(":account_id"), account_id);
+      query_category.bindValue(QSL(":custom_id"), QString::number(child->toCategory()->customId()));
+
+      if (query_category.exec()) {
+        child->setId(query_category.lastInsertId().toInt());
+      }
+      else {
+        return false;
+      }
+    }
+    else if (child->kind() == RootItemKind::Feed) {
+      Feed *feed = child->toFeed();
+
+      query_feed.bindValue(QSL(":title"), feed->title());
+      query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
+      query_feed.bindValue(QSL(":category"), feed->parent()->customId());
+      query_feed.bindValue(QSL(":protected"), 0);
+      query_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
+      query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
+      query_feed.bindValue(QSL(":account_id"), account_id);
+      query_feed.bindValue(QSL(":custom_id"), feed->customId());
+
+      if (query_feed.exec()) {
+        feed->setId(query_feed.lastInsertId().toInt());
+      }
+      else {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
+QStringList DatabaseQueries::customIdsOfMessagesFromAccount(QSqlDatabase db, int account_id, bool *ok) {
+  QSqlQuery query(db);
+  QStringList ids;
+  query.setForwardOnly(true);
+  query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), account_id);
+
+  if (ok != NULL) {
+    *ok = query.exec();
+  }
+  else {
+    query.exec();
+  }
+
+  while (query.next()) {
+    ids.append(query.value(0).toString());
+  }
+
+  return ids;
+}
+
+QStringList DatabaseQueries::customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool *ok) {
+  QSqlQuery query(db);
+  QStringList ids;
+  query.setForwardOnly(true);
+  query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), account_id);
+
+  if (ok != NULL) {
+    *ok = query.exec();
+  }
+  else {
+    query.exec();
+  }
+
+  while (query.next()) {
+    ids.append(query.value(0).toString());
+  }
+
+  return ids;
+}
+
+QStringList DatabaseQueries::customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok) {
+  QSqlQuery query(db);
+  QStringList ids;
+  query.setForwardOnly(true);
+  query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), account_id);
+  query.bindValue(QSL(":feed"), feed_custom_id);
+
+  if (ok != NULL) {
+    *ok = query.exec();
+  }
+  else {
+    query.exec();
+  }
+
+  while (query.next()) {
+    ids.append(query.value(0).toString());
+  }
+
+  return ids;
 }
 
 DatabaseQueries::DatabaseQueries() {

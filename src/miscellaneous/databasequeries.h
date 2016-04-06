@@ -27,6 +27,7 @@ class DatabaseQueries {
   public:
     static bool markMessagesReadUnread(QSqlDatabase db, const QStringList &ids, RootItem::ReadStatus read);
     static bool markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance);
+    static bool markFeedsReadUnread(QSqlDatabase db, const QStringList &ids, int account_id, RootItem::ReadStatus read);
     static bool markBinReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read);
     static bool markAccountReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read);
     static bool switchMessagesImportance(QSqlDatabase db, const QStringList &ids);
@@ -38,7 +39,7 @@ class DatabaseQueries {
     static bool purgeOldMessages(QSqlDatabase db, int older_than_days);
     static bool purgeRecycleBin(QSqlDatabase db);
     static QMap<int,int> getMessageCountsForCategory(QSqlDatabase db, int custom_id, int account_id,
-                                          bool including_total_counts, bool *ok = NULL);
+                                                     bool including_total_counts, bool *ok = NULL);
     static int getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id, int account_id,
                                        bool including_total_counts, bool *ok = NULL);
     static int getMessageCountsForBin(QSqlDatabase db, int account_id, bool including_total_counts, bool *ok = NULL);
@@ -52,6 +53,10 @@ class DatabaseQueries {
     static bool deleteAccountData(QSqlDatabase db, int account_id, bool delete_messages_too);
     static bool cleanFeeds(QSqlDatabase db, const QStringList &ids, bool clean_read_only, int account_id);
     static bool deleteLeftoverMessages(QSqlDatabase db, int account_id);
+    static bool storeAccountTree(QSqlDatabase db, RootItem *tree_root, int account_id);
+    static QStringList customIdsOfMessagesFromAccount(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static QStringList customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static QStringList customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = NULL);
 
   private:
     explicit DatabaseQueries();

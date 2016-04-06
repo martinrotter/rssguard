@@ -46,6 +46,15 @@ class IconFactory : public QObject {
 
     void clearCache();
 
+    inline QPixmap pixmap(const QString &name) {
+      if (m_currentIconTheme == APP_NO_THEME) {
+        return QPixmap();
+      }
+      else {
+        return QPixmap(APP_THEME_PATH + QDir::separator() +  m_currentIconTheme + QDir::separator() + name + APP_THEME_SUFFIX);
+      }
+    }
+
     // Returns icon from active theme or invalid icon if
     // "no icon theme" is set.
     inline QIcon fromTheme(const QString &name) {

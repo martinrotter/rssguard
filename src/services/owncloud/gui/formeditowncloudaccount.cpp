@@ -35,8 +35,8 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget *parent)
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                      "of feeds will be probably much slower and may time-out often."));
   m_ui->m_lblDescription->setText(tr("Note that at least version %1 is required.").arg(MINIMAL_OC_VERSION));
-  m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
-  m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account"));
+  m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your ownCloud account"));
+  m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your ownCloud account"));
   m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your ownCloud server, without any API path"));
   m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Information,
                                    tr("No test done yet."),
@@ -111,9 +111,9 @@ void FormEditOwnCloudAccount::performTest() {
     }
     else {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Ok,
-                                       tr("OwnCloud News server is okay, running with version %1, while at least version %2 is required.").arg(result.version(),
+                                       tr("ownCloud News server is okay, running with version %1, while at least version %2 is required.").arg(result.version(),
                                                                                                                                                MINIMAL_OC_VERSION),
-                                       tr("OwnCloud News server is okay."));
+                                       tr("ownCloud News server is okay."));
     }
   }
   else if (factory.lastError()  != QNetworkReply::NoError) {

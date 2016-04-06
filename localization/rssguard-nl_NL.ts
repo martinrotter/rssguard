@@ -994,14 +994,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Merk op dat tenminste versie %1 is vereist</translation>
     </message>
     <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Paswoord voor je TT-RSS account</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Gebruikersnaam voor je TT-RSS account</translation>
-    </message>
-    <message>
         <source>URL of your ownCloud server, without any API path</source>
         <translation>URL van je eigen ownCloud server, zonder een API pad</translation>
     </message>
@@ -1028,14 +1020,6 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
         <translation>Geselecteerde ownCloud Nieuws server draait een niet-ondersteunde versie. </translation>
-    </message>
-    <message>
-        <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>OwnCloud Nieuws server is ok, draait met versie %1, terwijl tenminste versie %2 is vereist.</translation>
-    </message>
-    <message>
-        <source>OwnCloud News server is okay.</source>
-        <translation>OwnCloud Nieuws server is ok.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1072,6 +1056,117 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>URL is okay.</source>
         <translation>Url is goed.</translation>
+    </message>
+    <message>
+        <source>Password for your ownCloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your ownCloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ownCloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormEditOwnCloudFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation>Bewerk feed</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Oudere categorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Kies hoofd item voor je feed.</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Automatische-update</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Vereist verificatie</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Paswoord</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation>De URL is ok.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation>De URL is leeg.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Gebruikersnaam is leeg.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Paswoord is leeg.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Automatisch bijwerken met behulp van globale interval</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Automatisch bijwerken elke</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Niet automatisch bijwerken </translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Volledige feed url inclusief schema</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation>Bewerk bestaande feed</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Voeg nieuw feed toe</translation>
     </message>
 </context>
 <context>
@@ -2796,10 +2891,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
 <context>
     <name>MessagePreviewer</name>
     <message>
-        <source>You clicked link &quot;%1&quot;. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>What action do you want to take?</source>
         <translation type="unfinished"/>
     </message>
@@ -2821,6 +2912,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3197,6 +3296,18 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>De Nieuws app is een RSS/Atom feed aggegrator. Het is deel van de ownCloud suite. Deze plugin implementeert %1 API.</translation>
+    </message>
+    <message>
+        <source>Not yet supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This plugin allows you to view and manager your wallabag articles.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
