@@ -20,6 +20,8 @@
 
 #include "services/abstract/rootitem.h"
 
+#include "services/abstract/serviceroot.h"
+
 #include <QSqlQuery>
 
 
@@ -57,6 +59,15 @@ class DatabaseQueries {
     static QStringList customIdsOfMessagesFromAccount(QSqlDatabase db, int account_id, bool *ok = NULL);
     static QStringList customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool *ok = NULL);
     static QStringList customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = NULL);
+    static QList<ServiceRoot*> getOwnCloudAccounts(QSqlDatabase db, bool *ok = NULL);
+    static bool deleteOwnCloudAccount(QSqlDatabase db, int account_id);
+    static bool overwriteOwnCloudAccount(QSqlDatabase db, const QString &username, const QString &password,
+                                         const QString &url, bool force_server_side_feed_update, int account_id);
+    static bool createOwnCloudAccount(QSqlDatabase db, int id_to_assign, const QString &username, const QString &password,
+                                      const QString &url, bool force_server_side_feed_update);
+    static int createAccount(QSqlDatabase db, const QString &code, bool *ok = NULL);
+    static Assignment getOwnCloudCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static Assignment getOwnCloudFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
 
   private:
     explicit DatabaseQueries();

@@ -20,15 +20,11 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/owncloudserviceroot.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
 #include "gui/dialogs/formmain.h"
-#include "miscellaneous/textfactory.h"
-
-#include <QSqlQuery>
-#include <QSqlError>
 
 
 OwnCloudServiceEntryPoint::OwnCloudServiceEntryPoint() {
@@ -45,28 +41,8 @@ ServiceRoot *OwnCloudServiceEntryPoint::createNewRoot() const {
 QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
   QSqlDatabase database = qApp->database()->connection(QSL("OwnCloudServiceEntryPoint"), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
-  QList<ServiceRoot*> roots;
 
-  if (query.exec("SELECT * FROM OwnCloudAccounts;")) {
-    while (query.next()) {
-      OwnCloudServiceRoot *root = new OwnCloudServiceRoot();
-      root->setId(query.value(0).toInt());
-      root->setAccountId(query.value(0).toInt());
-      root->network()->setAuthUsername(query.value(1).toString());
-      root->network()->setAuthPassword(TextFactory::decrypt(query.value(2).toString()));
-      root->network()->setUrl(query.value(3).toString());
-      root->network()->setForceServerSideUpdate(query.value(4).toBool());
-
-      root->updateTitle();
-      roots.append(root);
-    }
-  }
-  else {
-    qWarning("OwnCloud: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
-  }
-
-  return roots;
+  return DatabaseQueries::getOwnCloudAccounts(database);
 }
 
 bool OwnCloudServiceEntryPoint::isSingleInstanceService() const {

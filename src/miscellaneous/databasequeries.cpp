@@ -19,6 +19,11 @@
 
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
+#include "services/owncloud/owncloudserviceroot.h"
+#include "services/owncloud/owncloudcategory.h"
+#include "services/owncloud/owncloudfeed.h"
+#include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
@@ -52,15 +57,15 @@ bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Im
 }
 
 bool DatabaseQueries::markFeedsReadUnread(QSqlDatabase db, const QStringList &ids, int account_id, RootItem::ReadStatus read) {
-  QSqlQuery query_read_msg(db);
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;").arg(ids.join(QSL(", "))));
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare(QString("UPDATE Messages SET is_read = :read "
+                    "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;").arg(ids.join(QSL(", "))));
 
-  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
-  query_read_msg.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  q.bindValue(QSL(":account_id"), account_id);
 
-  return query_read_msg.exec();
+  return q.exec();
 }
 
 bool DatabaseQueries::markBinReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read) {
@@ -142,7 +147,7 @@ bool DatabaseQueries::purgeReadMessages(QSqlDatabase db) {
 }
 
 bool DatabaseQueries::purgeOldMessages(QSqlDatabase db, int older_than_days) {
-  QSqlQuery q = QSqlQuery(db);
+  QSqlQuery q(db);
   const qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-older_than_days).toMSecsSinceEpoch();
 
   q.setForwardOnly(true);
@@ -156,16 +161,16 @@ bool DatabaseQueries::purgeOldMessages(QSqlDatabase db, int older_than_days) {
 }
 
 bool DatabaseQueries::purgeRecycleBin(QSqlDatabase db) {
-  QSqlQuery query = QSqlQuery(db);
+  QSqlQuery q(db);
 
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted;"));
-  query.bindValue(QSL(":is_deleted"), 1);
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted;"));
+  q.bindValue(QSL(":is_deleted"), 1);
 
   // Remove only messages which are NOT starred.
-  query.bindValue(QSL(":is_important"), 0);
+  q.bindValue(QSL(":is_important"), 0);
 
-  return query.exec();
+  return q.exec();
 }
 
 QMap<int,int> DatabaseQueries::getMessageCountsForCategory(QSqlDatabase db, int custom_id, int account_id,
@@ -211,27 +216,27 @@ QMap<int,int> DatabaseQueries::getMessageCountsForCategory(QSqlDatabase db, int 
 
 int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id,
                                              int account_id, bool including_total_counts, bool *ok) {
-  QSqlQuery query_all(db);
-  query_all.setForwardOnly(true);
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
 
   if (including_total_counts) {
-    query_all.prepare("SELECT count(*) FROM Messages "
-                      "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+    q.prepare("SELECT count(*) FROM Messages "
+              "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
   }
   else {
-    query_all.prepare("SELECT count(*) FROM Messages "
-                      "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :account_id;");
+    q.prepare("SELECT count(*) FROM Messages "
+              "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :account_id;");
   }
 
-  query_all.bindValue(QSL(":feed"), feed_custom_id);
-  query_all.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
 
-  if (query_all.exec() && query_all.next()) {
+  if (q.exec() && q.next()) {
     if (ok != NULL) {
       *ok = true;
     }
 
-    return query_all.value(0).toInt();
+    return q.value(0).toInt();
   }
   else {
     if (ok != NULL) {
@@ -243,26 +248,26 @@ int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id
 }
 
 int DatabaseQueries::getMessageCountsForBin(QSqlDatabase db, int account_id, bool including_total_counts, bool *ok) {
-  QSqlQuery query_all(db);
-  query_all.setForwardOnly(true);
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
 
   if (including_total_counts) {
-    query_all.prepare("SELECT count(*) FROM Messages "
-                      "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+    q.prepare("SELECT count(*) FROM Messages "
+              "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
   }
   else {
-    query_all.prepare("SELECT count(*) FROM Messages "
-                      "WHERE is_read = 0 AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+    q.prepare("SELECT count(*) FROM Messages "
+              "WHERE is_read = 0 AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
   }
 
-  query_all.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":account_id"), account_id);
 
-  if (query_all.exec() && query_all.next()) {
+  if (q.exec() && q.next()) {
     if (ok != NULL) {
       *ok = true;
     }
 
-    return query_all.value(0).toInt();
+    return q.value(0).toInt();
   }
   else {
     if (ok != NULL) {
@@ -560,20 +565,20 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 }
 
 bool DatabaseQueries::cleanMessagesFromBin(QSqlDatabase db, bool clear_only_read, int account_id) {
-  QSqlQuery query_empty_bin(db);
-  query_empty_bin.setForwardOnly(true);
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
 
   if (clear_only_read) {
-    query_empty_bin.prepare("UPDATE Messages SET is_pdeleted = 1 "
-                            "WHERE is_read = 1 AND is_deleted = 1 AND account_id = :account_id;");
+    q.prepare("UPDATE Messages SET is_pdeleted = 1 "
+              "WHERE is_read = 1 AND is_deleted = 1 AND account_id = :account_id;");
   }
   else {
-    query_empty_bin.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));
+    q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));
   }
 
-  query_empty_bin.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":account_id"), account_id);
 
-  return query_empty_bin.exec();
+  return q.exec();
 }
 
 bool DatabaseQueries::deleteAccount(QSqlDatabase db, int account_id) {
@@ -604,25 +609,25 @@ bool DatabaseQueries::deleteAccount(QSqlDatabase db, int account_id) {
 
 bool DatabaseQueries::deleteAccountData(QSqlDatabase db, int account_id, bool delete_messages_too) {
   bool result = true;
-  QSqlQuery query(db);
-  query.setForwardOnly(true);
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
 
   if (delete_messages_too) {
-    query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
-    query.bindValue(QSL(":account_id"), account_id);
+    q.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
+    q.bindValue(QSL(":account_id"), account_id);
 
-    result &= query.exec();
+    result &= q.exec();
   }
 
-  query.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), account_id);
+  q.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
 
-  result &= query.exec();
+  result &= q.exec();
 
-  query.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), account_id);
+  q.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
 
-  result &= query.exec();
+  result &= q.exec();
 
   return result;
 }
@@ -720,67 +725,254 @@ bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem *tree_root, int
 }
 
 QStringList DatabaseQueries::customIdsOfMessagesFromAccount(QSqlDatabase db, int account_id, bool *ok) {
-  QSqlQuery query(db);
+  QSqlQuery q(db);
   QStringList ids;
-  query.setForwardOnly(true);
-  query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), account_id);
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
 
   if (ok != NULL) {
-    *ok = query.exec();
+    *ok = q.exec();
   }
   else {
-    query.exec();
+    q.exec();
   }
 
-  while (query.next()) {
-    ids.append(query.value(0).toString());
+  while (q.next()) {
+    ids.append(q.value(0).toString());
   }
 
   return ids;
 }
 
 QStringList DatabaseQueries::customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool *ok) {
-  QSqlQuery query(db);
+  QSqlQuery q(db);
   QStringList ids;
-  query.setForwardOnly(true);
-  query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), account_id);
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
 
   if (ok != NULL) {
-    *ok = query.exec();
+    *ok = q.exec();
   }
   else {
-    query.exec();
+    q.exec();
   }
 
-  while (query.next()) {
-    ids.append(query.value(0).toString());
+  while (q.next()) {
+    ids.append(q.value(0).toString());
   }
 
   return ids;
 }
 
 QStringList DatabaseQueries::customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok) {
-  QSqlQuery query(db);
+  QSqlQuery q(db);
   QStringList ids;
-  query.setForwardOnly(true);
-  query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), account_id);
-  query.bindValue(QSL(":feed"), feed_custom_id);
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":feed"), feed_custom_id);
 
   if (ok != NULL) {
-    *ok = query.exec();
+    *ok = q.exec();
   }
   else {
-    query.exec();
+    q.exec();
   }
 
-  while (query.next()) {
-    ids.append(query.value(0).toString());
+  while (q.next()) {
+    ids.append(q.value(0).toString());
   }
 
   return ids;
+}
+
+QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(QSqlDatabase db, bool *ok) {
+  QSqlQuery query(db);
+  QList<ServiceRoot*> roots;
+
+  if (query.exec("SELECT * FROM OwnCloudAccounts;")) {
+    while (query.next()) {
+      OwnCloudServiceRoot *root = new OwnCloudServiceRoot();
+      root->setId(query.value(0).toInt());
+      root->setAccountId(query.value(0).toInt());
+      root->network()->setAuthUsername(query.value(1).toString());
+      root->network()->setAuthPassword(TextFactory::decrypt(query.value(2).toString()));
+      root->network()->setUrl(query.value(3).toString());
+      root->network()->setForceServerSideUpdate(query.value(4).toBool());
+
+      root->updateTitle();
+      roots.append(root);
+    }
+
+    if (ok != NULL) {
+      *ok = true;
+    }
+  }
+  else {
+    qWarning("OwnCloud: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  return roots;
+}
+
+bool DatabaseQueries::deleteOwnCloudAccount(QSqlDatabase db, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM OwnCloudAccounts WHERE id = :id;"));
+  q.bindValue(QSL(":id"), account_id);
+
+  return q.exec();
+}
+
+bool DatabaseQueries::overwriteOwnCloudAccount(QSqlDatabase db, const QString &username, const QString &password,
+                                               const QString &url, bool force_server_side_feed_update, int account_id) {
+  QSqlQuery query(db);
+
+  query.prepare("UPDATE OwnCloudAccounts "
+                "SET username = :username, password = :password, url = :url, force_update = :force_update "
+                "WHERE id = :id;");
+  query.bindValue(QSL(":username"), username);
+  query.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  query.bindValue(QSL(":url"), url);
+  query.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
+  query.bindValue(QSL(":id"), account_id);
+
+  if (query.exec()) {
+    return true;
+  }
+  else {
+    qWarning("ownCloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    return false;
+  }
+}
+
+bool DatabaseQueries::createOwnCloudAccount(QSqlDatabase db, int id_to_assign, const QString &username,
+                                            const QString &password, const QString &url,
+                                            bool force_server_side_feed_update) {
+  QSqlQuery q(db);
+
+  q.prepare("INSERT INTO OwnCloudAccounts (id, username, password, url, force_update) "
+                "VALUES (:id, :username, :password, :url, :force_update);");
+  q.bindValue(QSL(":id"), id_to_assign);
+  q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  q.bindValue(QSL(":url"), url);
+  q.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
+
+  if (q.exec()) {
+    return true;
+  }
+  else {
+    qWarning("ownCloud: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    return false;
+  }
+}
+
+int DatabaseQueries::createAccount(QSqlDatabase db, const QString &code, bool *ok) {
+  QSqlQuery q(db);
+
+  // First obtain the ID, which can be assigned to this new account.
+  if (!q.exec("SELECT max(id) FROM Accounts;") || !q.next()) {
+    qWarning("Getting max ID from Accounts table failed: '%s'.", qPrintable(q.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+
+    return 0;
+  }
+
+  int id_to_assign = q.value(0).toInt() + 1;
+
+  q.prepare(QSL("INSERT INTO Accounts (id, type) VALUES (:id, :type);"));
+  q.bindValue(QSL(":id"), id_to_assign);
+  q.bindValue(QSL(":type"), code);
+
+  if (q.exec()) {
+    if (ok != NULL) {
+      *ok = true;
+    }
+
+    return id_to_assign;
+  }
+  else {
+    if (ok != NULL) {
+      *ok = false;
+    }
+
+    qWarning("Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    return 0;
+  }
+}
+
+Assignment DatabaseQueries::getOwnCloudCategories(QSqlDatabase db, int account_id, bool *ok) {
+  Assignment categories;
+
+  // Obtain data for categories from the database.
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qFatal("ownCloud: Query for obtaining categories failed. Error message: '%s'.", qPrintable(q.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  while (q.next()) {
+    AssignmentItem pair;
+    pair.first = q.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.second = new OwnCloudCategory(q.record());
+
+    categories << pair;
+  }
+
+  if (ok != NULL) {
+    *ok = true;
+  }
+
+  return categories;
+}
+
+Assignment DatabaseQueries::getOwnCloudFeeds(QSqlDatabase db, int account_id, bool *ok) {
+  Assignment feeds;
+
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qFatal("ownCloud: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  while (q.next()) {
+    AssignmentItem pair;
+    pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.second = new OwnCloudFeed(q.record());
+
+    feeds << pair;
+  }
+
+  if (ok != NULL) {
+    *ok = true;
+  }
+
+  return feeds;
 }
 
 DatabaseQueries::DatabaseQueries() {

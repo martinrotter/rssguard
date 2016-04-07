@@ -18,7 +18,7 @@
 #include "services/owncloud/owncloudserviceroot.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
@@ -29,9 +29,6 @@
 #include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
-
-#include <QSqlQuery>
-#include <QSqlError>
 
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
@@ -60,14 +57,9 @@ bool OwnCloudServiceRoot::editViaGui() {
 }
 
 bool OwnCloudServiceRoot::deleteViaGui() {
-  QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(connection);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM OwnCloudAccounts WHERE id = :id;"));
-  query.bindValue(QSL(":id"), accountId());
-
-  if (query.exec()) {
+  if (DatabaseQueries::deleteOwnCloudAccount(database, accountId())) {
     return ServiceRoot::deleteViaGui();
   }
   else {
@@ -179,62 +171,28 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
   if (accountId() != NO_PARENT_CATEGORY) {
     // We are overwritting previously saved data.
     QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-    QSqlQuery query(database);
 
-    query.prepare("UPDATE OwnCloudAccounts "
-                  "SET username = :username, password = :password, url = :url, force_update = :force_update "
-                  "WHERE id = :id;");
-    query.bindValue(QSL(":username"), m_network->authUsername());
-    query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->authPassword()));
-    query.bindValue(QSL(":url"), m_network->url());
-    query.bindValue(QSL(":force_update"), (int) m_network->forceServerSideUpdate());
-    query.bindValue(QSL(":id"), accountId());
-
-    if (query.exec()) {
+    if (DatabaseQueries::overwriteOwnCloudAccount(database, m_network->authUsername(),
+                                                  m_network->authPassword(), m_network->url(),
+                                                  m_network->forceServerSideUpdate(), accountId())) {
       updateTitle();
       itemChanged(QList<RootItem*>() << this);
-    }
-    else {
-      qWarning("ownCloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
     }
   }
   else {
     // We are probably saving newly added account.
     QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-    QSqlQuery query(database);
-
-    // First obtain the ID, which can be assigned to this new account.
-    if (!query.exec("SELECT max(id) FROM Accounts;") || !query.next()) {
-      qWarning("ownCloud: Getting max ID from Accounts table failed: '%s'.", qPrintable(query.lastError().text()));
-      return;
-    }
-
-    int id_to_assign = query.value(0).toInt() + 1;
-    bool saved = true;
-
-    query.prepare(QSL("INSERT INTO Accounts (id, type) VALUES (:id, :type);"));
-    query.bindValue(QSL(":id"), id_to_assign);
-    query.bindValue(QSL(":type"), code());
-
-    saved &= query.exec();
-
-    query.prepare("INSERT INTO OwnCloudAccounts (id, username, password, url, force_update) "
-                  "VALUES (:id, :username, :password, :url, :force_update);");
-    query.bindValue(QSL(":id"), id_to_assign);
-    query.bindValue(QSL(":username"), m_network->authUsername());
-    query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->authPassword()));
-    query.bindValue(QSL(":url"), m_network->url());
-    query.bindValue(QSL(":force_update"), (int) m_network->forceServerSideUpdate());
-
-    saved &= query.exec();
+    bool saved;
+    int id_to_assign = DatabaseQueries::createAccount(database, code(), &saved);
 
     if (saved) {
-      setId(id_to_assign);
-      setAccountId(id_to_assign);
-      updateTitle();
-    }
-    else {
-      qWarning("ownCloud: Saving of new account failed: '%s'.", qPrintable(query.lastError().text()));
+      if (DatabaseQueries::createOwnCloudAccount(database, id_to_assign, m_network->authUsername(),
+                                             m_network->authPassword(), m_network->url(),
+                                             m_network->forceServerSideUpdate())) {
+        setId(id_to_assign);
+        setAccountId(id_to_assign);
+        updateTitle();
+      }
     }
   }
 }
@@ -258,44 +216,8 @@ RootItem *OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
 
 void OwnCloudServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  Assignment categories;
-  Assignment feeds;
-
-  // Obtain data for categories from the database.
-  QSqlQuery query_categories(database);
-  query_categories.setForwardOnly(true);
-  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
-  query_categories.bindValue(QSL(":account_id"), accountId());
-
-  if (!query_categories.exec()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.", qPrintable(query_categories.lastError().text()));
-  }
-
-  while (query_categories.next()) {
-    AssignmentItem pair;
-    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new OwnCloudCategory(query_categories.record());
-
-    categories << pair;
-  }
-
-  // All categories are now loaded.
-  QSqlQuery query_feeds(database);
-  query_feeds.setForwardOnly(true);
-  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  query_feeds.bindValue(QSL(":account_id"), accountId());
-
-  if (!query_feeds.exec()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query_feeds.lastError().text()));
-  }
-
-  while (query_feeds.next()) {
-    AssignmentItem pair;
-    pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-    pair.second = new OwnCloudFeed(query_feeds.record());
-
-    feeds << pair;
-  }
+  Assignment categories = DatabaseQueries::getOwnCloudCategories(database, accountId());
+  Assignment feeds = DatabaseQueries::getOwnCloudFeeds(database, accountId());
 
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);
