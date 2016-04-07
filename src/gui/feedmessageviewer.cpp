@@ -118,12 +118,6 @@ void FeedMessageViewer::loadSize() {
 
 void FeedMessageViewer::loadMessageViewerFonts() {  
   m_messagesBrowser->reloadFontSettings();
-
-  // TODO: TODO
-  //QWebEngineSettings *view_settings = m_messagesBrowser->view()->settings();
-
-  //view_settings->setFontFamily(QWebEngineSettings::StandardFont, settings->value(GROUP(Messages),
-  //                                                                         SETTING(Messages::PreviewerFontStandard)).toString());
 }
 
 void FeedMessageViewer::quit() {
