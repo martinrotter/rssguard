@@ -303,7 +303,7 @@ void FormStandardFeedDetails::guessFeed() {
     else {
       m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Warning,
                                           tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
-                                          tr("Feed or icon metatada not fetched."));
+                                          tr("Feed or icon metadata not fetched."));
     }
 
     // Remove temporary feed object.
@@ -334,7 +334,7 @@ void FormStandardFeedDetails::guessIconOnly() {
     else {
       m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Warning,
                                           tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
-                                          tr("Icon metatada not fetched."));
+                                          tr("Icon metadata not fetched."));
     }
 
     // Remove temporary feed object.
