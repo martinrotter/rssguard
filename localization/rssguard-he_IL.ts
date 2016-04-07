@@ -2490,10 +2490,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Error: %1.</source>
         <translation>שגיאה: %1.</translation>
     </message>
@@ -2507,10 +2503,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metatada not fetched.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2599,6 +2591,14 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -27,11 +27,11 @@
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Tidak dapat menambahkan feed</translation>
+        <translation>Tidak dapat menambah feed</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Feed tidak dapat ditambahkan dikarenakan akun standar RSS/ATOM tidak dinyalakan.</translation>
+        <translation>Feed tidak dapat ditambah karena akun standar RSS/ATOM tidak dinyalakan.</translation>
     </message>
 </context>
 <context>
@@ -77,7 +77,7 @@
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation>Tidak ada server MySQL yang sedang berjalan di sasaran tujuan.</translation>
+        <translation>Tidak ada server MySQL yang sedang berjalan di target tujuan.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
@@ -99,7 +99,7 @@
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Database terpilih tidak tersedia. Ini akan dibuat. Itu baik-baik saja.</translation>
+        <translation>Database yang dipilih tidak tersedia. Ini akan dibuat. Itu baik-baik saja.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
@@ -138,7 +138,7 @@
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation>Pilih tujuan untuk berkas terunduh</translation>
+        <translation>Pilih tujuan untuk berkas yang diunduh</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -254,7 +254,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Tidak dapat membersihkan database, dikarenakan aksi genting lain sedang berjalan.</translation>
+        <translation>Tidak dapat membersihkan database, karena aksi genting lain sedang berjalan.</translation>
     </message>
 </context>
 <context>
@@ -306,7 +306,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>Anda tidak dapat memperbaharui semua item dikarenakan operasi genting lain sedang berlangsung.</translation>
+        <translation>Anda tidak dapat memperbaharui semua item karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Feed update started</source>
@@ -354,11 +354,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation>Item terpilih tidak dapat diubah dikarenakan operasi genting lain sedang berlangsung.</translation>
+        <translation>Item yang dipilih tidak dapat diubah karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation>Item terpilih tidak dapat dihapus dikarenakan operasi genting lain sedang berlangsung.</translation>
+        <translation>Item yang dipilih tidak dapat dihapus karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
@@ -366,7 +366,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation>Item terpilih tidak dapat diubah, ini tidak (belum?) didukung.</translation>
+        <translation>Item yang dipilih tidak dapat diubah, ini tidak (belum?) didukung.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
@@ -386,12 +386,13 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="unfinished"/>
+        <translation>Item ini tidak dapat dihapus karena sesuatu gagal secara genting. Kirim laporan bug.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="unfinished"/>
+        <translation>Item ini tidak dapat dihapus, karena ini tidak mendukung
+atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
@@ -403,11 +404,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation>Akun terpilih tidak mendukung penambahan feed baru.</translation>
+        <translation>Akun yang dipilih tidak mendukung penambahan feed baru.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation>Akun terpilih tidak mendukung penambahan kategori baru.</translation>
+        <translation>Akun yang dipilih tidak mendukung penambahan kategori baru.</translation>
     </message>
 </context>
 <context>
@@ -494,7 +495,7 @@ or this functionality is not implemented yet.</source>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Menambahkan akun baru</translation>
+        <translation>Menambah akun baru</translation>
     </message>
     <message>
         <source>Details</source>
@@ -518,7 +519,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>Akun ini dapat ditambahkan hanya sekali.</translation>
+        <translation>Akun ini dapat ditambah hanya sekali.</translation>
     </message>
 </context>
 <context>
@@ -608,7 +609,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>%n hari</numerusform></translation>
+        <translation><numerusform> hari</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -735,7 +736,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Menambahkan akun Tiny Tiny RSS baru</translation>
+        <translation>Menambah akun Tiny Tiny RSS baru</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
@@ -743,7 +744,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>Akses API pada server terpilih tidak diaktifkan.</translation>
+        <translation>Akses API pada server yang dipilih tidak diaktifkan.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
@@ -755,11 +756,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Server Tiny Tiny RSS terpilih menjalankan versi API (%1) yang tidak didukung. Setidaknya API level %2 dibutuhkan.</translation>
+        <translation>Server Tiny Tiny RSS yang dipilih menjalankan versi API (%1) yang tidak didukung. Setidaknya API level %2 dibutuhkan.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Server Tiny Tiny RSS terpilih menjalankan versi API yang tidak didukung.</translation>
+        <translation>Server Tiny Tiny RSS yang dipilih menjalankan versi API yang tidak didukung.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
@@ -775,7 +776,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Eror jaringan, sudahkan anda memasukkan endpoint API Tiny Tiny RSS and kata sandi yang benar?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -831,11 +832,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Menjalankan paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Membiarkan pilihan ini menyala menyebabkan pembaharuan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
     </message>
 </context>
 <context>
@@ -862,7 +863,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih strategi pembaharuan otomatis untuk feed ini. Strategi pembaharuan otomatis bawaan berarti feed akan diperbaharui dalam jangka waktu yang disetel di pengaturan aplikasi.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -898,19 +899,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan otomatis menggunakan jarak waktu global</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan otomatis setiap</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Tanpa pembaharuan otomatis sama sekali</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Url feed keseluruhan termasuk skema</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
@@ -918,7 +919,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Menambahkan feed baru</translation>
+        <translation>Menambah feed baru</translation>
     </message>
     <message>
         <source>Feed added</source>
@@ -926,11 +927,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Feed ditambahkan, memicu sinkronisasi sekarang.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Tidak dapat menambahkan feed</translation>
+        <translation>Tidak dapat menambah feed</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
@@ -957,7 +958,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Menjalankan paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -977,7 +978,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Memperlihatkan kata sandi</translation>
+        <translation>Menampilkan kata sandi</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -985,7 +986,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Membiarkan pilihan ini menyala menyebabkan pembaharuan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -993,7 +994,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation>URL dari server OwnCloud anda, tanpa jalur API apapun</translation>
+        <translation>URL dari server ownCloud anda, tanpa jalur API apapun</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -1005,7 +1006,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation>Menambahkan akun ownCloud News baru</translation>
+        <translation>Menambah akun ownCloud News baru</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
@@ -1013,11 +1014,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Server ownCloud News terpilih menjalankan versi yang tidak didukung (%1). Setidaknya versi %2 dibutuhkan.</translation>
+        <translation>Server ownCloud News yang dipilih menjalankan versi yang tidak didukung (%1). Setidaknya versi %2 dibutuhkan.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Server ownCloud News terpilih menjalankan versi yang tidak didukung.</translation>
+        <translation>Server ownCloud News yang dipilih menjalankan versi yang tidak didukung.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1025,7 +1026,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Eror jaringan, sudahkan anda memasukkan endpoint ownCloud and kata sandi yang benar?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1057,19 +1058,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Kata sandi untuk akun ownCloud anda</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna untuk akun ownCloud anda</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Server ownCloud News ok, berjalan dengan versi %1, walau setidaknya versi %2 dibutuhkan.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Server ownCloud News ok.</translation>
     </message>
 </context>
 <context>
@@ -1096,7 +1097,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih strategi pembaharuan otomatis untuk feed ini. Strategi pembaharuan otomatis bawaan berarti feed akan diperbaharui dalam jangka waktu yang disetel di pengaturan aplikasi.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1144,19 +1145,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan otomatis menggunakan jarak waktu global</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan otomatis setiap</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Tanpa pembaharuan otomatis sama sekali</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Url feed keseluruhan termasuk skema</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
@@ -1164,7 +1165,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Menambahkan feed baru</translation>
+        <translation>Menambah feed baru</translation>
     </message>
 </context>
 <context>
@@ -1183,7 +1184,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;Tool</translation>
+        <translation>Per&amp;kakas</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
@@ -1199,7 +1200,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation type="unfinished"/>
+        <translation>Mengganti &amp;pentingnya pesan yang dipilih</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1243,7 +1244,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"/>
+        <translation>Meng&amp;hapus pesan yang dipilih</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
@@ -1251,27 +1252,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Menandai pesan yang dipilih sebagai ter&amp;baca</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Menandai pesan yang dipilih sebagai belum terba&amp;ca</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Membuka sumber artikel yang dipilih di peramban &amp;eksternal</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Membuka pesan yang dipilih di peramban &amp;internal</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation type="unfinished"/>
+        <translation>Memilih pesan se&amp;lanjutnya</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation type="unfinished"/>
+        <translation>Memilih pesan se&amp;belumnya</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
@@ -1283,11 +1284,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Layar penuh</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Daftar feed</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
@@ -1307,7 +1308,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Bilah alat</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
@@ -1355,7 +1356,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation>Mengirim pesan terpilih via e-mail</translation>
+        <translation>Mengirim pesan yang dipilih via e-mail</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
@@ -1371,51 +1372,51 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>Memperbaha&amp;rui item terpilih</translation>
+        <translation>Memperbaha&amp;rui item yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation>Meng&amp;ubah item terpilih</translation>
+        <translation>Meng&amp;ubah item yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation>Meng&amp;hapus item terpilih</translation>
+        <translation>Meng&amp;hapus item yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="unfinished"/>
+        <translation>Menandai item yang &amp;dipilih sebagai terbaca</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation>Menandai semua pesan (tanpa penyaring pesan) dari item terpilih sebagai terbaca.</translation>
+        <translation>Menandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai terbaca.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="unfinished"/>
+        <translation>Menandai item yang di&amp;pilih sebagai belum terbaca</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation>Menandai semua pesan (tanpa penyaring pesan) dari item terpilih sebagai belum terbaca.</translation>
+        <translation>Menandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai belum terbaca.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="unfinished"/>
+        <translation>Mem&amp;bersihkan item yang dipilih</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation type="unfinished"/>
+        <translation>Menghapus semua pesan dari item yang dipilih.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Menandai &amp;semua item sebagai terbaca</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"/>
+        <translation>Menandai semua pesan di semua item terbaca. Ini tidak mengambil penyaring pesan ke akun.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Menampilkan item yang dipilih ke dalam mode &amp;koran</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
@@ -1423,7 +1424,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="unfinished"/>
+        <translation>Member&amp;sihkan semua item</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
@@ -1447,7 +1448,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation>Me&amp;mulihkan pesan terpilih</translation>
+        <translation>Me&amp;mulihkan pesan yang dipilih</translation>
     </message>
     <message>
         <source>No possible actions</source>
@@ -1483,7 +1484,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation>&amp;Menambahkan akun baru</translation>
+        <translation>&amp;Menambah akun baru</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -1491,27 +1492,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>Meng&amp;ubah akun terpilih</translation>
+        <translation>Meng&amp;ubah akun yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation>Meng&amp;hapus akun terpilih</translation>
+        <translation>Meng&amp;hapus akun yang dipilih</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation>Menambahkan feed baru ke akun terpilih</translation>
+        <translation>Menambah feed baru ke akun yang dipilih</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation>Menambahkan kategori baru ke akun terpilih</translation>
+        <translation>Menambah kategori baru ke akun yang dipilih</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Menambahkan kategori baru</translation>
+        <translation>Menambah kategori baru</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Menambahkan feed baru</translation>
+        <translation>Menambah feed baru</translation>
     </message>
     <message>
         <source>Stop running update</source>
@@ -1611,15 +1612,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="unfinished"/>
+        <translation>Ikon &amp;&amp; skin</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikon baki</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"/>
+        <translation>Memulai aplikasi secara sembunyi</translation>
     </message>
     <message>
         <source>Type</source>
@@ -1684,23 +1685,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="unfinished"/>
+        <translation>Area baki &amp;&amp; notifikasi</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>Tab</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"/>
+        <translation>Tutup tab dengan</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"/>
+        <translation>Sekali klik tombol tengah tetikus</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"/>
+        <translation>Membuka tab baru dengan dua kali klik pada tab bar</translation>
     </message>
     <message>
         <source>no icon theme</source>
@@ -1721,15 +1722,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"/>
+        <translation>Skin</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"/>
+        <translation>Skin yang aktif:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"/>
+        <translation>Skin yang dipilih:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
@@ -1737,7 +1738,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation type="unfinished"/>
+        <translation>Pengaturan genting berubah</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
@@ -1745,7 +1746,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa pengaturan genting belum disetel. Anda harus memperbaiki pengaturan ini dalam rangka mengkonfirmasi pengaturan baru.</translation>
     </message>
     <message>
         <source>Messages</source>
@@ -1753,7 +1754,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"/>
+        <translation>Peramban web yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Executable parameters</source>
@@ -1765,7 +1766,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"/>
+        <translation>Memilih peramban web yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
@@ -1777,7 +1778,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"/>
+        <translation>Berkas yang dapat dijalankan dari peramban web</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
@@ -1790,24 +1791,26 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Daftar eror:
+%1.</translation>
     </message>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Daftar perubahan:
+%1.</translation>
     </message>
     <message>
         <source>language changed</source>
-        <translation type="unfinished"/>
+        <translation>bahasa berubah</translation>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation type="unfinished"/>
+        <translation>tema ikon berubah</translation>
     </message>
     <message>
         <source>skin changed</source>
-        <translation type="unfinished"/>
+        <translation>skin berubah</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
@@ -1845,7 +1848,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="unfinished"/>
+        <translation>Driver database</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -1861,11 +1864,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan otomatis semua feed setiap</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"/>
+        <translation>Batas waktu koneksi feed</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
@@ -1885,7 +1888,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"/>
+        <translation>Nama host dari server MySQL anda</translation>
     </message>
     <message>
         <source>Username to login with</source>
@@ -1925,11 +1928,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"/>
+        <translation>Gaya tombol bilah alat</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"/>
+        <translation>Menyembunyikan jendela utama ketika di-minimize</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
@@ -1937,7 +1940,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"/>
+        <translation>Perhatikan bahwa pengaturan ini berlaku hanya pada koneksi yang baru dibentuk.</translation>
     </message>
     <message>
         <source>Select browser</source>
@@ -1961,11 +1964,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation>Teks disamping ikon</translation>
+        <translation>Teks di samping ikon</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation>Teks dibawah ikon</translation>
+        <translation>Teks di bawah ikon</translation>
     </message>
     <message>
         <source>Follow OS style</source>
@@ -1977,15 +1980,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"/>
+        <translation>Anda belum menjalankan uji koneksi apapun.</translation>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"/>
+        <translation>Menjalankan %1 pada permulaan sistem operasi</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jika tidak tercentang, maka  peramban web bawaan di seluruh sistem yang digunakan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -1993,7 +1996,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"/>
+        <translation>Format hitungan pesan di daftar feed</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
@@ -2009,11 +2012,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"/>
+        <translation>Bilah alat untuk daftar feed</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="unfinished"/>
+        <translation>Bilah alat untuk daftar pesan</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
@@ -2023,7 +2026,9 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa pengaturan genting berubah dan akan berlaku setelah aplikasi di-restart.
+
+Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
@@ -2054,59 +2059,59 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation>Direktori tujuan untuk berkas terunduh</translation>
+        <translation>Direktori tujuan untuk berkas yang diunduh</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"/>
+        <translation>Bertanya untuk setiap berkas yang diunduh</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"/>
+        <translation>Direktori tujuan tempat semua berkas yang diunduh disimpan</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Jelajah</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"/>
+        <translation>Memilih direktori tujuan unduhan</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"/>
+        <translation>Menampilkan kata &amp;sandi</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"/>
+        <translation>Peramban web &amp; e-mail &amp; proxy</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"/>
+        <translation>Menghapus sampah kunci registrasi Trolltech (HKCU\Software\Trolltech) ketika aplikasi keluar (Gunakan dengan resiko anda sendiri!)</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"/>
+        <translation>Database kerja</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Menggunakan peramban web eksternal tersuai</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Klien e-mail eksternal</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Menggunakan klien e-mail eksternal tersuai</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"/>
+        <translation>Klien e-mail yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Berkas dari klien e-mail yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Select client</source>
@@ -2120,11 +2125,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"/>
+        <translation>Menyimpan semua berkas yang diunduh ke</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"/>
+        <translation>Memilih email yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -2132,23 +2137,23 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"/>
+        <translation>Database kerja yang mempunyai akses menyeluruh.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Database kerja kosong.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Database kerja ok.</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"/>
+        <translation>(Ikon baki tidak tersedia.)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"/>
+        <translation>Fon peramban pesan internal</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
@@ -2160,11 +2165,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Menghidupkan notifikasi</translation>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
+        <translation>Membuka pengelola unduhan ketika penguduhan baru dimulai</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -2172,7 +2177,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
+        <translation>Menghidupkan notifikasi D-Bus</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
@@ -2215,19 +2220,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation>Memilih ikon untuk kategori anda.</translation>
+        <translation>Pilih ikon untuk kategori anda.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Menambahkan kategori baru</translation>
+        <translation>Menambah kategori baru</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation>Memperbaiki kategori yang ada</translation>
+        <translation>Mengubah kategori yang ada</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Tidak dapat menambahkan kategori</translation>
+        <translation>Tidak dapat menambah kategori</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
@@ -2267,7 +2272,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Memilih ikon</translation>
+        <translation>Pilih ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -2292,7 +2297,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Menyetel judul untuk kategori anda.</translation>
     </message>
     <message>
         <source>Category description</source>
@@ -2300,11 +2305,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Menyetel deskripsi untuk kategori anda.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Pilihan ikon</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
@@ -2327,7 +2332,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Memilih item induk untuk feed anda.</translation>
+        <translation>Pilih item induk untuk feed anda.</translation>
     </message>
     <message>
         <source>Type</source>
@@ -2335,15 +2340,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih jenis dari feed standar.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Encoding</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih encoding untuk feed standar. Jika anda tidak yakin mengenai encoding, maka pilih encoding &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
@@ -2351,7 +2356,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih strategi pembaharuan otomatis untuk feed ini. Strategi pembaharuan otomatis bawaan berarti feed akan diperbaharui dalam jangka waktu yang disetel di pengaturan aplikasi.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2367,7 +2372,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Ambil sekarang</translation>
     </message>
     <message>
         <source>Icon</source>
@@ -2375,7 +2380,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih ikon untuk feed anda.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -2391,11 +2396,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Ambil metadata</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Menambahkan feed baru</translation>
+        <translation>Menambah feed baru</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
@@ -2443,7 +2448,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Memilih ikon</translation>
+        <translation>Pilih ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -2464,7 +2469,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Tidak dapat menambahkan feed</translation>
+        <translation>Tidak dapat menambah feed</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
@@ -2476,47 +2481,39 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed tidak diubah disebabkan eror.</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Semua metadata diambil dengan berhasil.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Feed dan ikon metadata diambil.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Hasil: %1.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Eror: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak ada metadata yang diambil.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Ikon berhasil diambil.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metatada not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ikon metadata diambil.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak ada ikon yang diambil.</translation>
     </message>
     <message>
         <source>Feed title</source>
@@ -2524,7 +2521,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel judul untuk feed anda.</translation>
     </message>
     <message>
         <source>Feed description</source>
@@ -2532,27 +2529,27 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel deskripsi untuk feed anda.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Url feed keseluruhan termasuk skema</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel url untuk feed anda.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel nama pengguna untuk mengakses feed.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel kata sandi untuk mengakses feed.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Pilihan ikon</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
@@ -2572,19 +2569,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak ada metadata yang diambil sejauh ini.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan otomatis menggunakan jarak waktu global</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Otomatis pembaharuan setiap</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Tanpa pembaharuan otomatis sama sekali</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -2601,6 +2598,14 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>The URL is empty.</source>
         <translation>URL kosong.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2623,7 +2628,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak ada berkas yang dipilih.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -2631,15 +2636,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Destination file</source>
-        <translation type="unfinished"/>
+        <translation>Tujuan berkas</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Sumber feed &amp;&amp; kategori</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"/>
+        <translation>Ekspor feed</translation>
     </message>
     <message>
         <source>Source file</source>
@@ -2647,11 +2652,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Tujuan feed &amp;&amp; kategori</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"/>
+        <translation>Impor feed</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
@@ -2659,23 +2664,23 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"/>
+        <translation>Memilih berkas untuk ekspor feed</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Berkas dipilih.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"/>
+        <translation>Memilih berkas untuk impor feed</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat membuka berkas sumber.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation type="unfinished"/>
+        <translation>Feed dimuat.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
@@ -2691,7 +2696,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"/>
+        <translation>Eror genting terjadi.</translation>
     </message>
     <message>
         <source>Parsing data...</source>
@@ -2979,7 +2984,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Tanggal pembuatan pesan.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
@@ -3260,23 +3265,26 @@ version by clicking this popup notification.</source>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Layanan ini menawarkan integrasi dengan Tiny Tiny RSS.
+Tiny Tiny RSS merupakan pengumpul dan pembaca feed berita (RSS/Atom) berbasis web bersumber terbuka, didesain untuk memperkenankan ada untuk membaca berita dari lokasi manapun, sambil sebisa mungkin merasa seperti pada aplikasi desktopyang sesungguhnya.
+
+Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>Aplikasi News ini merupakan pengumpul feed RSS/Atom. Ini merupakan bagian dari rangkaian ownCloud. Plugin ini mengimplementasikan %1 API.</translation>
     </message>
     <message>
         <source>Not yet supported</source>
-        <translation type="unfinished"/>
+        <translation>Belum didukung</translation>
     </message>
     <message>
         <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
-        <translation type="unfinished"/>
+        <translation>Plugin in belum siap untuk digunakan. Ini akan ditambahkan di versi mendatang.</translation>
     </message>
     <message>
         <source>This plugin allows you to view and manager your wallabag articles.</source>
-        <translation type="unfinished"/>
+        <translation>Plugin ini memperkenankan anda untuk melihat dan mengelola artikel wallabag Anda.</translation>
     </message>
 </context>
 <context>
@@ -3348,16 +3356,16 @@ This category does not contain any nested items.</source>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metadata tidak terambil</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata tidak terambil karena: %1.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>tidak menggunakan pembaharuan otomatis</translation>
     </message>
     <message>
         <source>uses global settings</source>
@@ -3395,7 +3403,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Ambil metadata</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
@@ -3407,11 +3415,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"/>
+        <translation>Ekspor feed</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"/>
+        <translation>Impor feed</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
@@ -3425,15 +3433,15 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menambah item</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Tidak dapat menambahkan kategori</translation>
+        <translation>Tidak dapat menambah kategori</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
@@ -3547,15 +3555,15 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation type="unfinished"/>
+        <translation>Memasukkan pemisah</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation type="unfinished"/>
+        <translation>Memasukkan pemberi jarak</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation type="unfinished"/>
+        <translation>Pemisah</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3563,19 +3571,19 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Move action up</source>
-        <translation type="unfinished"/>
+        <translation>Memindah aksi ke atas</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation type="unfinished"/>
+        <translation>Memindah aksi ke bawah</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation type="unfinished"/>
+        <translation>Menambah aksi yang dipilih</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation>Menghapus aksi terpilih</translation>
+        <translation>Menghapus aksi yang dipilih</translation>
     </message>
     <message>
         <source>Delete all actions</source>
@@ -3594,7 +3602,7 @@ Unread news: %2</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>tidak menggunakan pembaharuan otomatis</translation>
     </message>
     <message>
         <source>uses global settings</source>
@@ -3632,11 +3640,11 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menambah item</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
     </message>
 </context>
 </TS>
