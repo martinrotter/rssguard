@@ -284,10 +284,6 @@ Clique para abrir a pasta de destino.</translation>
         <translation>Títulos de feeds/categorias.</translation>
     </message>
     <message>
-        <source>Counts of unread/all meesages.</source>
-        <translation>Contagem de mensagens não lidas/todas as mensagens.</translation>
-    </message>
-    <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Raiz</translation>
@@ -303,10 +299,6 @@ Clique para abrir a pasta de destino.</translation>
     <message>
         <source>Cannot update all items</source>
         <translation>Não é possível atualizar todos os itens</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>Você não pode atualizar todos os itens pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Feed update started</source>
@@ -329,6 +321,14 @@ Clique para abrir a pasta de destino.</translation>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Não foi possível realizar a operação de arrastar &amp; soltar</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Counts of unread/all mesages.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2613,11 +2613,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadado de feed e ícone não buscado.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadado de ícone não buscado.</translation>
     </message>
 </context>
 <context>

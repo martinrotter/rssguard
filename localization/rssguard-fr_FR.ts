@@ -283,10 +283,6 @@ Click here to open parent directory.</source>
         <translation>Titres des flux/catégories.</translation>
     </message>
     <message>
-        <source>Counts of unread/all meesages.</source>
-        <translation>Nombre des messages lus/non-lus.</translation>
-    </message>
-    <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Racine</translation>
@@ -302,10 +298,6 @@ Click here to open parent directory.</source>
     <message>
         <source>Cannot update all items</source>
         <translation>Impossible de mettre tout les articles à jour</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed update started</source>
@@ -327,6 +319,14 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Counts of unread/all mesages.</source>
         <translation type="unfinished"/>
     </message>
 </context>

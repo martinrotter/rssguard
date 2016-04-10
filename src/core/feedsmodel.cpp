@@ -64,7 +64,7 @@ FeedsModel::FeedsModel(QObject *parent)
   m_headerData << tr("Title");
 
   m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.") <<
-                   /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all meesages.");
+                   /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
 
   connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
   updateAutoUpdateStatus();
@@ -128,7 +128,7 @@ void FeedsModel::quit() {
 void FeedsModel::updateFeeds(const QList<Feed*> &feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(tr("Cannot update all items"),
-                         tr("You cannot update all items because another another critical operation is ongoing."),
+                         tr("You cannot update all items because another critical operation is ongoing."),
                          QSystemTrayIcon::Warning, qApp->mainForm(), true);
     return;
   }

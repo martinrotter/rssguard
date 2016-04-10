@@ -294,10 +294,6 @@ Click here to open parent directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Counts of unread/all meesages.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation type="unfinished"></translation>
@@ -315,10 +311,6 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -341,6 +333,14 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Counts of unread/all mesages.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

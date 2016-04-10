@@ -284,10 +284,6 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
-        <source>Counts of unread/all meesages.</source>
-        <translation>Počty nepřečtených/všech zpráviček.</translation>
-    </message>
-    <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Kořen</translation>
@@ -303,10 +299,6 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <message>
         <source>Cannot update all items</source>
         <translation>Nelze aktualizovat všechny položky</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>Nelze aktualizovat všechny položky, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
         <source>Feed update started</source>
@@ -329,6 +321,14 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Drag &amp; drop operaci nelze provést</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Counts of unread/all mesages.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

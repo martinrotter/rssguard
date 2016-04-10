@@ -285,10 +285,6 @@ Klik hier om map te openen.</translation>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
-        <source>Counts of unread/all meesages.</source>
-        <translation>Aantal van alle ongelezen berichten.</translation>
-    </message>
-    <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Root</translation>
@@ -304,10 +300,6 @@ Klik hier om map te openen.</translation>
     <message>
         <source>Cannot update all items</source>
         <translation>Kan alle items niet bijwerken</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>U kunt niet alle items updaten omdat er een andere bewerking plaats vind.</translation>
     </message>
     <message>
         <source>Feed update started</source>
@@ -330,6 +322,14 @@ Klik hier om map te openen.</translation>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Kan de drag &amp; drop bewerking niet uitvoeren</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Counts of unread/all mesages.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

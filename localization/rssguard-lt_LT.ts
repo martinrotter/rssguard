@@ -46,15 +46,15 @@
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation type="unfinished"/>
+        <translation>Šalinamos skaitytos žinutės...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Skaitytos žinutės išvalytos...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation type="unfinished"/>
+        <translation>Šiukšlinė išvalyta...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
@@ -62,18 +62,18 @@
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation type="unfinished"/>
+        <translation>Išvaloma šiukšlinė...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Senos žinutės išvalytos...</translation>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>MySQL serveris veikia kaip tikimasi.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
@@ -91,23 +91,23 @@
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished"/>
+        <translation>MySQL/MariaDB (paskirta duomenų bazė)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (įtaisyta duomenų bazė)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinktos duomenų bazės nėra (kol kas). Ji bus sukurta. Viskas gerai.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"/>
+        <translation>MySQL duomenų bazė neprieinama</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>%1 negali naudoti MySQL kaupiklio, jis yra neprieinamas. %1 dabar persijungia į SQLite duomenų bazę. Paleiskite savo MySQL serverį ir suderinkite programos nustatymus.</translation>
     </message>
 </context>
 <context>
@@ -234,7 +234,7 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Atsiunčiamas %n failas...</numerusform><numerusform>Atsiunčiami %n failai...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -268,7 +268,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Category </source>
-        <translation type="unfinished"/>
+        <translation>Kategorija</translation>
     </message>
 </context>
 <context>
@@ -280,11 +280,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Counts of unread/all meesages.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalų/kategorijų antraštės.</translation>
     </message>
     <message>
         <source>Root</source>
@@ -297,15 +293,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta atnaujinti visų elementų</translation>
     </message>
     <message>
         <source>Feed update started</source>
@@ -329,6 +321,14 @@ Click here to open parent directory.</source>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Counts of unread/all mesages.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
@@ -341,11 +341,11 @@ Click here to open parent directory.</source>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta redaguoti elemento</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta ištrinti elemento</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
@@ -353,11 +353,11 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinktas elementas negali būti redaguojamas, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinktas elementas negali būti ištrintas, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
@@ -576,7 +576,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Output directory</source>
-        <translation type="unfinished"/>
+        <translation>Išvesties katalogas</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
@@ -599,15 +599,15 @@ or this functionality is not implemented yet.</source>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Išvalyti duomenų bazę</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti visas žinutes, kurios senesnės nei</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform> diena</numerusform><numerusform> dienos</numerusform><numerusform> dienų</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -615,19 +615,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database information</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazės informacija</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazės failo dydis</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazės tipas</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation type="unfinished"/>
+        <translation>Eiga</translation>
     </message>
     <message>
         <source>I am ready.</source>
@@ -635,15 +635,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation type="unfinished"/>
+        <translation>Yra vykdomas duomenų bazės išvalymas.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazės išvalymas užbaigtas.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazės išvalymas nepavyko.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
@@ -651,11 +651,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti visas skaitytas žinutes (ne tas, kurios šiukšlinėje)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti visas žinutes iš šiukšlinės</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
@@ -663,11 +663,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="unfinished"/>
+        <translation>nežinoma</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation type="unfinished"/>
+        <translation>failas: %1, duomenys: %2</translation>
     </message>
 </context>
 <context>
@@ -742,7 +742,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>API prieiga pasirinktame serveryje nėra įjungta.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
@@ -750,7 +750,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation>Įvyko kitokia klaida, susisiekite su kūrėjais.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
@@ -826,7 +826,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Neapibrėžta klaida, ar įrašėte teisingą URL?</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -1028,7 +1028,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Neapibrėžta klaida, ar įrašėte teisingą URL?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -1302,7 +1302,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta atverti išorinės naršyklės. Pereikite į programos tinklalapį rankiniu būdu.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1418,7 +1418,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"/>
+        <translation>Rodo visas pasirinkto elemento žinutes naujoje &quot;laikraščio veiksenos&quot; kortelėje. Turėkite omenyje, kad žinutės nėra automatiškai nustatomos kaip skaitytos.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
@@ -1502,7 +1502,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti naują kategoriją į pasirinktą paskyrą</translation>
     </message>
     <message>
         <source>Add new category</source>
@@ -1525,7 +1525,7 @@ or this functionality is not implemented yet.</source>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Atkurti duomenų bazę/nustatymus</translation>
     </message>
     <message>
         <source>Operation results</source>
@@ -1691,15 +1691,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"/>
+        <translation>Užverti korteles...</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"/>
+        <translation>Vienu vidurinio pelės mygtuko spustelėjimu</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"/>
+        <translation>Atverti naujas korteles, du kartus spustelėjus kairiuoju pelės mygtuku ant kortelių juostos.</translation>
     </message>
     <message>
         <source>no icon theme</source>
@@ -1716,23 +1716,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"/>
+        <translation>Apipavidalinimai</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"/>
+        <translation>Aktyvus apipavidalinimas:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinktas apipavidalinimas:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"/>
+        <translation>Slėpti kortelių juostą, jeigu yra matoma tik viena kortelė.</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
@@ -1740,7 +1740,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="unfinished"/>
+        <translation>Kanalai ir žinutės</translation>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
@@ -1748,7 +1748,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"/>
+        <translation>Žinutės</translation>
     </message>
     <message>
         <source>Web browser executable</source>
@@ -1795,7 +1795,8 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Pakeitimų sąrašas:
+%1.</translation>
     </message>
     <message>
         <source>language changed</source>
@@ -1837,7 +1838,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"/>
+        <translation>Išorinė naršyklė</translation>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
@@ -1857,11 +1858,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Dvikarčiu dešiniojo pelės mygtuko nuspaudimu</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Automatiškai atnaujinti visus kanalus kas</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -1873,11 +1874,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"/>
+        <translation> ms</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"/>
+        <translation>Atnaujinti visus kanalus, paleidus programą</translation>
     </message>
     <message>
         <source>Data storage</source>
@@ -1937,7 +1938,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"/>
+        <translation>Turėkite omenyje, kad šie nustatymai pritaikomi tik naujai užmegztiems ryšiams.</translation>
     </message>
     <message>
         <source>Select browser</source>
@@ -1993,7 +1994,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių skaičiaus formatas kanalų sąraše</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
@@ -2033,7 +2034,7 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"/>
+        <translation>Tikrinti ar yra atnaujinimų, paleidus programą</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
@@ -2122,7 +2123,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"/>
+        <translation>Įrašyti visus atsisiųstus failus į</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
@@ -2130,11 +2131,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"/>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"/>
+        <translation>Veikianti duomenų bazė prie kurios turite pilną prieigą.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
@@ -2162,11 +2163,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Įjungti pranešimus</translation>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
+        <translation>Atverti atsiuntimų tvarkytuvę, kai pradedamas naujas atsiuntimas</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -2229,19 +2230,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti kategorijos</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorija nebuvo pridėta dėl klaidos.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta redaguoti kategorijos</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorija nebuvo redaguota dėl klaidos.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
@@ -2298,11 +2299,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Kategorijos aprašas</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Nustatykite savo kategorijai aprašą.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -2749,7 +2750,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nežinoma</translation>
     </message>
     <message>
         <source>List with updates was not
@@ -2825,19 +2826,19 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"/>
+        <translation>Atsiunčiamas atnaujinimas...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation type="unfinished"/>
+        <translation>Sėkmingai atsisiųsta</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Paketas buvo sėkmingai atsisiųstas.</translation>
     </message>
     <message>
         <source>Install update</source>
-        <translation type="unfinished"/>
+        <translation>Įdiegti atnaujinimą</translation>
     </message>
     <message>
         <source>Error occured</source>
@@ -3192,7 +3193,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta rodyti daugiau žinučių</translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
@@ -3438,11 +3439,11 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti kategorijos</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti kategorijos, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
 </context>
 <context>

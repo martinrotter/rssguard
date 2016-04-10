@@ -284,10 +284,6 @@ Klicka här för att öppna målmappen.</translation>
         <translation>Namn på kategorier/flöden.</translation>
     </message>
     <message>
-        <source>Counts of unread/all meesages.</source>
-        <translation>Antal meddelanden.</translation>
-    </message>
-    <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Root</translation>
@@ -303,10 +299,6 @@ Klicka här för att öppna målmappen.</translation>
     <message>
         <source>Cannot update all items</source>
         <translation>Kan inte uppdatera alla objekt</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>Du kan inte uppdatera alla objekt, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Feed update started</source>
@@ -329,6 +321,14 @@ Klicka här för att öppna målmappen.</translation>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Kan inte utföra dra &amp; släpp-åtgärd</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Counts of unread/all mesages.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2614,11 +2614,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Flödes- eller ikonmetadata inte hämtad.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ikonmetadata inte hämtad.</translation>
     </message>
 </context>
 <context>
