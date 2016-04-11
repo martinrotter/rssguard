@@ -975,5 +975,26 @@ Assignment DatabaseQueries::getOwnCloudFeeds(QSqlDatabase db, int account_id, bo
   return feeds;
 }
 
+bool DatabaseQueries::deleteFeed(QSqlDatabase db, int feed_custom_id, int account_id) {
+  QSqlQuery query_remove(db);
+  query_remove.setForwardOnly(true);
+
+  // Remove all messages from this feed.
+  query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
+  query_remove.bindValue(QSL(":feed"), feed_custom_id);
+  query_remove.bindValue(QSL(":account_id"), account_id);
+
+  if (!query_remove.exec()) {
+    return false;
+  }
+
+  // Remove feed itself.
+  query_remove.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :feed AND account_id = :account_id;"));
+  query_remove.bindValue(QSL(":feed"), feed_custom_id);
+  query_remove.bindValue(QSL(":account_id"), account_id);
+
+  return query_remove.exec();
+}
+
 DatabaseQueries::DatabaseQueries() {
 }

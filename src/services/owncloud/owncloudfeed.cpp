@@ -18,6 +18,7 @@
 #include "services/owncloud/owncloudfeed.h"
 
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "services/owncloud/owncloudserviceroot.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/gui/formeditowncloudfeed.h"
@@ -51,6 +52,23 @@ bool OwnCloudFeed::editViaGui() {
   form_pointer.data()->execForEdit(this);
   delete form_pointer.data();
   return false;
+}
+
+bool OwnCloudFeed::canBeDeleted() const {
+  return true;
+}
+
+bool OwnCloudFeed::deleteViaGui() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  if (serviceRoot()->network()->deleteFeed(customId()) &&
+      DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId())) {
+    serviceRoot()->requestItemRemoval(this);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool OwnCloudFeed::markAsReadUnread(RootItem::ReadStatus status) {

@@ -33,7 +33,7 @@ OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
     m_authUsername(QString()), m_authPassword(QString()), m_urlUser(QString()), m_urlStatus(QString()),
     m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
-    m_userId(QString()) {
+    m_urlDeleteFeed(QString()), m_userId(QString()) {
 }
 
 OwnCloudNetworkFactory::~OwnCloudNetworkFactory() {
@@ -60,6 +60,7 @@ void OwnCloudNetworkFactory::setUrl(const QString &url) {
   m_urlFeeds = m_fixedUrl + API_PATH + "feeds";
   m_urlMessages = m_fixedUrl + API_PATH + "items?id=%1&batchSize=%2&type=%3";
   m_urlFeedsUpdate = m_fixedUrl + API_PATH + "feeds/update?userId=%1&feedId=%2";
+  m_urlDeleteFeed = m_fixedUrl + API_PATH + "feeds/%1";
 
   setUserId(QString());
 }
@@ -166,6 +167,24 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
   m_lastError = network_reply.first;
 
   return OwnCloudGetFeedsCategoriesResponse(content_categories, content_feeds);
+}
+
+bool OwnCloudNetworkFactory::deleteFeed(int feed_id) {
+  QString final_url = m_urlDeleteFeed.arg(QString::number(feed_id));
+  NetworkResult network_reply = NetworkFactory::deleteResource(final_url,
+                                                               qApp->settings()->value(GROUP(Feeds),
+                                                                                       SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                               true, m_authUsername, m_authPassword, true);
+
+  m_lastError = network_reply.first;
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("ownCloud: Obtaining of categories failed with error %d.", network_reply.first);
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {

@@ -33,6 +33,8 @@ class OwnCloudFeed : public Feed {
 
     bool canBeEdited() const;
     bool editViaGui();
+    bool canBeDeleted() const;
+    bool deleteViaGui();
 
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);

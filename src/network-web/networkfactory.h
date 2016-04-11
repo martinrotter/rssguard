@@ -58,6 +58,10 @@ class NetworkFactory {
     static NetworkResult downloadFile(const QString &url, int timeout, QByteArray &output,
                                       bool protected_contents = false, const QString &username = QString(),
                                       const QString &password = QString(), bool set_basic_header = false);
+
+    static NetworkResult deleteResource(const QString &url, int timeout,
+                                    bool protected_contents = false, const QString &username = QString(),
+                                    const QString &password = QString(), bool set_basic_header = false);
 };
 
 #endif // NETWORKFACTORY_H

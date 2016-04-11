@@ -167,8 +167,7 @@ NetworkResult NetworkFactory::uploadData(const QString &url, int timeout, const 
   // We need to quit event loop when the download finishes.
   QObject::connect(&downloader, SIGNAL(completed(QNetworkReply::NetworkError)), &loop, SLOT(quit()));
 
-  downloader.uploadData(url, input_data, operation,
-                        timeout, protected_contents, username, password);
+  downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
   loop.exec();
   output = downloader.lastOutputData();
   result.first = downloader.lastOutputError();
@@ -222,6 +221,34 @@ NetworkResult NetworkFactory::downloadFile(const QString &url, int timeout,
   downloader.downloadFile(url, timeout, protected_contents, username, password);
   loop.exec();
   output = downloader.lastOutputData();
+  result.first = downloader.lastOutputError();
+  result.second = downloader.lastContentType();
+
+  return result;
+}
+
+NetworkResult NetworkFactory::deleteResource(const QString &url, int timeout, bool protected_contents,
+                                             const QString &username, const QString &password, bool set_basic_header) {
+  // Here, we want to achieve "synchronous" approach because we want synchronous download API for
+  // some use-cases too.
+  Downloader downloader;
+  QEventLoop loop;
+  NetworkResult result;
+
+  if (set_basic_header) {
+    QString basic_value = username + ":" + password;
+    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
+
+    downloader.appendRawHeader("Authorization", header_value.toLocal8Bit());
+  }
+
+  // We need to quit event loop when the download finishes.
+  QObject::connect(&downloader, SIGNAL(completed(QNetworkReply::NetworkError)), &loop, SLOT(quit()));
+
+  downloader.manipulateData(url, QNetworkAccessManager::DeleteOperation, QByteArray(),
+                            timeout, protected_contents, username, password);
+  loop.exec();
+
   result.first = downloader.lastOutputError();
   result.second = downloader.lastContentType();
 

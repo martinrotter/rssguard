@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "gui/dialogs/formmain.h"
@@ -200,23 +201,8 @@ bool TtRssFeed::removeItself() {
   if (response.code() == UFF_OK) {
     // Feed was removed online from server, remove local data.
     QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-    QSqlQuery query_remove(database);
 
-    query_remove.setForwardOnly(true);
-
-    // Remove all messages from this standard feed.
-    query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
-    query_remove.bindValue(QSL(":feed"), customId());
-
-    if (!query_remove.exec()) {
-      return false;
-    }
-
-    // Remove feed itself.
-    query_remove.prepare(QSL("DELETE FROM Feeds WHERE id = :feed;"));
-    query_remove.bindValue(QSL(":feed"), id());
-
-    return query_remove.exec();
+    return DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
   }
   else {
     qWarning("TT-RSS: Unsubscribing from feed failed, received JSON: '%s'", qPrintable(response.toString()));

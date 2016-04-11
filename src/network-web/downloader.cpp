@@ -39,33 +39,12 @@ Downloader::~Downloader() {
 
 void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents, const QString &username,
                               const QString &password) {
-  QNetworkRequest request;
-  QString non_const_url = url;
-
-  foreach (const QByteArray &header_name, m_customHeaders.keys()) {
-    request.setRawHeader(header_name, m_customHeaders.value(header_name));
-  }
-
-  // Set url for this request and fire it up.
-  m_timer->setInterval(timeout);
-
-  if (non_const_url.startsWith(URI_SCHEME_FEED)) {
-    qDebug("Replacing URI schemes for '%s'.", qPrintable(non_const_url));
-    request.setUrl(non_const_url.replace(QRegExp(QString('^') + URI_SCHEME_FEED), QString(URI_SCHEME_HTTP)));
-  }
-  else {
-    request.setUrl(non_const_url);
-  }
-
-  m_targetProtected = protected_contents;
-  m_targetUsername = username;
-  m_targetPassword = password;
-
-  runGetRequest(request);
+  manipulateData(url, QNetworkAccessManager::GetOperation, QByteArray(), timeout,
+                 protected_contents, username, password);
 }
 
-void Downloader::uploadData(const QString &url, const QByteArray &data, QNetworkAccessManager::Operation operation,
-                            int timeout, bool protected_contents, const QString &username, const QString &password) {
+void Downloader::manipulateData(const QString &url, QNetworkAccessManager::Operation operation, const QByteArray &data,
+                                int timeout, bool protected_contents, const QString &username, const QString &password) {
   QNetworkRequest request;
   QString non_const_url = url;
 
@@ -93,8 +72,14 @@ void Downloader::uploadData(const QString &url, const QByteArray &data, QNetwork
   if (operation == QNetworkAccessManager::PostOperation) {
     runPostRequest(request, m_inputData);
   }
-  else {
+  else if (operation == QNetworkAccessManager::GetOperation) {
+    runGetRequest(request);
+  }
+  else if (operation == QNetworkAccessManager::PutOperation) {
     runPutRequest(request, m_inputData);
+  }
+  else if (operation == QNetworkAccessManager::DeleteOperation) {
+    runDeleteRequest(request);
   }
 }
 
@@ -131,6 +116,9 @@ void Downloader::finished() {
     else if (reply_operation == QNetworkAccessManager::PutOperation) {
       runPutRequest(request, m_inputData);
     }
+    else if (reply_operation == QNetworkAccessManager::DeleteOperation) {
+      runDeleteRequest(request);
+    }
   }
   else {
     // No redirection is indicated. Final file is obtained in our "reply" object.
@@ -159,6 +147,18 @@ void Downloader::timeout() {
     // Download action timed-out, too slow connection or target is not reachable.
     m_activeReply->abort();
   }
+}
+
+void Downloader::runDeleteRequest(const QNetworkRequest &request) {
+  m_timer->start();
+  m_activeReply = m_downloadManager->deleteResource(request);
+
+  m_activeReply->setProperty("protected", m_targetProtected);
+  m_activeReply->setProperty("username", m_targetUsername);
+  m_activeReply->setProperty("password", m_targetPassword);
+
+  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
+  connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
 }
 
 void Downloader::runPutRequest(const QNetworkRequest &request, const QByteArray &data) {

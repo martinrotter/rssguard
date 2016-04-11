@@ -68,6 +68,7 @@ class DatabaseQueries {
     static int createAccount(QSqlDatabase db, const QString &code, bool *ok = NULL);
     static Assignment getOwnCloudCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
     static Assignment getOwnCloudFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static bool deleteFeed(QSqlDatabase db, int feed_custom_id, int account_id);
 
   private:
     explicit DatabaseQueries();

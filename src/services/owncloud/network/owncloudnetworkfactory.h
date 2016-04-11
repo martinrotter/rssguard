@@ -119,6 +119,9 @@ class OwnCloudNetworkFactory {
     // Get feeds & categories (used for sync-in).
     OwnCloudGetFeedsCategoriesResponse feedsCategories();
 
+    // Delete a feed.
+    bool deleteFeed(int feed_id);
+
     // Get messages for given feed.
     OwnCloudGetMessagesResponse getMessages(int feed_id);
 
@@ -143,6 +146,7 @@ class OwnCloudNetworkFactory {
     QString m_urlFeeds;
     QString m_urlMessages;
     QString m_urlFeedsUpdate;
+    QString m_urlDeleteFeed;
     QString m_userId;
 };
 
