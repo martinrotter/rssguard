@@ -324,11 +324,11 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan inte uppdatera alla poster eftersom en annan kritisk operation pågår.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>Antal olästa/alla meddelanden.</translation>
     </message>
 </context>
 <context>

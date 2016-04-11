@@ -31,14 +31,14 @@
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Feed tidak dapat ditambah karena akun standar RSS/ATOM tidak dinyalakan.</translation>
+        <translation>Feed tidak dapat ditambahkan karena akun standar RSS/ATOM tidak dinyalakan.</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation>Menyusutkan berkas database...</translation>
+        <translation>Susutkan berkas database...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation>Menghapus pesan terbaca...</translation>
+        <translation>Hapus pesan terbaca...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
@@ -58,11 +58,11 @@
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation>Menghapus pesan lama...</translation>
+        <translation>Hapus pesan lama...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation>Membersihkan tong sampah...</translation>
+        <translation>Bersihkan tong sampah...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
@@ -207,7 +207,7 @@ Klik disini untuk membuka direktori induk.</translation>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation>Membersihkan</translation>
+        <translation>Bersihkan</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
@@ -324,11 +324,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Anda tidak dapat memperbaharui semua item karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>Jumlah pesan belum terbaca/keseluruhan.</translation>
     </message>
 </context>
 <context>
@@ -342,7 +342,7 @@ Klik disini untuk membuka direktori induk.</translation>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation>Tidak dapat mengubah item</translation>
+        <translation>Tidak dapat menyunting item</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
@@ -354,7 +354,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation>Item yang dipilih tidak dapat diubah karena operasi genting lain sedang berlangsung.</translation>
+        <translation>Item yang dipilih tidak dapat disunting karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
@@ -366,11 +366,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation>Item yang dipilih tidak dapat diubah, ini tidak (belum?) didukung.</translation>
+        <translation>Item yang dipilih tidak dapat disunting, ini tidak (belum?) didukung.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation>Menghapus &quot;%1&quot;</translation>
+        <translation>Hapus &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
@@ -495,7 +495,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Menambah akun baru</translation>
+        <translation>Tambah akun baru</translation>
     </message>
     <message>
         <source>Details</source>
@@ -519,14 +519,14 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>Akun ini dapat ditambah hanya sekali.</translation>
+        <translation>Akun ini dapat ditambahkan hanya sekali.</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation>Mem-backup database/pengaturan</translation>
+        <translation>Backup database/pengaturan</translation>
     </message>
     <message>
         <source>Backup properties</source>
@@ -590,7 +590,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation>Memilih direktori tujuan</translation>
+        <translation>Pilih direktori tujuan</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
@@ -601,11 +601,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation>Membersihkan database</translation>
+        <translation>Pembersihan database</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation>Menghapus semua pesan lebih tua dari</translation>
+        <translation>Hapus semua pesan lebih tua dari</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
@@ -613,7 +613,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation>Menyusutkan berkas database</translation>
+        <translation>Susutkan berkas database</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -653,15 +653,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Menghapus semua pesan terbaca (bukan dari tong sampah)</translation>
+        <translation>Hapus semua pesan terbaca (bukan dari tong sampah)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation>Menghapus semua pesan dari tong sampah</translation>
+        <translation>Hapus semua pesan dari tong sampah</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Menghapus semua pesan yang ditandai bintang (termasuk dari tong sampah)</translation>
+        <translation>Hapus semua pesan yang ditandai bintang (termasuk dari tong sampah)</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -692,7 +692,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Menampilkan kata sandi</translation>
+        <translation>Tampilkan kata sandi</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -704,7 +704,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Uji setelan</translation>
+        <translation>&amp;Tes setelan</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
@@ -728,19 +728,19 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Belum ada pengujian yang dilakukan.</translation>
+        <translation>Belum ada tes yang dilakukan.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Ini, hasil dari pengujian koneksi ditampilkan.</translation>
+        <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Menambah akun Tiny Tiny RSS baru</translation>
+        <translation>Tambah akun Tiny Tiny RSS baru</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Mengubah akun Tiny Tiny RSS yang ada</translation>
+        <translation>Sunting akun Tiny Tiny RSS yang ada</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
@@ -832,7 +832,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Menjalankan paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
+        <translation>Eksekusi paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -843,7 +843,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormEditFeed</name>
     <message>
         <source>Edit feed</source>
-        <translation>Mengubah feed</translation>
+        <translation>Sunting feed</translation>
     </message>
     <message>
         <source>Parent category</source>
@@ -851,7 +851,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Memilih item induk untuk feed anda.</translation>
+        <translation>Pilih item induk untuk feed anda.</translation>
     </message>
     <message>
         <source>URL</source>
@@ -915,11 +915,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
-        <translation>Mengubah feed yang ada</translation>
+        <translation>Sunting feed yang ada</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Menambah feed baru</translation>
+        <translation>Tambah feed baru</translation>
     </message>
     <message>
         <source>Feed added</source>
@@ -958,7 +958,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Menjalankan paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
+        <translation>Eksekusi paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -978,11 +978,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Menampilkan kata sandi</translation>
+        <translation>Tampilkan kata sandi</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Uji setelan</translation>
+        <translation>&amp;Tes setelan</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -998,19 +998,19 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Belum ada pengujian yang dilakukan.</translation>
+        <translation>Belum ada tes yang dilakukan.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Ini, hasil dari pengujian koneksi ditampilkan.</translation>
+        <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation>Menambah akun ownCloud News baru</translation>
+        <translation>Tambah akun ownCloud News baru</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>Mengubah akun ownCloud News yang ada</translation>
+        <translation>Sunting akun ownCloud News yang ada</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
@@ -1077,7 +1077,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormEditOwnCloudFeed</name>
     <message>
         <source>Edit feed</source>
-        <translation>Mengubah feed</translation>
+        <translation>Sunting feed</translation>
     </message>
     <message>
         <source>Parent category</source>
@@ -1085,7 +1085,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Memilih item induk untuk feed anda.</translation>
+        <translation>Pilih item induk untuk feed anda.</translation>
     </message>
     <message>
         <source>URL</source>
@@ -1161,11 +1161,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
-        <translation>Mengubah feed yang ada</translation>
+        <translation>Sunting feed yang ada</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Menambah feed baru</translation>
+        <translation>Tambah feed baru</translation>
     </message>
 </context>
 <context>
@@ -1184,7 +1184,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;Alat</translation>
+        <translation>Ala&amp;t</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
@@ -1200,7 +1200,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation>Mengganti nilai &amp;pentingnya pesan yang dipilih</translation>
+        <translation>Ganti nilai &amp;pentingnya pesan yang dipilih</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1208,11 +1208,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation>Menampilkan pengaturan aplikasi.</translation>
+        <translation>Tampilkan pengaturan aplikasi.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation>Mengaktifkan mode layar penuh.</translation>
+        <translation>Ganti mode layar penuh.</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -1224,15 +1224,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation>Menyembunyikan jendela utama jika terlihat dan menampilkannya jika tersembunyi.</translation>
+        <translation>Sembunyikan jendela utama jika terlihat dan menampilkannya jika tersembunyi.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation>Menyembunyikan atau menampilkan daftar feed/kategori.</translation>
+        <translation>Sembunyikan atau Tampilkan daftar feed/kategori.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation>Memeriksa jika pembaharuan terkini untuk aplikasi tersedia untuk diunduh.</translation>
+        <translation>Periksa jika pembaharuan terkini untuk aplikasi tersedia untuk diunduh.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
@@ -1240,43 +1240,43 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation>Menampilkan info tambahan seputar aplikasi ini.</translation>
+        <translation>Tampilkan info tambahan seputar aplikasi ini.</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation>Meng&amp;hapus pesan yang dipilih</translation>
+        <translation>&amp;Hapus pesan yang dipilih</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation>Menyembunyikan atau menampilkan menu utama.</translation>
+        <translation>Sembunyikan atau tampilkan menu utama.</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Menandai pesan yang dipilih sebagai ter&amp;baca</translation>
+        <translation>Tandai pesan yang dipilih sebagai ter&amp;baca</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Menandai pesan yang dipilih sebagai belum terba&amp;ca</translation>
+        <translation>Tandai pesan yang dipilih sebagai belum terba&amp;ca</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation>Membuka sumber artikel yang dipilih di peramban &amp;eksternal</translation>
+        <translation>Buka sumber artikel yang dipilih di peramban &amp;eksternal</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation>Membuka pesan yang dipilih di peramban &amp;internal</translation>
+        <translation>Buka pesan yang dipilih di peramban &amp;internal</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>Memilih pesan se&amp;lanjutnya</translation>
+        <translation>Pilih pesan se&amp;lanjutnya</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation>Memilih pesan se&amp;belumnya</translation>
+        <translation>Pilih pesan se&amp;belumnya</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>&amp;Memeriksa pembaharuan</translation>
+        <translation>&amp;Periksa pembaharuan</translation>
     </message>
     <message>
         <source>Show/hide</source>
@@ -1296,7 +1296,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation>Mengganti visibilitas dari &amp;jendela utama</translation>
+        <translation>Ganti visibilitas dari &amp;jendela utama</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
@@ -1312,7 +1312,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation>Mengganti visibilitas dari bilah alat utama.</translation>
+        <translation>Ganti visibilitas dari bilah alat utama.</translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
@@ -1320,11 +1320,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
-        <translation>Melaporkan &amp;bug (GitHub)...</translation>
+        <translation>Laporkan &amp;bug (GitHub)...</translation>
     </message>
     <message>
         <source>Report a bug (BitBucket)...</source>
-        <translation>Melaporkan bug (BitBucket)...</translation>
+        <translation>Laporkan bug (BitBucket)...</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
@@ -1332,7 +1332,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation>Menampilkan &amp;wiki</translation>
+        <translation>Tampilkan &amp;wiki</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -1340,15 +1340,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation>Me&amp;mulihkan database/pengaturan</translation>
+        <translation>&amp;Pulihkan database/pengaturan</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation>Mem-&amp;backup database/pengaturan</translation>
+        <translation>&amp;Backup database/pengaturan</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation>Mengganti orientasi tata letak daftar pesan</translation>
+        <translation>Ganti orientasi tata letak daftar pesan</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
@@ -1356,7 +1356,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation>Mengirim pesan yang dipilih via e-mail</translation>
+        <translation>Kirim pesan yang dipilih via e-mail</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
@@ -1364,79 +1364,79 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation>Me&amp;nambah item baru</translation>
+        <translation>&amp;Tambah item baru</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation>Memper&amp;baharui semua item</translation>
+        <translation>Per&amp;baharui semua item</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>Memperbaha&amp;rui item yang dipilih</translation>
+        <translation>Perbaha&amp;rui item yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation>Meng&amp;ubah item yang dipilih</translation>
+        <translation>&amp;Sunting item yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation>Meng&amp;hapus item yang dipilih</translation>
+        <translation>&amp;Hapus item yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation>Menandai item yang &amp;dipilih sebagai terbaca</translation>
+        <translation>Tandai item yang &amp;dipilih sebagai terbaca</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation>Menandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai terbaca.</translation>
+        <translation>Tandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai terbaca.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation>Menandai item yang di&amp;pilih sebagai belum terbaca</translation>
+        <translation>Tandai item yang di&amp;pilih sebagai belum terbaca</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation>Menandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai belum terbaca.</translation>
+        <translation>Tandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai belum terbaca.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation>Mem&amp;bersihkan item yang dipilih</translation>
+        <translation>&amp;Bersihkan item yang dipilih</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation>Menghapus semua pesan dari item yang dipilih.</translation>
+        <translation>Hapus semua pesan dari item yang dipilih.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>Menandai &amp;semua item sebagai terbaca</translation>
+        <translation>Tandai &amp;semua item sebagai terbaca</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation>Menandai semua pesan di semua item terbaca. Ini tidak mengambil penyaring pesan ke akun.</translation>
+        <translation>Tandai semua pesan di semua item terbaca. Ini tidak mengambil penyaring pesan ke akun.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation>Menampilkan item yang dipilih ke dalam mode &amp;koran</translation>
+        <translation>Tampilkan item yang dipilih ke dalam mode &amp;koran</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation>Menampilkan semua pesan dari item yang dipilih ke dalam tab &quot;mode koran&quot; baru. Perhatikan bahwa pesan tidak disetel sebagai terbaca secara otomatis.</translation>
+        <translation>Tampilkan semua pesan dari item yang dipilih ke dalam tab &quot;mode koran&quot; baru. Perhatikan bahwa pesan tidak disetel sebagai terbaca secara otomatis.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation>Member&amp;sihkan semua item</translation>
+        <translation>Ber&amp;sihkan semua item</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation>Menghapus semua pesan dari semua item.</translation>
+        <translation>Hapus semua pesan dari semua item.</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation>Memilih item selan&amp;jutnya</translation>
+        <translation>Pilih item selan&amp;jutnya</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation>Memilih item s&amp;ebelumnya</translation>
+        <translation>Pilih item s&amp;ebelumnya</translation>
     </message>
     <message>
         <source>Show only unread items</source>
@@ -1444,11 +1444,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation>Memper&amp;lebar/mempersempit item yang dipilih</translation>
+        <translation>Per&amp;lebar/persempit item yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation>Me&amp;mulihkan pesan yang dipilih</translation>
+        <translation>&amp;Pulihkan pesan yang dipilih</translation>
     </message>
     <message>
         <source>No possible actions</source>
@@ -1460,15 +1460,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation>Mem&amp;ulihkan semua tong sampah</translation>
+        <translation>P&amp;ulihkan semua tong sampah</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation>Meng&amp;osongkan semua tong sampah</translation>
+        <translation>K&amp;osongkan semua tong sampah</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation>Memilih pesan be&amp;lum terbaca selanjutnya</translation>
+        <translation>Pilih pesan be&amp;lum terbaca selanjutnya</translation>
     </message>
     <message>
         <source>No recycle bin</source>
@@ -1484,7 +1484,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation>&amp;Menambah akun baru</translation>
+        <translation>&amp;Tambah akun baru</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -1492,31 +1492,31 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>Meng&amp;ubah akun yang dipilih</translation>
+        <translation>&amp;Sunting akun yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation>Meng&amp;hapus akun yang dipilih</translation>
+        <translation>&amp;Hapus akun yang dipilih</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation>Menambah feed baru ke akun yang dipilih</translation>
+        <translation>Tambah feed baru ke akun yang dipilih</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation>Menambah kategori baru ke akun yang dipilih</translation>
+        <translation>Tambah kategori baru ke akun yang dipilih</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Menambah kategori baru</translation>
+        <translation>Tambah kategori baru</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Menambah feed baru</translation>
+        <translation>Tambah feed baru</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation>Menghentikan pembaharuan yang berjalan</translation>
+        <translation>Hentikan pembaharuan yang berjalan</translation>
     </message>
     <message>
         <source>No actions possible</source>
@@ -1527,7 +1527,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation>Memulihkan database/pengaturan</translation>
+        <translation>Pulihkan database/pengaturan</translation>
     </message>
     <message>
         <source>Operation results</source>
@@ -1535,11 +1535,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation>Memulihkan database</translation>
+        <translation>Pulihkan database</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation>Memulihkan pengaturan</translation>
+        <translation>Pulihkan pengaturan</translation>
     </message>
     <message>
         <source>Restart</source>
@@ -1571,7 +1571,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation>Memilih direktori sumber</translation>
+        <translation>Pilih direktori sumber</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
@@ -1620,7 +1620,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation>Memulai aplikasi secara sembunyi</translation>
+        <translation>Mulai aplikasi secara sembunyi</translation>
     </message>
     <message>
         <source>Type</source>
@@ -1657,7 +1657,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation>Menampilkan kata sandi</translation>
+        <translation>Tampilkan kata sandi</translation>
     </message>
     <message>
         <source>Code</source>
@@ -1701,7 +1701,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation>Membuka tab baru dengan dua kali klik pada tab bar</translation>
+        <translation>Buka tab baru dengan dua kali klik pada tab bar</translation>
     </message>
     <message>
         <source>no icon theme</source>
@@ -1766,7 +1766,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation>Memilih peramban web yang dapat dijalankan</translation>
+        <translation>Pilih peramban web yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
@@ -1866,7 +1866,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Test setup</source>
-        <translation>Uji setelan</translation>
+        <translation>Tes setelan</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
@@ -1942,11 +1942,11 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation>Menyembunyikan jendela utama ketika di-minimize</translation>
+        <translation>Sembunyikan jendela utama ketika di-minimize</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation>Tidak ada uji koneksi yang dipicu sejauh ini.</translation>
+        <translation>Tidak ada tes koneksi yang dipicu sejauh ini.</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
@@ -1986,15 +1986,15 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Menjaga pilihan pesan di tengah area pandang daftar pesan</translation>
+        <translation>Jaga pilihan pesan di tengah area pandang daftar pesan</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation>Anda belum menjalankan uji koneksi apapun.</translation>
+        <translation>Anda belum mengeksekusi tes koneksi apapun.</translation>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation>Menjalankan %1 pada startup sistem operasi</translation>
+        <translation>Jalankan %1 pada startup sistem operasi</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -2030,7 +2030,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation>Pilih bilah alat untuk diubah</translation>
+        <translation>Pilih bilah alat untuk disunting</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
@@ -2046,11 +2046,11 @@ Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation>Memeriksa untuk pembaharuan pada startup aplikasi</translation>
+        <translation>Periksa untuk pembaharuan pada startup aplikasi</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>Menggunakan format tanggal/waktu tersuai (menimpa format yang dimuat dari lokalisasi yang aktif)</translation>
+        <translation>Gunakan format tanggal/waktu tersuai (menimpa format yang dimuat dari lokalisasi yang aktif)</translation>
     </message>
     <message>
         <source>Executables (*)</source>
@@ -2061,7 +2061,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Menghapus semua pesan dari semua feed ketika aplikasi keluar</translation>
+        <translation>Hapus semua pesan dari semua feed ketika aplikasi keluar</translation>
     </message>
     <message>
         <source>Downloads</source>
@@ -2085,11 +2085,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation>Memilih direktori tujuan unduhan</translation>
+        <translation>Pilih direktori tujuan unduhan</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation>Menampilkan kata &amp;sandi</translation>
+        <translation>Tampilkan kata &amp;sandi</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
@@ -2097,7 +2097,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Menghapus sampah kunci registrasi Trolltech (HKCU\Software\Trolltech) ketika aplikasi keluar (Gunakan dengan resiko anda sendiri!)</translation>
+        <translation>Hapus sampah kunci registrasi Trolltech (HKCU\Software\Trolltech) ketika aplikasi keluar (Gunakan dengan resiko anda sendiri!)</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -2105,7 +2105,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation>Menggunakan peramban web eksternal tersuai</translation>
+        <translation>Gunakan peramban web eksternal tersuai</translation>
     </message>
     <message>
         <source>External e-mail client</source>
@@ -2113,7 +2113,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation>Menggunakan klien e-mail eksternal tersuai</translation>
+        <translation>Gunakan klien e-mail eksternal tersuai</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
@@ -2137,11 +2137,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation>Menyimpan semua berkas yang diunduh ke</translation>
+        <translation>Simpan semua berkas yang diunduh ke</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation>Memilih email yang dapat dijalankan</translation>
+        <translation>Pilih email yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -2177,11 +2177,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation>Menghidupkan notifikasi</translation>
+        <translation>Nyalakan notifikasi</translation>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation>Membuka pengelola unduhan ketika penguduhan baru dimulai</translation>
+        <translation>Buka pengelola unduhan ketika penguduhan baru dimulai</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -2189,11 +2189,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
-        <translation>Menghidupkan notifikasi D-Bus</translation>
+        <translation>Nyalakan notifikasi D-Bus</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation>&amp;Mengganti fon</translation>
+        <translation>&amp;Ganti fon</translation>
     </message>
     <message>
         <source>Font preview</source>
@@ -2216,7 +2216,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation>Memilih item induk untuk kategori anda.</translation>
+        <translation>Pilih item induk untuk kategori anda.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2236,11 +2236,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Menambah kategori baru</translation>
+        <translation>Tambah kategori baru</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation>Mengubah kategori yang ada</translation>
+        <translation>Sunting kategori yang ada</translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -2248,15 +2248,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation>Kategori tidak ditambahkan disebabkan kesalahan.</translation>
+        <translation>Kategori tidak ditambahkan disebabkan eror.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation>Tidak dapat memperbaiki kategori</translation>
+        <translation>Tidak dapat menyunting kategori</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation>Kategori tidak diperbaiki disebabkan kesalahan.</translation>
+        <translation>Kategori tidak disunting disebabkan eror.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
@@ -2276,7 +2276,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation>Memilih berkas ikon untuk kategori</translation>
+        <translation>Pilih berkas ikon untuk kategori</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -2309,7 +2309,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation>Menyetel judul untuk kategori anda.</translation>
+        <translation>Setel judul untuk kategori anda.</translation>
     </message>
     <message>
         <source>Category description</source>
@@ -2317,7 +2317,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation>Menyetel deskripsi untuk kategori anda.</translation>
+        <translation>Setel deskripsi untuk kategori anda.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -2412,11 +2412,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Menambah feed baru</translation>
+        <translation>Tambah feed baru</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
-        <translation>Mengubah feed yang ada</translation>
+        <translation>Sunting feed yang ada</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
@@ -2452,7 +2452,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation>Memilih berkas ikon untuk feed</translation>
+        <translation>Pilih berkas ikon untuk feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -2489,11 +2489,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation>Tidak dapat mengubah feed</translation>
+        <translation>Tidak dapat menyunting feed</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation>Feed tidak diubah disebabkan eror.</translation>
+        <translation>Feed tidak disunting disebabkan eror.</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
@@ -2676,7 +2676,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation>Memilih berkas untuk ekspor feed</translation>
+        <translation>Pilih berkas untuk ekspor feed</translation>
     </message>
     <message>
         <source>File is selected.</source>
@@ -2684,7 +2684,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation>Memilih berkas untuk impor feed</translation>
+        <translation>Pilih berkas untuk impor feed</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
@@ -2724,7 +2724,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Memilih item induk untuk feed anda.</translation>
+        <translation>Pilih item induk untuk feed anda.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
@@ -2732,7 +2732,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation>Mendapatkan metadata secara online</translation>
+        <translation>Dapatkan metadata secara online</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
@@ -2798,7 +2798,7 @@ yang ter-install sekarang.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Memeriksa untuk pembaharuan</translation>
+        <translation>Periksa untuk pembaharuan</translation>
     </message>
     <message>
         <source>Update</source>
@@ -2894,7 +2894,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation>Membuka di peramban eksternal</translation>
+        <translation>Buka di peramban eksternal</translation>
     </message>
     <message>
         <source>Download</source>
@@ -2902,15 +2902,15 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation>Menandai pesan sebagai terbaca</translation>
+        <translation>Tandai pesan sebagai terbaca</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation>Menandai pesan sebagai belum terbaca</translation>
+        <translation>Tandai pesan sebagai belum terbaca</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation>Mengganti nilai pentingnya pesan</translation>
+        <translation>Ganti nilai pentingnya pesan</translation>
     </message>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
@@ -3080,7 +3080,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation>Menampilkan semua pesan</translation>
+        <translation>Tampilkan semua pesan</translation>
     </message>
     <message>
         <source>Message highlighter</source>
@@ -3207,7 +3207,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Menampilkan lebih banyak pesan (%n tersisa)</numerusform></translation>
+        <translation><numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3235,7 +3235,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.1</translation>
+        <translation>0.2</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3325,11 +3325,11 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation>Memulihkan tong sampah</translation>
+        <translation>Pulihkan tong sampah</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation>Mengosongkan tong sampah</translation>
+        <translation>Kosongkan tong sampah</translation>
     </message>
 </context>
 <context>
@@ -3541,7 +3541,7 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation>Menampilkan menu utama.</translation>
+        <translation>Tampilkan menu utama.</translation>
     </message>
     <message>
         <source>Main menu</source>
@@ -3579,11 +3579,11 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation>Memasukkan pemisah</translation>
+        <translation>Masukkan pemisah</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation>Memasukkan pemberi jarak</translation>
+        <translation>Masukkan pemberi jarak</translation>
     </message>
     <message>
         <source>Separator</source>
@@ -3595,23 +3595,23 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation>Memindah aksi ke atas</translation>
+        <translation>Pindah aksi ke atas</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation>Memindah aksi ke bawah</translation>
+        <translation>Pindah aksi ke bawah</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation>Menambah aksi yang dipilih</translation>
+        <translation>Tambah aksi yang dipilih</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation>Menghapus aksi yang dipilih</translation>
+        <translation>Hapus aksi yang dipilih</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation>Menghapus semua aksi</translation>
+        <translation>Hapus semua aksi</translation>
     </message>
 </context>
 <context>

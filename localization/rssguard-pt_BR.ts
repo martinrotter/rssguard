@@ -324,11 +324,11 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Você não pode atualizar todos os itens pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>Quantidade de mensagens não lidas/todas.</translation>
     </message>
 </context>
 <context>
