@@ -18,7 +18,7 @@
 #include "services/standard/standardcategory.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
@@ -30,9 +30,6 @@
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/standardfeed.h"
 
-#include <QVariant>
-#include <QSqlQuery>
-#include <QSqlError>
 #include <QPointer>
 
 
@@ -142,14 +139,8 @@ bool StandardCategory::removeItself() {
   if (children_removed) {
     // Children are removed, remove this standard category too.
     QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-    QSqlQuery query_remove(database);
 
-    // Remove this category from database.
-    query_remove.setForwardOnly(true);
-    query_remove.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
-    query_remove.bindValue(QSL(":category"), id());
-
-    return query_remove.exec();
+    return DatabaseQueries::deleteCategory(database, id());
   }
   else {
     return false;
@@ -159,66 +150,39 @@ bool StandardCategory::removeItself() {
 bool StandardCategory::addItself(RootItem *parent) {
   // Now, add category to persistent storage.
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_add(database);
+  int new_id = DatabaseQueries::addCategory(database, parent->id(), parent->getParentServiceRoot()->accountId(),
+                                            title(), description(), creationDate(), icon());
 
-  query_add.setForwardOnly(true);
-  query_add.prepare("INSERT INTO Categories "
-                    "(parent_id, title, description, date_created, icon, account_id) "
-                    "VALUES (:parent_id, :title, :description, :date_created, :icon, :account_id);");
-  query_add.bindValue(QSL(":parent_id"), parent->id());
-  query_add.bindValue(QSL(":title"), title());
-  query_add.bindValue(QSL(":description"), description());
-  query_add.bindValue(QSL(":date_created"), creationDate().toMSecsSinceEpoch());
-  query_add.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon()));
-  query_add.bindValue(QSL(":account_id"), parent->getParentServiceRoot()->accountId());
-
-  if (!query_add.exec()) {
-    qDebug("Failed to add category to database: '%s'.", qPrintable(query_add.lastError().text()));
-
-    // Query failed.
+  if (new_id <= 0) {
     return false;
   }
-
-  setId(query_add.lastInsertId().toInt());
-  setCustomId(id());
-
-  // Now set custom ID in the DB.
-  query_add.prepare(QSL("UPDATE Categories SET custom_id = :custom_id WHERE id = :id;"));
-  query_add.bindValue(QSL(":custom_id"), QString::number(customId()));
-  query_add.bindValue(QSL(":id"), id());
-  query_add.exec();
-
-  return true;
+  else {
+    setId(new_id);
+    setCustomId(new_id);
+    return true;
+  }
 }
 
 bool StandardCategory::editItself(StandardCategory *new_category_data) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_update_category(database);
+
   StandardCategory *original_category = this;
   RootItem *new_parent = new_category_data->parent();
 
-  query_update_category.setForwardOnly(true);
-  query_update_category.prepare("UPDATE Categories "
-                                "SET title = :title, description = :description, icon = :icon, parent_id = :parent_id "
-                                "WHERE id = :id;");
-  query_update_category.bindValue(QSL(":title"), new_category_data->title());
-  query_update_category.bindValue(QSL(":description"), new_category_data->description());
-  query_update_category.bindValue(QSL(":icon"), qApp->icons()->toByteArray(new_category_data->icon()));
-  query_update_category.bindValue(QSL(":parent_id"), new_parent->id());
-  query_update_category.bindValue(QSL(":id"), original_category->id());
+  if (DatabaseQueries::editCategory(database, new_parent->id(), original_category->id(),
+                                    new_category_data->title(), new_category_data->description(),
+                                    new_category_data->icon())) {
+    // Setup new model data for the original item.
+    original_category->setDescription(new_category_data->description());
+    original_category->setIcon(new_category_data->icon());
+    original_category->setTitle(new_category_data->title());
 
-  if (!query_update_category.exec()) {
-    // Persistent storage update failed, no way to continue now.
+    // Editing is done.
+    return true;
+  }
+  else {
     return false;
   }
-
-  // Setup new model data for the original item.
-  original_category->setDescription(new_category_data->description());
-  original_category->setIcon(new_category_data->icon());
-  original_category->setTitle(new_category_data->title());
-
-  // Editing is done.
-  return true;
 }
 
 StandardCategory::StandardCategory(const QSqlRecord &record) : Category(NULL) {

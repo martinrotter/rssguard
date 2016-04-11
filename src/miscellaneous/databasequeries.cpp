@@ -859,7 +859,7 @@ bool DatabaseQueries::createOwnCloudAccount(QSqlDatabase db, int id_to_assign, c
   QSqlQuery q(db);
 
   q.prepare("INSERT INTO OwnCloudAccounts (id, username, password, url, force_update) "
-                "VALUES (:id, :username, :password, :url, :force_update);");
+            "VALUES (:id, :username, :password, :url, :force_update);");
   q.bindValue(QSL(":id"), id_to_assign);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":password"), TextFactory::encrypt(password));
@@ -976,24 +976,95 @@ Assignment DatabaseQueries::getOwnCloudFeeds(QSqlDatabase db, int account_id, bo
 }
 
 bool DatabaseQueries::deleteFeed(QSqlDatabase db, int feed_custom_id, int account_id) {
-  QSqlQuery query_remove(db);
-  query_remove.setForwardOnly(true);
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
 
   // Remove all messages from this feed.
-  query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
-  query_remove.bindValue(QSL(":feed"), feed_custom_id);
-  query_remove.bindValue(QSL(":account_id"), account_id);
+  q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
+  q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
 
-  if (!query_remove.exec()) {
+  if (!q.exec()) {
     return false;
   }
 
   // Remove feed itself.
-  query_remove.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :feed AND account_id = :account_id;"));
-  query_remove.bindValue(QSL(":feed"), feed_custom_id);
-  query_remove.bindValue(QSL(":account_id"), account_id);
+  q.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :feed AND account_id = :account_id;"));
+  q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
 
-  return query_remove.exec();
+  return q.exec();
+}
+
+bool DatabaseQueries::deleteCategory(QSqlDatabase db, int id) {
+  QSqlQuery q(db);
+
+  // Remove this category from database.
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
+  q.bindValue(QSL(":category"), id);
+
+  return q.exec();
+}
+
+int DatabaseQueries::addCategory(QSqlDatabase db, int parent_id, int account_id, const QString &title,
+                                 const QString &description, QDateTime creation_date, const QIcon &icon,
+                                 bool *ok) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("INSERT INTO Categories "
+            "(parent_id, title, description, date_created, icon, account_id) "
+            "VALUES (:parent_id, :title, :description, :date_created, :icon, :account_id);");
+  q.bindValue(QSL(":parent_id"), parent_id);
+  q.bindValue(QSL(":title"), title);
+  q.bindValue(QSL(":description"), description);
+  q.bindValue(QSL(":date_created"), creation_date.toMSecsSinceEpoch());
+  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qDebug("Failed to add category to database: '%s'.", qPrintable(q.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+
+    // Query failed.
+    return 0;
+  }
+  else {
+    if (ok != NULL) {
+      *ok = true;
+    }
+
+    int new_id = q.lastInsertId().toInt();
+
+    // Now set custom ID in the DB.
+    q.prepare(QSL("UPDATE Categories SET custom_id = :custom_id WHERE id = :id;"));
+    q.bindValue(QSL(":custom_id"), QString::number(new_id));
+    q.bindValue(QSL(":id"), new_id);
+    q.exec();
+
+    return new_id;
+  }
+}
+
+bool DatabaseQueries::editCategory(QSqlDatabase db, int parent_id, int category_id,
+                                   const QString &title, const QString &description, const QIcon &icon) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("UPDATE Categories "
+            "SET title = :title, description = :description, icon = :icon, parent_id = :parent_id "
+            "WHERE id = :id;");
+  q.bindValue(QSL(":title"), title);
+  q.bindValue(QSL(":description"), description);
+  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
+  q.bindValue(QSL(":parent_id"), parent_id);
+  q.bindValue(QSL(":id"), category_id);
+
+  return q.exec();
 }
 
 DatabaseQueries::DatabaseQueries() {

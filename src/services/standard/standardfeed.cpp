@@ -20,7 +20,7 @@
 #include "definitions/definitions.h"
 #include "core/parsingfactory.h"
 #include "core/feedsmodel.h"
-#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
@@ -33,9 +33,6 @@
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
 #include <QVariant>
 #include <QTextCodec>
 #include <QPointer>
@@ -377,23 +374,8 @@ bool StandardFeed::performDragDropChange(RootItem *target_item) {
 
 bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_remove(database);
 
-  query_remove.setForwardOnly(true);
-
-  // Remove all messages from this standard feed.
-  query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
-  query_remove.bindValue(QSL(":feed"), customId());
-
-  if (!query_remove.exec()) {
-    return false;
-  }
-
-  // Remove feed itself.
-  query_remove.prepare(QSL("DELETE FROM Feeds WHERE id = :feed;"));
-  query_remove.bindValue(QSL(":feed"), id());
-
-  return query_remove.exec();
+  return DatabaseQueries::deleteFeed(database, customId(), getParentServiceRoot()->accountId());
 }
 
 bool StandardFeed::addItself(RootItem *parent) {

@@ -69,6 +69,11 @@ class DatabaseQueries {
     static Assignment getOwnCloudCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
     static Assignment getOwnCloudFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
     static bool deleteFeed(QSqlDatabase db, int feed_custom_id, int account_id);
+    static bool deleteCategory(QSqlDatabase db, int id);
+    static int addCategory(QSqlDatabase db, int parent_id, int account_id, const QString &title,
+                           const QString &description, QDateTime creation_date, const QIcon &icon, bool *ok = NULL);
+    static bool editCategory(QSqlDatabase db, int parent_id, int category_id,
+                             const QString &title, const QString &description, const QIcon &icon);
 
   private:
     explicit DatabaseQueries();
