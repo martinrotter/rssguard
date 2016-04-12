@@ -21,6 +21,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/mutex.h"
 #include "core/feedsmodel.h"
 #include "gui/messagebox.h"
@@ -35,8 +36,6 @@
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/gui/formstandardimportexport.h"
 
-#include <QSqlQuery>
-#include <QSqlError>
 #include <QStack>
 #include <QAction>
 #include <QSqlTableModel>
@@ -173,61 +172,8 @@ RecycleBin *StandardServiceRoot::recycleBin() const {
 
 void StandardServiceRoot::loadFromDatabase(){
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  Assignment categories;
-  Assignment feeds;
-
-  // Obtain data for categories from the database.
-  QSqlQuery query_categories(database);
-  query_categories.setForwardOnly(true);
-  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
-  query_categories.bindValue(QSL(":account_id"), accountId());
-
-  if (!query_categories.exec()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.",
-           qPrintable(query_categories.lastError().text()));
-  }
-
-  while (query_categories.next()) {
-    AssignmentItem pair;
-    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new StandardCategory(query_categories.record());
-
-    categories << pair;
-  }
-
-  // All categories are now loaded.
-  QSqlQuery query_feeds(database);
-  query_feeds.setForwardOnly(true);
-  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  query_feeds.bindValue(QSL(":account_id"), accountId());
-
-  if (!query_feeds.exec()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
-           qPrintable(query_feeds.lastError().text()));
-  }
-
-  while (query_feeds.next()) {
-    // Process this feed.
-    StandardFeed::Type type = static_cast<StandardFeed::Type>(query_feeds.value(FDS_DB_TYPE_INDEX).toInt());
-
-    switch (type) {
-      case StandardFeed::Atom10:
-      case StandardFeed::Rdf:
-      case StandardFeed::Rss0X:
-      case StandardFeed::Rss2X: {
-        AssignmentItem pair;
-        pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-        pair.second = new StandardFeed(query_feeds.record());
-        qobject_cast<StandardFeed*>(pair.second)->setType(type);
-
-        feeds << pair;
-        break;
-      }
-
-      default:
-        break;
-    }
-  }
+  Assignment categories = DatabaseQueries::getCategories(database, accountId());
+  Assignment feeds = DatabaseQueries::getFeeds(database, accountId());
 
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);

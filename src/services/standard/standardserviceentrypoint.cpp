@@ -20,9 +20,8 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/databasequeries.h"
 #include "services/standard/standardserviceroot.h"
-
-#include <QSqlQuery>
 
 
 StandardServiceEntryPoint::StandardServiceEntryPoint() {
@@ -62,22 +61,12 @@ QString StandardServiceEntryPoint::code() const {
 ServiceRoot *StandardServiceEntryPoint::createNewRoot() const {
   // Switch DB.
   QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
+  bool ok;
+  int new_id = DatabaseQueries::createAccount(database, code(), &ok);
 
-  // First obtain the ID, which can be assigned to this new account.
-  if (!query.exec("SELECT max(id) FROM Accounts;") || !query.next()) {
-    return NULL;
-  }
-
-  int id_to_assign = query.value(0).toInt() + 1;
-
-  query.prepare(QSL("INSERT INTO Accounts (id, type) VALUES (:id, :type);"));
-  query.bindValue(QSL(":id"), id_to_assign);
-  query.bindValue(QSL(":type"), code());
-
-  if (query.exec()) {
+  if (ok) {
     StandardServiceRoot *root = new StandardServiceRoot();
-    root->setAccountId(id_to_assign);
+    root->setAccountId(new_id);
     return root;
   }
   else {
@@ -88,20 +77,6 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() const {
 QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
   QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
-  QList<ServiceRoot*> roots;
 
-  query.setForwardOnly(true);
-  query.prepare(QSL("SELECT id FROM Accounts WHERE type = :type;"));
-  query.bindValue(QSL(":type"), code());
-
-  if (query.exec()) {
-    while (query.next()) {
-      StandardServiceRoot *root = new StandardServiceRoot();
-      root->setAccountId(query.value(0).toInt());
-      roots.append(root);
-    }
-  }
-
-  return roots;
+  return DatabaseQueries::getAccounts(database);
 }

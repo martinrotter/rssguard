@@ -21,6 +21,7 @@
 #include "services/abstract/rootitem.h"
 
 #include "services/abstract/serviceroot.h"
+#include "services/standard/standardfeed.h"
 
 #include <QSqlQuery>
 
@@ -74,6 +75,20 @@ class DatabaseQueries {
                            const QString &description, QDateTime creation_date, const QIcon &icon, bool *ok = NULL);
     static bool editCategory(QSqlDatabase db, int parent_id, int category_id,
                              const QString &title, const QString &description, const QIcon &icon);
+    static int addFeed(QSqlDatabase db, int parent_id, int account_id, const QString &title,
+                                   const QString &description, QDateTime creation_date, const QIcon &icon,
+                                   const QString &encoding, const QString &url, bool is_protected,
+                                   const QString &username, const QString &password,
+                                   Feed::AutoUpdateType auto_update_type,
+                                   int auto_update_interval, StandardFeed::Type feed_format, bool *ok = NULL);
+    static bool editFeed(QSqlDatabase db, int parent_id, int feed_id, const QString &title,
+                         const QString &description, const QIcon &icon,
+                         const QString &encoding, const QString &url, bool is_protected,
+                         const QString &username, const QString &password, Feed::AutoUpdateType auto_update_type,
+                         int auto_update_interval, StandardFeed::Type feed_format);
+    static QList<ServiceRoot*> getAccounts(QSqlDatabase db, bool *ok = NULL);
+    static Assignment getCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static Assignment getFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
 
   private:
     explicit DatabaseQueries();

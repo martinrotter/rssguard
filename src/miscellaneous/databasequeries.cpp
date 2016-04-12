@@ -18,11 +18,13 @@
 #include "miscellaneous/databasequeries.h"
 
 #include "services/abstract/category.h"
-#include "services/abstract/feed.h"
 #include "services/owncloud/owncloudserviceroot.h"
 #include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/owncloudfeed.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/standard/standardserviceroot.h"
+#include "services/standard/standardcategory.h"
+#include "services/standard/standardfeed.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -1065,6 +1067,209 @@ bool DatabaseQueries::editCategory(QSqlDatabase db, int parent_id, int category_
   q.bindValue(QSL(":id"), category_id);
 
   return q.exec();
+}
+
+int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, const QString &title,
+                             const QString &description, QDateTime creation_date, const QIcon &icon,
+                             const QString &encoding, const QString &url, bool is_protected,
+                             const QString &username, const QString &password,
+                             Feed::AutoUpdateType auto_update_type,
+                             int auto_update_interval, StandardFeed::Type feed_format, bool *ok) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("INSERT INTO Feeds "
+            "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type, account_id) "
+            "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type, :account_id);");
+  q.bindValue(QSL(":title"), title);
+  q.bindValue(QSL(":description"), description);
+  q.bindValue(QSL(":date_created"), creation_date.toMSecsSinceEpoch());
+  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
+  q.bindValue(QSL(":category"), parent_id);
+  q.bindValue(QSL(":encoding"), encoding);
+  q.bindValue(QSL(":url"), url);
+  q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
+  q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (password.isEmpty()) {
+    q.bindValue(QSL(":password"), password);
+  }
+  else {
+    q.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  }
+
+  q.bindValue(QSL(":update_type"), (int) auto_update_type);
+  q.bindValue(QSL(":update_interval"), auto_update_interval);
+  q.bindValue(QSL(":type"), (int) feed_format);
+
+  if (q.exec()) {
+    int new_id = q.lastInsertId().toInt();
+
+    // Now set custom ID in the DB.
+    q.prepare(QSL("UPDATE Feeds SET custom_id = :custom_id WHERE id = :id;"));
+    q.bindValue(QSL(":custom_id"), QString::number(new_id));
+    q.bindValue(QSL(":id"), new_id);
+    q.exec();
+
+    if (ok != NULL) {
+      *ok = true;
+    }
+
+    return new_id;
+  }
+  else {
+    if (ok != NULL) {
+      *ok = false;
+    }
+
+    qDebug("Failed to add feed to database: '%s'.", qPrintable(q.lastError().text()));
+    return 0;
+  }
+}
+
+bool DatabaseQueries::editFeed(QSqlDatabase db, int parent_id, int feed_id, const QString &title,
+                               const QString &description, const QIcon &icon,
+                               const QString &encoding, const QString &url, bool is_protected,
+                               const QString &username, const QString &password,
+                               Feed::AutoUpdateType auto_update_type,
+                               int auto_update_interval, StandardFeed::Type feed_format) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+
+  q.prepare("UPDATE Feeds "
+            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, protected = :protected, username = :username, password = :password, update_type = :update_type, update_interval = :update_interval, type = :type "
+            "WHERE id = :id;");
+  q.bindValue(QSL(":title"), title);
+  q.bindValue(QSL(":description"), description);
+  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
+  q.bindValue(QSL(":category"), parent_id);
+  q.bindValue(QSL(":encoding"), encoding);
+  q.bindValue(QSL(":url"), url);
+  q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
+  q.bindValue(QSL(":username"), username);
+
+  if (password.isEmpty()) {
+    q.bindValue(QSL(":password"), password);
+  }
+  else {
+    q.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  }
+
+  q.bindValue(QSL(":update_type"), (int) auto_update_type);
+  q.bindValue(QSL(":update_interval"), auto_update_interval);
+  q.bindValue(QSL(":type"), feed_format);
+  q.bindValue(QSL(":id"), feed_id);
+
+  return q.exec();
+}
+
+QList<ServiceRoot*> DatabaseQueries::getAccounts(QSqlDatabase db, bool *ok) {
+  QSqlQuery q(db);
+  QList<ServiceRoot*> roots;
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT id FROM Accounts WHERE type = :type;"));
+  q.bindValue(QSL(":type"), SERVICE_CODE_STD_RSS);
+
+  if (q.exec()) {
+    while (q.next()) {
+      StandardServiceRoot *root = new StandardServiceRoot();
+      root->setAccountId(q.value(0).toInt());
+      roots.append(root);
+    }
+
+    if (ok != NULL) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  return roots;
+}
+
+Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool *ok) {
+  Assignment categories;
+
+  // Obtain data for categories from the database.
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qFatal("Query for obtaining categories failed. Error message: '%s'.",
+           qPrintable(q.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  if (ok != NULL) {
+    *ok = true;
+  }
+
+  while (q.next()) {
+    AssignmentItem pair;
+    pair.first = q.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.second = new StandardCategory(q.record());
+
+    categories << pair;
+  }
+
+  return categories;
+}
+
+Assignment DatabaseQueries::getFeeds(QSqlDatabase db, int account_id, bool *ok) {
+  Assignment feeds;
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
+           qPrintable(q.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  if (ok != NULL) {
+    *ok = true;
+  }
+
+  while (q.next()) {
+    // Process this feed.
+    StandardFeed::Type type = static_cast<StandardFeed::Type>(q.value(FDS_DB_TYPE_INDEX).toInt());
+
+    switch (type) {
+      case StandardFeed::Atom10:
+      case StandardFeed::Rdf:
+      case StandardFeed::Rss0X:
+      case StandardFeed::Rss2X: {
+        AssignmentItem pair;
+        pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
+        pair.second = new StandardFeed(q.record());
+        qobject_cast<StandardFeed*>(pair.second)->setType(type);
+
+        feeds << pair;
+        break;
+      }
+
+      default:
+        break;
+    }
+  }
+
+  return feeds;
 }
 
 DatabaseQueries::DatabaseQueries() {
