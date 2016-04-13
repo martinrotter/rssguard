@@ -441,7 +441,10 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
   foreach (Message message, messages) {
     // Check if messages contain relative URLs and if they do, then replace them.
-    if (message.m_url.startsWith(QL1S("/"))) {
+    if (message.m_url.startsWith(QL1S("//"))) {
+      message.m_url = QString(URI_SCHEME_HTTP) + message.m_url.mid(2);
+    }
+    else if (message.m_url.startsWith(QL1S("/"))) {
       QString new_message_url = QUrl(url).toString(QUrl::RemoveUserInfo |
                                                    QUrl::RemovePath |
                                                    QUrl::RemoveQuery |
