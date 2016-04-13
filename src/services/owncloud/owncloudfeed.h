@@ -36,6 +36,8 @@ class OwnCloudFeed : public Feed {
     bool canBeDeleted() const;
     bool deleteViaGui();
 
+    bool editItself(OwnCloudFeed *new_feed_data);
+
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
 

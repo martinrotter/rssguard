@@ -95,7 +95,7 @@ void FormEditOwnCloudFeed::performAction() {
     saveFeed();
   }
   else {
-    addNewFeed();
+    // TODO: Add new feed.
   }
 
   accept();
@@ -200,40 +200,8 @@ void FormEditOwnCloudFeed::saveFeed() {
   new_feed_data->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   new_feed_data->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
 
-  // TODO: todo
-  //m_loadedFeed->editItself(new_feed_data);
+  m_loadedFeed->editItself(new_feed_data);
   delete new_feed_data;
-}
-
-void FormEditOwnCloudFeed::addNewFeed() {
-  RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-
-  // TODO: TODO.
-  /*
-  OwnCloudServiceRoot *root = parent->kind() == RootItemKind::Category ?
-                             qobject_cast<OwnCloudCategory*>(parent)->serviceRoot() :
-                             qobject_cast<OwnCloudServiceRoot*>(parent);
-  const int category_id = parent->kind() == RootItemKind::ServiceRoot ?
-                            0 :
-                            qobject_cast<TtRssCategory*>(parent)->customId();
-  const TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_ui->m_txtUrl->lineEdit()->text(),
-                                                                                 category_id,
-                                                                                 m_ui->m_gbAuthentication->isChecked(),
-                                                                                 m_ui->m_txtUsername->lineEdit()->text(),
-                                                                                 m_ui->m_txtPassword->lineEdit()->text());
-
-  if (response.code() == STF_INSERTED) {
-    // Feed was added online.
-    accept();
-    qApp->showGuiMessage(tr("Feed added"), tr("Feed was added, triggering sync in now."), QSystemTrayIcon::Information);
-    QTimer::singleShot(100, root, SLOT(syncIn()));
-  }
-  else {
-    reject();
-    qApp->showGuiMessage(tr("Cannot add feed"),
-                         tr("Feed was not added due to error."),
-                         QSystemTrayIcon::Critical, qApp->mainForm(), true);
-  }*/
 }
 
 void FormEditOwnCloudFeed::loadCategories(const QList<Category*> categories, RootItem *root_item) {

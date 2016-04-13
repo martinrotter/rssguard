@@ -71,6 +71,21 @@ bool OwnCloudFeed::deleteViaGui() {
   }
 }
 
+bool OwnCloudFeed::editItself(OwnCloudFeed *new_feed_data) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  if (!DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
+                                     new_feed_data->autoUpdateInitialInterval())) {
+    // Persistent storage update failed, no way to continue now.
+    return false;
+  }
+  else {
+    setAutoUpdateType(new_feed_data->autoUpdateType());
+    setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
+    return true;
+  }
+}
+
 bool OwnCloudFeed::markAsReadUnread(RootItem::ReadStatus status) {
   QStringList ids = getParentServiceRoot()->customIDSOfMessagesForItem(this);
   QNetworkReply::NetworkError response = serviceRoot()->network()->markMessagesRead(status, ids);
