@@ -19,7 +19,6 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -30,8 +29,6 @@
 #include "services/tt-rss/gui/formeditfeed.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 
-#include <QSqlQuery>
-#include <QSqlError>
 #include <QPointer>
 
 
@@ -145,21 +142,11 @@ bool TtRssFeed::cleanMessages(bool clear_only_read) {
 
 bool TtRssFeed::editItself(TtRssFeed *new_feed_data) {
   QSqlDatabase database = qApp->database()->connection("aa", DatabaseFactory::FromSettings);
-  QSqlQuery query_update(database);
 
-  query_update.setForwardOnly(true);
-  query_update.prepare("UPDATE Feeds "
-                       "SET update_type = :update_type, update_interval = :update_interval "
-                       "WHERE id = :id;");
-
-  query_update.bindValue(QSL(":update_type"), (int) new_feed_data->autoUpdateType());
-  query_update.bindValue(QSL(":update_interval"), new_feed_data->autoUpdateInitialInterval());
-  query_update.bindValue(QSL(":id"), id());
-
-  if (query_update.exec()) {
+  if (DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
+                                    new_feed_data->autoUpdateInitialInterval())) {
     setAutoUpdateType(new_feed_data->autoUpdateType());
     setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
-
     return true;
   }
   else {

@@ -25,6 +25,10 @@
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
+#include "services/tt-rss/ttrssserviceroot.h"
+#include "services/tt-rss/ttrsscategory.h"
+#include "services/tt-rss/ttrssfeed.h"
+#include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -823,6 +827,42 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(QSqlDatabase db, bool *
   return roots;
 }
 
+QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(QSqlDatabase db, bool *ok) {
+  QSqlQuery query(db);
+  QList<ServiceRoot*> roots;
+
+  if (query.exec("SELECT * FROM TtRssAccounts;")) {
+    while (query.next()) {
+      TtRssServiceRoot *root = new TtRssServiceRoot();
+      root->setId(query.value(0).toInt());
+      root->setAccountId(query.value(0).toInt());
+      root->network()->setUsername(query.value(1).toString());
+      root->network()->setPassword(TextFactory::decrypt(query.value(2).toString()));
+      root->network()->setAuthIsUsed(query.value(3).toBool());
+      root->network()->setAuthUsername(query.value(4).toString());
+      root->network()->setAuthPassword(TextFactory::decrypt(query.value(5).toString()));
+      root->network()->setUrl(query.value(6).toString());
+      root->network()->setForceServerSideUpdate(query.value(7).toBool());
+
+      root->updateTitle();
+      roots.append(root);
+    }
+
+    if (ok != NULL) {
+      *ok = true;
+    }
+  }
+  else {
+    qWarning("TT-RSS: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  return roots;
+}
+
 bool DatabaseQueries::deleteOwnCloudAccount(QSqlDatabase db, int account_id) {
   QSqlQuery q(db);
 
@@ -1164,6 +1204,22 @@ bool DatabaseQueries::editFeed(QSqlDatabase db, int parent_id, int feed_id, cons
   return q.exec();
 }
 
+bool DatabaseQueries::editBaseFeed(QSqlDatabase db, int feed_id, Feed::AutoUpdateType auto_update_type,
+                                   int auto_update_interval) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("UPDATE Feeds "
+            "SET update_type = :update_type, update_interval = :update_interval "
+            "WHERE id = :id;");
+
+  q.bindValue(QSL(":update_type"), (int) auto_update_type);
+  q.bindValue(QSL(":update_interval"), auto_update_interval);
+  q.bindValue(QSL(":id"), feed_id);
+
+  return q.exec();
+}
+
 QList<ServiceRoot*> DatabaseQueries::getAccounts(QSqlDatabase db, bool *ok) {
   QSqlQuery q(db);
   QList<ServiceRoot*> roots;
@@ -1209,9 +1265,10 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool 
       *ok = false;
     }
   }
-
-  if (ok != NULL) {
-    *ok = true;
+  else {
+    if (ok != NULL) {
+      *ok = true;
+    }
   }
 
   while (q.next()) {
@@ -1267,6 +1324,137 @@ Assignment DatabaseQueries::getFeeds(QSqlDatabase db, int account_id, bool *ok) 
       default:
         break;
     }
+  }
+
+  return feeds;
+}
+
+bool DatabaseQueries::deleteTtRssAccount(QSqlDatabase db, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM TtRssAccounts WHERE id = :id;"));
+  q.bindValue(QSL(":id"), account_id);
+
+  // Remove extra entry in "Tiny Tiny RSS accounts list" and then delete
+  // all the categories/feeds and messages.
+  return q.exec();
+}
+
+bool DatabaseQueries::overwriteTtRssAccount(QSqlDatabase db, const QString &username, const QString &password,
+                                            bool auth_protected, const QString &auth_username, const QString &auth_password,
+                                            const QString &url, bool force_server_side_feed_update, int account_id) {
+  QSqlQuery q(db);
+
+  q.prepare("UPDATE TtRssAccounts "
+            "SET username = :username, password = :password, url = :url, auth_protected = :auth_protected, "
+            "auth_username = :auth_username, auth_password = :auth_password, force_update = :force_update "
+            "WHERE id = :id;");
+  q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  q.bindValue(QSL(":url"), url);
+  q.bindValue(QSL(":auth_protected"), auth_protected ? 1 : 0);
+  q.bindValue(QSL(":auth_username"), auth_username);
+  q.bindValue(QSL(":auth_password"), TextFactory::encrypt(auth_password));
+  q.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
+  q.bindValue(QSL(":id"), account_id);
+
+  if (q.exec()) {
+    return true;
+  }
+  else {
+    qWarning("TT-RSS: Updating account failed: '%s'.", qPrintable(q.lastError().text()));
+    return false;
+  }
+}
+
+bool DatabaseQueries::createTtRssAccount(QSqlDatabase db, int id_to_assign, const QString &username,
+                                         const QString &password, bool auth_protected, const QString &auth_username,
+                                         const QString &auth_password, const QString &url,
+                                         bool force_server_side_feed_update) {
+  QSqlQuery q(db);
+
+  q.prepare("INSERT INTO TtRssAccounts (id, username, password, auth_protected, auth_username, auth_password, url, force_update) "
+            "VALUES (:id, :username, :password, :auth_protected, :auth_username, :auth_password, :url, :force_update);");
+  q.bindValue(QSL(":id"), id_to_assign);
+  q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  q.bindValue(QSL(":auth_protected"), auth_protected ? 1 : 0);
+  q.bindValue(QSL(":auth_username"), auth_username);
+  q.bindValue(QSL(":auth_password"), TextFactory::encrypt(auth_password));
+  q.bindValue(QSL(":url"), url);
+  q.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
+
+  if (q.exec()) {
+    return true;
+  }
+  else {
+    qWarning("TT-RSS: Saving of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    return false;
+  }
+}
+
+Assignment DatabaseQueries::getTtRssCategories(QSqlDatabase db, int account_id, bool *ok) {
+  Assignment categories;
+
+  // Obtain data for categories from the database.
+  QSqlQuery query_categories(db);
+  query_categories.setForwardOnly(true);
+  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
+  query_categories.bindValue(QSL(":account_id"), account_id);
+
+  if (!query_categories.exec()) {
+    qFatal("Query for obtaining categories failed. Error message: '%s'.", qPrintable(query_categories.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+  else {
+    if (ok != NULL) {
+      *ok = true;
+    }
+  }
+
+  while (query_categories.next()) {
+    AssignmentItem pair;
+    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.second = new TtRssCategory(query_categories.record());
+
+    categories << pair;
+  }
+
+  return categories;
+}
+
+Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool *ok) {
+  Assignment feeds;
+
+  // All categories are now loaded.
+  QSqlQuery query_feeds(db);
+  query_feeds.setForwardOnly(true);
+  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  query_feeds.bindValue(QSL(":account_id"), account_id);
+
+  if (!query_feeds.exec()) {
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query_feeds.lastError().text()));
+
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+  else {
+    if (ok != NULL) {
+      *ok = true;
+    }
+  }
+
+  while (query_feeds.next()) {
+    AssignmentItem pair;
+    pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.second = new TtRssFeed(query_feeds.record());
+
+    feeds << pair;
   }
 
   return feeds;

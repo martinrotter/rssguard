@@ -61,6 +61,7 @@ class DatabaseQueries {
     static QStringList customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool *ok = NULL);
     static QStringList customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = NULL);
     static QList<ServiceRoot*> getOwnCloudAccounts(QSqlDatabase db, bool *ok = NULL);
+    static QList<ServiceRoot*> getTtRssAccounts(QSqlDatabase db, bool *ok = NULL);
     static bool deleteOwnCloudAccount(QSqlDatabase db, int account_id);
     static bool overwriteOwnCloudAccount(QSqlDatabase db, const QString &username, const QString &password,
                                          const QString &url, bool force_server_side_feed_update, int account_id);
@@ -76,19 +77,31 @@ class DatabaseQueries {
     static bool editCategory(QSqlDatabase db, int parent_id, int category_id,
                              const QString &title, const QString &description, const QIcon &icon);
     static int addFeed(QSqlDatabase db, int parent_id, int account_id, const QString &title,
-                                   const QString &description, QDateTime creation_date, const QIcon &icon,
-                                   const QString &encoding, const QString &url, bool is_protected,
-                                   const QString &username, const QString &password,
-                                   Feed::AutoUpdateType auto_update_type,
-                                   int auto_update_interval, StandardFeed::Type feed_format, bool *ok = NULL);
+                       const QString &description, QDateTime creation_date, const QIcon &icon,
+                       const QString &encoding, const QString &url, bool is_protected,
+                       const QString &username, const QString &password,
+                       Feed::AutoUpdateType auto_update_type,
+                       int auto_update_interval, StandardFeed::Type feed_format, bool *ok = NULL);
     static bool editFeed(QSqlDatabase db, int parent_id, int feed_id, const QString &title,
                          const QString &description, const QIcon &icon,
                          const QString &encoding, const QString &url, bool is_protected,
                          const QString &username, const QString &password, Feed::AutoUpdateType auto_update_type,
                          int auto_update_interval, StandardFeed::Type feed_format);
+    static bool editBaseFeed(QSqlDatabase db, int feed_id, Feed::AutoUpdateType auto_update_type,
+                             int auto_update_interval);
     static QList<ServiceRoot*> getAccounts(QSqlDatabase db, bool *ok = NULL);
     static Assignment getCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
     static Assignment getFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static bool deleteTtRssAccount(QSqlDatabase db, int account_id);
+    static bool overwriteTtRssAccount(QSqlDatabase db, const QString &username, const QString &password,
+                                      bool auth_protected, const QString &auth_username, const QString &auth_password,
+                                      const QString &url, bool force_server_side_feed_update, int account_id);
+    static bool createTtRssAccount(QSqlDatabase db, int id_to_assign, const QString &username,
+                                   const QString &password, bool auth_protected, const QString &auth_username,
+                                   const QString &auth_password, const QString &url,
+                                   bool force_server_side_feed_update);
+    static Assignment getTtRssCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static Assignment getTtRssFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
 
   private:
     explicit DatabaseQueries();

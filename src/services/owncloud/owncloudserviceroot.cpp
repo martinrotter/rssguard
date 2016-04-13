@@ -168,10 +168,9 @@ void OwnCloudServiceRoot::updateTitle() {
 }
 
 void OwnCloudServiceRoot::saveAccountDataToDatabase() {
-  if (accountId() != NO_PARENT_CATEGORY) {
-    // We are overwritting previously saved data.
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
+  if (accountId() != NO_PARENT_CATEGORY) {
     if (DatabaseQueries::overwriteOwnCloudAccount(database, m_network->authUsername(),
                                                   m_network->authPassword(), m_network->url(),
                                                   m_network->forceServerSideUpdate(), accountId())) {
@@ -180,8 +179,6 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
     }
   }
   else {
-    // We are probably saving newly added account.
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
     bool saved;
     int id_to_assign = DatabaseQueries::createAccount(database, code(), &saved);
 

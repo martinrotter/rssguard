@@ -18,18 +18,14 @@
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/textfactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "gui/dialogs/formmain.h"
 #include "services/tt-rss/definitions.h"
-#include "services/tt-rss/gui/formeditaccount.h"
 #include "services/tt-rss/ttrssserviceroot.h"
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "services/tt-rss/gui/formeditaccount.h"
 
 #include <QPointer>
-#include <QSqlQuery>
-#include <QSqlError>
 
 
 TtRssServiceEntryPoint::TtRssServiceEntryPoint(){
@@ -37,7 +33,6 @@ TtRssServiceEntryPoint::TtRssServiceEntryPoint(){
 
 
 TtRssServiceEntryPoint::~TtRssServiceEntryPoint() {
-
 }
 
 bool TtRssServiceEntryPoint::isSingleInstanceService() const {
@@ -79,29 +74,6 @@ ServiceRoot *TtRssServiceEntryPoint::createNewRoot() const {
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
   QSqlDatabase database = qApp->database()->connection(QSL("TtRssServiceEntryPoint"), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
-  QList<ServiceRoot*> roots;
 
-  if (query.exec("SELECT * FROM TtRssAccounts;")) {
-    while (query.next()) {
-      TtRssServiceRoot *root = new TtRssServiceRoot();
-      root->setId(query.value(0).toInt());
-      root->setAccountId(query.value(0).toInt());
-      root->network()->setUsername(query.value(1).toString());
-      root->network()->setPassword(TextFactory::decrypt(query.value(2).toString()));
-      root->network()->setAuthIsUsed(query.value(3).toBool());
-      root->network()->setAuthUsername(query.value(4).toString());
-      root->network()->setAuthPassword(TextFactory::decrypt(query.value(5).toString()));
-      root->network()->setUrl(query.value(6).toString());
-      root->network()->setForceServerSideUpdate(query.value(7).toBool());
-
-      root->updateTitle();
-      roots.append(root);
-    }
-  }
-  else {
-    qWarning("TT-RSS: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
-  }
-
-  return roots;
+  return DatabaseQueries::getTtRssAccounts(database);
 }
