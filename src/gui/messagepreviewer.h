@@ -57,7 +57,6 @@ class MessagePreviewer : public QWidget {
 
   private:
     void updateButtons();
-    void updateTitle();
     QString prepareHtmlForMessage(const Message &message);
 
     QToolBar *m_toolBar;

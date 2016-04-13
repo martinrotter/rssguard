@@ -24,30 +24,6 @@
     <number>0</number>
    </property>
    <item row="0" column="1">
-    <widget class="QLabel" name="m_lblTitle">
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
     <widget class="MessageTextBrowser" name="m_txtMessage">
      <property name="autoFillBackground">
       <bool>true</bool>

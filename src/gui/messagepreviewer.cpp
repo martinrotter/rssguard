@@ -101,14 +101,9 @@ void MessagePreviewer::reloadFontSettings() {
                                  SETTING(Messages::PreviewerFontStandard)).toString());
 
   m_ui->m_txtMessage->setFont(fon);
-
-  fon.setPointSize(fon.pointSize() + 5);
-
-  m_ui->m_lblTitle->setFont(fon);
 }
 
 void MessagePreviewer::clear() {
-  m_ui->m_lblTitle->clear();
   m_ui->m_txtMessage->clear();
 
   hide();
@@ -121,11 +116,8 @@ void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
   if (!m_root.isNull()) {
     updateButtons();
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
-
-    m_ui->m_lblTitle->setText(m_message.m_title);
     m_ui->m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
 
-    updateTitle();
     show();
 
     m_ui->m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
@@ -147,7 +139,6 @@ void MessagePreviewer::markMessageAsRead() {
       emit requestMessageListReload(false);
       m_message.m_isRead = true;
       updateButtons();
-      updateTitle();
     }
   }
 }
@@ -167,7 +158,6 @@ void MessagePreviewer::markMessageAsUnread() {
       emit requestMessageListReload(false);
       m_message.m_isRead = false;
       updateButtons();
-      updateTitle();
     }
   }
 }
@@ -199,23 +189,16 @@ void MessagePreviewer::updateButtons() {
   m_actionMarkUnread->setEnabled(m_message.m_isRead);
 }
 
-void MessagePreviewer::updateTitle() {
-  QFont fon = m_ui->m_lblTitle->font();
-  fon.setBold(!m_message.m_isRead);
-  m_ui->m_lblTitle->setFont(fon);
-}
-
 QString MessagePreviewer::prepareHtmlForMessage(const Message &message) {
-  QString html = QString("<p>[url] <a href=\"%1\">%1</a></p>").arg(message.m_url);
+  QString html = QString("<h2 align=\"center\">%1</h2>").arg(message.m_title);
+
+  html += QString("<p>[url] <a href=\"%1\">%1</a></p>").arg(message.m_url);
 
   foreach (const Enclosure &enc, message.m_enclosures) {
     html += QString("<p>[%2] <a href=\"%1\">%1</a></p>").arg(enc.m_url, enc.m_mimeType);
   }
 
-  if (!message.m_enclosures.isEmpty()) {
-    html += "<hr/>";
-  }
-
+  html += "<hr/>";
   html += message.m_contents;
 
   return html;
