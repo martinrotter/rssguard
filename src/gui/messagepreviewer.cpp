@@ -35,29 +35,35 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
   m_ui->m_txtMessage->viewport()->setAutoFillBackground(true);
 
   connect(m_ui->m_txtMessage, &QTextBrowser::anchorClicked, [=](const QUrl &url) {
-    // User clicked some URL. Open it in external browser or download?
-    MessageBox box(qApp->mainForm());
+    if (!url.isEmpty()) {
+      // User clicked some URL. Open it in external browser or download?
+      MessageBox box(qApp->mainForm());
 
-    box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
-    box.setInformativeText(tr("What action do you want to take?"));
-    box.setDetailedText(url.toString());
-    QAbstractButton *btn_open = box.addButton(tr("Open in external browser"), QMessageBox::AcceptRole);
-    QAbstractButton *btn_download = box.addButton(tr("Download"), QMessageBox::RejectRole);
-    QAbstractButton *btn_cancel = box.addButton(QMessageBox::Cancel);
+      box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
+      box.setInformativeText(tr("What action do you want to take?"));
+      box.setDetailedText(url.toString());
+      QAbstractButton *btn_open = box.addButton(tr("Open in external browser"), QMessageBox::AcceptRole);
+      QAbstractButton *btn_download = box.addButton(tr("Download"), QMessageBox::RejectRole);
+      QAbstractButton *btn_cancel = box.addButton(QMessageBox::Cancel);
 
-    box.setDefaultButton(QMessageBox::Cancel);
-    box.exec();
+      box.setDefaultButton(QMessageBox::Cancel);
+      box.exec();
 
-    if (box.clickedButton() == btn_open) {
-      WebFactory::instance()->openUrlInExternalBrowser(url.toString());
+      if (box.clickedButton() == btn_open) {
+        WebFactory::instance()->openUrlInExternalBrowser(url.toString());
+      }
+      else if (box.clickedButton() == btn_download) {
+        qApp->downloadManager()->download(url);
+      }
+
+      btn_download->deleteLater();
+      btn_open->deleteLater();
+      btn_cancel->deleteLater();
     }
-    else if (box.clickedButton() == btn_download) {
-      qApp->downloadManager()->download(url);
+    else {
+      MessageBox::show(qApp->mainForm(), QMessageBox::Warning, tr("Incorrect link"),
+                       tr("Selected hyperlink is invalid."));
     }
-
-    btn_download->deleteLater();
-    btn_open->deleteLater();
-    btn_cancel->deleteLater();
   });
 
   m_toolBar = new QToolBar(this);
@@ -130,8 +136,8 @@ void MessagePreviewer::markMessageAsRead() {
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Read)) {
       DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
-                                        QStringList() << QString::number(m_message.m_id),
-                                        RootItem::Read);
+                                              QStringList() << QString::number(m_message.m_id),
+                                              RootItem::Read);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
                                                              QList<Message>() << m_message,
                                                              RootItem::Read);
@@ -149,8 +155,8 @@ void MessagePreviewer::markMessageAsUnread() {
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Unread)) {
       DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
-                                        QStringList() << QString::number(m_message.m_id),
-                                        RootItem::Unread);
+                                              QStringList() << QString::number(m_message.m_id),
+                                              RootItem::Unread);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
                                                              QList<Message>() << m_message,
                                                              RootItem::Unread);

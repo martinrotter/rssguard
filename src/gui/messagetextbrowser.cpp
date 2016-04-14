@@ -2,6 +2,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/networkfactory.h"
 
 
 MessageTextBrowser::MessageTextBrowser(QWidget *parent) : QTextBrowser(parent) {
