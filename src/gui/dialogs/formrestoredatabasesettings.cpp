@@ -26,7 +26,7 @@
 
 
 FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget *parent)
-  : QDialog(parent), m_ui(new Ui::FormRestoreDatabaseSettings) {
+  : QDialog(parent), m_ui(new Ui::FormRestoreDatabaseSettings), m_shouldRestart(false) {
   m_ui->setupUi(this);
 
   m_btnRestart = m_ui->m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ActionRole);
@@ -35,7 +35,10 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget *parent)
   setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 
-  connect(m_btnRestart, SIGNAL(clicked()), qApp, SLOT(restart()));
+  connect(m_btnRestart, &QPushButton::clicked, this, [=]() {
+    m_shouldRestart = true;
+    close();
+  });
   connect(m_ui->m_btnSelectFolder, SIGNAL(clicked()), this, SLOT(selectFolder()));
   connect(m_ui->m_groupDatabase, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
   connect(m_ui->m_groupSettings, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
@@ -93,11 +96,13 @@ void FormRestoreDatabaseSettings::selectFolder(QString folder) {
   }
 
   const QDir selected_folder(folder);
-  const QFileInfoList available_databases = selected_folder.entryInfoList(QStringList() << QString("*") + BACKUP_SUFFIX_DATABASE ,
+  const QFileInfoList available_databases = selected_folder.entryInfoList(QStringList()
+                                                                          << QString("*") + BACKUP_SUFFIX_DATABASE ,
                                                                           QDir::Files | QDir::NoDotAndDotDot | QDir::Readable |
                                                                           QDir::CaseSensitive | QDir::NoSymLinks,
                                                                           QDir::Name);
-  const QFileInfoList available_settings = selected_folder.entryInfoList(QStringList() << QString("*") + BACKUP_SUFFIX_SETTINGS ,
+  const QFileInfoList available_settings = selected_folder.entryInfoList(QStringList()
+                                                                         << QString("*") + BACKUP_SUFFIX_SETTINGS ,
                                                                          QDir::Files | QDir::NoDotAndDotDot | QDir::Readable |
                                                                          QDir::CaseSensitive | QDir::NoSymLinks,
                                                                          QDir::Name);

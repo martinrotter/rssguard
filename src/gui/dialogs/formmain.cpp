@@ -492,6 +492,10 @@ void FormMain::backupDatabaseSettings() {
 void FormMain::restoreDatabaseSettings() {
   QScopedPointer<FormRestoreDatabaseSettings> form(new FormRestoreDatabaseSettings(this));
   form->exec();
+
+  if (form->shouldRestart()) {
+    qApp->restart();
+  }
 }
 
 void FormMain::changeEvent(QEvent *event) {

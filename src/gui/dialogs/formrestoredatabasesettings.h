@@ -35,6 +35,10 @@ class FormRestoreDatabaseSettings : public QDialog {
     explicit FormRestoreDatabaseSettings(QWidget *parent = 0);
     virtual ~FormRestoreDatabaseSettings();
 
+    bool shouldRestart() const {
+      return m_shouldRestart;
+    }
+
   private slots:
     void performRestoration();
     void checkOkButton();
@@ -43,6 +47,8 @@ class FormRestoreDatabaseSettings : public QDialog {
   private:
     QScopedPointer<Ui::FormRestoreDatabaseSettings> m_ui;
     QPushButton *m_btnRestart;
+
+    bool m_shouldRestart;
 };
 
 #endif // FORMRESTOREDATABASESETTINGS_H
