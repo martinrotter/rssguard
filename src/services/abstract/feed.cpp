@@ -47,6 +47,8 @@ QVariant Feed::data(int column, int role) const {
           return QColor(Qt::blue);
 
         case Error:
+        case ParsingError:
+        case OtherError:
           return QColor(Qt::red);
 
         default:
@@ -84,7 +86,13 @@ void Feed::setCountOfUnreadMessages(int count_unread_messages) {
 
 int Feed::update() {
   QList<Message> msgs = obtainNewMessages();
-  return updateMessages(msgs);
+
+  if (msgs.size() > 0) {
+    return updateMessages(msgs);
+  }
+  else {
+    return 0;
+  }
 }
 
 void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {

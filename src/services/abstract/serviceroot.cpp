@@ -95,11 +95,15 @@ void ServiceRoot::updateCounts(bool including_total_count) {
   bool ok;
   QMap<int,QPair<int,int> > counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
 
-  foreach (Feed *feed, feeds) {
-    feed->setCountOfUnreadMessages(counts.value(feed->customId()).first);
+  if (ok) {
+    foreach (Feed *feed, feeds) {
+      if (counts.contains(feed->customId())) {
+        feed->setCountOfUnreadMessages(counts.value(feed->customId()).first);
 
-    if (including_total_count) {
-      feed->setCountOfAllMessages(counts.value(feed->customId()).second);
+        if (including_total_count) {
+          feed->setCountOfAllMessages(counts.value(feed->customId()).second);
+        }
+      }
     }
   }
 }
