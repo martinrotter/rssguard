@@ -51,7 +51,7 @@ void Category::updateCounts(bool including_total_count) {
 
   if (including_total_count) {
     QMap<int,int> counts = DatabaseQueries::getMessageCountsForCategory(database, customId(), getParentServiceRoot()->accountId(),
-                                                             including_total_count, &ok);
+                                                                        including_total_count, &ok);
 
     if (ok) {
       foreach (Feed *feed, feeds) {
@@ -61,7 +61,7 @@ void Category::updateCounts(bool including_total_count) {
   }
 
   QMap<int,int> counts = DatabaseQueries::getMessageCountsForCategory(database, customId(), getParentServiceRoot()->accountId(),
-                                                           false, &ok);
+                                                                      false, &ok);
 
   if (ok) {
     foreach (Feed *feed, feeds) {
