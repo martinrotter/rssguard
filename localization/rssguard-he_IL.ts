@@ -3208,7 +3208,7 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation type="unfinished"/>
+        <translation>he_IL</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
@@ -3222,12 +3222,12 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Hebrew (Israel)</translation>
     </message>
     <message numerus="yes">
         <source>
