@@ -75,6 +75,44 @@ QList<QAction*> ServiceRoot::serviceMenu() {
   return QList<QAction*>();
 }
 
+void ServiceRoot::updateCounts(bool including_total_count) {
+  QList<Feed*> feeds;
+
+  foreach (RootItem *child, getSubTree()) {
+    if (child->kind() == RootItemKind::Feed) {
+      feeds.append(child->toFeed());
+    }
+    else if (child->kind() != RootItemKind::Category && child->kind() != RootItemKind::ServiceRoot) {
+      child->updateCounts(including_total_count);
+    }
+  }
+
+  if (feeds.isEmpty()) {
+    return;
+  }
+
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  bool ok;
+
+  if (including_total_count) {
+    QMap<int,int> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
+
+    if (ok) {
+      foreach (Feed *feed, feeds) {
+        feed->setCountOfAllMessages(counts.value(feed->customId()));
+      }
+    }
+  }
+
+  QMap<int,int> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), false, &ok);
+
+  if (ok) {
+    foreach (Feed *feed, feeds) {
+      feed->setCountOfUnreadMessages(counts.value(feed->customId()));
+    }
+  }
+}
+
 void ServiceRoot::completelyRemoveAllData() {
   // Purge old data from SQL and clean all model items.
   removeOldFeedTree(true);

@@ -69,6 +69,8 @@ class ServiceRoot : public RootItem {
     // Access to recycle bin of this account if there is any.
     virtual RecycleBin *recycleBin() const = 0;
 
+    void updateCounts(bool including_total_count);
+
     QList<Message> undeletedMessages() const;
 
     // Start/stop services.

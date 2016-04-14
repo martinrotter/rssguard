@@ -43,6 +43,8 @@ class DatabaseQueries {
     static bool purgeRecycleBin(QSqlDatabase db);
     static QMap<int,int> getMessageCountsForCategory(QSqlDatabase db, int custom_id, int account_id,
                                                      bool including_total_counts, bool *ok = NULL);
+    static QMap<int,int> getMessageCountsForAccount(QSqlDatabase db, int account_id,
+                                                    bool including_total_counts, bool *ok = NULL);
     static int getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id, int account_id,
                                        bool including_total_counts, bool *ok = NULL);
     static int getMessageCountsForBin(QSqlDatabase db, int account_id, bool including_total_counts, bool *ok = NULL);

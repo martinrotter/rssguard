@@ -220,6 +220,46 @@ QMap<int,int> DatabaseQueries::getMessageCountsForCategory(QSqlDatabase db, int 
   return counts;
 }
 
+QMap<int,int> DatabaseQueries::getMessageCountsForAccount(QSqlDatabase db, int account_id,
+                                                          bool including_total_counts, bool *ok) {
+  QMap<int,int> counts;
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+
+  if (including_total_counts) {
+    q.prepare("SELECT feed, count(*) FROM Messages "
+              "WHERE feed IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
+              "GROUP BY feed;");
+  }
+  else {
+    q.prepare("SELECT feed, count(*) FROM Messages "
+              "WHERE feed IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :account_id "
+              "GROUP BY feed;");
+  }
+
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    while (q.next()) {
+      int feed_id = q.value(0).toInt();
+      int new_count = q.value(1).toInt();
+
+      counts.insert(feed_id, new_count);
+    }
+
+    if (ok != NULL) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != NULL) {
+      *ok = false;
+    }
+  }
+
+  return counts;
+}
+
 int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id,
                                              int account_id, bool including_total_counts, bool *ok) {
   QSqlQuery q(db);

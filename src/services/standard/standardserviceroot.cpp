@@ -181,7 +181,7 @@ void StandardServiceRoot::loadFromDatabase(){
 
   // As the last item, add recycle bin, which is needed.
   appendChild(m_recycleBin);
-  //updateCounts(true);
+  updateCounts(true);
 }
 
 void StandardServiceRoot::checkArgumentsForFeedAdding() {
