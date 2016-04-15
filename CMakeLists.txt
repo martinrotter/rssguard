@@ -296,9 +296,6 @@ file( GLOB APP_SOURCES_GL
   "src/services/owncloud/*.cpp"
   "src/services/owncloud/network/*.cpp"
   "src/services/owncloud/gui/*.cpp"
-  "src/services/wallabag/*.cpp"
-  "src/services/wallabag/network/*.cpp"
-  "src/services/wallabag/gui/*.cpp"
   "src/network-web/*.cpp"
   "src/*.cpp")
 
@@ -330,9 +327,6 @@ file( GLOB APP_HEADERS
   "src/services/owncloud/*.h"
   "src/services/owncloud/network/*.h"
   "src/services/owncloud/gui/*.h"
-  "src/services/wallabag/*.h"
-  "src/services/wallabag/network/*.h"
-  "src/services/wallabag/gui/*.h"
   "src/network-web/*.h")
 
 # APP forms.
@@ -342,7 +336,6 @@ file( GLOB APP_FORMS
   "src/services/standard/gui/*.ui"
   "src/services/tt-rss/gui/*.ui"
   "src/services/owncloud/gui/*.ui"
-  "src/services/wallabag/gui/*.ui"
   "src/network-web/*.ui")
 
 # APP translations.
