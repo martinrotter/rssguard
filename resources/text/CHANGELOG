@@ -1,9 +1,13 @@
 3.2.1 (not yet released)
 —————
 
+Added:
+
+▪ Internal message previewer now introduces list of images contained in message contents of displayed message.
+
 Fixed:
 
-▪ Changes in count of all/unread messages are now faster.
+▪ Changes in count of all/unread messages are now faster. This results in (much) faster program startup when using BIG database file.
 
 Changed:
 

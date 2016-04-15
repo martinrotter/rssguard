@@ -80,11 +80,10 @@ void MessagePreviewer::createConnections() {
 
     QToolTip::showText(QCursor::pos(), tr("Click this link to download it or open it with external browser."), this);
   });
-  connect(m_ui->m_txtMessage, &MessageTextBrowser::imageRequested, this, &MessagePreviewer::addMessageImage);
 }
 
 MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
-  m_ui(new Ui::MessagePreviewer), m_messageImages(QStringList()) {
+  m_ui(new Ui::MessagePreviewer) {
   m_ui->setupUi(this);
   m_ui->m_txtMessage->viewport()->setAutoFillBackground(true);
   m_toolBar = new QToolBar(this);
@@ -114,15 +113,12 @@ void MessagePreviewer::reloadFontSettings() {
 
 void MessagePreviewer::clear() {
   m_ui->m_txtMessage->clear();
-  m_messageImages.clear();
-
   hide();
 }
 
 void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
   m_message = message;
   m_root = root;
-  m_messageImages.clear();
 
   if (!m_root.isNull()) {
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
@@ -133,10 +129,6 @@ void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
 
     m_ui->m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
   }
-}
-
-void MessagePreviewer::addMessageImage(const QString &image_url) {
-  m_messageImages.append(image_url);
 }
 
 void MessagePreviewer::markMessageAsRead() {
@@ -207,10 +199,19 @@ void MessagePreviewer::updateButtons() {
 QString MessagePreviewer::prepareHtmlForMessage(const Message &message) {
   QString html = QString("<h2 align=\"center\">%1</h2>").arg(message.m_title);
 
-  html += QString("<p>[url] <a href=\"%1\">%1</a></p>").arg(message.m_url);
+  html += QString("[url] <a href=\"%1\">%1</a><br/>").arg(message.m_url);
 
   foreach (const Enclosure &enc, message.m_enclosures) {
-    html += QString("<p>[%2] <a href=\"%1\">%1</a></p>").arg(enc.m_url, enc.m_mimeType);
+    html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc.m_url, enc.m_mimeType);
+  }
+
+  int offset = 0;
+  QRegExp imgTagRegex("\\<img[^\\>]*src\\s*=\\s*\"([^\"]*)\"[^\\>]*\\>", Qt::CaseInsensitive);
+
+  imgTagRegex.setMinimal(true);
+  while( (offset = imgTagRegex.indexIn(message.m_contents, offset)) != -1){
+    offset += imgTagRegex.matchedLength();
+    html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(imgTagRegex.cap(1), tr("image"));
   }
 
   html += "<hr/>";
