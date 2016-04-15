@@ -32,7 +32,6 @@
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
-#include "services/wallabag/wallabagserviceentrypoint.h"
 
 #include <QSessionManager>
 #include <QThread>
@@ -61,7 +60,6 @@ QList<ServiceEntryPoint*> Application::feedServices() {
     m_feedServices.append(new StandardServiceEntryPoint());
     m_feedServices.append(new TtRssServiceEntryPoint());
     m_feedServices.append(new OwnCloudServiceEntryPoint());
-    m_feedServices.append(new WallabagServiceEntryPoint());
   }
 
   return m_feedServices;
