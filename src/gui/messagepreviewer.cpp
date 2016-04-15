@@ -209,6 +209,7 @@ QString MessagePreviewer::prepareHtmlForMessage(const Message &message) {
   QRegExp imgTagRegex("\\<img[^\\>]*src\\s*=\\s*\"([^\"]*)\"[^\\>]*\\>", Qt::CaseInsensitive);
 
   imgTagRegex.setMinimal(true);
+
   while( (offset = imgTagRegex.indexIn(message.m_contents, offset)) != -1){
     offset += imgTagRegex.matchedLength();
     html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(imgTagRegex.cap(1), tr("image"));
