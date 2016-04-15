@@ -2920,6 +2920,18 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>Click this link to download it or open it with external browser.</source>
         <translation>Klicka på den här länken för att ladda ner den eller öppna den med extern webbläsare.</translation>
     </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesModel</name>
@@ -3292,18 +3304,6 @@ Minst API-nivå %1 krävs.</translation>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>Nyhetsappen är en RSS-/Atom-flödesaggregator. Den är en del av ownCloud-sviten. Denna insticksmodul implementerar API:n %1.</translation>
-    </message>
-    <message>
-        <source>Not yet supported</source>
-        <translation>Stöd saknas för närvarande</translation>
-    </message>
-    <message>
-        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
-        <translation>Detta tillägg är inte redo för användning. Det kommer att läggas till i en kommande version.</translation>
-    </message>
-    <message>
-        <source>This plugin allows you to view and manager your wallabag articles.</source>
-        <translation>Detta tillägg låter dig se och hantera dina wallabag-artiklar.</translation>
     </message>
 </context>
 <context>

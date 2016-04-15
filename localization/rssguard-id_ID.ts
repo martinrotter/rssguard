@@ -2920,6 +2920,18 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
         <source>Click this link to download it or open it with external browser.</source>
         <translation>Klik link ini untuk mengunduhnya atau membukanya dengan peramban eksternal.</translation>
     </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesModel</name>
@@ -3289,18 +3301,6 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>Aplikasi News ini merupakan pengumpul feed RSS/Atom. Ini merupakan bagian dari rangkaian ownCloud. Plugin ini mengimplementasikan %1 API.</translation>
-    </message>
-    <message>
-        <source>Not yet supported</source>
-        <translation>Belum didukung</translation>
-    </message>
-    <message>
-        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
-        <translation>Plugin in belum siap untuk digunakan. Ini akan ditambahkan di versi mendatang.</translation>
-    </message>
-    <message>
-        <source>This plugin allows you to view and manager your wallabag articles.</source>
-        <translation>Plugin ini memperkenankan anda untuk melihat dan mengelola artikel wallabag Anda.</translation>
     </message>
 </context>
 <context>

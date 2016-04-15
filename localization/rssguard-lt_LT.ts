@@ -2902,6 +2902,18 @@ Go to application website to obtain it manually.</source>
         <source>Click this link to download it or open it with external browser.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesModel</name>
@@ -3270,18 +3282,6 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Not yet supported</source>
-        <translation>Kol kas nepalaikoma</translation>
-    </message>
-    <message>
-        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>This plugin allows you to view and manager your wallabag articles.</source>
         <translation type="unfinished"/>
     </message>
 </context>

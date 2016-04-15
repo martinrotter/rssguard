@@ -2920,6 +2920,18 @@ Vá até o site do aplicativo para obter manualmente.</translation>
         <source>Click this link to download it or open it with external browser.</source>
         <translation>Clique neste link para baixá-lo ou abri-lo no navegador externo.</translation>
     </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesModel</name>
@@ -3294,18 +3306,6 @@ Pelo menos o API nível %1 é necessário.</translation>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>O app News é um agregador de feeds RSS/Atom. Ele é parte da suíte ownCloud. Este plugin implementa o API %1.</translation>
-    </message>
-    <message>
-        <source>Not yet supported</source>
-        <translation>Não suportado ainda</translation>
-    </message>
-    <message>
-        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
-        <translation>O plugin ainda não está pronto para uso. Ele será adicionado em versões futuras.</translation>
-    </message>
-    <message>
-        <source>This plugin allows you to view and manager your wallabag articles.</source>
-        <translation>Este plugin permite visualizar e gerenciar seus artigos wallabag.</translation>
     </message>
 </context>
 <context>

@@ -2922,6 +2922,18 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>Click this link to download it or open it with external browser.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesModel</name>
@@ -3296,18 +3308,6 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>De Nieuws app is een RSS/Atom feed aggegrator. Het is deel van de ownCloud suite. Deze plugin implementeert %1 API.</translation>
-    </message>
-    <message>
-        <source>Not yet supported</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>This plugin is not yet ready for usage. It will be added in future versions.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>This plugin allows you to view and manager your wallabag articles.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
