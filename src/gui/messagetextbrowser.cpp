@@ -20,6 +20,7 @@ QVariant MessageTextBrowser::loadResource(int type, const QUrl &name) {
         m_imagePlaceholder = qApp->icons()->pixmap(QSL("image-placeholder")).scaledToWidth(20, Qt::FastTransformation);
       }
 
+      emit imageRequested(name.toString());
       return m_imagePlaceholder;
     }
 
