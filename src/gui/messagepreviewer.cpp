@@ -29,11 +29,7 @@
 #include <QToolTip>
 
 
-MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
-  m_ui(new Ui::MessagePreviewer) {
-  m_ui->setupUi(this);
-  m_ui->m_txtMessage->viewport()->setAutoFillBackground(true);
-
+void MessagePreviewer::createConnections() {
   connect(m_ui->m_txtMessage, &QTextBrowser::anchorClicked, [=](const QUrl &url) {
     if (!url.isEmpty()) {
       // User clicked some URL. Open it in external browser or download?
@@ -65,11 +61,6 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
                        tr("Selected hyperlink is invalid."));
     }
   });
-
-  m_toolBar = new QToolBar(this);
-  m_toolBar->setOrientation(Qt::Vertical);
-  m_ui->m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
-
   connect(m_actionMarkRead = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-read"), tr("Mark message as read")),
           &QAction::triggered,
           this,
@@ -89,6 +80,18 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
 
     QToolTip::showText(QCursor::pos(), tr("Click this link to download it or open it with external browser."), this);
   });
+  connect(m_ui->m_txtMessage, &MessageTextBrowser::imageRequested, this, &MessagePreviewer::addMessageImage);
+}
+
+MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
+  m_ui(new Ui::MessagePreviewer), m_messageImages(QStringList()) {
+  m_ui->setupUi(this);
+  m_ui->m_txtMessage->viewport()->setAutoFillBackground(true);
+  m_toolBar = new QToolBar(this);
+  m_toolBar->setOrientation(Qt::Vertical);
+  m_ui->m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
+
+  createConnections();
 
   m_actionSwitchImportance->setCheckable(true);
 
@@ -111,6 +114,7 @@ void MessagePreviewer::reloadFontSettings() {
 
 void MessagePreviewer::clear() {
   m_ui->m_txtMessage->clear();
+  m_messageImages.clear();
 
   hide();
 }
@@ -118,16 +122,21 @@ void MessagePreviewer::clear() {
 void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
   m_message = message;
   m_root = root;
+  m_messageImages.clear();
 
   if (!m_root.isNull()) {
-    updateButtons();
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
     m_ui->m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
 
+    updateButtons();
     show();
 
     m_ui->m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
   }
+}
+
+void MessagePreviewer::addMessageImage(const QString &image_url) {
+  m_messageImages.append(image_url);
 }
 
 void MessagePreviewer::markMessageAsRead() {

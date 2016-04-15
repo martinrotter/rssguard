@@ -48,6 +48,7 @@ class MessagePreviewer : public QWidget {
     void loadMessage(const Message &message, RootItem *root);
 
   private slots:
+    void addMessageImage(const QString &image_url);
     void markMessageAsRead();
     void markMessageAsUnread();
     void switchMessageImportance(bool checked);
@@ -56,6 +57,7 @@ class MessagePreviewer : public QWidget {
     void requestMessageListReload(bool mark_current_as_read);
 
   private:
+        void createConnections();
     void updateButtons();
     QString prepareHtmlForMessage(const Message &message);
 
@@ -63,6 +65,7 @@ class MessagePreviewer : public QWidget {
     QScopedPointer<Ui::MessagePreviewer> m_ui;
     Message m_message;
     QPointer<RootItem> m_root;
+    QStringList m_messageImages;
 
     QAction *m_actionMarkRead;
     QAction *m_actionMarkUnread;

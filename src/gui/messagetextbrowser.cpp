@@ -28,3 +28,8 @@ QVariant MessageTextBrowser::loadResource(int type, const QUrl &name) {
       return QVariant();
   }
 }
+
+void MessageTextBrowser::wheelEvent(QWheelEvent *e) {
+  QTextBrowser::wheelEvent(e);
+  qApp->settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, font().toString());
+}

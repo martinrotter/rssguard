@@ -17,6 +17,9 @@ class MessageTextBrowser : public QTextBrowser {
   signals:
     void imageRequested(const QString &image_url);
 
+  protected:
+    void wheelEvent(QWheelEvent *e);
+
   private:
     QPixmap m_imagePlaceholder;
 };
