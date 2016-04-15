@@ -110,7 +110,7 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   ServiceRoot *parent_root = getParentServiceRoot();
 
-  if (DatabaseQueries::cleanMessagesFromBin(database, clear_only_read, parent_root->accountId())) {
+  if (DatabaseQueries::purgeMessagesFromBin(database, clear_only_read, parent_root->accountId())) {
     updateCounts(true);
     parent_root->itemChanged(QList<RootItem*>() << this);
     parent_root->requestReloadMessageList(true);

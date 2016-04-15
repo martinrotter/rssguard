@@ -176,7 +176,7 @@ void ServiceRoot::storeNewFeedTree(RootItem *root) {
 void ServiceRoot::removeLeftOverMessages() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  DatabaseQueries::deleteLeftoverMessages(database, accountId());
+  DatabaseQueries::purgeLeftoverMessages(database, accountId());
 }
 
 QList<Message> ServiceRoot::undeletedMessages() const {

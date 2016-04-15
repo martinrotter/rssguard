@@ -33,11 +33,11 @@ Category::~Category() {
 void Category::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
 
-  foreach (RootItem *child, childItems()) {
+  foreach (RootItem *child, getSubTree()) {
     if (child->kind() == RootItemKind::Feed) {
       feeds.append(child->toFeed());
     }
-    else {
+    else if (child->kind() != RootItemKind::Category && child->kind() != RootItemKind::ServiceRoot) {
       child->updateCounts(including_total_count);
     }
   }

@@ -627,7 +627,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   return updated_messages;
 }
 
-bool DatabaseQueries::cleanMessagesFromBin(QSqlDatabase db, bool clear_only_read, int account_id) {
+bool DatabaseQueries::purgeMessagesFromBin(QSqlDatabase db, bool clear_only_read, int account_id) {
   QSqlQuery q(db);
   q.setForwardOnly(true);
 
@@ -722,7 +722,7 @@ bool DatabaseQueries::cleanFeeds(QSqlDatabase db, const QStringList &ids, bool c
   }
 }
 
-bool DatabaseQueries::deleteLeftoverMessages(QSqlDatabase db, int account_id) {
+bool DatabaseQueries::purgeLeftoverMessages(QSqlDatabase db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
