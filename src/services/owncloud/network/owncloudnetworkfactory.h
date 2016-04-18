@@ -18,14 +18,14 @@
 #ifndef OWNCLOUDNETWORKFACTORY_H
 #define OWNCLOUDNETWORKFACTORY_H
 
+#include "core/message.h"
+#include "services/abstract/rootitem.h"
+
 #include <QDateTime>
 #include <QString>
 #include <QIcon>
 #include <QNetworkReply>
-
-#include "qt-json/json.h"
-#include "core/message.h"
-#include "services/abstract/rootitem.h"
+#include <QJsonDocument>
 
 
 class OwnCloudResponse {
@@ -37,7 +37,7 @@ class OwnCloudResponse {
     QString toString() const;
 
   protected:
-    QtJson::JsonObject m_rawContent;
+    QJsonDocument m_rawContent;
 };
 
 class OwnCloudUserResponse : public OwnCloudResponse {

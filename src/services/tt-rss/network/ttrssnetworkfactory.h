@@ -18,13 +18,12 @@
 #ifndef TTRSSNETWORKFACTORY_H
 #define TTRSSNETWORKFACTORY_H
 
-#include "qt-json/json.h"
-
 #include "core/message.h"
 
 #include <QString>
 #include <QPair>
 #include <QNetworkReply>
+#include <QJsonDocument>
 
 
 class RootItem;
@@ -45,7 +44,7 @@ class TtRssResponse {
     QString toString() const;
 
   protected:
-    QtJson::JsonObject m_rawContent;
+    QJsonDocument m_rawContent;
 };
 
 class TtRssLoginResponse : public TtRssResponse {

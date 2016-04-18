@@ -278,7 +278,6 @@ file( GLOB APP_SOURCES_GL
   "src/qtsingleapplication/qtsinglecoreapplication.cpp"
   "src/qtsingleapplication/qtlocalpeer.cpp"
 
-  "src/qt-json/*.cpp"
   "src/gui/dialogs/*.cpp"
   "src/gui/notifications/*.cpp"
   "src/gui/*.cpp"

@@ -155,6 +155,8 @@ NetworkResult NetworkFactory::uploadData(const QString &url, int timeout, const 
   QEventLoop loop;
   NetworkResult result;
 
+  QString str(input_data);
+
   downloader.appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
 
   if (set_basic_header) {
