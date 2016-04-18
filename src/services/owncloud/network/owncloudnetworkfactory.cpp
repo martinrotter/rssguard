@@ -27,6 +27,7 @@
 #include "services/owncloud/owncloudfeed.h"
 
 #include <QJsonArray>
+#include <QJsonDocument>
 #include <QJsonObject>
 #include <QPixmap>
 
@@ -271,7 +272,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::R
   NetworkResult network_reply = NetworkFactory::uploadData(final_url,
                                                            qApp->settings()->value(GROUP(Feeds),
                                                                                    SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                           QJsonDocument(json).toJson(),
+                                                           QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            "application/json",
                                                            raw_output,
                                                            QNetworkAccessManager::PutOperation,
@@ -314,7 +315,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(RootItem
   NetworkResult network_reply = NetworkFactory::uploadData(final_url,
                                                            qApp->settings()->value(GROUP(Feeds),
                                                                                    SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                           QJsonDocument(json).toJson(),
+                                                           QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            "application/json",
                                                            raw_output,
                                                            QNetworkAccessManager::PutOperation,
@@ -337,7 +338,7 @@ void OwnCloudNetworkFactory::setUserId(const QString &userId) {
 }
 
 OwnCloudResponse::OwnCloudResponse(const QString &raw_content) {
-  m_rawContent = QJsonDocument::fromJson(raw_content.toUtf8());;
+  m_rawContent = QJsonDocument::fromJson(raw_content.toUtf8()).object();
 }
 
 OwnCloudResponse::~OwnCloudResponse() {
@@ -348,7 +349,7 @@ bool OwnCloudResponse::isLoaded() const {
 }
 
 QString OwnCloudResponse::toString() const {
-  return m_rawContent.toJson();
+  return QJsonDocument(m_rawContent).toJson(QJsonDocument::Compact);
 }
 
 OwnCloudUserResponse::OwnCloudUserResponse(const QString &raw_content) : OwnCloudResponse(raw_content) {
@@ -359,7 +360,7 @@ OwnCloudUserResponse::~OwnCloudUserResponse() {
 
 QString OwnCloudUserResponse::displayName() const {
   if (isLoaded()) {
-    return m_rawContent.object()["displayName"].toString();
+    return m_rawContent["displayName"].toString();
   }
   else {
     return QString();
@@ -368,7 +369,7 @@ QString OwnCloudUserResponse::displayName() const {
 
 QString OwnCloudUserResponse::userId() const {
   if (isLoaded()) {
-    return m_rawContent.object()["userId"].toString();
+    return m_rawContent["userId"].toString();
   }
   else {
     return QString();
@@ -377,7 +378,7 @@ QString OwnCloudUserResponse::userId() const {
 
 QDateTime OwnCloudUserResponse::lastLoginTime() const {
   if (isLoaded()) {
-    return QDateTime::fromMSecsSinceEpoch(m_rawContent.object()["lastLoginTimestamp"].toVariant().value<qint64>());
+    return QDateTime::fromMSecsSinceEpoch(m_rawContent["lastLoginTimestamp"].toVariant().value<qint64>());
   }
   else {
     return QDateTime();
@@ -386,7 +387,7 @@ QDateTime OwnCloudUserResponse::lastLoginTime() const {
 
 QIcon OwnCloudUserResponse::avatar() const {
   if (isLoaded()) {
-    QString image_data = m_rawContent.object()["avatar"].toObject()["data"].toString();
+    QString image_data = m_rawContent["avatar"].toObject()["data"].toString();
     QByteArray decoded_data = QByteArray::fromBase64(image_data.toLocal8Bit());
     QPixmap image;
 
@@ -407,7 +408,7 @@ OwnCloudStatusResponse::~OwnCloudStatusResponse() {
 
 QString OwnCloudStatusResponse::version() const {
   if (isLoaded()) {
-    return m_rawContent.object()["version"].toString();
+    return m_rawContent["version"].toString();
   }
   else {
     return QString();
@@ -416,7 +417,7 @@ QString OwnCloudStatusResponse::version() const {
 
 bool OwnCloudStatusResponse::misconfiguredCron() const {
   if (isLoaded()) {
-    return m_rawContent.object()["warnings"].toObject()["improperlyConfiguredCron"].toBool();
+    return m_rawContent["warnings"].toObject()["improperlyConfiguredCron"].toBool();
   }
   else {
     return false;
@@ -492,13 +493,13 @@ OwnCloudGetMessagesResponse::~OwnCloudGetMessagesResponse() {
 QList<Message> OwnCloudGetMessagesResponse::messages() const {
   QList<Message> msgs;
 
-  foreach (QVariant message, m_rawContent.object()["items"].toArray().toVariantList()) {
-    QMap<QString,QVariant> message_map = message.toMap();
+  foreach (QJsonValue message, m_rawContent["items"].toArray()) {
+    QJsonObject message_map = message.toObject();
     Message msg;
 
     msg.m_author = message_map["author"].toString();
     msg.m_contents = message_map["body"].toString();
-    msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].value<qint64>() * 1000);
+    msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].toVariant().value<qint64>() * 1000);
     msg.m_createdFromFeed = true;
     msg.m_customId = message_map["id"].toString();
     msg.m_customHash = message_map["guidHash"].toString();

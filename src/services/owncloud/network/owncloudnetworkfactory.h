@@ -25,7 +25,7 @@
 #include <QString>
 #include <QIcon>
 #include <QNetworkReply>
-#include <QJsonDocument>
+#include <QJsonObject>
 
 
 class OwnCloudResponse {
@@ -37,7 +37,7 @@ class OwnCloudResponse {
     QString toString() const;
 
   protected:
-    QJsonDocument m_rawContent;
+    QJsonObject m_rawContent;
 };
 
 class OwnCloudUserResponse : public OwnCloudResponse {

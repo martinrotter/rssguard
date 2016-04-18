@@ -27,7 +27,7 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 
-#include <QJsonObject>
+#include <QJsonDocument>
 #include <QJsonArray>
 #include <QPair>
 #include <QVariant>
@@ -89,7 +89,7 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::uploadData(m_url, qApp->settings()->value(GROUP(Feeds),
                                                                                           SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                           QJsonDocument(json).toJson(), CONTENT_TYPE, result_raw,
+                                                           QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssLoginResponse login_response(QString::fromUtf8(result_raw));
@@ -116,7 +116,7 @@ TtRssResponse TtRssNetworkFactory::logout() {
     QByteArray result_raw;
     NetworkResult network_reply = NetworkFactory::uploadData(m_url, qApp->settings()->value(GROUP(Feeds),
                                                                                             SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                             QJsonDocument(json).toJson(), CONTENT_TYPE, result_raw,
+                                                             QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                              QNetworkAccessManager::PostOperation,
                                                              m_authIsUsed, m_authUsername, m_authPassword);
 
@@ -158,7 +158,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
@@ -188,7 +188,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(),
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
@@ -199,7 +199,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
@@ -225,7 +225,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(),
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
@@ -236,7 +236,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(),
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
@@ -267,7 +267,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(),
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
@@ -278,7 +278,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(),
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
@@ -301,7 +301,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(), CONTENT_TYPE, result_raw,
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssUnsubscribeFeedResponse result(QString::fromUtf8(result_raw));
@@ -311,7 +311,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssUnsubscribeFeedResponse(QString::fromUtf8(result_raw));
@@ -358,7 +358,7 @@ void TtRssNetworkFactory::setAuthPassword(const QString &auth_password) {
 }
 
 TtRssResponse::TtRssResponse(const QString &raw_content) {
-  m_rawContent = QJsonDocument::fromJson(raw_content.toUtf8());
+  m_rawContent = QJsonDocument::fromJson(raw_content.toUtf8()).object();
 }
 
 TtRssResponse::~TtRssResponse() {
@@ -373,7 +373,7 @@ int TtRssResponse::seq() const {
     return CONTENT_NOT_LOADED;
   }
   else {
-    return m_rawContent.object()["seq"].toInt();
+    return m_rawContent["seq"].toInt();
   }
 }
 
@@ -382,7 +382,7 @@ int TtRssResponse::status() const {
     return CONTENT_NOT_LOADED;
   }
   else {
-    return m_rawContent.object()["status"].toInt();
+    return m_rawContent["status"].toInt();
   }
 }
 
@@ -391,7 +391,7 @@ bool TtRssResponse::isNotLoggedIn() const {
 }
 
 QString TtRssResponse::toString() const {
-  return m_rawContent.toJson();
+  return QJsonDocument(m_rawContent).toJson(QJsonDocument::Compact);
 }
 
 TtRssLoginResponse::TtRssLoginResponse(const QString &raw_content) : TtRssResponse(raw_content) {
@@ -405,7 +405,7 @@ int TtRssLoginResponse::apiLevel() const {
     return CONTENT_NOT_LOADED;
   }
   else {
-    return m_rawContent.object()["content"].toObject()["api_level"].toInt();
+    return m_rawContent["content"].toObject()["api_level"].toInt();
   }
 }
 
@@ -414,7 +414,7 @@ QString TtRssLoginResponse::sessionId() const {
     return QString();
   }
   else {
-    return m_rawContent.object()["content"].toObject()["session_id"].toString();
+    return m_rawContent["content"].toObject()["session_id"].toString();
   }
 }
 
@@ -423,7 +423,7 @@ QString TtRssResponse::error() const {
     return QString();
   }
   else {
-    return m_rawContent.object()["content"].toObject()["error"].toString();
+    return m_rawContent["content"].toObject()["error"].toString();
   }
 }
 
@@ -432,7 +432,7 @@ bool TtRssResponse::hasError() const {
     return false;
   }
   else {
-    return m_rawContent.object()["content"].toObject().contains("error");
+    return m_rawContent["content"].toObject().contains("error");
   }
 }
 
@@ -454,17 +454,17 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
 
   if (status() == API_STATUS_OK) {
     // We have data, construct object tree according to data.
-    QList<QVariant> items_to_process = m_rawContent.object()["content"].toObject()["categories"].toObject()["items"].toArray().toVariantList();
-    QList<QPair<RootItem*,QVariant> > pairs;
+    QJsonArray items_to_process = m_rawContent["content"].toObject()["categories"].toObject()["items"].toArray();
+    QList<QPair<RootItem*,QJsonValue> > pairs;
 
-    foreach (QVariant item, items_to_process) {
-      pairs.append(QPair<RootItem*,QVariant>(parent, item));
+    foreach (QJsonValue item, items_to_process) {
+      pairs.append(QPair<RootItem*,QJsonValue>(parent, item));
     }
 
     while (!pairs.isEmpty()) {
-      QPair<RootItem*,QVariant> pair = pairs.takeFirst();
+      QPair<RootItem*,QJsonValue> pair = pairs.takeFirst();
       RootItem *act_parent = pair.first;
-      QMap<QString,QVariant> item = pair.second.toMap();
+      QJsonObject item = pair.second.toObject();
 
       int item_id = item["bare_id"].toInt();
       bool is_category = item.contains("type") && item["type"].toString() == GFT_TYPE_CATEGORY;
@@ -474,8 +474,8 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           if (item_id == 0) {
             // This is "Uncategorized" category, all its feeds belong to top-level root.
             if (item.contains("items")) {
-              foreach (QVariant child_feed, item["items"].toList()) {
-                pairs.append(QPair<RootItem*,QVariant>(parent, child_feed));
+              foreach (QJsonValue child_feed, item["items"].toArray()) {
+                pairs.append(QPair<RootItem*,QJsonValue>(parent, child_feed));
               }
             }
           }
@@ -487,8 +487,8 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             act_parent->appendChild(category);
 
             if (item.contains("items")) {
-              foreach (QVariant child, item["items"].toList()) {
-                pairs.append(QPair<RootItem*,QVariant>(category, child));
+              foreach (QJsonValue child, item["items"].toArray()) {
+                pairs.append(QPair<RootItem*,QJsonValue>(category, child));
               }
             }
           }
@@ -498,7 +498,7 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           TtRssFeed *feed = new TtRssFeed();
 
           if (obtain_icons) {
-            QString icon_path = item["icon"].type() == QVariant::String ? item["icon"].toString() : QString();
+            QString icon_path = item["icon"].type() == QJsonValue::String ? item["icon"].toString() : QString();
 
             if (!icon_path.isEmpty()) {
               // Chop the "api/" suffix out and append
@@ -535,8 +535,8 @@ TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() {
 QList<Message> TtRssGetHeadlinesResponse::messages() const {
   QList<Message> messages;
 
-  foreach (QVariant item, m_rawContent.object()["content"].toArray().toVariantList()) {
-    QMap<QString,QVariant> mapped = item.toMap();
+  foreach (QJsonValue item, m_rawContent["content"].toArray()) {
+    QJsonObject mapped = item.toObject();
     Message message;
 
     message.m_author = mapped["author"].toString();
@@ -546,7 +546,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
 
     // Multiply by 1000 because Tiny Tiny RSS API does not include miliseconds in Unix
     // date/time number.
-    message.m_created = TextFactory::parseDateTime(mapped["updated"].value<qint64>() * 1000);
+    message.m_created = TextFactory::parseDateTime(mapped["updated"].toVariant().value<qint64>() * 1000);
     message.m_createdFromFeed = true;
     message.m_customId = mapped["id"].toString();
     message.m_feedId = mapped["feed_id"].toString();
@@ -555,8 +555,8 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
 
     if (mapped.contains(QSL("attachments"))) {
       // Process enclosures.
-      foreach (QVariant attachment, mapped["attachments"].toList()) {
-        QMap<QString,QVariant> mapped_attachemnt = attachment.toMap();
+      foreach (QJsonValue attachment, mapped["attachments"].toArray()) {
+        QJsonObject mapped_attachemnt = attachment.toObject();
         Enclosure enclosure;
 
         enclosure.m_mimeType = mapped_attachemnt["content_type"].toString();
@@ -579,8 +579,8 @@ TtRssUpdateArticleResponse::~TtRssUpdateArticleResponse() {
 }
 
 QString TtRssUpdateArticleResponse::updateStatus() const {
-  if (m_rawContent.object().contains(QSL("content"))) {
-    return m_rawContent.object()["content"].toObject()["status"].toString();
+  if (m_rawContent.contains(QSL("content"))) {
+    return m_rawContent["content"].toObject()["status"].toString();
   }
   else {
     return QString();
@@ -588,8 +588,8 @@ QString TtRssUpdateArticleResponse::updateStatus() const {
 }
 
 int TtRssUpdateArticleResponse::articlesUpdated() const {
-  if (m_rawContent.object().contains(QSL("content"))) {
-    return m_rawContent.object()["content"].toObject()["updated"].toInt();
+  if (m_rawContent.contains(QSL("content"))) {
+    return m_rawContent["content"].toObject()["updated"].toInt();
   }
   else {
     return 0;
@@ -603,8 +603,8 @@ TtRssSubscribeToFeedResponse::~TtRssSubscribeToFeedResponse() {
 }
 
 int TtRssSubscribeToFeedResponse::code() const {
-  if (m_rawContent.object().contains(QSL("content"))) {
-    return m_rawContent.object()["content"].toObject()["status"].toObject()["code"].toInt();
+  if (m_rawContent.contains(QSL("content"))) {
+    return m_rawContent["content"].toObject()["status"].toObject()["code"].toInt();
   }
   else {
     return STF_UNKNOWN;
@@ -619,8 +619,8 @@ TtRssUnsubscribeFeedResponse::~TtRssUnsubscribeFeedResponse() {
 }
 
 QString TtRssUnsubscribeFeedResponse::code() const {
-  if (m_rawContent.object().contains(QSL("content"))) {
-    QJsonObject map = m_rawContent.object()["content"].toObject();
+  if (m_rawContent.contains(QSL("content"))) {
+    QJsonObject map = m_rawContent["content"].toObject();
 
     if (map.contains(QSL("error"))) {
       return map["error"].toString();

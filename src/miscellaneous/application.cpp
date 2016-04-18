@@ -78,7 +78,10 @@ bool Application::isFirstRun() {
 }
 
 bool Application::isFirstRun(const QString &version) {
-  return settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, true).toBool();
+  if (version == APP_VERSION) {
+    // Check this only if checked version is equal to actual version.
+    return settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, true).toBool();
+  }
 }
 
 void Application::eliminateFirstRun() {

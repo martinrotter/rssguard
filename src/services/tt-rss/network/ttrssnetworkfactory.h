@@ -23,7 +23,7 @@
 #include <QString>
 #include <QPair>
 #include <QNetworkReply>
-#include <QJsonDocument>
+#include <QJsonObject>
 
 
 class RootItem;
@@ -44,7 +44,7 @@ class TtRssResponse {
     QString toString() const;
 
   protected:
-    QJsonDocument m_rawContent;
+    QJsonObject m_rawContent;
 };
 
 class TtRssLoginResponse : public TtRssResponse {
