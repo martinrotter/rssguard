@@ -41,7 +41,7 @@ namespace QtJson {
 
     template<typename T>
     QByteArray serializeMap(const T &map, bool &success) {
-        QByteArray str = "{ ";
+        QByteArray str = "{";
         QList<QByteArray> pairs;
         for (typename T::const_iterator it = map.begin(), itend = map.end(); it != itend; ++it) {
             QByteArray serializedValue = serialize(it.value());
@@ -49,11 +49,11 @@ namespace QtJson {
                 success = false;
                 break;
             }
-            pairs << sanitizeString(it.key()).toUtf8() + " : " + serializedValue;
+            pairs << sanitizeString(it.key()).toUtf8() + ":" + serializedValue;
         }
 
-        str += join(pairs, ", ");
-        str += " }";
+        str += join(pairs, ",");
+        str += "}";
         return str;
     }
 
@@ -168,7 +168,7 @@ namespace QtJson {
                 values << serializedValue;
             }
 
-            str = "[ " + join( values, ", " ) + " ]";
+            str = "[" + join( values, "," ) + "]";
         } else if (data.type() == QVariant::Hash) { // variant is a hash?
             str = serializeMap<>(data.toHash(), success);
         } else if (data.type() == QVariant::Map) { // variant is a map?
