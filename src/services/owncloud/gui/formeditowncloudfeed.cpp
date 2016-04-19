@@ -91,11 +91,9 @@ void FormEditOwnCloudFeed::onAutoUpdateTypeChanged(int new_index) {
 
 void FormEditOwnCloudFeed::performAction() {
   if (m_loadedFeed != NULL) {
-    // Edit given feed.
     saveFeed();
   }
   else {
-    // TODO: Add new feed.
     addNewFeed();
   }
 
@@ -206,28 +204,22 @@ void FormEditOwnCloudFeed::saveFeed() {
 }
 
 void FormEditOwnCloudFeed::addNewFeed() {
-  RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+  const RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
   const int category_id = parent->kind() == RootItemKind::ServiceRoot ? 0 : parent->customId();
+  const bool response = m_root->network()->createFeed(m_ui->m_txtUrl->lineEdit()->text(), category_id);
 
-
-  /*const TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_ui->m_txtUrl->lineEdit()->text(),
-                                                                                 category_id,
-                                                                                 m_ui->m_gbAuthentication->isChecked(),
-                                                                                 m_ui->m_txtUsername->lineEdit()->text(),
-                                                                                 m_ui->m_txtPassword->lineEdit()->text());
-*/
-  /*if (response.code() == STF_INSERTED) {
+  if (response) {
     // Feed was added online.
     accept();
     qApp->showGuiMessage(tr("Feed added"), tr("Feed was added, triggering sync in now."), QSystemTrayIcon::Information);
-    QTimer::singleShot(100, root, SLOT(syncIn()));
+    QTimer::singleShot(100, m_root, SLOT(syncIn()));
   }
   else {
     reject();
     qApp->showGuiMessage(tr("Cannot add feed"),
                          tr("Feed was not added due to error."),
                          QSystemTrayIcon::Critical, qApp->mainForm(), true);
-  }*/
+  }
 }
 
 void FormEditOwnCloudFeed::loadCategories(const QList<Category*> categories, RootItem *root_item) {
