@@ -49,6 +49,10 @@ class Downloader : public QObject {
     void downloadFile(const QString &url, int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
                       const QString &username = QString(), const QString &password = QString());
 
+    void uploadFile(const QString &url, const QByteArray &data, int timeout = DOWNLOAD_TIMEOUT,
+                    bool protected_contents = false, const QString &username = QString(),
+                    const QString &password = QString());
+
     // Performs asynchronous upload of given data as HTTP POST.
     // User needs to setup "Content-Encoding" header which
     // matches encoding of the data.

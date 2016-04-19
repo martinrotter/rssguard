@@ -87,7 +87,7 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   json["password"] = m_password;
 
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, qApp->settings()->value(GROUP(Feeds),
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, qApp->settings()->value(GROUP(Feeds),
                                                                                           SETTING(Feeds::UpdateTimeout)).toInt(),
                                                            QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
@@ -114,7 +114,7 @@ TtRssResponse TtRssNetworkFactory::logout() {
     json["sid"] = m_sessionId;
 
     QByteArray result_raw;
-    NetworkResult network_reply = NetworkFactory::uploadData(m_url, qApp->settings()->value(GROUP(Feeds),
+    NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, qApp->settings()->value(GROUP(Feeds),
                                                                                             SETTING(Feeds::UpdateTimeout)).toInt(),
                                                              QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                              QNetworkAccessManager::PostOperation,
@@ -147,7 +147,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
@@ -158,7 +158,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
@@ -188,7 +188,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
@@ -199,7 +199,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
@@ -225,7 +225,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
@@ -236,7 +236,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
+    network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
@@ -267,7 +267,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                            CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
@@ -278,7 +278,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
+    network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
                                                CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
@@ -301,7 +301,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                            QNetworkAccessManager::PostOperation,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssUnsubscribeFeedResponse result(QString::fromUtf8(result_raw));
@@ -311,7 +311,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssUnsubscribeFeedResponse(QString::fromUtf8(result_raw));
@@ -505,7 +505,9 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
               QString full_icon_address = base_address + QL1C('/') + icon_path;
               QByteArray icon_data;
 
-              if (NetworkFactory::downloadFile(full_icon_address, DOWNLOAD_TIMEOUT, icon_data).first == QNetworkReply::NoError) {
+              if (NetworkFactory::performNetworkOperation(full_icon_address, DOWNLOAD_TIMEOUT,
+                                                          QByteArray(), QString(), icon_data,
+                                                          QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError) {
                 // Icon downloaded, set it up.
                 QPixmap icon_pixmap;
                 icon_pixmap.loadFromData(icon_data);

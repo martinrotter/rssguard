@@ -43,6 +43,11 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
                  protected_contents, username, password);
 }
 
+void Downloader::uploadFile(const QString &url, const QByteArray &data, int timeout,
+                            bool protected_contents, const QString &username, const QString &password) {
+  manipulateData(url, QNetworkAccessManager::PostOperation, data, timeout, protected_contents, username, password);
+}
+
 void Downloader::manipulateData(const QString &url, QNetworkAccessManager::Operation operation, const QByteArray &data,
                                 int timeout, bool protected_contents, const QString &username, const QString &password) {
   QNetworkRequest request;
@@ -202,7 +207,9 @@ QVariant Downloader::lastContentType() const {
 }
 
 void Downloader::appendRawHeader(const QByteArray &name, const QByteArray &value) {
-  m_customHeaders.insert(name, value);
+  if (!value.isEmpty()) {
+    m_customHeaders.insert(name, value);
+  }
 }
 
 QNetworkReply::NetworkError Downloader::lastOutputError() const {

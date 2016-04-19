@@ -134,7 +134,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &u
   foreach (const QString &url, urls) {
     const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
     QByteArray icon_data;
-    network_result =  downloadFile(google_s2_with_url, timeout, icon_data).first;
+    network_result =  performNetworkOperation(google_s2_with_url, timeout, QByteArray(), QString(), icon_data,
+                                              QNetworkAccessManager::GetOperation).first;
 
     if (network_result == QNetworkReply::NoError) {
       QPixmap icon_pixmap;
@@ -147,7 +148,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &u
   return network_result;
 }
 
-NetworkResult NetworkFactory::uploadData(const QString &url, int timeout, const QByteArray &input_data,
+NetworkResult NetworkFactory::performNetworkOperation(const QString &url, int timeout, const QByteArray &input_data,
                                          const QString &input_content_type, QByteArray &output,
                                          QNetworkAccessManager::Operation operation, bool protected_contents,
                                          const QString &username, const QString &password, bool set_basic_header) {
@@ -195,62 +196,6 @@ NetworkResult NetworkFactory::downloadFeedFile(const QString &url, int timeout,
   downloader.downloadFile(url, timeout, protected_contents, username, password);
   loop.exec();
   output = downloader.lastOutputData();
-  result.first = downloader.lastOutputError();
-  result.second = downloader.lastContentType();
-
-  return result;
-}
-
-NetworkResult NetworkFactory::downloadFile(const QString &url, int timeout,
-                                           QByteArray &output, bool protected_contents,
-                                           const QString &username, const QString &password, bool set_basic_header) {
-  // Here, we want to achieve "synchronous" approach because we want synchronous download API for
-  // some use-cases too.
-  Downloader downloader;
-  QEventLoop loop;
-  NetworkResult result;
-
-  if (set_basic_header) {
-    QString basic_value = username + ":" + password;
-    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
-
-    downloader.appendRawHeader("Authorization", header_value.toLocal8Bit());
-  }
-
-  // We need to quit event loop when the download finishes.
-  QObject::connect(&downloader, SIGNAL(completed(QNetworkReply::NetworkError)), &loop, SLOT(quit()));
-
-  downloader.downloadFile(url, timeout, protected_contents, username, password);
-  loop.exec();
-  output = downloader.lastOutputData();
-  result.first = downloader.lastOutputError();
-  result.second = downloader.lastContentType();
-
-  return result;
-}
-
-NetworkResult NetworkFactory::deleteResource(const QString &url, int timeout, bool protected_contents,
-                                             const QString &username, const QString &password, bool set_basic_header) {
-  // Here, we want to achieve "synchronous" approach because we want synchronous download API for
-  // some use-cases too.
-  Downloader downloader;
-  QEventLoop loop;
-  NetworkResult result;
-
-  if (set_basic_header) {
-    QString basic_value = username + ":" + password;
-    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
-
-    downloader.appendRawHeader("Authorization", header_value.toLocal8Bit());
-  }
-
-  // We need to quit event loop when the download finishes.
-  QObject::connect(&downloader, SIGNAL(completed(QNetworkReply::NetworkError)), &loop, SLOT(quit()));
-
-  downloader.manipulateData(url, QNetworkAccessManager::DeleteOperation, QByteArray(),
-                            timeout, protected_contents, username, password);
-  loop.exec();
-
   result.first = downloader.lastOutputError();
   result.second = downloader.lastContentType();
 

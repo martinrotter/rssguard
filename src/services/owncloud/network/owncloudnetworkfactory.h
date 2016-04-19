@@ -122,6 +122,9 @@ class OwnCloudNetworkFactory {
     // Delete a feed.
     bool deleteFeed(int feed_id);
 
+    // Creates new feed.
+    bool createFeed(const QString &url, int parent_id);
+
     // Get messages for given feed.
     OwnCloudGetMessagesResponse getMessages(int feed_id);
 

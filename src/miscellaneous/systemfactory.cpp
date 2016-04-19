@@ -191,8 +191,10 @@ QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() 
   QByteArray releases_xml;
   QByteArray changelog;
 
-  result.second = NetworkFactory::downloadFile(RELEASES_LIST, DOWNLOAD_TIMEOUT, releases_xml).first;
-  NetworkFactory::downloadFile(CHANGELOG, DOWNLOAD_TIMEOUT, changelog).first;
+  result.second = NetworkFactory::performNetworkOperation(RELEASES_LIST, DOWNLOAD_TIMEOUT, QByteArray(), QString(),
+                                                          releases_xml, QNetworkAccessManager::GetOperation).first;
+  NetworkFactory::performNetworkOperation(CHANGELOG, DOWNLOAD_TIMEOUT, QByteArray(), QString(), changelog,
+                                          QNetworkAccessManager::GetOperation);
 
   if (result.second == QNetworkReply::NoError) {
     result.first = parseUpdatesFile(releases_xml, changelog);

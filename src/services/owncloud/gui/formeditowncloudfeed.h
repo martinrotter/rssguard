@@ -54,6 +54,7 @@ class FormEditOwnCloudFeed : public QDialog {
     void initialize();
     void loadFeed(OwnCloudFeed *input_feed);
     void saveFeed();
+    void addNewFeed();
     void loadCategories(const QList<Category*> categories, RootItem *root_item);
 
     QScopedPointer<Ui::FormEditOwnCloudFeed> m_ui;
