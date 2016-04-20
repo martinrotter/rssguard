@@ -179,11 +179,12 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
 
 bool OwnCloudNetworkFactory::deleteFeed(int feed_id) {
   QString final_url = m_urlDeleteFeed.arg(QString::number(feed_id));
+  QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(final_url,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
                                                                         QByteArray(), QString(),
-                                                                        QByteArray(), QNetworkAccessManager::DeleteOperation,
+                                                                        result_raw, QNetworkAccessManager::DeleteOperation,
                                                                         true, m_authUsername, m_authPassword, true);
 
   m_lastError = network_reply.first;

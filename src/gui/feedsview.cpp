@@ -113,9 +113,12 @@ void FeedsView::saveExpandStates(RootItem *item) {
   foreach (const RootItem *item, items) {
     const QString setting_name = item->hashCode();
 
+    QModelIndex source_index = sourceModel()->indexForItem(item);
+    QModelIndex visible_index = model()->mapFromSource(source_index);
+
     settings->setValue(GROUP(CategoriesExpandStates),
                        setting_name,
-                       isExpanded(model()->mapFromSource(sourceModel()->indexForItem(item))));
+                       isExpanded(visible_index));
   }
 }
 
