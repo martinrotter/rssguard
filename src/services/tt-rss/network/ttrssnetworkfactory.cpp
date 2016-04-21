@@ -141,7 +141,7 @@ TtRssResponse TtRssNetworkFactory::logout() {
 
 TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   QJsonObject json;
-  json["op"] = "getFeedTree";
+  json["op"] = QSL("getFeedTree");
   json["sid"] = m_sessionId;
   json["include_empty"] = true;
 
@@ -176,7 +176,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
                                                             bool show_content, bool include_attachments,
                                                             bool sanitize) {
   QJsonObject json;
-  json["op"] = "getHeadlines";
+  json["op"] = QSL("getHeadlines");
   json["sid"] = m_sessionId;
   json["feed_id"] = feed_id;
   json["force_update"] = m_forceServerSideUpdate;
@@ -217,7 +217,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
                                                                UpdateArticle::OperatingField field,
                                                                UpdateArticle::Mode mode) {
   QJsonObject json;
-  json["op"] = "updateArticle";
+  json["op"] = QSL("updateArticle");
   json["sid"] = m_sessionId;
   json["article_ids"] = ids.join(QSL(","));
   json["mode"] = (int) mode;
@@ -255,7 +255,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
                                                                   bool protectd, const QString &username,
                                                                   const QString &password) {
   QJsonObject json;
-  json["op"] = "subscribeToFeed";
+  json["op"] = QSL("subscribeToFeed");
   json["sid"] = m_sessionId;
   json["feed_url"] = url;
   json["category_id"] = category_id;
@@ -295,7 +295,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
 
 TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
   QJsonObject json;
-  json["op"] = "unsubscribeFeed";
+  json["op"] = QSL("unsubscribeFeed");
   json["sid"] = m_sessionId;
   json["feed_id"] = feed_id;
 
