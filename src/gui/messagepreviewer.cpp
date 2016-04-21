@@ -38,8 +38,9 @@ void MessagePreviewer::createConnections() {
       box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
       box.setInformativeText(tr("What action do you want to take?"));
       box.setDetailedText(url.toString());
-      QAbstractButton *btn_open = box.addButton(tr("Open in external browser"), QMessageBox::AcceptRole);
-      QAbstractButton *btn_download = box.addButton(tr("Download"), QMessageBox::RejectRole);
+      QAbstractButton *btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ActionRole);
+      QAbstractButton *btn_download = box.addButton(tr("Download"), QMessageBox::ActionRole);
+      QAbstractButton *btn_display = box.addButton(tr("Display"), QMessageBox::ActionRole);
       QAbstractButton *btn_cancel = box.addButton(QMessageBox::Cancel);
 
       box.setDefaultButton(QMessageBox::Cancel);
@@ -50,6 +51,9 @@ void MessagePreviewer::createConnections() {
       }
       else if (box.clickedButton() == btn_download) {
         qApp->downloadManager()->download(url);
+      }
+      else if (box.clickedButton() == btn_display) {
+        // TODO: Zobrazit obrázek.
       }
 
       btn_download->deleteLater();
@@ -83,7 +87,7 @@ void MessagePreviewer::createConnections() {
 }
 
 MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
-  m_ui(new Ui::MessagePreviewer) {
+  m_ui(new Ui::MessagePreviewer), m_pictures(QStringList()) {
   m_ui->setupUi(this);
   m_ui->m_txtMessage->viewport()->setAutoFillBackground(true);
   m_toolBar = new QToolBar(this);
@@ -113,6 +117,7 @@ void MessagePreviewer::reloadFontSettings() {
 
 void MessagePreviewer::clear() {
   m_ui->m_txtMessage->clear();
+  m_pictures.clear();
   hide();
 }
 
@@ -211,6 +216,8 @@ QString MessagePreviewer::prepareHtmlForMessage(const Message &message) {
   imgTagRegex.setMinimal(true);
 
   while( (offset = imgTagRegex.indexIn(message.m_contents, offset)) != -1){
+    m_pictures.append(imgTagRegex.cap(1));
+
     offset += imgTagRegex.matchedLength();
     html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(imgTagRegex.cap(1), tr("image"));
   }

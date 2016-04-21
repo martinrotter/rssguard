@@ -148,10 +148,7 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
 }
 
 void Downloader::timeout() {
-  if (m_activeReply != NULL) {
-    // Download action timed-out, too slow connection or target is not reachable.
-    m_activeReply->abort();
-  }
+  cancel();
 }
 
 void Downloader::runDeleteRequest(const QNetworkRequest &request) {
@@ -204,6 +201,13 @@ void Downloader::runGetRequest(const QNetworkRequest &request) {
 
 QVariant Downloader::lastContentType() const {
   return m_lastContentType;
+}
+
+void Downloader::cancel() {
+  if (m_activeReply != NULL) {
+    // Download action timed-out, too slow connection or target is not reachable.
+    m_activeReply->abort();
+  }
 }
 
 void Downloader::appendRawHeader(const QByteArray &name, const QByteArray &value) {

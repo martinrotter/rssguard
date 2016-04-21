@@ -43,6 +43,8 @@ class Downloader : public QObject {
     QVariant lastContentType() const;
 
   public slots:
+    void cancel();
+
     void appendRawHeader(const QByteArray &name, const QByteArray &value);
 
     // Performs asynchronous download of given file. Redirections are handled.
