@@ -75,6 +75,9 @@ Downloads
     
 Note that packages from OBS are not meant to be used in production. Rely on "official" packages for you Linux distro made by your Linux distro maintainers.
     
+### Mac OS X
+# I am looking for someone technically able to compile RSS Guard for Mac OS X. It supports Mac OS X, but I don't have Mac to compile it. Write me an e-mail if you want to become RSS Guard maintainer for Mac OS X.
+
 ![RSS Guard is 100% clean.](http://www.softpedia.com/_img/softpedia_100_free.png)
 
 - - -
