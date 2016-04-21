@@ -179,12 +179,11 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
 
 bool OwnCloudNetworkFactory::deleteFeed(int feed_id) {
   QString final_url = m_urlDeleteFeed.arg(QString::number(feed_id));
-  QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(final_url,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
                                                                         QByteArray(), QString(),
-                                                                        result_raw, QNetworkAccessManager::DeleteOperation,
+                                                                        QByteArray(), QNetworkAccessManager::DeleteOperation,
                                                                         true, m_authUsername, m_authPassword, true);
 
   m_lastError = network_reply.first;
@@ -440,7 +439,7 @@ QString OwnCloudUserResponse::userId() const {
 
 QDateTime OwnCloudUserResponse::lastLoginTime() const {
   if (isLoaded()) {
-    return QDateTime::fromMSecsSinceEpoch(m_rawContent["lastLoginTimestamp"].toDouble());
+    return QDateTime::fromMSecsSinceEpoch(m_rawContent["lastLoginTimestamp"].toVariant().value<qint64>());
   }
   else {
     return QDateTime();
@@ -563,7 +562,7 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
 
     msg.m_author = message_map["author"].toString();
     msg.m_contents = message_map["body"].toString();
-    msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].toDouble() * 1000);
+    msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].toVariant().value<qint64>() * 1000);
     msg.m_createdFromFeed = true;
     msg.m_customId = message_map["id"].toString();
     msg.m_customHash = message_map["guidHash"].toString();

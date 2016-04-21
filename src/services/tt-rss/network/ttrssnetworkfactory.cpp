@@ -82,9 +82,9 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   }
 
   QJsonObject json;
-  json.insert(QSL("op"), QJsonValue(QSL("login")));
-  json.insert(QSL("user"), QJsonValue(m_username));
-  json.insert(QSL("password"), QJsonValue(m_password));
+  json["op"] = "login";
+  json["user"] = m_username;
+  json["password"] = m_password;
 
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, qApp->settings()->value(GROUP(Feeds),
@@ -110,8 +110,8 @@ TtRssResponse TtRssNetworkFactory::logout() {
   if (!m_sessionId.isEmpty()) {
 
     QJsonObject json;
-    json.insert(QSL("op"), QJsonValue(QSL("logout")));
-    json.insert(QSL("sid"), QJsonValue(m_sessionId));
+    json["op"] = "logout";
+    json["sid"] = m_sessionId;
 
     QByteArray result_raw;
     NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_url, qApp->settings()->value(GROUP(Feeds),
@@ -141,9 +141,9 @@ TtRssResponse TtRssNetworkFactory::logout() {
 
 TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   QJsonObject json;
-  json.insert(QSL("op"), QJsonValue(QSL("getFeedTree")));
-  json.insert(QSL("sid"), QJsonValue(m_sessionId));
-  json.insert(QSL("include_empty"), QJsonValue(true));
+  json["op"] = "getFeedTree";
+  json["sid"] = m_sessionId;
+  json["include_empty"] = true;
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
@@ -156,7 +156,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login();
-    json.insert(QSL("sid"), QJsonValue(m_sessionId));
+    json["sid"] = m_sessionId;
 
     network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
@@ -197,7 +197,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login();
-    json.insert(QSL("sid"), QJsonValue(m_sessionId));
+    json["sid"] = m_sessionId;
 
     network_reply = NetworkFactory::performNetworkOperation(m_url, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact), CONTENT_TYPE, result_raw,
                                                QNetworkAccessManager::PostOperation,
@@ -548,7 +548,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
 
     // Multiply by 1000 because Tiny Tiny RSS API does not include miliseconds in Unix
     // date/time number.
-    message.m_created = TextFactory::parseDateTime(mapped["updated"].toDouble() * 1000);
+    message.m_created = TextFactory::parseDateTime(mapped["updated"].toVariant().value<qint64>() * 1000);
     message.m_createdFromFeed = true;
     message.m_customId = mapped["id"].toString();
     message.m_feedId = mapped["feed_id"].toString();
