@@ -82,7 +82,7 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   }
 
   QJsonObject json;
-  json["op"] = "login";
+  json["op"] = QJsonValue(QSL("login"));
   json["user"] = m_username;
   json["password"] = m_password;
 
