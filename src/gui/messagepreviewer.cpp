@@ -40,7 +40,6 @@ void MessagePreviewer::createConnections() {
       box.setDetailedText(url.toString());
       QAbstractButton *btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ActionRole);
       QAbstractButton *btn_download = box.addButton(tr("Download"), QMessageBox::ActionRole);
-      QAbstractButton *btn_display = box.addButton(tr("Display"), QMessageBox::ActionRole);
       QAbstractButton *btn_cancel = box.addButton(QMessageBox::Cancel);
 
       box.setDefaultButton(QMessageBox::Cancel);
@@ -51,9 +50,6 @@ void MessagePreviewer::createConnections() {
       }
       else if (box.clickedButton() == btn_download) {
         qApp->downloadManager()->download(url);
-      }
-      else if (box.clickedButton() == btn_display) {
-        // TODO: Zobrazit obrázek.
       }
 
       btn_download->deleteLater();
