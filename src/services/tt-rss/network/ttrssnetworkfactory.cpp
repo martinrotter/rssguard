@@ -82,7 +82,7 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   }
 
   QJsonObject json;
-  json["op"] = QJsonValue(QSL("login"));
+  json["op"] = QSL("login");
   json["user"] = m_username;
   json["password"] = m_password;
 
@@ -110,7 +110,7 @@ TtRssResponse TtRssNetworkFactory::logout() {
   if (!m_sessionId.isEmpty()) {
 
     QJsonObject json;
-    json["op"] = "logout";
+    json["op"] = QSL("logout");
     json["sid"] = m_sessionId;
 
     QByteArray result_raw;
