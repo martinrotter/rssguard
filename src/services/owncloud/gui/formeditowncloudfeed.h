@@ -49,6 +49,7 @@ class FormEditOwnCloudFeed : public QDialog {
     void onUrlChanged(const QString &new_url);
     void onUsernameChanged(const QString &new_username);
     void onPasswordChanged(const QString &new_password);
+    void onTitleChanged(const QString &title);
 
   private:
     void initialize();

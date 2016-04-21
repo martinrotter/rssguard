@@ -41,6 +41,7 @@ FormEditOwnCloudFeed::FormEditOwnCloudFeed(OwnCloudServiceRoot *root, QWidget *p
   connect(m_ui->m_gbAuthentication, SIGNAL(toggled(bool)), this, SLOT(onAuthenticationSwitched()));
   connect(m_ui->m_cmbAutoUpdateType, SIGNAL(currentIndexChanged(int)), this, SLOT(onAutoUpdateTypeChanged(int)));
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(performAction()));
+  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onTitleChanged(QString)));
 }
 
 FormEditOwnCloudFeed::~FormEditOwnCloudFeed() {
@@ -55,6 +56,8 @@ int FormEditOwnCloudFeed::execForEdit(OwnCloudFeed *input_feed) {
 }
 
 int FormEditOwnCloudFeed::execForAdd(const QString &url) {
+  m_ui->m_txtTitle->setEnabled(false);
+
   if (!url.isEmpty()) {
     m_ui->m_txtUrl->lineEdit()->setText(url);
   }
@@ -137,6 +140,11 @@ void FormEditOwnCloudFeed::onPasswordChanged(const QString &new_password) {
                                    tr("Password is empty."));
 }
 
+void FormEditOwnCloudFeed::onTitleChanged(const QString &title) {
+  m_ui->m_txtTitle->setStatus(title.isEmpty() ? WidgetWithStatus::Error : WidgetWithStatus::Ok,
+                              title.isEmpty() ? tr("Title is empty.") : tr("Title looks okay."));
+}
+
 void FormEditOwnCloudFeed::initialize() {
   setWindowIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
@@ -147,6 +155,8 @@ void FormEditOwnCloudFeed::initialize() {
   m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) Feed::SpecificAutoUpdate));
   m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) Feed::DontAutoUpdate));
 
+  setTabOrder(m_ui->m_cmbParentCategory, m_ui->m_txtTitle->lineEdit());
+  setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtUrl->lineEdit());
   setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_cmbAutoUpdateType);
   setTabOrder(m_ui->m_cmbAutoUpdateType, m_ui->m_spinAutoUpdateInterval);
   setTabOrder(m_ui->m_spinAutoUpdateInterval, m_ui->m_gbAuthentication);
@@ -174,10 +184,12 @@ void FormEditOwnCloudFeed::loadFeed(OwnCloudFeed *input_feed) {
     m_ui->m_lblUrl->setEnabled(false);
     m_ui->m_lblParentCategory->setEnabled(false);
     m_ui->m_cmbParentCategory->setEnabled(false);
+    m_ui->m_txtTitle->setEnabled(true);
 
     m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) input_feed->parent())));
     m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue((int) input_feed->autoUpdateType())));
     m_ui->m_spinAutoUpdateInterval->setValue(input_feed->autoUpdateInitialInterval());
+    m_ui->m_txtTitle->lineEdit()->setText(input_feed->title());
   }
   else {
     setWindowTitle(tr("Add new feed"));
@@ -193,6 +205,17 @@ void FormEditOwnCloudFeed::loadFeed(OwnCloudFeed *input_feed) {
 }
 
 void FormEditOwnCloudFeed::saveFeed() {
+  bool renamed = false;
+
+  if (m_ui->m_txtTitle->lineEdit()->text() != m_loadedFeed->title()) {
+    if (!m_root->network()->renameFeed(m_ui->m_txtTitle->lineEdit()->text(), m_loadedFeed->customId())) {
+      qWarning("ownCloud: Došlo k problému při prejmenování kanálu s ownCloud ID '%d'.", m_loadedFeed->customId());
+    }
+    else {
+      renamed = true;
+    }
+  }
+
   // User edited auto-update status. Save it.
   OwnCloudFeed *new_feed_data = new OwnCloudFeed();
 
@@ -200,7 +223,12 @@ void FormEditOwnCloudFeed::saveFeed() {
   new_feed_data->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
 
   m_loadedFeed->editItself(new_feed_data);
+
   delete new_feed_data;
+
+  if (renamed) {
+    QTimer::singleShot(200, m_root, SLOT(syncIn()));
+  }
 }
 
 void FormEditOwnCloudFeed::addNewFeed() {
