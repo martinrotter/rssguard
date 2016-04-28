@@ -218,7 +218,7 @@ QString MessagePreviewer::prepareHtmlForMessage(const Message &message) {
     html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(imgTagRegex.cap(1), tr("image"));
   }
 
-  html += "<hr/>";
+  html += "<br/>";
   html += message.m_contents;
 
   return html;
