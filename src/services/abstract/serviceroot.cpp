@@ -255,7 +255,9 @@ void ServiceRoot::syncIn() {
       }
     }
 
-    items_to_expand.append(this);
+    if (!items_to_expand.contains(this)) {
+      items_to_expand.prepend(this);
+    }
 
     requestItemExpand(items_to_expand, true);
   }

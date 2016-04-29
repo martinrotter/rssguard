@@ -520,7 +520,7 @@ void FeedsView::onItemExpandRequested(const QList<RootItem*> &items, bool exp) {
     QModelIndex source_index = m_sourceModel->indexForItem(item);
     QModelIndex proxy_index = m_proxyModel->mapFromSource(source_index);
 
-    setExpanded(proxy_index, !exp);
+    //setExpanded(proxy_index, !exp);
     setExpanded(proxy_index, exp);
   }
 }

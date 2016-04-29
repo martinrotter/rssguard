@@ -261,7 +261,7 @@ class RootItem : public QObject {
 
     RootItemKind::Kind m_kind;
     int m_id;
-        int m_customId;
+    int m_customId;
     QString m_title;
     QString m_description;
     QIcon m_icon;
