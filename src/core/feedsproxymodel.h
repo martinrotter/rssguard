@@ -56,15 +56,20 @@ class FeedsProxyModel : public QSortFilterProxyModel {
   private slots:
     void invalidateFilter();
 
+  signals:
+    void expandAfterFilterIn(const QModelIndex &idx);
+
   private:
     // Compares two rows of data.
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const;
+    bool filterAcceptsRowInternal(int source_row, const QModelIndex &source_parent) const;
 
     // Source model pointer.
     FeedsModel *m_sourceModel;
     const RootItem *m_selectedItem;
     bool m_showUnreadOnly;
+    QList<QPair<int,QModelIndex> > m_hiddenIndices;
 };
 
 #endif // FEEDSPROXYMODEL_H

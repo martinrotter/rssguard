@@ -60,6 +60,10 @@ FeedsView::FeedsView(QWidget *parent)
   connect(m_sourceModel, SIGNAL(itemExpandStateSaveRequested(RootItem*)), this, SLOT(onItemExpandStateSaveRequested(RootItem*)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
+  connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, [=](const QModelIndex &idx) {
+
+  });
+
   setModel(m_proxyModel);
   setupAppearance();
 }
