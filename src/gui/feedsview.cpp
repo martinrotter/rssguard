@@ -61,7 +61,10 @@ FeedsView::FeedsView(QWidget *parent)
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, [=](const QModelIndex &idx) {
-
+    QTimer::singleShot(100, this, [=] {
+      // TODO: Z nastavení.
+      setExpanded(m_proxyModel->mapFromSource(idx), true);
+    });
   });
 
   setModel(m_proxyModel);

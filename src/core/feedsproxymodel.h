@@ -57,7 +57,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     void invalidateFilter();
 
   signals:
-    void expandAfterFilterIn(const QModelIndex &idx);
+    void expandAfterFilterIn(QModelIndex idx) const;
 
   private:
     // Compares two rows of data.

@@ -188,12 +188,15 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
   if (should_show && m_hiddenIndices.contains(QPair<int,QModelIndex>(source_row, source_parent))) {
     // TODO: dodělat
 
-    m_hiddenIndices.removeAll(QPair<int,QModelIndex>(source_row, source_parent));
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int,QModelIndex>(source_row, source_parent));
 
     // Load status.
     emit expandAfterFilterIn(m_sourceModel->index(source_row, 0, source_parent));
   }
 
+  if (!should_show) {
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(QPair<int,QModelIndex>(source_row, source_parent));
+  }
 
   return should_show;
 }
