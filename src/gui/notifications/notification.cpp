@@ -103,9 +103,8 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
     if (response.arguments().size() == 1) {
       // Message was sent, notification should display.
       m_dBusActiveNotification = response.arguments().at(0).toUInt();
+      return;
     }
-
-    return;
   }
 #endif
 
