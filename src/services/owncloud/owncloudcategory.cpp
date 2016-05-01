@@ -23,11 +23,11 @@
 
 OwnCloudCategory::OwnCloudCategory(RootItem *parent) : Category(parent) {
   // Categories in ownCloud have now icons etc. They just have titles.
-  setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
+  setIcon(qApp->icons()->fromTheme(QSL("folder")));
 }
 
 OwnCloudCategory::OwnCloudCategory(const QSqlRecord &record) : Category(NULL) {
-  setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
+  setIcon(qApp->icons()->fromTheme(QSL("folder")));
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toInt());

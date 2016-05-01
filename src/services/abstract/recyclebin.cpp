@@ -28,7 +28,7 @@ RecycleBin::RecycleBin(RootItem *parent_item) : RootItem(parent_item), m_totalCo
   m_unreadCount(0), m_contextMenu(QList<QAction*>()) {
   setKind(RootItemKind::Bin);
   setId(ID_RECYCLE_BIN);
-  setIcon(qApp->icons()->fromTheme(QSL("folder-recycle-bin")));
+  setIcon(qApp->icons()->fromTheme(QSL("user-trash")));
   setTitle(tr("Recycle bin"));
   setDescription(tr("Recycle bin contains all deleted messages from all feeds."));
   setCreationDate(QDateTime::currentDateTime());

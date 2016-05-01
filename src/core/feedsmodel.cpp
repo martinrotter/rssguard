@@ -55,7 +55,7 @@ FeedsModel::FeedsModel(QObject *parent)
 
   //: Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));
-  m_rootItem->setIcon(qApp->icons()->fromTheme(QSL("folder-root")));
+  m_rootItem->setIcon(qApp->icons()->fromTheme(QSL("folder")));
 
   // Setup icons.
   m_countsIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
@@ -175,7 +175,7 @@ void FeedsModel::onFeedUpdatesFinished(const FeedDownloadResults &results) {
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
     qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon,
-                         0, false, qApp->icons()->fromTheme(QSL("item-update-all")));
+                         0, false, qApp->icons()->fromTheme(QSL("view-refresh")));
   }
 
   emit feedsUpdateFinished();

@@ -139,7 +139,7 @@ void FormEditFeed::onPasswordChanged(const QString &new_password) {
 }
 
 void FormEditFeed::initialize() {
-  setWindowIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
 
   // Setup auto-update options.

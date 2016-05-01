@@ -48,7 +48,7 @@ MessagesModel::~MessagesModel() {
 }
 
 void MessagesModel::setupIcons() {
-  m_favoriteIcon = qApp->icons()->fromTheme(QSL("mail-mark-favorite"));
+  m_favoriteIcon = qApp->icons()->fromTheme(QSL("mail-mark-important"));
   m_readIcon = qApp->icons()->fromTheme(QSL("mail-mark-read"));
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
 }

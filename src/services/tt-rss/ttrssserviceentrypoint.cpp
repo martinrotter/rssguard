@@ -59,7 +59,7 @@ QString TtRssServiceEntryPoint::author() const {
 }
 
 QIcon TtRssServiceEntryPoint::icon() const {
-  return qApp->icons()->fromTheme(QSL("application-ttrss"));
+  return qApp->icons()->fromTheme(QSL("tinytinyrss"));
 }
 
 QString TtRssServiceEntryPoint::code() const {

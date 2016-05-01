@@ -77,9 +77,6 @@ if(APPLE)
   set(APP_URL_BACKWARDS "org.bitbucket.${APP_LOW_NAME}")
 endif(APPLE)
 
-# Options declaration.
-option(ENABLE_ADDITIONAL_ICONS "Install additional icons" ON)
-
 if(WIN32)
   option(USE_NSIS "Use NSIS generator to produce installer" OFF)
 endif(WIN32)
@@ -97,7 +94,6 @@ cmake_minimum_required(VERSION 2.8.11)
 
 message(STATUS "")
 message(STATUS "[${APP_LOW_NAME}] ==== Options summary ====")
-message(STATUS "[${APP_LOW_NAME}] Install additional icons -> ${ENABLE_ADDITIONAL_ICONS}")
 
 if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] Use NSIS generator to produce installer -> ${USE_NSIS}")
@@ -446,12 +442,6 @@ if(WIN32)
 
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ./icons)
 
-  if(ENABLE_ADDITIONAL_ICONS)
-    install(DIRECTORY resources/graphics/icons/numix DESTINATION ./icons)
-    install(DIRECTORY resources/graphics/icons/papirus DESTINATION ./icons)
-    install(DIRECTORY resources/graphics/icons/papirus-dark DESTINATION ./icons)
-  endif(ENABLE_ADDITIONAL_ICONS)
-
   install(DIRECTORY resources/skins/base
     DESTINATION ./skins)
   install(DIRECTORY resources/misc
@@ -497,13 +487,6 @@ elseif(APPLE)
 
   install(DIRECTORY resources/initial_feeds DESTINATION ${APPLE_PREFIX})
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ${APPLE_PREFIX}/icons)
-
-  if(ENABLE_ADDITIONAL_ICONS)
-    install(DIRECTORY resources/graphics/icons/numix DESTINATION ${APPLE_PREFIX}/icons)
-    install(DIRECTORY resources/graphics/icons/papirus DESTINATION ${APPLE_PREFIX}/icons)
-    install(DIRECTORY resources/graphics/icons/papirus-dark DESTINATION ${APPLE_PREFIX}/icons)
-  endif(ENABLE_ADDITIONAL_ICONS)
-
   install(DIRECTORY resources/skins DESTINATION ${APPLE_PREFIX})
   install(DIRECTORY resources/misc DESTINATION ${APPLE_PREFIX})
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png DESTINATION ${APPLE_PREFIX} RENAME ${APP_LOW_NAME}.png)
@@ -516,13 +499,6 @@ elseif(UNIX)
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
   install(DIRECTORY resources/initial_feeds DESTINATION share/${APP_LOW_NAME})
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION share/${APP_LOW_NAME}/icons)
-
-  if(ENABLE_ADDITIONAL_ICONS)
-    install(DIRECTORY resources/graphics/icons/numix DESTINATION share/${APP_LOW_NAME}/icons)
-    install(DIRECTORY resources/graphics/icons/papirus DESTINATION share/${APP_LOW_NAME}/icons)
-    install(DIRECTORY resources/graphics/icons/papirus-dark DESTINATION share/${APP_LOW_NAME}/icons)
-  endif(ENABLE_ADDITIONAL_ICONS)
-
   install(DIRECTORY resources/skins/base DESTINATION share/${APP_LOW_NAME}/skins)
   install(DIRECTORY resources/misc  DESTINATION share/${APP_LOW_NAME})
   install(FILES ${CMAKE_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop  DESTINATION share/applications)

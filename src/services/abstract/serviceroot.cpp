@@ -212,7 +212,7 @@ void ServiceRoot::requestItemRemoval(RootItem *item) {
 void ServiceRoot::syncIn() {
   QIcon original_icon = icon();
 
-  setIcon(qApp->icons()->fromTheme(QSL("item-sync")));
+  setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
   itemChanged(QList<RootItem*>() << this);
 
   RootItem *new_tree = obtainNewTreeForSyncIn();

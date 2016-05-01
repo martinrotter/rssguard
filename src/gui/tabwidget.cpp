@@ -46,7 +46,7 @@ void TabWidget::setupMainMenuButton() {
   m_btnMainMenu->setAutoRaise(true);
   m_btnMainMenu->setPadding(3);
   m_btnMainMenu->setToolTip(tr("Displays main menu."));
-  m_btnMainMenu->setIcon(qApp->icons()->fromTheme(QSL("application-menu")));
+  m_btnMainMenu->setIcon(qApp->icons()->fromTheme(QSL("applications-other")));
   m_btnMainMenu->setPopupMode(QToolButton::InstantPopup);
 
   connect(m_btnMainMenu, SIGNAL(clicked()), this, SLOT(openMainMenu()));
@@ -82,7 +82,7 @@ void TabWidget::showDownloadManager() {
 
   // Download manager is not opened. Create tab with it.
   qApp->downloadManager()->setParent(this);
-  addTab(qApp->downloadManager(), qApp->icons()->fromTheme(QSL("download-manager")), tr("Downloads"), TabBar::DownloadManager);
+  addTab(qApp->downloadManager(), qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("Downloads"), TabBar::DownloadManager);
   setCurrentIndex(count() - 1);
 }
 
@@ -147,7 +147,7 @@ void TabWidget::setupIcons() {
   for (int index = 0; index < count(); index++) {
     // Index 0 usually contains widget which displays feeds & messages.
     if (tabBar()->tabType(index) == TabBar::FeedReader) {
-      setTabIcon(index, qApp->icons()->fromTheme(QSL("folder-feed")));
+      setTabIcon(index, qApp->icons()->fromTheme(QSL("application-rss+xml")));
     }
   }
 }

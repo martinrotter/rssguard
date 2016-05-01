@@ -186,7 +186,7 @@ void FormMain::updateAddItemMenu() {
     QList<QAction*> specific_root_actions = activated_root->addItemMenu();
 
     if (activated_root->supportsCategoryAdding()) {
-      QAction *action_new_category = new QAction(qApp->icons()->fromTheme(QSL("folder-category")),
+      QAction *action_new_category = new QAction(qApp->icons()->fromTheme(QSL("folder")),
                                                  tr("Add new category"),
                                                  m_ui->m_menuAddItem);
       root_menu->addAction(action_new_category);
@@ -194,7 +194,7 @@ void FormMain::updateAddItemMenu() {
     }
 
     if (activated_root->supportsFeedAdding()) {
-      QAction *action_new_feed = new QAction(qApp->icons()->fromTheme(QSL("folder-feed")),
+      QAction *action_new_feed = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")),
                                              tr("Add new feed"),
                                              m_ui->m_menuAddItem);
       root_menu->addAction(action_new_feed);
@@ -327,10 +327,10 @@ void FormMain::setupIcons() {
   IconFactory *icon_theme_factory = qApp->icons();
 
   // Setup icons of this main window.
-  m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme(QSL("download-manager")));
-  m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme(QSL("application-settings")));
+  m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme(QSL("emblem-downloads")));
+  m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme(QSL("preferences-other")));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme(QSL("application-exit")));
-  m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme(QSL("go-refresh")));
+  m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme(QSL("application-about")));
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme(QSL("check-for-updates")));
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("cleanup-database")));
@@ -338,36 +338,36 @@ void FormMain::setupIcons() {
   m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme(QSL("application-report-bug")));
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
-  m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("application-donate")));
-  m_ui->m_actionDisplayWiki->setIcon(icon_theme_factory->fromTheme(QSL("application-wiki")));
+  m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("face-smile")));
+  m_ui->m_actionDisplayWiki->setIcon(icon_theme_factory->fromTheme(QSL("applications-science")));
 
   // View.
-  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-window")));
+  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
   m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme(QSL("view-fullscreen")));
-  m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
-  m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-menu")));
-  m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
-  m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
+  m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
+  m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
+  m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
+  m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
   m_ui->m_actionSwitchStatusBar->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
-  m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-layout-direction")));
-  m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-switch")));
+  m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
+  m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
 
   // Feeds/messages.
-  m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
-  m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("go-stop")));
-  m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-all")));
-  m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
-  m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
-  m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionEditSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
+  m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
+  m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("process-stop")));
+  m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
+  m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
+  m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
+  m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
+  m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
+  m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
+  m_ui->m_actionEditSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("text-x-generic")));
   m_ui->m_actionMarkAllItemsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
-  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-favorite")));
+  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-important")));
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-external")));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-internal")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("item-send-email")));
@@ -385,14 +385,11 @@ void FormMain::setupIcons() {
   m_ui->m_actionServiceAdd->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
   m_ui->m_actionServiceEdit->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
   m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
-  m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder-feed")));
-  m_ui->m_actionAddCategoryIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder-category")));
+  m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml")));
+  m_ui->m_actionAddCategoryIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder")));
 
   // Setup icons on TabWidget too.
   m_ui->m_tabWidget->setupIcons();
-
-  // Most of icons are loaded, clear the cache.
-  qApp->icons()->clearCache();
 }
 
 void FormMain::loadSize() {

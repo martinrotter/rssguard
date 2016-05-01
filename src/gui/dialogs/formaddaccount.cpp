@@ -29,7 +29,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, Fe
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("item-new")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("document-new")));
 
   connect(m_ui->m_listEntryPoints, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(addSelectedAccount()));
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(addSelectedAccount()));

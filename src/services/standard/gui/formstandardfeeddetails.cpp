@@ -202,7 +202,7 @@ void FormStandardFeedDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the feed"),
                      qApp->homeFolderPath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
   dialog.setFileMode(QFileDialog::ExistingFile);
-  dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-generic")));
+  dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
   dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);
   dialog.setViewMode(QFileDialog::Detail);
   dialog.setLabelText(QFileDialog::Accept, tr("Select icon"));
@@ -218,7 +218,7 @@ void FormStandardFeedDetails::onLoadIconFromFile() {
 }
 
 void FormStandardFeedDetails::onUseDefaultIcon() {
-  m_ui->m_btnIcon->setIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
+  m_ui->m_btnIcon->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
 }
 
 void FormStandardFeedDetails::apply() {
@@ -390,7 +390,7 @@ void FormStandardFeedDetails::initialize() {
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
@@ -431,16 +431,16 @@ void FormStandardFeedDetails::initialize() {
 
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
-  m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme(QSL("image-generic")),
+  m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")),
                                          tr("Load icon from file..."),
                                          this);
-  m_actionNoIcon = new QAction(qApp->icons()->fromTheme(QSL("dialog-cancel")),
+  m_actionNoIcon = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
                                tr("Do not use icon"),
                                this);
-  m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme(QSL("folder-feed")),
+  m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")),
                                        tr("Use default icon"),
                                        this);
-  m_actionFetchIcon = new QAction(qApp->icons()->fromTheme(QSL("document-download")),
+  m_actionFetchIcon = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")),
                                   tr("Fetch icon from feed"),
                                   this);
   m_iconMenu->addAction(m_actionFetchIcon);

@@ -69,7 +69,7 @@ void MessagePreviewer::createConnections() {
           &QAction::triggered,
           this,
           &MessagePreviewer::markMessageAsUnread);
-  connect(m_actionSwitchImportance = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-favorite"), tr("Switch message importance")),
+  connect(m_actionSwitchImportance = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-important"), tr("Switch message importance")),
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
