@@ -3,6 +3,7 @@
 
 Added:
 
+▪ RSS Guard now supports system-wide icon themes and on Windows -> built-in Faenza theme was tweaked.
 ▪ ownCloud plugin now allows to add feeds and rename feeds.
 
 Fixed:
