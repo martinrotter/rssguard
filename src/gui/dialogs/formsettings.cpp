@@ -59,7 +59,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("preferences-other")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("emblem-system")));
 
   m_ui->m_editorMessagesToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->activeItemsWidget()->viewport()->installEventFilter(this);

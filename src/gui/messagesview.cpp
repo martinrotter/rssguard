@@ -470,7 +470,7 @@ void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
 void MessagesView::createNewspaperView(RootItem *selected_item, const QList<Message> &messages) {
   NewspaperPreviewer *prev = new NewspaperPreviewer(selected_item, messages, this);
   int index = qApp->mainForm()->tabWidget()->addTab(prev,
-                                                    qApp->icons()->fromTheme(QSL("emblem-mail")),
+                                                    qApp->icons()->fromTheme(QSL("text-x-script")),
                                                     tr("Newspaper view"),
                                                     TabBar::Closable);
   qApp->mainForm()->tabWidget()->setCurrentIndex(index);

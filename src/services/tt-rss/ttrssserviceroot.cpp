@@ -267,7 +267,7 @@ void TtRssServiceRoot::updateTitle() {
     host = m_network->url();
   }
 
-  setTitle(m_network->username() + QL1S("@") + host);
+  setTitle(m_network->username() + QL1S("@") + host + QSL(" (Tiny Tiny RSS)"));
 }
 
 RootItem *TtRssServiceRoot::obtainNewTreeForSyncIn() const {

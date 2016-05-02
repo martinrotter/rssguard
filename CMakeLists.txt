@@ -427,15 +427,16 @@ endif(UNIX)
 
 set(FAENZA_FOLDERS
   "resources/graphics/Faenza/actions"
-  "resources/graphics/Faenza/apps"
   "resources/graphics/Faenza/categories"
   "resources/graphics/Faenza/devices"
   "resources/graphics/Faenza/emblems"
   "resources/graphics/Faenza/mimetypes"
   "resources/graphics/Faenza/places"
   "resources/graphics/Faenza/status"
-  "resources/graphics/Faenza/stock"
   )
+
+file( GLOB MISC_ICONS
+  "resources/graphics/*.png")
 
 # Installation stage.
 if(WIN32)
@@ -450,7 +451,8 @@ if(WIN32)
   install(FILES ${APP_DLLS_QT5_MSVC2013_PLATFORMS} DESTINATION ./platforms)
   install(FILES ${APP_DLLS_QT5_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
 
-  install(FILES "resources/graphics/Faenza/index.theme" DESTINATION ./icons/Faenza)
+  install(FILES ${MISC_ICONS} DESTINATION ./icons/)
+  install(FILES resources/graphics/Faenza/index.theme DESTINATION ./icons/Faenza)
   install(DIRECTORY ${FAENZA_FOLDERS} DESTINATION ./icons/Faenza)
 
   install(DIRECTORY resources/skins/base
@@ -496,7 +498,8 @@ elseif(APPLE)
   # Setup custom "bundle" prefix.
   set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${EXE_NAME}.app/Contents/Resources)
 
-  install(FILES "resources/graphics/Faenza/index.theme" DESTINATION ${APPLE_PREFIX}/icons/Faenza)
+  install(FILES ${MISC_ICONS} DESTINATION ${APPLE_PREFIX}/icons/)
+  install(FILES resources/graphics/Faenza/index.theme DESTINATION ${APPLE_PREFIX}/icons/Faenza)
   install(DIRECTORY ${FAENZA_FOLDERS} DESTINATION ${APPLE_PREFIX}/icons/Faenza)
 
   install(DIRECTORY resources/initial_feeds DESTINATION ${APPLE_PREFIX})
@@ -510,8 +513,9 @@ elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
 
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
+
+  install(FILES ${MISC_ICONS} DESTINATION share/${APP_LOW_NAME}/icons)
   install(DIRECTORY resources/initial_feeds DESTINATION share/${APP_LOW_NAME})
-  install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION share/${APP_LOW_NAME}/icons)
   install(DIRECTORY resources/skins/base DESTINATION share/${APP_LOW_NAME}/skins)
   install(DIRECTORY resources/misc  DESTINATION share/${APP_LOW_NAME})
   install(FILES ${CMAKE_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop  DESTINATION share/applications)
