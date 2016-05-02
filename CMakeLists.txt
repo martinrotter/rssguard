@@ -425,22 +425,33 @@ else(UNIX)
     )
 endif(UNIX)
 
+set(FAENZA_FOLDERS
+  "resources/graphics/Faenza/actions"
+  "resources/graphics/Faenza/apps"
+  "resources/graphics/Faenza/categories"
+  "resources/graphics/Faenza/devices"
+  "resources/graphics/Faenza/emblems"
+  "resources/graphics/Faenza/mimetypes"
+  "resources/graphics/Faenza/places"
+  "resources/graphics/Faenza/status"
+  "resources/graphics/Faenza/stock"
+  )
+
 # Installation stage.
 if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows or OS/2.")
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION ./)
 
   # Copy DLLs and other binary files for main installation.
-  if(WIN32)
-    install(FILES ${APP_DLLS_QT5_MSVC2013} DESTINATION ./)
-    install(FILES ${APP_DLLS_QT5_MSVC2013_BEARER} DESTINATION ./bearer)
-    install(FILES ${APP_DLLS_QT5_MSVC2013_ICONENGINES} DESTINATION ./iconengines)
-    install(FILES ${APP_DLLS_QT5_MSVC2013_IMAGEFORMATS} DESTINATION ./imageformats)
-    install(FILES ${APP_DLLS_QT5_MSVC2013_PLATFORMS} DESTINATION ./platforms)
-    install(FILES ${APP_DLLS_QT5_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
-  endif(WIN32)
+  install(FILES ${APP_DLLS_QT5_MSVC2013} DESTINATION ./)
+  install(FILES ${APP_DLLS_QT5_MSVC2013_BEARER} DESTINATION ./bearer)
+  install(FILES ${APP_DLLS_QT5_MSVC2013_ICONENGINES} DESTINATION ./iconengines)
+  install(FILES ${APP_DLLS_QT5_MSVC2013_IMAGEFORMATS} DESTINATION ./imageformats)
+  install(FILES ${APP_DLLS_QT5_MSVC2013_PLATFORMS} DESTINATION ./platforms)
+  install(FILES ${APP_DLLS_QT5_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
 
-  install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ./icons)
+  install(FILES "resources/graphics/Faenza/index.theme" DESTINATION ./icons/Faenza)
+  install(DIRECTORY ${FAENZA_FOLDERS} DESTINATION ./icons/Faenza)
 
   install(DIRECTORY resources/skins/base
     DESTINATION ./skins)
@@ -485,8 +496,10 @@ elseif(APPLE)
   # Setup custom "bundle" prefix.
   set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${EXE_NAME}.app/Contents/Resources)
 
+  install(FILES "resources/graphics/Faenza/index.theme" DESTINATION ${APPLE_PREFIX}/icons/Faenza)
+  install(DIRECTORY ${FAENZA_FOLDERS} DESTINATION ${APPLE_PREFIX}/icons/Faenza)
+
   install(DIRECTORY resources/initial_feeds DESTINATION ${APPLE_PREFIX})
-  install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ${APPLE_PREFIX}/icons)
   install(DIRECTORY resources/skins DESTINATION ${APPLE_PREFIX})
   install(DIRECTORY resources/misc DESTINATION ${APPLE_PREFIX})
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png DESTINATION ${APPLE_PREFIX} RENAME ${APP_LOW_NAME}.png)
