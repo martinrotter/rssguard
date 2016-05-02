@@ -44,32 +44,11 @@ class IconFactory : public QObject {
     static QIcon fromByteArray(QByteArray array);
     static QByteArray toByteArray(const QIcon &icon);
 
-    void clearCache();
-
-    inline QPixmap pixmap(const QString &name) {
-      if (m_currentIconTheme == APP_NO_THEME) {
-        return QPixmap();
-      }
-      else {
-        return QPixmap(APP_THEME_PATH + QDir::separator() +  m_currentIconTheme + QDir::separator() + name + APP_THEME_SUFFIX);
-      }
-    }
+    QPixmap pixmap(const QString &name);
 
     // Returns icon from active theme or invalid icon if
     // "no icon theme" is set.
-    inline QIcon fromTheme(const QString &name) {
-      if (m_currentIconTheme == APP_NO_THEME) {
-        return QIcon();
-      }
-
-      if (!m_cachedIcons.contains(name)) {
-        // Icon is not cached yet.
-        m_cachedIcons.insert(name,
-                             QIcon(APP_THEME_PATH + QDir::separator() +  m_currentIconTheme + QDir::separator() + name + APP_THEME_SUFFIX));
-      }
-
-      return m_cachedIcons.value(name);
-    }
+    QIcon fromTheme(const QString &name);
 
     // Adds custom application path to be search for icons.
     void setupSearchPaths();
@@ -84,15 +63,11 @@ class IconFactory : public QObject {
 
     // Returns name of currently activated theme for the application.
     inline QString currentIconTheme() const {
-      return m_currentIconTheme;
+      return QIcon::themeName();
     }
 
     // Sets icon theme with given name as the active one and loads it.
     void setCurrentIconTheme(const QString &theme_name);
-
-  private:
-    QHash<QString, QIcon> m_cachedIcons;
-    QString m_currentIconTheme;
 };
 
 #endif // ICONFACTORY_H

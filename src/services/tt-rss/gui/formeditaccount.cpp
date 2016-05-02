@@ -31,7 +31,7 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
 
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("application-ttrss")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("tinytinyrss")));
 
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                      "of feeds will be probably much slower and may time-out often."));

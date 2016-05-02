@@ -38,7 +38,7 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   m_barProgressFeeds->setVisible(false);
   m_barProgressFeeds->setObjectName(QSL("m_barProgressFeeds"));
 
-  m_barProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("folder-feed")), tr("Feed update progress bar"), this);
+  m_barProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update progress bar"), this);
   m_barProgressFeedsAction->setObjectName(QSL("m_barProgressFeedsAction"));
 
   m_lblProgressFeeds = new QLabel(this);
@@ -46,7 +46,7 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   m_lblProgressFeeds->setVisible(false);
   m_lblProgressFeeds->setObjectName(QSL("m_lblProgressFeeds"));
 
-  m_lblProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("folder-feed")), tr("Feed update label"), this);
+  m_lblProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update label"), this);
   m_lblProgressFeedsAction->setObjectName(QSL("m_lblProgressFeedsAction"));
 
   m_barProgressDownload = new QProgressBar(this);
@@ -55,7 +55,7 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   m_barProgressDownload->setVisible(false);
   m_barProgressDownload->setObjectName(QSL("m_barProgressDownload"));
 
-  m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("download-manager")), tr("File download progress bar"), this);
+  m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("File download progress bar"), this);
   m_barProgressDownloadAction->setObjectName(QSL("m_barProgressDownloadAction"));
 
   m_lblProgressDownload = new QLabel(this);
@@ -64,7 +64,7 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   m_lblProgressDownload->setVisible(false);
   m_lblProgressDownload->setObjectName(QSL("m_lblProgressDownload"));
 
-  m_lblProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("download-manager")), tr("File download label"), this);
+  m_lblProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("File download label"), this);
   m_lblProgressDownloadAction->setObjectName(QSL("m_lblProgressDownloadAction"));
 
   m_lblProgressDownload->installEventFilter(this);
@@ -152,7 +152,7 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
 
         action_to_add = new QAction(this);
         action_to_add->setProperty("should_remove_action", true);
-        action_to_add->setIcon(qApp->icons()->fromTheme(QSL("application-search")));
+        action_to_add->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
         action_to_add->setProperty("type", SPACER_ACTION_NAME);
         action_to_add->setProperty("name", tr("Toolbar spacer"));
       }

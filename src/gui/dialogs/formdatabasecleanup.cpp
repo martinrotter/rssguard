@@ -29,7 +29,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_u
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("cleanup-database")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
 
   connect(m_ui->m_spinDays, SIGNAL(valueChanged(int)), this, SLOT(updateDaysSuffix(int)));
   m_ui->m_spinDays->setValue(DEFAULT_DAYS_TO_DELETE_MSG);

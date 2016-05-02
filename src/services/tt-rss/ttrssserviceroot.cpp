@@ -168,7 +168,7 @@ RecycleBin *TtRssServiceRoot::recycleBin() const {
 
 QList<QAction*> TtRssServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
-    m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("item-sync")), tr("Sync in"), this);
+    m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
 
     connect(m_actionSyncIn, SIGNAL(triggered()), this, SLOT(syncIn()));
     m_serviceMenu.append(m_actionSyncIn);

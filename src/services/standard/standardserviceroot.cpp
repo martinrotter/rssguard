@@ -215,7 +215,7 @@ void StandardServiceRoot::checkArgumentForFeedAdding(const QString &argument) {
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {
   if (m_feedContextMenu.isEmpty()) {
     // Initialize.
-    m_actionFeedFetchMetadata = new QAction(qApp->icons()->fromTheme(QSL("download-manager")), tr("Fetch metadata"), NULL);
+    m_actionFeedFetchMetadata = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("Fetch metadata"), NULL);
     m_feedContextMenu.append(m_actionFeedFetchMetadata);
   }
 

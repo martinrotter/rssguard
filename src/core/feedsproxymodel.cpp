@@ -28,7 +28,7 @@
 
 
 FeedsProxyModel::FeedsProxyModel(QObject *parent)
-  : QSortFilterProxyModel(parent), m_selectedItem(NULL), m_showUnreadOnly(false) {
+  : QSortFilterProxyModel(parent), m_selectedItem(NULL), m_showUnreadOnly(false), m_hiddenIndices(QList<QPair<int,QModelIndex> >()) {
   m_sourceModel = new FeedsModel(this);
 
   setObjectName(QSL("FeedsProxyModel"));
@@ -183,6 +183,25 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right
 }
 
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const {
+  bool should_show = filterAcceptsRowInternal(source_row, source_parent);
+
+  if (should_show && m_hiddenIndices.contains(QPair<int,QModelIndex>(source_row, source_parent))) {
+    // TODO: dodělat
+
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int,QModelIndex>(source_row, source_parent));
+
+    // Load status.
+    emit expandAfterFilterIn(m_sourceModel->index(source_row, 0, source_parent));
+  }
+
+  if (!should_show) {
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(QPair<int,QModelIndex>(source_row, source_parent));
+  }
+
+  return should_show;
+}
+
+bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex &source_parent) const {
   if (!m_showUnreadOnly) {
     return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
   }

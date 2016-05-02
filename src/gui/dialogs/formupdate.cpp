@@ -44,7 +44,7 @@ FormUpdate::FormUpdate(QWidget *parent)
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("application-about")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("help-about")));
 
   connect(m_btnUpdate, SIGNAL(clicked()), this, SLOT(startUpdate()));
   checkForUpdates();

@@ -225,7 +225,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray &data, bool fetch_m
               new_feed->setEncoding(feed_encoding);
               new_feed->setUrl(feed_url);
               new_feed->setCreationDate(QDateTime::currentDateTime());
-              new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-feed")) : feed_icon);
+              new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme(QSL("application-rss+xml")) : feed_icon);
 
               if (feed_type == QL1S("RSS1")) {
                 new_feed->setType(StandardFeed::Rdf);
@@ -267,7 +267,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray &data, bool fetch_m
 
           StandardCategory *new_category = new StandardCategory(active_model_item);
           new_category->setTitle(category_title);
-          new_category->setIcon(category_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-category")) : category_icon);
+          new_category->setIcon(category_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder")) : category_icon);
           new_category->setCreationDate(QDateTime::currentDateTime());
           new_category->setDescription(category_description);
 
@@ -325,7 +325,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data, bool 
         feed->setUrl(url);
         feed->setTitle(url);
         feed->setCreationDate(QDateTime::currentDateTime());
-        feed->setIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
+        feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
         feed->setEncoding(DEFAULT_FEED_ENCODING);
         root_item->appendChild(feed);
 

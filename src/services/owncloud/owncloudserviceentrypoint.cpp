@@ -70,6 +70,6 @@ QString OwnCloudServiceEntryPoint::author() const {
 }
 
 QIcon OwnCloudServiceEntryPoint::icon() const {
-  return qApp->icons()->fromTheme(QSL("application-owncloud"));
+  return qApp->icons()->fromTheme(QSL("owncloud"));
 }
 
