@@ -104,6 +104,13 @@ void ServiceRoot::updateCounts(bool including_total_count) {
           feed->setCountOfAllMessages(counts.value(feed->customId()).second);
         }
       }
+      else {
+        feed->setCountOfUnreadMessages(0);
+
+        if (including_total_count) {
+          feed->setCountOfAllMessages(0);
+        }
+      }
     }
   }
 }

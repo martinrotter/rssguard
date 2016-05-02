@@ -5,6 +5,11 @@ Added:
 
 ▪ ownCloud plugin now allows to add feeds and rename feeds.
 
+Fixed:
+
+▪ Some minor buggies and code mistakes.
+▪ Fixed problem with message counts.
+
 3.2.1
 —————
 
