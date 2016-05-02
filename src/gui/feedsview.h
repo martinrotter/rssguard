@@ -102,6 +102,7 @@ class FeedsView : public QTreeView {
     void openMessagesInNewspaperView(RootItem *root, const QList<Message> &messages);
 
   private slots:
+    void expandItemDelayed(const QModelIndex &idx);
     void markSelectedItemReadStatus(RootItem::ReadStatus read);
     void markAllItemsReadStatus(RootItem::ReadStatus read);
 

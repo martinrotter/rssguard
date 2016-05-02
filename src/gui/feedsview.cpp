@@ -59,13 +59,7 @@ FeedsView::FeedsView(QWidget *parent)
   connect(m_sourceModel, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SLOT(onItemExpandRequested(QList<RootItem*>,bool)));
   connect(m_sourceModel, SIGNAL(itemExpandStateSaveRequested(RootItem*)), this, SLOT(onItemExpandStateSaveRequested(RootItem*)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
-
-  connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, [=](const QModelIndex &idx) {
-    QTimer::singleShot(100, this, [=] {
-      // TODO: Z nastavení.
-      setExpanded(m_proxyModel->mapFromSource(idx), true);
-    });
-  });
+  connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, this, &FeedsView::expandItemDelayed);
 
   setModel(m_proxyModel);
   setupAppearance();
@@ -357,6 +351,13 @@ void FeedsView::selectPreviousItem() {
 
 void FeedsView::switchVisibility() {
   setVisible(!isVisible());
+}
+
+void FeedsView::expandItemDelayed(const QModelIndex &idx) {
+  QTimer::singleShot(100, this, [=] {
+    // TODO: Z nastavení.
+    setExpanded(m_proxyModel->mapFromSource(idx), true);
+  });
 }
 
 QMenu *FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
