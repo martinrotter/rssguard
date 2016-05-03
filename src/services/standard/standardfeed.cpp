@@ -383,8 +383,8 @@ bool StandardFeed::addItself(RootItem *parent) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   bool ok;
   int new_id = DatabaseQueries::addFeed(database, parent->id(), parent->getParentServiceRoot()->accountId(), title(),
-                                                description(), creationDate(), icon(), encoding(), url(), passwordProtected(),
-                                                username(), password(), autoUpdateType(), autoUpdateInitialInterval(), type(), &ok);
+                                        description(), creationDate(), icon(), encoding(), url(), passwordProtected(),
+                                        username(), password(), autoUpdateType(), autoUpdateInitialInterval(), type(), &ok);
 
   if (!ok) {
     // Query failed.
@@ -405,11 +405,11 @@ bool StandardFeed::editItself(StandardFeed *new_feed_data) {
   RootItem *new_parent = new_feed_data->parent();
 
   if (!DatabaseQueries::editFeed(database, new_parent->id(), original_feed->id(), new_feed_data->title(),
-                                new_feed_data->description(), new_feed_data->icon(),
-                                new_feed_data->encoding(), new_feed_data->url(), new_feed_data->passwordProtected(),
-                                new_feed_data->username(), new_feed_data->password(),
-                                new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
-                                new_feed_data->type())) {
+                                 new_feed_data->description(), new_feed_data->icon(),
+                                 new_feed_data->encoding(), new_feed_data->url(), new_feed_data->passwordProtected(),
+                                 new_feed_data->username(), new_feed_data->password(),
+                                 new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
+                                 new_feed_data->type())) {
     // Persistent storage update failed, no way to continue now.
     return false;
   }

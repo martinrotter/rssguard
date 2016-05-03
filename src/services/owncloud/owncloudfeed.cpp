@@ -59,10 +59,7 @@ bool OwnCloudFeed::canBeDeleted() const {
 }
 
 bool OwnCloudFeed::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (serviceRoot()->network()->deleteFeed(customId()) &&
-      DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId())) {
+  if (removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;
   }
@@ -84,6 +81,14 @@ bool OwnCloudFeed::editItself(OwnCloudFeed *new_feed_data) {
     setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
     return true;
   }
+}
+
+bool OwnCloudFeed::removeItself() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  return
+      serviceRoot()->network()->deleteFeed(customId()) &&
+      DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
 }
 
 bool OwnCloudFeed::markAsReadUnread(RootItem::ReadStatus status) {
