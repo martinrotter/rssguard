@@ -59,9 +59,7 @@ QString TtRssServiceEntryPoint::author() const {
 }
 
 QIcon TtRssServiceEntryPoint::icon() const {
-  return QIcon(QString(APP_THEME_PATH) +
-               QDir::separator() +
-               QSL("tt-rss.png"));
+  return qApp->icons()->miscIcon(QSL("tt-rss"));
 }
 
 QString TtRssServiceEntryPoint::code() const {

@@ -70,6 +70,14 @@ QIcon IconFactory::fromTheme(const QString &name) {
   return QIcon::fromTheme(name);
 }
 
+QPixmap IconFactory::miscPixmap(const QString &name) {
+  return QPixmap(QString(APP_THEME_PATH) + QDir::separator() + "misc" + QDir::separator() + name + ".png");
+}
+
+QIcon IconFactory::miscIcon(const QString &name) {
+  return QIcon(QString(APP_THEME_PATH) + QDir::separator() + "misc" + QDir::separator() + name + ".png");
+}
+
 void IconFactory::setupSearchPaths() {
   QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
@@ -120,7 +128,7 @@ QStringList IconFactory::installedIconThemes() const {
   icon_themes_paths.removeDuplicates();
 
   foreach (const QString &icon_path, icon_themes_paths) {
-   const QDir icon_dir(icon_path);
+    const QDir icon_dir(icon_path);
 
     // Iterate all icon themes in this directory.
     foreach (const QFileInfo &icon_theme_path, icon_dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot |

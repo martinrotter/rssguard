@@ -451,7 +451,7 @@ if(WIN32)
   install(FILES ${APP_DLLS_QT5_MSVC2013_PLATFORMS} DESTINATION ./platforms)
   install(FILES ${APP_DLLS_QT5_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
 
-  install(FILES ${MISC_ICONS} DESTINATION ./icons/)
+  install(DIRECTORY resources/graphics/misc DESTINATION ./icons)
   install(FILES resources/graphics/Faenza/index.theme DESTINATION ./icons/Faenza)
   install(DIRECTORY ${FAENZA_FOLDERS} DESTINATION ./icons/Faenza)
 
@@ -498,7 +498,7 @@ elseif(APPLE)
   # Setup custom "bundle" prefix.
   set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${EXE_NAME}.app/Contents/Resources)
 
-  install(FILES ${MISC_ICONS} DESTINATION ${APPLE_PREFIX}/icons/)
+  install(DIRECTORY resources/graphics/misc DESTINATION ${APPLE_PREFIX}/icons)
   install(FILES resources/graphics/Faenza/index.theme DESTINATION ${APPLE_PREFIX}/icons/Faenza)
   install(DIRECTORY ${FAENZA_FOLDERS} DESTINATION ${APPLE_PREFIX}/icons/Faenza)
 
@@ -514,7 +514,7 @@ elseif(UNIX)
 
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
 
-  install(FILES ${MISC_ICONS} DESTINATION share/${APP_LOW_NAME}/icons)
+  install(DIRECTORY resources/graphics/misc DESTINATION share/${APP_LOW_NAME}/icons)
   install(DIRECTORY resources/initial_feeds DESTINATION share/${APP_LOW_NAME})
   install(DIRECTORY resources/skins/base DESTINATION share/${APP_LOW_NAME}/skins)
   install(DIRECTORY resources/misc  DESTINATION share/${APP_LOW_NAME})

@@ -17,10 +17,7 @@ QVariant MessageTextBrowser::loadResource(int type, const QUrl &name) {
   switch (type) {
     case QTextDocument::ImageResource: {
       if (m_imagePlaceholder.isNull()) {
-        // TODO: opravit, zahrnout ten obrázek asi.
-        m_imagePlaceholder = QPixmap(QString(APP_THEME_PATH) +
-                                     QDir::separator() +
-                                     QSL("image-placeholder.png")).scaledToWidth(20, Qt::FastTransformation);
+        m_imagePlaceholder = qApp->icons()->miscPixmap(QSL("image-placeholder")).scaledToWidth(20, Qt::FastTransformation);
       }
 
       emit imageRequested(name.toString());

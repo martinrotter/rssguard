@@ -50,6 +50,9 @@ class IconFactory : public QObject {
     // "no icon theme" is set.
     QIcon fromTheme(const QString &name);
 
+    QPixmap miscPixmap(const QString &name);
+    QIcon miscIcon(const QString &name);
+
     // Adds custom application path to be search for icons.
     void setupSearchPaths();
 

@@ -455,7 +455,7 @@ void FormSettings::loadLanguage() {
     item->setText(1, language.m_code);
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
-    item->setIcon(0, qApp->icons()->fromTheme(QString(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
+    item->setIcon(0, qApp->icons()->miscIcon(QString(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
   }
 
   QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(qApp->localization()->loadedLanguage(), Qt::MatchContains, 1);
