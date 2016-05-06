@@ -112,11 +112,14 @@ bool TtRssFeed::canBeDeleted() const {
 }
 
 bool TtRssFeed::deleteViaGui() {
-  if (removeItself()) {
+  TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customId());
+
+  if (response.code() == UFF_OK && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;
   }
   else {
+    qWarning("TT-RSS: Unsubscribing from feed failed, received JSON: '%s'", qPrintable(response.toString()));
     return false;
   }
 }
@@ -183,16 +186,7 @@ QList<Message> TtRssFeed::obtainNewMessages() {
 }
 
 bool TtRssFeed::removeItself() {
-  TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customId());
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  if (response.code() == UFF_OK) {
-    // Feed was removed online from server, remove local data.
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-    return DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
-  }
-  else {
-    qWarning("TT-RSS: Unsubscribing from feed failed, received JSON: '%s'", qPrintable(response.toString()));
-    return false;
-  }
+  return DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
 }

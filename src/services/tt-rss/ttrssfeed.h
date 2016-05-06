@@ -42,11 +42,12 @@ class TtRssFeed : public Feed {
 
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
+
     bool editItself(TtRssFeed *new_feed_data);
+    bool removeItself();
 
   private:
     QList<Message> obtainNewMessages();
-    bool removeItself();
 };
 
 #endif // TTRSSFEED_H

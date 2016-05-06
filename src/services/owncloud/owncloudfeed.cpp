@@ -59,7 +59,7 @@ bool OwnCloudFeed::canBeDeleted() const {
 }
 
 bool OwnCloudFeed::deleteViaGui() {
-  if (removeItself()) {
+  if (serviceRoot()->network()->deleteFeed(customId()) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;
   }
@@ -86,9 +86,7 @@ bool OwnCloudFeed::editItself(OwnCloudFeed *new_feed_data) {
 bool OwnCloudFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  return
-      serviceRoot()->network()->deleteFeed(customId()) &&
-      DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
+  return DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
 }
 
 bool OwnCloudFeed::markAsReadUnread(RootItem::ReadStatus status) {
