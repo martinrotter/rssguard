@@ -31,7 +31,7 @@
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/gui/formeditaccount.h"
-#include "services/tt-rss/gui/formeditfeed.h"
+#include "services/tt-rss/gui/formttrssfeeddetails.h"
 
 #include <QSqlTableModel>
 #include <QPair>
@@ -122,9 +122,9 @@ void TtRssServiceRoot::addNewFeed(const QString &url) {
     return;
   }
 
-  QScopedPointer<FormEditFeed> form_pointer(new FormEditFeed(this, qApp->mainForm()));
+  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainForm()));
 
-  form_pointer.data()->execForAdd(url);
+  form_pointer.data()->exec(NULL, this, url);
   qApp->feedUpdateLock()->unlock();
 }
 

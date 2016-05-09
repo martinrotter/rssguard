@@ -32,7 +32,6 @@
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
-#include "services/standard/gui/formstandardfeeddetails.h"
 
 #include <QMenu>
 #include <QHeaderView>

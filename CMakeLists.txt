@@ -282,6 +282,7 @@ file( GLOB APP_SOURCES_GL
   "src/miscellaneous/simplecrypt/*.cpp"
   "src/exceptions/*.cpp"
   "src/core/*.cpp"
+  "src/services/abstract/gui/*.cpp"
   "src/services/abstract/*.cpp"
   "src/services/standard/*.cpp"
   "src/services/standard/gui/*.cpp"
@@ -313,6 +314,7 @@ file( GLOB APP_HEADERS
   "src/miscellaneous/*.h"
   "src/miscellaneous/simplecrypt/*.h"
   "src/core/*.h"
+  "src/services/abstract/gui/*.h"
   "src/services/abstract/*.h"
   "src/services/standard/*.h"
   "src/services/standard/gui/*.h"
@@ -328,6 +330,7 @@ file( GLOB APP_HEADERS
 file( GLOB APP_FORMS
   "src/gui/dialogs/*.ui"
   "src/gui/*.ui"
+  "src/services/abstract/gui/*.ui"
   "src/services/standard/gui/*.ui"
   "src/services/tt-rss/gui/*.ui"
   "src/services/owncloud/gui/*.ui"

@@ -26,7 +26,6 @@
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 #include "services/tt-rss/ttrsscategory.h"
-#include "services/tt-rss/gui/formeditfeed.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 
 #include <QPointer>
@@ -96,14 +95,10 @@ QVariant TtRssFeed::data(int column, int role) const {
 }
 
 bool TtRssFeed::canBeEdited() const {
-  return true;
+  return false;
 }
 
 bool TtRssFeed::editViaGui() {
-  QPointer<FormEditFeed> form_pointer = new FormEditFeed(serviceRoot(), qApp->mainForm());
-
-  form_pointer.data()->execForEdit(this);
-  delete form_pointer.data();
   return false;
 }
 

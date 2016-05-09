@@ -30,7 +30,7 @@
 #include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
-#include "services/owncloud/gui/formeditowncloudfeed.h"
+#include "services/owncloud/gui/formowncloudfeeddetails.h"
 
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
@@ -208,9 +208,9 @@ void OwnCloudServiceRoot::addNewFeed(const QString &url) {
     return;
   }
 
-  QScopedPointer<FormEditOwnCloudFeed> form_pointer(new FormEditOwnCloudFeed(this, qApp->mainForm()));
+  QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainForm()));
 
-  form_pointer.data()->execForAdd(url);
+  form_pointer.data()->exec(NULL, this, url);
   qApp->feedUpdateLock()->unlock();
 }
 

@@ -21,7 +21,7 @@
 #include "miscellaneous/databasequeries.h"
 #include "services/owncloud/owncloudserviceroot.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
-#include "services/owncloud/gui/formeditowncloudfeed.h"
+#include "services/owncloud/gui/formowncloudfeeddetails.h"
 #include "gui/dialogs/formmain.h"
 
 #include <QPointer>
@@ -47,9 +47,9 @@ bool OwnCloudFeed::canBeEdited() const {
 }
 
 bool OwnCloudFeed::editViaGui() {
-  QPointer<FormEditOwnCloudFeed> form_pointer = new FormEditOwnCloudFeed(serviceRoot(), qApp->mainForm());
+  QPointer<FormOwnCloudFeedDetails> form_pointer = new FormOwnCloudFeedDetails(serviceRoot(), qApp->mainForm());
 
-  form_pointer.data()->execForEdit(this);
+  form_pointer.data()->exec(this, NULL);
   delete form_pointer.data();
   return false;
 }

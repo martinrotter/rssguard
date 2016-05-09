@@ -30,8 +30,8 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "services/abstract/recyclebin.h"
-#include "services/standard/standardserviceroot.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
+#include "services/standard/standardserviceroot.h"
 
 #include <QVariant>
 #include <QTextCodec>
@@ -94,7 +94,6 @@ StandardServiceRoot *StandardFeed::serviceRoot() const {
 
 bool StandardFeed::editViaGui() {
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(), qApp->mainForm()));
-
   form_pointer.data()->exec(this, NULL);
   return false;
 }

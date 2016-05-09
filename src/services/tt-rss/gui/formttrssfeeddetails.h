@@ -15,18 +15,19 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef FORMSSFEEDDETAILS_H
-#define FORMSSFEEDDETAILS_H
+#ifndef FORMTTRSSFEEDDETAILS_H
+#define FORMTTRSSFEEDDETAILS_H
 
 #include "services/abstract/gui/formfeeddetails.h"
 
 
-class FormStandardFeedDetails : public FormFeedDetails {
+class FormTtRssFeedDetails : public FormFeedDetails {
     Q_OBJECT
 
   public:
-    explicit FormStandardFeedDetails(ServiceRoot *service_root, QWidget *parent = 0);
+    explicit FormTtRssFeedDetails(ServiceRoot *service_root, QWidget *parent = 0);
 
+    // FormFeedDetails interface
   protected slots:
     void apply();
 
@@ -34,4 +35,4 @@ class FormStandardFeedDetails : public FormFeedDetails {
     void setEditableFeed(Feed *editable_feed);
 };
 
-#endif // FORMSSFEEDDETAILS_H
+#endif // FORMTTRSSFEEDDETAILS_H
