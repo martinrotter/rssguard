@@ -138,12 +138,7 @@ QStringList IconFactory::installedIconThemes() const {
       QDir icon_theme_dir = QDir(icon_theme_path.absoluteFilePath());
 
       if (icon_theme_dir.exists(filters_index.at(0))) {
-        // We found theme.
-        QSettings index_theme(icon_theme_dir.entryInfoList(filters_index,
-                                                           QDir::Files).at(0).absoluteFilePath(), QSettings::IniFormat);
-
-        icon_theme_names << index_theme.value(QString("%1/%2").arg("Icon Theme",
-                                                                   "Name")).toString();
+        icon_theme_names << icon_theme_dir.dirName();
       }
     }
   }
