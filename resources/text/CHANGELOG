@@ -1,6 +1,14 @@
 3.2.2
 —————
 
+Changed:
+
+▪ Some minor tweaks for default icon theme loading.
+
+
+3.2.2
+—————
+
 Added:
 
 ▪ RSS Guard now supports system-wide icon themes and on Windows -> built-in Faenza theme was tweaked.

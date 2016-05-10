@@ -111,7 +111,7 @@ void IconFactory::loadCurrentIconTheme() {
   else {
     // Desired icon theme is not currently available.
     // Install "default" icon theme instead.
-    qDebug("Icon theme '%s' cannot be loaded because it is not installed. No icon theme is loaded now.",
+    qDebug("Icon theme '%s' cannot be loaded because it is not installed. No icon theme (or default icon theme) is loaded now.",
            qPrintable(theme_name_from_settings));
     QIcon::setThemeName(APP_NO_THEME);
   }
@@ -144,7 +144,6 @@ QStringList IconFactory::installedIconThemes() const {
   }
 
   icon_theme_names.removeDuplicates();
-  icon_theme_names.removeAll(QString());
 
   return icon_theme_names;
 }
