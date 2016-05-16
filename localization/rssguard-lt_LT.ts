@@ -38,11 +38,11 @@
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation type="unfinished"/>
+        <translation>Sumažinamas duomenų bazės failas...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazės failas sumažintas...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
@@ -77,12 +77,12 @@
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>Paskirties vietoje nėra vykdomas joks MySQL serveris.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Prieiga negalima. Panaudotas neteisingas naudotojo vardas ar slaptažodis.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
@@ -187,7 +187,8 @@
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation type="unfinished"/>
+        <translation>Failas &quot;%1&quot; yra atsisiųstas.
+Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>URL: %1</source>
@@ -195,18 +196,18 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Vietinis failas: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation type="unfinished"/>
+        <translation>Vietinio failo pasirinkimas atšauktas.</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation type="unfinished"/>
+        <translation>Išvalyti</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
@@ -241,19 +242,19 @@ Click here to open parent directory.</source>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių įrankių juosta</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation type="unfinished"/>
+        <translation>Kanalų įrankių juosta</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta išvalyti duomenų bazės</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta išvalyti duomenų bazės, nes yra vykdomas kitas kritinis veiksmas.</translation>
     </message>
 </context>
 <context>
@@ -289,7 +290,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Pradedamas kai kurių kanalų automatinis atnaujinimas</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -323,7 +324,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs negalite atnaujinti visų elementų, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -334,7 +335,7 @@ Click here to open parent directory.</source>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Įrankių juostos tarpiklis</translation>
     </message>
 </context>
 <context>
@@ -398,7 +399,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nepalaikoma</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -406,7 +407,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkta paskyra nepalaiko naujų kategorijų pridėjimo.</translation>
     </message>
 </context>
 <context>
@@ -524,19 +525,19 @@ or this functionality is not implemented yet.</source>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Daryti atsarginę duomenų bazės/nustatymų kopiją</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation type="unfinished"/>
+        <translation>Atsarginės kopijos savybės</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation type="unfinished"/>
+        <translation>Elementai, kurių atsarginę kopiją daryti</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazė</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -544,35 +545,35 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Backup name</source>
-        <translation type="unfinished"/>
+        <translation>Atsarginės kopijos pavadinimas</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Operacijos rezultatai</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation type="unfinished"/>
+        <translation>Bendras atsarginės kopijos failų pavadinimas</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas neįvykdyta jokių operacijų.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Atsarginė kopija buvo sėkmingai sukurta.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Atsarginės kopijos pavadinimas negali būti tuščias.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation type="unfinished"/>
+        <translation>Atsarginės kopijos pavadinimas atrodo tinkamai.</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation type="unfinished"/>
+        <translation>Atsarginė kopija nepavyko.</translation>
     </message>
     <message>
         <source>Output directory</source>
@@ -584,15 +585,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation type="unfinished"/>
+        <translation>Atsarginė kopija buvo sėkmingai sukurta ir patalpinta į paskirties katalogą.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkti paskirties katalogą</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation type="unfinished"/>
+        <translation>Yra nurodytas geras paskirties katalogas.</translation>
     </message>
 </context>
 <context>
@@ -611,7 +612,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation type="unfinished"/>
+        <translation>Sumažinti duomenų bazės failą</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -647,7 +648,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"/>
+        <translation>Išvalymo nustatymai (visi pažymėti elementai yra visiškai ištrinami iš duomenų bazės)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
@@ -674,11 +675,11 @@ or this functionality is not implemented yet.</source>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Atpažinimas</translation>
     </message>
     <message>
         <source>Username</source>
@@ -694,7 +695,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Reikalauja HTTP atpažinimo</translation>
     </message>
     <message>
         <source>URL</source>
@@ -702,43 +703,43 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Išbandyti sąranką</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="unfinished"/>
+        <translation>HTTP atpažinimo naudotojo vardas</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="unfinished"/>
+        <translation>HTTP atpažinimo slaptažodis</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų TT-RSS paskyros slaptažodis</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų TT-RSS paskyros naudotojo vardas</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>PILNAS jūsų TT-RSS egzemplioriaus URL SU galine &quot;/api/&quot; eilute</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas nebuvo atlikta jokių bandymų.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Čia yra rodomi ryšio bandymo rezultatai.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti naują Tiny Tiny RSS paskyrą</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Redaguoti esamą Tiny Tiny RSS paskyrą</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
@@ -766,7 +767,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS serveris yra geras.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -782,7 +783,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas yra geras.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
@@ -790,11 +791,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis yra geras.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas yra geras arba jo nereikia.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -802,7 +803,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis yra geras arba jo nereikia.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
@@ -814,15 +815,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL yra geras.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Turėkite omenyje, kad yra reikalaujamas bent %1 API lygis.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL turėtų užsibaigti su &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -830,122 +831,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>FormEditFeed</name>
-    <message>
-        <source>Edit feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Requires authentication</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Naudotojo vardas</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Slaptažodis</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Naudotojo vardas tuščias.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Slaptažodis tuščias.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Redaguoti esamą kanalą</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Pridėti naują kanalą</translation>
-    </message>
-    <message>
-        <source>Feed added</source>
-        <translation>Kanalas pridėtas</translation>
-    </message>
-    <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Nepavyksta pridėti kanalo</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Kanalas nebuvo pridėtas dėl klaidos.</translation>
-    </message>
-    <message>
-        <source>The URL is ok.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką.</translation>
     </message>
 </context>
 <context>
@@ -956,15 +846,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Tapatybės nustatymas</translation>
     </message>
     <message>
         <source>Username</source>
@@ -980,27 +870,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Išbandyti sąranką</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Turėkite omenyje, kad yra reikalaujama bent %1 versija.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų ownCloud serverio URL, be jokio API kelio</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas nebuvo atlikta jokių bandymų.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Čia yra rodomi ryšio bandymo rezultatai.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
@@ -1036,7 +926,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas yra geras.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
@@ -1044,7 +934,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis yra geras.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
@@ -1052,15 +942,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL yra geras.</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų ownCloud slaptažodis</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų ownCloud paskyros naudotojo vardas</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
@@ -1072,11 +962,7 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
-    <name>FormEditOwnCloudFeed</name>
-    <message>
-        <source>Edit feed</source>
-        <translation type="unfinished"/>
-    </message>
+    <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
         <translation type="unfinished"/>
@@ -1086,8 +972,20 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
+        <source>Type</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update</source>
@@ -1098,20 +996,72 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Requires authentication</source>
+        <source>Requires HTTP authentication</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Username</source>
-        <translation>Naudotojo vardas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Slaptažodis</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit feed &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>The URL is ok.</source>
@@ -1131,7 +1081,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Naudotojo vardas tuščias.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
@@ -1139,7 +1089,132 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Slaptažodis tuščias.</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1152,18 +1227,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Do not auto-update at all</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Redaguoti esamą kanalą</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Pridėti naują kanalą</translation>
     </message>
 </context>
 <context>
@@ -1214,11 +1277,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No actions available</source>
-        <translation type="unfinished"/>
+        <translation>Nėra prieinamų veiksmų</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation type="unfinished"/>
+        <translation>Šiuo metu nėra prieinama jokių veiksmų.</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
@@ -1522,6 +1585,25 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormOwnCloudFeedDetails</name>
+    <message>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
@@ -1529,7 +1611,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Operacijos rezultatai</translation>
     </message>
     <message>
         <source>Restore database</source>
@@ -1545,7 +1627,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas neįvykdyta jokių operacijų.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
@@ -1569,11 +1651,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkti šaltinio katalogą</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation type="unfinished"/>
+        <translation>Yra nurodytas geras šaltinio katalogas.</translation>
     </message>
 </context>
 <context>
@@ -1643,7 +1725,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų naudotojo vardas, skirtas atpažinimui įgaliotajame serveryje</translation>
     </message>
     <message>
         <source>Password</source>
@@ -1651,7 +1733,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų slaptažodis, skirtas atpažinimui įgaliotajame serveryje</translation>
     </message>
     <message>
         <source>Display password</source>
@@ -1659,7 +1741,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"/>
+        <translation>Kodas</translation>
     </message>
     <message>
         <source>Version</source>
@@ -1702,11 +1784,6 @@ or this functionality is not implemented yet.</source>
         <translation>Atverti naujas korteles, du kartus spustelėjus kairiuoju pelės mygtuku ant kortelių juostos.</translation>
     </message>
     <message>
-        <source>no icon theme</source>
-        <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>jokios piktogramų temos</translation>
-    </message>
-    <message>
         <source>Cannot save settings</source>
         <translation>Nepavyksta įrašyti nustatymų</translation>
     </message>
@@ -1736,7 +1813,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation type="unfinished"/>
+        <translation>Buvo pakeisti kritiniai nustatymai</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
@@ -1842,19 +1919,19 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"/>
+        <translation>ĮSPĖJIMAS: Turėkite omenyje, kad perjungimas į kitą duomenų kaupiklio tipą NEnukopijuos jūsų esamų duomenų iš esamo aktyvaus duomenų kaupiklio į naujai pasirinktą kaupiklį.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazės tvarkyklė</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>Kompiuterio vardas</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Išbandyti sąranką</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
@@ -1882,11 +1959,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų kaupiklis</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų MySQL serverio kompiuterio vardas</translation>
     </message>
     <message>
         <source>Username to login with</source>
@@ -1902,11 +1979,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kompiuterio vardas tuščias.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kompiuterio vardas atrodo tinkamai.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -1914,7 +1991,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas atrodo tinkamai.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
@@ -1922,7 +1999,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis atrodo tinkamai.</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
@@ -1930,11 +2007,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"/>
+        <translation>Slėpti pagrindinį langą, kai jis suskleidžiamas</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas nebuvo paleistas joks ryšio bandymas.</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
@@ -1946,11 +2023,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"/>
+        <translation>Be įgaliotojo serverio</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"/>
+        <translation>Sistemos įgaliotasis serveris</translation>
     </message>
     <message>
         <source>Icon only</source>
@@ -1978,15 +2055,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs kol kas neįvykdėte jokio ryšio bandymo.</translation>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"/>
+        <translation>Paleisti %1 operacinės sistemos paleidimo metu</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jei nepažymėta, tuomet bus naudojama sistemos mastu numatytoji saityno naršyklė.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -2010,15 +2087,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"/>
+        <translation>Kanalų sąrašo įrankių juosta</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių sąrašo įrankių juosta</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite įrankių juostą, kurią keisti</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
@@ -2049,7 +2126,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Išeinant iš programos, iš visų kanalų šalinti visas skaitytas žinutes</translation>
     </message>
     <message>
         <source>Downloads</source>
@@ -2057,15 +2134,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"/>
+        <translation>Paskirties katalogas atsisiųstiems failams</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"/>
+        <translation>Atskirai klausti kiekvienam atsiunčiamam failui</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"/>
+        <translation>Paskirties katalogas, į kurį yra įrašomi visi atsisiųsti failai</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
@@ -2073,7 +2150,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite atsisiuntimų paskirties katalogą</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
@@ -2089,7 +2166,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"/>
+        <translation>Darbinė duomenų bazė</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
@@ -2097,7 +2174,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Išorinis el. pašto klientas</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
@@ -2119,7 +2196,9 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"/>
+        <translation>Vietaženkliai:
+ • %1 - pasirinktos žinutės antraštė,
+ • %2 - pasirinktos žinutės pagrindinė dalis.</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
@@ -2135,15 +2214,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation>Veikianti duomenų bazė prie kurios turite pilną prieigą.</translation>
+        <translation>Darbinė duomenų bazė prie kurios turite pilną prieigą.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Darbinė duomenų bazė tuščia.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Darbinė duomenų bazė yra gera.</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
@@ -2151,11 +2230,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"/>
+        <translation>Vidinės žinučių naršyklės šriftai</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"/>
+        <translation>Turėkite omenyje, kad naudojamo MySQL serverio greitis ir naudojamos ryšio laikmenos delsa STIPRIAI įtakoja galutinį šios programos našumą. Lėtos duomenų bazės naudojimas priveda prie blogo našumo, naršant kanalus ar žinutes.</translation>
     </message>
     <message>
         <source>E-mail</source>
@@ -2171,7 +2250,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <translation>Būsenos juosta</translation>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
@@ -2179,7 +2258,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Keisti šriftą</translation>
     </message>
     <message>
         <source>Font preview</source>
@@ -2187,10 +2266,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite naują šriftą žinučių žiūryklei</translation>
     </message>
     <message>
         <source> (not available)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>no icon theme/system icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2198,11 +2282,11 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Pirminė kategorija</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite savo kategorijos pirminį elementą.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2218,7 +2302,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite savo kategorijai piktogramą.</translation>
     </message>
     <message>
         <source>Add new category</source>
@@ -2226,7 +2310,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation type="unfinished"/>
+        <translation>Redaguoti esamą kategoriją</translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -2246,11 +2330,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorijos pavadinimas yra geras.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorijos pavadinimas yra per trumpas.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
@@ -2258,11 +2342,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Aprašas yra geras.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite kategorijai piktogramos failą</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -2270,32 +2354,32 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkti piktogramą</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Atsisakyti</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Ieškoti:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos pavadinimas:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos tipas:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Kategorijos antraštė</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Nustatykite savo kategorijos antraštę.</translation>
     </message>
     <message>
         <source>Category description</source>
@@ -2325,147 +2409,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Tipas</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Antraštė</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Aprašas</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Piktograma</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Naudotojo vardas</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Slaptažodis</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Gauti metaduomenis</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Pridėti naują kanalą</translation>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Redaguoti esamą kanalą</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Aprašas tuščias.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Naudotojo vardas tuščias.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Slaptažodis tuščias.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Paveikslai (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Nepavyksta pridėti kanalo</translation>
     </message>
@@ -2480,130 +2423,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Feed was not edited due to error.</source>
         <translation>Kanalas negalėjo būti redaguotas dėl klaidos</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Visi metaduomenys sėkmingai gauti.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Klaida: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Negauta jokių metaduomenų.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Kanalo antraštė</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Kanalo aprašas</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Įkelti piktogramą iš failo...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Nenaudoti piktogramos</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Naudoti numatytąją piktogramą</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Gauti piktogramą iš kanalo</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Kol kas negauta jokių metaduomenų.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The URL is ok.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2622,7 +2441,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Operacijos rezultatai</translation>
     </message>
     <message>
         <source>No file is selected.</source>
@@ -2630,15 +2449,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas neįvykdyta jokių operacijų.</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation type="unfinished"/>
+        <translation>Paskirties failas</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Šaltinio kanalai ir kategorijos</translation>
     </message>
     <message>
         <source>Export feeds</source>
@@ -2646,11 +2465,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Source file</source>
-        <translation type="unfinished"/>
+        <translation>Šaltinio failas</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Paskirties kanalai ir kategorijos</translation>
     </message>
     <message>
         <source>Import feeds</source>
@@ -2662,15 +2481,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite failą kanalų eksportavimui</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Failas pasirinktas.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite failą kanalų importavimui</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
@@ -2678,15 +2497,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalai buvo įkelti.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation>Klaida, failas nėra tinkamai suformuotas. Pasirinkite kitą failą.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation>Įvyko klaida. Failas nėra tinkamai suformuotas. Pasirinkite kitą failą.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
@@ -2698,19 +2517,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation type="unfinished"/>
+        <translation>Analizuojami duomenys...</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta įrašyti į paskirties failą: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation>Šaknies mazgas</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite savo kanalui pirminį elementą.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
@@ -2730,22 +2549,41 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
 </context>
 <context>
+    <name>FormTtRssFeedDetails</name>
+    <message>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation type="unfinished"/>
+        <translation>Esama laida</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation type="unfinished"/>
+        <translation>Prieinama laida</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation type="unfinished"/>
+        <translation>Pakeitimai</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation type="unfinished"/>
+        <translation>Būsena</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -2759,7 +2597,7 @@ downloaded successfully.</source>
     </message>
     <message>
         <source>New release available.</source>
-        <translation type="unfinished"/>
+        <translation>Yra prieinama nauja laida.</translation>
     </message>
     <message>
         <source>This is new version which can be
@@ -2772,12 +2610,13 @@ downloaded and installed.</source>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation type="unfinished"/>
+        <translation>Jokia nauja laida neprieinama.</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation type="unfinished"/>
+        <translation>Ši laida nėra naujesnė, nei
+šiuo metu įdiegta laida.</translation>
     </message>
     <message>
         <source>Check for updates</source>
@@ -2872,7 +2711,7 @@ Go to application website to obtain it manually.</source>
     <name>MessagePreviewer</name>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation>Kokį veiksmą norite pasirinkti?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
@@ -2880,7 +2719,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti</translation>
     </message>
     <message>
         <source>Mark message as read</source>
@@ -2896,11 +2735,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs spustelėjote kažkokią nuorodą. Jūs galite atsisiųsti nuorodos turinį arba atverti ją išorinėje naršyklėje.</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite šią nuorodą, kad ją atsisiųstumėte arba atvertumėte išorinėje naršyklėje.</translation>
     </message>
     <message>
         <source>Incorrect link</source>
@@ -3011,7 +2850,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"/>
+        <translation>Priedų sąrašas.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
@@ -3058,19 +2897,19 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių paryškinimo meniu</translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation type="unfinished"/>
+        <translation>Jokio papildomo paryškinimo</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Paryškinti neskaitytas žinutes</translation>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation type="unfinished"/>
+        <translation>Paryškinti svarbias žinutes</translation>
     </message>
     <message>
         <source>Display all messages</source>
@@ -3078,11 +2917,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių markeris</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Įrankių juostos tarpiklis</translation>
     </message>
 </context>
 <context>
@@ -3093,19 +2932,19 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Problemos, paleidžiant išorinę naršyklę</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Išorinės naršyklės paleisti nepavyko.</translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Problemos, paleidžiant išorinę el. pašto kliento programą</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Išorinės el. pašto kliento programos paleisti nepavyko.</translation>
     </message>
     <message>
         <source>Newspaper view</source>
@@ -3147,27 +2986,27 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>laikina nesėkmė</translation>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>atpažinimas nepavyko</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>reikalingas įgaliotojo serverio atpažinimas</translation>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>įgaliotasis serveris nerastas</translation>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>turinys nerastas</translation>
     </message>
     <message>
         <source>unknown error</source>
@@ -3177,11 +3016,11 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>klaidų nėra</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation type="unfinished"/>
+        <translation>prieiga prie turinio buvo uždrausta</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
@@ -3201,7 +3040,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3218,6 +3057,14 @@ Go to application website to obtain it manually.</source>
         <source>Sync in</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3229,7 +3076,7 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.01</translation>
+        <translation>0.02</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3289,11 +3136,11 @@ At least API level %1 is required.</source>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Šiukšlinė</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Šiukšlinėje yra iš visų kanalų, visos ištrintos žinutės.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
@@ -3303,7 +3150,9 @@ At least API level %1 is required.</source>
         <source>Recycle bin
 
 %1</source>
-        <translation type="unfinished"/>
+        <translation>Šiukšlinė
+
+%1</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3354,7 +3203,7 @@ This category does not contain any nested items.</source>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metaduomenys negauti</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
@@ -3363,17 +3212,17 @@ This category does not contain any nested items.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nenaudoja automatinio atnaujinimo</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>naudoja visuotinius nustatymus</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3382,7 +3231,11 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1 (%2)%3
+
+Tinklo būsena: %6
+Koduotė: %4
+Automatinio atnaujinimo būsena: %5</translation>
     </message>
 </context>
 <context>
@@ -3466,18 +3319,18 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Įrankių juostos tarpiklis</translation>
     </message>
 </context>
 <context>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Yra prieinama nauja versija</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Išsamesnei informacijai spustelėkite šį pranešimą.</translation>
     </message>
     <message>
         <source>anonymous</source>
@@ -3497,7 +3350,7 @@ Neskaitytų naujienų: %2</translation>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation type="unfinished"/>
+        <translation>Užverti šią kortelę.</translation>
     </message>
     <message>
         <source>Close tab</source>
@@ -3512,7 +3365,7 @@ Neskaitytų naujienų: %2</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation type="unfinished"/>
+        <translation>Naršyti savo kanalus ir žinutes</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
@@ -3531,11 +3384,11 @@ Neskaitytų naujienų: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n valandą</numerusform><numerusform>%n valandas</numerusform><numerusform>%n valandų</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minutę</numerusform><numerusform>%n minutes</numerusform><numerusform>%n minučių</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3546,19 +3399,19 @@ Neskaitytų naujienų: %2</translation>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation type="unfinished"/>
+        <translation>Aktyvieji veiksmai</translation>
     </message>
     <message>
         <source>Available actions</source>
-        <translation type="unfinished"/>
+        <translation>Prieinami veiksmai</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation type="unfinished"/>
+        <translation>Įterpti skirtuką</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation type="unfinished"/>
+        <translation>Įterpti tarpiklį</translation>
     </message>
     <message>
         <source>Separator</source>
@@ -3566,19 +3419,19 @@ Neskaitytų naujienų: %2</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Įrankių juostos tarpiklis</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation type="unfinished"/>
+        <translation>Perkelti veksmą aukštyn</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation type="unfinished"/>
+        <translation>Nuleisti veiksmą žemyn</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti pasirinktą veiksmą</translation>
     </message>
     <message>
         <source>Delete selected action</source>
@@ -3601,24 +3454,26 @@ Neskaitytų naujienų: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nenaudoja automatinio atnaujinimo</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>naudoja visuotinius nustatymus</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Automatinio atnaujinimo būsena: %3</translation>
     </message>
 </context>
 <context>

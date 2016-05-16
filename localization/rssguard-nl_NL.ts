@@ -325,11 +325,11 @@ Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>U kunt niet alle items updaten omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
 </context>
 <context>
@@ -841,117 +841,6 @@ of deze functie bestaat nog niet.</translation>
     </message>
 </context>
 <context>
-    <name>FormEditFeed</name>
-    <message>
-        <source>Edit feed</source>
-        <translation>Bewerk feed</translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>Oudere categorie</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Kies hoofd item voor je feed.</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation>Automatische-update</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
-    </message>
-    <message>
-        <source>Requires authentication</source>
-        <translation>Vereist verificatie</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Paswoord</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Paswoord is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatisch bijwerken met behulp van globale interval</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatisch bijwerken elke</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Niet automatisch bijwerken </translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Volledige feed url inclusief schema</translation>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Bewerk bestaande feed</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Voeg nieuw feed toe</translation>
-    </message>
-    <message>
-        <source>Feed added</source>
-        <translation>Feed toegevoegd</translation>
-    </message>
-    <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Feed is toegvoegd, activeer sync nu.</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Door een fout is de feed niet toegevoegd.</translation>
-    </message>
-    <message>
-        <source>The URL is ok.</source>
-        <translation>De url is ok.</translation>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation>De url is leeg.</translation>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
@@ -1059,114 +948,287 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Paswoord voor je ownCloud account</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersnaam voor je ownCloud account</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>ownCloud Nieuws server is ok, draait met versie %1, terwijl tenminste versie %2 is vereist.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>OwnCloud Nieuws server is ok.</translation>
     </message>
 </context>
 <context>
-    <name>FormEditOwnCloudFeed</name>
-    <message>
-        <source>Edit feed</source>
-        <translation>Bewerk feed</translation>
-    </message>
+    <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Oudere categorie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Kies hoofd item voor je feed.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
+        <source>Type</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>Automatische-update</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Requires authentication</source>
-        <translation>Vereist verificatie</translation>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username</source>
-        <translation>Gebruikersnaam</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Paswoord</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>The URL is ok.</source>
-        <translation>De URL is ok.</translation>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation>De URL is leeg.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Paswoord is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatisch bijwerken met behulp van globale interval</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatisch bijwerken elke</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Niet automatisch bijwerken </translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Volledige feed url inclusief schema</translation>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Bewerk bestaande feed</translation>
+        <source>Fetch metadata</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Voeg nieuw feed toe</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit feed &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1525,6 +1587,25 @@ of deze functie bestaat nog niet.</translation>
     </message>
 </context>
 <context>
+    <name>FormOwnCloudFeedDetails</name>
+    <message>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
@@ -1703,11 +1784,6 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
         <translation>Open nieuwe tabbladen met linker muisknop dubbel-klik op tabblad</translation>
-    </message>
-    <message>
-        <source>no icon theme</source>
-        <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>Geen pictogram thema</translation>
     </message>
     <message>
         <source>Cannot save settings</source>
@@ -2191,22 +2267,27 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
+        <translation>D-bus meldingen aanzetten</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Verander lettertype</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"/>
+        <translation>Voorbeeld lettertype</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
+        <translation>Selecteer een nieuw lettertype voor berichten </translation>
     </message>
     <message>
         <source> (not available)</source>
+        <translation>(niet beschikbaar)</translation>
+    </message>
+    <message>
+        <source>no icon theme/system icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2341,147 +2422,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>Oudere categorie</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Kies hoofd item voor je feed.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Selecteer type van de standaard feed.</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Coderen</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Kies codering van de standaard feed. Als je niet zeker bent van de codering, selecteer dan &quot;UTF-8&quot; codering.</translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation>Automatische-update</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Omschrijving</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Nu ophalen</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Pictogram</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Selecteer pictogram voor je feed.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Paswoord</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Ophalen van metadata</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Voeg nieuw feed toe</translation>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Bewerk bestaande feed</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Feed naam is ok.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Feed naam is te kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Omschrijving is leeg.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Omschrijving is ok.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Paswoord is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Selecteer pictogram bestand voor je feed</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuleer</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Kijk in:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Pictogram naam:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Kan geen feed toevoegen</translation>
     </message>
@@ -2496,130 +2436,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Feed was not edited due to error.</source>
         <translation>Door een fout is de feed niet bewerkt.</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Alle metadata is succesvol opgehaald.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Metadata opgehaald voor feed en pictogram.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Resultaat: %1.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Fout: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Geen metadata opgehaald.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>Pictogram met succes opgehaald.</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>Metadata pictogram opgehaald.</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>Geen pictogram opgehaald.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Feed naam</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Stel titel in voor je feed.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Feed omschrijving</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Stel omschrijving voor feed in.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Volledige feed url inclusief schema</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Stel url in voor je feed.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Stel paswoord in voor toegang tot feed.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Pictogram selectie</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Pictogram opgehaald van feed</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Nog geen metadata opgehaald.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatisch bijwerken met behulp van globale interval</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatisch bijwerken elke</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Niet automatisch bijwerken </translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Vereist HTTP verificatie</translation>
-    </message>
-    <message>
-        <source>The URL is ok.</source>
-        <translation>De URL is ok.</translation>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation>De URL is leeg.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2743,6 +2559,25 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
         <translation>Wilt u de feed metadata online ophalen?</translation>
+    </message>
+</context>
+<context>
+    <name>FormTtRssFeedDetails</name>
+    <message>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2892,47 +2727,47 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagePreviewer</name>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation>Welke actie wil je ondernemen?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Open in externe browser</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Download</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>Markeer bericht als gelezen</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>Markeer bericht als ongelezen</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>Schakel tussen berichten belang</translation>
     </message>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation>Je klikte op een koppeling. Je kan downloaden via de koppeling of open het in een externe browser.</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Klik op deze koppeling om te downloaden of open in externe browser</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation>Niet werkende link</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerde hyperlink is ongeldig</translation>
     </message>
     <message>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>Afbeelding</translation>
     </message>
 </context>
 <context>
@@ -3217,19 +3052,19 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Form</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Toon meer berichten (%n resterend)</numerusform><numerusform>Toon meer berichten (%n resterende)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
+        <translation>Kan niet meer berichten tonen</translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Kan niet meer berichten tonen omdat de oudere feed is verwijderd</translation>
     </message>
 </context>
 <context>
@@ -3237,6 +3072,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Sync in</source>
         <translation>Sync in</translation>
+    </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3566,15 +3409,15 @@ Ongelezen nieuws: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n uur</numerusform><numerusform>%n ur(en)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minuut</numerusform><numerusform>%n minut(en)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"/>
+        <translation>en</translation>
     </message>
 </context>
 <context>
