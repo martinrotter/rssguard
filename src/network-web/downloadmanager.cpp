@@ -436,7 +436,7 @@ void DownloadItem::finished() {
   if (downloadedSuccessfully()) {
     qApp->showGuiMessage(tr("Download finished"),
                          tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(m_output.fileName())),
-                         QSystemTrayIcon::Information, 0, false, QIcon(), this, SLOT(openFolder()));
+                         QSystemTrayIcon::Information, 0, false, this, SLOT(openFolder()));
   }
 }
 

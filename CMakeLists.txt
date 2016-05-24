@@ -217,13 +217,7 @@ elseif(${MSVC_VERSION} VERSION_LESS 1600)
 endif(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU")
 
 # Setup libraries.
-if(UNIX)
-  # On Unices, enable D-Bus support.
-  find_package(Qt5 REQUIRED DBus Sql Widgets Xml Network LinguistTools PrintSupport)
-else(UNIX)
-  find_package(Qt5 REQUIRED Sql Widgets Xml Network LinguistTools PrintSupport)
-endif(UNIX)
-
+find_package(Qt5 REQUIRED Sql Widgets Xml Network LinguistTools PrintSupport)
 message(STATUS "[${APP_LOW_NAME}] Found Qt version: '${Qt5_VERSION}'.")
 
 if(Qt5_VERSION VERSION_LESS MINIMUM_QT_VERSION)
@@ -405,28 +399,8 @@ if(WIN32)
   target_link_libraries(${EXE_NAME} Qt5::WinMain)
 endif(WIN32)
 
-if(UNIX)
-  # Use modules from Qt.
-  qt5_use_modules(${EXE_NAME}
-    DBus
-    Core
-    Widgets
-    Sql
-    Network
-    Xml
-    PrintSupport
-    )
-else(UNIX)
-  # Use modules from Qt.
-  qt5_use_modules(${EXE_NAME}
-    Core
-    Widgets
-    Sql
-    Network
-    Xml
-    PrintSupport
-    )
-endif(UNIX)
+# Use modules from Qt.
+qt5_use_modules(${EXE_NAME} Core Widgets Sql Network Xml PrintSupport)
 
 set(FAENZA_FOLDERS
   "resources/graphics/Faenza/actions"

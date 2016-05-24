@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -640,16 +640,6 @@ Authors of this application are NOT responsible for lost data.</string>
                </widget>
               </item>
              </layout>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QCheckBox" name="m_checkEnableDBusNotifications">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Enable D-Bus notifications</string>
-             </property>
             </widget>
            </item>
           </layout>

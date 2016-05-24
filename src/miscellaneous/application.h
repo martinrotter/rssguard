@@ -158,7 +158,7 @@ class Application : public QtSingleApplication {
     // Displays given simple message in tray icon bubble or OSD
     // or in message box if tray icon is disabled.
     void showGuiMessage(const QString &title, const QString &message, QSystemTrayIcon::MessageIcon message_type,
-                        QWidget *parent = NULL, bool show_at_least_msgbox = false, const QIcon &custom_icon = QIcon(),
+                        QWidget *parent = NULL, bool show_at_least_msgbox = false,
                         QObject *invokation_target = NULL, const char *invokation_slot = NULL);
 
     // Returns pointer to "GOD" application singleton.

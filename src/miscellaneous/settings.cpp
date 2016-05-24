@@ -115,9 +115,6 @@ DVALUE(bool) GUI::UseTrayIconDef = true;
 DKEY GUI::EnableNotifications                   = "enable_notifications";
 DVALUE(bool) GUI::EnableNotificationsDef        = true;
 
-DKEY GUI::UseFancyNotifications                         = "use_fancy_notifications";
-DVALUE(bool) GUI::UseFancyNotificationsDef              = true;
-
 DKEY GUI::TabCloseMiddleClick                  = "tab_close_mid_button";
 DVALUE(bool) GUI::TabCloseMiddleClickDef       = true;
 

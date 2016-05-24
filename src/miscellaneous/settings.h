@@ -134,9 +134,6 @@ namespace GUI {
   KEY EnableNotifications;
   VALUE(bool) EnableNotificationsDef;
 
-  KEY UseFancyNotifications;
-  VALUE(bool) UseFancyNotificationsDef;
-
   KEY TabCloseMiddleClick;
   VALUE(bool) TabCloseMiddleClickDef;
 

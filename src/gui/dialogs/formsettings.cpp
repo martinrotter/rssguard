@@ -120,12 +120,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_checkMysqlShowPassword, SIGNAL(toggled(bool)), this, SLOT(switchMysqlPasswordVisiblity(bool)));
   connect(m_ui->m_btnChangeMessagesFont, SIGNAL(clicked()), this, SLOT(changeMessagesFont()));
 
-  connect(m_ui->m_checkEnableNotifications, &QCheckBox::toggled, [=](bool checked) {
-    if (!checked) {
-      m_ui->m_checkEnableDBusNotifications->setChecked(false);
-    }
-  });
-
   // Load all settings.
   loadGeneral();
   loadDataStorage();
@@ -704,13 +698,6 @@ void FormSettings::loadInterface() {
   // Load fancy notification settings.
   m_ui->m_checkEnableNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
 
-#if defined(Q_OS_LINUX)
-  m_ui->m_checkEnableDBusNotifications->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool());
-#else
-  m_ui->m_checkEnableDBusNotifications->setText(m_ui->m_checkEnableDBusNotifications->text() + tr(" (not available)"));
-  m_ui->m_checkEnableDBusNotifications->setEnabled(false);
-#endif
-
   // Load settings of icon theme.
   const QString current_theme = qApp->icons()->currentIconTheme();
 
@@ -803,7 +790,6 @@ void FormSettings::saveInterface() {
   m_settings->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
 
   // Save notifications.
-  m_settings->setValue(GROUP(GUI), GUI::UseFancyNotifications, m_ui->m_checkEnableDBusNotifications->isChecked());
   m_settings->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_checkEnableNotifications->isChecked());
 
   // Save selected icon theme.

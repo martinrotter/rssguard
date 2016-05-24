@@ -174,8 +174,7 @@ void FeedsModel::onFeedUpdatesFinished(const FeedDownloadResults &results) {
 
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon,
-                         0, false, qApp->icons()->fromTheme(QSL("view-refresh")));
+    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon, 0, false);
   }
 
   emit feedsUpdateFinished();
