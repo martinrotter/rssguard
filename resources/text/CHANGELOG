@@ -1,13 +1,16 @@
+3.2.4
+—————
+
+Fixed:
+
+▪ Auto-update interval/type is now persistent across sync-in for TT-RSS/ownCloud.
+
 3.2.3
 —————
 
 Changed:
 
 ▪ Some minor tweaks for default icon theme loading.
-
-Fixed:
-
-▪ Auto-update interval/type is now persistent across sync-in for TT-RSS/ownCloud.
 
 
 3.2.2
