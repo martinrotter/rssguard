@@ -966,83 +966,83 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Kategori induk</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih item induk untuk feed anda.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Jenis</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih jenis dari feed standar.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Encoding</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih encoding untuk feed standar. Jika anda tidak yakin mengenai encoding, maka pilih encoding &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan otomatis</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih strategi pembaharuan otomatis untuk feed ini. Strategi pembaharuan otomatis bawaan berarti feed akan diperbaharui dalam interval waktu yang disetel di pengaturan aplikasi.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Judul</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Deskripsi</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Ambil sekarang</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih ikon untuk feed anda.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Membutuhkan autentikasi HTTP</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Kata sandi</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Ambil metadata</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Tambah feed baru</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
@@ -1050,184 +1050,184 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Nama feed ok.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Nama feed terlalu pendek.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Deskripsi kosong.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Deskripsi ok.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL ok.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>URL tidak memenuhi pola standar. Apakah URL anda dimulai dengan awalan &quot;http://&quot; atau &quot;https://&quot;.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL kosong.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna ok atau ini tidak diperlukan.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna kosong.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Kata sandi ok atau ini tidak diperlukan.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kata sandi kosong.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Pilih berkas ikon untuk feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Gambar (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Pilih ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Batal</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Lihat ke dalam:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Nama ikon:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Jenis ikon:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Semua metadata diambil dengan berhasil.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata feed dan ikon diambil.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Hasil: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata feed atau ikon tidak diambil.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Eror: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak ada metadata yang diambil.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Ikon berhasil diambil.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata ikon diambil.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata ikon tidak diambil.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak ada ikon yang diambil.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Judul feed</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel judul untuk feed anda.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Deskripsi feed</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel deskripsi untuk feed anda.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Url feed keseluruhan termasuk skema</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel url untuk feed anda.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel nama pengguna untuk mengakses feed.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setel kata sandi untuk mengakses feed.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Pilihan ikon</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Memuat ikon dari berkas...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"/>
+        <translation>Tidak menggunakan ikon</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>Menggunakan ikon bawaan</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Mengambil ikon dari feed</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak ada metadata yang diambil sejauh ini.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan otomatis menggunakan jarak waktu global</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Otomatis pembaharuan setiap</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Tanpa pembaharuan otomatis sama sekali</translation>
     </message>
 </context>
 <context>
@@ -1589,19 +1589,19 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Feed ditambahkan</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Feed ditambahkan, memicu sinkronisasi sekarang.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menambah feed</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed tidak ditambahkan disebabkan eror.</translation>
     </message>
 </context>
 <context>
@@ -2264,10 +2264,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Bar status</translation>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation>Nyalakan notifikasi D-Bus</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation>&amp;Ganti fon</translation>
     </message>
@@ -2278,10 +2274,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Select new font for message viewer</source>
         <translation>Pilih font yang baru untuk penampil pesan</translation>
-    </message>
-    <message>
-        <source> (not available)</source>
-        <translation>(tidak tersedia)</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
@@ -2563,19 +2555,19 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Feed ditambahkan</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Feed ditambahkan, memicu sinkronisasi sekarang.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menambah feed</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed tidak ditambahkan disebabkan eror.</translation>
     </message>
 </context>
 <context>
@@ -3073,11 +3065,11 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menambah item</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
     </message>
 </context>
 <context>

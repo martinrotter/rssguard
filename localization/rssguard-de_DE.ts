@@ -964,31 +964,31 @@ or this functionality is not implemented yet.</source>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Stammkategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Selektieren Sie das Stamm-Item für Ihren Feed.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Selektiere den Typ des Standard-Feeds.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Enkodierung</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Selektiere die Enkodierung des Standard-Feeds. Falls Sie unsicher sind wählen einfach die &quot;UTF-8&quot; Enkodierung.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"/>
+        <translation>Auto-Update</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
@@ -996,31 +996,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Jetzt abrufen</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Selektieren Sie das Icon für Ihren Feed.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmodelle werden unterstützt.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -1028,15 +1028,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Metadaten abrufen</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -1048,19 +1048,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Feed-Name ist okay.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Feed-Name ist zu kurz.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Beschreibung ist leer.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Die Beschreibung ist OK.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
@@ -1076,60 +1076,60 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername ist okay oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername ist leer.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Passwort ist okay oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Passwort ist leer.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Selektiere die Icon-Datei für den Feed.</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Selektiere Icon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Schauen Sie in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Name:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Typ:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Alle Metadaten wurden erfolgreich abgerufen.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Feed- und Icon-Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Resultat: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
@@ -1137,11 +1137,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Fehler: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Keine Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
@@ -1161,19 +1161,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Feed-Titel</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setzen Sie den Titel für Ihren Feed.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Feed-Beschreibung</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setzen Sie die Beschreibung für Ihren Feed.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
@@ -1181,31 +1181,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setze die URL für Ihren Feed.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setzen Sie den Benutzernamen um zum Feed zu gelangen.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setzen Sie das Passwort um zum Feed zu gelangen.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Selektion</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Lade Icon aus Datei...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"/>
+        <translation>Icon nicht verwenden</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>Standard-Icon verwenden</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1213,19 +1213,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Bisher keine Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Auto-Update benutzt globales Intervall</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Auto-Update alle</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Kein Auto-Update ausführen</translation>
     </message>
 </context>
 <context>
@@ -1595,11 +1595,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
     </message>
 </context>
 <context>
@@ -2248,10 +2248,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation type="unfinished"/>
     </message>
@@ -2261,10 +2257,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> (not available)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2555,11 +2547,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
     </message>
 </context>
 <context>

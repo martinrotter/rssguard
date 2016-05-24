@@ -964,7 +964,7 @@ or this functionality is not implemented yet.</source>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Forældrekategori</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -972,7 +972,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
@@ -996,15 +996,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelse</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
@@ -1012,7 +1012,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
@@ -1020,7 +1020,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -1028,19 +1028,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Hent metadata</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj nyt feed</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
@@ -1048,7 +1048,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Feed navn er i orden.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
@@ -1056,11 +1056,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen beskrivelse.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelsen er OK.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
@@ -1076,48 +1076,48 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn ikke angivet.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeordet er tomt.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikonfil for dette feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuller</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Kig i:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Ikonnavn:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Ikontype:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
@@ -1125,7 +1125,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Feed og ikon metadata hentet.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
@@ -1137,15 +1137,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Fejl: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen metadata hentet.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Ikon hentet succesfuldt.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
@@ -1157,11 +1157,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen ikoner hentet</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Feedtitel</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
@@ -1169,11 +1169,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Feedbeskrivelse</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Angiv  beskrivelse for dit feed.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
@@ -1205,15 +1205,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>Brug standardikoner</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Hent ikon fra feed</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Indtil videre er der ikke hentet noget metadata.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1221,7 +1221,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Ajourfør hver</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
@@ -1587,7 +1587,7 @@ or this functionality is not implemented yet.</source>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Feed tilføjet</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -1595,11 +1595,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke tilføje feed</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
     </message>
 </context>
 <context>
@@ -2247,10 +2247,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation type="unfinished"/>
     </message>
@@ -2260,10 +2256,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> (not available)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2546,7 +2538,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Feed tilføjet</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -2554,11 +2546,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke tilføje feed</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
     </message>
 </context>
 <context>
@@ -3052,7 +3044,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Kam ikke tilføje post</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>

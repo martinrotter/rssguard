@@ -261,11 +261,11 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     <name>FeedsImportExportModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation> (kategorija)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation> (kanalas)</translation>
     </message>
     <message>
         <source>Category </source>
@@ -965,83 +965,83 @@ or this functionality is not implemented yet.</source>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Pirminė kategorija</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite savo kanalui pirminį elementą.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Tipas</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite standartinio kanalo tipą.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Koduotė</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite standartinio kanalo koduotę. Jeigu dėl koduotės nesate tikri, tuomet rinkitės &quot;UTF-8&quot; koduotę.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"/>
+        <translation>Automatinis atnaujinimas</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite šio kanalo automatinio atnaujinimo strategiją. Numatytoji automatinio atnaujinimo strategija reiškia, kad kanalas bus atnaujinamas programos nustatymuose nustatytais laiko intervalais.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Antraštė</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Aprašas</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Gauti dabar</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Piktograma</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite savo kanalui piktogramą.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Reikalauja HTTP atpažinimo</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Gauti metaduomenis</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti naują kanalą</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
@@ -1049,132 +1049,132 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo pavadinimas yra geras.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo pavadinimas yra per trumpas.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Aprašas tuščias.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Aprašas yra geras.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL yra geras.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>URL neatitinka standartinio šablono. Ar jūsų URL prasideda &quot;http://&quot; ar &quot;https://&quot; priešdeliu.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL yra tuščias.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas yra geras arba jo nereikia.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas tuščias.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis yra geras arba jo nereikia.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis tuščias.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite kanalui piktogramos failą</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Paveikslai (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkti piktogramą</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Atsisakyti</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Ieškoti:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos pavadinimas:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos tipas:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Visi metaduomenys sėkmingai gauti.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo ir piktogramos metaduomenys gauti.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Rezultatas: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo ar piktogramos metaduomenys negauti.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Klaida: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Negauta jokių metaduomenų.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Piktograma sėkmingai gauta.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos metaduomenys gauti.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos metaduomenys negauti.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Negauta jokios piktogramos.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo antraštė</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Nustatykite savo kanalo antraštę.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo aprašas</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Nustatykite savo kanalo aprašą.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
@@ -1182,15 +1182,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Nustatykite savo kanalo URL.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Nustatykite naudotojo vardą, skirtą gauti prieigą prie kanalo.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Nustatykite slaptažodį, skirtą gauti prieigą prie kanalo.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -1198,35 +1198,35 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Įkelti piktogramą iš failo...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"/>
+        <translation>Nenaudoti piktogramos</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti numatytąją piktogramą</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Gauti piktogramą iš kanalo</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas negauta jokių metaduomenų.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Automatiškai atnaujinti, naudojant visuotinį intervalą</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Automatiškai atnaujinti kas</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Neatnaujinti automatiškai</translation>
     </message>
 </context>
 <context>
@@ -1588,7 +1588,7 @@ or this functionality is not implemented yet.</source>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Kanalas pridėtas</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -1596,11 +1596,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti kanalo</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalas nebuvo pridėtas dėl klaidos.</translation>
     </message>
 </context>
 <context>
@@ -1761,7 +1761,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="unfinished"/>
+        <translation> (šioje platformoje nepalaikoma)</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -1821,7 +1821,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"/>
+        <translation>Nėra nustatyti kai kurie kritiniai nustatymai. Jūsų privalote ištaisyti šiuos nustatymus, kad patvirtintumėte naujus.</translation>
     </message>
     <message>
         <source>Messages</source>
@@ -2253,10 +2253,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Būsenos juosta</translation>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation>Įjungti D-Bus pranešimus</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation>&amp;Keisti šriftą</translation>
     </message>
@@ -2267,10 +2263,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Select new font for message viewer</source>
         <translation>Pasirinkite naują šriftą žinučių žiūryklei</translation>
-    </message>
-    <message>
-        <source> (not available)</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
@@ -2552,7 +2544,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Kanalas pridėtas</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -2560,11 +2552,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti kanalo</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalas nebuvo pridėtas dėl klaidos.</translation>
     </message>
 </context>
 <context>
@@ -3059,11 +3051,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti elemento</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti kanalo, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
 </context>
 <context>
@@ -3207,7 +3199,7 @@ This category does not contain any nested items.</source>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Metaduomenys nebuvo gauti todėl, kad: %1.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
@@ -3246,11 +3238,11 @@ Automatinio atnaujinimo būsena: %5</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"/>
+        <translation>Ar norite įkelti pradinį kanalų rinkinį?</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished"/>
+        <translation>Klaida, įkeliant pradinius kanalus</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -3258,7 +3250,7 @@ Automatinio atnaujinimo būsena: %5</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Importavimas sėkmingas, tačiau dėl klaidos nebuvo importuoti kai kurie kanalai/kategorijos.</translation>
     </message>
     <message>
         <source>Import was completely successfull.</source>

@@ -964,63 +964,63 @@ or this functionality is not implemented yet.</source>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Catégorie parente</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner un type pour le flux standard.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Encodage</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner un encodage pour le flux standard. Si vous n&apos;êtes pas sûr à propos de l&apos;encodage, sélectionner alors l&apos;encodage &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"/>
+        <translation>Mise à jour automatique</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner la stratégie des mises à jour automatique pour ce flux. Par défaut, cette stratégie signifie que le flux sera mis à jour par intervalle de temps défini dans les paramètres de l&apos;application.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titre</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Description</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Le chercher maintenant</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Icône</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner un icône pour votre flux.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -1028,19 +1028,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nom d&apos;utilisateur</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Mot de passe</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Chercher les métadonnées</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un nouveau flux</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
@@ -1048,15 +1048,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom du flux est correct.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom du flux est trop court.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>La description est vide.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
@@ -1076,60 +1076,60 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom d&apos;utilisateur est correct ou non nécessaire.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom d&apos;utilisateur est vide.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Le mot de passe  est correct ou non nécessaire.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Le mot de passe est vide.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner un icône pour le flux</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner l&apos;icône</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Rechercher dans :</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Nom de l&apos;icône :</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Type d&apos;icône :</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Tout les méta-datas ont été extraites avec succès.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Flux et icône extraits.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Résultat : %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
@@ -1137,11 +1137,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Erreur : %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Aucune méta-donnée extraite.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
@@ -1161,51 +1161,51 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Titre du flux</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Définir un titre pour votre flux.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Description du flux</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Définir une description pour votre flux.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>URL du flux complet incluant le préfixe</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Définir l&apos;URL pour votre flux.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Définir le nom d&apos;utilisateur pour accéder au flux.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Définir le mot de passe pour accéder au flux.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Sélection de l&apos;icône</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Charger l&apos;icône depuis un fichier...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"/>
+        <translation>Ne pas utiliser les icônes</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser les icônes par défaut</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1213,19 +1213,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Pas de métadonnées trouvé aussi loin.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Mise à jour automatique utilisant l&apos;intervalle global</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Tout mettre à jour</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Ne pas mettre tout à jour automatiquement</translation>
     </message>
 </context>
 <context>
@@ -1595,11 +1595,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ajouter le flux</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Le flux n&apos;a pas été ajouté dû à une erreur.</translation>
     </message>
 </context>
 <context>
@@ -2258,10 +2258,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation type="unfinished"/>
     </message>
@@ -2271,10 +2267,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> (not available)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2565,11 +2557,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ajouter le flux</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Le flux n&apos;a pas été ajouté dû à une erreur.</translation>
     </message>
 </context>
 <context>

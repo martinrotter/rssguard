@@ -2246,10 +2246,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation type="unfinished"/>
     </message>
@@ -2259,10 +2255,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> (not available)</source>
         <translation type="unfinished"/>
     </message>
     <message>

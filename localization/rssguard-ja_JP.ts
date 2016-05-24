@@ -964,7 +964,7 @@ or this functionality is not implemented yet.</source>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>親カテゴリ</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -972,7 +972,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>タイプ</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
@@ -980,7 +980,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>エンコード</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
@@ -988,7 +988,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"/>
+        <translation>自動更新</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
@@ -996,27 +996,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>タイトル</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>説明</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>今すぐ受信</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>アイコン</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>フィードのアイコンを選択</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1024,23 +1024,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>HTTP証明が必要です</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>ユーザー名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>パスワード</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>メタデータを取得</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>新しいフィードを追加</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
@@ -1052,11 +1052,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>フィード名が短すぎます。</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>説明欄が空です。</translation>
     </message>
     <message>
         <source>The description is ok.</source>
@@ -1072,7 +1072,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URLが空です。</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
@@ -1080,7 +1080,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>ユーザー名が空です。</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
@@ -1088,7 +1088,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>パスワードが空です。</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
@@ -1096,15 +1096,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>画像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>アイコンを選択</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <source>Look in:</source>
@@ -1137,7 +1137,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>エラー: %1。</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -1193,19 +1193,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>アイコン選択</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>ファイルからアイコンを読み込む</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"/>
+        <translation>アイコンを使用しない</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>デフォルトのアイコンを使用</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1587,7 +1587,7 @@ or this functionality is not implemented yet.</source>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>フィードが追加されました</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -1595,7 +1595,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>フィードを追加できません</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
@@ -2248,10 +2248,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation type="unfinished"/>
     </message>
@@ -2261,10 +2257,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> (not available)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2547,7 +2539,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>フィードが追加されました</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -2555,7 +2547,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>フィードを追加できません</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>

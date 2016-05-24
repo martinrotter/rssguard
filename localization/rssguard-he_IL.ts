@@ -972,7 +972,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>טיפוס</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
@@ -996,11 +996,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>כותרת</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>תיאור</translation>
     </message>
     <message>
         <source>URL</source>
@@ -1012,7 +1012,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>סמל</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
@@ -1028,11 +1028,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>שם משתמש</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>סיסמה</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -1104,7 +1104,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>ביטול</translation>
     </message>
     <message>
         <source>Look in:</source>
@@ -1137,7 +1137,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>שגיאה: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -1161,7 +1161,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>כותרת ערוץ</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
@@ -2246,10 +2246,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation type="unfinished"/>
     </message>
@@ -2259,10 +2255,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> (not available)</source>
         <translation type="unfinished"/>
     </message>
     <message>

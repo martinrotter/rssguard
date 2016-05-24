@@ -965,43 +965,43 @@ or this functionality is not implemented yet.</source>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Nadřazená kategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte typ standardního kanálu.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Kódování</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte kódování kanálu. Pokud si nejste jisti, tak zvolte kódování &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"/>
+        <translation>Auto-aktualizace</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Nadpis</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Popis</translation>
     </message>
     <message>
         <source>URL</source>
@@ -1009,39 +1009,39 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Načíst nyní</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikona</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte ikonu pro Váš kanál.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Vyžaduje HTTP autentizaci</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Heslo</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Načíst metadata</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový kanál</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
@@ -1049,88 +1049,88 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Název kanálu je v pořádku.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Název kanálu je příliš krátký.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Popis je prázdný.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Popis je v pořádku.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL je v pořádku.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>URL nemá standardní tvar. Začíná vaše URL na &quot;http://&quot; či &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL je prázdná.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno je v pořádku nebo není třeba.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno je prázdné.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Heslo je v pořádku nebo není třeba.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Heslo je prázdné.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat ikonu pro kanál</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat ikonu</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Hledat v:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Název ikony:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Typ ikony:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata stažena úspěšně.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata a ikona staženy.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Výsledek: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
@@ -1138,19 +1138,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Chyba: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Žádná metadata nestažena.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Ikona úspěšně stažena.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata ikony načtena.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
@@ -1158,75 +1158,75 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ikona nestažena.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Název kanálu</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte název pro Váš kanál.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Popis kanálu</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte popis Vašeho kanálu.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Plné url kanálu včetně schématu</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte url Vašeho kanálu.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Nastavte uživatelské jméno pro tento kanál.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Nastavte heslo pro tento kanál.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat ikonu</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Načíst ikonu ze souboru...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"/>
+        <translation>Nepoužít ikonu</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>Použít výchozí ikonu</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Stáhnout ikonu online z kanálu</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata doposud nenačtena.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Auto-aktualizovat dle hlavního nastavení</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Auto-aktualizovat každých</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Zakázat auto-aktualizace</translation>
     </message>
 </context>
 <context>
@@ -1588,19 +1588,19 @@ or this functionality is not implemented yet.</source>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Kanál přidán</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Kanál přidán, spouštím synchronizaci celého účtu.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Nelze přidat kanál</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kanál nepřidán kvůli chybě.</translation>
     </message>
 </context>
 <context>
@@ -2263,10 +2263,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable D-Bus notifications</source>
-        <translation>Povolit D-Bus notifikace</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation>&amp;Změnit písmo</translation>
     </message>
@@ -2277,10 +2273,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Select new font for message viewer</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> (not available)</source>
-        <translation>(není k dispozici)</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
@@ -2562,19 +2554,19 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Kanál přidán</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Kanál přidán, spouštím synchronizaci celého účtu.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"/>
+        <translation>Nelze přidat kanál</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kanál nepřidán kvůli chybě.</translation>
     </message>
 </context>
 <context>
@@ -3069,11 +3061,11 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Nelze přidat položku</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
     </message>
 </context>
 <context>
