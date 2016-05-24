@@ -38,7 +38,6 @@
 #include "gui/dialogs/formbackupdatabasesettings.h"
 #include "gui/dialogs/formrestoredatabasesettings.h"
 #include "gui/dialogs/formaddaccount.h"
-#include "gui/notifications/notification.h"
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/gui/formstandardimportexport.h"

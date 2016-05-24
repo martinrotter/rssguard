@@ -67,6 +67,9 @@ class SystemTrayIcon : public QSystemTrayIcon {
     // application settings.
     static bool isSystemTrayActivated();
 
+    // Determines whether baloon tips are enabled or not on tray icons.
+    static bool areNotificationsEnabled();
+
   public slots:
     void show();
 

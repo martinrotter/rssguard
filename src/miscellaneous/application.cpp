@@ -42,8 +42,7 @@ Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
     m_updateFeedsLock(NULL), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
-    m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false),
-    m_notification(NULL) {
+    m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
   connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
@@ -224,7 +223,7 @@ void Application::showGuiMessage(const QString &title, const QString &message,
                                  QSystemTrayIcon::MessageIcon message_type, QWidget *parent,
                                  bool show_at_least_msgbox, QObject *invokation_target,
                                  const char *invokation_slot) {
-  if (Notification::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
+  if (SystemTrayIcon::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
     trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
   }
   else if (show_at_least_msgbox) {
@@ -280,11 +279,6 @@ void Application::onAboutToQuit() {
     // Request for write lock timed-out. This means
     // that some critical action can be processed right now.
     qDebug("Close lock timed-out.");
-  }
-
-  if (m_notification != NULL) {
-    m_notification->deleteLater();
-    m_notification = NULL;
   }
 
   // Now, we can check if application should just quit or restart itself.

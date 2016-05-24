@@ -91,6 +91,10 @@ bool SystemTrayIcon::isSystemTrayActivated() {
   return SystemTrayIcon::isSystemTrayAvailable() && qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool();
 }
 
+bool SystemTrayIcon::areNotificationsEnabled() {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
+}
+
 void SystemTrayIcon::showPrivate() {
   // Make sure that application does not exit some window (for example
   // the settings window) gets closed. Behavior for main window

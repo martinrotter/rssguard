@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -606,13 +606,6 @@ Authors of this application are NOT responsible for lost data.</string>
            <string>Tray area &amp;&amp; notifications</string>
           </attribute>
           <layout class="QFormLayout" name="formLayout_3">
-           <item row="0" column="0">
-            <widget class="QCheckBox" name="m_checkEnableNotifications">
-             <property name="text">
-              <string>Enable notifications</string>
-             </property>
-            </widget>
-           </item>
            <item row="2" column="0" colspan="2">
             <widget class="QGroupBox" name="m_grpTray">
              <property name="title">
@@ -625,17 +618,24 @@ Authors of this application are NOT responsible for lost data.</string>
               <property name="fieldGrowthPolicy">
                <enum>QFormLayout::ExpandingFieldsGrow</enum>
               </property>
-              <item row="0" column="0">
+              <item row="1" column="0">
                <widget class="QCheckBox" name="m_checkHideWhenMinimized">
                 <property name="text">
                  <string>Hide main window when it is minimized</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0" colspan="2">
+              <item row="2" column="0" colspan="2">
                <widget class="QCheckBox" name="m_checkHidden">
                 <property name="text">
                  <string>Start application hidden</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="m_checkEnableNotifications">
+                <property name="text">
+                 <string>Enable popup baloon tooltips</string>
                 </property>
                </widget>
               </item>

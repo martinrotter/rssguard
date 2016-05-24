@@ -2234,10 +2234,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable notifications</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation type="unfinished"/>
     </message>
@@ -2260,6 +2256,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable popup baloon tooltips</source>
         <translation type="unfinished"/>
     </message>
 </context>

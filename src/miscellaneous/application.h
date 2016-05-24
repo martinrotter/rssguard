@@ -28,7 +28,6 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iofactory.h"
 #include "gui/systemtrayicon.h"
-#include "gui/notifications/notification.h"
 #include "network-web/downloadmanager.h"
 #include "services/abstract/serviceentrypoint.h"
 
@@ -74,14 +73,6 @@ class Application : public QtSingleApplication {
       }
 
       return m_system;
-    }
-
-    inline Notification *notification() {
-      if (m_notification == NULL) {
-        m_notification = new Notification();
-      }
-
-      return m_notification;
     }
 
     inline SkinFactory *skins() {
@@ -208,7 +199,6 @@ class Application : public QtSingleApplication {
     DatabaseFactory *m_database;
     DownloadManager *m_downloadManager;
     bool m_shouldRestart;
-    Notification *m_notification;
 };
 
 #endif // APPLICATION_H
