@@ -186,8 +186,6 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
   bool should_show = filterAcceptsRowInternal(source_row, source_parent);
 
   if (should_show && m_hiddenIndices.contains(QPair<int,QModelIndex>(source_row, source_parent))) {
-    // TODO: dodělat
-
     const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int,QModelIndex>(source_row, source_parent));
 
     // Load status.
