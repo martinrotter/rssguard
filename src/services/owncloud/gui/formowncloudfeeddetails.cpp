@@ -28,8 +28,8 @@
 
 FormOwnCloudFeedDetails::FormOwnCloudFeedDetails(ServiceRoot *service_root, QWidget *parent)
   : FormFeedDetails(service_root, parent) {
-  m_ui->m_cmbAutoUpdateType->setEnabled(false);
   m_ui->m_spinAutoUpdateInterval->setEnabled(false);
+  m_ui->m_cmbAutoUpdateType->setEnabled(false);
   m_ui->m_cmbType->setEnabled(false);
   m_ui->m_cmbEncoding->setEnabled(false);
   m_ui->m_btnFetchMetadata->setEnabled(false);
@@ -89,8 +89,13 @@ void FormOwnCloudFeedDetails::apply() {
 }
 
 void FormOwnCloudFeedDetails::setEditableFeed(Feed *editable_feed) {
+  m_ui->m_cmbAutoUpdateType->setEnabled(true);
+
   FormFeedDetails::setEditableFeed(editable_feed);
 
   m_ui->m_txtTitle->setEnabled(true);
+  m_ui->m_gbAuthentication->setEnabled(false);
   m_ui->m_txtUrl->setEnabled(false);
+  m_ui->m_lblParentCategory->setEnabled(false);
+  m_ui->m_cmbParentCategory->setEnabled(false);
 }

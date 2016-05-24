@@ -88,6 +88,9 @@ class StandardServiceRoot : public ServiceRoot {
     QList<QAction*> m_serviceMenu;
     QList<QAction*> m_feedContextMenu;
     QAction *m_actionFeedFetchMetadata;
+
+    QMap<int,QVariant> storeCustomFeedsData();
+    void restoreCustomFeedsData(const QMap<int,QVariant> &data, const QHash<int,Feed*> &feeds);
 };
 
 #endif // STANDARDSERVICEROOT_H

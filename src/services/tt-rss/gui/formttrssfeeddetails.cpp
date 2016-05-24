@@ -20,6 +20,7 @@
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 #include "services/tt-rss/ttrsscategory.h"
+#include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "miscellaneous/application.h"
 #include "gui/dialogs/formmain.h"
@@ -29,8 +30,8 @@
 
 FormTtRssFeedDetails::FormTtRssFeedDetails(ServiceRoot *service_root, QWidget *parent)
   : FormFeedDetails(service_root, parent) {
-  m_ui->m_cmbAutoUpdateType->setEnabled(false);
   m_ui->m_spinAutoUpdateInterval->setEnabled(false);
+  m_ui->m_cmbAutoUpdateType->setEnabled(false);
   m_ui->m_cmbType->setEnabled(false);
   m_ui->m_cmbEncoding->setEnabled(false);
   m_ui->m_btnFetchMetadata->setEnabled(false);
@@ -41,7 +42,15 @@ FormTtRssFeedDetails::FormTtRssFeedDetails(ServiceRoot *service_root, QWidget *p
 
 void FormTtRssFeedDetails::apply() {
   if (m_editableFeed != NULL) {
-    // No action to perform.
+    // User edited auto-update status. Save it.
+    TtRssFeed *new_feed_data = new TtRssFeed();
+
+    new_feed_data->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+    new_feed_data->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
+
+    qobject_cast<TtRssFeed*>(m_editableFeed)->editItself(new_feed_data);
+
+    delete new_feed_data;
   }
   else {
     RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
@@ -75,22 +84,14 @@ void FormTtRssFeedDetails::apply() {
 }
 
 void FormTtRssFeedDetails::setEditableFeed(Feed *editable_feed) {
+  m_ui->m_cmbAutoUpdateType->setEnabled(true);
+
   FormFeedDetails::setEditableFeed(editable_feed);
 
-  if (editable_feed != NULL) {
-    // Tiny Tiny RSS does not support editing of these features.
-    // User can edit only individual auto-update statuses.
-    m_ui->m_gbAuthentication->setEnabled(false);
-    m_ui->m_txtUrl->setEnabled(false);
-    m_ui->m_lblParentCategory->setEnabled(false);
-    m_ui->m_cmbParentCategory->setEnabled(false);
-  }
-  else {
-    // Tiny Tiny RSS does not support editing of these features.
-    // User can edit only individual auto-update statuses.
-    m_ui->m_gbAuthentication->setEnabled(true);
-    m_ui->m_txtUrl->setEnabled(true);
-    m_ui->m_lblParentCategory->setEnabled(true);
-    m_ui->m_cmbParentCategory->setEnabled(true);
-  }
+  // Tiny Tiny RSS does not support editing of these features.
+  // User can edit only individual auto-update statuses.
+  m_ui->m_gbAuthentication->setEnabled(false);
+  m_ui->m_txtUrl->setEnabled(false);
+  m_ui->m_lblParentCategory->setEnabled(false);
+  m_ui->m_cmbParentCategory->setEnabled(false);
 }

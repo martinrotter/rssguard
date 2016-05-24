@@ -309,8 +309,28 @@ QHash<int,Category*> RootItem::getHashedSubTreeCategories() const {
   while (!traversable_items.isEmpty()) {
     RootItem *active_item = traversable_items.takeFirst();
 
-    if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->id())) {
+    if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->customId())) {
       children.insert(active_item->customId(), active_item->toCategory());
+    }
+
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
+QHash<int,Feed*> RootItem::getHashedSubTreeFeeds() const {
+  QHash<int,Feed*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(const_cast<RootItem* const>(this));
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem *active_item = traversable_items.takeFirst();
+
+    if (active_item->kind() == RootItemKind::Feed && !children.contains(active_item->customId())) {
+      children.insert(active_item->customId(), active_item->toFeed());
     }
 
     traversable_items.append(active_item->childItems());

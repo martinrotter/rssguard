@@ -112,4 +112,6 @@ class Feed : public RootItem {
     int m_unreadCount;
 };
 
+Q_DECLARE_METATYPE(Feed::AutoUpdateType)
+
 #endif // FEED_H

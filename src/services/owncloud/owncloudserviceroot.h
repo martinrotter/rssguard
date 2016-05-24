@@ -56,6 +56,8 @@ class OwnCloudServiceRoot : public ServiceRoot {
     void addNewCategory();
 
   private:
+    QMap<int,QVariant> storeCustomFeedsData();
+    void restoreCustomFeedsData(const QMap<int,QVariant> &data, const QHash<int,Feed*> &feeds);
     RootItem *obtainNewTreeForSyncIn() const;
 
     void loadFromDatabase();

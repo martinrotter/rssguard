@@ -227,8 +227,12 @@ void ServiceRoot::syncIn() {
   if (new_tree != NULL) {
     // Purge old data from SQL and clean all model items.
     requestItemExpandStateSave(this);
+
+    QMap<int,QVariant> feed_custom_data = storeCustomFeedsData();
+
     removeOldFeedTree(false);
     cleanAllItems();
+    restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
 
     // Model is clean, now store new tree into DB and
     // set primary IDs of the items.

@@ -64,6 +64,8 @@ class TtRssServiceRoot : public ServiceRoot {
 
   private:
     RootItem *obtainNewTreeForSyncIn() const;
+    QMap<int,QVariant> storeCustomFeedsData();
+    void restoreCustomFeedsData(const QMap<int,QVariant> &data, const QHash<int,Feed*> &feeds);
 
     void loadFromDatabase();
 
