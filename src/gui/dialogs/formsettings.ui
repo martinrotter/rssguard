@@ -635,7 +635,7 @@ Authors of this application are NOT responsible for lost data.</string>
               <item row="0" column="0">
                <widget class="QCheckBox" name="m_checkEnableNotifications">
                 <property name="text">
-                 <string>Enable popup baloon tooltips</string>
+                 <string>Enable popup balloon tooltips</string>
                 </property>
                </widget>
               </item>
