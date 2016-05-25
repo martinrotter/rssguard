@@ -1,3 +1,10 @@
+3.2.5
+—————
+
+Fixed:
+
+▪ Removed "Restart" functionality, it was buggy and was causing a lot of internal problems, primarily with storing settings.
+
 3.2.4
 —————
 

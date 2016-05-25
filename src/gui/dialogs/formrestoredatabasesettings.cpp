@@ -26,19 +26,14 @@
 
 
 FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget *parent)
-  : QDialog(parent), m_ui(new Ui::FormRestoreDatabaseSettings), m_shouldRestart(false) {
+  : QDialog(parent), m_ui(new Ui::FormRestoreDatabaseSettings) {
   m_ui->setupUi(this);
 
-  m_btnRestart = m_ui->m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ActionRole);
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
   setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 
-  connect(m_btnRestart, &QPushButton::clicked, this, [=]() {
-    m_shouldRestart = true;
-    close();
-  });
   connect(m_ui->m_btnSelectFolder, SIGNAL(clicked()), this, SLOT(selectFolder()));
   connect(m_ui->m_groupDatabase, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
   connect(m_ui->m_groupSettings, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
@@ -63,7 +58,6 @@ void FormRestoreDatabaseSettings::performRestoration() {
                                   m_ui->m_listSettings->currentRow() >= 0 ?
                                     m_ui->m_listSettings->currentItem()->data(Qt::UserRole).toString() :
                                     QString());
-    m_btnRestart->setEnabled(true);
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Restoration was initiated. Restart to proceed."),
                                  tr("You need to restart application for restoration process to finish."));
   }
@@ -74,7 +68,6 @@ void FormRestoreDatabaseSettings::performRestoration() {
 }
 
 void FormRestoreDatabaseSettings::checkOkButton() {
-  m_btnRestart->setEnabled(false);
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!m_ui->m_lblSelectFolder->label()->text().isEmpty() &&
                                                               ((m_ui->m_groupDatabase->isChecked() &&
                                                                 m_ui->m_listDatabase->currentRow() >= 0) ||

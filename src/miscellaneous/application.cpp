@@ -42,7 +42,7 @@ Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
     m_updateFeedsLock(NULL), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
-    m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false) {
+    m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
   connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
@@ -280,22 +280,4 @@ void Application::onAboutToQuit() {
     // that some critical action can be processed right now.
     qDebug("Close lock timed-out.");
   }
-
-  // Now, we can check if application should just quit or restart itself.
-  if (m_shouldRestart) {
-    finish();
-    qDebug("Killing local peer connection to allow another instance to start.");
-
-    if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
-      qDebug("New application instance was started.");
-    }
-    else {
-      qWarning("New application instance was not started successfully.");
-    }
-  }
-}
-
-void Application::restart() {
-  m_shouldRestart = true;
-  quit();
 }

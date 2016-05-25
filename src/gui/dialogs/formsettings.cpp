@@ -335,18 +335,14 @@ bool FormSettings::doSaveCheck() {
 void FormSettings::promptForRestart() {
   if (!m_changedDataTexts.isEmpty()) {
     const QStringList changed_settings_description = m_changedDataTexts.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
-    const QMessageBox::StandardButton clicked_button =  MessageBox::show(this,
-                                                                         QMessageBox::Question,
-                                                                         tr("Critical settings were changed"),
-                                                                         tr("Some critical settings were changed and will be applied after the application gets restarted. "
-                                                                            "\n\nYou have to restart manually."),
-                                                                         tr("Do you want to restart now?"),
-                                                                         tr("List of changes:\n%1.").arg(changed_settings_description .join(QSL(",\n"))),
-                                                                         QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
-
-    if (clicked_button == QMessageBox::Yes) {
-      qApp->restart();
-    }
+    MessageBox::show(this,
+                     QMessageBox::Question,
+                     tr("Critical settings were changed"),
+                     tr("Some critical settings were changed and will be applied after the application gets restarted. "
+                        "\n\nYou have to restart manually."),
+                     QString(),
+                     tr("List of changes:\n%1.").arg(changed_settings_description .join(QSL(",\n"))),
+                     QMessageBox::Ok, QMessageBox::Ok);
   }
 }
 
@@ -681,7 +677,7 @@ void FormSettings::saveGeneral() {
   m_settings->setValue(GROUP(General), General::RemoveTrolltechJunk, m_ui->m_checkRemoveTrolltechJunk->isChecked());
 }
 
-void FormSettings::loadInterface() {  
+void FormSettings::loadInterface() {
   // Load settings of tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
     m_ui->m_grpTray->setChecked(m_settings->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());

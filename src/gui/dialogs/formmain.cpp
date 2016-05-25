@@ -96,7 +96,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionDownloadManager;
   actions << m_ui->m_actionRestoreDatabaseSettings;
   actions << m_ui->m_actionBackupDatabaseSettings;
-  actions << m_ui->m_actionRestart;
   actions << m_ui->m_actionQuit;
   actions << m_ui->m_actionFullscreen;
   actions << m_ui->m_actionAboutGuard;
@@ -329,7 +328,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme(QSL("emblem-downloads")));
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme(QSL("emblem-system")));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme(QSL("application-exit")));
-  m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme(QSL("help-about")));
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme(QSL("applications-internet")));
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
@@ -457,7 +455,6 @@ void FormMain::createConnections() {
   // Menu "File" connections.
   connect(m_ui->m_actionBackupDatabaseSettings, SIGNAL(triggered()), this, SLOT(backupDatabaseSettings()));
   connect(m_ui->m_actionRestoreDatabaseSettings, SIGNAL(triggered()), this, SLOT(restoreDatabaseSettings()));
-  connect(m_ui->m_actionRestart, SIGNAL(triggered()), qApp, SLOT(restart()));
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
   connect(m_ui->m_actionServiceAdd, SIGNAL(triggered()), this, SLOT(showAddAccountDialog()));
 
@@ -488,10 +485,6 @@ void FormMain::backupDatabaseSettings() {
 void FormMain::restoreDatabaseSettings() {
   QScopedPointer<FormRestoreDatabaseSettings> form(new FormRestoreDatabaseSettings(this));
   form->exec();
-
-  if (form->shouldRestart()) {
-    qApp->restart();
-  }
 }
 
 void FormMain::changeEvent(QEvent *event) {
