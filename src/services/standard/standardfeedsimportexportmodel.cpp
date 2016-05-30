@@ -32,8 +32,7 @@
 
 
 FeedsImportExportModel::FeedsImportExportModel(QObject *parent)
-  : QAbstractItemModel(parent), m_checkStates(QHash<RootItem*, Qt::CheckState>()),
-    m_rootItem(NULL), m_recursiveChange(false), m_mode(Import) {
+  : AccountCheckModel(parent), m_mode(Import) {
 }
 
 FeedsImportExportModel::~FeedsImportExportModel() {
@@ -42,27 +41,6 @@ FeedsImportExportModel::~FeedsImportExportModel() {
     // root item with main feed model, thus cannot be deleted from memory now.
     delete m_rootItem;
   }
-}
-
-RootItem *FeedsImportExportModel::itemForIndex(const QModelIndex &index) const {
-  if (index.isValid() && index.model() == this) {
-    return static_cast<RootItem*>(index.internalPointer());
-  }
-  else {
-    return m_rootItem;
-  }
-}
-
-RootItem *FeedsImportExportModel::rootItem() const {
-  return m_rootItem;
-}
-
-void FeedsImportExportModel::setRootItem(RootItem *root_item) {
-  if (m_rootItem != NULL) {
-    delete m_rootItem;
-  }
-
-  m_rootItem = root_item;
 }
 
 bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
@@ -99,7 +77,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
     RootItem *active_item = items_to_process.pop();
 
     foreach (RootItem *child_item, active_item->childItems()) {
-      if (!m_checkStates.contains(child_item) || m_checkStates[child_item] != Qt::Checked) {
+      if (!isItemChecked(child_item)) {
         continue;
       }
 
@@ -360,231 +338,4 @@ FeedsImportExportModel::Mode FeedsImportExportModel::mode() const {
 
 void FeedsImportExportModel::setMode(const FeedsImportExportModel::Mode &mode) {
   m_mode = mode;
-}
-
-void FeedsImportExportModel::checkAllItems() {
-  if (m_rootItem != NULL) {
-    foreach (RootItem *root_child, m_rootItem->childItems()) {
-      if (root_child->kind() != RootItemKind::Bin) {
-        setData(indexForItem(root_child), Qt::Checked, Qt::CheckStateRole);
-      }
-    }
-  }
-}
-
-void FeedsImportExportModel::uncheckAllItems() {
-  if (m_rootItem != NULL) {
-    foreach (RootItem *root_child, m_rootItem->childItems()) {
-      if (root_child->kind() != RootItemKind::Bin) {
-        setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
-      }
-    }
-  }
-}
-
-QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex &parent) const {
-  if (!hasIndex(row, column, parent)) {
-    return QModelIndex();
-  }
-
-  RootItem *parent_item = itemForIndex(parent);
-  RootItem *child_item = parent_item->child(row);
-
-  if (child_item) {
-    return createIndex(row, column, child_item);
-  }
-  else {
-    return QModelIndex();
-  }
-}
-
-QModelIndex FeedsImportExportModel::indexForItem(RootItem *item) const {
-  if (item == NULL || item->kind() == RootItemKind::ServiceRoot || item->kind() == RootItemKind::Root) {
-    // Root item lies on invalid index.
-    return QModelIndex();
-  }
-
-  QList<QModelIndex> parents;
-
-  // Start with root item (which obviously has invalid index).
-  parents << indexForItem(m_rootItem);
-
-  while (!parents.isEmpty()) {
-    QModelIndex active_index = parents.takeFirst();
-    int row_count = rowCount(active_index);
-
-    if (row_count > 0) {
-      // This index has children.
-      // Lets take a look if our target item is among them.
-      RootItem *active_item = itemForIndex(active_index);
-      int candidate_index = active_item->childItems().indexOf(item);
-
-      if (candidate_index >= 0) {
-        // We found our item.
-        return index(candidate_index, 0, active_index);
-      }
-      else {
-        // Item is not found, add all "categories" from active_item.
-        for (int i = 0; i < row_count; i++) {
-          RootItem *possible_category = active_item->child(i);
-
-          if (possible_category->kind() == RootItemKind::Category) {
-            parents << index(i, 0, active_index);
-          }
-        }
-      }
-    }
-  }
-
-  return QModelIndex();
-}
-
-QModelIndex FeedsImportExportModel::parent(const QModelIndex &child) const {
-  if (!child.isValid()) {
-    return QModelIndex();
-  }
-
-  RootItem *child_item = itemForIndex(child);
-  RootItem *parent_item = child_item->parent();
-
-  if (parent_item == m_rootItem) {
-    return QModelIndex();
-  }
-  else {
-    return createIndex(parent_item->row(), 0, parent_item);
-  }
-}
-
-int FeedsImportExportModel::rowCount(const QModelIndex &parent) const {
-  if (parent.column() > 0) {
-    return 0;
-  }
-  else {
-    RootItem *item = itemForIndex(parent);
-
-    if (item != NULL) {
-      return item->childCount();
-    }
-    else {
-      return 0;
-    }
-  }
-}
-
-int FeedsImportExportModel::columnCount(const QModelIndex &parent) const {
-  Q_UNUSED(parent)
-  return 1;
-}
-
-QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const {
-  if (index.column() != 0) {
-    return QVariant();
-  }
-
-  RootItem *item = itemForIndex(index);
-
-  if (role == Qt::CheckStateRole) {
-    if (m_checkStates.contains(item)) {
-      return m_checkStates.value(item);
-    }
-    else {
-      return static_cast<int>(Qt::Unchecked);
-    }
-  }
-  else if (role == Qt::DecorationRole) {
-    switch (item->kind()) {
-      case RootItemKind::Category:
-      case RootItemKind::Bin:
-      case RootItemKind::Feed:
-        return item->icon();
-
-      default:
-        return QVariant();
-    }
-  }
-  else if (role == Qt::DisplayRole) {
-    switch (item->kind()) {
-      case RootItemKind::Category:
-        return QVariant(item->data(index.column(), role).toString() + tr(" (category)"));
-
-      case RootItemKind::Feed:
-        return QVariant(item->data(index.column(), role).toString() + tr(" (feed)"));
-
-      default:
-        return item->title();
-    }
-  }
-  else {
-    return QVariant();
-  }
-}
-
-bool FeedsImportExportModel::setData(const QModelIndex &index, const QVariant &value, int role) {
-  if (index.isValid() && index.column() == 0 && role == Qt::CheckStateRole) {
-    RootItem *item = itemForIndex(index);
-
-    if (item == m_rootItem) {
-      // Cannot set data on root item.
-      return false;
-    }
-
-    // Change data for the actual item.
-    m_checkStates[item] = static_cast<Qt::CheckState>(value.toInt());
-    emit dataChanged(index, index);
-
-    if (m_recursiveChange) {
-      return true;
-    }
-
-    // Set new data for all descendants of this actual item.
-    foreach(RootItem *child, item->childItems()) {
-      setData(indexForItem(child), value, Qt::CheckStateRole);
-    }
-
-    // Now we need to change new data to all parents.
-    QModelIndex parent_index = index;
-    m_recursiveChange = true;
-
-    // Iterate all valid parents.
-    while ((parent_index = parent_index.parent()).isValid()) {
-      // We now have parent index. Get parent item too.
-      item = item->parent();
-
-      // Check children of this new parent item.
-      Qt::CheckState parent_state = Qt::Unchecked;
-      foreach (RootItem *child_of_parent, item->childItems()) {
-        if (m_checkStates.contains(child_of_parent) && m_checkStates[child_of_parent] == Qt::Checked) {
-          // We found out, that some child of this item is checked,
-          // therefore this item must be checked too.
-          parent_state = Qt::Checked;
-          break;
-        }
-      }
-
-      setData(parent_index, parent_state, Qt::CheckStateRole);
-    }
-
-    m_recursiveChange = false;
-    return true;
-  }
-
-  return false;
-}
-
-Qt::ItemFlags FeedsImportExportModel::flags(const QModelIndex &index) const {
-  if (!index.isValid() || itemForIndex(index)->kind() == RootItemKind::Bin) {
-    return Qt::NoItemFlags;
-  }
-
-  Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
-
-  if ( index.column() == 0 ) {
-    flags |= Qt::ItemIsUserCheckable;
-  }
-
-  return flags;
-}
-
-bool FeedsImportExportModel::isItemChecked(RootItem *item) {
-  return m_checkStates.contains(item) && m_checkStates.value(item, Qt::Unchecked);
 }
