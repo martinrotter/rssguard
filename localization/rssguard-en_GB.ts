@@ -1412,10 +1412,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Restart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1635,10 +1631,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2118,10 +2110,6 @@ You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Check for updates on application startup</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2276,7 +2264,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable popup baloon tooltips</source>
+        <source>Enable popup balloon tooltips</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

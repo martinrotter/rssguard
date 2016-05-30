@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl_NL">
 <context>
     <name>Application</name>
     <message>
@@ -186,7 +188,7 @@ Gelezen berichten gewist...</translation>
         <translation>Download klaar</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Bestand &apos;%1&apos; is klaar
 Klik hier om map te openen.</translation>
@@ -212,11 +214,17 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende minuut</numerusform>
+            <numerusform>%n resterende minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende seconde</numerusform>
+            <numerusform>%n resterende seconden</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -236,7 +244,10 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
+        <translation>
+            <numerusform>Dowloading %n bestand...</numerusform>
+            <numerusform>Downloading %n bestanden...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -295,7 +306,10 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-update van %n feed.</numerusform><numerusform>Auto-update van %n feeds.</numerusform></translation>
+        <translation>
+            <numerusform>Auto-update van %n feed.</numerusform>
+            <numerusform>Auto-update van %n feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -610,7 +624,10 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
+        <translation>
+            <numerusform> dag</numerusform>
+            <numerusform> dagen</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1047,7 +1064,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
@@ -1398,10 +1415,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Toon &amp;wiki</translation>
     </message>
     <message>
-        <source>&amp;Restart</source>
-        <translation>&amp;Herstart</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>&amp;Herstel database/instellingen</translation>
     </message>
@@ -1622,10 +1635,6 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Restore settings</source>
         <translation>Herstel instellingen</translation>
-    </message>
-    <message>
-        <source>Restart</source>
-        <translation>Herstart</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -2119,10 +2128,6 @@ You have to restart manually.</source>
 Je moet handmatig herstarten.</translation>
     </message>
     <message>
-        <source>Do you want to restart now?</source>
-        <translation>Wil je nu herstarten?</translation>
-    </message>
-    <message>
         <source>Check for updates on application startup</source>
         <translation>Controleer op updates als RssGuard wordt gestart</translation>
     </message>
@@ -2276,11 +2281,11 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable popup baloon tooltips</source>
-        <translation type="unfinished"/>
+        <source>Enable popup balloon tooltips</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3048,7 +3053,10 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Toon meer berichten (%n resterend)</numerusform><numerusform>Toon meer berichten (%n resterende)</numerusform></translation>
+        <translation>
+            <numerusform>Toon meer berichten (%n resterend)</numerusform>
+            <numerusform>Toon meer berichten (%n resterende)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3104,11 +3112,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n andere feed.</numerusform><numerusform>
++ %n andere feed.</numerusform>
+            <numerusform>
 
-+ %n andere feeds.</numerusform></translation>
++ %n andere feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3157,7 +3168,10 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3181,7 +3195,10 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3236,7 +3253,10 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3401,11 +3421,17 @@ Ongelezen nieuws: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n uur</numerusform><numerusform>%n ur(en)</numerusform></translation>
+        <translation>
+            <numerusform>%n uur</numerusform>
+            <numerusform>%n ur(en)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuut</numerusform><numerusform>%n minut(en)</numerusform></translation>
+        <translation>
+            <numerusform>%n minuut</numerusform>
+            <numerusform>%n minut(en)</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -3481,7 +3507,10 @@ Ongelezen nieuws: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
