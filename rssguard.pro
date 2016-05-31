@@ -48,10 +48,17 @@
 #
 #################################################################
 
-TEMPLATE = app
-TARGET = rssguard
+TEMPLATE    = app
+TARGET      = rssguard
+DEFINES	    *= QT_USE_QSTRINGBUILDER
+
 CODECFORTR  = UTF-8
 CODECFORSRC = UTF-8
+
+DESTDIR	    = app
+OBJECTS_DIR = build
+MOC_DIR	    = build
+UI_DIR	    = build
 
 message(rssguard: Welcome to RSS Guard qmake script.)
 message(rssguard: Detected Qt version: $$QT_VERSION)
@@ -424,14 +431,24 @@ TRANSLATIONS += localization/qtbase-cs_CZ.ts \
                 localization/rssguard-pt_BR.ts \
                 localization/rssguard-sv_SE.ts
 
-INCLUDEPATH +=  . \
-                src \
-                src/gui \
-                src/gui/dialogs \
-                src/dynamic-shortcuts
+INCLUDEPATH +=  $$PWD/. \
+                $$PWD/src \
+                $$PWD/src/gui \
+                $$PWD/src/gui/dialogs \
+                $$PWD/src/dynamic-shortcuts
 
-win {
+isEmpty(DESTDIR) {
+  DESTDIR = $$(PWD)
+}
+
+win32 {
 # Install all files on Windows.
+  target.path = bin
+
+  misc.files = $$DESTDIR/resources/misc/*.sql
+  misc.path = $$DESTDIR/misc
+
+  INSTALLS += target misc
 }
 
 unix:!mac {
