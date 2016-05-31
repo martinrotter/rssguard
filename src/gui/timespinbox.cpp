@@ -82,5 +82,7 @@ void TimeSpinBox::fixup(QString &input) const {
 }
 
 QValidator::State TimeSpinBox::validate(QString &input, int &pos) const {
+  Q_UNUSED(pos)
+
   return (valueFromText(input) != -1.0) ? QValidator::Acceptable : QValidator::Intermediate;
 }

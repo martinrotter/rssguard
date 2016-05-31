@@ -50,7 +50,17 @@
 
 TEMPLATE = app
 TARGET = rssguard
-INCLUDEPATH += .
+CODECFORTR  = UTF-8
+CODECFORSRC = UTF-8
+
+message(rssguard: Welcome to RSS Guard qmake script.)
+message(rssguard: Detected Qt version: $$QT_VERSION)
+
+lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 4) {
+  error(rssguard: At least Qt 5.4.0 is required.)
+}
+
+QT += core gui widgets sql network xml printsupport
 
 HEADERS += src/core/feeddownloader.h \
            src/core/feedsmodel.h \
@@ -371,7 +381,7 @@ SOURCES += src/main.cpp \
            src/services/tt-rss/gui/formeditaccount.cpp \
            src/services/tt-rss/gui/formttrssfeeddetails.cpp \
            src/services/tt-rss/network/ttrssnetworkfactory.cpp
-           
+
 FORMS += src/gui/messagepreviewer.ui \
          src/gui/newspaperpreviewer.ui \
          src/gui/toolbareditor.ui \
@@ -390,7 +400,7 @@ FORMS += src/gui/messagepreviewer.ui \
          src/services/standard/gui/formstandardcategorydetails.ui \
          src/services/standard/gui/formstandardimportexport.ui \
          src/services/tt-rss/gui/formeditaccount.ui
-           
+
 TRANSLATIONS += localization/qtbase-cs_CZ.ts \
                 localization/qtbase-da_DK.ts \
                 localization/qtbase-de_DE.ts \
@@ -413,3 +423,21 @@ TRANSLATIONS += localization/qtbase-cs_CZ.ts \
                 localization/rssguard-nl_NL.ts \
                 localization/rssguard-pt_BR.ts \
                 localization/rssguard-sv_SE.ts
+
+INCLUDEPATH +=  . \
+                src \
+                src/gui \
+                src/gui/dialogs \
+                src/dynamic-shortcuts
+
+win {
+# Install all files on Windows.
+}
+
+unix:!mac {
+# Install all files on Linux.
+}
+
+mac {
+# Install all files on Mac OS X.
+}

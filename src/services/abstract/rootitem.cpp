@@ -201,6 +201,8 @@ Qt::ItemFlags RootItem::additionalFlags() const {
 }
 
 bool RootItem::performDragDropChange(RootItem *target_item) {
+  Q_UNUSED(target_item)
+
   return false;
 }
 

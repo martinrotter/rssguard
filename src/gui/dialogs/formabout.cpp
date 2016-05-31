@@ -99,13 +99,9 @@ void FormAbout::loadLicenseAndInformation() {
 
   // Set other informative texts.
   m_ui->m_lblDesc->setText(tr("<b>%8</b><br>"
-                              "<b>Version:</b> %1 (build on %2 with CMake %3)<br>"
-                              "<b>Revision:</b> %4<br>"
-                              "<b>Build date:</b> %5<br>"
-                              "<b>Qt:</b> %6 (compiled against %7)<br>").arg(qApp->applicationVersion(),
-                                                                             CMAKE_SYSTEM,
-                                                                             CMAKE_VERSION,
-                                                                             APP_REVISION,
+                              "<b>Version:</b> %1<br>"
+                              "<b>Build date:</b> %2<br>"
+                              "<b>Qt:</b> %3 (compiled against %4)<br>").arg(qApp->applicationVersion(),
                                                                              TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__,
                                                                                                                              __TIME__)).toString(Qt::DefaultLocaleShortDate),
                                                                              qVersion(),

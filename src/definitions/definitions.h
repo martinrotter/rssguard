@@ -20,22 +20,19 @@
 
 #include <QtGlobal>
 
-#define CMAKE_VERSION       "@CMAKE_VERSION@"
-#define CMAKE_SYSTEM        "@CMAKE_SYSTEM@"
-
-#define APP_NAME            "@APP_NAME@"
-#define APP_LOW_NAME        "@APP_LOW_NAME@"
-#define APP_LOW_H_NAME      ".@APP_LOW_NAME@"
-#define APP_LONG_NAME       "@APP_NAME@ @APP_VERSION@"
-#define APP_AUTHOR          "@APP_AUTHOR@"
-#define APP_EMAIL           "@APP_EMAIL@"
-#define APP_URL             "@APP_URL@"
-#define APP_URL_ISSUES      "@APP_URL_ISSUES@"
-#define APP_URL_ISSUES_NEW_GITHUB  "@APP_URL_ISSUES_NEW_GITHUB@"
-#define APP_URL_ISSUES_NEW_BITBUCKET  "@APP_URL_ISSUES_NEW_BITBUCKET@"
-#define APP_URL_WIKI        "@APP_URL_WIKI@"
-#define APP_VERSION         "@APP_VERSION@"
-#define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@")
+#define APP_NAME            "RSS Guard"
+#define APP_LOW_NAME        "rssguard"
+#define APP_LOW_H_NAME      ".rssguard"
+#define APP_LONG_NAME       "RSS Guard 3.3.0"
+#define APP_AUTHOR          "Martin Rotter"
+#define APP_EMAIL           "rotter.martinos@gmail.com"
+#define APP_URL             "http://bitbucket.org/skunkos/rssguard"
+#define APP_URL_ISSUES      "http://bitbucket.org/skunkos/rssguard/issues"
+#define APP_URL_ISSUES_NEW_GITHUB  "https://github.com/martinrotter/rssguard/issues/new"
+#define APP_URL_ISSUES_NEW_BITBUCKET  "http://bitbucket.org/skunkos/rssguard/issues/new"
+#define APP_URL_WIKI        "https://bitbucket.org/skunkos/rssguard/wiki/Home"
+#define APP_VERSION         "3.3.0"
+#define APP_USERAGENT       QString("RSS Guuard/3.3.0 (http://bitbucket.org/skunkos/rssguard)")
 #define APP_DONATE_URL      "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
 #define SERVICE_CODE_STD_RSS  "std-rss"
@@ -72,8 +69,8 @@
 #define DEFAULT_DAYS_TO_DELETE_MSG            14
 #define ELLIPSIS_LENGTH                       3
 #define MIN_CATEGORY_NAME_LENGTH              3
-#define INTERNAL_URL_NEWSPAPER                "@APP_LOW_NAME@:newspaper"
-#define INTERNAL_URL_EMPTY                    "@APP_LOW_NAME@:empty"
+#define INTERNAL_URL_NEWSPAPER                "rssguard:newspaper"
+#define INTERNAL_URL_EMPTY                    "rssguard:empty"
 #define INTERNAL_URL_BLANK                    "about:blank"
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
 #define AUTO_UPDATE_INTERVAL                  60000
@@ -89,7 +86,7 @@
 #define FILTER_RIGHT_MARGIN                   5
 #define FEEDS_VIEW_INDENTATION                10
 #define ACCEPT_HEADER_FOR_FEED_DOWNLOADER     "application/atom+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7"
-#define MIME_TYPE_ITEM_POINTER                "@APP_LOW_NAME@/itempointer"
+#define MIME_TYPE_ITEM_POINTER                "rssguard/itempointer"
 #define DOWNLOADER_ICON_SIZE                  48
 #define NOTIFICATION_ICON_SIZE                32
 #define GOOGLE_SEARCH_URL                     "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
@@ -134,12 +131,11 @@
 #define APP_LOG_FILE        "log.txt"
 
 #if defined(Q_OS_OSX)
-#define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@/@APP_LOW_NAME@.app/Contents/Resources"
+#define APP_PREFIX          "rssguard.app/Contents/Resources"
 #else
-#define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@"
+#define APP_PREFIX          ".."
 #endif
 
-#define APP_REVISION        "@APP_REVISION@"
 #define APP_QUIT_INSTANCE   "app_quit"
 #define APP_IS_RUNNING      "app_is_running"
 #define APP_SKIN_DEFAULT    "base/vergilius.xml"
