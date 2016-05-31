@@ -86,7 +86,7 @@ void FormUpdate::checkForUpdates() {
 
     const bool is_self_update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
 
-    if (SystemFactory::isVersionNewer(update.first.m_availableVersion, APP_VERSION)) {
+    if (!SystemFactory::isVersionNewer(update.first.m_availableVersion, APP_VERSION)) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
@@ -111,7 +111,7 @@ void FormUpdate::checkForUpdates() {
 void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
   qApp->processEvents();
   m_ui->m_lblStatus->setStatus(WidgetWithStatus::Information,
-                               tr("Downloaded %1% (update size is %2 kB).").arg(QString::number((bytes_received * 100.0) / bytes_total,
+                               tr("Downloaded %1% (update size is %2 kB).").arg(QString::number((bytes_received * 100.0) / ++bytes_total,
                                                                                                 'f',
                                                                                                 2),
                                                                                 QString::number(bytes_total / 1000,
@@ -215,7 +215,7 @@ void FormUpdate::startUpdate() {
       // Initialie downloader.
       m_downloader = new Downloader(this);
 
-      //connect(m_downloader, SIGNAL(progress(qint64,qint64)), this, SLOT(updateProgress(qint64,qint64)));
+      connect(m_downloader, SIGNAL(progress(qint64,qint64)), this, SLOT(updateProgress(qint64,qint64)));
       connect(m_downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)), this, SLOT(updateCompleted(QNetworkReply::NetworkError,QByteArray)));
     }
 
