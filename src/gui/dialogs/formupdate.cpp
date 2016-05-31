@@ -111,7 +111,7 @@ void FormUpdate::checkForUpdates() {
 void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
   qApp->processEvents();
   m_ui->m_lblStatus->setStatus(WidgetWithStatus::Information,
-                               tr("Downloaded %1% (update size is %2 kB).").arg(QString::number((bytes_received * 100.0) / ++bytes_total,
+                               tr("Downloaded %1% (update size is %2 kB).").arg(QString::number(bytes_total == 0 ? 0 : (bytes_received * 100.0) / bytes_total,
                                                                                                 'f',
                                                                                                 2),
                                                                                 QString::number(bytes_total / 1000,

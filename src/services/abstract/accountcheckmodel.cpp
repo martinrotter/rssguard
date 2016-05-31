@@ -23,8 +23,7 @@
 
 
 AccountCheckModel::AccountCheckModel(QObject *parent)
-  : QAbstractItemModel(parent), m_checkStates(QHash<RootItem*, Qt::CheckState>()),
-    m_rootItem(NULL), m_recursiveChange(false) {
+  : QAbstractItemModel(parent), m_rootItem(NULL), m_checkStates(QHash<RootItem*, Qt::CheckState>()), m_recursiveChange(false) {
 }
 
 AccountCheckModel::~AccountCheckModel() {

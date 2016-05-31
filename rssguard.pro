@@ -22,19 +22,10 @@
 #
 # Usage:
 #   a) DEBUG build for testing.
-#     .....
+#     qmake -r CONFIG+=debug DESTDIR=/dir/dir/dir
 #
 #   b) RELEASE build for production use.
 #     .....
-#
-# Refreshing translation sources:
-#   make lupdate
-#
-# Generating source tarballs:
-#   make dist or make package_source
-#
-# Generating binary tarballs:
-#   make package
 #
 # Other information:
 #   - supports Windows, Linux,
@@ -50,22 +41,27 @@
 
 TEMPLATE    = app
 TARGET      = rssguard
+APP_NAME    = rssguard
 DEFINES	    *= QT_USE_QSTRINGBUILDER
 
 CODECFORTR  = UTF-8
 CODECFORSRC = UTF-8
 
-DESTDIR	    = app
-OBJECTS_DIR = build
-MOC_DIR	    = build
-UI_DIR	    = build
-
 message(rssguard: Welcome to RSS Guard qmake script.)
-message(rssguard: Detected Qt version: $$QT_VERSION)
+message(rssguard: Detected Qt version: '$$QT_VERSION'.)
+message(rssguard: Destination directory: '$$PREFIX'.)
 
 lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 4) {
   error(rssguard: At least Qt 5.4.0 is required.)
 }
+
+isEmpty(PREFIX) {
+  error(rssguard: Variable PREFIX is not set.)
+}
+
+message(rssguard: Build directory: '$$DESTDIR'.)
+message(rssguard: Install directory: '$$PREFIX'.)
+
 
 QT += core gui widgets sql network xml printsupport
 
@@ -76,6 +72,7 @@ HEADERS += src/core/feeddownloader.h \
            src/core/messagesmodel.h \
            src/core/messagesproxymodel.h \
            src/core/parsingfactory.h \
+           src/definitions/definitions.h \
            src/dynamic-shortcuts/dynamicshortcuts.h \
            src/dynamic-shortcuts/dynamicshortcutswidget.h \
            src/dynamic-shortcuts/shortcutbutton.h \
@@ -86,6 +83,14 @@ HEADERS += src/core/feeddownloader.h \
            src/gui/basetoolbar.h \
            src/gui/colorlabel.h \
            src/gui/comboboxwithstatus.h \
+           src/gui/dialogs/formabout.h \
+           src/gui/dialogs/formaddaccount.h \
+           src/gui/dialogs/formbackupdatabasesettings.h \
+           src/gui/dialogs/formdatabasecleanup.h \
+           src/gui/dialogs/formmain.h \
+           src/gui/dialogs/formrestoredatabasesettings.h \
+           src/gui/dialogs/formsettings.h \
+           src/gui/dialogs/formupdate.h \
            src/gui/edittableview.h \
            src/gui/feedmessageviewer.h \
            src/gui/feedstoolbar.h \
@@ -122,6 +127,7 @@ HEADERS += src/core/feeddownloader.h \
            src/miscellaneous/mutex.h \
            src/miscellaneous/settings.h \
            src/miscellaneous/settingsproperties.h \
+           src/miscellaneous/simplecrypt/simplecrypt.h \
            src/miscellaneous/skinfactory.h \
            src/miscellaneous/systemfactory.h \
            src/miscellaneous/textfactory.h \
@@ -135,152 +141,42 @@ HEADERS += src/core/feeddownloader.h \
            src/qtsingleapplication/qtlockedfile.h \
            src/qtsingleapplication/qtsingleapplication.h \
            src/qtsingleapplication/qtsinglecoreapplication.h \
-           src/gui/dialogs/formabout.h \
-           src/gui/dialogs/formaddaccount.h \
-           src/gui/dialogs/formbackupdatabasesettings.h \
-           src/gui/dialogs/formdatabasecleanup.h \
-           src/gui/dialogs/formmain.h \
-           src/gui/dialogs/formrestoredatabasesettings.h \
-           src/gui/dialogs/formsettings.h \
-           src/gui/dialogs/formupdate.h \
-           src/miscellaneous/simplecrypt/simplecrypt.h \
            src/services/abstract/accountcheckmodel.h \
            src/services/abstract/category.h \
            src/services/abstract/feed.h \
+           src/services/abstract/gui/formfeeddetails.h \
            src/services/abstract/recyclebin.h \
            src/services/abstract/rootitem.h \
            src/services/abstract/serviceentrypoint.h \
            src/services/abstract/serviceroot.h \
            src/services/owncloud/definitions.h \
+           src/services/owncloud/gui/formeditowncloudaccount.h \
+           src/services/owncloud/gui/formowncloudfeeddetails.h \
+           src/services/owncloud/network/owncloudnetworkfactory.h \
            src/services/owncloud/owncloudcategory.h \
            src/services/owncloud/owncloudfeed.h \
            src/services/owncloud/owncloudrecyclebin.h \
            src/services/owncloud/owncloudserviceentrypoint.h \
            src/services/owncloud/owncloudserviceroot.h \
+           src/services/standard/gui/formstandardcategorydetails.h \
+           src/services/standard/gui/formstandardfeeddetails.h \
+           src/services/standard/gui/formstandardimportexport.h \
            src/services/standard/standardcategory.h \
            src/services/standard/standardfeed.h \
            src/services/standard/standardfeedsimportexportmodel.h \
            src/services/standard/standardserviceentrypoint.h \
            src/services/standard/standardserviceroot.h \
            src/services/tt-rss/definitions.h \
-           src/services/tt-rss/ttrsscategory.h \
-           src/services/tt-rss/ttrssfeed.h \
-           src/services/tt-rss/ttrssrecyclebin.h \
-           src/services/tt-rss/ttrssserviceentrypoint.h \
-           src/services/tt-rss/ttrssserviceroot.h \
-           src/services/abstract/gui/formfeeddetails.h \
-           src/services/owncloud/gui/formeditowncloudaccount.h \
-           src/services/owncloud/gui/formowncloudfeeddetails.h \
-           src/services/owncloud/network/owncloudnetworkfactory.h \
-           src/services/standard/gui/formstandardcategorydetails.h \
-           src/services/standard/gui/formstandardfeeddetails.h \
-           src/services/standard/gui/formstandardimportexport.h \
            src/services/tt-rss/gui/formeditaccount.h \
            src/services/tt-rss/gui/formttrssfeeddetails.h \
            src/services/tt-rss/network/ttrssnetworkfactory.h \
-           src/definitions/definitions.h \
-           src/qtsingleapplication/qtsingleapplication.h \
-           src/miscellaneous/settings.h \
-           src/miscellaneous/settingsproperties.h \
-           src/miscellaneous/systemfactory.h \
-           src/miscellaneous/skinfactory.h \
-           src/miscellaneous/localization.h \
-           src/miscellaneous/iofactory.h \
-           src/gui/systemtrayicon.h \
-           src/network-web/downloadmanager.h \
-           src/gui/tabcontent.h \
-           src/services/abstract/serviceentrypoint.h \
-           src/core/messagesmodel.h \
-           src/core/message.h \
-           src/services/abstract/rootitem.h \
-           src/core/feeddownloader.h \
-           src/core/feedsmodel.h \
-           src/network-web/basenetworkaccessmanager.h \
-           src/services/abstract/feed.h \
-           src/services/abstract/category.h \
-           src/services/abstract/serviceroot.h \
-           src/services/abstract/recyclebin.h \
-           src/services/standard/standardserviceroot.h \
-           src/miscellaneous/textfactory.h \
-           src/miscellaneous/databasecleaner.h \
-           src/miscellaneous/mutex.h \
-           src/gui/statusbar.h \
-           src/gui/basetoolbar.h \
-           src/core/feedsproxymodel.h \
-           src/services/standard/standardcategory.h \
-           src/services/standard/standardfeed.h \
-           src/miscellaneous/databasequeries.h \
-           src/core/messagesproxymodel.h \
-           src/core/parsingfactory.h \
-           src/network-web/webfactory.h \
-           src/dynamic-shortcuts/dynamicshortcutswidget.h \
-           src/dynamic-shortcuts/shortcutcatcher.h \
-           src/dynamic-shortcuts/shortcutbutton.h \
-           src/gui/plaintoolbutton.h \
-           src/exceptions/applicationexception.h \
-           src/exceptions/ioexception.h \
-           src/gui/baselineedit.h \
-           src/gui/colorlabel.h \
-           src/gui/comboboxwithstatus.h \
-           src/gui/widgetwithstatus.h \
-           src/gui/edittableview.h \
-           src/services/standard/standardfeedsimportexportmodel.h \
-           src/services/abstract/accountcheckmodel.h \
-           src/gui/messagesview.h \
-           src/gui/messagestoolbar.h \
-           src/gui/feedstoolbar.h \
-           src/gui/messagepreviewer.h \
-           src/gui/dialogs/formdatabasecleanup.h \
-           src/gui/styleditemdelegatewithoutfocus.h \
-           src/services/standard/gui/formstandardcategorydetails.h \
-           src/gui/labelwithstatus.h \
-           src/gui/lineeditwithstatus.h \
-           src/gui/messagessearchlineedit.h \
-           src/network-web/networkfactory.h \
-           src/gui/newspaperpreviewer.h \
-           src/gui/messagetextbrowser.h \
-           src/gui/squeezelabel.h \
-           src/gui/tabwidget.h \
-           src/gui/tabbar.h \
-           src/gui/dialogs/formsettings.h \
-           src/gui/timespinbox.h \
-           src/gui/toolbareditor.h \
-           src/services/standard/standardserviceentrypoint.h \
-           src/services/tt-rss/ttrssserviceentrypoint.h \
-           src/services/owncloud/owncloudserviceentrypoint.h \
-           src/miscellaneous/autosaver.h \
-           src/services/owncloud/owncloudserviceroot.h \
-           src/services/owncloud/owncloudcategory.h \
-           src/services/owncloud/owncloudfeed.h \
-           src/services/owncloud/network/owncloudnetworkfactory.h \
-           src/services/tt-rss/ttrssserviceroot.h \
            src/services/tt-rss/ttrsscategory.h \
            src/services/tt-rss/ttrssfeed.h \
-           src/services/tt-rss/network/ttrssnetworkfactory.h \
-           src/miscellaneous/simplecrypt/simplecrypt.h \
-           src/network-web/downloader.h \
-           src/qtsingleapplication/qtlockedfile.cpp \
-           src/qtsingleapplication/qtlockedfile_win.cpp \
-           src/qtsingleapplication/qtlockedfile_unix.cpp \
-           src/gui/dialogs/formabout.h \
-           src/gui/dialogs/formaddaccount.h \
-           src/gui/dialogs/formbackupdatabasesettings.h \
-           src/gui/dialogs/formupdate.h \
-           src/gui/dialogs/formrestoredatabasesettings.h \
-           src/services/standard/gui/formstandardimportexport.h \
-           src/services/owncloud/gui/formowncloudfeeddetails.h \
-           src/services/abstract/gui/formfeeddetails.h \
-           src/services/owncloud/owncloudrecyclebin.h \
-           src/services/owncloud/definitions.h \
-           src/services/owncloud/gui/formeditowncloudaccount.h \
-           src/services/standard/gui/formstandardfeeddetails.h \
-           src/services/tt-rss/definitions.h \
-           src/services/tt-rss/gui/formttrssfeeddetails.h \
            src/services/tt-rss/ttrssrecyclebin.h \
-           src/services/tt-rss/gui/formeditaccount.h
+           src/services/tt-rss/ttrssserviceentrypoint.h \
+           src/services/tt-rss/ttrssserviceroot.h
 
-SOURCES += src/main.cpp \
-           src/core/feeddownloader.cpp \
+SOURCES += src/core/feeddownloader.cpp \
            src/core/feedsmodel.cpp \
            src/core/feedsproxymodel.cpp \
            src/core/message.cpp \
@@ -297,6 +193,14 @@ SOURCES += src/main.cpp \
            src/gui/basetoolbar.cpp \
            src/gui/colorlabel.cpp \
            src/gui/comboboxwithstatus.cpp \
+           src/gui/dialogs/formabout.cpp \
+           src/gui/dialogs/formaddaccount.cpp \
+           src/gui/dialogs/formbackupdatabasesettings.cpp \
+           src/gui/dialogs/formdatabasecleanup.cpp \
+           src/gui/dialogs/formmain.cpp \
+           src/gui/dialogs/formrestoredatabasesettings.cpp \
+           src/gui/dialogs/formsettings.cpp \
+           src/gui/dialogs/formupdate.cpp \
            src/gui/edittableview.cpp \
            src/gui/feedmessageviewer.cpp \
            src/gui/feedstoolbar.cpp \
@@ -321,6 +225,7 @@ SOURCES += src/main.cpp \
            src/gui/timespinbox.cpp \
            src/gui/toolbareditor.cpp \
            src/gui/widgetwithstatus.cpp \
+           src/main.cpp \
            src/miscellaneous/application.cpp \
            src/miscellaneous/autosaver.cpp \
            src/miscellaneous/databasecleaner.cpp \
@@ -332,6 +237,7 @@ SOURCES += src/main.cpp \
            src/miscellaneous/localization.cpp \
            src/miscellaneous/mutex.cpp \
            src/miscellaneous/settings.cpp \
+           src/miscellaneous/simplecrypt/simplecrypt.cpp \
            src/miscellaneous/skinfactory.cpp \
            src/miscellaneous/systemfactory.cpp \
            src/miscellaneous/textfactory.cpp \
@@ -343,51 +249,40 @@ SOURCES += src/main.cpp \
            src/network-web/webfactory.cpp \
            src/qtsingleapplication/qtlocalpeer.cpp \
            src/qtsingleapplication/qtlockedfile.cpp \
-           src/qtsingleapplication/qtlockedfile_unix.cpp \
-           src/qtsingleapplication/qtlockedfile_win.cpp \
            src/qtsingleapplication/qtsingleapplication.cpp \
            src/qtsingleapplication/qtsinglecoreapplication.cpp \
-           src/gui/dialogs/formabout.cpp \
-           src/gui/dialogs/formaddaccount.cpp \
-           src/gui/dialogs/formbackupdatabasesettings.cpp \
-           src/gui/dialogs/formdatabasecleanup.cpp \
-           src/gui/dialogs/formmain.cpp \
-           src/gui/dialogs/formrestoredatabasesettings.cpp \
-           src/gui/dialogs/formsettings.cpp \
-           src/gui/dialogs/formupdate.cpp \
-           src/miscellaneous/simplecrypt/simplecrypt.cpp \
            src/services/abstract/accountcheckmodel.cpp \
            src/services/abstract/category.cpp \
            src/services/abstract/feed.cpp \
+           src/services/abstract/gui/formfeeddetails.cpp \
            src/services/abstract/recyclebin.cpp \
            src/services/abstract/rootitem.cpp \
            src/services/abstract/serviceentrypoint.cpp \
            src/services/abstract/serviceroot.cpp \
+           src/services/owncloud/gui/formeditowncloudaccount.cpp \
+           src/services/owncloud/gui/formowncloudfeeddetails.cpp \
+           src/services/owncloud/network/owncloudnetworkfactory.cpp \
            src/services/owncloud/owncloudcategory.cpp \
            src/services/owncloud/owncloudfeed.cpp \
            src/services/owncloud/owncloudrecyclebin.cpp \
            src/services/owncloud/owncloudserviceentrypoint.cpp \
            src/services/owncloud/owncloudserviceroot.cpp \
+           src/services/standard/gui/formstandardcategorydetails.cpp \
+           src/services/standard/gui/formstandardfeeddetails.cpp \
+           src/services/standard/gui/formstandardimportexport.cpp \
            src/services/standard/standardcategory.cpp \
            src/services/standard/standardfeed.cpp \
            src/services/standard/standardfeedsimportexportmodel.cpp \
            src/services/standard/standardserviceentrypoint.cpp \
            src/services/standard/standardserviceroot.cpp \
+           src/services/tt-rss/gui/formeditaccount.cpp \
+           src/services/tt-rss/gui/formttrssfeeddetails.cpp \
+           src/services/tt-rss/network/ttrssnetworkfactory.cpp \
            src/services/tt-rss/ttrsscategory.cpp \
            src/services/tt-rss/ttrssfeed.cpp \
            src/services/tt-rss/ttrssrecyclebin.cpp \
            src/services/tt-rss/ttrssserviceentrypoint.cpp \
-           src/services/tt-rss/ttrssserviceroot.cpp \
-           src/services/abstract/gui/formfeeddetails.cpp \
-           src/services/owncloud/gui/formeditowncloudaccount.cpp \
-           src/services/owncloud/gui/formowncloudfeeddetails.cpp \
-           src/services/owncloud/network/owncloudnetworkfactory.cpp \
-           src/services/standard/gui/formstandardcategorydetails.cpp \
-           src/services/standard/gui/formstandardfeeddetails.cpp \
-           src/services/standard/gui/formstandardimportexport.cpp \
-           src/services/tt-rss/gui/formeditaccount.cpp \
-           src/services/tt-rss/gui/formttrssfeeddetails.cpp \
-           src/services/tt-rss/network/ttrssnetworkfactory.cpp
+           src/services/tt-rss/ttrssserviceroot.cpp
 
 FORMS += src/gui/messagepreviewer.ui \
          src/gui/newspaperpreviewer.ui \
@@ -437,20 +332,58 @@ INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src/gui/dialogs \
                 $$PWD/src/dynamic-shortcuts
 
-win32 {
+TEXTS = resources/text/CHANGELOG \
+        resources/text/COPYING_BSD
+
 # Install all files on Windows.
-  target.path = $$DESTDIR
+win32 {
+  target.path = $$PREFIX
 
-  misc.files = resources/misc/*.sql
-  misc.path = $$DESTDIR/misc
-
-  INSTALLS += target misc
+  misc_sql.files = resources/misc/*.sql
+  misc_sql.path = $$PREFIX/misc
 }
 
-unix:!mac {
 # Install all files on Linux.
+unix:!mac {
+  target.path = $$PREFIX/usr/bin
+
+  # Install SQL initializers.
+  misc_sql.files = resources/misc/*.sql
+  misc_sql.path = $$quote($$PREFIX/usr/share/$$TARGET/misc/)
+
+  # Misc icons.
+  misc_icons.files = resources/graphics/misc/*.png
+  misc_icons.path = $$quote($$PREFIX/usr/share/$$TARGET/icons/misc/)
+  misc_flags.files = resources/graphics/misc/flags/*.png
+  misc_flags.path = $$quote($$PREFIX/usr/share/$$TARGET/icons/misc/flags/)
+
+  # Initial feeds.
+  misc_feeds.files = resources/initial_feeds
+  misc_feeds.path = $$quote($$PREFIX/usr/share/$$TARGET/)
+
+  misc_icon.files = $$quote($$OUT_PWD/$${TARGET}.png)
+  misc_icon.extra = cp $$quote($$PWD/resources/graphics/$${TARGET}_128.png) $$quote($$OUT_PWD/$${TARGET}.png)
+  misc_icon.path = $$quote($$PREFIX/usr/share/pixmaps/)
+
+  misc_plain_icon.files = $$quote($$OUT_PWD/$${TARGET}_plain.png)
+  misc_plain_icon.extra = cp $$quote($$PWD/resources/graphics/$${TARGET}_plain_128.png) $$quote($$OUT_PWD/$${TARGET}_plain.png)
+  misc_plain_icon.path = $$quote($$PREFIX/usr/share/$$TARGET/icons/)
+
+  misc_texts.files = $$TEXTS
+  misc_texts.path = $$quote($$PREFIX/usr/share/$$TARGET/information/)
+
+  updateqm.input = TRANSLATIONS
+  updateqm.output = ${QMAKE_FILE_BASE}.qm
+  updateqm.commands = lrelease ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_BASE}.qm
+  updateqm.CONFIG += no_link target_predeps
+  QMAKE_EXTRA_COMPILERS += updateqm
+
+  translations.files = $$OUT_PWD/*.qm
+  translations.path = $$quote($$PREFIX/usr/share/$$TARGET/l10n/)
+
+  INSTALLS += target misc_sql misc_icons misc_flags misc_feeds misc_icon misc_plain_icon misc_texts translations
 }
 
-mac {
 # Install all files on Mac OS X.
+mac {
 }
