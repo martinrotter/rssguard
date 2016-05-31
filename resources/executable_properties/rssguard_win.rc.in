@@ -17,7 +17,7 @@ BEGIN
       VALUE "FileDescription",    "@APP_NAME@"
       VALUE "FileVersion",        "@APP_VERSION@"
       VALUE "InternalName",       "@APP_AUTHOR@"
-      VALUE "LegalCopyright",     "Copyright © 2011-2014 Martin Rotter"
+      VALUE "LegalCopyright",     "Copyright © 2011-2016 Martin Rotter"
       VALUE "LegalTrademarks1",   "Some rights reserved"
       VALUE "LegalTrademarks2",   "Some rights reserved"
       VALUE "OriginalFilename",   "@EXE_NAME@.exe"
