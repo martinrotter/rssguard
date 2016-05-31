@@ -26,7 +26,9 @@
 #include <QThreadPool>
 
 
-FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent), m_results(FeedDownloadResults()), m_isUpdateRunning(false), m_stopUpdate(false) {
+FeedDownloader::FeedDownloader(QObject *parent)
+  : QObject(parent), m_results(FeedDownloadResults()), m_feedsUpdated(0), m_feedsToUpdate(0),
+    m_feedsUpdating(0), m_feedsTotalCount(0), m_stopUpdate(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 }
 
@@ -35,7 +37,7 @@ FeedDownloader::~FeedDownloader() {
 }
 
 bool FeedDownloader::isUpdateRunning() const {
-  return m_isUpdateRunning;
+  return m_feedsToUpdate > 0 || m_feedsUpdating > 0;
 }
 
 void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
@@ -43,39 +45,29 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 
   // It may be good to disable "stop" action when batch feed update
   // starts.
-  m_isUpdateRunning = true;
   m_stopUpdate = false;
 
   m_results.clear();
 
+  m_feedsUpdated = 0;
   m_feedsUpdating = 0;
   m_feedsToUpdate = feeds.size();
-  m_totalFeedsCount = m_feedsToUpdate;
+  m_feedsTotalCount = m_feedsToUpdate;
 
   // Job starts now.
   emit started();
 
-  FeedDownloadResults results;
-
-  for (int i = 0, total = m_totalFeedsCount; i < total; i++) {
+  for (int i = 0; i < m_feedsTotalCount; i++) {
     if (m_stopUpdate) {
       qDebug("Stopping batch feed update now.");
+
+      // We want indicate that no more feeds will be updated in this queue.
       m_feedsToUpdate = 0;
 
       if (m_feedsUpdating <= 0) {
-        qDebug().nospace() << "Finished feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
-
-        m_results.sort();
-
-        // Make sure that there is not "stop" action pending.
-        m_isUpdateRunning = false;
-        m_stopUpdate = false;
-
-        // Update of feeds has finished.
-        // NOTE: This means that now "update lock" can be unlocked
-        // and feeds can be added/edited/deleted and application
-        // can eventually quit.
-        emit finished(m_results);
+        // User forced to stop, no more feeds will start updating.
+        // If also no feeds are updating right now, finish.
+        finalizeUpdate();
       }
 
       break;
@@ -95,36 +87,40 @@ void FeedDownloader::stopRunningUpdate() {
 }
 
 void FeedDownloader::oneFeedUpdateFinished(int updated_messages) {
-  Feed *feed = qobject_cast<Feed*>(sender());
+  const Feed *feed = qobject_cast<Feed*>(sender());
 
   disconnect(feed, SIGNAL(updated(int)),
              this, SLOT(oneFeedUpdateFinished(int)));
+
+  m_feedsUpdated++;
+  m_feedsUpdating--;
 
   if (updated_messages > 0) {
     m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));
   }
 
-  qDebug("Made progress in feed updates, total feeds count %d (id of feed is %d).",
-         m_totalFeedsCount, feed->id());
-  emit progress(feed, m_totalFeedsCount - m_feedsToUpdate, m_totalFeedsCount);
+  qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).",
+         m_feedsUpdated, m_feedsTotalCount, feed->id());
+  emit progress(feed, m_feedsUpdated, m_feedsTotalCount);
 
-  m_feedsUpdating--;
-
-  if (m_feedsToUpdate == 0 && m_feedsUpdating == 0) {
-    qDebug().nospace() << "Finished feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
-
-    m_results.sort();
-
-    // Make sure that there is not "stop" action pending.
-    m_isUpdateRunning = false;
-    m_stopUpdate = false;
-
-    // Update of feeds has finished.
-    // NOTE: This means that now "update lock" can be unlocked
-    // and feeds can be added/edited/deleted and application
-    // can eventually quit.
-    emit finished(m_results);
+  if (m_feedsToUpdate <= 0 && m_feedsUpdating <= 0) {
+    finalizeUpdate();
   }
+}
+
+void FeedDownloader::finalizeUpdate() {
+  qDebug().nospace() << "Finished feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
+
+  m_results.sort();
+
+  // Make sure that there is not "stop" action pending.
+  m_stopUpdate = false;
+
+  // Update of feeds has finished.
+  // NOTE: This means that now "update lock" can be unlocked
+  // and feeds can be added/edited/deleted and application
+  // can eventually quit.
+  emit finished(m_results);
 }
 
 FeedDownloadResults::FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {

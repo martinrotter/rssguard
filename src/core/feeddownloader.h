@@ -87,11 +87,15 @@ class FeedDownloader : public QObject {
     void progress(const Feed *feed, int current, int total);
 
   private:
+    void finalizeUpdate();
+
     FeedDownloadResults m_results;
+
+    int m_feedsUpdated;
     int m_feedsToUpdate;
     int m_feedsUpdating;
-    int m_totalFeedsCount;
-    bool m_isUpdateRunning;
+    int m_feedsTotalCount;
+
     bool m_stopUpdate;
 };
 
