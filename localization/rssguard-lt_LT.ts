@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="lt_LT">
 <context>
+    <name>AccountCheckModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished"> (kategorija)</translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished"> (kanalas)</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -273,14 +284,6 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
-    <message>
-        <source> (category)</source>
-        <translation> (kategorija)</translation>
-    </message>
-    <message>
-        <source> (feed)</source>
-        <translation> (kanalas)</translation>
-    </message>
     <message>
         <source>Category </source>
         <translation>Kategorija</translation>

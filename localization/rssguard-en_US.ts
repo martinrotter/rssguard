@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>AccountCheckModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -269,14 +280,6 @@ Click here to open parent directory.</source>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
-    <message>
-        <source> (category)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> (feed)</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Category </source>
         <translation type="unfinished"></translation>

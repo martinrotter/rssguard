@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="pt_BR">
 <context>
+    <name>AccountCheckModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished"> (categoria)</translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished"> (feed)</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -270,14 +281,6 @@ Clique para abrir a pasta de destino.</translation>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
-    <message>
-        <source> (category)</source>
-        <translation> (categoria)</translation>
-    </message>
-    <message>
-        <source> (feed)</source>
-        <translation> (feed)</translation>
-    </message>
     <message>
         <source>Category </source>
         <translation>Categoria </translation>

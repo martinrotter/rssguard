@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="cs_CZ">
 <context>
+    <name>AccountCheckModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished"> (kategorie)</translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished"> (kanál)</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -273,14 +284,6 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
-    <message>
-        <source> (category)</source>
-        <translation> (kategorie)</translation>
-    </message>
-    <message>
-        <source> (feed)</source>
-        <translation> (kanál)</translation>
-    </message>
     <message>
         <source>Category </source>
         <translation>Kategorie</translation>

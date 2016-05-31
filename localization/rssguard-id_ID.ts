@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="id_ID">
 <context>
+    <name>AccountCheckModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished">(kategori)</translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished">(feed)</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -267,14 +278,6 @@ Klik disini untuk membuka direktori induk.</translation>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
-    <message>
-        <source> (category)</source>
-        <translation>(kategori)</translation>
-    </message>
-    <message>
-        <source> (feed)</source>
-        <translation>(feed)</translation>
-    </message>
     <message>
         <source>Category </source>
         <translation>Kategori</translation>

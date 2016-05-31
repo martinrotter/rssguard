@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="sv_SE">
 <context>
+    <name>AccountCheckModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished"> (kategori)</translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished"> (flöde)</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -270,14 +281,6 @@ Klicka här för att öppna målmappen.</translation>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
-    <message>
-        <source> (category)</source>
-        <translation> (kategori)</translation>
-    </message>
-    <message>
-        <source> (feed)</source>
-        <translation> (flöde)</translation>
-    </message>
     <message>
         <source>Category </source>
         <translation>Kategori</translation>

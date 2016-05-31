@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="nl_NL">
 <context>
+    <name>AccountCheckModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished">(categorie)</translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished">(feed)</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -271,14 +282,6 @@ Klik hier om map te openen.</translation>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
-    <message>
-        <source> (category)</source>
-        <translation>(categorie)</translation>
-    </message>
-    <message>
-        <source> (feed)</source>
-        <translation>(feed)</translation>
-    </message>
     <message>
         <source>Category </source>
         <translation>Categorie</translation>
