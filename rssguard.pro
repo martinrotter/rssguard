@@ -437,15 +437,11 @@ INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src/gui/dialogs \
                 $$PWD/src/dynamic-shortcuts
 
-isEmpty(DESTDIR) {
-  DESTDIR = $$(PWD)
-}
-
 win32 {
 # Install all files on Windows.
-  target.path = bin
+  target.path = $$DESTDIR
 
-  misc.files = $$DESTDIR/resources/misc/*.sql
+  misc.files = resources/misc/*.sql
   misc.path = $$DESTDIR/misc
 
   INSTALLS += target misc
