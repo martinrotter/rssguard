@@ -1,22 +1,22 @@
-3.2.5
+3.3.0
 —————
 
-Fixed:
+Added:
+▪ Feed updates are now parallelized up to infinite number of threads. This speeds up speed of concurrent feed updates rapidly (more than 5 times). I was able to update about 160 feeds in 35 seconds. Note that this feature is still in experimental state.
 
+Fixed:
 ▪ Removed "Restart" functionality, it was buggy and was causing a lot of internal problems, primarily with storing settings.
 
 3.2.4
 —————
 
 Fixed:
-
 ▪ Auto-update interval/type is now persistent across sync-in for TT-RSS/ownCloud.
 
 3.2.3
 —————
 
 Changed:
-
 ▪ Some minor tweaks for default icon theme loading.
 
 
@@ -24,12 +24,10 @@ Changed:
 —————
 
 Added:
-
 ▪ RSS Guard now supports system-wide icon themes and on Windows -> built-in Faenza theme was tweaked.
 ▪ ownCloud plugin now allows to add feeds and rename feeds.
 
 Fixed:
-
 ▪ Some minor buggies and code mistakes.
 ▪ Fixed problem with message counts.
 
@@ -37,28 +35,23 @@ Fixed:
 —————
 
 Added:
-
 ▪ Internal message previewer now introduces list of images contained in message contents of displayed message.
 
 Fixed:
-
 ▪ Changes in count of all/unread messages are now faster. This results in (much) faster program startup when using BIG database file.
 
 Changed:
-
 ▪ Internal message viewer now displays title as part of main HTML view.
 
 3.2.0
 —————
 
 Main:
-
 ▪ Internal web browser was REMOVED. This is because old Qt WebKit web component will be removed from Qt and new Qt component for web viewing is based on Chromium, which is fucking joke. Some people hate Chromium because of many (technocal, philosophical, etical) reasons. Moreover, it lacks some useful features and is memory hungry. It is also very buggy in Qt now. Therefore now internal web browser is gone. Message preview component now uses much lighter solution and still can display certain HTML subset. RSS Guard was tweaked to be more friendly to external web browser. Double-clicking any message results in it being opened via external web browser.
 ▪ PLEASE, fill this survey: http://goo.gl/forms/ASWg4TFxlS
 ▪ RSS Guard now depends only Qt 5.6 or higher.
 
 Added:
-
 ▪ ownCloud plugin now can delete feeds and edit auto-update policy of feeds.
 ▪ Global auto-update feed interval spinbox now has better format. (issue #176)
 ▪ Message preview's font is now fully adjustable in settings. (issue #177)
@@ -68,7 +61,6 @@ Added:
 ▪ Opening of download manager when new file download starts is now optional. (issue #165)
 
 Fixed:
-
 ▪ Download manager now correctly displays download progress/info.
 ▪ Better detection of MySQL server status. (bug #169)
 ▪ Ordering of messages is now done on SQL server (stands for both MySQL and SQLite). (bug #172)
@@ -77,7 +69,6 @@ Fixed:
 ▪ Fixed little problem with feed list hiding. (bug #163)
 
 Changed:
-
 ▪ Better performance when recalculating counts of all/unread messages in categories with many feeds.
 ▪ Custom notification popup window is now removed, it was buggy on Windows 10. Windows 10 offers good built-in alternative. On Linux, we rely on D-Bus notifications.
 
@@ -85,14 +76,12 @@ Changed:
 —————
 
 Added:
-
 ▪ NEW ACCOUNT PLUGIN: OwnCloud News API 1.2 is now supported. Note that the support in this version is experimental and relatively basic. So far only syncing of feeds/messages is supported. Feed/category adding/removing is not yet supported yet. The OwnCloud plugin will be enhanced in future RSS Guard versions.
 ▪ Recycle bins now have context menu. (issue #162)
 ▪ User is now able to delete TT-RSS feeds. (issue #151)
 ▪ Added ability to stop running batch feed update. (issue #157)
 
 Fixed:
-
 ▪ Some other minor fixes.
 ▪ Feed list hidden when respective menu item is unchecked. (bug #163)
 ▪ Standard RSS/RDF/ATOM relative URLs in entries should now be correctly loaded. (bug #160)
@@ -104,7 +93,6 @@ Fixed:
 ▪ Fixed problem with adding feeds in TT-RSS accounts. (bug #154)
 
 Changed:
-
 ▪ Increased max feed network download timeout to 45 s.
 ▪ Adjusted behavior of Google suggestions when no suggestions are available for give text.
 ▪ Adjusted sorting, particularly in message list.
@@ -115,7 +103,6 @@ Changed:
 —————
 
 Added:
-
 ▪ Import of OPML/TXT files now allows to fetch feed metadata from online feed source.
 ▪ Added generic "Add new feed" action, which can be accessed via "Feeds & messages" menu. (issue #146)
 ▪ User can now specify destination root node when importing feeds. (issue #147)
@@ -123,13 +110,11 @@ Added:
 ▪ Optimized menu items in "Add new item" submenu. Added two new bindable actions for adding feeds & categories. (issues #146 and #148)
 
 Changed:
-
 ▪ Some GUI refinements and fixes.
 ▪ Added more logging entries.
 ▪ "Clean all items" now does not clean messages from recycle bins.
 
 Fixed:
-
 ▪ Left over messages are now correctly deleted after sync-in is performed in TT-RSS account.
 ▪ Made some rather big changes to sorting/filtering of feeds, which is now dynamic.
 ▪ Feeds are now (re)sorted when batch update finishes. (bug #150)
@@ -143,7 +128,6 @@ Fixed:
 —————
 
 Added:
-
 ▪ Background color of notifications is now changeable. (issue #134)
 ▪ Auto-update setting of individual Tiny Tiny RSS feeds can now be changed.
 ▪ RSS Guard is now useable as external RSS reader by common web browsers like Firefox etc. (issue #135)
@@ -151,14 +135,12 @@ Added:
 ▪ Activated accounts are now integrated into built-in web browser "add feed from website" feature.
 
 Fixed:
-
 ▪ Problem with adding/editing TT-RSS accounts. (bug #137)
 
 3.0.0
 —————
 
 Added:
-
 ▪ Brand new Tiny Tiny RSS plugin.
 ▪ Brand new "service plugin system" - HIGHLY EXPERIMENTAL and REWRITTEN from scratch. Expect bugs and misunderstandings now! Major parts of RSS Guard were completely rewritten. Note that some functionality might be TEMPORARILY removed.
 ▪ Added ability to completely disable notifications (bug #128).
@@ -166,7 +148,6 @@ Added:
 ▪ Added ability to go to next unread message. (partially bug #112)
 
 Fixed:
-
 ▪ Tiny Tiny RSS plugin now supports HTTP authentication (Basic, NTLM, Digest). (bug #132)
 ▪ Fixed bug with updating feed. (bug #131)
 ▪ Solved problem when user selects HUGE number of individual messages and marks them read/unread. Reselecting them after change may cause RSS Guard to hang.
@@ -181,12 +162,10 @@ Fixed:
 —————
 
 Added:
-
 ▪ Added experimental support for fetching metadata for individual feeds via feed context menu. (issue #118)
 ▪ "Show unread feeds only" is now persistent between application sessions. GUI of this feature will be worked on in upcoming releases. (issue #119)
 
 Fixed:
-
 ▪ Fixed crash when adding Adblock subscription.
 ▪ Custom external web browser now correctly opens URLs on some operating systems. This seemed to primarily affect Linux distributions. (bug #123)
 ▪ Categories are now not expanded when selected using "Go to next/previous item" in feeds list. (bug #122)
@@ -196,12 +175,10 @@ Fixed:
 —————
 
 Added:
-
 ▪ Key used for proxy/feed password coding is now stored in separate file. This file lies in the same directory as configuration file. If your use password-protected proxy/feeds, then make sure that NOBODY gets access to that file and your DB file in the same time.
 ▪ Notifications on Linux now support D-Bus "org.freedesktop.Notifications" service. User must have enabled "modern & fancy notifications" for this to work. If D-Bus service is not available, then feature falls back to RSS Guard custom popup notifications.
 
 Fixed:
-
 ▪ Size of downloaded website artifacts is now not hidden by progress bar.
 ▪ Auto-updating of feeds fixed, error was due to master mutex double locking. (issue #117)
 ▪ Fixed some memory leaks which might appear when adding/editing categories/feeds.
@@ -210,7 +187,6 @@ Fixed:
 —————
 
 Added:
-
 ▪ Implemented ability to display ONLY FEEDS WITH SOME UNREAD MESSAGES. This behavior can be controlled by action in menu 'Feeds -> Show only unread feeds/categories' (issue #52). Behavior is this:
 
     ▪ User selects some feeds with unread messages, reads them all.
@@ -227,14 +203,12 @@ Added ability to change font for internal message viewer.
 ▪ (Windows only) Updated bundled Qt runtime to versions 4.8.7/5.5.0. Pre-builded binaries use Qt 5. Although this results in larger installation files, this is good for future, because Qt 5 is newer and has better support.
 
 Fixed:
-
 ▪ Adblock subscriptions starting with faulty " [Adblock..."] are now correctly loaded.
 
 2.4.2
 —————
 
 Fixed:
-
 ▪ Browse button in 'Downloads' section of settings is now correctly disabled when needed.
 ▪ Icon cache is now automatically cleared after most of application is loaded. This should save some memory.
 
@@ -242,13 +216,11 @@ Fixed:
 —————
 
 Added:
-
 ▪ Experimental support for lighter version of Adblock component. It is configurable via status bar icon in bottom-right corner of main application window. It supports Adblock Plus filters. It is disabled by default. DO NOT user Adblock component if you wish to have LOW memory footprint or use very limited set of rules. Big set of rules makes RSS Guard more RAM hungry. (issue #7)
 ▪ Unavailable actions in menus are automatically disabled when such a situation arises. (issue #28)
 ▪ Added support for Google auto-suggest API. Just type your phrase in internal web browser location text box and Google will help you out.
 
 Fixed:
-
 ▪ Source code now uses QStringLiteral/QLatin1String class for character literals.
 ▪ Internal message previewer is now cleared only once when switching feeds.
 ▪ Database cleanup tools now do support "shrinking" in in-memory databases, althouth it is bit hacky.
@@ -259,7 +231,6 @@ Fixed:
 —————
 
 Added:
-
 ▪ Initial support for databse cleaning. See menu 'Tools -> Cleanup database'. (issue #101)
 ▪ RSS Guard is now able to export/import feed/category icons to/from OPML 2.0 files.
 ▪ Localizations now load their titles for localization list automatically.
@@ -271,7 +242,6 @@ Added:
 ▪ Option to search highlighted text in web browser via Google, available from context menu. (issue #72)
 
 Fixed:
-
 ▪ Marking feed(s) unread now correctly marks also selected message unread.
 ▪ Threads for feed updating are created only when really needed.
 ▪ Reworked DB initialization scripts which allow to use OPML to do initial feed population.
@@ -281,11 +251,9 @@ Fixed:
 —————
 
 Added:
-
 ▪ Danish localization.
 
 Fixed:
-
 ▪ Enhanced downloading of feed icons. Now combines Google API along with the actual links obtained from feed XMLs.
 ▪ Fixed restarting issues. (issue #109)
 ▪ Target directory settings is now used for all kinds of downloading + when prompt for each download destination is set, then previously used folder is saved. (issue #108)
@@ -298,11 +266,9 @@ Fixed:
 —————
 
 Fixed:
-
 ▪ Some MySQL-related fixes.
 
 Added:
-
 ▪ User now can specify MySQL target database by name. (issue #107)
 ▪ Automatic detection of feeds on websites. User loads website and can add feeds via custom web browser toolbar button. (issue #47)
 ▪ Better format for logged messages. Logging to file is possible via "rssguard 2> log.txt" command.
@@ -312,28 +278,23 @@ Added:
 —————
 
 Fixed:
-
 ▪ Fixed issue #53 - removing of duplicate messages. Feature is available globally in "Settings -> Messages".
 ▪ Fixed issue #100 - saving HTML web pages.
 ▪ Fixed issues #106, #65.
 
 Added:
-
 ▪ Completely new downloader (see menu Tools -> Downloads) forked from original Qt examples.
 
 Changed:
-
 ▪ Updater now displays full changelog.
 
 2.1.0
 —————
 
 Fixed:
-
 ▪ Fixed bug #105, #103.
 
 Added:
-
 ▪ Embedded web browser supports printing of its contents, feature is accessible via web browser context menu.
 ▪ Embedded web browser now displays navigation toolbar even in message preview mode/newspaper mode when user loads external links.
 
@@ -341,12 +302,10 @@ Added:
 ———————
 
 Fixed:
-
 ▪ Database is now correctly restored when using SQLite memory databases.
 ▪ When items are deleted from recycle bin then they are kept in DB and marked as "permanently deleted" (bug #95).'
 
 Added:
-
 ▪ Layout orientation of message list/viewer is now changeable via "View" menu (bug report #98).
 ▪ Sort order/column in message list is now persistent (bug #97).
 ▪ Inline searching in feed/message list is now case insensitive and more polished (bug report #84).
@@ -359,11 +318,9 @@ Added:
 ———————
 
 Fixed:
-
 ▪ Fixed #76, #75, #82, #79, #85 #78, #92, #93.
 
 Added:
-
 ▪ Settings/database can now experimentally be exported/imported.
 ▪ Added Swedish localization (thanks to Åke Engelbrektson).
 ▪ Parent item is now selected when adding new category/feed with that parent pre-selected in feed view.
@@ -373,7 +330,6 @@ Added:
 ———————
 
 Fixed:
-
 ▪ Fully portable settings is now used as default if non portable settings does not exist yet.
 ▪ List of actions in toolbar editor now does not allow copying of items.
 ▪ Keyboard search for message list should now work with Qt 4.
@@ -382,7 +338,6 @@ Fixed:
 ▪ Blau skin now has colored webkit scrollbars, fixed some button widths and enhanced menu popup tool buttons.
 
 Added:
-
 ▪ Application can now be safely restarted from within main menu.
 ▪ HTTP request for feed files now contains special "Accept" header.
 ▪ Recycle bin with ability to trash or restore the whole bin or individual messages.
@@ -390,7 +345,6 @@ Added:
 ▪ Three new skins, including solarized skin. Vergilius improved.
 
 Changed:
-
 ▪ File downloader now resolves "feed://" URI scheme to "http://" URI scheme.
 ▪ Target message is now selected instead of highlighted when searching with keyboard.
 
@@ -398,7 +352,6 @@ Changed:
 ———————
 
 Fixed:
-
 ▪ Some visual tweaking.
 ▪ URL redirection now works with relative redirecting addresses.
 ▪ Messages are now sorted using active locale.
@@ -407,14 +360,12 @@ Fixed:
 ▪ NSIS installer is now portable. It makes only ONE access to registry and you can use it to install RSS Guard to any location such as USB flash drives.
 
 Added:
-
 ▪ RSS Guard now accepts donations, see "Help" menu for more information.
 ▪ Tray icon tooltips now displays number of unread messages if there is at least one unread message.
 ▪ Re-introduced "blau" (dark) skin.
 ▪ Import/export dialog now offers "Check/uncheck all items" button.
 
 Changed:
-
 ▪ Selection in feed list is now single.
 ▪ Keyboard navigation to "next/previous" item in feed list is now recursively hybrid.
 
@@ -422,7 +373,6 @@ Changed:
 ———————
 
 Fixed:
-
 ▪ Improved behavior of updater. Switched to NSIS installers.
 ▪ Adjusted OS/2 icon handling.
 ▪ Toolbars tweaked.
@@ -433,12 +383,10 @@ Fixed:
 ▪ Database connections are only used when really needed.
 
 Added:
-
 ▪ Added NSIS-based "portable" installer for Windows and restructured update process.
 ▪ Added experimental support for exporting and importing feeds to/from OPML 2.0.
 ▪ Feeds now change their color to red if their network status reports error - feed is not reachable or was moved or is unavailable due to other errors.
 
 Changed:
-
 ▪ Added newly-compiled SQL libraries - MariaDB, Postgre SQL.
 ▪ Updated bundled OpenSSL libraries for Windows portable version.
