@@ -23,10 +23,11 @@
 #include "core/message.h"
 
 #include <QVariant>
+#include <QRunnable>
 
 
 // Base class for "feed" nodes.
-class Feed : public RootItem {
+class Feed : public RootItem, public QRunnable {
     Q_OBJECT
 
   public:
@@ -96,11 +97,17 @@ class Feed : public RootItem {
 
     void updateCounts(bool including_total_count);
 
+    // Runs update in thread (thread pooled).
+    void run();
+
   protected:
     virtual QList<Message> obtainNewMessages() = 0;
 
   private:
     int updateMessages(const QList<Message> &messages);
+
+  signals:
+    void updated(int updated_messages);
 
   private:
     QString m_url;

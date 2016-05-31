@@ -38,6 +38,10 @@ class FeedDownloadResults {
 
     static bool lessThan(const QPair<QString,int> &lhs, const QPair<QString,int> &rhs);
 
+    inline void clear() {
+      m_updatedFeeds.clear();
+    }
+
   private:
     // QString represents title if the feed, int represents count of newly downloaded messages.
     QList<QPair<QString,int> > m_updatedFeeds;
@@ -65,6 +69,9 @@ class FeedDownloader : public QObject {
     // Stops running update.
     void stopRunningUpdate();
 
+  private slots:
+    void oneFeedUpdateFinished(int updated_messages);
+
   signals:
     // Emitted if feed updates started.
     void started();
@@ -80,6 +87,10 @@ class FeedDownloader : public QObject {
     void progress(const Feed *feed, int current, int total);
 
   private:
+    FeedDownloadResults m_results;
+    int m_feedsToUpdate;
+    int m_feedsUpdating;
+    int m_totalFeedsCount;
     bool m_isUpdateRunning;
     bool m_stopUpdate;
 };

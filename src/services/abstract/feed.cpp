@@ -29,6 +29,7 @@ Feed::Feed(RootItem *parent)
     m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_totalCount(0), m_unreadCount(0) {
   setKind(RootItemKind::Feed);
+  setAutoDelete(false);
 }
 
 Feed::~Feed() {
@@ -127,6 +128,10 @@ void Feed::updateCounts(bool including_total_count) {
   }
 
   setCountOfUnreadMessages(DatabaseQueries::getMessageCountsForFeed(database, customId(), account_id, false));
+}
+
+void Feed::run() {
+  emit updated(update());
 }
 
 int Feed::updateMessages(const QList<Message> &messages) {
