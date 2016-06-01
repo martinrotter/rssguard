@@ -70,6 +70,10 @@ APP_DONATE_URL                = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xc
 
 isEmpty(PREFIX) {
   message(rssguard: PREFIX variable is not set. This might indicate error.)
+
+  win32 {
+    PREFIX = $$OUT_PWD/app
+  }
 }
 
 # Custom definitions.
