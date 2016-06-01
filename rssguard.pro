@@ -65,7 +65,7 @@ APP_URL_ISSUES                = "http://bitbucket.org/skunkos/rssguard/issues"
 APP_URL_ISSUES_NEW_GITHUB     = "https://github.com/martinrotter/rssguard/issues/new"
 APP_URL_ISSUES_NEW_BITBUCKET  = "http://bitbucket.org/skunkos/rssguard/issues/new"
 APP_URL_WIKI                  = "https://bitbucket.org/skunkos/rssguard/wiki/Home"
-APP_USERAGENT                 = "RSS Guard/3.3.0 (http://bitbucket.org/skunkos/rssguard)"
+APP_USERAGENT                 = "RSS Guard/3.3.0 (bitbucket.org/skunkos/rssguard)"
 APP_DONATE_URL                = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
 isEmpty(PREFIX) {
@@ -115,7 +115,7 @@ message(rssguard: Prefix directory: '$$PREFIX'.)
 message(rssguard: Build revision: '$$APP_REVISION'.)
 
 QT += core gui widgets sql network xml printsupport
-CONFIG += c++11 debug_and_release
+CONFIG *= c++11 debug_and_release warn_on
 
 # Make needed tweaks for RC file getting generated on Windows.
 win32 {
@@ -505,21 +505,20 @@ unix:!mac {
   misc_sql.path = $$quote($$PREFIX/share/$$TARGET/misc/)
 
   # Misc icons.
-  misc_icons.files = resources/graphics/misc/*.png
-  misc_icons.path = $$quote($$PREFIX/share/$$TARGET/icons/misc/)
-  misc_flags.files = resources/graphics/misc/flags/*.png
-  misc_flags.path = $$quote($$PREFIX/share/$$TARGET/icons/misc/flags/)
+  misc_icons.files = resources/graphics/misc
+  misc_icons.path = $$quote($$PREFIX/share/$$TARGET/icons/)
 
   # Initial feeds.
   misc_feeds.files = resources/initial_feeds
   misc_feeds.path = $$quote($$PREFIX/share/$$TARGET/)
 
-  misc_icon.files = $$quote($$OUT_PWD/$${TARGET}.png)
-  misc_icon.extra = cp $$quote($$PWD/resources/graphics/$${TARGET}_128.png) $$quote($$OUT_PWD/$${TARGET}.png)
+  misc_icon.files = resources/graphics/$${TARGET}.png
   misc_icon.path = $$quote($$PREFIX/share/pixmaps/)
 
-  misc_plain_icon.files = $$quote($$OUT_PWD/$${TARGET}_plain.png)
-  misc_plain_icon.extra = cp $$quote($$PWD/resources/graphics/$${TARGET}_plain_128.png) $$quote($$OUT_PWD/$${TARGET}_plain.png)
+  skins.files = resources/skins
+  skins.path = $$quote($$PREFIX/share/$$TARGET/)
+
+  misc_plain_icon.files = resources/graphics/$${TARGET}_plain.png
   misc_plain_icon.path = $$quote($$PREFIX/share/$$TARGET/icons/)
 
   misc_texts.files = $$TEXTS
@@ -529,8 +528,8 @@ unix:!mac {
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
   translations.files = $$OUT_PWD/*.qm
-  translations.path = $$quote($$PREFIX/share/applications/)
+  translations.path = $$quote($$PREFIX/share/$$TARGET/l10n/)
 
-  INSTALLS += target misc_sql misc_icons misc_flags misc_feeds \
-              misc_icon misc_plain_icon misc_texts desktop_file translations
+  INSTALLS += target misc_sql misc_icons misc_feeds \
+              misc_icon misc_plain_icon skins misc_texts desktop_file translations
 }
