@@ -4,6 +4,10 @@
 Added:
 ▪ Feed updates are now parallelized up to infinite number of threads. This speeds up speed of concurrent feed updates rapidly (more than 5 times). I was able to update about 160 feeds in 35 seconds. Note that this feature is still in experimental state.
 
+Removed:
+▪ Cmake dependency completely removed!
+▪ Completely abandoned support for self-updating via NSIS installers. Now, RSS Guard is distributed only via ZIP archives on Windows. User still can download them in RSS Guard.
+
 Fixed:
 ▪ Removed "Restart" functionality, it was buggy and was causing a lot of internal problems, primarily with storing settings.
 
