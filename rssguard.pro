@@ -42,7 +42,8 @@ TEMPLATE    = app
 TARGET      = rssguard
 DEFINES	    *= QT_USE_QSTRINGBUILDER
 
-APP_NAME    = rssguard
+APP_NAME = RSS Guard
+APP_LOW_NAME    = rssguard
 APP_VERSION = 3.3.0
 
 CODECFORTR  = UTF-8
@@ -367,10 +368,14 @@ lupdate.commands = lupdate -no-obsolete $$shell_path($$PWD/rssguard.pro) -ts $$s
 # Create new "make 7zip" target.
 win32 {
   seven_zip.target = 7zip
-  seven_zip.commands = $$PWD/resources/scripts/7za/7za.exe
+  seven_zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -t7z $$TARGET-$$APP_VERSION-win32.7z $$shell_path($$PREFIX/*)
+
+  zip.target = zip
+  zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -tzip $$TARGET-$$APP_VERSION-win32.zip $$shell_path($$PREFIX/*)
+
+  QMAKE_EXTRA_TARGETS += lupdate seven_zip zip
 }
 
-QMAKE_EXTRA_TARGETS += lupdate seven_zip
 QMAKE_EXTRA_COMPILERS += lrelease
 
 # Install all files on Windows.
@@ -472,8 +477,4 @@ unix:!mac {
 
   INSTALLS += target misc_sql misc_icons misc_flags misc_feeds \
               misc_icon misc_plain_icon misc_texts desktop_file translations
-}
-
-# Install all files on Mac OS X.
-mac {
 }
