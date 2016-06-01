@@ -21,15 +21,25 @@
 #  This is RSS Guard compilation script for qmake.
 #
 # Usage:
-#   a) DEBUG build for testing.
-#     qmake -r CONFIG+=debug PREFIX=C:\Program Files\RSS Guard
+#   a) DEBUG build for testing. (out of source build type)
+#     cd ../build-dir
+#     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=debug PREFIX=C:\Program Files\RSS Guard
+#     make
+#     make install
 #
-#   b) RELEASE build for production use.
-#     qmake -r CONFIG+=release PREFIX=/usr
+#   b) RELEASE build for production use. (out of source build type)
+#     cd ../build-dir
+#     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=release PREFIX=/usr INSTALL_ROOT=./app
+#     make
+#     make INSTALL_ROOT=./app install
 #
 # Variables:
-#   PREFIX - specifies parent folder structure under which installed files will really lie.
-#     !!! This is usually needed on Linux and its typical value would be "/usr".
+#   PREFIX - specifies parent folder structure under which installed files will really finally lie.
+#   !!! This is usually needed on Linux and its typical value would be "/usr".
+#
+#   INSTALL_ROOT - specifies the folder under which compiled application data will be temporarily placed
+#   after the "make install" step. Note that this variable has different meaning from PREFIX which describes
+#   the final path and is usually "/usr".
 #
 # Other information:
 #   - supports Windows, Linux,
@@ -76,6 +86,12 @@ isEmpty(PREFIX) {
   }
 }
 
+unix:!mac {
+  isEmpty(INSTALL_ROOT) {
+    message(rssguard: Variable INSTALL_ROOT is empty.)
+  }
+}
+
 # Custom definitions.
 DEFINES += APP_PREFIX=\"$$PREFIX\"
 DEFINES += APP_VERSION=\"$$APP_VERSION\"
@@ -116,7 +132,7 @@ message(rssguard: Build revision: '$$APP_REVISION'.)
 
 QT += core gui widgets sql network xml printsupport
 CONFIG *= c++11 debug_and_release warn_on
-DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS
+DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 
 # Make needed tweaks for RC file getting generated on Windows.
 win32 {
@@ -424,7 +440,10 @@ lrelease.CONFIG += no_link target_predeps
 lupdate.target = lupdate
 lupdate.commands = lupdate -no-obsolete $$shell_path($$PWD/rssguard.pro) -ts $$shell_path($$TRANSLATIONS_WO_QT)
 
-# Create new "make 7zip" target.
+QMAKE_EXTRA_TARGETS += lupdate
+QMAKE_EXTRA_COMPILERS += lrelease
+
+# Create new "make 7zip" target and "make zip" target.
 win32 {
   seven_zip.target = 7zip
   seven_zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -t7z $$TARGET-$$APP_VERSION-win32.7z $$shell_path($$PREFIX/*)
@@ -432,10 +451,18 @@ win32 {
   zip.target = zip
   zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -tzip $$TARGET-$$APP_VERSION-win32.zip $$shell_path($$PREFIX/*)
 
-  QMAKE_EXTRA_TARGETS += lupdate seven_zip zip
+  QMAKE_EXTRA_TARGETS += seven_zip zip
 }
 
-QMAKE_EXTRA_COMPILERS += lrelease
+unix:!mac {
+  seven_zip.target = 7zip
+  seven_zip.commands = 7za a -t7z $$TARGET-$$APP_VERSION-win32.7z $$shell_path($$INSTALL_ROOT/*)
+
+  zip.target = zip
+  zip.commands = 7za a -tzip $$TARGET-$$APP_VERSION-win32.zip $$shell_path($$INSTALL_ROOT/*)
+
+  QMAKE_EXTRA_TARGETS += seven_zip zip
+}
 
 # Install all files on Windows.
 win32 {
