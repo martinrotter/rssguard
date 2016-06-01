@@ -64,6 +64,7 @@ message(rssguard: Install directory: '$$PREFIX'.)
 
 
 QT += core gui widgets sql network xml printsupport
+CONFIG += c++11
 
 HEADERS += src/core/feeddownloader.h \
            src/core/feedsmodel.h \
@@ -326,6 +327,21 @@ TRANSLATIONS += localization/qtbase-cs_CZ.ts \
                 localization/rssguard-pt_BR.ts \
                 localization/rssguard-sv_SE.ts
 
+TRANSLATIONS_WO_QT += $$PWD/localization/rssguard-cs_CZ.ts \
+                      $$PWD/localization/rssguard-da_DK.ts \
+                      $$PWD/localization/rssguard-de_DE.ts \
+                      $$PWD/localization/rssguard-en_GB.ts \
+                      $$PWD/localization/rssguard-en_US.ts \
+                      $$PWD/localization/rssguard-fr_FR.ts \
+                      $$PWD/localization/rssguard-he_IL.ts \
+                      $$PWD/localization/rssguard-id_ID.ts \
+                      $$PWD/localization/rssguard-it_IT.ts \
+                      $$PWD/localization/rssguard-ja_JP.ts \
+                      $$PWD/localization/rssguard-lt_LT.ts \
+                      $$PWD/localization/rssguard-nl_NL.ts \
+                      $$PWD/localization/rssguard-pt_BR.ts \
+                      $$PWD/localization/rssguard-sv_SE.ts
+
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src \
                 $$PWD/src/gui \
@@ -334,6 +350,20 @@ INCLUDEPATH +=  $$PWD/. \
 
 TEXTS = resources/text/CHANGELOG \
         resources/text/COPYING_BSD
+
+# Make sure QM translations are generated.
+lrelease.input = TRANSLATIONS
+lrelease.output = ${QMAKE_FILE_BASE}.qm
+lrelease.commands = lrelease -compress ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_BASE}.qm
+lrelease.CONFIG += no_link target_predeps
+
+# Create new "make lupdate" target.
+lupdate.target = lupdate
+lupdate.commands = lupdate -no-obsolete $$shell_path($$PWD/rssguard.pro) -ts $$shell_path($$TRANSLATIONS_WO_QT)
+
+QMAKE_EXTRA_TARGETS += lupdate
+QMAKE_EXTRA_COMPILERS += lrelease
+
 
 # Install all files on Windows.
 win32 {
@@ -372,16 +402,14 @@ unix:!mac {
   misc_texts.files = $$TEXTS
   misc_texts.path = $$quote($$PREFIX/usr/share/$$TARGET/information/)
 
-  updateqm.input = TRANSLATIONS
-  updateqm.output = ${QMAKE_FILE_BASE}.qm
-  updateqm.commands = lrelease ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_BASE}.qm
-  updateqm.CONFIG += no_link target_predeps
-  QMAKE_EXTRA_COMPILERS += updateqm
+  desktop_file.files = resources/desktop/$${TARGET}.desktop
+  desktop_file.path = $$quote($$PREFIX/usr/share/$$TARGET/information/)
 
   translations.files = $$OUT_PWD/*.qm
-  translations.path = $$quote($$PREFIX/usr/share/$$TARGET/l10n/)
+  translations.path = $$quote($$PREFIX/usr/share/applications/)
 
-  INSTALLS += target misc_sql misc_icons misc_flags misc_feeds misc_icon misc_plain_icon misc_texts translations
+  INSTALLS += target misc_sql misc_icons misc_flags misc_feeds \
+              misc_icon misc_plain_icon misc_texts desktop_file translations
 }
 
 # Install all files on Mac OS X.

@@ -145,38 +145,6 @@ NotInstalled:
   
   ; Create uninstaller.
   WriteUninstaller "$INSTDIR\Uninstall.exe"
-  
-  ; Create entry in Windows "Add/Remove programs" panel.
-  ;Push "DisplayName"
-  ;Push "${APP_NAME}"
-  ;Call ConditionalAddToRegisty
-  ;Push "DisplayVersion"
-  ;Push "${APP_VERSION}"
-  ;Call ConditionalAddToRegisty
-  ;Push "Publisher"
-  ;Push "@CPACK_PACKAGE_VENDOR@"
-  ; ConditionalAddToRegisty
-  ;Push "UninstallString"
-  ;Push "$INSTDIR\Uninstall.exe"
-  ;Call ConditionalAddToRegisty
-  ;Push "NoRepair"
-  ;Push "1"
-  ;Call ConditionalAddToRegisty
-  ;Push "NoModify"
-  ;Push "1"
-  ;Call ConditionalAddToRegisty
-  ;Push "DisplayIcon"
-  ;Push "$INSTDIR\@CPACK_NSIS_INSTALLED_ICON_NAME@"
-  ;Call ConditionalAddToRegisty
-  ;Push "HelpLink"
-  ;Push "@CPACK_NSIS_HELP_LINK@"
-  ;Call ConditionalAddToRegisty
-  ;Push "URLInfoAbout"
-  ;Push "@CPACK_NSIS_URL_INFO_ABOUT@"
-  ;Call ConditionalAddToRegisty
-  ;Push "Contact"
-  ;Push "@CPACK_NSIS_CONTACT@"
-  ;Call ConditionalAddToRegisty
 SectionEnd
 
 Section "Desktop Icon" DesktopIcon
