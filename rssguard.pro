@@ -22,10 +22,14 @@
 #
 # Usage:
 #   a) DEBUG build for testing.
-#     qmake -r CONFIG+=debug PREFIX=/where/is/install/root/folder
+#     qmake -r CONFIG+=debug PREFIX=C:\Program Files\RSS Guard
 #
 #   b) RELEASE build for production use.
-#     qmake -r CONFIG+=release PREFIX=/where/is/install/root/folder
+#     qmake -r CONFIG+=release PREFIX=/usr
+#
+# Variables:
+#   PREFIX - specifies parent folder structure under which installed files will really lie.
+#     !!! This is usually needed on Linux and its typical value would be "/usr".
 #
 # Other information:
 #   - supports Windows, Linux,
@@ -42,9 +46,16 @@ TEMPLATE    = app
 TARGET      = rssguard
 DEFINES	    *= QT_USE_QSTRINGBUILDER
 
+message(rssguard: Welcome RSS Guard qmake script.)
+
+lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 4) {
+  error(rssguard: At least Qt 5.4.0 is required.)
+}
+
 APP_NAME                      = "RSS Guard"
 APP_LOW_NAME                  = "rssguard"
 APP_LOW_H_NAME                = ".rssguard"
+APP_COPYRIGHT                 = "(C) 2011-2016 Martin Rotter"
 APP_VERSION                   = "3.3.0"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_AUTHOR                    = "Martin Rotter"
@@ -57,7 +68,12 @@ APP_URL_WIKI                  = "https://bitbucket.org/skunkos/rssguard/wiki/Hom
 APP_USERAGENT                 = "RSS Guard/3.3.0 (http://bitbucket.org/skunkos/rssguard)"
 APP_DONATE_URL                = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
+isEmpty(PREFIX) {
+  message(rssguard: PREFIX variable is not set. This might indicate error.)
+}
+
 # Custom definitions.
+DEFINES += APP_PREFIX=\"$$PREFIX\"
 DEFINES += APP_VERSION=\"$$APP_VERSION\"
 DEFINES += APP_NAME=\"$$APP_NAME\"
 DEFINES += APP_LOW_NAME=\"$$APP_LOW_NAME\"
@@ -72,28 +88,40 @@ DEFINES += APP_URL_ISSUES_NEW_BITBUCKET=\"$$APP_URL_ISSUES_NEW_BITBUCKET\"
 DEFINES += APP_URL_WIKI=\"$$APP_URL_WIKI\"
 DEFINES += APP_USERAGENT=\"$$APP_USERAGENT\"
 DEFINES += APP_DONATE_URL=\"$$APP_DONATE_URL\"
+DEFINES += APP_SYSTEM_NAME=\"$$QMAKE_HOST.os\"
+DEFINES += APP_SYSTEM_VERSION=\"$$QMAKE_HOST.arch\"
 
 CODECFORTR  = UTF-8
 CODECFORSRC = UTF-8
 
-message(rssguard: Welcomeo RSS Guard qmake script.)
-message(rssguard: RSS Guard version is: '$$APP_VERSION'.)
-message(rssguard: Detected Qt version: '$$QT_VERSION'.)
-message(rssguard: Destination directory: '$$PREFIX'.)
-
-lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 4) {
-  error(rssguard: At least Qt 5.4.0 is required.)
+exists(.git) {
+  APP_REVISION = $$system(git rev-parse --short HEAD)
 }
 
-isEmpty(PREFIX) {
-  error(rssguard: Variable PREFIX is not set.)
+isEmpty(APP_REVISION) {
+  APP_REVISION = "-"
 }
 
+DEFINES += APP_REVISION=\"$$APP_REVISION\"
+
+message(rssguard: RSS Guard version is: $$APP_VERSION.)
+message(rssguard: Detected Qt version: $$QT_VERSION.)
 message(rssguard: Build directory: '$$DESTDIR'.)
-message(rssguard: Install directory: '$$PREFIX'.)
+message(rssguard: Prefix directory: '$$PREFIX'.)
+message(rssguard: Build revision: '$$APP_REVISION'.)
 
 QT += core gui widgets sql network xml printsupport
 CONFIG += c++11 debug_and_release
+
+# Make needed tweaks for RC file getting generated on Windows.
+win32 {
+  VERSION = $$APP_VERSION
+  RC_ICONS = resources/graphics/rssguard.ico
+  QMAKE_TARGET_COMPANY = $$APP_AUTHOR
+  QMAKE_TARGET_DESCRIPTION = $$APP_NAME
+  QMAKE_TARGET_COPYRIGHT = $$APP_COPYRIGHT
+  QMAKE_TARGET_PRODUCT = $$APP_NAME
+}
 
 HEADERS += src/core/feeddownloader.h \
            src/core/feedsmodel.h \
@@ -450,12 +478,10 @@ win32 {
   ico.files = resources/graphics/$${TARGET}.ico
   ico.path = $$quote($$PREFIX/)
 
-  app_icon.files = $$quote($$PREFIX/$${TARGET}.png)
-  app_icon.extra = copy /y $$shell_quote($$shell_path($$PWD/resources/graphics/$${TARGET}_128.png)) $$shell_quote($$shell_path($$PREFIX/$${TARGET}.png))
+  app_icon.files = resources/graphics/$${TARGET}.png
   app_icon.path = $$quote($$PREFIX/)
 
-  app_plain_icon.files = $$quote($$PREFIX/$${TARGET}_plain.png)
-  app_plain_icon.extra = copy /y $$shell_quote($$shell_path($$PWD/resources/graphics/$${TARGET}_plain_128.png)) $$shell_quote($$shell_path($$PREFIX/$${TARGET}_plain.png))
+  app_plain_icon.files = resources/graphics/$${TARGET}_plain.png
   app_plain_icon.path = $$quote($$PREFIX/)
 
   translations.files = $$OUT_PWD/*.qm
@@ -468,38 +494,38 @@ win32 {
 
 # Install all files on Linux.
 unix:!mac {
-  target.path = $$PREFIX/usr/bin
+  target.path = $$PREFIX/bin
 
   # Install SQL initializers.
   misc_sql.files = resources/misc/*.sql
-  misc_sql.path = $$quote($$PREFIX/usr/share/$$TARGET/misc/)
+  misc_sql.path = $$quote($$PREFIX/share/$$TARGET/misc/)
 
   # Misc icons.
   misc_icons.files = resources/graphics/misc/*.png
-  misc_icons.path = $$quote($$PREFIX/usr/share/$$TARGET/icons/misc/)
+  misc_icons.path = $$quote($$PREFIX/share/$$TARGET/icons/misc/)
   misc_flags.files = resources/graphics/misc/flags/*.png
-  misc_flags.path = $$quote($$PREFIX/usr/share/$$TARGET/icons/misc/flags/)
+  misc_flags.path = $$quote($$PREFIX/share/$$TARGET/icons/misc/flags/)
 
   # Initial feeds.
   misc_feeds.files = resources/initial_feeds
-  misc_feeds.path = $$quote($$PREFIX/usr/share/$$TARGET/)
+  misc_feeds.path = $$quote($$PREFIX/share/$$TARGET/)
 
   misc_icon.files = $$quote($$OUT_PWD/$${TARGET}.png)
   misc_icon.extra = cp $$quote($$PWD/resources/graphics/$${TARGET}_128.png) $$quote($$OUT_PWD/$${TARGET}.png)
-  misc_icon.path = $$quote($$PREFIX/usr/share/pixmaps/)
+  misc_icon.path = $$quote($$PREFIX/share/pixmaps/)
 
   misc_plain_icon.files = $$quote($$OUT_PWD/$${TARGET}_plain.png)
   misc_plain_icon.extra = cp $$quote($$PWD/resources/graphics/$${TARGET}_plain_128.png) $$quote($$OUT_PWD/$${TARGET}_plain.png)
-  misc_plain_icon.path = $$quote($$PREFIX/usr/share/$$TARGET/icons/)
+  misc_plain_icon.path = $$quote($$PREFIX/share/$$TARGET/icons/)
 
   misc_texts.files = $$TEXTS
-  misc_texts.path = $$quote($$PREFIX/usr/share/$$TARGET/information/)
+  misc_texts.path = $$quote($$PREFIX/share/$$TARGET/information/)
 
   desktop_file.files = resources/desktop/$${TARGET}.desktop
-  desktop_file.path = $$quote($$PREFIX/usr/share/applications/)
+  desktop_file.path = $$quote($$PREFIX/share/applications/)
 
   translations.files = $$OUT_PWD/*.qm
-  translations.path = $$quote($$PREFIX/usr/share/applications/)
+  translations.path = $$quote($$PREFIX/share/applications/)
 
   INSTALLS += target misc_sql misc_icons misc_flags misc_feeds \
               misc_icon misc_plain_icon misc_texts desktop_file translations

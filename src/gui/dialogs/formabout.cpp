@@ -99,9 +99,13 @@ void FormAbout::loadLicenseAndInformation() {
 
   // Set other informative texts.
   m_ui->m_lblDesc->setText(tr("<b>%8</b><br>"
-                              "<b>Version:</b> %1<br>"
-                              "<b>Build date:</b> %2<br>"
-                              "<b>Qt:</b> %3 (compiled against %4)<br>").arg(qApp->applicationVersion(),
+                              "<b>Version:</b> %1 (built on %2/%3)<br>"
+                              "<b>Revision:</b> %4<br>"
+                              "<b>Build date:</b> %5<br>"
+                              "<b>Qt:</b> %6 (compiled against %7)<br>").arg(qApp->applicationVersion(),
+                                                                             STRFY(APP_SYSTEM_NAME),
+                                                                             STRFY(APP_SYSTEM_VERSION),
+                                                                             STRFY(APP_REVISION),
                                                                              TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__,
                                                                                                                              __TIME__)).toString(Qt::DefaultLocaleShortDate),
                                                                              qVersion(),

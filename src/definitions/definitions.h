@@ -118,12 +118,6 @@
 #define APP_LOG_PATH        "data/log"
 #define APP_LOG_FILE        "log.txt"
 
-#if defined(Q_OS_OSX)
-#define APP_PREFIX          "rssguard.app/Contents/Resources"
-#else
-#define APP_PREFIX          ".."
-#endif
-
 #define APP_QUIT_INSTANCE   "app_quit"
 #define APP_IS_RUNNING      "app_is_running"
 #define APP_SKIN_DEFAULT    "base/vergilius.xml"
@@ -213,16 +207,16 @@
 #endif
 
 #if defined(Q_OS_LINUX)
-#define APP_DESKTOP_ENTRY_PATH APP_PREFIX + QString("/share/applications")
+#define APP_DESKTOP_ENTRY_PATH STRFY(APP_PREFIX) + QString("/share/applications")
 #define APP_DESKTOP_ENTRY_FILE "rssguard.desktop"
-#define APP_LANG_PATH APP_PREFIX + QString("/share/rssguard/l10n")
-#define APP_SKIN_PATH APP_PREFIX + QString("/share/rssguard/skins")
-#define APP_INFO_PATH APP_PREFIX + QString("/share/rssguard/information")
-#define APP_THEME_PATH APP_PREFIX + QString("/share/rssguard/icons")
-#define APP_MISC_PATH APP_PREFIX + QString("/share/rssguard/misc")
-#define APP_ICON_PATH APP_PREFIX + QString("/share/pixmaps/rssguard.png")
-#define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/rssguard/icons/rssguard_plain.png")
-#define APP_INITIAL_FEEDS_PATH APP_PREFIX + QString("/share/rssguard/initial_feeds")
+#define APP_LANG_PATH STRFY(APP_PREFIX) + QString("/share/rssguard/l10n")
+#define APP_SKIN_PATH STRFY(APP_PREFIX) + QString("/share/rssguard/skins")
+#define APP_INFO_PATH STRFY(APP_PREFIX) + QString("/share/rssguard/information")
+#define APP_THEME_PATH STRFY(APP_PREFIX) + QString("/share/rssguard/icons")
+#define APP_MISC_PATH STRFY(APP_PREFIX) + QString("/share/rssguard/misc")
+#define APP_ICON_PATH STRFY(APP_PREFIX) + QString("/share/pixmaps/rssguard.png")
+#define APP_ICON_PLAIN_PATH STRFY(APP_PREFIX) + QString("/share/rssguard/icons/rssguard_plain.png")
+#define APP_INITIAL_FEEDS_PATH STRFY(APP_PREFIX) + QString("/share/rssguard/initial_feeds")
 #elif defined(Q_OS_WIN)
 #define APP_LANG_PATH QApplication::applicationDirPath() + QString("/l10n")
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
