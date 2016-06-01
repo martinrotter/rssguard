@@ -22,16 +22,15 @@
 #
 # Usage:
 #   a) DEBUG build for testing.
-#     qmake -r CONFIG+=debug DESTDIR=/dir/dir/dir
+#     qmake -r CONFIG+=debug PREFIX=/where/is/install/root/folder
 #
 #   b) RELEASE build for production use.
-#     .....
+#     qmake -r CONFIG+=release PREFIX=/where/is/install/root/folder
 #
 # Other information:
 #   - supports Windows, Linux,
 #   - Qt 5.4 and higher is required,
-#   - resource compiler (windres.exe) is needed on MinGW,
-#   - resource compiler (rc.exe) is recommended on OS/2.
+#   - C++ 11 is required.
 #
 # Authors and contributors:
 #   - Martin Rotter (project leader),
@@ -41,13 +40,16 @@
 
 TEMPLATE    = app
 TARGET      = rssguard
-APP_NAME    = rssguard
 DEFINES	    *= QT_USE_QSTRINGBUILDER
+
+APP_NAME    = rssguard
+APP_VERSION = 3.3.0
 
 CODECFORTR  = UTF-8
 CODECFORSRC = UTF-8
 
 message(rssguard: Welcome to RSS Guard qmake script.)
+message(rssguard: RSS Guard version is: '$$APP_VERSION'.)
 message(rssguard: Detected Qt version: '$$QT_VERSION'.)
 message(rssguard: Destination directory: '$$PREFIX'.)
 
@@ -64,7 +66,7 @@ message(rssguard: Install directory: '$$PREFIX'.)
 
 
 QT += core gui widgets sql network xml printsupport
-CONFIG += c++11
+CONFIG += c++11 debug_and_release
 
 HEADERS += src/core/feeddownloader.h \
            src/core/feedsmodel.h \
@@ -349,7 +351,8 @@ INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src/dynamic-shortcuts
 
 TEXTS = resources/text/CHANGELOG \
-        resources/text/COPYING_BSD
+        resources/text/COPYING_BSD \
+        resources/text/COPYING_GNU_GPL
 
 # Make sure QM translations are generated.
 lrelease.input = TRANSLATIONS
@@ -361,9 +364,14 @@ lrelease.CONFIG += no_link target_predeps
 lupdate.target = lupdate
 lupdate.commands = lupdate -no-obsolete $$shell_path($$PWD/rssguard.pro) -ts $$shell_path($$TRANSLATIONS_WO_QT)
 
-QMAKE_EXTRA_TARGETS += lupdate
-QMAKE_EXTRA_COMPILERS += lrelease
+# Create new "make 7zip" target.
+win32 {
+  seven_zip.target = 7zip
+  seven_zip.commands = $$PWD/resources/scripts/7za/7za.exe
+}
 
+QMAKE_EXTRA_TARGETS += lupdate seven_zip
+QMAKE_EXTRA_COMPILERS += lrelease
 
 # Install all files on Windows.
 win32 {
@@ -371,6 +379,60 @@ win32 {
 
   misc_sql.files = resources/misc/*.sql
   misc_sql.path = $$PREFIX/misc
+
+  qt_dlls_root.files = resources/binaries/windows/qt5-msvc2013/*.dll
+  qt_dlls_root.path = $$quote($$PREFIX/)
+
+  qt_dlls_bearer.files = resources/binaries/windows/qt5-msvc2013/bearer/*.dll
+  qt_dlls_bearer.path = $$quote($$PREFIX/bearer/)
+
+  qt_dlls_iconengines.files = resources/binaries/windows/qt5-msvc2013/iconengines/*.dll
+  qt_dlls_iconengines.path = $$quote($$PREFIX/iconengines/)
+
+  qt_dlls_imageformats.files = resources/binaries/windows/qt5-msvc2013/imageformats/*.dll
+  qt_dlls_imageformats.path = $$quote($$PREFIX/imageformats/)
+
+  qt_dlls_platforms.files = resources/binaries/windows/qt5-msvc2013/platforms/*.dll
+  qt_dlls_platforms.path = $$quote($$PREFIX/platforms/)
+
+  qt_dlls_sqldrivers.files = resources/binaries/windows/qt5-msvc2013/sqldrivers/*.dll
+  qt_dlls_sqldrivers.path = $$quote($$PREFIX/sqldrivers/)
+
+  misc_icons.files = resources/graphics/misc
+  misc_icons.path = $$quote($$PREFIX/icons/)
+
+  faenza.files = resources/graphics/Faenza
+  faenza.path = $$quote($$PREFIX/icons/)
+
+  skins.files = resources/skins/base
+  skins.path = $$quote($$PREFIX/skins/)
+
+  sql.files = resources/misc
+  sql.path = $$quote($$PREFIX/)
+
+  feeds.files = resources/initial_feeds
+  feeds.path = $$quote($$PREFIX/)
+
+  texts.files = $$TEXTS
+  texts.path = $$quote($$PREFIX/)
+
+  ico.files = resources/graphics/$${TARGET}.ico
+  ico.path = $$quote($$PREFIX/)
+
+  app_icon.files = $$quote($$OUT_PWD/$${TARGET}.png)
+  app_icon.extra = copy /y $$shell_quote($$shell_path($$PWD/resources/graphics/$${TARGET}_128.png)) $$shell_quote($$shell_path($$OUT_PWD/$${TARGET}.png))
+  app_icon.path = $$quote($$PREFIX/)
+
+  app_plain_icon.files = $$quote($$OUT_PWD/$${TARGET}_plain.png)
+  app_plain_icon.extra = copy /y $$shell_quote($$shell_path($$PWD/resources/graphics/$${TARGET}_plain_128.png)) $$shell_quote($$shell_path($$OUT_PWD/$${TARGET}_plain.png))
+  app_plain_icon.path = $$quote($$PREFIX/)
+
+  translations.files = $$OUT_PWD/*.qm
+  translations.path = $$quote($$PREFIX/l10n/)
+
+  INSTALLS += target misc_sql qt_dlls_root qt_dlls_bearer qt_dlls_iconengines \
+              qt_dlls_imageformats qt_dlls_platforms qt_dlls_sqldrivers \
+              misc_icons faenza skins sql feeds texts ico app_icon app_plain_icon translations
 }
 
 # Install all files on Linux.
