@@ -116,6 +116,7 @@ message(rssguard: Build revision: '$$APP_REVISION'.)
 
 QT += core gui widgets sql network xml printsupport
 CONFIG *= c++11 debug_and_release warn_on
+DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS
 
 # Make needed tweaks for RC file getting generated on Windows.
 win32 {

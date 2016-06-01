@@ -129,7 +129,7 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
 }
 
 QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &urls, int timeout, QIcon &output) {
-  QNetworkReply::NetworkError network_result;
+  QNetworkReply::NetworkError network_result = QNetworkReply::UnknownNetworkError;
 
   foreach (const QString &url, urls) {
     const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
