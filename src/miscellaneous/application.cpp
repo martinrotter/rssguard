@@ -77,7 +77,7 @@ bool Application::isFirstRun() {
 }
 
 bool Application::isFirstRun(const QString &version) {
-  if (version == APP_VERSION) {
+  if (version == STRFY(APP_VERSION)) {
     // Check this only if checked version is equal to actual version.
     return settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, true).toBool();
   }
@@ -169,7 +169,7 @@ void Application::processExecutionMessage(const QString &message) {
 
   foreach (const QString &msg, message.split(ARGUMENTS_LIST_SEPARATOR)) {
     if (msg == APP_IS_RUNNING) {
-      showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
+      showGuiMessage(STRFY(APP_NAME), tr("Application is already running."), QSystemTrayIcon::Information);
       mainForm()->display();
     }
     else if (msg == APP_QUIT_INSTANCE) {
@@ -251,7 +251,7 @@ void Application::onSaveState(QSessionManager &manager) {
 
 void Application::onAboutToQuit() {
   eliminateFirstRun();
-  eliminateFirstRun(APP_VERSION);
+  eliminateFirstRun(STRFY(APP_VERSION));
 
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
   const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);

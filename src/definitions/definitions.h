@@ -20,20 +20,8 @@
 
 #include <QtGlobal>
 
-#define APP_NAME            "RSS Guard"
-#define APP_LOW_NAME        "rssguard"
-#define APP_LOW_H_NAME      ".rssguard"
-#define APP_LONG_NAME       "RSS Guard 3.3.0"
-#define APP_AUTHOR          "Martin Rotter"
-#define APP_EMAIL           "rotter.martinos@gmail.com"
-#define APP_URL             "http://bitbucket.org/skunkos/rssguard"
-#define APP_URL_ISSUES      "http://bitbucket.org/skunkos/rssguard/issues"
-#define APP_URL_ISSUES_NEW_GITHUB  "https://github.com/martinrotter/rssguard/issues/new"
-#define APP_URL_ISSUES_NEW_BITBUCKET  "http://bitbucket.org/skunkos/rssguard/issues/new"
-#define APP_URL_WIKI        "https://bitbucket.org/skunkos/rssguard/wiki/Home"
-#define APP_VERSION         "3.3.0"
-#define APP_USERAGENT       QString("RSS Guuard/3.3.0 (http://bitbucket.org/skunkos/rssguard)")
-#define APP_DONATE_URL      "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
+#define _STR(x) #x
+#define STRFY(x)  _STR(x)
 
 #define SERVICE_CODE_STD_RSS  "std-rss"
 #define SERVICE_CODE_TT_RSS   "tt-rss"
@@ -225,33 +213,24 @@
 #endif
 
 #if defined(Q_OS_LINUX)
-#define APP_DESKTOP_ENTRY_PATH "@DESKTOP_ENTRY_PATH@"
-#define APP_DESKTOP_ENTRY_FILE "@APP_LOW_NAME@.desktop"
+#define APP_DESKTOP_ENTRY_PATH APP_PREFIX + QString("/share/applications")
+#define APP_DESKTOP_ENTRY_FILE "rssguard.desktop"
 #define APP_LANG_PATH APP_PREFIX + QString("/share/rssguard/l10n")
 #define APP_SKIN_PATH APP_PREFIX + QString("/share/rssguard/skins")
 #define APP_INFO_PATH APP_PREFIX + QString("/share/rssguard/information")
 #define APP_THEME_PATH APP_PREFIX + QString("/share/rssguard/icons")
 #define APP_MISC_PATH APP_PREFIX + QString("/share/rssguard/misc")
-#define APP_ICON_PATH APP_PREFIX + QString("/share/pixmaps/@APP_LOW_NAME@.png")
-#define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/rssguard/icons/@APP_LOW_NAME@_plain.png")
+#define APP_ICON_PATH APP_PREFIX + QString("/share/pixmaps/rssguard.png")
+#define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/rssguard/icons/rssguard_plain.png")
 #define APP_INITIAL_FEEDS_PATH APP_PREFIX + QString("/share/rssguard/initial_feeds")
-#elif defined(Q_OS_OSX) || defined(Q_WS_MAC)
-#define APP_LANG_PATH APP_PREFIX + QString("/l10n")
-#define APP_SKIN_PATH APP_PREFIX + QString("/skins")
-#define APP_INFO_PATH APP_PREFIX + QString("/information")
-#define APP_THEME_PATH APP_PREFIX + QString("/icons")
-#define APP_MISC_PATH APP_PREFIX + QString("/misc")
-#define APP_ICON_PATH APP_PREFIX + QString("/@APP_LOW_NAME@.png")
-#define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/@APP_LOW_NAME@_plain.png")
-#define APP_INITIAL_FEEDS_PATH APP_PREFIX + QString("/initial_feeds")
-#elif defined(Q_OS_WIN) || defined(Q_OS_OS2)
+#elif defined(Q_OS_WIN)
 #define APP_LANG_PATH QApplication::applicationDirPath() + QString("/l10n")
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
 #define APP_INFO_PATH QApplication::applicationDirPath()
 #define APP_THEME_PATH QApplication::applicationDirPath() + QString("/icons")
 #define APP_MISC_PATH QApplication::applicationDirPath() + QString("/misc")
-#define APP_ICON_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@.png")
-#define APP_ICON_PLAIN_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@_plain.png")
+#define APP_ICON_PATH QApplication::applicationDirPath() + QString("/rssguard.png")
+#define APP_ICON_PLAIN_PATH QApplication::applicationDirPath() + QString("/rssguard_plain.png")
 #define APP_INITIAL_FEEDS_PATH QApplication::applicationDirPath() + QString("/initial_feeds")
 #endif
 

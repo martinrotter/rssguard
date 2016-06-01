@@ -47,7 +47,7 @@ StandardServiceRoot::StandardServiceRoot(RootItem *parent)
     m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
     m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
 
-  setTitle(qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME));
+  setTitle(qApp->system()->getUsername() + QL1S("@") + QL1S(STRFY(APP_LOW_NAME)));
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
 }

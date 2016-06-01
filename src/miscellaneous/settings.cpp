@@ -219,7 +219,7 @@ DKEY Database::MySQLPassword              = "mysql_password";
 DVALUE(QString) Database::MySQLPasswordDef  = QString();
 
 DKEY Database::MySQLDatabase              = "mysql_database";
-DVALUE(char*) Database::MySQLDatabaseDef  = APP_LOW_NAME;
+DVALUE(char*) Database::MySQLDatabaseDef  = STRFY(APP_LOW_NAME);
 
 DKEY Database::MySQLPort                  = "mysql_port";
 DVALUE(int) Database::MySQLPortDef        = APP_DB_MYSQL_PORT;
@@ -328,7 +328,7 @@ SettingsProperties Settings::determineProperties() {
   properties.m_settingsSuffix = QDir::separator() + QString(APP_CFG_PATH) + QDir::separator() + QString(APP_CFG_FILE);
 
   const QString app_path = qApp->applicationDirPath();
-  const QString home_path = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
+  const QString home_path = qApp->homeFolderPath() + QDir::separator() + QString(STRFY(APP_LOW_H_NAME));
   const QString home_path_file = home_path + properties.m_settingsSuffix;
 
   const bool portable_settings_available = QFileInfo(app_path).isWritable();

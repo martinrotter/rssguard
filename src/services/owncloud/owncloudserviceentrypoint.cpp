@@ -62,11 +62,11 @@ QString OwnCloudServiceEntryPoint::description() const {
 }
 
 QString OwnCloudServiceEntryPoint::version() const {
-  return APP_VERSION;
+  return STRFY(APP_VERSION);
 }
 
 QString OwnCloudServiceEntryPoint::author() const {
-  return APP_AUTHOR;
+  return STRFY(APP_AUTHOR);
 }
 
 QIcon OwnCloudServiceEntryPoint::icon() const {

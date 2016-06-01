@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
   qInstallMessageHandler(Debugging::debugHandler);
 
   // Instantiate base application object.
-  Application application(APP_LOW_NAME, argc, argv);
+  Application application(STRFY(APP_LOW_NAME), argc, argv);
   qDebug("Instantiated Application class.");
 
   // Check if another instance is running.
@@ -81,11 +81,11 @@ int main(int argc, char *argv[]) {
   qApp->localization()->loadActiveLanguage();
 
   // These settings needs to be set before any QSettings object.
-  Application::setApplicationName(APP_NAME);
-  Application::setApplicationVersion(APP_VERSION);
-  Application::setOrganizationName(APP_AUTHOR);
-  Application::setOrganizationDomain(APP_URL);
-  Application::setWindowIcon(QIcon(APP_ICON_PATH));
+  Application::setApplicationName(STRFY(APP_NAME));
+  Application::setApplicationVersion(STRFY(APP_VERSION));
+  Application::setOrganizationName(STRFY(APP_AUTHOR));
+  Application::setOrganizationDomain(STRFY(APP_URL));
+  Application::setWindowIcon(QIcon(STRFY(APP_ICON_PATH)));
 
   qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
 
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
   FormMain main_window;
 
   // Set correct information for main window.
-  main_window.setWindowTitle(APP_LONG_NAME);
+  main_window.setWindowTitle(STRFY(APP_LONG_NAME));
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
   DynamicShortcuts::load(qApp->userActions());
@@ -120,13 +120,13 @@ int main(int argc, char *argv[]) {
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)), &application, SLOT(processExecutionMessage(QString)));
 
-  if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
-    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                                                    "version by clicking this popup notification.").arg(APP_LONG_NAME),
+  if (qApp->isFirstRun() || qApp->isFirstRun(STRFY(APP_VERSION))) {
+    qApp->showGuiMessage(QSL(STRFY(APP_NAME)), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                                                           "version by clicking this popup notification.").arg(STRFY(APP_LONG_NAME)),
                          QSystemTrayIcon::NoIcon, 0, false, &main_window, SLOT(showAbout()));
   }
   else {
-    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_LONG_NAME), QSystemTrayIcon::NoIcon);
+    qApp->showGuiMessage(QSL(STRFY(APP_NAME)), QObject::tr("Welcome to %1.").arg(STRFY(APP_NAME)), QSystemTrayIcon::NoIcon);
   }
 
   if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {

@@ -145,9 +145,9 @@ void FormMain::prepareMenus() {
   // Setup menu for tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
 #if defined(Q_OS_WIN)
-    m_trayMenu = new TrayIconMenu(APP_NAME, this);
+    m_trayMenu = new TrayIconMenu(STRFY(APP_NAME), this);
 #else
-    m_trayMenu = new QMenu(APP_NAME, this);
+    m_trayMenu = new QMenu(STRFY(APP_NAME), this);
 #endif
 
     // Add needed items to the menu.
@@ -518,7 +518,7 @@ void FormMain::showUpdates() {
 }
 
 void FormMain::showWiki() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_WIKI)) {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(STRFY(APP_URL_WIKI))) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
@@ -533,7 +533,7 @@ void FormMain::showAddAccountDialog() {
 }
 
 void FormMain::reportABugOnGitHub() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW_GITHUB)) {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(STRFY(APP_URL_ISSUES_NEW_GITHUB))) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
@@ -541,7 +541,7 @@ void FormMain::reportABugOnGitHub() {
 }
 
 void FormMain::reportABugOnBitBucket() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW_BITBUCKET)) {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(STRFY(APP_URL_ISSUES_NEW_BITBUCKET))) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
@@ -549,7 +549,7 @@ void FormMain::reportABugOnBitBucket() {
 }
 
 void FormMain::donate() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_DONATE_URL)) {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(STRFY(APP_DONATE_URL))) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);

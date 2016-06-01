@@ -51,11 +51,11 @@ QString TtRssServiceEntryPoint::description() const {
 }
 
 QString TtRssServiceEntryPoint::version() const {
-  return APP_VERSION;
+  return STRFY(APP_VERSION);
 }
 
 QString TtRssServiceEntryPoint::author() const {
-  return APP_AUTHOR;
+  return STRFY(APP_AUTHOR);
 }
 
 QIcon TtRssServiceEntryPoint::icon() const {

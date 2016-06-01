@@ -42,14 +42,41 @@ TEMPLATE    = app
 TARGET      = rssguard
 DEFINES	    *= QT_USE_QSTRINGBUILDER
 
-APP_NAME = RSS Guard
-APP_LOW_NAME    = rssguard
-APP_VERSION = 3.3.0
+APP_NAME                      = "RSS Guard"
+APP_LOW_NAME                  = "rssguard"
+APP_LOW_H_NAME                = ".rssguard"
+APP_VERSION                   = "3.3.0"
+APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
+APP_AUTHOR                    = "Martin Rotter"
+APP_EMAIL                     = "rotter.martinos@gmail.com"
+APP_URL                       = "http://bitbucket.org/skunkos/rssguard"
+APP_URL_ISSUES                = "http://bitbucket.org/skunkos/rssguard/issues"
+APP_URL_ISSUES_NEW_GITHUB     = "https://github.com/martinrotter/rssguard/issues/new"
+APP_URL_ISSUES_NEW_BITBUCKET  = "http://bitbucket.org/skunkos/rssguard/issues/new"
+APP_URL_WIKI                  = "https://bitbucket.org/skunkos/rssguard/wiki/Home"
+APP_USERAGENT                 = "RSS Guard/3.3.0 (http://bitbucket.org/skunkos/rssguard)"
+APP_DONATE_URL                = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
+
+# Custom definitions.
+DEFINES += APP_VERSION=\"$$APP_VERSION\"
+DEFINES += APP_NAME=\"$$APP_NAME\"
+DEFINES += APP_LOW_NAME=\"$$APP_LOW_NAME\"
+DEFINES += APP_LOW_H_NAME=\"$$APP_LOW_H_NAME\"
+DEFINES += APP_LONG_NAME=\"$$APP_LONG_NAME\"
+DEFINES += APP_AUTHOR=\"$$APP_AUTHOR\"
+DEFINES += APP_EMAIL=\"$$APP_EMAIL\"
+DEFINES += APP_URL=\"$$APP_URL\"
+DEFINES += APP_URL_ISSUES=\"$$APP_URL_ISSUES\"
+DEFINES += APP_URL_ISSUES_NEW_GITHUB=\"$$APP_URL_ISSUES_NEW_GITHUB\"
+DEFINES += APP_URL_ISSUES_NEW_BITBUCKET=\"$$APP_URL_ISSUES_NEW_BITBUCKET\"
+DEFINES += APP_URL_WIKI=\"$$APP_URL_WIKI\"
+DEFINES += APP_USERAGENT=\"$$APP_USERAGENT\"
+DEFINES += APP_DONATE_URL=\"$$APP_DONATE_URL\"
 
 CODECFORTR  = UTF-8
 CODECFORSRC = UTF-8
 
-message(rssguard: Welcome to RSS Guard qmake script.)
+message(rssguard: Welcomeo RSS Guard qmake script.)
 message(rssguard: RSS Guard version is: '$$APP_VERSION'.)
 message(rssguard: Detected Qt version: '$$QT_VERSION'.)
 message(rssguard: Destination directory: '$$PREFIX'.)
@@ -64,7 +91,6 @@ isEmpty(PREFIX) {
 
 message(rssguard: Build directory: '$$DESTDIR'.)
 message(rssguard: Install directory: '$$PREFIX'.)
-
 
 QT += core gui widgets sql network xml printsupport
 CONFIG += c++11 debug_and_release
@@ -424,12 +450,12 @@ win32 {
   ico.files = resources/graphics/$${TARGET}.ico
   ico.path = $$quote($$PREFIX/)
 
-  app_icon.files = $$quote($$OUT_PWD/$${TARGET}.png)
-  app_icon.extra = copy /y $$shell_quote($$shell_path($$PWD/resources/graphics/$${TARGET}_128.png)) $$shell_quote($$shell_path($$OUT_PWD/$${TARGET}.png))
+  app_icon.files = $$quote($$PREFIX/$${TARGET}.png)
+  app_icon.extra = copy /y $$shell_quote($$shell_path($$PWD/resources/graphics/$${TARGET}_128.png)) $$shell_quote($$shell_path($$PREFIX/$${TARGET}.png))
   app_icon.path = $$quote($$PREFIX/)
 
-  app_plain_icon.files = $$quote($$OUT_PWD/$${TARGET}_plain.png)
-  app_plain_icon.extra = copy /y $$shell_quote($$shell_path($$PWD/resources/graphics/$${TARGET}_plain_128.png)) $$shell_quote($$shell_path($$OUT_PWD/$${TARGET}_plain.png))
+  app_plain_icon.files = $$quote($$PREFIX/$${TARGET}_plain.png)
+  app_plain_icon.extra = copy /y $$shell_quote($$shell_path($$PWD/resources/graphics/$${TARGET}_plain_128.png)) $$shell_quote($$shell_path($$PREFIX/$${TARGET}_plain.png))
   app_plain_icon.path = $$quote($$PREFIX/)
 
   translations.files = $$OUT_PWD/*.qm
@@ -470,7 +496,7 @@ unix:!mac {
   misc_texts.path = $$quote($$PREFIX/usr/share/$$TARGET/information/)
 
   desktop_file.files = resources/desktop/$${TARGET}.desktop
-  desktop_file.path = $$quote($$PREFIX/usr/share/$$TARGET/information/)
+  desktop_file.path = $$quote($$PREFIX/usr/share/applications/)
 
   translations.files = $$OUT_PWD/*.qm
   translations.path = $$quote($$PREFIX/usr/share/applications/)

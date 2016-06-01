@@ -49,7 +49,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
 #if defined(Q_OS_WIN)
   QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
                          QSettings::NativeFormat);
-  const bool autostart_enabled = registry_key.value(QSL(APP_LOW_NAME),
+  const bool autostart_enabled = registry_key.value(QSL(STRFY(APP_LOW_NAME)),
                                                     QString()).toString().replace(QL1C('\\'),
                                                                                   QL1C('/')) ==
                                  Application::applicationFilePath();
@@ -125,12 +125,12 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
 
   switch (new_status) {
     case SystemFactory::Enabled:
-      registry_key.setValue(APP_LOW_NAME,
+      registry_key.setValue(STRFY(APP_LOW_NAME),
                             Application::applicationFilePath().replace(QL1C('/'), QL1C('\\')));
       return true;
 
     case SystemFactory::Disabled:
-      registry_key.remove(APP_LOW_NAME);
+      registry_key.remove(STRFY(APP_LOW_NAME));
       return true;
 
     default:
@@ -141,7 +141,8 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   // "rssguard.desktop" desktop file.
   switch (new_status) {
     case SystemFactory::Enabled:
-      QFile::link(QString(APP_DESKTOP_ENTRY_PATH) + '/' + APP_DESKTOP_ENTRY_FILE, getAutostartDesktopFileLocation());
+      QFile::link(QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_ENTRY_FILE,
+                  getAutostartDesktopFileLocation());
       return true;
 
     case SystemFactory::Disabled:
@@ -275,7 +276,7 @@ void SystemFactory::checkForUpdatesOnStartup() {
   const UpdateCheck updates = checkForUpdates();
 
   if (updates.second == QNetworkReply::NoError && isVersionNewer(updates.first.m_availableVersion,
-                                                                APP_VERSION)) {
+                                                                 STRFY(APP_VERSION))) {
     qApp->showGuiMessage(tr("New version available"),
                          tr("Click the bubble for more information."),
                          QSystemTrayIcon::Information,

@@ -37,7 +37,7 @@ TrayIconMenu::~TrayIconMenu() {
 bool TrayIconMenu::event(QEvent *event) {
   if (event->type() == QEvent::Show && Application::activeModalWidget() != NULL) {
     QTimer::singleShot(0, this, SLOT(hide()));
-    qApp->showGuiMessage(QSL(APP_LONG_NAME),
+    qApp->showGuiMessage(QSL(STRFY(APP_LONG_NAME)),
                          tr("Close opened modal dialogs first."),
                          QSystemTrayIcon::Warning, qApp->mainForm(), true);
   }
@@ -121,11 +121,11 @@ void SystemTrayIcon::show() {
 
 void SystemTrayIcon::setNumber(int number, bool any_new_message) {
   if (number <= 0) {
-    setToolTip(QSL(APP_LONG_NAME));
+    setToolTip(QSL(STRFY(APP_LONG_NAME)));
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
   }
   else {
-    setToolTip(tr("%1\nUnread news: %2").arg(QSL(APP_LONG_NAME), QString::number(number)));
+    setToolTip(tr("%1\nUnread news: %2").arg(QSL(STRFY(APP_LONG_NAME)), QString::number(number)));
 
     QPixmap background(m_plainPixmap);
     QPainter tray_painter;

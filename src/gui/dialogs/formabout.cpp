@@ -33,7 +33,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout(
   setWindowIcon(qApp->icons()->fromTheme(QSL("help-about")));
 
   //: About RSS Guard dialog title.
-  setWindowTitle(tr("About %1").arg(APP_NAME));
+  setWindowTitle(tr("About %1").arg(STRFY(APP_NAME)));
 
   m_ui->m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
 
@@ -59,7 +59,7 @@ void FormAbout::loadSettingsAndPaths() {
     m_ui->m_txtPathsSettingsType->setText(tr("PARTIALLY portable"));
     m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->homeFolderPath() +
                                                                    QDir::separator() +
-                                                                   QString(APP_LOW_H_NAME) +
+                                                                   QString(STRFY(APP_LOW_H_NAME)) +
                                                                    QDir::separator() +
                                                                    QString(APP_DB_SQLITE_PATH)));
   }
@@ -106,7 +106,7 @@ void FormAbout::loadLicenseAndInformation() {
                                                                                                                              __TIME__)).toString(Qt::DefaultLocaleShortDate),
                                                                              qVersion(),
                                                                              QT_VERSION_STR,
-                                                                             APP_NAME));
+                                                                             STRFY(APP_NAME)));
 
   m_ui->m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."
                               "<br><br>This software is distributed under the terms of GNU General Public License, version 3."
@@ -114,9 +114,9 @@ void FormAbout::loadLicenseAndInformation() {
                               "<ul><li><a href=\"mailto://%1\">%1</a> ~e-mail</li>"
                               "<li><a href=\"%2\">%2</a> ~website</li></ul>"
                               "You can obtain source code for %5 from its website."
-                              "<br><br><br>Copyright (C) 2011-%3 %4</body>").arg(APP_EMAIL,
-                                                                                 APP_URL,
+                              "<br><br><br>Copyright (C) 2011-%3 %4</body>").arg(STRFY(APP_EMAIL),
+                                                                                 STRFY(APP_URL),
                                                                                  QString::number(QDateTime::currentDateTime().date().year()),
-                                                                                 APP_AUTHOR,
-                                                                                 APP_NAME));
+                                                                                 STRFY(APP_AUTHOR),
+                                                                                 STRFY(APP_NAME)));
 }

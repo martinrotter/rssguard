@@ -192,7 +192,7 @@ void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
   }
   else {
     m_sqliteDatabaseFilePath = qApp->homeFolderPath() + QDir::separator() +
-                               QString(APP_LOW_H_NAME) + QDir::separator() +
+                               QString(STRFY(APP_LOW_NAME)) + QDir::separator() +
                                QString(APP_DB_SQLITE_PATH);
   }
 }
@@ -647,7 +647,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
     determineDriver();
     MessageBox::show(NULL, QMessageBox::Critical, tr("MySQL database not available"),
                      tr("%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server "
-                        "and make adjustments in application settings.").arg(APP_NAME), QString(), QString());
+                        "and make adjustments in application settings.").arg(STRFY(APP_NAME)));
 
     return connection(objectName(), FromSettings);
   }
