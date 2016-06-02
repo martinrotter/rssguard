@@ -438,8 +438,8 @@ TEXTS = resources/text/CHANGELOG \
 
 # Make sure QM translations are generated.
 lrelease.input = TRANSLATIONS
-lrelease.output = $$OUT_PWD/${QMAKE_FILE_BASE}.qm
-lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$OUT_PWD/${QMAKE_FILE_BASE}.qm
+lrelease.output = $$OUT_PWD/l10n/${QMAKE_FILE_BASE}.qm
+lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$OUT_PWD/l10n/${QMAKE_FILE_BASE}.qm
 lrelease.CONFIG += no_link target_predeps
 
 # Create new "make lupdate" target.
@@ -522,8 +522,8 @@ win32 {
   app_plain_icon.files = resources/graphics/$${TARGET}_plain.png
   app_plain_icon.path = $$quote($$PREFIX/)
 
-  translations.files = $$OUT_PWD/*.qm
-  translations.path = $$quote($$PREFIX/l10n/)
+  translations.files = $$OUT_PWD/l10n
+  translations.path = $$quote($$PREFIX/)
 
   INSTALLS += target misc_sql qt_dlls_root qt_dlls_bearer qt_dlls_iconengines \
               qt_dlls_imageformats qt_dlls_platforms qt_dlls_sqldrivers \
@@ -561,8 +561,8 @@ unix:!mac {
   desktop_file.files = resources/desktop/$${TARGET}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
-  translations.files = $$OUT_PWD/*.qm
-  translations.path = $$quote($$PREFIX/share/$$TARGET/l10n/)
+  translations.files = $$OUT_PWD/l10n
+  translations.path = $$quote($$PREFIX/share/$$TARGET/)
 
   INSTALLS += target misc_sql misc_icons misc_feeds \
               misc_icon misc_plain_icon skins misc_texts desktop_file translations
