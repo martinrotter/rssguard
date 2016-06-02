@@ -86,6 +86,11 @@ isEmpty(PREFIX) {
   }
 }
 
+isEmpty(LRELEASE_EXECUTABLE) {
+  LRELEASE_EXECUTABLE = lrelease
+  message(rssguard: LRELEASE_EXECUTABLE variable is not set.)
+}
+
 unix:!mac {
   isEmpty(INSTALL_ROOT) {
     message(rssguard: Variable INSTALL_ROOT is empty.)
@@ -129,6 +134,7 @@ message(rssguard: Detected Qt version: $$QT_VERSION.)
 message(rssguard: Build directory: '$$DESTDIR'.)
 message(rssguard: Prefix directory: '$$PREFIX'.)
 message(rssguard: Build revision: '$$APP_REVISION'.)
+message(rssguard: lrelease executable name: '$$LRELEASE_EXECUTABLE'.)
 
 QT += core gui widgets sql network xml printsupport
 CONFIG *= c++11 debug_and_release warn_on
@@ -433,7 +439,7 @@ TEXTS = resources/text/CHANGELOG \
 # Make sure QM translations are generated.
 lrelease.input = TRANSLATIONS
 lrelease.output = ${QMAKE_FILE_BASE}.qm
-lrelease.commands = lrelease -compress ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_BASE}.qm
+lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_BASE}.qm
 lrelease.CONFIG += no_link target_predeps
 
 # Create new "make lupdate" target.
