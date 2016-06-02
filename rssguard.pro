@@ -439,7 +439,7 @@ TEXTS = resources/text/CHANGELOG \
 # Make sure QM translations are generated.
 lrelease.input = TRANSLATIONS
 lrelease.output = ${QMAKE_FILE_BASE}.qm
-lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_BASE}.qm
+lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$OUT_PWD/${QMAKE_FILE_BASE}.qm
 lrelease.CONFIG += no_link target_predeps
 
 # Create new "make lupdate" target.
