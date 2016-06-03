@@ -30,15 +30,11 @@
 #include <QNetworkReply>
 #include <QProcess>
 
-#if defined(Q_OS_WIN)
-#include <windows.h>
-#endif
-
 
 FormUpdate::FormUpdate(QWidget *parent)
   : QDialog(parent), m_downloader(NULL), m_readyToInstall(false), m_ui(new Ui::FormUpdate) {
   m_ui->setupUi(this);
-  m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Update"), QDialogButtonBox::ActionRole);
+  m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Download update"), QDialogButtonBox::ActionRole);
   m_btnUpdate->setToolTip(tr("Download new installation files."));
   m_ui->m_lblCurrentRelease->setText(STRFY(APP_VERSION));
 
@@ -89,7 +85,7 @@ void FormUpdate::checkForUpdates() {
     if (SystemFactory::isVersionNewer(update.first.m_availableVersion, STRFY(APP_VERSION))) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
-                                   tr("This is new version which can be\ndownloaded and installed."));
+                                   tr("This is new version which can be\ndownloaded."));
       m_btnUpdate->setEnabled(true);
       m_btnUpdate->setToolTip(is_self_update_for_this_system ?
                                 tr("Download installation file for your OS.") :
@@ -157,8 +153,8 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
   switch (status) {
     case QNetworkReply::NoError:
       saveUpdateFile(contents);
-      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"), tr("Package was downloaded successfully."));
-      m_btnUpdate->setText(tr("Install update"));
+      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"), tr("Package was downloaded successfully.\nYou must install it manually."));
+      m_btnUpdate->setText(tr("Go to update file"));
       m_btnUpdate->setEnabled(true);
       break;
 
@@ -180,32 +176,15 @@ void FormUpdate::startUpdate() {
     url_file = STRFY(APP_URL);
   }
 
-  if (m_readyToInstall) {
-    // Some package is downloaded and it can be installed
-    // via self-update feature.
-    close();
-
-    qDebug("Preparing to launch external installer '%s'.", qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
-
-#if defined(Q_OS_WIN)
-    HINSTANCE exec_result = ShellExecute(NULL,
-                                         NULL,
-                                         reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
-                                         NULL,
-                                         NULL,
-                                         SW_NORMAL);
-
-    if (((int)exec_result) <= 32) {
-      qDebug("External updater was not launched due to error.");
-
-      qApp->showGuiMessage(tr("Cannot update application"),
-                           tr("Cannot launch external updater. Update application manually."),
-                           QSystemTrayIcon::Warning, this);
+  if (m_readyToInstall) {    
+    if (!SystemFactory::openFolderFile(m_updateFilePath)) {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot open directory"),
+                       tr("Cannot open output directory. Open it manually."),
+                       QString(),
+                       m_updateFilePath);
     }
-    else {
-      qApp->quit();
-    }
-#endif
   }
   else if (update_for_this_system) {
     // Nothing is downloaded yet, but update for this system

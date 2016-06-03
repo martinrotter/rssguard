@@ -213,19 +213,14 @@ void DownloadItem::openFile() {
 
 void DownloadItem::openFolder() {
   if (m_output.exists()) {
-    const QString folder = QDir::toNativeSeparators(QFileInfo(m_output.fileName()).absoluteDir().absolutePath());
-
-#if defined(Q_OS_WIN32)
-    const QString file = QDir::toNativeSeparators(m_output.fileName());
-
-    if (!QProcess::startDetached(QString("explorer.exe /select, \"") + file + "\"")) {
-      MessageBox::show(this, QMessageBox::Warning, tr("Cannot open directory"), tr("Cannot open output directory. Open it manually."), QString(), folder);
+    if (!SystemFactory::openFolderFile(m_output.fileName())) {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot open directory"),
+                       tr("Cannot open output directory. Open it manually."),
+                       QString(),
+                       m_output.fileName());
     }
-#else
-    if (!QDesktopServices::openUrl(QUrl::fromLocalFile(folder))) {
-      MessageBox::show(this, QMessageBox::Warning, tr("Cannot open directory"), tr("Cannot open output directory. Open it manually."), QString(), folder);
-    }
-#endif
   }
 }
 

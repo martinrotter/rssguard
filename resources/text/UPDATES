@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
   <release version="3.2.4">
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-3.2.4-win32.exe</url>
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-3.2.4-win32.zip</url>
   </release>
 </releases>

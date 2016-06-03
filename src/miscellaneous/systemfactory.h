@@ -90,6 +90,8 @@ class SystemFactory : public QObject {
     static bool isVersionNewer(const QString &new_version, const QString &base_version);
     static bool isVersionEqualOrNewer(const QString &new_version, const QString &base_version);
 
+    static bool openFolderFile(const QString &file_path);
+
   public slots:
     void checkForUpdatesOnStartup();
 

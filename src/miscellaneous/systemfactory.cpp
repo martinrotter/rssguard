@@ -27,6 +27,7 @@
 #endif
 
 #include <QString>
+#include <QProcess>
 #include <QFile>
 #include <QDomDocument>
 #include <QDomElement>
@@ -238,6 +239,15 @@ bool SystemFactory::isVersionNewer(const QString &new_version, const QString &ba
 
 bool SystemFactory::isVersionEqualOrNewer(const QString &new_version, const QString &base_version) {
   return new_version == base_version || isVersionNewer(new_version, base_version);
+}
+
+bool SystemFactory::openFolderFile(const QString &file_path) {
+#if defined(Q_OS_WIN32)
+  return QProcess::startDetached(QString("explorer.exe /select, \"") + QDir::toNativeSeparators(file_path) + "\"");
+#else
+  const QString folder = QDir::toNativeSeparators(QFileInfo(file_path).absoluteDir().absolutePath());
+  return QDesktopServices::openUrl(QUrl::fromLocalFile(folder));
+#endif
 }
 
 UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) const {
