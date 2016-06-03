@@ -112,6 +112,7 @@ class Application : public QtSingleApplication {
 
     // Access to application-wide close lock.
     Mutex *feedUpdateLock();
+    Mutex *messageUpdateLock();
 
     inline FormMain *mainForm() {
       return m_mainForm;
@@ -184,6 +185,8 @@ class Application : public QtSingleApplication {
     // tries to lock the lock for writing), then no other
     // action will be allowed to lock for reading.
     QScopedPointer<Mutex> m_updateFeedsLock;
+    QScopedPointer<Mutex> m_updateMessagesLock;
+
     QList<ServiceEntryPoint*> m_feedServices;
     QList<QAction*> m_userActions;
     FormMain *m_mainForm;

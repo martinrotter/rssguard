@@ -19,9 +19,12 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/mutex.h"
 #include "miscellaneous/databasequeries.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
+
+#include <QThread>
 
 
 Feed::Feed(RootItem *parent)
@@ -131,6 +134,8 @@ void Feed::updateCounts(bool including_total_count) {
 }
 
 void Feed::run() {
+  qDebug().nospace() << "Updating feed " << customId() << " in thread: \'" << QThread::currentThreadId() << "\'.";
+
   emit updated(update());
 }
 
@@ -139,6 +144,13 @@ int Feed::updateMessages(const QList<Message> &messages) {
   int account_id = getParentServiceRoot()->accountId();
   bool anything_updated = false;
   bool ok;
+
+  // MySQL seems to be more error prone with transactions when called
+  // from more threads in the same time. SQLite does not have that limitation.
+  if (qApp->database()->activeDatabaseDriver() == DatabaseFactory::MYSQL) {
+    qApp->messageUpdateLock()->lock();
+  }
+
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   int updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(),
                                                          &anything_updated, &ok);
@@ -162,6 +174,10 @@ int Feed::updateMessages(const QList<Message> &messages) {
     }
 
     getParentServiceRoot()->itemChanged(items_to_update);
+  }
+
+  if (qApp->database()->activeDatabaseDriver() == DatabaseFactory::MYSQL) {
+    qApp->messageUpdateLock()->unlock();
   }
 
   return updated_messages;

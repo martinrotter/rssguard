@@ -41,7 +41,7 @@ bool FeedDownloader::isUpdateRunning() const {
 }
 
 void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
-  qDebug().nospace() << "Performing feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
+  qDebug().nospace() << "Starting feed updates from worker in thread: \'" << QThread::currentThreadId() << "\'.";
 
   // It may be good to disable "stop" action when batch feed update
   // starts.
