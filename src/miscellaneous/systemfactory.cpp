@@ -35,6 +35,7 @@
 #include <QFuture>
 #include <QFutureWatcher>
 #include <QtConcurrent/QtConcurrentRun>
+#include <QDesktopServices>
 
 
 typedef QPair<UpdateInfo, QNetworkReply::NetworkError> UpdateCheck;

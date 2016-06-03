@@ -266,7 +266,7 @@ void FormStandardImportExport::performAction() {
 
 void FormStandardImportExport::exportFeeds() {
   QByteArray result_data;
-  bool result_export;
+  bool result_export = false;
 
   switch (m_conversionType) {
     case OPML20:
