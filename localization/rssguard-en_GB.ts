@@ -502,7 +502,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %3 (compiled against %4)&lt;br&gt;</source>
+        <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

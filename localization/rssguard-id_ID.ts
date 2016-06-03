@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="id_ID">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="id_ID" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished">(kategori)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished">(feed)</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -198,7 +196,7 @@
         <translation>Mengunduh selesai</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Berkas &apos;%1&apos; terunduh.
 Klik disini untuk membuka direktori induk.</translation>
@@ -224,15 +222,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n menit tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n menit tersisa</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n detik tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n detik tersisa</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -252,9 +246,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Mengunduh %n berkas...</numerusform>
-        </translation>
+        <translation><numerusform>Mengunduh %n berkas...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -305,9 +297,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Saya akan otomatis memperbaharui %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Saya akan otomatis memperbaharui %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -467,10 +457,6 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation>Daftar perubahan tidak ditemukan.</translation>
     </message>
     <message>
-        <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (build on %2 with CMake %3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versi:&lt;/b&gt; %1 (dibangun di %2 dengan CMake %3)&lt;br&gt;&lt;b&gt;Revisi:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Tanggal dibangun:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (dikompilasi terhadap %7)&lt;br&gt;</translation>
-    </message>
-    <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Tentang %1</translation>
@@ -504,8 +490,8 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation>&lt;body&gt;%5 merupakan sebuah pembaca feed yang sangat kecil.&lt;br&gt;&lt;br&gt;Perangkat lunak ini didistribusikan di bawah ketentuan dari Lisensi Publik Umum GNU, versi 3.&lt;br&gt;&lt;br&gt;Kontak:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;Anda dapat memperoleh kode sumber untuk %5 dari website-nya.&lt;br&gt;&lt;br&gt;&lt;br&gt;Hak cipta (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
-        <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %3 (compiled against %4)&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -626,9 +612,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> hari</numerusform>
-        </translation>
+        <translation><numerusform> hari</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1065,7 +1049,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sunting feed &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
@@ -2281,11 +2265,11 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>tanpa tema ikon/tema ikon sistem</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3053,9 +3037,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform>
-        </translation>
+        <translation><numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3100,7 +3082,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_NAME</source>
@@ -3111,9 +3093,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n feed lain.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n feed lain.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3161,9 +3141,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n pesan terhapus.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan terhapus.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3185,9 +3163,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n pesan belum dibaca.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan belum dibaca.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3242,9 +3218,7 @@ Kategori ini tidak berisi item bersarang.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3408,15 +3382,11 @@ Berita belum terbaca:%2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n jam</numerusform>
-        </translation>
+        <translation><numerusform>%n jam</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n menit</numerusform>
-        </translation>
+        <translation><numerusform>%n menit</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3492,9 +3462,7 @@ Berita belum terbaca:%2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

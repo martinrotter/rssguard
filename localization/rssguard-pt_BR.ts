@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"> (categoria)</translation>
+        <translation>(categoria )</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"> (feed)</translation>
+        <translation> (feed)</translation>
     </message>
 </context>
 <context>
@@ -198,7 +196,7 @@
         <translation>Download concluído</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Arquivo &apos;%1&apos; foi baixado.
 Clique para abrir a pasta de destino.</translation>
@@ -224,17 +222,11 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minuto restante</numerusform>
-            <numerusform>%n minutos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto restante</numerusform><numerusform>%n minutos restantes</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n segundo restante</numerusform>
-            <numerusform>%n segundos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n segundo restante</numerusform><numerusform>%n segundos restantes</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -254,10 +246,7 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Baixando %n arquivo...</numerusform>
-            <numerusform>Baixando %n arquivos...</numerusform>
-        </translation>
+        <translation><numerusform>Baixando %n arquivo...</numerusform><numerusform>Baixando %n arquivos...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -308,10 +297,7 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>%n feed será atualizado automaticamente.</numerusform>
-            <numerusform>%n feeds serão atualizados automaticamente.</numerusform>
-        </translation>
+        <translation><numerusform>%n feed será atualizado automaticamente.</numerusform><numerusform>%n feeds serão atualizados automaticamente.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -471,10 +457,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Log de alterações não encontrado.</translation>
     </message>
     <message>
-        <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (build on %2 with CMake %3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versão:&lt;/b&gt; %1 (criado em %2 com o CMake %3)&lt;br&gt;&lt;b&gt;Revisão:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Data de criação:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compilado contra %7)&lt;br&gt;</translation>
-    </message>
-    <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Sobre o %1</translation>
@@ -508,8 +490,8 @@ ou esta função ainda não foi implementada.</translation>
         <translation>&lt;body&gt;O %5 é um leitor de feeds (muito) pequeno.&lt;br&gt;&lt;br&gt;Este software é distribuído sob os termos da GNU General Public License, versão 3.&lt;br&gt;&lt;br&gt;Contato:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;Você pode obter o código fonte do %5 a partir do seu site.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
-        <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %3 (compiled against %4)&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -630,10 +612,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>%n dia</numerusform>
-            <numerusform>%n dias</numerusform>
-        </translation>
+        <translation><numerusform>%n dia</numerusform><numerusform>%n dias</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -2290,7 +2269,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Ativar dicas no balão de notificação</translation>
     </message>
 </context>
 <context>
@@ -3058,10 +3037,7 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Exibir mais mensagens (%n restante)</numerusform>
-            <numerusform>Exibir mais mensagens (%n restantes)</numerusform>
-        </translation>
+        <translation><numerusform>Exibir mais mensagens (%n restante)</numerusform><numerusform>Exibir mais mensagens (%n restantes)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3117,14 +3093,11 @@ Vá até o site do aplicativo para obter manualmente.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n outro feed.</numerusform>
-            <numerusform>
++ %n outro feed.</numerusform><numerusform>
 
-+ %n outros feeds.</numerusform>
-        </translation>
++ %n outros feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3173,10 +3146,7 @@ Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n mensagem excluída.</numerusform>
-            <numerusform>%n mensagens excluídas.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensagem excluída.</numerusform><numerusform>%n mensagens excluídas.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3200,10 +3170,7 @@ Pelo menos o API nível %1 é necessário.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n mensagem não lida.</numerusform>
-            <numerusform>%n mensagem(ns) não lidas.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensagem não lida.</numerusform><numerusform>%n mensagem(ns) não lidas.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3258,10 +3225,7 @@ Esta categoria nenhum possui itens aninhados.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-        </translation>
+        <translation><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3425,17 +3389,11 @@ Notícias não lidas: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n hora</numerusform>
-            <numerusform>%n hora(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n hora</numerusform><numerusform>%n hora(s)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minuto</numerusform>
-            <numerusform>%n minuto(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto</numerusform><numerusform>%n minuto(s)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3511,10 +3469,7 @@ Notícias não lidas: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>usa configurações específicas (%n minuto para a próxima atualização automática)</numerusform>
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-        </translation>
+        <translation><numerusform>usa configurações específicas (%n minuto para a próxima atualização automática)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

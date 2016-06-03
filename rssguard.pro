@@ -41,6 +41,8 @@
 #   after the "make install" step. Note that this variable has different meaning from PREFIX which describes
 #   the final path and is usually "/usr".
 #
+#   LRELEASE_EXECUTABLE - specifies the name/path of "lrelease" executable, defaults to "lrelease".
+#
 # Other information:
 #   - supports Windows, Linux,
 #   - Qt 5.4 and higher is required,
@@ -139,10 +141,14 @@ message(rssguard: lrelease executable name: '$$LRELEASE_EXECUTABLE'.)
 QT += core gui widgets sql network xml printsupport
 CONFIG *= c++11 debug_and_release warn_on
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
+VERSION = $$APP_VERSION
+
+MOC_DIR = $$OUT_PWD/moc
+RCC_DIR = $$OUT_PWD/rcc
+UI_DIR = $$OUT_PWD/ui
 
 # Make needed tweaks for RC file getting generated on Windows.
 win32 {
-  VERSION = $$APP_VERSION
   RC_ICONS = resources/graphics/rssguard.ico
   QMAKE_TARGET_COMPANY = $$APP_AUTHOR
   QMAKE_TARGET_DESCRIPTION = $$APP_NAME
