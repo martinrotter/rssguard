@@ -45,7 +45,7 @@
 #
 # Other information:
 #   - supports Windows, Linux,
-#   - Qt 5.4 and higher is required,
+#   - Qt 5.6 and higher is required,
 #   - C++ 11 is required.
 #
 # Authors and contributors:
@@ -61,7 +61,7 @@ DEFINES	    *= QT_USE_QSTRINGBUILDER
 message(rssguard: Welcome RSS Guard qmake script.)
 
 lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 4) {
-  error(rssguard: At least Qt 5.4.0 is required.)
+  error(rssguard: At least Qt 5.6.0 is required.)
 }
 
 APP_NAME                      = "RSS Guard"
@@ -138,7 +138,7 @@ message(rssguard: Prefix directory: '$$PREFIX'.)
 message(rssguard: Build revision: '$$APP_REVISION'.)
 message(rssguard: lrelease executable name: '$$LRELEASE_EXECUTABLE'.)
 
-QT += core gui widgets sql network xml printsupport
+QT += core gui widgets webenginewidgets sql network xml printsupport
 CONFIG *= c++11 debug_and_release warn_on
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION
