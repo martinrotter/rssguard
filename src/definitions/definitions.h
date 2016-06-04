@@ -26,7 +26,6 @@
 #define SERVICE_CODE_STD_RSS  "std-rss"
 #define SERVICE_CODE_TT_RSS   "tt-rss"
 #define SERVICE_CODE_OWNCLOUD "owncloud"
-#define SERVICE_CODE_WALLABAG "wallabag"
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
@@ -44,7 +43,6 @@
 #define USER_AGENT_HTTP_HEADER                "User-Agent"
 #define TEXT_TITLE_LIMIT                      30
 #define RESELECT_MESSAGE_THRESSHOLD           500
-#define MAX_ZOOM_FACTOR                       10.0
 #define ICON_SIZE_SETTINGS                    16
 #define NO_PARENT_CATEGORY                    -1
 #define ID_RECYCLE_BIN                        -2
@@ -57,9 +55,6 @@
 #define DEFAULT_DAYS_TO_DELETE_MSG            14
 #define ELLIPSIS_LENGTH                       3
 #define MIN_CATEGORY_NAME_LENGTH              3
-#define INTERNAL_URL_NEWSPAPER                "rssguard:newspaper"
-#define INTERNAL_URL_EMPTY                    "rssguard:empty"
-#define INTERNAL_URL_BLANK                    "about:blank"
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
 #define AUTO_UPDATE_INTERVAL                  60000
 #define STARTUP_UPDATE_DELAY                  30000
