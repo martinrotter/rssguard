@@ -135,6 +135,19 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
 
   // Obtain version.
   skin.m_version = skin_node.attributes().namedItem(QSL("version")).toAttr().value();
+
+  // Obtain layout markup wrapper.
+  skin.m_layoutMarkupWrapper = skin_node.namedItem(QSL("markup_wrapper")).toElement().text();
+  skin.m_layoutMarkupWrapper = QByteArray::fromBase64(skin.m_layoutMarkupWrapper.toLocal8Bit());
+
+  // Obtain layout markup.
+  skin.m_layoutMarkup = skin_node.namedItem(QSL("markup")).toElement().text();
+  skin.m_layoutMarkup = QByteArray::fromBase64(skin.m_layoutMarkup.toLocal8Bit());
+
+  // Obtain enclosure hyperlink wrapper.
+  skin.m_enclosureMarkup = skin_node.namedItem(QSL("markup_enclosure")).toElement().text();
+  skin.m_enclosureMarkup = QByteArray::fromBase64(skin.m_enclosureMarkup.toLocal8Bit());
+
   // Obtain other information.
   skin.m_baseName = QString(skin_name).replace(QDir::separator(), '/');
 
@@ -144,7 +157,8 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
 
   if (ok != NULL) {
     *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
-          !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty();
+          !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty() &&
+          !skin.m_layoutMarkup.isEmpty();
   }
 
   return skin;

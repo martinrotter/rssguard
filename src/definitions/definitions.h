@@ -77,6 +77,9 @@
 #define ENCRYPTION_FILE_NAME                  "key.private"
 #define RELOAD_MODEL_BORDER_NUM               10
 
+#define INTERNAL_URL_MESSAGE                  "rssguard:message"
+#define INTERNAL_URL_BLANK                    "rssguard:blank"
+
 #define FEED_INITIAL_OPML_PATTERN             "feeds-%1.opml"
 
 #define FEED_REGEX_MATCHER                    "<link[^>]+type=\\\"application/(atom|rss)\\+xml\\\"[^>]*>"

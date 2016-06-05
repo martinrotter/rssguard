@@ -58,12 +58,10 @@ class MessagePreviewer : public QWidget {
   private:
     void createConnections();
     void updateButtons();
-    QString prepareHtmlForMessage(const Message &message);
 
     QToolBar *m_toolBar;
     QScopedPointer<Ui::MessagePreviewer> m_ui;
     Message m_message;
-    QStringList m_pictures;
     QPointer<RootItem> m_root;
 
     QAction *m_actionMarkRead;

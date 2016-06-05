@@ -23,32 +23,16 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="0" column="1">
-    <widget class="MessageTextBrowser" name="m_txtMessage">
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="tabChangesFocus">
-      <bool>true</bool>
-     </property>
-     <property name="openLinks">
-      <bool>false</bool>
-     </property>
-    </widget>
+   <item row="0" column="0">
+    <widget class="MessageBrowser" name="m_webMessage" native="true"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MessageTextBrowser</class>
-   <extends>QTextBrowser</extends>
-   <header>messagetextbrowser.h</header>
+   <class>MessageBrowser</class>
+   <extends>QWebEngineView</extends>
+   <header>messagebrowser.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

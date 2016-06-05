@@ -32,6 +32,9 @@ struct Skin {
     QString m_email;
     QString m_version;
     QString m_rawData;
+    QString m_layoutMarkupWrapper;
+    QString m_layoutMarkup;
+    QString m_enclosureMarkup;
 };
 
 Q_DECLARE_METATYPE(Skin)
