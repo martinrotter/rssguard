@@ -193,7 +193,6 @@ HEADERS += src/core/feeddownloader.h \
            src/gui/messagessearchlineedit.h \
            src/gui/messagestoolbar.h \
            src/gui/messagesview.h \
-           src/gui/messagetextbrowser.h \
            src/gui/newspaperpreviewer.h \
            src/gui/plaintoolbutton.h \
            src/gui/squeezelabel.h \
@@ -304,7 +303,6 @@ SOURCES += src/core/feeddownloader.cpp \
            src/gui/messagessearchlineedit.cpp \
            src/gui/messagestoolbar.cpp \
            src/gui/messagesview.cpp \
-           src/gui/messagetextbrowser.cpp \
            src/gui/newspaperpreviewer.cpp \
            src/gui/plaintoolbutton.cpp \
            src/gui/squeezelabel.cpp \
