@@ -3,11 +3,11 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation>(kategori)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation>(feed)</translation>
     </message>
 </context>
 <context>
@@ -491,7 +491,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versi:&lt;/b&gt; %1 (dibangun di %2/%3)&lt;br&gt;&lt;b&gt;Revisi:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Tanggal dibangun:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (dikompilasi terhadap %7)&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -2269,7 +2269,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Nyalakan balon popup keterangan alat</translation>
     </message>
 </context>
 <context>
