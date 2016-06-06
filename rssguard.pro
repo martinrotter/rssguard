@@ -265,7 +265,8 @@ HEADERS += src/core/feeddownloader.h \
            src/services/tt-rss/ttrssrecyclebin.h \
            src/services/tt-rss/ttrssserviceentrypoint.h \
            src/services/tt-rss/ttrssserviceroot.h \
-           src/gui/messagebrowser.h
+           src/gui/messagebrowser.h \
+           src/network-web/messagebrowserpage.h
 
 SOURCES += src/core/feeddownloader.cpp \
            src/core/feedsmodel.cpp \
@@ -373,7 +374,8 @@ SOURCES += src/core/feeddownloader.cpp \
            src/services/tt-rss/ttrssrecyclebin.cpp \
            src/services/tt-rss/ttrssserviceentrypoint.cpp \
            src/services/tt-rss/ttrssserviceroot.cpp \
-           src/gui/messagebrowser.cpp
+           src/gui/messagebrowser.cpp \
+           src/network-web/messagebrowserpage.cpp
 
 FORMS += src/gui/messagepreviewer.ui \
          src/gui/newspaperpreviewer.ui \

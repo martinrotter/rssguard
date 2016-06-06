@@ -20,9 +20,11 @@
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/application.h"
 #include "definitions/definitions.h"
+#include "network-web/messagebrowserpage.h"
 
 
 MessageBrowser::MessageBrowser(QWidget *parent) : QWebEngineView(parent) {
+  setPage(new MessageBrowserPage(this));
 }
 
 void MessageBrowser::loadMessage(const Message &message) {

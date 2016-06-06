@@ -64,6 +64,7 @@ MessagePreviewer::~MessagePreviewer() {
 
 void MessagePreviewer::reloadFontSettings() {
   // TODO: Reload font settings.
+  //QFont saved_font =
 }
 
 void MessagePreviewer::clear() {
