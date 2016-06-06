@@ -22,12 +22,24 @@
 
 
 class MessageBrowserPage : public QWebEnginePage {
+    Q_OBJECT
+
   public:
+    enum MessageStatusChange {
+      MarkRead,
+      MarkUnread,
+      MarkStarred,
+      MarkUnstarred
+    };
+
     explicit MessageBrowserPage(QObject *parent = 0);
 
   protected:
     void javaScriptAlert(const QUrl &securityOrigin, const QString &msg);
     bool acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame);
+
+  signals:
+    void messageStatusChangeRequested(int message_id, MessageBrowserPage::MessageStatusChange change);
 };
 
 #endif // MESSAGEBROWSERPAGE_H

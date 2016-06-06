@@ -58,7 +58,8 @@ void MessageBrowser::loadMessages(const QList<Message> &messages) {
                                                      message.m_created.toString(Qt::DefaultLocaleShortDate),
                                                      enclosures,
                                                      message.m_isRead ? "mark-unread" : "mark-read",
-                                                     message.m_isImportant ? "mark-unstarred" : "mark-starred"));
+                                                     message.m_isImportant ? "mark-unstarred" : "mark-starred",
+                                                     QString::number(message.m_id)));
   }
 
   QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),

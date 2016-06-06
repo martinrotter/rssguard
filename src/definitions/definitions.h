@@ -79,6 +79,8 @@
 
 #define INTERNAL_URL_MESSAGE                  "rssguard:message"
 #define INTERNAL_URL_BLANK                    "rssguard:blank"
+#define INTERNAL_URL_HOST                     "rssguard"
+#define INTERNAL_URL_MESSAGE_PORT             "message"
 
 #define FEED_INITIAL_OPML_PATTERN             "feeds-%1.opml"
 

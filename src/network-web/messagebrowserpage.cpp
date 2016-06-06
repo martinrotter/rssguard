@@ -17,13 +17,47 @@
 
 #include "network-web/messagebrowserpage.h"
 
+#include "definitions/definitions.h"
+
+#include <QStringList>
+#include <QString>
+
 
 MessageBrowserPage::MessageBrowserPage(QObject *parent) : QWebEnginePage(parent) {
 }
 
 
 void MessageBrowserPage::javaScriptAlert(const QUrl &securityOrigin, const QString &msg) {
-  QWebEnginePage::javaScriptAlert(securityOrigin, msg);
+  if (securityOrigin.isEmpty()) {
+    QStringList parts = msg.split(QL1C('-'));
+
+    if (parts.size() == 2) {
+      int message_id = parts.at(0).toInt();
+      QString action = parts.at(1);
+
+      if (action == QSL("read")) {
+        emit messageStatusChangeRequested(message_id, MarkRead);
+      }
+      else if (action == QSL("unread")) {
+        emit messageStatusChangeRequested(message_id, MarkUnread);
+      }
+      else if (action == QSL("starred")) {
+        emit messageStatusChangeRequested(message_id, MarkStarred);
+      }
+      else if (action == QSL("unstarred")) {
+        emit messageStatusChangeRequested(message_id, MarkUnstarred);
+      }
+      else {
+        QWebEnginePage::javaScriptAlert(securityOrigin, msg);
+      }
+    }
+    else {
+      QWebEnginePage::javaScriptAlert(securityOrigin, msg);
+    }
+  }
+  else {
+    QWebEnginePage::javaScriptAlert(securityOrigin, msg);
+  }
 }
 
 bool MessageBrowserPage::acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame) {
