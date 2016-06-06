@@ -24,7 +24,7 @@
 #include "network-web/webfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
-#include "gui/newspaperpreviewer.h"
+#include "gui/messagepreviewer.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
 
 #include <QKeyEvent>
@@ -468,14 +468,20 @@ void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
 }
 
 void MessagesView::createNewspaperView(RootItem *selected_item, const QList<Message> &messages) {
-  NewspaperPreviewer *prev = new NewspaperPreviewer(selected_item, messages, this);
+  MessagePreviewer *prev = new MessagePreviewer(this);
   int index = qApp->mainForm()->tabWidget()->addTab(prev,
                                                     qApp->icons()->fromTheme(QSL("text-x-script")),
                                                     tr("Newspaper view"),
                                                     TabBar::Closable);
-  qApp->mainForm()->tabWidget()->setCurrentIndex(index);
 
+  qApp->mainForm()->tabWidget()->setCurrentIndex(index);
   connect(prev, SIGNAL(requestMessageListReload(bool)), this, SLOT(reloadSelections(bool)));
+
+  prev->loadMessages(messages, selected_item);
+
+  QTimer::singleShot(100, [&prev, &messages, &selected_item]() {
+
+  });
 }
 
 void MessagesView::adjustColumns() {

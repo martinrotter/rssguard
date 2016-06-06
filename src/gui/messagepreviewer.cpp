@@ -30,31 +30,14 @@
 
 
 void MessagePreviewer::createConnections() {
-  connect(m_actionMarkRead = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-read"), tr("Mark message as read")),
-          &QAction::triggered,
-          this,
-          &MessagePreviewer::markMessageAsRead);
-  connect(m_actionMarkUnread = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-unread"), tr("Mark message as unread")),
-          &QAction::triggered,
-          this,
-          &MessagePreviewer::markMessageAsUnread);
-  connect(m_actionSwitchImportance = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-important"), tr("Switch message importance")),
-          &QAction::triggered,
-          this,
-          &MessagePreviewer::switchMessageImportance);
+  // TODO: TODO.
 }
 
-MessagePreviewer::MessagePreviewer(QWidget *parent) : QWidget(parent),
+MessagePreviewer::MessagePreviewer(QWidget *parent) : TabContent(parent),
   m_ui(new Ui::MessagePreviewer) {
   m_ui->setupUi(this);
-  m_toolBar = new QToolBar(this);
-  m_toolBar->setOrientation(Qt::Vertical);
-  m_ui->m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
 
   createConnections();
-
-  m_actionSwitchImportance->setCheckable(true);
-
   reloadFontSettings();
   clear();
 }
@@ -68,24 +51,27 @@ void MessagePreviewer::reloadFontSettings() {
 }
 
 void MessagePreviewer::clear() {
-  m_ui->m_webMessage->setHtml("<html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
+  m_ui->m_webMessage->setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
   hide();
 }
 
-void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
-  m_message = message;
+void MessagePreviewer::loadMessages(const QList<Message> &messages, RootItem *root) {
+  m_messages = messages;
   m_root = root;
 
   if (!m_root.isNull()) {
-    m_actionSwitchImportance->setChecked(m_message.m_isImportant);
-    m_ui->m_webMessage->loadMessage(message);
-    updateButtons();
+    m_ui->m_webMessage->loadMessages(messages);
     show();
   }
 }
 
+void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
+  loadMessages(QList<Message>() << message, root);
+}
+
 void MessagePreviewer::markMessageAsRead() {
   if (!m_root.isNull()) {
+    /*
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Read)) {
@@ -98,13 +84,14 @@ void MessagePreviewer::markMessageAsRead() {
 
       emit requestMessageListReload(false);
       m_message.m_isRead = true;
-      updateButtons();
     }
+    */
   }
 }
 
 void MessagePreviewer::markMessageAsUnread() {
   if (!m_root.isNull()) {
+    /*
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 RootItem::Unread)) {
@@ -117,13 +104,14 @@ void MessagePreviewer::markMessageAsUnread() {
 
       emit requestMessageListReload(false);
       m_message.m_isRead = false;
-      updateButtons();
     }
+    */
   }
 }
 
 void MessagePreviewer::switchMessageImportance(bool checked) {
   if (!m_root.isNull()) {
+    /*
     if (m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
                                                                         QList<ImportanceChange>() << ImportanceChange(m_message,
                                                                                                                       m_message.m_isImportant ?
@@ -141,10 +129,6 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
       emit requestMessageListReload(false);
       m_message.m_isImportant = checked;
     }
+    */
   }
-}
-
-void MessagePreviewer::updateButtons() {
-  m_actionMarkRead->setEnabled(!m_message.m_isRead);
-  m_actionMarkUnread->setEnabled(m_message.m_isRead);
 }

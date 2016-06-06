@@ -17,9 +17,6 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="m_layout">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
    <property name="bottomMargin">
     <number>0</number>
    </property>
@@ -31,7 +28,7 @@
  <customwidgets>
   <customwidget>
    <class>MessageBrowser</class>
-   <extends>QWebEngineView</extends>
+   <extends>QWidget</extends>
    <header>messagebrowser.h</header>
   </customwidget>
  </customwidgets>

@@ -49,33 +49,7 @@ void SkinFactory::loadCurrentSkin() {
   }
 }
 
-bool SkinFactory::loadSkinFromData(const Skin &skin) {
-  const QStringList skin_parts = skin.m_baseName.split(QL1C('/'), QString::SkipEmptyParts);
-
-  // Skin does not contain leading folder name or the actual skin file name.
-  if (skin_parts.size() != 2) {
-    qDebug("Loading of sking '%s' failed because skin name does not contain "
-           "base folder name or the actual skin name.",
-           qPrintable(skin.m_baseName));
-    return false;
-  }
-  else {
-    qDebug("Loading skin '%s'.", qPrintable(skin.m_baseName));
-  }
-
-  // Create needed variables and create QFile object representing skin contents.
-  const QString skin_folder = skin_parts.at(0);
-
-  // Here we use "/" instead of QDir::separator() because CSS2.1 url field
-  // accepts '/' as path elements separator.
-  //
-  // "##" is placeholder for the actual path to skin file. This is needed for using
-  // images within the QSS file.
-  // So if one uses "##/images/border.png" in QSS then it is
-  // replaced by fully absolute path and target file can
-  // be safely loaded.
-  QString raw_data = skin.m_rawData;
-
+void SkinFactory::loadSkinFromData(const Skin &skin) {
   // Iterate supported styles and load one.
   foreach (const QString &style, skin.m_stylesNames) {
     if (qApp->setStyle(style) != 0) {
@@ -84,12 +58,9 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
     }
   }
 
-  if (!raw_data.isEmpty()) {
-    const QString parsed_data = raw_data.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_folder);
-    qApp->setStyleSheet(parsed_data);
+  if (!skin.m_rawData.isEmpty()) {
+    qApp->setStyleSheet(skin.m_rawData);
   }
-
-  return true;
 }
 
 void SkinFactory::setCurrentSkinName(const QString &skin_name) {
@@ -119,10 +90,6 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
   // Obtain visible skin name.
   skin.m_visibleName = skin_node.namedItem(QSL("name")).toElement().text();
 
-  // Obtain skin raw data.
-  skin.m_rawData = skin_node.namedItem(QSL("data")).toElement().text();
-  skin.m_rawData = QByteArray::fromBase64(skin.m_rawData.toLocal8Bit());
-
   // Obtain style name.
   styles = skin_node.namedItem(QSL("style")).toElement().text();
   skin.m_stylesNames = styles.split(',', QString::SkipEmptyParts);
@@ -136,20 +103,40 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
   // Obtain version.
   skin.m_version = skin_node.attributes().namedItem(QSL("version")).toAttr().value();
 
+  // Obtain other information.
+  skin.m_baseName = QString(skin_name).replace(QDir::separator(), '/');
+
+  // Obtain base folder.
+  const QString base_folder = skin.m_baseName.split(QL1C('/'), QString::SkipEmptyParts).at(0);
+
+  // Here we use "/" instead of QDir::separator() because CSS2.1 url field
+  // accepts '/' as path elements separator.
+  //
+  // "##" is placeholder for the actual path to skin file. This is needed for using
+  // images within the QSS file.
+  // So if one uses "##/images/border.png" in QSS then it is
+  // replaced by fully absolute path and target file can
+  // be safely loaded.
+
   // Obtain layout markup wrapper.
   skin.m_layoutMarkupWrapper = skin_node.namedItem(QSL("markup_wrapper")).toElement().text();
   skin.m_layoutMarkupWrapper = QByteArray::fromBase64(skin.m_layoutMarkupWrapper.toLocal8Bit());
+  skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + base_folder);
 
   // Obtain layout markup.
   skin.m_layoutMarkup = skin_node.namedItem(QSL("markup")).toElement().text();
   skin.m_layoutMarkup = QByteArray::fromBase64(skin.m_layoutMarkup.toLocal8Bit());
+  skin.m_layoutMarkup = skin.m_layoutMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + base_folder);
 
   // Obtain enclosure hyperlink wrapper.
   skin.m_enclosureMarkup = skin_node.namedItem(QSL("markup_enclosure")).toElement().text();
   skin.m_enclosureMarkup = QByteArray::fromBase64(skin.m_enclosureMarkup.toLocal8Bit());
+  skin.m_enclosureMarkup = skin.m_enclosureMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + base_folder);
 
-  // Obtain other information.
-  skin.m_baseName = QString(skin_name).replace(QDir::separator(), '/');
+  // Obtain skin raw data.
+  skin.m_rawData = skin_node.namedItem(QSL("data")).toElement().text();
+  skin.m_rawData = QByteArray::fromBase64(skin.m_rawData.toLocal8Bit());
+  skin.m_rawData = skin.m_rawData.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + base_folder);
 
   // Free resources.
   skin_file.close();

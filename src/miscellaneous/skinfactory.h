@@ -71,7 +71,7 @@ class SkinFactory : public QObject {
 
   private:
     // Loads the skin from give skin_data.
-    bool loadSkinFromData(const Skin &skin);
+    void loadSkinFromData(const Skin &skin);
 
     // Holds name of the current skin.
     Skin m_currentSkin;

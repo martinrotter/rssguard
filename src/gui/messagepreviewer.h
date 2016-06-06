@@ -18,7 +18,7 @@
 #ifndef MESSAGEPREVIEWER_H
 #define MESSAGEPREVIEWER_H
 
-#include <QWidget>
+#include "gui/tabcontent.h"
 
 #include "ui_messagepreviewer.h"
 
@@ -34,7 +34,7 @@ namespace Ui {
 
 class QToolBar;
 
-class MessagePreviewer : public QWidget {
+class MessagePreviewer : public TabContent {
     Q_OBJECT
 
   public:
@@ -45,6 +45,7 @@ class MessagePreviewer : public QWidget {
 
   public slots:
     void clear();
+    void loadMessages(const QList<Message> &messages, RootItem *root);
     void loadMessage(const Message &message, RootItem *root);
 
   private slots:
@@ -57,16 +58,10 @@ class MessagePreviewer : public QWidget {
 
   private:
     void createConnections();
-    void updateButtons();
 
-    QToolBar *m_toolBar;
     QScopedPointer<Ui::MessagePreviewer> m_ui;
-    Message m_message;
+    QList<Message> m_messages;
     QPointer<RootItem> m_root;
-
-    QAction *m_actionMarkRead;
-    QAction *m_actionMarkUnread;
-    QAction *m_actionSwitchImportance;
 };
 
 #endif // MESSAGEPREVIEWER_H
