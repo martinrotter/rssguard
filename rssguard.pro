@@ -486,20 +486,29 @@ win32 {
   qt_dlls_root.files = resources/binaries/windows/qt5-msvc2013/*.dll
   qt_dlls_root.path = $$quote($$PREFIX/)
 
-  qt_dlls_bearer.files = resources/binaries/windows/qt5-msvc2013/bearer/*.dll
-  qt_dlls_bearer.path = $$quote($$PREFIX/bearer/)
+  qt_exe_root.files = resources/binaries/windows/qt5-msvc2013/*.exe
+  qt_exe_root.path = $$quote($$PREFIX/)
 
-  qt_dlls_iconengines.files = resources/binaries/windows/qt5-msvc2013/iconengines/*.dll
-  qt_dlls_iconengines.path = $$quote($$PREFIX/iconengines/)
+  qt_dlls_bearer.files = resources/binaries/windows/qt5-msvc2013/bearer
+  qt_dlls_bearer.path = $$quote($$PREFIX/)
 
-  qt_dlls_imageformats.files = resources/binaries/windows/qt5-msvc2013/imageformats/*.dll
-  qt_dlls_imageformats.path = $$quote($$PREFIX/imageformats/)
+  qt_dlls_iconengines.files = resources/binaries/windows/qt5-msvc2013/iconengines
+  qt_dlls_iconengines.path = $$quote($$PREFIX/)
 
-  qt_dlls_platforms.files = resources/binaries/windows/qt5-msvc2013/platforms/*.dll
-  qt_dlls_platforms.path = $$quote($$PREFIX/platforms/)
+  qt_dlls_imageformats.files = resources/binaries/windows/qt5-msvc2013/imageformats
+  qt_dlls_imageformats.path = $$quote($$PREFIX/)
 
-  qt_dlls_sqldrivers.files = resources/binaries/windows/qt5-msvc2013/sqldrivers/*.dll
-  qt_dlls_sqldrivers.path = $$quote($$PREFIX/sqldrivers/)
+  qt_dlls_platforms.files = resources/binaries/windows/qt5-msvc2013/platforms/
+  qt_dlls_platforms.path = $$quote($$PREFIX/)
+
+  qt_dlls_sqldrivers.files = resources/binaries/windows/qt5-msvc2013/sqldrivers
+  qt_dlls_sqldrivers.path = $$quote($$PREFIX/)
+
+  qt_dlls_translations.files = resources/binaries/windows/qt5-msvc2013/translations
+  qt_dlls_translations.path = $$quote($$PREFIX/)
+
+  qt_dlls_resources.files = resources/binaries/windows/qt5-msvc2013/resources
+  qt_dlls_resources.path = $$quote($$PREFIX/)
 
   misc_icons.files = resources/graphics/misc
   misc_icons.path = $$quote($$PREFIX/icons/)
@@ -531,9 +540,10 @@ win32 {
   translations.files = $$OUT_PWD/l10n
   translations.path = $$quote($$PREFIX/)
 
-  INSTALLS += target misc_sql qt_dlls_root qt_dlls_bearer qt_dlls_iconengines \
+  INSTALLS += target misc_sql qt_dlls_root qt_exe_root qt_dlls_bearer qt_dlls_iconengines \
               qt_dlls_imageformats qt_dlls_platforms qt_dlls_sqldrivers \
-              misc_icons faenza skins sql feeds texts ico app_icon app_plain_icon translations
+              qt_dlls_translations qt_dlls_resources misc_icons faenza skins \
+              sql feeds texts ico app_icon app_plain_icon translations
 }
 
 # Install all files on Linux.
