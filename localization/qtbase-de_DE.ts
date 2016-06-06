@@ -575,7 +575,7 @@ Drücken Sie ESC, um abzubrechen</translation>
     </message>
 </context>
 <context>
-    <name>QDateTimeParser</name>
+    <name>QDateTimeEdit</name>
     <message>
         <source>AM</source>
         <translation>AM</translation>
@@ -658,6 +658,10 @@ Drücken Sie ESC, um abzubrechen</translation>
         <translation>Die Initialisierung des Resolvers schlug fehl</translation>
     </message>
     <message>
+        <source>IPv6 addresses for nameservers is currently not supported</source>
+        <translation>IPv6-Adressen für DNS-Server sind gegenwärtig nicht unterstützt</translation>
+    </message>
+    <message>
         <source>Server could not process query</source>
         <translation>Der Server konnte die Anfrage nicht verarbeiten</translation>
     </message>
@@ -724,18 +728,6 @@ Drücken Sie ESC, um abzubrechen</translation>
     <message>
         <source>Invalid hostname</source>
         <translation>Ungültiger Hostname</translation>
-    </message>
-    <message>
-        <source>Host %1 could not be found.</source>
-        <translation>Host %1 konnte nicht gefunden werden.</translation>
-    </message>
-    <message>
-        <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
-    </message>
-    <message>
-        <source>IPv6 addresses for nameservers are currently not supported</source>
-        <translation>IPv6-Adressen für Nameserver sind gegenwärtig nicht unterstützt</translation>
     </message>
 </context>
 <context>
@@ -1051,7 +1043,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Alias</source>
-        <comment>OS X Finder</comment>
+        <comment>Mac OS X Finder</comment>
         <translation>Alias</translation>
     </message>
     <message>
@@ -1143,6 +1135,10 @@ Möchten Sie die Datei trotzdem löschen?</translation>
 </context>
 <context>
     <name>QFontDatabase</name>
+    <message>
+        <source>Normal</source>
+        <translation>Normal</translation>
+    </message>
     <message>
         <source>Bold</source>
         <translation>Fett</translation>
@@ -1383,7 +1379,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Host %1 not found</source>
-        <translation>Host %1 konnte nicht gefunden werden</translation>
+        <translation>Rechner %1 konnte nicht gefunden werden</translation>
     </message>
     <message>
         <source>Connection refused to host %1</source>
@@ -1566,14 +1562,6 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <message>
         <source>SSL handshake failed</source>
         <translation>Im Ablauf des SSL-Protokolls ist ein Fehler aufgetreten.</translation>
-    </message>
-    <message>
-        <source>Too many redirects</source>
-        <translation>Zu viele Weiterleitungen</translation>
-    </message>
-    <message>
-        <source>Insecure redirect</source>
-        <translation>Unsichere Weiterleitung</translation>
     </message>
 </context>
 <context>
@@ -2052,10 +2040,6 @@ Möchten Sie die Datei trotzdem löschen?</translation>
 <context>
     <name>QMYSQLDriver</name>
     <message>
-        <source>Unable to allocate a MYSQL object</source>
-        <translation>Es konnte kein  MYSQL-Objekt erstellt werden</translation>
-    </message>
-    <message>
         <source>Unable to open database &apos;%1&apos;</source>
         <translation>Die Datenbank &apos;%1&apos; kann nicht geöffnet werden</translation>
     </message>
@@ -2432,6 +2416,10 @@ Möchten Sie die Datei trotzdem löschen?</translation>
 <context>
     <name>QNetworkReply</name>
     <message>
+        <source>Error downloading %1 - server replied: %2</source>
+        <translation>Beim Herunterladen von %1 trat ein Fehler auf - Die Antwort des Servers ist: %2</translation>
+    </message>
+    <message>
         <source>Background request not allowed.</source>
         <translation>Hintergrundabfrage nicht zulässig.</translation>
     </message>
@@ -2450,10 +2438,6 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <message>
         <source>Protocol &quot;%1&quot; is unknown</source>
         <translation>Das Protokoll &quot;%1&quot; ist unbekannt</translation>
-    </message>
-    <message>
-        <source>Error transferring %1 - server replied: %2</source>
-        <translation>Bei der Übertragung von %1 trat ein Fehler auf - Die Antwort des Servers ist: %2</translation>
     </message>
 </context>
 <context>
@@ -3589,10 +3573,6 @@ Bitte deaktivieren Sie eine der beiden.</translation>
 <context>
     <name>QPrintPropertiesDialog</name>
     <message>
-        <source>Printer Properties</source>
-        <translation>Druckereigenschaften</translation>
-    </message>
-    <message>
         <source>Job Options</source>
         <translation>Einstellungen zum Druckauftrag</translation>
     </message>
@@ -3747,10 +3727,6 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     <message>
         <source>Process crashed</source>
         <translation>Der Prozess ist abgestürzt</translation>
-    </message>
-    <message>
-        <source>Process failed to start</source>
-        <translation>Das Starten des Prozesses ist fehlgeschlagen</translation>
     </message>
     <message>
         <source>Process failed to start (spawned process exited with code 127)</source>
@@ -4182,10 +4158,6 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     <message>
         <source>parentheses are too deeply nested (stack check)</source>
         <translation>Klammern zu tief geschachtelt (Stack-Prüfung)</translation>
-    </message>
-    <message>
-        <source>digits missing in \x{} or \o{}</source>
-        <translation>Fehlende Ziffern in \x{} oder \o{}</translation>
     </message>
 </context>
 <context>
