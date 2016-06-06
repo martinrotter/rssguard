@@ -28,6 +28,7 @@ class MessageBrowser : public QWebEngineView {
     MessageBrowser(QWidget* parent = 0);
 
   public slots:
+    void loadMessages(const QList<Message> &messages);
     void loadMessage(const Message &message);
 };
 

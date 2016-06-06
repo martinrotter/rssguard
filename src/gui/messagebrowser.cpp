@@ -27,36 +27,48 @@ MessageBrowser::MessageBrowser(QWidget *parent) : QWebEngineView(parent) {
   setPage(new MessageBrowserPage(this));
 }
 
-void MessageBrowser::loadMessage(const Message &message) {
+void MessageBrowser::loadMessages(const QList<Message> &messages) {
   Skin skin = qApp->skins()->currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
-  QString enclosures;
 
-  foreach (const Enclosure &enclosure, message.m_enclosures) {
-    enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url);
+  foreach (const Message &message, messages) {
+    QString enclosures;
 
-    if (!enclosure.m_mimeType.isEmpty()) {
-      enclosures += QL1S(" [") + enclosure.m_mimeType + QL1S("]");
+    foreach (const Enclosure &enclosure, message.m_enclosures) {
+      enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url);
+
+      if (!enclosure.m_mimeType.isEmpty()) {
+        enclosures += QL1S(" [") + enclosure.m_mimeType + QL1S("]");
+      }
+
+      enclosures += QL1S("<br />");
     }
 
-    enclosures += QL1S("<br />");
+    if (!enclosures.isEmpty()) {
+      enclosures = enclosures.prepend(QSL("<br />"));
+    }
+
+    messages_layout.append(single_message_layout.arg(message.m_title,
+                                                     tr("Written by ") + (message.m_author.isEmpty() ?
+                                                                            tr("uknown author") :
+                                                                            message.m_author),
+                                                     message.m_url,
+                                                     message.m_contents,
+                                                     message.m_created.toString(Qt::DefaultLocaleShortDate),
+                                                     enclosures,
+                                                     message.m_isRead ? "mark-unread" : "mark-read",
+                                                     message.m_isImportant ? "mark-unstarred" : "mark-starred"));
   }
 
-  if (!enclosures.isEmpty()) {
-    enclosures = enclosures.prepend(QSL("<br />"));
-  }
+  QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
+                                                          messages_layout);
 
-  messages_layout.append(single_message_layout.arg(message.m_title,
-                                                   tr("Written by ") + (message.m_author.isEmpty() ?
-                                                                          tr("uknown author") :
-                                                                          message.m_author),
-                                                   message.m_url,
-                                                   message.m_contents,
-                                                   message.m_created.toString(Qt::DefaultLocaleShortDate),
-                                                   enclosures));
-
-  QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(message.m_title, messages_layout);
+  IOFactory::writeTextFile("aaa.html", layout_wrapper.toUtf8());
 
   setHtml(layout_wrapper, QUrl(INTERNAL_URL_MESSAGE));
+}
+
+void MessageBrowser::loadMessage(const Message &message) {
+  loadMessages(QList<Message>() << message);
 }

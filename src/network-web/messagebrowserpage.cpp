@@ -20,3 +20,12 @@
 
 MessageBrowserPage::MessageBrowserPage(QObject *parent) : QWebEnginePage(parent) {
 }
+
+
+void MessageBrowserPage::javaScriptAlert(const QUrl &securityOrigin, const QString &msg) {
+  QWebEnginePage::javaScriptAlert(securityOrigin, msg);
+}
+
+bool MessageBrowserPage::acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame) {
+  return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
+}

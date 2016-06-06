@@ -24,6 +24,10 @@
 class MessageBrowserPage : public QWebEnginePage {
   public:
     explicit MessageBrowserPage(QObject *parent = 0);
+
+  protected:
+    void javaScriptAlert(const QUrl &securityOrigin, const QString &msg);
+    bool acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame);
 };
 
 #endif // MESSAGEBROWSERPAGE_H
