@@ -49,14 +49,15 @@ class MessagePreviewer : public TabContent {
     void loadMessage(const Message &message, RootItem *root);
 
   private slots:
-    void markMessageAsRead();
-    void markMessageAsUnread();
-    void switchMessageImportance(bool checked);
+    void receiveMessageStatusChangeRequest(int message_id, MessageBrowserPage::MessageStatusChange change);
 
   signals:
     void requestMessageListReload(bool mark_current_as_read);
 
   private:
+    Message *findMessage(int id);
+    void markMessageAsRead(int id, bool read);
+    void switchMessageImportance(int id, bool checked);
     void createConnections();
 
     QScopedPointer<Ui::MessagePreviewer> m_ui;

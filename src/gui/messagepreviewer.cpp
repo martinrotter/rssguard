@@ -30,7 +30,8 @@
 
 
 void MessagePreviewer::createConnections() {
-  // TODO: TODO.
+  connect(m_ui->m_webMessage, &MessageBrowser::messageStatusChangeRequested,
+          this, &MessagePreviewer::receiveMessageStatusChangeRequest);
 }
 
 MessagePreviewer::MessagePreviewer(QWidget *parent) : TabContent(parent),
@@ -69,66 +70,79 @@ void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
   loadMessages(QList<Message>() << message, root);
 }
 
-void MessagePreviewer::markMessageAsRead() {
-  if (!m_root.isNull()) {
-    /*
-    if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
-                                                                QList<Message>() << m_message,
-                                                                RootItem::Read)) {
-      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
-                                              QStringList() << QString::number(m_message.m_id),
-                                              RootItem::Read);
-      m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
-                                                             QList<Message>() << m_message,
-                                                             RootItem::Read);
+void MessagePreviewer::receiveMessageStatusChangeRequest(int message_id, MessageBrowserPage::MessageStatusChange change) {
+  switch (change) {
+    case MessageBrowserPage::MarkRead:
+      markMessageAsRead(message_id, true);
+      break;
 
-      emit requestMessageListReload(false);
-      m_message.m_isRead = true;
-    }
-    */
+    case MessageBrowserPage::MarkUnread:
+      markMessageAsRead(message_id, false);
+      break;
+
+    case MessageBrowserPage::MarkStarred:
+      switchMessageImportance(message_id, true);
+      break;
+
+    case MessageBrowserPage::MarkUnstarred:
+      switchMessageImportance(message_id, false);
+      break;
+
+    default:
+      break;
   }
 }
 
-void MessagePreviewer::markMessageAsUnread() {
+void MessagePreviewer::markMessageAsRead(int id, bool read) {
   if (!m_root.isNull()) {
-    /*
-    if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
-                                                                QList<Message>() << m_message,
-                                                                RootItem::Unread)) {
+    Message *msg = findMessage(id);
+
+    if (msg != nullptr && m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
+                                                                                  QList<Message>() << *msg,
+                                                                                  read ? RootItem::Read : RootItem::Unread)) {
       DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
-                                              QStringList() << QString::number(m_message.m_id),
-                                              RootItem::Unread);
+                                              QStringList() << QString::number(msg->m_id),
+                                              read ? RootItem::Read : RootItem::Unread);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
-                                                             QList<Message>() << m_message,
-                                                             RootItem::Unread);
+                                                             QList<Message>() << *msg,
+                                                             read ? RootItem::Read : RootItem::Unread);
 
       emit requestMessageListReload(false);
-      m_message.m_isRead = false;
+      msg->m_isRead = read ? RootItem::Read : RootItem::Unread;
     }
-    */
   }
 }
 
-void MessagePreviewer::switchMessageImportance(bool checked) {
+void MessagePreviewer::switchMessageImportance(int id, bool checked) {
   if (!m_root.isNull()) {
-    /*
-    if (m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                                        QList<ImportanceChange>() << ImportanceChange(m_message,
-                                                                                                                      m_message.m_isImportant ?
-                                                                                                                      RootItem::NotImportant :
-                                                                                                                      RootItem::Important))) {
+    Message *msg = findMessage(id);
+
+    if (msg != nullptr && m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
+                                                                                          QList<ImportanceChange>() << ImportanceChange(*msg,
+                                                                                                                                        msg->m_isImportant ?
+                                                                                                                                        RootItem::NotImportant :
+                                                                                                                                        RootItem::Important))) {
       DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
-                                                QStringList() << QString::number(m_message.m_id));
+                                                QStringList() << QString::number(msg->m_id));
 
       m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                                      QList<ImportanceChange>() << ImportanceChange(m_message,
-                                                                                                                    m_message.m_isImportant ?
+                                                                      QList<ImportanceChange>() << ImportanceChange(*msg,
+                                                                                                                    msg->m_isImportant ?
                                                                                                                       RootItem::NotImportant :
                                                                                                                       RootItem::Important));
 
       emit requestMessageListReload(false);
-      m_message.m_isImportant = checked;
+      msg->m_isImportant = checked;
     }
-    */
   }
+}
+
+Message *MessagePreviewer::findMessage(int id) {
+  for (int i = 0; i < m_messages.size(); i++) {
+    if (m_messages.at(i).m_id == id) {
+      return &m_messages[i];
+    }
+  }
+
+  return nullptr;
 }

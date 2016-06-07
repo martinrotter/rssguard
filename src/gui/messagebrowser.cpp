@@ -24,7 +24,11 @@
 
 
 MessageBrowser::MessageBrowser(QWidget *parent) : QWebEngineView(parent) {
-  setPage(new MessageBrowserPage(this));
+  MessageBrowserPage *page = new MessageBrowserPage(this);
+
+  connect(page, &MessageBrowserPage::messageStatusChangeRequested,
+          this, &MessageBrowser::messageStatusChangeRequested);
+  setPage(page);
 }
 
 void MessageBrowser::loadMessages(const QList<Message> &messages) {

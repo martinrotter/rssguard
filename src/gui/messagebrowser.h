@@ -21,15 +21,21 @@
 #include <QWebEngineView>
 
 #include "core/message.h"
+#include "network-web/messagebrowserpage.h"
 
 
 class MessageBrowser : public QWebEngineView {
+    Q_OBJECT
+
   public:
-    MessageBrowser(QWidget* parent = 0);
+    explicit MessageBrowser(QWidget* parent = 0);
 
   public slots:
     void loadMessages(const QList<Message> &messages);
     void loadMessage(const Message &message);
+
+  signals:
+    void messageStatusChangeRequested(int message_id, MessageBrowserPage::MessageStatusChange change);
 };
 
 #endif // MESSAGEBROWSER_H

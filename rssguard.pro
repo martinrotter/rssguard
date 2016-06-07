@@ -60,7 +60,7 @@ DEFINES	    *= QT_USE_QSTRINGBUILDER
 
 message(rssguard: Welcome RSS Guard qmake script.)
 
-lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 4) {
+lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 6) {
   error(rssguard: At least Qt 5.6.0 is required.)
 }
 
