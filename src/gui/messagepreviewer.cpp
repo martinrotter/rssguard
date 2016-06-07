@@ -26,6 +26,7 @@
 
 #include <QScrollBar>
 #include <QToolBar>
+#include <QWebEngineSettings>
 #include <QToolTip>
 
 
@@ -47,8 +48,12 @@ MessagePreviewer::~MessagePreviewer() {
 }
 
 void MessagePreviewer::reloadFontSettings() {
-  // TODO: Reload font settings.
-  //QFont saved_font =
+  QFont fon;
+  fon.fromString(qApp->settings()->value(GROUP(Messages),
+                                         SETTING(Messages::PreviewerFontStandard)).toString());
+
+  QWebEngineSettings::globalSettings()->setFontFamily(QWebEngineSettings::StandardFont, fon.family());
+  QWebEngineSettings::globalSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
 }
 
 void MessagePreviewer::clear() {
