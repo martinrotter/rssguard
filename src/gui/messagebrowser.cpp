@@ -40,17 +40,7 @@ void MessageBrowser::loadMessages(const QList<Message> &messages) {
     QString enclosures;
 
     foreach (const Enclosure &enclosure, message.m_enclosures) {
-      enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url);
-
-      if (!enclosure.m_mimeType.isEmpty()) {
-        enclosures += QL1S(" [") + enclosure.m_mimeType + QL1S("]");
-      }
-
-      enclosures += QL1S("<br />");
-    }
-
-    if (!enclosures.isEmpty()) {
-      enclosures = enclosures.prepend(QSL("<br />"));
+      enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url, tr("Attachment"), enclosure.m_mimeType);
     }
 
     messages_layout.append(single_message_layout.arg(message.m_title,
