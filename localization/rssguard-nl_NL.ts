@@ -2597,12 +2597,6 @@ succesvol gedownload.</translation>
         <translation>Nieuwe versie beschikbaar.</translation>
     </message>
     <message>
-        <source>This is new version which can be
-downloaded and installed.</source>
-        <translation>Dit is een nieuwe versie welke kan
-worden gedownload en geinstalleerd.</translation>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;.</source>
         <translation>Fout: %1&apos;.</translation>
     </message>
@@ -2619,10 +2613,6 @@ de geïnstalleerde.</translation>
     <message>
         <source>Check for updates</source>
         <translation>Controleer op updates</translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation>Update</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2671,14 +2661,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <translation>Download succesvol voltooid</translation>
     </message>
     <message>
-        <source>Package was downloaded successfully.</source>
-        <translation>Het pakket is succesvol gedownload.</translation>
-    </message>
-    <message>
-        <source>Install update</source>
-        <translation>Installeer de update</translation>
-    </message>
-    <message>
         <source>Error occured</source>
         <translation>Fout opgetreden</translation>
     </message>
@@ -2687,12 +2669,30 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <translation>Er is een fout opgetreden tijdens het downloaden van het pakket.</translation>
     </message>
     <message>
-        <source>Cannot launch external updater. Update application manually.</source>
-        <translation>Kan externe updater niet starten. Update rssguard handmatig.</translation>
-    </message>
-    <message>
         <source>Go to application website</source>
         <translation>Ga naar Rssguard website</translation>
+    </message>
+    <message>
+        <source>This is new version which can be
+downloaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You must install it manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to update file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2707,50 +2707,22 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
-        <source>What action do you want to take?</source>
-        <translation>Welke actie wil je ondernemen?</translation>
+        <source>Attachment</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Open in external browser</source>
-        <translation>Open in externe browser</translation>
+        <source>Written by </source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download</source>
-        <translation>Download</translation>
+        <source>uknown author</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mark message as read</source>
-        <translation>Markeer bericht als gelezen</translation>
-    </message>
-    <message>
-        <source>Mark message as unread</source>
-        <translation>Markeer bericht als ongelezen</translation>
-    </message>
-    <message>
-        <source>Switch message importance</source>
-        <translation>Schakel tussen berichten belang</translation>
-    </message>
-    <message>
-        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation>Je klikte op een koppeling. Je kan downloaden via de koppeling of open het in een externe browser.</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Klik op deze koppeling om te downloaden of open in externe browser</translation>
-    </message>
-    <message>
-        <source>Incorrect link</source>
-        <translation>Niet werkende link</translation>
-    </message>
-    <message>
-        <source>Selected hyperlink is invalid.</source>
-        <translation>Geselecteerde hyperlink is ongeldig</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>Afbeelding</translation>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3029,25 +3001,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>onbekende inhoud</translation>
-    </message>
-</context>
-<context>
-    <name>NewspaperPreviewer</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Toon meer berichten (%n resterend)</numerusform><numerusform>Toon meer berichten (%n resterende)</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot show more messages</source>
-        <translation>Kan niet meer berichten tonen</translation>
-    </message>
-    <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
-        <translation>Kan niet meer berichten tonen omdat de oudere feed is verwijderd</translation>
     </message>
 </context>
 <context>

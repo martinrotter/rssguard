@@ -2596,12 +2596,6 @@ laddades inte ner korrekt.</translation>
         <translation>Ny version tillgänglig.</translation>
     </message>
     <message>
-        <source>This is new version which can be
-downloaded and installed.</source>
-        <translation>Ny version som kan laddas
-ner och installeras.</translation>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;.</source>
         <translation>Fel: &apos;%1&apos;.</translation>
     </message>
@@ -2617,10 +2611,6 @@ currently installed one.</source>
     <message>
         <source>Check for updates</source>
         <translation>Sök efter uppdateringar</translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2669,14 +2659,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>Package was downloaded successfully.</source>
-        <translation>Paketet har laddats ner korrekt.</translation>
-    </message>
-    <message>
-        <source>Install update</source>
-        <translation>Installera uppdatering</translation>
-    </message>
-    <message>
         <source>Error occured</source>
         <translation>Ett fel uppstod</translation>
     </message>
@@ -2685,12 +2667,30 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <translation>Ett fel uppstod vid nedladdningen.</translation>
     </message>
     <message>
-        <source>Cannot launch external updater. Update application manually.</source>
-        <translation>Kan inte starta den externa uppdateraren. Uppdatera programmet manuellt.</translation>
-    </message>
-    <message>
         <source>Go to application website</source>
         <translation>Gå till programmets hemsida</translation>
+    </message>
+    <message>
+        <source>This is new version which can be
+downloaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You must install it manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to update file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2705,50 +2705,22 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
-        <source>What action do you want to take?</source>
-        <translation>Vad vill du göra?</translation>
+        <source>Attachment</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Open in external browser</source>
-        <translation>Öppna i extern webbläsare</translation>
+        <source>Written by </source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download</source>
-        <translation>Ladda ner</translation>
+        <source>uknown author</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mark message as read</source>
-        <translation>Markera meddelandet som läst</translation>
-    </message>
-    <message>
-        <source>Mark message as unread</source>
-        <translation>Markera meddelandet som oläst</translation>
-    </message>
-    <message>
-        <source>Switch message importance</source>
-        <translation>Växla meddelandeprioritet</translation>
-    </message>
-    <message>
-        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation>Du klickade på någon länk. Du kan ladda ner länkinnehållet eller öppna den i extern webbläsare.</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Klicka på den här länken för att ladda ner den eller öppna den med extern webbläsare.</translation>
-    </message>
-    <message>
-        <source>Incorrect link</source>
-        <translation>Felaktig länk</translation>
-    </message>
-    <message>
-        <source>Selected hyperlink is invalid.</source>
-        <translation>Den valda länken är ogiltig.</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>Bild</translation>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3027,25 +2999,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>okänt innehåll</translation>
-    </message>
-</context>
-<context>
-    <name>NewspaperPreviewer</name>
-    <message>
-        <source>Form</source>
-        <translation>Format</translation>
-    </message>
-    <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Visa fler meddelande (% återstår)</numerusform><numerusform>Visa fler meddelanden (% återstår)</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot show more messages</source>
-        <translation>Kan inte visa fler meddelanden</translation>
-    </message>
-    <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
-        <translation>Kan inte visa fler meddelanden eftersom överordnat flöde tagits bort.</translation>
     </message>
 </context>
 <context>

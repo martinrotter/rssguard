@@ -2583,11 +2583,6 @@ downloaded successfully.</source>
         <translation>Yra prieinama nauja laida.</translation>
     </message>
     <message>
-        <source>This is new version which can be
-downloaded and installed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;.</source>
         <translation>Klaida: &apos;%1&apos;.</translation>
     </message>
@@ -2603,10 +2598,6 @@ currently installed one.</source>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Update</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2655,14 +2646,6 @@ Go to application website to obtain it manually.</source>
         <translation>Sėkmingai atsisiųsta</translation>
     </message>
     <message>
-        <source>Package was downloaded successfully.</source>
-        <translation>Paketas buvo sėkmingai atsisiųstas.</translation>
-    </message>
-    <message>
-        <source>Install update</source>
-        <translation>Įdiegti atnaujinimą</translation>
-    </message>
-    <message>
         <source>Error occured</source>
         <translation>Įvyko klaida</translation>
     </message>
@@ -2671,12 +2654,30 @@ Go to application website to obtain it manually.</source>
         <translation>Atsiunčiant paketą, įvyko klaida.</translation>
     </message>
     <message>
-        <source>Cannot launch external updater. Update application manually.</source>
+        <source>Go to application website</source>
+        <translation>Eiti į programos tinklalapį</translation>
+    </message>
+    <message>
+        <source>This is new version which can be
+downloaded.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Go to application website</source>
-        <translation>Eiti į programos tinklalapį</translation>
+        <source>Package was downloaded successfully.
+You must install it manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to update file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2691,49 +2692,21 @@ Go to application website to obtain it manually.</source>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
-        <source>What action do you want to take?</source>
-        <translation>Kokį veiksmą norite pasirinkti?</translation>
-    </message>
-    <message>
-        <source>Open in external browser</source>
-        <translation>Atverti išorinėje naršyklėje</translation>
-    </message>
-    <message>
-        <source>Download</source>
-        <translation>Atsisiųsti</translation>
-    </message>
-    <message>
-        <source>Mark message as read</source>
-        <translation>Žymėti žinutę kaip skaitytą</translation>
-    </message>
-    <message>
-        <source>Mark message as unread</source>
-        <translation>Žymėti žinutę kaip neskaitytą</translation>
-    </message>
-    <message>
-        <source>Switch message importance</source>
-        <translation>Perjungti žinutės svarbą</translation>
-    </message>
-    <message>
-        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation>Jūs spustelėjote kažkokią nuorodą. Jūs galite atsisiųsti nuorodos turinį arba atverti ją išorinėje naršyklėje.</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Spustelėkite šią nuorodą, kad ją atsisiųstumėte arba atvertumėte išorinėje naršyklėje.</translation>
-    </message>
-    <message>
-        <source>Incorrect link</source>
+        <source>Attachment</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected hyperlink is invalid.</source>
+        <source>Written by </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>image</source>
+        <source>uknown author</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Newspaper view</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3013,25 +2986,6 @@ Go to application website to obtain it manually.</source>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>nežinomas turinys</translation>
-    </message>
-</context>
-<context>
-    <name>NewspaperPreviewer</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot show more messages</source>
-        <translation>Nepavyksta rodyti daugiau žinučių</translation>
-    </message>
-    <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>

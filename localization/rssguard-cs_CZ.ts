@@ -2593,11 +2593,6 @@ downloaded successfully.</source>
         <translation>Nová verze aplikace je dostupná.</translation>
     </message>
     <message>
-        <source>This is new version which can be
-downloaded and installed.</source>
-        <translation>Toto je nová verze, která může být stažena a nainstalována.</translation>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;.</source>
         <translation>Chyba: &apos;%1&apos;.</translation>
     </message>
@@ -2613,10 +2608,6 @@ currently installed one.</source>
     <message>
         <source>Check for updates</source>
         <translation>Zkontrolovat aktualizace</translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation>Aktualizovat</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2665,14 +2656,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <translation>Staženo úspěšně</translation>
     </message>
     <message>
-        <source>Package was downloaded successfully.</source>
-        <translation>Balík aktualizace úspěšně stažen.</translation>
-    </message>
-    <message>
-        <source>Install update</source>
-        <translation>Instalovat aktualizaci</translation>
-    </message>
-    <message>
         <source>Error occured</source>
         <translation>Vyskytla se chyba</translation>
     </message>
@@ -2681,12 +2664,30 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <translation>Během stahování aktualizace se vyskytla chyba.</translation>
     </message>
     <message>
-        <source>Cannot launch external updater. Update application manually.</source>
-        <translation>Nelze spustit externí aktualizátor. Aktualizuje aplikaci manuálně.</translation>
-    </message>
-    <message>
         <source>Go to application website</source>
         <translation>Přejít na web aplikace</translation>
+    </message>
+    <message>
+        <source>This is new version which can be
+downloaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You must install it manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to update file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2701,49 +2702,21 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
-        <source>What action do you want to take?</source>
+        <source>Attachment</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Open in external browser</source>
+        <source>Written by </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download</source>
+        <source>uknown author</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mark message as read</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mark message as unread</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Switch message importance</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Incorrect link</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>image</source>
+        <source>Newspaper view</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3023,25 +2996,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>neznámý obsah</translation>
-    </message>
-</context>
-<context>
-    <name>NewspaperPreviewer</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>

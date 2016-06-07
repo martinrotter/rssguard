@@ -2593,11 +2593,6 @@ downloaded successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This is new version which can be
-downloaded and installed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2612,10 +2607,6 @@ currently installed one.</source>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2664,14 +2655,6 @@ Go to application website to obtain it manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Package was downloaded successfully.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Install update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error occured</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2680,11 +2663,29 @@ Go to application website to obtain it manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cannot launch external updater. Update application manually.</source>
+        <source>Go to application website</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Go to application website</source>
+        <source>This is new version which can be
+downloaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You must install it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to update file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2700,49 +2701,21 @@ Go to application website to obtain it manually.</source>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
-        <source>What action do you want to take?</source>
+        <source>Attachment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open in external browser</source>
+        <source>Written by </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Download</source>
+        <source>uknown author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark message as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark message as unread</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Switch message importance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Incorrect link</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>image</source>
+        <source>Newspaper view</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3021,28 +2994,6 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>NewspaperPreviewer</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Cannot show more messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

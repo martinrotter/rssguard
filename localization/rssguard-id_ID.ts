@@ -2595,12 +2595,6 @@ diunduh dengan berhasil.</translation>
         <translation>Rilis baru tersedia.</translation>
     </message>
     <message>
-        <source>This is new version which can be
-downloaded and installed.</source>
-        <translation>Ini merupakan versi baru yang dapat
-diunduh dan di-install.</translation>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;.</source>
         <translation>Eror: &apos;%1&apos;.</translation>
     </message>
@@ -2617,10 +2611,6 @@ yang ter-install sekarang.</translation>
     <message>
         <source>Check for updates</source>
         <translation>Periksa untuk pembaharuan</translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation>Perbaharui</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2669,14 +2659,6 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
         <translation>Berhasil diunduh</translation>
     </message>
     <message>
-        <source>Package was downloaded successfully.</source>
-        <translation>Paket berhasil diunduh.</translation>
-    </message>
-    <message>
-        <source>Install update</source>
-        <translation>Meng-install pembaharuan</translation>
-    </message>
-    <message>
         <source>Error occured</source>
         <translation>Eror terjadi</translation>
     </message>
@@ -2685,12 +2667,30 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
         <translation>Eror terjadi saat pengunduhan paket.</translation>
     </message>
     <message>
-        <source>Cannot launch external updater. Update application manually.</source>
-        <translation>Tidak dapat menjalankan pembaharu eksternal. Perbaharui aplikasi secara manual.</translation>
-    </message>
-    <message>
         <source>Go to application website</source>
         <translation>Pergi ke website aplikasi</translation>
+    </message>
+    <message>
+        <source>This is new version which can be
+downloaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You must install it manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to update file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2705,50 +2705,22 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
-        <source>What action do you want to take?</source>
-        <translation>Apa aksi yang akan anda ambil?</translation>
+        <source>Attachment</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Open in external browser</source>
-        <translation>Buka di peramban eksternal</translation>
+        <source>Written by </source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download</source>
-        <translation>Mengunduh</translation>
+        <source>uknown author</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mark message as read</source>
-        <translation>Tandai pesan sebagai terbaca</translation>
-    </message>
-    <message>
-        <source>Mark message as unread</source>
-        <translation>Tandai pesan sebagai belum terbaca</translation>
-    </message>
-    <message>
-        <source>Switch message importance</source>
-        <translation>Ganti nilai pentingnya pesan</translation>
-    </message>
-    <message>
-        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation>Anda klik beberapa link. Anda dapat mengunduh konten dari link atau membukanya di peramban web eksternal.</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Klik link ini untuk mengunduhnya atau membukanya dengan peramban eksternal.</translation>
-    </message>
-    <message>
-        <source>Incorrect link</source>
-        <translation>Link yang tidak benar</translation>
-    </message>
-    <message>
-        <source>Selected hyperlink is invalid.</source>
-        <translation>Hyperlink yang dipilih tidak valid.</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>gambar</translation>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3027,25 +2999,6 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>konten tak dikenal</translation>
-    </message>
-</context>
-<context>
-    <name>NewspaperPreviewer</name>
-    <message>
-        <source>Form</source>
-        <translation>Formulir</translation>
-    </message>
-    <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot show more messages</source>
-        <translation>Tidak dapat menampilkan lebih banyak pesan</translation>
-    </message>
-    <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
-        <translation>Tidak dapat menampilkan lebih banyak pesan karena feed induk dihapus.</translation>
     </message>
 </context>
 <context>
