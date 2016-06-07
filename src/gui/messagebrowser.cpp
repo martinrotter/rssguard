@@ -58,10 +58,11 @@ void MessageBrowser::loadMessages(const QList<Message> &messages) {
 
   QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
                                                           messages_layout);
+  bool previously_enabled = isEnabled();
 
-  IOFactory::writeTextFile("aaa.html", layout_wrapper.toUtf8());
-
+  setEnabled(false);
   setHtml(layout_wrapper, QUrl(INTERNAL_URL_MESSAGE));
+  setEnabled(previously_enabled);
 }
 
 void MessageBrowser::loadMessage(const Message &message) {
