@@ -62,7 +62,7 @@ DKEY Messages::KeepCursorInCenter               = "keep_cursor_center";
 DVALUE(bool) Messages::KeepCursorInCenterDef    = false;
 
 DKEY Messages::PreviewerFontStandard                                    = "previewer_font_standard";
-NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QFont().toString();
+NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QFont(QFont().family(), 12).toString();
 
 // GUI.
 DKEY GUI::ID                                      = "gui";
@@ -257,8 +257,6 @@ DKEY CategoriesExpandStates::ID                         = "categories_expand_sta
 
 Settings::Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
-  // Perform last-minute initializations.
-  Messages::PreviewerFontStandardDef = qApp->font().family();
 }
 
 Settings::~Settings() {  

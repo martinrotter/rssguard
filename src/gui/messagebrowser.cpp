@@ -63,6 +63,8 @@ void MessageBrowser::loadMessages(const QList<Message> &messages) {
   setEnabled(false);
   setHtml(layout_wrapper, QUrl(INTERNAL_URL_MESSAGE));
   setEnabled(previously_enabled);
+
+  IOFactory::writeTextFile("aa.html", layout_wrapper.toUtf8());
 }
 
 void MessageBrowser::loadMessage(const Message &message) {
