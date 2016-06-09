@@ -45,6 +45,7 @@ class FormMain;
 class IconFactory;
 class QAction;
 class Mutex;
+class QWebEngineDownloadItem;
 
 class Application : public QtSingleApplication {
     Q_OBJECT
@@ -167,6 +168,7 @@ class Application : public QtSingleApplication {
     void onCommitData(QSessionManager &manager);
     void onSaveState(QSessionManager &manager);
     void onAboutToQuit();
+    void downloadRequested(QWebEngineDownloadItem*download_item);
 
   private:
     void eliminateFirstRun();

@@ -21,6 +21,8 @@
 #include <QWebEnginePage>
 
 
+class MessageBrowser;
+
 class MessageBrowserPage : public QWebEnginePage {
     Q_OBJECT
 
@@ -33,6 +35,9 @@ class MessageBrowserPage : public QWebEnginePage {
     };
 
     explicit MessageBrowserPage(QObject *parent = 0);
+
+
+    MessageBrowser *view() const;
 
   protected:
     void javaScriptAlert(const QUrl &securityOrigin, const QString &msg);

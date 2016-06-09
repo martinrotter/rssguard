@@ -77,8 +77,8 @@
 #define ENCRYPTION_FILE_NAME                  "key.private"
 #define RELOAD_MODEL_BORDER_NUM               10
 
-#define INTERNAL_URL_MESSAGE                  "rssguard:message"
-#define INTERNAL_URL_BLANK                    "rssguard:blank"
+#define INTERNAL_URL_MESSAGE                  "rssguard.message"
+#define INTERNAL_URL_BLANK                    "rssguard.blank"
 #define INTERNAL_URL_HOST                     "rssguard"
 #define INTERNAL_URL_MESSAGE_PORT             "message"
 

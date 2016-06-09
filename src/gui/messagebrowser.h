@@ -33,9 +33,16 @@ class MessageBrowser : public QWebEngineView {
   public slots:
     void loadMessages(const QList<Message> &messages);
     void loadMessage(const Message &message);
+    void clear();
+
+  private:
+    void assignMessageContents();
 
   signals:
     void messageStatusChangeRequested(int message_id, MessageBrowserPage::MessageStatusChange change);
+
+  private:
+    QString m_messageContents;
 };
 
 #endif // MESSAGEBROWSER_H

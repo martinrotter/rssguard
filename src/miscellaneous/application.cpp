@@ -36,6 +36,8 @@
 #include <QSessionManager>
 #include <QThread>
 #include <QProcess>
+#include <QWebEngineProfile>
+#include <QWebEngineDownloadItem>
 
 
 Application::Application(const QString &id, int &argc, char **argv)
@@ -46,6 +48,8 @@ Application::Application(const QString &id, int &argc, char **argv)
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
   connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
+  connect(QWebEngineProfile::defaultProfile(), SIGNAL(downloadRequested(QWebEngineDownloadItem*)),
+          this, SLOT(downloadRequested(QWebEngineDownloadItem*)));
 }
 
 Application::~Application() {
@@ -290,4 +294,9 @@ void Application::onAboutToQuit() {
     // that some critical action can be processed right now.
     qDebug("Close lock timed-out.");
   }
+}
+
+void Application::downloadRequested(QWebEngineDownloadItem *download_item) {
+  downloadManager()->download(download_item->url());
+  download_item->cancel();
 }

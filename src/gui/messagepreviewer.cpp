@@ -52,14 +52,12 @@ void MessagePreviewer::reloadFontSettings() {
   fon.fromString(qApp->settings()->value(GROUP(Messages),
                                          SETTING(Messages::PreviewerFontStandard)).toString());
 
-  auto aa = fon.family();
-
   QWebEngineSettings::globalSettings()->setFontFamily(QWebEngineSettings::StandardFont, fon.family());
   QWebEngineSettings::globalSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
 }
 
 void MessagePreviewer::clear() {
-  m_ui->m_webMessage->setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
+  m_ui->m_webMessage->clear();
   hide();
 }
 

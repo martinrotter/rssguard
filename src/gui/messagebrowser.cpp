@@ -56,17 +56,26 @@ void MessageBrowser::loadMessages(const QList<Message> &messages) {
                                                      QString::number(message.m_id)));
   }
 
-  QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
-                                                          messages_layout);
+  m_messageContents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
+                                                     messages_layout);
   bool previously_enabled = isEnabled();
 
-  setEnabled(false);
-  setHtml(layout_wrapper, QUrl(INTERNAL_URL_MESSAGE));
-  setEnabled(previously_enabled);
+  //setEnabled(false);
+  setHtml(m_messageContents, QUrl(INTERNAL_URL_MESSAGE));
+  //load(QUrl(INTERNAL_URL_MESSAGE));
+  //setEnabled(previously_enabled);
 
-  IOFactory::writeTextFile("aa.html", layout_wrapper.toUtf8());
+  IOFactory::writeTextFile("aa.html", m_messageContents.toUtf8());
 }
 
 void MessageBrowser::loadMessage(const Message &message) {
   loadMessages(QList<Message>() << message);
+}
+
+void MessageBrowser::clear() {
+  setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
+}
+
+void MessageBrowser::assignMessageContents() {
+  setHtml(m_messageContents, QUrl(INTERNAL_URL_MESSAGE));
 }

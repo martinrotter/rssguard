@@ -18,6 +18,7 @@
 #include "network-web/messagebrowserpage.h"
 
 #include "definitions/definitions.h"
+#include "gui/messagebrowser.h"
 
 #include <QStringList>
 #include <QString>
@@ -26,6 +27,9 @@
 MessageBrowserPage::MessageBrowserPage(QObject *parent) : QWebEnginePage(parent) {
 }
 
+MessageBrowser *MessageBrowserPage::view() const {
+  return qobject_cast<MessageBrowser*>(QWebEnginePage::view());
+}
 
 void MessageBrowserPage::javaScriptAlert(const QUrl &securityOrigin, const QString &msg) {
   if (securityOrigin.isEmpty()) {
