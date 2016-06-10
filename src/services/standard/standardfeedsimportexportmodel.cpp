@@ -290,7 +290,6 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data, bool 
     if (!url.isEmpty()) {
       QPair<StandardFeed*,QNetworkReply::NetworkError> guessed;
 
-
       if (fetch_metadata_online &&
           (guessed = StandardFeed::guessFeed(url)).second == QNetworkReply::NoError) {
         guessed.first->setUrl(url);
