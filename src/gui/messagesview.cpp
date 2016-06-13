@@ -475,10 +475,6 @@ void MessagesView::createNewspaperView(RootItem *selected_item, const QList<Mess
   connect(prev, SIGNAL(requestMessageListReload(bool)), this, SLOT(reloadSelections(bool)));
 
   prev->loadMessages(messages, selected_item);
-
-  QTimer::singleShot(100, [&prev, &messages, &selected_item]() {
-
-  });
 }
 
 void MessagesView::adjustColumns() {
