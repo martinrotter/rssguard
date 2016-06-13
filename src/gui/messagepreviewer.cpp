@@ -62,6 +62,19 @@ void MessagePreviewer::clear() {
 }
 
 void MessagePreviewer::loadMessages(const QList<Message> &messages, RootItem *root) {
+  if (m_messages.size() == messages.size()) {
+    for (int i = 0; i < messages.size(); i++) {
+      if (m_messages.at(i).m_customId != messages.at(i).m_customId) {
+        break;
+      }
+
+      if (i == messages.size() - 1) {
+        // We checked last items, both collections contain the same messages.
+        return;
+      }
+    }
+  }
+
   m_messages = messages;
   m_root = root;
 
