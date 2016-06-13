@@ -239,7 +239,6 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), this, SLOT(updateMessageButtonsAvailability()));
   connect(m_messagesBrowser, SIGNAL(requestMessageListReload(bool)), m_messagesView, SLOT(reloadSelections(bool)));
 
-
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(locked()), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(unlocked()), this, SLOT(updateFeedButtonsAvailability()));

@@ -68,11 +68,12 @@ void MessagesView::keyboardSearch(const QString &search) {
 }
 
 void MessagesView::reloadSelections(bool mark_current_index_read) {
+  QDateTime dt1 = QDateTime::currentDateTime();
+
   QModelIndex current_index = selectionModel()->currentIndex();
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
-
   const int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
   const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
@@ -99,6 +100,10 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
     // be selected and no message can be displayed.
     emit currentMessageRemoved();
   }
+
+  QDateTime dt2 = QDateTime::currentDateTime();
+
+  qDebug("Reloading of msg selections took %lld miliseconds.", dt1.msecsTo(dt2));
 }
 
 void MessagesView::setupAppearance() {
