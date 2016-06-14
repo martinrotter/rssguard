@@ -131,8 +131,8 @@ isEmpty(APP_REVISION) {
 
 DEFINES += APP_REVISION=\"$$APP_REVISION\"
 
-message(rssguard: RSS Guard version is: $$APP_VERSION.)
-message(rssguard: Detected Qt version: $$QT_VERSION.)
+message(rssguard: RSS Guard version is: '$$APP_VERSION'.)
+message(rssguard: Detected Qt version: '$$QT_VERSION'.)
 message(rssguard: Build directory: '$$DESTDIR'.)
 message(rssguard: Prefix directory: '$$PREFIX'.)
 message(rssguard: Build revision: '$$APP_REVISION'.)
