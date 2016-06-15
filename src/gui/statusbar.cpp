@@ -30,7 +30,12 @@
 
 StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   setSizeGripEnabled(false);
+
+#if defined(Q_OS_WIN32)
+  setContentsMargins(2, 0, 2, 2);
+#else
   setContentsMargins(2, 2, 2, 2);
+#endif
 
   m_barProgressFeeds = new QProgressBar(this);
   m_barProgressFeeds->setTextVisible(false);
