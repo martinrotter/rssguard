@@ -477,8 +477,6 @@ void MessagesView::createNewspaperView(RootItem *selected_item, const QList<Mess
                                                     TabBar::Closable);
 
   qApp->mainForm()->tabWidget()->setCurrentIndex(index);
-  connect(prev, SIGNAL(requestMessageListReload(bool)), this, SLOT(reloadSelections(bool)));
-
   prev->loadMessages(messages, selected_item);
 }
 

@@ -60,24 +60,24 @@ DEFINES	    *= QT_USE_QSTRINGBUILDER
 
 message(rssguard: Welcome RSS Guard qmake script.)
 
-lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 6) {
-  error(rssguard: At least Qt 5.6.0 is required.)
+lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 7) {
+  error(rssguard: At least Qt 5.7.0 is required.)
 }
 
 APP_NAME                      = "RSS Guard"
 APP_LOW_NAME                  = "rssguard"
 APP_LOW_H_NAME                = ".rssguard"
-APP_COPYRIGHT                 = "(C) 2011-2016 Martin Rotter"
+APP_AUTHOR                    = "Martin Rotter"
+APP_COPYRIGHT                 = "(C) 2011-2016 $$APP_AUTHOR"
 APP_VERSION                   = "3.3.0"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
-APP_AUTHOR                    = "Martin Rotter"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
 APP_URL                       = "http://bitbucket.org/skunkos/rssguard"
 APP_URL_ISSUES                = "http://bitbucket.org/skunkos/rssguard/issues"
 APP_URL_ISSUES_NEW_GITHUB     = "https://github.com/martinrotter/rssguard/issues/new"
 APP_URL_ISSUES_NEW_BITBUCKET  = "http://bitbucket.org/skunkos/rssguard/issues/new"
 APP_URL_WIKI                  = "https://bitbucket.org/skunkos/rssguard/wiki/Home"
-APP_USERAGENT                 = "RSS Guard/3.3.0 (bitbucket.org/skunkos/rssguard)"
+APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (bitbucket.org/skunkos/rssguard)"
 APP_DONATE_URL                = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
 isEmpty(PREFIX) {

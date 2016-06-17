@@ -125,7 +125,7 @@ void MessagePreviewer::markMessageAsRead(int id, bool read) {
                                                              QList<Message>() << *msg,
                                                              read ? RootItem::Read : RootItem::Unread);
 
-      emit requestMessageListReload(false);
+      emit markMessageRead(msg->m_id, read ? RootItem::Read : RootItem::Unread);
       msg->m_isRead = read ? RootItem::Read : RootItem::Unread;
     }
   }
@@ -149,7 +149,7 @@ void MessagePreviewer::switchMessageImportance(int id, bool checked) {
                                                                                                                       RootItem::NotImportant :
                                                                                                                       RootItem::Important));
 
-      emit requestMessageListReload(false);
+      emit markMessageImportant(msg->m_id, msg->m_isImportant ? RootItem::NotImportant : RootItem::Important);
       msg->m_isImportant = checked;
     }
   }

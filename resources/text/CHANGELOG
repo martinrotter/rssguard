@@ -6,6 +6,10 @@ Added:
 ▪ Default skin now uses Bootrstrap-powered look.
 ▪ Feed updates are now parallelized up to infinite number of threads. This speeds up speed of concurrent feed updates rapidly (more than 5 times). I was able to update about 160 feeds in 35 seconds. Note that this feature is still in experimental state.
 
+Changed:
+▪ Minimal Qt version bumped to 5.7.0 - this will lead to some betere features in the future.
+▪ Updated miscellaneous libraries - MariadDB, openSSL.
+
 Removed:
 ▪ All skins except default are removed because it is difficult for me to maintain all of them. Any user can pickup removed skin from repository, tweak it (it is easy) and send it to me and I will include it with next version of RSS Guard.
 ▪ Cmake dependency completely removed!

@@ -86,6 +86,12 @@ class MessagesModel : public QSqlTableModel {
     // Loads messages of given feeds.
     void loadMessages(RootItem *item);
 
+  public slots:
+    // NOTE: These methods DO NOT actually change data in the DB, just in the model.
+    // These are particularly used by msg browser.
+    bool setMessageImportantById(int id, RootItem::Importance important);
+    bool setMessageReadById(int id, RootItem::ReadStatus read);
+
   private slots:
     // To disable persistent changes submissions.
     bool submitAll();

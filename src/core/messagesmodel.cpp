@@ -88,6 +88,18 @@ void MessagesModel::loadMessages(RootItem *item) {
   fetchAllData();
 }
 
+bool MessagesModel::setMessageImportantById(int id, RootItem::Importance important) {
+  for (int i = 0; i < rowCount(); i++) {
+    int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
+
+    if (found_id == id) {
+      return setData(index(i, MSG_DB_IMPORTANT_INDEX), important);
+    }
+  }
+
+  return false;
+}
+
 bool MessagesModel::submitAll() {
   qFatal("Submitting changes via model is not allowed.");
   return false;
@@ -261,6 +273,18 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   else {
     return false;
   }
+}
+
+bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
+  for (int i = 0; i < rowCount(); i++) {
+    int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
+
+    if (found_id == id) {
+      return setData(index(i, MSG_DB_READ_INDEX), read);
+    }
+  }
+
+  return false;
 }
 
 bool MessagesModel::switchMessageImportance(int row_index) {

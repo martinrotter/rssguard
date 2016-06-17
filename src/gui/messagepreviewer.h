@@ -52,6 +52,8 @@ class MessagePreviewer : public TabContent {
     void receiveMessageStatusChangeRequest(int message_id, MessageBrowserPage::MessageStatusChange change);
 
   signals:
+    void markMessageRead(int id, RootItem::ReadStatus read);
+    void markMessageImportant(int id, RootItem::Importance important);
     void requestMessageListReload(bool mark_current_as_read);
 
   private:
