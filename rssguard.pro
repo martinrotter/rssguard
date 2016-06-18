@@ -189,7 +189,6 @@ HEADERS += src/core/feeddownloader.h \
            src/gui/labelwithstatus.h \
            src/gui/lineeditwithstatus.h \
            src/gui/messagebox.h \
-           src/gui/messagepreviewer.h \
            src/gui/messagessearchlineedit.h \
            src/gui/messagestoolbar.h \
            src/gui/messagesview.h \
@@ -264,8 +263,9 @@ HEADERS += src/core/feeddownloader.h \
            src/services/tt-rss/ttrssrecyclebin.h \
            src/services/tt-rss/ttrssserviceentrypoint.h \
            src/services/tt-rss/ttrssserviceroot.h \
-           src/gui/messagebrowser.h \
-           src/network-web/messagebrowserpage.h
+           src/network-web/messagebrowserpage.h \
+    src/gui/webviewer.h \
+    src/gui/webbrowser.h
 
 SOURCES += src/core/feeddownloader.cpp \
            src/core/feedsmodel.cpp \
@@ -299,7 +299,6 @@ SOURCES += src/core/feeddownloader.cpp \
            src/gui/labelwithstatus.cpp \
            src/gui/lineeditwithstatus.cpp \
            src/gui/messagebox.cpp \
-           src/gui/messagepreviewer.cpp \
            src/gui/messagessearchlineedit.cpp \
            src/gui/messagestoolbar.cpp \
            src/gui/messagesview.cpp \
@@ -372,10 +371,11 @@ SOURCES += src/core/feeddownloader.cpp \
            src/services/tt-rss/ttrssrecyclebin.cpp \
            src/services/tt-rss/ttrssserviceentrypoint.cpp \
            src/services/tt-rss/ttrssserviceroot.cpp \
-           src/gui/messagebrowser.cpp \
-           src/network-web/messagebrowserpage.cpp
+           src/network-web/messagebrowserpage.cpp \
+    src/gui/webviewer.cpp \
+    src/gui/webbrowser.cpp
 
-FORMS += src/gui/messagepreviewer.ui \
+FORMS += \
          src/gui/toolbareditor.ui \
          src/network-web/downloaditem.ui \
          src/network-web/downloadmanager.ui \
@@ -391,7 +391,8 @@ FORMS += src/gui/messagepreviewer.ui \
          src/services/owncloud/gui/formeditowncloudaccount.ui \
          src/services/standard/gui/formstandardcategorydetails.ui \
          src/services/standard/gui/formstandardimportexport.ui \
-         src/services/tt-rss/gui/formeditaccount.ui
+         src/services/tt-rss/gui/formeditaccount.ui \
+    src/gui/webbrowser.ui
 
 TRANSLATIONS += localization/qtbase-cs_CZ.ts \
                 localization/qtbase-da_DK.ts \

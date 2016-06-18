@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MessagePreviewer</class>
- <widget class="QWidget" name="MessagePreviewer">
+ <class>WebBrowser</class>
+ <widget class="QWidget" name="WebBrowser">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -30,15 +30,15 @@
     <number>0</number>
    </property>
    <item row="0" column="1">
-    <widget class="MessageBrowser" name="m_webMessage" native="true"/>
+    <widget class="WebViewer" name="m_webMessage" native="true"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MessageBrowser</class>
+   <class>WebViewer</class>
    <extends>QWidget</extends>
-   <header>messagebrowser.h</header>
+   <header>webviewer.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

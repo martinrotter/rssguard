@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/messagepreviewer.h"
+#include "gui/webbrowser.h"
 
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
@@ -30,13 +30,12 @@
 #include <QToolTip>
 
 
-void MessagePreviewer::createConnections() {
-  connect(m_ui->m_webMessage, &MessageBrowser::messageStatusChangeRequested,
-          this, &MessagePreviewer::receiveMessageStatusChangeRequest);
+void WebBrowser::createConnections() {
+  connect(m_ui->m_webMessage, &WebViewer::messageStatusChangeRequested, this, &WebBrowser::receiveMessageStatusChangeRequest);
 }
 
-MessagePreviewer::MessagePreviewer(QWidget *parent) : TabContent(parent),
-  m_ui(new Ui::MessagePreviewer) {
+WebBrowser::WebBrowser(QWidget *parent) : TabContent(parent),
+  m_ui(new Ui::WebBrowser) {
   m_ui->setupUi(this);
 
   createConnections();
@@ -44,10 +43,10 @@ MessagePreviewer::MessagePreviewer(QWidget *parent) : TabContent(parent),
   clear();
 }
 
-MessagePreviewer::~MessagePreviewer() {
+WebBrowser::~WebBrowser() {
 }
 
-void MessagePreviewer::reloadFontSettings() {
+void WebBrowser::reloadFontSettings() {
   QFont fon;
   fon.fromString(qApp->settings()->value(GROUP(Messages),
                                          SETTING(Messages::PreviewerFontStandard)).toString());
@@ -56,12 +55,12 @@ void MessagePreviewer::reloadFontSettings() {
   QWebEngineSettings::globalSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
 }
 
-void MessagePreviewer::clear() {
+void WebBrowser::clear() {
   m_ui->m_webMessage->clear();
   hide();
 }
 
-void MessagePreviewer::loadMessages(const QList<Message> &messages, RootItem *root) {
+void WebBrowser::loadMessages(const QList<Message> &messages, RootItem *root) {
   if (m_messages.size() == messages.size()) {
     for (int i = 0; i < messages.size(); i++) {
       if (m_messages.at(i).m_customId != messages.at(i).m_customId) {
@@ -84,11 +83,11 @@ void MessagePreviewer::loadMessages(const QList<Message> &messages, RootItem *ro
   }
 }
 
-void MessagePreviewer::loadMessage(const Message &message, RootItem *root) {
+void WebBrowser::loadMessage(const Message &message, RootItem *root) {
   loadMessages(QList<Message>() << message, root);
 }
 
-void MessagePreviewer::receiveMessageStatusChangeRequest(int message_id, MessageBrowserPage::MessageStatusChange change) {
+void WebBrowser::receiveMessageStatusChangeRequest(int message_id, MessageBrowserPage::MessageStatusChange change) {
   switch (change) {
     case MessageBrowserPage::MarkRead:
       markMessageAsRead(message_id, true);
@@ -111,7 +110,7 @@ void MessagePreviewer::receiveMessageStatusChangeRequest(int message_id, Message
   }
 }
 
-void MessagePreviewer::markMessageAsRead(int id, bool read) {
+void WebBrowser::markMessageAsRead(int id, bool read) {
   if (!m_root.isNull()) {
     Message *msg = findMessage(id);
 
@@ -131,7 +130,7 @@ void MessagePreviewer::markMessageAsRead(int id, bool read) {
   }
 }
 
-void MessagePreviewer::switchMessageImportance(int id, bool checked) {
+void WebBrowser::switchMessageImportance(int id, bool checked) {
   if (!m_root.isNull()) {
     Message *msg = findMessage(id);
 
@@ -155,7 +154,7 @@ void MessagePreviewer::switchMessageImportance(int id, bool checked) {
   }
 }
 
-Message *MessagePreviewer::findMessage(int id) {
+Message *WebBrowser::findMessage(int id) {
   for (int i = 0; i < m_messages.size(); i++) {
     if (m_messages.at(i).m_id == id) {
       return &m_messages[i];

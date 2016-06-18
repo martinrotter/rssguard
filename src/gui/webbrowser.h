@@ -15,12 +15,12 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MESSAGEPREVIEWER_H
-#define MESSAGEPREVIEWER_H
+#ifndef WEBBROWSER_H
+#define WEBBROWSER_H
 
 #include "gui/tabcontent.h"
 
-#include "ui_messagepreviewer.h"
+#include "ui_webbrowser.h"
 
 #include "core/message.h"
 #include "services/abstract/rootitem.h"
@@ -34,12 +34,12 @@ namespace Ui {
 
 class QToolBar;
 
-class MessagePreviewer : public TabContent {
+class WebBrowser : public TabContent {
     Q_OBJECT
 
   public:
-    explicit MessagePreviewer(QWidget *parent = 0);
-    virtual ~MessagePreviewer();
+    explicit WebBrowser(QWidget *parent = 0);
+    virtual ~WebBrowser();
 
     void reloadFontSettings();
 
@@ -62,9 +62,9 @@ class MessagePreviewer : public TabContent {
     void switchMessageImportance(int id, bool checked);
     void createConnections();
 
-    QScopedPointer<Ui::MessagePreviewer> m_ui;
+    QScopedPointer<Ui::WebBrowser> m_ui;
     QList<Message> m_messages;
     QPointer<RootItem> m_root;
 };
 
-#endif // MESSAGEPREVIEWER_H
+#endif // WEBBROWSER_H

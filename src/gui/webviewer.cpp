@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/messagebrowser.h"
+#include "gui/webviewer.h"
 
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/application.h"
@@ -23,15 +23,15 @@
 #include "network-web/messagebrowserpage.h"
 
 
-MessageBrowser::MessageBrowser(QWidget *parent) : QWebEngineView(parent) {
+WebViewer::WebViewer(QWidget *parent) : QWebEngineView(parent) {
   MessageBrowserPage *page = new MessageBrowserPage(this);
 
   connect(page, &MessageBrowserPage::messageStatusChangeRequested,
-          this, &MessageBrowser::messageStatusChangeRequested);
+          this, &WebViewer::messageStatusChangeRequested);
   setPage(page);
 }
 
-void MessageBrowser::loadMessages(const QList<Message> &messages) {
+void WebViewer::loadMessages(const QList<Message> &messages) {
   Skin skin = qApp->skins()->currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
@@ -65,14 +65,14 @@ void MessageBrowser::loadMessages(const QList<Message> &messages) {
   setEnabled(previously_enabled);
 }
 
-void MessageBrowser::loadMessage(const Message &message) {
+void WebViewer::loadMessage(const Message &message) {
   loadMessages(QList<Message>() << message);
 }
 
-void MessageBrowser::clear() {
+void WebViewer::clear() {
   setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
 }
 
-void MessageBrowser::assignMessageContents() {
+void WebViewer::assignMessageContents() {
   setHtml(m_messageContents, QUrl(INTERNAL_URL_MESSAGE));
 }

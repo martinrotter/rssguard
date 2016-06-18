@@ -36,7 +36,7 @@
 #include "gui/messagebox.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
-#include "gui/messagepreviewer.h"
+#include "gui/webbrowser.h"
 #include "gui/dialogs/formdatabasecleanup.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
@@ -64,7 +64,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
-    m_messagesBrowser(new MessagePreviewer(this)) {
+    m_messagesBrowser(new WebBrowser(this)) {
   initialize();
   initializeViews();
   loadMessageViewerFonts();

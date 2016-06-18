@@ -15,8 +15,8 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MESSAGEBROWSER_H
-#define MESSAGEBROWSER_H
+#ifndef WEBVIEWER_H
+#define WEBVIEWER_H
 
 #include <QWebEngineView>
 
@@ -24,11 +24,11 @@
 #include "network-web/messagebrowserpage.h"
 
 
-class MessageBrowser : public QWebEngineView {
+class WebViewer : public QWebEngineView {
     Q_OBJECT
 
   public:
-    explicit MessageBrowser(QWidget* parent = 0);
+    explicit WebViewer(QWidget* parent = 0);
 
   public slots:
     void loadMessages(const QList<Message> &messages);
@@ -45,4 +45,4 @@ class MessageBrowser : public QWebEngineView {
     QString m_messageContents;
 };
 
-#endif // MESSAGEBROWSER_H
+#endif // WEBVIEWER_H

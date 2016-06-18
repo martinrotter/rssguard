@@ -24,7 +24,7 @@
 #include "network-web/webfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
-#include "gui/messagepreviewer.h"
+#include "gui/webbrowser.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
 
 #include <QKeyEvent>
@@ -470,7 +470,7 @@ void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
 }
 
 void MessagesView::createNewspaperView(RootItem *selected_item, const QList<Message> &messages) {
-  MessagePreviewer *prev = new MessagePreviewer(this);
+  WebBrowser *prev = new WebBrowser(this);
   int index = qApp->mainForm()->tabWidget()->addTab(prev,
                                                     qApp->icons()->fromTheme(QSL("text-x-script")),
                                                     tr("Newspaper view"),

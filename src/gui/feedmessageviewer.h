@@ -30,7 +30,7 @@ class WebBrowser;
 class MessagesView;
 class MessagesToolBar;
 class FeedsToolBar;
-class MessagePreviewer;
+class WebBrowser;
 class FeedsView;
 class StandardFeed;
 class QToolBar;
@@ -134,7 +134,7 @@ class FeedMessageViewer : public TabContent {
     FeedsView *m_feedsView;
     QWidget *m_feedsWidget;
     QWidget *m_messagesWidget;
-    MessagePreviewer *m_messagesBrowser;
+    WebBrowser *m_messagesBrowser;
 };
 
 #endif // FEEDMESSAGEVIEWER_H
