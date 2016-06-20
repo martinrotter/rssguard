@@ -48,7 +48,7 @@ void WebBrowser::createConnections() {
 
   // Change location textbox status according to webpage status.
   connect(m_webView, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));
-  //connect(m_webView, SIGNAL(loadProgress(int)), this, SLOT(onLoadingProgress(int)));
+  connect(m_webView, SIGNAL(loadProgress(int)), this, SLOT(onLoadingProgress(int)));
   connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(onLoadingFinished(bool)));
 
   // Forward title/icon changes.
@@ -191,15 +191,28 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(act_discover);
   m_toolBar->addWidget(m_txtLocation);
 
+  m_loadingProgress = new QProgressBar(this);
+  m_loadingProgress->setFixedHeight(5);
+  m_loadingProgress->setMinimum(0);
+  m_loadingProgress->setTextVisible(false);
+  m_loadingProgress->setMaximum(100);
+  m_loadingProgress->setAttribute(Qt::WA_TranslucentBackground);
+
   // Setup layout.
   m_layout->addWidget(m_toolBar);
   m_layout->addWidget(m_webView);
+  m_layout->addWidget(m_loadingProgress);
   m_layout->setMargin(0);
   m_layout->setSpacing(0);
 }
 
 void WebBrowser::onLoadingStarted() {
   m_btnDiscoverFeeds->clearFeedAddresses();
+  m_loadingProgress->show();
+}
+
+void WebBrowser::onLoadingProgress(int progress) {
+  m_loadingProgress->setValue(progress);
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
@@ -213,6 +226,9 @@ void WebBrowser::onLoadingFinished(bool success) {
   else {
     m_btnDiscoverFeeds->clearFeedAddresses();
   }
+
+  m_loadingProgress->hide();
+  m_loadingProgress->setValue(0);
 }
 
 void WebBrowser::markMessageAsRead(int id, bool read) {

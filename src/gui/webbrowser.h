@@ -67,6 +67,7 @@ class WebBrowser : public TabContent {
   private slots:
     void updateUrl(const QUrl &url);
     void onLoadingStarted();
+    void onLoadingProgress(int progress);
     void onLoadingFinished(bool success);
     void receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change);
 
@@ -87,6 +88,7 @@ class WebBrowser : public TabContent {
     WebViewer *m_webView;
     LocationLineEdit *m_txtLocation;
     DiscoverFeedsButton *m_btnDiscoverFeeds;
+    QProgressBar *m_loadingProgress;
 
     QAction *m_actionBack;
     QAction *m_actionForward;
