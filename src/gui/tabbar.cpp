@@ -131,16 +131,13 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent *event) {
     // NOTE: This needs to be done here because
     // destination does not know the original event.
     if (event->button() & Qt::LeftButton && qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool()) {
-      if (tabType(tab_index) == TabBar::Closable) {
+      if ((tabType(tab_index) & (TabBar::Closable | TabBar::DownloadManager)) > 0) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
       }
     }
   }
-  // Check if new tab should be opened with initial web browser.
-  // NOTE: This check could be unnecesary here and should be done in
-  // destination object but we keep it here for consistency.
-  else if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabNewDoubleClick)).toBool()) {
+  else {
     emit emptySpaceDoubleClicked();
   }
 }

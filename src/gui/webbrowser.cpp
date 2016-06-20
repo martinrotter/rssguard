@@ -88,7 +88,6 @@ WebBrowser::WebBrowser(QWidget *parent) : TabContent(parent),
 
   createConnections();
   reloadFontSettings();
-  clear();
 }
 
 WebBrowser::~WebBrowser() {
@@ -175,7 +174,7 @@ void WebBrowser::onTitleChanged(const QString &new_title) {
 }
 
 void WebBrowser::onIconChanged(const QIcon &icon) {
-  emit iconChanged(m_index, m_webView->icon());
+  emit iconChanged(m_index, icon);
 }
 
 void WebBrowser::initializeLayout() {

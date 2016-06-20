@@ -258,7 +258,7 @@ void FeedMessageViewer::createConnections() {
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
-          qApp->mainForm()->tabWidget(), SLOT(addNewspaperView(RootItem*,QList<Message>));
+          qApp->mainForm()->tabWidget(), SLOT(addNewspaperView(RootItem*,QList<Message>)));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
           qApp->mainForm()->tabWidget(), SLOT(addNewspaperView(RootItem*,QList<Message>)));
 
@@ -346,6 +346,8 @@ void FeedMessageViewer::initialize() {
   m_toolBarMessages->setMovable(false);
   m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBarMessages->loadChangeableActions();
+
+  m_messagesBrowser->clear();
 
   // Now refresh visual setup.
   refreshVisualProperties();
