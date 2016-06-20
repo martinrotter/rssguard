@@ -117,7 +117,7 @@ void WebBrowser::loadUrl(const QString &url) {
 void WebBrowser::loadMessages(const QList<Message> &messages, RootItem *root) {
   if (m_messages.size() == messages.size()) {
     for (int i = 0; i < messages.size(); i++) {
-      if (m_messages.at(i).m_customId != messages.at(i).m_customId) {
+      if (m_messages.at(i).m_id != messages.at(i).m_id) {
         break;
       }
 
