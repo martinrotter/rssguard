@@ -66,12 +66,21 @@ class WebBrowser : public TabContent {
 
   private slots:
     void updateUrl(const QUrl &url);
+
     void onLoadingStarted();
     void onLoadingProgress(int progress);
     void onLoadingFinished(bool success);
+
     void receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change);
 
+    void onTitleChanged(const QString &new_title);
+    void onIconChanged(const QIcon &icon);
+
   signals:
+    // Title/icon is changed.
+    void iconChanged(int index, const QIcon &icon);
+    void titleChanged(int index, const QString &title);
+
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
     void requestMessageListReload(bool mark_current_as_read);

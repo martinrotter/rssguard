@@ -52,8 +52,8 @@ void WebBrowser::createConnections() {
   connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(onLoadingFinished(bool)));
 
   // Forward title/icon changes.
-  //connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
-  //connect(m_webView, SIGNAL(iconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
+  connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(m_webView, SIGNAL(iconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
 }
 
 void WebBrowser::updateUrl(const QUrl &url) {
@@ -162,6 +162,20 @@ void WebBrowser::receiveMessageStatusChangeRequest(int message_id, WebPage::Mess
     default:
       break;
   }
+}
+
+void WebBrowser::onTitleChanged(const QString &new_title) {
+  if (new_title.isEmpty()) {
+    //: Webbrowser tab title when no title is available.
+    emit titleChanged(m_index, tr("No title"));
+  }
+  else {
+    emit titleChanged(m_index, new_title);
+  }
+}
+
+void WebBrowser::onIconChanged(const QIcon &icon) {
+  emit iconChanged(m_index, m_webView->icon());
 }
 
 void WebBrowser::initializeLayout() {

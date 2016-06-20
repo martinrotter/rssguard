@@ -258,10 +258,10 @@ void FeedMessageViewer::createConnections() {
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
-          m_messagesView, SLOT(createNewspaperView(RootItem*,QList<Message>)));
+          qApp->mainForm()->tabWidget(), SLOT(addNewspaperView(RootItem*,QList<Message>));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
-          m_messagesView, SLOT(createNewspaperView(RootItem*,QList<Message>)));
-  
+          qApp->mainForm()->tabWidget(), SLOT(addNewspaperView(RootItem*,QList<Message>)));
+
   // Toolbar forwardings.
   connect(form_main->m_ui->m_actionAddFeedIntoSelectedAccount, SIGNAL(triggered()),
           m_feedsView, SLOT(addFeedIntoSelectedAccount()));

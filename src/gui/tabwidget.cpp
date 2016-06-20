@@ -24,6 +24,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "gui/tabbar.h"
 #include "gui/feedmessageviewer.h"
+#include "gui/webbrowser.h"
 #include "gui/plaintoolbutton.h"
 #include "gui/dialogs/formmain.h"
 
@@ -200,6 +201,67 @@ void TabWidget::closeAllTabsExceptCurrent() {
       iterative_index++;
     }
   }
+}
+
+int TabWidget::addNewspaperView(RootItem *root, const QList<Message> &messages) {
+  WebBrowser *prev = new WebBrowser(this);
+  int index = addTab(prev, qApp->icons()->fromTheme(QSL("text-x-script")), tr("Newspaper view"), TabBar::Closable);
+
+  setCurrentIndex(index);
+  prev->loadMessages(messages, root);
+
+  return index;
+}
+
+int TabWidget::addEmptyBrowser() {
+  return addBrowser(false, true);
+}
+
+int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
+  return addBrowser(true, false, initial_url);
+}
+
+int TabWidget::addLinkedBrowser(const QString &initial_url) {
+  return addLinkedBrowser(QUrl(initial_url));
+}
+
+int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl &initial_url) {
+  // Create new WebBrowser.
+  WebBrowser *browser = new WebBrowser(this);
+  int final_index;
+
+  if (move_after_current) {
+    // Insert web browser after current tab.
+    final_index = insertTab(currentIndex() + 1, browser, qApp->icons()->fromTheme(QSL("text-html")),
+                            tr("Web browser"), TabBar::Closable);
+  }
+  else {
+    // Add new browser as the last tab.
+    final_index = addTab(browser, qApp->icons()->fromTheme(QSL("text-html")),
+                         //: Web browser default tab title.
+                         tr("Web browser"),
+                         TabBar::Closable);
+  }
+
+  // Make connections.
+  connect(browser, SIGNAL(titleChanged(int,QString)), this, SLOT(changeTitle(int,QString)));
+  connect(browser, SIGNAL(iconChanged(int,QIcon)), this, SLOT(changeIcon(int,QIcon)));
+
+  // Setup the tab index.
+  browser->setIndex(final_index);
+
+  // Load initial web page if desired.
+  if (initial_url.isValid()) {
+    browser->loadUrl(initial_url);
+  }
+
+  // Make new web browser active if desired.
+  if (make_active) {
+    setCurrentIndex(final_index);
+    browser->setFocus(Qt::OtherFocusReason);
+  }
+
+  return final_index;
 }
 
 void TabWidget::removeTab(int index, bool clear_from_memory) {
