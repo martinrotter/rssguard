@@ -70,7 +70,7 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() const {
     return root;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

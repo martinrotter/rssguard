@@ -52,7 +52,7 @@
 #include <QDir>
 
 
-FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings), m_settings(NULL) {
+FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings), m_settings(nullptr) {
   m_ui->setupUi(this);
 
   m_settings = qApp->settings();
@@ -145,7 +145,7 @@ void FormSettings::changeDefaultBrowserArguments(int index) {
 void FormSettings::onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous) {
   Q_UNUSED(previous)
 
-  if (current != NULL) {
+  if (current != nullptr) {
     const Skin skin = current->data(0, Qt::UserRole).value<Skin>();
     m_ui->m_lblSelectedContents->setText(skin.m_visibleName);
   }
@@ -456,7 +456,7 @@ void FormSettings::loadLanguage() {
 }
 
 void FormSettings::saveLanguage() {
-  if (m_ui->m_treeLanguages->currentItem() == NULL) {
+  if (m_ui->m_treeLanguages->currentItem() == nullptr) {
     qDebug("No localizations loaded in settings dialog, so no saving for them.");
     return;
   }
@@ -737,7 +737,7 @@ void FormSettings::loadInterface() {
     }
   }
 
-  if (m_ui->m_treeSkins->currentItem() == NULL &&
+  if (m_ui->m_treeSkins->currentItem() == nullptr &&
       m_ui->m_treeSkins->topLevelItemCount() > 0) {
     // Currently active skin is NOT available, select another one as selected
     // if possible.

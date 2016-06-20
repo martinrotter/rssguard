@@ -27,7 +27,7 @@
 
 
 RootItem::RootItem(RootItem *parent_item)
-  : QObject(NULL),
+  : QObject(nullptr),
     m_kind(RootItemKind::Root),
     m_id(NO_PARENT_CATEGORY),
     m_customId(NO_PARENT_CATEGORY),
@@ -46,7 +46,7 @@ RootItem::~RootItem() {
 
 QString RootItem::hashCode() const {
   ServiceRoot *root = getParentServiceRoot();
-  int acc_id = root == NULL ? 0 : root->accountId();
+  int acc_id = root == nullptr ? 0 : root->accountId();
 
   return
       QString::number(acc_id) + QL1S("-") +
@@ -217,7 +217,7 @@ int RootItem::countOfAllMessages() const {
 }
 
 bool RootItem::isChildOf(const RootItem *root) const {
-  if (root == NULL) {
+  if (root == nullptr) {
     return false;
   }
 
@@ -236,7 +236,7 @@ bool RootItem::isChildOf(const RootItem *root) const {
 }
 
 bool RootItem::isParentOf(const RootItem *child) const {
-  if (child == NULL) {
+  if (child == nullptr) {
     return false;
   }
   else {
@@ -373,7 +373,7 @@ ServiceRoot *RootItem::getParentServiceRoot() const {
     }
   }
 
-  return NULL;
+  return nullptr;
 }
 
 bool RootItem::removeChild(RootItem *child) {

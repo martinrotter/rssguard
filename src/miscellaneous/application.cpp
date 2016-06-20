@@ -42,9 +42,9 @@
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
-    m_updateFeedsLock(NULL), m_updateMessagesLock(NULL), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(NULL),
-    m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
-    m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL) {
+    m_updateFeedsLock(nullptr), m_updateMessagesLock(nullptr), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
+    m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
+    m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
   connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
@@ -69,7 +69,7 @@ QList<ServiceEntryPoint*> Application::feedServices() {
 }
 
 QList<QAction*> Application::userActions() {
-  if (m_mainForm != NULL && m_userActions.isEmpty()) {
+  if (m_mainForm != nullptr && m_userActions.isEmpty()) {
     m_userActions = m_mainForm->allActions();
   }
 
@@ -99,7 +99,7 @@ void Application::eliminateFirstRun(const QString &version) {
 }
 
 IconFactory *Application::icons() {
-  if (m_icons == NULL) {
+  if (m_icons == nullptr) {
     m_icons = new IconFactory(this);
   }
 
@@ -107,7 +107,7 @@ IconFactory *Application::icons() {
 }
 
 DownloadManager *Application::downloadManager() {
-  if (m_downloadManager == NULL) {
+  if (m_downloadManager == nullptr) {
     m_downloadManager = new DownloadManager();
 
     connect(m_downloadManager, SIGNAL(downloadFinished()), mainForm()->statusBar(), SLOT(clearProgressDownload()));
@@ -193,7 +193,7 @@ void Application::processExecutionMessage(const QString &message) {
       // Application was running, and someone wants to add new feed.
       StandardServiceRoot *root = qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot();
 
-      if (root != NULL) {
+      if (root != nullptr) {
         root->checkArgumentForFeedAdding(msg);
       }
       else {
@@ -207,7 +207,7 @@ void Application::processExecutionMessage(const QString &message) {
 }
 
 SystemTrayIcon *Application::trayIcon() {
-  if (m_trayIcon == NULL) {
+  if (m_trayIcon == nullptr) {
     m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
     connect(m_trayIcon, SIGNAL(shown()),
             m_mainForm->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(notifyWithCounts()));
@@ -222,11 +222,11 @@ void Application::showTrayIcon() {
 }
 
 void Application::deleteTrayIcon() {
-  if (m_trayIcon != NULL) {
+  if (m_trayIcon != nullptr) {
     qDebug("Disabling tray icon, deleting it and raising main application window.");
     m_mainForm->display();
     delete m_trayIcon;
-    m_trayIcon = NULL;
+    m_trayIcon = nullptr;
 
     // Make sure that application quits when last window is closed.
     setQuitOnLastWindowClosed(true);

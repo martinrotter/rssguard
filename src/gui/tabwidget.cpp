@@ -31,7 +31,7 @@
 #include <QToolButton>
 
 
-TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent), m_menuMain(NULL) {
+TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent), m_menuMain(nullptr) {
   setTabBar(new TabBar(this));
   setupMainMenuButton();
   createConnections();
@@ -53,7 +53,7 @@ void TabWidget::setupMainMenuButton() {
 }
 
 void TabWidget::openMainMenu() {
-  if (m_menuMain == NULL) {
+  if (m_menuMain == nullptr) {
     m_menuMain = new QMenu(tr("Main menu"), this);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFile);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuView);

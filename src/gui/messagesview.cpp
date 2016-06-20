@@ -35,7 +35,7 @@
 
 MessagesView::MessagesView(QWidget *parent)
   : QTreeView(parent),
-    m_contextMenu(NULL),
+    m_contextMenu(nullptr),
     m_columnsAdjusted(false),
     m_batchUnreadSwitch(false) {
   m_proxyModel = new MessagesProxyModel(this);
@@ -147,7 +147,7 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
 }
 
 void MessagesView::initializeContextMenu() {
-  if (m_contextMenu == NULL) {
+  if (m_contextMenu == nullptr) {
     m_contextMenu = new QMenu(tr("Context menu for messages"), this);
   }
 
@@ -161,7 +161,7 @@ void MessagesView::initializeContextMenu() {
                             qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
                             qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
 
-  if (m_sourceModel->loadedItem() != NULL && m_sourceModel->loadedItem()->kind() == RootItemKind::Bin) {
+  if (m_sourceModel->loadedItem() != nullptr && m_sourceModel->loadedItem()->kind() == RootItemKind::Bin) {
     m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
   }
 }

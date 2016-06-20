@@ -67,9 +67,9 @@ void PlainToolButton::setChecked(bool checked) {
 }
 
 void PlainToolButton::reactOnActionChange(QAction *action) {
-  QAction *real_action = action == NULL ? qobject_cast<QAction*>(sender()) : action;
+  QAction *real_action = action == nullptr ? qobject_cast<QAction*>(sender()) : action;
 
-  if (real_action != NULL) {
+  if (real_action != nullptr) {
     setEnabled(real_action->isEnabled());
     setCheckable(real_action->isCheckable());
     setChecked(real_action->isChecked());

@@ -46,8 +46,8 @@
 
 FeedsModel::FeedsModel(QObject *parent)
   : QAbstractItemModel(parent), m_autoUpdateTimer(new QTimer(this)),
-    m_feedDownloaderThread(NULL), m_feedDownloader(NULL),
-    m_dbCleanerThread(NULL), m_dbCleaner(NULL) {
+    m_feedDownloaderThread(nullptr), m_feedDownloader(nullptr),
+    m_dbCleanerThread(nullptr), m_dbCleaner(nullptr) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -87,7 +87,7 @@ void FeedsModel::quit() {
   }
 
   // Close worker threads.
-  if (m_feedDownloaderThread != NULL && m_feedDownloaderThread->isRunning()) {
+  if (m_feedDownloaderThread != nullptr && m_feedDownloaderThread->isRunning()) {
     m_feedDownloader->stopRunningUpdate();
 
     qDebug("Quitting feed downloader thread.");
@@ -99,7 +99,7 @@ void FeedsModel::quit() {
     }
   }
 
-  if (m_dbCleanerThread != NULL && m_dbCleanerThread->isRunning()) {
+  if (m_dbCleanerThread != nullptr && m_dbCleanerThread->isRunning()) {
     qDebug("Quitting database cleaner thread.");
     m_dbCleanerThread->quit();
 
@@ -110,12 +110,12 @@ void FeedsModel::quit() {
   }
 
   // Close workers.
-  if (m_feedDownloader != NULL) {
+  if (m_feedDownloader != nullptr) {
     qDebug("Feed downloader exists. Deleting it from memory.");
     m_feedDownloader->deleteLater();
   }
 
-  if (m_dbCleaner != NULL) {
+  if (m_dbCleaner != nullptr) {
     qDebug("Database cleaner exists. Deleting it from memory.");
     m_dbCleaner->deleteLater();
   }
@@ -133,7 +133,7 @@ void FeedsModel::updateFeeds(const QList<Feed*> &feeds) {
     return;
   }
 
-  if (m_feedDownloader == NULL) {
+  if (m_feedDownloader == nullptr) {
     m_feedDownloader = new FeedDownloader();
     m_feedDownloaderThread = new QThread();
 
@@ -185,7 +185,7 @@ void FeedsModel::updateAllFeeds() {
 }
 
 DatabaseCleaner *FeedsModel::databaseCleaner() {
-  if (m_dbCleaner == NULL) {
+  if (m_dbCleaner == nullptr) {
     m_dbCleaner = new DatabaseCleaner();
     m_dbCleanerThread = new QThread();
 
@@ -446,7 +446,7 @@ void FeedsModel::removeItem(const QModelIndex &index) {
 }
 
 void FeedsModel::removeItem(RootItem *deleting_item) {
-  if (deleting_item != NULL) {
+  if (deleting_item != nullptr) {
     QModelIndex index = indexForItem(deleting_item);
     QModelIndex parent_index = index.parent();
     RootItem *parent_item = deleting_item->parent();
@@ -464,7 +464,7 @@ void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_
   RootItem *original_parent = original_node->parent();
 
   if (original_parent != new_parent) {
-    if (original_parent != NULL) {
+    if (original_parent != nullptr) {
       int original_index_of_item = original_parent->childItems().indexOf(original_node);
 
       if (original_index_of_item >= 0) {
@@ -510,12 +510,12 @@ StandardServiceRoot *FeedsModel::standardServiceRoot() const {
   foreach (ServiceRoot *root, serviceRoots()) {
     StandardServiceRoot *std_service_root;
 
-    if ((std_service_root = dynamic_cast<StandardServiceRoot*>(root)) != NULL) {
+    if ((std_service_root = dynamic_cast<StandardServiceRoot*>(root)) != nullptr) {
       return std_service_root;
     }
   }
 
-  return NULL;
+  return nullptr;
 }
 
 QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
@@ -577,7 +577,7 @@ RootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
 }
 
 QModelIndex FeedsModel::indexForItem(const RootItem *item) const {
-  if (item == NULL || item->kind() == RootItemKind::Root) {
+  if (item == nullptr || item->kind() == RootItemKind::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
@@ -612,7 +612,7 @@ bool FeedsModel::hasAnyFeedNewMessages() const {
 }
 
 bool FeedsModel::isFeedUpdateRunning() const {
-  return m_feedDownloader != NULL && m_feedDownloader->isUpdateRunning();
+  return m_feedDownloader != nullptr && m_feedDownloader->isUpdateRunning();
 }
 
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
@@ -687,7 +687,7 @@ bool FeedsModel::restoreAllBins() {
   foreach (ServiceRoot *root, serviceRoots()) {
     RecycleBin *bin_of_root = root->recycleBin();
 
-    if (bin_of_root != NULL) {
+    if (bin_of_root != nullptr) {
       result &= bin_of_root->restore();
     }
   }
@@ -701,7 +701,7 @@ bool FeedsModel::emptyAllBins() {
   foreach (ServiceRoot *root, serviceRoots()) {
     RecycleBin *bin_of_root = root->recycleBin();
 
-    if (bin_of_root != NULL) {
+    if (bin_of_root != nullptr) {
       result &= bin_of_root->empty();
     }
   }
@@ -727,7 +727,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
 }
 
 void FeedsModel::stopRunningFeedUpdate() {
-  if (m_feedDownloader != NULL) {
+  if (m_feedDownloader != nullptr) {
     m_feedDownloader->stopRunningUpdate();
   }
 }

@@ -156,7 +156,7 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
         action_to_add->setProperty("type", SPACER_ACTION_NAME);
         action_to_add->setProperty("name", tr("Toolbar spacer"));
       }
-      else if (matching_action != NULL) {
+      else if (matching_action != nullptr) {
         // Add originally toolbar action.
         PlainToolButton *tool_button = new PlainToolButton(this);
         tool_button->reactOnActionChange(matching_action);
@@ -168,16 +168,16 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
         connect(matching_action, SIGNAL(changed()), tool_button, SLOT(reactOnActionChange()));
       }
       else {
-        action_to_add = NULL;
-        widget_to_add = NULL;
+        action_to_add = nullptr;
+        widget_to_add = nullptr;
       }
 
-      if (action_to_add != NULL) {
+      if (action_to_add != nullptr) {
         action_to_add->setProperty("should_remove_widget", true);
       }
     }
 
-    if (action_to_add != NULL && widget_to_add != NULL) {
+    if (action_to_add != nullptr && widget_to_add != nullptr) {
       action_to_add->setProperty("widget", QVariant::fromValue((void*) widget_to_add));
       addPermanentWidget(widget_to_add);
       addAction(action_to_add);
@@ -198,13 +198,13 @@ bool StatusBar::eventFilter(QObject *watched, QEvent *event) {
 void StatusBar::clear() {
   while (!actions().isEmpty()) {
     QAction *act = actions().at(0);
-    QWidget *widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : NULL;
+    QWidget *widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
     bool should_remove_widget = act->property("should_remove_widget").isValid();
     bool should_remove_action = act->property("should_remove_action").isValid();
 
     removeAction(act);
 
-    if (widget != NULL) {
+    if (widget != nullptr) {
       removeWidget(widget);
       widget->setVisible(false);
 

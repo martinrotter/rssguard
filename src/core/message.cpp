@@ -73,7 +73,7 @@ Message::Message() {
 
 Message Message::fromSqlRecord(const QSqlRecord &record, bool *result) {
   if (record.count() != MSG_DB_CUSTOM_HASH_INDEX + 1) {
-    if (result != NULL) {
+    if (result != nullptr) {
       *result = false;
       return Message();
     }
@@ -95,7 +95,7 @@ Message Message::fromSqlRecord(const QSqlRecord &record, bool *result) {
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
 
-  if (result != NULL) {
+  if (result != nullptr) {
     *result = true;
   }
 

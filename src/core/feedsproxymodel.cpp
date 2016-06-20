@@ -28,7 +28,7 @@
 
 
 FeedsProxyModel::FeedsProxyModel(QObject *parent)
-  : QSortFilterProxyModel(parent), m_selectedItem(NULL), m_showUnreadOnly(false), m_hiddenIndices(QList<QPair<int,QModelIndex> >()) {
+  : QSortFilterProxyModel(parent), m_selectedItem(nullptr), m_showUnreadOnly(false), m_hiddenIndices(QList<QPair<int,QModelIndex> >()) {
   m_sourceModel = new FeedsModel(this);
 
   setObjectName(QSL("FeedsProxyModel"));

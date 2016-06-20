@@ -43,10 +43,10 @@
 
 FeedsView::FeedsView(QWidget *parent)
   : QTreeView(parent),
-    m_contextMenuCategories(NULL),
-    m_contextMenuFeeds(NULL),
-    m_contextMenuEmptySpace(NULL),
-    m_contextMenuOtherItems(NULL) {
+    m_contextMenuCategories(nullptr),
+    m_contextMenuFeeds(nullptr),
+    m_contextMenuEmptySpace(nullptr),
+    m_contextMenuOtherItems(nullptr) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -89,11 +89,11 @@ RootItem *FeedsView::selectedItem() const {
   const QModelIndexList selected_rows = selectionModel()->selectedRows();
 
   if (selected_rows.isEmpty()) {
-    return NULL;
+    return nullptr;
   }
   else {
     RootItem *selected_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(selected_rows.at(0)));
-    return selected_item == m_sourceModel->rootItem() ? NULL : selected_item;
+    return selected_item == m_sourceModel->rootItem() ? nullptr : selected_item;
   }
 }
 
@@ -155,7 +155,7 @@ void FeedsView::sortByColumn(int column, Qt::SortOrder order) {
 void FeedsView::addFeedIntoSelectedAccount() {
   const RootItem *selected = selectedItem();
 
-  if (selected != NULL) {
+  if (selected != nullptr) {
     ServiceRoot *root = selected->getParentServiceRoot();
 
     if (root->supportsFeedAdding()) {
@@ -173,7 +173,7 @@ void FeedsView::addFeedIntoSelectedAccount() {
 void FeedsView::addCategoryIntoSelectedAccount() {
   const RootItem *selected = selectedItem();
 
-  if (selected != NULL) {
+  if (selected != nullptr) {
     ServiceRoot *root = selected->getParentServiceRoot();
 
     if (root->supportsCategoryAdding()) {
@@ -265,7 +265,7 @@ void FeedsView::deleteSelectedItem() {
 
   RootItem *selected_item = selectedItem();
 
-  if (selected_item != NULL) {
+  if (selected_item != nullptr) {
     if (selected_item->canBeDeleted()) {
       // Ask user first.
       if (MessageBox::show(qApp->mainForm(),
@@ -360,7 +360,7 @@ void FeedsView::expandItemDelayed(const QModelIndex &idx) {
 }
 
 QMenu *FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
-  if (m_contextMenuCategories == NULL) {
+  if (m_contextMenuCategories == nullptr) {
     m_contextMenuCategories = new QMenu(tr("Context menu for categories"), this);
   }
   else {
@@ -386,7 +386,7 @@ QMenu *FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
 }
 
 QMenu *FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
-  if (m_contextMenuFeeds == NULL) {
+  if (m_contextMenuFeeds == nullptr) {
     m_contextMenuFeeds = new QMenu(tr("Context menu for categories"), this);
   }
   else {
@@ -412,7 +412,7 @@ QMenu *FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
 }
 
 QMenu *FeedsView::initializeContextMenuEmptySpace() {
-  if (m_contextMenuEmptySpace == NULL) {
+  if (m_contextMenuEmptySpace == nullptr) {
     m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
     m_contextMenuEmptySpace->addAction(qApp->mainForm()->m_ui->m_actionUpdateAllItems);
     m_contextMenuEmptySpace->addSeparator();
@@ -422,7 +422,7 @@ QMenu *FeedsView::initializeContextMenuEmptySpace() {
 }
 
 QMenu *FeedsView::initializeContextMenuOtherItem(RootItem *clicked_item) {
-  if (m_contextMenuOtherItems == NULL) {
+  if (m_contextMenuOtherItems == nullptr) {
     m_contextMenuOtherItems = new QMenu(tr("Context menu for other items"), this);
   }
   else {

@@ -47,7 +47,7 @@ void FormAddAccount::addSelectedAccount() {
   ServiceEntryPoint *point = selectedEntryPoint();
   ServiceRoot *new_root = point->createNewRoot();
 
-  if (new_root != NULL) {
+  if (new_root != nullptr) {
     m_model->addServiceAccount(new_root, true);
   }
   else {

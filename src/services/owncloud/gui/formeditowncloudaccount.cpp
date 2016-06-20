@@ -25,7 +25,7 @@
 
 
 FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget *parent)
-  : QDialog(parent), m_ui(new Ui::FormEditOwnCloudAccount), m_editableRoot(NULL) {
+  : QDialog(parent), m_ui(new Ui::FormEditOwnCloudAccount), m_editableRoot(nullptr) {
   m_ui->setupUi(this);
   m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
 
@@ -131,7 +131,7 @@ void FormEditOwnCloudAccount::performTest() {
 void FormEditOwnCloudAccount::onClickedOk() {
   bool editing_account = true;
 
-  if (m_editableRoot == NULL) {
+  if (m_editableRoot == nullptr) {
     // We want to confirm newly created account.
     // So save new account into DB, setup its properties.
     m_editableRoot = new OwnCloudServiceRoot();

@@ -42,7 +42,7 @@
 
 FormFeedDetails::FormFeedDetails(ServiceRoot *service_root, QWidget *parent)
   : QDialog(parent),
-    m_editableFeed(NULL),
+    m_editableFeed(nullptr),
     m_serviceRoot(service_root) {
   initialize();
   createConnections();
@@ -62,7 +62,7 @@ int FormFeedDetails::exec(Feed *input_feed, RootItem *parent_to_select, const QS
   // Load categories.
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
-  if (input_feed == NULL) {
+  if (input_feed == nullptr) {
     // User is adding new category.
     setWindowTitle(tr("Add new feed"));
 
@@ -76,7 +76,7 @@ int FormFeedDetails::exec(Feed *input_feed, RootItem *parent_to_select, const QS
       m_ui->m_cmbEncoding->setCurrentIndex(default_encoding_index);
     }
 
-    if (parent_to_select != NULL) {
+    if (parent_to_select != nullptr) {
       if (parent_to_select->kind() == RootItemKind::Category) {
         m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
       }
@@ -217,7 +217,7 @@ void FormFeedDetails::guessFeed() {
                                                                                       m_ui->m_txtUsername->lineEdit()->text(),
                                                                                       m_ui->m_txtPassword->lineEdit()->text());
 
-  if (result.first != NULL) {
+  if (result.first != nullptr) {
     // Icon or whole feed was guessed.
     m_ui->m_btnIcon->setIcon(result.first->icon());
     m_ui->m_txtTitle->lineEdit()->setText(result.first->title());
@@ -261,7 +261,7 @@ void FormFeedDetails::guessIconOnly() {
                                                                                      m_ui->m_txtUsername->lineEdit()->text(),
                                                                                      m_ui->m_txtPassword->lineEdit()->text());
 
-  if (result.first != NULL) {
+  if (result.first != nullptr) {
     // Icon or whole feed was guessed.
     m_ui->m_btnIcon->setIcon(result.first->icon());
 

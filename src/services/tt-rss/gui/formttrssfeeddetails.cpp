@@ -41,7 +41,7 @@ FormTtRssFeedDetails::FormTtRssFeedDetails(ServiceRoot *service_root, QWidget *p
 }
 
 void FormTtRssFeedDetails::apply() {
-  if (m_editableFeed != NULL) {
+  if (m_editableFeed != nullptr) {
     // User edited auto-update status. Save it.
     TtRssFeed *new_feed_data = new TtRssFeed();
 

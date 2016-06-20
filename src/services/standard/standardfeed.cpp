@@ -53,7 +53,7 @@ StandardFeed::StandardFeed(RootItem *parent_item)
 }
 
 StandardFeed::StandardFeed(const StandardFeed &other)
-  : Feed(NULL) {
+  : Feed(nullptr) {
   m_passwordProtected = other.passwordProtected();
   m_username = other.username();
   m_password = other.password();
@@ -94,7 +94,7 @@ StandardServiceRoot *StandardFeed::serviceRoot() const {
 
 bool StandardFeed::editViaGui() {
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(), qApp->mainForm()));
-  form_pointer.data()->exec(this, NULL);
+  form_pointer.data()->exec(this, nullptr);
   return false;
 }
 
@@ -184,7 +184,7 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
 void StandardFeed::fetchMetadataForItself() {
   QPair<StandardFeed*,QNetworkReply::NetworkError> metadata = guessFeed(url(), username(), password());
 
-  if (metadata.first != NULL && metadata.second == QNetworkReply::NoError) {
+  if (metadata.first != nullptr && metadata.second == QNetworkReply::NoError) {
     // Some properties are not updated when new metadata are fetched.
     metadata.first->setParent(parent());
     metadata.first->setUrl(url());
@@ -211,7 +211,7 @@ void StandardFeed::fetchMetadataForItself() {
 QPair<StandardFeed*,QNetworkReply::NetworkError> StandardFeed::guessFeed(const QString &url,
                                                                          const QString &username,
                                                                          const QString &password) {
-  QPair<StandardFeed*,QNetworkReply::NetworkError> result; result.first = NULL;
+  QPair<StandardFeed*,QNetworkReply::NetworkError> result; result.first = nullptr;
 
   QByteArray feed_contents;
   NetworkResult network_result = NetworkFactory::downloadFeedFile(url,
@@ -239,13 +239,13 @@ QPair<StandardFeed*,QNetworkReply::NetworkError> StandardFeed::guessFeed(const Q
       xml_schema_encoding = encoding_rexp.cap(0);
     }
 
-    if (result.first == NULL) {
+    if (result.first == nullptr) {
       result.first = new StandardFeed();
     }
 
     QTextCodec *custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
 
-    if (custom_codec != NULL) {
+    if (custom_codec != nullptr) {
       // Feed encoding was probably guessed.
       xml_contents_encoded = custom_codec->toUnicode(feed_contents);
       result.first->setEncoding(xml_schema_encoding);
@@ -450,7 +450,7 @@ QList<Message> StandardFeed::obtainNewMessages() {
   QTextCodec *codec = QTextCodec::codecForName(encoding().toLocal8Bit());
   QString formatted_feed_contents;
 
-  if (codec == NULL) {
+  if (codec == nullptr) {
     // No suitable codec for this encoding was found.
     // Use non-converted data.
     formatted_feed_contents = feed_contents;
@@ -487,7 +487,7 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
   return m_networkError;
 }
 
-StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
+StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(nullptr) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setCustomId(id());

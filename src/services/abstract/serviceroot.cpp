@@ -152,7 +152,7 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 
     RecycleBin *bin = recycleBin();
 
-    if (bin != NULL) {
+    if (bin != nullptr) {
       bin->updateCounts(true);
       itemss.append(bin);
     }
@@ -172,7 +172,7 @@ void ServiceRoot::storeNewFeedTree(RootItem *root) {
   if (DatabaseQueries::storeAccountTree(database, root, accountId())) {
     RecycleBin *bin = recycleBin();
 
-    if (bin != NULL && !childItems().contains(bin)) {
+    if (bin != nullptr && !childItems().contains(bin)) {
       // As the last item, add recycle bin, which is needed.
       appendChild(bin);
       bin->updateCounts(true);
@@ -224,7 +224,7 @@ void ServiceRoot::syncIn() {
 
   RootItem *new_tree = obtainNewTreeForSyncIn();
 
-  if (new_tree != NULL) {
+  if (new_tree != nullptr) {
     // Purge old data from SQL and clean all model items.
     requestItemExpandStateSave(this);
 
@@ -243,7 +243,7 @@ void ServiceRoot::syncIn() {
     removeLeftOverMessages();
 
     foreach (RootItem *top_level_item, new_tree->childItems()) {
-      top_level_item->setParent(NULL);
+      top_level_item->setParent(nullptr);
       requestItemReassignment(top_level_item, this);
     }
 
@@ -278,7 +278,7 @@ void ServiceRoot::syncIn() {
 }
 
 RootItem *ServiceRoot::obtainNewTreeForSyncIn() const {
-  return NULL;
+  return nullptr;
 }
 
 QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
@@ -449,7 +449,7 @@ bool ServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QList<Mes
     itemChanged(QList<RootItem*>() << bin);
   }
   else {
-    if (bin != NULL) {
+    if (bin != nullptr) {
       bin->updateCounts(true);
       itemChanged(QList<RootItem*>() << selected_item << bin);
     }

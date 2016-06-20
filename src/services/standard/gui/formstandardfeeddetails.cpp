@@ -45,7 +45,7 @@ void FormStandardFeedDetails::apply() {
   new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
 
-  if (m_editableFeed == NULL) {
+  if (m_editableFeed == nullptr) {
     // Add the feed.
     if (new_feed->addItself(parent)) {
       m_serviceRoot->requestItemReassignment(new_feed, parent);

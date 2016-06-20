@@ -231,7 +231,7 @@ void FormMain::updateRecycleBinMenu() {
     RecycleBin *bin = activated_root->recycleBin();
     QList<QAction*> context_menu;
 
-    if (bin == NULL) {
+    if (bin == nullptr) {
       QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
                                        tr("No recycle bin"),
                                        m_ui->m_menuRecycleBin);

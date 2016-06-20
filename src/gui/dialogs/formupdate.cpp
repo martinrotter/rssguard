@@ -32,7 +32,7 @@
 
 
 FormUpdate::FormUpdate(QWidget *parent)
-  : QDialog(parent), m_downloader(NULL), m_readyToInstall(false), m_ui(new Ui::FormUpdate) {
+  : QDialog(parent), m_downloader(nullptr), m_readyToInstall(false), m_ui(new Ui::FormUpdate) {
   m_ui->setupUi(this);
   m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Download update"), QDialogButtonBox::ActionRole);
   m_btnUpdate->setToolTip(tr("Download new installation files."));
@@ -190,7 +190,7 @@ void FormUpdate::startUpdate() {
     // Nothing is downloaded yet, but update for this system
     // is available and self-update feature is present.
 
-    if (m_downloader == NULL) {
+    if (m_downloader == nullptr) {
       // Initialie downloader.
       m_downloader = new Downloader(this);
 

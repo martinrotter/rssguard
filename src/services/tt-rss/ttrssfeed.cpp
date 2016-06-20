@@ -36,7 +36,7 @@ TtRssFeed::TtRssFeed(RootItem *parent)
   : Feed(parent) {
 }
 
-TtRssFeed::TtRssFeed(const QSqlRecord &record) : Feed(NULL) {
+TtRssFeed::TtRssFeed(const QSqlRecord &record) : Feed(nullptr) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
@@ -102,7 +102,7 @@ bool TtRssFeed::canBeEdited() const {
 bool TtRssFeed::editViaGui() {
   QPointer<FormTtRssFeedDetails> form_pointer = new FormTtRssFeedDetails(serviceRoot(), qApp->mainForm());
 
-  form_pointer.data()->exec(this, NULL);
+  form_pointer.data()->exec(this, nullptr);
   delete form_pointer.data();
   return false;
 }

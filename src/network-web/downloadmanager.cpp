@@ -61,7 +61,7 @@ DownloadItem::~DownloadItem() {
 }
 
 void DownloadItem::init() {
-  if (m_reply == NULL) {
+  if (m_reply == nullptr) {
     return;
   }
 
@@ -442,7 +442,7 @@ void DownloadItem::updateInfoAndUrlLabel() {
 
 DownloadManager::DownloadManager(QWidget *parent) : TabContent(parent), m_ui(new Ui::DownloadManager),
   m_autoSaver(new AutoSaver(this)), m_model(new DownloadModel(this)),
-  m_networkManager(SilentNetworkAccessManager::instance()), m_iconProvider(NULL), m_removePolicy(Never) {
+  m_networkManager(SilentNetworkAccessManager::instance()), m_iconProvider(nullptr), m_removePolicy(Never) {
   m_ui->setupUi(this);
   m_ui->m_viewDownloads->setShowGrid(false);
   m_ui->m_viewDownloads->verticalHeader()->hide();
@@ -505,7 +505,7 @@ void DownloadManager::download(const QUrl &url) {
 }
 
 void DownloadManager::handleUnsupportedContent(QNetworkReply *reply) {
-  if (reply == NULL || reply->url().isEmpty()) {
+  if (reply == nullptr || reply->url().isEmpty()) {
     return;
   }
 

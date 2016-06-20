@@ -40,7 +40,7 @@ MessagesModel::MessagesModel(QObject *parent)
   // via model, but via DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable(QSL("Messages"));
-  loadMessages(NULL);
+  loadMessages(nullptr);
 }
 
 MessagesModel::~MessagesModel() {
@@ -70,7 +70,7 @@ void MessagesModel::setupFonts() {
 void MessagesModel::loadMessages(RootItem *item) {
   m_selectedItem = item;
 
-  if (item == NULL) {
+  if (item == nullptr) {
     setFilter("true != true");
   }
   else {

@@ -23,7 +23,7 @@
 
 
 Downloader::Downloader(QObject *parent)
-  : QObject(parent), m_activeReply(NULL), m_downloadManager(new SilentNetworkAccessManager(this)),
+  : QObject(parent), m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)),
     m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_inputData(QByteArray()),
     m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
     m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
@@ -110,7 +110,7 @@ void Downloader::finished() {
     }
 
     m_activeReply->deleteLater();
-    m_activeReply = NULL;
+    m_activeReply = nullptr;
 
     if (reply_operation == QNetworkAccessManager::GetOperation) {
       runGetRequest(request);
@@ -133,7 +133,7 @@ void Downloader::finished() {
     m_lastOutputError = reply->error();
 
     m_activeReply->deleteLater();
-    m_activeReply = NULL;
+    m_activeReply = nullptr;
 
     emit completed(m_lastOutputError, m_lastOutputData);
   }
@@ -204,7 +204,7 @@ QVariant Downloader::lastContentType() const {
 }
 
 void Downloader::cancel() {
-  if (m_activeReply != NULL) {
+  if (m_activeReply != nullptr) {
     // Download action timed-out, too slow connection or target is not reachable.
     m_activeReply->abort();
   }

@@ -37,7 +37,7 @@ StandardCategory::StandardCategory(RootItem *parent_item) : Category(parent_item
 }
 
 StandardCategory::StandardCategory(const StandardCategory &other)
-  : Category(NULL) {
+  : Category(nullptr) {
   setId(other.id());
   setCustomId(other.customId());
   setTitle(other.title());
@@ -100,7 +100,7 @@ bool StandardCategory::performDragDropChange(RootItem *target_item) {
 bool StandardCategory::editViaGui() {
   QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(serviceRoot(), qApp->mainForm()));
 
-  form_pointer.data()->exec(this, NULL);
+  form_pointer.data()->exec(this, nullptr);
   return false;
 }
 
@@ -185,7 +185,7 @@ bool StandardCategory::editItself(StandardCategory *new_category_data) {
   }
 }
 
-StandardCategory::StandardCategory(const QSqlRecord &record) : Category(NULL) {
+StandardCategory::StandardCategory(const QSqlRecord &record) : Category(nullptr) {
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setCustomId(id());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());

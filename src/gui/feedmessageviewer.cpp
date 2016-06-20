@@ -157,7 +157,7 @@ void FeedMessageViewer::setListHeadersEnabled(bool enable) {
 void FeedMessageViewer::switchFeedComponentVisibility() {
   QAction *sen = qobject_cast<QAction*>(sender());
 
-  if (sen != NULL) {
+  if (sen != nullptr) {
     m_feedsWidget->setVisible(sen->isChecked());
   }
   else {
@@ -168,7 +168,7 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
   const QAction *origin = qobject_cast<QAction*>(sender());
   
-  if (origin == NULL) {
+  if (origin == nullptr) {
     m_feedsView->model()->invalidateReadFeedsFilter(true, false);
   }
   else {
@@ -179,7 +179,7 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
 void FeedMessageViewer::updateMessageButtonsAvailability() {
   const bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
   const bool atleast_one_message_selected = !m_messagesView->selectionModel()->selectedRows().isEmpty();
-  const bool bin_loaded = m_messagesView->sourceModel()->loadedItem() != NULL && m_messagesView->sourceModel()->loadedItem()->kind() == RootItemKind::Bin;
+  const bool bin_loaded = m_messagesView->sourceModel()->loadedItem() != nullptr && m_messagesView->sourceModel()->loadedItem()->kind() == RootItemKind::Bin;
   const FormMain *form_main = qApp->mainForm();
   
   form_main->m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
@@ -196,7 +196,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   const bool is_update_running = feedsView()->sourceModel()->isFeedUpdateRunning();
   const bool critical_action_running = qApp->feedUpdateLock()->isLocked();
   const RootItem *selected_item = feedsView()->selectedItem();
-  const bool anything_selected = selected_item != NULL;
+  const bool anything_selected = selected_item != nullptr;
   const bool feed_selected = anything_selected && selected_item->kind() == RootItemKind::Feed;
   const bool category_selected = anything_selected && selected_item->kind() == RootItemKind::Category;
   const bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;

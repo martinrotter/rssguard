@@ -99,7 +99,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
       new_message.m_created = current_time;
     }
 
-    // WARNING: There is a difference between "" and QString() in terms of NULL SQL values!
+    // WARNING: There is a difference between "" and QString() in terms of nullptr SQL values!
     // This is because of difference in QString::isNull() and QString::isEmpty(), the "" is not null
     // while QString() is.
     if (new_message.m_author.isNull()) {

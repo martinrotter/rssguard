@@ -42,5 +42,5 @@ QAction *BaseBar::findMatchingAction(const QString &action, const QList<QAction*
     }
   }
 
-  return NULL;
+  return nullptr;
 }

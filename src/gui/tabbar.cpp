@@ -68,7 +68,7 @@ void TabBar::closeTabViaButton() {
                                                                                                  0,
                                                                                                  this));
 
-  if (close_button != NULL) {
+  if (close_button != nullptr) {
     // Find index of tab for this close button.
     for (int i = 0; i < count(); i++) {
       if (tabButton(i, button_position) == close_button) {

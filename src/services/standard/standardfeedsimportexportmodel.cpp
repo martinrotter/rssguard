@@ -36,7 +36,7 @@ FeedsImportExportModel::FeedsImportExportModel(QObject *parent)
 }
 
 FeedsImportExportModel::~FeedsImportExportModel() {
-  if (m_rootItem != NULL && m_mode == Import) {
+  if (m_rootItem != nullptr && m_mode == Import) {
     // Delete all model items, but only if we are in import mode. Export mode shares
     // root item with main feed model, thus cannot be deleted from memory now.
     delete m_rootItem;
@@ -139,7 +139,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
 void FeedsImportExportModel::importAsOPML20(const QByteArray &data, bool fetch_metadata_online) {
   emit parsingStarted();
   emit layoutAboutToBeChanged();
-  setRootItem(NULL);
+  setRootItem(nullptr);
   emit layoutChanged();
 
   QDomDocument opml_document;
@@ -279,7 +279,7 @@ bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray &result) {
 void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data, bool fetch_metadata_online) {
   emit parsingStarted();
   emit layoutAboutToBeChanged();
-  setRootItem(NULL);
+  setRootItem(nullptr);
   emit layoutChanged();
 
   int completed = 0, succeded = 0, failed = 0;

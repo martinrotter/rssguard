@@ -35,7 +35,7 @@
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new OwnCloudRecycleBin(this)),
-    m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new OwnCloudNetworkFactory()) {
+    m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new OwnCloudNetworkFactory()) {
   setIcon(OwnCloudServiceEntryPoint().icon());
 }
 
@@ -210,7 +210,7 @@ void OwnCloudServiceRoot::addNewFeed(const QString &url) {
 
   QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainForm()));
 
-  form_pointer.data()->exec(NULL, this, url);
+  form_pointer.data()->exec(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();
 }
 
@@ -251,7 +251,7 @@ RootItem *OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
     return feed_cats_response.feedsCategories(true);
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

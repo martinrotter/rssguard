@@ -40,7 +40,7 @@ FormOwnCloudFeedDetails::FormOwnCloudFeedDetails(ServiceRoot *service_root, QWid
 }
 
 void FormOwnCloudFeedDetails::apply() {
-  if (m_editableFeed != NULL) {
+  if (m_editableFeed != nullptr) {
     bool renamed = false;
 
     if (m_ui->m_txtTitle->lineEdit()->text() != m_editableFeed->title()) {

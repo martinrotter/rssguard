@@ -645,7 +645,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
     // Also, we set the SQLite driver as active one.
     qApp->settings()->setValue(GROUP(Database), Database::ActiveDriver, APP_DB_SQLITE_DRIVER);
     determineDriver();
-    MessageBox::show(NULL, QMessageBox::Critical, tr("MySQL database not available"),
+    MessageBox::show(nullptr, QMessageBox::Critical, tr("MySQL database not available"),
                      tr("%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server "
                         "and make adjustments in application settings.").arg(STRFY(APP_NAME)));
 

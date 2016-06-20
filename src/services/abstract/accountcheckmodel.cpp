@@ -23,7 +23,7 @@
 
 
 AccountCheckModel::AccountCheckModel(QObject *parent)
-  : QAbstractItemModel(parent), m_rootItem(NULL), m_checkStates(QHash<RootItem*, Qt::CheckState>()), m_recursiveChange(false) {
+  : QAbstractItemModel(parent), m_rootItem(nullptr), m_checkStates(QHash<RootItem*, Qt::CheckState>()), m_recursiveChange(false) {
 }
 
 AccountCheckModel::~AccountCheckModel() {
@@ -43,7 +43,7 @@ RootItem *AccountCheckModel::rootItem() const {
 }
 
 void AccountCheckModel::setRootItem(RootItem *root_item) {
-  if (m_rootItem != NULL) {
+  if (m_rootItem != nullptr) {
     delete m_rootItem;
   }
 
@@ -51,7 +51,7 @@ void AccountCheckModel::setRootItem(RootItem *root_item) {
 }
 
 void AccountCheckModel::checkAllItems() {
-  if (m_rootItem != NULL) {
+  if (m_rootItem != nullptr) {
     foreach (RootItem *root_child, m_rootItem->childItems()) {
       if (root_child->kind() == RootItemKind::Feed || root_child->kind() == RootItemKind::Category) {
         setItemChecked(root_child, Qt::Checked);
@@ -61,7 +61,7 @@ void AccountCheckModel::checkAllItems() {
 }
 
 void AccountCheckModel::uncheckAllItems() {
-  if (m_rootItem != NULL) {
+  if (m_rootItem != nullptr) {
     foreach (RootItem *root_child, m_rootItem->childItems()) {
       if (root_child->kind() == RootItemKind::Feed || root_child->kind() == RootItemKind::Category) {
         setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
@@ -87,7 +87,7 @@ QModelIndex AccountCheckModel::index(int row, int column, const QModelIndex &par
 }
 
 QModelIndex AccountCheckModel::indexForItem(RootItem *item) const {
-  if (item == NULL || item->kind() == RootItemKind::ServiceRoot || item->kind() == RootItemKind::Root) {
+  if (item == nullptr || item->kind() == RootItemKind::ServiceRoot || item->kind() == RootItemKind::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
@@ -150,7 +150,7 @@ int AccountCheckModel::rowCount(const QModelIndex &parent) const {
   else {
     RootItem *item = itemForIndex(parent);
 
-    if (item != NULL) {
+    if (item != nullptr) {
       return item->childCount();
     }
     else {

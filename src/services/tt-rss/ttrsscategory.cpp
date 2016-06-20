@@ -31,7 +31,7 @@ TtRssCategory::TtRssCategory(RootItem *parent) : Category(parent) {
   setIcon(qApp->icons()->fromTheme(QSL("folder")));
 }
 
-TtRssCategory::TtRssCategory(const QSqlRecord &record) : Category(NULL) {
+TtRssCategory::TtRssCategory(const QSqlRecord &record) : Category(nullptr) {
   setIcon(qApp->icons()->fromTheme(QSL("folder")));
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());

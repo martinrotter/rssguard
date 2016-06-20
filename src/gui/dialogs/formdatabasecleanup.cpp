@@ -24,7 +24,7 @@
 #include <QCloseEvent>
 
 
-FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormDatabaseCleanup), m_cleaner(NULL) {
+FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormDatabaseCleanup), m_cleaner(nullptr) {
   m_ui->setupUi(this);
 
   // Set flags and attributes.
@@ -42,7 +42,7 @@ FormDatabaseCleanup::~FormDatabaseCleanup() {
 }
 
 void FormDatabaseCleanup::setCleaner(DatabaseCleaner *cleaner) {
-  if (m_cleaner != NULL) {
+  if (m_cleaner != nullptr) {
     disconnect(this, 0, m_cleaner, 0);
     disconnect(m_cleaner, 0, this, 0);
   }

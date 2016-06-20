@@ -214,12 +214,12 @@ QMap<int,QPair<int,int> > DatabaseQueries::getMessageCountsForCategory(QSqlDatab
       }
     }
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -261,12 +261,12 @@ QMap<int,QPair<int,int> > DatabaseQueries::getMessageCountsForAccount(QSqlDataba
       }
     }
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -292,14 +292,14 @@ int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec() && q.next()) {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
 
     return q.value(0).toInt();
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
 
@@ -323,14 +323,14 @@ int DatabaseQueries::getMessageCountsForBin(QSqlDatabase db, int account_id, boo
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec() && q.next()) {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
 
     return q.value(0).toInt();
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
 
@@ -359,12 +359,12 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, int
       }
     }
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -392,12 +392,12 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(QSqlDatabase db, int 
       }
     }
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -424,12 +424,12 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(QSqlDatabase db, 
       }
     }
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -606,7 +606,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   // just to keep the data consistent.
   if (db.exec("UPDATE Messages "
               "SET custom_id = (SELECT id FROM Messages t WHERE t.id = Messages.id) "
-              "WHERE Messages.custom_id IS NULL OR Messages.custom_id = '';").lastError().isValid()) {
+              "WHERE Messages.custom_id IS nullptr OR Messages.custom_id = '';").lastError().isValid()) {
     qWarning("Failed to set custom ID for all messages.");
   }
 
@@ -614,12 +614,12 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     db.rollback();
     qDebug("Transaction commit for message downloader failed.");
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
@@ -794,7 +794,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(QSqlDatabase db, int
   q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
-  if (ok != NULL) {
+  if (ok != nullptr) {
     *ok = q.exec();
   }
   else {
@@ -815,7 +815,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromBin(QSqlDatabase db, int acc
   q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
-  if (ok != NULL) {
+  if (ok != nullptr) {
     *ok = q.exec();
   }
   else {
@@ -837,7 +837,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(QSqlDatabase db, int fe
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":feed"), feed_custom_id);
 
-  if (ok != NULL) {
+  if (ok != nullptr) {
     *ok = q.exec();
   }
   else {
@@ -869,14 +869,14 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(QSqlDatabase db, bool *
       roots.append(root);
     }
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
   else {
     qWarning("OwnCloud: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -905,14 +905,14 @@ QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(QSqlDatabase db, bool *ok)
       roots.append(root);
     }
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
   else {
     qWarning("TT-RSS: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -981,7 +981,7 @@ int DatabaseQueries::createAccount(QSqlDatabase db, const QString &code, bool *o
   if (!q.exec("SELECT max(id) FROM Accounts;") || !q.next()) {
     qWarning("Getting max ID from Accounts table failed: '%s'.", qPrintable(q.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
 
@@ -995,14 +995,14 @@ int DatabaseQueries::createAccount(QSqlDatabase db, const QString &code, bool *o
   q.bindValue(QSL(":type"), code);
 
   if (q.exec()) {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
 
     return id_to_assign;
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
 
@@ -1023,7 +1023,7 @@ Assignment DatabaseQueries::getOwnCloudCategories(QSqlDatabase db, int account_i
   if (!q.exec()) {
     qFatal("ownCloud: Query for obtaining categories failed. Error message: '%s'.", qPrintable(q.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -1036,7 +1036,7 @@ Assignment DatabaseQueries::getOwnCloudCategories(QSqlDatabase db, int account_i
     categories << pair;
   }
 
-  if (ok != NULL) {
+  if (ok != nullptr) {
     *ok = true;
   }
 
@@ -1054,7 +1054,7 @@ Assignment DatabaseQueries::getOwnCloudFeeds(QSqlDatabase db, int account_id, bo
   if (!q.exec()) {
     qFatal("ownCloud: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -1067,7 +1067,7 @@ Assignment DatabaseQueries::getOwnCloudFeeds(QSqlDatabase db, int account_id, bo
     feeds << pair;
   }
 
-  if (ok != NULL) {
+  if (ok != nullptr) {
     *ok = true;
   }
 
@@ -1125,7 +1125,7 @@ int DatabaseQueries::addCategory(QSqlDatabase db, int parent_id, int account_id,
   if (!q.exec()) {
     qDebug("Failed to add category to database: '%s'.", qPrintable(q.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
 
@@ -1133,7 +1133,7 @@ int DatabaseQueries::addCategory(QSqlDatabase db, int parent_id, int account_id,
     return 0;
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
 
@@ -1209,14 +1209,14 @@ int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, con
     q.bindValue(QSL(":id"), new_id);
     q.exec();
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
 
     return new_id;
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
 
@@ -1292,12 +1292,12 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(QSqlDatabase db, bool *ok) {
       roots.append(root);
     }
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
@@ -1318,12 +1318,12 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool 
     qFatal("Query for obtaining categories failed. Error message: '%s'.",
            qPrintable(q.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
@@ -1351,12 +1351,12 @@ Assignment DatabaseQueries::getFeeds(QSqlDatabase db, int account_id, bool *ok) 
     qFatal("Query for obtaining feeds failed. Error message: '%s'.",
            qPrintable(q.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
 
-  if (ok != NULL) {
+  if (ok != nullptr) {
     *ok = true;
   }
 
@@ -1463,12 +1463,12 @@ Assignment DatabaseQueries::getTtRssCategories(QSqlDatabase db, int account_id, 
   if (!query_categories.exec()) {
     qFatal("Query for obtaining categories failed. Error message: '%s'.", qPrintable(query_categories.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }
@@ -1496,12 +1496,12 @@ Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool 
   if (!query_feeds.exec()) {
     qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query_feeds.lastError().text()));
 
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = false;
     }
   }
   else {
-    if (ok != NULL) {
+    if (ok != nullptr) {
       *ok = true;
     }
   }

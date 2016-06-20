@@ -30,7 +30,7 @@
 OwnCloudFeed::OwnCloudFeed(RootItem *parent) : Feed(parent) {
 }
 
-OwnCloudFeed::OwnCloudFeed(const QSqlRecord &record) : Feed(NULL) {
+OwnCloudFeed::OwnCloudFeed(const QSqlRecord &record) : Feed(nullptr) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
@@ -49,7 +49,7 @@ bool OwnCloudFeed::canBeEdited() const {
 bool OwnCloudFeed::editViaGui() {
   QPointer<FormOwnCloudFeedDetails> form_pointer = new FormOwnCloudFeedDetails(serviceRoot(), qApp->mainForm());
 
-  form_pointer.data()->exec(this, NULL);
+  form_pointer.data()->exec(this, nullptr);
   delete form_pointer.data();
   return false;
 }

@@ -168,7 +168,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
     updateCounts(true);
     items_to_update.append(this);
 
-    if (getParentServiceRoot()->recycleBin() != NULL && anything_updated) {
+    if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
       getParentServiceRoot()->recycleBin()->updateCounts(true);
       items_to_update.append(getParentServiceRoot()->recycleBin());
     }

@@ -70,7 +70,7 @@ void MessagesToolBar::loadChangeableActions(const QStringList& actions) {
   foreach (const QString &action_name, actions) {
     QAction *matching_action = findMatchingAction(action_name, available_actions);
 
-    if (matching_action != NULL) {
+    if (matching_action != nullptr) {
       // Add existing standard action.
       addAction(matching_action);
     }

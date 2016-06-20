@@ -40,7 +40,7 @@
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new TtRssRecycleBin(this)),
-    m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory()) {
+    m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory()) {
   setIcon(TtRssServiceEntryPoint().icon());
 }
 
@@ -124,7 +124,7 @@ void TtRssServiceRoot::addNewFeed(const QString &url) {
 
   QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainForm()));
 
-  form_pointer.data()->exec(NULL, this, url);
+  form_pointer.data()->exec(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();
 }
 
@@ -277,7 +277,7 @@ RootItem *TtRssServiceRoot::obtainNewTreeForSyncIn() const {
     return feed_cats_response.feedsCategories(true, m_network->url());
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

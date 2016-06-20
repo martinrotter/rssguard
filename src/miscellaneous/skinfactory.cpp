@@ -142,7 +142,7 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
   skin_file.close();
   skin_file.deleteLater();
 
-  if (ok != NULL) {
+  if (ok != nullptr) {
     *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
           !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty() &&
           !skin.m_layoutMarkup.isEmpty();

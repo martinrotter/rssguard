@@ -44,8 +44,8 @@
 
 StandardServiceRoot::StandardServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new RecycleBin(this)),
-    m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
-    m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
+    m_actionExportFeeds(nullptr), m_actionImportFeeds(nullptr), m_serviceMenu(QList<QAction*>()),
+    m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(nullptr) {
 
   setTitle(qApp->system()->getUsername() + QL1S("@") + QL1S(STRFY(APP_LOW_NAME)));
   setIcon(StandardServiceEntryPoint().icon());
@@ -142,7 +142,7 @@ void StandardServiceRoot::addNewFeed(const QString &url) {
   }
 
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this, qApp->mainForm()));
-  form_pointer.data()->exec(NULL, NULL, url);
+  form_pointer.data()->exec(nullptr, nullptr, url);
 
   qApp->feedUpdateLock()->unlock();
 }
@@ -224,7 +224,7 @@ void StandardServiceRoot::checkArgumentForFeedAdding(const QString &argument) {
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {
   if (m_feedContextMenu.isEmpty()) {
     // Initialize.
-    m_actionFeedFetchMetadata = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("Fetch metadata"), NULL);
+    m_actionFeedFetchMetadata = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("Fetch metadata"), nullptr);
     m_feedContextMenu.append(m_actionFeedFetchMetadata);
   }
 
@@ -273,14 +273,14 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
           // Add category failed, but this can mean that the same category (with same title)
           // already exists. If such a category exists in current parent, then find it and
           // add descendants to it.
-          RootItem *existing_category = NULL;
+          RootItem *existing_category = nullptr;
           foreach (RootItem *child, target_parent->childItems()) {
             if (child->kind() == RootItemKind::Category && child->title() == new_category_title) {
               existing_category = child;
             }
           }
 
-          if (existing_category != NULL) {
+          if (existing_category != nullptr) {
             original_parents.push(existing_category);
             new_parents.push(source_category);
           }
@@ -328,7 +328,7 @@ void StandardServiceRoot::addNewCategory() {
   }
 
   QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this, qApp->mainForm()));
-  form_pointer.data()->exec(NULL, NULL);
+  form_pointer.data()->exec(nullptr, nullptr);
 
   qApp->feedUpdateLock()->unlock();
 }

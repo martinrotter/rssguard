@@ -35,7 +35,7 @@ TrayIconMenu::~TrayIconMenu() {
 }
 
 bool TrayIconMenu::event(QEvent *event) {
-  if (event->type() == QEvent::Show && Application::activeModalWidget() != NULL) {
+  if (event->type() == QEvent::Show && Application::activeModalWidget() != nullptr) {
     QTimer::singleShot(0, this, SLOT(hide()));
     qApp->showGuiMessage(QSL(STRFY(APP_LONG_NAME)),
                          tr("Close opened modal dialogs first."),
@@ -51,8 +51,8 @@ SystemTrayIcon::SystemTrayIcon(const QString &normal_icon, const QString &plain_
     m_normalIcon(normal_icon),
     m_plainPixmap(plain_icon),
     m_font(QFont()),
-    m_bubbleClickTarget(NULL),
-    m_bubbleClickSlot(NULL) {
+    m_bubbleClickTarget(nullptr),
+    m_bubbleClickSlot(nullptr) {
   qDebug("Creating SystemTrayIcon instance.");
 
   m_font.setBold(true);
@@ -167,7 +167,7 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
 
 void SystemTrayIcon::showMessage(const QString &title, const QString &message, QSystemTrayIcon::MessageIcon icon,
                                  int milliseconds_timeout_hint, QObject *click_target, const char *click_slot) {
-  if (m_bubbleClickTarget != NULL && m_bubbleClickSlot != NULL) {
+  if (m_bubbleClickTarget != nullptr && m_bubbleClickSlot != nullptr) {
     // Disconnect previous bubble click signalling.
     disconnect(this, SIGNAL(messageClicked()), m_bubbleClickTarget, m_bubbleClickSlot);
   }
@@ -175,7 +175,7 @@ void SystemTrayIcon::showMessage(const QString &title, const QString &message, Q
   m_bubbleClickSlot = (char*) click_slot;
   m_bubbleClickTarget = click_target;
 
-  if (click_target != NULL && click_slot != NULL) {
+  if (click_target != nullptr && click_slot != nullptr) {
     // Establish new connection for bubble click.
     connect(this, SIGNAL(messageClicked()), click_target, click_slot);
   }

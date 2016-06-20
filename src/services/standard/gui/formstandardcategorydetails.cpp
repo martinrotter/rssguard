@@ -41,7 +41,7 @@
 
 
 FormStandardCategoryDetails::FormStandardCategoryDetails(StandardServiceRoot *service_root, QWidget *parent)
-  : QDialog(parent), m_editableCategory(NULL), m_serviceRoot(service_root)  {
+  : QDialog(parent), m_editableCategory(nullptr), m_serviceRoot(service_root)  {
   initialize();
   createConnections();
 
@@ -79,7 +79,7 @@ int FormStandardCategoryDetails::exec(StandardCategory *input_category, RootItem
   // Load categories.
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, input_category);
 
-  if (input_category == NULL) {
+  if (input_category == nullptr) {
     // User is adding new category.
     setWindowTitle(tr("Add new category"));
 
@@ -88,7 +88,7 @@ int FormStandardCategoryDetails::exec(StandardCategory *input_category, RootItem
     m_actionUseDefaultIcon->trigger();
 
     // Load parent from suggested item.
-    if (parent_to_select != NULL) {
+    if (parent_to_select != nullptr) {
       if (parent_to_select->kind() == RootItemKind::Category) {
         m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
       }
@@ -120,7 +120,7 @@ void FormStandardCategoryDetails::apply() {
   new_category->setDescription(m_ui->m_txtDescription->lineEdit()->text());
   new_category->setIcon(m_ui->m_btnIcon->icon());
 
-  if (m_editableCategory == NULL) {
+  if (m_editableCategory == nullptr) {
     // Add the category.
     if (new_category->addItself(parent)) {
       m_serviceRoot->requestItemReassignment(new_category, parent);
@@ -251,7 +251,7 @@ void FormStandardCategoryDetails::loadCategories(const QList<Category*> categori
                                      QVariant::fromValue((void*) root_item));
 
   foreach (Category *category, categories) {
-    if (input_category != NULL && (category == input_category || category->isChildOf(input_category))) {
+    if (input_category != nullptr && (category == input_category || category->isChildOf(input_category))) {
       // This category cannot be selected as the new
       // parent for currently edited category, so
       // don't add it.

@@ -20,8 +20,6 @@
 
 #include "gui/tabcontent.h"
 
-//#include "ui_webbrowser.h"
-
 #include "core/message.h"
 #include "network-web/webpage.h"
 #include "services/abstract/rootitem.h"
@@ -29,10 +27,6 @@
 #include <QPointer>
 #include <QToolBar>
 
-
-/*namespace Ui {
-  class MessagePreviewer;
-}*/
 
 class QToolButton;
 class QVBoxLayout;
@@ -98,8 +92,6 @@ class WebBrowser : public TabContent {
     QAction *m_actionForward;
     QAction *m_actionReload;
     QAction *m_actionStop;
-
-    //QScopedPointer<Ui::WebBrowser> m_ui;
 
     QList<Message> m_messages;
     QPointer<RootItem> m_root;

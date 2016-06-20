@@ -62,7 +62,7 @@ void EditTableView::removeSelected() {
 }
 
 void EditTableView::removeAll() {
-  if (model() != NULL) {
+  if (model() != nullptr) {
     model()->removeRows(0, model()->rowCount(rootIndex()), rootIndex());
   }
 }

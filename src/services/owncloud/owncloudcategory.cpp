@@ -26,7 +26,7 @@ OwnCloudCategory::OwnCloudCategory(RootItem *parent) : Category(parent) {
   setIcon(qApp->icons()->fromTheme(QSL("folder")));
 }
 
-OwnCloudCategory::OwnCloudCategory(const QSqlRecord &record) : Category(NULL) {
+OwnCloudCategory::OwnCloudCategory(const QSqlRecord &record) : Category(nullptr) {
   setIcon(qApp->icons()->fromTheme(QSL("folder")));
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
