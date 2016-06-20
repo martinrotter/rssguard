@@ -26,8 +26,7 @@
 WebViewer::WebViewer(QWidget *parent) : QWebEngineView(parent) {
   WebPage *page = new WebPage(this);
 
-  connect(page, &WebPage::messageStatusChangeRequested,
-          this, &WebViewer::messageStatusChangeRequested);
+  connect(page, &WebPage::messageStatusChangeRequested, this, &WebViewer::messageStatusChangeRequested);
   setPage(page);
 }
 

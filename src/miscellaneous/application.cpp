@@ -299,4 +299,5 @@ void Application::onAboutToQuit() {
 void Application::downloadRequested(QWebEngineDownloadItem *download_item) {
   downloadManager()->download(download_item->url());
   download_item->cancel();
+  download_item->deleteLater();
 }

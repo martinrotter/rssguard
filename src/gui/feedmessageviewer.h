@@ -47,7 +47,7 @@ class FeedMessageViewer : public TabContent {
 
     // WebBrowser getter from TabContent interface.
     inline WebBrowser *webBrowser() const {
-      return NULL;
+      return m_messagesBrowser;
     }
 
     // FeedsView getter.

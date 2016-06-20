@@ -265,7 +265,10 @@ HEADERS += src/core/feeddownloader.h \
            src/services/tt-rss/ttrssserviceroot.h \
            src/gui/webviewer.h \
            src/gui/webbrowser.h \
-           src/network-web/webpage.h
+           src/network-web/webpage.h \
+    src/gui/locationlineedit.h \
+    src/network-web/googlesuggest.h \
+    src/gui/discoverfeedsbutton.h
 
 SOURCES += src/core/feeddownloader.cpp \
            src/core/feedsmodel.cpp \
@@ -373,7 +376,10 @@ SOURCES += src/core/feeddownloader.cpp \
            src/services/tt-rss/ttrssserviceroot.cpp \
            src/gui/webviewer.cpp \
            src/gui/webbrowser.cpp \
-           src/network-web/webpage.cpp
+           src/network-web/webpage.cpp \
+    src/gui/locationlineedit.cpp \
+    src/network-web/googlesuggest.cpp \
+    src/gui/discoverfeedsbutton.cpp
 
 FORMS += \
          src/gui/toolbareditor.ui \

@@ -20,19 +20,30 @@
 
 #include "gui/tabcontent.h"
 
-#include "ui_webbrowser.h"
+//#include "ui_webbrowser.h"
 
 #include "core/message.h"
+#include "network-web/webpage.h"
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
+#include <QToolBar>
 
 
-namespace Ui {
+/*namespace Ui {
   class MessagePreviewer;
-}
+}*/
 
-class QToolBar;
+class QToolButton;
+class QVBoxLayout;
+class QHBoxLayout;
+class QProgressBar;
+class QMenu;
+class QLabel;
+class TabWidget;
+class WebViewer;
+class LocationLineEdit;
+class DiscoverFeedsButton;
 
 class WebBrowser : public TabContent {
     Q_OBJECT
@@ -41,14 +52,28 @@ class WebBrowser : public TabContent {
     explicit WebBrowser(QWidget *parent = 0);
     virtual ~WebBrowser();
 
+    WebBrowser *webBrowser() const {
+      return const_cast<WebBrowser*>(this);
+    }
+
     void reloadFontSettings();
 
   public slots:
     void clear();
+    void loadUrl(const QString &url);
+    void loadUrl(const QUrl &url);
     void loadMessages(const QList<Message> &messages, RootItem *root);
     void loadMessage(const Message &message, RootItem *root);
 
+    // Switches visibility of navigation bar.
+    inline void setNavigationBarVisible(bool visible) {
+      m_toolBar->setVisible(visible);
+    }
+
   private slots:
+    void updateUrl(const QUrl &url);
+    void onLoadingStarted();
+    void onLoadingFinished(bool success);
     void receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change);
 
   signals:
@@ -57,12 +82,25 @@ class WebBrowser : public TabContent {
     void requestMessageListReload(bool mark_current_as_read);
 
   private:
+    void initializeLayout();
     Message *findMessage(int id);
     void markMessageAsRead(int id, bool read);
     void switchMessageImportance(int id, bool checked);
     void createConnections();
 
-    QScopedPointer<Ui::WebBrowser> m_ui;
+    QVBoxLayout *m_layout;
+    QToolBar *m_toolBar;
+    WebViewer *m_webView;
+    LocationLineEdit *m_txtLocation;
+    DiscoverFeedsButton *m_btnDiscoverFeeds;
+
+    QAction *m_actionBack;
+    QAction *m_actionForward;
+    QAction *m_actionReload;
+    QAction *m_actionStop;
+
+    //QScopedPointer<Ui::WebBrowser> m_ui;
+
     QList<Message> m_messages;
     QPointer<RootItem> m_root;
 };

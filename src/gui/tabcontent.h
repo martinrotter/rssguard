@@ -21,6 +21,8 @@
 #include <QWidget>
 
 
+class WebBrowser;
+
 // Base class for all widgets which are placed inside tabs of TabWidget
 class TabContent : public QWidget {
     Q_OBJECT
@@ -40,6 +42,10 @@ class TabContent : public QWidget {
     inline virtual void setIndex(int index) {
       m_index = index;
     }
+
+    // Obtains instance contained in this TabContent or nullptr.
+    // This can be used for obtaining the menu from the instance and so on.
+    virtual WebBrowser *webBrowser() const = 0;
 
   protected:
     int m_index;

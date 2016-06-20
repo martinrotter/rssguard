@@ -18,9 +18,13 @@
 #include "gui/webbrowser.h"
 
 #include "miscellaneous/application.h"
-#include "network-web/webfactory.h"
 #include "miscellaneous/databasequeries.h"
+#include "network-web/networkfactory.h"
+#include "network-web/webfactory.h"
 #include "gui/messagebox.h"
+#include "gui/webviewer.h"
+#include "gui/discoverfeedsbutton.h"
+#include "gui/locationlineedit.h"
 #include "gui/dialogs/formmain.h"
 #include "services/abstract/serviceroot.h"
 
@@ -28,15 +32,59 @@
 #include <QToolBar>
 #include <QWebEngineSettings>
 #include <QToolTip>
+#include <QWidgetAction>
 
 
 void WebBrowser::createConnections() {
-  connect(m_ui->m_webMessage, &WebViewer::messageStatusChangeRequested, this, &WebBrowser::receiveMessageStatusChangeRequest);
+  connect(m_webView, &WebViewer::messageStatusChangeRequested, this, &WebBrowser::receiveMessageStatusChangeRequest);
+
+  connect(m_txtLocation,SIGNAL(submitted(QString)), this, SLOT(loadUrl(QString)));
+  connect(m_webView, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
+
+  // Connect this WebBrowser to global TabWidget.
+  //TabWidget *tab_widget = qApp->mainForm()->tabWidget();
+  //connect(m_webView, SIGNAL(newTabRequested()), tab_widget, SLOT(addEmptyBrowser()));
+  //connect(m_webView, SIGNAL(linkMiddleClicked(QUrl)), tab_widget, SLOT(addLinkedBrowser(QUrl)));
+
+  // Change location textbox status according to webpage status.
+  connect(m_webView, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));
+  //connect(m_webView, SIGNAL(loadProgress(int)), this, SLOT(onLoadingProgress(int)));
+  connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(onLoadingFinished(bool)));
+
+  // Forward title/icon changes.
+  //connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  //connect(m_webView, SIGNAL(iconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
+}
+
+void WebBrowser::updateUrl(const QUrl &url) {
+  QString url_string = url.toString();
+
+  m_txtLocation->setText(url_string);
+  //setNavigationBarVisible(url_string != INTERNAL_URL_EMPTY && url_string != INTERNAL_URL_NEWSPAPER);
+}
+
+void WebBrowser::loadUrl(const QUrl &url) {
+  if (url.isValid()) {
+    m_webView->load(url);
+  }
 }
 
 WebBrowser::WebBrowser(QWidget *parent) : TabContent(parent),
-  m_ui(new Ui::WebBrowser) {
-  m_ui->setupUi(this);
+  m_layout(new QVBoxLayout(this)),
+  m_toolBar(new QToolBar(tr("Navigation panel"), this)),
+  m_webView(new WebViewer(this)),
+  m_txtLocation(new LocationLineEdit(this)),
+  m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
+  m_actionBack(m_webView->pageAction(QWebEnginePage::Back)),
+  m_actionForward(m_webView->pageAction(QWebEnginePage::Forward)),
+  m_actionReload(m_webView->pageAction(QWebEnginePage::Reload)),
+  m_actionStop(m_webView->pageAction(QWebEnginePage::Stop)) {
+
+  // Initialize the components and layout.
+  initializeLayout();
+
+  setTabOrder(m_txtLocation, m_toolBar);
+  setTabOrder(m_toolBar, m_webView);
 
   createConnections();
   reloadFontSettings();
@@ -44,6 +92,8 @@ WebBrowser::WebBrowser(QWidget *parent) : TabContent(parent),
 }
 
 WebBrowser::~WebBrowser() {
+  // Delete members. Do not use scoped pointers here.
+  delete m_layout;
 }
 
 void WebBrowser::reloadFontSettings() {
@@ -56,8 +106,12 @@ void WebBrowser::reloadFontSettings() {
 }
 
 void WebBrowser::clear() {
-  m_ui->m_webMessage->clear();
+  m_webView->clear();
   hide();
+}
+
+void WebBrowser::loadUrl(const QString &url) {
+  return loadUrl(QUrl::fromUserInput(url));
 }
 
 void WebBrowser::loadMessages(const QList<Message> &messages, RootItem *root) {
@@ -78,7 +132,7 @@ void WebBrowser::loadMessages(const QList<Message> &messages, RootItem *root) {
   m_root = root;
 
   if (!m_root.isNull()) {
-    m_ui->m_webMessage->loadMessages(messages);
+    m_webView->loadMessages(messages);
     show();
   }
 }
@@ -107,6 +161,57 @@ void WebBrowser::receiveMessageStatusChangeRequest(int message_id, WebPage::Mess
 
     default:
       break;
+  }
+}
+
+void WebBrowser::initializeLayout() {
+  m_toolBar->setFloatable(false);
+  m_toolBar->setMovable(false);
+  m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
+
+  // Modify action texts.
+  m_actionBack->setText(tr("Back"));
+  m_actionBack->setToolTip(tr("Go back."));
+  m_actionForward->setText(tr("Forward"));
+  m_actionForward->setToolTip(tr("Go forward."));
+  m_actionReload->setText(tr("Reload"));
+  m_actionReload->setToolTip(tr("Reload current web page."));
+  m_actionStop->setText(tr("Stop"));
+  m_actionStop->setToolTip(tr("Stop web page loading."));
+
+  QWidgetAction *act_discover = new QWidgetAction(this);
+
+  act_discover->setDefaultWidget(m_btnDiscoverFeeds);
+
+  // Add needed actions into toolbar.
+  m_toolBar->addAction(m_actionBack);
+  m_toolBar->addAction(m_actionForward);
+  m_toolBar->addAction(m_actionReload);
+  m_toolBar->addAction(m_actionStop);
+  m_toolBar->addAction(act_discover);
+  m_toolBar->addWidget(m_txtLocation);
+
+  // Setup layout.
+  m_layout->addWidget(m_toolBar);
+  m_layout->addWidget(m_webView);
+  m_layout->setMargin(0);
+  m_layout->setSpacing(0);
+}
+
+void WebBrowser::onLoadingStarted() {
+  m_btnDiscoverFeeds->clearFeedAddresses();
+}
+
+void WebBrowser::onLoadingFinished(bool success) {
+  if (success) {
+    // Let's check if there are any feeds defined on the web and eventually
+    // display "Add feeds" button.
+    m_webView->page()->toHtml([this](const QString &result){
+      this->m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(), result));
+    });
+  }
+  else {
+    m_btnDiscoverFeeds->clearFeedAddresses();
   }
 }
 

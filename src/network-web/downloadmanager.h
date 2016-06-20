@@ -108,6 +108,10 @@ class DownloadManager : public TabContent {
     explicit DownloadManager(QWidget *parent = 0);
     virtual ~DownloadManager();
 
+    WebBrowser *webBrowser() const {
+      return nullptr;
+    }
+
     QNetworkAccessManager *networkManager() const;
 
     int totalDownloads() const;
