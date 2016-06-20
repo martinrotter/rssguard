@@ -49,7 +49,7 @@ class WebBrowser : public TabContent {
     void loadMessage(const Message &message, RootItem *root);
 
   private slots:
-    void receiveMessageStatusChangeRequest(int message_id, MessageBrowserPage::MessageStatusChange change);
+    void receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change);
 
   signals:
     void markMessageRead(int id, RootItem::ReadStatus read);

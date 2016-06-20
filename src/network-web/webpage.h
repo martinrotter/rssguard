@@ -15,15 +15,15 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MESSAGEBROWSERPAGE_H
-#define MESSAGEBROWSERPAGE_H
+#ifndef WEBPAGE_H
+#define WEBPAGE_H
 
 #include <QWebEnginePage>
 
 
 class WebViewer;
 
-class MessageBrowserPage : public QWebEnginePage {
+class WebPage : public QWebEnginePage {
     Q_OBJECT
 
   public:
@@ -34,8 +34,7 @@ class MessageBrowserPage : public QWebEnginePage {
       MarkUnstarred
     };
 
-    explicit MessageBrowserPage(QObject *parent = 0);
-
+    explicit WebPage(QObject *parent = 0);
 
     WebViewer *view() const;
 
@@ -44,7 +43,7 @@ class MessageBrowserPage : public QWebEnginePage {
     bool acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame);
 
   signals:
-    void messageStatusChangeRequested(int message_id, MessageBrowserPage::MessageStatusChange change);
+    void messageStatusChangeRequested(int message_id, WebPage::MessageStatusChange change);
 };
 
-#endif // MESSAGEBROWSERPAGE_H
+#endif // WEBPAGE_H

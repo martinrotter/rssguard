@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "network-web/messagebrowserpage.h"
+#include "network-web/webpage.h"
 
 #include "definitions/definitions.h"
 #include "gui/webviewer.h"
@@ -24,14 +24,14 @@
 #include <QString>
 
 
-MessageBrowserPage::MessageBrowserPage(QObject *parent) : QWebEnginePage(parent) {
+WebPage::WebPage(QObject *parent) : QWebEnginePage(parent) {
 }
 
-WebViewer *MessageBrowserPage::view() const {
+WebViewer *WebPage::view() const {
   return qobject_cast<WebViewer*>(QWebEnginePage::view());
 }
 
-void MessageBrowserPage::javaScriptAlert(const QUrl &securityOrigin, const QString &msg) {
+void WebPage::javaScriptAlert(const QUrl &securityOrigin, const QString &msg) {
   if (securityOrigin.isEmpty()) {
     QStringList parts = msg.split(QL1C('-'));
 
@@ -64,6 +64,6 @@ void MessageBrowserPage::javaScriptAlert(const QUrl &securityOrigin, const QStri
   }
 }
 
-bool MessageBrowserPage::acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame) {
+bool WebPage::acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame) {
   return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
 }

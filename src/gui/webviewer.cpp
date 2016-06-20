@@ -20,15 +20,19 @@
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/application.h"
 #include "definitions/definitions.h"
-#include "network-web/messagebrowserpage.h"
+#include "network-web/webpage.h"
 
 
 WebViewer::WebViewer(QWidget *parent) : QWebEngineView(parent) {
-  MessageBrowserPage *page = new MessageBrowserPage(this);
+  WebPage *page = new WebPage(this);
 
-  connect(page, &MessageBrowserPage::messageStatusChangeRequested,
+  connect(page, &WebPage::messageStatusChangeRequested,
           this, &WebViewer::messageStatusChangeRequested);
   setPage(page);
+}
+
+void WebViewer::displayMessage() {
+  setHtml(m_messageContents, QUrl(INTERNAL_URL_MESSAGE));
 }
 
 void WebViewer::loadMessages(const QList<Message> &messages) {
@@ -61,7 +65,7 @@ void WebViewer::loadMessages(const QList<Message> &messages) {
   bool previously_enabled = isEnabled();
 
   setEnabled(false);
-  setHtml(m_messageContents, QUrl(INTERNAL_URL_MESSAGE));
+  displayMessage();
   setEnabled(previously_enabled);
 }
 
@@ -71,8 +75,4 @@ void WebViewer::loadMessage(const Message &message) {
 
 void WebViewer::clear() {
   setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
-}
-
-void WebViewer::assignMessageContents() {
-  setHtml(m_messageContents, QUrl(INTERNAL_URL_MESSAGE));
 }

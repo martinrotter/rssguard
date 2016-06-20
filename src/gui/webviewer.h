@@ -21,7 +21,7 @@
 #include <QWebEngineView>
 
 #include "core/message.h"
-#include "network-web/messagebrowserpage.h"
+#include "network-web/webpage.h"
 
 
 class WebViewer : public QWebEngineView {
@@ -31,15 +31,13 @@ class WebViewer : public QWebEngineView {
     explicit WebViewer(QWidget* parent = 0);
 
   public slots:
+    void displayMessage();
     void loadMessages(const QList<Message> &messages);
     void loadMessage(const Message &message);
     void clear();
 
-  private:
-    void assignMessageContents();
-
   signals:
-    void messageStatusChangeRequested(int message_id, MessageBrowserPage::MessageStatusChange change);
+    void messageStatusChangeRequested(int message_id, WebPage::MessageStatusChange change);
 
   private:
     QString m_messageContents;

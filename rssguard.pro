@@ -263,9 +263,9 @@ HEADERS += src/core/feeddownloader.h \
            src/services/tt-rss/ttrssrecyclebin.h \
            src/services/tt-rss/ttrssserviceentrypoint.h \
            src/services/tt-rss/ttrssserviceroot.h \
-           src/network-web/messagebrowserpage.h \
-    src/gui/webviewer.h \
-    src/gui/webbrowser.h
+           src/gui/webviewer.h \
+           src/gui/webbrowser.h \
+           src/network-web/webpage.h
 
 SOURCES += src/core/feeddownloader.cpp \
            src/core/feedsmodel.cpp \
@@ -371,9 +371,9 @@ SOURCES += src/core/feeddownloader.cpp \
            src/services/tt-rss/ttrssrecyclebin.cpp \
            src/services/tt-rss/ttrssserviceentrypoint.cpp \
            src/services/tt-rss/ttrssserviceroot.cpp \
-           src/network-web/messagebrowserpage.cpp \
-    src/gui/webviewer.cpp \
-    src/gui/webbrowser.cpp
+           src/gui/webviewer.cpp \
+           src/gui/webbrowser.cpp \
+           src/network-web/webpage.cpp
 
 FORMS += \
          src/gui/toolbareditor.ui \
@@ -392,7 +392,7 @@ FORMS += \
          src/services/standard/gui/formstandardcategorydetails.ui \
          src/services/standard/gui/formstandardimportexport.ui \
          src/services/tt-rss/gui/formeditaccount.ui \
-    src/gui/webbrowser.ui
+         src/gui/webbrowser.ui
 
 TRANSLATIONS += localization/qtbase-cs_CZ.ts \
                 localization/qtbase-da_DK.ts \
@@ -417,20 +417,20 @@ TRANSLATIONS += localization/qtbase-cs_CZ.ts \
                 localization/rssguard-pt_BR.ts \
                 localization/rssguard-sv_SE.ts
 
-TRANSLATIONS_WO_QT += $$PWD/localization/rssguard-cs_CZ.ts \
-                      $$PWD/localization/rssguard-da_DK.ts \
-                      $$PWD/localization/rssguard-de_DE.ts \
-                      $$PWD/localization/rssguard-en_GB.ts \
-                      $$PWD/localization/rssguard-en_US.ts \
-                      $$PWD/localization/rssguard-fr_FR.ts \
-                      $$PWD/localization/rssguard-he_IL.ts \
-                      $$PWD/localization/rssguard-id_ID.ts \
-                      $$PWD/localization/rssguard-it_IT.ts \
-                      $$PWD/localization/rssguard-ja_JP.ts \
-                      $$PWD/localization/rssguard-lt_LT.ts \
-                      $$PWD/localization/rssguard-nl_NL.ts \
-                      $$PWD/localization/rssguard-pt_BR.ts \
-                      $$PWD/localization/rssguard-sv_SE.ts
+TRANSLATIONS_WO_QT += localization/rssguard-cs_CZ.ts \
+                      localization/rssguard-da_DK.ts \
+                      localization/rssguard-de_DE.ts \
+                      localization/rssguard-en_GB.ts \
+                      localization/rssguard-en_US.ts \
+                      localization/rssguard-fr_FR.ts \
+                      localization/rssguard-he_IL.ts \
+                      localization/rssguard-id_ID.ts \
+                      localization/rssguard-it_IT.ts \
+                      localization/rssguard-ja_JP.ts \
+                      localization/rssguard-lt_LT.ts \
+                      localization/rssguard-nl_NL.ts \
+                      localization/rssguard-pt_BR.ts \
+                      localization/rssguard-sv_SE.ts
 
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src \

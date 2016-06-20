@@ -93,7 +93,13 @@ bool MessagesModel::setMessageImportantById(int id, RootItem::Importance importa
     int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
 
     if (found_id == id) {
-      return setData(index(i, MSG_DB_IMPORTANT_INDEX), important);
+      bool set = setData(index(i, MSG_DB_IMPORTANT_INDEX), important);
+
+      if (set) {
+        emit dataChanged(index(i, 0), index(i, MSG_DB_CUSTOM_HASH_INDEX));
+      }
+
+      return set;
     }
   }
 
@@ -280,7 +286,13 @@ bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
     int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
 
     if (found_id == id) {
-      return setData(index(i, MSG_DB_READ_INDEX), read);
+      bool set = setData(index(i, MSG_DB_READ_INDEX), read);
+
+      if (set) {
+        emit dataChanged(index(i, 0), index(i, MSG_DB_CUSTOM_HASH_INDEX));
+      }
+
+      return set;
     }
   }
 

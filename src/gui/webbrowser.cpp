@@ -87,21 +87,21 @@ void WebBrowser::loadMessage(const Message &message, RootItem *root) {
   loadMessages(QList<Message>() << message, root);
 }
 
-void WebBrowser::receiveMessageStatusChangeRequest(int message_id, MessageBrowserPage::MessageStatusChange change) {
+void WebBrowser::receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change) {
   switch (change) {
-    case MessageBrowserPage::MarkRead:
+    case WebPage::MarkRead:
       markMessageAsRead(message_id, true);
       break;
 
-    case MessageBrowserPage::MarkUnread:
+    case WebPage::MarkUnread:
       markMessageAsRead(message_id, false);
       break;
 
-    case MessageBrowserPage::MarkStarred:
+    case WebPage::MarkStarred:
       switchMessageImportance(message_id, true);
       break;
 
-    case MessageBrowserPage::MarkUnstarred:
+    case WebPage::MarkUnstarred:
       switchMessageImportance(message_id, false);
       break;
 
