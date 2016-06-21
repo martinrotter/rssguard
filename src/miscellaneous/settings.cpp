@@ -95,7 +95,7 @@ DKEY GUI::MainWindowStartsMaximized             = "window_is_maximized";
 DVALUE(bool) GUI::MainWindowStartsMaximizedDef  = false;
 
 DKEY GUI::MainMenuVisible                 = "main_menu_visible";
-DVALUE(bool) GUI::MainMenuVisibleDef      = true;
+DVALUE(bool) GUI::MainMenuVisibleDef      = false;
 
 DKEY GUI::ToolbarsVisible                 = "enable_toolbars";
 DVALUE(bool) GUI::ToolbarsVisibleDef      = true;
@@ -125,7 +125,7 @@ DKEY GUI::TabNewDoubleClick                    = "tab_new_double_button";
 DVALUE(bool) GUI::TabNewDoubleClickDef         = true;
 
 DKEY GUI::HideTabBarIfOnlyOneTab               = "hide_tabbar_one_tab";
-DVALUE(bool) GUI::HideTabBarIfOnlyOneTabDef    = true;
+DVALUE(bool) GUI::HideTabBarIfOnlyOneTabDef    = false;
 
 DKEY GUI::MessagesToolbarDefaultButtons             = "messages_toolbar";
 DVALUE(char*) GUI::MessagesToolbarDefaultButtonsDef = "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,spacer,search";

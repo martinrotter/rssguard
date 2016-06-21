@@ -58,9 +58,11 @@ void TabWidget::openMainMenu() {
     m_menuMain = new QMenu(tr("Main menu"), this);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFile);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuView);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuAccounts);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFeeds);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuMessages);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuTools);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuWebBrowserTabs);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuHelp);
   }
 
@@ -175,32 +177,21 @@ bool TabWidget::closeCurrentTab() {
 void TabWidget::closeAllTabsExceptCurrent() {
   // Close tabs after active tab.
   int index_of_active = currentIndex();
-  int total_count = count();
-  int iterative_index = 0;
 
-  while (total_count-- > 0) {
-    if (iterative_index < index_of_active) {
-      // Deleting tab on the left from the active one.
-      if (closeTab(iterative_index)) {
-        // We successfully deleted that LEFT tab.
+  for (int i = count() - 1; i >= 0; i--) {
+    if (i != index_of_active) {
+      if (i < index_of_active) {
         index_of_active--;
       }
-      else {
-        // We reached "non-closable" tab, go forward.
-        iterative_index++;
-      }
+
+      closeTab(i);
     }
-    else if (iterative_index > index_of_active) {
-      // Deleting tab on the right from the active one.
-      if (!closeTab(iterative_index)) {
-        // We reached "non-closable" tab, go forward.
-        iterative_index++;
-      }
-    }
-    else {
-      // We iterate through active tab now, no deleting;
-      iterative_index++;
-    }
+  }
+}
+
+void TabWidget::closeAllTabs() {
+  for (int i = count() - 1; i >= 0; i--) {
+    closeTab(i);
   }
 }
 

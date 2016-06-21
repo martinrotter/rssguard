@@ -8,7 +8,8 @@ Added:
 
 Changed:
 ▪ Minimal Qt version bumped to 5.7.0 - this will lead to some betere features in the future.
-▪ Updated miscellaneous libraries - MariadDB, openSSL.
+▪ Updated miscellaneous libraries - MariadDB, openSSL (Windows only).
+▪ Main menu is by default hidden, tab bar is now always visible. Main menu is now accessible via left/top corner iconified button. Users can of course tweak settings in Tools -> Options -> User interface.
 
 Removed:
 ▪ All skins except default are removed because it is difficult for me to maintain all of them. Any user can pickup removed skin from repository, tweak it (it is easy) and send it to me and I will include it with next version of RSS Guard.

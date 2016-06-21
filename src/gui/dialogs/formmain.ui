@@ -160,12 +160,21 @@
     <addaction name="m_actionServiceEdit"/>
     <addaction name="m_actionServiceDelete"/>
    </widget>
+   <widget class="QMenu" name="m_menuWebBrowserTabs">
+    <property name="title">
+     <string>Web browser &amp;&amp; tabs</string>
+    </property>
+    <addaction name="m_actionTabNewWebBrowser"/>
+    <addaction name="m_actionTabsCloseAll"/>
+    <addaction name="m_actionTabsCloseAllExceptCurrent"/>
+   </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
    <addaction name="m_menuAccounts"/>
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
    <addaction name="m_menuRecycleBin"/>
+   <addaction name="m_menuWebBrowserTabs"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>
@@ -695,6 +704,21 @@
    </property>
    <property name="shortcut">
     <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionTabNewWebBrowser">
+   <property name="text">
+    <string>New tab</string>
+   </property>
+  </action>
+  <action name="m_actionTabsCloseAll">
+   <property name="text">
+    <string>Close all tabs</string>
+   </property>
+  </action>
+  <action name="m_actionTabsCloseAllExceptCurrent">
+   <property name="text">
+    <string>Close all tabs except current</string>
    </property>
   </action>
  </widget>

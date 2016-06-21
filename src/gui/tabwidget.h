@@ -103,14 +103,16 @@ class TabWidget : public QTabWidget {
     bool closeTab(int index);
     bool closeCurrentTab();
 
+    // Closes all "closable" tabs except the active tab.
+    void closeAllTabsExceptCurrent();
+
+    void closeAllTabs();
+
     // Opens main menu.
     void openMainMenu();
 
     // Displays download manager.
     void showDownloadManager();
-
-    // Closes all "closable" tabs except the active tab.
-    void closeAllTabsExceptCurrent();
 
     int addNewspaperView(RootItem *root, const QList<Message> &messages);
 
