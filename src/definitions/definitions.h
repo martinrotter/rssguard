@@ -77,6 +77,11 @@
 #define ENCRYPTION_FILE_NAME                  "key.private"
 #define RELOAD_MODEL_BORDER_NUM               10
 
+#define MAX_ZOOM_FACTOR     5.0f
+#define MIN_ZOOM_FACTOR     0.25f
+#define DEFAULT_ZOOM_FACTOR 1.0f
+#define ZOOM_FACTOR_STEP    0.1f
+
 #define INTERNAL_URL_MESSAGE                  "rssguard.message"
 #define INTERNAL_URL_BLANK                    "rssguard.blank"
 #define INTERNAL_URL_MESSAGE_HOST             "message"

@@ -30,11 +30,22 @@ class WebViewer : public QWebEngineView {
   public:
     explicit WebViewer(QWidget* parent = 0);
 
+    bool canIncreaseZoom();
+    bool canDecreaseZoom();
+
   public slots:
+    // Page zoom modifiers.
+    bool increaseWebPageZoom();
+    bool decreaseWebPageZoom();
+    bool resetWebPageZoom();
+
     void displayMessage();
     void loadMessages(const QList<Message> &messages);
     void loadMessage(const Message &message);
     void clear();
+
+  protected:
+    void wheelEvent(QWheelEvent *event);
 
   signals:
     void messageStatusChangeRequested(int message_id, WebPage::MessageStatusChange change);

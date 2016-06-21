@@ -104,6 +104,18 @@ void WebBrowser::reloadFontSettings() {
   QWebEngineSettings::globalSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
 }
 
+void WebBrowser::increaseZoom() {
+  m_webView->increaseWebPageZoom();
+}
+
+void WebBrowser::decreaseZoom() {
+  m_webView->decreaseWebPageZoom();
+}
+
+void WebBrowser::resetZoom() {
+  m_webView->resetWebPageZoom();
+}
+
 void WebBrowser::clear() {
   m_webView->clear();
   hide();

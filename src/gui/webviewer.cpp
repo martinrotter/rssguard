@@ -22,6 +22,8 @@
 #include "definitions/definitions.h"
 #include "network-web/webpage.h"
 
+#include <QWheelEvent>
+
 
 WebViewer::WebViewer(QWidget *parent) : QWebEngineView(parent) {
   WebPage *page = new WebPage(this);
@@ -30,8 +32,48 @@ WebViewer::WebViewer(QWidget *parent) : QWebEngineView(parent) {
   setPage(page);
 }
 
+bool WebViewer::canIncreaseZoom() {
+  return zoomFactor() <= MAX_ZOOM_FACTOR - ZOOM_FACTOR_STEP;
+}
+
+bool WebViewer::canDecreaseZoom() {
+  return zoomFactor() >= MIN_ZOOM_FACTOR + ZOOM_FACTOR_STEP;
+}
+
 void WebViewer::displayMessage() {
   setHtml(m_messageContents, QUrl(INTERNAL_URL_MESSAGE));
+}
+
+bool WebViewer::increaseWebPageZoom() {
+  if (canIncreaseZoom()) {
+    setZoomFactor(zoomFactor() + ZOOM_FACTOR_STEP);
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool WebViewer::decreaseWebPageZoom() {
+  if (canDecreaseZoom()) {
+    setZoomFactor(zoomFactor() - ZOOM_FACTOR_STEP);
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool WebViewer::resetWebPageZoom() {
+  const qreal new_factor = 1.0;
+
+  if (new_factor != zoomFactor()) {
+    setZoomFactor(new_factor);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 void WebViewer::loadMessages(const QList<Message> &messages) {
@@ -74,4 +116,17 @@ void WebViewer::loadMessage(const Message &message) {
 
 void WebViewer::clear() {
   setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
+}
+
+void WebViewer::wheelEvent(QWheelEvent *event) {
+  QWebEngineView::wheelEvent(event);
+
+  if ((event->modifiers() & Qt::ControlModifier) > 0) {
+    if (event->delta() > 0) {
+      increaseWebPageZoom();
+    }
+    else if (event->delta() < 0) {
+      decreaseWebPageZoom();
+    }
+  }
 }

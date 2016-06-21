@@ -53,6 +53,10 @@ class WebBrowser : public TabContent {
     void reloadFontSettings();
 
   public slots:
+    void increaseZoom();
+    void decreaseZoom();
+    void resetZoom();
+
     void clear();
     void loadUrl(const QString &url);
     void loadUrl(const QUrl &url);

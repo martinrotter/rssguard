@@ -708,7 +708,7 @@
   </action>
   <action name="m_actionTabNewWebBrowser">
    <property name="text">
-    <string>New tab</string>
+    <string>New web browser tab</string>
    </property>
   </action>
   <action name="m_actionTabsCloseAll">
