@@ -99,13 +99,9 @@ class TabWidget : public QTabWidget {
     void changeTitle(int index, const QString &new_title);
     void changeIcon(int index, const QIcon &new_icon);
 
-    // Closes tab with given index and deletes contained widget.
+    // Tab closing.
     bool closeTab(int index);
-    bool closeCurrentTab();
-
-    // Closes all "closable" tabs except the active tab.
     void closeAllTabsExceptCurrent();
-
     void closeAllTabs();
 
     // Opens main menu.

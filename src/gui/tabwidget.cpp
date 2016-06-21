@@ -170,10 +170,6 @@ bool TabWidget::closeTab(int index) {
   }
 }
 
-bool TabWidget::closeCurrentTab() {
-  return closeTab(currentIndex());
-}
-
 void TabWidget::closeAllTabsExceptCurrent() {
   // Close tabs after active tab.
   int index_of_active = currentIndex();
