@@ -122,6 +122,8 @@ void WebViewer::clear() {
 }
 
 QWebEngineView *WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
+  Q_UNUSED(type)
+
   return qApp->mainForm()->tabWidget()->widget(qApp->mainForm()->tabWidget()->addBrowser(false, false))->webBrowser()->viewer();
 }
 
