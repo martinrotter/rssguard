@@ -45,6 +45,7 @@ class WebViewer : public QWebEngineView {
     void clear();
 
   protected:
+    QWebEngineView *createWindow(QWebEnginePage::WebWindowType type);
     void wheelEvent(QWheelEvent *event);
 
   signals:

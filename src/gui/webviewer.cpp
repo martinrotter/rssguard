@@ -21,6 +21,9 @@
 #include "miscellaneous/application.h"
 #include "definitions/definitions.h"
 #include "network-web/webpage.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/tabwidget.h"
+#include "gui/webbrowser.h"
 
 #include <QWheelEvent>
 
@@ -116,6 +119,10 @@ void WebViewer::loadMessage(const Message &message) {
 
 void WebViewer::clear() {
   setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
+}
+
+QWebEngineView *WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
+  return qApp->mainForm()->tabWidget()->widget(qApp->mainForm()->tabWidget()->addBrowser(false, false))->webBrowser()->viewer();
 }
 
 void WebViewer::wheelEvent(QWheelEvent *event) {

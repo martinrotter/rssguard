@@ -206,7 +206,7 @@ int TabWidget::addEmptyBrowser() {
 }
 
 int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
-  return addBrowser(true, false, initial_url);
+  return addBrowser(false, false, initial_url);
 }
 
 int TabWidget::addLinkedBrowser(const QString &initial_url) {

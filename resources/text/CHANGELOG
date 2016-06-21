@@ -5,6 +5,8 @@ Added:
 ▪ Internal message viewer is now based on QtWebEngine module which is based on Chromium project. This speeds up viewing of messages and supports newest HTML 5 or CSS 3 features. Note that this does not mean that fully featured internal web browser will come back. It will not! Only SIMPLIFIED internal web browser is now added. New message viewer is also better for viewing messages in newspaper mode.
 ▪ Default skin now uses Bootrstrap-powered look.
 ▪ Feed updates are now parallelized up to infinite number of threads. This speeds up speed of concurrent feed updates rapidly (more than 5 times). I was able to update about 160 feeds in 35 seconds. Note that this feature is still in experimental state.
+▪ Middle mouse button click on any message in message list opens message in internal web browser, double click in external web browser.
+▪ Any middle mouse button click on hyperlink opens it in new internal web browser tab.
 
 Changed:
 ▪ Minimal Qt version bumped to 5.7.0 - this will lead to some betere features in the future.

@@ -50,6 +50,10 @@ class WebBrowser : public TabContent {
       return const_cast<WebBrowser*>(this);
     }
 
+    WebViewer *viewer() const {
+      return m_webView;
+    }
+
     void reloadFontSettings();
 
   public slots:

@@ -710,6 +710,9 @@
    <property name="text">
     <string>New web browser tab</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+T</string>
+   </property>
   </action>
   <action name="m_actionTabsCloseAll">
    <property name="text">

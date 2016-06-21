@@ -137,6 +137,9 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSelectPreviousMessage;
   actions << m_ui->m_actionSelectNextUnreadMessage;
   actions << m_ui->m_actionExpandCollapseItem;
+  actions << m_ui->m_actionTabNewWebBrowser;
+  actions << m_ui->m_actionTabsCloseAll;
+  actions << m_ui->m_actionTabsCloseAllExceptCurrent;
 
   return actions;
 }
