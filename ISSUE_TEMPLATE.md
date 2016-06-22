@@ -16,6 +16,6 @@
 
 *Write what in fact happened...*
 
-#### Other information
+#### Other information (logs, see Wiki)
 
 *Write any other supplementary information here...*
