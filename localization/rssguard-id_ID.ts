@@ -125,12 +125,13 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Situs web ini tidak mengandung feed satupun.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>Klik saya to untuk menambah feed dari situs web ini.
+Situs web ini mengandung %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -138,7 +139,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Akun yang diberikan tidak mendukung penambahan feed.</translation>
     </message>
 </context>
 <context>
@@ -1597,23 +1598,23 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Peramban web &amp;&amp; tabs</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Laporkan &amp;bug...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Tab peramban web baru</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>Tutup semua tab</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Tutup semua tab kecuali ini</translation>
     </message>
 </context>
 <context>
@@ -2660,7 +2661,7 @@ yang ter-install sekarang.</translation>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
         <translation>Berkas instalasi tidak tersedia secara langsung.
-Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
+Pergi ke situs web aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>No new update available.</source>
@@ -2672,7 +2673,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Tidak dapat mengarahkan ke berkas instalasi. Periksa unduhan instalasi baru secara manual pada website proyek.</translation>
+        <translation>Tidak dapat mengarahkan ke berkas instalasi. Periksa unduhan instalasi baru secara manual pada situs web proyek.</translation>
     </message>
     <message>
         <source>Download update</source>
@@ -2700,7 +2701,7 @@ Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation>Pergi ke website aplikasi</translation>
+        <translation>Pergi ke situs web aplikasi</translation>
     </message>
     <message>
         <source>This is new version which can be
@@ -2742,7 +2743,7 @@ Anda harus instal secara manual.</translation>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>Alamat situs web menuju kesini</translation>
     </message>
 </context>
 <context>
@@ -3359,7 +3360,7 @@ Berita belum terbaca:%2</translation>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Peramban web</translation>
     </message>
 </context>
 <context>
@@ -3493,44 +3494,44 @@ Login terakhir pada: %5</translation>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Papan navigasi</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Tanpa judul</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Kembali</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>Kembali.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>Maju</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>Maju.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>Muat ulang</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Muat ulang halaman web ini.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Hentikan</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Hentikan pemuatan halaman web.</translation>
     </message>
 </context>
 <context>

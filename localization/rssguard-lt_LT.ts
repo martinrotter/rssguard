@@ -312,7 +312,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Šaknis</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
@@ -941,7 +941,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Tinklo klaida, ar jūs įrašėte teisingą ownCloud galutinį tašką ir slaptažodį?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1488,7 +1488,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"/>
+        <translation>Žymi visas žinutes visuose elementuose kaip skaitytas. Tai neatsižvelgia į žinučių filtrus.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
@@ -1596,11 +1596,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Nėra galimų veiksmų</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Saityno naršyklė ir kortelės</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
@@ -2842,7 +2842,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių įkėlimas iš &quot;%1&quot; elemento nepavyko.</translation>
     </message>
     <message>
         <source>Account ID</source>
@@ -2965,7 +2965,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>įgaliotasis serveris atmetė ryšį</translation>
     </message>
     <message>
         <source>temporary failure</source>
@@ -3109,7 +3109,7 @@ At least API level %1 is required.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n ištrinta žinutė.</numerusform><numerusform>%n ištrintos žinutės.</numerusform><numerusform>%n ištrintų žinučių.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3156,12 +3156,13 @@ At least API level %1 is required.</source>
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1 (kategorija)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation type="unfinished"/>
+        <translation>
+Šioje kategorijoje nėra jokių įdėtinių elementų.</translation>
     </message>
 </context>
 <context>
@@ -3420,7 +3421,7 @@ Neskaitytų naujienų: %2</translation>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation>Iš pradžių, užverkite atvertus modalinius dialogus.</translation>
     </message>
 </context>
 <context>
