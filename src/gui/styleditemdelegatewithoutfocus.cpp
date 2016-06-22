@@ -26,7 +26,7 @@ StyledItemDelegateWithoutFocus::~StyledItemDelegateWithoutFocus() {
 
 void StyledItemDelegateWithoutFocus::paint(QPainter *painter, const QStyleOptionViewItem &option,
                                            const QModelIndex &index) const {
-  QStyleOptionViewItemV4 itemOption(option);
+  QStyleOptionViewItem itemOption(option);
 
   if (itemOption.state & QStyle::State_HasFocus) {
     itemOption.state = itemOption.state ^ QStyle::State_HasFocus;
