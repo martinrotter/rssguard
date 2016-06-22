@@ -33,15 +33,7 @@ Localization::~Localization() {
 }
 
 QString Localization::desiredLanguage() const {
-  QString from_settings = qApp->settings()->value(GROUP(General), SETTING(General::Language)).toString();
-
-  foreach (Language lang, installedLanguages()) {
-    if (lang.m_code == from_settings) {
-      return from_settings;
-    }
-  }
-
-  return DEFAULT_LOCALE;
+  return qApp->settings()->value(GROUP(General), SETTING(General::Language)).toString();
 }
 
 void Localization::loadActiveLanguage() {
@@ -52,6 +44,7 @@ void Localization::loadActiveLanguage() {
   if (app_translator->load(QLocale(desired_localization), "rssguard", QSL("-"), APP_LANG_PATH)) {
     Application::installTranslator(app_translator);
     qDebug("Application localization '%s' loaded successfully.", qPrintable(desired_localization));
+    desired_localization = app_translator->translate("QObject", "LANG_ABBREV");
   }
   else {
     qWarning("Application localization '%s' was not loaded.", qPrintable(desired_localization));
