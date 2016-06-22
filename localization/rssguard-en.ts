@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="he_IL" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="en" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -98,7 +98,7 @@
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>שגיאה לא מוכרת.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
@@ -299,16 +299,16 @@ Click here to open parent directory.</source>
     <message>
         <source>Title</source>
         <extracomment>Title text in the feed list header.</extracomment>
-        <translation>כותרת</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation>כותרות של ערוצים/קטגוריות.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
-        <translation>שורש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
@@ -436,19 +436,19 @@ or this functionality is not implemented yet.</source>
     <name>FormAbout</name>
     <message>
         <source>Information</source>
-        <translation>מידע</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Licenses</source>
-        <translation>רשיונות</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>רשיון GNU GPL (חל על קוד מקור RSS Guard)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>רשיון GNU GPL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
@@ -468,7 +468,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>License not found.</source>
-        <translation>רשיון לא נמצא.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Changelog not found.</source>
@@ -477,15 +477,15 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
-        <translation>אודות %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings type</source>
-        <translation>טיפוס הגדרות</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings file</source>
-        <translation>קובץ הגדרות</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Database root path</source>
@@ -532,11 +532,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation>מחבר</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Description</source>
-        <translation>תיאור</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This account can be added only once.</source>
@@ -559,11 +559,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database</source>
-        <translation>מסד נתונים</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings</source>
-        <translation>הגדרות</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Backup name</source>
@@ -705,11 +705,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>סיסמה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
@@ -880,11 +880,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>סיסמה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
@@ -995,7 +995,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Type</source>
-        <translation>טיפוס</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
@@ -1019,11 +1019,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation>כותרת</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Description</source>
-        <translation>תיאור</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL</source>
@@ -1035,7 +1035,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon</source>
-        <translation>סמל</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select icon for your feed.</source>
@@ -1051,11 +1051,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>סיסמה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -1127,7 +1127,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>ביטול</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Look in:</source>
@@ -1160,7 +1160,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation>שגיאה: %1.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -1184,7 +1184,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed title</source>
-        <translation>כותרת ערוץ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set title for your feed.</source>
@@ -1255,27 +1255,27 @@ or this functionality is not implemented yet.</source>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;קובץ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;עזרה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>&amp;תצוגה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;כלים</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>י&amp;ציאה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>&amp;הגדרות</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Messages</source>
@@ -1319,7 +1319,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>&amp;אודות יישום</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
@@ -1403,7 +1403,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;תרמו דרך PayPal</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -1689,11 +1689,11 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>General</source>
         <extracomment>General settings section.</extracomment>
-        <translation>כללי</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>User interface</source>
-        <translation>ממשק משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon theme</source>
@@ -1701,7 +1701,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Settings</source>
-        <translation>הגדרות</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
@@ -1710,7 +1710,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Language</source>
         <extracomment>Language settings section.</extracomment>
-        <translation>שפה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Proxy</source>
@@ -1731,11 +1731,11 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation>טיפוס</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Host</source>
-        <translation>מארח</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
@@ -1743,11 +1743,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Port</source>
-        <translation>פורט</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
@@ -1755,7 +1755,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password</source>
-        <translation>סיסמה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
@@ -1775,7 +1775,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation>מחבר</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Socks5</source>
@@ -1795,7 +1795,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>כרטיסיות</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close tabs with</source>
@@ -1951,7 +1951,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hostname</source>
-        <translation>שם מארח</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Test setup</source>
@@ -2298,15 +2298,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Title</source>
-        <translation>כותרת</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Description</source>
-        <translation>תיאור</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon</source>
-        <translation>סמל</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select icon for your category.</source>
@@ -2366,7 +2366,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>ביטול</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Look in:</source>
@@ -2437,7 +2437,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation>&amp;בחר קובץ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Check all items</source>
@@ -2671,7 +2671,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Error occured</source>
-        <translation>אירעה שגיאה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
@@ -2742,11 +2742,11 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Feed</source>
-        <translation>ערוץ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title</source>
-        <translation>כותרת</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Url</source>
@@ -2754,7 +2754,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation>מחבר</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Created on</source>
@@ -2762,7 +2762,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Contents</source>
-        <translation>תכנים</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Id of the message.</source>
@@ -2916,7 +2916,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>תצוגת עיתון</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2924,7 +2924,7 @@ You must install it manually.</source>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation>שגיאת פרוטוקול</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>host not found</source>
@@ -3020,26 +3020,26 @@ You must install it manually.</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>he_IL</translation>
+        <translation>en_US</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation type="unfinished"/>
+        <translation>1.33.7</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>מרטין רוטר</translation>
+        <translation>Martin Rotter</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
+        <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Hebrew (Israel)</translation>
+        <translation>English (USA)</translation>
     </message>
     <message numerus="yes">
         <source>
@@ -3297,7 +3297,7 @@ Unread news: %2</source>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation>ערוצים</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
@@ -3309,7 +3309,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Main menu</source>
-        <translation>תפריט ראשי</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Downloads</source>
@@ -3317,7 +3317,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>תצוגת עיתון</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Web browser</source>
@@ -3360,7 +3360,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Separator</source>
-        <translation>חוצץ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3453,7 +3453,7 @@ Last login on: %5</source>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>אין כותרת</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Back</source>
@@ -3461,7 +3461,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Go back.</source>
-        <translation>חזור.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Forward</source>
@@ -3469,7 +3469,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation>המשך.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Reload</source>
@@ -3496,15 +3496,15 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Written by </source>
-        <translation>נכתב על ידי</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>uknown author</source>
-        <translation>מחבר לא ידוע</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>תצוגת עיתון</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

@@ -1,9 +1,9 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="id_ID" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation>(kategori)</translation>
+        <translation>(Categorie)</translation>
     </message>
     <message>
         <source> (feed)</source>
@@ -14,239 +14,240 @@
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>Aplikasi sedang berjalan.</translation>
+        <translation>RSSguard is al gestart.</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Direktori keluaran tak dapat ditulisi.</translation>
+        <translation>Uitvoermap is niet beschrijfbaar.</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation>Berkas pengaturan tidak berhasil disalin ke direktori keluaran.</translation>
+        <translation>Instellingen van bestand niet succesvol gekopieerd naar uitvoermap.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation>Berkas database tidak berhasil disalin ke direktori keluaran.</translation>
+        <translation>Databasebestand niet succesvol gekopieerd naar uitvoermap.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Pemulihan database tidak dapat dimulai. Pastikan direktori keluaran dapat ditulisi.</translation>
+        <translation>Database herstel werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Pemulihan pengaturan tidak dapat dimulai. Pastikan direktori keluaran dapat ditulisi.</translation>
+        <translation>Herstel van de instellingen werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Tidak dapat menambah feed</translation>
+        <translation>Kan geen feed toevoegen</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Feed tidak dapat ditambahkan karena akun standar RSS/ATOM tidak dinyalakan.</translation>
+        <translation>Feed kan niet worden toegevoegd omdat standaard RSS / Atom account niet is ingeschakeld.</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation>Susutkan berkas database...</translation>
+        <translation>Krimpende databasebestand...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation>Berkas database disusutkan...</translation>
+        <translation>Databasebestand krimpt...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation>Hapus pesan terbaca...</translation>
+        <translation>Verwijder gelezen berichten...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation>Pesan terbaca dibersihkan...</translation>
+        <translation>
+Gelezen berichten gewist...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation>Tong sampah dibersihkan...</translation>
+        <translation>Prullenbak gewist...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation>Hapus pesan lama...</translation>
+        <translation>Verwijder oude berichten...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation>Bersihkan tong sampah...</translation>
+        <translation>Wis prullenbak...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation>Pesan lama dibersihkan...</translation>
+        <translation>Oude berichten gewist...</translation>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation>Server MySQL bekerja sesuai yang diharapkan.</translation>
+        <translation>MySQL server werkt als verwacht.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation>Tidak ada server MySQL yang sedang berjalan di target tujuan.</translation>
+        <translation>Geen MySQL server draait er in de doelbestemming.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation>Akses ditolak. Username atau password yang digunakan tidak benar.</translation>
+        <translation>Toegang geweigerd. Ongeldig gebruikersnaam of paswoord gebruikt.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>Eror tak dikenal.</translation>
+        <translation>Onbekende fout.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (database terdedikasi)</translation>
+        <translation>MySQL/MariaDB (specifieke database)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation>SQLite (database tertanam)</translation>
+        <translation>SQLite (ingesloten database)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Database yang dipilih tidak tersedia. Ini akan dibuat. Itu baik-baik saja.</translation>
+        <translation>Geselekteerde database bestaat (nog) niet. Het wordt aangemaakt. Dat is normaal.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation>Database MySQL tidak tersedia</translation>
+        <translation>MySQL database is niet beschikbaar</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 tidak dapat menggunakan penyimpanan MySQL, itu tidak tersedia. %1 serakang berganti ke database SQLite. Jalankan MySQL anda dan buat penyesuaian di pengaturan aplikasi.</translation>
+        <translation>%1 kan geen gebruik maken van MySQL opslag, het is niet beschikbaar. %1 switch nu over naar de SQLite database. Start je MySQL server en maak aanpassingen in de programma-instellingen.</translation>
     </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Deze website bevat geen feeds.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Tidak didukung</translation>
+        <translation>Niet ondersteund</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Dit account ondersteunt geen toevoeging van feeds.</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation>Ico</translation>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation>Nama file</translation>
+        <translation>Bestandsnaam</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation>Eror membuka berkas keluaran: %1</translation>
+        <translation>Fout bij het openen van uitvoerbestand: %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>&amp;Coba lagi</translation>
+        <translation>&amp;Probeer opnieuw</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>Ber&amp;henti</translation>
+        <translation>&amp;Stop</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>&amp;Buka berkas</translation>
+        <translation>&amp;Open bestand</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation>Pilih tujuan untuk berkas yang diunduh</translation>
+        <translation>Kies bestemming voor het gedownloade bestand</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation>Eror: %1</translation>
+        <translation>Fout: %1</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation>Direktori unduhan tidak dapat dibuat</translation>
+        <translation>Download map kan niet worden aangemaakt</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation>Eror ketika menyimpan berkas: %1</translation>
+        <translation>Fout bij het opslaan van bestand: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation>%1 dari %2 (%3 per detik) - %4</translation>
+        <translation>%1 of %2 (%3 per seconde) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation>%1 dari %2 - mengunduh selesai</translation>
+        <translation>%1 of %2 - download voltooid</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>Buka &amp;direktori</translation>
+        <translation>Open &amp;map</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation>Tidak dapat membuka berkas</translation>
+        <translation>Kan bestand niet openen</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation>Tidak dapat membuka berkas keluaran. Buka secara manual.</translation>
+        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>Tidak dapat membuka direktori</translation>
+        <translation>Kan map niet openen</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Tidak dapat membuka direktori keluaran. Buka secara manual.</translation>
+        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation>Mengunduh selesai</translation>
+        <translation>Download klaar</translation>
     </message>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation>Berkas &apos;%1&apos; terunduh.
-Klik disini untuk membuka direktori induk.</translation>
+        <translation>Bestand &apos;%1&apos; is klaar
+Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation>URL: %1</translation>
+        <translation>Url: %1</translation>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation>Berkas lokal: %1</translation>
+        <translation>Lokaal bestand: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation>Pilihan berkas lokal dibatalkan.</translation>
+        <translation>Selectie van lokaal bestand is geannuleerd.</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation>Bersihkan</translation>
+        <translation>Opschonen</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n menit tersisa</numerusform></translation>
+        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n detik tersisa</numerusform></translation>
+        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -266,33 +267,33 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Mengunduh %n berkas...</numerusform></translation>
+        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation>Bilah alat untuk pesan</translation>
+        <translation>Werkbalk voor berichten</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>Bilah alat untuk feed</translation>
+        <translation>Werkbalk voor feeds</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>Tidak dapat membersihkan database</translation>
+        <translation>Kan database niet opschonen</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Tidak dapat membersihkan database, karena aksi genting lain sedang berjalan.</translation>
+        <translation>Je kunt database niet opschonenen omdat een andere kritische operatie gaande is.</translation>
     </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>Kategori</translation>
+        <translation>Categorie</translation>
     </message>
 </context>
 <context>
@@ -300,11 +301,11 @@ Klik disini untuk membuka direktori induk.</translation>
     <message>
         <source>Title</source>
         <extracomment>Title text in the feed list header.</extracomment>
-        <translation>Judul</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation>Judul dari feed/kategori.</translation>
+        <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Root</source>
@@ -313,251 +314,251 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Memulai pembaharuan otomatis beberapa feed</translation>
+        <translation>Begint met auto-update van sommige feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Saya akan otomatis memperbaharui %n feed.</numerusform></translation>
+        <translation><numerusform>Auto-update van %n feed.</numerusform><numerusform>Auto-update van %n feeds.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation>Tidak dapat memperbaharui semua item</translation>
+        <translation>Kan alle items niet bijwerken</translation>
     </message>
     <message>
         <source>Feed update started</source>
         <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Pembaharuan feed dimulai</translation>
+        <translation>Bijwerken feed is gestart</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed terbaharui &apos;%1&apos;</translation>
+        <translation>Feed bijwerken &apos;%1&apos;</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Pesan baru terunduh</translation>
+        <translation>Nieuw bericht gedownload</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation>Anda tidak dapat memindahkan item tertarik ke akun berbeda, ini tidak didukung.</translation>
+        <translation>Je kan geen gesleepte item overdragen naar een ander account, dir wordt niet ondersteunt.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation>Tidak dapat melakukan operasi tarik &amp; jatuh</translation>
+        <translation>Kan de drag &amp; drop bewerking niet uitvoeren</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Anda tidak dapat memperbaharui semua item karena operasi genting lain sedang berlangsung.</translation>
+        <translation>U kunt niet alle items updaten omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation>Jumlah pesan belum terbaca/keseluruhan.</translation>
+        <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Pengatur jarak bilah alat</translation>
+        <translation>Werkbalkruimte</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation>Tidak dapat menyunting item</translation>
+        <translation>Kan item niet bewerken</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation>Tidak dapat menghapus item</translation>
+        <translation>Kan item niet verwijderen</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation>Menu konteks untuk ruang kosong</translation>
+        <translation>Contextmenu voor lege regels</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation>Item yang dipilih tidak dapat disunting karena operasi genting lain sedang berlangsung.</translation>
+        <translation>Geselecteerde item kunt u niet bewerken omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation>Item yang dipilih tidak dapat dihapus karena operasi genting lain sedang berlangsung.</translation>
+        <translation>Geselecteerde item kunt u niet verwijderen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation>Menu konteks untuk kategori</translation>
+        <translation>Contextmenu voor categorieën</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation>Item yang dipilih tidak dapat disunting, ini tidak (belum?) didukung.</translation>
+        <translation>Geselecteerde item kun je niet bewerken,dit wordt nog (niet) ondersteunt.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation>Hapus &quot;%1&quot;</translation>
+        <translation>Verwijder &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation>Anda akan benar-benar menghapus item &quot;%1&quot;.</translation>
+        <translation>Je staat op het punt om gehele item &quot;%1&quot; te verwijderen.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation>Apakah anda yakin?</translation>
+        <translation>Weet je het zeker?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation>Tidak dapat menghapus &quot;%1&quot;</translation>
+        <translation>Kan &quot;%1&quot; niet verwijderen</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation>Item ini tidak dapat dihapus karena sesuatu gagal secara genting. Kirim laporan bug.</translation>
+        <translation>Deze item kan niet worden verwijderd omdat het ergens fout ging. Meld deze bug.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation>Item ini tidak dapat dihapus, karena ini tidak mendukung
-atau fungsi ini belum diimplementasikan.</translation>
+        <translation>Deze item kan niet worden verwijderd omdat het niet wordt ondersteunt
+of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation>Menu konteks untuk item lain</translation>
+        <translation>Invoegen van andere items</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Tidak didukung</translation>
+        <translation>Niet ondersteund</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation>Akun yang dipilih tidak mendukung penambahan feed baru.</translation>
+        <translation>Geselecteerde account ondersteunt geen toevoeging van nieuwe feeds.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation>Akun yang dipilih tidak mendukung penambahan kategori baru.</translation>
+        <translation>Geselecteerde account ondersteunt geen toevoeging van nieuwe categorieën.</translation>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
     <message>
         <source>Information</source>
-        <translation>Informasi</translation>
+        <translation>Informatie</translation>
     </message>
     <message>
         <source>Licenses</source>
-        <translation>Lisensi</translation>
+        <translation>Licenties</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>Lisensi GNU GPL (berlaku pada kode sumber RSS Guard)</translation>
+        <translation>GNU GPL Licentie (Geldt voor RSS Guard bron code)</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>Lisensi GNU GPL</translation>
+        <translation>GNU GPL Licentie</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>Lisensi BSD (berlaku pada kode sumber QtSingleApplication)</translation>
+        <translation>BSD licentie (Geldt voor QtSingleAplication bron code)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation>Halaman lisensi hanya tersedia dalam bahasa Inggris.</translation>
+        <translation>Licentie pagina is alleen beschikbaar in het Engels.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Daftar perubahan</translation>
+        <translation>Changelog</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation>Daftar perubahan hanya tersedia dalam bahasa Inggris.</translation>
+        <translation>Changelog pagina is alleen beschikbaar in het Engels.</translation>
     </message>
     <message>
         <source>License not found.</source>
-        <translation>Lisensi tidak ditemukan.</translation>
+        <translation>Licentie niet gevonden.</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation>Daftar perubahan tidak ditemukan.</translation>
+        <translation>Changelog niet gevonden.</translation>
     </message>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
-        <translation>Tentang %1</translation>
+        <translation>Over %1</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation>Jenis pengaturan</translation>
+        <translation>Type instellingen</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation>Berkas pengaturan</translation>
+        <translation>Bestands instellingen</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation>Jalur sumber database</translation>
+        <translation>Database root pad</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation>Sepenuhnya portable</translation>
+        <translation>Volledig portable</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>Sebagian portable</translation>
+        <translation>Deels portable</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation>Sumber</translation>
+        <translation>Hulpbronnen</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 merupakan sebuah pembaca feed yang sangat kecil.&lt;br&gt;&lt;br&gt;Perangkat lunak ini didistribusikan di bawah ketentuan dari Lisensi Publik Umum GNU, versi 3.&lt;br&gt;&lt;br&gt;Kontak:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;Anda dapat memperoleh kode sumber untuk %5 dari website-nya.&lt;br&gt;&lt;br&gt;&lt;br&gt;Hak cipta (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License, versie 3.&lt;br&gt;&lt;br&gt;Contact:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~Website&lt;/li&gt;&lt;li&gt;U kunt de broncode voor %5 downloaden van de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versi:&lt;/b&gt; %1 (dibangun di %2/%3)&lt;br&gt;&lt;b&gt;Revisi:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Tanggal dibangun:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (dikompilasi terhadap %7)&lt;br&gt;</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Tambah akun baru</translation>
+        <translation>Voeg nieuw account toe</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation>Rincian</translation>
+        <translation>Gegevens</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nama</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Versi</translation>
+        <translation>Versie</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Penulis</translation>
+        <translation>Auteur</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Deskripsi</translation>
+        <translation>Omschrijving</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>Akun ini dapat ditambahkan hanya sekali.</translation>
+        <translation>Dit account kan maar 1 maal worden toegevoegd.</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation>Backup database/pengaturan</translation>
+        <translation>Backup database/instellingen</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation>Properti backup</translation>
+        <translation>Backup eigenschappen</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation>Item untuk di-backup</translation>
+        <translation>Items voor backup</translation>
     </message>
     <message>
         <source>Database</source>
@@ -565,161 +566,161 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Pengaturan</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation>Nama backup</translation>
+        <translation>Backup naam</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Hasil operasi</translation>
+        <translation>Resultaten</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation>Nama umum untuk backup berkas</translation>
+        <translation>Algemene naam voor backup bestanden</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Belum ada operasi dijalankan.</translation>
+        <translation>Nog geen handeling uitgevoerd.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation>Backup telah berhasil dibuat.</translation>
+        <translation>Back-up is gemaakt.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation>Nama backup tidak dapat kosong.</translation>
+        <translation>Backup naam kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation>Nama backup terlihat ok.</translation>
+        <translation>Backup naam is in orde.</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation>Backup gagal.</translation>
+        <translation>Backup mislukt.</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation>Direktori keluaran</translation>
+        <translation>Uitvoermap</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Pilih direktori</translation>
+        <translation>&amp;Selecteer map</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation>Backup berhasil dibuat dan disimpan di direktori tujuan.</translation>
+        <translation>Backup is succesvol aangemaakt en opgeslagen in de doelmap.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation>Pilih direktori tujuan</translation>
+        <translation>Selecteer de doelmap</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation>Direktori tujuan yang baik ditetapkan.</translation>
+        <translation>Juiste bestemmingsmap is opgegeven.</translation>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation>Pembersihan database</translation>
+        <translation>Database opschonen</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation>Hapus semua pesan lebih tua dari</translation>
+        <translation>Verwijder alle berichten ouder dan</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> hari</numerusform></translation>
+        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation>Susutkan berkas database</translation>
+        <translation>Databasebestand krimpt</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Informasi database</translation>
+        <translation>Database informatie</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation>Ukuran berkas database</translation>
+        <translation>Databasebestands grootte</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation>Jenis database</translation>
+        <translation>Database type</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation>Perkembangan</translation>
+        <translation>Vordering</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation>Saya siap.</translation>
+        <translation>Het is klaar.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation>Pembersihan database sedang berjalan.</translation>
+        <translation>Database opschonen loopt.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation>Pembersihan database selesai.</translation>
+        <translation>Database opschonen is klaar.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation>Pembersihan database gagal.</translation>
+        <translation>Database opschonen is mislukt.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation>Pengaturan pembersihan (semua item tercentang akan benar-benar terhapus dari database)</translation>
+        <translation>Opschonen van instellingen (alle gecontroleerde items worden volledig gewist uit de database)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Hapus semua pesan terbaca (bukan dari tong sampah)</translation>
+        <translation>Verwijder alle gelezen berichten(niet die van de prullenbak)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation>Hapus semua pesan dari tong sampah</translation>
+        <translation>Verwijder alle berichten van de prullenbak</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Hapus semua pesan yang ditandai bintang (termasuk dari tong sampah)</translation>
+        <translation>Verwijder alle berichten met ster(niet die van de prullenbak)</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation>Tidak dikenal</translation>
+        <translation>onbekend</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation>berkas: %1, data: %2</translation>
+        <translation>bestand: %1, gegevens: %2</translation>
     </message>
 </context>
 <context>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Autentikasi</translation>
+        <translation>Verificatie</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Nama pengguna</translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kata sandi</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Tampilkan kata sandi</translation>
+        <translation>Toon paswoord</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Membutuhkan autentikasi HTTP</translation>
+        <translation>Vereist HTTP verificatie</translation>
     </message>
     <message>
         <source>URL</source>
@@ -727,139 +728,139 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Tes setelan</translation>
+        <translation>&amp;Test instelling</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>Autentikasi HTTP nama pengguna</translation>
+        <translation>HTTP verificatie gebruikersnaam</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>Autentikasi HTTP kata sandi</translation>
+        <translation>HTTP verificatie paswoord</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>Kata sandi untuk akun TT-RSS anda</translation>
+        <translation>Paswoord voor je TT-RSS account</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>Nama pengguna untuk akun TT-RSS anda</translation>
+        <translation>Gebruikersnaam voor je TT-RSS account</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation>URL penuh dari instansi TT-RSS anda dengan mengikuti rangkaian &quot;/api/&quot;</translation>
+        <translation>VOLLEDIG URL van uw TT-RSS bijvoorbeeld met het slepen van de &quot;/ api /&quot; aanvraag</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Belum ada tes yang dilakukan.</translation>
+        <translation>Nog geen test uitgevoerd.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
+        <translation>Hier, worden resultaten van verbinding getoond.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Tambah akun Tiny Tiny RSS baru</translation>
+        <translation>Voeg nieuwe Tiny Tiny RSS account toe</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Sunting akun Tiny Tiny RSS yang ada</translation>
+        <translation>Bewerk bestaande Tiny Tiny RSS account</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>Akses API pada server yang dipilih tidak diaktifkan.</translation>
+        <translation>API toegang op geselecteerde server staat uit.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation>Kredensial masukkan salah.</translation>
+        <translation>Ingevoerde verificatiegegevens zijn onjuist.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation>Eror lain terjadi, hubungi pengembang.</translation>
+        <translation>Andere fout opgetreden, contact ontwikkelaars.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Server Tiny Tiny RSS yang dipilih menjalankan versi API (%1) yang tidak didukung. Setidaknya API level %2 dibutuhkan.</translation>
+        <translation>Geselecteerde Tiny Tiny RSS server draait een niet- ondersteunde versie van API (%1). Tenminste API level %2 is vereist.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Server Tiny Tiny RSS yang dipilih menjalankan versi API yang tidak didukung.</translation>
+        <translation>Geselecteerde Tiny Tiny RSS-server draait een niet-ondersteunde versie van API.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Server Tiny Tiny RSS ok, berjalan dengan API level %1, walau setidaknya API level %2 dibutuhkan.</translation>
+        <translation>Tiny Tiny RSS server is ok, draait met API level %2, terwijl op z&apos;n minst API level %2 vereist is.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Server Tiny Tiny RSS ok.</translation>
+        <translation>Tiny Tiny RSS server is ok.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Eror jaringan: &apos;%1&apos;.</translation>
+        <translation>Netwerk fout: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Eror jaringan, sudahkan anda memasukkan endpoint API Tiny Tiny RSS and kata sandi yang benar?</translation>
+        <translation>Netwerk fout, heb je de juiste Tiny Tiny RSS API eindpunt en paswoord?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Nama user tidak dapat kosong.</translation>
+        <translation>Gebruikersnaam kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Nama user ok.</translation>
+        <translation>Gebruikersnaam is goed.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Kata sandi tidak dapat kosong.</translation>
+        <translation>Paswoord kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Kata sandi ok.</translation>
+        <translation>Paswoord is ok.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Nama pengguna ok atau ini tidak diperlukan.</translation>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Username kosong.</translation>
+        <translation>Gebruikersnaam is leeg.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Kata sandi ok atau ini tidak diperlukan.</translation>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Password kosong.</translation>
+        <translation>Paswoord is leeg.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URL tidak dapat kosong.</translation>
+        <translation>Url mag niet leeg zijn.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL ok.</translation>
+        <translation>Url is goed.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation>Perhatikan bahwa setidaknya API level %1 dibutuhkan.</translation>
+        <translation>Merk op dat tenminste een API-niveau is vereist van %1.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation>URL sebaiknya diakhiri dengan &quot;/api/&quot;.</translation>
+        <translation>URL zou moeten eindigen met &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Eror tidak ditentukan, apakah anda memasukkan URL yang benar?</translation>
+        <translation>Onbekende fout, heb je de URL correct ingevoerd?</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Eksekusi paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
+        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Membiarkan pilihan ini menyala menyebabkan pembaharuan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
+        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
     </message>
 </context>
 <context>
@@ -870,162 +871,162 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Eksekusi paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
+        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Autentikasi</translation>
+        <translation>Verificatie</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Nama pengguna</translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kata sandi</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Tampilkan kata sandi</translation>
+        <translation>Toon paswoord</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Tes setelan</translation>
+        <translation>&amp;Test instelling</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Membiarkan pilihan ini menyala menyebabkan pembaharuan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
+        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation>Perhatikan bahwa setidaknya versi %1 dibutuhkan.</translation>
+        <translation>Merk op dat tenminste versie %1 is vereist</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation>URL dari server ownCloud anda, tanpa jalur API apapun</translation>
+        <translation>URL van je eigen ownCloud server, zonder een API pad</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Belum ada tes yang dilakukan.</translation>
+        <translation>Nog geen test uitgevoerd.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
+        <translation>Hier, worden resultaten van verbinding getoond.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation>Tambah akun ownCloud News baru</translation>
+        <translation>Voeg een nieuw ownCloud Nieuws account toe</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>Sunting akun ownCloud News yang ada</translation>
+        <translation>Bewerk bestaande ownCloud Nieuws account</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Server ownCloud News yang dipilih menjalankan versi yang tidak didukung (%1). Setidaknya versi %2 dibutuhkan.</translation>
+        <translation>Geselecteerde ownCloud Nieuws server draait een niet-ondersteunde versie (%1). Tenminste versie %2 is vereist.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Server ownCloud News yang dipilih menjalankan versi yang tidak didukung.</translation>
+        <translation>Geselecteerde ownCloud Nieuws server draait een niet-ondersteunde versie. </translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Eror jaringan: &apos;%1&apos;.</translation>
+        <translation>Netwerk fout: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>Eror jaringan, sudahkan anda memasukkan endpoint ownCloud and kata sandi yang benar?</translation>
+        <translation>Netwerk fout, heb je de juiste ownCloud eindpunt en paswoord ingevuld?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Eror tidak ditentukan, apakah anda memasukkan URL yang benar?</translation>
+        <translation>Onbekende fout, heb je de URL correct ingevoerd?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Nama pengguna tidak dapat kosong.</translation>
+        <translation>Gebruikersnaam kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Nama pengguna ok.</translation>
+        <translation>Gebruikersnaam is goed.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Kata sandi tidak dapat kosong.</translation>
+        <translation>Paswoord kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Kata sandi ok.</translation>
+        <translation>Paswoord is ok.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URL tidak dapat kosong.</translation>
+        <translation>Url mag niet leeg zijn.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL ok.</translation>
+        <translation>Url is goed.</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation>Kata sandi untuk akun ownCloud anda</translation>
+        <translation>Paswoord voor je ownCloud account</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation>Nama pengguna untuk akun ownCloud anda</translation>
+        <translation>Gebruikersnaam voor je ownCloud account</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>Server ownCloud News ok, berjalan dengan versi %1, walau setidaknya versi %2 dibutuhkan.</translation>
+        <translation>ownCloud Nieuws server is ok, draait met versie %1, terwijl tenminste versie %2 is vereist.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation>Server ownCloud News ok.</translation>
+        <translation>OwnCloud Nieuws server is ok.</translation>
     </message>
 </context>
 <context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Kategori induk</translation>
+        <translation>Oudere categorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Pilih item induk untuk feed anda.</translation>
+        <translation>Kies hoofd item voor je feed.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Jenis</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation>Pilih jenis dari feed standar.</translation>
+        <translation>Selecteer type van de standaard feed.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation>Encoding</translation>
+        <translation>Coderen</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Pilih encoding untuk feed standar. Jika anda tidak yakin mengenai encoding, maka pilih encoding &quot;UTF-8&quot;.</translation>
+        <translation>Kies codering van de standaard feed. Als je niet zeker bent van de codering, selecteer dan &quot;UTF-8&quot; codering.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>Pembaharuan otomatis</translation>
+        <translation>Automatische-update</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Pilih strategi pembaharuan otomatis untuk feed ini. Strategi pembaharuan otomatis bawaan berarti feed akan diperbaharui dalam interval waktu yang disetel di pengaturan aplikasi.</translation>
+        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Judul</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Deskripsi</translation>
+        <translation>Omschrijving</translation>
     </message>
     <message>
         <source>URL</source>
@@ -1033,567 +1034,567 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation>Ambil sekarang</translation>
+        <translation>Nu ophalen</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Ikon</translation>
+        <translation>Pictogram</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation>Pilih ikon untuk feed anda.</translation>
+        <translation>Selecteer pictogram voor je feed.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Membutuhkan autentikasi HTTP</translation>
+        <translation>Vereist HTTP verificatie</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Nama pengguna</translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kata sandi</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Ambil metadata</translation>
+        <translation>Ophalen van metadata</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Tambah feed baru</translation>
+        <translation>Voeg nieuw feed toe</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation>Sunting feed &apos;%1&apos;</translation>
+        <translation>Bewerk feed &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation>Nama feed ok.</translation>
+        <translation>Feed naam is ok.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation>Nama feed terlalu pendek.</translation>
+        <translation>Feed naam is te kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Deskripsi kosong.</translation>
+        <translation>Omschrijving is leeg.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Deskripsi ok.</translation>
+        <translation>Omschrijving is ok.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation>URL ok.</translation>
+        <translation>De URL is ok.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>URL tidak memenuhi pola standar. Apakah URL anda dimulai dengan awalan &quot;http://&quot; atau &quot;https://&quot;.</translation>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation>URL kosong.</translation>
+        <translation>De URL is leeg.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Nama pengguna ok atau ini tidak diperlukan.</translation>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Nama pengguna kosong.</translation>
+        <translation>Gebruikersnaam is leeg.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Kata sandi ok atau ini tidak diperlukan.</translation>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Kata sandi kosong.</translation>
+        <translation>Paswoord is leeg.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation>Pilih berkas ikon untuk feed</translation>
+        <translation>Selecteer pictogram bestand voor je feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Gambar (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Pilih ikon</translation>
+        <translation>Selecteer pictogram</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Batal</translation>
+        <translation>Annuleer</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Lihat ke dalam:</translation>
+        <translation>Kijk in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Nama ikon:</translation>
+        <translation>Pictogram naam:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Jenis ikon:</translation>
+        <translation>Type pictogram:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation>Semua metadata diambil dengan berhasil.</translation>
+        <translation>Alle metadata is succesvol opgehaald.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation>Metadata feed dan ikon diambil.</translation>
+        <translation>Metadata opgehaald voor feed en pictogram.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation>Hasil: %1.</translation>
+        <translation>Resultaat: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation>Metadata feed atau ikon tidak diambil.</translation>
+        <translation>Metadata niet opgehaald voor feed en pictogram.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation>Eror: %1.</translation>
+        <translation>Fout: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation>Tidak ada metadata yang diambil.</translation>
+        <translation>Geen metadata opgehaald.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation>Ikon berhasil diambil.</translation>
+        <translation>Pictogram met succes opgehaald.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation>Metadata ikon diambil.</translation>
+        <translation>Metadata pictogram opgehaald.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation>Metadata ikon tidak diambil.</translation>
+        <translation>Metadata pictogram niet opgehaald.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation>Tidak ada ikon yang diambil.</translation>
+        <translation>Geen pictogram opgehaald.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation>Judul feed</translation>
+        <translation>Feed naam</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation>Setel judul untuk feed anda.</translation>
+        <translation>Stel titel in voor je feed.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation>Deskripsi feed</translation>
+        <translation>Feed omschrijving</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation>Setel deskripsi untuk feed anda.</translation>
+        <translation>Stel omschrijving voor feed in.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation>Url feed keseluruhan termasuk skema</translation>
+        <translation>Volledige feed url inclusief schema</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation>Setel url untuk feed anda.</translation>
+        <translation>Stel url in voor je feed.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation>Setel nama pengguna untuk mengakses feed.</translation>
+        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation>Setel kata sandi untuk mengakses feed.</translation>
+        <translation>Stel paswoord in voor toegang tot feed.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>Pilihan ikon</translation>
+        <translation>Pictogram selectie</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Memuat ikon dari berkas...</translation>
+        <translation>Laad pictogram uit een bestand...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Tidak menggunakan ikon</translation>
+        <translation>Gebruik geen pictogram</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Menggunakan ikon bawaan</translation>
+        <translation>Gebruik standaard pictogram</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation>Mengambil ikon dari feed</translation>
+        <translation>Pictogram opgehaald van feed</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation>Tidak ada metadata yang diambil sejauh ini.</translation>
+        <translation>Nog geen metadata opgehaald.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation>Pembaharuan otomatis menggunakan jarak waktu global</translation>
+        <translation>Automatisch bijwerken met behulp van globale interval</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation>Otomatis pembaharuan setiap</translation>
+        <translation>Automatisch bijwerken elke</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation>Tanpa pembaharuan otomatis sama sekali</translation>
+        <translation>Niet automatisch bijwerken </translation>
     </message>
 </context>
 <context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;Berkas</translation>
+        <translation>&amp;Bestand</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>Bant&amp;uan</translation>
+        <translation>&amp;Help</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>T&amp;ilik</translation>
+        <translation>&amp;Toon</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>Ala&amp;t</translation>
+        <translation>&amp;Hulpmiddelen</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>&amp;Keluar</translation>
+        <translation>&amp;Sluit</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>&amp;Pengaturan</translation>
+        <translation>&amp;Instellingen</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation>&amp;Pesan</translation>
+        <translation>&amp;Berichten</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation>Ganti nilai &amp;pentingnya pesan yang dipilih</translation>
+        <translation>Wissel het &amp;belang van geselecteerde berichten</translation>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation>Keluar dari aplikasi.</translation>
+        <translation>Sluit het programma.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation>Tampilkan pengaturan aplikasi.</translation>
+        <translation>Toon instellingen van het programma.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation>Ganti mode layar penuh.</translation>
+        <translation>Schakel beeldvullende modus.</translation>
     </message>
     <message>
         <source>No actions available</source>
-        <translation>Tidak ada aksi tersedia</translation>
+        <translation>Geen acties beschikbaar</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation>Tidak ada aksi tersedia saat ini.</translation>
+        <translation>Er zijn geen acties beschikbaar op dit moment.</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation>Sembunyikan jendela utama jika terlihat dan menampilkannya jika tersembunyi.</translation>
+        <translation>Verberg hoofdvenster als het zichtbaar is en toon het als het verborgen is.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation>Sembunyikan atau Tampilkan daftar feed/kategori.</translation>
+        <translation>Verberg of toon de lijst van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation>Periksa jika pembaharuan terkini untuk aplikasi tersedia untuk diunduh.</translation>
+        <translation>Controleer als nieuwe update voor RSSguard beschikbaar is om te downloaden.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>&amp;Tentang aplikasi</translation>
+        <translation>&amp;Over RSSguard</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation>Tampilkan info tambahan seputar aplikasi ini.</translation>
+        <translation>Toon extra informatie over RSSguard.</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation>&amp;Hapus pesan yang dipilih</translation>
+        <translation>Verwij&amp;der geselecteerde berichten</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation>Sembunyikan atau tampilkan menu utama.</translation>
+        <translation>Verberg of toon het hoofdmenu.</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Tandai pesan yang dipilih sebagai ter&amp;baca</translation>
+        <translation>Markeer ge&amp;selecteerde berichten als &amp;gelezen</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Tandai pesan yang dipilih sebagai belum terba&amp;ca</translation>
+        <translation>Markeer ge&amp;selecteerde berichten als &amp;ongelezen</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation>Buka sumber artikel yang dipilih di peramban &amp;eksternal</translation>
+        <translation>Open geselecteerde bron artikelen met &amp;externe webbrowser</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation>Buka pesan yang dipilih di peramban &amp;internal</translation>
+        <translation>Open geselecteerde berichten met &amp;ingebouwde webbrowser</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>Pilih pesan se&amp;lanjutnya</translation>
+        <translation>Selecteer volge&amp;nd bericht</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation>Pilih pesan se&amp;belumnya</translation>
+        <translation>Selecteer &amp;vorige bericht</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>&amp;Periksa pembaharuan</translation>
+        <translation>Controleer op &amp;updates</translation>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation>Tampilkan/sembunyikan</translation>
+        <translation>Toon/verberg</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation>&amp;Layar penuh</translation>
+        <translation>&amp;Beeldvullend</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation>&amp;Daftar feed</translation>
+        <translation>&amp;Feed lijst</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation>Menu &amp;utama</translation>
+        <translation>Hoofd&amp;menu</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation>Ganti visibilitas dari &amp;jendela utama</translation>
+        <translation>Schakel over naar het hoofd&amp;venster</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation>Tidak dapat membuka peramban eksternal</translation>
+        <translation>Kan externe browser niet starten</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Tidak bisa membuka peramban eksternal. Arahkan ke website aplikasi secara manual.</translation>
+        <translation>Kan externe webbrowser niet starten, Navigeer handmatig naar RSSguard website.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation>&amp;Bilah alat</translation>
+        <translation>&amp;Werkbalk</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation>Ganti visibilitas dari bilah alat utama.</translation>
+        <translation>Schakel over naar het hoofdvenster.</translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation>Daftar tajuk &amp;feed/pesan</translation>
+        <translation>&amp;Feed/bericht  kopteksten</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Donasi via PayPal</translation>
+        <translation>&amp;Doneer met PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation>Tampilkan &amp;wiki</translation>
+        <translation>Toon &amp;wiki</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation>&amp;Pulihkan database/pengaturan</translation>
+        <translation>&amp;Herstel database/instellingen</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation>&amp;Backup database/pengaturan</translation>
+        <translation>&amp;Backup database/instellingen</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation>Ganti orientasi tata letak daftar pesan</translation>
+        <translation>Schakel tussen lijst met berichten indeling </translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation>&amp;Unduhan</translation>
+        <translation>&amp;Downloads</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation>Kirim pesan yang dipilih via e-mail</translation>
+        <translation>Geselecteerde berichten verzenden via e-mail</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation>Pembersihan &amp;database</translation>
+        <translation>&amp;database opschonen</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation>&amp;Tambah item baru</translation>
+        <translation>Voeg &amp;nieuw item toe</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation>Per&amp;baharui semua item</translation>
+        <translation>&amp;Alle items bijwerken</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>Perbaha&amp;rui item yang dipilih</translation>
+        <translation>&amp;Geselecteerde items bijwerken</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation>&amp;Sunting item yang dipilih</translation>
+        <translation>&amp;Bewerk geselecteerde item</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation>&amp;Hapus item yang dipilih</translation>
+        <translation>&amp;Verwijder geselecteerde item</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation>Tandai item yang &amp;dipilih sebagai terbaca</translation>
+        <translation>&amp;Markeer geselecteerde berichten als gelezen</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation>Tandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai terbaca.</translation>
+        <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als gelezen.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation>Tandai item yang di&amp;pilih sebagai belum terbaca</translation>
+        <translation>&amp;Markeer geselecteerde item als ongelezen</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation>Tandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai belum terbaca.</translation>
+        <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als ongelezen.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation>&amp;Bersihkan item yang dipilih</translation>
+        <translation>Geselecteerde items &amp;opschonen</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation>Hapus semua pesan dari item yang dipilih.</translation>
+        <translation>Verwijder alle berichten van geselecteerde items.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>Tandai &amp;semua item sebagai terbaca</translation>
+        <translation>&amp;Markeer alle items als &amp;gelezen</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation>Tandai semua pesan di semua item terbaca. Ini tidak mengambil penyaring pesan ke akun.</translation>
+        <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters mee in account.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation>Tampilkan item yang dipilih ke dalam mode &amp;koran</translation>
+        <translation>Bekijk geselecteerde items in kra&amp;ntweergave</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation>Tampilkan semua pesan dari item yang dipilih ke dalam tab &quot;mode koran&quot; baru. Perhatikan bahwa pesan tidak disetel sebagai terbaca secara otomatis.</translation>
+        <translation>Toon alle berichten van geselecteerde item in een nieuwe &quot;krantweergave&quot; tabblad.Let op dat berichten niet automatisch als gelezen zijn ingesteld.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation>Ber&amp;sihkan semua item</translation>
+        <translation>Alle items &amp;opschonen</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation>Hapus semua pesan dari semua item.</translation>
+        <translation>Verwijder alle berichten van alle items.</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation>Pilih item selan&amp;jutnya</translation>
+        <translation>Selecteer &amp;volgende item</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation>Pilih item s&amp;ebelumnya</translation>
+        <translation>Selecteer &amp;vorige item</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation>Hanya menampilkan item belum terbaca</translation>
+        <translation>Toon alleen ongelezen items</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation>Per&amp;lebar/persempit item yang dipilih</translation>
+        <translation>&amp;Uitklappen/inklappen geselecteerde item</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation>&amp;Pulihkan pesan yang dipilih</translation>
+        <translation>&amp;Herstel geselecteerde berichten</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation>Tidak ada aksi yang mungkin</translation>
+        <translation>Geen mogelijke acties</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation>Tong &amp;sampah</translation>
+        <translation>&amp;Prullenbak</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation>P&amp;ulihkan semua tong sampah</translation>
+        <translation>&amp;Herstel alle prullenbakken</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation>K&amp;osongkan semua tong sampah</translation>
+        <translation>&amp;Leeg alle prullenbakken</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation>Pilih pesan be&amp;lum terbaca selanjutnya</translation>
+        <translation>Selecteer volgende &amp;ongelezen bericht</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation>Tidak ada tong sampah</translation>
+        <translation>Geeen vuilnisbak</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Feed &amp;&amp; kategori</translation>
+        <translation>Feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation>&amp;Akun</translation>
+        <translation>&amp;Accounts</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation>&amp;Tambah akun baru</translation>
+        <translation>&amp;Voeg nieuw account toe</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation>Bar status</translation>
+        <translation>Statusbalk</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>&amp;Sunting akun yang dipilih</translation>
+        <translation>&amp;Bewerk geselecteerde account</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation>&amp;Hapus akun yang dipilih</translation>
+        <translation>&amp;Verwijder geselecteerde account</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation>Tambah feed baru ke akun yang dipilih</translation>
+        <translation>Voeg nieuwe feed toe aan geselecteerde account</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation>Tambah kategori baru ke akun yang dipilih</translation>
+        <translation>Voeg nieuwe categorie toe aan geselecteerde account</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Tambah kategori baru</translation>
+        <translation>Voeg nieuwe categorie toe</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Tambah feed baru</translation>
+        <translation>Voeg nieuw feed toe</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation>Hentikan pembaharuan yang berjalan</translation>
+        <translation>Stop met updaten</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation>Tidak ada aksi yang mungkin</translation>
+        <translation>Acties niet mogelijk</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
@@ -1601,7 +1602,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Rapporteer een &amp;bug...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
@@ -1620,70 +1621,70 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Feed ditambahkan</translation>
+        <translation>Feed toegevoegd</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation>Feed ditambahkan, memicu sinkronisasi sekarang.</translation>
+        <translation>Feed is toegvoegd, activeer sync nu.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Tidak dapat menambah feed</translation>
+        <translation>Kan geen feed toevoegen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Feed tidak ditambahkan disebabkan eror.</translation>
+        <translation>Door een fout is de feed niet toegevoegd.</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation>Pulihkan database/pengaturan</translation>
+        <translation>Herstel database/instellingen</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Hasil operasi</translation>
+        <translation>Resultaten</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation>Pulihkan database</translation>
+        <translation>Herstel database</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation>Pulihkan pengaturan</translation>
+        <translation>Herstel instellingen</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Belum ada operasi dijalankan.</translation>
+        <translation>Nog geen handeling uitgevoerd.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation>Pemulihan dimulai. Restart untuk melanjutkan.</translation>
+        <translation>Herstel werd ingezet. Herstart om verder te gaan.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation>Anda perlu untuk me-restart aplikasi untuk proses pemulihan selesai.</translation>
+        <translation>Je moet RssGuard herstarten om de herstel procedure te voltooien.</translation>
     </message>
     <message>
         <source>Source directory</source>
-        <translation>Direktori sumber</translation>
+        <translation>Source map</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Pilih direktori</translation>
+        <translation>&amp;Selecteer map</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation>Database dan/atau pengaturan tidak berhasil disalin ke direktori pemulihan.</translation>
+        <translation>Database en / of instellingen werden niet succesvol gekopieerd naar de herstel map.</translation>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation>Pilih direktori sumber</translation>
+        <translation>Selecteer source map</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation>Direktori sumber yang baik telah ditetapkan.</translation>
+        <translation>Juiste source map is opgegeven.</translation>
     </message>
 </context>
 <context>
@@ -1691,28 +1692,28 @@ atau fungsi ini belum diimplementasikan.</translation>
     <message>
         <source>General</source>
         <extracomment>General settings section.</extracomment>
-        <translation>Umum</translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation>Antarmuka pengguna</translation>
+        <translation>Gebruikers interface</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation>Tema ikon</translation>
+        <translation>Pictogram thema</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Pengaturan</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation>Pintasan keyboard</translation>
+        <translation>Sneltoetsen toetsenbord</translation>
     </message>
     <message>
         <source>Language</source>
         <extracomment>Language settings section.</extracomment>
-        <translation>Bahasa</translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <source>Proxy</source>
@@ -1720,20 +1721,20 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation>Ikon &amp;&amp; skin</translation>
+        <translation>Pictogrammen &amp;&amp; skins</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation>Ikon baki</translation>
+        <translation>Pictogram in het systeemvak</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation>Mulai aplikasi secara sembunyi</translation>
+        <translation>Start programma verborgen</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation>Jenis</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Host</source>
@@ -1741,43 +1742,43 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation>Nama host atau IP dari server proxy anda</translation>
+        <translation>Hostnaam of ip van je proxy server</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>Poort</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Nama pengguna</translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation>Nama pengguna anda untuk autentikasi server proxy</translation>
+        <translation>Je gebruikersnaam voor proxy server verificatie</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kata sandi</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation>Kata sandi anda untuk autentikasi server proxy</translation>
+        <translation>Je paswoord voor proxy server verificatie</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation>Tampilkan kata sandi</translation>
+        <translation>Toon paswoord</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation>Kode</translation>
+        <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Versi</translation>
+        <translation>Versie</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Penulis</translation>
+        <translation>Auteur</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -1789,139 +1790,139 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation>(tidak didukung di platform ini)</translation>
+        <translation> (Platform wordt niet ondersteunt)</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation>Area baki &amp;&amp; notifikasi</translation>
+        <translation>Tray gebied &amp;&amp; meldingen</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>Tab</translation>
+        <translation>Tabbladen</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation>Tutup tab dengan</translation>
+        <translation>Sluit tabblad met</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation>Sekali klik tombol tengah tetikus</translation>
+        <translation>Middelste muisknop enkele-klik</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation>Buka tab baru dengan dua kali klik pada tab bar</translation>
+        <translation>Open nieuwe tabbladen met linker muisknop dubbel-klik op tabblad</translation>
     </message>
     <message>
         <source>Cannot save settings</source>
-        <translation>Tidak dapat menyimpan pengaturan</translation>
+        <translation>Kan instellingen niet opslaan</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nama</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation>Ikon</translation>
+        <translation>Pictogrammen</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation>Skin</translation>
+        <translation>Skins</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation>Skin yang aktif:</translation>
+        <translation>Actieve skin:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation>Skin yang dipilih:</translation>
+        <translation>Gekozen skin:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation>Sembunyikan bilah tab jika hanya satu tab terlihat</translation>
+        <translation>Verberg  tabblad als alleen een tabblad zichtbaar is</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation>Pengaturan genting berubah</translation>
+        <translation>Kritieke instellingen zijn veranderd</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation>Feed &amp; pesan</translation>
+        <translation>Feeds &amp; berichten</translation>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation>Beberapa pengaturan genting belum disetel. Anda harus memperbaiki pengaturan ini dalam rangka mengkonfirmasi pengaturan baru.</translation>
+        <translation>Sommige kritieke instellingen zijn niet instelbaar. Je moet deze nieuwe instellingen bevestigen om op te lossen.</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Pesan</translation>
+        <translation>Berichten</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation>Peramban web yang dapat dijalankan</translation>
+        <translation>Webbrowser exe</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation>Parameter yang dapat dijalankan</translation>
+        <translation>exe parameters</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>Perhatikan bahwa &quot;%1&quot; (tanpa tanda kutip) adalah tempat bagi URL dari pesan yang dipilih.</translation>
+        <translation>Noteer dat &quot;%1&quot; (zonder aanhalingstekens) een tijdelijke aanduiding is voor URL of geselecteerde berichten.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation>Pilih peramban web yang dapat dijalankan</translation>
+        <translation>Selecteer exe bestand voor browser</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation>Yang dapat dijalankan (*.*)</translation>
+        <translation>Uitvoerbare bestanden (*.*)</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation>Opera 12 atau lebih tua</translation>
+        <translation>Opera 12 of ouder</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation>Berkas yang dapat dijalankan dari peramban web</translation>
+        <translation>Uitvoerbaar bestand van webbrowser</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation>Parameter ke yang dapat dijalankan</translation>
+        <translation>Parameter voor exe</translation>
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation>beberapa pintasan keyboard tidak unik</translation>
+        <translation>Sommige Sneltoetsen van toetsenbord zijn niet uniek</translation>
     </message>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation>Daftar eror:
+        <translation>Lijst van fouten:
 %1.</translation>
     </message>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation>Daftar perubahan:
+        <translation>Lijst van veranderingen:
 %1.</translation>
     </message>
     <message>
         <source>language changed</source>
-        <translation>bahasa berubah</translation>
+        <translation>Van taal veranderd</translation>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation>tema ikon berubah</translation>
+        <translation>Pictogram thema is veranderd</translation>
     </message>
     <message>
         <source>skin changed</source>
-        <translation>skin berubah</translation>
+        <translation>Skin is veranderd</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation>Gunakan argumen sampel untuk</translation>
+        <translation>Gebruik voorbeeld argumenten voor</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation>Gunakan database di memori sebagai database bekerja</translation>
+        <translation>Gebruik in-geheugen database als de werkende database</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -1935,312 +1936,313 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation>Penggunaan database kerja  di memori memiliki beberapa keunggulan dan kendala. Pastikan bahwa anda akrab dengan ini sebelum anda menyalakan fitur ini. Keuntungan:
+        <translation>Het gebruik van in-geheugen werkende database heeft een aantal voordelen en nadelen.Zorg ervoor dat u er bekend mee bent voordat u deze functie inschakelt.
+Voordelen:
 &lt;ul&gt;
-&lt;li&gt;kecepatan tinggi untuk manipulasi feed/pesan (terutama dengan ribuan pesan ditampilkan),&lt;/li&gt;
-&lt;li&gt;seluruh database disimpan di dalam RAM, sehingga hard disk anda dapat beristirahat lebih.&lt;/li&gt;
+&lt;li&gt;hogere snelheid voor feed/bericht manipulaties (vooral met duizenden berichten weergegeven),&lt;/li&gt;
+&lt;li&gt;gehele database opgeslagen in het RAM geheugen, waardoor uw harde schijf meer rust.&lt;/li&gt;
 &lt;/ul&gt;
-Kerugian:
+Nadelen:
 &lt;ul&gt;
-&lt;li&gt;jika aplikasi crash, ubahan anda dari sesi terakhir akan hilang,&lt;/li&gt;
-&lt;li&gt;startup and shutdown aplikasi dapat memakan sedikit lebih lama (maks. 2 detik).&lt;/li&gt;
-&lt;/ul&gt;
-Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translation>
+&lt;li&gt;als rssguard crasht, gaan wijzigingen van laatste sessie verloren,&lt;/li&gt;
+&lt;li&gt;opstarten en afsluiten van rssguard kan iets langer duren (max. 2 seconden).&lt;/li&gt;
+&lt;/lu&gt;
+Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</translation>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation>database di memori dialihkan</translation>
+        <translation>in-geheugen database overgeschakeld</translation>
     </message>
     <message>
         <source>External web browser</source>
-        <translation>Peramban web eksternal</translation>
+        <translation>Externe webbrowser</translation>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>PERINGATAN: Perhatikan bahwa beralih ke jenis penyimpanan data lain tidak akan menyalin data anda yang ada dari penyimpanan data yang sedang aktif ke salah satu yang baru dipilih.</translation>
+        <translation>WAARSCHUWING: Let op dat de overstap naar een ander type gegevens opslag NIET bestaande gegevens van dat moment kopiëren naar nieuw geselecteerde gegevens opslag.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation>Driver database</translation>
+        <translation>Database driver</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation>Nama host</translation>
+        <translation>Hostnaam</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation>Tes setelan</translation>
+        <translation>Test instelling</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation>Dua kali klik tombol kanan tetikus</translation>
+        <translation>Rechter muisknop dubbele-klik</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation>Pembaharuan otomatis semua feed setiap</translation>
+        <translation>Alle feeds automatisch bijwerken elke</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation>Batas waktu koneksi feed</translation>
+        <translation>Feed verbindings time-out</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation>Batas waktu koneksi merupakan interval waktu yang dipesan untuk mengunduh pesan baru untuk feed. Jika interval waktu ini berlalu, maka proses pengunduhan dibatalkan.</translation>
+        <translation>Verbinding timeout is tijdsinterval dat wordt gereserveerd voor downloaden van nieuwe berichten voor de feed. Als het tijdsinterval is verstreken, dan wordt het download proces afgebroken.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation> ms</translation>
+        <translation>ms</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation>Perbaharui semua feed pada startup aplikasi</translation>
+        <translation>Alle feeds bijwerken met starten van RSSguard</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation>Penyimpanan data</translation>
+        <translation>Gegevens opslag</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation>Nama host dari server MySQL anda</translation>
+        <translation>Hostnaam van je MySQL server</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation>Nama pengguna untuk login</translation>
+        <translation>Gebruikersnaam om in te loggen</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation>Kata sandi untuk nama pengguna anda</translation>
+        <translation>Paswoord voor je gebruikersnaam</translation>
     </message>
     <message>
         <source>data storage backend changed</source>
-        <translation>backend penyimpanan data diubah</translation>
+        <translation>Gegevens opslag backend is veranderd</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation>Nama host kosong.</translation>
+        <translation>Hostnaam is leeg.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Nama host terlihat ok.</translation>
+        <translation>Hostnaam voldoet.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Nama pengguna kosong.</translation>
+        <translation>Gebruikersnaam is leeg.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation>Nama pengguna terlihat ok.</translation>
+        <translation>Gebruikersnaam voldoet.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Kata sandi kosong.</translation>
+        <translation>Paswoord is leeg.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation>Kata sandi terlihat ok.</translation>
+        <translation>Paswoord voldoet.</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation>Gaya tombol bilah alat</translation>
+        <translation>Werkbalkknop stijl</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation>Sembunyikan jendela utama ketika di-minimize</translation>
+        <translation>Verberg hoofdvenster wanneer het wordt geminimaliseerd</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation>Tidak ada tes koneksi yang dipicu sejauh ini.</translation>
+        <translation>Geen verbindings test geactiveerd tot nu toe.</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Perhatikan bahwa pengaturan ini berlaku hanya pada koneksi yang baru dibentuk.</translation>
+        <translation>Merk op dat deze instellingen alleen worden  toegepast op nieuw tot stand gebrachte verbindingen.</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation>Pilih browser</translation>
+        <translation>Selecteer browser</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation>Tanpa proxy</translation>
+        <translation>Geen proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation>Proxy sistem</translation>
+        <translation>Systeem proxy</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation>Hanya ikon</translation>
+        <translation>Alleen pictogram</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation>Hanya teks</translation>
+        <translation>Alleen tekst</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation>Teks di samping ikon</translation>
+        <translation>Tekst naast pictogram</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation>Teks di bawah ikon</translation>
+        <translation>Tekst onder pictogram</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation>Mengikuti gaya sistem operasi</translation>
+        <translation>Volg OS stijl</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Jaga pilihan pesan di tengah area pandang daftar pesan</translation>
+        <translation>Houd bericht selectie in het midden van de lijst met berichten kijkvenster</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation>Anda belum mengeksekusi tes koneksi apapun.</translation>
+        <translation>U heeft nog geen verbindings test uitgevoerd.</translation>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation>Jalankan %1 pada startup sistem operasi</translation>
+        <translation>Laad %1 als systeem opstart</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jika tidak tercentang, maka  peramban web bawaan di seluruh sistem yang digunakan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Indien aangevinkt, wordt standaard de systeem  webbrowser gebruikt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Feed &amp;&amp; kategori</translation>
+        <translation>Feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation>Format hitungan pesan di daftar feed</translation>
+        <translation>Aantal bericht formaat in feeds lijst</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Masukkan format untuk hitungan dari pesan yang ditampilkan di samping setiap feed/kategori di daftar feed. Gunakan rangkaian &quot;%all&quot; dan &quot;%unread&quot; yang merupakan tempat untuk hitungan sesungguhnya dari pesan seluruhnya (atau belum terbaca).</translation>
+        <translation>Voer formaat in voor telling van berichten weergegeven naast elke feed / categorie in feed lijst. Gebruik &quot;%alle&quot; en &quot;%ongelezen&quot; strings die tijdelijke aanduidingen zijn voor de eigenlijke telling van alle (of ongelezen) berichten zijn.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
-        <translation>peramban eksternal tersuai tidak disetel dengan benar</translation>
+        <translation>Aangepaste externe browser in niet correct ingesteld</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation>Bilah alat</translation>
+        <translation>Werkbalken</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation>Bilah alat untuk daftar feed</translation>
+        <translation>Welkbalk voor feeds lijst</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation>Bilah alat untuk daftar pesan</translation>
+        <translation>Werkbalk voor berichten lijst</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation>Pilih bilah alat untuk disunting</translation>
+        <translation>Selecteer werkbalk om te bewerken</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation>Beberapa pengaturan genting berubah dan akan berlaku setelah aplikasi di-restart.
+        <translation>Sommige kritieke instellingen zijn veranderd en worden van kracht als het programma wordt herstart.
 
-Anda harus me-restart secara manual.</translation>
+Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation>Periksa untuk pembaharuan pada startup aplikasi</translation>
+        <translation>Controleer op updates als RssGuard wordt gestart</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>Gunakan format tanggal/waktu tersuai (menimpa format yang dimuat dari lokalisasi yang aktif)</translation>
+        <translation>Gebruik aangepaste datum / tijd opmaak (overschrijft de opmaak van de actieve geladen locatie)</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation>Yang dapat dijalankan (*)</translation>
+        <translation>Uitvoerbare bestanden (*.*)</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Hapus semua pesan dari semua feed ketika aplikasi keluar</translation>
+        <translation>Verwijder de gelezen berichten van alle feeds als rssguard sluit</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Unduhan</translation>
+        <translation>Downloads</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation>Direktori tujuan untuk berkas yang diunduh</translation>
+        <translation>Doelmap voor de gedownloade bestanden</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation>Bertanya untuk setiap berkas yang diunduh</translation>
+        <translation>Vraag voor elk individuele gedownloade bestand</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation>Direktori tujuan tempat semua berkas yang diunduh disimpan</translation>
+        <translation>Doelmap waar alle downloads worden opgeslagen</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation>&amp;Telisik</translation>
+        <translation>&amp;Blader</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation>Pilih direktori tujuan unduhan</translation>
+        <translation>Selecteer gedownloade doelmap </translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation>Tampilkan kata &amp;sandi</translation>
+        <translation>&amp;Toon paswoord</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Peramban web &amp; e-mail &amp; proxy</translation>
+        <translation>Webbrowser &amp; e-mail &amp; proxy</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Hapus sampah kunci registrasi Trolltech (HKCU\Software\Trolltech) ketika aplikasi keluar (Gunakan dengan resiko anda sendiri!)</translation>
+        <translation>Verwijder ongewenste Trolltech registersleutel (HKCU\\Software\\Trolltech) wanneer RssGuard wordt afgesloten (Gebruik op eigen risico!)</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation>Database kerja</translation>
+        <translation>Werkende database</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation>Gunakan peramban web eksternal tersuai</translation>
+        <translation>Gebruik aangepaste externe webbrowser</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation>Klien e-mail eksternal</translation>
+        <translation>Externe e-mail client</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation>Gunakan klien e-mail eksternal tersuai</translation>
+        <translation>Gebruik een aangepaste externe e-mailclient</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation>Klien e-mail yang dapat dijalankan</translation>
+        <translation>Selecteer exe bestand voor e-mail</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation>Berkas dari klien e-mail yang dapat dijalankan</translation>
+        <translation>Uitvoerbaar bestand van e-mail client</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation>Pilih klien</translation>
+        <translation>Selecteer client</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation>Placeholder:
- • %1 - judul dari pesan yang dipilih,
- • %2 - badan dari pesan yang dipilih.</translation>
+        <translation>Plaatshouders: 
+ •.%1 - titel van het geselecteerde bericht,
+ • %2 - body van geselecteerde bericht.</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation>Simpan semua berkas yang diunduh ke</translation>
+        <translation>Sla alle gedownloade bestanden op naar</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation>Pilih email yang dapat dijalankan</translation>
+        <translation>Selecteer exe bestand voor e-mail</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -2248,27 +2250,27 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation>Database kerja yang mempunyai akses menyeluruh.</translation>
+        <translation>Werkende database waar je volledige toegang tot hebt.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation>Database kerja kosong.</translation>
+        <translation>Werkende database is leeg.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation>Database kerja ok.</translation>
+        <translation>Werkende database is ok.</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation>(Ikon baki tidak tersedia.)</translation>
+        <translation>(Pictogram in systeemvak is niet beschikbaar.)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation>Fon peramban pesan internal</translation>
+        <translation>Intern bericht browser lettertypen</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Perhatikan bahwa kecepatan dari server MySQL yang digunakan dan latensi dari media koneksi yang digunakan sangat mempengaruhi kinerja akhir dari aplikasi ini. Menggunakan koneksi database lamban menyebabkan kinerja buruk ketika menilik feed dari pesan.</translation>
+        <translation>Merk op dat de snelheid van de gebruikte MySQL server en wachttijd van de gebruikte verbinding ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing. Met langzame database connecties leidt dit tot slechte prestaties tijdens het browsen feeds of berichten.</translation>
     </message>
     <message>
         <source>E-mail</source>
@@ -2276,336 +2278,336 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation>Buka pengelola unduhan ketika penguduhan baru dimulai</translation>
+        <translation>Open de download manager wanneer een nieuwe download start</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation>Bar status</translation>
+        <translation>Statusbalk</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation>&amp;Ganti fon</translation>
+        <translation>&amp;Verander lettertype</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation>Pratinjau fon</translation>
+        <translation>Voorbeeld lettertype</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation>Pilih font yang baru untuk penampil pesan</translation>
+        <translation>Selecteer een nieuw lettertype voor berichten </translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>tanpa tema ikon/tema ikon sistem</translation>
+        <translation>Geen icon thema/systeem icon thema</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation>Nyalakan balon popup keterangan alat</translation>
+        <translation>Zet popup ballon tooltips aan</translation>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Kategori induk</translation>
+        <translation>Oudere categorie</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation>Pilih item induk untuk kategori anda.</translation>
+        <translation>Kies hoofd item voor je categorie.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Judul</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Deskripsi</translation>
+        <translation>Omschrijving</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Ikon</translation>
+        <translation>Pictogram</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation>Pilih ikon untuk kategori anda.</translation>
+        <translation>Selecteer pictogram voor je categorie.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Tambah kategori baru</translation>
+        <translation>Voeg nieuwe categorie toe</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation>Sunting kategori yang ada</translation>
+        <translation>Bewerk bestaande categorie</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Tidak dapat menambah kategori</translation>
+        <translation>Kan geen categorie toevoegen</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation>Kategori tidak ditambahkan disebabkan eror.</translation>
+        <translation>Door een fout is de categorie niet toegevoegd.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation>Tidak dapat menyunting kategori</translation>
+        <translation>Kan categorie niet bewerken</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation>Kategori tidak disunting disebabkan eror.</translation>
+        <translation>Door een fout is de categorie niet bewerkt.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation>Nama kategori ok.</translation>
+        <translation>Categorie naam is ok.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation>Nama kategori terlalu pendek.</translation>
+        <translation>Categorie naam is te kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Deskripsi kosong.</translation>
+        <translation>Omschrijving is leeg.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Deskripsi ok.</translation>
+        <translation>Omschrijving is ok.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation>Pilih berkas ikon untuk kategori</translation>
+        <translation>Kies pictogram bestand voor de categorie</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Gambar (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Pilih ikon</translation>
+        <translation>Selecteer pictogram</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Batal</translation>
+        <translation>Annuleer</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Lihat ke dalam:</translation>
+        <translation>Kijk in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Nama ikon:</translation>
+        <translation>Pictogram naam:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Jenis ikon:</translation>
+        <translation>Type pictogram:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation>Judul kategori</translation>
+        <translation>Titel categorie</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation>Setel judul untuk kategori anda.</translation>
+        <translation>Stel titel in voor je categorie.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation>Deskripsi kategori</translation>
+        <translation>Categorie omschrijving</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation>Setel deskripsi untuk kategori anda.</translation>
+        <translation>Stel omschrijving in voor je categorie.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>Pilihan ikon</translation>
+        <translation>Pictogram selectie</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Memuat ikon dari berkas...</translation>
+        <translation>Laad pictogram uit een bestand...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Tidak menggunakan ikon</translation>
+        <translation>Gebruik geen pictogram</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Menggunakan ikon bawaan</translation>
+        <translation>Gebruik standaard pictogram</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Cannot add feed</source>
-        <translation>Tidak dapat menambah feed</translation>
+        <translation>Kan geen feed toevoegen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Feed tidak ditambahkan disebabkan eror.</translation>
+        <translation>Door een fout is de feed niet toegevoegd.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation>Tidak dapat menyunting feed</translation>
+        <translation>Kan feed niet bewerken</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation>Feed tidak disunting disebabkan eror.</translation>
+        <translation>Door een fout is de feed niet bewerkt.</translation>
     </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation>&amp;Pilih berkas</translation>
+        <translation>&amp;Selecteer bestand</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation>&amp;Centang semua item</translation>
+        <translation>&amp;Controleer alle items</translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation>&amp;Hapus centang semua item</translation>
+        <translation>&amp;Vinkje bij alle items</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Hasil operasi</translation>
+        <translation>Resultaten</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation>Tidak ada berkas yang dipilih.</translation>
+        <translation>Geen bestand geselecteerd.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Belum ada operasi dijalankan.</translation>
+        <translation>Nog geen handeling uitgevoerd.</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation>Tujuan berkas</translation>
+        <translation>Doelbestand</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation>Sumber feed &amp;&amp; kategori</translation>
+        <translation>Source Feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Ekspor feed</translation>
+        <translation>Exporteer feeds</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation>Berkas sumber</translation>
+        <translation>Source bestand</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation>Tujuan feed &amp;&amp; kategori</translation>
+        <translation>Doelgroep feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Impor feed</translation>
+        <translation>Importeer feeds</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation>Berkas OPML 2.0 (*.opml)</translation>
+        <translation>OPML 2.0 bestanden (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation>Pilih berkas untuk ekspor feed</translation>
+        <translation>Selecteer bestand voor feed export</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation>Berkas dipilih.</translation>
+        <translation>Bestand is geselecteerd.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation>Pilih berkas untuk impor feed</translation>
+        <translation>Selecteer bestand voor feed import</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation>Tidak dapat membuka berkas sumber.</translation>
+        <translation>Kan source bestand niet openen.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation>Feed dimuat.</translation>
+        <translation>Feeds zijn geladen.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation>Eror, berkas tidak terbentuk dengan baik. Pilih berkas lain.</translation>
+        <translation>Fout, het bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>Eror terjadi. Berkas tidak terbentuk dengan baik. Pilih berkas lain.</translation>
+        <translation>Fout opgetreden. Bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation>Feed berhasil diekspor.</translation>
+        <translation>Feeds zijn met succes geëxporteerd.</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation>Eror genting terjadi.</translation>
+        <translation>Kritieke fout opgetreden.</translation>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation>Mengurai data...</translation>
+        <translation>Gegevens ontleden...</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation>Tidak dapat menulis ke berkas tujuan: &apos;%1&apos;.</translation>
+        <translation>Kan niet schrijven naar doelbestand: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation>Root node</translation>
+        <translation>Root rechten</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Pilih item induk untuk feed anda.</translation>
+        <translation>Kies hoofd item voor je feed.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation>Berkas TXT [satu URL per baris] (*.txt)</translation>
+        <translation>TXT bestanden (een url per lijn) (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation>Dapatkan metadata secara online</translation>
+        <translation>Krijg metadata online</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation>Metadata untuk feed anda dapat diambil secara online. Perhatikan bahwa aksi dapat memakan waktu beberapa menit, tergantung pada jumlah feed.</translation>
+        <translation>Metadata voor uw feeds kunnen online worden opgehaald. Merk op dat de actie een aantal minuten kan duren, afhankelijk van het aantal feeds.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation>Apakah anda ingin mengambil metadata feed secara online?</translation>
+        <translation>Wilt u de feed metadata online ophalen?</translation>
     </message>
 </context>
 <context>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Feed ditambahkan</translation>
+        <translation>Feed toegevoegd</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation>Feed ditambahkan, memicu sinkronisasi sekarang.</translation>
+        <translation>Feed is toegvoegd, activeer sync nu.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Tidak dapat menambah feed</translation>
+        <translation>Kan geen feed toevoegen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Feed tidak ditambahkan disebabkan eror.</translation>
+        <translation>Door een fout is de feed niet toegevoegd.</translation>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation>Rilis saat ini</translation>
+        <translation>Huidige versie</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation>Rilis yang tersedia</translation>
+        <translation>Beschikbare versie</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Perubahan</translation>
+        <translation>Veranderingen</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2614,154 +2616,152 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation>Tidak dikenal</translation>
+        <translation>onbekend</translation>
     </message>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation>Daftar dengan pembaharuan tidak
-diunduh dengan berhasil.</translation>
+        <translation>Lijst met updates is niet
+succesvol gedownload.</translation>
     </message>
     <message>
         <source>New release available.</source>
-        <translation>Rilis baru tersedia.</translation>
+        <translation>Nieuwe versie beschikbaar.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation>Eror: &apos;%1&apos;.</translation>
+        <translation>Fout: %1&apos;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation>Tidak ada rilis baru tersedia.</translation>
+        <translation>Geen nieuwe versie beschikbaar.</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation>Rilis ini bukan yang lebih terkini dari
-yang ter-install sekarang.</translation>
+        <translation>Deze versie is niet nieuwer dan
+de geïnstalleerde.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Periksa untuk pembaharuan</translation>
+        <translation>Controleer op updates</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation>Mengunduh berkas instalasi baru.</translation>
+        <translation>Download nieuwe installatie bestanden.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Pemeriksaan pembaharuan gagal.</translation>
+        <translation>Zoeken naar updates mislukt.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Mengunduh berkas instalasi untuk sistem operasi anda.</translation>
+        <translation>Download installatie bestand voor OS/2.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Berkas instalasi tidak tersedia secara langsung.
-Pergi ke website aplikasi untuk mendapatkannya secara manual.</translation>
+        <translation>Installatie bestand in nu niet beschikbaar.
+Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Tidak ada pembaharuan terkini tersedia.</translation>
+        <translation>Geen nieuwe update beschikbaar.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation>Tidak dapat memperbaharui aplikasi</translation>
+        <translation>Kan RSSguard niet updaten</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Tidak dapat mengarahkan ke berkas instalasi. Periksa unduhan instalasi baru secara manual pada website proyek.</translation>
+        <translation>Kan niet naar installatiebestand bladeren. Controleer nieuwe installatie downloads handmatig op RSSguard website.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Mengunduh pembaharuan</translation>
+        <translation>Download update</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation>Terunduh %1% (ukuran pembaharuan adalah %2 kB).</translation>
+        <translation>Downloaded %1% (update grootte is %2 kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation>Mengunduh pembaharuan...</translation>
+        <translation>Update downloaden ...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation>Berhasil diunduh</translation>
+        <translation>Download succesvol voltooid</translation>
     </message>
     <message>
         <source>Error occured</source>
-        <translation>Eror terjadi</translation>
+        <translation>Fout opgetreden</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation>Eror terjadi saat pengunduhan paket.</translation>
+        <translation>Er is een fout opgetreden tijdens het downloaden van het pakket.</translation>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation>Pergi ke website aplikasi</translation>
+        <translation>Ga naar Rssguard website</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation>Ini adalah versi baru yang dapat
-diunduh.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Paket diunduh dengan sukses.
-Anda harus instal secara manual.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Go to update file</source>
-        <translation>Pergi untuk pembaharuan berkas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>Tidak dapat membuka direktori</translation>
+        <translation>Kan map niet openen</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Tidak dapat membuka direktori keluaran. Buka secara manual.</translation>
+        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
     </message>
 </context>
 <context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation>Tidak dapat membuka berkas &apos;%1&apos; untuk membaca.</translation>
+        <translation>Kan bestand &apos;%1&apos; niet openen om te lezen.</translation>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>Tidak dapat membuka berkas &apos;%1&apos; untuk menulis.</translation>
+        <translation>Kan bestand &apos;%1&apos; niet openen om te schrijven.</translation>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>Tik Website adres hier</translation>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation>Id</translation>
+        <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>Terbaca</translation>
+        <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation>Terhapus</translation>
+        <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation>Penting</translation>
+        <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
@@ -2769,7 +2769,7 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Judul</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
@@ -2777,169 +2777,169 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Penulis</translation>
+        <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation>Dibuat pada</translation>
+        <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation>Konten</translation>
+        <translation>Inhoud</translation>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation>Id dari pesan.</translation>
+        <translation>Id van het bericht.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation>Apakah pesan terbaca?</translation>
+        <translation>Is bericht gelezen?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation>Apakah pesan terhapus?</translation>
+        <translation>Is bericht verwijderd?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation>Apakah pesan penting?</translation>
+        <translation>IS bericht belangrijk?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation>Id dari feed dimana pesan ini dimiliki.</translation>
+        <translation>Id van feed waar dit bericht bijhoort.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation>Judul dari pesan.</translation>
+        <translation>Titel van het bericht.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation>Url dari pesan.</translation>
+        <translation>Url van het bericht.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation>Penulis dari pesan.</translation>
+        <translation>De schrijver van het bericht.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation>Tanggal pembuatan pesan.</translation>
+        <translation>Aanmaakdatum van het bericht.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation>Konten dari pesan.</translation>
+        <translation>Inhoud van het bericht.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation>Terhapus permanen</translation>
+        <translation>Definitief verwijderd</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation>Apakah pesan terhapus permanen dari tong sampah?</translation>
+        <translation>Is het bericht definitief verwijderd uit de prullenbak?</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation>Lampiran</translation>
+        <translation>Bijlagen</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation>Daftar dari lampiran.</translation>
+        <translation>Bijlagen lijst.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation>Memuat pesan gagal, mungkin pesan tidak dapat diunduh.</translation>
+        <translation>Laden van berichten mislukt, misschien konden berichten niet worden gedownload.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation>Memuat pesan dari item &apos;%1&apos; gagal.</translation>
+        <translation>Laden van berichten voor item &apos;%1&apos; mislukt.</translation>
     </message>
     <message>
         <source>Account ID</source>
-        <translation>ID akun</translation>
+        <translation>Account ID</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation>ID tersuai</translation>
+        <translation>Aangepaste ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation>ID akun dari pesan.</translation>
+        <translation>Account ID van het bericht.</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation>ID tersuai dari pesan</translation>
+        <translation>Aangepaste ID van het bericht</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation>Hash tersuai</translation>
+        <translation>Aangepaste hash</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation>Hash tersuai dari pesan.</translation>
+        <translation>Aangepaste hash van bericht.</translation>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation>Pencarian pesan</translation>
+        <translation>Zoek berichten</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation>Kotak pencarian pesan</translation>
+        <translation>Berichten zoek box</translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation>Menu untuk menyoroti pesan</translation>
+        <translation>Menu voor markeren berichten</translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation>Tanpa penyorotan ekstra</translation>
+        <translation>Niet extra markeren</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation>Menyoroti pesan belum terbaca</translation>
+        <translation>Markeer ongelezen berichten</translation>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation>Menyoroti pesan penting</translation>
+        <translation>Markeer belangrijke berichten</translation>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation>Tampilkan semua pesan</translation>
+        <translation>Toon alle berichten</translation>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation>Penyorot pesan</translation>
+        <translation>Bericht markeerder</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Pengatur jarak bilah alat</translation>
+        <translation>Werkbalk ruimte</translation>
     </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation>Menu konteks untuk pesan</translation>
+        <translation>Contextmenu voor berichten</translation>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation>Masalah dengan memulai peramban web eksternal</translation>
+        <translation>Probleem om externe webbrowser te starten</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation>Peramban web eksternal tidak dapat dimulai.</translation>
+        <translation>Externe webbrowser kon niet worden gestart.</translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation>Masalah dengan memulai klien e-mail eksternal</translation>
+        <translation>Probleem om externe e-mail client te starten</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation>Klien e-mail eksternal tidak dapat dimulai.</translation>
+        <translation>Externe e-mail client kon niet worden gestart.</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Tampilan koran</translation>
+        <translation>Krantweergave</translation>
     </message>
 </context>
 <context>
@@ -2947,95 +2947,95 @@ Anda harus instal secara manual.</translation>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation>protokol eror</translation>
+        <translation>protocol fout</translation>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>host tidak ditemukan</translation>
+        <translation>host niet gevonden</translation>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>koneksi ditolak</translation>
+        <translation>verbinding geweigerd</translation>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation>autentikasi proxy dibutuhkan</translation>
+        <translation>Verbindings time-out</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>SSL handshake gagal</translation>
+        <translation>SSL handshake is mislukt</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>koneksi server proxy ditolak</translation>
+        <translation>proxy server verbinding geweigerd</translation>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation>gagal sementara</translation>
+        <translation>tijdelijke storing</translation>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>autentikasi gagal</translation>
+        <translation>verificatie mislukt</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation>autentikasi proxy dibutuhkan</translation>
+        <translation>proxy verificatie vereist</translation>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>server proxy tidak ditemukan</translation>
+        <translation>proxy server niet gevonden</translation>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>konten tidak ditemukan</translation>
+        <translation>inhoud niet gevonden</translation>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation>eror tidak dikenal</translation>
+        <translation>onbekende fout</translation>
     </message>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation>tidak ada eror</translation>
+        <translation>geen fouten</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation>akses ke konten ditolak</translation>
+        <translation>toegang tot inhoud is geweigerd</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation>koneksi kehabisan waktu atau dibatalkan</translation>
+        <translation>verbinding verlopen of werd geannuleerd</translation>
     </message>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation>konten tak dikenal</translation>
+        <translation>onbekende inhoud</translation>
     </message>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation>Sinkronisasi di</translation>
+        <translation>Sync in</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Tidak dapat menambah item</translation>
+        <translation>Kan item niet toevoegen</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
+        <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
 </context>
 <context>
@@ -3043,50 +3043,54 @@ Anda harus instal secara manual.</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>id_ID</translation>
+        <translation>nl_NL</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.2</translation>
+        <translation>0.07</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Rachman</translation>
+        <translation>Elbert Pol</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
+        <translation>elbert.pol@gmail.com</translation>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Bahasa Indonesia</translation>
+        <translation>Nederlands</translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>+ %n feed lain.</numerusform></translation>
+        <translation><numerusform>
+
++ %n andere feed.</numerusform><numerusform>
+
++ %n andere feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation>Selamat datang di %1.
+        <translation>Welkom bij %1.
 
-Silahkan, memeriksa hal BARU yang termasuk
-di versi ini dengan meng-klik popup notifikasi ini.</translation>
+Check voor NIEUW materiaal in deze versie
+door te clicken op deze popup melding.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Selamat datang di %1.</translation>
+        <translation>Welkom bij %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation>Memuat kumpulan awal dari feed</translation>
+        <translation>Laad eerste set van de feeds</translation>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -3094,43 +3098,46 @@ di versi ini dengan meng-klik popup notifikasi ini.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation>Layanan ini menawarkan integrasi dengan Tiny Tiny RSS.
-Tiny Tiny RSS merupakan pengumpul dan pembaca feed berita (RSS/Atom) berbasis web bersumber terbuka, didesain untuk memperkenankan ada untuk membaca berita dari lokasi manapun, sambil sebisa mungkin merasa seperti pada aplikasi desktopyang sesungguhnya.
+        <translation>Deze service biedt integratie met TinyTiny RSS.
 
-Setidaknya API level %1 dibutuhkan.</translation>
+Tiny Tiny RSS is een open source web-based nieuws-feed (RSS / Atom) lezer en aggregator, ontworpen om u nieuws te laten lezen vanaf elke locatie, terwijl u het gevoel hebt zo dicht mogelijk bij een echte desktop te zijn.
+
+Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation>Aplikasi News ini merupakan pengumpul feed RSS/Atom. Ini merupakan bagian dari rangkaian ownCloud. Plugin ini mengimplementasikan %1 API.</translation>
+        <translation>De Nieuws app is een RSS/Atom feed aggegrator. Het is deel van de ownCloud suite. Deze plugin implementeert %1 API.</translation>
     </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation>Tong sampah</translation>
+        <translation>Prullenbak</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>Tong sampah berisi semua pesan terhapus dari semua feed.</translation>
+        <translation>De prullenbak bevat alle verwijderde berichten van alle feeds.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n pesan terhapus.</numerusform></translation>
+        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
 
 %1</source>
-        <translation>Tong sampah %1</translation>
+        <translation>Prullenbak
+
+%1</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation>Pulihkan tong sampah</translation>
+        <translation>Herstel vuilnisbak</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation>Kosongkan tong sampah</translation>
+        <translation>Leeg vuilnisbak</translation>
     </message>
 </context>
 <context>
@@ -3138,22 +3145,22 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n pesan belum dibaca.</numerusform></translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation>Ulang ke pintasan asli.</translation>
+        <translation>Reset naar standaard sneltoets.</translation>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation>Bersihkan pintasan saat ini.</translation>
+        <translation>Wis huidige sneltoets.</translation>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation>Klik dan tekan pintasan baru.</translation>
+        <translation>Klik en raak nieuwe sneltoets.</translation>
     </message>
 </context>
 <context>
@@ -3161,39 +3168,39 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (kategori)%2%3</translation>
+        <translation>%1 (categorie)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
         <translation>
-Kategori ini tidak berisi item bersarang.</translation>
+Deze categorie bevat geen nested items.</translation>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation>Metadata tidak terambil</translation>
+        <translation>Metadata niet opgehaald</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation>Metadata tidak terambil karena: %1.</translation>
+        <translation>Metadate niet opgehaald omdat: %1.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>tidak menggunakan pembaharuan otomatis</translation>
+        <translation>automatisch bijwerken niet gebruiken</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>menggunakan pengaturan global</translation>
+        <translation>gebruik algemene instellingen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform></translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3204,110 +3211,110 @@ Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation>%1 (%2)%3
 
-Status Jaringan: %6
-Encoding: %4
-Status pembaharuan otomatis: %5</translation>
+Netwerk status: %6
+Coderen: %4
+Auto-update status: %5 </translation>
     </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Ini adalah akun layanan wajib untuk standar feed RSS/RDF/ATOM.</translation>
+        <translation>Dit is verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation>Apakah anda ingin memuat kumpulan awal dari feed?</translation>
+        <translation>Wil je de eerste set van feeds laden?</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation>Eror ketika memuat feed awal</translation>
+        <translation>Fout bij het laden van de eerste feeds</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Ambil metadata</translation>
+        <translation>Ophalen van metadata</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Impor berhasil, tetapi beberapa feed/kategori tidak diimpor disebabkan eror.</translation>
+        <translation>Importeren succesvol, maar sommige feeds / categorieën waren niet goed  geïmporteerd door fouten.</translation>
     </message>
     <message>
         <source>Import was completely successfull.</source>
-        <translation>Impor benar-benar berhasil.</translation>
+        <translation>Importeren is helemaal geslaagd.</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Ekspor feed</translation>
+        <translation>Exporteer feeds</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Impor feed</translation>
+        <translation>Importeer feeds</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation>Ini merupakan akun layanan untuk standar feed RSS/RDF/ATOM.
+        <translation>Dit is een service account voor standaard RSS/RDF/ATOM feeds.
 
-ID akun: %1</translation>
+Account ID: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation>Akun baru ini tidak berisi feed apapun. Anda sekarang dapat menambah kumpulan feed bawaan.</translation>
+        <translation>Dit nieuwe account bevat geen feeds. U kunt de standaard set van feeds toevoegen.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Tidak dapat menambah item</translation>
+        <translation>Kan item niet toevoegen</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
+        <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Tidak dapat menambah kategori</translation>
+        <translation>Kan geen categorie toevoegen</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation>Tidak dapat menambah kategori karena operasi genting lain sedang berlangsung.</translation>
+        <translation>Kan geen categorie toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation>Bar perkembangan pembaharuan feed</translation>
+        <translation>Feed update progresbalk</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation>Label pembaharuan feed</translation>
+        <translation>Feed update label</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation>Bar perkembangan pengunduhan berkas</translation>
+        <translation>Bestandsdownload progresbar</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation>Label pengunduhan berkas</translation>
+        <translation>Bestandsdownload label</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Pengatur jarak bilah alat</translation>
+        <translation>Werkbalkruimte</translation>
     </message>
 </context>
 <context>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Versi baru tersedia</translation>
+        <translation>Nieuwe versie beschikbaar</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Klik gelembung untuk informasi lebih.</translation>
+        <translation>Klik op luchtbel voor meer informatie.</translation>
     </message>
     <message>
         <source>anonymous</source>
-        <translation>anonymous</translation>
+        <translation>Anoniem</translation>
     </message>
 </context>
 <context>
@@ -3316,119 +3323,120 @@ ID akun: %1</translation>
         <source>%1
 Unread news: %2</source>
         <translation>%1
-Berita belum terbaca:%2</translation>
+
+Ongelezen nieuws: %2</translation>
     </message>
 </context>
 <context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation>Tutup tab ini.</translation>
+        <translation>Sluit dit tabblad.</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation>Tutup tab</translation>
+        <translation>Sluit tabblad</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation>Feed</translation>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation>Menelisik feed dan pesan anda</translation>
+        <translation>Blader door feeds en berichten</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation>Tampilkan menu utama.</translation>
+        <translation>Toont het hoofdmenu.</translation>
     </message>
     <message>
         <source>Main menu</source>
-        <translation>Menu utama</translation>
+        <translation>Hoofdmenu</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Unduhan</translation>
+        <translation>Downloads</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Tampilan koran</translation>
+        <translation>Krantweergave</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Webbrowser</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n jam</numerusform></translation>
+        <translation><numerusform>%n uur</numerusform><numerusform>%n ur(en)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n menit</numerusform></translation>
+        <translation><numerusform>%n minuut</numerusform><numerusform>%n minut(en)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation>dan</translation>
+        <translation>en</translation>
     </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation>Aksi yang aktif</translation>
+        <translation>Geactiveerde acties</translation>
     </message>
     <message>
         <source>Available actions</source>
-        <translation>Aksi tersedia</translation>
+        <translation>Beschikbare acties</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation>Masukkan pemisah</translation>
+        <translation>Scheidingsteken invoegen</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation>Masukkan pemberi jarak</translation>
+        <translation>Voeg ruimte in</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation>Pemisah</translation>
+        <translation>Scheidingsteken</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Pengatur jarak bilah alat</translation>
+        <translation>Werkbalk ruimte</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation>Pindah aksi ke atas</translation>
+        <translation>Verplaats maatregel omhoog</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation>Pindah aksi ke bawah</translation>
+        <translation>Verplaats maatregel omlaag</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation>Tambah aksi yang dipilih</translation>
+        <translation>Voeg geselecteerde maatregel toe</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation>Hapus aksi yang dipilih</translation>
+        <translation>Verwijder geselecteerde maatregel</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation>Hapus semua aksi</translation>
+        <translation>Verwijder alle maatregels</translation>
     </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation>Tutup dialog modal yang terbuka lebih dulu.</translation>
+        <translation>Sluit geopende modaal vensters eerst.</translation>
     </message>
 </context>
 <context>
@@ -3436,17 +3444,17 @@ Berita belum terbaca:%2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>tidak menggunakan pembaharuan otomatis</translation>
+        <translation>automatisch bijwerken niet gebruiken</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>menggunakan pengaturan global</translation>
+        <translation>gebruik algemene instellingen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform></translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
@@ -3455,7 +3463,7 @@ Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation>%1%2
 
-Status pembaharuan otomatis: %3</translation>
+Auto update status: %3</translation>
     </message>
 </context>
 <context>
@@ -3470,86 +3478,86 @@ Last error: %4
 Last login on: %5</source>
         <translation>Tiny Tiny RSS
 
-ID akun: %3
-Nama pengguna: %1
+Account ID: %3
+Gebruikersnaam: %1
 Server: %2
-Eror terakhir: %4
-Login terakhir pada: %5</translation>
+Laatste fout: %4
+Laatste login: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation>Sinkronisasi di</translation>
+        <translation>Sync in</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Tidak dapat menambah item</translation>
+        <translation>Kan item niet toevoegen</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
+        <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Navigatie venster</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Geen titel</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Terug</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>Ga terug.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>Vooruit</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>Ga vooruit.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>Herlaad</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Vernieuw huidige webpagina.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Stop het laden van pagina.</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation>Lampiran</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Ditulis oleh</translation>
+        <translation>Geschreven door </translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation>pengarang tak diketahui</translation>
+        <translation>Onbekende auteur</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Tampilan koran</translation>
+        <translation>Krantweergave</translation>
     </message>
 </context>
 </TS>

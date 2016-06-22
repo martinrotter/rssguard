@@ -1,227 +1,224 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation> (kategori)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (feed)</source>
-        <translation> (flöde)</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>Programmet är redan startat.</translation>
+        <translation>アプリケーションは既に実行中です。</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Utdatamappen är inte skrivbar.</translation>
+        <translation>出力ディレクトリは書き込み不可能です。</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation>Inställningsfilen kopierades inte till utdatamappen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation>Databasfilen kopierades inte till utdatamappen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Databasåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Inställningsåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flödet</translation>
+        <translation>フィードを追加できません</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Flödet kan inte läggas till eftersom standard RSS-/ATOM-konto inte aktiverats.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation>Krymper databasfilen...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation>Databasfilen krympt...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation>Tar bort lästa meddelanden...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation>Lästa meddelanden rensat...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation>Papperskorgen rensad...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation>Tar bort gamla meddelanden...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation>Rensar papperskorgen...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation>Gamla meddelanden rensat...</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation>MySQL-servern fungerar som förväntat.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation>Ingen MySQL-server. körs på målplatsen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation>Åtkomst nekad. Ogiltigt användarnamn eller lösenord.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>Okänt fel.</translation>
+        <translation>不明なエラーです。</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (dedikerad databas)</translation>
+        <translation>MySQL/MariaDB (外部データベース)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation>SQLite (inbäddad databas)</translation>
+        <translation>SQLite (内蔵データベース)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Den valda databasen finns inte (än). Den kommer att skapas.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation>MySQL databas inte tillgänglig</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 kan inte använda MySQL-lagringen, den är inte tillgänglig. %1 växlar nu till SQLite databas. Starta din MySQL-server och justera programinställningarna.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation>Webbsidan innehåller inga flöden.</translation>
+        <translation>このウェブサイトにはフィードがありません。</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flödet från webbsidan.
-Denna webbsida innehåller %n flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Stöds ej</translation>
+        <translation>サポートされていません</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation>Angivet kontot stöder inte tillägg av nya flöden.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation>Ikon</translation>
+        <translation>アイコン</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation>Filnamn</translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation>Kunde inte öppna utdatafil: %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>&amp;Försök igen</translation>
+        <translation>再試行(&amp;T)</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>&amp;Stopp</translation>
+        <translation>停止(&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>&amp;Öppna fil</translation>
+        <translation>ファイルを開く(&amp;O)</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation>Välj destination för nedladdad fil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation>Fel: %1</translation>
+        <translation>エラー: %1</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation>Nedladdningsplatsen kunde inte skapas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation>Fel när filen skulle sparas: %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation>%1 av %2 (%3 per sekund) - %4</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation>%1 av %2 - Nedladdning slutförd</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>Öppna &amp;mapp</translation>
+        <translation>ディレクトリを開く(&amp;d)</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation>Kan inte öppna filen</translation>
+        <translation>ファイルを開けません</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation>Kan inte öppna utdatafilen. Öppna den manuellt.</translation>
+        <translation>アウトプットファイルを開けません。手動で開いてください。</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>Kan inte öppna mappen</translation>
+        <translation>ディレクトリを開けません。</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
+        <translation>アウトプットディレクトリを開けません。手動で開いてください。</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation>Nedladdning slutförd</translation>
+        <translation>ダウンロード完了</translation>
     </message>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation>Filen &apos;%1&apos; är nedlladdad.
-Klicka här för att öppna målmappen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL: %1</source>
@@ -229,30 +226,30 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation>Lokal fil: %1</translation>
+        <translation>ローカルファイル: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation>Val av lokal fil avbröts.</translation>
+        <translation>選択したローカルファイルはキャンセルされました。</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation>Rensa</translation>
+        <translation>クリア</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation><numerusform>あと%n分です</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation><numerusform>あと%n秒です</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation>byte</translation>
+        <translation>バイト</translation>
     </message>
     <message>
         <source>kB</source>
@@ -268,33 +265,33 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
+        <translation><numerusform>%n件のファイルをダウンロード中...</numerusform></translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation>Verktygsfält för meddelanden</translation>
+        <translation>メッセージのツールバー</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>Verktygsfält för flöden</translation>
+        <translation>フィードのツールバー</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>Kan inte rensa databasen</translation>
+        <translation>データベースをクリーンアップできません</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
+        <translation>データベースをクリーンアップできません、外部による操作が実行中です。</translation>
     </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>Kategori</translation>
+        <translation>カテゴリ</translation>
     </message>
 </context>
 <context>
@@ -302,426 +299,425 @@ Klicka här för att öppna målmappen.</translation>
     <message>
         <source>Title</source>
         <extracomment>Title text in the feed list header.</extracomment>
-        <translation>Namn</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation>Namn på kategorier/flöden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
-        <translation>Root</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Uppdaterar flöden automatiskt</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation>Kan inte uppdatera alla objekt</translation>
+        <translation>すべてのアイテムを更新できません</translation>
     </message>
     <message>
         <source>Feed update started</source>
         <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Flödesuppdatering startad</translation>
+        <translation>フィードの更新を開始</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Uppdaterade flödet &apos;%1&apos;</translation>
+        <translation>フィード&apos;%1&apos;が更新されました</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Nya meddelanden nedladdade</translation>
+        <translation>新しいメッセージがダウンロードされました</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation>Du kan inte överföra objekt till annat konto med dra &amp; släpp. Stöd saknas för detta.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation>Kan inte utföra dra &amp; släpp-åtgärd</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Du kan inte uppdatera alla poster eftersom en annan kritisk operation pågår.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation>Antal olästa/alla meddelanden.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Avgränsare för verktygsfält</translation>
+        <translation>ツールバーの空白</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation>Kan inte redigera objektet</translation>
+        <translation>アイテムを編集できません</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation>Kan inte bort objektet</translation>
+        <translation>アイテムを削除できません</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation>Kontextmeny för tomt utrymme</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation>Markerat objekt kan inte redigeras, eftersom en annan kritisk åtgärd pågår.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation>Markerat objekt kan inte tas bort, eftersom en annan kritisk åtgärd pågår.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation>Kontextmeny för kategorier</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation>Det valda objektet kan inte redigeras. Stöd saknas (för närvarande?).</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation>Tar bort &quot;%1&quot;</translation>
+        <translation>&quot;%1&quot;を削除中</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation>Du är på väg att helt ta bort &quot;%1&quot;.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation>Är du säker?</translation>
+        <translation>よろしいですか?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation>Kan inte ta bort &quot;%1&quot;</translation>
+        <translation>&quot;%1&quot;を削除できません</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation>Objektet kan inte tas bort på grund av ett kritiskt fel. Skicka gärna en felrapport.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation>Objektet kan inte tas bort eftersom stöd saknas, eller för
-att funktionen inte är implementerad än.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation>Kontextmeny för andra objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Stöds ej</translation>
+        <translation>サポートされていません</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation>Det valda kontot stöder inte tillägg av nya flöden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation>Det valda kontot stöder inte tillägg av nya kategorier.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>情報</translation>
     </message>
     <message>
         <source>Licenses</source>
-        <translation>Licenser</translation>
+        <translation>ライセンス</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL Licens (gäller RSS Guards källkod)</translation>
+        <translation>GNU GPL ライセンス (RSS Guardのソースコードに適用されています)</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>GNU GPL Licens</translation>
+        <translation>GNU GPL ライセンス</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD Licens (gäller to QtSingleApplication källkod)</translation>
+        <translation>BSD ライセンス (QtSingleApplicationのソースコードに適用されています)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation>Licenssidan visas endast på Engelska.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Ändringslogg</translation>
+        <translation>変更履歴</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation>Ändringsloggen visas endast på Engelska.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>License not found.</source>
-        <translation>Licensen hittades inte.</translation>
+        <translation>ライセンスがありません。</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation>Ändringsloggen hittades inte.</translation>
+        <translation>更新履歴がありません。</translation>
     </message>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
-        <translation>Om %1</translation>
+        <translation>%1について</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation>Inställningstyp</translation>
+        <translation>設定タイプ</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation>Inställningsfil</translation>
+        <translation>設定ファイル</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation>Databasens root-mapp</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation>FULLT portabel</translation>
+        <translation>完全ポータブル</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>PARTIELLT portabel</translation>
+        <translation>部分的ポータブル</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation>Resurser</translation>
+        <translation>リソース</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 är en (mycket) liten flödesläsare.&lt;br&gt;&lt;br&gt;Mjukvaran distribueras under GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Kontakt:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-post&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webbsida&lt;/li&gt;&lt;/ul&gt;Du kan hämta källkod för %5 från webbsidan.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (byggd på %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Byggdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (kompilerad mot %7)&lt;br&gt;</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Lägg till nytt konto</translation>
+        <translation>新しいアカウントを追加</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation>Detaljerat</translation>
+        <translation>詳細</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Namn</translation>
+        <translation>名前</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Version</translation>
+        <translation>バージョン</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Författare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivning</translation>
+        <translation>説明</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>Kontot kan endast läggas till en gång.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation>Säkerhetskopiera databas/inställningar</translation>
+        <translation>データベースと設定のバックアップ</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation>Säkerhetskopiering</translation>
+        <translation>バックアップのプロパティ</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation>Kopiera</translation>
+        <translation>バックアップするアイテム</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation>Databas</translation>
+        <translation>データベース</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Inställningar</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation>Kopians namn</translation>
+        <translation>バックアップ名</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Åtgärdsresultat</translation>
+        <translation>実行結果</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation>Namn för säkerhetskopior</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Ingen åtgärd slutförd än.</translation>
+        <translation>まだ何も実行されていません。</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation>Säkerhetskopiering slutförd.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation>Säkerhetskopians namn saknas.</translation>
+        <translation>バックアップ名は空にできません。</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation>Säkerhetskopians namn är godkänt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation>Säkerhetskopiering misslyckades.</translation>
+        <translation>バックアップ失敗。</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation>Utdatamapp</translation>
+        <translation>出力ディレクトリ</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Välj mapp</translation>
+        <translation>ディレクトリを選択(&amp;S)</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation>Säkerhetskopia skapad, och lagrad i målmappen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation>Välj målmapp</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation>Målmappen är godkänd.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation>Rensa databasen</translation>
+        <translation>データベースをクリーンアップ</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation>Ta bort alla meddelanden äldre än</translation>
+        <translation>これより古いメッセージをすべて削除</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
+        <translation><numerusform>日</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation>Krymp databasfilen</translation>
+        <translation>データベースファイルを縮める</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Databasinformation</translation>
+        <translation>データベース情報</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation>Databasens filstorlek</translation>
+        <translation>データベースファイルサイズ</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation>Databastyp</translation>
+        <translation>データベース形式</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation>Förlopp</translation>
+        <translation>進捗</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation>Jag är klar.</translation>
+        <translation>用意ができました。</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation>Databasrensning körs.</translation>
+        <translation>データベースクリーンアップが実行中です。</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation>Databasrensning slutförd.</translation>
+        <translation>データベースクリーンアップが完了しました。</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation>Databasrensning misslyckades.</translation>
+        <translation>データベースクリーンアップが失敗しました。</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation>Rensningsinställningar (alla markerade objekt raderas helt från databasen)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Ta bort alla lästa meddelanden (inte dem i papperskorgen)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation>Ta bort alla meddelanden från papperskorgen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Ta bort alla stjärnmärkta meddelanden (inklusive dem i papperskorgen)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>unknown</source>
-        <translation>Okänd</translation>
+        <translation>不明</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation>fil: %1, data: %2</translation>
+        <translation>ファイル: %1、データ: %2</translation>
     </message>
 </context>
 <context>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Vissa flöden kräver autentisering, inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentisering stöds.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Autentisering</translation>
+        <translation>証明</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Användarnamn</translation>
+        <translation>ユーザー名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Lösenord</translation>
+        <translation>パスワード</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Visa lösenord</translation>
+        <translation>パスワードを表示</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Kräver HTTP-autentisering</translation>
+        <translation>HTTP証明が必要です</translation>
     </message>
     <message>
         <source>URL</source>
@@ -729,963 +725,963 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Testa inställning</translation>
+        <translation>テストセットアップ(&amp;T)</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>Användarnamn för HTTP-autentisering</translation>
+        <translation>HTTP認証のユーザ名</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>Lösenord för HTTP-autentisering</translation>
+        <translation>HTTP認証のパスワード</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>Lösenord för ditt TT RSS-konto</translation>
+        <translation>あなたのTT-RSSアカウントのパスワード</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>Användarnamn för ditt TT RSS-konto</translation>
+        <translation>あなたのTT-RSSアカウントのユーザ名</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation>FULLSTÄNDIG URL till din TT RSS-instans MED efterföljande API-sträng</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Inget test utfört ännu.</translation>
+        <translation>まだテストが完了していません。</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Här visas resultat av anslutningstest.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Lägg till nytt Tiny Tiny RSS-konto</translation>
+        <translation>新しいTiny Tiny RSSアカウントを追加</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Redigera befintligt </translation>
+        <translation>存在するTiny Tiny RSSアカウントを編集</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>API-åtkomst är inte aktiverad på den valda servern.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation>Inloggningsuppgifter är felaktiga.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation>Annat fel uppstod! Kontakta utvecklaren.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Den valda Tiny Tiny RSS-servern kör en API-version (%1) som inte stöds. Minst API-nivå %2 krävs.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Den valda Tiny Tiny RSS-servern kör en API-version som inte stöds.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS-servern är okay. Den kör API-nivå %1 och minimikravet är nivå %2.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS-servern är okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Nätverksfel: &apos;%1&apos;.</translation>
+        <translation>ネットワークエラー: %1</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Nätverksfel! Har du angett korrekt Tiny Tiny RSS API-slutpunkt och lösenord?</translation>
+        <translation>ネットワークエラーが発生しました。正しいTiny Tiny RSS APIエンドポイントとパスワードを入力しているか確認してください。</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Användarnamn saknas.</translation>
+        <translation>ユーザ名は空にできません。</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Användarnamn okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Lösenord saknas.</translation>
+        <translation>パスワードは空にできません。</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Lösenord okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Användarnamnet är ok, eller behövs inte.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Användarnamn saknas.</translation>
+        <translation>ユーザー名が空です。</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Lösenordet är ok, eller behövs inte.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Lösenord saknas.</translation>
+        <translation>パスワードが空です。</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URL saknas.</translation>
+        <translation>URLは空にできません。</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation>Notera att API-nivå %1 är miniminivå.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation>URL skall avslutas med &quot;/api/&quot;.</translation>
+        <translation>URLは「/api/」で終わる必要があります。</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL </translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Autentisering</translation>
+        <translation>証明</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Användarnamn </translation>
+        <translation>ユーザー名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Lösenord </translation>
+        <translation>パスワード</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Visa lösenord</translation>
+        <translation>パスワードを表示</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Testa inställning</translation>
+        <translation>テストセットアップ(&amp;T)</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation>Notera att lägst version %1 är ett krav.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation>URL för din ownCloud-server, utan API-sökväg</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Inget test utfört ännu.</translation>
+        <translation>まだテストが完了していません。</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Här visas resultat av anslutningstest.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation>Lägg till nytt ownCloud News-konto</translation>
+        <translation>新しいownCloudニュースアカウントを追加</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>Redigera befintligt </translation>
+        <translation>存在するownCloudニュースアカウントを編集</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Den valda ownCloud News-servern kör en version (%1) som inte stöds. Lägst version %2 är ett krav.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Den valda ownCloud News-servern kör en version som inte stöds. </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Nätverksfel: &apos;%1&apos;.</translation>
+        <translation>ネットワークエラー: %1</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>Nätverksfel! Har du angett korrekt ownCloud-slutpunkt och lösenord?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Användarnamn saknas.</translation>
+        <translation>ユーザ名は空にできません。</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Användarnamn okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Lösenord saknas.</translation>
+        <translation>パスワードは空にできません。</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Lösenord okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URL saknas.</translation>
+        <translation>URLは空にできません。</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation>Lösenord för ditt ownCloud-konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation>Användarnamn för ditt ownCloud-konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>ownClouds nyhetsserver fungerar med version %1, då minst version %2 krävs.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation>ownClouds nyhetsserver är okay.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Överordnad kategori</translation>
+        <translation>親カテゴリ</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Välj övergripande objekt för ditt flöde.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Type</source>
-        <translation>Typ</translation>
+        <translation>タイプ</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation>Välj flödestyp.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Encoding</source>
-        <translation>Kodning</translation>
+        <translation>エンコード</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Välj flödeskodning. Välj &quot;UTF-8&quot; om du är osäker på kodningen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>Autouppdatering </translation>
+        <translation>自動更新</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Välj uppdateringsstrategi för flödet. Standard autouppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivning</translation>
+        <translation>説明</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL </translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation>Hämta nu</translation>
+        <translation>今すぐ受信</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Ikon</translation>
+        <translation>アイコン</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation>Välj ikon för flödet.</translation>
+        <translation>フィードのアイコンを選択</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Kräver HTTP-autentisering</translation>
+        <translation>HTTP証明が必要です</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Användarnamn </translation>
+        <translation>ユーザー名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Lösenord </translation>
+        <translation>パスワード</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Hämta metadata</translation>
+        <translation>メタデータを取得</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
+        <translation>新しいフィードを追加</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation>Redigera flödet &apos;%1&apos;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation>Flödesnamnet är ok.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation>Flödesnamnet är för kort.</translation>
+        <translation>フィード名が短すぎます。</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Beskrivning saknas.</translation>
+        <translation>説明欄が空です。</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Beskrivningen är ok.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation>URL:en är OK.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation>URL saknas.</translation>
+        <translation>URLが空です。</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Användarnamnet är ok, eller behövs inte. </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Användarnamn saknas. </translation>
+        <translation>ユーザー名が空です。</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Lösenordet är ok, eller behövs inte. </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Lösenord saknas. </translation>
+        <translation>パスワードが空です。</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation>Välj ikonfil för flödet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>画像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Välj ikon</translation>
+        <translation>アイコンを選択</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Avbryt</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Sök i:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Ikonnamn:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Ikontyp:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation>All metadata hämtades korrekt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation>Flödes- och ikonmetadata hämtad.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation>Resultat: %1.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation>Flödes- eller ikonmetadata inte hämtad.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation>Fel: %1.</translation>
+        <translation>エラー: %1。</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation>Ingen metadata hämtades.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation>Ikon hämtades.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation>Ikonmetadata hämtad.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation>Ikonmetadata inte hämtad.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation>Ikon hämtades inte.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed title</source>
-        <translation>Flödesnamn</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation>Ange flödets namn.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed description</source>
-        <translation>Flödesbeskrivning</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation>Beskriv flödet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation>Flödets fullständiga URL inklusive schema</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation>Ange flödets URL.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation>Ange lösenord för att få åtkomst till flödet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>Ikonval</translation>
+        <translation>アイコン選択</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Hämta ikon från fil...</translation>
+        <translation>ファイルからアイコンを読み込む</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Använd ingen ikon</translation>
+        <translation>アイコンを使用しない</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Använd standardikon</translation>
+        <translation>デフォルトのアイコンを使用</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation>Hämta ikon från flödet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation>Ingen metadata hämtad.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation>Autouppdatering med globala intervall</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation>Uppdatera automatiskt varje</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation>Uppdatera inte automatiskt</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;Arkiv</translation>
+        <translation>ファイル(&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Hjälp</translation>
+        <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>V&amp;isa</translation>
+        <translation>表示(&amp;V)</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>V&amp;erktyg</translation>
+        <translation>ツール(&amp;T)</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>A&amp;vsluta</translation>
+        <translation>終了(&amp;Q)</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>&amp;Inställningar</translation>
+        <translation>設定(&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation>&amp;Meddelanden</translation>
+        <translation>メッセージ(&amp;M)</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation>Växla &amp;prioritet för markerade meddelanden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation>Avsluta programmet.</translation>
+        <translation>アプリケーションを終了します。</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation>Visa inställningar för programmet.</translation>
+        <translation>アプリケーションの設定を表示します。</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation>Växla fönster-/fullskärmsläge.</translation>
+        <translation>全画面モードを切り替え</translation>
     </message>
     <message>
         <source>No actions available</source>
-        <translation>Inga åtgärder tillgängliga</translation>
+        <translation>使用可能なアクションはありません</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation>Inga åtgärder tillgängliga just nu.</translation>
+        <translation>現在使用可能なアクションはありません。</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation>Dölj programfönstret om det är synligt, och visa det om det är dolt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation>Dölj/Visa listan med flöden/kategorier.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation>Sök efter ny programuppdatering.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>&amp;Om programmet</translation>
+        <translation>このアプリケーションについて(&amp;A)</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation>Visa extra information om det här programmet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation>&amp;Ta bort markerade meddelanden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation>Dölj/Visa huvudmenyn.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Märk markerade &amp;meddelanden som &amp;lästa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Märk markerade &amp;meddelanden som &amp;olästa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation>Öppna markerade källartiklar i &amp;extern webbläsare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation>Öppna markerade meddelanden i &amp;intern webbläsare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>Gå till &amp;nästa meddelande</translation>
+        <translation>次のメッセージを選択(&amp;n)</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation>Gå till &amp;föregående meddelande</translation>
+        <translation>次のメッセージを選択(&amp;p)</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>Sök efter &amp;uppdateringar</translation>
+        <translation>更新を確認(&amp;u)</translation>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation>Dölj/Visa</translation>
+        <translation>表示/非表示</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation>&amp;Fullskärm</translation>
+        <translation>フルスクリーン(&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation>&amp;Flödeslista</translation>
+        <translation>フィード一覧(&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation>&amp;Huvudmeny</translation>
+        <translation>メインメニュー(&amp;M)</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation>Visa/Dölj &amp;programfönstret</translation>
+        <translation>メインウィンドウの表示を切り替え(&amp;w)</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation>Kan inte öppna extern webbläsare</translation>
+        <translation>外部ブラウザを開けません</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Kan inte öppna extern webbläsare. Navigera manuellt till programmets webbsida.</translation>
+        <translation>外部ブラウザを開けません。アプリケーションのウェブサイトを手動で開いてください。</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation>&amp;Verktygsfält</translation>
+        <translation>ツールバー(&amp;T)</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation>Visa/Dölj verktygsfält.</translation>
+        <translation>メインツールバーの表示を切り替え</translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation>&amp;Kolumnrubriker</translation>
+        <translation>フィードとメッセージ一覧のヘッダー(&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Donera via PayPal</translation>
+        <translation>PayPalで寄付(&amp;D)</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation>Visa &amp;wiki</translation>
+        <translation>Wikiを表示(&amp;w)</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation>&amp;Återställ databas/inställningar</translation>
+        <translation>データベースと設定の復元(&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation>&amp;Säkerhetskopiera  databas/inställningar</translation>
+        <translation>データベースと設定のバックアップ(&amp;B)</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation>Växla meddelandelistans layout-orientering</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation>&amp;Nedladdningar</translation>
+        <translation>ダウンロード(&amp;D)</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation>Skicka meddelandet via e-post</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation>&amp;Rensa databasen</translation>
+        <translation>データベースをクリーンアップ(&amp;C)</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation>Lägg till &amp;nytt objekt</translation>
+        <translation>新しいアイテムを追加(&amp;n)</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation>Uppdatera &amp;alla objekt</translation>
+        <translation>全てのアイテムを更新(&amp;a)</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>Uppdatera &amp;markerade objekt</translation>
+        <translation>選択したアイテムを更新(&amp;s)</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation>&amp;Redigera markerade objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation>&amp;Ta bort markerade objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation>&amp;Märk markerade objekt som lästa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation>Märk alla meddelanden (utan meddelandefilter) från markerade objekt som lästa.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation>&amp;Märk markerade objekt som olästa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation>Märk alla meddelanden (utan meddelandefilter) från markerade objekt som olästa.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation>&amp;Rensa markerade objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation>Tar bort alla meddelanden från markerade objekt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>&amp;Märk alla objekt som &amp;lästa</translation>
+        <translation>全てのアイテムを既読にする(&amp;M)</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation>Märker all meddelanden i alla objekt som lästa. Tar inte hänsyn till meddelandefilter.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation>Visa markerade objekt i &amp;tidningsläge</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation>Visar alla meddelanden från markerade objekt i en ny &quot;tidningsvy&quot;. Notera att meddelanden inte automatiskt märks som lästa.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation>&amp;Rensa alla objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation>Tar bort alla meddelanden från alla objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation>Gå till &amp;nästa objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation>Gå till &amp;föregående objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation>Visa endast olästa objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation>&amp;Expandera/Komprimera markerade objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation>&amp;Återställ markerade meddelanden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation>Inga möjliga åtgärder</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation>&amp;Papperskorg(ar)</translation>
+        <translation>ゴミ箱(&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation>&amp;Återställ alla pappereskorgar</translation>
+        <translation>ゴミ箱を復元(&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation>&amp;Töm alla papperskorgar</translation>
+        <translation>ゴミ箱を空にする(&amp;E)</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation>Gå till nästa &amp;olästa meddelande</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation>Ingen papperskorg</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Flöden &amp;&amp; kategorier</translation>
+        <translation>フィードとカテゴリ(&amp;&amp;)</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation>&amp;Konton</translation>
+        <translation>アカウント(&amp;A)</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation>&amp;Lägg till nytt konto</translation>
+        <translation>新しいアカウントを追加(&amp;A)</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation>Statusfält</translation>
+        <translation>ステータスバー</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>&amp;Redigera markerat konto</translation>
+        <translation>選択したアカウントを編集(&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation>&amp;Ta bort markerat konto</translation>
+        <translation>選択したアカウントを削除(&amp;D)</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation>Lägg till nytt flöde i markerat konto</translation>
+        <translation>選択したアカウントに新しいフィードを追加</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation>Lägg till ny kategori i markerat konto</translation>
+        <translation>選択したアカウントに新しいカテゴリを追加</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Lägg till ny kategori</translation>
+        <translation>新しいカテゴリを追加</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
+        <translation>新しいフィードを追加</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation>Avbryt uppdatering</translation>
+        <translation>実行中の更新を停止</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation>Inga åtgärder möjliga</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation>Webbläsare &amp;&amp;flikar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation>Rapportera ett &amp;fel...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation>Ny webbläsarflik.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation>Stäng alla flikar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation>Stäng alla flikar utom den aktuella</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Flöde tillagt</translation>
+        <translation>フィードが追加されました</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation>Flöde tillagt. Synkroniseras nu.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flödet </translation>
+        <translation>フィードを追加できません</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Flödet lades inte till, på grund av ett fel.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation>Återställ databas/inställningar</translation>
+        <translation>データベースと設定の復元</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Åtgärdsresultat</translation>
+        <translation>実行結果</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation>Återställ databas</translation>
+        <translation>データベースの復元</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation>Återställ inställningar</translation>
+        <translation>設定の復元</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Ingen åtgärd slutförd än.</translation>
+        <translation>まだ何も実行されていません。</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation>Återställning inledd. Starta om programmet för att slutföra.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation>Du måste starta om programmet för att slutföra återställningen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Source directory</source>
-        <translation>Källmapp</translation>
+        <translation>ソースディレクトリ</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Välj mapp</translation>
+        <translation>ディレクトリを選択(&amp;S)</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation>Databas och/eller inställningar kopierades inte till återställningsmappen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation>Välj källmapp</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation>Källmappen är godkänd.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1693,93 +1689,93 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>General</source>
         <extracomment>General settings section.</extracomment>
-        <translation>Allmänt</translation>
+        <translation>一般</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation>Utseende</translation>
+        <translation>ユーザーインターフェイス</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation>Ikontema</translation>
+        <translation>アイコンテーマ</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Inställningar</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation>Tangentbordsgenvägar</translation>
+        <translation>キーボードショートカット</translation>
     </message>
     <message>
         <source>Language</source>
         <extracomment>Language settings section.</extracomment>
-        <translation>Språk</translation>
+        <translation>言語</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation>プロキシ</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation>Ikoner &amp;&amp; teman</translation>
+        <translation>アイコン &amp;&amp; スキン</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation>Meddelandefältsikon</translation>
+        <translation>通知アイコン</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation>Starta programmet dolt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation>Typ</translation>
+        <translation>タイプ</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation>Värd</translation>
+        <translation>ホスト</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation>Värdnamn eller IP-adress till din proxyserver</translation>
+        <translation>プロキシサーバのホスト名またはIP</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>ポート</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Användarnamn</translation>
+        <translation>ユーザー名</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation>Ditt användarnamn för proxyserverns autentisering</translation>
+        <translation>プロキシサーバ認証のためのユーザ名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Lösenord</translation>
+        <translation>パスワード</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation>Ditt lösenord för proxyserverns autentisering</translation>
+        <translation>プロキシサーバ認証のためのパスワード</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation>Visa lösenordet</translation>
+        <translation>パスワードを表示</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation>Språkkod</translation>
+        <translation>コード</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Version</translation>
+        <translation>バージョン</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Översättare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Socks5</source>
@@ -1787,143 +1783,143 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation>HTTP</translation>
+        <translation>Http</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation> (stöds inte på den här plattformen)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation>Meddelandefält &amp;&amp; aviseringar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>Flikar</translation>
+        <translation>タブ</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation>Stäng flikar med</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation>Enkelklick på mushjulsknappen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation>Öppna nya flikar med dubbelklick i flikfältet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot save settings</source>
-        <translation>Kan inte spara inställningar</translation>
+        <translation>設定を保存できません</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Namn</translation>
+        <translation>名前</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation>Ikoner</translation>
+        <translation>アイコン</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation>Teman</translation>
+        <translation>スキン</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation>Aktivt tema:</translation>
+        <translation>有効なスキン:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation>Valt tema:</translation>
+        <translation>選択したスキン:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation>Dölj flikfältet om endast en flik är öppen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation>Kritiska inställningar har ändrats</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation>Flöden &amp; meddelanden</translation>
+        <translation>フィードとメッセージ</translation>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation>Vissa kritiska inställningar har inte konfigurerats. Du måste åtgärda dessa för att kunna verkställa inställningarna.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Meddelanden</translation>
+        <translation>メッセージ</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation>Startfil för webbläsare</translation>
+        <translation>実行可能なウェブブラウザ</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation>Startparametrar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>Notera att &quot;%1&quot; (utan citationstecken) är platshållare för det markerade meddelandets URL.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation>Välj startfil för webbläsaren</translation>
+        <translation>実行形式のウェブブラウザを選択してください</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation>exe-filer (*.*)</translation>
+        <translation>実行形式 (*.*)</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation>Opera 12 eller äldre</translation>
+        <translation>Opera 12以降</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation>Webbläsarens startfil</translation>
+        <translation>ウェブブラウザの実行可能ファイル</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation>Parametrar för startfilen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation>Vissa tangentbordsgenvägar är inte unika</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation>Lista över fel:
-%1.</translation>
+        <translation>エラーの一覧:
+%1。</translation>
     </message>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation>Lista över ändringar:
-%1.</translation>
+        <translation>変更の一覧:
+%1。</translation>
     </message>
     <message>
         <source>language changed</source>
-        <translation>Språket har ändrats</translation>
+        <translation>言語が変更されました</translation>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation>Ikontemat har ändrats</translation>
+        <translation>アイコンテーマが変更されました</translation>
     </message>
     <message>
         <source>skin changed</source>
-        <translation>Temat har ändrats</translation>
+        <translation>スキンが変更されました</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation>Använd argument för</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation>Använd minnesdatabas (IMDB) som arbetsdatabas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -1937,313 +1933,298 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation>Användning av minnesdatabas har åtskilliga fördelar och fallgropar. Se till att du känner till dessa innan du aktiverar den här funktionen.
-Fördelar:
-&lt;ul&gt;
-&lt;li&gt;Bättre hastighet för manipulation av flöden/meddelanden(speciellt vid visning av tusentals meddelanden).&lt;/li&gt;
-&lt;li&gt;Hela databasen lagrad i RAM, för en mindre belastad hårddisk.&lt;/li&gt;
-&lt;/ul&gt;
-Nackdelar:
-&lt;ul&gt;
-&lt;li&gt;Om programmet kraschar, förlorar du ändringar gjorda under den sessionen.&lt;/li&gt;
-&lt;li&gt;Programstart och avslut kan ta lite längre tid (max. 2 sekunder).&lt;/li&gt;
-&lt;/ul&gt;
-Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation>Minnesdatabas växlad</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External web browser</source>
-        <translation>Extern webbläsare</translation>
+        <translation>外部ウェブブラウザー</translation>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>VARNING! Notera att byte till en annan datalagringstyp INTE kopierar befintliga data från den aktiva datalagringen till den nyvalda.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Database driver</source>
-        <translation>Databasdrivrutin</translation>
+        <translation>データベースドライバー</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation>Värdnamn</translation>
+        <translation>ホスト名</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation>Testa</translation>
+        <translation>テストセットアップ</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation>Dubbelklick på höger musknapp</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation>Auto-uppdatera alla flöden varje</translation>
+        <translation>全てのフィードを一定時間ごとに自動更新</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation>Anslutnings-timeout för flöden</translation>
+        <translation>フィード接続のタイムアウト</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation>Anslutnings-timeout är det tidsintervall som reserverats föratt ladda ner nya meddelanden. Om detta tidsintervall överskrids, kommer nedladdningsprocessen att avbrytas.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> ms</source>
-        <translation> ms</translation>
+        <translation>ミリ秒</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation>Uppdatera alla flöden vid programstart</translation>
+        <translation>アプリケーションの起動後に全てのフィードを更新</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation>Datalagring</translation>
+        <translation>データ記憶</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation>Värdnamn för din MySQL-server</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation>Användarnamn för att logga in</translation>
+        <translation>ログインするユーザ名</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation>Lösenord för ditt användarnamn</translation>
+        <translation>あなたのユーザ名のパスワード</translation>
     </message>
     <message>
         <source>data storage backend changed</source>
-        <translation>Datalagringens stöddatabas har ändrats</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation>Värdnamn saknas.</translation>
+        <translation>ホスト名が空です。</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Värdnamnet ser ok ut.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Användarnamn saknas.</translation>
+        <translation>ユーザー名が空です。</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation>Användarnamnet ser ok ut.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Lösenord saknas.</translation>
+        <translation>パスワードが空です。</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation>Lösenordet ser ok ut.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation>Verktygsfältets knappstil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation>Dölj programfönstret vid minimering</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation>Inget anslutningstest utfört än.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Notera att dess inställningar endast verkställs för nyetablerade anslutningar.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select browser</source>
-        <translation>Välj webbläsare</translation>
+        <translation>ブラウザを選択</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation>Ingen proxy</translation>
+        <translation>プロキシなし</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation>Systemets proxy</translation>
+        <translation>システム設定</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation>Endast ikon</translation>
+        <translation>アイコンのみ</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation>Endast text</translation>
+        <translation>テキストのみ</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation>Text bredvid ikon</translation>
+        <translation>アイコンの横にテキスト</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation>Text under ikon</translation>
+        <translation>アイコンの下にテキスト</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation>Operativsystemets stil</translation>
+        <translation>OSのスタイルに従う</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Placera markerat meddelande i mitten av vyn för meddelandelista</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation>Du har inte utfört något anslutningstest än.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation>Starta %1 vid systemstart</translation>
+        <translation>オペレーティングシステムの開始時に%1を起動</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Om kryssrutan lämnas omarkerad, används systemets standardwebbläsare.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Flöden &amp;&amp; kategorier</translation>
+        <translation>フィードとカテゴリ(&amp;&amp;)</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation>Meddelanderäknare för flödeslistan</translation>
+        <translation>フィード一覧のメッセージ数の書式</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Ange vilket format meddelanderäknaren skall visa antal meddelanden för varje flöde/kategori. Använd &quot;%all&quot; och &quot;%unread&quot; vilket är platshållare för alla (respektive olästa) meddelanden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
-        <translation>Anpassad extern webbläsare är inte korrekt konfigurerad</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation>Verktygsfält</translation>
+        <translation>ツールバー</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation>Verktygsfält för flödeslista</translation>
+        <translation>フィード一覧のツールバー</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation>Verktygsfält för meddelandelista</translation>
+        <translation>メッセージ一覧のツールバー</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation>Välj verktygsfält att redigera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation>Vissa kritiska inställningar har ändrats och kommer att verkställas efter att programmet har startats om. 
-
-Du måste starta om manuellt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation>Sök efter uppdateringar vid programstart</translation>
+        <translation>アプリケーションの起動後に更新を確認</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>Använd anpassada datum-/tidsformat (undantar format inlästa från aktivt språksystem)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation>Körbara (*)</translation>
+        <translation>実行可能形式 (*)</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Ta bort alla lästa meddelanden från alla flöden vid programavslut</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Nedladdningar</translation>
+        <translation>ダウンロード</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation>Målmapp för nedladdade filer</translation>
+        <translation>ダウンロードしたファイルの保存先</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation>Fråga om varje enskild fil</translation>
+        <translation>ファイルのダウンロード時に訊ねる</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation>Målmapp där alla nedladdade filer sparas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation>&amp;Bläddra</translation>
+        <translation>参照(&amp;B)</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation>Välj nedladdningsmapp</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation>&amp;Visa lösenord</translation>
+        <translation>パスワードを表示(&amp;S)</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Webbläsare, e-post &amp; proxy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Ta bort Trolltechs registernyckel (HKCU\\Software\\Trolltech) när programmet avslutas (Används på egen risk!).</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Working database</source>
-        <translation>Arbetsdatabas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation>Använd anpassad extern webbläsare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation>Extern e-postklient</translation>
+        <translation>外部電子メールクライアント</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation>Använd extern anpassad e-postklient</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation>E-postklientens programfil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation>E-postklientens startfil</translation>
+        <translation>電子メールクライアントの実行ファイル</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation>Välj klient</translation>
+        <translation>クライアントを選択</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation>Platshållare:
- • %1 - titel för aktuellt meddelande
- • %2 - brödtext för </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation>Spara alla nedladdade filer i</translation>
+        <translation>全てのダウンロードファイルを以下に保存</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation>Välj startfil för e-postklienten</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -2251,527 +2232,523 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation>Arbetsdatabas som du har full åtkomst till.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation>Arbetsdatabasen är tom.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation>Arbetsdatabasen är OK.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation>(meddelandefältsikon ej tillgänglig)</translation>
+        <translation>(通知アイコンは利用できません。)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation>Teckensnitt för intern meddelandeläsare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Notera att hastigheten på den använda MySQL-servern och latensen för aktuellt anslutningsmedium, KRAFTIGT påverkar detta programs prestanda. Användning av långsamma databasanslutningar leder till dålig prestanda vid navigering bland flöden och meddelanden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>E-mail</source>
-        <translation>E-post</translation>
+        <translation>電子メール</translation>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation>Öppna nedladdningshanteraren när ny nedladdning startas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation>Statusfält</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation>&amp;Ändra teckensnitt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Font preview</source>
-        <translation>Teckengranskning</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation>Välj nytt teckensnitt för meddelandevyn</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>inget ikontema/systemikontema</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation>Aktivera poup-informationsrutor</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Överordnad kategori</translation>
+        <translation>親カテゴリ</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation>Välj överordnad mapp för kategorin.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivning</translation>
+        <translation>説明</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Ikon</translation>
+        <translation>アイコン</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation>Välj ikon för kategorin.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Lägg till ny kategori</translation>
+        <translation>新しいカテゴリを追加</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation>Redigera befintlig kategori</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Kan inte lägga till kategori</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation>Kategorin lades inte till, på grund av något fel.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation>Kan inte redigera kategorin</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation>Kategorin kan inte redigeras, på grund av något fel.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation>Kategorinamnet är ok.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation>Kategorinamnet är för kort.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Beskrivning saknas.</translation>
+        <translation>説明欄が空です。</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Beskrivningen är ok.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation>Välj ikonfil för kategorin</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>画像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Välj ikon</translation>
+        <translation>アイコンを選択</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Avbryt</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Sök i:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Ikonnamn:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Ikontyp:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category title</source>
-        <translation>Kategorinamn</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation>Ange namnet på din kategori.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category description</source>
-        <translation>Kategoribeskrivning</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation>Beskriv din kategori.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>Ikonval</translation>
+        <translation>アイコン選択</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Hämta ikon från fil...</translation>
+        <translation>ファイルからアイコンを読み込む</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Använd ingen ikon</translation>
+        <translation>アイコンを使用しない</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Använd standardikon</translation>
+        <translation>デフォルトのアイコンを使用</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flöde</translation>
+        <translation>フィードを追加できません</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Flödet lades inte till, på grund av något fel.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation>Kan inte redigera flödet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation>Flödet redigerades inte, på grund av något fel.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation>&amp;Välj fil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation>&amp;Markera alla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation>&amp;Avmarkera alla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Åtgärdsresultat</translation>
+        <translation>実行結果</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation>Ingen fil har valts.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Ingen åtgärd slutförd än.</translation>
+        <translation>まだ何も実行されていません。</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation>Målfil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation>Källflöden &amp;&amp; -kategorier</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Exportera flöden</translation>
+        <translation>フィードをエクスポート</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation>Källfil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation>Målflöden &amp;&amp; -kategorier</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importera flöden</translation>
+        <translation>フィードをインポート</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation>OPML 2.0-filer (*.opml)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation>Välj fil för flödesexport</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation>Fil är vald.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation>Välj fil för flödesimport</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation>Kan inte öppna källfil.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation>Flöden lästes in.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation>Fel! Filen är inte rätt formaterad. Välj en annan fil.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>Ett fel uppstod. Filen är felformaterad. Välj en annan fil.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation>Flöden exporterades korrekt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation>Ett allvarligt fel uppstod.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation>Analyserar data...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation>Kan inte skriva till målfilen: %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Root node</source>
-        <translation>Rotnod</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Välj övergripande objekt för ditt flöde.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation>TXT-filer [en URL per rad] (*.txt)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation>Hämta metadata online</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation>Metadata för flödet kan hämtas online. Notera att åtgärden kan ta flera minuter, beroende på antal flöden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation>Vill du hämta flödesmetadata online?</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Flöde tillagt</translation>
+        <translation>フィードが追加されました</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation>Flöde tillagt. Synkroniseras nu.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flödet </translation>
+        <translation>フィードを追加できません</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Flödet lades inte till, på grund av ett fel.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation>Aktuell version</translation>
+        <translation>現在のリリース</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation>Tillgänglig version</translation>
+        <translation>利用可能なリリース</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Ändringar</translation>
+        <translation>変更点</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>状態</translation>
     </message>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation>Okänd</translation>
+        <translation>不明</translation>
     </message>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation>Listan med uppdateringar
-laddades inte ner korrekt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New release available.</source>
-        <translation>Ny version tillgänglig.</translation>
+        <translation>新しいリリースがあります。</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation>Fel: &apos;%1&apos;.</translation>
+        <translation>エラー: &apos;%1&apos;。</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation>Ingen ny version tillgänglig.</translation>
+        <translation>新しいリリースはありません。</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation>Den här versionen är nyare än den installerade.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Sök efter uppdateringar</translation>
+        <translation>更新を確認</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation>Ladda ner ny installationsfil.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Kunde inte söka efter uppdatering.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Ladda ner installationsfil för ditt system.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Installationsfilen är inte direkt tillgänglig.
-Gå till programmets hemsida för att hämta den manuellt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Ingen ny uppdatering tillgänglig.</translation>
+        <translation>新しい更新はありません。</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation>Kan inte uppdatera programmet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Kan inte navigera till installationsfilen. Sök ny installationsnedladdning manuellt, på projektets hemsida.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Ladda ner uppdatering</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation>%1% nerladdat (uppdateringens storlek är %2 kB).</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation>Laddar ner uppdatering...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation>Nedladdning slutförd</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error occured</source>
-        <translation>Ett fel uppstod</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation>Ett fel uppstod vid nedladdningen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation>Gå till programmets hemsida</translation>
+        <translation>アプリケーションのウェブサイトを開く</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation>Detta är en ny version som kan
-laddas ner.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Paketet har laddats ner.
-Du måste installera det manuellt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Go to update file</source>
-        <translation>Gå till uppdateringsfilen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>Kan inte öppna mappen</translation>
+        <translation>ディレクトリを開けません。</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
+        <translation>アウトプットディレクトリを開けません。手動で開いてください。</translation>
     </message>
 </context>
 <context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation>Kunde inte öppna filen &apos;%1&apos; för inläsning.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>Kan inte öppna filen &apos;%1&apos; för skrivning.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation>Webbadress anges här</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation>ID</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Read</source>
-        <translation>Läst</translation>
+        <translation>既読</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation>Borttaget</translation>
+        <translation>削除済み</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation>Viktigt</translation>
+        <translation>重要</translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation>Flöde</translation>
+        <translation>フィード</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <source>Url</source>
@@ -2779,169 +2756,169 @@ Du måste installera det manuellt.</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Författare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Created on</source>
-        <translation>Skapad</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Contents</source>
-        <translation>Innehåll</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation>Meddelande-ID.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation>Är meddelandet läst?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation>Är meddelandet borttaget?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation>Är meddelandet viktigt?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation>ID för det flöde som detta meddelande tillhör.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation>Meddelandetitel.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation>URL för meddelandet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation>Meddelandets författare.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation>Skapelsedatum för meddelandet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation>Innehåll i meddelandet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation>Permanent borttagna</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation>Är meddelandet permanent borttaget från papperskorgen?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Attachments</source>
-        <translation>Bilagor</translation>
+        <translation>添付ファイル</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation>Lista över bilagor.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation>Inläsning av meddelanden misslyckades. Meddelandena kanske inte kan laddas ner.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation>Inläsning av meddelanden från &apos;%1&apos; misslyckades.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Account ID</source>
-        <translation>Konto-ID</translation>
+        <translation>アカウントID</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation>Anpassat ID</translation>
+        <translation>カスタムID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation>Konto-ID för meddelandet</translation>
+        <translation>メッセージのアカウントID</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation>Anpassat ID för meddelandet</translation>
+        <translation>メッセージのカスタムID</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation>Anpassad hash</translation>
+        <translation>カスタムハッシュ</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation>Anpassad hash-summa för meddelandet.</translation>
+        <translation>メッセージのカスタムハッシュ</translation>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation>Sök meddelande</translation>
+        <translation>メッセージを検索</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation>Sökfält</translation>
+        <translation>メッセージ検索欄</translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation>Meny för färgmarkering av meddelanden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation>Ingen färgmarkering</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation>Färgmarkera olästa meddelanden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation>Färgmarkera viktiga meddelanden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation>Visa alla meddelande</translation>
+        <translation>全てのメッセージを表示</translation>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation>Färgmarkör</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Verktygsavskiljare</translation>
+        <translation>ツールバーの空白</translation>
     </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation>Kontextmeny för meddelanden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation>Problem med att starta extern webbläsare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation>Extern webbläsare kan inte startas.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation>Problem att starta extern e-postklient</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation>Extern e-postklient kunde inte startas.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Tidningsvy</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2949,95 +2926,95 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation>Protokollfel</translation>
+        <translation>プロトコルエラー</translation>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>Värddatorn kan inte hittas</translation>
+        <translation>ホストが存在しません</translation>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>Anslutning nekades</translation>
+        <translation>接続が拒否されました</translation>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation>Anslutningstiden överskreds</translation>
+        <translation>接続がタイムアウトしました</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>SSL-handskakning misslyckades</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>Proxy-anslutning nekades</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation>Temporärt fel</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>Autentiseringen misslyckades</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation>Proxyautentisering krävs</translation>
+        <translation>プロキシの認証が必要です</translation>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>Proxyservern hittades inte</translation>
+        <translation>プロキシのサーバーが見つかりません</translation>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>Inget innehåll hittades</translation>
+        <translation>コンテンツが存在しません</translation>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation>Okänt fel</translation>
+        <translation>不明なエラー</translation>
     </message>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation>Inga fel</translation>
+        <translation>エラーなし</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation>åtkomst till innehållet nekades</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation>anslutningstiden överskreds, eller avbröts</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation>okänt innehåll</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation>Synka i</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kan inte lägga till objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3045,52 +3022,47 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>sv_SE</translation>
+        <translation>ja_JP</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>2.0.0.3</translation>
+        <translation>0.01</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Åke Engelbrektson</translation>
+        <translation>Martin Rotter</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>eson57@gmail.com</translation>
+        <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Swedish</translation>
+        <translation>日本語</translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>+ %n annat flöde.</numerusform><numerusform>
-
-+ %n andra flöden.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation>Välkommen till %1.
-
-Kolla in NYA grejer i den här versionen 
-genom att klicka på denna popup-avisering.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Välkommen till %1.</translation>
+        <translation>%1へようこそ。</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation>Läs in inledande flödesuppsättning</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -3098,46 +3070,40 @@ genom att klicka på denna popup-avisering.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation>Denna tjänst erbjuder integration med Tiny Tiny RSS.
-
-Tiny Tiny RSS är en öppen källkods, webbaserad flödesläsare (RSS/Atom) och aggregator, designad för att låta dig läsa nyheter från valfri webbplats, med känslan så nära en riktig skrivbordsklient som möjligt.
-
-Minst API-nivå %1 krävs.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation>Nyhetsappen är en RSS-/Atom-flödesaggregator. Den är en del av ownCloud-sviten. Denna insticksmodul implementerar API:n %1.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation>Papperskorgen</translation>
+        <translation>ゴミ箱</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>Papperskorgen innehåller borttagna meddelanden från samtliga flöden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
 
 %1</source>
-        <translation>Papperskorg
-
-%1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation>Återställ papperskorgen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation>Töm papperskorgen</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3145,22 +3111,22 @@ Minst API-nivå %1 krävs.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation>Återställ ursprunglig ikon.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation>Rensa aktuell genväg.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation>Klicka och välj ny snabbtangent.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3168,39 +3134,38 @@ Minst API-nivå %1 krävs.</translation>
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (kategori)%2%3</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation>
-Denna kategori innehåller inga objekt.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation>Metadata hämtades inte</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation>Metadata hämtades inte på grund av: %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>uppdateras inte automatiskt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Globala inställningar</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3209,112 +3174,106 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)%3
-
-Nätverksstatus: %6
-Kodning: %4
-Uppdateringsstatus: %5</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Detta är ett obligatoriskt tjänstkonto för standard RSS/RDF/ATOM-flöden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation>Vill du läsa in flödesuppsättningen?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation>Fel vid inläsning av flöden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Hämta metadata</translation>
+        <translation>メタデータを取得</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Importen slutfördes, men vissa flöden/kategorier importerades inte på grund av något fel.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Import was completely successfull.</source>
-        <translation>Importen slutfördes korrekt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Exportera flöden</translation>
+        <translation>フィードをエクスポート</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importera flöden</translation>
+        <translation>フィードをインポート</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation>Detta är ett tjänstkonto för standard RSS/RDF/ATOM-flöden.
-
-Konto-ID: %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation>Detta nya konto inkluderar inte några flöden. Du kan nu läsa in standarduppsättningen av flöden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kan inte lägga till objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Kan inte lägga till kategori</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation>Kan inte lägga till kategori, eftersom en annan kritisk åtgärd pågår.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation>Förloppsindikator för flödesuppdatering</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation>Flödesuppdateringsetikett</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation>Förloppsindikator för nedladdning</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>File download label</source>
-        <translation>Nedladdningsetikett</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Mellanrum</translation>
+        <translation>ツールバーの空白</translation>
     </message>
 </context>
 <context>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Ny tillgänglig version</translation>
+        <translation>新しいバージョンが利用可能です</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Klicka på detta meddelande för mer information.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>anonymous</source>
-        <translation>anonym</translation>
+        <translation>匿名</translation>
     </message>
 </context>
 <context>
@@ -3322,120 +3281,119 @@ Konto-ID: %1</translation>
     <message>
         <source>%1
 Unread news: %2</source>
-        <translation>%1
-Olästa nyheter: %2</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation>Stäng den här fliken.</translation>
+        <translation>このタブを閉じる</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation>Stäng fliken</translation>
+        <translation>タブを閉じる</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation>Flöden</translation>
+        <translation>フィード</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation>Bläddra bland dina flöden och meddelanden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation>Visar den primära menyn.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Main menu</source>
-        <translation>Huvudmeny</translation>
+        <translation>メインメニュー</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Nedladdningar</translation>
+        <translation>ダウンロード</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Tidningsvy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation>Webbläsare</translation>
+        <translation>ウェブブラウザー</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation>och</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation>Aktiverade åtgärder</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Available actions</source>
-        <translation>Tillgängliga åtgärder</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation>Infoga separator</translation>
+        <translation>セパレーターを挿入</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation>Infoga mellanrum</translation>
+        <translation>空白を挿入</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation>Separator</translation>
+        <translation>セパレーター</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Mellanrum</translation>
+        <translation>ツールバーの空白</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation>Flytta upp åtgärden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Move action down</source>
-        <translation>Flytta ner åtgärden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation>Lägg till vald åtgärd</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation>Ta bort vald åtgärd</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation>Ta bort alla åtgärder</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation>Stäng öppna dialogrutor först.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3443,26 +3401,24 @@ Olästa nyheter: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>uppdateras inte automatiskt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>använder globala inställningar</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1%2
-
-Autouppdateringsstatus: %3</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3475,88 +3431,82 @@ Username: %1
 Server: %2
 Last error: %4
 Last login on: %5</source>
-        <translation>Tiny Tiny RSS
-
-Konto-ID: %3
-Användarnamn: %1
-Server: %2
-Senaste fel: %4
-Senast inloggad: %5</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sync in</source>
-        <translation>Synka i</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kan inte lägga till objekt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation>Navigationspanel</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>Ingen titel</translation>
+        <translation>タイトルなし</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Tillbaka</translation>
+        <translation>戻る</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation>Gå tillbaka.</translation>
+        <translation>戻る</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation>Framåt</translation>
+        <translation>進む</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation>Gå framåt.</translation>
+        <translation>進む</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation>Uppdatera</translation>
+        <translation>再読み込み</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Uppdatera aktuell webbsida.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stopp</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation>Stoppa inläsning av webbsidan.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation>Bilaga</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Skriven av </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>uknown author</source>
-        <translation>okänd författare</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Tidningsvy</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

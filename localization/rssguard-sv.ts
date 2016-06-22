@@ -1,257 +1,258 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation>(Categorie)</translation>
+        <translation> (kategori)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation>(feed)</translation>
+        <translation> (flöde)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>RSSguard is al gestart.</translation>
+        <translation>Programmet är redan startat.</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Uitvoermap is niet beschrijfbaar.</translation>
+        <translation>Utdatamappen är inte skrivbar.</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation>Instellingen van bestand niet succesvol gekopieerd naar uitvoermap.</translation>
+        <translation>Inställningsfilen kopierades inte till utdatamappen.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation>Databasebestand niet succesvol gekopieerd naar uitvoermap.</translation>
+        <translation>Databasfilen kopierades inte till utdatamappen.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Database herstel werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
+        <translation>Databasåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Herstel van de instellingen werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
+        <translation>Inställningsåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
+        <translation>Kan inte lägga till flödet</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Feed kan niet worden toegevoegd omdat standaard RSS / Atom account niet is ingeschakeld.</translation>
+        <translation>Flödet kan inte läggas till eftersom standard RSS-/ATOM-konto inte aktiverats.</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation>Krimpende databasebestand...</translation>
+        <translation>Krymper databasfilen...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation>Databasebestand krimpt...</translation>
+        <translation>Databasfilen krympt...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation>Verwijder gelezen berichten...</translation>
+        <translation>Tar bort lästa meddelanden...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation>
-Gelezen berichten gewist...</translation>
+        <translation>Lästa meddelanden rensat...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation>Prullenbak gewist...</translation>
+        <translation>Papperskorgen rensad...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation>Verwijder oude berichten...</translation>
+        <translation>Tar bort gamla meddelanden...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation>Wis prullenbak...</translation>
+        <translation>Rensar papperskorgen...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation>Oude berichten gewist...</translation>
+        <translation>Gamla meddelanden rensat...</translation>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation>MySQL server werkt als verwacht.</translation>
+        <translation>MySQL-servern fungerar som förväntat.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation>Geen MySQL server draait er in de doelbestemming.</translation>
+        <translation>Ingen MySQL-server. körs på målplatsen.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation>Toegang geweigerd. Ongeldig gebruikersnaam of paswoord gebruikt.</translation>
+        <translation>Åtkomst nekad. Ogiltigt användarnamn eller lösenord.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>Onbekende fout.</translation>
+        <translation>Okänt fel.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (specifieke database)</translation>
+        <translation>MySQL/MariaDB (dedikerad databas)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation>SQLite (ingesloten database)</translation>
+        <translation>SQLite (inbäddad databas)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Geselekteerde database bestaat (nog) niet. Het wordt aangemaakt. Dat is normaal.</translation>
+        <translation>Den valda databasen finns inte (än). Den kommer att skapas.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation>MySQL database is niet beschikbaar</translation>
+        <translation>MySQL databas inte tillgänglig</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 kan geen gebruik maken van MySQL opslag, het is niet beschikbaar. %1 switch nu over naar de SQLite database. Start je MySQL server en maak aanpassingen in de programma-instellingen.</translation>
+        <translation>%1 kan inte använda MySQL-lagringen, den är inte tillgänglig. %1 växlar nu till SQLite databas. Starta din MySQL-server och justera programinställningarna.</translation>
     </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation>Deze website bevat geen feeds.</translation>
+        <translation>Webbsidan innehåller inga flöden.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Klicka för att lägga till flödet från webbsidan.
+Denna webbsida innehåller %n flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Niet ondersteund</translation>
+        <translation>Stöds ej</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation>Dit account ondersteunt geen toevoeging van feeds.</translation>
+        <translation>Angivet kontot stöder inte tillägg av nya flöden.</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation>Icon</translation>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation>Bestandsnaam</translation>
+        <translation>Filnamn</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation>Fout bij het openen van uitvoerbestand: %1</translation>
+        <translation>Kunde inte öppna utdatafil: %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>&amp;Probeer opnieuw</translation>
+        <translation>&amp;Försök igen</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>&amp;Stop</translation>
+        <translation>&amp;Stopp</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>&amp;Open bestand</translation>
+        <translation>&amp;Öppna fil</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation>Kies bestemming voor het gedownloade bestand</translation>
+        <translation>Välj destination för nedladdad fil</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation>Fout: %1</translation>
+        <translation>Fel: %1</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation>Download map kan niet worden aangemaakt</translation>
+        <translation>Nedladdningsplatsen kunde inte skapas</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation>Fout bij het opslaan van bestand: %1</translation>
+        <translation>Fel när filen skulle sparas: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation>%1 of %2 (%3 per seconde) - %4</translation>
+        <translation>%1 av %2 (%3 per sekund) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation>%1 of %2 - download voltooid</translation>
+        <translation>%1 av %2 - Nedladdning slutförd</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>Open &amp;map</translation>
+        <translation>Öppna &amp;mapp</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation>Kan bestand niet openen</translation>
+        <translation>Kan inte öppna filen</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
+        <translation>Kan inte öppna utdatafilen. Öppna den manuellt.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>Kan map niet openen</translation>
+        <translation>Kan inte öppna mappen</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
+        <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation>Download klaar</translation>
+        <translation>Nedladdning slutförd</translation>
     </message>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation>Bestand &apos;%1&apos; is klaar
-Klik hier om map te openen.</translation>
+        <translation>Filen &apos;%1&apos; är nedlladdad.
+Klicka här för att öppna målmappen.</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation>Url: %1</translation>
+        <translation>URL: %1</translation>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation>Lokaal bestand: %1</translation>
+        <translation>Lokal fil: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation>Selectie van lokaal bestand is geannuleerd.</translation>
+        <translation>Val av lokal fil avbröts.</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation>Opschonen</translation>
+        <translation>Rensa</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation>bytes</translation>
+        <translation>byte</translation>
     </message>
     <message>
         <source>kB</source>
@@ -267,33 +268,33 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
+        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation>Werkbalk voor berichten</translation>
+        <translation>Verktygsfält för meddelanden</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>Werkbalk voor feeds</translation>
+        <translation>Verktygsfält för flöden</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>Kan database niet opschonen</translation>
+        <translation>Kan inte rensa databasen</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Je kunt database niet opschonenen omdat een andere kritische operatie gaande is.</translation>
+        <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>Categorie</translation>
+        <translation>Kategori</translation>
     </message>
 </context>
 <context>
@@ -301,11 +302,11 @@ Klik hier om map te openen.</translation>
     <message>
         <source>Title</source>
         <extracomment>Title text in the feed list header.</extracomment>
-        <translation>Titel</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation>Naam van feeds/categorieën.</translation>
+        <translation>Namn på kategorier/flöden.</translation>
     </message>
     <message>
         <source>Root</source>
@@ -314,413 +315,413 @@ Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Begint met auto-update van sommige feeds</translation>
+        <translation>Uppdaterar flöden automatiskt</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-update van %n feed.</numerusform><numerusform>Auto-update van %n feeds.</numerusform></translation>
+        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation>Kan alle items niet bijwerken</translation>
+        <translation>Kan inte uppdatera alla objekt</translation>
     </message>
     <message>
         <source>Feed update started</source>
         <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Bijwerken feed is gestart</translation>
+        <translation>Flödesuppdatering startad</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed bijwerken &apos;%1&apos;</translation>
+        <translation>Uppdaterade flödet &apos;%1&apos;</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Nieuw bericht gedownload</translation>
+        <translation>Nya meddelanden nedladdade</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation>Je kan geen gesleepte item overdragen naar een ander account, dir wordt niet ondersteunt.</translation>
+        <translation>Du kan inte överföra objekt till annat konto med dra &amp; släpp. Stöd saknas för detta.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation>Kan de drag &amp; drop bewerking niet uitvoeren</translation>
+        <translation>Kan inte utföra dra &amp; släpp-åtgärd</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>U kunt niet alle items updaten omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Du kan inte uppdatera alla poster eftersom en annan kritisk operation pågår.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation>Aantal van alle ongelezen berichten.</translation>
+        <translation>Antal olästa/alla meddelanden.</translation>
     </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Werkbalkruimte</translation>
+        <translation>Avgränsare för verktygsfält</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation>Kan item niet bewerken</translation>
+        <translation>Kan inte redigera objektet</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation>Kan item niet verwijderen</translation>
+        <translation>Kan inte bort objektet</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation>Contextmenu voor lege regels</translation>
+        <translation>Kontextmeny för tomt utrymme</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation>Geselecteerde item kunt u niet bewerken omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Markerat objekt kan inte redigeras, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation>Geselecteerde item kunt u niet verwijderen omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Markerat objekt kan inte tas bort, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation>Contextmenu voor categorieën</translation>
+        <translation>Kontextmeny för kategorier</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation>Geselecteerde item kun je niet bewerken,dit wordt nog (niet) ondersteunt.</translation>
+        <translation>Det valda objektet kan inte redigeras. Stöd saknas (för närvarande?).</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation>Verwijder &quot;%1&quot;</translation>
+        <translation>Tar bort &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation>Je staat op het punt om gehele item &quot;%1&quot; te verwijderen.</translation>
+        <translation>Du är på väg att helt ta bort &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation>Weet je het zeker?</translation>
+        <translation>Är du säker?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation>Kan &quot;%1&quot; niet verwijderen</translation>
+        <translation>Kan inte ta bort &quot;%1&quot;</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation>Deze item kan niet worden verwijderd omdat het ergens fout ging. Meld deze bug.</translation>
+        <translation>Objektet kan inte tas bort på grund av ett kritiskt fel. Skicka gärna en felrapport.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation>Deze item kan niet worden verwijderd omdat het niet wordt ondersteunt
-of deze functie bestaat nog niet.</translation>
+        <translation>Objektet kan inte tas bort eftersom stöd saknas, eller för
+att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation>Invoegen van andere items</translation>
+        <translation>Kontextmeny för andra objekt</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Niet ondersteund</translation>
+        <translation>Stöds ej</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation>Geselecteerde account ondersteunt geen toevoeging van nieuwe feeds.</translation>
+        <translation>Det valda kontot stöder inte tillägg av nya flöden.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation>Geselecteerde account ondersteunt geen toevoeging van nieuwe categorieën.</translation>
+        <translation>Det valda kontot stöder inte tillägg av nya kategorier.</translation>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Information</translation>
     </message>
     <message>
         <source>Licenses</source>
-        <translation>Licenties</translation>
+        <translation>Licenser</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL Licentie (Geldt voor RSS Guard bron code)</translation>
+        <translation>GNU GPL Licens (gäller RSS Guards källkod)</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>GNU GPL Licentie</translation>
+        <translation>GNU GPL Licens</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD licentie (Geldt voor QtSingleAplication bron code)</translation>
+        <translation>BSD Licens (gäller to QtSingleApplication källkod)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation>Licentie pagina is alleen beschikbaar in het Engels.</translation>
+        <translation>Licenssidan visas endast på Engelska.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Changelog</translation>
+        <translation>Ändringslogg</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation>Changelog pagina is alleen beschikbaar in het Engels.</translation>
+        <translation>Ändringsloggen visas endast på Engelska.</translation>
     </message>
     <message>
         <source>License not found.</source>
-        <translation>Licentie niet gevonden.</translation>
+        <translation>Licensen hittades inte.</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation>Changelog niet gevonden.</translation>
+        <translation>Ändringsloggen hittades inte.</translation>
     </message>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
-        <translation>Over %1</translation>
+        <translation>Om %1</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation>Type instellingen</translation>
+        <translation>Inställningstyp</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation>Bestands instellingen</translation>
+        <translation>Inställningsfil</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation>Database root pad</translation>
+        <translation>Databasens root-mapp</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation>Volledig portable</translation>
+        <translation>FULLT portabel</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>Deels portable</translation>
+        <translation>PARTIELLT portabel</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation>Hulpbronnen</translation>
+        <translation>Resurser</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License, versie 3.&lt;br&gt;&lt;br&gt;Contact:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~Website&lt;/li&gt;&lt;li&gt;U kunt de broncode voor %5 downloaden van de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 är en (mycket) liten flödesläsare.&lt;br&gt;&lt;br&gt;Mjukvaran distribueras under GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Kontakt:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-post&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webbsida&lt;/li&gt;&lt;/ul&gt;Du kan hämta källkod för %5 från webbsidan.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (byggd på %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Byggdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (kompilerad mot %7)&lt;br&gt;</translation>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Voeg nieuw account toe</translation>
+        <translation>Lägg till nytt konto</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation>Gegevens</translation>
+        <translation>Detaljerat</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Naam</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Versie</translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Auteur</translation>
+        <translation>Författare</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Omschrijving</translation>
+        <translation>Beskrivning</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>Dit account kan maar 1 maal worden toegevoegd.</translation>
+        <translation>Kontot kan endast läggas till en gång.</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation>Backup database/instellingen</translation>
+        <translation>Säkerhetskopiera databas/inställningar</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation>Backup eigenschappen</translation>
+        <translation>Säkerhetskopiering</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation>Items voor backup</translation>
+        <translation>Kopiera</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation>Database</translation>
+        <translation>Databas</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Instellingen</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation>Backup naam</translation>
+        <translation>Kopians namn</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Resultaten</translation>
+        <translation>Åtgärdsresultat</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation>Algemene naam voor backup bestanden</translation>
+        <translation>Namn för säkerhetskopior</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Nog geen handeling uitgevoerd.</translation>
+        <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation>Back-up is gemaakt.</translation>
+        <translation>Säkerhetskopiering slutförd.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation>Backup naam kan niet leeg zijn.</translation>
+        <translation>Säkerhetskopians namn saknas.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation>Backup naam is in orde.</translation>
+        <translation>Säkerhetskopians namn är godkänt.</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation>Backup mislukt.</translation>
+        <translation>Säkerhetskopiering misslyckades.</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation>Uitvoermap</translation>
+        <translation>Utdatamapp</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Selecteer map</translation>
+        <translation>&amp;Välj mapp</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation>Backup is succesvol aangemaakt en opgeslagen in de doelmap.</translation>
+        <translation>Säkerhetskopia skapad, och lagrad i målmappen.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation>Selecteer de doelmap</translation>
+        <translation>Välj målmapp</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation>Juiste bestemmingsmap is opgegeven.</translation>
+        <translation>Målmappen är godkänd.</translation>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation>Database opschonen</translation>
+        <translation>Rensa databasen</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation>Verwijder alle berichten ouder dan</translation>
+        <translation>Ta bort alla meddelanden äldre än</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
+        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation>Databasebestand krimpt</translation>
+        <translation>Krymp databasfilen</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Database informatie</translation>
+        <translation>Databasinformation</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation>Databasebestands grootte</translation>
+        <translation>Databasens filstorlek</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation>Database type</translation>
+        <translation>Databastyp</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation>Vordering</translation>
+        <translation>Förlopp</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation>Het is klaar.</translation>
+        <translation>Jag är klar.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation>Database opschonen loopt.</translation>
+        <translation>Databasrensning körs.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation>Database opschonen is klaar.</translation>
+        <translation>Databasrensning slutförd.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation>Database opschonen is mislukt.</translation>
+        <translation>Databasrensning misslyckades.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation>Opschonen van instellingen (alle gecontroleerde items worden volledig gewist uit de database)</translation>
+        <translation>Rensningsinställningar (alla markerade objekt raderas helt från databasen)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Verwijder alle gelezen berichten(niet die van de prullenbak)</translation>
+        <translation>Ta bort alla lästa meddelanden (inte dem i papperskorgen)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation>Verwijder alle berichten van de prullenbak</translation>
+        <translation>Ta bort alla meddelanden från papperskorgen</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Verwijder alle berichten met ster(niet die van de prullenbak)</translation>
+        <translation>Ta bort alla stjärnmärkta meddelanden (inklusive dem i papperskorgen)</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation>onbekend</translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation>bestand: %1, gegevens: %2</translation>
+        <translation>fil: %1, data: %2</translation>
     </message>
 </context>
 <context>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+        <translation>Vissa flöden kräver autentisering, inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentisering stöds.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Verificatie</translation>
+        <translation>Autentisering</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Gebruikersnaam</translation>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Paswoord</translation>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Toon paswoord</translation>
+        <translation>Visa lösenord</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Vereist HTTP verificatie</translation>
+        <translation>Kräver HTTP-autentisering</translation>
     </message>
     <message>
         <source>URL</source>
@@ -728,297 +729,297 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test instelling</translation>
+        <translation>&amp;Testa inställning</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>HTTP verificatie gebruikersnaam</translation>
+        <translation>Användarnamn för HTTP-autentisering</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>HTTP verificatie paswoord</translation>
+        <translation>Lösenord för HTTP-autentisering</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>Paswoord voor je TT-RSS account</translation>
+        <translation>Lösenord för ditt TT RSS-konto</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>Gebruikersnaam voor je TT-RSS account</translation>
+        <translation>Användarnamn för ditt TT RSS-konto</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation>VOLLEDIG URL van uw TT-RSS bijvoorbeeld met het slepen van de &quot;/ api /&quot; aanvraag</translation>
+        <translation>FULLSTÄNDIG URL till din TT RSS-instans MED efterföljande API-sträng</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Nog geen test uitgevoerd.</translation>
+        <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Hier, worden resultaten van verbinding getoond.</translation>
+        <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Voeg nieuwe Tiny Tiny RSS account toe</translation>
+        <translation>Lägg till nytt Tiny Tiny RSS-konto</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Bewerk bestaande Tiny Tiny RSS account</translation>
+        <translation>Redigera befintligt </translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>API toegang op geselecteerde server staat uit.</translation>
+        <translation>API-åtkomst är inte aktiverad på den valda servern.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation>Ingevoerde verificatiegegevens zijn onjuist.</translation>
+        <translation>Inloggningsuppgifter är felaktiga.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation>Andere fout opgetreden, contact ontwikkelaars.</translation>
+        <translation>Annat fel uppstod! Kontakta utvecklaren.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Geselecteerde Tiny Tiny RSS server draait een niet- ondersteunde versie van API (%1). Tenminste API level %2 is vereist.</translation>
+        <translation>Den valda Tiny Tiny RSS-servern kör en API-version (%1) som inte stöds. Minst API-nivå %2 krävs.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Geselecteerde Tiny Tiny RSS-server draait een niet-ondersteunde versie van API.</translation>
+        <translation>Den valda Tiny Tiny RSS-servern kör en API-version som inte stöds.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS server is ok, draait met API level %2, terwijl op z&apos;n minst API level %2 vereist is.</translation>
+        <translation>Tiny Tiny RSS-servern är okay. Den kör API-nivå %1 och minimikravet är nivå %2.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS server is ok.</translation>
+        <translation>Tiny Tiny RSS-servern är okay.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerk fout: &apos;%1&apos;</translation>
+        <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Netwerk fout, heb je de juiste Tiny Tiny RSS API eindpunt en paswoord?</translation>
+        <translation>Nätverksfel! Har du angett korrekt Tiny Tiny RSS API-slutpunkt och lösenord?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Gebruikersnaam kan niet leeg zijn.</translation>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Gebruikersnaam is goed.</translation>
+        <translation>Användarnamn okay.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Paswoord kan niet leeg zijn.</translation>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Paswoord is ok.</translation>
+        <translation>Lösenord okay.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
+        <translation>Användarnamnet är ok, eller behövs inte.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Paswoord is ok of het is niet nodig.</translation>
+        <translation>Lösenordet är ok, eller behövs inte.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>Url mag niet leeg zijn.</translation>
+        <translation>URL saknas.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>Url is goed.</translation>
+        <translation>URL okay.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation>Merk op dat tenminste een API-niveau is vereist van %1.</translation>
+        <translation>Notera att API-nivå %1 är miniminivå.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation>URL zou moeten eindigen met &quot;/api/&quot;.</translation>
+        <translation>URL skall avslutas med &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Onbekende fout, heb je de URL correct ingevoerd?</translation>
+        <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
+        <translation>Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
+        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
+        <translation>Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Verificatie</translation>
+        <translation>Autentisering</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Gebruikersnaam</translation>
+        <translation>Användarnamn </translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Paswoord</translation>
+        <translation>Lösenord </translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Toon paswoord</translation>
+        <translation>Visa lösenord</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test instelling</translation>
+        <translation>&amp;Testa inställning</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
+        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation>Merk op dat tenminste versie %1 is vereist</translation>
+        <translation>Notera att lägst version %1 är ett krav.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation>URL van je eigen ownCloud server, zonder een API pad</translation>
+        <translation>URL för din ownCloud-server, utan API-sökväg</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Nog geen test uitgevoerd.</translation>
+        <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Hier, worden resultaten van verbinding getoond.</translation>
+        <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation>Voeg een nieuw ownCloud Nieuws account toe</translation>
+        <translation>Lägg till nytt ownCloud News-konto</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>Bewerk bestaande ownCloud Nieuws account</translation>
+        <translation>Redigera befintligt </translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Geselecteerde ownCloud Nieuws server draait een niet-ondersteunde versie (%1). Tenminste versie %2 is vereist.</translation>
+        <translation>Den valda ownCloud News-servern kör en version (%1) som inte stöds. Lägst version %2 är ett krav.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Geselecteerde ownCloud Nieuws server draait een niet-ondersteunde versie. </translation>
+        <translation>Den valda ownCloud News-servern kör en version som inte stöds. </translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerk fout: &apos;%1&apos;</translation>
+        <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>Netwerk fout, heb je de juiste ownCloud eindpunt en paswoord ingevuld?</translation>
+        <translation>Nätverksfel! Har du angett korrekt ownCloud-slutpunkt och lösenord?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Onbekende fout, heb je de URL correct ingevoerd?</translation>
+        <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Gebruikersnaam kan niet leeg zijn.</translation>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Gebruikersnaam is goed.</translation>
+        <translation>Användarnamn okay.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Paswoord kan niet leeg zijn.</translation>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Paswoord is ok.</translation>
+        <translation>Lösenord okay.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>Url mag niet leeg zijn.</translation>
+        <translation>URL saknas.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>Url is goed.</translation>
+        <translation>URL okay.</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation>Paswoord voor je ownCloud account</translation>
+        <translation>Lösenord för ditt ownCloud-konto</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation>Gebruikersnaam voor je ownCloud account</translation>
+        <translation>Användarnamn för ditt ownCloud-konto</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>ownCloud Nieuws server is ok, draait met versie %1, terwijl tenminste versie %2 is vereist.</translation>
+        <translation>ownClouds nyhetsserver fungerar med version %1, då minst version %2 krävs.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation>OwnCloud Nieuws server is ok.</translation>
+        <translation>ownClouds nyhetsserver är okay.</translation>
     </message>
 </context>
 <context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Oudere categorie</translation>
+        <translation>Överordnad kategori</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Kies hoofd item voor je feed.</translation>
+        <translation>Välj övergripande objekt för ditt flöde.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation>Selecteer type van de standaard feed.</translation>
+        <translation>Välj flödestyp.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation>Coderen</translation>
+        <translation>Kodning</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Kies codering van de standaard feed. Als je niet zeker bent van de codering, selecteer dan &quot;UTF-8&quot; codering.</translation>
+        <translation>Välj flödeskodning. Välj &quot;UTF-8&quot; om du är osäker på kodningen.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>Automatische-update</translation>
+        <translation>Autouppdatering </translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
+        <translation>Välj uppdateringsstrategi för flödet. Standard autouppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -1026,665 +1027,665 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Omschrijving</translation>
+        <translation>Beskrivning</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation>Nu ophalen</translation>
+        <translation>Hämta nu</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Pictogram</translation>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation>Selecteer pictogram voor je feed.</translation>
+        <translation>Välj ikon för flödet.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Vereist HTTP verificatie</translation>
+        <translation>Kräver HTTP-autentisering</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Gebruikersnaam</translation>
+        <translation>Användarnamn </translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Paswoord</translation>
+        <translation>Lösenord </translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Ophalen van metadata</translation>
+        <translation>Hämta metadata</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Voeg nieuw feed toe</translation>
+        <translation>Lägg till nytt flöde</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation>Bewerk feed &apos;%1&apos;</translation>
+        <translation>Redigera flödet &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation>Feed naam is ok.</translation>
+        <translation>Flödesnamnet är ok.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation>Feed naam is te kort.</translation>
+        <translation>Flödesnamnet är för kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Omschrijving is leeg.</translation>
+        <translation>Beskrivning saknas.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Omschrijving is ok.</translation>
+        <translation>Beskrivningen är ok.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation>De URL is ok.</translation>
+        <translation>URL:en är OK.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
+        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation>De URL is leeg.</translation>
+        <translation>URL saknas.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
+        <translation>Användarnamnet är ok, eller behövs inte. </translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
+        <translation>Användarnamn saknas. </translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Paswoord is ok of het is niet nodig.</translation>
+        <translation>Lösenordet är ok, eller behövs inte. </translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
+        <translation>Lösenord saknas. </translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation>Selecteer pictogram bestand voor je feed</translation>
+        <translation>Välj ikonfil för flödet</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
+        <translation>Välj ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annuleer</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Kijk in:</translation>
+        <translation>Sök i:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Pictogram naam:</translation>
+        <translation>Ikonnamn:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
+        <translation>Ikontyp:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation>Alle metadata is succesvol opgehaald.</translation>
+        <translation>All metadata hämtades korrekt.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation>Metadata opgehaald voor feed en pictogram.</translation>
+        <translation>Flödes- och ikonmetadata hämtad.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation>Resultaat: %1.</translation>
+        <translation>Resultat: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation>Metadata niet opgehaald voor feed en pictogram.</translation>
+        <translation>Flödes- eller ikonmetadata inte hämtad.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation>Fout: %1.</translation>
+        <translation>Fel: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation>Geen metadata opgehaald.</translation>
+        <translation>Ingen metadata hämtades.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation>Pictogram met succes opgehaald.</translation>
+        <translation>Ikon hämtades.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation>Metadata pictogram opgehaald.</translation>
+        <translation>Ikonmetadata hämtad.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation>Metadata pictogram niet opgehaald.</translation>
+        <translation>Ikonmetadata inte hämtad.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation>Geen pictogram opgehaald.</translation>
+        <translation>Ikon hämtades inte.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation>Feed naam</translation>
+        <translation>Flödesnamn</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation>Stel titel in voor je feed.</translation>
+        <translation>Ange flödets namn.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation>Feed omschrijving</translation>
+        <translation>Flödesbeskrivning</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation>Stel omschrijving voor feed in.</translation>
+        <translation>Beskriv flödet.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation>Volledige feed url inclusief schema</translation>
+        <translation>Flödets fullständiga URL inklusive schema</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation>Stel url in voor je feed.</translation>
+        <translation>Ange flödets URL.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
+        <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation>Stel paswoord in voor toegang tot feed.</translation>
+        <translation>Ange lösenord för att få åtkomst till flödet.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>Pictogram selectie</translation>
+        <translation>Ikonval</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
+        <translation>Hämta ikon från fil...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
+        <translation>Använd ingen ikon</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
+        <translation>Använd standardikon</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation>Pictogram opgehaald van feed</translation>
+        <translation>Hämta ikon från flödet</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation>Nog geen metadata opgehaald.</translation>
+        <translation>Ingen metadata hämtad.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation>Automatisch bijwerken met behulp van globale interval</translation>
+        <translation>Autouppdatering med globala intervall</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation>Automatisch bijwerken elke</translation>
+        <translation>Uppdatera automatiskt varje</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation>Niet automatisch bijwerken </translation>
+        <translation>Uppdatera inte automatiskt</translation>
     </message>
 </context>
 <context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;Bestand</translation>
+        <translation>&amp;Arkiv</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Help</translation>
+        <translation>&amp;Hjälp</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>&amp;Toon</translation>
+        <translation>V&amp;isa</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;Hulpmiddelen</translation>
+        <translation>V&amp;erktyg</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>&amp;Sluit</translation>
+        <translation>A&amp;vsluta</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>&amp;Instellingen</translation>
+        <translation>&amp;Inställningar</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation>&amp;Berichten</translation>
+        <translation>&amp;Meddelanden</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation>Wissel het &amp;belang van geselecteerde berichten</translation>
+        <translation>Växla &amp;prioritet för markerade meddelanden</translation>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation>Sluit het programma.</translation>
+        <translation>Avsluta programmet.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation>Toon instellingen van het programma.</translation>
+        <translation>Visa inställningar för programmet.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation>Schakel beeldvullende modus.</translation>
+        <translation>Växla fönster-/fullskärmsläge.</translation>
     </message>
     <message>
         <source>No actions available</source>
-        <translation>Geen acties beschikbaar</translation>
+        <translation>Inga åtgärder tillgängliga</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation>Er zijn geen acties beschikbaar op dit moment.</translation>
+        <translation>Inga åtgärder tillgängliga just nu.</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation>Verberg hoofdvenster als het zichtbaar is en toon het als het verborgen is.</translation>
+        <translation>Dölj programfönstret om det är synligt, och visa det om det är dolt.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation>Verberg of toon de lijst van feeds/categorieën.</translation>
+        <translation>Dölj/Visa listan med flöden/kategorier.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation>Controleer als nieuwe update voor RSSguard beschikbaar is om te downloaden.</translation>
+        <translation>Sök efter ny programuppdatering.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>&amp;Over RSSguard</translation>
+        <translation>&amp;Om programmet</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation>Toon extra informatie over RSSguard.</translation>
+        <translation>Visa extra information om det här programmet.</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation>Verwij&amp;der geselecteerde berichten</translation>
+        <translation>&amp;Ta bort markerade meddelanden</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation>Verberg of toon het hoofdmenu.</translation>
+        <translation>Dölj/Visa huvudmenyn.</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Markeer ge&amp;selecteerde berichten als &amp;gelezen</translation>
+        <translation>Märk markerade &amp;meddelanden som &amp;lästa</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Markeer ge&amp;selecteerde berichten als &amp;ongelezen</translation>
+        <translation>Märk markerade &amp;meddelanden som &amp;olästa</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation>Open geselecteerde bron artikelen met &amp;externe webbrowser</translation>
+        <translation>Öppna markerade källartiklar i &amp;extern webbläsare</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation>Open geselecteerde berichten met &amp;ingebouwde webbrowser</translation>
+        <translation>Öppna markerade meddelanden i &amp;intern webbläsare</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>Selecteer volge&amp;nd bericht</translation>
+        <translation>Gå till &amp;nästa meddelande</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation>Selecteer &amp;vorige bericht</translation>
+        <translation>Gå till &amp;föregående meddelande</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>Controleer op &amp;updates</translation>
+        <translation>Sök efter &amp;uppdateringar</translation>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation>Toon/verberg</translation>
+        <translation>Dölj/Visa</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation>&amp;Beeldvullend</translation>
+        <translation>&amp;Fullskärm</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation>&amp;Feed lijst</translation>
+        <translation>&amp;Flödeslista</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation>Hoofd&amp;menu</translation>
+        <translation>&amp;Huvudmeny</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation>Schakel over naar het hoofd&amp;venster</translation>
+        <translation>Visa/Dölj &amp;programfönstret</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation>Kan externe browser niet starten</translation>
+        <translation>Kan inte öppna extern webbläsare</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Kan externe webbrowser niet starten, Navigeer handmatig naar RSSguard website.</translation>
+        <translation>Kan inte öppna extern webbläsare. Navigera manuellt till programmets webbsida.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation>&amp;Werkbalk</translation>
+        <translation>&amp;Verktygsfält</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation>Schakel over naar het hoofdvenster.</translation>
+        <translation>Visa/Dölj verktygsfält.</translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation>&amp;Feed/bericht  kopteksten</translation>
+        <translation>&amp;Kolumnrubriker</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Doneer met PayPal</translation>
+        <translation>&amp;Donera via PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation>Toon &amp;wiki</translation>
+        <translation>Visa &amp;wiki</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation>&amp;Herstel database/instellingen</translation>
+        <translation>&amp;Återställ databas/inställningar</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation>&amp;Backup database/instellingen</translation>
+        <translation>&amp;Säkerhetskopiera  databas/inställningar</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation>Schakel tussen lijst met berichten indeling </translation>
+        <translation>Växla meddelandelistans layout-orientering</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation>&amp;Downloads</translation>
+        <translation>&amp;Nedladdningar</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation>Geselecteerde berichten verzenden via e-mail</translation>
+        <translation>Skicka meddelandet via e-post</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation>&amp;database opschonen</translation>
+        <translation>&amp;Rensa databasen</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation>Voeg &amp;nieuw item toe</translation>
+        <translation>Lägg till &amp;nytt objekt</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation>&amp;Alle items bijwerken</translation>
+        <translation>Uppdatera &amp;alla objekt</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>&amp;Geselecteerde items bijwerken</translation>
+        <translation>Uppdatera &amp;markerade objekt</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation>&amp;Bewerk geselecteerde item</translation>
+        <translation>&amp;Redigera markerade objekt</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation>&amp;Verwijder geselecteerde item</translation>
+        <translation>&amp;Ta bort markerade objekt</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation>&amp;Markeer geselecteerde berichten als gelezen</translation>
+        <translation>&amp;Märk markerade objekt som lästa</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als gelezen.</translation>
+        <translation>Märk alla meddelanden (utan meddelandefilter) från markerade objekt som lästa.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation>&amp;Markeer geselecteerde item als ongelezen</translation>
+        <translation>&amp;Märk markerade objekt som olästa</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als ongelezen.</translation>
+        <translation>Märk alla meddelanden (utan meddelandefilter) från markerade objekt som olästa.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation>Geselecteerde items &amp;opschonen</translation>
+        <translation>&amp;Rensa markerade objekt</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation>Verwijder alle berichten van geselecteerde items.</translation>
+        <translation>Tar bort alla meddelanden från markerade objekt.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>&amp;Markeer alle items als &amp;gelezen</translation>
+        <translation>&amp;Märk alla objekt som &amp;lästa</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters mee in account.</translation>
+        <translation>Märker all meddelanden i alla objekt som lästa. Tar inte hänsyn till meddelandefilter.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation>Bekijk geselecteerde items in kra&amp;ntweergave</translation>
+        <translation>Visa markerade objekt i &amp;tidningsläge</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation>Toon alle berichten van geselecteerde item in een nieuwe &quot;krantweergave&quot; tabblad.Let op dat berichten niet automatisch als gelezen zijn ingesteld.</translation>
+        <translation>Visar alla meddelanden från markerade objekt i en ny &quot;tidningsvy&quot;. Notera att meddelanden inte automatiskt märks som lästa.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation>Alle items &amp;opschonen</translation>
+        <translation>&amp;Rensa alla objekt</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation>Verwijder alle berichten van alle items.</translation>
+        <translation>Tar bort alla meddelanden från alla objekt</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation>Selecteer &amp;volgende item</translation>
+        <translation>Gå till &amp;nästa objekt</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation>Selecteer &amp;vorige item</translation>
+        <translation>Gå till &amp;föregående objekt</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation>Toon alleen ongelezen items</translation>
+        <translation>Visa endast olästa objekt</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation>&amp;Uitklappen/inklappen geselecteerde item</translation>
+        <translation>&amp;Expandera/Komprimera markerade objekt</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation>&amp;Herstel geselecteerde berichten</translation>
+        <translation>&amp;Återställ markerade meddelanden</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation>Geen mogelijke acties</translation>
+        <translation>Inga möjliga åtgärder</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation>&amp;Prullenbak</translation>
+        <translation>&amp;Papperskorg(ar)</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation>&amp;Herstel alle prullenbakken</translation>
+        <translation>&amp;Återställ alla pappereskorgar</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation>&amp;Leeg alle prullenbakken</translation>
+        <translation>&amp;Töm alla papperskorgar</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation>Selecteer volgende &amp;ongelezen bericht</translation>
+        <translation>Gå till nästa &amp;olästa meddelande</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation>Geeen vuilnisbak</translation>
+        <translation>Ingen papperskorg</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds &amp;&amp; categorieën</translation>
+        <translation>Flöden &amp;&amp; kategorier</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation>&amp;Accounts</translation>
+        <translation>&amp;Konton</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation>&amp;Voeg nieuw account toe</translation>
+        <translation>&amp;Lägg till nytt konto</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation>Statusbalk</translation>
+        <translation>Statusfält</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>&amp;Bewerk geselecteerde account</translation>
+        <translation>&amp;Redigera markerat konto</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation>&amp;Verwijder geselecteerde account</translation>
+        <translation>&amp;Ta bort markerat konto</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation>Voeg nieuwe feed toe aan geselecteerde account</translation>
+        <translation>Lägg till nytt flöde i markerat konto</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation>Voeg nieuwe categorie toe aan geselecteerde account</translation>
+        <translation>Lägg till ny kategori i markerat konto</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Voeg nieuwe categorie toe</translation>
+        <translation>Lägg till ny kategori</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Voeg nieuw feed toe</translation>
+        <translation>Lägg till nytt flöde</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation>Stop met updaten</translation>
+        <translation>Avbryt uppdatering</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation>Acties niet mogelijk</translation>
+        <translation>Inga åtgärder möjliga</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Webbläsare &amp;&amp;flikar</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation>Rapporteer een &amp;bug...</translation>
+        <translation>Rapportera ett &amp;fel...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Ny webbläsarflik.</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>Stäng alla flikar</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Stäng alla flikar utom den aktuella</translation>
     </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Feed toegevoegd</translation>
+        <translation>Flöde tillagt</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation>Feed is toegvoegd, activeer sync nu.</translation>
+        <translation>Flöde tillagt. Synkroniseras nu.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
+        <translation>Kan inte lägga till flödet </translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Door een fout is de feed niet toegevoegd.</translation>
+        <translation>Flödet lades inte till, på grund av ett fel.</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation>Herstel database/instellingen</translation>
+        <translation>Återställ databas/inställningar</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Resultaten</translation>
+        <translation>Åtgärdsresultat</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation>Herstel database</translation>
+        <translation>Återställ databas</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation>Herstel instellingen</translation>
+        <translation>Återställ inställningar</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Nog geen handeling uitgevoerd.</translation>
+        <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation>Herstel werd ingezet. Herstart om verder te gaan.</translation>
+        <translation>Återställning inledd. Starta om programmet för att slutföra.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation>Je moet RssGuard herstarten om de herstel procedure te voltooien.</translation>
+        <translation>Du måste starta om programmet för att slutföra återställningen.</translation>
     </message>
     <message>
         <source>Source directory</source>
-        <translation>Source map</translation>
+        <translation>Källmapp</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Selecteer map</translation>
+        <translation>&amp;Välj mapp</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation>Database en / of instellingen werden niet succesvol gekopieerd naar de herstel map.</translation>
+        <translation>Databas och/eller inställningar kopierades inte till återställningsmappen.</translation>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation>Selecteer source map</translation>
+        <translation>Välj källmapp</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation>Juiste source map is opgegeven.</translation>
+        <translation>Källmappen är godkänd.</translation>
     </message>
 </context>
 <context>
@@ -1692,28 +1693,28 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>General</source>
         <extracomment>General settings section.</extracomment>
-        <translation>Algemeen</translation>
+        <translation>Allmänt</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation>Gebruikers interface</translation>
+        <translation>Utseende</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation>Pictogram thema</translation>
+        <translation>Ikontema</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Instellingen</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation>Sneltoetsen toetsenbord</translation>
+        <translation>Tangentbordsgenvägar</translation>
     </message>
     <message>
         <source>Language</source>
         <extracomment>Language settings section.</extracomment>
-        <translation>Taal</translation>
+        <translation>Språk</translation>
     </message>
     <message>
         <source>Proxy</source>
@@ -1721,64 +1722,64 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation>Pictogrammen &amp;&amp; skins</translation>
+        <translation>Ikoner &amp;&amp; teman</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation>Pictogram in het systeemvak</translation>
+        <translation>Meddelandefältsikon</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation>Start programma verborgen</translation>
+        <translation>Starta programmet dolt</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation>Type</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation>Host</translation>
+        <translation>Värd</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation>Hostnaam of ip van je proxy server</translation>
+        <translation>Värdnamn eller IP-adress till din proxyserver</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Poort</translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Gebruikersnaam</translation>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation>Je gebruikersnaam voor proxy server verificatie</translation>
+        <translation>Ditt användarnamn för proxyserverns autentisering</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Paswoord</translation>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation>Je paswoord voor proxy server verificatie</translation>
+        <translation>Ditt lösenord för proxyserverns autentisering</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation>Toon paswoord</translation>
+        <translation>Visa lösenordet</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation>Code</translation>
+        <translation>Språkkod</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Versie</translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Auteur</translation>
+        <translation>Översättare</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -1786,143 +1787,143 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation>Http</translation>
+        <translation>HTTP</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation> (Platform wordt niet ondersteunt)</translation>
+        <translation> (stöds inte på den här plattformen)</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation>Tray gebied &amp;&amp; meldingen</translation>
+        <translation>Meddelandefält &amp;&amp; aviseringar</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>Tabbladen</translation>
+        <translation>Flikar</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation>Sluit tabblad met</translation>
+        <translation>Stäng flikar med</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation>Middelste muisknop enkele-klik</translation>
+        <translation>Enkelklick på mushjulsknappen</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation>Open nieuwe tabbladen met linker muisknop dubbel-klik op tabblad</translation>
+        <translation>Öppna nya flikar med dubbelklick i flikfältet</translation>
     </message>
     <message>
         <source>Cannot save settings</source>
-        <translation>Kan instellingen niet opslaan</translation>
+        <translation>Kan inte spara inställningar</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Naam</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation>Pictogrammen</translation>
+        <translation>Ikoner</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation>Skins</translation>
+        <translation>Teman</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation>Actieve skin:</translation>
+        <translation>Aktivt tema:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation>Gekozen skin:</translation>
+        <translation>Valt tema:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation>Verberg  tabblad als alleen een tabblad zichtbaar is</translation>
+        <translation>Dölj flikfältet om endast en flik är öppen</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation>Kritieke instellingen zijn veranderd</translation>
+        <translation>Kritiska inställningar har ändrats</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation>Feeds &amp; berichten</translation>
+        <translation>Flöden &amp; meddelanden</translation>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation>Sommige kritieke instellingen zijn niet instelbaar. Je moet deze nieuwe instellingen bevestigen om op te lossen.</translation>
+        <translation>Vissa kritiska inställningar har inte konfigurerats. Du måste åtgärda dessa för att kunna verkställa inställningarna.</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Berichten</translation>
+        <translation>Meddelanden</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation>Webbrowser exe</translation>
+        <translation>Startfil för webbläsare</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation>exe parameters</translation>
+        <translation>Startparametrar</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>Noteer dat &quot;%1&quot; (zonder aanhalingstekens) een tijdelijke aanduiding is voor URL of geselecteerde berichten.</translation>
+        <translation>Notera att &quot;%1&quot; (utan citationstecken) är platshållare för det markerade meddelandets URL.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation>Selecteer exe bestand voor browser</translation>
+        <translation>Välj startfil för webbläsaren</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation>Uitvoerbare bestanden (*.*)</translation>
+        <translation>exe-filer (*.*)</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation>Opera 12 of ouder</translation>
+        <translation>Opera 12 eller äldre</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation>Uitvoerbaar bestand van webbrowser</translation>
+        <translation>Webbläsarens startfil</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation>Parameter voor exe</translation>
+        <translation>Parametrar för startfilen</translation>
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation>Sommige Sneltoetsen van toetsenbord zijn niet uniek</translation>
+        <translation>Vissa tangentbordsgenvägar är inte unika</translation>
     </message>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation>Lijst van fouten:
+        <translation>Lista över fel:
 %1.</translation>
     </message>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation>Lijst van veranderingen:
+        <translation>Lista över ändringar:
 %1.</translation>
     </message>
     <message>
         <source>language changed</source>
-        <translation>Van taal veranderd</translation>
+        <translation>Språket har ändrats</translation>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation>Pictogram thema is veranderd</translation>
+        <translation>Ikontemat har ändrats</translation>
     </message>
     <message>
         <source>skin changed</source>
-        <translation>Skin is veranderd</translation>
+        <translation>Temat har ändrats</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation>Gebruik voorbeeld argumenten voor</translation>
+        <translation>Använd argument för</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation>Gebruik in-geheugen database als de werkende database</translation>
+        <translation>Använd minnesdatabas (IMDB) som arbetsdatabas</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -1936,313 +1937,313 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation>Het gebruik van in-geheugen werkende database heeft een aantal voordelen en nadelen.Zorg ervoor dat u er bekend mee bent voordat u deze functie inschakelt.
-Voordelen:
+        <translation>Användning av minnesdatabas har åtskilliga fördelar och fallgropar. Se till att du känner till dessa innan du aktiverar den här funktionen.
+Fördelar:
 &lt;ul&gt;
-&lt;li&gt;hogere snelheid voor feed/bericht manipulaties (vooral met duizenden berichten weergegeven),&lt;/li&gt;
-&lt;li&gt;gehele database opgeslagen in het RAM geheugen, waardoor uw harde schijf meer rust.&lt;/li&gt;
+&lt;li&gt;Bättre hastighet för manipulation av flöden/meddelanden(speciellt vid visning av tusentals meddelanden).&lt;/li&gt;
+&lt;li&gt;Hela databasen lagrad i RAM, för en mindre belastad hårddisk.&lt;/li&gt;
 &lt;/ul&gt;
-Nadelen:
+Nackdelar:
 &lt;ul&gt;
-&lt;li&gt;als rssguard crasht, gaan wijzigingen van laatste sessie verloren,&lt;/li&gt;
-&lt;li&gt;opstarten en afsluiten van rssguard kan iets langer duren (max. 2 seconden).&lt;/li&gt;
-&lt;/lu&gt;
-Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</translation>
+&lt;li&gt;Om programmet kraschar, förlorar du ändringar gjorda under den sessionen.&lt;/li&gt;
+&lt;li&gt;Programstart och avslut kan ta lite längre tid (max. 2 sekunder).&lt;/li&gt;
+&lt;/ul&gt;
+Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translation>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation>in-geheugen database overgeschakeld</translation>
+        <translation>Minnesdatabas växlad</translation>
     </message>
     <message>
         <source>External web browser</source>
-        <translation>Externe webbrowser</translation>
+        <translation>Extern webbläsare</translation>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>WAARSCHUWING: Let op dat de overstap naar een ander type gegevens opslag NIET bestaande gegevens van dat moment kopiëren naar nieuw geselecteerde gegevens opslag.</translation>
+        <translation>VARNING! Notera att byte till en annan datalagringstyp INTE kopierar befintliga data från den aktiva datalagringen till den nyvalda.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation>Database driver</translation>
+        <translation>Databasdrivrutin</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation>Hostnaam</translation>
+        <translation>Värdnamn</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation>Test instelling</translation>
+        <translation>Testa</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation>Rechter muisknop dubbele-klik</translation>
+        <translation>Dubbelklick på höger musknapp</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation>Alle feeds automatisch bijwerken elke</translation>
+        <translation>Auto-uppdatera alla flöden varje</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation>Feed verbindings time-out</translation>
+        <translation>Anslutnings-timeout för flöden</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation>Verbinding timeout is tijdsinterval dat wordt gereserveerd voor downloaden van nieuwe berichten voor de feed. Als het tijdsinterval is verstreken, dan wordt het download proces afgebroken.</translation>
+        <translation>Anslutnings-timeout är det tidsintervall som reserverats föratt ladda ner nya meddelanden. Om detta tidsintervall överskrids, kommer nedladdningsprocessen att avbrytas.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation>ms</translation>
+        <translation> ms</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation>Alle feeds bijwerken met starten van RSSguard</translation>
+        <translation>Uppdatera alla flöden vid programstart</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation>Gegevens opslag</translation>
+        <translation>Datalagring</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation>Hostnaam van je MySQL server</translation>
+        <translation>Värdnamn för din MySQL-server</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation>Gebruikersnaam om in te loggen</translation>
+        <translation>Användarnamn för att logga in</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation>Paswoord voor je gebruikersnaam</translation>
+        <translation>Lösenord för ditt användarnamn</translation>
     </message>
     <message>
         <source>data storage backend changed</source>
-        <translation>Gegevens opslag backend is veranderd</translation>
+        <translation>Datalagringens stöddatabas har ändrats</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation>Hostnaam is leeg.</translation>
+        <translation>Värdnamn saknas.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Hostnaam voldoet.</translation>
+        <translation>Värdnamnet ser ok ut.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation>Gebruikersnaam voldoet.</translation>
+        <translation>Användarnamnet ser ok ut.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation>Paswoord voldoet.</translation>
+        <translation>Lösenordet ser ok ut.</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation>Werkbalkknop stijl</translation>
+        <translation>Verktygsfältets knappstil</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation>Verberg hoofdvenster wanneer het wordt geminimaliseerd</translation>
+        <translation>Dölj programfönstret vid minimering</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation>Geen verbindings test geactiveerd tot nu toe.</translation>
+        <translation>Inget anslutningstest utfört än.</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Merk op dat deze instellingen alleen worden  toegepast op nieuw tot stand gebrachte verbindingen.</translation>
+        <translation>Notera att dess inställningar endast verkställs för nyetablerade anslutningar.</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation>Selecteer browser</translation>
+        <translation>Välj webbläsare</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation>Geen proxy</translation>
+        <translation>Ingen proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation>Systeem proxy</translation>
+        <translation>Systemets proxy</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation>Alleen pictogram</translation>
+        <translation>Endast ikon</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation>Alleen tekst</translation>
+        <translation>Endast text</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation>Tekst naast pictogram</translation>
+        <translation>Text bredvid ikon</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation>Tekst onder pictogram</translation>
+        <translation>Text under ikon</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation>Volg OS stijl</translation>
+        <translation>Operativsystemets stil</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Houd bericht selectie in het midden van de lijst met berichten kijkvenster</translation>
+        <translation>Placera markerat meddelande i mitten av vyn för meddelandelista</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation>U heeft nog geen verbindings test uitgevoerd.</translation>
+        <translation>Du har inte utfört något anslutningstest än.</translation>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation>Laad %1 als systeem opstart</translation>
+        <translation>Starta %1 vid systemstart</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Indien aangevinkt, wordt standaard de systeem  webbrowser gebruikt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Om kryssrutan lämnas omarkerad, används systemets standardwebbläsare.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds &amp;&amp; categorieën</translation>
+        <translation>Flöden &amp;&amp; kategorier</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation>Aantal bericht formaat in feeds lijst</translation>
+        <translation>Meddelanderäknare för flödeslistan</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Voer formaat in voor telling van berichten weergegeven naast elke feed / categorie in feed lijst. Gebruik &quot;%alle&quot; en &quot;%ongelezen&quot; strings die tijdelijke aanduidingen zijn voor de eigenlijke telling van alle (of ongelezen) berichten zijn.</translation>
+        <translation>Ange vilket format meddelanderäknaren skall visa antal meddelanden för varje flöde/kategori. Använd &quot;%all&quot; och &quot;%unread&quot; vilket är platshållare för alla (respektive olästa) meddelanden.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
-        <translation>Aangepaste externe browser in niet correct ingesteld</translation>
+        <translation>Anpassad extern webbläsare är inte korrekt konfigurerad</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation>Werkbalken</translation>
+        <translation>Verktygsfält</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation>Welkbalk voor feeds lijst</translation>
+        <translation>Verktygsfält för flödeslista</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation>Werkbalk voor berichten lijst</translation>
+        <translation>Verktygsfält för meddelandelista</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation>Selecteer werkbalk om te bewerken</translation>
+        <translation>Välj verktygsfält att redigera</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation>Sommige kritieke instellingen zijn veranderd en worden van kracht als het programma wordt herstart.
+        <translation>Vissa kritiska inställningar har ändrats och kommer att verkställas efter att programmet har startats om. 
 
-Je moet handmatig herstarten.</translation>
+Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation>Controleer op updates als RssGuard wordt gestart</translation>
+        <translation>Sök efter uppdateringar vid programstart</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>Gebruik aangepaste datum / tijd opmaak (overschrijft de opmaak van de actieve geladen locatie)</translation>
+        <translation>Använd anpassada datum-/tidsformat (undantar format inlästa från aktivt språksystem)</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation>Uitvoerbare bestanden (*.*)</translation>
+        <translation>Körbara (*)</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Verwijder de gelezen berichten van alle feeds als rssguard sluit</translation>
+        <translation>Ta bort alla lästa meddelanden från alla flöden vid programavslut</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Downloads</translation>
+        <translation>Nedladdningar</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation>Doelmap voor de gedownloade bestanden</translation>
+        <translation>Målmapp för nedladdade filer</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation>Vraag voor elk individuele gedownloade bestand</translation>
+        <translation>Fråga om varje enskild fil</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation>Doelmap waar alle downloads worden opgeslagen</translation>
+        <translation>Målmapp där alla nedladdade filer sparas</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation>&amp;Blader</translation>
+        <translation>&amp;Bläddra</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation>Selecteer gedownloade doelmap </translation>
+        <translation>Välj nedladdningsmapp</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation>&amp;Toon paswoord</translation>
+        <translation>&amp;Visa lösenord</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Webbrowser &amp; e-mail &amp; proxy</translation>
+        <translation>Webbläsare, e-post &amp; proxy</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Verwijder ongewenste Trolltech registersleutel (HKCU\\Software\\Trolltech) wanneer RssGuard wordt afgesloten (Gebruik op eigen risico!)</translation>
+        <translation>Ta bort Trolltechs registernyckel (HKCU\\Software\\Trolltech) när programmet avslutas (Används på egen risk!).</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation>Werkende database</translation>
+        <translation>Arbetsdatabas</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation>Gebruik aangepaste externe webbrowser</translation>
+        <translation>Använd anpassad extern webbläsare</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation>Externe e-mail client</translation>
+        <translation>Extern e-postklient</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation>Gebruik een aangepaste externe e-mailclient</translation>
+        <translation>Använd extern anpassad e-postklient</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation>Selecteer exe bestand voor e-mail</translation>
+        <translation>E-postklientens programfil</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation>Uitvoerbaar bestand van e-mail client</translation>
+        <translation>E-postklientens startfil</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation>Selecteer client</translation>
+        <translation>Välj klient</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation>Plaatshouders: 
- •.%1 - titel van het geselecteerde bericht,
- • %2 - body van geselecteerde bericht.</translation>
+        <translation>Platshållare:
+ • %1 - titel för aktuellt meddelande
+ • %2 - brödtext för </translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation>Sla alle gedownloade bestanden op naar</translation>
+        <translation>Spara alla nedladdade filer i</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation>Selecteer exe bestand voor e-mail</translation>
+        <translation>Välj startfil för e-postklienten</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -2250,71 +2251,71 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation>Werkende database waar je volledige toegang tot hebt.</translation>
+        <translation>Arbetsdatabas som du har full åtkomst till.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation>Werkende database is leeg.</translation>
+        <translation>Arbetsdatabasen är tom.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation>Werkende database is ok.</translation>
+        <translation>Arbetsdatabasen är OK.</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation>(Pictogram in systeemvak is niet beschikbaar.)</translation>
+        <translation>(meddelandefältsikon ej tillgänglig)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation>Intern bericht browser lettertypen</translation>
+        <translation>Teckensnitt för intern meddelandeläsare</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Merk op dat de snelheid van de gebruikte MySQL server en wachttijd van de gebruikte verbinding ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing. Met langzame database connecties leidt dit tot slechte prestaties tijdens het browsen feeds of berichten.</translation>
+        <translation>Notera att hastigheten på den använda MySQL-servern och latensen för aktuellt anslutningsmedium, KRAFTIGT påverkar detta programs prestanda. Användning av långsamma databasanslutningar leder till dålig prestanda vid navigering bland flöden och meddelanden.</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation>E-mail</translation>
+        <translation>E-post</translation>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation>Open de download manager wanneer een nieuwe download start</translation>
+        <translation>Öppna nedladdningshanteraren när ny nedladdning startas</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation>Statusbalk</translation>
+        <translation>Statusfält</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation>&amp;Verander lettertype</translation>
+        <translation>&amp;Ändra teckensnitt</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation>Voorbeeld lettertype</translation>
+        <translation>Teckengranskning</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation>Selecteer een nieuw lettertype voor berichten </translation>
+        <translation>Välj nytt teckensnitt för meddelandevyn</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>Geen icon thema/systeem icon thema</translation>
+        <translation>inget ikontema/systemikontema</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation>Zet popup ballon tooltips aan</translation>
+        <translation>Aktivera poup-informationsrutor</translation>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Oudere categorie</translation>
+        <translation>Överordnad kategori</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation>Kies hoofd item voor je categorie.</translation>
+        <translation>Välj överordnad mapp för kategorin.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2322,292 +2323,292 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Description</source>
-        <translation>Omschrijving</translation>
+        <translation>Beskrivning</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Pictogram</translation>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation>Selecteer pictogram voor je categorie.</translation>
+        <translation>Välj ikon för kategorin.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Voeg nieuwe categorie toe</translation>
+        <translation>Lägg till ny kategori</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation>Bewerk bestaande categorie</translation>
+        <translation>Redigera befintlig kategori</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Kan geen categorie toevoegen</translation>
+        <translation>Kan inte lägga till kategori</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation>Door een fout is de categorie niet toegevoegd.</translation>
+        <translation>Kategorin lades inte till, på grund av något fel.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation>Kan categorie niet bewerken</translation>
+        <translation>Kan inte redigera kategorin</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation>Door een fout is de categorie niet bewerkt.</translation>
+        <translation>Kategorin kan inte redigeras, på grund av något fel.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation>Categorie naam is ok.</translation>
+        <translation>Kategorinamnet är ok.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation>Categorie naam is te kort.</translation>
+        <translation>Kategorinamnet är för kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Omschrijving is leeg.</translation>
+        <translation>Beskrivning saknas.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Omschrijving is ok.</translation>
+        <translation>Beskrivningen är ok.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation>Kies pictogram bestand voor de categorie</translation>
+        <translation>Välj ikonfil för kategorin</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
+        <translation>Välj ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annuleer</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Kijk in:</translation>
+        <translation>Sök i:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Pictogram naam:</translation>
+        <translation>Ikonnamn:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
+        <translation>Ikontyp:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation>Titel categorie</translation>
+        <translation>Kategorinamn</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation>Stel titel in voor je categorie.</translation>
+        <translation>Ange namnet på din kategori.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation>Categorie omschrijving</translation>
+        <translation>Kategoribeskrivning</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation>Stel omschrijving in voor je categorie.</translation>
+        <translation>Beskriv din kategori.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>Pictogram selectie</translation>
+        <translation>Ikonval</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
+        <translation>Hämta ikon från fil...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
+        <translation>Använd ingen ikon</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
+        <translation>Använd standardikon</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
+        <translation>Kan inte lägga till flöde</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Door een fout is de feed niet toegevoegd.</translation>
+        <translation>Flödet lades inte till, på grund av något fel.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation>Kan feed niet bewerken</translation>
+        <translation>Kan inte redigera flödet</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation>Door een fout is de feed niet bewerkt.</translation>
+        <translation>Flödet redigerades inte, på grund av något fel.</translation>
     </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation>&amp;Selecteer bestand</translation>
+        <translation>&amp;Välj fil</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation>&amp;Controleer alle items</translation>
+        <translation>&amp;Markera alla</translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation>&amp;Vinkje bij alle items</translation>
+        <translation>&amp;Avmarkera alla</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Resultaten</translation>
+        <translation>Åtgärdsresultat</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation>Geen bestand geselecteerd.</translation>
+        <translation>Ingen fil har valts.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Nog geen handeling uitgevoerd.</translation>
+        <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation>Doelbestand</translation>
+        <translation>Målfil</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation>Source Feeds &amp;&amp; categorieën</translation>
+        <translation>Källflöden &amp;&amp; -kategorier</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Exporteer feeds</translation>
+        <translation>Exportera flöden</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation>Source bestand</translation>
+        <translation>Källfil</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation>Doelgroep feeds &amp;&amp; categorieën</translation>
+        <translation>Målflöden &amp;&amp; -kategorier</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importeer feeds</translation>
+        <translation>Importera flöden</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation>OPML 2.0 bestanden (*.opml)</translation>
+        <translation>OPML 2.0-filer (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation>Selecteer bestand voor feed export</translation>
+        <translation>Välj fil för flödesexport</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation>Bestand is geselecteerd.</translation>
+        <translation>Fil är vald.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation>Selecteer bestand voor feed import</translation>
+        <translation>Välj fil för flödesimport</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation>Kan source bestand niet openen.</translation>
+        <translation>Kan inte öppna källfil.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation>Feeds zijn geladen.</translation>
+        <translation>Flöden lästes in.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation>Fout, het bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
+        <translation>Fel! Filen är inte rätt formaterad. Välj en annan fil.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>Fout opgetreden. Bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
+        <translation>Ett fel uppstod. Filen är felformaterad. Välj en annan fil.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation>Feeds zijn met succes geëxporteerd.</translation>
+        <translation>Flöden exporterades korrekt.</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation>Kritieke fout opgetreden.</translation>
+        <translation>Ett allvarligt fel uppstod.</translation>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation>Gegevens ontleden...</translation>
+        <translation>Analyserar data...</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation>Kan niet schrijven naar doelbestand: &apos;%1&apos;.</translation>
+        <translation>Kan inte skriva till målfilen: %1</translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation>Root rechten</translation>
+        <translation>Rotnod</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Kies hoofd item voor je feed.</translation>
+        <translation>Välj övergripande objekt för ditt flöde.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation>TXT bestanden (een url per lijn) (*.txt)</translation>
+        <translation>TXT-filer [en URL per rad] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation>Krijg metadata online</translation>
+        <translation>Hämta metadata online</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation>Metadata voor uw feeds kunnen online worden opgehaald. Merk op dat de actie een aantal minuten kan duren, afhankelijk van het aantal feeds.</translation>
+        <translation>Metadata för flödet kan hämtas online. Notera att åtgärden kan ta flera minuter, beroende på antal flöden.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation>Wilt u de feed metadata online ophalen?</translation>
+        <translation>Vill du hämta flödesmetadata online?</translation>
     </message>
 </context>
 <context>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Feed toegevoegd</translation>
+        <translation>Flöde tillagt</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation>Feed is toegvoegd, activeer sync nu.</translation>
+        <translation>Flöde tillagt. Synkroniseras nu.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
+        <translation>Kan inte lägga till flödet </translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Door een fout is de feed niet toegevoegd.</translation>
+        <translation>Flödet lades inte till, på grund av ett fel.</translation>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation>Huidige versie</translation>
+        <translation>Aktuell version</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation>Beschikbare versie</translation>
+        <translation>Tillgänglig version</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Veranderingen</translation>
+        <translation>Ändringar</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2616,156 +2617,157 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation>onbekend</translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation>Lijst met updates is niet
-succesvol gedownload.</translation>
+        <translation>Listan med uppdateringar
+laddades inte ner korrekt.</translation>
     </message>
     <message>
         <source>New release available.</source>
-        <translation>Nieuwe versie beschikbaar.</translation>
+        <translation>Ny version tillgänglig.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation>Fout: %1&apos;.</translation>
+        <translation>Fel: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation>Geen nieuwe versie beschikbaar.</translation>
+        <translation>Ingen ny version tillgänglig.</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation>Deze versie is niet nieuwer dan
-de geïnstalleerde.</translation>
+        <translation>Den här versionen är nyare än den installerade.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Controleer op updates</translation>
+        <translation>Sök efter uppdateringar</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation>Download nieuwe installatie bestanden.</translation>
+        <translation>Ladda ner ny installationsfil.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Zoeken naar updates mislukt.</translation>
+        <translation>Kunde inte söka efter uppdatering.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Download installatie bestand voor OS/2.</translation>
+        <translation>Ladda ner installationsfil för ditt system.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Installatie bestand in nu niet beschikbaar.
-Ga naar RRSguard website en download het handmatig.</translation>
+        <translation>Installationsfilen är inte direkt tillgänglig.
+Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Geen nieuwe update beschikbaar.</translation>
+        <translation>Ingen ny uppdatering tillgänglig.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation>Kan RSSguard niet updaten</translation>
+        <translation>Kan inte uppdatera programmet</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Kan niet naar installatiebestand bladeren. Controleer nieuwe installatie downloads handmatig op RSSguard website.</translation>
+        <translation>Kan inte navigera till installationsfilen. Sök ny installationsnedladdning manuellt, på projektets hemsida.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Download update</translation>
+        <translation>Ladda ner uppdatering</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation>Downloaded %1% (update grootte is %2 kB).</translation>
+        <translation>%1% nerladdat (uppdateringens storlek är %2 kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation>Update downloaden ...</translation>
+        <translation>Laddar ner uppdatering...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation>Download succesvol voltooid</translation>
+        <translation>Nedladdning slutförd</translation>
     </message>
     <message>
         <source>Error occured</source>
-        <translation>Fout opgetreden</translation>
+        <translation>Ett fel uppstod</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation>Er is een fout opgetreden tijdens het downloaden van het pakket.</translation>
+        <translation>Ett fel uppstod vid nedladdningen.</translation>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation>Ga naar Rssguard website</translation>
+        <translation>Gå till programmets hemsida</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Detta är en ny version som kan
+laddas ner.</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Paketet har laddats ner.
+Du måste installera det manuellt.</translation>
     </message>
     <message>
         <source>Go to update file</source>
-        <translation type="unfinished"/>
+        <translation>Gå till uppdateringsfilen</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>Kan map niet openen</translation>
+        <translation>Kan inte öppna mappen</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
+        <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
     </message>
 </context>
 <context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation>Kan bestand &apos;%1&apos; niet openen om te lezen.</translation>
+        <translation>Kunde inte öppna filen &apos;%1&apos; för inläsning.</translation>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>Kan bestand &apos;%1&apos; niet openen om te schrijven.</translation>
+        <translation>Kan inte öppna filen &apos;%1&apos; för skrivning.</translation>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation>Tik Website adres hier</translation>
+        <translation>Webbadress anges här</translation>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation>ld</translation>
+        <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>Lees</translation>
+        <translation>Läst</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation>verwijder</translation>
+        <translation>Borttaget</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation>Belangrijk</translation>
+        <translation>Viktigt</translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation>Feed</translation>
+        <translation>Flöde</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2773,173 +2775,173 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Url</source>
-        <translation>Url</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Auteur</translation>
+        <translation>Författare</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation>Gemaakt op</translation>
+        <translation>Skapad</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation>Inhoud</translation>
+        <translation>Innehåll</translation>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation>Id van het bericht.</translation>
+        <translation>Meddelande-ID.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation>Is bericht gelezen?</translation>
+        <translation>Är meddelandet läst?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation>Is bericht verwijderd?</translation>
+        <translation>Är meddelandet borttaget?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation>IS bericht belangrijk?</translation>
+        <translation>Är meddelandet viktigt?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation>Id van feed waar dit bericht bijhoort.</translation>
+        <translation>ID för det flöde som detta meddelande tillhör.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation>Titel van het bericht.</translation>
+        <translation>Meddelandetitel.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation>Url van het bericht.</translation>
+        <translation>URL för meddelandet.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation>De schrijver van het bericht.</translation>
+        <translation>Meddelandets författare.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation>Aanmaakdatum van het bericht.</translation>
+        <translation>Skapelsedatum för meddelandet.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation>Inhoud van het bericht.</translation>
+        <translation>Innehåll i meddelandet.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation>Definitief verwijderd</translation>
+        <translation>Permanent borttagna</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation>Is het bericht definitief verwijderd uit de prullenbak?</translation>
+        <translation>Är meddelandet permanent borttaget från papperskorgen?</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation>Bijlagen</translation>
+        <translation>Bilagor</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation>Bijlagen lijst.</translation>
+        <translation>Lista över bilagor.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation>Laden van berichten mislukt, misschien konden berichten niet worden gedownload.</translation>
+        <translation>Inläsning av meddelanden misslyckades. Meddelandena kanske inte kan laddas ner.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation>Laden van berichten voor item &apos;%1&apos; mislukt.</translation>
+        <translation>Inläsning av meddelanden från &apos;%1&apos; misslyckades.</translation>
     </message>
     <message>
         <source>Account ID</source>
-        <translation>Account ID</translation>
+        <translation>Konto-ID</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation>Aangepaste ID</translation>
+        <translation>Anpassat ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation>Account ID van het bericht.</translation>
+        <translation>Konto-ID för meddelandet</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation>Aangepaste ID van het bericht</translation>
+        <translation>Anpassat ID för meddelandet</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation>Aangepaste hash</translation>
+        <translation>Anpassad hash</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation>Aangepaste hash van bericht.</translation>
+        <translation>Anpassad hash-summa för meddelandet.</translation>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation>Zoek berichten</translation>
+        <translation>Sök meddelande</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation>Berichten zoek box</translation>
+        <translation>Sökfält</translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation>Menu voor markeren berichten</translation>
+        <translation>Meny för färgmarkering av meddelanden</translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation>Niet extra markeren</translation>
+        <translation>Ingen färgmarkering</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation>Markeer ongelezen berichten</translation>
+        <translation>Färgmarkera olästa meddelanden</translation>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation>Markeer belangrijke berichten</translation>
+        <translation>Färgmarkera viktiga meddelanden</translation>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation>Toon alle berichten</translation>
+        <translation>Visa alla meddelande</translation>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation>Bericht markeerder</translation>
+        <translation>Färgmarkör</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Werkbalk ruimte</translation>
+        <translation>Verktygsavskiljare</translation>
     </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation>Contextmenu voor berichten</translation>
+        <translation>Kontextmeny för meddelanden</translation>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation>Probleem om externe webbrowser te starten</translation>
+        <translation>Problem med att starta extern webbläsare</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation>Externe webbrowser kon niet worden gestart.</translation>
+        <translation>Extern webbläsare kan inte startas.</translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation>Probleem om externe e-mail client te starten</translation>
+        <translation>Problem att starta extern e-postklient</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation>Externe e-mail client kon niet worden gestart.</translation>
+        <translation>Extern e-postklient kunde inte startas.</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Krantweergave</translation>
+        <translation>Tidningsvy</translation>
     </message>
 </context>
 <context>
@@ -2947,95 +2949,95 @@ You must install it manually.</source>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation>protocol fout</translation>
+        <translation>Protokollfel</translation>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>host niet gevonden</translation>
+        <translation>Värddatorn kan inte hittas</translation>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>verbinding geweigerd</translation>
+        <translation>Anslutning nekades</translation>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation>Verbindings time-out</translation>
+        <translation>Anslutningstiden överskreds</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>SSL handshake is mislukt</translation>
+        <translation>SSL-handskakning misslyckades</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>proxy server verbinding geweigerd</translation>
+        <translation>Proxy-anslutning nekades</translation>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation>tijdelijke storing</translation>
+        <translation>Temporärt fel</translation>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>verificatie mislukt</translation>
+        <translation>Autentiseringen misslyckades</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation>proxy verificatie vereist</translation>
+        <translation>Proxyautentisering krävs</translation>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>proxy server niet gevonden</translation>
+        <translation>Proxyservern hittades inte</translation>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>inhoud niet gevonden</translation>
+        <translation>Inget innehåll hittades</translation>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation>onbekende fout</translation>
+        <translation>Okänt fel</translation>
     </message>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation>geen fouten</translation>
+        <translation>Inga fel</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation>toegang tot inhoud is geweigerd</translation>
+        <translation>åtkomst till innehållet nekades</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation>verbinding verlopen of werd geannuleerd</translation>
+        <translation>anslutningstiden överskreds, eller avbröts</translation>
     </message>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation>onbekende inhoud</translation>
+        <translation>okänt innehåll</translation>
     </message>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation>Sync in</translation>
+        <translation>Synka i</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kan item niet toevoegen</translation>
+        <translation>Kan inte lägga till objekt</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>
@@ -3043,54 +3045,52 @@ You must install it manually.</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>nl_NL</translation>
+        <translation>sv_SE</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.07</translation>
+        <translation>2.0.0.3</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Elbert Pol</translation>
+        <translation>Åke Engelbrektson</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>elbert.pol@gmail.com</translation>
+        <translation>eson57@gmail.com</translation>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Nederlands</translation>
+        <translation>Swedish</translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation><numerusform>+ %n annat flöde.</numerusform><numerusform>
 
-+ %n andere feed.</numerusform><numerusform>
-
-+ %n andere feeds.</numerusform></translation>
++ %n andra flöden.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation>Welkom bij %1.
+        <translation>Välkommen till %1.
 
-Check voor NIEUW materiaal in deze versie
-door te clicken op deze popup melding.</translation>
+Kolla in NYA grejer i den här versionen 
+genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Welkom bij %1.</translation>
+        <translation>Välkommen till %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation>Laad eerste set van de feeds</translation>
+        <translation>Läs in inledande flödesuppsättning</translation>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -3098,46 +3098,46 @@ door te clicken op deze popup melding.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation>Deze service biedt integratie met TinyTiny RSS.
+        <translation>Denna tjänst erbjuder integration med Tiny Tiny RSS.
 
-Tiny Tiny RSS is een open source web-based nieuws-feed (RSS / Atom) lezer en aggregator, ontworpen om u nieuws te laten lezen vanaf elke locatie, terwijl u het gevoel hebt zo dicht mogelijk bij een echte desktop te zijn.
+Tiny Tiny RSS är en öppen källkods, webbaserad flödesläsare (RSS/Atom) och aggregator, designad för att låta dig läsa nyheter från valfri webbplats, med känslan så nära en riktig skrivbordsklient som möjligt.
 
-Een API niveau van tenminste %1 is vereist.</translation>
+Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation>De Nieuws app is een RSS/Atom feed aggegrator. Het is deel van de ownCloud suite. Deze plugin implementeert %1 API.</translation>
+        <translation>Nyhetsappen är en RSS-/Atom-flödesaggregator. Den är en del av ownCloud-sviten. Denna insticksmodul implementerar API:n %1.</translation>
     </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation>Prullenbak</translation>
+        <translation>Papperskorgen</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>De prullenbak bevat alle verwijderde berichten van alle feeds.</translation>
+        <translation>Papperskorgen innehåller borttagna meddelanden från samtliga flöden.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
 
 %1</source>
-        <translation>Prullenbak
+        <translation>Papperskorg
 
 %1</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation>Herstel vuilnisbak</translation>
+        <translation>Återställ papperskorgen</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation>Leeg vuilnisbak</translation>
+        <translation>Töm papperskorgen</translation>
     </message>
 </context>
 <context>
@@ -3145,22 +3145,22 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation>Reset naar standaard sneltoets.</translation>
+        <translation>Återställ ursprunglig ikon.</translation>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation>Wis huidige sneltoets.</translation>
+        <translation>Rensa aktuell genväg.</translation>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation>Klik en raak nieuwe sneltoets.</translation>
+        <translation>Klicka och välj ny snabbtangent.</translation>
     </message>
 </context>
 <context>
@@ -3168,39 +3168,39 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (categorie)%2%3</translation>
+        <translation>%1 (kategori)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
         <translation>
-Deze categorie bevat geen nested items.</translation>
+Denna kategori innehåller inga objekt.</translation>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation>Metadata niet opgehaald</translation>
+        <translation>Metadata hämtades inte</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation>Metadate niet opgehaald omdat: %1.</translation>
+        <translation>Metadata hämtades inte på grund av: %1</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>automatisch bijwerken niet gebruiken</translation>
+        <translation>uppdateras inte automatiskt</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>gebruik algemene instellingen</translation>
+        <translation>Globala inställningar</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3211,110 +3211,110 @@ Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation>%1 (%2)%3
 
-Netwerk status: %6
-Coderen: %4
-Auto-update status: %5 </translation>
+Nätverksstatus: %6
+Kodning: %4
+Uppdateringsstatus: %5</translation>
     </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Dit is verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
+        <translation>Detta är ett obligatoriskt tjänstkonto för standard RSS/RDF/ATOM-flöden.</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation>Wil je de eerste set van feeds laden?</translation>
+        <translation>Vill du läsa in flödesuppsättningen?</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation>Fout bij het laden van de eerste feeds</translation>
+        <translation>Fel vid inläsning av flöden</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Ophalen van metadata</translation>
+        <translation>Hämta metadata</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Importeren succesvol, maar sommige feeds / categorieën waren niet goed  geïmporteerd door fouten.</translation>
+        <translation>Importen slutfördes, men vissa flöden/kategorier importerades inte på grund av något fel.</translation>
     </message>
     <message>
         <source>Import was completely successfull.</source>
-        <translation>Importeren is helemaal geslaagd.</translation>
+        <translation>Importen slutfördes korrekt.</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Exporteer feeds</translation>
+        <translation>Exportera flöden</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importeer feeds</translation>
+        <translation>Importera flöden</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation>Dit is een service account voor standaard RSS/RDF/ATOM feeds.
+        <translation>Detta är ett tjänstkonto för standard RSS/RDF/ATOM-flöden.
 
-Account ID: %1</translation>
+Konto-ID: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation>Dit nieuwe account bevat geen feeds. U kunt de standaard set van feeds toevoegen.</translation>
+        <translation>Detta nya konto inkluderar inte några flöden. Du kan nu läsa in standarduppsättningen av flöden.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kan item niet toevoegen</translation>
+        <translation>Kan inte lägga till objekt</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Kan geen categorie toevoegen</translation>
+        <translation>Kan inte lägga till kategori</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation>Kan geen categorie toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Kan inte lägga till kategori, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation>Feed update progresbalk</translation>
+        <translation>Förloppsindikator för flödesuppdatering</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation>Feed update label</translation>
+        <translation>Flödesuppdateringsetikett</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation>Bestandsdownload progresbar</translation>
+        <translation>Förloppsindikator för nedladdning</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation>Bestandsdownload label</translation>
+        <translation>Nedladdningsetikett</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Werkbalkruimte</translation>
+        <translation>Mellanrum</translation>
     </message>
 </context>
 <context>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Nieuwe versie beschikbaar</translation>
+        <translation>Ny tillgänglig version</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Klik op luchtbel voor meer informatie.</translation>
+        <translation>Klicka på detta meddelande för mer information.</translation>
     </message>
     <message>
         <source>anonymous</source>
-        <translation>Anoniem</translation>
+        <translation>anonym</translation>
     </message>
 </context>
 <context>
@@ -3323,120 +3323,119 @@ Account ID: %1</translation>
         <source>%1
 Unread news: %2</source>
         <translation>%1
-
-Ongelezen nieuws: %2</translation>
+Olästa nyheter: %2</translation>
     </message>
 </context>
 <context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation>Sluit dit tabblad.</translation>
+        <translation>Stäng den här fliken.</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation>Sluit tabblad</translation>
+        <translation>Stäng fliken</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation>Feeds</translation>
+        <translation>Flöden</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation>Blader door feeds en berichten</translation>
+        <translation>Bläddra bland dina flöden och meddelanden</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation>Toont het hoofdmenu.</translation>
+        <translation>Visar den primära menyn.</translation>
     </message>
     <message>
         <source>Main menu</source>
-        <translation>Hoofdmenu</translation>
+        <translation>Huvudmeny</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Downloads</translation>
+        <translation>Nedladdningar</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Krantweergave</translation>
+        <translation>Tidningsvy</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation>Webbrowser</translation>
+        <translation>Webbläsare</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n uur</numerusform><numerusform>%n ur(en)</numerusform></translation>
+        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuut</numerusform><numerusform>%n minut(en)</numerusform></translation>
+        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation>en</translation>
+        <translation>och</translation>
     </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation>Geactiveerde acties</translation>
+        <translation>Aktiverade åtgärder</translation>
     </message>
     <message>
         <source>Available actions</source>
-        <translation>Beschikbare acties</translation>
+        <translation>Tillgängliga åtgärder</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation>Scheidingsteken invoegen</translation>
+        <translation>Infoga separator</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation>Voeg ruimte in</translation>
+        <translation>Infoga mellanrum</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation>Scheidingsteken</translation>
+        <translation>Separator</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Werkbalk ruimte</translation>
+        <translation>Mellanrum</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation>Verplaats maatregel omhoog</translation>
+        <translation>Flytta upp åtgärden</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation>Verplaats maatregel omlaag</translation>
+        <translation>Flytta ner åtgärden</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation>Voeg geselecteerde maatregel toe</translation>
+        <translation>Lägg till vald åtgärd</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation>Verwijder geselecteerde maatregel</translation>
+        <translation>Ta bort vald åtgärd</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation>Verwijder alle maatregels</translation>
+        <translation>Ta bort alla åtgärder</translation>
     </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation>Sluit geopende modaal vensters eerst.</translation>
+        <translation>Stäng öppna dialogrutor först.</translation>
     </message>
 </context>
 <context>
@@ -3444,17 +3443,17 @@ Ongelezen nieuws: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>automatisch bijwerken niet gebruiken</translation>
+        <translation>uppdateras inte automatiskt</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>gebruik algemene instellingen</translation>
+        <translation>använder globala inställningar</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
@@ -3463,7 +3462,7 @@ Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation>%1%2
 
-Auto update status: %3</translation>
+Autouppdateringsstatus: %3</translation>
     </message>
 </context>
 <context>
@@ -3478,86 +3477,86 @@ Last error: %4
 Last login on: %5</source>
         <translation>Tiny Tiny RSS
 
-Account ID: %3
-Gebruikersnaam: %1
+Konto-ID: %3
+Användarnamn: %1
 Server: %2
-Laatste fout: %4
-Laatste login: %5</translation>
+Senaste fel: %4
+Senast inloggad: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation>Sync in</translation>
+        <translation>Synka i</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kan item niet toevoegen</translation>
+        <translation>Kan inte lägga till objekt</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation>Navigatie venster</translation>
+        <translation>Navigationspanel</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>Geen titel</translation>
+        <translation>Ingen titel</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Terug</translation>
+        <translation>Tillbaka</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation>Ga terug.</translation>
+        <translation>Gå tillbaka.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation>Vooruit</translation>
+        <translation>Framåt</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation>Ga vooruit.</translation>
+        <translation>Gå framåt.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation>Herlaad</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Vernieuw huidige webpagina.</translation>
+        <translation>Uppdatera aktuell webbsida.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation>Stop het laden van pagina.</translation>
+        <translation>Stoppa inläsning av webbsidan.</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="unfinished"/>
+        <translation>Bilaga</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Geschreven door </translation>
+        <translation>Skriven av </translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation>Onbekende auteur</translation>
+        <translation>okänd författare</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Krantweergave</translation>
+        <translation>Tidningsvy</translation>
     </message>
 </context>
 </TS>

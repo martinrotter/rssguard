@@ -398,43 +398,43 @@ FORMS += \
          src/services/standard/gui/formstandardimportexport.ui \
          src/services/tt-rss/gui/formeditaccount.ui
 
-TRANSLATIONS += localization/qtbase-cs_CZ.ts \
-                localization/qtbase-da_DK.ts \
-                localization/qtbase-de_DE.ts \
-                localization/qtbase-fr_FR.ts \
-                localization/qtbase-he_IL.ts \
-                localization/qtbase-it_IT.ts \
-                localization/qtbase-ja_JP.ts \
-                localization/qtbase-sv_SE.ts \
-                localization/rssguard-cs_CZ.ts \
-                localization/rssguard-da_DK.ts \
-                localization/rssguard-de_DE.ts \
+TRANSLATIONS += localization/qtbase-cs.ts \
+                localization/qtbase-da.ts \
+                localization/qtbase-de.ts \
+                localization/qtbase-fr.ts \
+                localization/qtbase-he.ts \
+                localization/qtbase-it.ts \
+                localization/qtbase-ja.ts \
+                localization/qtbase-sv.ts \
+                localization/rssguard-cs.ts \
+                localization/rssguard-da.ts \
+                localization/rssguard-de.ts \
                 localization/rssguard-en_GB.ts \
-                localization/rssguard-en_US.ts \
-                localization/rssguard-fr_FR.ts \
-                localization/rssguard-he_IL.ts \
-                localization/rssguard-id_ID.ts \
-                localization/rssguard-it_IT.ts \
-                localization/rssguard-ja_JP.ts \
-                localization/rssguard-lt_LT.ts \
-                localization/rssguard-nl_NL.ts \
-                localization/rssguard-pt_BR.ts \
-                localization/rssguard-sv_SE.ts
+                localization/rssguard-en.ts \
+                localization/rssguard-fr.ts \
+                localization/rssguard-he.ts \
+                localization/rssguard-id.ts \
+                localization/rssguard-it.ts \
+                localization/rssguard-ja.ts \
+                localization/rssguard-lt.ts \
+                localization/rssguard-nl.ts \
+                localization/rssguard-pt.ts \
+                localization/rssguard-sv.ts
 
-TRANSLATIONS_WO_QT += $$PWD/localization/rssguard-cs_CZ.ts \
-                      $$PWD/localization/rssguard-da_DK.ts \
-                      $$PWD/localization/rssguard-de_DE.ts \
+TRANSLATIONS_WO_QT += $$PWD/localization/rssguard-cs.ts \
+                      $$PWD/localization/rssguard-da.ts \
+                      $$PWD/localization/rssguard-de.ts \
                       $$PWD/localization/rssguard-en_GB.ts \
-                      $$PWD/localization/rssguard-en_US.ts \
-                      $$PWD/localization/rssguard-fr_FR.ts \
-                      $$PWD/localization/rssguard-he_IL.ts \
-                      $$PWD/localization/rssguard-id_ID.ts \
-                      $$PWD/localization/rssguard-it_IT.ts \
-                      $$PWD/localization/rssguard-ja_JP.ts \
-                      $$PWD/localization/rssguard-lt_LT.ts \
-                      $$PWD/localization/rssguard-nl_NL.ts \
-                      $$PWD/localization/rssguard-pt_BR.ts \
-                      $$PWD/localization/rssguard-sv_SE.ts
+                      $$PWD/localization/rssguard-en.ts \
+                      $$PWD/localization/rssguard-fr.ts \
+                      $$PWD/localization/rssguard-he.ts \
+                      $$PWD/localization/rssguard-id.ts \
+                      $$PWD/localization/rssguard-it.ts \
+                      $$PWD/localization/rssguard-ja.ts \
+                      $$PWD/localization/rssguard-lt.ts \
+                      $$PWD/localization/rssguard-nl.ts \
+                      $$PWD/localization/rssguard-pt.ts \
+                      $$PWD/localization/rssguard-sv.ts
 
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src \

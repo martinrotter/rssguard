@@ -1,140 +1,140 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja_JP" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation> (Kategorie)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation> (Feed)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>アプリケーションは既に実行中です。</translation>
+        <translation>Die Applikation läuft bereits.</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>出力ディレクトリは書き込み不可能です。</translation>
+        <translation>Ausgabeverzeichnis ist nicht beschreibbar.</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Einstellungsdatei konnte nicht in das Ausgabeverzeichnis geschrieben werden.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Datenbank konnte nicht in das Ausgabeverzeichnis geschrieben werden.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="unfinished"/>
+        <translation>Wiederherstellung der Datenbank wurde nicht initiiert. Stellen Sie sicher, dass das Ausgabeverzeichnis beschrieben werden kann.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="unfinished"/>
+        <translation>Wiederherstellung der Einstellungen wurde nicht initiiert. Stellen Sie sicher, dass das Ausgabeverzeichnis beschrieben werden kann.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>フィードを追加できません</translation>
+        <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>Feed kann nicht hinzugefügt werden, weil das standardmäßige RSS-/ATOM-Konto nicht aktiviert ist.</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation type="unfinished"/>
+        <translation>Komprimiere Datenbankdatei...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation type="unfinished"/>
+        <translation>Datenbank wurde komprimiert</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation type="unfinished"/>
+        <translation>Entferne gelesene Nachrichten...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Gelesene Nachrichten wurden entfernt</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation type="unfinished"/>
+        <translation>Papierkorb wurde geleert</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation type="unfinished"/>
+        <translation>Entferne alte Nachrichten...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation type="unfinished"/>
+        <translation>Leere Papierkorb...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Alte Nachrichten wurden entfernt</translation>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>MySQL Server funktioniert ordnungsgemäß.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>Am Zielort ist kein MySQL Server verfügbar.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Zugriff verweigert. Es wurde ein ungültiger Benutzername bzw. ein ungültiges Passwort verwendet.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>不明なエラーです。</translation>
+        <translation>Unbekannter Fehler.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (外部データベース)</translation>
+        <translation>MySQL / MariaDB (eigenständiges Datenbanksystem)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation>SQLite (内蔵データベース)</translation>
+        <translation>SQLite (eingebettete Datenbank)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Die gewählte Datenbank existiert noch nicht und wird angelegt.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"/>
+        <translation>Keine MySQL Datenbank verfügbar</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>%1 kann MySQL Datenspeicher nicht lesen, weil er nicht verfügbar ist. %1 verwendet alternativ eine SQLite Datenbank. Starten Sie den MySQL Server und konfigurieren Sie den Zugriff hierauf in den Einstellungen.</translation>
     </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation>このウェブサイトにはフィードがありません。</translation>
+        <translation>Diese Website enthält keine Feeds.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>サポートされていません</translation>
+        <translation>Nicht unterstützt</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
@@ -145,80 +145,80 @@ This website contains %n feed(s).</source>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation>アイコン</translation>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation>ファイル名</translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Fehler beim Öffnen der Ausgabedatei: %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>再試行(&amp;T)</translation>
+        <translation>Er&amp;neut versuchen</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>停止(&amp;S)</translation>
+        <translation>&amp;Beenden</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>ファイルを開く(&amp;O)</translation>
+        <translation>&amp;Datei öffnen</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation type="unfinished"/>
+        <translation>Speicherort für heruntergeladene Datei wählen</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation>エラー: %1</translation>
+        <translation>Fehler: %1</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"/>
+        <translation>Verzeichnis für Herunterladen konnte nicht erstellt werden</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Fehler beim Speichern der Datei: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation type="unfinished"/>
+        <translation>%1 von %2 (%3 pro Sekunde) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation type="unfinished"/>
+        <translation>%1 von %2 - Herunterladen abgeschlossen</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>ディレクトリを開く(&amp;d)</translation>
+        <translation>&amp;Verzeichnis öffnen</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation>ファイルを開けません</translation>
+        <translation>Kann Datei nicht öffnen</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation>アウトプットファイルを開けません。手動で開いてください。</translation>
+        <translation>Kann Ausgabedatei nicht öffnen. Bitte manuell probieren.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>ディレクトリを開けません。</translation>
+        <translation>Kann Verzeichnis nicht öffnen</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>アウトプットディレクトリを開けません。手動で開いてください。</translation>
+        <translation>Kann Ausgabeverzeichnis nicht öffnen. Bitte manuell probieren.</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation>ダウンロード完了</translation>
+        <translation>Herunterladen abgeschlossen</translation>
     </message>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation type="unfinished"/>
+        <translation>Datei &apos;%1&apos; wurde heruntergeladen. Zum Öffnen des übergeordneten Verzeichnisses hier klicken.</translation>
     </message>
     <message>
         <source>URL: %1</source>
@@ -226,30 +226,30 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation>ローカルファイル: %1</translation>
+        <translation>Lokale Datei: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation>選択したローカルファイルはキャンセルされました。</translation>
+        <translation>Auswahl der lokalen Datei aufgehoben.</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation>クリア</translation>
+        <translation>Bereinigen</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>あと%n分です</numerusform></translation>
+        <translation><numerusform>% Minute verbleibend</numerusform><numerusform>%n Minuten verbleibend</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>あと%n秒です</numerusform></translation>
+        <translation><numerusform>%n Sekunde verbleibend</numerusform><numerusform>%n Sekunden verbleibend</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation>バイト</translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <source>kB</source>
@@ -265,33 +265,33 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>%n件のファイルをダウンロード中...</numerusform></translation>
+        <translation><numerusform>Lade %n Datei herunter...</numerusform><numerusform>Lade %n Dateien herunter...</numerusform></translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation>メッセージのツールバー</translation>
+        <translation>Toolbar für Nachrichten</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>フィードのツールバー</translation>
+        <translation>Toolbar für Feeds</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>データベースをクリーンアップできません</translation>
+        <translation>Kann Datenbank nicht bereinigen</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>データベースをクリーンアップできません、外部による操作が実行中です。</translation>
+        <translation>Kann die Datenbank nicht bereinigen aufgrund einer anderen für diese relevanten Aktion.</translation>
     </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>カテゴリ</translation>
+        <translation>Kategorie</translation>
     </message>
 </context>
 <context>
@@ -299,425 +299,425 @@ Click here to open parent directory.</source>
     <message>
         <source>Title</source>
         <extracomment>Title text in the feed list header.</extracomment>
-        <translation>タイトル</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation type="unfinished"/>
+        <translation>Titel der Feeds/Kategorien.</translation>
     </message>
     <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Wurzel</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Beginne mit automatischer Aktualisierung einiger Feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n Feed wird automatisch aktualisiert.</numerusform><numerusform>%n Feeds werden automatisch aktualisiert.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation>すべてのアイテムを更新できません</translation>
+        <translation>Kann nicht alle Einträge aktualisieren</translation>
     </message>
     <message>
         <source>Feed update started</source>
         <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>フィードの更新を開始</translation>
+        <translation>Aktualisierung der Feeds hat begonnen</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>フィード&apos;%1&apos;が更新されました</translation>
+        <translation>Feed &apos;%1&apos; wurde aktualisiert</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>新しいメッセージがダウンロードされました</translation>
+        <translation>Neue Nachrichten wurden heruntergeladen</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"/>
+        <translation>Ziehen und Ablegen in ein anderes Konto wird nicht unterstützt.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Kann Ziehen und Ablegen nicht durchführen</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Aufgrund einer anderen laufenden Aktion können nicht alle Einträge aktualisiert werden.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>Anzahl ungelesener / aller Nachrichten.</translation>
     </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation>ツールバーの空白</translation>
+        <translation>Toolbar Platzhalter</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation>アイテムを編集できません</translation>
+        <translation>Kann das Item nicht editieren</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation>アイテムを削除できません</translation>
+        <translation>Item kann nicht gelöscht werden</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmenü für Leerraum</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählter Eintrag kann aufgrund einer anderen hierfür relevanten Aktion nicht bearbeitet werden.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählter Eintrag kann aufgrund einer anderen hierfür relevanten Aktion nicht gelöscht werden.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmenü für Kategorien</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählter Eintrag kann nicht bearbeitet werden, weil dies für den betr. Typ noch nicht unterstützt wird.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation>&quot;%1&quot;を削除中</translation>
+        <translation>Lösche &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Eintrag &quot;%1&quot; soll gelöscht werden.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation>よろしいですか?</translation>
+        <translation>Sind Sie sicher?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation>&quot;%1&quot;を削除できません</translation>
+        <translation>Kann &quot;%1&quot; nicht löschen</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="unfinished"/>
+        <translation>Dieser Eintrag kann aufgrund eines kritischen Problems nicht gelöscht werden. Es wäre gut, wenn Sie einen Fehlerbericht einschicken würden.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="unfinished"/>
+        <translation>Dieser Eintrag kann nicht gelöscht werden, weil Löschen dieser Art von Einträgen noch nicht implementiert ist.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmenü für sonstige Einträge</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>サポートされていません</translation>
+        <translation>Nicht unterstützt</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Zum ausgewählten Konto können keine zusätzlichen Feeds hinzugefügt werden.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation type="unfinished"/>
+        <translation>Zum ausgewählten Konto können keine zusätzlichen Kategorien hinzugefügt werden.</translation>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
     <message>
         <source>Information</source>
-        <translation>情報</translation>
+        <translation>Information</translation>
     </message>
     <message>
         <source>Licenses</source>
-        <translation>ライセンス</translation>
+        <translation>Lizenzen</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL ライセンス (RSS Guardのソースコードに適用されています)</translation>
+        <translation>GNU GPL Lizenz (gilt für den RSS Guard Source Code)</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>GNU GPL ライセンス</translation>
+        <translation>GNU GPL Lizenz</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD ライセンス (QtSingleApplicationのソースコードに適用されています)</translation>
+        <translation>BSD Lizenz (gilt für den QtSingleApplication Source Code)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation type="unfinished"/>
+        <translation>Die Lizenzseite ist nur in englischer Sprache verfügbar.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>変更履歴</translation>
+        <translation>Changelog</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation type="unfinished"/>
+        <translation>Die Changelog-Seite ist nur in englischer Sprache verfügbar.</translation>
     </message>
     <message>
         <source>License not found.</source>
-        <translation>ライセンスがありません。</translation>
+        <translation>Lizenz nicht gefunden.</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation>更新履歴がありません。</translation>
+        <translation>Changelog nicht gefunden.</translation>
     </message>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
-        <translation>%1について</translation>
+        <translation>Über %1</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation>設定タイプ</translation>
+        <translation>Einstellungsmodus</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation>設定ファイル</translation>
+        <translation>Einstellungsdatei</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation type="unfinished"/>
+        <translation>Stammverzeichnis der Datenbank</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation>完全ポータブル</translation>
+        <translation>VOLLSTÄNDIG portierbar</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>部分的ポータブル</translation>
+        <translation>TEILWEISE portierbar</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation>リソース</translation>
+        <translation>Ressourcen</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;body&gt;%5 ist ein einfacher Aggregator für Web-Feeds / Feedreader.&lt;br&gt;&lt;br&gt;Die Software wird unter der GNU General Public License in Version 3 vertrieben.&lt;br&gt;&lt;br&gt;Kontakt:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;Der Quellcode von %5 ist über dessen Webseite erhältlich.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (erstellt unter %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Erstellungsdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt-Version:&lt;/b&gt; %6 (kompiliert gegen %7)&lt;br&gt;</translation>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>新しいアカウントを追加</translation>
+        <translation>Neues Konto hinzufügen</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation>詳細</translation>
+        <translation>Details</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>名前</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>バージョン</translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>説明</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation type="unfinished"/>
+        <translation>Von diesem Dienst kann nur ein Konto hinzugefügt werden.</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation>データベースと設定のバックアップ</translation>
+        <translation>Sicherungskopie von Datenbank und Einstellungen</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation>バックアップのプロパティ</translation>
+        <translation>Backupeinstellungen</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation>バックアップするアイテム</translation>
+        <translation>Dateien zur Sicherung</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation>データベース</translation>
+        <translation>Datenbank</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>設定</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation>バックアップ名</translation>
+        <translation>Name der Sicherungskopie</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>実行結果</translation>
+        <translation>Ergebnis der Aktion</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation type="unfinished"/>
+        <translation>Gemeinsamer Name der Dateien mit den Sicherungskopien</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>まだ何も実行されていません。</translation>
+        <translation>Noch keine Aktion durchgeführt.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Sicherungskopie wurde erfolgreich erstellt.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation>バックアップ名は空にできません。</translation>
+        <translation>Der Name der Sicherungskopie darf nicht leer sein.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation type="unfinished"/>
+        <translation>Der Name der Sicherungskopie scheint geeignet zu sein.</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation>バックアップ失敗。</translation>
+        <translation>Erstellung der Sicherungskopie ist fehlgeschlagen.</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation>出力ディレクトリ</translation>
+        <translation>Ausgabeverzeichnis</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>ディレクトリを選択(&amp;S)</translation>
+        <translation>&amp;Verzeichnis auswählen</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation type="unfinished"/>
+        <translation>Sicherungskopie wurde erfolgreich erstellt und im Zielverzeichnis abgespeichert.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation type="unfinished"/>
+        <translation>Verzeichnis für Sicherungskopie auswählen</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation type="unfinished"/>
+        <translation>Es wurde ein geeignetes Zielverzeichnis ausgewählt.</translation>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation>データベースをクリーンアップ</translation>
+        <translation>Datenbank bereinigen</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation>これより古いメッセージをすべて削除</translation>
+        <translation>Entferne alle Nachrichten, die älter sind als</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>日</numerusform></translation>
+        <translation><numerusform> Tag</numerusform><numerusform> Tage</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation>データベースファイルを縮める</translation>
+        <translation>Datenbank komprimieren</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>データベース情報</translation>
+        <translation>Informationen zur Datenbank</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation>データベースファイルサイズ</translation>
+        <translation>Größe der Datenbankdatei</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation>データベース形式</translation>
+        <translation>Typ der Datenbank</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation>進捗</translation>
+        <translation>Fortschritt</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation>用意ができました。</translation>
+        <translation>Bereit.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation>データベースクリーンアップが実行中です。</translation>
+        <translation>Bereinigung der Datenbank läuft.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation>データベースクリーンアップが完了しました。</translation>
+        <translation>Bereinigung der Datenbank ist abgeschlossen.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation>データベースクリーンアップが失敗しました。</translation>
+        <translation>Bereinigung der Datenbank ist fehlgeschlagen.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"/>
+        <translation>Einstellungen der Bereinigung (alle ausgewählten Einträge werden komplett aus der Datenbank entfernt)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation type="unfinished"/>
+        <translation>Alle gelesenen Nachrichten entfernen (ausgenommen diejenigen im Papierkorb)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Alle Nachrichten aus dem Papierkorb entfernen</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation type="unfinished"/>
+        <translation>Alle als wichtig markierten Nachrichten entfernen (einschließlich derjenigen im Papierkorb)</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation>不明</translation>
+        <translation>unbekannt</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation>ファイル: %1、データ: %2</translation>
+        <translation>Datei: %1, Daten: %2</translation>
     </message>
 </context>
 <context>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>証明</translation>
+        <translation>Authentifizierung</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>ユーザー名</translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>パスワードを表示</translation>
+        <translation>Passwort anzeigen</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>HTTP証明が必要です</translation>
+        <translation>Benötigt HTTP Authentifizierung</translation>
     </message>
     <message>
         <source>URL</source>
@@ -725,139 +725,139 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>テストセットアップ(&amp;T)</translation>
+        <translation>Einstellungen &amp;testen</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>HTTP認証のユーザ名</translation>
+        <translation>Benutzername für HTTP Authentifizierung</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>HTTP認証のパスワード</translation>
+        <translation>Passwort für HTTP Authentifizierung</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>あなたのTT-RSSアカウントのパスワード</translation>
+        <translation>Passwort für das TT-RSS Konto</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>あなたのTT-RSSアカウントのユーザ名</translation>
+        <translation>Benutzername für das TT-RSS Konto</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>VOLLSTÄNDIGE URL der TT-RSS Instanz MIT abschließender Zeichenkette &quot;/api/&quot;</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>まだテストが完了していません。</translation>
+        <translation>Einstellungen wurden noch nicht getestet.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Anzeige der Ergebnisse des Verbindungstests.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>新しいTiny Tiny RSSアカウントを追加</translation>
+        <translation>Neues Tiny Tiny RSS Konto hinzufügen</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>存在するTiny Tiny RSSアカウントを編集</translation>
+        <translation>Bestehendes Tiny Tiny RSS Konto bearbeiten</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>Zugriff auf das API ist vom ausgewählten Server nicht aktiviert.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation>Die eingegebenen Nutzerdaten sind nicht korrekt.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation>Ein anderer Fehler ist aufgetreten. Bitte wenden Sie sich an die Entwickler.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Der ausgewählte Tiny Tiny RSS Server verwendet eine nicht unterstützte Version (%1) des API. Es wird mindestens Stufe %2 benötigt.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished"/>
+        <translation>Der ausgewählte Tiny Tiny RSS Server verwendet eine nicht unterstützte Version des API.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS Server ist verfügbar und verwendet das API der Stufe %1, wobei mindestens %2 benötigt wird.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS Server ist verfügbar.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>ネットワークエラー: %1</translation>
+        <translation>Netzwerkfehler: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>ネットワークエラーが発生しました。正しいTiny Tiny RSS APIエンドポイントとパスワードを入力しているか確認してください。</translation>
+        <translation>Netzwerkfehler. Haben Sie zum Tiny Tiny RSS API Endpunkt und Passwort korrekt eingetragen?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>ユーザ名は空にできません。</translation>
+        <translation>Benutzername darf nicht leer sein.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername ist in Ordnung.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>パスワードは空にできません。</translation>
+        <translation>Passwort darf nicht leer sein.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Passwort ist in Ordnung.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername ist in Ordnung oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>ユーザー名が空です。</translation>
+        <translation>Benutzername ist leer.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Passwort ist in Ordnung oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>パスワードが空です。</translation>
+        <translation>Passwort ist leer.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URLは空にできません。</translation>
+        <translation>URL darf nicht leer sein.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL ist in Ordnung.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Bitte beachten, dass mindestens Stufe %1 des API benötigt wird.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation>URLは「/api/」で終わる必要があります。</translation>
+        <translation>URL sollte mit &quot;/api/&quot; enden.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Nicht spezifizierter Fehler. Haben Sie einen korrekte URL eingegeben?</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Aktualisierung auf Server erzwingen, wenn Feeds innerhalb RSS Guard aktualisiert werden</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Die Aktivierung dieser Option bedingt häufig langsameres Herunterladen und Zeitüberschreitungen.</translation>
     </message>
 </context>
 <context>
@@ -868,162 +868,162 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Aktualisierung auf Server erzwingen, wenn Feeds innerhalb RSS Guard aktualisiert werden</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>証明</translation>
+        <translation>Authentifizierung</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>ユーザー名</translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>パスワードを表示</translation>
+        <translation>Passwort anzeigen</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>テストセットアップ(&amp;T)</translation>
+        <translation>Einstellungen &amp;testen</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Die Aktivierung dieser Option bedingt häufig langsameres Herunterladen und Zeitüberschreitungen.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Bitte beachten, dass mindestens Version %1 benötigt wird.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL des ownClod Servers ohne Pfad des API</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>まだテストが完了していません。</translation>
+        <translation>Einstellungen wurden noch nicht getestet.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Anzeige der Ergebnisse des Verbindungstests.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation>新しいownCloudニュースアカウントを追加</translation>
+        <translation>Neues ownCloud News Konto hinzufügen</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>存在するownCloudニュースアカウントを編集</translation>
+        <translation>Bestehendes ownCloud News Konto bearbeiten</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Der ausgewählte ownCloud News Server verwendet das API in einer nicht unterstützten Version (%1). Es wird mindestens Version %2 benötigt.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Der ausgewählte ownCloud News Server verwendet eine nicht unterstützte Version.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>ネットワークエラー: %1</translation>
+        <translation>Netzwerkfehler: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerkfehler. Haben Sie ownCloud Endpunkt und Passwort korrekt eingetragen?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Nicht spezifizierter Fehler. Haben Sie einen korrekten URL eintragen?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>ユーザ名は空にできません。</translation>
+        <translation>Benutzername darf nicht leer sein.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername ist in Ordnung.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>パスワードは空にできません。</translation>
+        <translation>Passwort darf nicht leer sein.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Passwort ist in Ordnung.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URLは空にできません。</translation>
+        <translation>URL darf nicht leer sein.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL ist in Ordnung.</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Passwort für Ihr ownCloud Konto</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername für Ihr ownCloud Konto</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>ownCloud News Server ist verfügbar und läuft in Version %1, wobei mindestens %2 benötigt wird.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>ownCloud News Server ist verfügbar.</translation>
     </message>
 </context>
 <context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>親カテゴリ</translation>
+        <translation>Übergeordneter Eintrag</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Eintrag auswählen, unter dem der Feed einsortiert werden soll.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>タイプ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Typ des Feeds auswählen.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation>エンコード</translation>
+        <translation>Zeichenkodierung</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Zeichenkodierung des Feeds auswählen. Falls Sie unsicher sind, wählen Sie einfach &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>自動更新</translation>
+        <translation>Automat. Aktualisierung</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Modus der automatischen Aktualisierung festlegen. Mit &quot;Globalem Intervall&quot; wird das für RSS Guard insgesamt festgelegte Intervall verwendet.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>タイトル</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>説明</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <source>URL</source>
@@ -1031,567 +1031,567 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation>今すぐ受信</translation>
+        <translation>Jetzt abrufen</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>アイコン</translation>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation>フィードのアイコンを選択</translation>
+        <translation>Icon für den Feed auswählen.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>HTTP証明が必要です</translation>
+        <translation>Benötigt HTTP Authentifizierung</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>ユーザー名</translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>メタデータを取得</translation>
+        <translation>Metadaten abrufen</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>新しいフィードを追加</translation>
+        <translation>Neuen Feed hinzufügen</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Feed &apos;%1&apos; bearbeiten</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Feed-Name ist in Ordnung.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation>フィード名が短すぎます。</translation>
+        <translation>Feed-Name ist zu kurz.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>説明欄が空です。</translation>
+        <translation>Beschreibung ist leer.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Die Beschreibung ist in Ordnung.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL ist in Ordnung.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>Der URL folgt nicht dem üblichen Schema. Beginnt er mit dem Präfix &quot;http://&quot; oder &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation>URLが空です。</translation>
+        <translation>Der URL ist leer.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername ist in Ordnung oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>ユーザー名が空です。</translation>
+        <translation>Benutzername ist leer.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Passwort ist in Ordnung oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>パスワードが空です。</translation>
+        <translation>Passwort ist leer.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Datei für den Feed auswählen</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>画像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Graphiken (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>アイコンを選択</translation>
+        <translation>Icon auswählen</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Suchen in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Name:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Typ:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Alle Metadaten wurden erfolgreich abgerufen.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Feed- und Icon-Metadaten wurden abgerufen.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Ergebnis: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Die Metadaten von Feed oder Icon wurde nicht abgerufen.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation>エラー: %1。</translation>
+        <translation>Fehler: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Keine Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Icon wurde erfolgreich abgerufen.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadaten des Icons wurden abgerufen.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Die Metadaten des Icons wurde nicht abgerufen.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Es wurde kein Icon abgerufen.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Name des Feeds</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Setzen Sie den Namen für den Feed.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Beschreibung des Feeds</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Beschreibung für den Feed setzen.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Vollständiger Feed URL einschließliches eines Schemas</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>URL für den Feed setzen.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername zum Zugriff auf den Feed zu setzen.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Passwort zum Zugriff auf den Feed zu setzen.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>アイコン選択</translation>
+        <translation>Icon auswählen</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>ファイルからアイコンを読み込む</translation>
+        <translation>Icon aus Datei laden...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>アイコンを使用しない</translation>
+        <translation>Kein Icon verwenden</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>デフォルトのアイコンを使用</translation>
+        <translation>Standard-Icon verwenden</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Icon aus Feed abrufen</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Bisher keine Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Global festgelegtes Intervall</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Alle</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Nicht automatisch aktualisieren</translation>
     </message>
 </context>
 <context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>ファイル(&amp;F)</translation>
+        <translation>&amp;Datei</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>ヘルプ(&amp;H)</translation>
+        <translation>&amp;Hilfe</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>表示(&amp;V)</translation>
+        <translation>&amp;Ansicht</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>ツール(&amp;T)</translation>
+        <translation>&amp;Werkzeuge</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>終了(&amp;Q)</translation>
+        <translation>&amp;Beenden</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>設定(&amp;S)</translation>
+        <translation>&amp;Einstellungen</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation>メッセージ(&amp;M)</translation>
+        <translation>&amp;Nachrichten</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation type="unfinished"/>
+        <translation>Schalte die &amp;Wichtigkeit der selektierten Nachrichten um</translation>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation>アプリケーションを終了します。</translation>
+        <translation>Beende die Applikation.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation>アプリケーションの設定を表示します。</translation>
+        <translation>Anzeigeeinstellungen der Applikation.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation>全画面モードを切り替え</translation>
+        <translation>Schalte zum Vollbildmodus.</translation>
     </message>
     <message>
         <source>No actions available</source>
-        <translation>使用可能なアクションはありません</translation>
+        <translation>Keine Funktionen verfügbar</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation>現在使用可能なアクションはありません。</translation>
+        <translation>Keine Funktionen verfügbar.</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"/>
+        <translation>Hauptfenster verstecken falls es sichtbar was oder sichtbar falls es versteckt war.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="unfinished"/>
+        <translation>Versteckt oder zeigt die Liste der Feeds/Kategorien an.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation type="unfinished"/>
+        <translation>Prüfe ob neue Programmupdates zum Download verfügbar sind.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>このアプリケーションについて(&amp;A)</translation>
+        <translation>&amp;Über diese Anwendung</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation type="unfinished"/>
+        <translation>Zusätzliche Informationen über diese Anwendung anzeigen.</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Nachrichten &amp;löschen</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation type="unfinished"/>
+        <translation>Hauptmenü anzeigen oder verstecken.</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Nachrichten als ge&amp;lesen markieren</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Nachrichten als &amp;ungelesen markieren</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Artikel in &amp;externem Browser öffnen</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Artikel in &amp;internem Browser öffnen</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>次のメッセージを選択(&amp;n)</translation>
+        <translation>&amp;Nächste Nachricht auswählen</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation>次のメッセージを選択(&amp;p)</translation>
+        <translation>&amp;Vorige Nachricht auswählen</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>更新を確認(&amp;u)</translation>
+        <translation>Auf &amp;Aktualisierungen überprüfen</translation>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation>表示/非表示</translation>
+        <translation>Anzeigen / verstecken</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation>フルスクリーン(&amp;F)</translation>
+        <translation>Voll&amp;bild</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation>フィード一覧(&amp;F)</translation>
+        <translation>&amp;Liste der Feeds</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation>メインメニュー(&amp;M)</translation>
+        <translation>&amp;Hauptmenü</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation>メインウィンドウの表示を切り替え(&amp;w)</translation>
+        <translation>Sichtbarkeit des Haupt&amp;fensters umschalten</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation>外部ブラウザを開けません</translation>
+        <translation>Kann externen Browser nicht öffnen</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>外部ブラウザを開けません。アプリケーションのウェブサイトを手動で開いてください。</translation>
+        <translation>Kann externen Browser nicht öffnen. Webseite der Anwendung bitte manuell aufrufen.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation>ツールバー(&amp;T)</translation>
+        <translation>&amp;Werkzeugleisten</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation>メインツールバーの表示を切り替え</translation>
+        <translation>Sichtbarkeit der &amp;Werkzeugleisten umschalten</translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation>フィードとメッセージ一覧のヘッダー(&amp;F)</translation>
+        <translation>&amp;Kopfzeilen der Listen mit Feeds bzw. Nachrichten</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>PayPalで寄付(&amp;D)</translation>
+        <translation>&amp;Spenden via PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation>Wikiを表示(&amp;w)</translation>
+        <translation>&amp;Wiki anzeigen</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation>データベースと設定の復元(&amp;R)</translation>
+        <translation>Datenbank und Einstellungen &amp;wiederherstellen</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation>データベースと設定のバックアップ(&amp;B)</translation>
+        <translation>Datenbank und Einstellungen &amp;sichern</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="unfinished"/>
+        <translation>Anordnung (Layout) innerhalb der Nachrichtenliste umschalten</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation>ダウンロード(&amp;D)</translation>
+        <translation>&amp;Downloads</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Nachricht per &amp;Mail versenden</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation>データベースをクリーンアップ(&amp;C)</translation>
+        <translation>Datenbank be&amp;reinigen</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation>新しいアイテムを追加(&amp;n)</translation>
+        <translation>Neuen &amp;Eintrag hinzufügen</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation>全てのアイテムを更新(&amp;a)</translation>
+        <translation>&amp;Alle Einträge aktualisieren</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>選択したアイテムを更新(&amp;s)</translation>
+        <translation>Ausge&amp;wählte Einträge aktualisieren</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählten Eintrag &amp;bearbeiten</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählten Eintrag l&amp;öschen</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Einträge als ge&amp;lesen markieren</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="unfinished"/>
+        <translation>Alle zu den ausgewählten Einträgen gehörigen Nachrichten als gelesen markieren. Lässt Nachrichtenfilter unberücksichtigt.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Einträge als &amp;ungelesen markieren</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="unfinished"/>
+        <translation>Alle zu den ausgewählten Einträgen gehörigen Nachrichten als ungelesen markieren. Lässt Nachrichtenfilter unberücksichtigt.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Einträge ent&amp;fernen</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation type="unfinished"/>
+        <translation>Alle zu den ausgewählten Einträgen gehörenden Nachrichten entfernen.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>全てのアイテムを既読にする(&amp;M)</translation>
+        <translation>Alle Einträge als ge&amp;lesen markieren</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"/>
+        <translation>Zu allen Einträgen gehörige Nachrichten als gelesen markieren. Lässt Nachrichtenfilter unberücksichtigt.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Einträge im &amp;Zeitungsmodus betrachten</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"/>
+        <translation>Alle zu den ausgewählten Einträgen gehörigen Nachrichten in einem neuen Tab im Zeitungsmodus öffnen. Markiert die Nachrichten nicht automatisch als gelesen.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="unfinished"/>
+        <translation>Alle Einträge &amp;löschen</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation type="unfinished"/>
+        <translation>Zu allen Einträgen gehörige Nachrichten alle löschen.</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nächsten Eintrag auswählen</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vorigen Eintrag auswählen</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation type="unfinished"/>
+        <translation>Nur ungelesene Einträge anzeigen</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählten Eintrag aus-/ein&amp;klappen</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Nachrichten &amp;wiederherstellen</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"/>
+        <translation>Keine Aktionen möglich</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation>ゴミ箱(&amp;R)</translation>
+        <translation>&amp;Papierkörbe</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation>ゴミ箱を復元(&amp;R)</translation>
+        <translation>Alle Papierk&amp;örbe wiederherstellen</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation>ゴミ箱を空にする(&amp;E)</translation>
+        <translation>Alle Papierkör&amp;be leeren</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation type="unfinished"/>
+        <translation>Nächste &amp;ungelesene Nachricht auswählen</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Kein Papierkorb</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>フィードとカテゴリ(&amp;&amp;)</translation>
+        <translation>Kategorien &amp;&amp; &amp;Feeds</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation>アカウント(&amp;A)</translation>
+        <translation>&amp;Konten</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation>新しいアカウントを追加(&amp;A)</translation>
+        <translation>&amp;Neues Konto hinzufügen</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation>ステータスバー</translation>
+        <translation>Statusleiste</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>選択したアカウントを編集(&amp;E)</translation>
+        <translation>Ausgewähltes Konto &amp;bearbeiten</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation>選択したアカウントを削除(&amp;D)</translation>
+        <translation>Ausgewähltes Konto l&amp;öschen</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation>選択したアカウントに新しいフィードを追加</translation>
+        <translation>Zum ausgewählten Konto neuen Feed hinzufügen</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation>選択したアカウントに新しいカテゴリを追加</translation>
+        <translation>Zum ausgewählten Konto neue Kategorie hinzufügen</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>新しいカテゴリを追加</translation>
+        <translation>Neue Kategorie hinzufügen</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>新しいフィードを追加</translation>
+        <translation>Neuen Feed hinzufügen</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation>実行中の更新を停止</translation>
+        <translation>Aktualisierung beenden</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Keine Aktionen möglich</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
@@ -1618,70 +1618,70 @@ or this functionality is not implemented yet.</source>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>フィードが追加されました</translation>
+        <translation>Feed wurde hinzugefügt</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Feed wurde hinzugefügt, Synchronisation wird ausgelöst.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>フィードを追加できません</translation>
+        <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed wurde aufgrund eines Fehlers nicht hinzugefügt.</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation>データベースと設定の復元</translation>
+        <translation>Datenbank und Einstellungen wiederherstellen</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>実行結果</translation>
+        <translation>Ergebnis der Aktion</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation>データベースの復元</translation>
+        <translation>&amp;Datenbank wiederherstellen</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation>設定の復元</translation>
+        <translation>&amp;Einstellungen wiederherstellen</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>まだ何も実行されていません。</translation>
+        <translation>Es wurde noch keine Aktion ausgeführt.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation type="unfinished"/>
+        <translation>Wiederherstellung wurde initiiert. Zum Abschließen neu starten.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation type="unfinished"/>
+        <translation>Die Anwendung muss zum Abschluss der Wiederherstellung neu gestartet werden.</translation>
     </message>
     <message>
         <source>Source directory</source>
-        <translation>ソースディレクトリ</translation>
+        <translation>Verzeichnis der Sicherungskopien</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>ディレクトリを選択(&amp;S)</translation>
+        <translation>&amp;Verzeichnis auswählen</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation type="unfinished"/>
+        <translation>Die Datenbank und/oder die Einstellungen konnten nicht in das für die Wiederherstellung vorgesehene Verzeichnis kopiert werden.</translation>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation type="unfinished"/>
+        <translation>Verzeichnis für Sicherungskopie auswählen</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation type="unfinished"/>
+        <translation>Es wurde ein geeignetes Verzeichnis ausgewählt.</translation>
     </message>
 </context>
 <context>
@@ -1689,93 +1689,93 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>General</source>
         <extracomment>General settings section.</extracomment>
-        <translation>一般</translation>
+        <translation>Generell</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation>ユーザーインターフェイス</translation>
+        <translation>Benutzeroberfläche</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation>アイコンテーマ</translation>
+        <translation>Icon Theme</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>設定</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation>キーボードショートカット</translation>
+        <translation>Tastaturkombinationen</translation>
     </message>
     <message>
         <source>Language</source>
         <extracomment>Language settings section.</extracomment>
-        <translation>言語</translation>
+        <translation>Sprache</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation>プロキシ</translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation>アイコン &amp;&amp; スキン</translation>
+        <translation>Icons &amp;&amp; Skins</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation>通知アイコン</translation>
+        <translation>Tray Icon</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"/>
+        <translation>Starte die Applikation versteckt</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation>タイプ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation>ホスト</translation>
+        <translation>Host</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation>プロキシサーバのホスト名またはIP</translation>
+        <translation>Hostname oder IP ihres Proxy-Servers</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>ポート</translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>ユーザー名</translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation>プロキシサーバ認証のためのユーザ名</translation>
+        <translation>Ihr Benutzername für die Proxy-Server Authentifikation</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation>プロキシサーバ認証のためのパスワード</translation>
+        <translation>Ihr Passwort für die Proxy-Server Authentifikation</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation>パスワードを表示</translation>
+        <translation>Zeige das Passwort</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation>コード</translation>
+        <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>バージョン</translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Author</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -1787,139 +1787,139 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="unfinished"/>
+        <translation>(nicht verfügbar auf dieser Plattform)</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="unfinished"/>
+        <translation>Tray-Bereich &amp;&amp; Benachrichtigungen</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>タブ</translation>
+        <translation>Reiter</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"/>
+        <translation>Schliesse die Reiter mit</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"/>
+        <translation>Mittlere Maustaste Einfachklick</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"/>
+        <translation>Öffne neue Reiter mit einem Doppelklick der linken Maustaste auf der Reiterleiste</translation>
     </message>
     <message>
         <source>Cannot save settings</source>
-        <translation>設定を保存できません</translation>
+        <translation>Kann die Einstellungen nicht speichern</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>名前</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation>アイコン</translation>
+        <translation>Icons</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation>スキン</translation>
+        <translation>Skins</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation>有効なスキン:</translation>
+        <translation>Aktive Skin:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation>選択したスキン:</translation>
+        <translation>Selektierte Skin:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"/>
+        <translation>Verstecke die Reiterleiste falls nur ein Reiter sichtbar ist</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation type="unfinished"/>
+        <translation>Kritische Einstellungen wurden geändert</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation>フィードとメッセージ</translation>
+        <translation>Feeds &amp; Nachrichten</translation>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"/>
+        <translation>Ein paar kritische Einstellungen sind nicht gesetzt. Sie müssen diese Einstellungen korrigieren damit neue gesetzt werden können.</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation>メッセージ</translation>
+        <translation>Nachrichten</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation>実行可能なウェブブラウザ</translation>
+        <translation>Ausführbare Datei des Webbrowsers</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parameter der ausführbaren Datei</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"/>
+        <translation>Beachten Sie, dass &quot;%1&quot; (ohne Anführungszeichen) der Platzhalter der URL der selektierten Nachricht ist.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation>実行形式のウェブブラウザを選択してください</translation>
+        <translation>Wählen Sie die ausführbare Datei des Webbrowsers</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation>実行形式 (*.*)</translation>
+        <translation>Ausführbare Dateien (*.*)</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation>Opera 12以降</translation>
+        <translation>Opera 12 oder älter</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation>ウェブブラウザの実行可能ファイル</translation>
+        <translation>Ausführbare Datei des Webbrowsern</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"/>
+        <translation>Parameter für die auszuführende Datei</translation>
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation type="unfinished"/>
+        <translation>einige Tastaturkombinationen sind nicht eindeutig</translation>
     </message>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation>エラーの一覧:
-%1。</translation>
+        <translation>Liste der Fehler:
+%1.</translation>
     </message>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation>変更の一覧:
-%1。</translation>
+        <translation>Liste der Änderungen:
+%1.</translation>
     </message>
     <message>
         <source>language changed</source>
-        <translation>言語が変更されました</translation>
+        <translation>Sprache geändert</translation>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation>アイコンテーマが変更されました</translation>
+        <translation>Icon-Thema geändert</translation>
     </message>
     <message>
         <source>skin changed</source>
-        <translation>スキンが変更されました</translation>
+        <translation>Skin geändert</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"/>
+        <translation>Verwenden Sie Beispielargumente für</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"/>
+        <translation>Verwenden Sie die In-Speicherdatenbank als aktuelle Datenbank</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -1933,298 +1933,313 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"/>
+        <translation>Die Verwendung einer Datenbank im Arbeitsspeicher bietet einige Vor-, aber auch einige Nachteile. Nutzer sollten sich vor der Verwendung über beide bewusst sein.&lt;br&gt;
+Vorteile:
+&lt;ul&gt;
+&lt;li&gt;höhere Geschwindigkeit bei Manipulationen an Feeds oder Nachrichten, insbesondere, wenn beide schon in großer Zahl vorliegen&lt;/li&gt;
+&lt;li&gt;Entlastung für Hardware wie Festplatte oder SDD&lt;/li&gt;
+&lt;/ul&gt;
+Nachteile:
+&lt;ul&gt;
+&lt;li&gt;bei einem Absturz der Anwendung gehen sämtliche Daten der aktuellen Sitzung verloren&lt;/li&gt;
+&lt;li&gt;Starten und Beenden der Anwendung dauern etwas länger (max. 2sec)&lt;/li&gt;
+&lt;/ul&gt;
+Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</translation>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation type="unfinished"/>
+        <translation>In-Speicherdatenbank umgeschaltet</translation>
     </message>
     <message>
         <source>External web browser</source>
-        <translation>外部ウェブブラウザー</translation>
+        <translation>Externer Webbrowser</translation>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"/>
+        <translation>Warnung: Beachten Sie, dass das Umschalten auf einen anderen Datenspeicherung ihre bestehenden Daten NICHT auf den neuen selektierten kopieren wird.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation>データベースドライバー</translation>
+        <translation>Datenbanktreiber</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation>ホスト名</translation>
+        <translation>Hostname</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation>テストセットアップ</translation>
+        <translation>Testkonfiguration</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Doppelklick der rechten Maustaste</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation>全てのフィードを一定時間ごとに自動更新</translation>
+        <translation>Auto-Update alle Feeds alle</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation>フィード接続のタイムアウト</translation>
+        <translation>Verbindungs-Timeout des Feed</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"/>
+        <translation>Der Verbindungs-Timeout ist das Intervall welches für das Herunterladen neuer Nachrichten reserviert ist. Falls dieses Intervall abläuft wird das Herunterladen abgebrochen.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation>ミリ秒</translation>
+        <translation> ms</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation>アプリケーションの起動後に全てのフィードを更新</translation>
+        <translation>Update alle Feeds bei Applikationsstart</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation>データ記憶</translation>
+        <translation>Datenspeicher</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"/>
+        <translation>Hostname Ihres MySQL Servers</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation>ログインするユーザ名</translation>
+        <translation>Benutzername zum einloggen</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation>あなたのユーザ名のパスワード</translation>
+        <translation>Passwort für Ihren Benutzernamen</translation>
     </message>
     <message>
         <source>data storage backend changed</source>
-        <translation type="unfinished"/>
+        <translation>Datenspeicher-Backend wurde geändert</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation>ホスト名が空です。</translation>
+        <translation>Hostname ist leer.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Hostname sieht okay aus.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>ユーザー名が空です。</translation>
+        <translation>Benutzername ist leer.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername sieht okay aus.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>パスワードが空です。</translation>
+        <translation>Passwort ist leer.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Passwort sieht okay aus.</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"/>
+        <translation>Toolbar-Knopfstil</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"/>
+        <translation>Verstecke das Hauptfenster wenn es minimisiert ist</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"/>
+        <translation>Bisher noch kein Verbindungstest ausgelöst.</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"/>
+        <translation>Beachte, dass diese Einstellungen nur auf neue Verbindungen angewendet werden.</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation>ブラウザを選択</translation>
+        <translation>Wähle Browser aus</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation>プロキシなし</translation>
+        <translation>Kein Proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation>システム設定</translation>
+        <translation>System Proxy</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation>アイコンのみ</translation>
+        <translation>Nur Icon</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation>テキストのみ</translation>
+        <translation>Nur Text</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation>アイコンの横にテキスト</translation>
+        <translation>Text neben Icon</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation>アイコンの下にテキスト</translation>
+        <translation>Text unter Icon</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation>OSのスタイルに従う</translation>
+        <translation>Folge Betriebssystemstil</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Behalte die Nachrichten in der Mitte des Nachrichten-Listenfelds</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"/>
+        <translation>Es wurde noch kein Verbindungstest ausgeführt.</translation>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation>オペレーティングシステムの開始時に%1を起動</translation>
+        <translation>%1 bei Sitzungsbeginn starten</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ohne Aktivierung wird der systemweit voreingestellte Standardbrowser verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>フィードとカテゴリ(&amp;&amp;)</translation>
+        <translation>Feeds &amp;&amp;Kategorien</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation>フィード一覧のメッセージ数の書式</translation>
+        <translation>Zählweise der Nachrichten in der Liste mit Kategorien und Feeds</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"/>
+        <translation>Geben Sie das Format der Zählweise ein, mit der (un-) gelesene Nachrichten innerhalb der Liste von Kategorien und Feeds gelistet werden. Die Platzhalter &quot;%all&quot; und &quot;%unread&quot; können für die Zahl aller bzw. der ungelesenen Nachrichten verwendet werden.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
-        <translation type="unfinished"/>
+        <translation>Der externe Browser ist nicht korrekt konfiguriert</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation>ツールバー</translation>
+        <translation>Werkzeugleisten</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation>フィード一覧のツールバー</translation>
+        <translation>Werkzeugleiste zur Liste mit den Kategorien und Feeds</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation>メッセージ一覧のツールバー</translation>
+        <translation>Werkzeugleiste für die Nachrichtenliste</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"/>
+        <translation>Zu bearbeitende Werkzeugleiste auswählen</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Einige wichtige Einstellungen wurden geändert, was erst nach einem Neustart zur Anwendung kommt. 
+
+Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation>アプリケーションの起動後に更新を確認</translation>
+        <translation>Beim Starten der Anwendung nach Aktualisierungen suchen</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"/>
+        <translation>Individuelles Format für Datum und Zeit verwenden (überschreibt das zur aktiven Lokalisierung gehörige Format)</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation>実行可能形式 (*)</translation>
+        <translation>ausführbare Dateien (*)</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Beim Beenden sämtliche Nachrichten aus allen Feeds entfernen</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>ダウンロード</translation>
+        <translation>Downloads</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation>ダウンロードしたファイルの保存先</translation>
+        <translation>Zielverzeichnis für heruntergeladene Dateien</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation>ファイルのダウンロード時に訊ねる</translation>
+        <translation>Zielverzeichnis bei jedem Herunterladen einzeln erfragen</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"/>
+        <translation>Zielverzeichnis zum Abspeichern aller heruntergeladenen Dateien</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation>参照(&amp;B)</translation>
+        <translation>&amp;Durchsuchen</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"/>
+        <translation>Zielverzeichnis zum Herunterladen auswählen</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation>パスワードを表示(&amp;S)</translation>
+        <translation>&amp;Passwort anzeigen</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"/>
+        <translation>Browser, Mail-Client, Proxy</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"/>
+        <translation>Fragwürdigen Trolltech registry key (HKCU\Software\Trolltech) beim Beenden entfernen. Erfolgt auf eigene Verantwortung!</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"/>
+        <translation>Verwendete Datenbank</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Individuell festgelegten externen Browser verwenden</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation>外部電子メールクライアント</translation>
+        <translation>Externes Mailprogramm (Mail-Client)</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Individuell festgelegtes externes Mailprogramm verwenden</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"/>
+        <translation>Auszuführende Datei</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation>電子メールクライアントの実行ファイル</translation>
+        <translation>Auszuführende Datei des Mailprogramms</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation>クライアントを選択</translation>
+        <translation>Mailprogramm auswählen</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"/>
+        <translation>Platzhalter:
+ • %1 - Betreff der ausgewählten Nachricht
+ • %2 - Textkörper der ausgewählten Nachricht</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation>全てのダウンロードファイルを以下に保存</translation>
+        <translation>Alle heruntergeladenen Dateien speichern in</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"/>
+        <translation>Wählen Sie die ausführbare Datei des Mail-Clients</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -2232,693 +2247,695 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"/>
+        <translation>Funktionsfähige Datenbank, zu der Sie volle Zugriffsrechte besitzen.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Verwendete Datenbank ist leer.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Verwendete Datenbank ist funktionsbereit.</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation>(通知アイコンは利用できません。)</translation>
+        <translation>(Icon in Leiste ist nicht verfügbar.)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"/>
+        <translation>Schriften für internen Nachrichtenbrowser</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"/>
+        <translation>Bitte beachten Sie, dass die Leistungsfähigkeit des verwendeten MySQL Servers bzw. der Netzwerkverbindung einen MASSIVEN Einfluss auf die Leistungsfähigkeit von RSS Guard haben. Eine langsame Verbindung zur Datenbank beeinflusst insbesondere das Durchsuchen von Feeds oder Nachrichten.</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation>電子メール</translation>
+        <translation>Mail</translation>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
+        <translation>Beim Beginn des Herunterladens den Download Manger starten</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <translation>Statusleiste</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>Schrift &amp;ändern</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"/>
+        <translation>Vorschau der Schrift</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
+        <translation>Schrift für den internen Nachrichtenbrowser auswählen</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>(keins)</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Desktop-Benachrichtigungen aktivieren</translation>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>親カテゴリ</translation>
+        <translation>Übergeordnete Kategorie</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorie wählen, in der die bearbeitete enthalten sein soll.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>タイトル</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>説明</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>アイコン</translation>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Icon für die Kategorie auswählen.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>新しいカテゴリを追加</translation>
+        <translation>Neue Kategorie hinzufügen</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation type="unfinished"/>
+        <translation>Bestehende Kategorie bearbeiten</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"/>
+        <translation>Kategorie kann nicht hinzugefügt werden</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorie wurde aufgrund eines Fehlers nicht hinzugefügt.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation type="unfinished"/>
+        <translation>Kategorie kann nicht editiert werden</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorie wurde aufgrund eines Fehlers nicht bearbeitet.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kategoriename ist in Ordnung.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Kategoriename ist zu kurz.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>説明欄が空です。</translation>
+        <translation>Beschreibung ist leer.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Die Beschreibung ist in Ordnung.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Datei für die Kategorie auswählen</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>画像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Graphiken (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>アイコンを選択</translation>
+        <translation>Icon auswählen</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Suchen in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Name:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Typ:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Kategoriename</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Setzen Sie den Titel für die Kategorie.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Kategoriebeschreibung</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Beschreibung für die Kategorie setzen.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>アイコン選択</translation>
+        <translation>Auswahl des Icons</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>ファイルからアイコンを読み込む</translation>
+        <translation>Icon aus Datei laden...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>アイコンを使用しない</translation>
+        <translation>Kein Icon verwenden</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>デフォルトのアイコンを使用</translation>
+        <translation>Standard-Icon verwenden</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Cannot add feed</source>
-        <translation>フィードを追加できません</translation>
+        <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed wurde aufgrund eines Fehlers nicht hinzugefügt.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"/>
+        <translation>Feed kann nicht bearbeitet werden</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed wurde aufgrund eines Fehlers nicht bearbeitet.</translation>
     </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Datei wählen</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Alle Einträge auswählen</translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Keinen Eintrag auswählen</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>実行結果</translation>
+        <translation>Ergebnisse der Aktion</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Keine Datei ausgewählt.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>まだ何も実行されていません。</translation>
+        <translation>Es wurde noch keine Aktion durchgeführt.</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation type="unfinished"/>
+        <translation>Datei für Export</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Zu exportierende Feeds &amp;&amp; Kategorien</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>フィードをエクスポート</translation>
+        <translation>Feeds exportieren</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation type="unfinished"/>
+        <translation>Datei mit zu importierenden Feeds und Kategorien</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Zu importierende Feeds &amp;&amp; Kategorien</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>フィードをインポート</translation>
+        <translation>Feeds importieren</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation type="unfinished"/>
+        <translation>OPML 2.0 Dateien (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"/>
+        <translation>Datei zum Exportieren auswählen</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Datei wurde ausgewählt.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"/>
+        <translation>Datei zum Importieren auswählen</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation type="unfinished"/>
+        <translation>Kann zu importierende Datei nicht öffnen.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation type="unfinished"/>
+        <translation>Feeds wurden geladen.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation>Fehler. Datei ist nicht korrekt formatiert. Bitte eine andere Datei wählen.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation>Es ist ein Fehler aufgetreten. Die Datei ist nicht korrekt formatiert. Bitte eine andere Datei wählen.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Feeds wurden erfolgreich exportiert.</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"/>
+        <translation>Ein kritischer Fehler ist aufgetreten.</translation>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation type="unfinished"/>
+        <translation>Verarbeite Daten...</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Kann nicht in Zieldatei &apos;%1&apos; schreiben.</translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation>Einordnen unter</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Eintrag auswählen, unter dem die Kategorien und Feeds eingegliedert werden.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>Textdateien [eine URL pro Zeile] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Metadaten online abrufen</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Metadaten der Feeds können online abgerufen werden. Beachten Sie, dass dies je nach Anzahl der Feeds einige Minuten dauern kann.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation type="unfinished"/>
+        <translation>Sollen die Metadaten online abgerufen werden?</translation>
     </message>
 </context>
 <context>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>フィードが追加されました</translation>
+        <translation>Feed wurde hinzugefügt</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Feed wurde hinzugefügt, Synchronisation wird ausgelöst.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>フィードを追加できません</translation>
+        <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation>現在のリリース</translation>
+        <translation>Aktuelle Version</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation>利用可能なリリース</translation>
+        <translation>Verfügbare Version</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>変更点</translation>
+        <translation>Änderungen</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation>状態</translation>
+        <translation>Status</translation>
     </message>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation>不明</translation>
+        <translation>unbekannt</translation>
     </message>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation type="unfinished"/>
+        <translation>List mit Updates wurde nicht
+erfolgreich heruntergeladen.</translation>
     </message>
     <message>
         <source>New release available.</source>
-        <translation>新しいリリースがあります。</translation>
+        <translation>Neue Version verfügbar.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation>エラー: &apos;%1&apos;。</translation>
+        <translation>Fehler: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation>新しいリリースはありません。</translation>
+        <translation>Keine neue Version verfügbar.</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation type="unfinished"/>
+        <translation>Diese Version ist nicht neuer als
+die aktuell installierte.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>更新を確認</translation>
+        <translation>Prüfe auf Updates</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation type="unfinished"/>
+        <translation>Neue Datei zum Installieren herunterladen.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation type="unfinished"/>
+        <translation>Überprüfung auf Aktualisierungen ist fehlgeschlagen.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation type="unfinished"/>
+        <translation>Installationsdateien für Ihr Betriebssystem herunterladen.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Kein direkter Zugriff auf Installationsdatei möglich. Bitte manuell über die Webseite des Projektes herunterladen.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>新しい更新はありません。</translation>
+        <translation>Keine neuen Aktualisierungen verfügbar.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation type="unfinished"/>
+        <translation>Kann die Anwendung nicht aktualisieren</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>Kann die Installationsdatei nicht abrufen. Bitte auf der Webseite des Projekts nach verfügbaren Aktualisierungen suchen und diese b. Bed. manuell herunterladen.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation type="unfinished"/>
+        <translation>Aktualisierung herunterladen</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation type="unfinished"/>
+        <translation>%1% heruntergeladen (gesamte Größe ist %2kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"/>
+        <translation>Lade Aktualisierung herunter...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation type="unfinished"/>
+        <translation>Herunterladen war erfolgreich</translation>
     </message>
     <message>
         <source>Error occured</source>
-        <translation type="unfinished"/>
+        <translation>Es ist ein Fehler aufgetreten</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist beim Herunterladen des Paketes aufgetreten.</translation>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation>アプリケーションのウェブサイトを開く</translation>
+        <translation>Webseite der Anwendung aufrufen</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Neue Version, die heruntergeladen werden kann.</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Paket wurde erfolgreich heruntergeladen. Es muss manuell installiert werden.</translation>
     </message>
     <message>
         <source>Go to update file</source>
-        <translation type="unfinished"/>
+        <translation>Datei mit Aktualisierung ansehen</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>ディレクトリを開けません。</translation>
+        <translation>Kann Verzeichnis nicht öffnen</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>アウトプットディレクトリを開けません。手動で開いてください。</translation>
+        <translation>Kann Verzeichnis mit Ausgabe nicht öffnen. Bitte manuell öffnen.</translation>
     </message>
 </context>
 <context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation type="unfinished"/>
+        <translation>Kann Datei &apos;%1&apos; nicht mit Leserechten öffnen.</translation>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation type="unfinished"/>
+        <translation>Kann Datei &apos;%1&apos; nicht mit Schreibrechten öffnen.</translation>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>Die Webseitenadresse kommt hierhin</translation>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>既読</translation>
+        <translation>Lesen</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation>削除済み</translation>
+        <translation>Gelöscht</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation>重要</translation>
+        <translation>Wichtig</translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation>フィード</translation>
+        <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>タイトル</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
-        <translation>URL</translation>
+        <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Author</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Erstellt am</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"/>
+        <translation>Inhalt</translation>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="unfinished"/>
+        <translation>ID der Nachricht.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation type="unfinished"/>
+        <translation>Wurde die Nachricht gelesen?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation type="unfinished"/>
+        <translation>Wurde die Nachricht gelöscht?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"/>
+        <translation>Ist die Nachricht wichtig?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>ID des Feeds zu welchem die Nachricht gehört.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Titel der Nachricht.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation type="unfinished"/>
+        <translation>URL der Nachricht.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Author der Nachricht.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Erstellungsdatum der Nachricht.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Inhalt der Nachricht.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="unfinished"/>
+        <translation>Dauerhaft gelöscht</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Wurde die Nachricht dauerhaft aus dem Papierkorb gelöscht?</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation>添付ファイル</translation>
+        <translation>Anhänge</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"/>
+        <translation>Liste der Anhänge.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Laden der Nachrichten schlug fehl. Möglicher Weise gab es ein Problem beim Herunterladen.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
+        <translation>Laden von Nachrichten zu Eintrag &apos;%1&apos; schlug fehl.</translation>
     </message>
     <message>
         <source>Account ID</source>
-        <translation>アカウントID</translation>
+        <translation>ID Konto</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation>カスタムID</translation>
+        <translation>Individuelle ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation>メッセージのアカウントID</translation>
+        <translation>Konto ID der Nachricht.</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation>メッセージのカスタムID</translation>
+        <translation>Individuelle ID der Nachricht</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation>カスタムハッシュ</translation>
+        <translation>Individuelle Prüfsumme</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation>メッセージのカスタムハッシュ</translation>
+        <translation>Individuelle Prüfsumme der Nachricht.</translation>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation>メッセージを検索</translation>
+        <translation>Nachrichten suchen</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation>メッセージ検索欄</translation>
+        <translation>Suchformular für Nachrichten</translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation type="unfinished"/>
+        <translation>Menu für Hervorhebungen von Nachrichten</translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation type="unfinished"/>
+        <translation>Keine Hervorhebung</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Ungelesene Nachrichten hervorheben</translation>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation type="unfinished"/>
+        <translation>Als wichtig markierte Nachrichten hervorheben</translation>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation>全てのメッセージを表示</translation>
+        <translation>Alle Nachrichten anzeigen</translation>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation type="unfinished"/>
+        <translation>Hervorheben von Nachrichten</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>ツールバーの空白</translation>
+        <translation>Toolbar Platzhalter</translation>
     </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmenü der Nachricht</translation>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Problem mit Start des externen Webbrowsers</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Externer Webbrowser konnte nicht gestartet werden.</translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Problem beim Starten des externen Mailprogramms</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Das externe Mailprogramm konnte nicht gestartet werden.</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Zeitungsansicht</translation>
     </message>
 </context>
 <context>
@@ -2926,95 +2943,95 @@ You must install it manually.</source>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation>プロトコルエラー</translation>
+        <translation>Protokollfehler</translation>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>ホストが存在しません</translation>
+        <translation>Host nicht gefunden</translation>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>接続が拒否されました</translation>
+        <translation>Verbindung wurde verweigert</translation>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation>接続がタイムアウトしました</translation>
+        <translation>Zeitüberschreitung der Verbindung</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>SSL Verbindungsaufbau ist fehlgeschlagen</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Verbindung zum Proxy wurde abgelehnt</translation>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Temporärer Fehler</translation>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Authentifizierung ist fehlgeschlagen</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation>プロキシの認証が必要です</translation>
+        <translation>Authentifizierung am Proxy ist nötig</translation>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>プロキシのサーバーが見つかりません</translation>
+        <translation>Proxy Server wurde nicht gefunden</translation>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>コンテンツが存在しません</translation>
+        <translation>Inhalt nicht gefunden</translation>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation>不明なエラー</translation>
+        <translation>unbekannter Fehler</translation>
     </message>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation>エラーなし</translation>
+        <translation>Keine Fehler</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation type="unfinished"/>
+        <translation>Zugriff auf Inhalte wurde verweigert</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation type="unfinished"/>
+        <translation>Zeitüberschreitung oder Annullierung der Verbindung</translation>
     </message>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Unbekannter Inhalt</translation>
     </message>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synchronisieren</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Kann Eintrag nicht hinzufügen</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kann Eintrag nicht hinzufügen, da noch eine andere ihn betreffende Aktion läuft.</translation>
     </message>
 </context>
 <context>
@@ -3022,47 +3039,50 @@ You must install it manually.</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>ja_JP</translation>
+        <translation>de_DE</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.01</translation>
+        <translation>0.03</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation>Patrick Scheller</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation>patlecat@gmail.com</translation>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>日本語</translation>
+        <translation>Deutsch</translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>+ %n anderer Feed.</numerusform><numerusform>+ %n andere Feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Willkommen bei %1.
+
+Bitte überprüfen Sie die in dieser Version enthaltene Neuerungen
+durch Klicken auf diese Benachrichtigung.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>%1へようこそ。</translation>
+        <translation>Willkommen bei %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation type="unfinished"/>
+        <translation>Zu Beginn standardmäßige Zusammenstellung von Feeds laden</translation>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -3070,40 +3090,46 @@ version by clicking this popup notification.</source>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Dieser Dienst erlaubt den Zugriff auf Tiny Tiny RSS (TT-RSS).
+
+Tiny Tiny RSS ist eine quelloffener, webbasierter Feedreader für RSS und Atom. Er hält Inhalt über einen Webserver vor und hat das Ziel, das Lesen von Feeds von den verschiedensten Orten zu ermöglichen und gleichzeitig eine Oberfläche ähnlich Desktop-Anwendungen vorzuhalten.
+
+Zum Zugriff wird mindesens das API der Stufe %1 benötigt.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>ownCloud News ist ein in diesen Dienst integrierter RSS / Atom Aggregator. Dieser Dienst erlaubt den Zugriff hierauf über das API in Version %1.</translation>
     </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation>ゴミ箱</translation>
+        <translation>Papierkorb</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Der Papierkorb enthält gelöschte Nachrichten aller Feeds.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n gelöschte Nachricht.</numerusform><numerusform>%n gelöschte Nachrichten.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
 
 %1</source>
-        <translation type="unfinished"/>
+        <translation>Papierkorb
+
+%1</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Papierkorb wiederherstellen</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Papierkorb leeren</translation>
     </message>
 </context>
 <context>
@@ -3111,22 +3137,22 @@ At least API level %1 is required.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n ungelesene Nachricht.</numerusform><numerusform>%n ungelesene Nachrichten.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Vorherige Tastenkombination wiederherstellen.</translation>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Aktuelle Tastenkombination löschen.</translation>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Klicken und neue Tastenkombination eingeben.</translation>
     </message>
 </context>
 <context>
@@ -3134,38 +3160,38 @@ At least API level %1 is required.</source>
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1 (Kategorie) %2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation type="unfinished"/>
+        <translation>Diese Kategorie enthält keine verschachtelten Unterpunkte.</translation>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metadaten wurden nicht abgerufen</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Metadaten wurden aus folgendem Grund nicht abgerufen: %1.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>keine automatische Aktualisierung</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>verwendet globale Einstellungen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3174,106 +3200,112 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1 (%2)%3
+
+Netzwerkstatus: %6
+Zeichenkodierung: %4
+Status der automatischer Aktualisierung: %5</translation>
     </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Obligates Konto für den Dienst zum Zugriff auf standardmäßige RSS/RDF/ATOM Feeds.</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"/>
+        <translation>Soll zu Beginn eine Auswahl von Feeds geladen werden?</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished"/>
+        <translation>Fehler beim Laden der initial einzurichtenden Feeds</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>メタデータを取得</translation>
+        <translation>Metadaten abrufen</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Importieren prinzipiell erfolgreich, einige Feeds / Kategorien jedoch fehlgeschlagen.</translation>
     </message>
     <message>
         <source>Import was completely successfull.</source>
-        <translation type="unfinished"/>
+        <translation>Importieren wurde vollständig erfolgreich abgeschlossen.</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>フィードをエクスポート</translation>
+        <translation>Feeds exportieren</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>フィードをインポート</translation>
+        <translation>Feeds importieren</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation type="unfinished"/>
+        <translation>Konto zum Dienst für den Zugriff auf Feeds gem. RSS/RDF/ATOM Standard.
+
+ID des Kontos: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Dieses neu eingerichtete Konto enthält noch keine Feeds. Sie können jetzt eine standardmäßige Zusammenstellung von Feeds integrieren.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Kann Eintrag nicht hinzufügen</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kann Eintrag nicht hinzufügen, da noch eine andere ihn betreffende Aktion läuft.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"/>
+        <translation>Kategorie kann nicht hinzugefügt werden</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kann Kategorie nicht hinzufügen, da noch eine andere diese betreffende Aktion läuft.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Fortschrittsbalken für Aktualisierungen von Feeds</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation>Label der Aktualisierungen von Feeds</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Fortschritsbalken zum Herunterladen von Dateien</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation>Label zum Herunterladen von Dateien</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>ツールバーの空白</translation>
+        <translation>Abstandhalter</translation>
     </message>
 </context>
 <context>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>新しいバージョンが利用可能です</translation>
+        <translation>Eine neue Version ist verfügbar</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Für weitere Informationen auf die angezeigte Benachrichtigung klicken.</translation>
     </message>
     <message>
         <source>anonymous</source>
-        <translation>匿名</translation>
+        <translation>anonymous</translation>
     </message>
 </context>
 <context>
@@ -3281,119 +3313,120 @@ Account ID: %1</source>
     <message>
         <source>%1
 Unread news: %2</source>
-        <translation type="unfinished"/>
+        <translation>%1
+Ungelesene Nachrichten: %2</translation>
     </message>
 </context>
 <context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation>このタブを閉じる</translation>
+        <translation>Schliesse diesen Reiter.</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation>タブを閉じる</translation>
+        <translation>Schliesse Reiter</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation>フィード</translation>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation type="unfinished"/>
+        <translation>Blätteren Sie Ihre Feeds und Nachrichten</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation type="unfinished"/>
+        <translation>Anzeige des Hauptmenüs.</translation>
     </message>
     <message>
         <source>Main menu</source>
-        <translation>メインメニュー</translation>
+        <translation>Hauptmenü</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>ダウンロード</translation>
+        <translation>Downloads</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Zeitungsansicht</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation>ウェブブラウザー</translation>
+        <translation>Web Browser</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n Stunde</numerusform><numerusform>%n Stunden</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n Minute</numerusform><numerusform>%n Minuten</numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"/>
+        <translation> und </translation>
     </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Aktionen</translation>
     </message>
     <message>
         <source>Available actions</source>
-        <translation type="unfinished"/>
+        <translation>Verfügbare Aktionen</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation>セパレーターを挿入</translation>
+        <translation>&amp;Trennlinie einfügen</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation>空白を挿入</translation>
+        <translation>Ab&amp;standhalter einfügen</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation>セパレーター</translation>
+        <translation>Trennlinie</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>ツールバーの空白</translation>
+        <translation>Toolbar Platzhalter</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation type="unfinished"/>
+        <translation>Aktion nach &amp;oben verschieben</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation type="unfinished"/>
+        <translation>Aktion nach &amp;unten verschieben</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Aktion hin&amp;zufügen</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Aktion &amp;löschen</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Alle Aktionen löschen</translation>
     </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation>Schliessen Sie zuerst alle modalen Fenster.</translation>
     </message>
 </context>
 <context>
@@ -3401,24 +3434,26 @@ Unread news: %2</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>keine automatische Aktualisierung</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>verwendet globale Einstellungen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Status der automatische Aktualisierung: %3</translation>
     </message>
 </context>
 <context>
@@ -3431,82 +3466,88 @@ Username: %1
 Server: %2
 Last error: %4
 Last login on: %5</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS
+
+Konto ID: %3
+Benutzername: %1
+Server: %2
+Letzter Fehler: %4
+Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synchronisieren</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Kann Eintrag nicht hinzufügen</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kann Eintrag nicht hinzufügen, da noch eine andere ihn betreffende Aktion läuft.</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Navigations-Panel</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>タイトルなし</translation>
+        <translation>Kein Titel</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>戻る</translation>
+        <translation>Zurück</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation>戻る</translation>
+        <translation>Geh zurück.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation>進む</translation>
+        <translation>Vorwärts</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation>進む</translation>
+        <translation>Geh vorwärts.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation>再読み込み</translation>
+        <translation>Neu laden</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Lade aktuelle Webseite neu.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>停止</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Stoppe das laden der Webseite.</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="unfinished"/>
+        <translation>Anhang</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>Geschrieben von</translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>unbekannter Autor</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Zeitungsansicht</translation>
     </message>
 </context>
 </TS>
