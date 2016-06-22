@@ -1,402 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.0" language="it">
 <context>
     <name>CloseButton</name>
     <message>
         <source>Close Tab</source>
-        <translation>Schließen</translation>
+        <translation>Chiudi scheda</translation>
     </message>
 </context>
 <context>
     <name>MAC_APPLICATION_MENU</name>
     <message>
         <source>Services</source>
-        <translation>Dienste</translation>
+        <translation>Servizi</translation>
     </message>
     <message>
         <source>Hide %1</source>
-        <translation>%1 ausblenden</translation>
+        <translation>Nascondi %1</translation>
     </message>
     <message>
         <source>Hide Others</source>
-        <translation>Andere ausblenden</translation>
+        <translation>Nascondi gli altri</translation>
     </message>
     <message>
         <source>Show All</source>
-        <translation>Alle anzeigen</translation>
+        <translation>Mostra tutto</translation>
     </message>
     <message>
         <source>Preferences...</source>
-        <translation>Einstellungen...</translation>
+        <translation>Preferenze...</translation>
     </message>
     <message>
         <source>Quit %1</source>
-        <translation>%1 beenden</translation>
+        <translation>Esci da %1</translation>
     </message>
     <message>
         <source>About %1</source>
-        <translation>Über %1</translation>
+        <translation>Informazioni su %1</translation>
     </message>
 </context>
 <context>
     <name>QAbstractSocket</name>
     <message>
         <source>Socket operation timed out</source>
-        <translation>Zeitüberschreitung bei Socket-Operation</translation>
+        <translation>Operazione sul socket scaduta</translation>
     </message>
     <message>
         <source>Operation on socket is not supported</source>
-        <translation>Diese Socket-Operation wird nicht unterstützt</translation>
+        <translation>Operazione sul socket non supportata</translation>
     </message>
     <message>
         <source>Host not found</source>
-        <translation>Rechner konnte nicht gefunden werden</translation>
+        <translation>Host non trovato</translation>
     </message>
     <message>
         <source>Connection refused</source>
-        <translation>Verbindung verweigert</translation>
+        <translation>Connessione rifiutata</translation>
     </message>
     <message>
         <source>Connection timed out</source>
-        <translation>Das Zeitlimit für die Verbindung wurde überschritten</translation>
+        <translation>Connessione scaduta</translation>
     </message>
     <message>
         <source>Trying to connect while connection is in progress</source>
-        <translation>Versuch der Verbindungsaufnahme während bereits eine andere Verbindungsaufnahme läuft</translation>
+        <translation>Tentativo di connessione mentre una connessione è ancora in corso</translation>
     </message>
     <message>
         <source>Socket is not connected</source>
-        <translation>Der Socket ist nicht verbunden</translation>
+        <translation>Socket non connesso</translation>
     </message>
     <message>
         <source>Network unreachable</source>
-        <translation>Das Netzwerk ist nicht erreichbar</translation>
+        <translation>Rete non raggiungibile</translation>
     </message>
 </context>
 <context>
     <name>QAbstractSpinBox</name>
     <message>
         <source>&amp;Select All</source>
-        <translation>&amp;Alles auswählen</translation>
+        <translation>&amp;Seleziona tutto</translation>
     </message>
     <message>
         <source>&amp;Step up</source>
-        <translation>&amp;Inkrementieren</translation>
+        <translation>&amp;Aumenta</translation>
     </message>
     <message>
         <source>Step &amp;down</source>
-        <translation>&amp;Dekrementieren</translation>
+        <translation>&amp;Diminuisci</translation>
     </message>
 </context>
 <context>
     <name>QAccessibleActionInterface</name>
     <message>
         <source>Press</source>
-        <translation>Drücken</translation>
+        <translation>Premi</translation>
     </message>
     <message>
         <source>Increase</source>
-        <translation>Erhöhen</translation>
+        <translation>Incrementa</translation>
     </message>
     <message>
         <source>Decrease</source>
-        <translation>Senken</translation>
+        <translation>Decrementa</translation>
     </message>
     <message>
         <source>ShowMenu</source>
-        <translation>Menü anzeigen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SetFocus</source>
-        <translation>Fokus setzen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toggle</source>
-        <translation>Umschalten</translation>
-    </message>
-    <message>
-        <source>Scroll Left</source>
-        <translation>Nach links scrollen</translation>
-    </message>
-    <message>
-        <source>Scroll Right</source>
-        <translation>Nach rechts scrollen</translation>
-    </message>
-    <message>
-        <source>Scroll Up</source>
-        <translation>Nach oben scrollen</translation>
-    </message>
-    <message>
-        <source>Scroll Down</source>
-        <translation>Nach unten scrollen</translation>
-    </message>
-    <message>
-        <source>Previous Page</source>
-        <translation>Vorige Seite</translation>
-    </message>
-    <message>
-        <source>Next Page</source>
-        <translation>Nächste Seite</translation>
+        <translation>Commuta</translation>
     </message>
     <message>
         <source>Triggers the action</source>
-        <translation>Aktion auslösen</translation>
+        <translation>Attiva l&apos;azione</translation>
     </message>
     <message>
         <source>Increase the value</source>
-        <translation>Wert erhöhen</translation>
+        <translation>Incrementa il valore</translation>
     </message>
     <message>
         <source>Decrease the value</source>
-        <translation>Wert absenken</translation>
+        <translation>Decrementa il valore</translation>
     </message>
     <message>
         <source>Shows the menu</source>
-        <translation>Zeigt das Menü an</translation>
+        <translation>Mostra il menu</translation>
     </message>
     <message>
         <source>Sets the focus</source>
-        <translation>Setzt den Fokus</translation>
+        <translation>Imposta il focus</translation>
     </message>
     <message>
         <source>Toggles the state</source>
-        <translation>Schaltet den Zustand um</translation>
-    </message>
-    <message>
-        <source>Scrolls to the left</source>
-        <translation>Scrollt nach links</translation>
-    </message>
-    <message>
-        <source>Scrolls to the right</source>
-        <translation>Scrollt nach rechts</translation>
-    </message>
-    <message>
-        <source>Scrolls up</source>
-        <translation>Scrollt nach oben</translation>
-    </message>
-    <message>
-        <source>Scrolls down</source>
-        <translation>Scrollt nach unten</translation>
-    </message>
-    <message>
-        <source>Goes back a page</source>
-        <translation>Geht zur vorigen Seite</translation>
-    </message>
-    <message>
-        <source>Goes to the next page</source>
-        <translation>Geht zur nächsten Seite</translation>
+        <translation>Commuta lo stato</translation>
     </message>
 </context>
 <context>
     <name>QAndroidPlatformTheme</name>
     <message>
         <source>Yes</source>
-        <translation>Ja</translation>
+        <translation>Sì</translation>
     </message>
     <message>
         <source>Yes to All</source>
-        <translation>Ja, alle</translation>
+        <translation>Sì a tutti</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>Nein</translation>
+        <translation>No</translation>
     </message>
     <message>
         <source>No to All</source>
-        <translation>Nein, keine</translation>
+        <translation>No a tutti</translation>
     </message>
 </context>
 <context>
     <name>QApplication</name>
     <message>
         <source>Executable &apos;%1&apos; requires Qt %2, found Qt %3.</source>
-        <translation>Die Anwendung &apos;%1&apos; benötigt Qt %2; es wurde aber Qt %3 gefunden.</translation>
+        <translation>L&apos;eseguibile &apos;%1&apos; richiede Qt %2, trovata Qt %3.</translation>
     </message>
     <message>
         <source>Incompatible Qt Library Error</source>
-        <translation>Die Qt-Bibliothek ist inkompatibel</translation>
+        <translation>Errore: libreria Qt non compatibile</translation>
     </message>
 </context>
 <context>
     <name>QCocoaMenuItem</name>
     <message>
         <source>About Qt</source>
-        <translation>Über Qt</translation>
+        <translation>Informazioni su Qt</translation>
     </message>
     <message>
         <source>About</source>
-        <translation>Über</translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <source>Config</source>
-        <translation>Konfiguration</translation>
+        <translation>Configurazione</translation>
     </message>
     <message>
         <source>Preference</source>
-        <translation>Einstellung</translation>
+        <translation>Preferenza</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation>Optionen</translation>
+        <translation>Opzioni</translation>
     </message>
     <message>
         <source>Setting</source>
-        <translation>Einstellung</translation>
+        <translation>Impostazione</translation>
     </message>
     <message>
         <source>Setup</source>
-        <translation>Einrichten</translation>
+        <translation>Impostazione</translation>
     </message>
     <message>
         <source>Quit</source>
-        <translation>Beenden</translation>
+        <translation>Uscita</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Verlassen</translation>
-    </message>
-    <message>
-        <source>Cut</source>
-        <translation>Ausschneiden</translation>
-    </message>
-    <message>
-        <source>Copy</source>
-        <translation>Kopieren</translation>
-    </message>
-    <message>
-        <source>Paste</source>
-        <translation>Einfügen</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>Alles auswählen</translation>
+        <translation>Esci</translation>
     </message>
 </context>
 <context>
     <name>QCocoaTheme</name>
     <message>
         <source>Don&apos;t Save</source>
-        <translation>Nicht speichern</translation>
+        <translation>Non salvare</translation>
     </message>
 </context>
 <context>
     <name>QColorDialog</name>
     <message>
         <source>Hu&amp;e:</source>
-        <translation>Farb&amp;ton:</translation>
+        <translation>Tint&amp;a:</translation>
     </message>
     <message>
         <source>&amp;Sat:</source>
-        <translation>&amp;Sättigung:</translation>
+        <translation>&amp;Sat:</translation>
     </message>
     <message>
         <source>&amp;Val:</source>
-        <translation>&amp;Helligkeit:</translation>
+        <translation>&amp;Val:</translation>
     </message>
     <message>
         <source>&amp;Red:</source>
-        <translation>&amp;Rot:</translation>
+        <translation>&amp;Rosso:</translation>
     </message>
     <message>
         <source>&amp;Green:</source>
-        <translation>&amp;Grün:</translation>
+        <translation>&amp;Verde:</translation>
     </message>
     <message>
         <source>Bl&amp;ue:</source>
-        <translation>Bla&amp;u:</translation>
+        <translation>Bl&amp;u:</translation>
     </message>
     <message>
         <source>A&amp;lpha channel:</source>
-        <translation>A&amp;lphakanal:</translation>
+        <translation>Canale a&amp;lfa:</translation>
     </message>
     <message>
         <source>&amp;HTML:</source>
         <translation>&amp;HTML:</translation>
     </message>
     <message>
-        <source>Cursor at %1, %2
+        <source>Cursor at %1, %2, color: %3
 Press ESC to cancel</source>
-        <translation>Cursor bei %1, %2
-Drücken Sie ESC, um abzubrechen</translation>
-    </message>
-    <message>
-        <source>&amp;Pick Screen Color</source>
-        <translation>&amp;Farbe vom Bildschirm wählen</translation>
+        <translation>Cursore su %1, %2, colore: %3
+Premi ESC per annullare</translation>
     </message>
     <message>
         <source>Select Color</source>
-        <translation>Farbauswahl</translation>
+        <translation>Seleziona colore</translation>
+    </message>
+    <message>
+        <source>Pick Screen Color</source>
+        <translation>Scegli il colore dello schermo</translation>
     </message>
     <message>
         <source>&amp;Basic colors</source>
-        <translation>Grundfar&amp;ben</translation>
+        <translation>Colori di &amp;base</translation>
     </message>
     <message>
         <source>&amp;Custom colors</source>
-        <translation>&amp;Benutzerdefinierte Farben</translation>
+        <translation>&amp;Colori personalizzati</translation>
     </message>
     <message>
         <source>&amp;Add to Custom Colors</source>
-        <translation>Zu benutzerdefinierten Farben &amp;hinzufügen</translation>
+        <translation>&amp;Aggiungi ai colori personalizzati</translation>
     </message>
 </context>
 <context>
     <name>QComboBox</name>
     <message>
         <source>False</source>
-        <translation>Falsch</translation>
+        <translation>Falso</translation>
     </message>
     <message>
         <source>True</source>
-        <translation>Wahr</translation>
+        <translation>Vero</translation>
     </message>
     <message>
         <source>Open the combo box selection popup</source>
-        <translation>Öffnet das Auswahlfenster der Combobox</translation>
+        <translation>Apri il menu a tendina</translation>
     </message>
 </context>
 <context>
     <name>QCommandLineParser</name>
     <message>
         <source>Displays version information.</source>
-        <translation>Zeigt Versionsinformation an.</translation>
+        <translation>Mostra le informazioni sulla versione.</translation>
     </message>
     <message>
         <source>Displays this help.</source>
-        <translation>Zeigt diese Hilfe an.</translation>
+        <translation>Mostra questa guida.</translation>
     </message>
     <message>
         <source>Unknown option &apos;%1&apos;.</source>
-        <translation>Unbekannte Option &apos;%1&apos;.</translation>
+        <translation>Opzione sconosciuta &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Unknown options: %1.</source>
-        <translation>Unbekannte Optionen: %1.</translation>
+        <translation>Opzioni sconosciute: %1.</translation>
     </message>
     <message>
         <source>Missing value after &apos;%1&apos;.</source>
-        <translation>Nach &apos;%1&apos; fehlt der Wert.</translation>
+        <translation>Valore mancante dopo &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Unexpected value after &apos;%1&apos;.</source>
-        <translation>Wert unerwartet nach &apos;%1&apos;.</translation>
+        <translation>Valore non previsto dopo &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>[options]</source>
-        <translation>[Optionen]</translation>
+        <translation>[opzioni]</translation>
     </message>
     <message>
         <source>Usage: %1</source>
-        <translation>Aufruf: %1</translation>
+        <translation>Utilizzo: %1</translation>
     </message>
     <message>
         <source>Options:</source>
-        <translation>Optionen:</translation>
+        <translation>Opzioni:</translation>
     </message>
     <message>
         <source>Arguments:</source>
-        <translation>Argumente:</translation>
+        <translation>Parametri:</translation>
     </message>
 </context>
 <context>
@@ -404,174 +340,167 @@ Drücken Sie ESC, um abzubrechen</translation>
     <message>
         <source>%1: key is empty</source>
         <comment>QSystemSemaphore</comment>
-        <translation>%1: Ungültige Schlüsselangabe (leer)</translation>
+        <translation>%1: la chiave è vuota</translation>
     </message>
     <message>
         <source>%1: unable to make key</source>
         <comment>QSystemSemaphore</comment>
-        <translation>%1: Es kann kein Schlüssel erzeugt werden</translation>
+        <translation>%1: impossibile creare la chiave</translation>
     </message>
     <message>
         <source>%1: ftok failed</source>
         <comment>QSystemSemaphore</comment>
-        <translation>%1: ftok-Aufruf ist fehlgeschlagen</translation>
+        <translation>%1: ftok non riuscito</translation>
     </message>
 </context>
 <context>
     <name>QCupsJobWidget</name>
     <message>
         <source>Job</source>
-        <translation>Druckauftrag</translation>
+        <translation>Processo</translation>
     </message>
     <message>
         <source>Job Control</source>
-        <translation>Einstellungen zum Druckauftrag</translation>
+        <translation>Controllo del processo</translation>
     </message>
     <message>
         <source>Scheduled printing:</source>
-        <translation>Zum Drucken vorgesehen:</translation>
+        <translation>Pianificazione della stampa:</translation>
     </message>
     <message>
         <source>Billing information:</source>
-        <translation>Rechnungsinformation:</translation>
+        <translation>Informazioni di resoconto:</translation>
     </message>
     <message>
         <source>Job priority:</source>
-        <translation>Priorität des Druckauftrags:</translation>
+        <translation>Priorità del processo:</translation>
     </message>
     <message>
         <source>Banner Pages</source>
-        <translation>Kopfseiten</translation>
+        <translation>Pagine di separazione</translation>
     </message>
     <message>
         <source>End:</source>
         <comment>Banner page at end</comment>
-        <translation>Ende:</translation>
+        <translation>Fine:</translation>
     </message>
     <message>
         <source>Start:</source>
         <comment>Banner page at start</comment>
-        <translation>Anfang:</translation>
+        <translation>Inizio:</translation>
     </message>
     <message>
         <source>Print Immediately</source>
-        <translation>Sofort ausdrucken</translation>
+        <translation>Stampa immediatamente</translation>
     </message>
     <message>
         <source>Hold Indefinitely</source>
-        <translation>Unbegrenzt vorhalten</translation>
+        <translation>Trattieni indefinitamente</translation>
     </message>
     <message>
         <source>Day (06:00 to 17:59)</source>
-        <translation>Tagsüber (06:00 bis 17:59)</translation>
+        <translation>Giorno (dalle 06:00 alle 17:59)</translation>
     </message>
     <message>
         <source>Night (18:00 to 05:59)</source>
-        <translation>Nachts (18:00 bis 05:59)</translation>
+        <translation>Notte (dalle 18:00 alle 05:59)</translation>
     </message>
     <message>
         <source>Second Shift (16:00 to 23:59)</source>
-        <translation>Zweite Schicht (16:00 bis 23:59)</translation>
+        <translation>Secondo turno (dalle 16:00 alle 23:59)</translation>
     </message>
     <message>
         <source>Third Shift (00:00 to 07:59)</source>
-        <translation>Dritte Schicht (00:00 bis 07:59)</translation>
+        <translation>Terzo turno (dalle 00:00 alle 07:59)</translation>
     </message>
     <message>
         <source>Weekend (Saturday to Sunday)</source>
-        <translation>Wochenende (Samstag bis Sonntag)</translation>
+        <translation>Finesettimana (da sabato a domenica)</translation>
     </message>
     <message>
         <source>Specific Time</source>
-        <translation>Zu festgelegter Zeit</translation>
+        <translation>Orario specifico</translation>
     </message>
     <message>
         <source>None</source>
         <comment>CUPS Banner page</comment>
-        <translation>Keine</translation>
+        <translation>Nessuno</translation>
     </message>
     <message>
         <source>Standard</source>
         <comment>CUPS Banner page</comment>
-        <translation>Vorgabe</translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <source>Unclassified</source>
         <comment>CUPS Banner page</comment>
-        <translation>Öffentlich</translation>
+        <translation>Non classificato</translation>
     </message>
     <message>
         <source>Confidential</source>
         <comment>CUPS Banner page</comment>
-        <translation>Vertraulich</translation>
+        <translation>Confidenziale</translation>
     </message>
     <message>
         <source>Classified</source>
         <comment>CUPS Banner page</comment>
-        <translation>Nicht öffentlich</translation>
+        <translation>Classificato</translation>
     </message>
     <message>
         <source>Secret</source>
         <comment>CUPS Banner page</comment>
-        <translation>Geheim</translation>
+        <translation>Segreto</translation>
     </message>
     <message>
         <source>Top Secret</source>
         <comment>CUPS Banner page</comment>
-        <translation>Streng geheim</translation>
+        <translation>Segretissimo</translation>
     </message>
 </context>
 <context>
     <name>QDB2Driver</name>
     <message>
         <source>Unable to connect</source>
-        <translation>Es kann keine Verbindung aufgebaut werden</translation>
+        <translation>Connessione non riuscita</translation>
     </message>
     <message>
         <source>Unable to commit transaction</source>
-        <translation>Die Transaktion kann nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Unable to rollback transaction</source>
-        <translation>Die Transaktion kann nicht rückgängig gemacht werden (Operation &apos;rollback&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile annullare la transazione</translation>
     </message>
     <message>
         <source>Unable to set autocommit</source>
-        <translation>&apos;autocommit&apos; kann nicht aktiviert werden</translation>
+        <translation>Impossibile impostare l&apos;autocommit</translation>
     </message>
 </context>
 <context>
     <name>QDB2Result</name>
     <message>
         <source>Unable to execute statement</source>
-        <translation>Der Befehl kann nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire il comando</translation>
     </message>
     <message>
         <source>Unable to prepare statement</source>
-        <translation>Der Befehl kann nicht vorbereitet werden</translation>
+        <translation>Impossibile preparare il comando</translation>
     </message>
     <message>
         <source>Unable to bind variable</source>
-        <translation>Die Variable kann nicht gebunden werden</translation>
+        <translation>Impossibile effettuare il bind della variabile</translation>
     </message>
     <message>
         <source>Unable to fetch record %1</source>
-        <translation>Der Datensatz %1 kann nicht abgeholt werden</translation>
+        <translation>Impossibile ottenere il record %1</translation>
     </message>
     <message>
         <source>Unable to fetch next</source>
-        <translation>Der nächste Datensatz kann nicht abgeholt werden</translation>
+        <translation>Impossibile recuperare il successivo</translation>
     </message>
     <message>
         <source>Unable to fetch first</source>
-        <translation>Der erste Datensatz kann nicht abgeholt werden</translation>
-    </message>
-</context>
-<context>
-    <name>QDBusTrayIcon</name>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
+        <translation>Impossibile recuperare il primo</translation>
     </message>
 </context>
 <context>
@@ -597,7 +526,7 @@ Drücken Sie ESC, um abzubrechen</translation>
     <name>QDialog</name>
     <message>
         <source>What&apos;s This?</source>
-        <translation>Direkthilfe</translation>
+        <translation>Che cos&apos;è?</translation>
     </message>
 </context>
 <context>
@@ -606,128 +535,220 @@ Drücken Sie ESC, um abzubrechen</translation>
         <source>OK</source>
         <translation>OK</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>&amp;OK</translation>
+    </message>
+    <message>
+        <source>&amp;Save</source>
+        <translation>&amp;Salva</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Salva</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Apri</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Annulla</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annulla</translation>
+    </message>
+    <message>
+        <source>&amp;Close</source>
+        <translation>&amp;Chiudi</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Chiudi</translation>
+    </message>
+    <message>
+        <source>Apply</source>
+        <translation>Applica</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Ripristina</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Aiuto</translation>
+    </message>
+    <message>
+        <source>Don&apos;t Save</source>
+        <translation>Non salvare</translation>
+    </message>
+    <message>
+        <source>Close without Saving</source>
+        <translation>Chiudi senza salvare</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation>Tralascia</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>&amp;Sì</translation>
+    </message>
+    <message>
+        <source>Yes to &amp;All</source>
+        <translation>Sì &amp;a tutti</translation>
+    </message>
+    <message>
+        <source>&amp;No</source>
+        <translation>&amp;No</translation>
+    </message>
+    <message>
+        <source>N&amp;o to All</source>
+        <translation>N&amp;o a tutti</translation>
+    </message>
+    <message>
+        <source>Save All</source>
+        <translation>Salva tutti</translation>
+    </message>
+    <message>
+        <source>Abort</source>
+        <translation>Interrompi</translation>
+    </message>
+    <message>
+        <source>Retry</source>
+        <translation>Riprova</translation>
+    </message>
+    <message>
+        <source>Ignore</source>
+        <translation>Ignora</translation>
+    </message>
+    <message>
+        <source>Restore Defaults</source>
+        <translation>Ripristina valori predefiniti</translation>
+    </message>
 </context>
 <context>
     <name>QDirModel</name>
     <message>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation>Größe</translation>
+        <translation>Dimensione</translation>
     </message>
     <message>
         <source>Kind</source>
         <comment>Match OS X Finder</comment>
-        <translation>Art</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <source>Type</source>
         <comment>All other platforms</comment>
-        <translation>Typ</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <source>Date Modified</source>
-        <translation>Änderungsdatum</translation>
+        <translation>Data di modifica</translation>
     </message>
 </context>
 <context>
     <name>QDnsLookup</name>
     <message>
         <source>Operation cancelled</source>
-        <translation>Operation abgebrochen</translation>
+        <translation>Operazione annullata</translation>
     </message>
 </context>
 <context>
     <name>QDnsLookupRunnable</name>
     <message>
         <source>Invalid domain name</source>
-        <translation>Ungültiger Domain-Name</translation>
+        <translation>Nome di dominio non valido</translation>
     </message>
     <message>
         <source>Not yet supported on Android</source>
-        <translation>Nicht unterstützt auf Android</translation>
+        <translation>Non ancora supportato su Android</translation>
     </message>
     <message>
         <source>Resolver functions not found</source>
-        <translation>Die Resolver-Funktionen konnten nicht gefunden werden</translation>
+        <translation>Funzioni di risoluzione non trovate</translation>
     </message>
     <message>
         <source>Resolver initialization failed</source>
-        <translation>Die Initialisierung des Resolvers schlug fehl</translation>
+        <translation>Inizializzazione del risolutore non riuscita</translation>
     </message>
     <message>
         <source>IPv6 addresses for nameservers is currently not supported</source>
-        <translation>IPv6-Adressen für DNS-Server sind gegenwärtig nicht unterstützt</translation>
+        <translation>Gli indirizzi IPv6 per i server di risoluzione dei nomi non sono al momento supportati</translation>
     </message>
     <message>
         <source>Server could not process query</source>
-        <translation>Der Server konnte die Anfrage nicht verarbeiten</translation>
+        <translation>Il server non può elaborare la query</translation>
     </message>
     <message>
         <source>Server failure</source>
-        <translation>Serverausfall</translation>
+        <translation>Errore del server</translation>
     </message>
     <message>
         <source>Non existent domain</source>
-        <translation>Domain existiert nicht</translation>
+        <translation>Dominio non esistente</translation>
     </message>
     <message>
         <source>Server refused to answer</source>
-        <translation>Der Server verweigerte die Antwort</translation>
+        <translation>Il server si è rifiutato di rispondere</translation>
     </message>
     <message>
         <source>Invalid reply received</source>
-        <translation>Ungültige Antwort erhalten</translation>
+        <translation>Ricevuta una risposta non valida</translation>
     </message>
     <message>
         <source>Could not expand domain name</source>
-        <translation>Der Domain-Name konnte nicht expandiert werden</translation>
+        <translation>Impossibile espandere il nome del dominio</translation>
     </message>
     <message>
         <source>Invalid IPv4 address record</source>
-        <translation>Ungültiger IPv4-Adressdatensatz</translation>
+        <translation>Record di tipo indirizzo IPv4 non valido</translation>
     </message>
     <message>
         <source>Invalid IPv6 address record</source>
-        <translation>Ungültiger IPv6-Adressdatensatz</translation>
+        <translation>Record di tipo indirizzo IPv6 non valido</translation>
     </message>
     <message>
         <source>Invalid canonical name record</source>
-        <translation>Ungültigen Datensatz für kanonischen Namen erhalten</translation>
+        <translation>Record di tipo nome canonico non valido</translation>
     </message>
     <message>
         <source>Invalid name server record</source>
-        <translation>Ungültigen Datensatz des Name-Servers erhalten</translation>
+        <translation>Record di tipo nome del server non valido</translation>
     </message>
     <message>
         <source>Invalid pointer record</source>
-        <translation>Ungültigen Datensatz für Verweis erhalten</translation>
+        <translation>Record di tipo puntatore non valido</translation>
     </message>
     <message>
         <source>Invalid mail exchange record</source>
-        <translation>Ungültigen Datensatz für E-Mail-Austausch erhalten</translation>
+        <translation>Record di tipo mail exchange non valido</translation>
     </message>
     <message>
         <source>Invalid service record</source>
-        <translation>Ungültigen Datensatz für Dienst erhalten</translation>
+        <translation>Record di tipo servizio non valido</translation>
     </message>
     <message>
         <source>Invalid text record</source>
-        <translation>Ungültigen Datensatz für Text erhalten</translation>
+        <translation>Record di tipo testo non valido</translation>
     </message>
     <message>
         <source>Resolver library can&apos;t be loaded: No runtime library loading support</source>
-        <translation>Die Resolver-Bibliothek konnte nicht geladen werden. Das Laden zur Laufzeit wird nicht unterstützt</translation>
+        <translation>La libreria di risoluzione non può essere caricata. Nessun supporto per il caricamento di librerie</translation>
     </message>
     <message>
         <source>No hostname given</source>
-        <translation>Es wurde kein Hostname angegeben</translation>
+        <translation>Nessun nome host inserito</translation>
     </message>
     <message>
         <source>Invalid hostname</source>
-        <translation>Ungültiger Hostname</translation>
+        <translation>Nome dell&apos;host non valido</translation>
     </message>
 </context>
 <context>
@@ -735,39 +756,39 @@ Drücken Sie ESC, um abzubrechen</translation>
     <message>
         <source>Float</source>
         <extracomment>Accessible name for button undocking a dock widget (floating state)</extracomment>
-        <translation>Lösen</translation>
+        <translation>Fluttua</translation>
     </message>
     <message>
         <source>Undocks and re-attaches the dock widget</source>
-        <translation>Löst das Dock-Widget und verankert es wieder</translation>
+        <translation>Separa e ri-collega l&apos;oggetto contenitore</translation>
     </message>
     <message>
         <source>Close</source>
         <extracomment>Accessible name for button closing a dock widget</extracomment>
-        <translation>Schließen</translation>
+        <translation>Chiudi</translation>
     </message>
     <message>
         <source>Closes the dock widget</source>
-        <translation>Schließt das Dock-Widget</translation>
+        <translation>Chiudi l&apos;oggetto contenitore</translation>
     </message>
 </context>
 <context>
     <name>QErrorMessage</name>
     <message>
         <source>Debug Message:</source>
-        <translation>Debug-Ausgabe:</translation>
+        <translation>Messaggio di debug:</translation>
     </message>
     <message>
         <source>Warning:</source>
-        <translation>Warnung:</translation>
+        <translation>Avvertimento:</translation>
     </message>
     <message>
         <source>Fatal Error:</source>
-        <translation>Fehler:</translation>
+        <translation>Errore fatale:</translation>
     </message>
     <message>
         <source>&amp;Show this message again</source>
-        <translation>Diese Meldung wieder an&amp;zeigen</translation>
+        <translation>Mo&amp;stra ancora questo messaggio</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -778,268 +799,263 @@ Drücken Sie ESC, um abzubrechen</translation>
     <name>QFile</name>
     <message>
         <source>Destination file is the same file.</source>
-        <translation>Die Zieldatei ist dieselbe Datei.</translation>
+        <translation>Il file di destinazione è lo stesso file.</translation>
     </message>
     <message>
         <source>Source file does not exist.</source>
-        <translation>Die Quelldatei existiert nicht.</translation>
+        <translation>Il file di origine non esiste.</translation>
     </message>
     <message>
         <source>Destination file exists</source>
-        <translation>Die Zieldatei existiert bereits</translation>
+        <translation>Il file di destinazione esiste</translation>
     </message>
     <message>
         <source>Error while renaming.</source>
-        <translation>Fehler beim Umbenennen.</translation>
+        <translation>Errore durante la rinomina.</translation>
     </message>
     <message>
         <source>Unable to restore from %1: %2</source>
-        <translation>Die Datei konnte nicht von %1 wieder hergestellt werden: %2</translation>
+        <translation>Impossibile ripristinare da %1: %2</translation>
     </message>
     <message>
         <source>Will not rename sequential file using block copy</source>
-        <translation>Eine sequentielle Datei wird nicht durch blockweises Kopieren umbenannt</translation>
+        <translation>Impossibile rinominare un file sequenziale usando una copia a blocchi</translation>
     </message>
     <message>
         <source>Cannot remove source file</source>
-        <translation>Die Quelldatei kann nicht entfernt werden</translation>
+        <translation>Impossibile rimuovere il file di origine</translation>
     </message>
     <message>
         <source>Cannot open %1 for input</source>
-        <translation>%1 kann nicht zum Lesen geöffnet werden</translation>
+        <translation>Impossibile aprire %1 per l&apos;input</translation>
     </message>
     <message>
         <source>Cannot open for output</source>
-        <translation>Öffnen zum Schreiben fehlgeschlagen</translation>
+        <translation>Impossibile aprire per l&apos;output</translation>
     </message>
     <message>
         <source>Failure to write block</source>
-        <translation>Der Datenblock konnte nicht geschrieben werden</translation>
+        <translation>Scrittura del blocco non riuscita</translation>
     </message>
     <message>
         <source>Cannot create %1 for output</source>
-        <translation>%1 kann nicht erstellt werden</translation>
+        <translation>Impossibile creare %1 per l&apos;output</translation>
     </message>
 </context>
 <context>
     <name>QFileDevice</name>
     <message>
         <source>No file engine available or engine does not support UnMapExtension</source>
-        <translation>Es ist kein Datei-Engine verfügbar oder der gegenwärtig aktive Engine unterstützt die UnMap-Erweiterung nicht</translation>
+        <translation>Nessun file engine disponibile o l&apos;engine non supporta UnMapExtension</translation>
     </message>
 </context>
 <context>
     <name>QFileDialog</name>
     <message>
         <source>Look in:</source>
-        <translation>Suchen in:</translation>
+        <translation>Cerca in:</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Zurück</translation>
+        <translation>Indietro</translation>
     </message>
     <message>
         <source>Go back</source>
-        <translation>Zurück</translation>
+        <translation>Vai indietro</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation>Vorwärts</translation>
+        <translation>Vai avanti</translation>
     </message>
     <message>
         <source>Go forward</source>
-        <translation>Vor</translation>
+        <translation>Avanti</translation>
     </message>
     <message>
         <source>Parent Directory</source>
-        <translation>Übergeordnetes Verzeichnis</translation>
+        <translation>Cartella superiore</translation>
     </message>
     <message>
         <source>Go to the parent directory</source>
-        <translation>Gehe zum übergeordneten Verzeichnis</translation>
+        <translation>Vai alla cartella superiore</translation>
     </message>
     <message>
         <source>Create New Folder</source>
-        <translation>Neuen Ordner erstellen</translation>
+        <translation>Crea nuova cartella</translation>
     </message>
     <message>
         <source>Create a New Folder</source>
-        <translation>Neuen Ordner erstellen</translation>
+        <translation>Crea una nuova cartella</translation>
     </message>
     <message>
         <source>List View</source>
-        <translation>Liste</translation>
+        <translation>Vista a elenco</translation>
     </message>
     <message>
         <source>Change to list view mode</source>
-        <translation>Wechsle zu Listenansicht</translation>
+        <translation>Passa alla modalità vista a elenco</translation>
     </message>
     <message>
         <source>Detail View</source>
-        <translation>Details</translation>
+        <translation>Vista dettagliata</translation>
     </message>
     <message>
         <source>Change to detail view mode</source>
-        <translation>Wechsle zu Detailansicht</translation>
+        <translation>Passa alla modalità vista dettagliata</translation>
     </message>
     <message>
         <source>Sidebar</source>
-        <translation>Seitenleiste</translation>
+        <translation>Barra laterale</translation>
     </message>
     <message>
         <source>List of places and bookmarks</source>
-        <translation>Liste der Orte und Lesezeichen</translation>
+        <translation>Lista di risorse e segnalibri</translation>
     </message>
     <message>
         <source>Files</source>
-        <translation>Dateien</translation>
+        <translation>File</translation>
     </message>
     <message>
         <source>Files of type:</source>
-        <translation>Dateien des Typs:</translation>
+        <translation>File di tipo:</translation>
     </message>
     <message>
         <source>Find Directory</source>
-        <translation>Verzeichnis suchen</translation>
+        <translation>Trova cartella</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>Öffnen</translation>
+        <translation>Apri</translation>
     </message>
     <message>
         <source>Save As</source>
-        <translation>Speichern unter</translation>
+        <translation>Salva come</translation>
     </message>
     <message>
         <source>Directory:</source>
-        <translation>Verzeichnis:</translation>
+        <translation>Cartella:</translation>
     </message>
     <message>
         <source>File &amp;name:</source>
-        <translation>Datei&amp;name:</translation>
+        <translation>&amp;Nome del file:</translation>
     </message>
     <message>
         <source>&amp;Open</source>
-        <translation>&amp;Öffnen</translation>
+        <translation>&amp;Apri</translation>
     </message>
     <message>
         <source>&amp;Choose</source>
-        <translation>&amp;Auswählen</translation>
+        <translation>S&amp;cegli</translation>
     </message>
     <message>
         <source>&amp;Save</source>
-        <translation>S&amp;peichern</translation>
+        <translation>&amp;Salva</translation>
     </message>
     <message>
         <source>All Files (*)</source>
-        <translation>Alle Dateien (*)</translation>
+        <translation>Tutti i file (*)</translation>
     </message>
     <message>
         <source>Show </source>
-        <translation>Anzeigen </translation>
+        <translation>Mostra </translation>
     </message>
     <message>
         <source>&amp;Rename</source>
-        <translation>&amp;Umbenennen</translation>
+        <translation>&amp;Rinomina</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
-        <translation>&amp;Löschen</translation>
+        <translation>&amp;Elimina</translation>
     </message>
     <message>
         <source>Show &amp;hidden files</source>
-        <translation>&amp;Versteckte Dateien anzeigen</translation>
+        <translation>Mostra i &amp;file nascosti</translation>
     </message>
     <message>
         <source>&amp;New Folder</source>
-        <translation>&amp;Neues Verzeichnis</translation>
+        <translation>&amp;Nuova cartella</translation>
     </message>
     <message>
         <source>All files (*)</source>
-        <translation>Alle Dateien (*)</translation>
+        <translation>Tutti i file (*)</translation>
     </message>
     <message>
         <source>Directories</source>
-        <translation>Verzeichnisse</translation>
+        <translation>Cartelle</translation>
     </message>
     <message>
         <source>%1
 Directory not found.
 Please verify the correct directory name was given.</source>
         <translation>%1
-Das Verzeichnis konnte nicht gefunden werden.
-Stellen Sie sicher, dass der Verzeichnisname richtig ist.</translation>
+Cartella non trovata.
+Verifica che sia stato inserito il nome corretto della cartella.</translation>
     </message>
     <message>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation>Die Datei %1 existiert bereits.
-Soll sie überschrieben werden?</translation>
+        <translation>%1 esiste già.
+Vuoi sostituirlo?</translation>
     </message>
     <message>
         <source>%1
 File not found.
 Please verify the correct file name was given.</source>
         <translation>%1
-Die Datei konnte nicht gefunden werden.
-Stellen Sie sicher, dass der Dateiname richtig ist.</translation>
+File non trovato.
+Verifica che sia stato inserito il nome corretto del file.</translation>
+    </message>
+    <message>
+        <source>New Folder</source>
+        <translation>Nuova cartella</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Elimina</translation>
     </message>
     <message>
         <source>&apos;%1&apos; is write protected.
 Do you want to delete it anyway?</source>
-        <translation>&apos;%1&apos; ist schreibgeschützt.
-Möchten Sie die Datei trotzdem löschen?</translation>
-    </message>
-    <message>
-        <source>New Folder</source>
-        <translation>Neues Verzeichnis</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Löschen</translation>
+        <translation>&apos;%1&apos; è protetto da scrittura.
+Vuoi eliminarlo comunque?</translation>
     </message>
     <message>
         <source>Are you sure you want to delete &apos;%1&apos;?</source>
-        <translation>Sind Sie sicher, dass Sie &apos;%1&apos; löschen möchten?</translation>
+        <translation>Sei sicuro di voler eliminare &apos;%1&apos;?</translation>
     </message>
     <message>
         <source>Could not delete directory.</source>
-        <translation>Das Verzeichnis konnte nicht gelöscht werden.</translation>
+        <translation>Impossibile rimuovere la cartella.</translation>
     </message>
     <message>
         <source>Recent Places</source>
-        <translation>Zuletzt besucht</translation>
+        <translation>Risorse recenti</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>Löschen</translation>
+        <translation>Elimina</translation>
     </message>
     <message>
         <source>My Computer</source>
-        <translation>Mein Computer</translation>
+        <translation>Il mio computer</translation>
     </message>
     <message>
         <source>Drive</source>
-        <translation>Laufwerk</translation>
-    </message>
-    <message>
-        <source>%1 File</source>
-        <extracomment>%1 is a file name suffix, for example txt</extracomment>
-        <translation>%1-Datei</translation>
+        <translation>Unità</translation>
     </message>
     <message>
         <source>File</source>
-        <translation>Datei</translation>
+        <translation>File</translation>
     </message>
     <message>
         <source>File Folder</source>
         <comment>Match Windows Explorer</comment>
-        <translation>Ordner</translation>
+        <translation>Cartella di file</translation>
     </message>
     <message>
         <source>Folder</source>
         <comment>All other platforms</comment>
-        <translation>Verzeichnis</translation>
+        <translation>Cartella</translation>
     </message>
     <message>
         <source>Alias</source>
@@ -1049,23 +1065,23 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <message>
         <source>Shortcut</source>
         <comment>All other platforms</comment>
-        <translation>Symbolischer Link</translation>
+        <translation>Scorciatoia</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Unbekannt</translation>
+        <translation>Sconosciuto</translation>
     </message>
     <message>
         <source>Alt+Left</source>
-        <translation>Alt+Left</translation>
+        <translation>Alt+Sinistra</translation>
     </message>
     <message>
         <source>Alt+Right</source>
-        <translation>Alt+Right</translation>
+        <translation>Alt+Destra</translation>
     </message>
     <message>
         <source>Alt+Up</source>
-        <translation>Alt+Up</translation>
+        <translation>Alt+Su</translation>
     </message>
 </context>
 <context>
@@ -1088,41 +1104,41 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>%1 bytes</source>
-        <translation>%1 Byte</translation>
+        <translation>%1 byte</translation>
     </message>
     <message>
         <source>Invalid filename</source>
-        <translation>Ungültiger Dateiname</translation>
+        <translation>Nome del file non valido</translation>
     </message>
     <message>
         <source>&lt;b&gt;The name &quot;%1&quot; can not be used.&lt;/b&gt;&lt;p&gt;Try using another name, with fewer characters or no punctuations marks.</source>
-        <translation>&lt;b&gt;Der Name &quot;%1&quot; kann nicht verwendet werden.&lt;/b&gt;&lt;p&gt;Versuchen Sie, die Satzzeichen zu entfernen oder einen kürzeren Namen zu verwenden.</translation>
+        <translation>&lt;b&gt;Il nome &quot;%1&quot; non può essere usato.&lt;/b&gt;&lt;p&gt;Prova ad utilizzare un altro nome, con meno caratteri o senza punteggiatura.</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation>Größe</translation>
+        <translation>Dimensione</translation>
     </message>
     <message>
         <source>Kind</source>
         <comment>Match OS X Finder</comment>
-        <translation>Art</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <source>Type</source>
         <comment>All other platforms</comment>
-        <translation>Typ</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <source>Date Modified</source>
-        <translation>Änderungsdatum</translation>
+        <translation>Data di modifica</translation>
     </message>
     <message>
         <source>My Computer</source>
-        <translation>Mein Computer</translation>
+        <translation>Il mio computer</translation>
     </message>
     <message>
         <source>Computer</source>
@@ -1137,95 +1153,67 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <name>QFontDatabase</name>
     <message>
         <source>Normal</source>
-        <translation>Normal</translation>
+        <translation>Normale</translation>
     </message>
     <message>
         <source>Bold</source>
-        <translation>Fett</translation>
+        <translation>Grassetto</translation>
     </message>
     <message>
         <source>Demi Bold</source>
-        <translation>Halbfett</translation>
+        <translation>Semigrassetto</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation>Schwarz</translation>
+        <translation>Marcato</translation>
     </message>
     <message>
         <source>Demi</source>
-        <extracomment>The word for &quot;Demi&quot; as in &quot;Demi Bold&quot; used as a pattern for string searches</extracomment>
-        <translation>Halb</translation>
+        <translation>Semi</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>Leicht</translation>
-    </message>
-    <message>
-        <source>Normal</source>
-        <comment>The Normal or Regular font weight</comment>
-        <translation>Normal</translation>
-    </message>
-    <message>
-        <source>Medium</source>
-        <comment>The Medium font weight</comment>
-        <translation>Mittel</translation>
-    </message>
-    <message>
-        <source>Thin</source>
-        <translation>Dünn</translation>
-    </message>
-    <message>
-        <source>Extra Light</source>
-        <translation>Sehr dünn</translation>
-    </message>
-    <message>
-        <source>Extra Bold</source>
-        <translation>Sehr fett</translation>
-    </message>
-    <message>
-        <source>Extra</source>
-        <extracomment>The word for &quot;Extra&quot; as in &quot;Extra Bold, Extra Thin&quot; used as a pattern for string searches</extracomment>
-        <translation>Sehr</translation>
+        <translation>Leggero</translation>
     </message>
     <message>
         <source>Italic</source>
-        <translation>Kursiv</translation>
+        <translation>Corsivo</translation>
     </message>
     <message>
         <source>Oblique</source>
-        <translation>Schräggestellt</translation>
+        <translation>Obliquo</translation>
     </message>
     <message>
         <source>Any</source>
-        <translation>Alle</translation>
+        <translation>Qualsiasi</translation>
     </message>
     <message>
         <source>Latin</source>
-        <translation>Lateinisch</translation>
+        <translation>Latino</translation>
     </message>
     <message>
         <source>Greek</source>
-        <translation>Griechisch</translation>
+        <translation>Greco</translation>
     </message>
     <message>
         <source>Cyrillic</source>
-        <translation>Kyrillisch</translation>
+        <translation>Cirillico</translation>
     </message>
     <message>
         <source>Armenian</source>
-        <translation>Armenisch</translation>
+        <translation>Armeno</translation>
     </message>
     <message>
         <source>Hebrew</source>
-        <translation>Hebräisch</translation>
+        <translation>Ebraico</translation>
     </message>
     <message>
         <source>Arabic</source>
-        <translation>Arabisch</translation>
+        <translation>Arabo</translation>
     </message>
     <message>
         <source>Syriac</source>
-        <translation>Syrisch</translation>
+        <translation>Siriaco</translation>
     </message>
     <message>
         <source>Thaana</source>
@@ -1237,7 +1225,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Bengali</source>
-        <translation>Bengalisch</translation>
+        <translation>Bengalese</translation>
     </message>
     <message>
         <source>Gurmukhi</source>
@@ -1253,7 +1241,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Tamil</source>
-        <translation>Tamilisch</translation>
+        <translation>Tamil</translation>
     </message>
     <message>
         <source>Telugu</source>
@@ -1269,27 +1257,27 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Sinhala</source>
-        <translation>Sinhala</translation>
+        <translation>Singalese</translation>
     </message>
     <message>
         <source>Thai</source>
-        <translation>Thailändisch</translation>
+        <translation>Thailandese</translation>
     </message>
     <message>
         <source>Lao</source>
-        <translation>Laotisch</translation>
+        <translation>Lao</translation>
     </message>
     <message>
         <source>Tibetan</source>
-        <translation>Tibetisch</translation>
+        <translation>Tibetano</translation>
     </message>
     <message>
         <source>Myanmar</source>
-        <translation>Myanmar</translation>
+        <translation>Birmano</translation>
     </message>
     <message>
         <source>Georgian</source>
-        <translation>Georgisch</translation>
+        <translation>Georgiano</translation>
     </message>
     <message>
         <source>Khmer</source>
@@ -1297,35 +1285,35 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Simplified Chinese</source>
-        <translation>Chinesisch (Kurzzeichen)</translation>
+        <translation>Cinese semplificato</translation>
     </message>
     <message>
         <source>Traditional Chinese</source>
-        <translation>Chinesisch (Langzeichen)</translation>
+        <translation>Cinese tradizionale</translation>
     </message>
     <message>
         <source>Japanese</source>
-        <translation>Japanisch</translation>
+        <translation>Giapponese</translation>
     </message>
     <message>
         <source>Korean</source>
-        <translation>Koreanisch</translation>
+        <translation>Coreano</translation>
     </message>
     <message>
         <source>Vietnamese</source>
-        <translation>Vietnamesisch</translation>
+        <translation>Vietnamita</translation>
     </message>
     <message>
         <source>Symbol</source>
-        <translation>Symbol</translation>
+        <translation>Simbolo</translation>
     </message>
     <message>
         <source>Ogham</source>
-        <translation>Ogham</translation>
+        <translation>Ogamico</translation>
     </message>
     <message>
         <source>Runic</source>
-        <translation>Runen</translation>
+        <translation>Runico</translation>
     </message>
     <message>
         <source>N&apos;Ko</source>
@@ -1336,128 +1324,132 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <name>QFontDialog</name>
     <message>
         <source>Select Font</source>
-        <translation>Schriftart auswählen</translation>
+        <translation>Seleziona carattere</translation>
     </message>
     <message>
         <source>&amp;Font</source>
-        <translation>&amp;Schriftart</translation>
+        <translation>&amp;Carattere</translation>
     </message>
     <message>
         <source>Font st&amp;yle</source>
-        <translation>Schrifts&amp;til</translation>
+        <translation>St&amp;ile del carattere</translation>
     </message>
     <message>
         <source>&amp;Size</source>
-        <translation>&amp;Größe</translation>
+        <translation>Dimen&amp;sione</translation>
     </message>
     <message>
         <source>Effects</source>
-        <translation>Effekte</translation>
+        <translation>Effetti</translation>
     </message>
     <message>
         <source>Stri&amp;keout</source>
-        <translation>Durch&amp;gestrichen</translation>
+        <translation>Ba&amp;rrato</translation>
     </message>
     <message>
         <source>&amp;Underline</source>
-        <translation>&amp;Unterstrichen</translation>
+        <translation>Sottolineat&amp;o</translation>
     </message>
     <message>
         <source>Sample</source>
-        <translation>Beispiel</translation>
+        <translation>Esempio</translation>
     </message>
     <message>
         <source>Wr&amp;iting System</source>
-        <translation>&amp;Schriftsystem</translation>
+        <translation>Sistema di scr&amp;ittura</translation>
     </message>
 </context>
 <context>
     <name>QFtp</name>
     <message>
         <source>Not connected</source>
-        <translation>Keine Verbindung</translation>
+        <translation>Non connesso</translation>
     </message>
     <message>
         <source>Host %1 not found</source>
-        <translation>Rechner %1 konnte nicht gefunden werden</translation>
+        <translation>Host %1 non trovato</translation>
     </message>
     <message>
         <source>Connection refused to host %1</source>
-        <translation>Verbindung mit %1 verweigert</translation>
+        <translation>Connessione all&apos;host %1 rifiutata</translation>
     </message>
     <message>
         <source>Connection timed out to host %1</source>
-        <translation>Das Zeitlimit für die Verbindung zu &apos;%1&apos; wurde überschritten</translation>
+        <translation>Connessione all&apos;host %1 scaduta</translation>
     </message>
     <message>
         <source>Connected to host %1</source>
-        <translation>Verbunden mit Rechner %1</translation>
+        <translation>Connesso all&apos;host %1</translation>
+    </message>
+    <message>
+        <source>Connection refused for data connection</source>
+        <translation>Connessione rifiutata per trasferimento dati</translation>
     </message>
     <message>
         <source>Data Connection refused</source>
-        <translation>Datenverbindung verweigert</translation>
+        <translation>Connessione dati rifiutata</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
     <message>
         <source>Connecting to host failed:
 %1</source>
-        <translation>Verbindung mit Rechner ist fehlgeschlagen:
+        <translation>Connessione all&apos;host non riuscita:
 %1</translation>
     </message>
     <message>
         <source>Login failed:
 %1</source>
-        <translation>Anmeldung ist fehlgeschlagen:
+        <translation>Login non riuscito:
 %1</translation>
     </message>
     <message>
         <source>Listing directory failed:
 %1</source>
-        <translation>Der Inhalt des Verzeichnisses konnte nicht angezeigt werden:
+        <translation>Recupero del contenuto della cartella non riuscito:
 %1</translation>
     </message>
     <message>
         <source>Changing directory failed:
 %1</source>
-        <translation>Das Ändern des Verzeichnisses schlug fehl:
+        <translation>Cambio della cartella non riuscito:
 %1</translation>
     </message>
     <message>
         <source>Downloading file failed:
 %1</source>
-        <translation>Das Herunterladen der Datei schlug fehl:
+        <translation>Scaricamento del file non riuscito:
 %1</translation>
     </message>
     <message>
         <source>Uploading file failed:
 %1</source>
-        <translation>Das Hochladen der Datei schlug fehl:
+        <translation>Caricamento del file non riuscito:
 %1</translation>
     </message>
     <message>
         <source>Removing file failed:
 %1</source>
-        <translation>Das Löschen der Datei schlug fehl:
+        <translation>Eliminazione del file non riuscita:
 %1</translation>
     </message>
     <message>
         <source>Creating directory failed:
 %1</source>
-        <translation>Das Erstellen des Verzeichnisses schlug fehl:
+        <translation>Creazione della cartella non riuscita:
 %1</translation>
     </message>
     <message>
         <source>Removing directory failed:
 %1</source>
-        <translation>Das Löschen des Verzeichnisses schlug fehl:
+        <translation>Eliminazione della cartella non riuscita:
 %1</translation>
     </message>
     <message>
         <source>Connection closed</source>
-        <translation>Verbindung beendet</translation>
+        <translation>Connessione interrotta</translation>
     </message>
 </context>
 <context>
@@ -1468,19 +1460,19 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>&amp;Save</source>
-        <translation>S&amp;peichern</translation>
+        <translation>&amp;Salva</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation>&amp;Abbrechen</translation>
+        <translation>&amp;Annulla</translation>
     </message>
     <message>
         <source>&amp;Close</source>
-        <translation>Schl&amp;ießen</translation>
+        <translation>&amp;Chiudi</translation>
     </message>
     <message>
         <source>Close without Saving</source>
-        <translation>Schließen ohne zu Speichern</translation>
+        <translation>Chiudi senza salvare</translation>
     </message>
 </context>
 <context>
@@ -1495,349 +1487,303 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <name>QHostInfo</name>
     <message>
         <source>No host name given</source>
-        <translation>Es wurde kein Hostname angegeben</translation>
+        <translation>Nessun nome host inserito</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
 </context>
 <context>
     <name>QHostInfoAgent</name>
     <message>
         <source>No host name given</source>
-        <translation>Es wurde kein Hostname angegeben</translation>
+        <translation>Nessun nome host inserito</translation>
     </message>
     <message>
         <source>Invalid hostname</source>
-        <translation>Ungültiger Hostname</translation>
+        <translation>Nome dell&apos;host non valido</translation>
     </message>
     <message>
         <source>Unknown address type</source>
-        <translation>Unbekannter Adresstyp</translation>
+        <translation>Tipo di indirizzo sconosciuto</translation>
     </message>
     <message>
         <source>Host not found</source>
-        <translation>Host konnte nicht gefunden werden</translation>
+        <translation>Host non trovato</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
     <message>
         <source>Unknown error (%1)</source>
-        <translation>Unbekannter Fehler (%1)</translation>
+        <translation>Errore sconosciuto (%1)</translation>
     </message>
 </context>
 <context>
     <name>QHttp</name>
     <message>
         <source>Host %1 not found</source>
-        <translation>Host %1 konnte nicht gefunden werden</translation>
+        <translation>Host %1 non trovato</translation>
     </message>
     <message>
         <source>Connection refused</source>
-        <translation>Verbindung verweigert</translation>
+        <translation>Connessione rifiutata</translation>
     </message>
     <message>
         <source>Connection closed</source>
-        <translation>Verbindung beendet</translation>
+        <translation>Connessione interrotta</translation>
     </message>
     <message>
         <source>Proxy requires authentication</source>
-        <translation>Proxy-Authentifizierung erforderlich</translation>
+        <translation>Il proxy richiede autenticazione</translation>
     </message>
     <message>
         <source>Host requires authentication</source>
-        <translation>Der Host verlangt eine Authentifizierung</translation>
+        <translation>L&apos;host richiede autenticazione</translation>
     </message>
     <message>
         <source>Data corrupted</source>
-        <translation>Die Daten sind verfälscht</translation>
+        <translation>Dati corrotti</translation>
     </message>
     <message>
         <source>Unknown protocol specified</source>
-        <translation>Unbekanntes Protokoll angegeben</translation>
+        <translation>Protocollo sconosciuto specificato</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
-        <translation>Im Ablauf des SSL-Protokolls ist ein Fehler aufgetreten.</translation>
+        <translation>Handshake SSL non riuscito</translation>
     </message>
 </context>
 <context>
     <name>QHttpSocketEngine</name>
     <message>
         <source>Did not receive HTTP response from proxy</source>
-        <translation>Keine HTTP-Antwort vom Proxy-Server</translation>
+        <translation>Non è stata ricevuta una risposta HTTP dal proxy</translation>
     </message>
     <message>
         <source>Error parsing authentication request from proxy</source>
-        <translation>Fehler beim Auswerten der Authentifizierungsanforderung des Proxy-Servers</translation>
+        <translation>Errore analizzando la richiesta di autenticazione ricevuta dal proxy</translation>
     </message>
     <message>
         <source>Authentication required</source>
-        <translation>Authentifizierung erforderlich</translation>
+        <translation>Autenticazione richiesta</translation>
     </message>
     <message>
         <source>Proxy denied connection</source>
-        <translation>Der Proxy-Server hat den Aufbau einer Verbindung verweigert</translation>
+        <translation>Il proxy ha rifiutato la connessione</translation>
     </message>
     <message>
         <source>Error communicating with HTTP proxy</source>
-        <translation>Fehler bei der Kommunikation mit dem Proxy-Server</translation>
+        <translation>Errore di comunicazione con il proxy HTTP</translation>
     </message>
     <message>
         <source>Proxy server not found</source>
-        <translation>Es konnte kein Proxy-Server gefunden werden</translation>
+        <translation>Server proxy non trovato</translation>
     </message>
     <message>
         <source>Proxy connection refused</source>
-        <translation>Der Proxy-Server hat den Aufbau einer Verbindung verweigert</translation>
+        <translation>Connessione al proxy rifiutata</translation>
     </message>
     <message>
         <source>Proxy server connection timed out</source>
-        <translation>Bei der Verbindung mit dem Proxy-Server wurde ein Zeitlimit überschritten</translation>
+        <translation>La connessione al server proxy è scaduta</translation>
     </message>
     <message>
         <source>Proxy connection closed prematurely</source>
-        <translation>Der Proxy-Server hat die Verbindung vorzeitig beendet</translation>
+        <translation>La connessione al proxy si è interrotta prematuramente</translation>
     </message>
 </context>
 <context>
     <name>QIBaseDriver</name>
     <message>
         <source>Error opening database</source>
-        <translation>Die Datenbankverbindung konnte nicht geöffnet werden</translation>
+        <translation>Errore di apertura del database</translation>
     </message>
     <message>
         <source>Could not start transaction</source>
-        <translation>Es konnte keine Transaktion gestartet werden</translation>
+        <translation>Impossibile avviare la transazione</translation>
     </message>
     <message>
         <source>Unable to commit transaction</source>
-        <translation>Die Transaktion konnte nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Unable to rollback transaction</source>
-        <translation>Die Transaktion konnte nicht rückgängig gemacht werden (Operation &apos;rollback&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile annullare la transazione</translation>
     </message>
 </context>
 <context>
     <name>QIBaseResult</name>
     <message>
         <source>Unable to create BLOB</source>
-        <translation>Es konnte kein BLOB erzeugt werden</translation>
+        <translation>Impossibile creare il BLOB</translation>
     </message>
     <message>
         <source>Unable to write BLOB</source>
-        <translation>Der BLOB konnte nicht geschrieben werden</translation>
+        <translation>Impossibile scrivere il BLOB</translation>
     </message>
     <message>
         <source>Unable to open BLOB</source>
-        <translation>Der BLOB konnte nicht geöffnet werden</translation>
+        <translation>Impossibile aprire il BLOB</translation>
     </message>
     <message>
         <source>Unable to read BLOB</source>
-        <translation>Der BLOB konnte nicht gelesen werden</translation>
+        <translation>Impossibile leggere il BLOB</translation>
     </message>
     <message>
         <source>Could not find array</source>
-        <translation>Das Feld konnte nicht gefunden werden</translation>
+        <translation>Array non trovato</translation>
     </message>
     <message>
         <source>Could not get array data</source>
-        <translation>Die Daten des Feldes konnten nicht gelesen werden</translation>
+        <translation>Impossibile ottenere i dati dell&apos;array</translation>
     </message>
     <message>
         <source>Could not get query info</source>
-        <translation>Die erforderlichen Informationen zur Abfrage sind nicht verfügbar</translation>
+        <translation>Impossibile ottenere le informazione della query</translation>
     </message>
     <message>
         <source>Could not start transaction</source>
-        <translation>Es konnte keine Transaktion gestartet werden</translation>
+        <translation>Impossibile avviare la transazione</translation>
     </message>
     <message>
         <source>Unable to commit transaction</source>
-        <translation>Die Transaktion konnte nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Could not allocate statement</source>
-        <translation>Die Allokation des Befehls ist fehlgeschlagen</translation>
+        <translation>Impossibile allocare il comando</translation>
     </message>
     <message>
         <source>Could not prepare statement</source>
-        <translation>Der Befehl konnte nicht initialisiert werden</translation>
+        <translation>Impossibile preparare il comando</translation>
     </message>
     <message>
         <source>Could not describe input statement</source>
-        <translation>Es konnte keine Beschreibung des Eingabebefehls erhalten werden</translation>
+        <translation>Impossibile descrivere il comando di input</translation>
     </message>
     <message>
         <source>Could not describe statement</source>
-        <translation>Es konnte keine Beschreibung des Befehls erhalten werden</translation>
+        <translation>Impossibile descrivere il comando</translation>
     </message>
     <message>
         <source>Unable to close statement</source>
-        <translation>Der Befehl konnte nicht geschlossen werden</translation>
+        <translation>Impossibile chiudere il comando</translation>
     </message>
     <message>
         <source>Unable to execute query</source>
-        <translation>Der Befehl konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire la query</translation>
     </message>
     <message>
         <source>Could not fetch next item</source>
-        <translation>Das nächste Element konnte nicht abgeholt werden</translation>
+        <translation>Impossibile recuperare l&apos;elemento successivo</translation>
     </message>
     <message>
         <source>Could not get statement info</source>
-        <translation>Es ist keine Information zum Befehl verfügbar</translation>
+        <translation>Impossibile ottenere le informazione del comando</translation>
     </message>
 </context>
 <context>
     <name>QIODevice</name>
     <message>
         <source>Permission denied</source>
-        <translation>Zugriff verweigert</translation>
+        <translation>Permesso negato</translation>
     </message>
     <message>
         <source>Too many open files</source>
-        <translation>Zu viele Dateien geöffnet</translation>
+        <translation>Troppi file aperti</translation>
     </message>
     <message>
         <source>No such file or directory</source>
-        <translation>Die Datei oder das Verzeichnis konnte nicht gefunden werden</translation>
+        <translation>File o cartella non trovati</translation>
     </message>
     <message>
         <source>No space left on device</source>
-        <translation>Kein freier Speicherplatz auf dem Gerät vorhanden</translation>
+        <translation>Spazio esaurito sul dispositivo</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
     <message>
         <source>file to open is a directory</source>
-        <translation>die zu öffnende Datei ist ein Verzeichnis</translation>
-    </message>
-</context>
-<context>
-    <name>QImageReader</name>
-    <message>
-        <source>Invalid device</source>
-        <translation>Ungültiges Gerät</translation>
-    </message>
-    <message>
-        <source>File not found</source>
-        <translation>Datei nicht gefunden</translation>
-    </message>
-    <message>
-        <source>Unsupported image format</source>
-        <translation>Dieser Typ von Bilddaten wird nicht unterstützt</translation>
-    </message>
-    <message>
-        <source>Unable to read image data</source>
-        <translation>Die Bilddaten konnten nicht gelesen werden</translation>
-    </message>
-    <message>
-        <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
-    </message>
-</context>
-<context>
-    <name>QImageWriter</name>
-    <message>
-        <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
-    </message>
-    <message>
-        <source>Device is not set</source>
-        <translation>Kein Ausgabegerät</translation>
-    </message>
-    <message>
-        <source>Device not writable</source>
-        <translation>Kann nicht auf Ausgabegerät schreiben</translation>
-    </message>
-    <message>
-        <source>Unsupported image format</source>
-        <translation>Dieser Typ von Bilddaten wird nicht unterstützt</translation>
+        <translation>il file da aprire è una cartella</translation>
     </message>
 </context>
 <context>
     <name>QInputDialog</name>
     <message>
         <source>Enter a value:</source>
-        <translation>Geben Sie einen Wert ein:</translation>
+        <translation>Inserisci un valore:</translation>
     </message>
 </context>
 <context>
     <name>QJsonParseError</name>
     <message>
         <source>no error occurred</source>
-        <translation>kein Fehler</translation>
+        <translation>nessun errore rilevato</translation>
     </message>
     <message>
         <source>unterminated object</source>
-        <translation>Nicht abgeschlossenes Objekt</translation>
+        <translation>oggetto non terminato</translation>
     </message>
     <message>
         <source>missing name separator</source>
-        <translation>Trennzeichen für Namen fehlt</translation>
+        <translation>separatore del nome mancante</translation>
     </message>
     <message>
         <source>unterminated array</source>
-        <translation>Nicht abgeschlossenes Feld</translation>
+        <translation>array non terminato</translation>
     </message>
     <message>
         <source>missing value separator</source>
-        <translation>Trennzeichen für Wert fehlt</translation>
+        <translation>separatore del valore mancante</translation>
     </message>
     <message>
         <source>illegal value</source>
-        <translation>Ungültiger Wert</translation>
+        <translation>valore non valido</translation>
     </message>
     <message>
         <source>invalid termination by number</source>
         <translatorcomment>?</translatorcomment>
-        <translation>Ungültiger Abschluß durch Zahl</translation>
+        <translation>terminazione con un numero non valida</translation>
     </message>
     <message>
         <source>illegal number</source>
-        <translation>Ungültige Zahl</translation>
+        <translation>numero non valido</translation>
     </message>
     <message>
         <source>invalid escape sequence</source>
-        <translation>Ungültige Escape-Sequenz</translation>
+        <translation>sequenza di escape non valida</translation>
     </message>
     <message>
         <source>invalid UTF8 string</source>
-        <translation>Ungültige UTF8-Zeichenkette</translation>
+        <translation>stringa UTF8 non valida</translation>
     </message>
     <message>
         <source>unterminated string</source>
-        <translation>Nicht abgeschlossene Zeichenkette</translation>
+        <translation>stringa non terminata</translation>
     </message>
     <message>
         <source>object is missing after a comma</source>
-        <translation>Objekt fehlt nach Komma </translation>
+        <translation>oggetto mancante dopo una virgola</translation>
     </message>
     <message>
         <source>too deeply nested document</source>
-        <translation>Das Dokument ist zu tief geschachtelt</translation>
+        <translation>documento annidato troppo profondamente</translation>
     </message>
     <message>
         <source>too large document</source>
-        <translation>zu großes Dokument</translation>
-    </message>
-    <message>
-        <source>garbage at the end of the document</source>
-        <translation>Überzähliger Inhalt nach Ende des Dokuments</translation>
+        <translation>documento troppo grande</translation>
     </message>
 </context>
 <context>
     <name>QKeySequenceEdit</name>
     <message>
         <source>Press shortcut</source>
-        <translation>Geben Sie ein Tastenkürzel ein</translation>
+        <translation>Premi scorciatoia</translation>
     </message>
     <message>
         <source>%1, ...</source>
@@ -1849,269 +1795,273 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <name>QLibrary</name>
     <message>
         <source>&apos;%1&apos; is not an ELF object (%2)</source>
-        <translation>&apos;%1&apos; ist keine ELF-Objektdatei (%2)</translation>
+        <translation>&apos;%1&apos; non è un oggetto ELF (%2)</translation>
     </message>
     <message>
         <source>&apos;%1&apos; is not an ELF object</source>
-        <translation>&apos;%1&apos; ist keine ELF-Objektdatei</translation>
+        <translation>&apos;%1&apos; non è un oggetto ELF</translation>
     </message>
     <message>
         <source>&apos;%1&apos; is an invalid ELF object (%2)</source>
-        <translation>&apos;%1&apos; ist keine gültige ELF-Objektdatei (%2)</translation>
+        <translation>&apos;%1&apos; è un oggetto ELF non valido (%2)</translation>
     </message>
     <message>
         <source>Plugin verification data mismatch in &apos;%1&apos;</source>
-        <translation>Die Prüfdaten des Plugins &apos;%1&apos; stimmen nicht überein</translation>
+        <translation>Dati di verifica del plugin non corrispondenti in &apos;%1&apos;</translation>
     </message>
     <message>
         <source>The shared library was not found.</source>
-        <translation>Die dynamische Bibliothek konnte nicht gefunden werden.</translation>
+        <translation>La libreria dinamica non è stata trovata.</translation>
     </message>
     <message>
         <source>The file &apos;%1&apos; is not a valid Qt plugin.</source>
-        <translation>Die Datei &apos;%1&apos; ist kein gültiges Qt-Plugin.</translation>
+        <translation>Il file &apos;%1&apos; non è un plugin Qt valido.</translation>
     </message>
     <message>
         <source>The plugin &apos;%1&apos; uses incompatible Qt library. (%2.%3.%4) [%5]</source>
-        <translation>Das Plugin &apos;%1&apos; verwendet eine inkompatible Qt-Bibliothek. (%2.%3.%4) [%5]</translation>
+        <translation>Il plugin &apos;%1&apos; usa una versione di Qt incompatibile (%2.%3.%4) [%5]</translation>
     </message>
     <message>
         <source>The plugin &apos;%1&apos; uses incompatible Qt library. (Cannot mix debug and release libraries.)</source>
-        <translation>Das Plugin &apos;%1&apos; verwendet eine inkompatible Qt-Bibliothek. (Im Debug-Modus erstellte und im Release-Modus erstellte Bibliotheken können nicht zusammen verwendet werden.)</translation>
+        <translation>Il plugin &apos;%1&apos; usa una versione di Qt incompatibile (non si possono usare librerie di debug e di release assieme)</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
     <message>
         <source>Cannot load library %1: %2</source>
-        <translation>Die Bibliothek %1 kann nicht geladen werden: %2</translation>
+        <translation>Impossibile caricare la libreria %1: %2</translation>
     </message>
     <message>
         <source>Cannot unload library %1: %2</source>
-        <translation>Die Bibliothek %1 kann nicht entladen werden: %2</translation>
+        <translation>Impossibile rilasciare la libreria %1: %2</translation>
     </message>
     <message>
         <source>Cannot resolve symbol &quot;%1&quot; in %2: %3</source>
-        <translation>Das Symbol &quot;%1&quot; kann in %2 nicht aufgelöst werden: %3</translation>
+        <translation>Impossibile risolvere il simbolo &quot;%1&quot; in %2: %3</translation>
     </message>
     <message>
         <source>&apos;%1&apos; is not a valid Mach-O binary (%2)</source>
-        <translation>&apos;%1&apos; ist keine gültige ausführbare Datei des Typs Mach-O (%2)</translation>
+        <translation>&apos;%1&apos; è un binario Mach-O non valido (%2)</translation>
     </message>
     <message>
         <source>file is corrupt</source>
-        <translation>Datei beschädigt</translation>
+        <translation>il file è danneggiato</translation>
     </message>
     <message>
         <source>file too small</source>
-        <translation>Datei zu klein</translation>
+        <translation>il file è troppo piccolo</translation>
     </message>
     <message>
         <source>no suitable architecture in fat binary</source>
-        <translation>Keine passende Architektur in ausführbarer Datei (fat binary)</translation>
+        <translation>nessuna architettura appropriata nel fat binary</translation>
     </message>
     <message>
         <source>invalid magic %1</source>
-        <translation>Ungültiger Magic-Code: %1</translation>
+        <translation>magic %1 non valido</translation>
     </message>
     <message>
         <source>wrong architecture</source>
-        <translation>Falsche Architektur</translation>
+        <translation>architettura errata</translation>
     </message>
     <message>
         <source>not a dynamic library</source>
-        <translation>Keine dynamische Bibliothek</translation>
+        <translation>non è una libreria dinamica</translation>
     </message>
     <message>
         <source>&apos;%1&apos; is not a Qt plugin</source>
-        <translation>&apos;%1&apos; ist kein Qt-Plugin</translation>
+        <translation>&apos;%1&apos; non è un plugin Qt</translation>
     </message>
 </context>
 <context>
     <name>QLineEdit</name>
     <message>
         <source>&amp;Undo</source>
-        <translation>&amp;Rückgängig</translation>
+        <translation>Ann&amp;ulla</translation>
     </message>
     <message>
         <source>&amp;Redo</source>
-        <translation>Wieder&amp;herstellen</translation>
+        <translation>&amp;Rifai</translation>
     </message>
     <message>
         <source>Cu&amp;t</source>
-        <translation>&amp;Ausschneiden</translation>
+        <translation>&amp;Taglia</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
-        <translation>&amp;Kopieren</translation>
+        <translation>&amp;Copia</translation>
     </message>
     <message>
         <source>&amp;Paste</source>
-        <translation>Einf&amp;ügen</translation>
+        <translation>&amp;Incolla</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Löschen</translation>
+        <translation>Elimina</translation>
     </message>
     <message>
         <source>Select All</source>
-        <translation>Alles auswählen</translation>
+        <translation>Seleziona tutto</translation>
     </message>
 </context>
 <context>
     <name>QLocalServer</name>
     <message>
         <source>%1: Name error</source>
-        <translation>%1: Fehlerhafter Name</translation>
+        <translation>%1: errore nel nome</translation>
     </message>
     <message>
         <source>%1: Permission denied</source>
-        <translation>%1: Zugriff verweigert</translation>
+        <translation>%1: permesso negato</translation>
     </message>
     <message>
         <source>%1: Address in use</source>
-        <translation>%1: Die Adresse wird bereits verwendet</translation>
+        <translation>%1: indirizzo già in uso</translation>
     </message>
     <message>
         <source>%1: Unknown error %2</source>
-        <translation>%1: Unbekannter Fehler %2</translation>
+        <translation>%1: errore sconosciuto %2</translation>
     </message>
 </context>
 <context>
     <name>QLocalSocket</name>
     <message>
         <source>%1: Connection refused</source>
-        <translation>%1: Der Verbindungsaufbau wurde verweigert</translation>
+        <translation>%1: connessione rifiutata</translation>
     </message>
     <message>
         <source>%1: Remote closed</source>
-        <translation>%1: Die Verbindung wurde von der Gegenseite geschlossen</translation>
+        <translation>%1: connessione interrotta</translation>
     </message>
     <message>
         <source>%1: Invalid name</source>
-        <translation>%1: Ungültiger Name</translation>
+        <translation>%1: nome non valido</translation>
     </message>
     <message>
         <source>%1: Socket access error</source>
-        <translation>%1: Fehler beim Zugriff auf den Socket</translation>
+        <translation>%1: errore di accesso al socket</translation>
     </message>
     <message>
         <source>%1: Socket resource error</source>
-        <translation>%1: Socket-Fehler (Ressourcenproblem)</translation>
+        <translation>%1: errore di risorsa del socket</translation>
     </message>
     <message>
         <source>%1: Socket operation timed out</source>
-        <translation>%1: Zeitüberschreitung bei Socket-Operation</translation>
+        <translation>%1: operazione sul socket scaduta</translation>
     </message>
     <message>
         <source>%1: Datagram too large</source>
-        <translation>%1: Das Datagramm ist zu groß</translation>
+        <translation>%1: pacchetto troppo grande</translation>
     </message>
     <message>
         <source>%1: Connection error</source>
-        <translation>%1: Verbindungsfehler</translation>
+        <translation>%1: errore di connessione</translation>
     </message>
     <message>
         <source>%1: The socket operation is not supported</source>
-        <translation>%1: Diese Socket-Operation wird nicht unterstützt</translation>
+        <translation>%1: operazione sul socket non supportata</translation>
     </message>
     <message>
         <source>%1: Operation not permitted when socket is in this state</source>
-        <translation>%1: Diese Operation ist in diesem Socket-Status nicht zulässig</translation>
+        <translation>%1: operazione non permessa quando il socket è in questo stato</translation>
     </message>
     <message>
         <source>%1: Unknown error</source>
-        <translation>%1: Unbekannter Fehler</translation>
+        <translation>%1: errore sconosciuto</translation>
     </message>
     <message>
         <source>%1: Unknown error %2</source>
-        <translation>%1: Unbekannter Fehler %2</translation>
+        <translation>%1: errore sconosciuto %2</translation>
     </message>
     <message>
         <source>%1: Access denied</source>
-        <translation>%1: Zugriff verweigert</translation>
+        <translation>%1: accesso negato</translation>
     </message>
     <message>
         <source>Trying to connect while connection is in progress</source>
-        <translation>Versuch der Verbindungsaufnahme während bereits eine andere Verbindungsaufnahme läuft</translation>
+        <translation>Tentativo di connessione mentre una connessione è ancora in corso</translation>
     </message>
 </context>
 <context>
     <name>QMYSQLDriver</name>
     <message>
+        <source>Unable to open database &apos;</source>
+        <translation>Impossibile aprire il database &apos;</translation>
+    </message>
+    <message>
         <source>Unable to open database &apos;%1&apos;</source>
-        <translation>Die Datenbank &apos;%1&apos; kann nicht geöffnet werden</translation>
+        <translation>Impossibile aprire il database &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Unable to connect</source>
-        <translation>Es kann keine Verbindung aufgebaut werden</translation>
+        <translation>Connessione non riuscita</translation>
     </message>
     <message>
         <source>Unable to begin transaction</source>
-        <translation>Es kann keine Transaktion gestartet werden</translation>
+        <translation>Impossibile iniziare la transazione</translation>
     </message>
     <message>
         <source>Unable to commit transaction</source>
-        <translation>Die Transaktion kann nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Unable to rollback transaction</source>
-        <translation>Die Transaktion kann nicht rückgängig gemacht werden (Operation &apos;rollback&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile annullare la transazione</translation>
     </message>
 </context>
 <context>
     <name>QMYSQLResult</name>
     <message>
         <source>Unable to fetch data</source>
-        <translation>Es konnten keine Daten abgeholt werden</translation>
+        <translation>Impossibile ottenere i dati</translation>
     </message>
     <message>
         <source>Unable to execute query</source>
-        <translation>Die Abfrage konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire la query</translation>
     </message>
     <message>
         <source>Unable to store result</source>
-        <translation>Das Ergebnis konnte nicht gespeichert werden</translation>
+        <translation>Impossibile memorizzare il risultato</translation>
     </message>
     <message>
         <source>Unable to execute next query</source>
-        <translation>Die folgende Abfrage kann nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire la prossima query</translation>
     </message>
     <message>
         <source>Unable to store next result</source>
-        <translation>Das folgende Ergebnis kann nicht gespeichert werden</translation>
+        <translation>Impossibile memorizzare il prossimo risultato</translation>
     </message>
     <message>
         <source>Unable to prepare statement</source>
-        <translation>Der Befehl konnte nicht initialisiert werden</translation>
+        <translation>Impossibile preparare il comando</translation>
     </message>
     <message>
         <source>Unable to reset statement</source>
-        <translation>Der Befehl konnte nicht zurückgesetzt werden</translation>
+        <translation>Impossibile azzerare il comando</translation>
     </message>
     <message>
         <source>Unable to bind value</source>
-        <translation>Der Wert konnte nicht gebunden werden</translation>
+        <translation>Impossibile effettuare il bind del valore</translation>
     </message>
     <message>
         <source>Unable to execute statement</source>
-        <translation>Der Befehl konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire il comando</translation>
     </message>
     <message>
         <source>Unable to bind outvalues</source>
-        <translation>Die Ausgabewerte konnten nicht gebunden werden</translation>
+        <translation>Impossibile agganciare i valore di uscita</translation>
     </message>
     <message>
         <source>Unable to store statement results</source>
-        <translation>Die Ergebnisse des Befehls konnten nicht gespeichert werden</translation>
+        <translation>Impossibile memorizzare i risultati del comando</translation>
     </message>
 </context>
 <context>
     <name>QMdiArea</name>
     <message>
         <source>(Untitled)</source>
-        <translation>(Unbenannt)</translation>
+        <translation>(Senza titolo)</translation>
     </message>
 </context>
 <context>
@@ -2126,78 +2076,78 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Minimize</source>
-        <translation>Minimieren</translation>
+        <translation>Minimizza</translation>
     </message>
     <message>
         <source>Maximize</source>
-        <translation>Maximieren</translation>
+        <translation>Massimizza</translation>
     </message>
     <message>
         <source>Unshade</source>
-        <translation>Herabrollen</translation>
+        <translation>Srotola</translation>
     </message>
     <message>
         <source>Shade</source>
-        <translation>Aufrollen</translation>
+        <translation>Arrotola</translation>
     </message>
     <message>
         <source>Restore Down</source>
-        <translation>Wiederherstellen</translation>
+        <translation>Ripristina in basso</translation>
     </message>
     <message>
         <source>Restore</source>
-        <translation>Wiederherstellen</translation>
+        <translation>Ripristina</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Schließen</translation>
+        <translation>Chiudi</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Aiuto</translation>
     </message>
     <message>
         <source>Menu</source>
-        <translation>Menü</translation>
+        <translation>Menu</translation>
     </message>
     <message>
         <source>&amp;Restore</source>
-        <translation>Wieder&amp;herstellen</translation>
+        <translation>&amp;Ripristina</translation>
     </message>
     <message>
         <source>&amp;Move</source>
-        <translation>Ver&amp;schieben</translation>
+        <translation>&amp;Sposta</translation>
     </message>
     <message>
         <source>&amp;Size</source>
-        <translation>&amp;Größe</translation>
+        <translation>Dimen&amp;sione</translation>
     </message>
     <message>
         <source>Mi&amp;nimize</source>
-        <translation>M&amp;inimieren</translation>
+        <translation>Mi&amp;nimizza</translation>
     </message>
     <message>
         <source>Ma&amp;ximize</source>
-        <translation>Ma&amp;ximieren</translation>
+        <translation>Ma&amp;ssimizza</translation>
     </message>
     <message>
         <source>Stay on &amp;Top</source>
-        <translation>Im &amp;Vordergrund bleiben</translation>
+        <translation>Sempre in &amp;primo piano</translation>
     </message>
     <message>
         <source>&amp;Close</source>
-        <translation>Schl&amp;ießen</translation>
+        <translation>&amp;Chiudi</translation>
     </message>
 </context>
 <context>
     <name>QMessageBox</name>
     <message>
         <source>Show Details...</source>
-        <translation>Details einblenden...</translation>
+        <translation>Mostra dettagli...</translation>
     </message>
     <message>
         <source>Hide Details...</source>
-        <translation>Details ausblenden...</translation>
+        <translation>Nascondi dettagli...</translation>
     </message>
     <message>
         <source>OK</source>
@@ -2205,287 +2155,294 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Aiuto</translation>
     </message>
     <message>
         <source>&lt;h3&gt;About Qt&lt;/h3&gt;&lt;p&gt;This program uses Qt version %1.&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;Über Qt&lt;/h3&gt;&lt;p&gt;Dieses Programm verwendet Qt Version %1.&lt;/p&gt;</translation>
+        <translation>&lt;h3&gt;Informazioni su Qt&lt;/h3&gt;&lt;p&gt;Questo programma usa la versione %1 di Qt.&lt;/p&gt;</translation>
     </message>
     <message>
-        <source>&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across all major desktop operating systems. It is also available for embedded Linux and other embedded and mobile operating systems.&lt;/p&gt;&lt;p&gt;Qt is available under three different licensing options designed to accommodate the needs of our various users.&lt;/p&gt;&lt;p&gt;Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of the GNU LGPL version 3 or GNU LGPL version 2.1.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 3 is appropriate for the development of Qt&amp;nbsp;applications provided you can comply with the terms and conditions of the GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 2.1 is appropriate for the development of Qt&amp;nbsp;applications provided you can comply with the terms and conditions of the GNU LGPL version 2.1.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://%2/&quot;&gt;%2&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;&lt;p&gt;Copyright (C) %1 The Qt Company Ltd and other contributors.&lt;/p&gt;&lt;p&gt;Qt and the Qt logo are trademarks of The Qt Company Ltd.&lt;/p&gt;&lt;p&gt;Qt is The Qt Company Ltd product developed as an open source project. See &lt;a href=&quot;http://%3/&quot;&gt;%3&lt;/a&gt; for more information.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across all major desktop operating systems. It is also available for embedded Linux and other embedded and mobile operating systems.&lt;/p&gt;&lt;p&gt;Qt is available under three different licensing options designed to accommodate the needs of our various users.&lt;/p&gt;&lt;p&gt;Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of the GNU LGPL version 3 or GNU LGPL version 2.1.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 3 is appropriate for the development of Qt&amp;nbsp;applications provided you can comply with the terms and conditions of the GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 2.1 is appropriate for the development of Qt&amp;nbsp;applications provided you can comply with the terms and conditions of the GNU LGPL version 2.1.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://%2/&quot;&gt;%2&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;&lt;p&gt;Copyright (C) %1 The Qt Company Ltd and other contributors.&lt;/p&gt;&lt;p&gt;Qt and the Qt logo are trademarks of The Qt Company Ltd.&lt;/p&gt;&lt;p&gt;Qt is The Qt Company Ltd product developed as an open source project. See &lt;a href=&quot;http://%3/&quot;&gt;%3&lt;/a&gt; for more information.&lt;/p&gt;</translation>
+        <source>&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across all major desktop operating systems. It is also available for embedded Linux and other embedded and mobile operating systems.&lt;/p&gt;&lt;p&gt;Qt is available under three different licensing options designed to accommodate the needs of our various users.&lt;/p&gt;&lt;p&gt;Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of the GNU LGPL version 2.1 or GNU GPL version 3.0.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 2.1 is appropriate for the development of Qt applications provided you can comply with the terms and conditions of the GNU LGPL version 2.1.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU General Public License version 3.0 is appropriate for the development of Qt applications where you wish to use such applications in combination with software subject to the terms of the GNU GPL version 3.0 or where you are otherwise willing to comply with the terms of the GNU GPL version 3.0.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://qt.io/licensing/&quot;&gt;qt.io/licensing&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;&lt;p&gt;Copyright (C) 2015 The Qt Company Ltd and other contributors.&lt;/p&gt;&lt;p&gt;Qt and the Qt logo are trademarks of Digia Plc and/or its subsidiary(-ies).&lt;/p&gt;&lt;p&gt;Qt is developed as an open source project on &lt;a href=&quot;http://qt-project.org/&quot;&gt;qt-project.org&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Qt is a Digia product. See &lt;a href=&quot;http://qt.io/&quot;&gt;qt.io&lt;/a&gt; for more information.&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>About Qt</source>
-        <translation>Über Qt</translation>
+        <translation>Informazioni su Qt</translation>
     </message>
 </context>
 <context>
     <name>QNativeSocketEngine</name>
     <message>
         <source>Unable to initialize non-blocking socket</source>
-        <translation>Der nichtblockierende Socket konnte nicht initialisiert werden</translation>
+        <translation>Impossibile inizializzare un socket non bloccante</translation>
     </message>
     <message>
         <source>Unable to initialize broadcast socket</source>
-        <translation>Der Broadcast-Socket konnte nicht initialisiert werden</translation>
+        <translation>Impossibile inizializzare un socket broadcast</translation>
     </message>
     <message>
         <source>Attempt to use IPv6 socket on a platform with no IPv6 support</source>
-        <translation>Es wurde versucht, einen IPv6-Socket auf einem System ohne IPv6-Unterstützung zu verwenden</translation>
+        <translation>Tentativo di utilizzo di un socket IPv6 su una piattaforma che non supporta IPv6</translation>
     </message>
     <message>
         <source>The remote host closed the connection</source>
-        <translation>Der entfernte Rechner hat die Verbindung geschlossen</translation>
+        <translation>L&apos;host remoto ha chiuso la connessione</translation>
     </message>
     <message>
         <source>Network operation timed out</source>
-        <translation>Das Zeitlimit für die Operation wurde überschritten</translation>
+        <translation>Operazione di rete scaduta</translation>
     </message>
     <message>
         <source>Out of resources</source>
-        <translation>Keine Ressourcen verfügbar</translation>
+        <translation>Risorse esaurite</translation>
     </message>
     <message>
         <source>Unsupported socket operation</source>
-        <translation>Socket-Operation nicht unterstützt</translation>
+        <translation>Operazione su socket non supportata</translation>
     </message>
     <message>
         <source>Protocol type not supported</source>
-        <translation>Das Protokoll wird nicht unterstützt</translation>
+        <translation>Tipo di protocollo non supportato</translation>
     </message>
     <message>
         <source>Invalid socket descriptor</source>
-        <translation>Ungültiger Socket-Deskriptor</translation>
+        <translation>Descrittore del socket non valido</translation>
     </message>
     <message>
         <source>Host unreachable</source>
-        <translation>Der Host kann nicht erreicht werden</translation>
+        <translation>Host non raggiungibile</translation>
     </message>
     <message>
         <source>Network unreachable</source>
-        <translation>Das Netzwerk ist nicht erreichbar</translation>
+        <translation>Rete non raggiungibile</translation>
     </message>
     <message>
         <source>Permission denied</source>
-        <translation>Zugriff verweigert</translation>
+        <translation>Permesso negato</translation>
     </message>
     <message>
         <source>Connection timed out</source>
-        <translation>Das Zeitlimit für die Verbindung wurde überschritten</translation>
+        <translation>Connessione scaduta</translation>
     </message>
     <message>
         <source>Connection refused</source>
-        <translation>Verbindung verweigert</translation>
+        <translation>Connessione rifiutata</translation>
     </message>
     <message>
         <source>The bound address is already in use</source>
-        <translation>Die angegebene Adresse ist bereits in Gebrauch</translation>
+        <translation>L&apos;indirizzo selezionato è già in uso</translation>
     </message>
     <message>
         <source>The address is not available</source>
-        <translation>Die Adresse ist nicht verfügbar</translation>
+        <translation>L&apos;indirizzo non è disponibile</translation>
     </message>
     <message>
         <source>The address is protected</source>
-        <translation>Die Adresse ist geschützt</translation>
+        <translation>L&apos;indirizzo è protetto</translation>
     </message>
     <message>
         <source>Datagram was too large to send</source>
-        <translation>Das Datagram konnte nicht gesendet werden, weil es zu groß ist</translation>
+        <translation>Il pacchetto è troppo grande per l&apos;invio</translation>
     </message>
     <message>
         <source>Unable to send a message</source>
-        <translation>Die Nachricht konnte nicht gesendet werden</translation>
+        <translation>Impossibile inviare un messaggio</translation>
     </message>
     <message>
         <source>Unable to receive a message</source>
-        <translation>Die Nachricht konnte nicht empfangen werden</translation>
+        <translation>Impossibile ricevere un messaggio</translation>
     </message>
     <message>
         <source>Unable to write</source>
-        <translation>Der Schreibvorgang konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile scrivere</translation>
     </message>
     <message>
         <source>Network error</source>
-        <translation>Netzwerkfehler</translation>
+        <translation>Errore di rete</translation>
     </message>
     <message>
         <source>Another socket is already listening on the same port</source>
-        <translation>Auf diesem Port hört bereits ein anderer Socket</translation>
+        <translation>Un altro socket è già in ascolto sulla stessa porta</translation>
     </message>
     <message>
         <source>Operation on non-socket</source>
-        <translation>Operation kann nur auf einen Socket angewandt werden</translation>
+        <translation>Operazione su un non-socket</translation>
     </message>
     <message>
         <source>The proxy type is invalid for this operation</source>
-        <translation>Die Operation kann mit dem Proxy-Typ nicht durchgeführt werden</translation>
+        <translation>Il tipo di proxy non è valido per questa operazione</translation>
     </message>
     <message>
         <source>Temporary error</source>
-        <translation>Vorübergehender Fehler</translation>
+        <translation>Errore temporaneo</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
 </context>
 <context>
     <name>QNetworkAccessCacheBackend</name>
     <message>
         <source>Error opening %1</source>
-        <translation>%1 konnte nicht geöffnet werden</translation>
+        <translation>Errore durante l&apos;apertura di %1</translation>
     </message>
 </context>
 <context>
     <name>QNetworkAccessDataBackend</name>
     <message>
         <source>Invalid URI: %1</source>
-        <translation>Ungültiger URI: %1</translation>
+        <translation>URI non valido: %1</translation>
     </message>
 </context>
 <context>
     <name>QNetworkAccessDebugPipeBackend</name>
     <message>
         <source>Write error writing to %1: %2</source>
-        <translation>Fehler beim Schreiben zu %1: %2</translation>
+        <translation>Errore di scrittura su %1: %2</translation>
     </message>
     <message>
         <source>Socket error on %1: %2</source>
-        <translation>Socket-Fehler bei %1: %2</translation>
+        <translation>Errore del socket su %1: %2</translation>
     </message>
     <message>
         <source>Remote host closed the connection prematurely on %1</source>
-        <translation>Der Host hat die Verbindung zu %1 vorzeitig beendet</translation>
+        <translation>L&apos;host remoto ha chiuso la connessione prematuramente su %1</translation>
     </message>
 </context>
 <context>
     <name>QNetworkAccessFileBackend</name>
     <message>
         <source>Request for opening non-local file %1</source>
-        <translation>Anforderung zum Öffnen einer Datei über Netzwerk %1</translation>
+        <translation>Richiesta di apertura di un file non locale %1</translation>
     </message>
     <message>
         <source>Error opening %1: %2</source>
-        <translation>%1 konnte nicht geöffnet werden: %2</translation>
+        <translation>Errore durante l&apos;apertura di %1: %2</translation>
     </message>
     <message>
         <source>Write error writing to %1: %2</source>
-        <translation>Fehler beim Schreiben zur Datei %1: %2</translation>
+        <translation>Errore di scrittura su %1: %2</translation>
     </message>
     <message>
         <source>Cannot open %1: Path is a directory</source>
-        <translation>%1 kann nicht geöffnet werden: Der Pfad spezifiziert ein Verzeichnis</translation>
+        <translation>Impossibile aprire %1: il percorso è una cartella</translation>
     </message>
     <message>
         <source>Read error reading from %1: %2</source>
-        <translation>Beim Lesen von der Datei %1 trat ein Fehler auf: %2</translation>
+        <translation>Errore di lettura da %1: %2</translation>
     </message>
 </context>
 <context>
     <name>QNetworkAccessFtpBackend</name>
     <message>
         <source>No suitable proxy found</source>
-        <translation>Es konnte kein geeigneter Proxy-Server gefunden werden</translation>
+        <translation>Nessun proxy adatto trovato</translation>
     </message>
     <message>
         <source>Cannot open %1: is a directory</source>
-        <translation>%1 kann nicht geöffnet werden: Es handelt sich um ein Verzeichnis</translation>
+        <translation>Impossibile aprire %1: è una cartella</translation>
     </message>
     <message>
         <source>Logging in to %1 failed: authentication required</source>
-        <translation>Die Anmeldung bei %1 ist fehlgeschlagen: Es ist eine Authentifizierung erforderlich</translation>
+        <translation>Log su %1 non riuscito: richiesta autenticazione</translation>
     </message>
     <message>
         <source>Error while downloading %1: %2</source>
-        <translation>Beim Herunterladen von %1 trat ein Fehler auf: %2</translation>
+        <translation>Errore durante lo scaricamento di %1: %2</translation>
     </message>
     <message>
         <source>Error while uploading %1: %2</source>
-        <translation>Beim Hochladen von %1 trat ein Fehler auf: %2</translation>
+        <translation>Errore durante il caricamento di %1: %2</translation>
     </message>
 </context>
 <context>
     <name>QNetworkAccessManager</name>
     <message>
         <source>Network access is disabled.</source>
-        <translation>Der Zugriff auf das Netzwerk ist nicht gestattet.</translation>
+        <translation>Accesso alla rete disabilitato.</translation>
     </message>
 </context>
 <context>
     <name>QNetworkReply</name>
     <message>
         <source>Error downloading %1 - server replied: %2</source>
-        <translation>Beim Herunterladen von %1 trat ein Fehler auf - Die Antwort des Servers ist: %2</translation>
+        <translation>Errore durante lo scaricamento %1 - il server ha risposto: %2</translation>
     </message>
     <message>
         <source>Background request not allowed.</source>
-        <translation>Hintergrundabfrage nicht zulässig.</translation>
+        <translation>Richiesta in background non permessa.</translation>
     </message>
     <message>
         <source>Network session error.</source>
-        <translation>Fehler bei Netzwerkverbindung.</translation>
+        <translation>Errore della sessione di rete.</translation>
     </message>
     <message>
         <source>backend start error.</source>
-        <translation>Fehler beim Starten des Backends.</translation>
+        <translation>errore di avvio del backend.</translation>
     </message>
     <message>
         <source>Temporary network failure.</source>
-        <translation>Das Netzwerk ist vorübergehend ausgefallen.</translation>
+        <translation>Errore temporaneo della rete.</translation>
     </message>
     <message>
         <source>Protocol &quot;%1&quot; is unknown</source>
-        <translation>Das Protokoll &quot;%1&quot; ist unbekannt</translation>
+        <translation>Il protocollo &quot;%1&quot; è sconosciuto</translation>
     </message>
 </context>
 <context>
     <name>QNetworkReplyHttpImpl</name>
     <message>
         <source>Operation canceled</source>
-        <translation>Operation abgebrochen</translation>
+        <translation>Operazione annullata</translation>
     </message>
     <message>
         <source>No suitable proxy found</source>
-        <translation>Es konnte kein geeigneter Proxy-Server gefunden werden</translation>
+        <translation>Nessun proxy adatto trovato</translation>
+    </message>
+</context>
+<context>
+    <name>QNetworkReplyHttpImplPrivate</name>
+    <message>
+        <source>No suitable proxy found</source>
+        <translation>Nessun proxy adatto trovato</translation>
     </message>
 </context>
 <context>
     <name>QNetworkReplyImpl</name>
     <message>
         <source>Operation canceled</source>
-        <translation>Operation abgebrochen</translation>
+        <translation>Operazione annullata</translation>
     </message>
 </context>
 <context>
     <name>QNetworkSession</name>
     <message>
         <source>Invalid configuration.</source>
-        <translation>Ungültige Konfiguration.</translation>
+        <translation>Configurazione non valida.</translation>
     </message>
 </context>
 <context>
     <name>QNetworkSessionPrivateImpl</name>
     <message>
         <source>Unknown session error.</source>
-        <translation>Unbekannter Fehler bei Netzwerkverbindung.</translation>
+        <translation>Errore sconosciuto di sessione.</translation>
     </message>
     <message>
         <source>The session was aborted by the user or system.</source>
-        <translation>Die Verbindung wurde vom Benutzer oder vom Betriebssystem unterbrochen.</translation>
+        <translation>La sessione è stata interrotta dall&apos;utente o dal sistema.</translation>
     </message>
     <message>
         <source>The requested operation is not supported by the system.</source>
-        <translation>Die angeforderte Operation wird vom System nicht unterstützt.</translation>
+        <translation>L&apos;operazione richiesta non è supportata dal sistema.</translation>
     </message>
     <message>
         <source>The specified configuration cannot be used.</source>
-        <translation>Die angegebene Konfiguration kann nicht verwendet werden.</translation>
+        <translation>La configurazione specificata non può essere utilizzata.</translation>
     </message>
     <message>
         <source>Roaming was aborted or is not possible.</source>
-        <translation>Das Roaming wurde abgebrochen oder ist hier nicht möglich.</translation>
+        <translation>Roaming interrotto o non possibile.</translation>
     </message>
 </context>
 <context>
@@ -2493,241 +2450,256 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <message>
         <source>Unable to initialize</source>
         <comment>QOCIDriver</comment>
-        <translation>Initialisierung fehlgeschlagen</translation>
+        <translation>Impossibile inizializzare</translation>
     </message>
     <message>
         <source>Unable to logon</source>
-        <translation>Logon-Vorgang fehlgeschlagen</translation>
+        <translation>Autenticazione non riuscita</translation>
     </message>
     <message>
         <source>Unable to begin transaction</source>
-        <translation>Es konnte keine Transaktion gestartet werden</translation>
+        <translation>Impossibile iniziare la transazione</translation>
     </message>
     <message>
         <source>Unable to commit transaction</source>
-        <translation>Die Transaktion konnte nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Unable to rollback transaction</source>
-        <translation>Die Transaktion konnte nicht rückgängig gemacht werden (Operation &apos;rollback&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile annullare la transazione</translation>
     </message>
 </context>
 <context>
     <name>QOCIResult</name>
     <message>
         <source>Unable to bind column for batch execute</source>
-        <translation>Die Spalte konnte nicht für den Stapelverarbeitungs-Befehl gebunden werden</translation>
+        <translation>Impossibile effettuare il bind della colonna per l&apos;esecuzione non interattiva</translation>
     </message>
     <message>
         <source>Unable to execute batch statement</source>
-        <translation>Der Stapelverarbeitungs-Befehl konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire il comando non interattivo</translation>
     </message>
     <message>
         <source>Unable to goto next</source>
-        <translation>Kann nicht zum nächsten Element gehen</translation>
+        <translation>Impossibile andare al successivo</translation>
     </message>
     <message>
         <source>Unable to alloc statement</source>
-        <translation>Die Allokation des Befehls ist fehlgeschlagen</translation>
+        <translation>Impossibile allocare il comando</translation>
     </message>
     <message>
         <source>Unable to prepare statement</source>
-        <translation>Der Befehl konnte nicht initialisiert werden</translation>
+        <translation>Impossibile preparare il comando</translation>
     </message>
     <message>
         <source>Unable to get statement type</source>
-        <translation>Der Anweisungstyp kann nicht bestimmt werden</translation>
+        <translation>Impossibile recuperare il tipo di comando</translation>
     </message>
     <message>
         <source>Unable to bind value</source>
-        <translation>Der Wert konnte nicht gebunden werden</translation>
+        <translation>Impossibile effettuare il bind del valore</translation>
     </message>
     <message>
         <source>Unable to execute statement</source>
-        <translation>Der Befehl konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire il comando</translation>
     </message>
 </context>
 <context>
     <name>QODBCDriver</name>
     <message>
         <source>Unable to connect</source>
-        <translation>Es kann keine Verbindung aufgebaut werden</translation>
+        <translation>Connessione non riuscita</translation>
     </message>
     <message>
         <source>Unable to connect - Driver doesn&apos;t support all functionality required</source>
-        <translation>Es kann keine Verbindung aufgebaut werden weil der Treiber die benötigte Funktionalität nicht vollständig unterstützt</translation>
+        <translation>Connessione non riuscita - il driver non supporta tutte le funzionalità richieste</translation>
     </message>
     <message>
         <source>Unable to disable autocommit</source>
-        <translation>&apos;autocommit&apos; konnte nicht deaktiviert werden</translation>
+        <translation>Impossibile disabilitare l&apos;autocommit</translation>
     </message>
     <message>
         <source>Unable to commit transaction</source>
-        <translation>Die Transaktion konnte nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Unable to rollback transaction</source>
-        <translation>Die Transaktion konnte nicht rückgängig gemacht werden (Operation &apos;rollback&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile annullare la transazione</translation>
     </message>
     <message>
         <source>Unable to enable autocommit</source>
-        <translation>&apos;autocommit&apos; konnte nicht aktiviert werden</translation>
+        <translation>Impossibile abilitare l&apos;autocommit</translation>
     </message>
 </context>
 <context>
     <name>QODBCResult</name>
     <message>
         <source>Unable to fetch last</source>
-        <translation>Der letzte Datensatz konnte nicht abgeholt werden</translation>
+        <translation>Impossibile ottenere l&apos;ultimo</translation>
     </message>
     <message>
         <source>QODBCResult::reset: Unable to set &apos;SQL_CURSOR_STATIC&apos; as statement attribute. Please check your ODBC driver configuration</source>
-        <translation>QODBCResult::reset: &apos;SQL_CURSOR_STATIC&apos; konnte nicht als Attribut des Befehls gesetzt werden. Bitte prüfen Sie die Konfiguration Ihres ODBC-Treibers</translation>
+        <translation>QODBCResult::reset: Impossibile impostare &apos;SQL_CURSOR_STATIC&apos; come attributo del comando. Verifica la configurazione del driver ODBC</translation>
     </message>
     <message>
         <source>Unable to execute statement</source>
-        <translation>Der Befehl konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire l&apos;istruzione</translation>
     </message>
     <message>
         <source>Unable to fetch</source>
-        <translation>Es konnten keine Daten abgeholt werden</translation>
+        <translation>Impossibile ottenere i dati</translation>
     </message>
     <message>
         <source>Unable to fetch next</source>
-        <translation>Der nächste Datensatz konnte nicht abgeholt werden</translation>
+        <translation>Impossibile ottenere il successivo</translation>
     </message>
     <message>
         <source>Unable to fetch first</source>
-        <translation>Der erste Datensatz konnte nicht abgeholt werden</translation>
+        <translation>Impossibile ottenere il primo</translation>
     </message>
     <message>
         <source>Unable to fetch previous</source>
-        <translation>Der vorherige Datensatz konnte nicht abgeholt werden</translation>
+        <translation>Impossibile ottenere il precedente</translation>
     </message>
     <message>
         <source>Unable to prepare statement</source>
-        <translation>Der Befehl konnte nicht initialisiert werden</translation>
+        <translation>Impossibile preparare l&apos;istruzione</translation>
     </message>
     <message>
         <source>Unable to bind variable</source>
-        <translation>Die Variable konnte nicht gebunden werden</translation>
+        <translation>Impossibile agganciare la variabile</translation>
+    </message>
+</context>
+<context>
+    <name>QPPDOptionsModel</name>
+    <message>
+        <source>Name</source>
+        <translation>Nome</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Valore</translation>
     </message>
 </context>
 <context>
     <name>QPSQLDriver</name>
     <message>
         <source>Unable to connect</source>
-        <translation>Es kann keine Verbindung aufgebaut werden</translation>
+        <translation>Connessione non riuscita</translation>
     </message>
     <message>
         <source>Could not begin transaction</source>
-        <translation>Es konnte keine Transaktion gestartet werden</translation>
+        <translation>Impossibile avviare la transazione</translation>
     </message>
     <message>
         <source>Could not commit transaction</source>
-        <translation>Die Transaktion konnte nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Could not rollback transaction</source>
-        <translation>Die Transaktion konnte nicht rückgängig gemacht werden (Operation &apos;rollback&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile annullare la transazione</translation>
     </message>
     <message>
         <source>Unable to subscribe</source>
-        <translation>Die Registrierung ist fehlgeschlagen</translation>
+        <translation>Registrazione non riuscita</translation>
     </message>
     <message>
         <source>Unable to unsubscribe</source>
-        <translation>Die Registrierung konnte nicht aufgehoben werden</translation>
+        <translation>Deregistrazione non riuscita</translation>
     </message>
 </context>
 <context>
     <name>QPSQLResult</name>
     <message>
         <source>Unable to create query</source>
-        <translation>Es konnte keine Abfrage erzeugt werden</translation>
+        <translation>Impossibile creare la query</translation>
     </message>
     <message>
         <source>Unable to prepare statement</source>
-        <translation>Der Befehl konnte nicht initialisiert werden</translation>
+        <translation>Impossibile preparare l&apos;istruzione</translation>
     </message>
 </context>
 <context>
     <name>QPageSetupWidget</name>
     <message>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <source>Paper</source>
-        <translation>Papier</translation>
+        <translation>Carta</translation>
     </message>
     <message>
         <source>Page size:</source>
-        <translation>Seitengröße:</translation>
+        <translation>Dimensione della pagina:</translation>
     </message>
     <message>
         <source>Width:</source>
-        <translation>Breite:</translation>
+        <translation>Larghezza:</translation>
     </message>
     <message>
         <source>Height:</source>
-        <translation>Höhe:</translation>
+        <translation>Altezza:</translation>
     </message>
     <message>
         <source>Paper source:</source>
-        <translation>Papierquelle:</translation>
+        <translation>Alimentazione della carta:</translation>
     </message>
     <message>
         <source>Orientation</source>
-        <translation>Ausrichtung</translation>
+        <translation>Orientamento</translation>
     </message>
     <message>
         <source>Portrait</source>
-        <translation>Hochformat</translation>
+        <translation>Verticale</translation>
     </message>
     <message>
         <source>Landscape</source>
-        <translation>Querformat</translation>
+        <translation>Orizzontale</translation>
     </message>
     <message>
         <source>Reverse landscape</source>
-        <translation>Umgekehrtes Querformat</translation>
+        <translation>Orizzontale inverso</translation>
     </message>
     <message>
         <source>Reverse portrait</source>
-        <translation>Umgekehrtes Hochformat</translation>
+        <translation>Verticale inverso</translation>
     </message>
     <message>
         <source>Margins</source>
-        <translation>Ränder</translation>
+        <translation>Margini</translation>
     </message>
     <message>
         <source>top margin</source>
-        <translation>Oberer Rand</translation>
+        <translation>margine superiore</translation>
     </message>
     <message>
         <source>left margin</source>
-        <translation>Linker Rand</translation>
+        <translation>margine sinistro</translation>
     </message>
     <message>
         <source>right margin</source>
-        <translation>Rechter Rand</translation>
+        <translation>margine destro</translation>
     </message>
     <message>
         <source>bottom margin</source>
-        <translation>Unterer Rand</translation>
+        <translation>margine inferiore</translation>
+    </message>
+    <message>
+        <source>Centimeters (cm)</source>
+        <translation>Centimetri (cm)</translation>
     </message>
     <message>
         <source>Millimeters (mm)</source>
-        <translation>Millimeter (mm)</translation>
+        <translation>Millimetri (mm)</translation>
     </message>
     <message>
         <source>Inches (in)</source>
-        <translation>Zoll (in)</translation>
+        <translation>Pollici (in)</translation>
     </message>
     <message>
         <source>Points (pt)</source>
-        <translation>Punkte (pt)</translation>
+        <translation>Punti (pt)</translation>
     </message>
     <message>
         <source>Pica (P̸)</source>
@@ -2743,7 +2715,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation>Benutzerdefiniert</translation>
+        <translation>Personalizzata</translation>
     </message>
     <message>
         <source>mm</source>
@@ -2758,7 +2730,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <message>
         <source>in</source>
         <extracomment>Unit &apos;Inch&apos;</extracomment>
-        <translation>Zoll</translation>
+        <translation>in</translation>
     </message>
     <message>
         <source>P̸</source>
@@ -2777,15 +2749,15 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Page Layout</source>
-        <translation>Seitenaufbau</translation>
+        <translation>Impaginazione</translation>
     </message>
     <message>
         <source>Page order:</source>
-        <translation>Reihenfolge der Seiten:</translation>
+        <translation>Ordine delle pagine:</translation>
     </message>
     <message>
         <source>Pages per sheet:</source>
-        <translation>Seiten pro Blatt:</translation>
+        <translation>Pagine per foglio:</translation>
     </message>
 </context>
 <context>
@@ -2793,37 +2765,37 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <message>
         <source>Custom (%1mm x %2mm)</source>
         <extracomment>Custom size name in millimeters</extracomment>
-        <translation>Benutzerdefiniert (%1mm x %2mm)</translation>
+        <translation>Personalizzata (%1mm x %2mm)</translation>
     </message>
     <message>
         <source>Custom (%1pt x %2pt)</source>
         <extracomment>Custom size name in points</extracomment>
-        <translation>Benutzerdefiniert (%1pt x %2pt)</translation>
+        <translation>Personalizzata (%1pt x %2pt)</translation>
     </message>
     <message>
         <source>Custom (%1in x %2in)</source>
         <extracomment>Custom size name in inches</extracomment>
-        <translation>Benutzerdefiniert (%1 Zoll x %2 Zoll)</translation>
+        <translation>Personalizzata (%1in x %2in)</translation>
     </message>
     <message>
         <source>Custom (%1pc x %2pc)</source>
         <extracomment>Custom size name in picas</extracomment>
-        <translation>Benutzerdefiniert (%1pc x %2pc)</translation>
+        <translation>Personalizzata (%1pc x %2pc)</translation>
     </message>
     <message>
         <source>Custom (%1DD x %2DD)</source>
         <extracomment>Custom size name in didots</extracomment>
-        <translation>Benutzerdefiniert (%1DD x %2DD)</translation>
+        <translation>Personalizzata (%1DD x %2DD)</translation>
     </message>
     <message>
         <source>Custom (%1CC x %2CC)</source>
         <extracomment>Custom size name in ciceros</extracomment>
-        <translation>Benutzerdefiniert (%1CC x %2CC)</translation>
+        <translation>Personalizzata (%1CC x %2CC)</translation>
     </message>
     <message>
         <source>%1 x %2 in</source>
         <extracomment>Page size in &apos;Inch&apos;.</extracomment>
-        <translation>%1 x %2 Zoll</translation>
+        <translation>%1 x %2 pollici</translation>
     </message>
     <message>
         <source>A0</source>
@@ -2915,23 +2887,23 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Executive (7.5 x 10 in)</source>
-        <translation>Executive (7,5 x 10 Zoll)</translation>
+        <translation>Esecutivo (7.5 x 10 pollici)</translation>
     </message>
     <message>
         <source>Executive (7.25 x 10.5 in)</source>
-        <translation>Executive (7,25 x 10,5 Zoll)</translation>
+        <translation>Esecutivo (7.25 x 10.5 pollici)</translation>
     </message>
     <message>
         <source>Folio (8.27 x 13 in)</source>
-        <translation>Folio (8,27 x 13 Zoll)</translation>
+        <translation>Folio (8.27 x 13 pollici)</translation>
     </message>
     <message>
         <source>Legal</source>
-        <translation>Legal</translation>
+        <translation>Legale</translation>
     </message>
     <message>
         <source>Letter / ANSI A</source>
-        <translation>Letter / ANSI A</translation>
+        <translation>Lettera / ANSI A</translation>
     </message>
     <message>
         <source>Tabloid / ANSI B</source>
@@ -2939,11 +2911,11 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Ledger / ANSI B</source>
-        <translation>Ledger / ANSI B</translation>
+        <translation>Libro mastro / ANSI B</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation>Benutzerdefiniert</translation>
+        <translation>Personalizzata</translation>
     </message>
     <message>
         <source>A3 Extra</source>
@@ -2959,7 +2931,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>A4 Small</source>
-        <translation>A4 Klein</translation>
+        <translation>A4 Piccolo</translation>
     </message>
     <message>
         <source>A5 Extra</source>
@@ -3027,47 +2999,47 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Legal Extra</source>
-        <translation>Legal Extra</translation>
+        <translation>Legale extra</translation>
     </message>
     <message>
         <source>Letter Extra</source>
-        <translation>Letter Extra</translation>
+        <translation>Lettera extra</translation>
     </message>
     <message>
         <source>Letter Plus</source>
-        <translation>Letter Plus</translation>
+        <translation>Lettera plus</translation>
     </message>
     <message>
         <source>Letter Small</source>
-        <translation>Letter Klein</translation>
+        <translation>Lettera piccola</translation>
     </message>
     <message>
         <source>Tabloid Extra</source>
-        <translation>Tabloid Extra</translation>
+        <translation>Tabloid extra</translation>
     </message>
     <message>
         <source>Architect A</source>
-        <translation>Architect A</translation>
+        <translation>Architetto A</translation>
     </message>
     <message>
         <source>Architect B</source>
-        <translation>Architect B</translation>
+        <translation>Architetto B</translation>
     </message>
     <message>
         <source>Architect C</source>
-        <translation>Architect C</translation>
+        <translation>Architetto C</translation>
     </message>
     <message>
         <source>Architect D</source>
-        <translation>Architect D</translation>
+        <translation>Architetto D</translation>
     </message>
     <message>
         <source>Architect E</source>
-        <translation>Architect E</translation>
+        <translation>Architetto E</translation>
     </message>
     <message>
         <source>Note</source>
-        <translation>Note</translation>
+        <translation>Nota</translation>
     </message>
     <message>
         <source>Quarto</source>
@@ -3075,7 +3047,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Statement</source>
-        <translation>Statement</translation>
+        <translation>Dichiarazione</translation>
     </message>
     <message>
         <source>Super A</source>
@@ -3087,11 +3059,11 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Postcard</source>
-        <translation>Postkarte</translation>
+        <translation>Cartolina</translation>
     </message>
     <message>
         <source>Double Postcard</source>
-        <translation>Doppelpostkarte</translation>
+        <translation>Cartolina doppia</translation>
     </message>
     <message>
         <source>PRC 16K</source>
@@ -3103,167 +3075,167 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>PRC 32K Big</source>
-        <translation>PRC 32K Groß</translation>
+        <translation>PRC 32K Grande</translation>
     </message>
     <message>
         <source>Fan-fold US (14.875 x 11 in)</source>
-        <translation>Endlosdruckpapier US (14,875 x 11 Zoll)</translation>
+        <translation>Pieghevole US (14.875 x 11 pollici)</translation>
     </message>
     <message>
         <source>Fan-fold German (8.5 x 12 in)</source>
-        <translation>Endlosdruckpapier Deutsch (8,5 x 12 Zoll)</translation>
+        <translation>Pieghevole tedesco (8.5 x 12 pollici)</translation>
     </message>
     <message>
         <source>Fan-fold German Legal (8.5 x 13 in)</source>
-        <translation>Endlosdruckpapier Deutsch Legal (8,5 x 13 Zoll)</translation>
+        <translation>Pieghevole tedesco legale (8.5 x 13 pollici)</translation>
     </message>
     <message>
         <source>Envelope B4</source>
-        <translation>Umschlag B4</translation>
+        <translation>Busta B4</translation>
     </message>
     <message>
         <source>Envelope B5</source>
-        <translation>Umschlag B5</translation>
+        <translation>Busta B5</translation>
     </message>
     <message>
         <source>Envelope B6</source>
-        <translation>Umschlag B6</translation>
+        <translation>Busta B6</translation>
     </message>
     <message>
         <source>Envelope C0</source>
-        <translation>Umschlag C0</translation>
+        <translation>Busta C0</translation>
     </message>
     <message>
         <source>Envelope C1</source>
-        <translation>Umschlag C1</translation>
+        <translation>Busta C1</translation>
     </message>
     <message>
         <source>Envelope C2</source>
-        <translation>Umschlag C2</translation>
+        <translation>Busta C2</translation>
     </message>
     <message>
         <source>Envelope C3</source>
-        <translation>Umschlag C3</translation>
+        <translation>Busta C3</translation>
     </message>
     <message>
         <source>Envelope C4</source>
-        <translation>Umschlag C4</translation>
+        <translation>Busta C4</translation>
     </message>
     <message>
         <source>Envelope C5</source>
-        <translation>Umschlag C5</translation>
+        <translation>Busta C5</translation>
     </message>
     <message>
         <source>Envelope C6</source>
-        <translation>Umschlag C6</translation>
+        <translation>Busta C6</translation>
     </message>
     <message>
         <source>Envelope C65</source>
-        <translation>Umschlag C65</translation>
+        <translation>Busta C65</translation>
     </message>
     <message>
         <source>Envelope C7</source>
-        <translation>Umschlag C7</translation>
+        <translation>Busta C7</translation>
     </message>
     <message>
         <source>Envelope DL</source>
-        <translation>Umschlag DL</translation>
+        <translation>Busta DL</translation>
     </message>
     <message>
         <source>Envelope US 9</source>
-        <translation>Umschlag US 9</translation>
+        <translation>Busta US 9</translation>
     </message>
     <message>
         <source>Envelope US 10</source>
-        <translation>Umschlag US 10</translation>
+        <translation>Busta US 10</translation>
     </message>
     <message>
         <source>Envelope US 11</source>
-        <translation>Umschlag US 11</translation>
+        <translation>Busta US 11</translation>
     </message>
     <message>
         <source>Envelope US 12</source>
-        <translation>Umschlag US 12</translation>
+        <translation>Busta US 12</translation>
     </message>
     <message>
         <source>Envelope US 14</source>
-        <translation>Umschlag US 14</translation>
+        <translation>Busta US 14</translation>
     </message>
     <message>
         <source>Envelope Monarch</source>
-        <translation>Umschlag Monarch</translation>
+        <translation>Busta Monarch</translation>
     </message>
     <message>
         <source>Envelope Personal</source>
-        <translation>Umschlag Personal</translation>
+        <translation>Busta personale</translation>
     </message>
     <message>
         <source>Envelope Chou 3</source>
-        <translation>Umschlag Chou 3</translation>
+        <translation>Busta Chou 3</translation>
     </message>
     <message>
         <source>Envelope Chou 4</source>
-        <translation>Umschlag Chou 4</translation>
+        <translation>Busta Chou 4</translation>
     </message>
     <message>
         <source>Envelope Invite</source>
-        <translation>Umschlag Einladung</translation>
+        <translation>Busta invito</translation>
     </message>
     <message>
         <source>Envelope Italian</source>
-        <translation>Umschlag Italienisch</translation>
+        <translation>Busta italiana</translation>
     </message>
     <message>
         <source>Envelope Kaku 2</source>
-        <translation>Umschlag Kaku 2</translation>
+        <translation>Busta Kaku 2</translation>
     </message>
     <message>
         <source>Envelope Kaku 3</source>
-        <translation>Umschlag Kaku 3</translation>
+        <translation>Busta Kaku 3</translation>
     </message>
     <message>
         <source>Envelope PRC 1</source>
-        <translation>Umschlag PRC 1</translation>
+        <translation>Busta PRC 1</translation>
     </message>
     <message>
         <source>Envelope PRC 2</source>
-        <translation>Umschlag PRC 2</translation>
+        <translation>Busta PRC 2</translation>
     </message>
     <message>
         <source>Envelope PRC 3</source>
-        <translation>Umschlag PRC 3</translation>
+        <translation>Busta PRC 3</translation>
     </message>
     <message>
         <source>Envelope PRC 4</source>
-        <translation>Umschlag PRC 4</translation>
+        <translation>Busta PRC 4</translation>
     </message>
     <message>
         <source>Envelope PRC 5</source>
-        <translation>Umschlag PRC 5</translation>
+        <translation>Busta PRC 5</translation>
     </message>
     <message>
         <source>Envelope PRC 6</source>
-        <translation>Umschlag PRC 6</translation>
+        <translation>Busta PRC 6</translation>
     </message>
     <message>
         <source>Envelope PRC 7</source>
-        <translation>Umschlag PRC 7</translation>
+        <translation>Busta PRC 7</translation>
     </message>
     <message>
         <source>Envelope PRC 8</source>
-        <translation>Umschlag PRC 8</translation>
+        <translation>Busta PRC 8</translation>
     </message>
     <message>
         <source>Envelope PRC 9</source>
-        <translation>Umschlag PRC 9</translation>
+        <translation>Busta PRC 9</translation>
     </message>
     <message>
         <source>Envelope PRC 10</source>
-        <translation>Umschlag PRC 10</translation>
+        <translation>Busta PRC 10</translation>
     </message>
     <message>
         <source>Envelope You 4</source>
-        <translation>Umschlag You 4</translation>
+        <translation>Busta You 4</translation>
     </message>
 </context>
 <context>
@@ -3274,121 +3246,245 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation>Speichern</translation>
+        <translation>Salva</translation>
     </message>
     <message>
         <source>Save All</source>
-        <translation>Alles speichern</translation>
+        <translation>Salva tutti</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>Öffnen</translation>
+        <translation>Apri</translation>
     </message>
     <message>
         <source>&amp;Yes</source>
-        <translation>&amp;Ja</translation>
+        <translation>&amp;Sì</translation>
     </message>
     <message>
         <source>Yes to &amp;All</source>
-        <translation>Ja, &amp;alle</translation>
+        <translation>Sì &amp;a tutti</translation>
     </message>
     <message>
         <source>&amp;No</source>
-        <translation>&amp;Nein</translation>
+        <translation>&amp;No</translation>
     </message>
     <message>
         <source>N&amp;o to All</source>
-        <translation>N&amp;ein, keine</translation>
+        <translation>N&amp;o a tutti</translation>
     </message>
     <message>
         <source>Abort</source>
-        <translation>Abbrechen</translation>
+        <translation>Interrompi</translation>
     </message>
     <message>
         <source>Retry</source>
-        <translation>Wiederholen</translation>
+        <translation>Riprova</translation>
     </message>
     <message>
         <source>Ignore</source>
-        <translation>Ignorieren</translation>
+        <translation>Ignora</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Schließen</translation>
+        <translation>Chiudi</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Abbrechen</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation>Verwerfen</translation>
+        <translation>Tralascia</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Aiuto</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation>Anwenden</translation>
+        <translation>Applica</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Zurücksetzen</translation>
+        <translation>Ripristina</translation>
     </message>
     <message>
         <source>Restore Defaults</source>
-        <translation>Voreinstellungen</translation>
+        <translation>Ripristina valori predefiniti</translation>
     </message>
 </context>
 <context>
     <name>QPluginLoader</name>
     <message>
         <source>The plugin was not loaded.</source>
-        <translation>Das Plugin wurde nicht geladen.</translation>
+        <translation>Il plugin non è stata caricato.</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
 </context>
 <context>
     <name>QPrintDialog</name>
     <message>
         <source>Print</source>
-        <translation>Drucken</translation>
+        <translation>Stampa</translation>
+    </message>
+    <message>
+        <source>A0</source>
+        <translation>A0</translation>
+    </message>
+    <message>
+        <source>A1</source>
+        <translation>A1</translation>
+    </message>
+    <message>
+        <source>A2</source>
+        <translation>A2</translation>
+    </message>
+    <message>
+        <source>A3</source>
+        <translation>A3</translation>
+    </message>
+    <message>
+        <source>A4</source>
+        <translation>A4</translation>
+    </message>
+    <message>
+        <source>A5</source>
+        <translation>A5</translation>
+    </message>
+    <message>
+        <source>A6</source>
+        <translation>A6</translation>
+    </message>
+    <message>
+        <source>A7</source>
+        <translation>A7</translation>
+    </message>
+    <message>
+        <source>A8</source>
+        <translation>A8</translation>
+    </message>
+    <message>
+        <source>A9</source>
+        <translation>A9</translation>
+    </message>
+    <message>
+        <source>B0</source>
+        <translation>B0</translation>
+    </message>
+    <message>
+        <source>B1</source>
+        <translation>B1</translation>
+    </message>
+    <message>
+        <source>B2</source>
+        <translation>B2</translation>
+    </message>
+    <message>
+        <source>B3</source>
+        <translation>B3</translation>
+    </message>
+    <message>
+        <source>B4</source>
+        <translation>B4</translation>
+    </message>
+    <message>
+        <source>B5</source>
+        <translation>B5</translation>
+    </message>
+    <message>
+        <source>B6</source>
+        <translation>B6</translation>
+    </message>
+    <message>
+        <source>B7</source>
+        <translation>B7</translation>
+    </message>
+    <message>
+        <source>B8</source>
+        <translation>B8</translation>
+    </message>
+    <message>
+        <source>B9</source>
+        <translation>B9</translation>
+    </message>
+    <message>
+        <source>B10</source>
+        <translation>B10</translation>
+    </message>
+    <message>
+        <source>C5E</source>
+        <translation>C5E</translation>
+    </message>
+    <message>
+        <source>DLE</source>
+        <translation>DLE</translation>
+    </message>
+    <message>
+        <source>Executive</source>
+        <translation>Esecutivo</translation>
+    </message>
+    <message>
+        <source>Folio</source>
+        <translation>Foglio</translation>
+    </message>
+    <message>
+        <source>Ledger</source>
+        <translation>Registro</translation>
+    </message>
+    <message>
+        <source>Legal</source>
+        <translation>Legale</translation>
+    </message>
+    <message>
+        <source>Letter</source>
+        <translation>Lettera</translation>
+    </message>
+    <message>
+        <source>Tabloid</source>
+        <translation>Tabloid</translation>
+    </message>
+    <message>
+        <source>US Common #10 Envelope</source>
+        <translation>Busta comune #10 USA</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Personalizzato</translation>
     </message>
     <message>
         <source>Left to Right, Top to Bottom</source>
-        <translation>Von links nach rechts, von oben nach unten</translation>
+        <translation>Da sinistra a destra, dall&apos;alto verso il basso</translation>
     </message>
     <message>
         <source>Left to Right, Bottom to Top</source>
-        <translation>Von links nach rechts, von unten nach oben</translation>
+        <translation>Da sinistra a destra, dal basso verso l&apos;alto</translation>
     </message>
     <message>
         <source>Right to Left, Bottom to Top</source>
-        <translation>Von rechts nach links, von unten nach oben</translation>
+        <translation>Da destra a sinistra, dal basso verso l&apos;alto</translation>
     </message>
     <message>
         <source>Right to Left, Top to Bottom</source>
-        <translation>Von rechts nach links, von oben nach unten</translation>
+        <translation>Da destra a sinistra, dall&apos;alto verso il basso</translation>
     </message>
     <message>
         <source>Bottom to Top, Left to Right</source>
-        <translation>Von unten nach oben, von links nach rechts</translation>
+        <translation>Dal basso verso l&apos;alto, da sinistra a destra</translation>
     </message>
     <message>
         <source>Bottom to Top, Right to Left</source>
-        <translation>Von unten nach oben, von rechts nach links</translation>
+        <translation>Dal basso verso l&apos;alto, da destra a sinistra</translation>
     </message>
     <message>
         <source>Top to Bottom, Left to Right</source>
-        <translation>Von oben nach unten, von links nach rechts</translation>
+        <translation>Dall&apos;alto verso il basso, da sinistra a destra</translation>
     </message>
     <message>
         <source>Top to Bottom, Right to Left</source>
-        <translation>Von oben nach unten, von rechts nach links</translation>
+        <translation>Dall&apos;alto verso il basso, da destra a sinistra</translation>
     </message>
     <message>
         <source>1 (1x1)</source>
@@ -3416,71 +3512,71 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>All Pages</source>
-        <translation>Alle Seiten</translation>
+        <translation>Tutte le pagine</translation>
     </message>
     <message>
         <source>Odd Pages</source>
-        <translation>Ungerade Seiten</translation>
+        <translation>Pagine dispari</translation>
     </message>
     <message>
         <source>Even Pages</source>
-        <translation>Gerade Seiten</translation>
+        <translation>Pagine pari</translation>
     </message>
     <message>
         <source>&amp;Options &gt;&gt;</source>
-        <translation>&amp;Einstellungen &gt;&gt;</translation>
+        <translation>&amp;Opzioni &gt;&gt;</translation>
     </message>
     <message>
         <source>&amp;Print</source>
-        <translation>&amp;Drucken</translation>
+        <translation>Stam&amp;pa</translation>
     </message>
     <message>
         <source>&amp;Options &lt;&lt;</source>
-        <translation>&amp;Einstellungen &lt;&lt; </translation>
+        <translation>&amp;Opzioni &lt;&lt;</translation>
     </message>
     <message>
         <source>Print to File (PDF)</source>
-        <translation>In PDF-Datei drucken</translation>
+        <translation>Stampa su file (PDF)</translation>
     </message>
     <message>
         <source>Local file</source>
-        <translation>Lokale Datei</translation>
+        <translation>File locale</translation>
     </message>
     <message>
         <source>Write PDF file</source>
-        <translation>PDF-Datei schreiben</translation>
+        <translation>Scrivi file PDF</translation>
     </message>
     <message>
         <source>Print To File ...</source>
-        <translation>In Datei drucken ...</translation>
+        <translation>Stampa su file...</translation>
     </message>
     <message>
         <source>%1 is a directory.
 Please choose a different file name.</source>
-        <translation>%1 ist ein Verzeichnis.
-Bitte wählen Sie einen anderen Dateinamen.</translation>
+        <translation>%1 è una cartella.
+Seleziona un nome diverso per il file.</translation>
     </message>
     <message>
         <source>File %1 is not writable.
 Please choose a different file name.</source>
-        <translation>Die Datei %1 ist schreibgeschützt.
-Bitte wählen Sie einen anderen Dateinamen.</translation>
+        <translation>Il file %1 non è scrivibile.
+Seleziona un nome diverso per il file.</translation>
     </message>
     <message>
         <source>%1 already exists.
 Do you want to overwrite it?</source>
-        <translation>Die Datei %1 existiert bereits.
-Soll sie überschrieben werden?</translation>
+        <translation>%1 esiste già.
+Vuoi sostituirlo?</translation>
     </message>
     <message>
         <source>Options &apos;Pages Per Sheet&apos; and &apos;Page Set&apos; cannot be used together.
 Please turn one of those options off.</source>
-        <translation>Die Einstellungen &quot;Seiten pro Blatt&quot; und &quot;Seiten-Satz&quot; können nicht zusammen verwendet werden.
-Bitte deaktivieren Sie eine der beiden.</translation>
+        <translation>Le opzioni &apos;pagine per foglio&apos; e &apos;insieme di pagine&apos; non possono essere utilizzate insieme.
+Disattiva una di queste opzioni.</translation>
     </message>
     <message>
         <source>The &apos;From&apos; value cannot be greater than the &apos;To&apos; value.</source>
-        <translation>Die Angabe für die erste Seite darf nicht größer sein als die für die letzte Seite.</translation>
+        <translation>Il valore di &quot;Da&quot; non può essere maggiore del valore di &quot;A&quot;.</translation>
     </message>
     <message>
         <source>OK</source>
@@ -3488,14 +3584,14 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Automatic</source>
-        <translation>Automatisch</translation>
+        <translation>Automatico</translation>
     </message>
 </context>
 <context>
     <name>QPrintPreviewDialog</name>
     <message>
         <source>Page Setup</source>
-        <translation>Seite einrichten</translation>
+        <translation>Impostazione pagina</translation>
     </message>
     <message>
         <source>%1%</source>
@@ -3503,211 +3599,219 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Print Preview</source>
-        <translation>Druckvorschau</translation>
+        <translation>Anteprima di stampa</translation>
     </message>
     <message>
         <source>Next page</source>
-        <translation>Nächste Seite</translation>
+        <translation>Pagina successiva</translation>
     </message>
     <message>
         <source>Previous page</source>
-        <translation>Vorige Seite</translation>
+        <translation>Pagina precedente</translation>
     </message>
     <message>
         <source>First page</source>
-        <translation>Erste Seite</translation>
+        <translation>Prima pagina</translation>
     </message>
     <message>
         <source>Last page</source>
-        <translation>Letzte Seite</translation>
+        <translation>Ultima pagina</translation>
     </message>
     <message>
         <source>Fit width</source>
-        <translation>Breite anpassen</translation>
+        <translation>Adatta alla larghezza</translation>
     </message>
     <message>
         <source>Fit page</source>
-        <translation>Seite anpassen</translation>
+        <translation>Adatta alla pagina</translation>
     </message>
     <message>
         <source>Zoom in</source>
-        <translation>Vergrößern</translation>
+        <translation>Ingrandisci</translation>
     </message>
     <message>
         <source>Zoom out</source>
-        <translation>Verkleinern</translation>
+        <translation>Rimpicciolisci</translation>
     </message>
     <message>
         <source>Portrait</source>
-        <translation>Hochformat</translation>
+        <translation>Verticale</translation>
     </message>
     <message>
         <source>Landscape</source>
-        <translation>Querformat</translation>
+        <translation>Orizzontale</translation>
     </message>
     <message>
         <source>Show single page</source>
-        <translation>Einzelne Seite anzeigen</translation>
+        <translation>Mostra pagina singola</translation>
     </message>
     <message>
         <source>Show facing pages</source>
-        <translation>Gegenüberliegende Seiten anzeigen</translation>
+        <translation>Mostra pagine affiancate</translation>
     </message>
     <message>
         <source>Show overview of all pages</source>
-        <translation>Übersicht aller Seiten</translation>
+        <translation>Mostra anteprima di tutte le pagine</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation>Drucken</translation>
+        <translation>Stampa</translation>
     </message>
     <message>
         <source>Page setup</source>
-        <translation>Seite einrichten</translation>
+        <translation>Impostazione pagina</translation>
     </message>
     <message>
         <source>Export to PDF</source>
-        <translation>PDF exportieren</translation>
+        <translation>Esporta come PDF</translation>
+    </message>
+    <message>
+        <source>Export to PostScript</source>
+        <translation>Esporta come PostScript</translation>
     </message>
 </context>
 <context>
     <name>QPrintPropertiesDialog</name>
     <message>
         <source>Job Options</source>
-        <translation>Einstellungen zum Druckauftrag</translation>
+        <translation>Opzioni del processo</translation>
     </message>
 </context>
 <context>
     <name>QPrintPropertiesWidget</name>
     <message>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <source>Page</source>
-        <translation>Seite</translation>
+        <translation>Pagina</translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation>Avanzate</translation>
     </message>
 </context>
 <context>
     <name>QPrintSettingsOutput</name>
     <message>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <source>Copies</source>
-        <translation>Anzahl Exemplare</translation>
+        <translation>Copie</translation>
     </message>
     <message>
         <source>Print range</source>
-        <translation>Bereich drucken</translation>
+        <translation>Stampa intervallo</translation>
     </message>
     <message>
         <source>Print all</source>
-        <translation>Alles drucken</translation>
+        <translation>Stampa tutto</translation>
     </message>
     <message>
         <source>Pages from</source>
-        <translation>Seiten von</translation>
+        <translation>Pagine da</translation>
     </message>
     <message>
         <source>to</source>
-        <translation>bis</translation>
+        <translation>a</translation>
     </message>
     <message>
         <source>Current Page</source>
-        <translation>Aktuelle Seite</translation>
+        <translation>Pagina corrente</translation>
     </message>
     <message>
         <source>Selection</source>
-        <translation>Auswahl</translation>
+        <translation>Selezione</translation>
     </message>
     <message>
         <source>Output Settings</source>
-        <translation>Ausgabeeinstellungen</translation>
+        <translation>Impostazioni di uscita</translation>
     </message>
     <message>
         <source>Copies:</source>
-        <translation>Anzahl Exemplare:</translation>
+        <translation>Copie:</translation>
     </message>
     <message>
         <source>Collate</source>
-        <translation>Sortieren</translation>
+        <translation>Fascicola</translation>
     </message>
     <message>
         <source>Reverse</source>
-        <translation>Umgekehrt</translation>
+        <translation>Ordine inverso</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation>Optionen</translation>
+        <translation>Opzioni</translation>
     </message>
     <message>
         <source>Color Mode</source>
-        <translation>Farbmodus</translation>
+        <translation>Modalità colore</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation>Farbe</translation>
+        <translation>Colore</translation>
     </message>
     <message>
         <source>Grayscale</source>
-        <translation>Graustufen</translation>
+        <translation>Scala di grigi</translation>
     </message>
     <message>
         <source>Duplex Printing</source>
-        <translation>Duplexdruck</translation>
+        <translation>Stampa fronte/retro</translation>
     </message>
     <message>
         <source>None</source>
-        <translation>Kein</translation>
+        <translation>Nessuno</translation>
     </message>
     <message>
         <source>Long side</source>
-        <translation>Lange Seite</translation>
+        <translation>Lato lungo</translation>
     </message>
     <message>
         <source>Short side</source>
-        <translation>Kurze Seite</translation>
+        <translation>Lato corto</translation>
     </message>
     <message>
         <source>Page Set:</source>
-        <translation>Seiten-Satz:</translation>
+        <translation>Insieme di pagine:</translation>
     </message>
 </context>
 <context>
     <name>QPrintWidget</name>
     <message>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <source>Printer</source>
-        <translation>Drucker</translation>
+        <translation>Stampante</translation>
     </message>
     <message>
         <source>&amp;Name:</source>
-        <translation>&amp;Name:</translation>
+        <translation>&amp;Nome:</translation>
     </message>
     <message>
         <source>P&amp;roperties</source>
-        <translation>&amp;Eigenschaften</translation>
+        <translation>P&amp;roprietà</translation>
     </message>
     <message>
         <source>Location:</source>
-        <translation>Standort:</translation>
+        <translation>Posizione:</translation>
     </message>
     <message>
         <source>Preview</source>
-        <translation>Vorschau</translation>
+        <translation>Anteprima</translation>
     </message>
     <message>
         <source>Type:</source>
-        <translation>Typ:</translation>
+        <translation>Tipo:</translation>
     </message>
     <message>
         <source>Output &amp;file:</source>
-        <translation>Ausgabe&amp;datei:</translation>
+        <translation>&amp;File di output:</translation>
     </message>
     <message>
         <source>...</source>
@@ -3718,679 +3822,639 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     <name>QProcess</name>
     <message>
         <source>Error reading from process</source>
-        <translation>Das Lesen vom Prozess ist fehlgeschlagen</translation>
+        <translation>Errore di lettura dal processo</translation>
     </message>
     <message>
         <source>Error writing to process</source>
-        <translation>Das Schreiben zum Prozess ist fehlgeschlagen</translation>
+        <translation>Errore di scrittura sul processo</translation>
     </message>
     <message>
         <source>Process crashed</source>
-        <translation>Der Prozess ist abgestürzt</translation>
-    </message>
-    <message>
-        <source>Process failed to start (spawned process exited with code 127)</source>
-        <translation>Das Starten des Prozesses ist fehlgeschlagen (der Unterprozess wurde mit Rückgabewert 127 beendet)</translation>
+        <translation>Il processo è andato in crash</translation>
     </message>
     <message>
         <source>No program defined</source>
-        <translation>Es wurde kein Programm angegeben</translation>
+        <translation>Nessun programma definito</translation>
     </message>
     <message>
         <source>Could not open input redirection for reading</source>
-        <translation>Die Eingabeumleitung konnte nicht zum Lesen geöffnet werden</translation>
+        <translation>Impossibile aprire la redirezione dell&apos;input per la lettura</translation>
     </message>
     <message>
         <source>Could not open output redirection for writing</source>
-        <translation>Die Ausgabeumleitung konnte nicht zum Lesen geöffnet werden</translation>
+        <translation>Impossibile aprire la redirezione dell&apos;output per la scrittura</translation>
     </message>
     <message>
         <source>Resource error (fork failure): %1</source>
-        <translation>Ressourcenproblem (&quot;fork failure&quot;): %1</translation>
+        <translation>Errore di risorsa (fork non riuscito): %1</translation>
     </message>
     <message>
         <source>Process operation timed out</source>
-        <translation>Zeitüberschreitung</translation>
+        <translation>Operazione del processo scaduta</translation>
     </message>
     <message>
         <source>Process failed to start: %1</source>
-        <translation>Das Starten des Prozesses ist fehlgeschlagen: %1</translation>
+        <translation>Avvio del processo non riuscito: %1</translation>
     </message>
 </context>
 <context>
     <name>QProgressDialog</name>
     <message>
         <source>Cancel</source>
-        <translation>Abbrechen</translation>
+        <translation>Annulla</translation>
     </message>
 </context>
 <context>
     <name>QQnxFileDialogHelper</name>
     <message>
+        <source>CANCEL</source>
+        <translation>ANNULLA</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
         <source>All files (*.*)</source>
-        <translation>Alle Dateien (*.*)</translation>
+        <translation>Tutti i file (*.*)</translation>
     </message>
 </context>
 <context>
     <name>QQnxFilePicker</name>
     <message>
         <source>Pick a file</source>
-        <translation>Wählen Sie eine Datei aus</translation>
+        <translation>Scegli un file</translation>
     </message>
 </context>
 <context>
     <name>QRegExp</name>
     <message>
         <source>no error occurred</source>
-        <translation>kein Fehler</translation>
+        <translation>nessun errore rilevato</translation>
     </message>
     <message>
         <source>disabled feature used</source>
-        <translation>deaktivierte Eigenschaft wurde benutzt</translation>
+        <translation>usata funzionalità disabilitata</translation>
     </message>
     <message>
         <source>bad char class syntax</source>
-        <translation>falsche Syntax für Zeichenklasse</translation>
+        <translation>sintassi della classe di caratteri non corretta</translation>
     </message>
     <message>
         <source>bad lookahead syntax</source>
-        <translation>falsche Syntax für Lookahead</translation>
+        <translation>sintassi della ricerca in avanti non corretta</translation>
     </message>
     <message>
         <source>lookbehinds not supported, see QTBUG-2371</source>
-        <translation>lookbehinds nicht unterstützt, siehe QTBUG-2371</translation>
+        <translation>ricerca all&apos;indietro non supportata, vedi QTBUG-2371</translation>
     </message>
     <message>
         <source>bad repetition syntax</source>
-        <translation>falsche Syntax für Wiederholungen</translation>
+        <translation>sintassi di ripetizione non corretta</translation>
     </message>
     <message>
         <source>invalid octal value</source>
-        <translation>ungültiger Oktal-Wert</translation>
+        <translation>valore ottale non valido</translation>
     </message>
     <message>
         <source>missing left delim</source>
-        <translation>fehlende linke Begrenzung</translation>
+        <translation>delimitatore sinistro mancante</translation>
     </message>
     <message>
         <source>unexpected end</source>
-        <translation>unerwartetes Ende</translation>
+        <translation>fine non prevista</translation>
     </message>
     <message>
         <source>met internal limit</source>
-        <translation>internes Limit erreicht</translation>
+        <translation>raggiunto limite interno</translation>
     </message>
     <message>
         <source>invalid interval</source>
-        <translation>ungültiges Intervall</translation>
+        <translation>intervallo non valido</translation>
     </message>
     <message>
         <source>invalid category</source>
-        <translation>ungültige Kategorie</translation>
+        <translation>categoria non valida</translation>
     </message>
 </context>
 <context>
     <name>QRegularExpression</name>
     <message>
         <source>no error</source>
-        <translation>kein Fehler</translation>
+        <translation>nessun errore</translation>
     </message>
     <message>
         <source>\ at end of pattern</source>
-        <translation>\ am Ende des Musters</translation>
+        <translation>\ alla fine del pattern</translation>
     </message>
     <message>
         <source>\c at end of pattern</source>
-        <translation>\c am Ende des Musters</translation>
+        <translation>\c alla fine del pattern</translation>
     </message>
     <message>
         <source>unrecognized character follows \</source>
-        <translation>Nicht erkanntes Zeichen nach \</translation>
+        <translation>carattere non riconosciuto dopo \</translation>
     </message>
     <message>
         <source>numbers out of order in {} quantifier</source>
-        <translation>Falsche Reihenfolge der Zahlen bei {}-Angabe</translation>
+        <translation>numeri fuori sequenza nel quantificatore {}</translation>
     </message>
     <message>
         <source>number too big in {} quantifier</source>
-        <translation>Zu große Zahl bei {}-Angabe</translation>
+        <translation>numero troppo grande nel quantificatore {}</translation>
     </message>
     <message>
         <source>missing terminating ] for character class</source>
-        <translation>Die schließende eckige Klammer fehlt bei Zeichenklasse</translation>
+        <translation>terminatore ] mancante per la classe di caratteri</translation>
     </message>
     <message>
         <source>invalid escape sequence in character class</source>
-        <translation>Ungültige Escape-Sequenz in Zeichenklasse</translation>
+        <translation>sequenza di escape non valida nella classe di caratteri</translation>
     </message>
     <message>
         <source>range out of order in character class</source>
-        <translation>Ungültiger Bereich in Zeichenklasse</translation>
+        <translation>intervallo fuori sequenza nella classe di caratteri</translation>
     </message>
     <message>
         <source>nothing to repeat</source>
-        <translation>nichts zu wiederholen</translation>
+        <translation>nulla da ripetere</translation>
     </message>
     <message>
         <source>internal error: unexpected repeat</source>
-        <translation>interner Fehler: Wiederholung nicht erwartet</translation>
+        <translation>errore interno: ripetizione imprevista</translation>
     </message>
     <message>
         <source>unrecognized character after (? or (?-</source>
-        <translation>Zeichen nicht erkannt nach (? oder (?-</translation>
+        <translation>carattere non riconosciuto dopo (? o (?-</translation>
     </message>
     <message>
         <source>POSIX named classes are supported only within a class</source>
-        <translation>nach POSIX benannte Klassen sind nur innerhalb einer Klasse unterstützt</translation>
+        <translation>le classi di tipo POSIX sono supportate solo all&apos;interno di una classe</translation>
     </message>
     <message>
         <source>missing )</source>
-        <translation>) fehlt</translation>
+        <translation>) mancante</translation>
     </message>
     <message>
         <source>reference to non-existent subpattern</source>
-        <translation>Referenz auf nicht existentes Untermuster</translation>
+        <translation>riferimento a sotto-pattern non esistente</translation>
     </message>
     <message>
         <source>erroffset passed as NULL</source>
-        <translation>erroffset als NULL übergeben</translation>
+        <translation>erroffset passato come NULL</translation>
     </message>
     <message>
         <source>unknown option bit(s) set</source>
-        <translation>Unbekannte Options-Bits gesetzt</translation>
+        <translation>impostati bit sconosciuti per l&apos;opzione</translation>
     </message>
     <message>
         <source>missing ) after comment</source>
-        <translation>) fehlt nach Kommentar</translation>
+        <translation>) mancante dopo il commento</translation>
     </message>
     <message>
         <source>regular expression is too large</source>
-        <translation>regulärer Ausdruck zu groß</translation>
+        <translation>l&apos;espressione regolare è troppo grande</translation>
     </message>
     <message>
         <source>failed to get memory</source>
-        <translation>es konnte kein Speicher erhalten werden</translation>
+        <translation>impossibile ottenere la memoria</translation>
     </message>
     <message>
         <source>unmatched parentheses</source>
-        <translation>überzählige Klammern</translation>
+        <translation>parentesi non corrispondenti</translation>
     </message>
     <message>
         <source>internal error: code overflow</source>
-        <translation>interner Fehler: Code-Überlauf</translation>
+        <translation>errore interno: overflow del codice</translation>
     </message>
     <message>
         <source>unrecognized character after (?&lt;</source>
-        <translation>Zeichen nicht erkannt nach (?&lt;</translation>
+        <translation>carattere non riconosciuto dopo (?&lt;</translation>
     </message>
     <message>
         <source>lookbehind assertion is not fixed length</source>
-        <translation>lookbehind assertion hat keine feste Länge</translation>
+        <translation>l&apos;asserzione di ricerca all&apos;indietro non è a lunghezza fissa</translation>
     </message>
     <message>
         <source>malformed number or name after (?(</source>
-        <translation>Name oder Nummer nach (?( ungültig</translation>
+        <translation>numero o nome maldefinito dopo (?(</translation>
     </message>
     <message>
         <source>conditional group contains more than two branches</source>
-        <translation>Bedingte Gruppe enthält mehr als zwei Verzweigungen</translation>
+        <translation>il gruppo condizionale contiene più di due diramazioni</translation>
     </message>
     <message>
         <source>assertion expected after (?(</source>
-        <translation>assertion erwartet nach (?(</translation>
+        <translation>asserzione prevista dopo (?(</translation>
     </message>
     <message>
         <source>(?R or (?[+-]digits must be followed by )</source>
-        <translation>(?R oder (?[+-]Ziffern erfordert schließende Klammer</translation>
+        <translation>(?R o (?[+-]cifre devono essere seguite da )</translation>
     </message>
     <message>
         <source>unknown POSIX class name</source>
-        <translation>unbekannter POSIX-Klassenname</translation>
+        <translation>nome di classe POSIX sconosciuto</translation>
     </message>
     <message>
         <source>POSIX collating elements are not supported</source>
-        <translation>POSIX-Sortierfolgen werden nicht unterstützt</translation>
+        <translation>gli elementi POSIX di raccoglimento non sono supportati</translation>
     </message>
     <message>
         <source>this version of PCRE is not compiled with PCRE_UTF8 support</source>
-        <translation>diese Version von PCRE ist nicht mit PCRE_UTF8 Unterstützung erstellt</translation>
+        <translation>questa versione di PCRE non è compilata con il supporto PCRE_UTF8</translation>
     </message>
     <message>
         <source>character value in \x{...} sequence is too large</source>
-        <translation>Zeichenwert in \x{...} ist zu groß</translation>
+        <translation>il valore del carattere nella sequenza \x{...} è troppo grande</translation>
     </message>
     <message>
         <source>invalid condition (?(0)</source>
-        <translation>Ungültige Bedingung (?(0)</translation>
+        <translation>condizione (?(0) non valida</translation>
     </message>
     <message>
         <source>\C not allowed in lookbehind assertion</source>
-        <translation>\C ist in lookbehind assertion nicht zulässig</translation>
+        <translation>\C non consentito in una asserzione lookbehind</translation>
     </message>
     <message>
         <source>PCRE does not support \L, \l, \N{name}, \U, or \u</source>
-        <translation>PCRE unterstützt \L, \l, \N{name}, \U, oder \u nicht</translation>
+        <translation>PCRE non supporta \L, \l, \N{nome}, \U, o \u</translation>
     </message>
     <message>
         <source>number after (?C is &gt; 255</source>
-        <translation>Zahl nach(?C ist &gt; 255</translation>
+        <translation>il numero dopo (?C è &gt; 255</translation>
     </message>
     <message>
         <source>closing ) for (?C expected</source>
-        <translation>schließende Klammer für (?C erwartet</translation>
+        <translation>prevista ) di chiusura per (?C</translation>
     </message>
     <message>
         <source>recursive call could loop indefinitely</source>
-        <translation>Rekursiver Aufruf könnte zu Endlosschleife führen</translation>
+        <translation>la chiamata ricorsiva potrebbe entrare in un loop infinito</translation>
     </message>
     <message>
         <source>unrecognized character after (?P</source>
-        <translation>Zeichen nicht erkannt nach (?P</translation>
+        <translation>carattere non riconosciuto dopo (?P</translation>
     </message>
     <message>
         <source>syntax error in subpattern name (missing terminator)</source>
-        <translation>Syntaxfehler in Name des Untermusters (fehlendes Trennzeichen)</translation>
+        <translation>errore di sintassi nel nome del sotto-pattern (terminatore mancante)</translation>
     </message>
     <message>
         <source>two named subpatterns have the same name</source>
-        <translation>Es gibt zwei Untermuster desselben Namens</translation>
+        <translation>due sotto-pattern con nome hanno lo stesso nome</translation>
     </message>
     <message>
         <source>invalid UTF-8 string</source>
-        <translation>Ungültige UTF8-Zeichenkette</translation>
+        <translation>stringa UTF-8 non valida</translation>
     </message>
     <message>
         <source>support for \P, \p, and \X has not been compiled</source>
-        <translation>Unterstützung für \P, \p, und \X wurde nicht eingebunden</translation>
+        <translation>il supporto per \P, \p e \X non è stato compilato</translation>
     </message>
     <message>
         <source>malformed \P or \p sequence</source>
-        <translation>fehlerhafte \P- oder \p-Sequenz</translation>
+        <translation>sequenza \P o \p malformata</translation>
     </message>
     <message>
         <source>unknown property name after \P or \p</source>
-        <translation>unbekannter Eigenschaftsname nach \P oder \p</translation>
+        <translation>nome della proprietà sconosciuto dopo \P o \p</translation>
     </message>
     <message>
         <source>subpattern name is too long (maximum 32 characters)</source>
-        <translation>Name des Untermusters ist zu lang (höchstens 32 Zeichen)</translation>
+        <translation>il nome del sotto-pattern è troppo lungo (massimo 32 caratteri)</translation>
     </message>
     <message>
         <source>too many named subpatterns (maximum 10000)</source>
-        <translation>Zuviele benannte Untermuster (höchstens 10000)</translation>
+        <translation>troppi sotto-pattern con nome (massimo 10000)</translation>
     </message>
     <message>
         <source>octal value is greater than \377 (not in UTF-8 mode)</source>
-        <translation>Okaler Wert ist größer als \377 (nicht im UTF8-Modus)</translation>
+        <translation>il valore ottale è maggiore di \377 (non in modalità UTF-8)</translation>
     </message>
     <message>
         <source>internal error: overran compiling workspace</source>
-        <translation>interner Fehler: Überlauf im Kompilierbereich</translation>
+        <translation>errore interno: sconfinamento nella compilazione dello spazio di lavoro</translation>
     </message>
     <message>
         <source>internal error: previously-checked referenced subpattern not found</source>
-        <translation>interner Fehler: bereits überprüfte Referenz auf Untermuster nicht gefunden</translation>
+        <translation>errore interno: riferimento non trovato al sotto-modello verificato in precedenza</translation>
     </message>
     <message>
         <source>DEFINE group contains more than one branch</source>
-        <translation>DEFINE-Gruppe enthält mehr als eine Verzweigung</translation>
+        <translation>il gruppo DEFINE contiene più di un ramo</translation>
     </message>
     <message>
         <source>repeating a DEFINE group is not allowed</source>
-        <translation>Wiederholung einer DEFINE-Gruppe ist nicht zulässig</translation>
+        <translation>la ripetizione di un gruppo DEFINE non è consentita</translation>
     </message>
     <message>
         <source>inconsistent NEWLINE options</source>
-        <translation>Inkonsistente NEWLINE-Optionen</translation>
+        <translation>opzioni NEWLINE inconsistenti</translation>
     </message>
     <message>
         <source>\g is not followed by a braced, angle-bracketed, or quoted name/number or by a plain number</source>
-        <translation>auf \g folgt weder in Anführungszeichen, geschweifte oder eckige Klammern eingeschlossene Zahl oder Name noch eine einfache Zahl</translation>
+        <translation>\g non è seguito da un nome/numero tra parentesi, parentesi graffe o tra virgolette o da un numero semplice</translation>
     </message>
     <message>
         <source>a numbered reference must not be zero</source>
-        <translation>eine nummerierte Referenz darf nicht Null sein</translation>
+        <translation>un riferimento numerato non deve essere pari a zero</translation>
     </message>
     <message>
         <source>an argument is not allowed for (*ACCEPT), (*FAIL), or (*COMMIT)</source>
-        <translation>Argumente für (*ACCEPT), (*FAIL), oder (*COMMIT) nicht zulässig</translation>
+        <translation>un parametro non è consentito per (*ACCEPT), (*FAIL), o (*COMMIT)</translation>
     </message>
     <message>
         <source>(*VERB) not recognized</source>
-        <translation>(*VERB) nicht erkannt</translation>
+        <translation>(*VERBO) non riconosciuto</translation>
     </message>
     <message>
         <source>number is too big</source>
-        <translation>zu große Zahl</translation>
+        <translation>il numero è troppo grande</translation>
     </message>
     <message>
         <source>subpattern name expected</source>
-        <translation>Name des Untermusters erwartet</translation>
+        <translation>previsto nome del sotto-pattern</translation>
     </message>
     <message>
         <source>digit expected after (?+</source>
-        <translation>Ziffer erwartet nach (?+</translation>
+        <translation>cifra prevista dopo (?+</translation>
     </message>
     <message>
         <source>] is an invalid data character in JavaScript compatibility mode</source>
-        <translation>] ist kein gültiges Zeichen im JavaScript-Kompatibilitätsmodus</translation>
+        <translation>] è un carattere non valido nella modalità di compatibilità JavaScript</translation>
     </message>
     <message>
         <source>different names for subpatterns of the same number are not allowed</source>
-        <translation>Verschiedene Namen für Untermuster mit derselben Nummer sind nicht zulässig</translation>
+        <translation>nomi diversi per sotto-pattern dello stesso numero non sono consentiti</translation>
     </message>
     <message>
         <source>(*MARK) must have an argument</source>
-        <translation>(*MARK) erfordert ein Argument</translation>
+        <translation>(*MARK) deve avere un parametro</translation>
     </message>
     <message>
         <source>this version of PCRE is not compiled with PCRE_UCP support</source>
-        <translation>diese Version von PCRE ist nicht mit PCRE_UCP-Unterstützung erstellt</translation>
+        <translation>questa versione di PCRE non è compilata con il supporto PCRE_UCP</translation>
     </message>
     <message>
         <source>\c must be followed by an ASCII character</source>
-        <translation>auf \c muss ein ASCII-Zeichen folgen</translation>
+        <translation>\c deve essere seguito da un carattere ASCII</translation>
     </message>
     <message>
         <source>\k is not followed by a braced, angle-bracketed, or quoted name</source>
-        <translation>auf \k folgt kein in Anführungszeichen, geschweifte oder eckige Klammern eingeschlossener Name</translation>
+        <translation>\k non è seguito da un nome tra parentesi, parentesi graffe o virgolette</translation>
     </message>
     <message>
         <source>internal error: unknown opcode in find_fixedlength()</source>
-        <translation>interner Fehler: Unbekannter Operationscode in find_fixedlength()</translation>
+        <translation>errore interno: opcode sconosciuto in find_fixedlength()</translation>
     </message>
     <message>
         <source>\N is not supported in a class</source>
-        <translation>\N ist innerhalb einer Klasse nicht unterstützt</translation>
+        <translation>\N non è supportato in una classe</translation>
     </message>
     <message>
         <source>too many forward references</source>
-        <translation>zuviele Vorwärtsreferenzen</translation>
+        <translation>troppi riferimenti in avanti</translation>
     </message>
     <message>
         <source>disallowed Unicode code point (&gt;= 0xd800 &amp;&amp; &lt;= 0xdfff)</source>
-        <translation>nicht zulässiger Unicode-Code-Point (&gt;= 0xd800 &amp;&amp; &lt;= 0xdfff)</translation>
+        <translation>code point Unicode non consentito (&gt;= 0xd800 &amp;&amp; &lt;= 0xdfff)</translation>
     </message>
     <message>
         <source>invalid UTF-16 string</source>
-        <translation>Ungültige UTF-16-Zeichenkette</translation>
+        <translation>stringa UTF-16 non valida</translation>
     </message>
     <message>
         <source>name is too long in (*MARK), (*PRUNE), (*SKIP), or (*THEN)</source>
-        <translation>Name zu lang in (*MARK), (*PRUNE), (*SKIP), oder (*THEN)</translation>
+        <translation>nome troppo lungo in (*MARK), (*PRUNE), (*SKIP), o (*THEN)</translation>
     </message>
     <message>
         <source>character value in \u.... sequence is too large</source>
-        <translation>Zeichenwert in \u....-Sequenz ist zu groß</translation>
-    </message>
-    <message>
-        <source>invalid UTF-32 string</source>
-        <translation>Ungültige UTF-32-Zeichenkette</translation>
-    </message>
-    <message>
-        <source>setting UTF is disabled by the application</source>
-        <translation>UTF-Einstellung durch Anwendung deaktiviert</translation>
-    </message>
-    <message>
-        <source>non-hex character in \x{} (closing brace missing?)</source>
-        <translation>\x{} enthält ein Zeichen, das keine Hexadezimalziffer ist (fehlt eventuell eine schließende Klammer?)</translation>
-    </message>
-    <message>
-        <source>non-octal character in \o{} (closing brace missing?)</source>
-        <translation>\o{} enthält ein Zeichen, das keine Oktalziffer ist (fehlt eventuell eine schließende Klammer?)</translation>
-    </message>
-    <message>
-        <source>missing opening brace after \o</source>
-        <translation>öffnende Klammer fehlt nach \o</translation>
-    </message>
-    <message>
-        <source>parentheses are too deeply nested</source>
-        <translation>Klammern zu tief geschachtelt</translation>
-    </message>
-    <message>
-        <source>invalid range in character class</source>
-        <translation>Ungültiger Bereich in Zeichenklasse</translation>
-    </message>
-    <message>
-        <source>group name must start with a non-digit</source>
-        <translation>Gruppenname darf nicht mit einer Ziffer beginnen</translation>
-    </message>
-    <message>
-        <source>parentheses are too deeply nested (stack check)</source>
-        <translation>Klammern zu tief geschachtelt (Stack-Prüfung)</translation>
+        <translation>valore del carattere troppo grande nella sequenza \u....</translation>
     </message>
 </context>
 <context>
     <name>QSQLite2Driver</name>
     <message>
         <source>Error opening database</source>
-        <translation>Die Datenbankverbindung konnte nicht geöffnet werden</translation>
+        <translation>Errore di apertura del database</translation>
     </message>
     <message>
         <source>Unable to begin transaction</source>
-        <translation>Es konnte keine Transaktion gestartet werden</translation>
+        <translation>Impossibile iniziare la transazione</translation>
     </message>
     <message>
         <source>Unable to commit transaction</source>
-        <translation>Die Transaktion konnte nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Unable to rollback transaction</source>
-        <translation>Die Transaktion kann nicht rückgängig gemacht werden</translation>
+        <translation>Impossibile annullare la transazione</translation>
     </message>
 </context>
 <context>
     <name>QSQLite2Result</name>
     <message>
         <source>Unable to fetch results</source>
-        <translation>Das Ergebnis konnte nicht abgeholt werden</translation>
+        <translation>Impossibile ottenere i risultati</translation>
     </message>
     <message>
         <source>Unable to execute statement</source>
-        <translation>Der Befehl konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire il comando</translation>
     </message>
 </context>
 <context>
     <name>QSQLiteDriver</name>
     <message>
         <source>Error opening database</source>
-        <translation>Die Datenbankverbindung konnte nicht geöffnet werden</translation>
+        <translation>Errore di apertura del database</translation>
     </message>
     <message>
         <source>Error closing database</source>
-        <translation>Die Datenbankverbindung konnte nicht geschlossen werden</translation>
+        <translation>Errore di chiusura del database</translation>
     </message>
     <message>
         <source>Unable to begin transaction</source>
-        <translation>Es konnte keine Transaktion gestartet werden</translation>
+        <translation>Impossibile iniziare la transazione</translation>
     </message>
     <message>
         <source>Unable to commit transaction</source>
-        <translation>Die Transaktion konnte nicht durchgeführt werden (Operation &apos;commit&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile effettuare la transazione</translation>
     </message>
     <message>
         <source>Unable to rollback transaction</source>
-        <translation>Die Transaktion konnte nicht rückgängig gemacht werden (Operation &apos;rollback&apos; fehlgeschlagen)</translation>
+        <translation>Impossibile annullare la transazione</translation>
     </message>
 </context>
 <context>
     <name>QSQLiteResult</name>
     <message>
         <source>Unable to fetch row</source>
-        <translation>Der Datensatz konnte nicht abgeholt werden</translation>
+        <translation>Impossibile ottenere la riga</translation>
     </message>
     <message>
         <source>No query</source>
-        <translation>Kein Abfrage</translation>
+        <translation>Nessuna query</translation>
     </message>
     <message>
         <source>Unable to execute statement</source>
-        <translation>Der Befehl konnte nicht ausgeführt werden</translation>
+        <translation>Impossibile eseguire il comando</translation>
     </message>
     <message>
         <source>Unable to execute multiple statements at a time</source>
-        <translation>Es können nicht mehrere Befehle gleichzeitig ausgeführt werden</translation>
+        <translation>Impossibile eseguire più comandi alla volta</translation>
     </message>
     <message>
         <source>Unable to reset statement</source>
-        <translation>Der Befehl konnte nicht zurückgesetzt werden</translation>
+        <translation>Impossibile reinizializzare il comando</translation>
     </message>
     <message>
         <source>Unable to bind parameters</source>
-        <translation>Die Parameter konnten nicht gebunden werden</translation>
+        <translation>Impossibile effettuare il bind dei parametri</translation>
     </message>
     <message>
         <source>Parameter count mismatch</source>
-        <translation>Die Anzahl der Parameter ist falsch</translation>
+        <translation>Numero di parametri non corrispondente</translation>
     </message>
 </context>
 <context>
     <name>QSaveFile</name>
     <message>
         <source>Existing file %1 is not writable</source>
-        <translation>Die existierende Datei %1 ist nicht schreibbar</translation>
-    </message>
-    <message>
-        <source>Filename refers to a directory</source>
-        <translation>Dateiname bezeichnet ein Verzeichnis</translation>
+        <translation>Il file esistente %1 non è scrivibile</translation>
     </message>
     <message>
         <source>Writing canceled by application</source>
-        <translation>Das Schreiben wurde von der Anwendung abgebrochen</translation>
+        <translation>La scrittura è stata annullata dall&apos;applicazione</translation>
     </message>
 </context>
 <context>
     <name>QScrollBar</name>
     <message>
         <source>Scroll here</source>
-        <translation>Hierher scrollen</translation>
+        <translation>Scorri qui</translation>
     </message>
     <message>
         <source>Left edge</source>
-        <translation>Linker Rand</translation>
+        <translation>Margine sinistro</translation>
     </message>
     <message>
         <source>Top</source>
-        <translation>Anfang</translation>
+        <translation>Cima</translation>
     </message>
     <message>
         <source>Right edge</source>
-        <translation>Rechter Rand</translation>
+        <translation>Margine destro</translation>
     </message>
     <message>
         <source>Bottom</source>
-        <translation>Ende</translation>
+        <translation>Fondo</translation>
     </message>
     <message>
         <source>Page left</source>
-        <translation>Eine Seite nach links</translation>
+        <translation>Pagina a sinistra</translation>
     </message>
     <message>
         <source>Page up</source>
-        <translation>Eine Seite nach oben</translation>
+        <translation>Pagina su</translation>
     </message>
     <message>
         <source>Page right</source>
-        <translation>Eine Seite nach rechts</translation>
+        <translation>Pagina a destra</translation>
     </message>
     <message>
         <source>Page down</source>
-        <translation>Eine Seite nach unten</translation>
+        <translation>Pagina giù</translation>
     </message>
     <message>
         <source>Scroll left</source>
-        <translation>Nach links scrollen</translation>
+        <translation>Scorri a sinistra</translation>
     </message>
     <message>
         <source>Scroll up</source>
-        <translation>Nach oben scrollen</translation>
+        <translation>Scorri in alto</translation>
     </message>
     <message>
         <source>Scroll right</source>
-        <translation>Nach rechts scrollen</translation>
+        <translation>Scorri a destra</translation>
     </message>
     <message>
         <source>Scroll down</source>
-        <translation>Nach unten scrollen</translation>
+        <translation>Scorri in basso</translation>
     </message>
 </context>
 <context>
     <name>QSharedMemory</name>
     <message>
         <source>%1: unable to set key on lock</source>
-        <translation>%1: Es kann kein Schlüssel für die Sperrung gesetzt werden</translation>
+        <translation>%1: impossibile impostare la chiave sul lock</translation>
     </message>
     <message>
         <source>%1: create size is less then 0</source>
-        <translation>%1: Die Größenangabe für die Erzeugung ist kleiner als Null</translation>
+        <translation>%1: la dimensione di creazione è minore di 0</translation>
     </message>
     <message>
         <source>%1: unable to lock</source>
-        <translation>%1: Sperrung fehlgeschlagen</translation>
+        <translation>%1: impossibile bloccare</translation>
     </message>
     <message>
         <source>%1: unable to unlock</source>
-        <translation>%1: Die Sperrung konnte nicht aufgehoben werden</translation>
+        <translation>%1: impossibile sbloccare</translation>
     </message>
     <message>
         <source>%1: permission denied</source>
-        <translation>%1: Zugriff verweigert</translation>
+        <translation>%1: permesso negato</translation>
     </message>
     <message>
         <source>%1: already exists</source>
-        <translation>%1: existiert bereits</translation>
+        <translation>%1: esiste già</translation>
     </message>
     <message>
         <source>%1: doesn&apos;t exist</source>
-        <translation>%1: existiert nicht</translation>
+        <translation>%1: non esiste</translation>
     </message>
     <message>
         <source>%1: out of resources</source>
-        <translation>%1: Keine Ressourcen mehr verfügbar</translation>
+        <translation>%1: risorse esaurite</translation>
     </message>
     <message>
         <source>%1: unknown error %2</source>
-        <translation>%1: Unbekannter Fehler %2</translation>
+        <translation>%1: errore sconosciuto %2</translation>
     </message>
     <message>
         <source>%1: key is empty</source>
-        <translation>%1: Ungültige Schlüsselangabe (leer)</translation>
-    </message>
-    <message>
-        <source>%1: bad name</source>
-        <translation>%1: Ungültiger Name</translation>
+        <translation>%1: la chiave è vuota</translation>
     </message>
     <message>
         <source>%1: UNIX key file doesn&apos;t exist</source>
-        <translation>%1: Die Unix-Schlüsseldatei existiert nicht</translation>
+        <translation>%1: il file della chiave UNIX non esiste</translation>
     </message>
     <message>
         <source>%1: ftok failed</source>
-        <translation>%1: ftok-Aufruf ist fehlgeschlagen</translation>
+        <translation>%1: ftok non riuscito</translation>
     </message>
     <message>
         <source>%1: unable to make key</source>
-        <translation>%1: Es kann kein Schlüssel erzeugt werden</translation>
+        <translation>%1: impossibile creare la chiave</translation>
     </message>
     <message>
         <source>%1: system-imposed size restrictions</source>
-        <translation>%1: Ein systembedingtes Limit der Größe wurde erreicht</translation>
+        <translation>%1: il sistema impone restrizioni di dimensione</translation>
     </message>
     <message>
         <source>%1: not attached</source>
-        <translation>%1: nicht verbunden</translation>
+        <translation>%1: non collegato</translation>
     </message>
     <message>
         <source>%1: invalid size</source>
-        <translation>%1: Ungültige Größe</translation>
+        <translation>%1: dimensione non valida</translation>
     </message>
     <message>
         <source>%1: key error</source>
-        <translation>%1: Fehlerhafter Schlüssel</translation>
+        <translation>%1: errore della chiave</translation>
     </message>
     <message>
         <source>%1: size query failed</source>
-        <translation>%1: Die Abfrage der Größe ist fehlgeschlagen</translation>
+        <translation>%1: query della dimensione non riuscita</translation>
     </message>
 </context>
 <context>
@@ -4398,7 +4462,7 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     <message>
         <source>Space</source>
         <extracomment>This and all following &quot;incomprehensible&quot; strings in QShortcut context are key names. Please use the localized names appearing on actual keyboards or whatever is commonly used.</extracomment>
-        <translation>Leertaste</translation>
+        <translation>Spazio</translation>
     </message>
     <message>
         <source>Esc</source>
@@ -4410,181 +4474,181 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Backtab</source>
-        <translation>Rück-Tab</translation>
+        <translation>Tab indietro</translation>
     </message>
     <message>
         <source>Backspace</source>
-        <translation>Rücktaste</translation>
+        <translation>Backspace</translation>
     </message>
     <message>
         <source>Return</source>
-        <translation>Return</translation>
+        <translation>Invio</translation>
     </message>
     <message>
         <source>Enter</source>
-        <translation>Enter</translation>
+        <translation>Invio</translation>
     </message>
     <message>
         <source>Ins</source>
-        <translation>Einfg</translation>
+        <translation>Ins</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation>Entf</translation>
+        <translation>Canc</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation>Druck</translation>
+        <translation>Stampa</translation>
     </message>
     <message>
         <source>SysReq</source>
-        <translation>SysReq</translation>
+        <translation>R Sist</translation>
     </message>
     <message>
         <source>Home</source>
-        <translation>Pos1</translation>
+        <translation>↖</translation>
     </message>
     <message>
         <source>End</source>
-        <translation>Ende</translation>
+        <translation>Fine</translation>
     </message>
     <message>
         <source>Left</source>
-        <translation>Links</translation>
+        <translation>Sinistra</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Hoch</translation>
+        <translation>Su</translation>
     </message>
     <message>
         <source>Right</source>
-        <translation>Rechts</translation>
+        <translation>Destra</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Herunter</translation>
+        <translation>Giù</translation>
     </message>
     <message>
         <source>PgUp</source>
-        <translation>Bild aufwärts</translation>
+        <translation>Pag↑</translation>
     </message>
     <message>
         <source>PgDown</source>
-        <translation>Bild abwärts</translation>
+        <translation>Pag↓</translation>
     </message>
     <message>
         <source>CapsLock</source>
-        <translation>Feststelltaste</translation>
+        <translation>Bloc Maiusc</translation>
     </message>
     <message>
         <source>NumLock</source>
-        <translation>Zahlen-Feststelltaste</translation>
+        <translation>Bloc Num</translation>
     </message>
     <message>
         <source>ScrollLock</source>
-        <translation>Rollen-Feststelltaste</translation>
+        <translation>Bloc Scorr</translation>
     </message>
     <message>
         <source>Menu</source>
-        <translation>Menü</translation>
+        <translation>Menu</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Aiuto</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Zurück</translation>
+        <translation>Indietro</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation>Vorwärts</translation>
+        <translation>Avanti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Abbrechen</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Aktualisieren</translation>
+        <translation>Aggiorna</translation>
     </message>
     <message>
         <source>Volume Down</source>
-        <translation>Lautstärke -</translation>
+        <translation>Diminuisci il volume</translation>
     </message>
     <message>
         <source>Volume Mute</source>
-        <translation>Ton aus</translation>
+        <translation>Muto</translation>
     </message>
     <message>
         <source>Volume Up</source>
-        <translation>Lautstärke +</translation>
+        <translation>Aumenta il volume</translation>
     </message>
     <message>
         <source>Bass Boost</source>
-        <translation>Bass-Boost</translation>
+        <translation>Amplifica i bassi</translation>
     </message>
     <message>
         <source>Bass Up</source>
-        <translation>Bass +</translation>
+        <translation>Più bassi</translation>
     </message>
     <message>
         <source>Bass Down</source>
-        <translation>Bass -</translation>
+        <translation>Meno bassi</translation>
     </message>
     <message>
         <source>Treble Up</source>
-        <translation>Höhen +</translation>
+        <translation>Più alti</translation>
     </message>
     <message>
         <source>Treble Down</source>
-        <translation>Höhen -</translation>
+        <translation>Meno alti</translation>
     </message>
     <message>
         <source>Media Play</source>
-        <translation>Wiedergabe</translation>
+        <translation>Riproduci media</translation>
     </message>
     <message>
         <source>Media Stop</source>
-        <translation>Stopp</translation>
+        <translation>Interrompi media</translation>
     </message>
     <message>
         <source>Media Previous</source>
-        <translation>Vorheriger</translation>
+        <translation>Media precedente</translation>
     </message>
     <message>
         <source>Media Next</source>
-        <translation>Nächster</translation>
+        <translation>Media successivo</translation>
     </message>
     <message>
         <source>Media Record</source>
-        <translation>Aufzeichnen</translation>
+        <translation>Registrazione</translation>
     </message>
     <message>
         <source>Media Pause</source>
         <extracomment>Media player pause button</extracomment>
-        <translation>Pause</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Toggle Media Play/Pause</source>
         <extracomment>Media player button to toggle between playing and paused</extracomment>
-        <translation>Wiedergabe/Pause</translation>
+        <translation>Pausa/riproduci</translation>
     </message>
     <message>
         <source>Home Page</source>
-        <translation>Startseite</translation>
+        <translation>Pagina iniziale</translation>
     </message>
     <message>
         <source>Favorites</source>
-        <translation>Favoriten</translation>
+        <translation>Preferiti</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Suchen</translation>
+        <translation>Ricerca</translation>
     </message>
     <message>
         <source>Standby</source>
@@ -4592,171 +4656,175 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Open URL</source>
-        <translation>URL öffnen</translation>
+        <translation>Apri URL</translation>
     </message>
     <message>
         <source>Launch Mail</source>
-        <translation>Mail starten</translation>
+        <translation>Avvia mail</translation>
     </message>
     <message>
         <source>Launch Media</source>
-        <translation>Medienspieler starten</translation>
+        <translation>Avvia media</translation>
     </message>
     <message>
         <source>Launch (0)</source>
-        <translation>(0) starten</translation>
+        <translation>Avvia (0)</translation>
     </message>
     <message>
         <source>Launch (1)</source>
-        <translation>(1) starten</translation>
+        <translation>Avvia (1)</translation>
     </message>
     <message>
         <source>Launch (2)</source>
-        <translation>(2) starten</translation>
+        <translation>Avvia (2)</translation>
     </message>
     <message>
         <source>Launch (3)</source>
-        <translation>(3) starten</translation>
+        <translation>Avvia (3)</translation>
     </message>
     <message>
         <source>Launch (4)</source>
-        <translation>(4) starten</translation>
+        <translation>Avvia (4)</translation>
     </message>
     <message>
         <source>Launch (5)</source>
-        <translation>(5) starten</translation>
+        <translation>Avvia (5)</translation>
     </message>
     <message>
         <source>Launch (6)</source>
-        <translation>(6) starten</translation>
+        <translation>Avvia (6)</translation>
     </message>
     <message>
         <source>Launch (7)</source>
-        <translation>(7) starten</translation>
+        <translation>Avvia (7)</translation>
     </message>
     <message>
         <source>Launch (8)</source>
-        <translation>(8) starten</translation>
+        <translation>Avvia (8)</translation>
     </message>
     <message>
         <source>Launch (9)</source>
-        <translation>(9) starten</translation>
+        <translation>Avvia (9)</translation>
     </message>
     <message>
         <source>Launch (A)</source>
-        <translation>(A) starten</translation>
+        <translation>Avvia (A)</translation>
     </message>
     <message>
         <source>Launch (B)</source>
-        <translation>(B) starten</translation>
+        <translation>Avvia (B)</translation>
     </message>
     <message>
         <source>Launch (C)</source>
-        <translation>(C) starten</translation>
+        <translation>Avvia (C)</translation>
     </message>
     <message>
         <source>Launch (D)</source>
-        <translation>(D) starten</translation>
+        <translation>Avvia (D)</translation>
     </message>
     <message>
         <source>Launch (E)</source>
-        <translation>(E) starten</translation>
+        <translation>Avvia (E)</translation>
     </message>
     <message>
         <source>Launch (F)</source>
-        <translation>(F) starten</translation>
+        <translation>Avvia (F)</translation>
     </message>
     <message>
         <source>Monitor Brightness Up</source>
-        <translation>Monitor heller</translation>
+        <translation>Aumenta luminosità dello schermo</translation>
     </message>
     <message>
         <source>Monitor Brightness Down</source>
-        <translation>Monitor dunkler</translation>
+        <translation>Diminuisci luminosità dello schermo</translation>
     </message>
     <message>
         <source>Keyboard Light On/Off</source>
-        <translation>Tastaturbeleuchtung Ein/Aus</translation>
+        <translation>Attiva/disattiva illuminazione tastiera</translation>
     </message>
     <message>
         <source>Keyboard Brightness Up</source>
-        <translation>Tastaturbeleuchtung heller</translation>
+        <translation>Aumenta luminosità della tastiera</translation>
     </message>
     <message>
         <source>Keyboard Brightness Down</source>
-        <translation>Tastaturbeleuchtung dunkler</translation>
+        <translation>Diminuisci luminosità della tastiera</translation>
     </message>
     <message>
         <source>Power Off</source>
-        <translation>Ausschalten</translation>
+        <translation>Spegni</translation>
     </message>
     <message>
         <source>Wake Up</source>
-        <translation>Aufwecken</translation>
+        <translation>Risveglia</translation>
     </message>
     <message>
         <source>Eject</source>
-        <translation>Auswerfen</translation>
+        <translation>Espelli</translation>
     </message>
     <message>
         <source>Screensaver</source>
-        <translation>Bildschirmschoner</translation>
+        <translation>Salvaschermo</translation>
     </message>
     <message>
         <source>WWW</source>
-        <translation>Internet</translation>
+        <translation>WWW</translation>
     </message>
     <message>
         <source>Sleep</source>
-        <translation>Schlafmodus</translation>
+        <translation>Sospendi</translation>
     </message>
     <message>
         <source>LightBulb</source>
-        <translation>Beleuchtung</translation>
+        <translation>Lampadina</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation>Shop</translation>
+        <translation>Negozio</translation>
     </message>
     <message>
         <source>History</source>
-        <translation>Verlauf</translation>
+        <translation>Cronologia</translation>
     </message>
     <message>
         <source>Add Favorite</source>
-        <translation>Lesezeichen hinzufügen</translation>
+        <translation>Aggiungi preferito</translation>
     </message>
     <message>
         <source>Hot Links</source>
-        <translation>Empfohlene Verweise</translation>
+        <translation>Collegamenti</translation>
     </message>
     <message>
         <source>Adjust Brightness</source>
-        <translation>Helligkeit einstellen</translation>
+        <translation>Regola luminosità</translation>
     </message>
     <message>
         <source>Finance</source>
-        <translation>Finanzen</translation>
+        <translation>Finanza</translation>
     </message>
     <message>
         <source>Community</source>
-        <translation>Community</translation>
+        <translation>Comunità</translation>
+    </message>
+    <message>
+        <source>Audio Rewind</source>
+        <translation>Riavvolgi audio</translation>
     </message>
     <message>
         <source>Back Forward</source>
-        <translation>Hinterstes nach vorn</translation>
+        <translation>Indietro veloce</translation>
     </message>
     <message>
         <source>Application Left</source>
-        <translation>Anwendung links</translation>
+        <translation>Applicazione a sinistra</translation>
     </message>
     <message>
         <source>Application Right</source>
-        <translation>Anwendung rechts</translation>
+        <translation>Applicazione a destra</translation>
     </message>
     <message>
         <source>Book</source>
-        <translation>Buch</translation>
+        <translation>Libro</translation>
     </message>
     <message>
         <source>CD</source>
@@ -4764,31 +4832,31 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Calculator</source>
-        <translation>Rechner</translation>
+        <translation>Calcolatrice</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Löschen</translation>
+        <translation>Pulisci</translation>
     </message>
     <message>
         <source>Clear Grab</source>
-        <translation>Zugriff löschen</translation>
+        <translation>Pulisci cattura</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Schließen</translation>
+        <translation>Chiudi</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>Kopieren</translation>
+        <translation>Copia</translation>
     </message>
     <message>
         <source>Cut</source>
-        <translation>Ausschneiden</translation>
+        <translation>Taglia</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation>Anzeigen</translation>
+        <translation>Mostra</translation>
     </message>
     <message>
         <source>DOS</source>
@@ -4796,11 +4864,11 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Documents</source>
-        <translation>Dokumente</translation>
+        <translation>Documenti</translation>
     </message>
     <message>
         <source>Spreadsheet</source>
-        <translation>Tabellenkalkulation</translation>
+        <translation>Foglio di calcolo</translation>
     </message>
     <message>
         <source>Browser</source>
@@ -4808,11 +4876,11 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation>Spiel</translation>
+        <translation>Gioco</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation>Los</translation>
+        <translation>Vai</translation>
     </message>
     <message>
         <source>iTouch</source>
@@ -4820,103 +4888,103 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Logoff</source>
-        <translation>Logoff</translation>
+        <translation>Termina sessione</translation>
     </message>
     <message>
         <source>Market</source>
-        <translation>Markt</translation>
+        <translation>Market</translation>
     </message>
     <message>
         <source>Meeting</source>
-        <translation>Meeting</translation>
+        <translation>Riunione</translation>
     </message>
     <message>
         <source>Keyboard Menu</source>
-        <translation>Tastaturmenü</translation>
+        <translation>Menu della tastiera</translation>
     </message>
     <message>
         <source>Menu PB</source>
-        <translation>Menü PB</translation>
+        <translation>Menu PB</translation>
     </message>
     <message>
         <source>My Sites</source>
-        <translation>Meine Orte</translation>
+        <translation>I miei siti</translation>
     </message>
     <message>
         <source>News</source>
-        <translation>Nachrichten</translation>
+        <translation>Notizie</translation>
     </message>
     <message>
         <source>Home Office</source>
-        <translation>Home Office</translation>
+        <translation>Ufficio</translation>
     </message>
     <message>
         <source>Option</source>
-        <translation>Option</translation>
+        <translation>Opzione</translation>
     </message>
     <message>
         <source>Paste</source>
-        <translation>Einfügen</translation>
+        <translation>Incolla</translation>
     </message>
     <message>
         <source>Phone</source>
-        <translation>Telefon</translation>
+        <translation>Telefono</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation>Antworten</translation>
+        <translation>Rispondi</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation>Neu laden</translation>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <source>Rotate Windows</source>
-        <translation>Fenster rotieren</translation>
+        <translation>Ruota finestre</translation>
     </message>
     <message>
         <source>Rotation PB</source>
-        <translation>Rotation PB</translation>
+        <translation>Rotazione PB</translation>
     </message>
     <message>
         <source>Rotation KB</source>
-        <translation>Rotation KB</translation>
+        <translation>Rotazione KB</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation>Speichern</translation>
+        <translation>Salva</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Senden</translation>
+        <translation>Invia</translation>
     </message>
     <message>
         <source>Spellchecker</source>
-        <translation>Rechtschreibprüfung</translation>
+        <translation>Controllo ortografico</translation>
     </message>
     <message>
         <source>Split Screen</source>
-        <translation>Bildschirm teilen</translation>
+        <translation>Dividi schermo</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation>Hilfe</translation>
+        <translation>Supporto</translation>
     </message>
     <message>
         <source>Task Panel</source>
-        <translation>Task-Leiste</translation>
+        <translation>Pannello attività</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation>Terminal</translation>
+        <translation>Terminale</translation>
     </message>
     <message>
         <source>Tools</source>
-        <translation>Werkzeuge</translation>
+        <translation>Strumenti</translation>
     </message>
     <message>
         <source>Travel</source>
-        <translation>Reise</translation>
+        <translation>Viaggi</translation>
     </message>
     <message>
         <source>Video</source>
@@ -4924,7 +4992,7 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Word Processor</source>
-        <translation>Textverarbeitung</translation>
+        <translation>Elaboratore di testi</translation>
     </message>
     <message>
         <source>XFer</source>
@@ -4932,15 +5000,15 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Zoom In</source>
-        <translation>Vergrößern</translation>
+        <translation>Ingrandisci</translation>
     </message>
     <message>
         <source>Zoom Out</source>
-        <translation>Verkleinern</translation>
+        <translation>Rimpicciolisci</translation>
     </message>
     <message>
         <source>Away</source>
-        <translation>Abwesend</translation>
+        <translation>Assente</translation>
     </message>
     <message>
         <source>Messenger</source>
@@ -4952,19 +5020,19 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Mail Forward</source>
-        <translation>Weiterleitung</translation>
+        <translation>Inoltra messaggio di posta</translation>
     </message>
     <message>
         <source>Pictures</source>
-        <translation>Bilder</translation>
+        <translation>Immagini</translation>
     </message>
     <message>
         <source>Music</source>
-        <translation>Musik</translation>
+        <translation>Musica</translation>
     </message>
     <message>
         <source>Battery</source>
-        <translation>Batterie</translation>
+        <translation>Batteria</translation>
     </message>
     <message>
         <source>Bluetooth</source>
@@ -4972,167 +5040,91 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Wireless</source>
-        <translation>Drahtlos</translation>
+        <translation>Wireless</translation>
     </message>
     <message>
         <source>Ultra Wide Band</source>
-        <translation>Ultra Wide Band</translation>
+        <translation>Banda ultra larga</translation>
+    </message>
+    <message>
+        <source>Audio Forward</source>
+        <translation>Avanzamento audio</translation>
     </message>
     <message>
         <source>Audio Repeat</source>
-        <translation>Audio wiederholen</translation>
+        <translation>Ripeti audio</translation>
     </message>
     <message>
         <source>Audio Random Play</source>
-        <translation>Audio zufällige Auswahl spielen</translation>
+        <translation>Riproduzione audio casuale</translation>
     </message>
     <message>
         <source>Subtitle</source>
-        <translation>Untertitel</translation>
+        <translation>Sottotitolo</translation>
     </message>
     <message>
         <source>Audio Cycle Track</source>
-        <translation>Audiotitel wiederholen</translation>
+        <translation>Ripeti in ciclo le tracce audio</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Zeit</translation>
+        <translation>Ora</translation>
     </message>
     <message>
         <source>Select</source>
-        <translation>Auswählen</translation>
+        <translation>Seleziona</translation>
     </message>
     <message>
         <source>View</source>
-        <translation>Ansicht</translation>
+        <translation>Vista</translation>
     </message>
     <message>
         <source>Top Menu</source>
-        <translation>Hauptmenü</translation>
+        <translation>Menu principale</translation>
     </message>
     <message>
         <source>Suspend</source>
-        <translation>Pause</translation>
+        <translation>Sospensione</translation>
     </message>
     <message>
         <source>Hibernate</source>
-        <translation>Hibernate</translation>
-    </message>
-    <message>
-        <source>Media Rewind</source>
-        <translation>Medium zurückspulen</translation>
-    </message>
-    <message>
-        <source>Media Fast Forward</source>
-        <translation>Medium vorspulen</translation>
-    </message>
-    <message>
-        <source>Power Down</source>
-        <translation>Ausschalten</translation>
-    </message>
-    <message>
-        <source>Microphone Mute</source>
-        <translation>Mikrofon stummschalten</translation>
-    </message>
-    <message>
-        <source>Red</source>
-        <translation>Rot</translation>
-    </message>
-    <message>
-        <source>Green</source>
-        <translation>Grün</translation>
-    </message>
-    <message>
-        <source>Yellow</source>
-        <translation>Gelb</translation>
-    </message>
-    <message>
-        <source>Blue</source>
-        <translation>Blau</translation>
-    </message>
-    <message>
-        <source>Channel Up</source>
-        <translation>nächster Kanal</translation>
-    </message>
-    <message>
-        <source>Channel Down</source>
-        <translation>vorangehender Kanal</translation>
-    </message>
-    <message>
-        <source>Guide</source>
-        <translation>Anleitung</translation>
-    </message>
-    <message>
-        <source>Info</source>
-        <translation>Information</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Einstellungen</translation>
-    </message>
-    <message>
-        <source>Microphone Volume Up</source>
-        <translation>Mikrofon lauter</translation>
-    </message>
-    <message>
-        <source>Microphone Volume Down</source>
-        <translation>Mikrofon leiser</translation>
-    </message>
-    <message>
-        <source>New</source>
-        <translation>Neu</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Öffnen</translation>
-    </message>
-    <message>
-        <source>Find</source>
-        <translation>Suchen</translation>
-    </message>
-    <message>
-        <source>Undo</source>
-        <translation>Rückgängig</translation>
-    </message>
-    <message>
-        <source>Redo</source>
-        <translation>Wiederherstellen</translation>
+        <translation>Ibernazione</translation>
     </message>
     <message>
         <source>Print Screen</source>
-        <translation>Bildschirm drucken</translation>
+        <translation>Stampa schermo</translation>
     </message>
     <message>
         <source>Page Up</source>
-        <translation>Bild aufwärts</translation>
+        <translation>Pagina precedente</translation>
     </message>
     <message>
         <source>Page Down</source>
-        <translation>Bild abwärts</translation>
+        <translation>Pagina successiva</translation>
     </message>
     <message>
         <source>Caps Lock</source>
-        <translation>Feststelltaste</translation>
+        <translation>Bloc Maiusc</translation>
     </message>
     <message>
         <source>Num Lock</source>
-        <translation>Zahlen-Feststelltaste</translation>
+        <translation>Bloc Num</translation>
     </message>
     <message>
         <source>Number Lock</source>
-        <translation>Zahlen-Feststelltaste</translation>
+        <translation>Blocco numeri</translation>
     </message>
     <message>
         <source>Scroll Lock</source>
-        <translation>Rollen-Feststelltaste</translation>
+        <translation>Bloc Scorr</translation>
     </message>
     <message>
         <source>Insert</source>
-        <translation>Einfügen</translation>
+        <translation>Inserisci</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Löschen</translation>
+        <translation>Cancella</translation>
     </message>
     <message>
         <source>Escape</source>
@@ -5140,70 +5132,70 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>System Request</source>
-        <translation>System Request</translation>
+        <translation>Richiesta di sistema</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>Ja</translation>
+        <translation>Sì</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>Nein</translation>
+        <translation>No</translation>
     </message>
     <message>
         <source>Context1</source>
-        <translation>Kontext1</translation>
+        <translation>Contesto1</translation>
     </message>
     <message>
         <source>Context2</source>
-        <translation>Kontext2</translation>
+        <translation>Contesto2</translation>
     </message>
     <message>
         <source>Context3</source>
-        <translation>Kontext3</translation>
+        <translation>Contesto3</translation>
     </message>
     <message>
         <source>Context4</source>
-        <translation>Kontext4</translation>
+        <translation>Contesto4</translation>
     </message>
     <message>
         <source>Call</source>
         <extracomment>Button to start a call (note: a separate button is used to end the call)</extracomment>
-        <translation>Anruf</translation>
+        <translation>Chiama</translation>
     </message>
     <message>
         <source>Hangup</source>
         <extracomment>Button to end a call (note: a separate button is used to start the call)</extracomment>
-        <translation>Auflegen</translation>
+        <translation>Riaggancia</translation>
     </message>
     <message>
         <source>Toggle Call/Hangup</source>
         <extracomment>Button that will hang up if we&apos;re in call, or make a call if we&apos;re not.</extracomment>
-        <translation>Anrufen/Aufhängen</translation>
+        <translation>Chiama/riaggancia</translation>
     </message>
     <message>
         <source>Flip</source>
-        <translation>Umdrehen</translation>
+        <translation>Gira</translation>
     </message>
     <message>
         <source>Voice Dial</source>
         <extracomment>Button to trigger voice dialing</extracomment>
-        <translation>Sprachwahl</translation>
+        <translation>Composizione vocale</translation>
     </message>
     <message>
         <source>Last Number Redial</source>
         <extracomment>Button to redial the last number called</extracomment>
-        <translation>Wahlwiederholung</translation>
+        <translation>Richiama l&apos;ultimo numero</translation>
     </message>
     <message>
         <source>Camera Shutter</source>
         <extracomment>Button to trigger the camera shutter (take a picture)</extracomment>
-        <translation>Auslöser</translation>
+        <translation>Scatta</translation>
     </message>
     <message>
         <source>Camera Focus</source>
         <extracomment>Button to focus the camera</extracomment>
-        <translation>Scharfstellen</translation>
+        <translation>Metti a fuoco</translation>
     </message>
     <message>
         <source>Kanji</source>
@@ -5255,119 +5247,103 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Kana Lock</source>
-        <translation>Kana Lock</translation>
+        <translation>Blocca Kana</translation>
     </message>
     <message>
         <source>Kana Shift</source>
-        <translation>Kana Shift</translation>
+        <translation>Shift Kana</translation>
     </message>
     <message>
         <source>Eisu Shift</source>
-        <translation>Eisu Shift</translation>
+        <translation>Shift Eisu</translation>
     </message>
     <message>
         <source>Eisu toggle</source>
-        <translation>Eisu toggle</translation>
+        <translation>Commuta Eisu</translation>
     </message>
     <message>
         <source>Code input</source>
-        <translation>Code-Eingabe</translation>
+        <translation>Immissione codice</translation>
     </message>
     <message>
         <source>Multiple Candidate</source>
-        <translation>Mehrere Vorschläge</translation>
+        <translation>Candidati multipli</translation>
     </message>
     <message>
         <source>Previous Candidate</source>
-        <translation>Vorheriger Vorschlag</translation>
+        <translation>Candidato precedente</translation>
     </message>
     <message>
         <source>Hangul</source>
-        <translation>Hangeul</translation>
+        <translation>Hangul</translation>
     </message>
     <message>
         <source>Hangul Start</source>
-        <translation>Hangeul Anfang</translation>
+        <translation>Avvio Hangul</translation>
     </message>
     <message>
         <source>Hangul End</source>
-        <translation>Hangeul Ende</translation>
+        <translation>Fine Hangul</translation>
     </message>
     <message>
         <source>Hangul Hanja</source>
-        <translation>Hangeul-Hanja</translation>
+        <translation>Hangul Hanja</translation>
     </message>
     <message>
         <source>Hangul Jamo</source>
-        <translation>Hangeul-Jamo</translation>
+        <translation>Hangul Jamo</translation>
     </message>
     <message>
         <source>Hangul Romaja</source>
-        <translation>Hangeul-Romaja</translation>
+        <translation>Hangul Romaja</translation>
     </message>
     <message>
         <source>Hangul Jeonja</source>
-        <translation>Hangeul-Jeonja</translation>
+        <translation>Hangul Jeonja</translation>
     </message>
     <message>
         <source>Hangul Banja</source>
-        <translation>Hangeul-Banja</translation>
+        <translation>Hangul Banja</translation>
     </message>
     <message>
         <source>Hangul PreHanja</source>
-        <translation>Hangeul-PreHanja</translation>
+        <translation>Hangul PreHanja</translation>
     </message>
     <message>
         <source>Hangul PostHanja</source>
-        <translation>Hangeul-PostHanja</translation>
+        <translation>Hangul PostHanja</translation>
     </message>
     <message>
         <source>Hangul Special</source>
-        <translation>Hangeul Special</translation>
+        <translation>Hangul speciale</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Abbrechen</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <source>Printer</source>
-        <translation>Drucker</translation>
+        <translation>Stampante</translation>
     </message>
     <message>
         <source>Execute</source>
-        <translation>Ausführen</translation>
+        <translation>Esegui</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Abspielen</translation>
+        <translation>Riproduci</translation>
     </message>
     <message>
         <source>Zoom</source>
-        <translation>Vergrößern</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Verlassen</translation>
-    </message>
-    <message>
-        <source>Touchpad Toggle</source>
-        <translation>Touchpad-Umschalter</translation>
-    </message>
-    <message>
-        <source>Touchpad On</source>
-        <translation>Touchpad an</translation>
-    </message>
-    <message>
-        <source>Touchpad Off</source>
-        <translation>Touchpad aus</translation>
+        <translation>Ingrandisci</translation>
     </message>
     <message>
         <source>Ctrl</source>
-        <translation>Strg</translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <source>Shift</source>
-        <translation>Umschalt</translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <source>Alt</source>
@@ -5379,7 +5355,7 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>Zahlenblock</translation>
+        <translation>Num</translation>
     </message>
     <message>
         <source>+</source>
@@ -5394,59 +5370,59 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     <name>QSocks5SocketEngine</name>
     <message>
         <source>Connection to proxy refused</source>
-        <translation>Der Proxy-Server hat den Aufbau einer Verbindung verweigert</translation>
+        <translation>Connessione al proxy rifiutata</translation>
     </message>
     <message>
         <source>Connection to proxy closed prematurely</source>
-        <translation>Der Proxy-Server hat die Verbindung vorzeitig beendet</translation>
+        <translation>La connessione al proxy si è interrotta prematuramente</translation>
     </message>
     <message>
         <source>Proxy host not found</source>
-        <translation>Der Proxy-Server konnte nicht gefunden werden</translation>
+        <translation>Host proxy non trovato</translation>
     </message>
     <message>
         <source>Connection to proxy timed out</source>
-        <translation>Bei der Verbindung mit dem Proxy-Server wurde ein Zeitlimit überschritten</translation>
+        <translation>Connessione al proxy scaduta</translation>
     </message>
     <message>
         <source>Proxy authentication failed</source>
-        <translation>Die Authentifizierung beim Proxy-Server ist fehlgeschlagen</translation>
+        <translation>Autenticazione al proxy non riuscita</translation>
     </message>
     <message>
         <source>Proxy authentication failed: %1</source>
-        <translation>Die Authentifizierung beim Proxy-Server ist fehlgeschlagen: %1</translation>
+        <translation>Autenticazione al proxy non riuscita: %1</translation>
     </message>
     <message>
         <source>SOCKS version 5 protocol error</source>
-        <translation>Protokoll-Fehler (SOCKS Version 5)</translation>
+        <translation>Errore del protocollo SOCKS versione 5</translation>
     </message>
     <message>
         <source>General SOCKSv5 server failure</source>
-        <translation>Allgemeiner Fehler bei der Kommunikation mit dem SOCKSv5-Server</translation>
+        <translation>Errore generico del server SOCKv5</translation>
     </message>
     <message>
         <source>Connection not allowed by SOCKSv5 server</source>
-        <translation>Der SOCKSv5-Server hat die Verbindung verweigert</translation>
+        <translation>Connessione non consentita dal server SOCKSv5</translation>
     </message>
     <message>
         <source>TTL expired</source>
-        <translation>Die Lebensdauer (TTL) ist verstrichen</translation>
+        <translation>TTL scaduto</translation>
     </message>
     <message>
         <source>SOCKSv5 command not supported</source>
-        <translation>Dieses SOCKSv5-Kommando wird nicht unterstützt</translation>
+        <translation>Comando SOCKSv5 non supportato</translation>
     </message>
     <message>
         <source>Address type not supported</source>
-        <translation>Dieser Adresstyp wird nicht unterstützt</translation>
+        <translation>Tipo di indirizzo non supportato</translation>
     </message>
     <message>
         <source>Unknown SOCKSv5 proxy error code 0x%1</source>
-        <translation>Unbekannten Fehlercode vom SOCKSv5-Proxy-Server erhalten: 0x%1</translation>
+        <translation>Codice di errore proxy SOCKSv5 0x%1 sconosciuto</translation>
     </message>
     <message>
         <source>Network operation timed out</source>
-        <translation>Das Zeitlimit für die Operation wurde überschritten</translation>
+        <translation>Operazione di rete scaduta</translation>
     </message>
 </context>
 <context>
@@ -5454,834 +5430,780 @@ Bitte deaktivieren Sie eine der beiden.</translation>
     <message>
         <source>invalid role</source>
         <extracomment>Role of an accessible object - the object is in an invalid state or could not be constructed</extracomment>
-        <translation>ungültige Rolle</translation>
+        <translation>ruolo non valido</translation>
     </message>
     <message>
         <source>title bar</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Titelleiste</translation>
+        <translation>barra del titolo</translation>
     </message>
     <message>
         <source>menu bar</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Menüleiste</translation>
+        <translation>barra del menu</translation>
     </message>
     <message>
         <source>scroll bar</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Bildlaufleiste</translation>
+        <translation>barra di scorrimento</translation>
     </message>
     <message>
         <source>grip</source>
         <extracomment>Role of an accessible object - the grip is usually used for resizing another object</extracomment>
-        <translation>Griff</translation>
+        <translation>maniglia</translation>
     </message>
     <message>
         <source>sound</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Akustisches Signal</translation>
+        <translation>suono</translation>
     </message>
     <message>
         <source>cursor</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Mauszeiger</translation>
+        <translation>cursore</translation>
     </message>
     <message>
         <source>text caret</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Einfügemarke</translation>
+        <translation>cursore del testo</translation>
     </message>
     <message>
         <source>alert message</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Benachrichtigung</translation>
+        <translation>messaggio di avviso</translation>
+    </message>
+    <message>
+        <source>window</source>
+        <extracomment>Role of an accessible object</extracomment>
+        <translation>finestra</translation>
     </message>
     <message>
         <source>filler</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Füller</translation>
+        <translation>riempitore</translation>
     </message>
     <message>
         <source>popup menu</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Menü</translation>
+        <translation>menu a comparsa</translation>
     </message>
     <message>
         <source>menu item</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Menüeintrag</translation>
+        <translation>voce di menu</translation>
     </message>
     <message>
         <source>tool tip</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Tooltip</translation>
+        <translation>suggerimento</translation>
     </message>
     <message>
         <source>application</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Anwendung</translation>
+        <translation>applicazione</translation>
     </message>
     <message>
         <source>document</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Dokument</translation>
+        <translation>documento</translation>
     </message>
     <message>
         <source>panel</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Panel</translation>
+        <translation>pannello</translation>
     </message>
     <message>
         <source>chart</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Diagramm</translation>
+        <translation>grafico</translation>
     </message>
     <message>
         <source>dialog</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Dialog</translation>
+        <translation>finestra di dialogo</translation>
     </message>
     <message>
         <source>frame</source>
-        <extracomment>Role of an accessible object: a window with frame and title
-----------
-Role of an accessible object</extracomment>
-        <translation>Rahmen</translation>
+        <extracomment>Role of an accessible object</extracomment>
+        <translation>cornice</translation>
     </message>
     <message>
         <source>separator</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Separator</translation>
+        <translation>separatore</translation>
     </message>
     <message>
         <source>tool bar</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Werkzeugleiste</translation>
+        <translation>barra degli strumenti</translation>
     </message>
     <message>
         <source>status bar</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Statuszeile</translation>
+        <translation>barra di stato</translation>
     </message>
     <message>
         <source>table</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Tabelle</translation>
+        <translation>tabella</translation>
     </message>
     <message>
         <source>column header</source>
         <extracomment>Role of an accessible object - part of a table</extracomment>
-        <translation>Spaltentitel</translation>
+        <translation>intestazione della colonna</translation>
     </message>
     <message>
         <source>row header</source>
         <extracomment>Role of an accessible object - part of a table</extracomment>
-        <translation>Zeilentitel</translation>
+        <translation>intestazione della riga</translation>
     </message>
     <message>
         <source>column</source>
         <extracomment>Role of an accessible object - part of a table</extracomment>
-        <translation>Spalte</translation>
+        <translation>colonna</translation>
     </message>
     <message>
         <source>row</source>
         <extracomment>Role of an accessible object - part of a table</extracomment>
-        <translation>Zeile</translation>
+        <translation>riga</translation>
     </message>
     <message>
         <source>cell</source>
         <extracomment>Role of an accessible object - part of a table</extracomment>
-        <translation>Zelle</translation>
+        <translation>cella</translation>
     </message>
     <message>
         <source>link</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Verweis</translation>
+        <translation>collegamento</translation>
     </message>
     <message>
         <source>help balloon</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Ballonhilfe</translation>
+        <translation>fumetto di aiuto</translation>
     </message>
     <message>
         <source>assistant</source>
         <extracomment>Role of an accessible object - a helper dialog</extracomment>
-        <translation>Assistent</translation>
+        <translation>assistente</translation>
     </message>
     <message>
         <source>list</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Liste</translation>
+        <translation>lista</translation>
     </message>
     <message>
         <source>list item</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Listenelement</translation>
+        <translation>elemento della lista</translation>
     </message>
     <message>
         <source>tree</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Baum</translation>
+        <translation>albero</translation>
     </message>
     <message>
         <source>tree item</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Baumelement</translation>
+        <translation>elemento dell&apos;albero</translation>
     </message>
     <message>
         <source>page tab</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Seitenreiter</translation>
+        <translation>scheda</translation>
     </message>
     <message>
         <source>property page</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Eigenschaftsseite</translation>
+        <translation>pagina delle proprietà</translation>
     </message>
     <message>
         <source>indicator</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Indikator</translation>
+        <translation>indicatore</translation>
     </message>
     <message>
         <source>graphic</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>graphisch</translation>
+        <translation>grafico</translation>
     </message>
     <message>
         <source>label</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Textfeld</translation>
+        <translation>etichetta</translation>
     </message>
     <message>
         <source>text</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Text</translation>
+        <translation>testo</translation>
     </message>
     <message>
         <source>push button</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Schaltfläche</translation>
+        <translation>pulsante</translation>
     </message>
     <message>
         <source>check box</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Checkbox</translation>
+        <translation>casella di spunta</translation>
     </message>
     <message>
         <source>radio button</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Radioknopf</translation>
+        <translation>casella a scelta singola</translation>
     </message>
     <message>
         <source>combo box</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Auswahlfeld</translation>
+        <translation>casella combinata</translation>
     </message>
     <message>
         <source>progress bar</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Fortschrittsanzeige</translation>
+        <translation>barra di avanzamento</translation>
     </message>
     <message>
         <source>dial</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Skala</translation>
+        <translation>quadrante</translation>
     </message>
     <message>
         <source>hotkey field</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Feld mit Tastenverknüpfung</translation>
+        <translation>campo di scorciatoia</translation>
     </message>
     <message>
         <source>slider</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Schieber</translation>
+        <translation>regolatore</translation>
     </message>
     <message>
         <source>spin box</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Zahlenfeld</translation>
+        <translation>casella numerica</translation>
     </message>
     <message>
         <source>canvas</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Zeichenfläche</translation>
+        <translation>superficie</translation>
     </message>
     <message>
         <source>animation</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Animation</translation>
+        <translation>animazione</translation>
     </message>
     <message>
         <source>equation</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Gleichung</translation>
+        <translation>equazione</translation>
     </message>
     <message>
         <source>button with drop down</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Schaltfläche, die ein Fenster ausklappt</translation>
-    </message>
-    <message>
-        <source>button with drop down grid</source>
-        <extracomment>Role of an accessible object - a button that expands a grid.</extracomment>
-        <translation>Schaltfläche, die ein Fenster ausklappt, was ein Gitter zeigt</translation>
-    </message>
-    <message>
-        <source>space</source>
-        <extracomment>Role of an accessible object - blank space between other objects.</extracomment>
-        <translation>Leerraum</translation>
+        <translation>pulsante con elenco a comparsa</translation>
     </message>
     <message>
         <source>button menu</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Schaltfläche mit Menü</translation>
+        <translation>pulsante con menu</translation>
+    </message>
+    <message>
+        <source>button with drop down grid</source>
+        <extracomment>Role of an accessible object - a button that expands a grid.</extracomment>
+        <translation>pulsante con griglia a comparsa</translation>
+    </message>
+    <message>
+        <source>space</source>
+        <extracomment>Role of an accessible object - blank space between other objects.</extracomment>
+        <translation>spazio</translation>
     </message>
     <message>
         <source>page tab list</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Liste von Seitenreitern</translation>
+        <translation>lista schede della pagina</translation>
     </message>
     <message>
         <source>clock</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Uhr</translation>
+        <translation>orologio</translation>
     </message>
     <message>
         <source>splitter</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Fensterteiler</translation>
+        <translation>divisore</translation>
     </message>
     <message>
         <source>layered pane</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>Panel mit mehreren Schichten</translation>
-    </message>
-    <message>
-        <source>web document</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Web-Dokument</translation>
-    </message>
-    <message>
-        <source>paragraph</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Absatz</translation>
-    </message>
-    <message>
-        <source>section</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Abschnitt</translation>
-    </message>
-    <message>
-        <source>color chooser</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Farbauswahl</translation>
-    </message>
-    <message>
-        <source>footer</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Fußzeile</translation>
-    </message>
-    <message>
-        <source>form</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Formular</translation>
-    </message>
-    <message>
-        <source>heading</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Kopfzeile</translation>
-    </message>
-    <message>
-        <source>note</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Hinweis</translation>
-    </message>
-    <message>
-        <source>complementary content</source>
-        <extracomment>Role of an accessible object</extracomment>
-        <translation>Ergänzender Inhalt</translation>
+        <translation>pannello stratificato</translation>
     </message>
     <message>
         <source>unknown</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>unbekannt</translation>
+        <translation>sconosciuto</translation>
     </message>
 </context>
 <context>
     <name>QSslSocket</name>
     <message>
         <source>No error</source>
-        <translation>Kein Fehler</translation>
+        <translation>Nessun errore</translation>
     </message>
     <message>
         <source>The issuer certificate could not be found</source>
-        <translation>Das Zertifikat des Ausstellers konnte nicht gefunden werden</translation>
+        <translation>Il certificato dell&apos;emittente non è stato trovato</translation>
     </message>
     <message>
         <source>The certificate signature could not be decrypted</source>
-        <translation>Die Signatur des Zertifikats konnte nicht entschlüsselt werden</translation>
+        <translation>La firma del certificato non può essere decifrata</translation>
     </message>
     <message>
         <source>The public key in the certificate could not be read</source>
-        <translation>Der öffentliche Schlüssel konnte nicht gelesen werden</translation>
+        <translation>La chiave pubblica del certificato non può essere letta</translation>
     </message>
     <message>
         <source>The signature of the certificate is invalid</source>
-        <translation>Die Signatur des Zertifikats ist ungültig</translation>
+        <translation>La firma del certificato non è valida</translation>
     </message>
     <message>
         <source>The certificate is not yet valid</source>
-        <translation>Das Zertifikat ist noch nicht gültig</translation>
+        <translation>Il certificato non è ancora valido</translation>
     </message>
     <message>
         <source>The certificate has expired</source>
-        <translation>Die Gültigkeit des Zertifikats ist abgelaufen</translation>
+        <translation>Il certificato è scaduto</translation>
     </message>
     <message>
         <source>The certificate&apos;s notBefore field contains an invalid time</source>
-        <translation>Das Feld &apos;notBefore&apos; des Zertifikats enthält eine ungültige Zeit</translation>
+        <translation>Il campo notBefore del certificato contiene una data non valida</translation>
     </message>
     <message>
         <source>The certificate&apos;s notAfter field contains an invalid time</source>
-        <translation>Das Feld &apos;notAfter&apos; des Zertifikats enthält eine ungültige Zeit</translation>
+        <translation>Il campo notAfter del certificato contiene una data non valida</translation>
     </message>
     <message>
         <source>The certificate is self-signed, and untrusted</source>
-        <translation>Das Zertifikat ist selbstsigniert und daher nicht vertrauenswürdig</translation>
+        <translation>Il certificato è auto-firmato e non affidabile</translation>
     </message>
     <message>
         <source>The root certificate of the certificate chain is self-signed, and untrusted</source>
-        <translation>Das oberste Zertifikat der Kette ist selbstsigniert und daher nicht vertrauenswürdig</translation>
+        <translation>Il certificato principale della catena di certificati è auto-firmato e non affidabile</translation>
     </message>
     <message>
         <source>The issuer certificate of a locally looked up certificate could not be found</source>
-        <translation>Das Zertifikat des Ausstellers eines lokal gefundenen Zertifikats konnte nicht gefunden werden</translation>
+        <translation>Il certificato dell&apos;emittente di un certificato cercato localmente non può essere trovato</translation>
     </message>
     <message>
         <source>No certificates could be verified</source>
-        <translation>Keines der Zertifikate konnte verifiziert werden</translation>
+        <translation>Nessun certificato può essere verificato</translation>
     </message>
     <message>
         <source>One of the CA certificates is invalid</source>
-        <translation>Eines der Zertifikate der Zertifizierungsstelle ist ungültig</translation>
+        <translation>Uno dei certificati dell&apos;autorità di certificazione non è valido</translation>
     </message>
     <message>
         <source>The basicConstraints path length parameter has been exceeded</source>
-        <translation>Die Länge des basicConstraints-Pfades wurde überschritten</translation>
+        <translation>La lunghezza del percorso del parametro basicConstraints è stata superata</translation>
     </message>
     <message>
         <source>The supplied certificate is unsuitable for this purpose</source>
-        <translation>Das angegebene Zertifikat kann in diesem Fall nicht verwendet werden</translation>
+        <translation>Il certificato fornito non è adatto per questo scopo</translation>
     </message>
     <message>
         <source>The root CA certificate is not trusted for this purpose</source>
-        <translation>Das oberste Zertifikat der Zertifizierungsstelle ist für diesen Fall nicht vertrauenswürdig</translation>
+        <translation>Il certificato principale dell&apos;autorità di certificazione non è affidabile per questo scopo</translation>
     </message>
     <message>
         <source>The root CA certificate is marked to reject the specified purpose</source>
-        <translation>Das oberste Zertifikat der Zertifizierungsstelle weist diesen Fall auf Grund einer speziellen Kennzeichnung zurück</translation>
+        <translation>Il certificato principale dell&apos;autorità di certificazione è contrassegnato per rifiutare lo scopo specifico</translation>
     </message>
     <message>
         <source>The current candidate issuer certificate was rejected because its subject name did not match the issuer name of the current certificate</source>
-        <translation>Das Zertifikat des betrachteten Ausstellers wurde zurückgewiesen da sein Subjektname nicht dem Namen des Austellers des aktuellen Zertifikats entspricht</translation>
+        <translation>Il certificato dell&apos;emittente attualmente candidato è stato rifiutato perché il nome del suo oggetto non corrisponde al nome dell&apos;emittente del certificato attuale</translation>
     </message>
     <message>
         <source>The current candidate issuer certificate was rejected because its issuer name and serial number was present and did not match the authority key identifier of the current certificate</source>
-        <translation>Das Zertifikat des betrachteten Ausstellers wurde zurückgewiesen da Ausstellername und Seriennummer vorhanden sind und nicht dem Bezeichner der Zertifizierungsstelle des aktuellen Zertifikats entsprechen</translation>
+        <translation>Il certificato dell&apos;emittente attualmente candidato è stato rifiutato perché erano presenti il nome dell&apos;emittente e il numero di serie, e non corrispondevano all&apos;identificativo della chiave di autorità del certificato attuale</translation>
     </message>
     <message>
         <source>The peer did not present any certificate</source>
-        <translation>Die Gegenstelle hat kein Zertifikat angegeben</translation>
+        <translation>La controparte non ha presentato alcun certificato</translation>
     </message>
     <message>
         <source>The host name did not match any of the valid hosts for this certificate</source>
-        <translation>Der Name des Hosts ist keiner aus der Liste der für dieses Zertifikat gültigen Hosts</translation>
+        <translation>Il nome dell&apos;host non coincide con nessuno degli host validi per questo certificato</translation>
     </message>
     <message>
         <source>The peer certificate is blacklisted</source>
-        <translation>Das Zertifikat der Gegenstelle ist in einer Schwarzen Liste enthalten</translation>
+        <translation>Il certificato della controparte è nella lista nera</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
     <message>
         <source>Error creating SSL context (%1)</source>
-        <translation>Es konnte keine SSL-Kontextstruktur erzeugt werden (%1)</translation>
-    </message>
-    <message>
-        <source>unsupported protocol</source>
-        <translation>Nicht unterstütztes Protokoll</translation>
+        <translation>Errore di creazione del contesto SSL (%1)</translation>
     </message>
     <message>
         <source>Invalid or empty cipher list (%1)</source>
-        <translation>Ungültige oder leere Schlüsselliste (%1)</translation>
+        <translation>Elenco di cifrari non valido o vuoto (%1)</translation>
     </message>
     <message>
         <source>Cannot provide a certificate with no key, %1</source>
-        <translation>Ohne Schlüssel kann kein Zertifikat zur Verfügung gestellt werden, %1</translation>
+        <translation>Impossibile fornire un certificato senza chiave, %1</translation>
     </message>
     <message>
         <source>Error loading local certificate, %1</source>
-        <translation>Das lokale Zertifikat konnte nicht geladen werden, %1</translation>
+        <translation>Errore di caricamento del certificato, %1</translation>
     </message>
     <message>
         <source>Error loading private key, %1</source>
-        <translation>Der private Schlüssel konnte nicht geladen werden, %1</translation>
+        <translation>Errore di caricamento della chiave privata, %1</translation>
     </message>
     <message>
         <source>Private key does not certify public key, %1</source>
-        <translation>Der private Schlüssel passt nicht zum öffentlichen Schlüssel, %1</translation>
-    </message>
-    <message>
-        <source>OpenSSL version too old, need at least v1.0.2</source>
-        <translation>Die verwendete Version von OpenSSL ist zu alt, es muss v1.0.2 oder neuer sein</translation>
-    </message>
-    <message>
-        <source>Error when setting the elliptic curves (%1)</source>
-        <translation>Fehler beim Setzen der elliptischen Kurven (%1)</translation>
+        <translation>La chiave privata non certifica la chiave pubblica %1</translation>
     </message>
     <message>
         <source>Error creating SSL session, %1</source>
-        <translation>Es konnte keine SSL-Sitzung erzeugt werden, %1</translation>
+        <translation>Errore di creazione della sessione SSL, %1</translation>
     </message>
     <message>
         <source>Error creating SSL session: %1</source>
-        <translation>Es konnte keine SSL-Sitzung erzeugt werden: %1</translation>
+        <translation>Errore di creazione della sessione SSL: %1</translation>
+    </message>
+    <message>
+        <source>Unable to init Ssl Context: %1</source>
+        <translation>Impossibile inizializzare il contesto SSL: %1</translation>
     </message>
     <message>
         <source>Unable to init SSL Context: %1</source>
-        <translation>Der SSL-Kontext konnte nicht initialisiert werden: %1</translation>
+        <translation>Impossibile inizializzare il contesto SSL: %1</translation>
     </message>
     <message>
         <source>Unable to write data: %1</source>
-        <translation>Die Daten konnten nicht geschrieben werden: %1</translation>
+        <translation>Impossibile scrivere i dati: %1</translation>
     </message>
     <message>
         <source>Unable to decrypt data: %1</source>
-        <translation>Die Daten konnten nicht entschlüsselt werden: %1</translation>
+        <translation>Impossibile decifrare i dati: %1</translation>
     </message>
     <message>
         <source>The TLS/SSL connection has been closed</source>
-        <translation>Die TLS/SSL-Verbindung wurde geschlossen</translation>
+        <translation>La connessione TLS/SSL è stata chiusa</translation>
     </message>
     <message>
         <source>Error while reading: %1</source>
-        <translation>Beim Lesen ist ein Fehler aufgetreten: %1</translation>
+        <translation>Errore di lettura: %1</translation>
     </message>
     <message>
         <source>Error during SSL handshake: %1</source>
-        <translation>Im Ablauf des SSL-Protokolls ist ein Fehler aufgetreten: %1</translation>
+        <translation>Errore durante l&apos;handshake SSL: %1</translation>
     </message>
 </context>
 <context>
     <name>QStandardPaths</name>
     <message>
         <source>Desktop</source>
-        <translation>Desktop</translation>
+        <translation>Scrivania</translation>
     </message>
     <message>
         <source>Documents</source>
-        <translation>Dokumente</translation>
+        <translation>Documenti</translation>
     </message>
     <message>
         <source>Fonts</source>
-        <translation>Schriftarten</translation>
+        <translation>Caratteri</translation>
     </message>
     <message>
         <source>Applications</source>
-        <translation>Anwendungen</translation>
+        <translation>Applicazioni</translation>
     </message>
     <message>
         <source>Music</source>
-        <translation>Musik</translation>
+        <translation>Musica</translation>
     </message>
     <message>
         <source>Movies</source>
-        <translation>Filme</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Pictures</source>
-        <translation>Bilder</translation>
+        <translation>Immagini</translation>
     </message>
     <message>
         <source>Temporary Directory</source>
-        <translation>Temporäres Verzeichnis</translation>
+        <translation>Cartella temporanea</translation>
     </message>
     <message>
         <source>Home</source>
-        <translation>Benutzerverzeichnis</translation>
+        <translation>Home</translation>
     </message>
     <message>
         <source>Application Data</source>
-        <translation>Anwendungsdaten</translation>
-    </message>
-    <message>
-        <source>Application Configuration</source>
-        <translation>Anwendungskonfiguration</translation>
+        <translation>Dati applicazioni</translation>
     </message>
     <message>
         <source>Cache</source>
-        <translation>Zwischenspeicher</translation>
+        <translation>Cache</translation>
     </message>
     <message>
         <source>Shared Data</source>
-        <translation>Gemeinsame Daten</translation>
+        <translation>Dati condivisi</translation>
     </message>
     <message>
         <source>Runtime</source>
-        <translation>Laufzeit</translation>
+        <translation>Esecuzione</translation>
     </message>
     <message>
         <source>Configuration</source>
-        <translation>Konfiguration</translation>
+        <translation>Configurazione</translation>
     </message>
     <message>
         <source>Shared Configuration</source>
-        <translation>Gemeinsame Konfiguration</translation>
+        <translation>Configurazione condivisa</translation>
     </message>
     <message>
         <source>Shared Cache</source>
-        <translation>Gemeinsamer Zwischenspeicher</translation>
+        <translation>Cache condivisa</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation>Download</translation>
+        <translation>Scaricati</translation>
     </message>
 </context>
 <context>
     <name>QStateMachine</name>
     <message>
         <source>Missing initial state in compound state &apos;%1&apos;</source>
-        <translation>Der Anfangszustand des zusammengesetzten Zustands &apos;%1&apos; fehlt</translation>
+        <translation>Stato iniziale mancante nello stato composito &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Missing default state in history state &apos;%1&apos;</source>
-        <translation>Der Anfangszustand im Verlauf bei Zustand &apos;%1&apos; fehlt</translation>
+        <translation>Stato predefinito mancante nello stato storico &apos;%1&apos;</translation>
     </message>
     <message>
         <source>No common ancestor for targets and source of transition from state &apos;%1&apos;</source>
-        <translation>Die Ziele und die Quelle des Übergangs vom Zustand &apos;%1&apos; haben keinen gemeinsamen Ursprung</translation>
+        <translation>Nessun antenato comune per le destinazioni e l&apos;origine della transizione dallo stato &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Unknown error</source>
-        <translation>Unbekannter Fehler</translation>
+        <translation>Errore sconosciuto</translation>
     </message>
 </context>
 <context>
     <name>QSystemSemaphore</name>
     <message>
         <source>%1: permission denied</source>
-        <translation>%1: Zugriff verweigert</translation>
+        <translation>%1: permesso negato</translation>
     </message>
     <message>
         <source>%1: already exists</source>
-        <translation>%1: Existiert bereits</translation>
+        <translation>%1: esiste già</translation>
     </message>
     <message>
         <source>%1: does not exist</source>
-        <translation>%1: Nicht existent</translation>
+        <translation>%1: non esiste</translation>
     </message>
     <message>
         <source>%1: out of resources</source>
-        <translation>%1: Keine Ressourcen mehr verfügbar</translation>
+        <translation>%1: risorse esaurite</translation>
     </message>
     <message>
         <source>%1: unknown error %2</source>
-        <translation>%1: Unbekannter Fehler %2</translation>
+        <translation>%1: errore sconosciuto %2</translation>
     </message>
 </context>
 <context>
     <name>QTDSDriver</name>
     <message>
         <source>Unable to open connection</source>
-        <translation>Die Datenbankverbindung kann nicht geöffnet werden</translation>
+        <translation>Impossibile stabilire una connessione</translation>
     </message>
     <message>
         <source>Unable to use database</source>
-        <translation>Die Datenbank kann nicht verwendet werden</translation>
+        <translation>Impossibile usare il database</translation>
     </message>
 </context>
 <context>
     <name>QTabBar</name>
     <message>
         <source>Scroll Left</source>
-        <translation>Nach links scrollen</translation>
+        <translation>Scorri a sinistra</translation>
     </message>
     <message>
         <source>Scroll Right</source>
-        <translation>Nach rechts scrollen</translation>
+        <translation>Scorri a destra</translation>
     </message>
 </context>
 <context>
     <name>QTcpServer</name>
     <message>
         <source>Operation on socket is not supported</source>
-        <translation>Diese Socket-Operation wird nicht unterstützt</translation>
+        <translation>Operazione sul socket non supportata</translation>
     </message>
 </context>
 <context>
     <name>QTgaFile</name>
     <message>
         <source>Could not read image data</source>
-        <translation>Die Bilddaten konnten nicht gelesen werden</translation>
+        <translation>Impossibile leggere i dati dell&apos;immagine</translation>
     </message>
     <message>
         <source>Sequential device (eg socket) for image read not supported</source>
-        <translation>Das Lesen von Bilddaten von sequentiellen Geräten (zum Beispiel Sockets) wird nicht unterstützt</translation>
+        <translation>Il dispositivo sequenziale (ad es. socket) per la lettura dell&apos;immagine non è supportato</translation>
     </message>
     <message>
         <source>Seek file/device for image read failed</source>
-        <translation>Die Positionierung einer Datei/eines Eingabegeräts für das Lesen der Bilddaten schlug fehl</translation>
+        <translation>La ricerca su file/dispositivo per la lettura dell&apos;immagine non è riuscita</translation>
     </message>
     <message>
         <source>Image header read failed</source>
-        <translation>Das Lesen der Kopfdaten des Bildes schlug fehl</translation>
+        <translation>La lettura dell&apos;intestazione dell&apos;immagine non è riuscita</translation>
     </message>
     <message>
         <source>Image type not supported</source>
-        <translation>Dieser Typ von Bilddaten wird nicht unterstützt</translation>
+        <translation>Tipo di immagine non supportato</translation>
     </message>
     <message>
         <source>Image depth not valid</source>
-        <translation>Ungültige Tiefenangabe in Bilddaten</translation>
+        <translation>La profondità dell&apos;immagine non è valida</translation>
     </message>
     <message>
         <source>Could not seek to image read footer</source>
-        <translation>Die Positionierung auf dem Endelement der Bilddaten schlug fehl</translation>
+        <translation>Impossibile saltare al fondo del file dell&apos;immagine</translation>
     </message>
     <message>
         <source>Could not read footer</source>
-        <translation>Das Endelement konnte nicht gelesen werden</translation>
+        <translation>Impossibile leggere il fondo</translation>
     </message>
     <message>
         <source>Image type (non-TrueVision 2.0) not supported</source>
-        <translation>Dieser Typ von Bilddaten (nicht TrueVision 2.0) wird nicht unterstützt</translation>
+        <translation>Il tipo di immagine (non-TrueVision 2.0) non è supportato</translation>
     </message>
     <message>
         <source>Could not reset to read data</source>
-        <translation>Die Positionierung zum Lesen der Daten schlug fehl</translation>
+        <translation>Impossibile reinizializzare per la lettura dei dati</translation>
     </message>
 </context>
 <context>
     <name>QUndoGroup</name>
     <message>
         <source>Undo %1</source>
-        <translation>%1 rückgängig machen</translation>
+        <translation>Annulla %1</translation>
     </message>
     <message>
         <source>Undo</source>
         <comment>Default text for undo action</comment>
-        <translation>Rückgängig</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <source>Redo %1</source>
-        <translation>%1 wiederherstellen</translation>
+        <translation>Rifai %1</translation>
     </message>
     <message>
         <source>Redo</source>
         <comment>Default text for redo action</comment>
-        <translation>Wiederherstellen</translation>
+        <translation>Rifai</translation>
     </message>
 </context>
 <context>
     <name>QUndoModel</name>
     <message>
         <source>&lt;empty&gt;</source>
-        <translation>&lt;leer&gt;</translation>
+        <translation>&lt;vuoto&gt;</translation>
     </message>
 </context>
 <context>
     <name>QUndoStack</name>
     <message>
         <source>Undo %1</source>
-        <translation>%1 rückgängig machen</translation>
+        <translation>Annulla %1</translation>
     </message>
     <message>
         <source>Undo</source>
         <comment>Default text for undo action</comment>
-        <translation>Rückgängig</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <source>Redo %1</source>
-        <translation>%1 wiederherstellen</translation>
+        <translation>Rifai %1</translation>
     </message>
     <message>
         <source>Redo</source>
         <comment>Default text for redo action</comment>
-        <translation>Wiederherstellen</translation>
+        <translation>Rifai</translation>
     </message>
 </context>
 <context>
     <name>QUnicodeControlCharacterMenu</name>
     <message>
         <source>LRM Left-to-right mark</source>
-        <translation>LRM Left-to-right mark</translation>
+        <translation>LRM indicatore di direzione da sinistra a destra</translation>
     </message>
     <message>
         <source>RLM Right-to-left mark</source>
-        <translation>RLM Right-to-left mark</translation>
+        <translation>RLM indicatore di direzione da destra a sinistra</translation>
     </message>
     <message>
         <source>ZWJ Zero width joiner</source>
-        <translation>ZWJ Zero width joiner</translation>
+        <translation>ZWJ carattere congiungente di ampiezza zero</translation>
     </message>
     <message>
         <source>ZWNJ Zero width non-joiner</source>
-        <translation>ZWNJ Zero width non-joiner</translation>
+        <translation>ZWNJ carattere non congiungente di ampiezza zero</translation>
     </message>
     <message>
         <source>ZWSP Zero width space</source>
-        <translation>ZWSP Zero width space</translation>
+        <translation>ZWSP spazio di ampiezza zero</translation>
     </message>
     <message>
         <source>LRE Start of left-to-right embedding</source>
-        <translation>LRE Start of left-to-right embedding</translation>
+        <translation>LRE inizio incorporamento da sinistra a destra</translation>
     </message>
     <message>
         <source>RLE Start of right-to-left embedding</source>
-        <translation>RLE Start of right-to-left embedding</translation>
+        <translation>RLE inizio incorporamento da destra a sinistra</translation>
     </message>
     <message>
         <source>LRO Start of left-to-right override</source>
-        <translation>LRO Start of left-to-right override</translation>
+        <translation>LRO inizio forzatura da sinistra a destra</translation>
     </message>
     <message>
         <source>RLO Start of right-to-left override</source>
-        <translation>RLO Start of right-to-left override</translation>
+        <translation>RLO inizio forzatura da destra a sinistra</translation>
     </message>
     <message>
         <source>PDF Pop directional formatting</source>
-        <translation>PDF Pop directional formatting</translation>
+        <translation>PDF ripristina impostazioni di direzione del testo</translation>
     </message>
     <message>
         <source>LRI Left-to-right isolate</source>
-        <translation>LRI Left-to-right isolate</translation>
+        <translation>LRI Isolato da sinistra a destra</translation>
     </message>
     <message>
         <source>RLI Right-to-left isolate</source>
-        <translation>RLI Right-to-left isolate</translation>
+        <translation>RLI Isolato da destra a sinistra</translation>
     </message>
     <message>
         <source>FSI First strong isolate</source>
-        <translation>FSI First strong isolate</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>PDI Pop directional isolate</source>
-        <translation>PDI Pop directional isolate</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Insert Unicode control character</source>
-        <translation>Unicode-Kontrollzeichen einfügen</translation>
+        <translation>Inserisci carattere di controllo Unicode</translation>
     </message>
 </context>
 <context>
     <name>QWhatsThisAction</name>
     <message>
         <source>What&apos;s This?</source>
-        <translation>Direkthilfe</translation>
+        <translation>Che cos&apos;è?</translation>
     </message>
 </context>
 <context>
@@ -6295,335 +6217,320 @@ Role of an accessible object</extracomment>
     <name>QWidgetTextControl</name>
     <message>
         <source>&amp;Undo</source>
-        <translation>&amp;Rückgängig</translation>
+        <translation>Ann&amp;ulla</translation>
     </message>
     <message>
         <source>&amp;Redo</source>
-        <translation>Wieder&amp;herstellen</translation>
+        <translation>&amp;Rifai</translation>
     </message>
     <message>
         <source>Cu&amp;t</source>
-        <translation>&amp;Ausschneiden</translation>
+        <translation>&amp;Taglia</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
-        <translation>&amp;Kopieren</translation>
+        <translation>&amp;Copia</translation>
     </message>
     <message>
         <source>Copy &amp;Link Location</source>
-        <translation>&amp;Link-Adresse kopieren</translation>
+        <translation>Copia il co&amp;llegamento</translation>
     </message>
     <message>
         <source>&amp;Paste</source>
-        <translation>Einf&amp;ügen</translation>
+        <translation>&amp;Incolla</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Löschen</translation>
+        <translation>Elimina</translation>
     </message>
     <message>
         <source>Select All</source>
-        <translation>Alles auswählen</translation>
-    </message>
-</context>
-<context>
-    <name>QWindowsDirect2DIntegration</name>
-    <message>
-        <source>Qt cannot load the direct2d platform plugin because the Direct2D version on this system is too old. The minimum system requirement for this platform plugin is Windows 7 SP1 with Platform Update.
-
-The minimum Direct2D version required is %1.%2.%3.%4. The Direct2D version on this system is %5.%6.%7.%8.</source>
-        <translation>Qt kann das Direct2D-Plattform-Plugin nicht laden, weil die auf dem System installierte Version von Direct2D veraltet ist. Dieses Plattform-Plugin erfordert mindestens Windows 7 SP1 mit Plattform Update.
-
-Die minimal erforderliche Version von Direct2D ist %1.%2.%3.%4. Die auf diesem System installierte Version von Direct2D ist %5.%6.%7.%8.</translation>
-    </message>
-    <message>
-        <source>Cannot load direct2d platform plugin</source>
-        <translation>Direct2D-Plattform-Plugin kann nicht geladen werden</translation>
+        <translation>Seleziona tutto</translation>
     </message>
 </context>
 <context>
     <name>QWizard</name>
     <message>
         <source>Go Back</source>
-        <translation>Zurück</translation>
+        <translation>Indietro</translation>
     </message>
     <message>
         <source>&lt; &amp;Back</source>
-        <translation>&lt; &amp;Zurück</translation>
+        <translation>&lt; &amp;Precedente</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Continua</translation>
     </message>
     <message>
         <source>&amp;Next</source>
-        <translation>&amp;Weiter</translation>
+        <translation>&amp;Successivo</translation>
     </message>
     <message>
         <source>&amp;Next &gt;</source>
-        <translation>&amp;Weiter &gt;</translation>
+        <translation>&amp;Successivo &gt;</translation>
     </message>
     <message>
         <source>Commit</source>
-        <translation>Anwenden</translation>
+        <translation>Applica</translation>
     </message>
     <message>
         <source>Done</source>
-        <translation>Fertig</translation>
+        <translation>Fatto</translation>
     </message>
     <message>
         <source>&amp;Finish</source>
-        <translation>Ab&amp;schließen</translation>
+        <translation>&amp;Fine</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Abbrechen</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Aiuto</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Hilfe</translation>
+        <translation>&amp;Aiuto</translation>
     </message>
 </context>
 <context>
     <name>QXml</name>
     <message>
         <source>no error occurred</source>
-        <translation>kein Fehler</translation>
+        <translation>nessun errore rilevato</translation>
     </message>
     <message>
         <source>error triggered by consumer</source>
-        <translation>Konsument löste Fehler aus</translation>
+        <translation>errore causato dal consumatore</translation>
     </message>
     <message>
         <source>unexpected end of file</source>
-        <translation>unerwartetes Ende der Datei</translation>
+        <translation>fine del file inattesa</translation>
     </message>
     <message>
         <source>more than one document type definition</source>
-        <translation>mehrere Dokumenttypdefinitionen</translation>
+        <translation>definizione di più di un tipo di documento</translation>
     </message>
     <message>
         <source>error occurred while parsing element</source>
-        <translation>Fehler beim Parsen eines Elements</translation>
+        <translation>errore durante l&apos;analisi dell&apos;elemento</translation>
     </message>
     <message>
         <source>tag mismatch</source>
-        <translation>Element-Tags sind nicht richtig geschachtelt</translation>
+        <translation>tag non corrispondente</translation>
     </message>
     <message>
         <source>error occurred while parsing content</source>
-        <translation>Fehler beim Parsen des Inhalts eines Elements</translation>
+        <translation>errore durante l&apos;analisi del contenuto</translation>
     </message>
     <message>
         <source>unexpected character</source>
-        <translation>unerwartetes Zeichen</translation>
+        <translation>carattere non previsto</translation>
     </message>
     <message>
         <source>invalid name for processing instruction</source>
-        <translation>kein gültiger Name für eine Processing-Instruktion</translation>
+        <translation>nome non valido per l&apos;istruzione di elaborazione</translation>
     </message>
     <message>
         <source>version expected while reading the XML declaration</source>
-        <translation>fehlende Version beim Parsen der XML-Deklaration</translation>
+        <translation>prevista versione nella lettura della dichiarazione XML</translation>
     </message>
     <message>
         <source>wrong value for standalone declaration</source>
-        <translation>falscher Wert für die Standalone-Deklaration</translation>
+        <translation>valore errato per la dichiarazione standalone</translation>
     </message>
     <message>
         <source>encoding declaration or standalone declaration expected while reading the XML declaration</source>
-        <translation>fehlende Kodierung-Deklaration oder Standalone-Deklaration beim Parsen der XML-Deklaration</translation>
+        <translation>prevista dichiarazione di codifica o dichiarazione standalone durante la lettura della dichiarazione XML</translation>
     </message>
     <message>
         <source>standalone declaration expected while reading the XML declaration</source>
-        <translation>fehlende Standalone-Deklaration beim Parsen der XML Deklaration</translation>
+        <translation>prevista dichiarazione standalone durante la lettura della dichiarazione XML</translation>
     </message>
     <message>
         <source>error occurred while parsing document type definition</source>
-        <translation>Fehler beim Parsen der Dokumenttypdefinition</translation>
+        <translation>si è verificato un errore nell&apos;analisi della definizione del documento</translation>
     </message>
     <message>
         <source>letter is expected</source>
-        <translation>ein Buchstabe ist an dieser Stelle erforderlich</translation>
+        <translation>lettera prevista</translation>
     </message>
     <message>
         <source>error occurred while parsing comment</source>
-        <translation>Fehler beim Parsen eines Kommentars</translation>
+        <translation>errore durante l&apos;analisi del commento</translation>
     </message>
     <message>
         <source>error occurred while parsing reference</source>
-        <translation>Fehler beim Parsen einer Referenz</translation>
+        <translation>errore durante l&apos;analisi del riferimento</translation>
     </message>
     <message>
         <source>internal general entity reference not allowed in DTD</source>
-        <translation>in einer DTD ist keine interne allgemeine Entity-Referenz erlaubt</translation>
+        <translation>riferimento all&apos;entità generale interna non consentito nella DTD</translation>
     </message>
     <message>
         <source>external parsed general entity reference not allowed in attribute value</source>
-        <translation>in einem Attribut-Wert sind keine externen Entity-Referenzen erlaubt</translation>
+        <translation>riferimento ad entità esterna generale analizzata non consentito in un valore di attributo</translation>
     </message>
     <message>
         <source>external parsed general entity reference not allowed in DTD</source>
-        <translation>in der DTD sind keine externen Entity-Referenzen erlaubt </translation>
+        <translation>riferimento a entità esterna generale analizzata non consetito nella DTD</translation>
     </message>
     <message>
         <source>unparsed entity reference in wrong context</source>
-        <translation>nicht-analysierte Entity-Referenz im falschen Kontext verwendet</translation>
+        <translation>riferimento ad entità non analizzato nel contesto errato</translation>
     </message>
     <message>
         <source>recursive entities</source>
-        <translation>rekursive Entity</translation>
+        <translation>entità ricorsive</translation>
     </message>
     <message>
         <source>error in the text declaration of an external entity</source>
-        <translation>Fehler in der Text-Deklaration einer externen Entity</translation>
+        <translation>errore nella dichiarazione testuale di una entità esterna</translation>
     </message>
 </context>
 <context>
     <name>QXmlStream</name>
     <message>
         <source>Extra content at end of document.</source>
-        <translation>Überzähliger Inhalt nach Ende des Dokuments.</translation>
+        <translation>Contenuti aggiuntivi alla fine del documento.</translation>
     </message>
     <message>
         <source>Invalid entity value.</source>
-        <translation>Ungültiger Entity-Wert.</translation>
+        <translation>Valore dell&apos;entità non valido.</translation>
     </message>
     <message>
         <source>Invalid XML character.</source>
-        <translation>Ungültiges XML-Zeichen.</translation>
+        <translation>Carattere XML non valido.</translation>
     </message>
     <message>
         <source>Sequence &apos;]]&gt;&apos; not allowed in content.</source>
-        <translation>Im Inhalt ist die Zeichenfolge &apos;]]&gt;&apos; nicht erlaubt.</translation>
+        <translation>La sequenza &apos;]]&gt;&apos; non è permessa nel contenuto.</translation>
     </message>
     <message>
         <source>Encountered incorrectly encoded content.</source>
-        <translation>Es wurde Inhalt mit einer ungültigen Kodierung gefunden.</translation>
+        <translation>Rilevato contenuto non codificato correttamente.</translation>
     </message>
     <message>
         <source>Namespace prefix &apos;%1&apos; not declared</source>
-        <translation>Der Namensraum-Präfix &apos;%1&apos; wurde nicht deklariert</translation>
+        <translation>Il prefisso &apos;%1&apos; del namespace non è stato dichiarato</translation>
     </message>
     <message>
         <source>Illegal namespace declaration.</source>
-        <translation>Ungültige Namensraum-Deklaration.</translation>
+        <translation>Dichiarazione di namespace non valida.</translation>
     </message>
     <message>
-        <source>Attribute &apos;%1&apos; redefined.</source>
-        <translation>Attribut &apos;%1&apos; mehrfach definiert.</translation>
+        <source>Attribute redefined.</source>
+        <translation>Attributo ridefinito.</translation>
     </message>
     <message>
         <source>Unexpected character &apos;%1&apos; in public id literal.</source>
-        <translation>&apos;%1&apos; ist kein gültiges Zeichen in einer public-id-Angabe.</translation>
+        <translation>Carattere inatteso &apos;%1&apos; in letterale identificativo pubblico.</translation>
     </message>
     <message>
         <source>Invalid XML version string.</source>
-        <translation>Ungültige XML-Versionsangabe.</translation>
+        <translation>Stringa di versione XML non valida.</translation>
     </message>
     <message>
         <source>Unsupported XML version.</source>
-        <translation>Diese XML-Version wird nicht unterstützt.</translation>
+        <translation>Versione di XML non supportata.</translation>
     </message>
     <message>
         <source>The standalone pseudo attribute must appear after the encoding.</source>
-        <translation>Das Standalone-Pseudoattribut muss der Kodierung unmittelbar folgen.</translation>
+        <translation>Lo pseudo-attributo standalone deve comparire dopo la codifica.</translation>
     </message>
     <message>
         <source>%1 is an invalid encoding name.</source>
-        <translation>%1 ist kein gültiger Name für die Kodierung.</translation>
+        <translation>%1 è un nome di codifica non valido.</translation>
     </message>
     <message>
         <source>Encoding %1 is unsupported</source>
-        <translation>Die Kodierung %1 wird nicht unterstützt</translation>
+        <translation>La codifica %1 non è supportata</translation>
     </message>
     <message>
         <source>Standalone accepts only yes or no.</source>
-        <translation>Der Wert für das &apos;Standalone&apos;-Attribut kann nur &apos;yes&apos; oder &apos;no&apos; sein.</translation>
+        <translation>Standalone accetta solo si o no.</translation>
     </message>
     <message>
         <source>Invalid attribute in XML declaration.</source>
-        <translation>Die XML-Deklaration enthält ein ungültiges Attribut.</translation>
+        <translation>Attributo non valido nella dichiarazione XML.</translation>
     </message>
     <message>
         <source>Premature end of document.</source>
-        <translation>Vorzeitiges Ende des Dokuments.</translation>
+        <translation>Fine del documento prematura.</translation>
     </message>
     <message>
         <source>Invalid document.</source>
-        <translation>Ungültiges Dokument.</translation>
+        <translation>Documento non valido.</translation>
     </message>
     <message>
         <source>Expected </source>
-        <translation>Es wurde </translation>
+        <translation>Previsto </translation>
     </message>
     <message>
         <source>, but got &apos;</source>
-        <translation>erwartet, stattdessen erhalten &apos;</translation>
+        <translation>, ma ottenuto &apos;</translation>
     </message>
     <message>
         <source>Unexpected &apos;</source>
-        <translation>Ungültig an dieser Stelle &apos; </translation>
+        <translation>Imprevisto &apos;</translation>
     </message>
     <message>
         <source>Expected character data.</source>
-        <translation>Es wurden Zeichendaten erwartet.</translation>
+        <translation>Previsti dati a carattere.</translation>
     </message>
     <message>
         <source>Recursive entity detected.</source>
-        <translation>Es wurde eine rekursive Entity festgestellt.</translation>
+        <translation>Entità ricorsiva rilevata.</translation>
     </message>
     <message>
         <source>Start tag expected.</source>
-        <translation>Öffnendes Element erwartet.</translation>
+        <translation>Previsto tag di inizio.</translation>
     </message>
     <message>
         <source>NDATA in parameter entity declaration.</source>
-        <translation>Eine Parameter-Entity-Deklaration darf kein NDATA enthalten.</translation>
+        <translation>NDATA nella dichiarazione dell&apos;entità del parametro.</translation>
     </message>
     <message>
         <source>XML declaration not at start of document.</source>
-        <translation>Die XML-Deklaration befindet sich nicht am Anfang des Dokuments.</translation>
+        <translation>Dichiarazione XML non all&apos;inizio del documento.</translation>
     </message>
     <message>
         <source>%1 is an invalid processing instruction name.</source>
-        <translation>%1 ist kein gültiger Name für eine Prozessing-Instruktion.</translation>
+        <translation>%1 non è un nome di elaborazione dell&apos;istruzione valido.</translation>
     </message>
     <message>
         <source>Invalid processing instruction name.</source>
-        <translation>Der Name der Prozessing-Instruktion ist ungültig.</translation>
+        <translation>nome non valido per l&apos;istruzione di elaborazione.</translation>
     </message>
     <message>
         <source>%1 is an invalid PUBLIC identifier.</source>
-        <translation>%1 ist keine gültige Angabe für eine PUBLIC-Id.</translation>
+        <translation>%1 è un identificatore PUBLIC non valido.</translation>
     </message>
     <message>
         <source>Invalid XML name.</source>
-        <translation>Ungültiger XML-Name.</translation>
+        <translation>Nome XML non valido.</translation>
     </message>
     <message>
         <source>Opening and ending tag mismatch.</source>
-        <translation>Die Anzahl der öffnenden Elemente stimmt nicht mit der Anzahl der schließenden Elemente überein.</translation>
+        <translation>Apertura e chiusura del tag non corrispondenti.</translation>
     </message>
     <message>
         <source>Entity &apos;%1&apos; not declared.</source>
-        <translation>Die Entity &apos;%1&apos; ist nicht deklariert.</translation>
+        <translation>L&apos;entità &apos;%1&apos; non è stata dichiarata.</translation>
     </message>
     <message>
         <source>Reference to unparsed entity &apos;%1&apos;.</source>
-        <translation>Es wurde die ungeparste Entity &apos;%1&apos; referenziert.</translation>
+        <translation>Riferimento all&apos;entità &apos;%1&apos; non analizzata.</translation>
     </message>
     <message>
         <source>Reference to external entity &apos;%1&apos; in attribute value.</source>
-        <translation>Im Attributwert wurde die externe Entity &apos;%1&apos; referenziert.</translation>
+        <translation>Riferimento all&apos;entità esterna &apos;%1&apos; nel valore dell&apos;attributo.</translation>
     </message>
     <message>
         <source>Invalid character reference.</source>
-        <translation>Ungültige Zeichenreferenz.</translation>
+        <translation>Riferimento al carattere non valido.</translation>
     </message>
 </context>
 </TS>
