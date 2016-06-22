@@ -3,6 +3,7 @@
 
 Changed:
 ▪ Changed couple of icons. (bug #12)
+▪ Changed codes of localizations and localizations loading. (bug #19)
 
 Fixed:
 ▪ Fixed minimum allowed length of category/feed titles. (bug #17)
