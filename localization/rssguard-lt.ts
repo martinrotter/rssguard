@@ -3,22 +3,22 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation> (kategorija)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (feed)</source>
-        <translation> (kanalas)</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>Programa jau yra vykdoma.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Išvesties katalogas nėra įrašomas.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -130,10 +130,7 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalas.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalai.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalų.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -426,7 +423,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Nepalaikoma</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -869,15 +866,15 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
@@ -885,23 +882,23 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Naudotojo vardas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Slaptažodis</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Rodyti slaptažodį</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Išbandyti sąranką</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -1824,7 +1821,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation>Piktogramos</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Skins</source>
@@ -1832,7 +1829,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation>Aktyvus apipavidalinimas:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected skin:</source>
@@ -2014,7 +2011,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Kompiuterio vardas atrodo tinkamai.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -3036,12 +3033,12 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>lt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.03</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3055,7 +3052,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Lietuvių</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
@@ -3429,12 +3426,12 @@ Neskaitytų naujienų: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>nenaudoja automatinio atnaujinimo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>naudoja visuotinius nustatymus</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -3475,11 +3472,11 @@ Paskutinis prisijungimas: %5</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Nepavyksta pridėti elemento</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Nepavyksta pridėti kanalo, nes yra vykdoma kita kritinė operacija.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3515,7 +3512,7 @@ Paskutinis prisijungimas: %5</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Iš naujo įkelti esamą tinklalapį.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>

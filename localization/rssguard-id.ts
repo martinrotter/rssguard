@@ -3,22 +3,22 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation>(kategori)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (feed)</source>
-        <translation>(feed)</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>Aplikasi sedang berjalan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Direktori keluaran tak dapat ditulisi.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -130,8 +130,7 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klik saya to untuk menambah feed dari situs web ini.
-Situs web ini mengandung %n feed.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -424,7 +423,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Tidak didukung</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -867,15 +866,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Eksekusi paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
@@ -883,23 +882,23 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Nama pengguna</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kata sandi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Tampilkan kata sandi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Tes setelan</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Membiarkan pilihan ini menyala menyebabkan pembaharuan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -1822,7 +1821,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation>Ikon</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Skins</source>
@@ -1830,7 +1829,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation>Skin yang aktif:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected skin:</source>
@@ -2022,7 +2021,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Nama host terlihat ok.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -3044,12 +3043,12 @@ Anda harus instal secara manual.</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>id</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.2</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3063,7 +3062,7 @@ Anda harus instal secara manual.</translation>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Bahasa Indonesia</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
@@ -3437,12 +3436,12 @@ Berita belum terbaca:%2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>tidak menggunakan pembaharuan otomatis</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>menggunakan pengaturan global</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -3479,15 +3478,15 @@ Login terakhir pada: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation>Sinkronisasi di</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Tidak dapat menambah item</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3523,7 +3522,7 @@ Login terakhir pada: %5</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Muat ulang halaman web ini.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>

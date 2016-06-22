@@ -14,7 +14,7 @@
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>L&apos;application est déjà en cours d&apos;exécution.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Output directory is not writable.</source>
@@ -864,7 +864,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -872,7 +872,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
@@ -880,11 +880,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>Nom d&apos;utilisateur</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Mot de passe</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
@@ -1819,7 +1819,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icons</source>
-        <translation>Icônes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Skins</source>
@@ -1827,7 +1827,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation>Thème actif :</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected skin:</source>
@@ -2019,7 +2019,7 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Le nom de l&apos;hôte semble correct.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -3035,12 +3035,12 @@ You must install it manually.</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>fr</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.04</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3054,7 +3054,7 @@ You must install it manually.</source>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>French</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
@@ -3414,12 +3414,12 @@ Unread news: %2</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Ne pas utiliser la mise à jour automatique</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Utiliser les paramètres globaux</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -3492,7 +3492,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Recharger la page courante</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>

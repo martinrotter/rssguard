@@ -3,7 +3,7 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation>(kategori)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (feed)</source>
@@ -14,7 +14,7 @@
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>Programmet kører allerede</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Output directory is not writable.</source>
@@ -421,7 +421,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Usupporteret</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -864,7 +864,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -872,7 +872,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
@@ -880,15 +880,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Vis kodeord</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -1819,7 +1819,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icons</source>
-        <translation>Ikoner</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Skins</source>
@@ -2009,7 +2009,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Værtsnavn ser ud til at være i orden.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -3022,12 +3022,12 @@ You must install it manually.</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>da</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.01</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3041,7 +3041,7 @@ You must install it manually.</source>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Danish</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
@@ -3408,12 +3408,12 @@ Ulæste nyheder: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>bruger ikke automatisk ajourføring</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>bruger globale indstillinger</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -3446,7 +3446,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kam ikke tilføje post</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
@@ -3486,7 +3486,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Genindlæs nuværende hjemmeside.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>

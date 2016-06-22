@@ -8,8 +8,8 @@ read -p "Username: " USERNAME
 read -p "Password: " PASSWORD
 
 # Setup parameters.
-RESOURCE=../../../localization/rssguard-en_GB.ts
-CODES="cs_CZ da_DK de_DE en_US fr_FR he_IL id_ID it_IT ja_JP lt_LT nl_NL pt_BR sv_SE"
+RESOURCE=../../../localization/rssguard-en.ts
+CODES="cs da de en_GB fr he id it ja lt nl pt sv"
 TRANSLATION='../../../localization/rssguard-$CODE.ts'
 
 declare PARAMS
