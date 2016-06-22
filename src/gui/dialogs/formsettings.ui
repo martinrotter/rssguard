@@ -18,13 +18,13 @@
     <widget class="QListWidget" name="m_listSettings">
      <property name="minimumSize">
       <size>
-       <width>220</width>
+       <width>260</width>
        <height>0</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>220</width>
+       <width>260</width>
        <height>16777215</height>
       </size>
      </property>
@@ -417,8 +417,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>782</width>
-            <height>451</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -495,8 +495,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>776</width>
-                <height>425</height>
+                <width>742</width>
+                <height>426</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1515,6 +1515,11 @@ Authors of this application are NOT responsible for lost data.</string>
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>TimeSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>timespinbox.h</header>
+  </customwidget>
+  <customwidget>
    <class>DynamicShortcutsWidget</class>
    <extends>QWidget</extends>
    <header>dynamicshortcutswidget.h</header>
@@ -1525,11 +1530,6 @@ Authors of this application are NOT responsible for lost data.</string>
    <extends>QWidget</extends>
    <header>toolbareditor.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TimeSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>timespinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
