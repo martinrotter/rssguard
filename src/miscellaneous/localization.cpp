@@ -41,7 +41,7 @@ void Localization::loadActiveLanguage() {
   QTranslator *app_translator = new QTranslator(qApp);
   QString desired_localization = desiredLanguage();
 
-  if (app_translator->load(QString("rssguard-%1.qm").arg(desired_localization), APP_LANG_PATH, QSL("-"))) {
+  if (app_translator->load(QString("rssguard-%1").arg(desired_localization), APP_LANG_PATH, QSL("-"))) {
     Application::installTranslator(app_translator);
     qDebug("Application localization '%s' loaded successfully.", qPrintable(desired_localization));
   }
@@ -50,7 +50,7 @@ void Localization::loadActiveLanguage() {
     desired_localization = DEFAULT_LOCALE;
   }
 
-  if (qt_translator->load(QString("qtbase-%1.qm").arg(desired_localization), APP_LANG_PATH, QSL("-"))) {
+  if (qt_translator->load(QString("qtbase-%1").arg(desired_localization), APP_LANG_PATH, QSL("-"))) {
     Application::installTranslator(qt_translator);
     qDebug("Qt localization '%s' loaded successfully.", qPrintable(desired_localization));
   }
