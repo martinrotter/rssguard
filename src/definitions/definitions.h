@@ -21,7 +21,7 @@
 #include <QtGlobal>
 
 #define _STR(x) #x
-#define STRFY(x)  _STR(x)
+#define STRFY(x) _STR(x)
 
 #define SERVICE_CODE_STD_RSS  "std-rss"
 #define SERVICE_CODE_TT_RSS   "tt-rss"

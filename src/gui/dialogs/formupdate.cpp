@@ -173,7 +173,7 @@ void FormUpdate::startUpdate() {
     url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;
   }
   else {
-    url_file = STRFY(APP_URL);
+    url_file = APP_URL;
   }
 
   if (m_readyToInstall) {    

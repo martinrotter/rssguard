@@ -193,7 +193,7 @@ void TabWidget::closeAllTabs() {
 
 int TabWidget::addNewspaperView(RootItem *root, const QList<Message> &messages) {
   WebBrowser *prev = new WebBrowser(this);
-  int index = addTab(prev, qApp->icons()->fromTheme(QSL("text-x-script")), tr("Newspaper view"), TabBar::Closable);
+  int index = addTab(prev, qApp->icons()->fromTheme(QSL("format-justify-fill")), tr("Newspaper view"), TabBar::Closable);
 
   setCurrentIndex(index);
   prev->loadMessages(messages, root);

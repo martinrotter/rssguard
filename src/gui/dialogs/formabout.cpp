@@ -119,7 +119,7 @@ void FormAbout::loadLicenseAndInformation() {
                               "<li><a href=\"%2\">%2</a> ~website</li></ul>"
                               "You can obtain source code for %5 from its website."
                               "<br><br><br>Copyright (C) 2011-%3 %4</body>").arg(STRFY(APP_EMAIL),
-                                                                                 STRFY(APP_URL),
+                                                                                 APP_URL,
                                                                                  QString::number(QDateTime::currentDateTime().date().year()),
                                                                                  STRFY(APP_AUTHOR),
                                                                                  STRFY(APP_NAME)));
