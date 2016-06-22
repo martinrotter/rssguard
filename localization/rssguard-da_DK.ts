@@ -3,7 +3,7 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation>(kategori)</translation>
     </message>
     <message>
         <source> (feed)</source>
@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation type="unfinished"/>
+        <translation>Fjerner læst meddelelse...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
@@ -110,14 +110,34 @@
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Valgte database eksisterer ikke (endnu). Den vil blive oprettet. Det er okay.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"/>
+        <translation>MySQL-database ikke tilgængelig</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Given account does not support adding feeds.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -217,7 +237,7 @@ Click here to open parent directory.</source>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation type="unfinished"/>
+        <translation>Ryd op</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
@@ -252,11 +272,11 @@ Click here to open parent directory.</source>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjslinie for meddelelser</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjslinie for feeds</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -314,7 +334,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Nye meddelelser hentet</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
@@ -337,7 +357,7 @@ Click here to open parent directory.</source>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjslinie afstandsstykke</translation>
     </message>
 </context>
 <context>
@@ -452,7 +472,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation type="unfinished"/>
+        <translation>Ændringslog ikke fundet.</translation>
     </message>
     <message>
         <source>About %1</source>
@@ -606,7 +626,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation type="unfinished"/>
+        <translation>Fjern alle meddelelser ældre end</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
@@ -614,7 +634,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation type="unfinished"/>
+        <translation>Krymp databasefil</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -630,7 +650,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Progress</source>
-        <translation type="unfinished"/>
+        <translation>Status</translation>
     </message>
     <message>
         <source>I am ready.</source>
@@ -646,7 +666,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation type="unfinished"/>
+        <translation>Oprydning af database fejlet.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
@@ -658,7 +678,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Fjern alle meddelelser fra skraldespanden</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
@@ -681,7 +701,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Godkendelse</translation>
     </message>
     <message>
         <source>Username</source>
@@ -697,7 +717,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Kræver HTTP-godkendelse</translation>
     </message>
     <message>
         <source>URL</source>
@@ -717,7 +737,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord til din TT-RSS-konto</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
@@ -725,7 +745,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>FULD URL på din  TT-RSS instans MED  efterfølgende  &quot;/api/&quot; i strengen.</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -737,7 +757,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj ny Tiny Tiny RSS konto</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
@@ -745,7 +765,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>API-adgang på valgte server er ikke aktiveret.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
@@ -773,7 +793,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Netværksfejl: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
@@ -781,7 +801,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn skal udfyldes.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
@@ -856,7 +876,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Godkendelse</translation>
     </message>
     <message>
         <source>Username</source>
@@ -912,7 +932,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Netværksfejl: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
@@ -924,7 +944,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn skal udfyldes.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
@@ -948,19 +968,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord til din ownCloud-konto</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn til din ownCloud-konto</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>ownCloud Nyhedsserver er okay, kørende med version %1, mens version %2, som minimum er krævet.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>ownCloud nyhedsserver er okay.</translation>
     </message>
 </context>
 <context>
@@ -1019,7 +1039,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon til feed.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1027,7 +1047,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Kræver HTTP-godkendelse</translation>
     </message>
     <message>
         <source>Username</source>
@@ -1047,7 +1067,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Rediger feed &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
@@ -1168,7 +1188,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Sæt feedtitel</translation>
     </message>
     <message>
         <source>Feed description</source>
@@ -1200,11 +1220,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Indlæs et ikon fra en fil...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"/>
+        <translation>Brug ikke ikonet</translation>
     </message>
     <message>
         <source>Use default icon</source>
@@ -1331,7 +1351,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation type="unfinished"/>
+        <translation>Vælg &amp;næste meddelelse</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
@@ -1371,7 +1391,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation type="unfinished"/>
+        <translation>Værk&amp;tøjslinie</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
@@ -1382,16 +1402,8 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Report a &amp;bug (GitHub)...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Report a bug (BitBucket)...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Donate via PayPal</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Donér via PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -1403,7 +1415,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Backup database/indstillinger</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
@@ -1415,7 +1427,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Send valgte meddelelser med e-post</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
@@ -1439,7 +1451,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Slet valgt post</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
@@ -1491,7 +1503,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation type="unfinished"/>
+        <translation>Vælg &amp;næste post</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
@@ -1531,7 +1543,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Ingen skraldespand</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -1543,11 +1555,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Tilføj ny konto</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation type="unfinished"/>
+        <translation>Statuslinie</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
@@ -1581,6 +1593,26 @@ or this functionality is not implemented yet.</source>
         <source>No actions possible</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Web browser &amp;&amp; tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Report a &amp;bug...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New web browser tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1605,7 +1637,7 @@ or this functionality is not implemented yet.</source>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Gendan database/indstillinger</translation>
     </message>
     <message>
         <source>Operation results</source>
@@ -1629,7 +1661,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation type="unfinished"/>
+        <translation>Du skal genstarte programmet for at fuldføre gendannelsesprocessen.</translation>
     </message>
     <message>
         <source>Source directory</source>
@@ -1707,7 +1739,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="unfinished"/>
+        <translation>Værtsnavn eller IP på sin proxyserver</translation>
     </message>
     <message>
         <source>Port</source>
@@ -1799,7 +1831,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"/>
+        <translation>Valgt tema:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
@@ -1811,7 +1843,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="unfinished"/>
+        <translation>Feeds &amp; meddelelser</translation>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
@@ -1860,7 +1892,8 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Liste med fejl:
+%1.</translation>
     </message>
     <message>
         <source>List of changes:
@@ -1878,7 +1911,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>skin changed</source>
-        <translation type="unfinished"/>
+        <translation>tema ændret</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
@@ -2080,11 +2113,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjslinie for feedliste</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjslinie for meddelelsesliste</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
@@ -2157,7 +2190,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Brug ekstern brugerdefineret  netlæser</translation>
     </message>
     <message>
         <source>External e-mail client</source>
@@ -2173,7 +2206,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Epost-klientens eksekverbare fil</translation>
     </message>
     <message>
         <source>Select client</source>
@@ -2203,7 +2236,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Aktiv database er tom.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
@@ -2231,7 +2264,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <translation>Statuslinie</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
@@ -2239,11 +2272,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"/>
+        <translation>Forhåndsvisning af skrifttyper</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ny skrifttype for meddelelsesfremviser</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
@@ -2311,7 +2344,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorinavn er for kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
@@ -2352,7 +2385,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Kategorinavn</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
@@ -2372,11 +2405,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Indlæs et ikon fra en fil...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"/>
+        <translation>Brug ikke ikonet</translation>
     </message>
     <message>
         <source>Use default icon</source>
@@ -2406,7 +2439,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vælg fil</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
@@ -2514,7 +2547,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Hent online metadata.</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
@@ -2574,7 +2607,7 @@ downloaded successfully.</source>
     </message>
     <message>
         <source>New release available.</source>
-        <translation type="unfinished"/>
+        <translation>Programopdatering tilgængelig.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
@@ -2666,7 +2699,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke åbne bibliotek</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
@@ -2681,25 +2714,13 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke åbne filen &apos;%1&apos; for skrivning.</translation>
     </message>
 </context>
 <context>
-    <name>MessageBrowser</name>
+    <name>LocationLineEdit</name>
     <message>
-        <source>Attachment</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>uknown author</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Newspaper view</source>
+        <source>Website address goes here</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2767,7 +2788,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Meddelelsesoverskrift</translation>
     </message>
     <message>
         <source>Url of the message.</source>
@@ -2791,7 +2812,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Er meddelelsen permanent slettet fra skraldespanden?</translation>
     </message>
     <message>
         <source>Attachments</source>
@@ -2811,7 +2832,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Account ID</source>
-        <translation type="unfinished"/>
+        <translation>KontoID</translation>
     </message>
     <message>
         <source>Custom ID</source>
@@ -2870,7 +2891,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjslinie afstandsstykke</translation>
     </message>
 </context>
 <context>
@@ -2889,7 +2910,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke starte eksternt postprogram</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
@@ -2897,7 +2918,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Avisfremvisning</translation>
     </message>
 </context>
 <context>
@@ -2940,12 +2961,12 @@ You must install it manually.</source>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>godkendelse fejlede</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>proxy-godkendelse kræves</translation>
     </message>
     <message>
         <source>proxy server not found</source>
@@ -2978,7 +2999,7 @@ You must install it manually.</source>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>ukendt indhold</translation>
     </message>
 </context>
 <context>
@@ -3049,7 +3070,11 @@ version by clicking this popup notification.</source>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Denne tjeneste  tilbyder integration med Tiny Tiny RSS.
+
+Tiny Tiny RSS er en open source netbaseret nyhedsfeed (RSS/Atom) læser, lavet til at gøre det muligt for dig at læse nyheder alle steder fra, men føles næsten som et rigtigt skrivebord sprogram.
+
+Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
@@ -3074,7 +3099,9 @@ At least API level %1 is required.</source>
         <source>Recycle bin
 
 %1</source>
-        <translation type="unfinished"/>
+        <translation>Skraldespand
+
+%1</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3097,11 +3124,11 @@ At least API level %1 is required.</source>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Nulstil til original genvej.</translation>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Nulstil nuværende genvej.</translation>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
@@ -3214,7 +3241,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke tilføje kategori, fordi en anden kritisk operation er under udførelse.</translation>
     </message>
 </context>
 <context>
@@ -3229,7 +3256,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Filhentningsstatusbar</translation>
     </message>
     <message>
         <source>File download label</source>
@@ -3237,7 +3264,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjslinie afstandsstykke</translation>
     </message>
 </context>
 <context>
@@ -3297,12 +3324,21 @@ Ulæste nyheder: %2</translation>
         <source>Downloads</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <extracomment>Web browser default tab title.</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n time</numerusform><numerusform>%n timer</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
@@ -3310,14 +3346,14 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"/>
+        <translation>og</translation>
     </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation type="unfinished"/>
+        <translation>Aktiverede handlinger</translation>
     </message>
     <message>
         <source>Available actions</source>
@@ -3325,7 +3361,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation type="unfinished"/>
+        <translation>Indsæt afstandsstykke</translation>
     </message>
     <message>
         <source>Insert spacer</source>
@@ -3333,11 +3369,11 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation type="unfinished"/>
+        <translation>Afstandsstykke</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjslinie afstandsstykke</translation>
     </message>
     <message>
         <source>Move action up</source>
@@ -3414,6 +3450,69 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>WebBrowser</name>
+    <message>
+        <source>Navigation panel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No title</source>
+        <extracomment>Webbrowser tab title when no title is available.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go back.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go forward.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop web page loading.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>WebViewer</name>
+    <message>
+        <source>Attachment</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Written by </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>uknown author</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Newspaper view</source>
         <translation type="unfinished"/>
     </message>
 </context>

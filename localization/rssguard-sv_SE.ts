@@ -122,6 +122,26 @@
     </message>
 </context>
 <context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Given account does not support adding feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
@@ -1384,14 +1404,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>&amp;Kolumnrubriker</translation>
     </message>
     <message>
-        <source>Report a &amp;bug (GitHub)...</source>
-        <translation>Rapportera ett &amp;fel (GitHub)...</translation>
-    </message>
-    <message>
-        <source>Report a bug (BitBucket)...</source>
-        <translation>Rapportera ett fel (BitBucket)...</translation>
-    </message>
-    <message>
         <source>&amp;Donate via PayPal</source>
         <translation>&amp;Donera via PayPal</translation>
     </message>
@@ -1582,6 +1594,26 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>No actions possible</source>
         <translation>Inga åtgärder möjliga</translation>
+    </message>
+    <message>
+        <source>Web browser &amp;&amp; tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Report a &amp;bug...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New web browser tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2673,24 +2705,26 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Detta är en ny version som kan
+laddas ner.</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Paketet har laddats ner.
+Du måste installera det manuellt.</translation>
     </message>
     <message>
         <source>Go to update file</source>
-        <translation type="unfinished"/>
+        <translation>Gå till uppdateringsfilen</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte öppna mappen</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
     </message>
 </context>
 <context>
@@ -2705,21 +2739,9 @@ You must install it manually.</source>
     </message>
 </context>
 <context>
-    <name>MessageBrowser</name>
+    <name>LocationLineEdit</name>
     <message>
-        <source>Attachment</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>uknown author</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Newspaper view</source>
+        <source>Website address goes here</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3335,6 +3357,15 @@ Olästa nyheter: %2</translation>
         <source>Downloads</source>
         <translation>Nedladdningar</translation>
     </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <extracomment>Web browser default tab title.</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
@@ -3461,6 +3492,69 @@ Senast inloggad: %5</translation>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
+    </message>
+</context>
+<context>
+    <name>WebBrowser</name>
+    <message>
+        <source>Navigation panel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No title</source>
+        <extracomment>Webbrowser tab title when no title is available.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go back.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go forward.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop web page loading.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>WebViewer</name>
+    <message>
+        <source>Attachment</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Written by </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>uknown author</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

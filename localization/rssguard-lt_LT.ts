@@ -3,11 +3,11 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation> (kategorija)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation> (kanalas)</translation>
     </message>
 </context>
 <context>
@@ -122,6 +122,26 @@
     </message>
 </context>
 <context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Given account does not support adding feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
@@ -149,7 +169,7 @@
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite paskirtes vietą atsiunčiamam failui</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -331,7 +351,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>Neskaitytų/visų žinučių skaičiai.</translation>
     </message>
 </context>
 <context>
@@ -490,7 +510,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versija:&lt;/b&gt; %1 (sukurta sistemoje %2/%3)&lt;br&gt;&lt;b&gt;Poversijis:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Kūrimo data:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (sukompiliuota remiantis %7)&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -750,7 +770,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation>Įrašyti prisijungimo duomenys neteisingi.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
@@ -1048,7 +1068,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Redaguoti kanalą &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
@@ -1181,7 +1201,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Pilnas kanalo url su schema</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
@@ -1383,14 +1403,6 @@ or this functionality is not implemented yet.</source>
         <translation>Ka&amp;nalų/žinučių sąrašo antraštės</translation>
     </message>
     <message>
-        <source>Report a &amp;bug (GitHub)...</source>
-        <translation>Pranešti apie &amp;klaidą (GitHub)...</translation>
-    </message>
-    <message>
-        <source>Report a bug (BitBucket)...</source>
-        <translation>Pranešti apie klaidą (BitBucket)...</translation>
-    </message>
-    <message>
         <source>&amp;Donate via PayPal</source>
         <translation>&amp;Paaukoti per PayPal</translation>
     </message>
@@ -1582,6 +1594,26 @@ or this functionality is not implemented yet.</source>
         <source>No actions possible</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Web browser &amp;&amp; tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Report a &amp;bug...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New web browser tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1642,7 +1674,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation type="unfinished"/>
+        <translation>Duomenų bazė ir/ar nustatymai nebuvo sėkmingai nukopijuoti į atkūrimo katalogą.</translation>
     </message>
     <message>
         <source>Select source directory</source>
@@ -1824,23 +1856,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"/>
+        <translation>Saityno naršyklės vykdomasis</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"/>
+        <translation>Vykdomojo parametrai</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"/>
+        <translation>Turėkite omenyje, kad &quot;%1&quot; (be kabučių) yra pasirinktos žinutės URL vietaženklis.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite saityno naršyklės vykdomąjį</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation type="unfinished"/>
+        <translation>Vykdomieji (*.*)</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
@@ -1848,15 +1880,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"/>
+        <translation>Saityno naršyklės vykdomasis failas</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"/>
+        <translation>Vykdomajam skirti parametrai</translation>
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation type="unfinished"/>
+        <translation>kai kurie spartieji klavišai kartojasi</translation>
     </message>
     <message>
         <source>List of errors:
@@ -1884,7 +1916,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti pavyzdinius argumentus</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
@@ -1938,11 +1970,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"/>
+        <translation>Prisijungimui prie kanalo skirtas laikas</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"/>
+        <translation>Prisijungimui skirtas laikas yra laiko intervalas, kuris yra rezervuojamas naujų kanalo žinučių atsiuntimui. Jeigu šis laiko intervalas praeina, tuomet atsiuntimo procesas yra nutraukiamas.</translation>
     </message>
     <message>
         <source> ms</source>
@@ -2014,7 +2046,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite naršyklę</translation>
     </message>
     <message>
         <source>No proxy</source>
@@ -2046,7 +2078,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Išlaikyti žinučių pasirinkimą žinučių sąrašo rodinio viduryje</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
@@ -2058,7 +2090,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jei nepažymėta, tuomet bus naudojama sistemos mastu numatytoji saityno naršyklė.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jei nepažymėta, tuomet bus naudojama sistemos mastu nustatyta numatytoji saityno naršyklė.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -2070,11 +2102,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"/>
+        <translation>Įrašykite žinučių skaičiaus, kuris rodomas kanalų sąraše šalia kiekvieno kanalo/kategorijos, formatą. Naudokite &quot;%all&quot; ir &quot;%unread&quot; eilutes, kurios yra visų (ar neskaitytų) žinučių skaičiaus vietaženkliai.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
-        <translation type="unfinished"/>
+        <translation>tinkinta išorinė naršyklė nėra nustatyta teisingai</translation>
     </message>
     <message>
         <source>Toolbars</source>
@@ -2106,14 +2138,14 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti tinkintą datos/laiko formatą (nustelbia iš aktyvaus lokalizavimo įkeltą formatą)</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Vykdomieji (*)</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
@@ -2149,7 +2181,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"/>
+        <translation>Naršyklė, el. paštas ir įg. serveris</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
@@ -2161,7 +2193,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti tinkintą išorinę saityno naršyklę</translation>
     </message>
     <message>
         <source>External e-mail client</source>
@@ -2169,19 +2201,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti tinkintą išorinį el. pašto klientą</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"/>
+        <translation>El. pašto vykdomasis</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>El. pašto kliento vykdomasis failas</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite klientą</translation>
     </message>
     <message>
         <source>Placeholders:
@@ -2197,7 +2229,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite el. pašto vykdomąjį</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -2254,7 +2286,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nėra piktogramų temos/sistemos piktogramų tema</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
@@ -2576,7 +2608,8 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Sąrašas su atnaujinimais nebuvo
+sėkmingai atsisiųstas.</translation>
     </message>
     <message>
         <source>New release available.</source>
@@ -2606,7 +2639,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyko patikrinti ar yra atnaujinimų.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
@@ -2619,11 +2652,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation type="unfinished"/>
+        <translation>Naujas atnaujinimas nėra prieinamas.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta atnaujinti programos</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
@@ -2631,11 +2664,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Download update</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti atnaujinimą</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsta %1% (atnaujinimo dydis yra %2 kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
@@ -2660,12 +2693,14 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Tai yra nauja versija, kuri gali būti
+atsisiųsta.</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Paketas buvo sėkmingai atsisiųstas.
+Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Go to update file</source>
@@ -2673,11 +2708,11 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta atverti katalogo</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta atverti išvesties katalogo. Atverkite jį rankiniu būdu.</translation>
     </message>
 </context>
 <context>
@@ -2692,21 +2727,9 @@ You must install it manually.</source>
     </message>
 </context>
 <context>
-    <name>MessageBrowser</name>
+    <name>LocationLineEdit</name>
     <message>
-        <source>Attachment</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>uknown author</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Newspaper view</source>
+        <source>Website address goes here</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2714,7 +2737,7 @@ You must install it manually.</source>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation>Id</translation>
     </message>
     <message>
         <source>Read</source>
@@ -2746,7 +2769,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Sukurta</translation>
     </message>
     <message>
         <source>Contents</source>
@@ -2754,23 +2777,23 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Žinutės Id.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation type="unfinished"/>
+        <translation>Ar žinutė skaityta?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation type="unfinished"/>
+        <translation>Ar žinutė ištrinta?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"/>
+        <translation>Ar žinutė svarbi?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo, kuriam priklauso ši žinutė, Id.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -2810,7 +2833,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių įkėlimas nepavyko, galbūt, žinutes nepavyko atsisiųsti.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
@@ -2822,15 +2845,15 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation type="unfinished"/>
+        <translation>Tinkintas ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Žinutės paskyros ID.</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation type="unfinished"/>
+        <translation>Tinkintas žinutės ID</translation>
     </message>
     <message>
         <source>Custom hash</source>
@@ -2932,7 +2955,7 @@ You must install it manually.</source>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>SSL išankstinis suderinimas nepavyko</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
@@ -3013,7 +3036,7 @@ You must install it manually.</source>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.02</translation>
+        <translation>0.03</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3105,22 +3128,22 @@ At least API level %1 is required.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n neskaityta žinutė.</numerusform><numerusform>%n neskaitytos žinutės.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Atstatyti į pradinį spartųjį klavišą.</translation>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Išvalyti dabartinį spartųjį klavišą.</translation>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite ir nuspauskite naują spartųjį klavišą.</translation>
     </message>
 </context>
 <context>
@@ -3316,6 +3339,15 @@ Neskaitytų naujienų: %2</translation>
         <source>Downloads</source>
         <translation>Atsiuntimai</translation>
     </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <extracomment>Web browser default tab title.</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
@@ -3442,6 +3474,69 @@ Paskutinis prisijungimas: %5</translation>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Nepavyksta pridėti kanalo, nes yra vykdoma kita kritinė operacija.</translation>
+    </message>
+</context>
+<context>
+    <name>WebBrowser</name>
+    <message>
+        <source>Navigation panel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No title</source>
+        <extracomment>Webbrowser tab title when no title is available.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go back.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go forward.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop web page loading.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>WebViewer</name>
+    <message>
+        <source>Attachment</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Written by </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>uknown author</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

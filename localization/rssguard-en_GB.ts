@@ -124,6 +124,29 @@
     </message>
 </context>
 <context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Given account does not support adding feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
@@ -1399,14 +1422,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Report a &amp;bug (GitHub)...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Report a bug (BitBucket)...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Donate via PayPal</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1596,6 +1611,26 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No actions possible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser &amp;&amp; tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report a &amp;bug...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New web browser tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2701,21 +2736,9 @@ You must install it manually.</source>
     </message>
 </context>
 <context>
-    <name>MessageBrowser</name>
+    <name>LocationLineEdit</name>
     <message>
-        <source>Attachment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>uknown author</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Newspaper view</source>
+        <source>Website address goes here</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3324,6 +3347,15 @@ Unread news: %2</source>
         <source>Downloads</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <extracomment>Web browser default tab title.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
@@ -3450,6 +3482,69 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WebBrowser</name>
+    <message>
+        <source>Navigation panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No title</source>
+        <extracomment>Webbrowser tab title when no title is available.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go back.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go forward.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop web page loading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WebViewer</name>
+    <message>
+        <source>Attachment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Written by </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>uknown author</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Newspaper view</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

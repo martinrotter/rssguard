@@ -122,6 +122,26 @@
     </message>
 </context>
 <context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Given account does not support adding feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
@@ -1384,14 +1404,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Cabeçalhos da lista de &amp;feeds/mensagens</translation>
     </message>
     <message>
-        <source>Report a &amp;bug (GitHub)...</source>
-        <translation>Relatar um &amp;bug (GitHub)...</translation>
-    </message>
-    <message>
-        <source>Report a bug (BitBucket)...</source>
-        <translation>Relatar um bug (BitBucket)...</translation>
-    </message>
-    <message>
         <source>&amp;Donate via PayPal</source>
         <translation>&amp;Doar pelo PayPal</translation>
     </message>
@@ -1582,6 +1594,26 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>No actions possible</source>
         <translation>Nenhuma ação possível</translation>
+    </message>
+    <message>
+        <source>Web browser &amp;&amp; tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Report a &amp;bug...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New web browser tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2673,24 +2705,26 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Esta é a nova versão que pode ser
+baixada.</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation type="unfinished"/>
+        <translation>O pacote foi baixado com sucesso.
+Você precisa instalá-lo manualmente.</translation>
     </message>
     <message>
         <source>Go to update file</source>
-        <translation type="unfinished"/>
+        <translation>Ir para arquivo de atualização</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível abrir a pasta</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível abrir a pasta de saída. Abra-a manualmente.</translation>
     </message>
 </context>
 <context>
@@ -2705,21 +2739,9 @@ You must install it manually.</source>
     </message>
 </context>
 <context>
-    <name>MessageBrowser</name>
+    <name>LocationLineEdit</name>
     <message>
-        <source>Attachment</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Written by </source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>uknown author</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Newspaper view</source>
+        <source>Website address goes here</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3337,6 +3359,15 @@ Notícias não lidas: %2</translation>
         <source>Downloads</source>
         <translation>Downloads</translation>
     </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <extracomment>Web browser default tab title.</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
@@ -3463,6 +3494,69 @@ Servidor: %2
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Não é possível adicionar feeds porque outra operação crítica está em curso.</translation>
+    </message>
+</context>
+<context>
+    <name>WebBrowser</name>
+    <message>
+        <source>Navigation panel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No title</source>
+        <extracomment>Webbrowser tab title when no title is available.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go back.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go forward.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop web page loading.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>WebViewer</name>
+    <message>
+        <source>Attachment</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Written by </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>uknown author</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
