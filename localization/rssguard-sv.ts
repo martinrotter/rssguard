@@ -3045,7 +3045,7 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>sv_SE</translation>
+        <translation>sv</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>

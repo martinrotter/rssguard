@@ -3044,7 +3044,7 @@ You must install it manually.</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>en_US</translation>
+        <translation>en</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>

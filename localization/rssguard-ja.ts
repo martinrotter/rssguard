@@ -3022,7 +3022,7 @@ You must install it manually.</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>ja_JP</translation>
+        <translation>ja</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
@@ -3032,11 +3032,11 @@ You must install it manually.</source>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation></translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation></translation>
     </message>
     <message>
         <source>LANG_NAME</source>
