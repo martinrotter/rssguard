@@ -1,14 +1,16 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Encoding=UTF-8
 Exec=rssguard
 X-GNOME-Autostart-Delay=15
+X-LXQt-Need-Tray=true
 Name=RSS Guard
-GenericName=A (very) tiny feed reader
+GenericName=Feed reader
 GenericName[cs]=Velmi jednoduchá čtečka kanálů
-Comment=A (very) tiny feed reader
+GenericName[de]=Feedreader
+Comment=Tiny yet feature rich Qt feed reader
 Comment[cs]=Velmi jednoduchá čtečka kanálů
+Comment[de]=Qt Feedreader mit großem Funktionsumfang bei geringem Ressourcenbedarf
 Icon=rssguard
 Terminal=false
 Categories=Qt;Network;News;
