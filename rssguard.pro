@@ -127,7 +127,7 @@ isEmpty(APP_REVISION) {
   APP_REVISION = "-"
 }
 
-DEFINES += APP_REVISION=\"$$APP_REVISION\"
+DEFINES += APP_REVISION='"\\\"$$APP_REVISION\\\""'
 
 message(rssguard: RSS Guard version is: '$$APP_VERSION'.)
 message(rssguard: Detected Qt version: '$$QT_VERSION'.)

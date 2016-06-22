@@ -105,7 +105,7 @@ void FormAbout::loadLicenseAndInformation() {
                               "<b>Qt:</b> %6 (compiled against %7)<br>").arg(qApp->applicationVersion(),
                                                                              APP_SYSTEM_NAME,
                                                                              APP_SYSTEM_VERSION,
-                                                                             STRFY(APP_REVISION),
+                                                                             APP_REVISION,
                                                                              TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__,
                                                                                                                              __TIME__)).toString(Qt::DefaultLocaleShortDate),
                                                                              qVersion(),

@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
   Application::setApplicationVersion(APP_VERSION);
   Application::setOrganizationName(APP_AUTHOR);
   Application::setOrganizationDomain(APP_URL);
-  Application::setWindowIcon(QIcon(STRFY(APP_ICON_PATH)));
+  Application::setWindowIcon(QIcon(APP_ICON_PATH));
 
   qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
 
