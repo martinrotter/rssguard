@@ -22,6 +22,8 @@
 
 
 class TimeSpinBox : public QDoubleSpinBox {
+    Q_OBJECT
+
   public:
     explicit TimeSpinBox(QWidget *parent = 0);
     virtual ~TimeSpinBox();

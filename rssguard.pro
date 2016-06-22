@@ -421,20 +421,20 @@ TRANSLATIONS += localization/qtbase-cs_CZ.ts \
                 localization/rssguard-pt_BR.ts \
                 localization/rssguard-sv_SE.ts
 
-TRANSLATIONS_WO_QT += localization/rssguard-cs_CZ.ts \
-                      localization/rssguard-da_DK.ts \
-                      localization/rssguard-de_DE.ts \
-                      localization/rssguard-en_GB.ts \
-                      localization/rssguard-en_US.ts \
-                      localization/rssguard-fr_FR.ts \
-                      localization/rssguard-he_IL.ts \
-                      localization/rssguard-id_ID.ts \
-                      localization/rssguard-it_IT.ts \
-                      localization/rssguard-ja_JP.ts \
-                      localization/rssguard-lt_LT.ts \
-                      localization/rssguard-nl_NL.ts \
-                      localization/rssguard-pt_BR.ts \
-                      localization/rssguard-sv_SE.ts
+TRANSLATIONS_WO_QT += $$PWD/localization/rssguard-cs_CZ.ts \
+                      $$PWD/localization/rssguard-da_DK.ts \
+                      $$PWD/localization/rssguard-de_DE.ts \
+                      $$PWD/localization/rssguard-en_GB.ts \
+                      $$PWD/localization/rssguard-en_US.ts \
+                      $$PWD/localization/rssguard-fr_FR.ts \
+                      $$PWD/localization/rssguard-he_IL.ts \
+                      $$PWD/localization/rssguard-id_ID.ts \
+                      $$PWD/localization/rssguard-it_IT.ts \
+                      $$PWD/localization/rssguard-ja_JP.ts \
+                      $$PWD/localization/rssguard-lt_LT.ts \
+                      $$PWD/localization/rssguard-nl_NL.ts \
+                      $$PWD/localization/rssguard-pt_BR.ts \
+                      $$PWD/localization/rssguard-sv_SE.ts
 
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src \
