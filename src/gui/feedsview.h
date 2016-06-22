@@ -101,6 +101,16 @@ class FeedsView : public QTreeView {
     // Requests opening of given messages in newspaper mode.
     void openMessagesInNewspaperView(RootItem *root, const QList<Message> &messages);
 
+  protected:
+    // Handle selections.
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+
+    // React on "Del" key.
+    void keyPressEvent(QKeyEvent *event);
+
+    // Show custom context menu.
+    void contextMenuEvent(QContextMenuEvent *event);
+
   private slots:
     void expandItemDelayed(const QModelIndex &idx);
     void markSelectedItemReadStatus(RootItem::ReadStatus read);
@@ -122,15 +132,6 @@ class FeedsView : public QTreeView {
     void setupAppearance();
 
     void saveExpandStates(RootItem *item);
-
-    // Handle selections.
-    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
-
-    // React on "Del" key.
-    void keyPressEvent(QKeyEvent *event);
-
-    // Show custom context menu.
-    void contextMenuEvent(QContextMenuEvent *event);
 
     QMenu *m_contextMenuCategories;
     QMenu *m_contextMenuFeeds;

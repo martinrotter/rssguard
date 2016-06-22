@@ -44,8 +44,8 @@ bool WebViewer::canDecreaseZoom() {
 }
 
 void WebViewer::displayMessage() {
-  load(QUrl(INTERNAL_URL_MESSAGE));
-  //setHtml(m_messageContents, QUrl::fromUserInput("aa"));
+  //load(QUrl(INTERNAL_URL_MESSAGE));
+  setHtml(m_messageContents, QUrl::fromUserInput(INTERNAL_URL_MESSAGE));
 }
 
 bool WebViewer::increaseWebPageZoom() {
@@ -119,7 +119,11 @@ void WebViewer::loadMessage(const Message &message) {
 }
 
 void WebViewer::clear() {
+  bool previously_enabled = isEnabled();
+
+  setEnabled(false);
   setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
+  setEnabled(previously_enabled);
 }
 
 QWebEngineView *WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
