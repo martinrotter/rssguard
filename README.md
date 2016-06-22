@@ -1,5 +1,6 @@
 RSS Guard
 =========
+[![AUR](https://badge.fury.io/gh/martinrotter%2Frssguard.svg)](#)
 [![AUR](https://img.shields.io/aur/votes/rssguard.svg?maxAge=3600)](#)
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](#)
 [![license](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](#)
