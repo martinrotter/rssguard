@@ -20,6 +20,7 @@ Removed:
 
 Fixed:
 ▪ Removed "Restart" functionality, it was buggy and was causing a lot of internal problems, primarily with storing settings.
+▪ OPML exporter now generates valid XML with all xmlns correctly filled.
 
 3.2.4
 —————

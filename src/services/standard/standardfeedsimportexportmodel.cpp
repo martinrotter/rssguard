@@ -52,6 +52,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
   // Added OPML 2.0 metadata.
   opml_document.appendChild(opml_document.createElement(QSL("opml")));
   opml_document.documentElement().setAttribute(QSL("version"), QSL("version"));
+  opml_document.documentElement().setAttribute("xmlns:rssguard", STRFY(APP_URL));
 
   QDomElement elem_opml_head = opml_document.createElement(QSL("head"));
 
