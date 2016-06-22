@@ -4,13 +4,6 @@ Welcome to RSS Guard website. You can find here basic information.
 
 RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.
 
-#####################
-#####################
-# ***ALL USERS WHO UPDATED TO 3.2.0+ -> fill [this survey](http://goo.gl/forms/ASWg4TFxlS).***
-#####################
-
-#####################
-
 Core features are:
 
 * **support for online feed synchronization via plugins**,
@@ -63,20 +56,17 @@ Thanks to
 Downloads
 ---------
 ### Windows
-* [all downloads](https://bitbucket.org/skunkos/rssguard/downloads).
+* [official downloads](https://github.com/martinrotter/rssguard/releases).
 * alternative downloads
 
 [![Alternative RSS Guard downloads.](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
 ### Linux
-* [stable releases (based on Qt 5)](https://software.opensuse.org/download.html?project=home%3Askunkos%3Arssguard&package=rssguard-qt5),
-* [development releases (based on Qt 5)](https://software.opensuse.org/download.html?project=home%3Askunkos%3Arssguard&package=rssguard-qt5-git),
+* [stable releases](https://software.opensuse.org/download.html?project=home%3Askunkos%3Arssguard&package=rssguard-qt5),
+* [development releases](https://software.opensuse.org/download.html?project=home%3Askunkos%3Arssguard&package=rssguard-qt5-git),
 + alternative downloads:
-    * Archlinux AUR packages - [stable-qt5](https://aur.archlinux.org/packages/rssguard/).
+    * Archlinux AUR packages - [stable](https://aur.archlinux.org/packages/rssguard/).
     
 Note that packages from OBS are not meant to be used in production. Rely on "official" packages for you Linux distro made by your Linux distro maintainers.
-    
-### Mac OS X
-# I am looking for someone technically able to compile RSS Guard for Mac OS X. It supports Mac OS X, but I don't have Mac to compile it. Write me an e-mail if you want to become RSS Guard maintainer for Mac OS X.
 
 ![RSS Guard is 100% clean.](http://www.softpedia.com/_img/softpedia_100_free.png)
 
