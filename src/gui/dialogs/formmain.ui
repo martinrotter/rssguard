@@ -63,7 +63,6 @@
     </property>
     <addaction name="m_actionCheckForUpdates"/>
     <addaction name="m_actionReportBugGitHub"/>
-    <addaction name="m_actionReportBugBitBucket"/>
     <addaction name="m_actionDisplayWiki"/>
     <addaction name="m_actionDonate"/>
     <addaction name="m_actionAboutGuard"/>
@@ -484,7 +483,7 @@
   </action>
   <action name="m_actionReportBugGitHub">
    <property name="text">
-    <string>Report a &amp;bug (GitHub)...</string>
+    <string>Report a &amp;bug...</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -519,14 +518,6 @@
    </property>
    <property name="shortcut">
     <string notr="true">H</string>
-   </property>
-  </action>
-  <action name="m_actionReportBugBitBucket">
-   <property name="text">
-    <string>Report a bug (BitBucket)...</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionDonate">

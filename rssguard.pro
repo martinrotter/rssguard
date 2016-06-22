@@ -72,12 +72,11 @@ APP_COPYRIGHT                 = "(C) 2011-2016 $$APP_AUTHOR"
 APP_VERSION                   = "3.3.0"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
-APP_URL                       = "http://bitbucket.org/skunkos/rssguard"
-APP_URL_ISSUES                = "http://bitbucket.org/skunkos/rssguard/issues"
-APP_URL_ISSUES_NEW_GITHUB     = "https://github.com/martinrotter/rssguard/issues/new"
-APP_URL_ISSUES_NEW_BITBUCKET  = "http://bitbucket.org/skunkos/rssguard/issues/new"
-APP_URL_WIKI                  = "https://bitbucket.org/skunkos/rssguard/wiki/Home"
-APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (bitbucket.org/skunkos/rssguard)"
+APP_URL                       = "https://github.com/martinrotter/rssguard"
+APP_URL_ISSUES                = "https://github.com/martinrotter/rssguard/issues"
+APP_URL_ISSUES_NEW            = "https://github.com/martinrotter/rssguard/issues/new"
+APP_URL_WIKI                  = "https://github.com/martinrotter/rssguard/wiki"
+APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (github.com/martinrotter/rssguard)"
 APP_DONATE_URL                = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
 isEmpty(PREFIX) {
@@ -445,7 +444,8 @@ INCLUDEPATH +=  $$PWD/. \
 
 TEXTS = resources/text/CHANGELOG \
         resources/text/COPYING_BSD \
-        resources/text/COPYING_GNU_GPL
+        resources/text/COPYING_GNU_GPL \
+        resources/text/COPYING_GNU_GPL_HTML
 
 # Make sure QM translations are generated.
 lrelease.input = TRANSLATIONS

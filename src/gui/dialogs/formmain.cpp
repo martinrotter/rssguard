@@ -335,7 +335,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme(QSL("applications-internet")));
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
   m_ui->m_actionReportBugGitHub->setIcon(icon_theme_factory->fromTheme(QSL("call-start")));
-  m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme(QSL("call-start")));
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
   m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("applications-office")));
@@ -480,7 +479,6 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
   connect(m_ui->m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
   connect(m_ui->m_actionReportBugGitHub, SIGNAL(triggered()), this, SLOT(reportABugOnGitHub()));
-  connect(m_ui->m_actionReportBugBitBucket, SIGNAL(triggered()), this, SLOT(reportABugOnBitBucket()));
   connect(m_ui->m_actionDonate, SIGNAL(triggered()), this, SLOT(donate()));
   connect(m_ui->m_actionDisplayWiki, SIGNAL(triggered()), this, SLOT(showWiki()));
 
@@ -547,14 +545,6 @@ void FormMain::showAddAccountDialog() {
 
 void FormMain::reportABugOnGitHub() {
   if (!WebFactory::instance()->openUrlInExternalBrowser(STRFY(APP_URL_ISSUES_NEW_GITHUB))) {
-    qApp->showGuiMessage(tr("Cannot open external browser"),
-                         tr("Cannot open external browser. Navigate to application website manually."),
-                         QSystemTrayIcon::Warning, this, true);
-  }
-}
-
-void FormMain::reportABugOnBitBucket() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(STRFY(APP_URL_ISSUES_NEW_BITBUCKET))) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
