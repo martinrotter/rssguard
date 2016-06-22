@@ -635,7 +635,7 @@ void FormSettings::switchMysqlPasswordVisiblity(bool visible) {
 }
 
 void FormSettings::loadGeneral() {
-  m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(STRFY(APP_NAME)));
+  m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(APP_NAME));
   m_ui->m_checkForUpdatesOnStart->setChecked(m_settings->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool());
 
   // Load auto-start status.

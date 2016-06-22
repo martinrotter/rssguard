@@ -57,7 +57,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
   QDomElement elem_opml_head = opml_document.createElement(QSL("head"));
 
   QDomElement elem_opml_title = opml_document.createElement(QSL("title"));
-  QDomText text_opml_title = opml_document.createTextNode(QString(STRFY(APP_NAME)));
+  QDomText text_opml_title = opml_document.createTextNode(QString(APP_NAME));
   elem_opml_title.appendChild(text_opml_title);
   elem_opml_head.appendChild(elem_opml_title);
 

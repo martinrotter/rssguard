@@ -36,7 +36,7 @@ FormUpdate::FormUpdate(QWidget *parent)
   m_ui->setupUi(this);
   m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Download update"), QDialogButtonBox::ActionRole);
   m_btnUpdate->setToolTip(tr("Download new installation files."));
-  m_ui->m_lblCurrentRelease->setText(STRFY(APP_VERSION));
+  m_ui->m_lblCurrentRelease->setText(APP_VERSION);
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
@@ -82,7 +82,7 @@ void FormUpdate::checkForUpdates() {
 
     const bool is_self_update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
 
-    if (SystemFactory::isVersionNewer(update.first.m_availableVersion, STRFY(APP_VERSION))) {
+    if (SystemFactory::isVersionNewer(update.first.m_availableVersion, APP_VERSION)) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded."));

@@ -43,11 +43,11 @@ QString StandardServiceEntryPoint::description() const {
 }
 
 QString StandardServiceEntryPoint::version() const {
-  return STRFY(APP_VERSION);
+  return APP_VERSION;
 }
 
 QString StandardServiceEntryPoint::author() const {
-  return STRFY(APP_AUTHOR);
+  return APP_AUTHOR;
 }
 
 QIcon StandardServiceEntryPoint::icon() const {
