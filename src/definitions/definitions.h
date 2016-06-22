@@ -54,7 +54,7 @@
 #define FEEDS_VIEW_COLUMN_COUNT               2
 #define DEFAULT_DAYS_TO_DELETE_MSG            14
 #define ELLIPSIS_LENGTH                       3
-#define MIN_CATEGORY_NAME_LENGTH              3
+#define MIN_CATEGORY_NAME_LENGTH              1
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
 #define AUTO_UPDATE_INTERVAL                  60000
 #define STARTUP_UPDATE_DELAY                  30000

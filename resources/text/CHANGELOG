@@ -4,6 +4,9 @@
 Changed:
 ▪ Changed couple of icons. (bug #12)
 
+Fixed:
+▪ Fixed minimum allowed length of category/feed titles. (bug #17)
+
 3.3.0
 —————
 
