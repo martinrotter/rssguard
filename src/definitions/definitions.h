@@ -33,7 +33,7 @@
 #define URI_SCHEME_HTTP                       "http://"
 #define RELEASES_LIST                         "https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/text/UPDATES"
 #define CHANGELOG                             "https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/text/CHANGELOG"
-#define DEFAULT_LOCALE                        "en_GB"
+#define DEFAULT_LOCALE                        "en"
 #define DEFAULT_FEED_ENCODING                 "UTF-8"
 #define DEFAULT_FEED_TYPE                     "RSS"
 #define URL_REGEXP                            "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
