@@ -2,7 +2,7 @@ RSS Guard
 =========
 [![AUR](https://img.shields.io/aur/votes/rssguard.svg?maxAge=2592000)]()
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg)]()
-[![license](https://img.shields.io/github/license/martinrotter/rssguard.svg)]()
+[![license](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=2592000)]()
 
 Welcome to RSS Guard website. You can find here basic information.
 
