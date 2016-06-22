@@ -3,22 +3,22 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation>(kategori)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation>(flöde)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"/>
+        <translation>Programmet är redan startat</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"/>
+        <translation>Utdatamappen är inte skrivbar</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -3043,7 +3043,7 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation type="unfinished"/>
+        <translation>sv</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
