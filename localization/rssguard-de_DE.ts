@@ -125,7 +125,7 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Diese Website enthält keine Feeds.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
@@ -134,7 +134,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nicht unterstützt</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
@@ -2738,7 +2738,7 @@ You must install it manually.</source>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>Die Webseitenadresse kommt hierhin</translation>
     </message>
 </context>
 <context>
@@ -3352,12 +3352,12 @@ Ungelesene Nachrichten: %2</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Zeitungsansicht</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Web Browser</translation>
     </message>
 </context>
 <context>
@@ -3491,63 +3491,63 @@ Letzte Anmeldung: %5</translation>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Navigations-Panel</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Kein Titel</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Zurück</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>Geh zurück.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>Vorwärts</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>Geh vorwärts.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>Neu laden</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Lade aktuelle Webseite neu.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Stoppe das laden der Webseite.</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="unfinished"/>
+        <translation>Anhang</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>Geschrieben von</translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>unbekannter Autor</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Zeitungsansicht</translation>
     </message>
 </context>
 </TS>

@@ -125,20 +125,22 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Webbsidan innehåller inga flöden.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Klicka för att lägga till flödet från webbsidan.
+Denna webbsida innehåller %n flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Stöds ej</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Angivet kontot stöder inte tillägg av nya flöden.</translation>
     </message>
 </context>
 <context>
@@ -1597,23 +1599,23 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Webbläsare &amp;&amp;flikar</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Rapportera ett &amp;fel...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Ny webbläsarflik.</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>Stäng alla flikar</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Stäng alla flikar utom den aktuella</translation>
     </message>
 </context>
 <context>
@@ -2742,7 +2744,7 @@ Du måste installera det manuellt.</translation>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>Webbadress anges här</translation>
     </message>
 </context>
 <context>
@@ -3359,12 +3361,12 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Tidningsvy</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Webbläsare</translation>
     </message>
 </context>
 <context>
@@ -3498,63 +3500,63 @@ Senast inloggad: %5</translation>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Navigationspanel</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Ingen titel</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Tillbaka</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>Gå tillbaka.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>Framåt</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>Gå framåt.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Uppdatera aktuell webbsida.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Stoppa inläsning av webbsidan.</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="unfinished"/>
+        <translation>Bilaga</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>Skriven av </translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>okänd författare</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Tidningsvy</translation>
     </message>
 </context>
 </TS>

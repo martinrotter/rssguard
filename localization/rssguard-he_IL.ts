@@ -3317,7 +3317,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>תצוגת עיתון</translation>
     </message>
     <message>
         <source>Web browser</source>
@@ -3453,7 +3453,7 @@ Last login on: %5</source>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>אין כותרת</translation>
     </message>
     <message>
         <source>Back</source>
@@ -3461,7 +3461,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>חזור.</translation>
     </message>
     <message>
         <source>Forward</source>
@@ -3469,7 +3469,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>המשך.</translation>
     </message>
     <message>
         <source>Reload</source>
@@ -3496,15 +3496,15 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>נכתב על ידי</translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>מחבר לא ידוע</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>תצוגת עיתון</translation>
     </message>
 </context>
 </TS>

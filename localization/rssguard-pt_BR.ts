@@ -125,7 +125,7 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Este site não contém nenhum feed.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
@@ -134,11 +134,11 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Não suportado</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>A conta fornecida não suporta adicionar feeds.</translation>
     </message>
 </context>
 <context>
@@ -2742,7 +2742,7 @@ Você precisa instalá-lo manualmente.</translation>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>O endereço do site vai aqui</translation>
     </message>
 </context>
 <context>
@@ -3361,12 +3361,12 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Visualização da publicação</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Navegador da web</translation>
     </message>
 </context>
 <context>
@@ -3500,63 +3500,63 @@ Servidor: %2
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Painel de navegação</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Sem título</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Voltar</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>Volta.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>Avançar</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>Avança.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>Recarregar</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Recarrega a página atual.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Interrompe o carregamento da página.</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="unfinished"/>
+        <translation>Anexo</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>Escrito por </translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>autor desconhecido</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Visualização da publicação</translation>
     </message>
 </context>
 </TS>

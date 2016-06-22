@@ -125,7 +125,7 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>このウェブサイトにはフィードがありません。</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
@@ -134,7 +134,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>サポートされていません</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
@@ -3324,7 +3324,7 @@ Unread news: %2</source>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>ウェブブラウザー</translation>
     </message>
 </context>
 <context>
@@ -3455,27 +3455,27 @@ Last login on: %5</source>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>タイトルなし</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>戻る</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>戻る</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>進む</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>進む</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>再読み込み</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
@@ -3483,7 +3483,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>

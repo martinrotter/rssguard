@@ -1599,7 +1599,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Segnala un &amp;bug...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
@@ -2723,7 +2723,7 @@ You must install it manually.</source>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>L&apos;indirizzo del sito web va qui</translation>
     </message>
 </context>
 <context>
@@ -3321,12 +3321,12 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Modalità giornale</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Web browser</translation>
     </message>
 </context>
 <context>
@@ -3452,44 +3452,44 @@ Last login on: %5</source>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Pannello di navigazione</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Nessun titolo</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Indietro</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>Torna indietro.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>Avanti</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>Vai avanti.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Ricarica pagina web corrente.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Ferma</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Ferma caricamento pagina web.</translation>
     </message>
 </context>
 <context>
@@ -3500,15 +3500,15 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>Scritto da</translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>autore sconosciuto</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Modalità giornale</translation>
     </message>
 </context>
 </TS>

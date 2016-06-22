@@ -125,16 +125,19 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Šioje svetainėje nėra jokių kanalų.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalas.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalai.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalų.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nepalaikoma</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
@@ -339,11 +342,11 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs negalite perkelti velkamą elementą į kitą paskyrą, tai yra nepalaikoma.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Negalima atlikti vilkimo operacijos</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
@@ -409,12 +412,13 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="unfinished"/>
+        <translation>Šis elementas negali būti ištrintas, nes įvyko kažkokia kritinė klaida. Praneškite apie klaidą.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="unfinished"/>
+        <translation>Šis elementas negali būti ištrintas, kadangi jis to nepalaiko
+arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
@@ -1600,19 +1604,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Pranešti apie &amp;klaidą...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Nauja saityno naršyklės kortelė</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>Užverti visas korteles</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Užverti visas korteles išskyrus esamą</translation>
     </message>
 </context>
 <context>
@@ -2631,7 +2635,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation type="unfinished"/>
+        <translation>Tikrinti ar yra atnaujinimų</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2648,7 +2652,8 @@ currently installed one.</source>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Įdiegimo failas nėra prieinamas tiesiogiai.
+Pereikite į programos svetainę, kad jį gautumėte.</translation>
     </message>
     <message>
         <source>No new update available.</source>
@@ -2730,7 +2735,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>Čia turi būti svetainės adresas</translation>
     </message>
 </context>
 <context>
@@ -3240,7 +3245,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Šioje naujoje paskyroje nėra jokių kanalų. Jūs galite dabar pridėti numatytąjį kanalų rinkinį.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -3263,7 +3268,7 @@ Account ID: %1</source>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo atnaujinimo eigos juosta</translation>
     </message>
     <message>
         <source>Feed update label</source>
@@ -3271,7 +3276,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Failo atsiuntimo eigos juosta</translation>
     </message>
     <message>
         <source>File download label</source>
@@ -3314,7 +3319,7 @@ Neskaitytų naujienų: %2</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation type="unfinished"/>
+        <translation>Užverti kortelę</translation>
     </message>
 </context>
 <context>
@@ -3341,12 +3346,12 @@ Neskaitytų naujienų: %2</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Laikraščio veiksena</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Saityno naršyklė</translation>
     </message>
 </context>
 <context>
@@ -3384,7 +3389,7 @@ Neskaitytų naujienų: %2</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation type="unfinished"/>
+        <translation>Skirtukas</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3480,44 +3485,44 @@ Paskutinis prisijungimas: %5</translation>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Naršymo skydelis</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Be pavadinimo</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Atgal</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>Grįžti atgal.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>Pirmyn</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>Pereiti pirmyn.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>Įkelti iš naujo</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Iš naujo įkelti esamą tinklalapį.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Stabdyti tinklalapio įkėlimą.</translation>
     </message>
 </context>
 <context>
@@ -3528,15 +3533,15 @@ Paskutinis prisijungimas: %5</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>Parašė </translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>nežinomas autorius</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Laikraščio veiksena</translation>
     </message>
 </context>
 </TS>

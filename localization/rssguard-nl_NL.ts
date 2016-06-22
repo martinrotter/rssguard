@@ -126,7 +126,7 @@ Gelezen berichten gewist...</translation>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Deze website bevat geen feeds.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
@@ -135,11 +135,11 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Niet ondersteund</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Dit account ondersteunt geen toevoeging van feeds.</translation>
     </message>
 </context>
 <context>
@@ -1602,7 +1602,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Rapporteer een &amp;bug...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
@@ -2742,7 +2742,7 @@ You must install it manually.</source>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>Tik Website adres hier</translation>
     </message>
 </context>
 <context>
@@ -3362,12 +3362,12 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Krantweergave</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Webbrowser</translation>
     </message>
 </context>
 <context>
@@ -3501,44 +3501,44 @@ Laatste login: %5</translation>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Navigatie venster</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Geen titel</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Terug</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"/>
+        <translation>Ga terug.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"/>
+        <translation>Vooruit</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"/>
+        <translation>Ga vooruit.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>Herlaad</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Vernieuw huidige webpagina.</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
+        <translation>Stop het laden van pagina.</translation>
     </message>
 </context>
 <context>
@@ -3549,15 +3549,15 @@ Laatste login: %5</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>Geschreven door </translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>Onbekende auteur</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Krantweergave</translation>
     </message>
 </context>
 </TS>

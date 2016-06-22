@@ -134,7 +134,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Tidak didukung</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
@@ -3354,7 +3354,7 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Tampilan koran</translation>
     </message>
     <message>
         <source>Web browser</source>
@@ -3537,19 +3537,19 @@ Login terakhir pada: %5</translation>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="unfinished"/>
+        <translation>Lampiran</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"/>
+        <translation>Ditulis oleh</translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"/>
+        <translation>pengarang tak diketahui</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"/>
+        <translation>Tampilan koran</translation>
     </message>
 </context>
 </TS>
