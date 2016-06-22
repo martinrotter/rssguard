@@ -62,7 +62,7 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="m_actionCheckForUpdates"/>
-    <addaction name="m_actionReportBugGitHub"/>
+    <addaction name="m_actionReportBug"/>
     <addaction name="m_actionDisplayWiki"/>
     <addaction name="m_actionDonate"/>
     <addaction name="m_actionAboutGuard"/>
@@ -481,12 +481,9 @@
     <string notr="true">M</string>
    </property>
   </action>
-  <action name="m_actionReportBugGitHub">
+  <action name="m_actionReportBug">
    <property name="text">
     <string>Report a &amp;bug...</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchToolBars">

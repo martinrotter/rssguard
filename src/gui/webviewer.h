@@ -33,6 +33,10 @@ class WebViewer : public QWebEngineView {
     bool canIncreaseZoom();
     bool canDecreaseZoom();
 
+    inline QString messageContents() {
+      return m_messageContents;
+    }
+
   public slots:
     // Page zoom modifiers.
     bool increaseWebPageZoom();

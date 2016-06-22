@@ -32,28 +32,23 @@ WebViewer *WebPage::view() const {
 }
 
 void WebPage::javaScriptAlert(const QUrl &securityOrigin, const QString &msg) {
-  if (securityOrigin.isEmpty()) {
-    QStringList parts = msg.split(QL1C('-'));
+  QStringList parts = msg.split(QL1C('-'));
 
-    if (parts.size() == 2) {
-      int message_id = parts.at(0).toInt();
-      QString action = parts.at(1);
+  if (parts.size() == 2) {
+    int message_id = parts.at(0).toInt();
+    QString action = parts.at(1);
 
-      if (action == QSL("read")) {
-        emit messageStatusChangeRequested(message_id, MarkRead);
-      }
-      else if (action == QSL("unread")) {
-        emit messageStatusChangeRequested(message_id, MarkUnread);
-      }
-      else if (action == QSL("starred")) {
-        emit messageStatusChangeRequested(message_id, MarkStarred);
-      }
-      else if (action == QSL("unstarred")) {
-        emit messageStatusChangeRequested(message_id, MarkUnstarred);
-      }
-      else {
-        QWebEnginePage::javaScriptAlert(securityOrigin, msg);
-      }
+    if (action == QSL("read")) {
+      emit messageStatusChangeRequested(message_id, MarkRead);
+    }
+    else if (action == QSL("unread")) {
+      emit messageStatusChangeRequested(message_id, MarkUnread);
+    }
+    else if (action == QSL("starred")) {
+      emit messageStatusChangeRequested(message_id, MarkStarred);
+    }
+    else if (action == QSL("unstarred")) {
+      emit messageStatusChangeRequested(message_id, MarkUnstarred);
     }
     else {
       QWebEnginePage::javaScriptAlert(securityOrigin, msg);
@@ -65,5 +60,11 @@ void WebPage::javaScriptAlert(const QUrl &securityOrigin, const QString &msg) {
 }
 
 bool WebPage::acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame) {
-  return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
+  if (url.host() == INTERNAL_URL_MESSAGE_HOST) {
+    setHtml(view()->messageContents(), QUrl(INTERNAL_URL_MESSAGE));
+    return true;
+  }
+  else {
+    return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
+  }
 }

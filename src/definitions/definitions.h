@@ -82,10 +82,10 @@
 #define DEFAULT_ZOOM_FACTOR 1.0f
 #define ZOOM_FACTOR_STEP    0.1f
 
-#define INTERNAL_URL_MESSAGE                  "rssguard.message"
-#define INTERNAL_URL_BLANK                    "rssguard.blank"
-#define INTERNAL_URL_MESSAGE_HOST             "message"
-#define INTERNAL_URL_BLANK_HOST               "blank"
+#define INTERNAL_URL_MESSAGE                  "http://rssguard.message"
+#define INTERNAL_URL_BLANK                    "http://rssguard.blank"
+#define INTERNAL_URL_MESSAGE_HOST             "rssguard.message"
+#define INTERNAL_URL_BLANK_HOST               "rssguard.blank"
 
 #define FEED_INITIAL_OPML_PATTERN             "feeds-%1.opml"
 

@@ -334,7 +334,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme(QSL("help-about")));
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme(QSL("applications-internet")));
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
-  m_ui->m_actionReportBugGitHub->setIcon(icon_theme_factory->fromTheme(QSL("call-start")));
+  m_ui->m_actionReportBug->setIcon(icon_theme_factory->fromTheme(QSL("call-start")));
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
   m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("applications-office")));
@@ -478,7 +478,7 @@ void FormMain::createConnections() {
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
   connect(m_ui->m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
-  connect(m_ui->m_actionReportBugGitHub, SIGNAL(triggered()), this, SLOT(reportABugOnGitHub()));
+  connect(m_ui->m_actionReportBug, SIGNAL(triggered()), this, SLOT(reportABug()));
   connect(m_ui->m_actionDonate, SIGNAL(triggered()), this, SLOT(donate()));
   connect(m_ui->m_actionDisplayWiki, SIGNAL(triggered()), this, SLOT(showWiki()));
 
@@ -543,8 +543,8 @@ void FormMain::showAddAccountDialog() {
   form_update->exec();
 }
 
-void FormMain::reportABugOnGitHub() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(STRFY(APP_URL_ISSUES_NEW_GITHUB))) {
+void FormMain::reportABug() {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(STRFY(APP_URL_ISSUES_NEW))) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
