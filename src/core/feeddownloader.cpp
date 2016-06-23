@@ -41,6 +41,12 @@ bool FeedDownloader::isUpdateRunning() const {
 }
 
 void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
+  if (feeds.isEmpty()) {
+    qDebug("No feeds to update in worker thread, aborting update.");
+    finalizeUpdate();
+    return;
+  }
+
   qDebug().nospace() << "Starting feed updates from worker in thread: \'" << QThread::currentThreadId() << "\'.";
 
   // It may be good to disable "stop" action when batch feed update

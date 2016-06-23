@@ -1,24 +1,26 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="de">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -130,7 +132,10 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -138,7 +143,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -216,7 +221,7 @@ This website contains %n feed(s).</source>
         <translation>Herunterladen abgeschlossen</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Datei &apos;%1&apos; wurde heruntergeladen. Zum Öffnen des übergeordneten Verzeichnisses hier klicken.</translation>
     </message>
@@ -241,11 +246,17 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>% Minute verbleibend</numerusform><numerusform>%n Minuten verbleibend</numerusform></translation>
+        <translation>
+            <numerusform>% Minute verbleibend</numerusform>
+            <numerusform>%n Minuten verbleibend</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n Sekunde verbleibend</numerusform><numerusform>%n Sekunden verbleibend</numerusform></translation>
+        <translation>
+            <numerusform>%n Sekunde verbleibend</numerusform>
+            <numerusform>%n Sekunden verbleibend</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -265,7 +276,10 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Lade %n Datei herunter...</numerusform><numerusform>Lade %n Dateien herunter...</numerusform></translation>
+        <translation>
+            <numerusform>Lade %n Datei herunter...</numerusform>
+            <numerusform>Lade %n Dateien herunter...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -316,7 +330,10 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>%n Feed wird automatisch aktualisiert.</numerusform><numerusform>%n Feeds werden automatisch aktualisiert.</numerusform></translation>
+        <translation>
+            <numerusform>%n Feed wird automatisch aktualisiert.</numerusform>
+            <numerusform>%n Feeds werden automatisch aktualisiert.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -421,7 +438,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Nicht unterstützt</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -630,7 +647,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> Tag</numerusform><numerusform> Tage</numerusform></translation>
+        <translation>
+            <numerusform> Tag</numerusform>
+            <numerusform> Tage</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -864,15 +884,15 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">URL</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Aktualisierung auf Server erzwingen, wenn Feeds innerhalb RSS Guard aktualisiert werden</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -880,23 +900,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Benutzername</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Passwort</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Passwort anzeigen</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Einstellungen &amp;testen</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Die Aktivierung dieser Option bedingt häufig langsameres Herunterladen und Zeitüberschreitungen.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -1595,23 +1615,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1819,7 +1839,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skins</source>
@@ -1827,7 +1847,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected skin:</source>
@@ -2020,7 +2040,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -3054,7 +3074,10 @@ You must install it manually.</source>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>+ %n anderer Feed.</numerusform><numerusform>+ %n andere Feeds.</numerusform></translation>
+        <translation>
+            <numerusform>+ %n anderer Feed.</numerusform>
+            <numerusform>+ %n andere Feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3103,7 +3126,10 @@ Zum Zugriff wird mindesens das API der Stufe %1 benötigt.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n gelöschte Nachricht.</numerusform><numerusform>%n gelöschte Nachrichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n gelöschte Nachricht.</numerusform>
+            <numerusform>%n gelöschte Nachrichten.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3127,7 +3153,10 @@ Zum Zugriff wird mindesens das API der Stufe %1 benötigt.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ungelesene Nachricht.</numerusform><numerusform>%n ungelesene Nachrichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ungelesene Nachricht.</numerusform>
+            <numerusform>%n ungelesene Nachrichten.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3181,7 +3210,10 @@ This category does not contain any nested items.</source>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
+        <translation>
+            <numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform>
+            <numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3354,11 +3386,17 @@ Ungelesene Nachrichten: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n Stunde</numerusform><numerusform>%n Stunden</numerusform></translation>
+        <translation>
+            <numerusform>%n Stunde</numerusform>
+            <numerusform>%n Stunden</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n Minute</numerusform><numerusform>%n Minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n Minute</numerusform>
+            <numerusform>%n Minuten</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -3424,17 +3462,20 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished">keine automatische Aktualisierung</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished">verwendet globale Einstellungen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
+        <translation>
+            <numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform>
+            <numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
@@ -3466,15 +3507,15 @@ Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Synchronisieren</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Kann Eintrag nicht hinzufügen</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Kann Eintrag nicht hinzufügen, da noch eine andere ihn betreffende Aktion läuft.</translation>
     </message>
 </context>
 <context>
@@ -3510,7 +3551,7 @@ Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stop</source>
