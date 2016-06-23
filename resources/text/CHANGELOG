@@ -6,6 +6,7 @@ Changed:
 ▪ Changed codes of localizations and localizations loading. (bug #19)
 
 Fixed:
+▪ Fixed problem when updating 0 feeds - GUI lockup.
 ▪ Fixed minimum allowed length of category/feed titles. (bug #17)
 
 3.3.0

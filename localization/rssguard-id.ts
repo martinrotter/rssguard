@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="id">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="id" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -132,10 +130,8 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klik saya untuk menambah feed dari situs web ini.
-Situs web ini mengandung %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Klik saya untuk menambah feed dari situs web ini.
+Situs web ini mengandung %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -221,7 +217,7 @@ Situs web ini mengandung %n feed.</numerusform>
         <translation>Mengunduh selesai</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Berkas &apos;%1&apos; terunduh.
 Klik disini untuk membuka direktori induk.</translation>
@@ -247,15 +243,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n menit tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n menit tersisa</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n detik tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n detik tersisa</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -275,9 +267,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Mengunduh %n berkas...</numerusform>
-        </translation>
+        <translation><numerusform>Mengunduh %n berkas...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -328,9 +318,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Saya akan otomatis memperbaharui %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Saya akan otomatis memperbaharui %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -645,9 +633,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> hari</numerusform>
-        </translation>
+        <translation><numerusform> hari</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -3067,15 +3053,13 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n feed lain.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n feed lain.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3123,9 +3107,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n pesan terhapus.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan terhapus.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3147,9 +3129,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n pesan belum dibaca.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan belum dibaca.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3204,9 +3184,7 @@ Kategori ini tidak berisi item bersarang.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3379,15 +3357,11 @@ Berita belum terbaca:%2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n jam</numerusform>
-        </translation>
+        <translation><numerusform>%n jam</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n menit</numerusform>
-        </translation>
+        <translation><numerusform>%n menit</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3463,9 +3437,7 @@ Berita belum terbaca:%2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
