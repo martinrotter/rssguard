@@ -76,7 +76,11 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
 
   // We found correct path, now check if file exists and return correct status.
   if (QFile::exists(desktop_file_location)) {
-    return SystemFactory::Enabled;
+    // File exists, we must read it and check if "Hidden" attribute is defined and what is its value.
+    QSettings desktop_settings(desktop_file_location, QSettings::IniFormat);
+    bool hidden_value = desktop_settings.value(QSL("Desktop Entry/Hidden"), false).toBool();
+
+    return hidden_value ? SystemFactory::Disabled : SystemFactory::Enabled;
   }
   else {
     return SystemFactory::Disabled;
@@ -109,7 +113,6 @@ QString SystemFactory::getAutostartDesktopFileLocation() const {
     }
   }
 
-  // No location found, return empty string.
   return desktop_file_location;
 }
 #endif
@@ -141,15 +144,21 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
 #elif defined(Q_OS_LINUX)
   // Note that we expect here that no other program uses
   // "rssguard.desktop" desktop file.
+  const QString destination_file = getAutostartDesktopFileLocation();
+
   switch (new_status) {
     case SystemFactory::Enabled:
-      QFile::link(QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_ENTRY_FILE,
-                  getAutostartDesktopFileLocation());
-      return true;
+      if (QFile::exists(destination_file)) {
+        if (!QFile::remove(destination_file)) {
+          return false;
+        }
+      }
+
+      return QFile::copy(QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE,
+                         getAutostartDesktopFileLocation());
 
     case SystemFactory::Disabled:
-      QFile::remove(getAutostartDesktopFileLocation());
-      return true;
+      return QFile::remove(getAutostartDesktopFileLocation());
 
     default:
       return false;
