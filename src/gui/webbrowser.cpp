@@ -118,6 +118,7 @@ void WebBrowser::resetZoom() {
 
 void WebBrowser::clear() {
   m_webView->clear();
+  m_messages.clear();
   hide();
 }
 
