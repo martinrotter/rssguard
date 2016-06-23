@@ -581,8 +581,8 @@ unix:!mac {
   desktop_file.files = resources/desktop/$${TARGET}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
-  desktop_file_autostart.files = resources/desktop/$${TARGET}.autostart
-  desktop_file_autostart.path = $$quote($$PREFIX/share/$$TARGET/autostart/)
+  desktop_file_autostart.files = resources/desktop/$${TARGET}.desktop.autostart
+  desktop_file_autostart.path = $$quote($$PREFIX/share/$${TARGET}/autostart/)
 
   translations.files = $$OUT_PWD/l10n
   translations.path = $$quote($$PREFIX/share/$$TARGET/)

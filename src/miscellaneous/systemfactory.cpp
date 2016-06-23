@@ -147,7 +147,7 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   const QString destination_file = getAutostartDesktopFileLocation();
 
   switch (new_status) {
-    case SystemFactory::Enabled:
+    case SystemFactory::Enabled: {
       if (QFile::exists(destination_file)) {
         if (!QFile::remove(destination_file)) {
           return false;
@@ -158,8 +158,10 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
         return false;
       }
 
-      return QFile::copy(QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE,
-                         getAutostartDesktopFileLocation());
+      const QString source_autostart_desktop_file = QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE;
+
+      return QFile::copy(source_autostart_desktop_file, getAutostartDesktopFileLocation());
+    }
 
     case SystemFactory::Disabled:
       return QFile::remove(getAutostartDesktopFileLocation());

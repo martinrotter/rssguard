@@ -207,7 +207,7 @@
 #endif
 
 #if defined(Q_OS_LINUX)
-#define APP_DESKTOP_ENTRY_PATH APP_PREFIX + QString("/share/autostart")
+#define APP_DESKTOP_ENTRY_PATH APP_PREFIX + QString("/share/rssguard/autostart")
 #define APP_DESKTOP_SOURCE_ENTRY_FILE "rssguard.desktop.autostart"
 #define APP_DESKTOP_ENTRY_FILE "rssguard.desktop"
 #define APP_LANG_PATH APP_PREFIX + QString("/share/rssguard/l10n")
