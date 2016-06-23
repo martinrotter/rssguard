@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=RSS Guard
+TryExec=rssguard
+Exec=rssguard
+Hidden=false
+X-GNOME-Autostart-Delay=15
+X-LXQt-Need-Tray=true
