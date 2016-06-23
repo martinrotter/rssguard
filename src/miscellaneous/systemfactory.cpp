@@ -154,6 +154,10 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
         }
       }
 
+      if (!QDir().mkpath(APP_DESKTOP_ENTRY_PATH)) {
+        return false;
+      }
+
       return QFile::copy(QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE,
                          getAutostartDesktopFileLocation());
 
