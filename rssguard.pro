@@ -77,7 +77,7 @@ APP_URL_ISSUES                = "https://github.com/martinrotter/rssguard/issues
 APP_URL_ISSUES_NEW            = "https://github.com/martinrotter/rssguard/issues/new"
 APP_URL_WIKI                  = "https://github.com/martinrotter/rssguard/wiki"
 APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (github.com/martinrotter/rssguard)"
-APP_DONATE_URL                = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
+APP_DONATE_URL                = "https://goo.gl/YFVJ0j"
 
 isEmpty(PREFIX) {
   message(rssguard: PREFIX variable is not set. This might indicate error.)

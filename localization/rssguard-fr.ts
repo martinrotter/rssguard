@@ -3051,11 +3051,6 @@ You must install it manually.</source>
         <source>LANG_EMAIL</source>
         <translation>nicolaslegall34@gmail.com</translation>
     </message>
-    <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation type="unfinished"/>
-    </message>
     <message numerus="yes">
         <source>
 

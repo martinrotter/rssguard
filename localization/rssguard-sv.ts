@@ -130,7 +130,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller ett annat flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -423,7 +425,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Stöds ej</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -866,15 +868,15 @@ att funktionen inte är implementerad än.</translation>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Tvinga serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Vissa flöden kräver autentisering. Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -882,23 +884,23 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Visa lösenord</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testa inställning</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -1821,7 +1823,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Ikoner</translation>
     </message>
     <message>
         <source>Skins</source>
@@ -1829,7 +1831,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"/>
+        <translation>Aktivt tema</translation>
     </message>
     <message>
         <source>Selected skin:</source>
@@ -2022,7 +2024,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Värdnamnet verkar OK.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -3048,7 +3050,7 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation type="unfinished"/>
+        <translation>1.33.7</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3058,11 +3060,6 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>LANG_EMAIL</source>
         <translation>eson57@gmail.com</translation>
-    </message>
-    <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
@@ -3441,12 +3438,12 @@ Olästa nyheter: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>uppdateras inte automatiskt</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>använder globala inställningar</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -3483,15 +3480,15 @@ Senast inloggad: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synka i</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte lägga till objekt</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>
@@ -3527,7 +3524,7 @@ Senast inloggad: %5</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Läs in aktuell webbsida igen.</translation>
     </message>
     <message>
         <source>Stop</source>

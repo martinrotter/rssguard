@@ -3,22 +3,22 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation>(kategorija)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation>(kanalas)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"/>
+        <translation>Programa jau yra vykdoma</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"/>
+        <translation>Išvesties katalogas nėra įrašomas</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -130,7 +130,10 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalas.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalai.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalų.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -138,7 +141,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Duotoji paskyra nepalaiko kanalų pridėjimo.</translation>
     </message>
 </context>
 <context>
@@ -250,7 +253,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation type="unfinished"/>
+        <translation>baitų</translation>
     </message>
     <message>
         <source>kB</source>
@@ -423,7 +426,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nepalaikoma</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -779,7 +782,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikomą API versiją (%1). Reikalinga bent %2 lygio API.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
@@ -799,7 +802,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Tinklo klaida, ar jūs įrašėte teisingą Tiny Tiny RSS API galutinį tašką ir slaptažodį?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -866,15 +869,15 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos. </translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -882,23 +885,23 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas </translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis </translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Rodyti slaptažodį </translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Išbandyti sąranką </translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką. </translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -1525,7 +1528,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"/>
+        <translation>Nėra galimų veiksmų</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
@@ -1821,7 +1824,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos</translation>
     </message>
     <message>
         <source>Skins</source>
@@ -1829,7 +1832,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"/>
+        <translation>Aktyvus apipavidalinimas</translation>
     </message>
     <message>
         <source>Selected skin:</source>
@@ -2186,7 +2189,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti brukalo Trolltech registro raktą (HKCU\Software\Trolltech), kai programa baigia savo darbą (Naudokite savo pačių rizika!)</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -2291,7 +2294,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Įjungti iškylančiuosius paaiškinimus</translation>
     </message>
 </context>
 <context>
@@ -3038,7 +3041,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation type="unfinished"/>
+        <translation>0.35</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3047,11 +3050,6 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
@@ -3205,7 +3203,7 @@ Automatinio atnaujinimo būsena: %5</translation>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Tai yra būtina paslaugos paskyra, skirta standartiniams RSS/RDF/ATOM kanalams.</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
@@ -3239,7 +3237,9 @@ Automatinio atnaujinimo būsena: %5</translation>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation type="unfinished"/>
+        <translation>Tai yra paslaugos paskyra, skirta standartiniams RSS/RDF/ATOM kanalams.
+
+Paskyros ID: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
@@ -3431,7 +3431,7 @@ Neskaitytų naujienų: %2</translation>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>naudoja visuotinius nustatymus </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -3472,11 +3472,11 @@ Paskutinis prisijungimas: %5</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti elemento </translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta pridėti kanalo, nes yra vykdoma kita kritinė operacija. </translation>
     </message>
 </context>
 <context>
@@ -3512,7 +3512,7 @@ Paskutinis prisijungimas: %5</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Iš naujo įkelti esamą tinklalapį.</translation>
     </message>
     <message>
         <source>Stop</source>

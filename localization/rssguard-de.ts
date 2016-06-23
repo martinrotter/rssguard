@@ -3055,11 +3055,6 @@ You must install it manually.</source>
         <source>LANG_EMAIL</source>
         <translation>patlecat@gmail.com</translation>
     </message>
-    <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Deutsch</translation>
-    </message>
     <message numerus="yes">
         <source>
 

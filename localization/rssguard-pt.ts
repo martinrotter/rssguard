@@ -3,22 +3,22 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation>(categoria)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation>(feed)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"/>
+        <translation>O aplicativo já está em execução</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"/>
+        <translation>A pasta de saída não possui permissão de escrita</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -130,7 +130,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Clique para adicionar feeds deste site.
+Este site contém um feed.</numerusform><numerusform>Clique para adicionar feeds deste site.
+Este site contêm %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -423,7 +425,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Não suportado</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -866,15 +868,15 @@ ou esta função ainda não foi implementada.</translation>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Alguns feeds necessitam de autenticação, incluindo feeds do GMail. Esquemas de autenticação BASIC, NTLM-2 e DIGEST-MD5 são suportados.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -882,23 +884,23 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Usuário</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Senha</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar senha</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testar configuração</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Deixar esta opção marcada faz com que as atualizações provavelmente fiquem mais lentas e o tempo limite esgote com frequência.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -1821,7 +1823,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Ícones</translation>
     </message>
     <message>
         <source>Skins</source>
@@ -1829,7 +1831,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"/>
+        <translation>Tema ativo</translation>
     </message>
     <message>
         <source>Selected skin:</source>
@@ -2021,7 +2023,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>O nome do host parece estar correto.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -3048,7 +3050,7 @@ Você precisa instalá-lo manualmente.</translation>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation type="unfinished"/>
+        <translation>1.33.7</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3058,11 +3060,6 @@ Você precisa instalá-lo manualmente.</translation>
     <message>
         <source>LANG_EMAIL</source>
         <translation>igorruckert@yahoo.com.br</translation>
-    </message>
-    <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
@@ -3443,12 +3440,12 @@ Notícias não lidas: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>não usa a atualização automática</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>usa as configurações globais</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -3485,15 +3482,15 @@ Servidor: %2
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sincronizar em</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar o item</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar feeds porque outra operação crítica está em andamento.</translation>
     </message>
 </context>
 <context>
@@ -3529,7 +3526,7 @@ Servidor: %2
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Recarrega a página atual.</translation>
     </message>
     <message>
         <source>Stop</source>

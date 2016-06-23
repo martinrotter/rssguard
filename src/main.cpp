@@ -39,8 +39,6 @@
 
 
 int main(int argc, char *argv[]) {
-  //: Name of language, e.g. English.
-  QObject::tr("LANG_NAME");
   //: Abbreviation of language, e.g. en.
   //: Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code.
   //: Examples: "cs_CZ", "en_GB", "en_US".

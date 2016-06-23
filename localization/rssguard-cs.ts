@@ -3054,11 +3054,6 @@ You must install it manually.</source>
         <source>LANG_EMAIL</source>
         <translation>rotter.martinos@gmail.com</translation>
     </message>
-    <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Čeština</translation>
-    </message>
     <message numerus="yes">
         <source>
 
