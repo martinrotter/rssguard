@@ -63,9 +63,9 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
     return SystemFactory::Disabled;
   }
 
+#elif defined(Q_OS_LINUX)
   // Use proper freedesktop.org way to auto-start the application on Linux.
   // INFO: http://standards.freedesktop.org/autostart-spec/latest/
-#elif defined(Q_OS_LINUX)
   const QString desktop_file_location = getAutostartDesktopFileLocation();
 
   // No correct path was found.
@@ -86,8 +86,8 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
     return SystemFactory::Disabled;
   }
 
-  // Disable auto-start functionality on unsupported platforms.
 #else
+  // Disable auto-start functionality on unsupported platforms.
   return SystemFactory::Unavailable;
 #endif
 }
