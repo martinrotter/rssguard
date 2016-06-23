@@ -41,10 +41,8 @@
 int main(int argc, char *argv[]) {
   //: Abbreviation of language, e.g. en.
   //: Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code.
-  //: Examples: "cs_CZ", "en_GB", "en_US".
+  //: Examples: "cs", "en", "it", "cs_CZ", "en_GB", "en_US".
   QObject::tr("LANG_ABBREV");
-  //: Version of your translation, e.g. 1.0.
-  QObject::tr("LANG_VERSION");
   //: Name of translator - optional.
   QObject::tr("LANG_AUTHOR");
 

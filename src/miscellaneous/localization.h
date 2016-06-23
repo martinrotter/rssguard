@@ -27,7 +27,6 @@
 struct Language {
     QString m_name;
     QString m_code;
-    QString m_version;
     QString m_author;
     QString m_email;
 };

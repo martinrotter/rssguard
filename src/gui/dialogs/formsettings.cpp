@@ -68,12 +68,11 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Setup behavior.
   m_ui->m_listSettings->setCurrentRow(0);
-  m_ui->m_treeLanguages->setColumnCount(4);
+  m_ui->m_treeLanguages->setColumnCount(3);
   m_ui->m_treeLanguages->setHeaderHidden(false);
   m_ui->m_treeLanguages->setHeaderLabels(QStringList()
                                          << /*: Language column of language list. */ tr("Language")
                                          << /*: Lang. code column of language list. */ tr("Code")
-                                         << tr("Version")
                                          << tr("Author"));
 
   m_ui->m_treeSkins->setColumnCount(4);
@@ -443,8 +442,7 @@ void FormSettings::loadLanguage() {
     QTreeWidgetItem *item = new QTreeWidgetItem(m_ui->m_treeLanguages);
     item->setText(0, language.m_name);
     item->setText(1, language.m_code);
-    item->setText(2, language.m_version);
-    item->setText(3, language.m_author);
+    item->setText(2, language.m_author);
     item->setIcon(0, qApp->icons()->miscIcon(QString(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
   }
 

@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="lt">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -130,10 +132,14 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalas.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalai.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalų.</numerusform></translation>
+        <translation>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalas.</numerusform>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalai.</numerusform>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalų.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -148,7 +154,7 @@ This website contains %n feed(s).</source>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Filename</source>
@@ -219,7 +225,7 @@ This website contains %n feed(s).</source>
         <translation>Atsiuntimas užbaigtas</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Failas &quot;%1&quot; yra atsisiųstas.
 Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
@@ -245,11 +251,19 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>Liko %n minutė</numerusform><numerusform>Liko %n minutės</numerusform><numerusform>Liko %n minučių</numerusform></translation>
+        <translation>
+            <numerusform>Liko %n minutė</numerusform>
+            <numerusform>Liko %n minutės</numerusform>
+            <numerusform>Liko %n minučių</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>Liko %n sekundė</numerusform><numerusform>Liko %n sekundės</numerusform><numerusform>Liko %n sekundžių</numerusform></translation>
+        <translation>
+            <numerusform>Liko %n sekundė</numerusform>
+            <numerusform>Liko %n sekundės</numerusform>
+            <numerusform>Liko %n sekundžių</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -269,7 +283,11 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Atsiunčiamas %n failas...</numerusform><numerusform>Atsiunčiami %n failai...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform></translation>
+        <translation>
+            <numerusform>Atsiunčiamas %n failas...</numerusform>
+            <numerusform>Atsiunčiami %n failai...</numerusform>
+            <numerusform>Atsiunčiama %n failų...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -320,7 +338,11 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
+        <translation>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -376,7 +398,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
@@ -388,7 +410,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
@@ -422,7 +444,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -635,7 +657,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> diena</numerusform><numerusform> dienos</numerusform><numerusform> dienų</numerusform></translation>
+        <translation>
+            <numerusform> diena</numerusform>
+            <numerusform> dienos</numerusform>
+            <numerusform> dienų</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -687,7 +713,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>unknown</source>
@@ -790,7 +816,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
@@ -921,19 +947,19 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -981,11 +1007,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1221,7 +1247,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Load icon from file...</source>
@@ -1320,7 +1346,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;About application</source>
@@ -1464,7 +1490,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
@@ -1472,7 +1498,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
@@ -1548,7 +1574,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -1627,7 +1653,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -1924,7 +1950,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -1938,11 +1964,11 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>External web browser</source>
@@ -2014,7 +2040,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -2265,7 +2291,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
@@ -2410,7 +2436,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Load icon from file...</source>
@@ -2552,19 +2578,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2575,7 +2601,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2639,7 +2665,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
@@ -2647,7 +2673,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Installation file is not available directly.
@@ -2665,7 +2691,7 @@ Pereikite į programos svetainę, kad jį gautumėte.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Download update</source>
@@ -2709,7 +2735,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Go to update file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot open directory</source>
@@ -2746,19 +2772,19 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Title</source>
@@ -2778,7 +2804,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Id of the message.</source>
@@ -2822,15 +2848,15 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>List of attachments.</source>
@@ -2862,11 +2888,11 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2877,7 +2903,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
@@ -2912,7 +2938,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
@@ -3020,7 +3046,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -3035,13 +3061,8 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <name>QObject</name>
     <message>
         <source>LANG_ABBREV</source>
-        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
+        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>lt</translation>
-    </message>
-    <message>
-        <source>LANG_VERSION</source>
-        <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.35</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -3050,26 +3071,30 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n kita žinutė.</numerusform><numerusform>
++ %n kita žinutė.</numerusform>
+            <numerusform>
 
-+ %n kitos žinutės.</numerusform><numerusform>
++ %n kitos žinutės.</numerusform>
+            <numerusform>
 
-+ %n kitų žinučių.</numerusform></translation>
++ %n kitų žinučių.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
@@ -3085,11 +3110,11 @@ version by clicking this popup notification.</source>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3104,7 +3129,11 @@ At least API level %1 is required.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n ištrinta žinutė.</numerusform><numerusform>%n ištrintos žinutės.</numerusform><numerusform>%n ištrintų žinučių.</numerusform></translation>
+        <translation>
+            <numerusform>%n ištrinta žinutė.</numerusform>
+            <numerusform>%n ištrintos žinutės.</numerusform>
+            <numerusform>%n ištrintų žinučių.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3128,7 +3157,11 @@ At least API level %1 is required.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n neskaityta žinutė.</numerusform><numerusform>%n neskaitytos žinutės.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform></translation>
+        <translation>
+            <numerusform>%n neskaityta žinutė.</numerusform>
+            <numerusform>%n neskaitytos žinutės.</numerusform>
+            <numerusform>%n neskaitytų žinučių.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3183,7 +3216,11 @@ This category does not contain any nested items.</source>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
+        <translation>
+            <numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3223,7 +3260,7 @@ Automatinio atnaujinimo būsena: %5</translation>
     </message>
     <message>
         <source>Import was completely successfull.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Export feeds</source>
@@ -3270,7 +3307,7 @@ Paskyros ID: %1</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File download progress bar</source>
@@ -3278,7 +3315,7 @@ Paskyros ID: %1</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3297,7 +3334,7 @@ Paskyros ID: %1</translation>
     </message>
     <message>
         <source>anonymous</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3356,11 +3393,19 @@ Neskaitytų naujienų: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n valandą</numerusform><numerusform>%n valandas</numerusform><numerusform>%n valandų</numerusform></translation>
+        <translation>
+            <numerusform>%n valandą</numerusform>
+            <numerusform>%n valandas</numerusform>
+            <numerusform>%n valandų</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minutę</numerusform><numerusform>%n minutes</numerusform><numerusform>%n minučių</numerusform></translation>
+        <translation>
+            <numerusform>%n minutę</numerusform>
+            <numerusform>%n minutes</numerusform>
+            <numerusform>%n minučių</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -3426,7 +3471,7 @@ Neskaitytų naujienų: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished">nenaudoja automatinio atnaujinimo</translation>
     </message>
     <message>
         <source>uses global settings</source>
@@ -3436,7 +3481,11 @@ Neskaitytų naujienų: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
+        <translation>
+            <numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
@@ -3468,7 +3517,7 @@ Paskutinis prisijungimas: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -3527,7 +3576,7 @@ Paskutinis prisijungimas: %5</translation>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Written by </source>
