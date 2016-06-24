@@ -145,6 +145,7 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   // Note that we expect here that no other program uses
   // "rssguard.desktop" desktop file.
   const QString destination_file = getAutostartDesktopFileLocation();
+  const QString destination_folder = QFileInfo(destination_file).absolutePath();
 
   switch (new_status) {
     case SystemFactory::Enabled: {
@@ -154,17 +155,17 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
         }
       }
 
-      if (!QDir().mkpath(APP_DESKTOP_ENTRY_PATH)) {
+      if (!QDir().mkpath(destination_folder)) {
         return false;
       }
 
       const QString source_autostart_desktop_file = QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE;
 
-      return QFile::copy(source_autostart_desktop_file, getAutostartDesktopFileLocation());
+      return QFile::copy(source_autostart_desktop_file, destination_file);
     }
 
     case SystemFactory::Disabled:
-      return QFile::remove(getAutostartDesktopFileLocation());
+      return QFile::remove(destination_file);
 
     default:
       return false;
