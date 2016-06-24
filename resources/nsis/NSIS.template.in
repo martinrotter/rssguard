@@ -18,16 +18,15 @@
 
 ;--------------------------------
 ; Do necessary inclusions.
-!include ..\..\..\resources\nsis\NSIS.definitions.nsh
+!include NSIS.definitions.nsh
 !include MUI2.nsh
 
 ;--------------------------------
 ; Basic values definitions.
-!define INST_DIR "@CPACK_TEMPORARY_DIRECTORY@"
 
 ; Name and file.
 Name "${APP_NAME} portable"
-OutFile "@CPACK_TOPLEVEL_DIRECTORY@/@CPACK_OUTPUT_FILE_NAME@"
+OutFile "${OUTPUT_FILE}"
 
 ; Set custom branding text.
 BrandingText "${APP_NAME}"
@@ -36,7 +35,7 @@ BrandingText "${APP_NAME}"
 SetCompressor /SOLID /FINAL lzma
 
 ; Default installation folder.
-InstallDir "@CPACK_NSIS_INSTALL_ROOT@\${APP_NAME}"
+InstallDir "$PROGRAMFILES\${APP_NAME}"
 InstallDirRegKey HKCU "Software\${APP_NAME}" "Install Directory"
 
 ; Require administrator access.
@@ -138,7 +137,7 @@ NotInstalled:
   SetOutPath "$INSTDIR"
   
   ; Install core application files.
-  @CPACK_NSIS_FULL_INSTALL@
+  File /r "${BINARY_TREE}\"
   
   ; Store installation folder.
   WriteRegStr HKCU "Software\${APP_NAME}" "Install Directory" $INSTDIR
@@ -172,10 +171,10 @@ Section "Uninstall"
   ; Here remove all files, but skip "data" folder.
   Push "$INSTDIR"
   Push "data"
-  Call RmDirsButOne
+  Call un.RmDirsButOne
   
   ; Remove uninstaller.
-  Delete "$INSTDIR\Uninstall.exe"
+  Delete "$INSTDIR\*"
    
   ; Remove rest of installed files.
   ; Custom files are left intact.
@@ -193,39 +192,39 @@ SectionEnd
 ;--------------------------------
 ; Custom functions.
 
-Function RmDirsButOne
- Exch $R0 ; exclude dir
- Exch
- Exch $R1 ; route dir
- Push $R2
- Push $R3
- 
+Function un.RmDirsButOne
+  Exch $R0 ; exclude dir
+  Exch
+  Exch $R1 ; route dir
+  Push $R2
+  Push $R3
+
   ClearErrors
   FindFirst $R3 $R2 "$R1\*.*"
   IfErrors Exit
- 
+
   Top:
-   StrCmp $R2 "." Next
-   StrCmp $R2 ".." Next
-   StrCmp $R2 $R0 Next
-   IfFileExists "$R1\$R2\*.*" 0 Next
+    StrCmp $R2 "." Next
+    StrCmp $R2 ".." Next
+    StrCmp $R2 $R0 Next
+    IfFileExists "$R1\$R2\*.*" 0 Next
     RmDir /r "$R1\$R2"
- 
-   #Goto Exit ;uncomment this to stop it being recursive (delete only one dir)
- 
-   Next:
+
+    #Goto Exit ;uncomment this to stop it being recursive (delete only one dir)
+
+  Next:
     ClearErrors
     FindNext $R3 $R2
     IfErrors Exit
-   Goto Top
- 
+    Goto Top
+
   Exit:
-  FindClose $R3
- 
- Pop $R3
- Pop $R2
- Pop $R1
- Pop $R0
+    FindClose $R3
+
+  Pop $R3
+  Pop $R2
+  Pop $R1
+  Pop $R0
 FunctionEnd
 
 ; Executed when installer starts.

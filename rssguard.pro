@@ -462,12 +462,34 @@ QMAKE_EXTRA_COMPILERS += lrelease
 # Create new "make 7zip" target and "make zip" target.
 win32 {
   seven_zip.target = 7zip
+  seven_zip.depends = install
   seven_zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -t7z $$TARGET-$$APP_VERSION-win32.7z $$shell_path($$PREFIX/*)
 
   zip.target = zip
+  zip.depends = install
   zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -tzip $$TARGET-$$APP_VERSION-win32.zip $$shell_path($$PREFIX/*)
 
   QMAKE_EXTRA_TARGETS += seven_zip zip
+}
+
+# Create NSIS installer target on Windows.
+win32 {
+  nsis.target = nsis
+  nsis.depends = install
+  nsis.commands = \
+    $$shell_path($$shell_quote($$PWD/resources/scripts/findreplace/findreplace/bin/Release/findreplace.exe)) @APP_VERSION@ $$shell_quote($$APP_VERSION) @APP_NAME@ $$shell_quote($$APP_NAME) @APP_LOW_NAME@ $$shell_quote($$APP_LOW_NAME) @EXE_NAME@ $$shell_quote($${APP_LOW_NAME}.exe) @PWD@ $$shell_path($$shell_quote($$PWD)) @OUT_PWD@ $$shell_path($$shell_quote($$OUT_PWD)) $$shell_path($$shell_quote($$PWD/resources/nsis/NSIS.definitions.nsh.in)) > $$shell_path($$shell_quote($$OUT_PWD/NSIS.definitions.nsh)) && \
+    xcopy /Y $$shell_path($$shell_quote($$PWD/resources/nsis/NSIS.template.in)) $$shell_path($$shell_quote($$OUT_PWD/)) && \
+    $$shell_path($$shell_quote($$PWD/resources/scripts/nsis/makensis.exe)) $$shell_path($$shell_quote($$OUT_PWD/NSIS.template.in))
+
+  QMAKE_EXTRA_TARGETS += nsis
+}
+
+win32 {
+  windows_all.target = windows_all
+  windows_all.depends = seven_zip nsis
+  windows_all.commands = echo "windows_all done..."
+
+  QMAKE_EXTRA_TARGETS += windows_all
 }
 
 unix:!mac {
