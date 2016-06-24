@@ -30,6 +30,10 @@
 #include <QNetworkReply>
 #include <QProcess>
 
+#if defined(Q_OS_WIN)
+#include <windows.h>
+#endif
+
 
 FormUpdate::FormUpdate(QWidget *parent)
   : QDialog(parent), m_downloader(nullptr), m_readyToInstall(false), m_ui(new Ui::FormUpdate) {
@@ -105,15 +109,17 @@ void FormUpdate::checkForUpdates() {
 }
 
 void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
-  qApp->processEvents();
-  m_ui->m_lblStatus->setStatus(WidgetWithStatus::Information,
-                               tr("Downloaded %1% (update size is %2 kB).").arg(QString::number(bytes_total == 0 ? 0 : (bytes_received * 100.0) / bytes_total,
-                                                                                                'f',
-                                                                                                2),
-                                                                                QString::number(bytes_total / 1000,
-                                                                                                'f',
-                                                                                                2)),
-                               tr("Downloading update..."));
+  if (bytes_received % 10 == 0) {
+    qApp->processEvents();
+    m_ui->m_lblStatus->setStatus(WidgetWithStatus::Information,
+                                 tr("Downloaded %1% (update size is %2 kB).").arg(QString::number(bytes_total == 0 ? 0 : (bytes_received * 100.0) / bytes_total,
+                                                                                                  'f',
+                                                                                                  2),
+                                                                                  QString::number(bytes_total / 1000,
+                                                                                                  'f',
+                                                                                                  2)),
+                                 tr("Downloading update..."));
+  }
 }
 
 void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
@@ -154,7 +160,7 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
     case QNetworkReply::NoError:
       saveUpdateFile(contents);
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"), tr("Package was downloaded successfully.\nYou must install it manually."));
-      m_btnUpdate->setText(tr("Go to update file"));
+      m_btnUpdate->setText(tr("Install"));
       m_btnUpdate->setEnabled(true);
       break;
 
@@ -176,15 +182,29 @@ void FormUpdate::startUpdate() {
     url_file = APP_URL;
   }
 
-  if (m_readyToInstall) {    
-    if (!SystemFactory::openFolderFile(m_updateFilePath)) {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot open directory"),
-                       tr("Cannot open output directory. Open it manually."),
-                       QString(),
-                       m_updateFilePath);
+  if (m_readyToInstall) {
+    close();
+    qDebug("Preparing to launch external installer '%s'.", qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
+
+#if defined(Q_OS_WIN)
+    HINSTANCE exec_result = ShellExecute(NULL,
+                                         NULL,
+                                         reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
+                                         NULL,
+                                         NULL,
+                                         SW_NORMAL);
+
+    if (((int)exec_result) <= 32) {
+      qDebug("External updater was not launched due to error.");
+
+      qApp->showGuiMessage(tr("Cannot update application"),
+                           tr("Cannot launch external updater. Update application manually."),
+                           QSystemTrayIcon::Warning, this);
     }
+    else {
+      qApp->quit();
+    }
+#endif
   }
   else if (update_for_this_system) {
     // Nothing is downloaded yet, but update for this system
@@ -196,6 +216,7 @@ void FormUpdate::startUpdate() {
 
       connect(m_downloader, SIGNAL(progress(qint64,qint64)), this, SLOT(updateProgress(qint64,qint64)));
       connect(m_downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)), this, SLOT(updateCompleted(QNetworkReply::NetworkError,QByteArray)));
+      updateProgress(0, 100);
     }
 
     m_btnUpdate->setText(tr("Downloading update..."));
