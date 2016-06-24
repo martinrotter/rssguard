@@ -1,24 +1,26 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="de">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation> (Kategorie)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation> (Feed)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"/>
+        <translation>Die Anwendung läuft bereits.</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"/>
+        <translation>Das Ausgabeverzeichnis ist nicht beschreibbar.</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -53,6 +55,7 @@
     </message>
     <message>
         <source>Database file shrinked...</source>
+        <translatorcomment>Trailing &apos;...&apos; don&apos;t make sense here. These are normally used to depict that another dialogue will open upon clicking or that a procedure is ongoing. Neither applies here.</translatorcomment>
         <translation>Datenbank wurde komprimiert</translation>
     </message>
     <message>
@@ -61,10 +64,12 @@
     </message>
     <message>
         <source>Read messages purged...</source>
+        <translatorcomment>(same as &quot;Database file shrinked...&quot;)</translatorcomment>
         <translation>Gelesene Nachrichten wurden entfernt</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
+        <translatorcomment>(same as &quot;Database file shrinked...&quot;)</translatorcomment>
         <translation>Papierkorb wurde geleert</translation>
     </message>
     <message>
@@ -77,6 +82,7 @@
     </message>
     <message>
         <source>Old messages purged...</source>
+        <translatorcomment>(same as &quot;Database file shrinked...&quot;)</translatorcomment>
         <translation>Alte Nachrichten wurden entfernt</translation>
     </message>
 </context>
@@ -130,7 +136,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation>
+            <numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
+Diese Webseite enhält %n Feed.</numerusform>
+            <numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
+Diese Webseite enhält %n Feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -138,13 +149,14 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Zum genannten Konto können keine Feeds hinzugefügt werden.</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
+        <translatorcomment>Shouldn&apos;t this be &quot;Icon&quot; in the template as well?</translatorcomment>
         <translation>Icon</translation>
     </message>
     <message>
@@ -216,7 +228,7 @@ This website contains %n feed(s).</source>
         <translation>Herunterladen abgeschlossen</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Datei &apos;%1&apos; wurde heruntergeladen. Zum Öffnen des übergeordneten Verzeichnisses hier klicken.</translation>
     </message>
@@ -241,11 +253,17 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>% Minute verbleibend</numerusform><numerusform>%n Minuten verbleibend</numerusform></translation>
+        <translation>
+            <numerusform>% Minute verbleibend</numerusform>
+            <numerusform>%n Minuten verbleibend</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n Sekunde verbleibend</numerusform><numerusform>%n Sekunden verbleibend</numerusform></translation>
+        <translation>
+            <numerusform>%n Sekunde verbleibend</numerusform>
+            <numerusform>%n Sekunden verbleibend</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -265,18 +283,21 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Lade %n Datei herunter...</numerusform><numerusform>Lade %n Dateien herunter...</numerusform></translation>
+        <translation>
+            <numerusform>Lade %n Datei herunter...</numerusform>
+            <numerusform>Lade %n Dateien herunter...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation>Toolbar für Nachrichten</translation>
+        <translation>Werkzeugleiste für Nachrichten</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>Toolbar für Feeds</translation>
+        <translation>Werkzeugleiste für Feeds</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -316,7 +337,10 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>%n Feed wird automatisch aktualisiert.</numerusform><numerusform>%n Feeds werden automatisch aktualisiert.</numerusform></translation>
+        <translation>
+            <numerusform>%n Feed wird automatisch aktualisiert.</numerusform>
+            <numerusform>%n Feeds werden automatisch aktualisiert.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -357,18 +381,18 @@ Click here to open parent directory.</source>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Toolbar Platzhalter</translation>
+        <translation>Abstandhalter</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation>Kann das Item nicht editieren</translation>
+        <translation>Kann den Eintrag nicht bearbeiten</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation>Item kann nicht gelöscht werden</translation>
+        <translation>Eintrag kann nicht gelöscht werden</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
@@ -421,7 +445,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nicht unterstützt</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -630,7 +654,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> Tag</numerusform><numerusform> Tage</numerusform></translation>
+        <translation>
+            <numerusform> Tag</numerusform>
+            <numerusform> Tage</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -697,7 +724,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
+        <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -864,15 +891,15 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Aktualisierung auf Server erzwingen, wenn Feeds innerhalb RSS Guard aktualisiert werden</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -880,23 +907,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Passwort anzeigen</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Einstellungen &amp;testen</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Die Aktivierung dieser Option bedingt häufig langsameres Herunterladen und Zeitüberschreitungen.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -1043,11 +1070,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
+        <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Benötigt HTTP Authentifizierung</translation>
+        <translation>Benötigt HTTP-Authentifizierung</translation>
     </message>
     <message>
         <source>Username</source>
@@ -1091,6 +1118,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translatorcomment>Question mark is missing in template / English.</translatorcomment>
         <translation>Der URL folgt nicht dem üblichen Schema. Beginnt er mit dem Präfix &quot;http://&quot; oder &quot;https://&quot;?</translation>
     </message>
     <message>
@@ -1287,11 +1315,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation>Beende die Applikation.</translation>
+        <translation>Anwendung beenden.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation>Anzeigeeinstellungen der Applikation.</translation>
+        <translation>Anzeigeeinstellungen der Anwendung.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
@@ -1307,7 +1335,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation>Hauptfenster verstecken falls es sichtbar was oder sichtbar falls es versteckt war.</translation>
+        <translation>Hauptfenster verstecken, falls es sichtbar war, oder sichtbar, falls es versteckt war.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
@@ -1315,7 +1343,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation>Prüfe ob neue Programmupdates zum Download verfügbar sind.</translation>
+        <translation>Prüfe, ob Aktualisierungen verfügbar sind.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
@@ -1387,7 +1415,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Kann externen Browser nicht öffnen. Webseite der Anwendung bitte manuell aufrufen.</translation>
+        <translation>Kann externen Browser nicht öffnen. Bitte versuchen, die Webseite manuell aufzurufen.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1595,23 +1623,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Webbrowser &amp;&amp; &amp;Reiter</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Fehlerbericht einsenden...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Neuer Reiter für Browser</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>Alle Reiter schließen</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Alle Reiter schließen außer dem aktuellen</translation>
     </message>
 </context>
 <context>
@@ -1726,7 +1754,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation>Starte die Applikation versteckt</translation>
+        <translation>Starte die Anwendung versteckt</translation>
     </message>
     <message>
         <source>Type</source>
@@ -1751,7 +1779,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation>Ihr Benutzername für die Proxy-Server Authentifikation</translation>
+        <translation>Ihr Benutzername für die Authentifizierung am Proxy-Server</translation>
     </message>
     <message>
         <source>Password</source>
@@ -1759,11 +1787,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation>Ihr Passwort für die Proxy-Server Authentifikation</translation>
+        <translation>Ihr Passwort für die Authentifizierung am Proxy-Server</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation>Zeige das Passwort</translation>
+        <translation>Passwort anzeigen</translation>
     </message>
     <message>
         <source>Code</source>
@@ -1775,7 +1803,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation>Author</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -1783,11 +1811,12 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Http</source>
-        <translation>Http</translation>
+        <translatorcomment>Shouldn&apos;t this be capitalized in the template as well?</translatorcomment>
+        <translation>HTTP</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation>(nicht verfügbar auf dieser Plattform)</translation>
+        <translation> (auf dieser Plattform nicht verfügbar)</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -1819,7 +1848,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Icons</translation>
     </message>
     <message>
         <source>Skins</source>
@@ -1827,15 +1856,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"/>
+        <translation>Aktives Skin:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation>Selektierte Skin:</translation>
+        <translation>Skin auswählen:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation>Verstecke die Reiterleiste falls nur ein Reiter sichtbar ist</translation>
+        <translation>Verstecke die Reiterleiste, falls nur ein Reiter sichtbar ist</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
@@ -1847,7 +1876,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation>Ein paar kritische Einstellungen sind nicht gesetzt. Sie müssen diese Einstellungen korrigieren damit neue gesetzt werden können.</translation>
+        <translation>Ein paar kritische Einstellungen sind nicht gesetzt. Sie müssen diese Einstellungen korrigieren, damit neue gesetzt werden können.</translation>
     </message>
     <message>
         <source>Messages</source>
@@ -1855,19 +1884,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation>Ausführbare Datei des Webbrowsers</translation>
+        <translation>Auszuführende Datei des Webbrowsers</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation>Parameter der ausführbaren Datei</translation>
+        <translation>Parameter der auszuführenden Datei</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>Beachten Sie, dass &quot;%1&quot; (ohne Anführungszeichen) der Platzhalter der URL der selektierten Nachricht ist.</translation>
+        <translation>Beachten Sie, dass &quot;%1&quot; (ohne Anführungszeichen) der Platzhalter der URL der ausgewählten Nachricht ist.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation>Wählen Sie die ausführbare Datei des Webbrowsers</translation>
+        <translation>Wählen Sie die auszuführende Datei des Webbrowsers</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
@@ -1879,7 +1908,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation>Ausführbare Datei des Webbrowsern</translation>
+        <translation>Auszuführende Datei des Webbrowsern</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
@@ -1919,7 +1948,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation>Verwenden Sie die In-Speicherdatenbank als aktuelle Datenbank</translation>
+        <translation>Verwenden Sie die Datenbank im Arbeitsspeicher als aktuelle Datenbank</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -1933,6 +1962,7 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
+        <translatorcomment>Additional line break before &quot;Advantages&quot; (&quot;Vorteile&quot;) would make sense in template as well, IMO.</translatorcomment>
         <translation>Die Verwendung einer Datenbank im Arbeitsspeicher bietet einige Vor-, aber auch einige Nachteile. Nutzer sollten sich vor der Verwendung über beide bewusst sein.&lt;br&gt;
 Vorteile:
 &lt;ul&gt;
@@ -1948,7 +1978,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation>In-Speicherdatenbank umgeschaltet</translation>
+        <translation>Auf Datenbank im Arbeitsspeicher umgeschaltet</translation>
     </message>
     <message>
         <source>External web browser</source>
@@ -1956,7 +1986,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>Warnung: Beachten Sie, dass das Umschalten auf einen anderen Datenspeicherung ihre bestehenden Daten NICHT auf den neuen selektierten kopieren wird.</translation>
+        <translation>Warnung: Beachten Sie, dass das Umschalten auf einen anderen Datenspeicherung ihre bestehenden Daten NICHT auf den neuen ausgewählten kopieren wird.</translation>
     </message>
     <message>
         <source>Database driver</source>
@@ -1968,7 +1998,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Test setup</source>
-        <translation>Testkonfiguration</translation>
+        <translation>Einstellungen testen</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
@@ -1976,15 +2006,15 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation>Auto-Update alle Feeds alle</translation>
+        <translation>Alle Feeds automatisch aktualisieren</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation>Verbindungs-Timeout des Feed</translation>
+        <translation>Zeitüberschreitung des Feeds</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation>Der Verbindungs-Timeout ist das Intervall welches für das Herunterladen neuer Nachrichten reserviert ist. Falls dieses Intervall abläuft wird das Herunterladen abgebrochen.</translation>
+        <translation>Die Zeitüberschreitung der Verbindung ist das Intervall, das für das Herunterladen neuer Nachrichten reserviert ist. Falls dieses Intervall abläuft, wird das Herunterladen abgebrochen.</translation>
     </message>
     <message>
         <source> ms</source>
@@ -1992,7 +2022,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation>Update alle Feeds bei Applikationsstart</translation>
+        <translation>Beim Starten der Anwendung alle Feeds aktualisieren</translation>
     </message>
     <message>
         <source>Data storage</source>
@@ -2004,7 +2034,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Username to login with</source>
-        <translation>Benutzername zum einloggen</translation>
+        <translation>Benutzername zum Einloggen</translation>
     </message>
     <message>
         <source>Password for your username</source>
@@ -2020,7 +2050,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Der hostname scheint in Ordnung zu sein.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -2028,7 +2058,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation>Benutzername sieht okay aus.</translation>
+        <translation>Benutzername scheint in Ordnung zu sein.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
@@ -2036,15 +2066,15 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation>Passwort sieht okay aus.</translation>
+        <translation>Passwort scheint in Ordnung zu sein.</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation>Toolbar-Knopfstil</translation>
+        <translation>Stil der Schaltflächen in Werkzeugleisten</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation>Verstecke das Hauptfenster wenn es minimisiert ist</translation>
+        <translation>Verstecke das Hauptfenster wenn, es minimiert ist</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
@@ -2052,11 +2082,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Beachte, dass diese Einstellungen nur auf neue Verbindungen angewendet werden.</translation>
+        <translation>Bitte beachten, dass diese Einstellungen nur auf neue Verbindungen angewendet werden.</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation>Wähle Browser aus</translation>
+        <translation>Browser auswählen</translation>
     </message>
     <message>
         <source>No proxy</source>
@@ -2064,7 +2094,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>System proxy</source>
-        <translation>System Proxy</translation>
+        <translation>Systemweiter Proxy</translation>
     </message>
     <message>
         <source>Icon only</source>
@@ -2096,6 +2126,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
+        <translatorcomment>This is wrong in the template. It&apos;s not during boot when RSS Guard gets started but at the beginning of (desktop) sessions.</translatorcomment>
         <translation>%1 bei Sitzungsbeginn starten</translation>
     </message>
     <message>
@@ -2112,7 +2143,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Geben Sie das Format der Zählweise ein, mit der (un-) gelesene Nachrichten innerhalb der Liste von Kategorien und Feeds gelistet werden. Die Platzhalter &quot;%all&quot; und &quot;%unread&quot; können für die Zahl aller bzw. der ungelesenen Nachrichten verwendet werden.</translation>
+        <translation>Geben Sie das Format der Zählweise ein, mit der die Anzahl (un-) gelesener Nachrichten innerhalb der Liste von Kategorien und Feeds angezeigt wird. Die Platzhalter &quot;%all&quot; und &quot;%unread&quot; können für die Zahl aller bzw. der ungelesenen Nachrichten verwendet werden.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
@@ -2239,7 +2270,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation>Wählen Sie die ausführbare Datei des Mail-Clients</translation>
+        <translation>Wählen Sie die auszuführende Datei des Mail-Clients</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -2404,7 +2435,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation>Setzen Sie den Titel für die Kategorie.</translation>
+        <translation>Setzen Sie den Namen für die Kategorie.</translation>
     </message>
     <message>
         <source>Category description</source>
@@ -2641,7 +2672,7 @@ die aktuell installierte.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Prüfe auf Updates</translation>
+        <translation>Prüfe auf Aktualisierungen</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2694,7 +2725,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation>Ein Fehler ist beim Herunterladen des Paketes aufgetreten.</translation>
+        <translation>Beim Herunterladen des Paketes ist ein Fehler aufgetreten.</translation>
     </message>
     <message>
         <source>Go to application website</source>
@@ -2773,7 +2804,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation>Author</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
@@ -2813,7 +2844,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation>Author der Nachricht.</translation>
+        <translation>Autor der Nachricht.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
@@ -2908,7 +2939,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Toolbar Platzhalter</translation>
+        <translation>Abstandhalter</translation>
     </message>
 </context>
 <context>
@@ -2973,7 +3004,7 @@ You must install it manually.</source>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation>Temporärer Fehler</translation>
+        <translation>Vorübergehender Fehler</translation>
     </message>
     <message>
         <source>authentication failed</source>
@@ -3044,17 +3075,22 @@ You must install it manually.</source>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Patrick Scheller</translation>
+        <translatorcomment>Is it okay to state two authors here?</translatorcomment>
+        <translation>Patrick Scheller, Peter Mattern</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>patlecat@gmail.com</translation>
+        <translatorcomment>Is it okay to state two mail addresses here?</translatorcomment>
+        <translation>patlecat@gmail.com, pmattern@arcor.de</translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>+ %n anderer Feed.</numerusform><numerusform>+ %n andere Feeds.</numerusform></translation>
+        <translation>
+            <numerusform>+ %n anderer Feed.</numerusform>
+            <numerusform>+ %n andere Feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3103,7 +3139,10 @@ Zum Zugriff wird mindesens das API der Stufe %1 benötigt.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n gelöschte Nachricht.</numerusform><numerusform>%n gelöschte Nachrichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n gelöschte Nachricht.</numerusform>
+            <numerusform>%n gelöschte Nachrichten.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3127,7 +3166,10 @@ Zum Zugriff wird mindesens das API der Stufe %1 benötigt.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ungelesene Nachricht.</numerusform><numerusform>%n ungelesene Nachrichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ungelesene Nachricht.</numerusform>
+            <numerusform>%n ungelesene Nachrichten.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3181,7 +3223,10 @@ This category does not contain any nested items.</source>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
+        <translation>
+            <numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform>
+            <numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3326,7 +3371,7 @@ Ungelesene Nachrichten: %2</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation>Blätteren Sie Ihre Feeds und Nachrichten</translation>
+        <translation>In Feeds und Nachrichten blättern</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
@@ -3347,18 +3392,24 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation>Web Browser</translation>
+        <translation>Webbrowser</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n Stunde</numerusform><numerusform>%n Stunden</numerusform></translation>
+        <translation>
+            <numerusform>%n Stunde</numerusform>
+            <numerusform>%n Stunden</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n Minute</numerusform><numerusform>%n Minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n Minute</numerusform>
+            <numerusform>%n Minuten</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -3389,7 +3440,7 @@ Ungelesene Nachrichten: %2</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Toolbar Platzhalter</translation>
+        <translation>Abstandhalter</translation>
     </message>
     <message>
         <source>Move action up</source>
@@ -3424,17 +3475,20 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>verwendet keine automatische Aktualisierung</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>verwendet die globalen Einstellungen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
+        <translation>
+            <numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform>
+            <numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
@@ -3466,22 +3520,22 @@ Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synchronisieren</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Kann Eintrag nicht hinzufügen</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kann Eintrag nicht hinzufügen, da noch eine andere ihn betreffende Aktion läuft.</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation>Navigations-Panel</translation>
+        <translation>Navigations-Leiste</translation>
     </message>
     <message>
         <source>No title</source>
@@ -3494,7 +3548,7 @@ Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation>Geh zurück.</translation>
+        <translation>Gehe zurück.</translation>
     </message>
     <message>
         <source>Forward</source>
@@ -3502,7 +3556,7 @@ Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation>Geh vorwärts.</translation>
+        <translation>Gehe vorwärts.</translation>
     </message>
     <message>
         <source>Reload</source>
@@ -3510,7 +3564,7 @@ Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Aktuelle Webseite neu laden.</translation>
     </message>
     <message>
         <source>Stop</source>
