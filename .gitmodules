@@ -10,3 +10,6 @@
 [submodule "resources/scripts/nsis"]
 	path = resources/scripts/nsis
 	url = https://github.com/martinrotter/nsis.git
+[submodule "resources/scripts/findreplace"]
+	path = resources/scripts/findreplace
+	url = https://github.com/martinrotter/findreplace.git

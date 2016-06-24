@@ -169,10 +169,11 @@ LangString DESC_StartMenuShortcuts ${LANG_ENGLISH} "Start Menu Shortcuts for ${A
 
 ; Uninstaller section.
 Section "Uninstall"
-  ; Remove core application files & directories.
-  @CPACK_NSIS_DELETE_FILES@
-  @CPACK_NSIS_DELETE_DIRECTORIES@
-
+  ; Here remove all files, but skip "data" folder.
+  Push "$INSTDIR"
+  Push "data"
+  Call RmDirsButOne
+  
   ; Remove uninstaller.
   Delete "$INSTDIR\Uninstall.exe"
    
@@ -192,17 +193,43 @@ SectionEnd
 ;--------------------------------
 ; Custom functions.
 
+Function RmDirsButOne
+ Exch $R0 ; exclude dir
+ Exch
+ Exch $R1 ; route dir
+ Push $R2
+ Push $R3
+ 
+  ClearErrors
+  FindFirst $R3 $R2 "$R1\*.*"
+  IfErrors Exit
+ 
+  Top:
+   StrCmp $R2 "." Next
+   StrCmp $R2 ".." Next
+   StrCmp $R2 $R0 Next
+   IfFileExists "$R1\$R2\*.*" 0 Next
+    RmDir /r "$R1\$R2"
+ 
+   #Goto Exit ;uncomment this to stop it being recursive (delete only one dir)
+ 
+   Next:
+    ClearErrors
+    FindNext $R3 $R2
+    IfErrors Exit
+   Goto Top
+ 
+  Exit:
+  FindClose $R3
+ 
+ Pop $R3
+ Pop $R2
+ Pop $R1
+ Pop $R0
+FunctionEnd
+
 ; Executed when installer starts.
 Function .onInit
   IntOp $0 ${SF_SELECTED} | ${SF_RO}
   SectionSetFlags ${Core} $0
-FunctionEnd
-
-; Conditional saving to registry.
-Function ConditionalAddToRegisty
-  Pop $0
-  Pop $1
-  StrCmp "$0" "" ConditionalAddToRegisty_EmptyString
-    WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "$1" "$0"
-  ConditionalAddToRegisty_EmptyString:
 FunctionEnd
