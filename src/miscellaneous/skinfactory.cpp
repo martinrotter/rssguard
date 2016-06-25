@@ -32,21 +32,34 @@ SkinFactory::~SkinFactory() {
 }
 
 void SkinFactory::loadCurrentSkin() {
-  const QString skin_name_from_settings = selectedSkinName();
+  QList<QString> skin_names_to_try;
+
+  skin_names_to_try.append(selectedSkinName());
+  skin_names_to_try.append(APP_SKIN_DEFAULT);
+
   bool skin_parsed;
-  const Skin skin_data = skinInfo(skin_name_from_settings, &skin_parsed);
+  Skin skin_data;
+  QString skin_name;
 
-  if (skin_parsed) {
-    loadSkinFromData(skin_data);
+  while (!skin_names_to_try.isEmpty()) {
+    skin_name = skin_names_to_try.takeFirst();
+    skin_data = skinInfo(skin_name, &skin_parsed);
 
-    // Set this 'Skin' object as active one.
-    m_currentSkin = skin_data;
+    if (skin_parsed) {
+      loadSkinFromData(skin_data);
 
-    qDebug("Skin '%s' loaded.", qPrintable(skin_name_from_settings));
+      // Set this 'Skin' object as active one.
+      m_currentSkin = skin_data;
+
+      qDebug("Skin '%s' loaded.", qPrintable(skin_name));
+      return;
+    }
+    else {
+      qWarning("Failed to load skin '%s'.", qPrintable(skin_name));
+    }
   }
-  else {
-    qFatal("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!", qPrintable(skin_name_from_settings));
-  }
+
+  qFatal("Failed to load selected or default skin(s). Quitting!");
 }
 
 void SkinFactory::loadSkinFromData(const Skin &skin) {
