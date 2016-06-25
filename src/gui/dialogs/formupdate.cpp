@@ -58,7 +58,7 @@ bool FormUpdate::isUpdateForThisSystem() const {
 }
 
 bool FormUpdate::isSelfUpdateSupported() const {
-#if defined(Q_OS_WIN32)
+#if defined(Q_OS_WIN)
   return true;
 #else
   return false;

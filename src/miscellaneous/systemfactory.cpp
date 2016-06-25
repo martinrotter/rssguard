@@ -259,7 +259,7 @@ bool SystemFactory::isVersionEqualOrNewer(const QString &new_version, const QStr
 }
 
 bool SystemFactory::openFolderFile(const QString &file_path) {
-#if defined(Q_OS_WIN32)
+#if defined(Q_OS_WIN)
   return QProcess::startDetached(QString("explorer.exe /select, \"") + QDir::toNativeSeparators(file_path) + "\"");
 #else
   const QString folder = QDir::toNativeSeparators(QFileInfo(file_path).absoluteDir().absolutePath());
