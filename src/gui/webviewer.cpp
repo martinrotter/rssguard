@@ -94,7 +94,7 @@ void WebViewer::loadMessages(const QList<Message> &messages) {
 
     messages_layout.append(single_message_layout.arg(message.m_title,
                                                      tr("Written by ") + (message.m_author.isEmpty() ?
-                                                                            tr("uknown author") :
+                                                                            tr("unknown author") :
                                                                             message.m_author),
                                                      message.m_url,
                                                      message.m_contents,

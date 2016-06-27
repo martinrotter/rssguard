@@ -306,10 +306,10 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
   }
 
   if (some_feed_category_error) {
-    output_message = tr("Import successfull, but some feeds/categories were not imported due to error.");
+    output_message = tr("Import successful, but some feeds/categories were not imported due to error.");
   }
   else {
-    output_message = tr("Import was completely successfull.");
+    output_message = tr("Import was completely successful.");
   }
 
   return !some_feed_category_error;
