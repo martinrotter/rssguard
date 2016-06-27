@@ -75,7 +75,6 @@
      <property name="title">
       <string>Show/hide</string>
      </property>
-     <addaction name="m_actionFullscreen"/>
      <addaction name="m_actionSwitchFeedsList"/>
      <addaction name="m_actionSwitchMainMenu"/>
      <addaction name="m_actionSwitchToolBars"/>
@@ -83,6 +82,7 @@
      <addaction name="m_actionSwitchStatusBar"/>
     </widget>
     <addaction name="m_menuShowHide"/>
+    <addaction name="m_actionFullscreen"/>
     <addaction name="m_actionSwitchMainWindow"/>
     <addaction name="m_actionSwitchMessageListOrientation"/>
    </widget>
@@ -221,7 +221,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Fullscreen</string>
+    <string>View &amp;fullscreen</string>
    </property>
    <property name="toolTip">
     <string>Switch fullscreen mode.</string>

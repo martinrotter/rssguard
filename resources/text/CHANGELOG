@@ -2,7 +2,11 @@
 —————
 
 Fixed:
+▪ Fixed some typos.
+▪ Fixed some UI stuff in menus etc.
 ▪ Fixed problem with skin loading. (bug #25)
+
+You can see more verbose list of fixed stuff here: https://github.com/martinrotter/rssguard/issues?utf8=%E2%9C%93&q=is%3Aclosed%20milestone%3A%223.3.2%22%20
 
 3.3.1
 —————
