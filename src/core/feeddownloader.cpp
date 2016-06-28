@@ -95,8 +95,7 @@ void FeedDownloader::stopRunningUpdate() {
 void FeedDownloader::oneFeedUpdateFinished(int updated_messages) {
   const Feed *feed = qobject_cast<Feed*>(sender());
 
-  disconnect(feed, SIGNAL(updated(int)),
-             this, SLOT(oneFeedUpdateFinished(int)));
+  disconnect(feed, SIGNAL(updated(int)), this, SLOT(oneFeedUpdateFinished(int)));
 
   m_feedsUpdated++;
   m_feedsUpdating--;
@@ -105,8 +104,7 @@ void FeedDownloader::oneFeedUpdateFinished(int updated_messages) {
     m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));
   }
 
-  qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).",
-         m_feedsUpdated, m_feedsTotalCount, feed->id());
+  qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).", m_feedsUpdated, m_feedsTotalCount, feed->id());
   emit progress(feed, m_feedsUpdated, m_feedsTotalCount);
 
   if (m_feedsToUpdate <= 0 && m_feedsUpdating <= 0) {
