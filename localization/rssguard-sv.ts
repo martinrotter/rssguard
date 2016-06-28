@@ -1370,10 +1370,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Dölj/Visa</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>&amp;Fullskärm</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>&amp;Flödeslista</translation>
     </message>
@@ -1616,6 +1612,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Close all tabs except current</source>
         <translation>Stäng alla flikar utom den aktuella</translation>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2717,16 +2717,12 @@ You must install it manually.</source>
 Du måste installera det manuellt.</translation>
     </message>
     <message>
-        <source>Go to update file</source>
-        <translation>Gå till uppdateringsfilen</translation>
+        <source>Install</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>Kan inte öppna mappen</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
-        <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3225,14 +3221,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Hämta metadata</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Importen slutfördes, men vissa flöden/kategorier importerades inte på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Importen slutfördes korrekt.</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Exportera flöden</translation>
     </message>
@@ -3267,6 +3255,14 @@ Konto-ID: %1</translation>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Kan inte lägga till kategori, eftersom en annan kritisk åtgärd pågår.</translation>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3541,12 +3537,12 @@ Senast inloggad: %5</translation>
         <translation>Skriven av </translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>okänd författare</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Tidningsvy</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

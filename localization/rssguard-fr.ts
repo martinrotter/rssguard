@@ -3,38 +3,38 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation>(catégorie)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation>(flux)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"/>
+        <translation>L&apos;application est déjà lancée</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"/>
+        <translation>Le répertoire de destination n&apos;est pas accessible en écriture</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Le fichier de réglages n&apos;a pas été copié correctement dans le répertoire de destination.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Le fichier de base de données n&apos;a pas été copié correctement dans le répertoire de destination.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="unfinished"/>
+        <translation>La restauration de la base de données n&apos;a pas été initiée. Vérifier que le répertoire de destination est accessible en écriture.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="unfinished"/>
+        <translation>La restauration des paramètres n&apos;a pas été initiée. Vérifier que le répertoire de destination est accessible en écriture.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -42,42 +42,42 @@
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>Le flux ne peut pas être ajouté car le compte RSS/ATOM standard n&apos;est pas activé.</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation type="unfinished"/>
+        <translation>Réduction du fichier de base de données...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation type="unfinished"/>
+        <translation>Base de données réduite...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation type="unfinished"/>
+        <translation>Suppression des messages lus...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Messages lus purgés...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation type="unfinished"/>
+        <translation>Corbeille purgée...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation type="unfinished"/>
+        <translation>Suppression des anciens messages...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation type="unfinished"/>
+        <translation>Purge de la corbeille...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Anciens messages purgés...</translation>
     </message>
 </context>
 <context>
@@ -102,19 +102,19 @@
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished"/>
+        <translation>MySQL/MariaDB (base de donnée dédiée)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (base de données embarquée)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>La base de données sélectionnée n&apos;existe pas (encore). Elle sera créée. C&apos;est bon.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="unfinished"/>
+        <translation>MySQL base de donnée indisponible</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
@@ -125,7 +125,7 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Ce site ne contient aucun flux.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
@@ -134,74 +134,74 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Non supporté</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Le compte fourni ne supporte pas l&apos;ajout de flux.</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="unfinished"/>
+        <translation>Ico</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation type="unfinished"/>
+        <translation>Nom de fichier</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Erreur lors de l&apos;ouverture du fichier de destination : %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Essayez encore</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Stop</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ouvrez le fichier</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation type="unfinished"/>
+        <translation>Selectionnez la destination du fichier téléchargé</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Erreur : %1</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"/>
+        <translation>Le répertoire de téléchargement n&apos;a pas pu être créé</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Erreur lors de l&apos;enregistrement du fichier : %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation type="unfinished"/>
+        <translation>%1 sur %2 (%3 par seconde) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation type="unfinished"/>
+        <translation>%1 sur %2 - téléchargement terminé</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation type="unfinished"/>
+        <translation>Ouvrir %repertoire</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ouvrir le fichier</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ouvrir le fichier de destination. Ouvrez le manuellement.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
@@ -1366,10 +1366,6 @@ or this functionality is not implemented yet.</source>
         <translation>Montrer/cacher</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>&amp;Plein écran</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>Liste des &amp;flux</translation>
     </message>
@@ -1611,6 +1607,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2707,15 +2707,11 @@ You must install it manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Go to update file</source>
+        <source>Install</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
+        <source>Cannot launch external updater. Update application manually.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3199,14 +3195,6 @@ Auto-update status: %5</source>
         <translation>Chercher les métadonnées</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation type="unfinished"/>
     </message>
@@ -3238,6 +3226,14 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3504,12 +3500,12 @@ Last login on: %5</source>
         <translation>Écrit par</translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>auteur inconnu</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Vue journal</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

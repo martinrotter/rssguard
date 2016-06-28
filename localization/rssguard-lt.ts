@@ -1371,10 +1371,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Rodyti/slėpti</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>&amp;Visas ekranas</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>&amp;Kanalų sąrašas</translation>
     </message>
@@ -1617,6 +1613,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Close all tabs except current</source>
         <translation>Užverti visas korteles išskyrus esamą</translation>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2708,16 +2708,12 @@ You must install it manually.</source>
 Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
-        <source>Go to update file</source>
+        <source>Install</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>Nepavyksta atverti katalogo</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
-        <translation>Nepavyksta atverti išvesties katalogo. Atverkite jį rankiniu būdu.</translation>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3213,14 +3209,6 @@ Automatinio atnaujinimo būsena: %5</translation>
         <translation>Gauti metaduomenis</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Importavimas sėkmingas, tačiau dėl klaidos nebuvo importuoti kai kurie kanalai/kategorijos.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Eksportuoti kanalus</translation>
     </message>
@@ -3255,6 +3243,14 @@ Paskyros ID: %1</translation>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Nepavyksta pridėti kategorijos, nes yra vykdoma kita kritinė operacija.</translation>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3529,12 +3525,12 @@ Paskutinis prisijungimas: %5</translation>
         <translation>Parašė </translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>nežinomas autorius</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Laikraščio veiksena</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

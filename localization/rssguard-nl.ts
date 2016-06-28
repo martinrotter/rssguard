@@ -1369,10 +1369,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Toon/verberg</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>&amp;Beeldvullend</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>&amp;Feed lijst</translation>
     </message>
@@ -1614,6 +1610,10 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2715,16 +2715,12 @@ You must install it manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Go to update file</source>
+        <source>Install</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>Kan map niet openen</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
-        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3225,14 +3221,6 @@ Auto-update status: %5 </translation>
         <translation>Ophalen van metadata</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Importeren succesvol, maar sommige feeds / categorieën waren niet goed  geïmporteerd door fouten.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Importeren is helemaal geslaagd.</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Exporteer feeds</translation>
     </message>
@@ -3267,6 +3255,14 @@ Account ID: %1</translation>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Kan geen categorie toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3542,12 +3538,12 @@ Laatste login: %5</translation>
         <translation>Geschreven door </translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>Onbekende auteur</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Krantweergave</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

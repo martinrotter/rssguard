@@ -1369,10 +1369,6 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation>Tampilkan/sembunyikan</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>&amp;Layar penuh</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>&amp;Daftar feed</translation>
     </message>
@@ -1615,6 +1611,10 @@ atau fungsi ini belum diimplementasikan.</translation>
     <message>
         <source>Close all tabs except current</source>
         <translation>Tutup semua tab kecuali ini</translation>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2716,16 +2716,12 @@ You must install it manually.</source>
 Anda harus instal secara manual.</translation>
     </message>
     <message>
-        <source>Go to update file</source>
-        <translation>Pergi untuk pembaharuan berkas</translation>
+        <source>Install</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>Tidak dapat membuka direktori</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
-        <translation>Tidak dapat membuka direktori keluaran. Buka secara manual.</translation>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3219,14 +3215,6 @@ Status pembaharuan otomatis: %5</translation>
         <translation>Ambil metadata</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Impor berhasil, tetapi beberapa feed/kategori tidak diimpor disebabkan eror.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Impor benar-benar berhasil.</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Ekspor feed</translation>
     </message>
@@ -3261,6 +3249,14 @@ ID akun: %1</translation>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Tidak dapat menambah kategori karena operasi genting lain sedang berlangsung.</translation>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3535,12 +3531,12 @@ Login terakhir pada: %5</translation>
         <translation>Ditulis oleh</translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>pengarang tak diketahui</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Tampilan koran</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

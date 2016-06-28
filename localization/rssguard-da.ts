@@ -1366,10 +1366,6 @@ or this functionality is not implemented yet.</source>
         <translation>Vis/skjul</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>&amp;Fuldskærm</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation type="unfinished"/>
     </message>
@@ -1611,6 +1607,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2694,15 +2694,11 @@ You must install it manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Go to update file</source>
+        <source>Install</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>Kan ikke åbne bibliotek</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
+        <source>Cannot launch external updater. Update application manually.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3192,14 +3188,6 @@ Auto-update status: %5</source>
         <translation>Hent metadata</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Import udført succesfuldt.</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Eksportér feeds</translation>
     </message>
@@ -3232,6 +3220,14 @@ Account ID: %1</source>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Kan ikke tilføje kategori, fordi en anden kritisk operation er under udførelse.</translation>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3498,12 +3494,12 @@ Last login on: %5</source>
         <translation>Skrevet af</translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>Ukendt forfatter</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Avisfremvisning</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

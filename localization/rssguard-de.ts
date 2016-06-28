@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -55,7 +53,6 @@
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translatorcomment>Trailing &apos;...&apos; don&apos;t make sense here. These are normally used to depict that another dialogue will open upon clicking or that a procedure is ongoing. Neither applies here.</translatorcomment>
         <translation>Datenbank wurde komprimiert</translation>
     </message>
     <message>
@@ -64,12 +61,10 @@
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translatorcomment>(same as &quot;Database file shrinked...&quot;)</translatorcomment>
         <translation>Gelesene Nachrichten wurden entfernt</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translatorcomment>(same as &quot;Database file shrinked...&quot;)</translatorcomment>
         <translation>Papierkorb wurde geleert</translation>
     </message>
     <message>
@@ -82,7 +77,6 @@
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translatorcomment>(same as &quot;Database file shrinked...&quot;)</translatorcomment>
         <translation>Alte Nachrichten wurden entfernt</translation>
     </message>
 </context>
@@ -136,12 +130,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
-Diese Webseite enhält %n Feed.</numerusform>
-            <numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
-Diese Webseite enhält %n Feeds.</numerusform>
-        </translation>
+        <translation><numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
+Diese Webseite enhält %n Feed.</numerusform><numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
+Diese Webseite enhält %n Feeds.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -156,7 +147,6 @@ Diese Webseite enhält %n Feeds.</numerusform>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translatorcomment>Shouldn&apos;t this be &quot;Icon&quot; in the template as well?</translatorcomment>
         <translation>Icon</translation>
     </message>
     <message>
@@ -228,7 +218,7 @@ Diese Webseite enhält %n Feeds.</numerusform>
         <translation>Herunterladen abgeschlossen</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Datei &apos;%1&apos; wurde heruntergeladen. Zum Öffnen des übergeordneten Verzeichnisses hier klicken.</translation>
     </message>
@@ -253,17 +243,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>% Minute verbleibend</numerusform>
-            <numerusform>%n Minuten verbleibend</numerusform>
-        </translation>
+        <translation><numerusform>% Minute verbleibend</numerusform><numerusform>%n Minuten verbleibend</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n Sekunde verbleibend</numerusform>
-            <numerusform>%n Sekunden verbleibend</numerusform>
-        </translation>
+        <translation><numerusform>%n Sekunde verbleibend</numerusform><numerusform>%n Sekunden verbleibend</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -283,10 +267,7 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Lade %n Datei herunter...</numerusform>
-            <numerusform>Lade %n Dateien herunter...</numerusform>
-        </translation>
+        <translation><numerusform>Lade %n Datei herunter...</numerusform><numerusform>Lade %n Dateien herunter...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -320,11 +301,11 @@ Click here to open parent directory.</source>
     <message>
         <source>Title</source>
         <extracomment>Title text in the feed list header.</extracomment>
-        <translation>Titel</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation>Titel der Feeds/Kategorien.</translation>
+        <translation>Namen der Feeds/Kategorien.</translation>
     </message>
     <message>
         <source>Root</source>
@@ -337,10 +318,7 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>%n Feed wird automatisch aktualisiert.</numerusform>
-            <numerusform>%n Feeds werden automatisch aktualisiert.</numerusform>
-        </translation>
+        <translation><numerusform>%n Feed wird automatisch aktualisiert.</numerusform><numerusform>%n Feeds werden automatisch aktualisiert.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -654,10 +632,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> Tag</numerusform>
-            <numerusform> Tage</numerusform>
-        </translation>
+        <translation><numerusform> Tag</numerusform><numerusform> Tage</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1118,7 +1093,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translatorcomment>Question mark is missing in template / English.</translatorcomment>
         <translation>Der URL folgt nicht dem üblichen Schema. Beginnt er mit dem Präfix &quot;http://&quot; oder &quot;https://&quot;?</translation>
     </message>
     <message>
@@ -1394,10 +1368,6 @@ or this functionality is not implemented yet.</source>
         <translation>Anzeigen / verstecken</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>Voll&amp;bild</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>&amp;Liste der Feeds</translation>
     </message>
@@ -1641,6 +1611,10 @@ or this functionality is not implemented yet.</source>
         <source>Close all tabs except current</source>
         <translation>Alle Reiter schließen außer dem aktuellen</translation>
     </message>
+    <message>
+        <source>View &amp;fullscreen</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1811,7 +1785,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Http</source>
-        <translatorcomment>Shouldn&apos;t this be capitalized in the template as well?</translatorcomment>
         <translation>HTTP</translation>
     </message>
     <message>
@@ -1962,7 +1935,6 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translatorcomment>Additional line break before &quot;Advantages&quot; (&quot;Vorteile&quot;) would make sense in template as well, IMO.</translatorcomment>
         <translation>Die Verwendung einer Datenbank im Arbeitsspeicher bietet einige Vor-, aber auch einige Nachteile. Nutzer sollten sich vor der Verwendung über beide bewusst sein.&lt;br&gt;
 Vorteile:
 &lt;ul&gt;
@@ -2074,7 +2046,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation>Verstecke das Hauptfenster wenn, es minimiert ist</translation>
+        <translation>Verstecke das Hauptfenster, wenn es minimiert ist</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
@@ -2126,7 +2098,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translatorcomment>This is wrong in the template. It&apos;s not during boot when RSS Guard gets started but at the beginning of (desktop) sessions.</translatorcomment>
         <translation>%1 bei Sitzungsbeginn starten</translation>
     </message>
     <message>
@@ -2649,7 +2620,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation>List mit Updates wurde nicht
+        <translation>Liste mit Aktualisierungen wurde nicht
 erfolgreich heruntergeladen.</translation>
     </message>
     <message>
@@ -2742,16 +2713,12 @@ You must install it manually.</source>
         <translation>Paket wurde erfolgreich heruntergeladen. Es muss manuell installiert werden.</translation>
     </message>
     <message>
-        <source>Go to update file</source>
-        <translation>Datei mit Aktualisierung ansehen</translation>
+        <source>Install</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>Kann Verzeichnis nicht öffnen</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
-        <translation>Kann Verzeichnis mit Ausgabe nicht öffnen. Bitte manuell öffnen.</translation>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2836,7 +2803,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation>Titel der Nachricht.</translation>
+        <translation>Titel der Nachrichten.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
@@ -3075,22 +3042,17 @@ You must install it manually.</source>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translatorcomment>Is it okay to state two authors here?</translatorcomment>
         <translation>Patrick Scheller, Peter Mattern</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translatorcomment>Is it okay to state two mail addresses here?</translatorcomment>
         <translation>patlecat@gmail.com, pmattern@arcor.de</translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n anderer Feed.</numerusform>
-            <numerusform>+ %n andere Feeds.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n anderer Feed.</numerusform><numerusform>+ %n andere Feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3139,10 +3101,7 @@ Zum Zugriff wird mindesens das API der Stufe %1 benötigt.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n gelöschte Nachricht.</numerusform>
-            <numerusform>%n gelöschte Nachrichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n gelöschte Nachricht.</numerusform><numerusform>%n gelöschte Nachrichten.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3166,10 +3125,7 @@ Zum Zugriff wird mindesens das API der Stufe %1 benötigt.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ungelesene Nachricht.</numerusform>
-            <numerusform>%n ungelesene Nachrichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ungelesene Nachricht.</numerusform><numerusform>%n ungelesene Nachrichten.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3223,10 +3179,7 @@ This category does not contain any nested items.</source>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform>
-        </translation>
+        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3259,14 +3212,6 @@ Status der automatischer Aktualisierung: %5</translation>
     <message>
         <source>Fetch metadata</source>
         <translation>Metadaten abrufen</translation>
-    </message>
-    <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Importieren prinzipiell erfolgreich, einige Feeds / Kategorien jedoch fehlgeschlagen.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Importieren wurde vollständig erfolgreich abgeschlossen.</translation>
     </message>
     <message>
         <source>Export feeds</source>
@@ -3303,6 +3248,14 @@ ID des Kontos: %1</translation>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Kann Kategorie nicht hinzufügen, da noch eine andere diese betreffende Aktion läuft.</translation>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3399,17 +3352,11 @@ Ungelesene Nachrichten: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n Stunde</numerusform>
-            <numerusform>%n Stunden</numerusform>
-        </translation>
+        <translation><numerusform>%n Stunde</numerusform><numerusform>%n Stunden</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n Minute</numerusform>
-            <numerusform>%n Minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n Minute</numerusform><numerusform>%n Minuten</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3485,10 +3432,7 @@ Ungelesene Nachrichten: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform>
-        </translation>
+        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
@@ -3586,12 +3530,12 @@ Letzte Anmeldung: %5</translation>
         <translation>Geschrieben von</translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>unbekannter Autor</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Zeitungsansicht</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

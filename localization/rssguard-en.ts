@@ -1389,10 +1389,6 @@ or this functionality is not implemented yet.</translation>
         <translation>Show/hide</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>&amp;Fullscreen</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>&amp;Feed list</translation>
     </message>
@@ -1635,6 +1631,10 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>Close all tabs except current</source>
         <translation>Close all tabs except current</translation>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2736,16 +2736,12 @@ You must install it manually.</source>
 You must install it manually.</translation>
     </message>
     <message>
-        <source>Go to update file</source>
-        <translation>Go to update file</translation>
+        <source>Install</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>Cannot open directory</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
-        <translation>Cannot open output directory. Open it manually.</translation>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3254,14 +3250,6 @@ Auto-update status: %5</translation>
         <translation>Fetch metadata</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Import successfull, but some feeds/categories were not imported due to error.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Import was completely successfull.</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Export feeds</translation>
     </message>
@@ -3296,6 +3284,14 @@ Account ID: %1</translation>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Cannot add category because another critical operation is ongoing.</translation>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3579,12 +3575,12 @@ Last login on: %5</translation>
         <translation>Written by </translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>uknown author</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Newspaper view</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

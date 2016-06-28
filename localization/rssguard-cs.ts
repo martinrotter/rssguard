@@ -1367,10 +1367,6 @@ or this functionality is not implemented yet.</source>
         <translation>Zobrazit/skrýt</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>Přes celou &amp;obrazovku</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>Seznam &amp;kanálů</translation>
     </message>
@@ -1612,6 +1608,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2710,16 +2710,12 @@ You must install it manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Go to update file</source>
+        <source>Install</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>Adresář nelze otevřít</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
-        <translation>Výstupní adresář nelze otevří, otevřete jej ručně.</translation>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3222,14 +3218,6 @@ Automatický update: %5</translation>
         <translation>Načíst metadata</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Import byl úspěšný, ale některé kanály či kategorie nebyly importovány kvůli chybě.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Import byl zcela úspěšný.</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Exportovat kanály</translation>
     </message>
@@ -3264,6 +3252,14 @@ ID účtu: %1</translation>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Nelze přidat kategorii, protože probíhá jiná kritická operace.</translation>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3538,12 +3534,12 @@ Poslední přihlášení: %5</translation>
         <translation>Napsal </translation>
     </message>
     <message>
-        <source>uknown author</source>
-        <translation>neznámý autor</translation>
-    </message>
-    <message>
         <source>Newspaper view</source>
         <translation>Novinový náhled</translation>
+    </message>
+    <message>
+        <source>unknown author</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

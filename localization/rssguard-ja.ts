@@ -1366,10 +1366,6 @@ or this functionality is not implemented yet.</source>
         <translation>表示/非表示</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen</source>
-        <translation>フルスクリーン(&amp;F)</translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>フィード一覧(&amp;F)</translation>
     </message>
@@ -1611,6 +1607,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close all tabs except current</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View &amp;fullscreen</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2694,16 +2694,12 @@ You must install it manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Go to update file</source>
+        <source>Install</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot open directory</source>
-        <translation>ディレクトリを開けません。</translation>
-    </message>
-    <message>
-        <source>Cannot open output directory. Open it manually.</source>
-        <translation>アウトプットディレクトリを開けません。手動で開いてください。</translation>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3186,14 +3182,6 @@ Auto-update status: %5</source>
         <translation>メタデータを取得</translation>
     </message>
     <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>フィードをエクスポート</translation>
     </message>
@@ -3225,6 +3213,14 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successful.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3491,11 +3487,11 @@ Last login on: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>uknown author</source>
+        <source>Newspaper view</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Newspaper view</source>
+        <source>unknown author</source>
         <translation type="unfinished"/>
     </message>
 </context>
