@@ -516,7 +516,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
     if (message.m_customId.isEmpty()) {
       // We need to recognize existing messages according URL & AUTHOR.
-      // NOTE: This concerns messages from standard account.
+      // NOTE: This particularly concerns messages from standard account.
       query_select_with_url.bindValue(QSL(":feed"), feed_custom_id);
       query_select_with_url.bindValue(QSL(":title"), message.m_title);
       query_select_with_url.bindValue(QSL(":url"), message.m_url);

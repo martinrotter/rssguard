@@ -205,6 +205,8 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
 
+  IOFactory::writeTextFile("aaa", result_raw);
+
   if (network_reply.first != QNetworkReply::NoError) {
     qWarning("TT-RSS: getHeadlines failed with error %d.", network_reply.first);
   }
@@ -550,7 +552,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
     // date/time number.
     message.m_created = TextFactory::parseDateTime(mapped["updated"].toDouble() * 1000);
     message.m_createdFromFeed = true;
-    message.m_customId = mapped["id"].toString();
+    message.m_customId = QString::number(mapped["id"].toInt());
     message.m_feedId = mapped["feed_id"].toString();
     message.m_title = mapped["title"].toString();
     message.m_url = mapped["link"].toString();

@@ -1,7 +1,11 @@
 3.3.2
 —————
 
+Changed:
+▪ Feed updating/message downloading logic is now a bit simpler. Message downloading is still parallelized but final storing into DB is not. It is now queued. This slows down the proces only a bit, but gives more reliability.
+
 Fixed:
+▪ Fixed problems with obtaining custom ID for downloaded messages in TT-RSS plugin. This caused probably a lot of problems with mismatch of downloaded/real unread messages counts.
 ▪ Fixed some typos.
 ▪ Fixed some UI stuff in menus etc.
 ▪ Fixed problem with skin loading. (bug #25)
