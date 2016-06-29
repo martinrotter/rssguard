@@ -47,9 +47,7 @@ int main(int argc, char *argv[]) {
   QObject::tr("LANG_AUTHOR");
 
   // Ensure that ini format is used as application settings storage on Mac OS.
-#ifdef Q_OS_MAC
   QSettings::setDefaultFormat(QSettings::IniFormat);
-#endif
 
   // Setup debug output system.
   qInstallMessageHandler(Debugging::debugHandler);
@@ -65,6 +63,7 @@ int main(int argc, char *argv[]) {
   }
 
   // Register needed metatypes.
+  qRegisterMetaType<QList<Message> >("QList<Message>");
   qRegisterMetaType<QList<RootItem*> >("QList<RootItem*>");
 
   // Add an extra path for non-system icon themes and set current icon theme
@@ -114,7 +113,7 @@ int main(int argc, char *argv[]) {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
 
   // Setup single-instance behavior.
-  QObject::connect(&application, SIGNAL(messageReceived(QString)), &application, SLOT(processExecutionMessage(QString)));
+  QObject::connect(&application, &Application::messageReceived, &application, &Application::processExecutionMessage);
 
   if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
     qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"

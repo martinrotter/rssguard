@@ -88,17 +88,6 @@ void Feed::setCountOfUnreadMessages(int count_unread_messages) {
   m_unreadCount = count_unread_messages;
 }
 
-int Feed::update() {
-  QList<Message> msgs = obtainNewMessages();
-
-  if (msgs.size() > 0) {
-    return updateMessages(msgs);
-  }
-  else {
-    return 0;
-  }
-}
-
 void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {
   // If new initial auto-update interval is set, then
   // we should reset time that remains to the next auto-update.
@@ -134,9 +123,13 @@ void Feed::updateCounts(bool including_total_count) {
 }
 
 void Feed::run() {
-  qDebug().nospace() << "Updating feed " << customId() << " in thread: \'" << QThread::currentThreadId() << "\'.";
+  qDebug().nospace() << "Downloading new messages for feed "
+                     << customId() << " in thread: \'"
+                     << QThread::currentThreadId() << "\'.";
 
-  emit updated(update());
+  QList<Message> msgs = obtainNewMessages();
+
+  emit messagesObtained(msgs);
 }
 
 int Feed::updateMessages(const QList<Message> &messages) {
@@ -144,13 +137,6 @@ int Feed::updateMessages(const QList<Message> &messages) {
   int account_id = getParentServiceRoot()->accountId();
   bool anything_updated = false;
   bool ok;
-
-  // MySQL seems to be more error prone with transactions when called
-  // from more threads in the same time. SQLite does not have that limitation.
-  if (qApp->database()->activeDatabaseDriver() == DatabaseFactory::MYSQL) {
-    qApp->messageUpdateLock()->lock();
-  }
-
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   int updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(),
                                                          &anything_updated, &ok);
@@ -174,10 +160,6 @@ int Feed::updateMessages(const QList<Message> &messages) {
     }
 
     getParentServiceRoot()->itemChanged(items_to_update);
-  }
-
-  if (qApp->database()->activeDatabaseDriver() == DatabaseFactory::MYSQL) {
-    qApp->messageUpdateLock()->unlock();
   }
 
   return updated_messages;

@@ -61,13 +61,6 @@ class Feed : public RootItem, public QRunnable {
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);
 
-    // Performs synchronous update and returns number of newly updated messages.
-    // NOTE: This is called from worker thread, not from main UI thread.
-    // NOTE: This should COMPLETELY download ALL messages from online source
-    // into locale "Messages" table, INCLUDING contents (or excerpts) of those
-    // messages.
-    int update();
-
     QVariant data(int column, int role) const;
 
     int autoUpdateInitialInterval() const;
@@ -95,19 +88,18 @@ class Feed : public RootItem, public QRunnable {
       m_url = url;
     }
 
+    int updateMessages(const QList<Message> &messages);
     void updateCounts(bool including_total_count);
 
     // Runs update in thread (thread pooled).
     void run();
 
-  protected:
+  private:
+    // Performs synchronous obtaining of new messages for this feed.
     virtual QList<Message> obtainNewMessages() = 0;
 
-  private:
-    int updateMessages(const QList<Message> &messages);
-
   signals:
-    void updated(int updated_messages);
+    void messagesObtained(QList<Message> messages);
 
   private:
     QString m_url;

@@ -101,7 +101,9 @@ void IconFactory::loadCurrentIconTheme() {
 
   // Display list of installed themes.
   qDebug("Installed icon themes are: %s.",
-         qPrintable(QStringList(installed_themes).replaceInStrings(QRegExp(QSL("^|$")), QSL("\'")).join(QSL(", "))));
+         qPrintable(QStringList(installed_themes)
+                    .replaceInStrings(QRegExp(QSL("^|$")), QSL("\'"))
+                    .replaceInStrings(QRegExp(QSL("^\\'$")), QSL("\'\'")).join(QSL(", "))));
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
@@ -111,8 +113,8 @@ void IconFactory::loadCurrentIconTheme() {
   else {
     // Desired icon theme is not currently available.
     // Install "default" icon theme instead.
-    qDebug("Icon theme '%s' cannot be loaded because it is not installed. No icon theme (or default icon theme) is loaded now.",
-           qPrintable(theme_name_from_settings));
+    qWarning("Icon theme '%s' cannot be loaded because it is not installed. No icon theme (or default icon theme) is loaded now.",
+             qPrintable(theme_name_from_settings));
     QIcon::setThemeName(APP_NO_THEME);
   }
 }

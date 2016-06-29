@@ -27,12 +27,14 @@
 
 
 FeedDownloader::FeedDownloader(QObject *parent)
-  : QObject(parent), m_results(FeedDownloadResults()), m_feedsUpdated(0), m_feedsToUpdate(0),
+  : QObject(parent), m_results(FeedDownloadResults()), m_msgUpdateMutex(new QMutex()), m_feedsUpdated(0), m_feedsToUpdate(0),
     m_feedsUpdating(0), m_feedsTotalCount(0), m_stopUpdate(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 }
 
 FeedDownloader::~FeedDownloader() {
+  m_msgUpdateMutex->unlock();
+  delete m_msgUpdateMutex;
   qDebug("Destroying FeedDownloader instance.");
 }
 
@@ -79,7 +81,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
       break;
     }
 
-    connect(feeds.at(i), SIGNAL(updated(int)), this, SLOT(oneFeedUpdateFinished(int)),
+    connect(feeds.at(i), &Feed::messagesObtained, this, &FeedDownloader::oneFeedUpdateFinished,
             (Qt::ConnectionType) (Qt::UniqueConnection | Qt::AutoConnection));
     QThreadPool::globalInstance()->start(feeds.at(i));
 
@@ -92,13 +94,23 @@ void FeedDownloader::stopRunningUpdate() {
   m_stopUpdate = true;
 }
 
-void FeedDownloader::oneFeedUpdateFinished(int updated_messages) {
-  const Feed *feed = qobject_cast<Feed*>(sender());
+void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
+  Feed *feed = qobject_cast<Feed*>(sender());
 
-  disconnect(feed, SIGNAL(updated(int)), this, SLOT(oneFeedUpdateFinished(int)));
+  disconnect(feed, &Feed::messagesObtained, this, &FeedDownloader::oneFeedUpdateFinished);
 
   m_feedsUpdated++;
   m_feedsUpdating--;
+
+  // Now make sure, that messages are actually stored to SQL in a locked state.
+
+  qDebug().nospace() << "Saving messages of feed "
+                     << feed->customId() << " in thread: \'"
+                     << QThread::currentThreadId() << "\'.";
+
+  m_msgUpdateMutex->lock();
+  int updated_messages = messages.isEmpty() ? 0 : feed->updateMessages(messages);
+  m_msgUpdateMutex->unlock();
 
   if (updated_messages > 0) {
     m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));

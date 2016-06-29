@@ -59,7 +59,7 @@ void SkinFactory::loadCurrentSkin() {
     }
   }
 
-  qFatal("Failed to load selected or default skin(s). Quitting!");
+  qFatal("Failed to load selected or default skin. Quitting!");
 }
 
 void SkinFactory::loadSkinFromData(const Skin &skin) {

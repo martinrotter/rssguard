@@ -22,6 +22,8 @@
 
 #include <QPair>
 
+#include "core/message.h"
+
 
 class Feed;
 
@@ -70,7 +72,7 @@ class FeedDownloader : public QObject {
     void stopRunningUpdate();
 
   private slots:
-    void oneFeedUpdateFinished(int updated_messages);
+    void oneFeedUpdateFinished(const QList<Message> &messages);
 
   signals:
     // Emitted if feed updates started.
@@ -90,6 +92,7 @@ class FeedDownloader : public QObject {
     void finalizeUpdate();
 
     FeedDownloadResults m_results;
+    QMutex *m_msgUpdateMutex;
 
     int m_feedsUpdated;
     int m_feedsToUpdate;

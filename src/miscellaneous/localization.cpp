@@ -44,11 +44,13 @@ void Localization::loadActiveLanguage() {
   qDebug("Starting to load active localization. Desired localization is '%s'.", qPrintable(desired_localization));
 
   if (app_translator->load(QLocale(desired_localization), "rssguard", QSL("-"), APP_LANG_PATH)) {
+    const QString real_loaded_locale = app_translator->translate("QObject", "LANG_ABBREV");
+
     Application::installTranslator(app_translator);
     qDebug("Application localization '%s' loaded successfully, specifically sublocalization '%s' was loaded.",
            qPrintable(desired_localization),
-           qPrintable(app_translator->translate("QObject", "LANG_ABBREV")));
-    desired_localization = app_translator->translate("QObject", "LANG_ABBREV");
+           qPrintable(real_loaded_locale));
+    desired_localization = real_loaded_locale;
   }
   else {
     qWarning("Application localization '%s' was not loaded. Loading '%s' instead.",
