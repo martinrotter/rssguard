@@ -64,7 +64,7 @@ Downloads
 * [official downloads](https://github.com/martinrotter/rssguard/releases),
 * alternative downloads:
   * [Archlinux AUR package](https://aur.archlinux.org/packages/rssguard/),
-  * [OBS/development releases](https://software.opensuse.org/download.html?project=home%3Askunkos%3Arssguard&package=rssguard-qt5-git).
+  * [OBS/development releases](https://build.opensuse.org/package/show/home:skunkos:rssguard/rssguard-git) (click "Download package" in top/right corner of the website).
 
 [![Alternative RSS Guard downloads.](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
 
