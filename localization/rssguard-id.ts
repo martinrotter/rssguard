@@ -1614,7 +1614,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Tampilkan &amp;layar penuh</translation>
     </message>
 </context>
 <context>
@@ -2717,11 +2717,11 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>Instal</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat meluncurkan pembaharu. Pembaharuan aplikasi secara manual.</translation>
     </message>
 </context>
 <context>
@@ -3252,11 +3252,11 @@ ID akun: %1</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Impor berhasil, tetapi beberapa feed/kategori tidak diimpor disebabkan eror.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation>Impor benar-benar berhasil.</translation>
     </message>
 </context>
 <context>
@@ -3536,7 +3536,7 @@ Login terakhir pada: %5</translation>
     </message>
     <message>
         <source>unknown author</source>
-        <translation type="unfinished"/>
+        <translation>pengarang tak diketahui</translation>
     </message>
 </context>
 </TS>

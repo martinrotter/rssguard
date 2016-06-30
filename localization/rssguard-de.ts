@@ -1417,7 +1417,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation>Anordnung (Layout) innerhalb der Nachrichtenliste umschalten</translation>
+        <translation>&amp;Anordnung (Layout) der Nachrichtenliste umschalten</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
@@ -1613,7 +1613,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vollbild</translation>
     </message>
 </context>
 <context>
@@ -2714,11 +2714,11 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>Installieren</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="unfinished"/>
+        <translation>Kann externes Programm zur Aktualisierung nicht starten. Bitte Aktualisierung manuell durchführen.</translation>
     </message>
 </context>
 <context>
@@ -3251,11 +3251,11 @@ ID des Kontos: %1</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Importieren war prinzipiell erfolgreich, allerdings konnten einige Feeds / Kategorien aufgrund von Fehlern nicht importiert werden.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation>Importieren wurde erfolgreich vollständig abgeschlossen.</translation>
     </message>
 </context>
 <context>
@@ -3535,7 +3535,7 @@ Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>unknown author</source>
-        <translation type="unfinished"/>
+        <translation>unbekannter Autor</translation>
     </message>
 </context>
 </TS>

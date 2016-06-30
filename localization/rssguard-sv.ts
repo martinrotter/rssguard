@@ -1615,7 +1615,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Visa &amp;helskärmsläge</translation>
     </message>
 </context>
 <context>
@@ -2718,11 +2718,11 @@ Du måste installera det manuellt.</translation>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>Installera</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte starta extern uppdaterare. Uppdatera programmet manuellt.</translation>
     </message>
 </context>
 <context>
@@ -3258,11 +3258,11 @@ Konto-ID: %1</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Importen slutfördes, men vissa flöden/kategorier importerades inte på grund fel.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation>Importen slutfördes korrekt.</translation>
     </message>
 </context>
 <context>
@@ -3542,7 +3542,7 @@ Senast inloggad: %5</translation>
     </message>
     <message>
         <source>unknown author</source>
-        <translation type="unfinished"/>
+        <translation>okänd författare</translation>
     </message>
 </context>
 </TS>

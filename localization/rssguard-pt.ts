@@ -1615,7 +1615,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Ver em &amp;tela cheia</translation>
     </message>
 </context>
 <context>
@@ -2718,11 +2718,11 @@ Você precisa instalá-lo manualmente.</translation>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>Instalar</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível executar o atualizador externo. Atualize o aplicativo manualmente.</translation>
     </message>
 </context>
 <context>
@@ -3260,11 +3260,11 @@ ID da Conta: %1</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Importado com sucesso, mas alguns feeds/categorias não foram importados devido a um erro.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation>A importação foi totalmente bem sucedida.</translation>
     </message>
 </context>
 <context>
@@ -3544,7 +3544,7 @@ Servidor: %2
     </message>
     <message>
         <source>unknown author</source>
-        <translation type="unfinished"/>
+        <translation>autor desconhecido</translation>
     </message>
 </context>
 </TS>
