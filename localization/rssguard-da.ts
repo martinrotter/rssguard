@@ -3027,7 +3027,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
@@ -3064,6 +3064,14 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/RDF/ATOM)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -3096,6 +3096,14 @@ Pelo menos o API nível %1 é necessário.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>O app News é um agregador de feeds RSS/Atom. Ele é parte da suíte ownCloud. Este plugin implementa o API %1.</translation>
     </message>
+    <message>
+        <source>Standard online feeds (RSS/RDF/ATOM)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>

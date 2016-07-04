@@ -3094,6 +3094,14 @@ Een API niveau van tenminste %1 is vereist.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>De Nieuws app is een RSS/Atom feed aggegrator. Het is deel van de ownCloud suite. Deze plugin implementeert %1 API.</translation>
     </message>
+    <message>
+        <source>Standard online feeds (RSS/RDF/ATOM)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>

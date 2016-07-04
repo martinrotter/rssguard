@@ -2277,7 +2277,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation>Beim Beginn des Herunterladens den Download Manger starten</translation>
+        <translation>Beim Beginn des Herunterladens den Download Manager starten</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -3078,15 +3078,24 @@ durch Klicken auf diese Benachrichtigung.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation>Dieser Dienst erlaubt den Zugriff auf Tiny Tiny RSS (TT-RSS).
+        <translation>Dieser Dienst erlaubt den Zugriff auf Tiny Tiny RSS (TT-RSS) über dessen API.
 
-Tiny Tiny RSS ist eine quelloffener, webbasierter Feedreader für RSS und Atom. Er hält Inhalt über einen Webserver vor und hat das Ziel, das Lesen von Feeds von den verschiedensten Orten zu ermöglichen und gleichzeitig eine Oberfläche ähnlich Desktop-Anwendungen vorzuhalten.
+Tiny Tiny RSS ist eine quelloffener, als Webanwendung realisierter Feedreader für RSS und Atom. 
+Die Ansicht erfolgt standardmäßig per Browser, wobei eine Nutzeroberfläche ähnlich eigenständigen RSS Clients angestrebt wird, ist aber alternativ auch über ein API möglich.
 
-Zum Zugriff wird mindesens das API der Stufe %1 benötigt.</translation>
+Das API muss mindestens in Stufe %1 verfügbar sein.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation>ownCloud News ist ein in diesen Dienst integrierter RSS / Atom Aggregator. Dieser Dienst erlaubt den Zugriff hierauf über das API in Version %1.</translation>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/RDF/ATOM)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
