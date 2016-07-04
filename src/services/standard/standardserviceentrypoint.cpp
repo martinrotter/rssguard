@@ -35,11 +35,11 @@ bool StandardServiceEntryPoint::isSingleInstanceService() const {
 }
 
 QString StandardServiceEntryPoint::name() const {
-  return QSL("Standard online feeds (RSS/RDF/ATOM)");
+  return QObject::tr("Standard online feeds (RSS/RDF/ATOM)");
 }
 
 QString StandardServiceEntryPoint::description() const {
-  return QSL("This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.");
+  return QObject::tr("This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.");
 }
 
 QString StandardServiceEntryPoint::version() const {
