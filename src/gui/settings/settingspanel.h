@@ -30,7 +30,10 @@ class SettingsPanel : public QWidget {
   public:
     explicit SettingsPanel(Settings *settings, QWidget *parent = 0);
 
+    // Call this base implementation in the end of your subclass implementation.
     virtual void loadSettings();
+
+    // Call this base implementation in the end of your subclass implementation.
     virtual void saveSettings();
 
   protected:
@@ -41,11 +44,15 @@ class SettingsPanel : public QWidget {
     bool isDirty() const;
     void setIsDirty(bool is_dirty);
 
+    // Settings to use to save/load.
+    Settings *settings() const;
+
   signals:
     void settingsChanged();
 
   private:
     bool m_isDirty;
+    Settings *m_settings;
 };
 
 #endif // SETTINGSPANEL_H

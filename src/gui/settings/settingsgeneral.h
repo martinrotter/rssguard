@@ -13,6 +13,10 @@ class SettingsGeneral : public SettingsPanel {
     explicit SettingsGeneral(Settings *settings, QWidget *parent = 0);
     virtual ~SettingsGeneral();
 
+  protected:
+    void loadSettings();
+    void saveSettings();
+
   private:
     Ui::SettingsGeneral *m_ui;
 };

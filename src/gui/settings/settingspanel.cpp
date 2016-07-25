@@ -21,7 +21,7 @@
 #include "miscellaneous/settings.h"
 
 
-SettingsPanel::SettingsPanel(Settings *settings, QWidget *parent) : QWidget(parent) {
+SettingsPanel::SettingsPanel(Settings *settings, QWidget *parent) : QWidget(parent), m_settings(settings) {
 }
 
 void SettingsPanel::loadSettings() {
@@ -43,4 +43,8 @@ bool SettingsPanel::isDirty() const {
 
 void SettingsPanel::setIsDirty(bool is_dirty) {
   m_isDirty = is_dirty;
+}
+
+Settings *SettingsPanel::settings() const {
+  return m_settings;
 }
