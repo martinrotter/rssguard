@@ -266,7 +266,9 @@ HEADERS += src/core/feeddownloader.h \
            src/network-web/webpage.h \
            src/gui/locationlineedit.h \
            src/network-web/googlesuggest.h \
-           src/gui/discoverfeedsbutton.h
+           src/gui/discoverfeedsbutton.h \
+    src/gui/settings/settingspanel.h \
+    src/gui/settings/settingsgeneral.h
 
 SOURCES += src/core/feeddownloader.cpp \
            src/core/feedsmodel.cpp \
@@ -377,7 +379,9 @@ SOURCES += src/core/feeddownloader.cpp \
            src/network-web/webpage.cpp \
            src/gui/locationlineedit.cpp \
            src/network-web/googlesuggest.cpp \
-           src/gui/discoverfeedsbutton.cpp
+           src/gui/discoverfeedsbutton.cpp \
+    src/gui/settings/settingspanel.cpp \
+    src/gui/settings/settingsgeneral.cpp
 
 FORMS += \
          src/gui/toolbareditor.ui \
@@ -395,7 +399,8 @@ FORMS += \
          src/services/owncloud/gui/formeditowncloudaccount.ui \
          src/services/standard/gui/formstandardcategorydetails.ui \
          src/services/standard/gui/formstandardimportexport.ui \
-         src/services/tt-rss/gui/formeditaccount.ui
+         src/services/tt-rss/gui/formeditaccount.ui \
+    src/gui/settings/settingsgeneral.ui
 
 TRANSLATIONS += localization/qtbase-cs.ts \
                 localization/qtbase-da.ts \
