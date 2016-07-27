@@ -15,26 +15,36 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-
 #include "gui/settings/settingspanel.h"
 
 #include "miscellaneous/settings.h"
 
 
-SettingsPanel::SettingsPanel(Settings *settings, QWidget *parent) : QWidget(parent), m_settings(settings) {
+SettingsPanel::SettingsPanel(Settings *settings, QWidget *parent)
+  : QWidget(parent), m_isDirty(false), m_isLoading(false), m_settings(settings) {
 }
 
-void SettingsPanel::loadSettings() {
+void SettingsPanel::onBeginLoadSettings() {
+  m_isLoading = true;
+}
+
+void SettingsPanel::onEndLoadSettings() {
+  m_isLoading = false;
   setIsDirty(false);
 }
 
-void SettingsPanel::saveSettings() {
+void SettingsPanel::onBeginSaveSettings() {
+}
+
+void SettingsPanel::onEndSaveSettings() {
   setIsDirty(false);
 }
 
 void SettingsPanel::dirtifySettings() {
-  setIsDirty(true);
-  emit settingsChanged();
+  if (!m_isLoading) {
+    setIsDirty(true);
+    emit settingsChanged();
+  }
 }
 
 bool SettingsPanel::isDirty() const {

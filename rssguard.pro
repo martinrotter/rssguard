@@ -268,7 +268,14 @@ HEADERS += src/core/feeddownloader.h \
            src/network-web/googlesuggest.h \
            src/gui/discoverfeedsbutton.h \
     src/gui/settings/settingspanel.h \
-    src/gui/settings/settingsgeneral.h
+    src/gui/settings/settingsgeneral.h \
+    src/gui/settings/settingsdatabase.h \
+    src/gui/settings/settingsshortcuts.h \
+    src/gui/settings/settingsgui.h \
+    src/gui/settings/settingslocalization.h \
+    src/gui/settings/settingsbrowsermail.h \
+    src/gui/settings/settingsfeedsmessages.h \
+    src/gui/settings/settingsdownloads.h
 
 SOURCES += src/core/feeddownloader.cpp \
            src/core/feedsmodel.cpp \
@@ -381,7 +388,14 @@ SOURCES += src/core/feeddownloader.cpp \
            src/network-web/googlesuggest.cpp \
            src/gui/discoverfeedsbutton.cpp \
     src/gui/settings/settingspanel.cpp \
-    src/gui/settings/settingsgeneral.cpp
+    src/gui/settings/settingsgeneral.cpp \
+    src/gui/settings/settingsdatabase.cpp \
+    src/gui/settings/settingsshortcuts.cpp \
+    src/gui/settings/settingsgui.cpp \
+    src/gui/settings/settingslocalization.cpp \
+    src/gui/settings/settingsbrowsermail.cpp \
+    src/gui/settings/settingsfeedsmessages.cpp \
+    src/gui/settings/settingsdownloads.cpp
 
 FORMS += \
          src/gui/toolbareditor.ui \
@@ -400,7 +414,14 @@ FORMS += \
          src/services/standard/gui/formstandardcategorydetails.ui \
          src/services/standard/gui/formstandardimportexport.ui \
          src/services/tt-rss/gui/formeditaccount.ui \
-    src/gui/settings/settingsgeneral.ui
+    src/gui/settings/settingsgeneral.ui \
+    src/gui/settings/settingsdatabase.ui \
+    src/gui/settings/settingsshortcuts.ui \
+    src/gui/settings/settingsgui.ui \
+    src/gui/settings/settingslocalization.ui \
+    src/gui/settings/settingsbrowsermail.ui \
+    src/gui/settings/settingsfeedsmessages.ui \
+    src/gui/settings/settingsdownloads.ui
 
 TRANSLATIONS += localization/qtbase-cs.ts \
                 localization/qtbase-da.ts \

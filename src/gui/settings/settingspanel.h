@@ -15,7 +15,6 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-
 #ifndef SETTINGSPANEL_H
 #define SETTINGSPANEL_H
 
@@ -30,15 +29,14 @@ class SettingsPanel : public QWidget {
   public:
     explicit SettingsPanel(Settings *settings, QWidget *parent = 0);
 
-    // Call this base implementation in the end of your subclass implementation.
-    virtual void loadSettings();
-
-    // Call this base implementation in the end of your subclass implementation.
-    virtual void saveSettings();
+    virtual void loadSettings() = 0;
+    virtual void saveSettings() = 0;
 
   protected:
-    // Sets this settings panel as dirty (some settings are changed) and emits the signal.
-    void dirtifySettings();
+    void onBeginLoadSettings();
+    void onEndLoadSettings();
+    void onBeginSaveSettings();
+    void onEndSaveSettings();
 
     // These methods should not be probably called by subclasses.
     bool isDirty() const;
@@ -47,11 +45,17 @@ class SettingsPanel : public QWidget {
     // Settings to use to save/load.
     Settings *settings() const;
 
+  protected slots:
+    // Sets this settings panel as dirty (some settings are changed) and emits the signal.
+    // NOTE: This will be probably called by subclasses when user changes some stuff.
+    void dirtifySettings();
+
   signals:
     void settingsChanged();
 
   private:
     bool m_isDirty;
+    bool m_isLoading;
     Settings *m_settings;
 };
 

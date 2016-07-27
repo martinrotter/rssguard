@@ -1,3 +1,20 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #include "gui/settings/settingsgeneral.h"
 
 #include "miscellaneous/systemfactory.h"
@@ -15,6 +32,8 @@ SettingsGeneral::~SettingsGeneral() {
 }
 
 void SettingsGeneral::loadSettings() {
+  onBeginLoadSettings();
+
   m_ui->m_checkForUpdatesOnStart->setChecked(settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool());
 
   // Load auto-start status.
@@ -42,10 +61,12 @@ void SettingsGeneral::loadSettings() {
   m_ui->m_checkRemoveTrolltechJunk->setVisible(false);
 #endif
 
-  SettingsPanel::loadSettings();
+  onEndLoadSettings();
 }
 
 void SettingsGeneral::saveSettings() {
+  onBeginSaveSettings();
+
   // If auto-start feature is available and user wants to turn it on, then turn it on.
   if (m_ui->m_checkAutostart->isChecked()) {
     qApp->system()->setAutoStartStatus(SystemFactory::Enabled);
@@ -57,5 +78,5 @@ void SettingsGeneral::saveSettings() {
   settings()->setValue(GROUP(General), General::UpdateOnStartup, m_ui->m_checkForUpdatesOnStart->isChecked());
   settings()->setValue(GROUP(General), General::RemoveTrolltechJunk, m_ui->m_checkRemoveTrolltechJunk->isChecked());
 
-  SettingsPanel::saveSettings();
+  onEndSaveSettings();
 }
