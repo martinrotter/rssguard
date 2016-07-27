@@ -10,7 +10,7 @@ class SettingsShortcuts : public SettingsPanel {
     Q_OBJECT
 
   public:
-    explicit SettingsShortcuts(QWidget *parent = 0);
+    explicit SettingsShortcuts(Settings *settings, QWidget *parent = 0);
     virtual ~SettingsShortcuts();
 
     void loadSettings();

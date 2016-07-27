@@ -10,13 +10,21 @@ class SettingsDatabase : public SettingsPanel {
     Q_OBJECT
 
   public:
-    explicit SettingsDatabase(QWidget *parent = 0);
+    explicit SettingsDatabase(Settings *settings, QWidget *parent = 0);
     virtual ~SettingsDatabase();
 
     void loadSettings();
     void saveSettings();
 
   private:
+    void mysqlTestConnection();
+    void onMysqlHostnameChanged(const QString &new_hostname);
+    void onMysqlUsernameChanged(const QString &new_username);
+    void onMysqlPasswordChanged(const QString &new_password);
+    void onMysqlDatabaseChanged(const QString &new_database);
+    void selectSqlBackend(int index);
+    void switchMysqlPasswordVisiblity(bool visible);
+
     Ui::SettingsDatabase *m_ui;
 };
 

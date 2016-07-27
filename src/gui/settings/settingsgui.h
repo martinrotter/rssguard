@@ -1,22 +1,26 @@
 #ifndef SETTINGSGUI_H
 #define SETTINGSGUI_H
 
-#include <QWidget>
+#include "gui/settings/settingspanel.h"
 
-namespace Ui {
-  class SettingsGui;
-}
+#include "ui_settingsgui.h"
 
-class SettingsGui : public QWidget
-{
+
+class SettingsGui : public SettingsPanel {
     Q_OBJECT
 
   public:
-    explicit SettingsGui(QWidget *parent = 0);
-    ~SettingsGui();
+    explicit SettingsGui(Settings *settings, QWidget *parent = 0);
+    virtual ~SettingsGui();
+
+    void loadSettings();
+    void saveSettings();
+
+  private slots:
+    void onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
   private:
-    Ui::SettingsGui *ui;
+    Ui::SettingsGui *m_ui;
 };
 
 #endif // SETTINGSGUI_H

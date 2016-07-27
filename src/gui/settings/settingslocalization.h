@@ -1,22 +1,23 @@
 #ifndef SETTINGSLOCALIZATION_H
 #define SETTINGSLOCALIZATION_H
 
-#include <QWidget>
+#include "gui/settings/settingspanel.h"
 
-namespace Ui {
-  class SettingsLocalization;
-}
+#include "ui_settingslocalization.h"
 
-class SettingsLocalization : public QWidget
-{
+
+class SettingsLocalization : public SettingsPanel {
     Q_OBJECT
 
   public:
-    explicit SettingsLocalization(QWidget *parent = 0);
-    ~SettingsLocalization();
+    explicit SettingsLocalization(Settings *settings, QWidget *parent = 0);
+    virtual ~SettingsLocalization();
+
+    void loadSettings();
+    void saveSettings();
 
   private:
-    Ui::SettingsLocalization *ui;
+    Ui::SettingsLocalization *m_ui;
 };
 
 #endif // SETTINGSLOCALIZATION_H

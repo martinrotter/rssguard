@@ -96,27 +96,18 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Establish needed connections.
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(saveSettings()));
+
   connect(m_ui->m_cmbProxyType, SIGNAL(currentIndexChanged(int)), this, SLOT(onProxyTypeChanged(int)));
   connect(m_ui->m_checkShowPassword, SIGNAL(stateChanged(int)), this, SLOT(displayProxyPassword(int)));
-  connect(m_ui->m_treeSkins, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)), this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
   connect(m_ui->m_cmbExternalBrowserPreset, SIGNAL(currentIndexChanged(int)), this, SLOT(changeDefaultBrowserArguments(int)));
   connect(m_ui->m_btnExternalBrowserExecutable, SIGNAL(clicked()), this, SLOT(selectBrowserExecutable()));
   connect(m_ui->m_cmbExternalEmailPreset, SIGNAL(currentIndexChanged(int)), this, SLOT(changeDefaultEmailArguments(int)));
   connect(m_ui->m_btnExternalEmailExecutable, SIGNAL(clicked()), this, SLOT(selectEmailExecutable()));
-  connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlUsernameChanged(QString)));
-  connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlHostnameChanged(QString)));
-  connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlPasswordChanged(QString)));
-  connect(m_ui->m_txtMysqlDatabase->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlDatabaseChanged(QString)));
-  connect(m_ui->m_btnMysqlTestSetup, SIGNAL(clicked()), this, SLOT(mysqlTestConnection()));
-  connect(m_ui->m_spinMysqlPort, SIGNAL(editingFinished()), this, SLOT(onMysqlDataStorageEdited()));
-  connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onMysqlDataStorageEdited()));
-  connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onMysqlDataStorageEdited()));
-  connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onMysqlDataStorageEdited()));
-  connect(m_ui->m_cmbSelectToolBar, SIGNAL(currentIndexChanged(int)), m_ui->m_stackedToolbars, SLOT(setCurrentIndex(int)));
-  connect(m_ui->m_cmbDatabaseDriver, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSqlBackend(int)));
+
   connect(m_ui->m_btnDownloadsTargetDirectory, SIGNAL(clicked()), this, SLOT(selectDownloadsDirectory()));
-  connect(m_ui->m_checkMysqlShowPassword, SIGNAL(toggled(bool)), this, SLOT(switchMysqlPasswordVisiblity(bool)));
+
   connect(m_ui->m_btnChangeMessagesFont, SIGNAL(clicked()), this, SLOT(changeMessagesFont()));
+
 
   // Load all settings.
   loadGeneral();

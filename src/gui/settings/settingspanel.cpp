@@ -21,7 +21,7 @@
 
 
 SettingsPanel::SettingsPanel(Settings *settings, QWidget *parent)
-  : QWidget(parent), m_isDirty(false), m_isLoading(false), m_settings(settings) {
+  : QWidget(parent), m_requiresRestart(false), m_isDirty(false), m_isLoading(false), m_settings(settings) {
 }
 
 void SettingsPanel::onBeginLoadSettings() {
@@ -30,6 +30,8 @@ void SettingsPanel::onBeginLoadSettings() {
 
 void SettingsPanel::onEndLoadSettings() {
   m_isLoading = false;
+
+  setRequiresRestart(false);
   setIsDirty(false);
 }
 
@@ -38,6 +40,7 @@ void SettingsPanel::onBeginSaveSettings() {
 
 void SettingsPanel::onEndSaveSettings() {
   setIsDirty(false);
+  setRequiresRestart(false);
 }
 
 void SettingsPanel::dirtifySettings() {
@@ -45,6 +48,18 @@ void SettingsPanel::dirtifySettings() {
     setIsDirty(true);
     emit settingsChanged();
   }
+}
+
+bool SettingsPanel::requiresRestart() const {
+  return m_requiresRestart;
+}
+
+void SettingsPanel::setRequiresRestart(bool requiresRestart) {
+  m_requiresRestart = requiresRestart;
+}
+
+void SettingsPanel::requireRestart() {
+  setRequiresRestart(true);
 }
 
 bool SettingsPanel::isDirty() const {

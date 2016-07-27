@@ -32,15 +32,14 @@ class SettingsPanel : public QWidget {
     virtual void loadSettings() = 0;
     virtual void saveSettings() = 0;
 
+    bool requiresRestart() const;
+    bool isDirty() const;
+
   protected:
     void onBeginLoadSettings();
     void onEndLoadSettings();
     void onBeginSaveSettings();
     void onEndSaveSettings();
-
-    // These methods should not be probably called by subclasses.
-    bool isDirty() const;
-    void setIsDirty(bool is_dirty);
 
     // Settings to use to save/load.
     Settings *settings() const;
@@ -50,10 +49,16 @@ class SettingsPanel : public QWidget {
     // NOTE: This will be probably called by subclasses when user changes some stuff.
     void dirtifySettings();
 
+    // These methods should not be probably called by subclasses.
+    void setIsDirty(bool is_dirty);
+    void setRequiresRestart(bool requiresRestart);
+    void requireRestart();
+
   signals:
     void settingsChanged();
 
   private:
+    bool m_requiresRestart;
     bool m_isDirty;
     bool m_isLoading;
     Settings *m_settings;
