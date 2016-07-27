@@ -87,22 +87,30 @@ void WebViewer::loadMessages(const QList<Message> &messages) {
 
   foreach (const Message &message, messages) {
     QString enclosures;
+    QString enclosure_images;
 
     foreach (const Enclosure &enclosure, message.m_enclosures) {
       enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url, tr("Attachment"), enclosure.m_mimeType);
+
+      if (enclosure.m_mimeType.startsWith(QSL("image/"))) {
+        // Add thumbnail image.
+        enclosure_images += skin.m_enclosureImageMarkup.arg(enclosure.m_url, enclosure.m_mimeType)  ;
+      }
     }
 
-    messages_layout.append(single_message_layout.arg(message.m_title,
-                                                     tr("Written by ") + (message.m_author.isEmpty() ?
-                                                                            tr("unknown author") :
-                                                                            message.m_author),
-                                                     message.m_url,
-                                                     message.m_contents,
-                                                     message.m_created.toString(Qt::DefaultLocaleShortDate),
-                                                     enclosures,
-                                                     message.m_isRead ? "mark-unread" : "mark-read",
-                                                     message.m_isImportant ? "mark-unstarred" : "mark-starred",
-                                                     QString::number(message.m_id)));
+    messages_layout.append(single_message_layout
+                           .arg(message.m_title,
+                                tr("Written by ") + (message.m_author.isEmpty() ?
+                                                       tr("unknown author") :
+                                                       message.m_author),
+                                message.m_url,
+                                message.m_contents,
+                                message.m_created.toString(Qt::DefaultLocaleShortDate),
+                                enclosures,
+                                message.m_isRead ? "mark-unread" : "mark-read",
+                                message.m_isImportant ? "mark-unstarred" : "mark-starred",
+                                QString::number(message.m_id))
+                           .arg(enclosure_images));
   }
 
   m_messageContents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),

@@ -33,6 +33,7 @@ struct Skin {
     QString m_version;
     QString m_rawData;
     QString m_layoutMarkupWrapper;
+    QString m_enclosureImageMarkup;
     QString m_layoutMarkup;
     QString m_enclosureMarkup;
 };

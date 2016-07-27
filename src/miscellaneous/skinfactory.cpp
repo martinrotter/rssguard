@@ -136,6 +136,11 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
   skin.m_layoutMarkupWrapper = QByteArray::fromBase64(skin.m_layoutMarkupWrapper.toLocal8Bit());
   skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + base_folder);
 
+  // Obtain enclosure image layout
+  skin.m_enclosureImageMarkup = skin_node.namedItem(QSL("enclosure_image")).toElement().text();
+  skin.m_enclosureImageMarkup = QByteArray::fromBase64(skin.m_enclosureImageMarkup.toLocal8Bit());
+  skin.m_enclosureImageMarkup = skin.m_enclosureImageMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + base_folder);
+
   // Obtain layout markup.
   skin.m_layoutMarkup = skin_node.namedItem(QSL("markup")).toElement().text();
   skin.m_layoutMarkup = QByteArray::fromBase64(skin.m_layoutMarkup.toLocal8Bit());
