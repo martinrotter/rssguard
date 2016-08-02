@@ -18,30 +18,10 @@
 #include "gui/dialogs/formsettings.h"
 
 #include "definitions/definitions.h"
-#include "core/feeddownloader.h"
-#include "core/feedsmodel.h"
-#include "core/messagesmodel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/databasefactory.h"
-#include "miscellaneous/localization.h"
-#include "miscellaneous/systemfactory.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/skinfactory.h"
-#include "miscellaneous/textfactory.h"
-#include "network-web/webfactory.h"
-#include "network-web/silentnetworkaccessmanager.h"
-#include "gui/systemtrayicon.h"
-#include "gui/feedmessageviewer.h"
-#include "gui/feedsview.h"
-#include "gui/feedstoolbar.h"
 #include "gui/messagebox.h"
-#include "gui/basetoolbar.h"
-#include "gui/messagestoolbar.h"
-#include "gui/messagesview.h"
-#include "gui/statusbar.h"
-#include "gui/dialogs/formmain.h"
-#include "dynamic-shortcuts/dynamicshortcuts.h"
 
 #include "gui/settings/settingsbrowsermail.h"
 #include "gui/settings/settingsdatabase.h"
@@ -51,14 +31,6 @@
 #include "gui/settings/settingsgui.h"
 #include "gui/settings/settingslocalization.h"
 #include "gui/settings/settingsshortcuts.h"
-
-#include <QProcess>
-#include <QNetworkProxy>
-#include <QColorDialog>
-#include <QFileDialog>
-#include <QKeyEvent>
-#include <QFontDialog>
-#include <QDir>
 
 
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_panels(QList<SettingsPanel*>()), m_ui(new Ui::FormSettings), m_settings(qApp->settings()) {
@@ -72,7 +44,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_panels(QList<Se
   m_btnApply->setEnabled(false);
 
   // Establish needed connections.
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(saveSettings()));
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormSettings::saveSettings);
+  connect(m_btnApply, &QPushButton::clicked, this, &FormSettings::applySettings);
 
   addSettingsPanel(new SettingsGeneral(m_settings, this));
   addSettingsPanel(new SettingsDatabase(m_settings, this));
@@ -105,10 +78,38 @@ void FormSettings::promptForRestart() {
 }
 
 void FormSettings::saveSettings() {
+  applySettings();
+  accept();
+}
+
+void FormSettings::applySettings() {
   // Save all settings.
   m_settings->checkSettings();
-  promptForRestart();
-  accept();
+
+  QStringList panels_for_restart;
+
+  foreach (SettingsPanel *panel, m_panels) {
+    if (panel->requiresRestart()) {
+      panels_for_restart.append(panel->title().toLower());
+    }
+
+    panel->saveSettings();
+  }
+
+  if (!panels_for_restart.isEmpty()) {
+    const QStringList changed_settings_description = panels_for_restart.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
+
+    MessageBox::show(this,
+                     QMessageBox::Question,
+                     tr("Critical settings were changed"),
+                     tr("Some critical settings were changed and will be applied after the application gets restarted. "
+                        "\n\nYou have to restart manually."),
+                     QString(),
+                     tr("Changed categories of settings:\n%1.").arg(changed_settings_description .join(QSL(",\n"))),
+                     QMessageBox::Ok, QMessageBox::Ok);
+  }
+
+  m_btnApply->setEnabled(false);
 }
 
 void FormSettings::addSettingsPanel(SettingsPanel *panel) {

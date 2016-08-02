@@ -40,6 +40,7 @@ class FormSettings : public QDialog {
 
     // Saves settings into global configuration.
     void saveSettings();
+    void applySettings();
     
   private:
     void addSettingsPanel(SettingsPanel *panel);
