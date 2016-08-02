@@ -70,22 +70,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>m_buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>FormSettings</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>334</x>
-     <y>400</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>m_listSettings</sender>
    <signal>currentRowChanged(int)</signal>
    <receiver>m_stackedSettings</receiver>

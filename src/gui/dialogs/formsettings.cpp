@@ -45,6 +45,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_panels(QList<Se
 
   // Establish needed connections.
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormSettings::saveSettings);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormSettings::cancelSettings);
   connect(m_btnApply, &QPushButton::clicked, this, &FormSettings::applySettings);
 
   addSettingsPanel(new SettingsGeneral(m_settings, this));
@@ -104,7 +105,7 @@ void FormSettings::applySettings() {
     MessageBox::show(this,
                      QMessageBox::Question,
                      tr("Critical settings were changed"),
-                     tr("Some critical settings were changed and will be applied after the application gets restarted. "
+                     tr("Some critical settings were changed and will be applied after the application gets restarted."
                         "\n\nYou have to restart manually."),
                      QString(),
                      tr("Changed categories of settings:\n%1.").arg(changed_settings_description .join(QSL(",\n"))),
@@ -112,6 +113,35 @@ void FormSettings::applySettings() {
   }
 
   m_btnApply->setEnabled(false);
+}
+
+void FormSettings::cancelSettings() {
+  QStringList changed_panels;
+
+  foreach (SettingsPanel *panel, m_panels) {
+    if (panel->isDirty()) {
+      changed_panels.append(panel->title().toLower());
+    }
+  }
+
+  if (changed_panels.isEmpty()) {
+    reject();
+  }
+  else {
+    const QStringList changed_settings_description = changed_panels.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
+
+    if (MessageBox::show(this,
+                     QMessageBox::Critical,
+                     tr("Some settings are changed and will be lost"),
+                     tr("Some settings were changed and by cancelling this dialog, you would lose these changes."
+                        "\n\nYou have to restart manually."),
+                     tr("Do you really want to close this dialog without saving settings?"),
+                     tr("Changed categories of settings:\n%1.").arg(changed_settings_description .join(QSL(",\n"))),
+                     QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) ==
+        QMessageBox::Yes) {
+      reject();
+    }
+  }
 }
 
 void FormSettings::addSettingsPanel(SettingsPanel *panel) {
