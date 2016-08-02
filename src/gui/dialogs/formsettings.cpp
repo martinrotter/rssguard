@@ -93,7 +93,9 @@ void FormSettings::applySettings() {
       panels_for_restart.append(panel->title().toLower());
     }
 
-    panel->saveSettings();
+    if (panel->isDirty()) {
+      panel->saveSettings();
+    }
   }
 
   if (!panels_for_restart.isEmpty()) {
