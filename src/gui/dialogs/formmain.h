@@ -18,9 +18,9 @@
 #ifndef FORMMAIN_H
 #define FORMMAIN_H
 
-#include "ui_formmain.h"
-
 #include <QMainWindow>
+
+#include "ui_formmain.h"
 
 
 class StatusBar;

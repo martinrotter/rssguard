@@ -18,16 +18,12 @@
 #ifndef FORMABOUT_H
 #define FORMABOUT_H
 
+#include <QDialog>
+
 #include "ui_formabout.h"
 
 #include "definitions/definitions.h"
 
-#include <QDialog>
-
-
-namespace Ui {
-  class FormAbout;
-}
 
 class FormAbout : public QDialog {
     Q_OBJECT

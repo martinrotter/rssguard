@@ -23,10 +23,6 @@
 #include "ui_formaddaccount.h"
 
 
-namespace Ui {
-  class FormAddAccount;
-}
-
 class ServiceEntryPoint;
 class FeedsModel;
 

@@ -25,10 +25,6 @@
 #include "miscellaneous/databasecleaner.h"
 
 
-namespace Ui {
-  class FormDatabaseCleanup;
-}
-
 class FormDatabaseCleanup : public QDialog {
     Q_OBJECT
 

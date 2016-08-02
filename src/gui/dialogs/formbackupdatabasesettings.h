@@ -23,10 +23,6 @@
 #include "ui_formbackupdatabasesettings.h"
 
 
-namespace Ui {
-  class FormBackupDatabaseSettings;
-}
-
 class FormBackupDatabaseSettings : public QDialog {
     Q_OBJECT
 

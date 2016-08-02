@@ -23,10 +23,6 @@
 #include "ui_formrestoredatabasesettings.h"
 
 
-namespace Ui {
-  class FormRestoreDatabaseSettings;
-}
-
 class FormRestoreDatabaseSettings : public QDialog {
     Q_OBJECT
 

@@ -18,26 +18,12 @@
 #ifndef FORMSETTINGS_H
 #define FORMSETTINGS_H
 
-#include "ui_formsettings.h"
-
 #include <QDialog>
 
+#include "ui_formsettings.h"
 
-namespace Ui {
-  class FormSettings;
-}
 
 class Settings;
-
-// Structure holding some initial values.
-struct TemporarySettings {
-
-  public:
-    TemporarySettings() : m_dataStorageDataChanged(false) {
-    }
-
-    bool m_dataStorageDataChanged;
-};
 
 class FormSettings : public QDialog {
     Q_OBJECT
@@ -47,69 +33,16 @@ class FormSettings : public QDialog {
     explicit FormSettings(QWidget *parent = 0);
     virtual ~FormSettings();
 
-  protected:
-    // Does check of controls before dialog can be submitted.
-    bool doSaveCheck();
-    bool eventFilter(QObject *obj, QEvent *e);
-
   private slots:
     // Displays "restart" dialog if some critical settings changed.
     void promptForRestart();
 
     // Saves settings into global configuration.
     void saveSettings();
-
-    void loadInterface();
-    void saveInterface();
-    void onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-
-    void loadDownloads();
-    void saveDownloads();
-    void selectDownloadsDirectory();
-
-    void loadGeneral();
-    void saveGeneral();
-
-    void loadDataStorage();
-    void saveDataStorage();
-    void mysqlTestConnection();
-    void onMysqlHostnameChanged(const QString &new_hostname);
-    void onMysqlUsernameChanged(const QString &new_username);
-    void onMysqlPasswordChanged(const QString &new_password);
-    void onMysqlDatabaseChanged(const QString &new_database);
-    void onMysqlDataStorageEdited();
-    void selectSqlBackend(int index);
-    void switchMysqlPasswordVisiblity(bool visible);
-
-    void loadLanguage();
-    void saveLanguage();
-
-    void loadShortcuts();
-    void saveShortcuts();
-
-    void loadBrowser();
-    void saveBrowser();
-    void changeDefaultBrowserArguments(int index);
-    void selectBrowserExecutable();
-
-    void changeDefaultEmailArguments(int index);
-    void selectEmailExecutable();
-
-    void loadProxy();
-    void saveProxy();
-    void displayProxyPassword(int state);
-    void onProxyTypeChanged(int index);
-
-    void loadFeedsMessages();
-    void initializeMessageDateFormats();
-    void changeMessagesFont();
-    void saveFeedsMessages();
     
   private:
     QScopedPointer<Ui::FormSettings> m_ui;
     Settings *m_settings;
-    TemporarySettings m_initialSettings;
-    QStringList m_changedDataTexts;
 };
 
 #endif // FORMSETTINGS_H

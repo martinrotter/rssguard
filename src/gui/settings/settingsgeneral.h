@@ -30,7 +30,10 @@ class SettingsGeneral : public SettingsPanel {
     explicit SettingsGeneral(Settings *settings, QWidget *parent = 0);
     virtual ~SettingsGeneral();
 
-  protected:
+    inline QString title() const {
+      return tr("General");
+    }
+
     void loadSettings();
     void saveSettings();
 

@@ -1,3 +1,20 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #include "gui/settings/settingsgui.h"
 
 #include "gui/systemtrayicon.h"
@@ -10,6 +27,8 @@
 #include "gui/feedstoolbar.h"
 #include "gui/messagestoolbar.h"
 #include "gui/statusbar.h"
+
+#include <QDropEvent>
 
 
 SettingsGui::SettingsGui(Settings *settings, QWidget *parent) : SettingsPanel(settings, parent),  m_ui(new Ui::SettingsGui) {
@@ -41,6 +60,21 @@ SettingsGui::SettingsGui(Settings *settings, QWidget *parent) : SettingsPanel(se
 SettingsGui::~SettingsGui() {
   delete m_ui;
 }
+
+bool SettingsGui::eventFilter(QObject *obj, QEvent *e) {
+  Q_UNUSED(obj)
+
+  if (e->type() == QEvent::Drop) {
+    QDropEvent *drop_event = static_cast<QDropEvent*>(e);
+
+    if (drop_event->keyboardModifiers() != Qt::NoModifier) {
+      drop_event->setDropAction(Qt::MoveAction);
+    }
+  }
+
+  return false;
+}
+
 
 void SettingsGui::loadSettings() {
   onBeginLoadSettings();
