@@ -3,6 +3,8 @@
 
 Added:
 ▪ Message viewer now displays thumbnails of image message attachments. (issue #39)
+▪ Application settings is now divided into separate components on source code level.
+▪ Application settings now offers "Apply" button which saves settings without closing the dialog. (issue #16)
 
 3.3.2
 —————
