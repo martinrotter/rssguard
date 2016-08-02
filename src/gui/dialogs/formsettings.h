@@ -24,6 +24,7 @@
 
 
 class Settings;
+class SettingsPanel;
 
 class FormSettings : public QDialog {
     Q_OBJECT
@@ -41,7 +42,11 @@ class FormSettings : public QDialog {
     void saveSettings();
     
   private:
+    void addSettingsPanel(SettingsPanel *panel);
+
+    QList<SettingsPanel*> m_panels;
     QScopedPointer<Ui::FormSettings> m_ui;
+    QPushButton *m_btnApply;
     Settings *m_settings;
 };
 

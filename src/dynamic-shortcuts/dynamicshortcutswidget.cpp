@@ -106,6 +106,8 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
     m_layout->addWidget(catcher, row_id, 2);
 
     row_id++;
+
+    connect(catcher, &ShortcutCatcher::shortcutChanged, this, &DynamicShortcutsWidget::setupChanged);
   }
 
   // Make sure that "spacer" is added.

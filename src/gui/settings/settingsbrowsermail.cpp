@@ -29,6 +29,18 @@ SettingsBrowserMail::SettingsBrowserMail(Settings *settings, QWidget *parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsBrowserMail) {
   m_ui->setupUi(this);
 
+  connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtProxyHost, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtProxyPassword, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtProxyUsername, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_spinProxyPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_grpCustomExternalBrowser, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_grpCustomExternalEmail, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtExternalBrowserArguments, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtExternalBrowserExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtExternalEmailArguments, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtExternalEmailExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+
   connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsBrowserMail::onProxyTypeChanged);
   connect(m_ui->m_checkShowPassword, &QCheckBox::stateChanged, this, &SettingsBrowserMail::displayProxyPassword);
   connect(m_ui->m_cmbExternalBrowserPreset, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsBrowserMail::changeDefaultBrowserArguments);
@@ -113,6 +125,8 @@ void SettingsBrowserMail::selectEmailExecutable() {
 }
 
 void SettingsBrowserMail::loadSettings() {
+  onBeginLoadSettings();
+
   // Load settings of web browser GUI.
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
   m_ui->m_txtExternalBrowserExecutable->setText(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString());
@@ -139,10 +153,12 @@ void SettingsBrowserMail::loadSettings() {
   m_ui->m_txtProxyPassword->setText(TextFactory::decrypt(settings()->value(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
   m_ui->m_spinProxyPort->setValue(settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt());
 
-
+  onEndLoadSettings();
 }
 
 void SettingsBrowserMail::saveSettings() {
+  onBeginSaveSettings();
+
   // Save settings of GUI of web browser.
   settings()->setValue(GROUP(Browser), Browser::CustomExternalBrowserEnabled, m_ui->m_grpCustomExternalBrowser->isChecked());
   settings()->setValue(GROUP(Browser), Browser::CustomExternalBrowserExecutable, m_ui->m_txtExternalBrowserExecutable->text());
@@ -161,4 +177,6 @@ void SettingsBrowserMail::saveSettings() {
 
   // Reload settings for all network access managers.
   SilentNetworkAccessManager::instance()->loadSettings();
+
+  onEndSaveSettings();
 }

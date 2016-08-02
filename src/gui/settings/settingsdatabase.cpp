@@ -27,6 +27,14 @@ SettingsDatabase::SettingsDatabase(Settings *settings, QWidget *parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsDatabase) {
   m_ui->setupUi(this);
 
+  connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_txtMysqlDatabase->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_txtMysqlHostname->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_txtMysqlPassword->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_txtMysqlUsername->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_spinMysqlPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &SettingsDatabase::dirtifySettings);
+
   connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsDatabase::selectSqlBackend);
   connect(m_ui->m_checkMysqlShowPassword, &QCheckBox::toggled, this, &SettingsDatabase::switchMysqlPasswordVisiblity);
   connect(m_ui->m_txtMysqlUsername->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlUsernameChanged);

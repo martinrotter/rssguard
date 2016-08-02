@@ -229,7 +229,7 @@
         </widget>
        </item>
        <item row="2" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_hideTabBarIfOneTabVisible">
+        <widget class="QCheckBox" name="m_checkHideTabBarIfOneTabVisible">
          <property name="text">
           <string>Hide tab bar if just one tab is visible</string>
          </property>

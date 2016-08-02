@@ -154,6 +154,8 @@ void ToolBarEditor::insertSpacer() {
 
   m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
   m_ui->m_listActivatedActions->setCurrentRow(current_row + 1);
+
+  emit setupChanged();
 }
 
 void ToolBarEditor::insertSeparator() {
@@ -166,6 +168,8 @@ void ToolBarEditor::insertSeparator() {
 
   m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
   m_ui->m_listActivatedActions->setCurrentRow(current_row + 1);
+
+  emit setupChanged();
 }
 
 void ToolBarEditor::moveActionDown() {
@@ -178,6 +182,8 @@ void ToolBarEditor::moveActionDown() {
     m_ui->m_listActivatedActions->takeItem(row++);
     m_ui->m_listActivatedActions->insertItem(row, selected_item);
     m_ui->m_listActivatedActions->setCurrentRow(row);
+
+    emit setupChanged();
   }
 }
 
@@ -191,6 +197,8 @@ void ToolBarEditor::moveActionUp() {
     m_ui->m_listActivatedActions->takeItem(row--);
     m_ui->m_listActivatedActions->insertItem(row, selected_item);
     m_ui->m_listActivatedActions->setCurrentRow(row);
+
+    emit setupChanged();
   }
 }
 
@@ -204,6 +212,8 @@ void ToolBarEditor::addSelectedAction() {
           m_ui->m_listActivatedActions->currentRow() + 1,
           m_ui->m_listAvailableActions->takeItem(m_ui->m_listAvailableActions->row(selected_item)));
     m_ui->m_listActivatedActions->setCurrentRow(m_ui->m_listActivatedActions->currentRow() + 1);
+
+    emit setupChanged();
   }
 }
 
@@ -226,6 +236,8 @@ void ToolBarEditor::deleteSelectedAction() {
       m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
       m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->currentRow() + 1);
     }
+
+    emit setupChanged();
   }
 }
 
@@ -243,4 +255,5 @@ void ToolBarEditor::deleteAllActions() {
 
   m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
   updateActionsAvailability();
+  emit setupChanged();
 }

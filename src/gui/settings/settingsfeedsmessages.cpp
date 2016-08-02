@@ -23,6 +23,7 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagesview.h"
+#include "gui/timespinbox.h"
 
 #include <QFontDialog>
 
@@ -31,13 +32,25 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings *settings, QWidget *parent
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsFeedsMessages){
   m_ui->setupUi(this);
   initializeMessageDateFormats();
+
+  connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkRemoveReadMessagesOnExit, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkUpdateAllFeedsOnStartup, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinAutoUpdateInterval, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinFeedUpdateTimeout, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbMessagesDateTimeFormat, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbCountsFeedList, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsFeedsMessages::dirtifySettings);
+
   connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, &SettingsFeedsMessages::changeMessagesFont);
 }
 
 SettingsFeedsMessages::~SettingsFeedsMessages() {
   delete m_ui;
 }
-
 
 void SettingsFeedsMessages::initializeMessageDateFormats() {
   QStringList best_formats; best_formats << QSL("d/M/yyyy hh:mm:ss") << QSL("ddd, d. M. yy hh:mm:ss") <<
@@ -59,10 +72,13 @@ void SettingsFeedsMessages::changeMessagesFont() {
 
   if (ok) {
     m_ui->m_lblMessagesFont->setFont(new_font);
+    dirtifySettings();
   }
 }
 
 void SettingsFeedsMessages::loadSettings() {
+  onBeginLoadSettings();
+
   m_ui->m_checkKeppMessagesInTheMiddle->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool());
   m_ui->m_checkRemoveReadMessagesOnExit->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool());
   m_ui->m_checkAutoUpdate->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool());
@@ -86,9 +102,13 @@ void SettingsFeedsMessages::loadSettings() {
   fon.fromString(settings()->value(GROUP(Messages),
                                    SETTING(Messages::PreviewerFontStandard)).toString());
   m_ui->m_lblMessagesFont->setFont(fon);
+
+  onEndLoadSettings();
 }
 
 void SettingsFeedsMessages::saveSettings() {
+  onBeginSaveSettings();
+
   settings()->setValue(GROUP(Messages), Messages::KeepCursorInCenter, m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
   settings()->setValue(GROUP(Messages), Messages::ClearReadOnExit, m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateEnabled, m_ui->m_checkAutoUpdate->isChecked());
@@ -108,4 +128,6 @@ void SettingsFeedsMessages::saveSettings() {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->updateDateFormat();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->reloadWholeLayout();
+
+  onEndSaveSettings();
 }

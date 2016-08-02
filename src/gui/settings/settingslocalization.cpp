@@ -38,6 +38,8 @@ SettingsLocalization::SettingsLocalization(Settings *settings, QWidget *parent)
   m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+
+  connect(m_ui->m_treeLanguages, &QTreeWidget::currentItemChanged, this, &SettingsLocalization::dirtifySettings);
 }
 
 SettingsLocalization::~SettingsLocalization() {

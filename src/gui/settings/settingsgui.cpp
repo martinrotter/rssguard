@@ -53,6 +53,22 @@ SettingsGui::SettingsGui(Settings *settings, QWidget *parent) : SettingsPanel(se
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
 
+  connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_grpTray, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkEnableNotifications, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkHidden, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkHideWhenMinimized, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkHideTabBarIfOneTabVisible, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkCloseTabsDoubleClick, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkCloseTabsMiddleClick, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkNewTabDoubleClick, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_grbCloseTabs, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_cmbToolbarButtonStyle, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_editorFeedsToolbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_editorMessagesToolbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_editorStatusbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
+
   connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::onSkinSelected);
   connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars, &QStackedWidget::setCurrentIndex);
 }
@@ -149,7 +165,7 @@ void SettingsGui::loadSettings() {
   m_ui->m_checkCloseTabsMiddleClick->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool());
   m_ui->m_checkCloseTabsDoubleClick->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool());
   m_ui->m_checkNewTabDoubleClick->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::TabNewDoubleClick)).toBool());
-  m_ui->m_hideTabBarIfOneTabVisible->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool());
+  m_ui->m_checkHideTabBarIfOneTabVisible->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool());
 
   // Load toolbar button style.
   m_ui->m_cmbToolbarButtonStyle->addItem(tr("Icon only"), Qt::ToolButtonIconOnly);
@@ -217,7 +233,7 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::TabCloseMiddleClick,  m_ui->m_checkCloseTabsMiddleClick->isChecked());
   settings()->setValue(GROUP(GUI), GUI::TabCloseDoubleClick, m_ui->m_checkCloseTabsDoubleClick->isChecked());
   settings()->setValue(GROUP(GUI), GUI::TabNewDoubleClick, m_ui->m_checkNewTabDoubleClick->isChecked());
-  settings()->setValue(GROUP(GUI), GUI::HideTabBarIfOnlyOneTab, m_ui->m_hideTabBarIfOneTabVisible->isChecked());
+  settings()->setValue(GROUP(GUI), GUI::HideTabBarIfOnlyOneTab, m_ui->m_checkHideTabBarIfOneTabVisible->isChecked());
 
   m_ui->m_editorFeedsToolbar->saveToolBar();
   m_ui->m_editorMessagesToolbar->saveToolBar();

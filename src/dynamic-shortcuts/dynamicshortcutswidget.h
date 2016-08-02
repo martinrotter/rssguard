@@ -50,6 +50,9 @@ class DynamicShortcutsWidget : public QWidget {
     // assigned to actions before calling this method.
     void populate(QList<QAction*> actions);
 
+  signals:
+    void setupChanged();
+
   private:
     static bool lessThan(QAction *lhs, QAction *rhs);
 

@@ -66,6 +66,9 @@ class ToolBarEditor : public QWidget {
     void deleteSelectedAction();
     void deleteAllActions();
 
+  signals:
+    void setupChanged();
+
   private:
     QScopedPointer<Ui::ToolBarEditor> m_ui;
     BaseBar *m_toolBar;
