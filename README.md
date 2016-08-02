@@ -47,8 +47,6 @@ I say "thank you" for all your support, donators.
 Feeds & Videos
 -----
 * [video channel at YouTube](http://www.youtube.com/playlist?list=PL-75mFFA3wujyMyea6W1qJEV_ulh6433j),
-* [RSS channel at Google Groups](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50),
-* [RSS channel at BitBucket](https://bitbucket.org/skunkos/rssguard/rss),
 * [screenshots](https://drive.google.com/folderview?id=0B8XNkQ-jUoBYdVRSNm1kQ3BUMzQ&usp=sharing).
 
 - - -
