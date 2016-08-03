@@ -597,8 +597,8 @@ win32 {
               sql feeds texts ico app_icon app_plain_icon translations
 }
 
-# Install all files on Linux and Mac OSX.
-unix: {
+# Install all files on Linux.
+unix:!mac {
   target.path = $$PREFIX/bin
 
   # Install SQL initializers.
@@ -625,21 +625,55 @@ unix: {
   misc_texts.files = $$TEXTS
   misc_texts.path = $$quote($$PREFIX/share/$$TARGET/information/)
 
-  translations.files = $$OUT_PWD/l10n
-  translations.path = $$quote($$PREFIX/share/$$TARGET/)
-
-  INSTALLS += target misc_sql misc_icons misc_feeds \
-              misc_icon misc_plain_icon skins misc_texts \
-              translations
-}
-
-# Install files on Linux only.
-unix:!mac {
   desktop_file.files = resources/desktop/$${TARGET}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
   desktop_file_autostart.files = resources/desktop/$${TARGET}.desktop.autostart
   desktop_file_autostart.path = $$quote($$PREFIX/share/$${TARGET}/autostart/)
 
-  INSTALLS += desktop_file desktop_file_autostart
+  translations.files = $$OUT_PWD/l10n
+  translations.path = $$quote($$PREFIX/share/$$TARGET/)
+
+  INSTALLS += target misc_sql misc_icons misc_feeds \
+              misc_icon misc_plain_icon skins misc_texts \
+              desktop_file desktop_file_autostart translations
+}
+
+mac {
+  CONFIG += app_bundle
+  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+
+  QMAKE_INFO_PLIST = resources/macosx/Info.plist.in
+  ICON = resources/macosx/$${TARGET}.icns
+  IDENTIFIER = org.$${TARGET}.RSSGuard
+
+  # Install SQL initializers.
+  misc_sql.files = resources/misc
+  misc_sql.path = Contents/Resources
+
+  # Misc icons.
+  misc_icons.files = resources/graphics/misc
+  misc_icons.path = Contents/Resources/icons
+
+  # Initial feeds.
+  misc_feeds.files = resources/initial_feeds
+  misc_feeds.path = Contents/Resources
+
+  skins.files = resources/skins
+  skins.path = Contents/Resources
+
+  misc_plain_icon.files = resources/graphics/$${TARGET}_plain.png
+  misc_plain_icon.path = Contents/Resources/icons
+
+  misc_texts.files = $$TEXTS
+  misc_texts.path = Contents/Resources/information
+
+  translations.files = $$OUT_PWD/l10n
+  translations.path =  Contents/Resources
+
+  QMAKE_BUNDLE_DATA += misc_sql misc_icons misc_feeds skins \
+                       misc_plain_icon misc_texts translations
+
+  INSTALLS += misc_sql misc_icons misc_feeds skins \
+              misc_plain_icon misc_texts translations
 }
