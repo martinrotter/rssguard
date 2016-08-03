@@ -6,6 +6,9 @@ Added:
 ▪ Application settings is now divided into separate components on source code level.
 ▪ Application settings now offers "Apply" button which saves settings without closing the dialog. (issue #16)
 
+Fixed:
+▪ RSS Guard correctly saves windows size/position when maximized on exit. (bug #45)
+
 3.3.2
 —————
 

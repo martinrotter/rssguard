@@ -437,8 +437,10 @@ void FormMain::saveSize() {
   }
 
   if (is_maximized) {
-    setWindowState(windowState() & ~Qt::WindowMaximized);
+    setWindowState((windowState() & ~Qt::WindowMaximized) | Qt::WindowActive);
   }
+
+  qApp->processEvents();
 
   settings->setValue(GROUP(GUI), GUI::MainMenuVisible, m_ui->m_actionSwitchMainMenu->isChecked());
   settings->setValue(GROUP(GUI), GUI::MainWindowInitialPosition, pos());
