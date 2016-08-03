@@ -43,6 +43,7 @@ SettingsDatabase::SettingsDatabase(Settings *settings, QWidget *parent)
   connect(m_ui->m_txtMysqlDatabase->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlDatabaseChanged);
   connect(m_ui->m_btnMysqlTestSetup, &QPushButton::clicked, this, &SettingsDatabase::mysqlTestConnection);
 
+  connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_spinMysqlPort, &QSpinBox::editingFinished, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_txtMysqlHostname->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
