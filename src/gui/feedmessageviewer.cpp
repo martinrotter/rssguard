@@ -438,7 +438,7 @@ void FeedMessageViewer::refreshVisualProperties() {
 }
 
 void FeedMessageViewer::onFeedsUpdateFinished() {
-  m_messagesView->reloadSelections(true);
+  m_messagesView->reloadSelections(false);
 }
 
 void FeedMessageViewer::onFeedsUpdateStarted() {
