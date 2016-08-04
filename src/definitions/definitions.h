@@ -208,17 +208,18 @@
 
 #if defined(Q_OS_LINUX)
 
-#define APP_DESKTOP_ENTRY_PATH APP_PREFIX + QString("/share/rssguard/autostart")
 #define APP_DESKTOP_SOURCE_ENTRY_FILE "rssguard.desktop.autostart"
 #define APP_DESKTOP_ENTRY_FILE "rssguard.desktop"
-#define APP_LANG_PATH APP_PREFIX + QString("/share/rssguard/l10n")
-#define APP_SKIN_PATH APP_PREFIX + QString("/share/rssguard/skins")
-#define APP_INFO_PATH APP_PREFIX + QString("/share/rssguard/information")
-#define APP_THEME_PATH APP_PREFIX + QString("/share/rssguard/icons")
-#define APP_MISC_PATH APP_PREFIX + QString("/share/rssguard/misc")
-#define APP_ICON_PATH APP_PREFIX + QString("/share/pixmaps/rssguard.png")
-#define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/rssguard/icons/rssguard_plain.png")
-#define APP_INITIAL_FEEDS_PATH APP_PREFIX + QString("/share/rssguard/initial_feeds")
+
+#define APP_DESKTOP_ENTRY_PATH QApplication::applicationDirPath() + QString("/../share/rssguard/autostart")
+#define APP_LANG_PATH QApplication::applicationDirPath() + QString("/../share/rssguard/l10n")
+#define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/../share/rssguard/skins")
+#define APP_INFO_PATH QApplication::applicationDirPath() + QString("/../share/rssguard/information")
+#define APP_THEME_PATH QApplication::applicationDirPath() + QString("/../share/rssguard/icons")
+#define APP_MISC_PATH QApplication::applicationDirPath() + QString("/../share/rssguard/misc")
+#define APP_ICON_PATH QApplication::applicationDirPath() + QString("/../share/pixmaps/rssguard.png")
+#define APP_ICON_PLAIN_PATH QApplication::applicationDirPath() + QString("/../share/rssguard/icons/rssguard_plain.png")
+#define APP_INITIAL_FEEDS_PATH QApplication::applicationDirPath() + QString("/../share/rssguard/initial_feeds")
 
 #elif defined(Q_OS_OSX)
 

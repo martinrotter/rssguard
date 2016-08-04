@@ -23,23 +23,21 @@
 # Usage:
 #   a) DEBUG build for testing. (out of source build type)
 #     cd ../build-dir
-#     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=debug PREFIX=C:\Program Files\RSS Guard
+#     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=debug PREFIX=/usr
 #     make
 #     make install
 #
 #   b) RELEASE build for production use. (out of source build type)
 #     cd ../build-dir
-#     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=release PREFIX=/usr INSTALL_ROOT=./app
+#     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=release PREFIX=./usr
 #     make
-#     make INSTALL_ROOT=./app install
+#     make install
 #
 # Variables:
-#   PREFIX - specifies parent folder structure under which installed files will really finally lie.
-#   !!! This is usually needed on Linux and its typical value would be "/usr".
+#   PREFIX - specifies base folder to which files are copied during "make install" step.
 #
-#   INSTALL_ROOT - specifies the folder under which compiled application data will be temporarily placed
-#   after the "make install" step. Note that this variable has different meaning from PREFIX which describes
-#   the final path and is usually "/usr".
+#   INSTALL_ROOT - specifies additional output folder for "make install" step. When this variable is defined,
+#                  then it is prepended to PREFIX variable. This is useful for example on Linux, where
 #
 #   LRELEASE_EXECUTABLE - specifies the name/path of "lrelease" executable, defaults to "lrelease".
 #
@@ -92,14 +90,7 @@ isEmpty(LRELEASE_EXECUTABLE) {
   message(rssguard: LRELEASE_EXECUTABLE variable is not set.)
 }
 
-unix:!mac {
-  isEmpty(INSTALL_ROOT) {
-    message(rssguard: Variable INSTALL_ROOT is empty.)
-  }
-}
-
 # Custom definitions.
-DEFINES += APP_PREFIX='"\\\"$$PREFIX\\\""'
 DEFINES += APP_VERSION='"\\\"$$APP_VERSION\\\""'
 DEFINES += APP_NAME='"\\\"$$APP_NAME\\\""'
 DEFINES += APP_LOW_NAME='"\\\"$$APP_LOW_NAME\\\""'
@@ -515,16 +506,6 @@ win32 {
   windows_all.commands = echo "windows_all done..."
 
   QMAKE_EXTRA_TARGETS += windows_all
-}
-
-unix:!mac {
-  seven_zip.target = 7zip
-  seven_zip.commands = 7za a -t7z $$TARGET-$$APP_VERSION-win32.7z $$shell_path($$INSTALL_ROOT/*)
-
-  zip.target = zip
-  zip.commands = 7za a -tzip $$TARGET-$$APP_VERSION-win32.zip $$shell_path($$INSTALL_ROOT/*)
-
-  QMAKE_EXTRA_TARGETS += seven_zip zip
 }
 
 # Install all files on Windows.
