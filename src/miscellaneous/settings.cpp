@@ -82,8 +82,11 @@ DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllItems,m_ac
 DKEY GUI::StatusbarActions              = "status_bar";
 DVALUE(char*) GUI::StatusbarActionsDef  = "m_lblProgressFeedsAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_actionFullscreen,m_actionQuit";
 
-DKEY GUI::MainWindowInitialSize        = "window_size";
-DKEY GUI::MainWindowInitialPosition    = "window_position";
+DKEY GUI::MainWindowInitialSize                 = "window_size";
+DKEY GUI::MainWindowInitialPosition             = "window_position";
+
+DKEY GUI::IsMainWindowMaximizedBeforeFullscreen             = "is_window_maximized_before_fullscreen";
+DVALUE(bool) GUI::IsMainWindowMaximizedBeforeFullscreenDef  = false;
 
 DKEY GUI::MainWindowStartsFullscreen             = "start_in_fullscreen";
 DVALUE(bool) GUI::MainWindowStartsFullscreenDef  = false;

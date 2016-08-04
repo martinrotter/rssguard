@@ -104,6 +104,9 @@ namespace GUI {
   KEY MainWindowInitialSize;
   KEY MainWindowInitialPosition;
 
+  KEY IsMainWindowMaximizedBeforeFullscreen;
+  VALUE(bool) IsMainWindowMaximizedBeforeFullscreenDef;
+
   KEY MainWindowStartsFullscreen;
   VALUE(bool) MainWindowStartsFullscreenDef;
 

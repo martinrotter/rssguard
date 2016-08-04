@@ -168,10 +168,16 @@ void FormMain::prepareMenus() {
 
 void FormMain::switchFullscreenMode() {
   if (!isFullScreen()) {
+    qApp->settings()->setValue(GROUP(GUI), GUI::IsMainWindowMaximizedBeforeFullscreen, isMaximized());
     showFullScreen();
   }
   else {
-    showNormal();
+    if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::IsMainWindowMaximizedBeforeFullscreen)).toBool()) {
+      setWindowState((windowState() & ~Qt::WindowFullScreen) | Qt::WindowMaximized);
+    }
+    else {
+      showNormal();
+    }
   }
 }
 
@@ -404,14 +410,17 @@ void FormMain::loadSize() {
   resize(settings->value(GROUP(GUI), GUI::MainWindowInitialSize, size()).toSize());
   move(settings->value(GROUP(GUI), GUI::MainWindowInitialPosition, screen.center() - rect().center()).toPoint());
 
+  if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsMaximized)).toBool()) {
+    setWindowState(windowState() | Qt::WindowMaximized);
+
+    // We process events so that window is really maximized fast.
+    qApp->processEvents();
+  }
+
   // If user exited the application while in fullsreen mode,
   // then re-enable it now.
   if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsFullscreen)).toBool()) {
     m_ui->m_actionFullscreen->setChecked(true);
-  }
-
-  if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsMaximized)).toBool()) {
-    setWindowState(windowState() | Qt::WindowMaximized);
   }
 
   // Hide the main menu if user wants it.
@@ -429,18 +438,26 @@ void FormMain::loadSize() {
 
 void FormMain::saveSize() {
   Settings *settings = qApp->settings();
-  const bool is_fullscreen = isFullScreen();
-  const bool is_maximized = isMaximized();
+  bool is_fullscreen = isFullScreen();
+  bool is_maximized = false;
 
   if (is_fullscreen) {
     m_ui->m_actionFullscreen->setChecked(false);
+
+    // We (process events to really) un-fullscreen, so that we can determine if window is really maximized.
+    qApp->processEvents();
   }
 
-  if (is_maximized) {
+  if (isMaximized()) {
+    is_maximized = true;
+
+    // Window is maximized, we store that fact to settings and unmaximize.
+    qApp->settings()->setValue(GROUP(GUI), GUI::IsMainWindowMaximizedBeforeFullscreen, isMaximized());
     setWindowState((windowState() & ~Qt::WindowMaximized) | Qt::WindowActive);
-  }
 
-  qApp->processEvents();
+    // We process events to really have window un-maximized.
+    qApp->processEvents();
+  }
 
   settings->setValue(GROUP(GUI), GUI::MainMenuVisible, m_ui->m_actionSwitchMainMenu->isChecked());
   settings->setValue(GROUP(GUI), GUI::MainWindowInitialPosition, pos());
