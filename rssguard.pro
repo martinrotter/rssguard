@@ -655,12 +655,18 @@ mac {
   misc_icons.files = resources/graphics/misc
   misc_icons.path = Contents/Resources/icons
 
+  faenza.files = resources/graphics/Faenza
+  faenza.path = Contents/Resources/icons
+
   # Initial feeds.
   misc_feeds.files = resources/initial_feeds
   misc_feeds.path = Contents/Resources
 
   skins.files = resources/skins
   skins.path = Contents/Resources
+
+  misc_icon.files = resources/graphics/$${TARGET}.png
+  misc_icon.path = Contents/Resources/icons
 
   misc_plain_icon.files = resources/graphics/$${TARGET}_plain.png
   misc_plain_icon.path = Contents/Resources/icons
@@ -671,9 +677,9 @@ mac {
   translations.files = $$OUT_PWD/l10n
   translations.path =  Contents/Resources
 
-  QMAKE_BUNDLE_DATA += misc_sql misc_icons misc_feeds skins \
-                       misc_plain_icon misc_texts translations
+  QMAKE_BUNDLE_DATA += misc_sql misc_icons faenza misc_feeds skins \
+                       misc_icon misc_plain_icon misc_texts translations
 
-  INSTALLS += misc_sql misc_icons misc_feeds skins \
-              misc_plain_icon misc_texts translations
+  INSTALLS += misc_sql misc_icons faenza misc_feeds skins \
+              misc_icon misc_plain_icon misc_texts translations
 }
