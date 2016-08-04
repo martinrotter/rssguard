@@ -23,7 +23,7 @@
 # Usage:
 #   a) DEBUG build for testing. (out of source build type)
 #     cd ../build-dir
-#     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=debug PREFIX=/usr
+#     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=debug PREFIX=./usr
 #     make
 #     make install
 #
@@ -35,14 +35,10 @@
 #
 # Variables:
 #   PREFIX - specifies base folder to which files are copied during "make install" step.
-#
-#   INSTALL_ROOT - specifies additional output folder for "make install" step. When this variable is defined,
-#                  then it is prepended to PREFIX variable. This is useful for example on Linux, where
-#
 #   LRELEASE_EXECUTABLE - specifies the name/path of "lrelease" executable, defaults to "lrelease".
 #
 # Other information:
-#   - supports Windows, Linux,
+#   - supports Windows, Linux, Mac OS X,
 #   - Qt 5.7 and higher is required,
 #   - C++ 11 is required.
 #
