@@ -489,7 +489,7 @@ win32 {
   nsis.target = nsis
   nsis.depends = install
   nsis.commands = \
-    $$shell_path($$shell_quote($$PWD/resources/scripts/findreplace/findreplace/bin/Release/findreplace.exe)) @APP_VERSION@ $$shell_quote($$APP_VERSION) @APP_NAME@ $$shell_quote($$APP_NAME) @APP_LOW_NAME@ $$shell_quote($$APP_LOW_NAME) @EXE_NAME@ $$shell_quote($${APP_LOW_NAME}.exe) @PWD@ $$shell_path($$shell_quote($$PWD)) @OUT_PWD@ $$shell_path($$shell_quote($$OUT_PWD)) $$shell_path($$shell_quote($$PWD/resources/nsis/NSIS.definitions.nsh.in)) > $$shell_path($$shell_quote($$OUT_PWD/NSIS.definitions.nsh)) && \
+    $$shell_path($$shell_quote($$PWD/resources/scripts/sed/sed.exe)) -e \"s|@APP_VERSION@|$$APP_VERSION|g; s|@APP_NAME@|$$APP_NAME|g; s|@APP_LOW_NAME@|$$APP_LOW_NAME|g; s|@EXE_NAME@|$${APP_LOW_NAME}.exe|g; s|@PWD@|$$replace(PWD, /, \\\\)|g; s|@OUT_PWD@|$$replace(OUT_PWD, /, \\\\)|g\" $$shell_path($$shell_quote($$PWD/resources/nsis/NSIS.definitions.nsh.in)) > $$shell_path($$shell_quote($$OUT_PWD/NSIS.definitions.nsh)) && \
     xcopy /Y $$shell_path($$shell_quote($$PWD/resources/nsis/NSIS.template.in)) $$shell_path($$shell_quote($$OUT_PWD/)) && \
     $$shell_path($$shell_quote($$PWD/resources/scripts/nsis/makensis.exe)) $$shell_path($$shell_quote($$OUT_PWD/NSIS.template.in))
 
