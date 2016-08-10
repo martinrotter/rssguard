@@ -7,7 +7,11 @@ Added:
 ▪ Application settings now offers "Apply" button which saves settings without closing the dialog. (issue #16)
 
 Fixed:
+▪ Correct message is now selected after some feed gets updated. (bug #46)
 ▪ RSS Guard correctly saves windows size/position when maximized on exit. (bug #45)
+
+Changed:
+▪ MariaDB binary DLL file updated to 10.1.16 (Windows only).
 
 3.3.2
 —————

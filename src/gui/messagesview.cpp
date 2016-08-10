@@ -70,18 +70,31 @@ void MessagesView::keyboardSearch(const QString &search) {
 void MessagesView::reloadSelections(bool mark_current_index_read) {
   const QDateTime dt1 = QDateTime::currentDateTime();
 
-  const QModelIndex current_index = selectionModel()->currentIndex();
+  QModelIndex current_index = selectionModel()->currentIndex();
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   const Message selected_message = m_sourceModel->messageAt(mapped_current_index.row());
-
   const int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
   const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
   // Reload the model now.
   m_sourceModel->sort(col, ord);
 
-  selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
-  current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
+  // Now, we must find the same previously focused message.
+  if (selected_message.m_id > 0) {
+    for (int i = 0; i < m_proxyModel->rowCount(); i++) {
+      QModelIndex msg_idx = m_proxyModel->index(i, MSG_DB_TITLE_INDEX);
+      Message msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(msg_idx).row());
+
+      if (msg.m_id == selected_message.m_id) {
+        current_index = msg_idx;
+        break;
+      }
+
+      if (i == m_proxyModel->rowCount() - 1) {
+        current_index = QModelIndex();
+      }
+    }
+  }
 
   if (current_index.isValid()) {
     if (!mark_current_index_read) {
@@ -90,9 +103,10 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
       m_batchUnreadSwitch = true;
     }
 
-    setCurrentIndex(current_index);
+
     scrollTo(current_index);
-    reselectIndexes(selected_indexes);
+    setCurrentIndex(current_index);
+    reselectIndexes(QModelIndexList() << current_index);
     m_batchUnreadSwitch = false;
   }
   else {
