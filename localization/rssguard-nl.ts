@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -133,12 +131,9 @@ Gelezen berichten gewist...</translation>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klik hier om feeds toe tevoegen van deze website.
-Deze website heeft %n feed.</numerusform>
-            <numerusform>Klik hier om feeds toe tevoegen van deze website.
-Deze website heeft %n feed(s).</numerusform>
-        </translation>
+        <translation><numerusform>Klik hier om feeds toe tevoegen van deze website.
+Deze website heeft %n feed.</numerusform><numerusform>Klik hier om feeds toe tevoegen van deze website.
+Deze website heeft %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -224,7 +219,7 @@ Deze website heeft %n feed(s).</numerusform>
         <translation>Download klaar</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Bestand &apos;%1&apos; is klaar
 Klik hier om map te openen.</translation>
@@ -250,17 +245,11 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n resterende minuut</numerusform>
-            <numerusform>%n resterende minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n resterende seconde</numerusform>
-            <numerusform>%n resterende seconden</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -280,10 +269,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Dowloading %n bestand...</numerusform>
-            <numerusform>Downloading %n bestanden...</numerusform>
-        </translation>
+        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -334,10 +320,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Auto-update van %n feed.</numerusform>
-            <numerusform>Auto-update van %n feeds.</numerusform>
-        </translation>
+        <translation><numerusform>Auto-update van %n feed.</numerusform><numerusform>Auto-update van %n feeds.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -652,10 +635,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> dag</numerusform>
-            <numerusform> dagen</numerusform>
-        </translation>
+        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1723,26 +1703,24 @@ of deze functie bestaat nog niet.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.
-
-You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Do you really want to close this dialog without saving settings?</source>
-        <translation type="unfinished"></translation>
+        <source>Do you really want to close this dialog without saving any settings?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2495,14 +2473,11 @@ Je moet het handmatig installeren.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n andere feed.</numerusform>
-            <numerusform>
++ %n andere feed.</numerusform><numerusform>
 
-+ %n andere feeds.</numerusform>
-        </translation>
++ %n andere feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2559,10 +2534,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-        </translation>
+        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2586,198 +2558,197 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe webbrowser</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Indien aangevinkt, wordt standaard de systeem  webbrowser gebruikt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik aangepaste externe webbrowser</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbrowser exe</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoerbaar bestand van webbrowser</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Blader</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>exe parameters</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter voor exe</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik voorbeeld argumenten voor</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer browser</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Noteer dat &quot;%1&quot; (zonder aanhalingstekens) een tijdelijke aanduiding is voor URL of geselecteerde berichten.</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe e-mail client</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik een aangepaste externe e-mailclient</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer exe bestand voor e-mail</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoerbaar bestand van e-mail client</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer client</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaatshouders: 
+ •.%1 - titel van het geselecteerde bericht,
+ • %2 - body van geselecteerde bericht.</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation type="unfinished"></translation>
+        <translation>Host</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam of ip van je proxy server</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Poort</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Gebruikersnaam</translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Je gebruikersnaam voor proxy server verificatie</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Paswoord</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Je paswoord voor proxy server verificatie</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon paswoord</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Merk op dat deze instellingen alleen worden  toegepast op nieuw tot stand gebrachte verbindingen.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer exe bestand voor browser</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoerbare bestanden (*.*)</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoerbare bestanden (*.*)</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer exe bestand voor e-mail</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation type="unfinished"></translation>
+        <translation>Opera 12 of ouder</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"></translation>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Systeem proxy</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"></translation>
+        <translation>Socks5</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"></translation>
+        <translation>Http</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbrowser &amp; e-mail &amp; proxy</translation>
     </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"></translation>
+        <translation>WAARSCHUWING: Let op dat de overstap naar een ander type gegevens opslag NIET bestaande gegevens van dat moment kopiëren naar nieuw geselecteerde gegevens opslag.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="unfinished"></translation>
+        <translation>Database driver</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik in-geheugen database als de werkende database</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -2791,418 +2762,429 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het gebruik van in-geheugen werkende database heeft een aantal voordelen en nadelen.Zorg ervoor dat u er bekend mee bent voordat u deze functie inschakelt.
+Voordelen:
+&lt;ul&gt;
+&lt;li&gt;hogere snelheid voor feed/bericht manipulaties (vooral met duizenden berichten weergegeven),&lt;/li&gt;
+&lt;li&gt;gehele database opgeslagen in het RAM geheugen, waardoor uw harde schijf meer rust.&lt;/li&gt;
+&lt;/ul&gt;
+Nadelen:
+&lt;ul&gt;
+&lt;li&gt;als rssguard crasht, gaan wijzigingen van laatste sessie verloren,&lt;/li&gt;
+&lt;li&gt;opstarten en afsluiten van rssguard kan iets langer duren (max. 2 seconden).&lt;/li&gt;
+&lt;/lu&gt;
+Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Poort</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Gebruikersnaam</translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Paswoord</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Test instelling</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Merk op dat de snelheid van de gebruikte MySQL server en wachttijd van de gebruikte verbinding ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing. Met langzame database connecties leidt dit tot slechte prestaties tijdens het browsen feeds of berichten.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Toon paswoord</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkende database</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam is leeg.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam is ok.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished">Gebruikersnaam is leeg.</translation>
+        <translation>Gebruikersnaam is leeg.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikersnaam voldoet.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished">Paswoord is leeg.</translation>
+        <translation>Paswoord is leeg.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Paswoord voldoet.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkende database is leeg.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkende database is ok.</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen verbindings test geactiveerd tot nu toe.</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>U heeft nog geen verbindings test uitgevoerd.</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam van je MySQL server</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikersnaam om in te loggen</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="unfinished"></translation>
+        <translation>Paswoord voor je gebruikersnaam</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkende database waar je volledige toegang tot hebt.</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Gegevens opslag</translation>
     </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"></translation>
+        <translation>Open de download manager wanneer een nieuwe download start</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelmap voor de gedownloade bestanden</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"></translation>
+        <translation>Vraag voor elk individuele gedownloade bestand</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"></translation>
+        <translation>Sla alle gedownloade bestanden op naar</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelmap waar alle downloads worden opgeslagen</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Blader</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer gedownloade doelmap </translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished">Downloads</translation>
+        <translation>Downloads</translation>
     </message>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="unfinished">Feeds &amp;&amp; categorieën</translation>
+        <translation>Feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle feeds bijwerken met starten van RSSguard</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle feeds automatisch bijwerken elke</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed verbindings time-out</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinding timeout is tijdsinterval dat wordt gereserveerd voor downloaden van nieuwe berichten voor de feed. Als het tijdsinterval is verstreken, dan wordt het download proces afgebroken.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal bericht formaat in feeds lijst</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer formaat in voor telling van berichten weergegeven naast elke feed / categorie in feed lijst. Gebruik &quot;%alle&quot; en &quot;%ongelezen&quot; strings die tijdelijke aanduidingen zijn voor de eigenlijke telling van alle (of ongelezen) berichten zijn.</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Berichten</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder de gelezen berichten van alle feeds als rssguard sluit</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"></translation>
+        <translation>Houd bericht selectie in het midden van de lijst met berichten kijkvenster</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik aangepaste datum / tijd opmaak (overschrijft de opmaak van de actieve geladen locatie)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern bericht browser lettertypen</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verander lettertype</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer een nieuw lettertype voor berichten </translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Voorbeeld lettertype</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Feeds &amp; berichten</translation>
     </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Laad %1 als systeem opstart</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleer op updates als RssGuard wordt gestart</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder ongewenste Trolltech registersleutel (HKCU\\Software\\Trolltech) wanneer RssGuard wordt afgesloten (Gebruik op eigen risico!)</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="unfinished"></translation>
+        <translation> (Platform wordt niet ondersteunt)</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemeen</translation>
     </message>
 </context>
 <context>
     <name>SettingsGui</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogrammen &amp;&amp; skins</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogrammen</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram thema</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Skins</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Actieve skin</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gekozen skin:</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Tray gebied &amp;&amp; meldingen</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram in het systeemvak</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Verberg hoofdvenster wanneer het wordt geminimaliseerd</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Start programma verborgen</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Zet popup ballon tooltips aan</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabbladen</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Open nieuwe tabbladen met linker muisknop dubbel-klik op tabblad</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Verberg  tabblad als alleen een tabblad zichtbaar is</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit tabblad met</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechter muisknop dubbele-klik</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Middelste muisknop enkele-klik</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalken</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"></translation>
+        <translation>Welkbalk voor feeds lijst</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalk voor berichten lijst</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Statusbalk</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalkknop stijl</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer werkbalk om te bewerken</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Naam</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished">Versie</translation>
+        <translation>Versie</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Auteur</translation>
+        <translation>Auteur</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"></translation>
+        <translation>E-mail</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Pictogram in systeemvak is niet beschikbaar.)</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Geen icon thema/systeem icon thema</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen pictogram</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen tekst</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst naast pictogram</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst onder pictogram</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation type="unfinished"></translation>
+        <translation>Volg OS stijl</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikers interface</translation>
     </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Code</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Auteur</translation>
+        <translation>Auteur</translation>
     </message>
 </context>
 <context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Sneltoetsen toetsenbord</translation>
     </message>
 </context>
 <context>
@@ -3257,10 +3239,7 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3434,17 +3413,11 @@ Ongelezen nieuws: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n uur</numerusform>
-            <numerusform>%n ur(en)</numerusform>
-        </translation>
+        <translation><numerusform>%n uur</numerusform><numerusform>%n ur(en)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minuut</numerusform>
-            <numerusform>%n minut(en)</numerusform>
-        </translation>
+        <translation><numerusform>%n minuut</numerusform><numerusform>%n minut(en)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3520,10 +3493,7 @@ Ongelezen nieuws: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

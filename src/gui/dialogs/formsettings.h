@@ -35,9 +35,6 @@ class FormSettings : public QDialog {
     virtual ~FormSettings();
 
   private slots:
-    // Displays "restart" dialog if some critical settings changed.
-    void promptForRestart();
-
     // Saves settings into global configuration.
     void saveSettings();
     void applySettings();

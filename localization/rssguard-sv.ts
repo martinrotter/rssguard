@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sv">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -132,12 +130,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller ett annat flöde.</numerusform>
-            <numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform>
-        </translation>
+        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller ett annat flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -223,7 +218,7 @@ Denna webbsida innehåller %n flöden.</numerusform>
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; är nedlladdad.
 Klicka här för att öppna målmappen.</translation>
@@ -249,17 +244,11 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minut kvar</numerusform>
-            <numerusform>%n minuter kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n sekund kvar</numerusform>
-            <numerusform>%n sekunder kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -279,10 +268,7 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Laddar ner %n fil...</numerusform>
-            <numerusform>Laddar ner %n filer...</numerusform>
-        </translation>
+        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -333,10 +319,7 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Jag uppdaterar %n flöde automatiskt</numerusform>
-            <numerusform>Jag uppdaterar %n flöden automatiskt</numerusform>
-        </translation>
+        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -651,10 +634,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>dag</numerusform>
-            <numerusform>dagar</numerusform>
-        </translation>
+        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1722,26 +1702,27 @@ att funktionen inte är implementerad än.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vissa kritiska inställningar har ändrats och kommer att tillämpas när programmet har startats om.
+
+Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändrade inställningskategorier:
+%1.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.
-
-You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Do you really want to close this dialog without saving settings?</source>
-        <translation type="unfinished"></translation>
+        <source>Do you really want to close this dialog without saving any settings?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2493,12 +2474,9 @@ Du måste installera det manuellt.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n annat flöde.</numerusform>
-            <numerusform>
+        <translation><numerusform>+ %n annat flöde.</numerusform><numerusform>
 
-+ %n andra flöden.</numerusform>
-        </translation>
++ %n andra flöden.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2555,10 +2533,7 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n borttaget meddelande.</numerusform>
-            <numerusform>%n borttagna meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2582,198 +2557,197 @@ Minst API-nivå %1 krävs.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n oläst meddelande.</numerusform>
-            <numerusform>%n olästa meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Extern webbläsare</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Om kryssrutan lämnas omarkerad, används systemets standardwebbläsare.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd anpassad extern webbläsare</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Startfil för webbläsare</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbläsarens startfil</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bläddra</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Startparametrar</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametrar för startfilen</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd argument för</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj webbläsare</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Notera att &quot;%1&quot; (utan citationstecken) är platshållare för det markerade meddelandets URL.</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Extern e-postklient</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd extern anpassad e-postklient</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"></translation>
+        <translation>E-postklientens programfil</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>E-postklientens startfil</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj klient</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platshållare:
+ • %1 - titel för aktuellt meddelande
+ • %2 - brödtext för </translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation type="unfinished"></translation>
+        <translation>Värd</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="unfinished"></translation>
+        <translation>Värdnamn eller IP-adress till din proxyserver</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Ditt användarnamn för proxyserverns autentisering</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Ditt lösenord för proxyserverns autentisering</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa lösenordet</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Notera att dess inställningar endast verkställs för nyetablerade anslutningar.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj startfil för webbläsaren</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Körbara (*)</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>exe-filer (*.*)</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj startfil för e-postklienten</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation type="unfinished"></translation>
+        <translation>Opera 12 eller äldre</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"></translation>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemets proxy</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"></translation>
+        <translation>Socks5</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbläsare, e-post &amp; proxy</translation>
     </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"></translation>
+        <translation>VARNING! Notera att byte till en annan datalagringstyp INTE kopierar befintliga data från den aktiva datalagringen till den nyvalda.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasdrivrutin</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd minnesdatabas (IMDB) som arbetsdatabas</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -2787,418 +2761,429 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Användning av minnesdatabas har åtskilliga fördelar och fallgropar. Se till att du känner till dessa innan du aktiverar den här funktionen.
+Fördelar:
+&lt;ul&gt;
+&lt;li&gt;Bättre hastighet för manipulation av flöden/meddelanden(speciellt vid visning av tusentals meddelanden).&lt;/li&gt;
+&lt;li&gt;Hela databasen lagrad i RAM, för en mindre belastad hårddisk.&lt;/li&gt;
+&lt;/ul&gt;
+Nackdelar:
+&lt;ul&gt;
+&lt;li&gt;Om programmet kraschar, förlorar du ändringar gjorda under den sessionen.&lt;/li&gt;
+&lt;li&gt;Programstart och avslut kan ta lite längre tid (max. 2 sekunder).&lt;/li&gt;
+&lt;/ul&gt;
+Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Värdnamn</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Testa</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Notera att hastigheten på den använda MySQL-servern och latensen för aktuellt anslutningsmedium, KRAFTIGT påverkar detta programs prestanda. Användning av långsamma databasanslutningar leder till dålig prestanda vid navigering bland flöden och meddelanden.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Visa lösenord</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbetsdatabas</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Värdnamn saknas.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Värdnamnet verkar OK.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Användarnamnet ser ok ut.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösenordet ser ok ut.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbetsdatabasen är tom.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbetsdatabasen är OK.</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inget anslutningstest utfört än.</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du har inte utfört något anslutningstest än.</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"></translation>
+        <translation>Värdnamn för din MySQL-server</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="unfinished"></translation>
+        <translation>Användarnamn för att logga in</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösenord för ditt användarnamn</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbetsdatabas som du har full åtkomst till.</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Datalagring</translation>
     </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna nedladdningshanteraren när ny nedladdning startas</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"></translation>
+        <translation>Målmapp för nedladdade filer</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"></translation>
+        <translation>Fråga om varje enskild fil</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara alla nedladdade filer i</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Målmapp där alla nedladdade filer sparas</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bläddra</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj nedladdningsmapp</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished">Nedladdningar</translation>
+        <translation>Nedladdningar</translation>
     </message>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="unfinished">Flöden &amp;&amp; kategorier</translation>
+        <translation>Flöden &amp;&amp; kategorier</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera alla flöden vid programstart</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-uppdatera alla flöden varje</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslutnings-timeout för flöden</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslutnings-timeout är det tidsintervall som reserverats föratt ladda ner nya meddelanden. Om detta tidsintervall överskrids, kommer nedladdningsprocessen att avbrytas.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation> ms</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>Meddelanderäknare för flödeslistan</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange vilket format meddelanderäknaren skall visa antal meddelanden för varje flöde/kategori. Använd &quot;%all&quot; och &quot;%unread&quot; vilket är platshållare för alla (respektive olästa) meddelanden.</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Meddelanden</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort alla lästa meddelanden från alla flöden vid programavslut</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"></translation>
+        <translation>Placera markerat meddelande i mitten av vyn för meddelandelista</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd anpassada datum-/tidsformat (undantar format inlästa från aktivt språksystem)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Teckensnitt för intern meddelandeläsare</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ändra teckensnitt</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj nytt teckensnitt för meddelandevyn</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Teckengranskning</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Flöden &amp; meddelanden</translation>
     </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta %1 vid systemstart</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök efter uppdateringar vid programstart</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort Trolltechs registernyckel (HKCU\\Software\\Trolltech) när programmet avslutas (Används på egen risk!).</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="unfinished"></translation>
+        <translation> (stöds inte på den här plattformen)</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Allmänt</translation>
     </message>
 </context>
 <context>
     <name>SettingsGui</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikoner &amp;&amp; teman</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikoner</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikontema</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Teman</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivt tema</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Valt tema:</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Meddelandefält &amp;&amp; aviseringar</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Meddelandefältsikon</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj programfönstret vid minimering</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta programmet dolt</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivera poup-informationsrutor</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Flikar</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna nya flikar med dubbelklick i flikfältet</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj flikfältet om endast en flik är öppen</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"></translation>
+        <translation>Stäng flikar med</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbelklick på höger musknapp</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkelklick på mushjulsknappen</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation>Verktygsfält</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"></translation>
+        <translation>Verktygsfält för flödeslista</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="unfinished"></translation>
+        <translation>Verktygsfält för meddelandelista</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Statusfält</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"></translation>
+        <translation>Verktygsfältets knappstil</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj verktygsfält att redigera</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Namn</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished">Version</translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Författare</translation>
+        <translation>Författare</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"></translation>
+        <translation>E-post</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>(meddelandefältsikon ej tillgänglig)</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>inget ikontema/systemikontema</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Endast ikon</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation type="unfinished"></translation>
+        <translation>Endast text</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Text bredvid ikon</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Text under ikon</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation type="unfinished"></translation>
+        <translation>Operativsystemets stil</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Utseende</translation>
     </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Språk</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Språkkod</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Författare</translation>
+        <translation>Författare</translation>
     </message>
 </context>
 <context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Tangentbordsgenvägar</translation>
     </message>
 </context>
 <context>
@@ -3253,10 +3238,7 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform>
-            <numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform>
-        </translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3429,17 +3411,11 @@ Olästa nyheter: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n timma</numerusform>
-            <numerusform>%n timmar</numerusform>
-        </translation>
+        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minut</numerusform>
-            <numerusform>%n minuter</numerusform>
-        </translation>
+        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3515,10 +3491,7 @@ Olästa nyheter: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform>
-            <numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
-        </translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

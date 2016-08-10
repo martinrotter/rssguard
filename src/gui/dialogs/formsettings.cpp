@@ -64,20 +64,6 @@ FormSettings::~FormSettings() {
   qDebug("Destroying FormSettings distance.");
 }
 
-void FormSettings::promptForRestart() {
-  /*if (!m_changedDataTexts.isEmpty()) {
-    const QStringList changed_settings_description = m_changedDataTexts.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
-    MessageBox::show(this,
-                     QMessageBox::Question,
-                     tr("Critical settings were changed"),
-                     tr("Some critical settings were changed and will be applied after the application gets restarted. "
-                        "\n\nYou have to restart manually."),
-                     QString(),
-                     tr("List of changes:\n%1.").arg(changed_settings_description .join(QSL(",\n"))),
-                     QMessageBox::Ok, QMessageBox::Ok);
-  }*/
-}
-
 void FormSettings::saveSettings() {
   applySettings();
   accept();
@@ -133,9 +119,8 @@ void FormSettings::cancelSettings() {
     if (MessageBox::show(this,
                      QMessageBox::Critical,
                      tr("Some settings are changed and will be lost"),
-                     tr("Some settings were changed and by cancelling this dialog, you would lose these changes."
-                        "\n\nYou have to restart manually."),
-                     tr("Do you really want to close this dialog without saving settings?"),
+                     tr("Some settings were changed and by cancelling this dialog, you would lose these changes."),
+                     tr("Do you really want to close this dialog without saving any settings?"),
                      tr("Changed categories of settings:\n%1.").arg(changed_settings_description .join(QSL(",\n"))),
                      QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) ==
         QMessageBox::Yes) {

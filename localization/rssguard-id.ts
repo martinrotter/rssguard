@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="id">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="id" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -132,10 +130,8 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klik saya untuk menambah feed dari situs web ini.
-Situs web ini mengandung %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Klik saya untuk menambah feed dari situs web ini.
+Situs web ini mengandung %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -221,7 +217,7 @@ Situs web ini mengandung %n feed.</numerusform>
         <translation>Mengunduh selesai</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Berkas &apos;%1&apos; terunduh.
 Klik disini untuk membuka direktori induk.</translation>
@@ -247,15 +243,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n menit tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n menit tersisa</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n detik tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n detik tersisa</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -275,9 +267,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Mengunduh %n berkas...</numerusform>
-        </translation>
+        <translation><numerusform>Mengunduh %n berkas...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -328,9 +318,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Saya akan otomatis memperbaharui %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Saya akan otomatis memperbaharui %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -645,9 +633,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> hari</numerusform>
-        </translation>
+        <translation><numerusform> hari</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1715,26 +1701,24 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.
-
-You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Do you really want to close this dialog without saving settings?</source>
-        <translation type="unfinished"></translation>
+        <source>Do you really want to close this dialog without saving any settings?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2481,15 +2465,13 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n feed lain.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n feed lain.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2545,9 +2527,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n pesan terhapus.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan terhapus.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2569,197 +2549,197 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n pesan belum dibaca.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan belum dibaca.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Peramban web eksternal</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jika tidak tercentang, maka  peramban web bawaan di seluruh sistem yang digunakan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Gunakan peramban web eksternal tersuai</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Peramban web yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Berkas yang dapat dijalankan dari peramban web</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Telisik</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter ke yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"></translation>
+        <translation>Gunakan argumen sampel untuk</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih browser</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Perhatikan bahwa &quot;%1&quot; (tanpa tanda kutip) adalah tempat bagi URL dari pesan yang dipilih.</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klien e-mail eksternal</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Gunakan klien e-mail eksternal tersuai</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Klien e-mail yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Berkas dari klien e-mail yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih klien</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Placeholder:
+ • %1 - judul dari pesan yang dipilih,
+ • %2 - badan dari pesan yang dipilih.</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation type="unfinished">Jenis</translation>
+        <translation>Jenis</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation type="unfinished"></translation>
+        <translation>Host</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama host atau IP dari server proxy anda</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Nama pengguna</translation>
+        <translation>Nama pengguna</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama pengguna anda untuk autentikasi server proxy</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Kata sandi</translation>
+        <translation>Kata sandi</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Kata sandi anda untuk autentikasi server proxy</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan kata sandi</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Perhatikan bahwa pengaturan ini berlaku hanya pada koneksi yang baru dibentuk.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih peramban web yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Yang dapat dijalankan (*)</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Yang dapat dijalankan (*.*)</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih email yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation type="unfinished"></translation>
+        <translation>Opera 12 atau lebih tua</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"></translation>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Tanpa proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy sistem</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"></translation>
+        <translation>Socks5</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"></translation>
+        <translation>Http</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Peramban web &amp; e-mail &amp; proxy</translation>
     </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"></translation>
+        <translation>PERINGATAN: Perhatikan bahwa beralih ke jenis penyimpanan data lain tidak akan menyalin data anda yang ada dari penyimpanan data yang sedang aktif ke salah satu yang baru dipilih.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="unfinished"></translation>
+        <translation>Driver database</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Gunakan database di memori sebagai database bekerja</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -2773,418 +2753,428 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Penggunaan database kerja  di memori memiliki beberapa keunggulan dan kendala. Pastikan bahwa anda akrab dengan ini sebelum anda menyalakan fitur ini. Keuntungan:
+&lt;ul&gt;
+&lt;li&gt;kecepatan tinggi untuk manipulasi feed/pesan (terutama dengan ribuan pesan ditampilkan),&lt;/li&gt;
+&lt;li&gt;seluruh database disimpan di dalam RAM, sehingga hard disk anda dapat beristirahat lebih.&lt;/li&gt;
+&lt;/ul&gt;
+Kerugian:
+&lt;ul&gt;
+&lt;li&gt;jika aplikasi crash, ubahan anda dari sesi terakhir akan hilang,&lt;/li&gt;
+&lt;li&gt;startup and shutdown aplikasi dapat memakan sedikit lebih lama (maks. 2 detik).&lt;/li&gt;
+&lt;/ul&gt;
+Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama host</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Nama pengguna</translation>
+        <translation>Nama pengguna</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Kata sandi</translation>
+        <translation>Kata sandi</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Tes setelan</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Perhatikan bahwa kecepatan dari server MySQL yang digunakan dan latensi dari media koneksi yang digunakan sangat mempengaruhi kinerja akhir dari aplikasi ini. Menggunakan koneksi database lamban menyebabkan kinerja buruk ketika menilik feed dari pesan.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan kata &amp;sandi</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Database kerja</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama host kosong.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama host terlihat ok.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama pengguna kosong.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama pengguna terlihat ok.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kata sandi kosong.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kata sandi terlihat ok.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database kerja kosong.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database kerja ok.</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak ada tes koneksi yang dipicu sejauh ini.</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anda belum mengeksekusi tes koneksi apapun.</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama host dari server MySQL anda</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama pengguna untuk login</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="unfinished"></translation>
+        <translation>Kata sandi untuk nama pengguna anda</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database kerja yang mempunyai akses menyeluruh.</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Penyimpanan data</translation>
     </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"></translation>
+        <translation>Buka pengelola unduhan ketika penguduhan baru dimulai</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"></translation>
+        <translation>Direktori tujuan untuk berkas yang diunduh</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"></translation>
+        <translation>Bertanya untuk setiap berkas yang diunduh</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpan semua berkas yang diunduh ke</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Direktori tujuan tempat semua berkas yang diunduh disimpan</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Telisik</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih direktori tujuan unduhan</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished">Unduhan</translation>
+        <translation>Unduhan</translation>
     </message>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="unfinished">Feed &amp;&amp; kategori</translation>
+        <translation>Feed &amp;&amp; kategori</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Perbaharui semua feed pada startup aplikasi</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"></translation>
+        <translation>Pembaharuan otomatis semua feed setiap</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Batas waktu koneksi feed</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Batas waktu koneksi merupakan interval waktu yang dipesan untuk mengunduh pesan baru untuk feed. Jika interval waktu ini berlalu, maka proses pengunduhan dibatalkan.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation> ms</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>Format hitungan pesan di daftar feed</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Masukkan format untuk hitungan dari pesan yang ditampilkan di samping setiap feed/kategori di daftar feed. Gunakan rangkaian &quot;%all&quot; dan &quot;%unread&quot; yang merupakan tempat untuk hitungan sesungguhnya dari pesan seluruhnya (atau belum terbaca).</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesan</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus semua pesan dari semua feed ketika aplikasi keluar</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"></translation>
+        <translation>Jaga pilihan pesan di tengah area pandang daftar pesan</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gunakan format tanggal/waktu tersuai (menimpa format yang dimuat dari lokalisasi yang aktif)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Fon peramban pesan internal</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ganti fon</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih font yang baru untuk penampil pesan</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Pratinjau fon</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed &amp; pesan</translation>
     </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalankan %1 pada startup sistem operasi</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Periksa untuk pembaharuan pada startup aplikasi</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus sampah kunci registrasi Trolltech (HKCU\Software\Trolltech) ketika aplikasi keluar (Gunakan dengan resiko anda sendiri!)</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="unfinished"></translation>
+        <translation>(tidak didukung di platform ini)</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Umum</translation>
     </message>
 </context>
 <context>
     <name>SettingsGui</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon &amp;&amp; skin</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema ikon</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Skin</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skin yang aktif:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skin yang dipilih:</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Area baki &amp;&amp; notifikasi</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon baki</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Sembunyikan jendela utama ketika di-minimize</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Mulai aplikasi secara sembunyi</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyalakan balon popup keterangan alat</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Tab</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Buka tab baru dengan dua kali klik pada tab bar</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Sembunyikan bilah tab jika hanya satu tab terlihat</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutup tab dengan</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Dua kali klik tombol kanan tetikus</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekali klik tombol tengah tetikus</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilah alat</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilah alat untuk daftar feed</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilah alat untuk daftar pesan</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Bar status</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"></translation>
+        <translation>Gaya tombol bilah alat</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih bilah alat untuk disunting</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Nama</translation>
+        <translation>Nama</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished">Versi</translation>
+        <translation>Versi</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Penulis</translation>
+        <translation>Penulis</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"></translation>
+        <translation>E-mail</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Ikon baki tidak tersedia.)</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>tanpa tema ikon/tema ikon sistem</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Hanya ikon</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation type="unfinished"></translation>
+        <translation>Hanya teks</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Teks di samping ikon</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Teks di bawah ikon</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation type="unfinished"></translation>
+        <translation>Mengikuti gaya sistem operasi</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Antarmuka pengguna</translation>
     </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Bahasa</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Kode</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Penulis</translation>
+        <translation>Penulis</translation>
     </message>
 </context>
 <context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pintasan keyboard</translation>
     </message>
 </context>
 <context>
@@ -3239,9 +3229,7 @@ Kategori ini tidak berisi item bersarang.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3414,15 +3402,11 @@ Berita belum terbaca:%2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n jam</numerusform>
-        </translation>
+        <translation><numerusform>%n jam</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n menit</numerusform>
-        </translation>
+        <translation><numerusform>%n menit</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3498,9 +3482,7 @@ Berita belum terbaca:%2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

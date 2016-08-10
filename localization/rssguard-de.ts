@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -132,12 +130,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
-Diese Webseite enhält %n Feed.</numerusform>
-            <numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
-Diese Webseite enhält %n Feeds.</numerusform>
-        </translation>
+        <translation><numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
+Diese Webseite enhält %n Feed.</numerusform><numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
+Diese Webseite enhält %n Feeds.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -223,7 +218,7 @@ Diese Webseite enhält %n Feeds.</numerusform>
         <translation>Herunterladen abgeschlossen</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Datei &apos;%1&apos; wurde heruntergeladen. Zum Öffnen des übergeordneten Verzeichnisses hier klicken.</translation>
     </message>
@@ -248,17 +243,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>% Minute verbleibend</numerusform>
-            <numerusform>%n Minuten verbleibend</numerusform>
-        </translation>
+        <translation><numerusform>% Minute verbleibend</numerusform><numerusform>%n Minuten verbleibend</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n Sekunde verbleibend</numerusform>
-            <numerusform>%n Sekunden verbleibend</numerusform>
-        </translation>
+        <translation><numerusform>%n Sekunde verbleibend</numerusform><numerusform>%n Sekunden verbleibend</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -278,10 +267,7 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Lade %n Datei herunter...</numerusform>
-            <numerusform>Lade %n Dateien herunter...</numerusform>
-        </translation>
+        <translation><numerusform>Lade %n Datei herunter...</numerusform><numerusform>Lade %n Dateien herunter...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -332,10 +318,7 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>%n Feed wird automatisch aktualisiert.</numerusform>
-            <numerusform>%n Feeds werden automatisch aktualisiert.</numerusform>
-        </translation>
+        <translation><numerusform>%n Feed wird automatisch aktualisiert.</numerusform><numerusform>%n Feeds werden automatisch aktualisiert.</numerusform></translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -649,10 +632,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> Tag</numerusform>
-            <numerusform> Tage</numerusform>
-        </translation>
+        <translation><numerusform> Tag</numerusform><numerusform> Tage</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1720,26 +1700,24 @@ or this functionality is not implemented yet.</source>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.
-
-You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Do you really want to close this dialog without saving settings?</source>
-        <translation type="unfinished"></translation>
+        <source>Do you really want to close this dialog without saving any settings?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2489,10 +2467,7 @@ You must install it manually.</source>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n anderer Feed.</numerusform>
-            <numerusform>+ %n andere Feeds.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n anderer Feed.</numerusform><numerusform>+ %n andere Feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2553,10 +2528,7 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n gelöschte Nachricht.</numerusform>
-            <numerusform>%n gelöschte Nachrichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n gelöschte Nachricht.</numerusform><numerusform>%n gelöschte Nachrichten.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2580,198 +2552,197 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ungelesene Nachricht.</numerusform>
-            <numerusform>%n ungelesene Nachrichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ungelesene Nachricht.</numerusform><numerusform>%n ungelesene Nachrichten.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Externer Webbrowser</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ohne Aktivierung wird der systemweit voreingestellte Standardbrowser verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Individuell festgelegten externen Browser verwenden</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Auszuführende Datei des Webbrowsers</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Auszuführende Datei des Webbrowsern</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Durchsuchen</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter der auszuführenden Datei</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter für die auszuführende Datei</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwenden Sie Beispielargumente für</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Browser auswählen</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Beachten Sie, dass &quot;%1&quot; (ohne Anführungszeichen) der Platzhalter der URL der ausgewählten Nachricht ist.</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Externes Mailprogramm (Mail-Client)</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Individuell festgelegtes externes Mailprogramm verwenden</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Auszuführende Datei</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Auszuführende Datei des Mailprogramms</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation type="unfinished"></translation>
+        <translation>Mailprogramm auswählen</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Platzhalter:
+ • %1 - Betreff der ausgewählten Nachricht
+ • %2 - Textkörper der ausgewählten Nachricht</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation type="unfinished"></translation>
+        <translation>Host</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname oder IP ihres Proxy-Servers</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Benutzername</translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Ihr Benutzername für die Authentifizierung am Proxy-Server</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Passwort</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Ihr Passwort für die Authentifizierung am Proxy-Server</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort anzeigen</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte beachten, dass diese Einstellungen nur auf neue Verbindungen angewendet werden.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie die auszuführende Datei des Webbrowsers</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ausführbare Dateien (*)</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausführbare Dateien (*.*)</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie die auszuführende Datei des Mail-Clients</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation type="unfinished"></translation>
+        <translation>Opera 12 oder älter</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"></translation>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemweiter Proxy</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"></translation>
+        <translation>Socks5</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Browser, Mail-Client, Proxy</translation>
     </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Warnung: Beachten Sie, dass das Umschalten auf einen anderen Datenspeicherung ihre bestehenden Daten NICHT auf den neuen ausgewählten kopieren wird.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbanktreiber</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwenden Sie die Datenbank im Arbeitsspeicher als aktuelle Datenbank</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -2785,418 +2756,429 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Verwendung einer Datenbank im Arbeitsspeicher bietet einige Vor-, aber auch einige Nachteile. Nutzer sollten sich vor der Verwendung über beide bewusst sein.&lt;br&gt;
+Vorteile:
+&lt;ul&gt;
+&lt;li&gt;höhere Geschwindigkeit bei Manipulationen an Feeds oder Nachrichten, insbesondere, wenn beide schon in großer Zahl vorliegen&lt;/li&gt;
+&lt;li&gt;Entlastung für Hardware wie Festplatte oder SDD&lt;/li&gt;
+&lt;/ul&gt;
+Nachteile:
+&lt;ul&gt;
+&lt;li&gt;bei einem Absturz der Anwendung gehen sämtliche Daten der aktuellen Sitzung verloren&lt;/li&gt;
+&lt;li&gt;Starten und Beenden der Anwendung dauern etwas länger (max. 2sec)&lt;/li&gt;
+&lt;/ul&gt;
+Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Benutzername</translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Passwort</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen testen</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte beachten Sie, dass die Leistungsfähigkeit des verwendeten MySQL Servers bzw. der Netzwerkverbindung einen MASSIVEN Einfluss auf die Leistungsfähigkeit von RSS Guard haben. Eine langsame Verbindung zur Datenbank beeinflusst insbesondere das Durchsuchen von Feeds oder Nachrichten.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Passwort anzeigen</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwendete Datenbank</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname ist leer.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der hostname scheint in Ordnung zu sein.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished">Benutzername ist leer.</translation>
+        <translation>Benutzername ist leer.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername scheint in Ordnung zu sein.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished">Passwort ist leer.</translation>
+        <translation>Passwort ist leer.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort scheint in Ordnung zu sein.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwendete Datenbank ist leer.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwendete Datenbank ist funktionsbereit.</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bisher noch kein Verbindungstest ausgelöst.</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es wurde noch kein Verbindungstest ausgeführt.</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname Ihres MySQL Servers</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername zum Einloggen</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort für Ihren Benutzernamen</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktionsfähige Datenbank, zu der Sie volle Zugriffsrechte besitzen.</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenspeicher</translation>
     </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"></translation>
+        <translation>Beim Beginn des Herunterladens den Download Manager starten</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"></translation>
+        <translation>Zielverzeichnis für heruntergeladene Dateien</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"></translation>
+        <translation>Zielverzeichnis bei jedem Herunterladen einzeln erfragen</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle heruntergeladenen Dateien speichern in</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Zielverzeichnis zum Abspeichern aller heruntergeladenen Dateien</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Durchsuchen</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Zielverzeichnis zum Herunterladen auswählen</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished">Downloads</translation>
+        <translation>Downloads</translation>
     </message>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="unfinished">Kategorien &amp;&amp; &amp;Feeds</translation>
+        <translation>Feeds &amp;&amp;Kategorien</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Beim Starten der Anwendung alle Feeds aktualisieren</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Feeds automatisch aktualisieren</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeitüberschreitung des Feeds</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Zeitüberschreitung der Verbindung ist das Intervall, das für das Herunterladen neuer Nachrichten reserviert ist. Falls dieses Intervall abläuft, wird das Herunterladen abgebrochen.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation> ms</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>Zählweise der Nachrichten in der Liste mit Kategorien und Feeds</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geben Sie das Format der Zählweise ein, mit der die Anzahl (un-) gelesener Nachrichten innerhalb der Liste von Kategorien und Feeds angezeigt wird. Die Platzhalter &quot;%all&quot; und &quot;%unread&quot; können für die Zahl aller bzw. der ungelesenen Nachrichten verwendet werden.</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachrichten</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Beim Beenden sämtliche Nachrichten aus allen Feeds entfernen</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"></translation>
+        <translation>Behalte die Nachrichten in der Mitte des Nachrichten-Listenfelds</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"></translation>
+        <translation>Individuelles Format für Datum und Zeit verwenden (überschreibt das zur aktiven Lokalisierung gehörige Format)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Schriften für internen Nachrichtenbrowser</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"></translation>
+        <translation>Schrift &amp;ändern</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="unfinished"></translation>
+        <translation>Schrift für den internen Nachrichtenbrowser auswählen</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorschau der Schrift</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Feeds &amp; Nachrichten</translation>
     </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 bei Sitzungsbeginn starten</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Beim Starten der Anwendung nach Aktualisierungen suchen</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fragwürdigen Trolltech registry key (HKCU\Software\Trolltech) beim Beenden entfernen. Erfolgt auf eigene Verantwortung!</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="unfinished"></translation>
+        <translation> (auf dieser Plattform nicht verfügbar)</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Generell</translation>
     </message>
 </context>
 <context>
     <name>SettingsGui</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Icons &amp;&amp; Skins</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Icons</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon Theme</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Skins</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktives Skin:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skin auswählen:</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Tray-Bereich &amp;&amp; Benachrichtigungen</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Tray Icon</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Verstecke das Hauptfenster, wenn es minimiert ist</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Starte die Anwendung versteckt</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Desktop-Benachrichtigungen aktivieren</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiter</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Öffne neue Reiter mit einem Doppelklick der linken Maustaste auf der Reiterleiste</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Verstecke die Reiterleiste, falls nur ein Reiter sichtbar ist</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"></translation>
+        <translation>Schliesse die Reiter mit</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Doppelklick der rechten Maustaste</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittlere Maustaste Einfachklick</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeugleisten</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeugleiste zur Liste mit den Kategorien und Feeds</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeugleiste für die Nachrichtenliste</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Statusleiste</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"></translation>
+        <translation>Stil der Schaltflächen in Werkzeugleisten</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Zu bearbeitende Werkzeugleiste auswählen</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Name</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished">Version</translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"></translation>
+        <translation>Mail</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Icon in Leiste ist nicht verfügbar.)</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>(keins)</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur Icon</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur Text</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Text neben Icon</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Text unter Icon</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation type="unfinished"></translation>
+        <translation>Folge Betriebssystemstil</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzeroberfläche</translation>
     </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprache</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Code</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Autor</translation>
+        <translation>Autor</translation>
     </message>
 </context>
 <context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Tastaturkombinationen</translation>
     </message>
 </context>
 <context>
@@ -3250,10 +3232,7 @@ This category does not contain any nested items.</source>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform>
-        </translation>
+        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3426,17 +3405,11 @@ Ungelesene Nachrichten: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n Stunde</numerusform>
-            <numerusform>%n Stunden</numerusform>
-        </translation>
+        <translation><numerusform>%n Stunde</numerusform><numerusform>%n Stunden</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n Minute</numerusform>
-            <numerusform>%n Minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n Minute</numerusform><numerusform>%n Minuten</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3512,10 +3485,7 @@ Ungelesene Nachrichten: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform>
-        </translation>
+        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

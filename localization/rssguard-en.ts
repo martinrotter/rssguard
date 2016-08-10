@@ -1733,13 +1733,11 @@ You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.
-
-You have to restart manually.</source>
+        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Do you really want to close this dialog without saving settings?</source>
+        <source>Do you really want to close this dialog without saving any settings?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
