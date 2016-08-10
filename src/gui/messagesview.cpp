@@ -232,8 +232,8 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
          current_index.row(), current_index.column(),
          mapped_current_index.row(), mapped_current_index.column());
 
-  if (mapped_current_index.isValid() && selected_rows.count() == 1) {
-    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(selected_rows.at(0)).row());
+  if (mapped_current_index.isValid() && selected_rows.count() > 0) {
+    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
 
     if (!m_batchUnreadSwitch) {
       // Set this message as read only if current item
