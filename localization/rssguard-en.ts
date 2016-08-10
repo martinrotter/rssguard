@@ -1710,619 +1710,37 @@ or this functionality is not implemented yet.</translation>
 <context>
     <name>FormSettings</name>
     <message>
-        <source>General</source>
-        <extracomment>General settings section.</extracomment>
-        <translation>General</translation>
-    </message>
-    <message>
-        <source>User interface</source>
-        <translation>User interface</translation>
-    </message>
-    <message>
-        <source>Icon theme</source>
-        <translation>Icon theme</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Settings</translation>
-    </message>
-    <message>
-        <source>Keyboard shortcuts</source>
-        <translation>Keyboard shortcuts</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
-        <translation>Language</translation>
-    </message>
-    <message>
-        <source>Proxy</source>
-        <translation>Proxy</translation>
-    </message>
-    <message>
-        <source>Icons &amp;&amp; skins</source>
-        <translation>Icons &amp;&amp; skins</translation>
-    </message>
-    <message>
-        <source>Tray icon</source>
-        <translation>Tray icon</translation>
-    </message>
-    <message>
-        <source>Start application hidden</source>
-        <translation>Start application hidden</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <extracomment>Proxy server type.</extracomment>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Host</source>
-        <translation>Host</translation>
-    </message>
-    <message>
-        <source>Hostname or IP of your proxy server</source>
-        <translation>Hostname or IP of your proxy server</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation>Port</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Username</translation>
-    </message>
-    <message>
-        <source>Your username for proxy server authentication</source>
-        <translation>Your username for proxy server authentication</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Password</translation>
-    </message>
-    <message>
-        <source>Your password for proxy server authentication</source>
-        <translation>Your password for proxy server authentication</translation>
-    </message>
-    <message>
-        <source>Display password</source>
-        <translation>Display password</translation>
-    </message>
-    <message>
-        <source>Code</source>
-        <translation>Code</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Version</translation>
-    </message>
-    <message>
-        <source>Author</source>
-        <translation>Author</translation>
-    </message>
-    <message>
-        <source>Socks5</source>
-        <translation>Socks5</translation>
-    </message>
-    <message>
-        <source>Http</source>
-        <translation>Http</translation>
-    </message>
-    <message>
-        <source> (not supported on this platform)</source>
-        <translation> (not supported on this platform)</translation>
-    </message>
-    <message>
-        <source>Tray area &amp;&amp; notifications</source>
-        <translation>Tray area &amp;&amp; notifications</translation>
-    </message>
-    <message>
-        <source>Tabs</source>
-        <translation>Tabs</translation>
-    </message>
-    <message>
-        <source>Close tabs with</source>
-        <translation>Close tabs with</translation>
-    </message>
-    <message>
-        <source>Middle mouse button single-click</source>
-        <translation>Middle mouse button single-click</translation>
-    </message>
-    <message>
-        <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation>Open new tabs with left mouse button double-click on tab bar</translation>
-    </message>
-    <message>
-        <source>Cannot save settings</source>
-        <translation>Cannot save settings</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Name</translation>
-    </message>
-    <message>
-        <source>Icons</source>
-        <translation>Icons </translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation>Skins</translation>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation>Active skin </translation>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation>Selected skin:</translation>
-    </message>
-    <message>
-        <source>Hide tab bar if just one tab is visible</source>
-        <translation>Hide tab bar if just one tab is visible</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
         <translation>Critical settings were changed</translation>
     </message>
     <message>
-        <source>Feeds &amp; messages</source>
-        <translation>Feeds &amp; messages</translation>
-    </message>
-    <message>
-        <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation>Some critical settings are not set. You must fix these settings in order confirm new settings.</translation>
-    </message>
-    <message>
-        <source>Messages</source>
-        <translation>Messages</translation>
-    </message>
-    <message>
-        <source>Web browser executable</source>
-        <translation>Web browser executable</translation>
-    </message>
-    <message>
-        <source>Executable parameters</source>
-        <translation>Executable parameters</translation>
-    </message>
-    <message>
-        <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</translation>
-    </message>
-    <message>
-        <source>Select web browser executable</source>
-        <translation>Select web browser executable</translation>
-    </message>
-    <message>
-        <source>Executables (*.*)</source>
-        <translation>Executables (*.*)</translation>
-    </message>
-    <message>
-        <source>Opera 12 or older</source>
-        <translation>Opera 12 or older</translation>
-    </message>
-    <message>
-        <source>Executable file of web browser</source>
-        <translation>Executable file of web browser</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Parameters to executable</translation>
-    </message>
-    <message>
-        <source>some keyboard shortcuts are not unique</source>
-        <translation>some keyboard shortcuts are not unique</translation>
-    </message>
-    <message>
-        <source>List of errors:
-%1.</source>
-        <translation>List of errors:
-%1.</translation>
-    </message>
-    <message>
-        <source>List of changes:
-%1.</source>
-        <translation>List of changes:
-%1.</translation>
-    </message>
-    <message>
-        <source>language changed</source>
-        <translation>language changed</translation>
-    </message>
-    <message>
-        <source>icon theme changed</source>
-        <translation>icon theme changed</translation>
-    </message>
-    <message>
-        <source>skin changed</source>
-        <translation>skin changed</translation>
-    </message>
-    <message>
-        <source>Use sample arguments for</source>
-        <translation>Use sample arguments for</translation>
-    </message>
-    <message>
-        <source>Use in-memory database as the working database</source>
-        <translation>Use in-memory database as the working database</translation>
-    </message>
-    <message>
-        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</source>
-        <translation>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</translation>
-    </message>
-    <message>
-        <source>in-memory database switched</source>
-        <translation>in-memory database switched</translation>
-    </message>
-    <message>
-        <source>External web browser</source>
-        <translation>External web browser</translation>
-    </message>
-    <message>
-        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</translation>
-    </message>
-    <message>
-        <source>Database driver</source>
-        <translation>Database driver</translation>
-    </message>
-    <message>
-        <source>Hostname</source>
-        <translation>Hostname</translation>
-    </message>
-    <message>
-        <source>Test setup</source>
-        <translation>Test setup</translation>
-    </message>
-    <message>
-        <source>Right mouse button double-click</source>
-        <translation>Right mouse button double-click</translation>
-    </message>
-    <message>
-        <source>Auto-update all feeds every</source>
-        <translation>Auto-update all feeds every</translation>
-    </message>
-    <message>
-        <source>Feed connection timeout</source>
-        <translation>Feed connection timeout</translation>
-    </message>
-    <message>
-        <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</translation>
-    </message>
-    <message>
-        <source> ms</source>
-        <translation> ms</translation>
-    </message>
-    <message>
-        <source>Update all feed on application startup</source>
-        <translation>Update all feed on application startup</translation>
-    </message>
-    <message>
-        <source>Data storage</source>
-        <translation>Data storage</translation>
-    </message>
-    <message>
-        <source>Hostname of your MySQL server</source>
-        <translation>Hostname of your MySQL server</translation>
-    </message>
-    <message>
-        <source>Username to login with</source>
-        <translation>Username to login with</translation>
-    </message>
-    <message>
-        <source>Password for your username</source>
-        <translation>Password for your username</translation>
-    </message>
-    <message>
-        <source>data storage backend changed</source>
-        <translation>data storage backend changed</translation>
-    </message>
-    <message>
-        <source>Hostname is empty.</source>
-        <translation>Hostname is empty.</translation>
-    </message>
-    <message>
-        <source>Hostname looks ok.</source>
-        <translation>Hostname looks ok. </translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Username is empty.</translation>
-    </message>
-    <message>
-        <source>Username looks ok.</source>
-        <translation>Username looks ok.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Password is empty.</translation>
-    </message>
-    <message>
-        <source>Password looks ok.</source>
-        <translation>Password looks ok.</translation>
-    </message>
-    <message>
-        <source>Toolbar button style</source>
-        <translation>Toolbar button style</translation>
-    </message>
-    <message>
-        <source>Hide main window when it is minimized</source>
-        <translation>Hide main window when it is minimized</translation>
-    </message>
-    <message>
-        <source>No connection test triggered so far.</source>
-        <translation>No connection test triggered so far.</translation>
-    </message>
-    <message>
-        <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Note that these settings are applied only on newly established connections.</translation>
-    </message>
-    <message>
-        <source>Select browser</source>
-        <translation>Select browser</translation>
-    </message>
-    <message>
-        <source>No proxy</source>
-        <translation>No proxy</translation>
-    </message>
-    <message>
-        <source>System proxy</source>
-        <translation>System proxy</translation>
-    </message>
-    <message>
-        <source>Icon only</source>
-        <translation>Icon only</translation>
-    </message>
-    <message>
-        <source>Text only</source>
-        <translation>Text only</translation>
-    </message>
-    <message>
-        <source>Text beside icon</source>
-        <translation>Text beside icon</translation>
-    </message>
-    <message>
-        <source>Text under icon</source>
-        <translation>Text under icon</translation>
-    </message>
-    <message>
-        <source>Follow OS style</source>
-        <translation>Follow OS style</translation>
-    </message>
-    <message>
-        <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Keep message selection in the middle of the message list viewport</translation>
-    </message>
-    <message>
-        <source>You did not executed any connection test yet.</source>
-        <translation>You did not executed any connection test yet.</translation>
-    </message>
-    <message>
-        <source>Launch %1 on operating system startup</source>
-        <translation>Launch %1 on operating system startup</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds &amp;&amp; categories</translation>
-    </message>
-    <message>
-        <source>Message count format in feed list</source>
-        <translation>Message count format in feed list</translation>
-    </message>
-    <message>
-        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</translation>
-    </message>
-    <message>
-        <source>custom external browser is not set correctly</source>
-        <translation>custom external browser is not set correctly</translation>
-    </message>
-    <message>
-        <source>Toolbars</source>
-        <translation>Toolbars</translation>
-    </message>
-    <message>
-        <source>Toolbar for feeds list</source>
-        <translation>Toolbar for feeds list</translation>
-    </message>
-    <message>
-        <source>Toolbar for messages list</source>
-        <translation>Toolbar for messages list</translation>
-    </message>
-    <message>
-        <source>Select toolbar to edit</source>
-        <translation>Select toolbar to edit</translation>
-    </message>
-    <message>
-        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+        <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation>Some critical settings were changed and will be applied after the application gets restarted. 
-
-You have to restart manually.</translation>
-    </message>
-    <message>
-        <source>Check for updates on application startup</source>
-        <translation>Check for updates on application startup</translation>
-    </message>
-    <message>
-        <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Executables (*)</source>
-        <extracomment>File filter for external browser selection dialog.
-----------
-File filter for external e-mail selection dialog.</extracomment>
-        <translation>Executables (*)</translation>
+        <source>Changed categories of settings:
+%1.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Remove all read messages from all feeds on application exit</translation>
+        <source>Some settings are changed and will be lost</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Downloads</source>
-        <translation>Downloads</translation>
+        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.
+
+You have to restart manually.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Target directory for downloaded files</source>
-        <translation>Target directory for downloaded files</translation>
-    </message>
-    <message>
-        <source>Ask for each individual downloaded file</source>
-        <translation>Ask for each individual downloaded file</translation>
-    </message>
-    <message>
-        <source>Target directory where all downloaded files are saved</source>
-        <translation>Target directory where all downloaded files are saved</translation>
-    </message>
-    <message>
-        <source>&amp;Browse</source>
-        <translation>&amp;Browse</translation>
-    </message>
-    <message>
-        <source>Select downloads target directory</source>
-        <translation>Select downloads target directory</translation>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>&amp;Show password</translation>
-    </message>
-    <message>
-        <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Web browser &amp; e-mail &amp; proxy</translation>
-    </message>
-    <message>
-        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</translation>
-    </message>
-    <message>
-        <source>Working database</source>
-        <translation>Working database</translation>
-    </message>
-    <message>
-        <source>Use custom external web browser</source>
-        <translation>Use custom external web browser</translation>
-    </message>
-    <message>
-        <source>External e-mail client</source>
-        <translation>External e-mail client</translation>
-    </message>
-    <message>
-        <source>Use custom external e-mail client</source>
-        <translation>Use custom external e-mail client</translation>
-    </message>
-    <message>
-        <source>E-mail client executable</source>
-        <translation>E-mail client executable</translation>
-    </message>
-    <message>
-        <source>Executable file of e-mail client</source>
-        <translation>Executable file of e-mail client</translation>
-    </message>
-    <message>
-        <source>Select client</source>
-        <translation>Select client</translation>
-    </message>
-    <message>
-        <source>Placeholders:
- • %1 - title of selected message,
- • %2 - body of selected message.</source>
-        <translation>Placeholders:
- • %1 - title of selected message,
- • %2 - body of selected message.</translation>
-    </message>
-    <message>
-        <source>Save all downloaded files to</source>
-        <translation>Save all downloaded files to</translation>
-    </message>
-    <message>
-        <source>Select e-mail executable</source>
-        <translation>Select e-mail executable</translation>
-    </message>
-    <message>
-        <source>Mozilla Thunderbird</source>
-        <translation>Mozilla Thunderbird</translation>
-    </message>
-    <message>
-        <source>Working database which you have full access to.</source>
-        <translation>Working database which you have full access to.</translation>
-    </message>
-    <message>
-        <source>Working database is empty.</source>
-        <translation>Working database is empty.</translation>
-    </message>
-    <message>
-        <source>Working database is ok.</source>
-        <translation>Working database is ok.</translation>
-    </message>
-    <message>
-        <source>(Tray icon is not available.)</source>
-        <translation>(Tray icon is not available.)</translation>
-    </message>
-    <message>
-        <source>Internal message browser fonts</source>
-        <translation>Internal message browser fonts</translation>
-    </message>
-    <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</translation>
-    </message>
-    <message>
-        <source>E-mail</source>
-        <translation>E-mail</translation>
-    </message>
-    <message>
-        <source>Open download manager when new download is started</source>
-        <translation>Open download manager when new download is started</translation>
-    </message>
-    <message>
-        <source>Statusbar</source>
-        <translation>Statusbar</translation>
-    </message>
-    <message>
-        <source>&amp;Change font</source>
-        <translation>&amp;Change font</translation>
-    </message>
-    <message>
-        <source>Font preview</source>
-        <translation>Font preview</translation>
-    </message>
-    <message>
-        <source>Select new font for message viewer</source>
-        <translation>Select new font for message viewer</translation>
-    </message>
-    <message>
-        <source>no icon theme/system icon theme</source>
-        <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>no icon theme/system icon theme</translation>
-    </message>
-    <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation>Enable popup balloon tooltips</translation>
+        <source>Do you really want to close this dialog without saving settings?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3166,6 +2584,631 @@ At least API level %1 is required.</translation>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBrowserMail</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External web browser</source>
+        <translation type="unfinished">External web browser</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Use custom external web browser</source>
+        <translation type="unfinished">Use custom external web browser</translation>
+    </message>
+    <message>
+        <source>Web browser executable</source>
+        <translation type="unfinished">Web browser executable</translation>
+    </message>
+    <message>
+        <source>Executable file of web browser</source>
+        <translation type="unfinished">Executable file of web browser</translation>
+    </message>
+    <message>
+        <source>&amp;Browse</source>
+        <translation type="unfinished">&amp;Browse</translation>
+    </message>
+    <message>
+        <source>Executable parameters</source>
+        <translation type="unfinished">Executable parameters</translation>
+    </message>
+    <message>
+        <source>Parameters to executable</source>
+        <translation type="unfinished">Parameters to executable</translation>
+    </message>
+    <message>
+        <source>Use sample arguments for</source>
+        <translation type="unfinished">Use sample arguments for</translation>
+    </message>
+    <message>
+        <source>Select browser</source>
+        <translation type="unfinished">Select browser</translation>
+    </message>
+    <message>
+        <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
+        <translation type="unfinished">Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</translation>
+    </message>
+    <message>
+        <source>External e-mail client</source>
+        <translation type="unfinished">External e-mail client</translation>
+    </message>
+    <message>
+        <source>Use custom external e-mail client</source>
+        <translation type="unfinished">Use custom external e-mail client</translation>
+    </message>
+    <message>
+        <source>E-mail client executable</source>
+        <translation type="unfinished">E-mail client executable</translation>
+    </message>
+    <message>
+        <source>Executable file of e-mail client</source>
+        <translation type="unfinished">Executable file of e-mail client</translation>
+    </message>
+    <message>
+        <source>Select client</source>
+        <translation type="unfinished">Select client</translation>
+    </message>
+    <message>
+        <source>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</source>
+        <translation type="unfinished">Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</translation>
+    </message>
+    <message>
+        <source>Proxy</source>
+        <translation type="unfinished">Proxy</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <extracomment>Proxy server type.</extracomment>
+        <translation type="unfinished">Type</translation>
+    </message>
+    <message>
+        <source>Host</source>
+        <translation type="unfinished">Host</translation>
+    </message>
+    <message>
+        <source>Hostname or IP of your proxy server</source>
+        <translation type="unfinished">Hostname or IP of your proxy server</translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation type="unfinished">Port</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your username for proxy server authentication</source>
+        <translation type="unfinished">Your username for proxy server authentication</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your password for proxy server authentication</source>
+        <translation type="unfinished">Your password for proxy server authentication</translation>
+    </message>
+    <message>
+        <source>Display password</source>
+        <translation type="unfinished">Display password</translation>
+    </message>
+    <message>
+        <source>Note that these settings are applied only on newly established connections.</source>
+        <translation type="unfinished">Note that these settings are applied only on newly established connections.</translation>
+    </message>
+    <message>
+        <source>Select web browser executable</source>
+        <translation type="unfinished">Select web browser executable</translation>
+    </message>
+    <message>
+        <source>Executables (*)</source>
+        <extracomment>File filter for external browser selection dialog.
+----------
+File filter for external e-mail selection dialog.</extracomment>
+        <translation type="unfinished">Executables (*)</translation>
+    </message>
+    <message>
+        <source>Executables (*.*)</source>
+        <translation type="unfinished">Executables (*.*)</translation>
+    </message>
+    <message>
+        <source>Select e-mail executable</source>
+        <translation type="unfinished">Select e-mail executable</translation>
+    </message>
+    <message>
+        <source>Opera 12 or older</source>
+        <translation type="unfinished">Opera 12 or older</translation>
+    </message>
+    <message>
+        <source>Mozilla Thunderbird</source>
+        <translation type="unfinished">Mozilla Thunderbird</translation>
+    </message>
+    <message>
+        <source>No proxy</source>
+        <translation type="unfinished">No proxy</translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation type="unfinished">System proxy</translation>
+    </message>
+    <message>
+        <source>Socks5</source>
+        <translation type="unfinished">Socks5</translation>
+    </message>
+    <message>
+        <source>Http</source>
+        <translation type="unfinished">Http</translation>
+    </message>
+    <message>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation type="unfinished">Web browser &amp; e-mail &amp; proxy</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDatabase</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
+        <translation type="unfinished">WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</translation>
+    </message>
+    <message>
+        <source>Database driver</source>
+        <translation type="unfinished">Database driver</translation>
+    </message>
+    <message>
+        <source>Use in-memory database as the working database</source>
+        <translation type="unfinished">Use in-memory database as the working database</translation>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
+&lt;ul&gt;
+&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
+&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
+&lt;/ul&gt;
+Disadvantages:
+&lt;ul&gt;
+&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
+&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
+&lt;/ul&gt;
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished">Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
+&lt;ul&gt;
+&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
+&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
+&lt;/ul&gt;
+Disadvantages:
+&lt;ul&gt;
+&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
+&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
+&lt;/ul&gt;
+Authors of this application are NOT responsible for lost data.</translation>
+    </message>
+    <message>
+        <source>Hostname</source>
+        <translation type="unfinished">Hostname</translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation type="unfinished">Port</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Test setup</source>
+        <translation type="unfinished">Test setup</translation>
+    </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
+        <translation type="unfinished">Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</translation>
+    </message>
+    <message>
+        <source>&amp;Show password</source>
+        <translation type="unfinished">&amp;Show password</translation>
+    </message>
+    <message>
+        <source>Working database</source>
+        <translation type="unfinished">Working database</translation>
+    </message>
+    <message>
+        <source>Hostname is empty.</source>
+        <translation type="unfinished">Hostname is empty.</translation>
+    </message>
+    <message>
+        <source>Hostname looks ok.</source>
+        <translation type="unfinished">Hostname looks ok. </translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Username is empty.</translation>
+    </message>
+    <message>
+        <source>Username looks ok.</source>
+        <translation type="unfinished">Username looks ok.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Password is empty.</translation>
+    </message>
+    <message>
+        <source>Password looks ok.</source>
+        <translation type="unfinished">Password looks ok.</translation>
+    </message>
+    <message>
+        <source>Working database is empty.</source>
+        <translation type="unfinished">Working database is empty.</translation>
+    </message>
+    <message>
+        <source>Working database is ok.</source>
+        <translation type="unfinished">Working database is ok.</translation>
+    </message>
+    <message>
+        <source>No connection test triggered so far.</source>
+        <translation type="unfinished">No connection test triggered so far.</translation>
+    </message>
+    <message>
+        <source>You did not executed any connection test yet.</source>
+        <translation type="unfinished">You did not executed any connection test yet.</translation>
+    </message>
+    <message>
+        <source>Hostname of your MySQL server</source>
+        <translation type="unfinished">Hostname of your MySQL server</translation>
+    </message>
+    <message>
+        <source>Username to login with</source>
+        <translation type="unfinished">Username to login with</translation>
+    </message>
+    <message>
+        <source>Password for your username</source>
+        <translation type="unfinished">Password for your username</translation>
+    </message>
+    <message>
+        <source>Working database which you have full access to.</source>
+        <translation type="unfinished">Working database which you have full access to.</translation>
+    </message>
+    <message>
+        <source>Data storage</source>
+        <translation type="unfinished">Data storage</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDownloads</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open download manager when new download is started</source>
+        <translation type="unfinished">Open download manager when new download is started</translation>
+    </message>
+    <message>
+        <source>Target directory for downloaded files</source>
+        <translation type="unfinished">Target directory for downloaded files</translation>
+    </message>
+    <message>
+        <source>Ask for each individual downloaded file</source>
+        <translation type="unfinished">Ask for each individual downloaded file</translation>
+    </message>
+    <message>
+        <source>Save all downloaded files to</source>
+        <translation type="unfinished">Save all downloaded files to</translation>
+    </message>
+    <message>
+        <source>Target directory where all downloaded files are saved</source>
+        <translation type="unfinished">Target directory where all downloaded files are saved</translation>
+    </message>
+    <message>
+        <source>&amp;Browse</source>
+        <translation type="unfinished">&amp;Browse</translation>
+    </message>
+    <message>
+        <source>Select downloads target directory</source>
+        <translation type="unfinished">Select downloads target directory</translation>
+    </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished">Downloads</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsFeedsMessages</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation type="unfinished">Feeds &amp;&amp; categories</translation>
+    </message>
+    <message>
+        <source>Update all feed on application startup</source>
+        <translation type="unfinished">Update all feed on application startup</translation>
+    </message>
+    <message>
+        <source>Auto-update all feeds every</source>
+        <translation type="unfinished">Auto-update all feeds every</translation>
+    </message>
+    <message>
+        <source>Feed connection timeout</source>
+        <translation type="unfinished">Feed connection timeout</translation>
+    </message>
+    <message>
+        <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
+        <translation type="unfinished">Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</translation>
+    </message>
+    <message>
+        <source> ms</source>
+        <translation type="unfinished"> ms</translation>
+    </message>
+    <message>
+        <source>Message count format in feed list</source>
+        <translation type="unfinished">Message count format in feed list</translation>
+    </message>
+    <message>
+        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
+        <translation type="unfinished">Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</translation>
+    </message>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished">Messages</translation>
+    </message>
+    <message>
+        <source>Remove all read messages from all feeds on application exit</source>
+        <translation type="unfinished">Remove all read messages from all feeds on application exit</translation>
+    </message>
+    <message>
+        <source>Keep message selection in the middle of the message list viewport</source>
+        <translation type="unfinished">Keep message selection in the middle of the message list viewport</translation>
+    </message>
+    <message>
+        <source>Use custom date/time format (overrides format loaded from active localization)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal message browser fonts</source>
+        <translation type="unfinished">Internal message browser fonts</translation>
+    </message>
+    <message>
+        <source>&amp;Change font</source>
+        <translation type="unfinished">&amp;Change font</translation>
+    </message>
+    <message>
+        <source>Select new font for message viewer</source>
+        <translation type="unfinished">Select new font for message viewer</translation>
+    </message>
+    <message>
+        <source>Font preview</source>
+        <translation type="unfinished">Font preview</translation>
+    </message>
+    <message>
+        <source>Feeds &amp; messages</source>
+        <translation type="unfinished">Feeds &amp; messages</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsGeneral</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch %1 on operating system startup</source>
+        <translation type="unfinished">Launch %1 on operating system startup</translation>
+    </message>
+    <message>
+        <source>Check for updates on application startup</source>
+        <translation type="unfinished">Check for updates on application startup</translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
+        <translation type="unfinished">Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</translation>
+    </message>
+    <message>
+        <source> (not supported on this platform)</source>
+        <translation type="unfinished"> (not supported on this platform)</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation type="unfinished">General</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsGui</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icons &amp;&amp; skins</source>
+        <translation type="unfinished">Icons &amp;&amp; skins</translation>
+    </message>
+    <message>
+        <source>Icons</source>
+        <translation type="unfinished">Icons </translation>
+    </message>
+    <message>
+        <source>Icon theme</source>
+        <translation type="unfinished">Icon theme</translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished">Skins</translation>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished">Active skin </translation>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished">Selected skin:</translation>
+    </message>
+    <message>
+        <source>Tray area &amp;&amp; notifications</source>
+        <translation type="unfinished">Tray area &amp;&amp; notifications</translation>
+    </message>
+    <message>
+        <source>Tray icon</source>
+        <translation type="unfinished">Tray icon</translation>
+    </message>
+    <message>
+        <source>Hide main window when it is minimized</source>
+        <translation type="unfinished">Hide main window when it is minimized</translation>
+    </message>
+    <message>
+        <source>Start application hidden</source>
+        <translation type="unfinished">Start application hidden</translation>
+    </message>
+    <message>
+        <source>Enable popup balloon tooltips</source>
+        <translation type="unfinished">Enable popup balloon tooltips</translation>
+    </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished">Tabs</translation>
+    </message>
+    <message>
+        <source>Open new tabs with left mouse button double-click on tab bar</source>
+        <translation type="unfinished">Open new tabs with left mouse button double-click on tab bar</translation>
+    </message>
+    <message>
+        <source>Hide tab bar if just one tab is visible</source>
+        <translation type="unfinished">Hide tab bar if just one tab is visible</translation>
+    </message>
+    <message>
+        <source>Close tabs with</source>
+        <translation type="unfinished">Close tabs with</translation>
+    </message>
+    <message>
+        <source>Right mouse button double-click</source>
+        <translation type="unfinished">Right mouse button double-click</translation>
+    </message>
+    <message>
+        <source>Middle mouse button single-click</source>
+        <translation type="unfinished">Middle mouse button single-click</translation>
+    </message>
+    <message>
+        <source>Toolbars</source>
+        <translation type="unfinished">Toolbars</translation>
+    </message>
+    <message>
+        <source>Toolbar for feeds list</source>
+        <translation type="unfinished">Toolbar for feeds list</translation>
+    </message>
+    <message>
+        <source>Toolbar for messages list</source>
+        <translation type="unfinished">Toolbar for messages list</translation>
+    </message>
+    <message>
+        <source>Statusbar</source>
+        <translation type="unfinished">Statusbar</translation>
+    </message>
+    <message>
+        <source>Toolbar button style</source>
+        <translation type="unfinished">Toolbar button style</translation>
+    </message>
+    <message>
+        <source>Select toolbar to edit</source>
+        <translation type="unfinished">Select toolbar to edit</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished">Name</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished">Version</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished">Author</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation type="unfinished">E-mail</translation>
+    </message>
+    <message>
+        <source>(Tray icon is not available.)</source>
+        <translation type="unfinished">(Tray icon is not available.)</translation>
+    </message>
+    <message>
+        <source>no icon theme/system icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
+        <translation type="unfinished">no icon theme/system icon theme</translation>
+    </message>
+    <message>
+        <source>Icon only</source>
+        <translation type="unfinished">Icon only</translation>
+    </message>
+    <message>
+        <source>Text only</source>
+        <translation type="unfinished">Text only</translation>
+    </message>
+    <message>
+        <source>Text beside icon</source>
+        <translation type="unfinished">Text beside icon</translation>
+    </message>
+    <message>
+        <source>Text under icon</source>
+        <translation type="unfinished">Text under icon</translation>
+    </message>
+    <message>
+        <source>Follow OS style</source>
+        <translation type="unfinished">Follow OS style</translation>
+    </message>
+    <message>
+        <source>User interface</source>
+        <translation type="unfinished">User interface</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsLocalization</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="unfinished">Language</translation>
+    </message>
+    <message>
+        <source>Code</source>
+        <translation type="unfinished">Code</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished">Author</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsShortcuts</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keyboard shortcuts</source>
+        <translation type="unfinished">Keyboard shortcuts</translation>
     </message>
 </context>
 <context>

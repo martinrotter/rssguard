@@ -1,24 +1,26 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="cs">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"/>
+        <translation>(kategorie)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation>(zdroj)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"/>
+        <translation>Aplikace již běží</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze psát do cílové složky</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -130,7 +132,14 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanál.</numerusform>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanály.</numerusform>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanálů.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -216,7 +225,7 @@ This website contains %n feed(s).</source>
         <translation>Stahování dokončeno</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Soubor &apos;%1&apos; je stažen.
 Klikněte sem pro otevření nadřazeného adresáře.</translation>
@@ -242,11 +251,19 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minuta do konce</numerusform><numerusform>%n minuty do konce</numerusform><numerusform>%n minut do konce</numerusform></translation>
+        <translation>
+            <numerusform>%n minuta do konce</numerusform>
+            <numerusform>%n minuty do konce</numerusform>
+            <numerusform>%n minut do konce</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n vteřina do konce</numerusform><numerusform>%n vteřiny do konce</numerusform><numerusform>%n vteřin do konce</numerusform></translation>
+        <translation>
+            <numerusform>%n vteřina do konce</numerusform>
+            <numerusform>%n vteřiny do konce</numerusform>
+            <numerusform>%n vteřin do konce</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -254,19 +271,23 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation type="unfinished"/>
+        <translation>kB</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="unfinished"/>
+        <translation>MB</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="unfinished"/>
+        <translation>GB</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Stahuji %n soubor...</numerusform><numerusform>Stahuji %n soubory...</numerusform><numerusform>Stahuji %n souborů...</numerusform></translation>
+        <translation>
+            <numerusform>Stahuji %n soubor...</numerusform>
+            <numerusform>Stahuji %n soubory...</numerusform>
+            <numerusform>Stahuji %n souborů...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -317,7 +338,11 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Budu aktualizovat %n kanál.</numerusform><numerusform>Budu aktualizovat %n kanály.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
+        <translation>
+            <numerusform>Budu aktualizovat %n kanál.</numerusform>
+            <numerusform>Budu aktualizovat %n kanály.</numerusform>
+            <numerusform>Budu aktualizovat %n kanálů.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -347,11 +372,11 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze obnovit všechny soubory protože právě probíhá jiná důležitá operace.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>Počet nepřečtených/všech zpráv.</translation>
     </message>
 </context>
 <context>
@@ -422,7 +447,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nepodpodováno</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -510,7 +535,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (vytvořená %2/%3)&lt;br&gt;&lt;b&gt;Kontrola:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Datum buildu:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (kompilováno proti %7)&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -631,7 +656,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> den</numerusform><numerusform> dny</numerusform><numerusform> dnů</numerusform></translation>
+        <translation>
+            <numerusform> den</numerusform>
+            <numerusform> dny</numerusform>
+            <numerusform> dnů</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -722,7 +751,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -865,15 +894,15 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Vynutit aktualizace kanálů na straně serveru</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Některé kanály vyžadují autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -881,23 +910,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Heslo</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit heslo</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Otestovat nastavení</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Zapnutí této položky může výrazně zpomalit aktualizaci kanálů.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -937,7 +966,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Síťová chyba, zadali jste správnou cestu k ownCloud a heslo?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -969,19 +998,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Heslo k vašemu účtu ownCloud</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno pro ownCloud</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Server ownCloud News je v pořádku, běží na verzi %1, přičemž minimální vyžadovaná verze je %2.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Server ownCloud News je v pořádku.</translation>
     </message>
 </context>
 <context>
@@ -1028,7 +1057,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
@@ -1068,7 +1097,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Upravit kanál &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
@@ -1157,7 +1186,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata a ikona nebyly staženy.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
@@ -1177,7 +1206,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata ikony nebyla načtena.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
@@ -1592,7 +1621,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Webový prohlížeč a záložky</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
@@ -1600,19 +1629,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Nová záložka webového prohlížeče</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>Zavřít všechny záložky</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Zavřít ostatní záložky</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit na &amp;celou obrazovku</translation>
     </message>
 </context>
 <context>
@@ -1688,619 +1717,37 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormSettings</name>
     <message>
-        <source>General</source>
-        <extracomment>General settings section.</extracomment>
-        <translation>Obecné</translation>
-    </message>
-    <message>
-        <source>User interface</source>
-        <translation>Uživatelské rozhraní</translation>
-    </message>
-    <message>
-        <source>Icon theme</source>
-        <translation>Téma ikon</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Nastavení</translation>
-    </message>
-    <message>
-        <source>Keyboard shortcuts</source>
-        <translation>Klávesové zkratky</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
-        <translation>Lokalizace</translation>
-    </message>
-    <message>
-        <source>Proxy</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icons &amp;&amp; skins</source>
-        <translation>Ikony &amp;&amp; skiny</translation>
-    </message>
-    <message>
-        <source>Tray icon</source>
-        <translation>Notifikační ikona</translation>
-    </message>
-    <message>
-        <source>Start application hidden</source>
-        <translation>Spouštět aplikaci skrytou</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <extracomment>Proxy server type.</extracomment>
-        <translation>Typ</translation>
-    </message>
-    <message>
-        <source>Host</source>
-        <translation>Server</translation>
-    </message>
-    <message>
-        <source>Hostname or IP of your proxy server</source>
-        <translation>Webový název IP adresa proxy serveru</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Uživatelské jméno</translation>
-    </message>
-    <message>
-        <source>Your username for proxy server authentication</source>
-        <translation>Vaše uživatelské jméno pro autentifikaci</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Heslo</translation>
-    </message>
-    <message>
-        <source>Your password for proxy server authentication</source>
-        <translation>Vaše heslo pro autentifikaci</translation>
-    </message>
-    <message>
-        <source>Display password</source>
-        <translation>Zobrazit heslo</translation>
-    </message>
-    <message>
-        <source>Code</source>
-        <translation>Kód</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Verze</translation>
-    </message>
-    <message>
-        <source>Author</source>
-        <translation>Autor</translation>
-    </message>
-    <message>
-        <source>Socks5</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Http</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> (not supported on this platform)</source>
-        <translation> (na této platformě nepodporováno)</translation>
-    </message>
-    <message>
-        <source>Tray area &amp;&amp; notifications</source>
-        <translation>Notifikační oblast</translation>
-    </message>
-    <message>
-        <source>Tabs</source>
-        <translation>Panely</translation>
-    </message>
-    <message>
-        <source>Close tabs with</source>
-        <translation>Zavírat panely pomocí</translation>
-    </message>
-    <message>
-        <source>Middle mouse button single-click</source>
-        <translation>Prostředního tlačítka myši</translation>
-    </message>
-    <message>
-        <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation>Otevírat nové panely poklepáním na panelový pruh</translation>
-    </message>
-    <message>
-        <source>Cannot save settings</source>
-        <translation>Nastavení nelze uložit</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Název</translation>
-    </message>
-    <message>
-        <source>Icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation>Skiny</translation>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation>Vybraný skin:</translation>
-    </message>
-    <message>
-        <source>Hide tab bar if just one tab is visible</source>
-        <translation>Skrýt přepínač tabů, je-li viditelný pouze jeden tab</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
         <translation>Kritická nastavení změněna</translation>
     </message>
     <message>
-        <source>Feeds &amp; messages</source>
-        <translation>Kanály &amp; zprávy</translation>
-    </message>
-    <message>
-        <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation>Některá kritická nastavení nejsou vyplněna. Musíte je opravit než bude možné dialog potvrdit.</translation>
-    </message>
-    <message>
-        <source>Messages</source>
-        <translation>Zprávy</translation>
-    </message>
-    <message>
-        <source>Web browser executable</source>
-        <translation>Spouštěcí soubor</translation>
-    </message>
-    <message>
-        <source>Executable parameters</source>
-        <translation>Parametry spouštěče</translation>
-    </message>
-    <message>
-        <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>Mějte na vědomí, že &quot;%1&quot; (bez uvozovek) je zástupný symbol pro URL dané zprávy.</translation>
-    </message>
-    <message>
-        <source>Select web browser executable</source>
-        <translation>Zvolit spouštěč webového externího prohlížeče</translation>
-    </message>
-    <message>
-        <source>Executables (*.*)</source>
-        <translation>Spouštěče (*.*)</translation>
-    </message>
-    <message>
-        <source>Opera 12 or older</source>
-        <translation>Opera 12 nebo starší</translation>
-    </message>
-    <message>
-        <source>Executable file of web browser</source>
-        <translation>Spouštěcí soubor prohlžeče webu</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Parametry spouštěče</translation>
-    </message>
-    <message>
-        <source>some keyboard shortcuts are not unique</source>
-        <translation>některé klávesové zkratky nejsou unikátní</translation>
-    </message>
-    <message>
-        <source>List of errors:
-%1.</source>
-        <translation>Seznam chyb:
-%1.</translation>
-    </message>
-    <message>
-        <source>List of changes:
-%1.</source>
-        <translation>Seznam změn:
-%1.</translation>
-    </message>
-    <message>
-        <source>language changed</source>
-        <translation>jazyk změněn</translation>
-    </message>
-    <message>
-        <source>icon theme changed</source>
-        <translation>téma ikon změněno</translation>
-    </message>
-    <message>
-        <source>skin changed</source>
-        <translation>skin změněn</translation>
-    </message>
-    <message>
-        <source>Use sample arguments for</source>
-        <translation>Použít typické argumenty pro</translation>
-    </message>
-    <message>
-        <source>Use in-memory database as the working database</source>
-        <translation>Použít paměťovou datábázi jako pracovní datové uložiště</translation>
-    </message>
-    <message>
-        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</source>
-        <translation>Použití paměťové databáze má hned několik výhod a nevýhod. Před povolením této funkce se ujistětě, že se s nimi seznámíte. Výhody:
-&lt;ul&gt;
-&lt;li&gt;vyšší rychlost při manipulaci se zprávami a kanály (obzvláště, pokud je zpráv hodně),&lt;/li&gt;
-&lt;li&gt;celá databáze je uložená v RAM, tedy pevný disk může více odpočívat.&lt;/li&gt;
-&lt;/ul&gt;
-Nevýhody:
-&lt;ul&gt;
-&lt;li&gt;pokud aplikace zhavaruje, tak Vaše změny z posledního sezení budou ztraceny,&lt;/li&gt;
-&lt;li&gt;start a vypnutí aplikace může trvat o něco déle (max. 2 vteřiny).&lt;/li&gt;
-&lt;/ul&gt;
-Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</translation>
-    </message>
-    <message>
-        <source>in-memory database switched</source>
-        <translation>paměťová databáze přepnuta</translation>
-    </message>
-    <message>
-        <source>External web browser</source>
-        <translation>Externí webový prohlížeč</translation>
-    </message>
-    <message>
-        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>VAROVÁNÍ: Mějte na paměti, že přepnutí z jednoho databázového backendu na jiný neprovede zkopírování dat mezi těmito backendy.</translation>
-    </message>
-    <message>
-        <source>Database driver</source>
-        <translation>Datbázový ovladač</translation>
-    </message>
-    <message>
-        <source>Hostname</source>
-        <translation>Hostitel</translation>
-    </message>
-    <message>
-        <source>Test setup</source>
-        <translation>Otestovat</translation>
-    </message>
-    <message>
-        <source>Right mouse button double-click</source>
-        <translation>Dvojklik pravého tlačítka myši</translation>
-    </message>
-    <message>
-        <source>Auto-update all feeds every</source>
-        <translation>Auto-aktualizovat všechny kanály každých</translation>
-    </message>
-    <message>
-        <source>Feed connection timeout</source>
-        <translation>Časový limit stažení souboru kanálu</translation>
-    </message>
-    <message>
-        <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation>Tento časový limit označuje čas, který si stahovací komponenta vyhradí pro získání souboru každého kanálu. Pokud tento čas vyprší a soubor doposud nebyl získán, tak se aktualizace kanálu ukončí a přejde se na další kanál.</translation>
-    </message>
-    <message>
-        <source> ms</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Update all feed on application startup</source>
-        <translation>Aktualizovat všechny kanály po startu aplikace</translation>
-    </message>
-    <message>
-        <source>Data storage</source>
-        <translation>Uložiště dat</translation>
-    </message>
-    <message>
-        <source>Hostname of your MySQL server</source>
-        <translation>Hostitel Vašeho MySQL serveru</translation>
-    </message>
-    <message>
-        <source>Username to login with</source>
-        <translation>Uživatelské jméno</translation>
-    </message>
-    <message>
-        <source>Password for your username</source>
-        <translation>Heslo</translation>
-    </message>
-    <message>
-        <source>data storage backend changed</source>
-        <translation>databázový backend změněn</translation>
-    </message>
-    <message>
-        <source>Hostname is empty.</source>
-        <translation>Hostitel je prázdný.</translation>
-    </message>
-    <message>
-        <source>Hostname looks ok.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Uživatelské jméno je prázdné.</translation>
-    </message>
-    <message>
-        <source>Username looks ok.</source>
-        <translation>Uživatelské jméno se jeví být v pořádku.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Heslo je prázdné.</translation>
-    </message>
-    <message>
-        <source>Password looks ok.</source>
-        <translation>Heslo vypadá dobře.</translation>
-    </message>
-    <message>
-        <source>Toolbar button style</source>
-        <translation>Styl nástrojové lišty</translation>
-    </message>
-    <message>
-        <source>Hide main window when it is minimized</source>
-        <translation>Skrýt hlavní okno při jeho minimalizaci</translation>
-    </message>
-    <message>
-        <source>No connection test triggered so far.</source>
-        <translation>Test připojení doposud nespuštěn.</translation>
-    </message>
-    <message>
-        <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Tato nastavení se projeví pouze na nově vytvořených spojeních.</translation>
-    </message>
-    <message>
-        <source>Select browser</source>
-        <translation>Zvolte prohlížeč</translation>
-    </message>
-    <message>
-        <source>No proxy</source>
-        <translation>Bez proxy</translation>
-    </message>
-    <message>
-        <source>System proxy</source>
-        <translation>Systémová proxy</translation>
-    </message>
-    <message>
-        <source>Icon only</source>
-        <translation>Pouze ikony</translation>
-    </message>
-    <message>
-        <source>Text only</source>
-        <translation>Pouze texty</translation>
-    </message>
-    <message>
-        <source>Text beside icon</source>
-        <translation>Texty vedle ikon</translation>
-    </message>
-    <message>
-        <source>Text under icon</source>
-        <translation>Texty pod ikonami</translation>
-    </message>
-    <message>
-        <source>Follow OS style</source>
-        <translation>Podle nastavení systému</translation>
-    </message>
-    <message>
-        <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Držet vybranou zprávu uprostřed seznamu zpráv při jejich procházení</translation>
-    </message>
-    <message>
-        <source>You did not executed any connection test yet.</source>
-        <translation>Doposud nebyl probeden žádny test spojení.</translation>
-    </message>
-    <message>
-        <source>Launch %1 on operating system startup</source>
-        <translation>Spustit %1 při spuštění operačního systému</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pokud bude nezaškrtnuto, pak se použije výchozí systémový webový prohlížeč.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Kanály &amp;&amp; kategorie</translation>
-    </message>
-    <message>
-        <source>Message count format in feed list</source>
-        <translation>Formát čítače zpráv v seznamu kanálů</translation>
-    </message>
-    <message>
-        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Zadejte formát pro čítače zpráv, které jsou zobrazeny u každého kanálu/kategorie. Použijte zástupné symboly &quot;%all&quot; a &quot;%unread&quot;, které představují aktuální hodnoty čítačů.</translation>
-    </message>
-    <message>
-        <source>custom external browser is not set correctly</source>
-        <translation>vlastní externí prohlížeč není správně nastaven</translation>
-    </message>
-    <message>
-        <source>Toolbars</source>
-        <translation>Nástrojové lišty</translation>
-    </message>
-    <message>
-        <source>Toolbar for feeds list</source>
-        <translation>Lišta seznamu kanálů</translation>
-    </message>
-    <message>
-        <source>Toolbar for messages list</source>
-        <translation>Lišta seznamu zpráv</translation>
-    </message>
-    <message>
-        <source>Select toolbar to edit</source>
-        <translation>Zvolte lištu, kterou chcete upravit</translation>
-    </message>
-    <message>
-        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+        <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation>Některá kritická nastavení se změnila a budou aktivována až po restartu aplikace.
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changed categories of settings:
+%1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some settings are changed and will be lost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some settings were changed and by cancelling this dialog, you would lose these changes.
 
-Musíte restartovat manuálně.</translation>
+You have to restart manually.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Check for updates on application startup</source>
-        <translation>Kontrolovat aktualizace po startu programu</translation>
-    </message>
-    <message>
-        <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>Použít vlastní format datumu (přepíše formát načtený z lokalizace)</translation>
-    </message>
-    <message>
-        <source>Executables (*)</source>
-        <extracomment>File filter for external browser selection dialog.
-----------
-File filter for external e-mail selection dialog.</extracomment>
-        <translation>Spustitelné soubory (*)</translation>
-    </message>
-    <message>
-        <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Vymazat všechny přečtené zprávy, když se aplikace vypíná</translation>
-    </message>
-    <message>
-        <source>Downloads</source>
-        <translation>Stahování</translation>
-    </message>
-    <message>
-        <source>Target directory for downloaded files</source>
-        <translation>Cílový adresář pro stahované soubory</translation>
-    </message>
-    <message>
-        <source>Ask for each individual downloaded file</source>
-        <translation>Ptát se u každého stahovaného souboru</translation>
-    </message>
-    <message>
-        <source>Target directory where all downloaded files are saved</source>
-        <translation>Cílový adresář, kam jsou ukládány všechny stahované soubory</translation>
-    </message>
-    <message>
-        <source>&amp;Browse</source>
-        <translation>&amp;Procházet</translation>
-    </message>
-    <message>
-        <source>Select downloads target directory</source>
-        <translation>Zvolit cílový adresář pro uložení stahovaných souborů</translation>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>&amp;Zobrazit heslo</translation>
-    </message>
-    <message>
-        <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Webový prohlížeč &amp; e-mail &amp; proxy</translation>
-    </message>
-    <message>
-        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Vymazat odpadní Trolltech klíč v registru (HKCU\Software\Trolltech při ukončení aplikace (Používejte na vlastní riziko!)</translation>
-    </message>
-    <message>
-        <source>Working database</source>
-        <translation>Pracovní databáze</translation>
-    </message>
-    <message>
-        <source>Use custom external web browser</source>
-        <translation>Použít vlastní webový prohlížeč</translation>
-    </message>
-    <message>
-        <source>External e-mail client</source>
-        <translation>Externí e-mailový klient</translation>
-    </message>
-    <message>
-        <source>Use custom external e-mail client</source>
-        <translation>Použít vlastní e-mailový klient</translation>
-    </message>
-    <message>
-        <source>E-mail client executable</source>
-        <translation>Spustitelný soubor e-mailového klienta</translation>
-    </message>
-    <message>
-        <source>Executable file of e-mail client</source>
-        <translation>Spustitelný soubor e-mailového klienta</translation>
-    </message>
-    <message>
-        <source>Select client</source>
-        <translation>Zvolit klienta</translation>
-    </message>
-    <message>
-        <source>Placeholders:
- • %1 - title of selected message,
- • %2 - body of selected message.</source>
-        <translation>Placeholdery:
- • %1 - název vybrané zprávy,
- • %2 - tělo vybrané zprávy.</translation>
-    </message>
-    <message>
-        <source>Save all downloaded files to</source>
-        <translation>Uložit všechny stahované soubory do</translation>
-    </message>
-    <message>
-        <source>Select e-mail executable</source>
-        <translation>Zvolit spouštěcí soubor e-mailového klienta</translation>
-    </message>
-    <message>
-        <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Working database which you have full access to.</source>
-        <translation>Pracovní databáze, ke které máte plný přístup.</translation>
-    </message>
-    <message>
-        <source>Working database is empty.</source>
-        <translation>Pracovní databáze je prázdná.</translation>
-    </message>
-    <message>
-        <source>Working database is ok.</source>
-        <translation>Pracovní databáze je ok.</translation>
-    </message>
-    <message>
-        <source>(Tray icon is not available.)</source>
-        <translation>(Tray ikona není dostupná.)</translation>
-    </message>
-    <message>
-        <source>Internal message browser fonts</source>
-        <translation>Písma interního prohlížeče zpráv</translation>
-    </message>
-    <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Mějte na paměti, že rychlost a latence použitého MySQL serveru těžce ovlivňuje svižnost aplikace. Použití pomalého databázového spojení může vést ke špatnému výkonu aplikace např. při prohlížení zpráv.</translation>
-    </message>
-    <message>
-        <source>E-mail</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Open download manager when new download is started</source>
-        <translation>Při začátku stahování otevírat správce stahování</translation>
-    </message>
-    <message>
-        <source>Statusbar</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Change font</source>
-        <translation>&amp;Změnit písmo</translation>
-    </message>
-    <message>
-        <source>Font preview</source>
-        <translation>Náhled písma</translation>
-    </message>
-    <message>
-        <source>Select new font for message viewer</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>no icon theme/system icon theme</source>
-        <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <source>Do you really want to close this dialog without saving settings?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2702,20 +2149,22 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Toto je nová verze, která může být
+stažena.</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Balíček byl úspěšně stažen.
+Musíte ho nainstalovat manuálně.</translation>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>Instalovat</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="unfinished"/>
+        <translation>Nebylo možné spustit externí updater. Aplikaci musíte updatovat sami.</translation>
     </message>
 </context>
 <context>
@@ -2740,7 +2189,7 @@ You must install it manually.</source>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation>Id</translation>
     </message>
     <message>
         <source>Read</source>
@@ -2764,7 +2213,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Url</source>
-        <translation type="unfinished"/>
+        <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
@@ -2860,11 +2309,11 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation>Zvláštní hash</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Zvlášnní hash zprávy</translation>
     </message>
 </context>
 <context>
@@ -3049,13 +2498,17 @@ You must install it manually.</source>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n další kanál.</numerusform><numerusform>
++ %n další kanál.</numerusform>
+            <numerusform>
 
-+ %n další kanály.</numerusform><numerusform>
++ %n další kanály.</numerusform>
+            <numerusform>
 
-+ %n dalších kanálů.</numerusform></translation>
++ %n dalších kanálů.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3089,15 +2542,15 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>Aplikace News je agregátor RSS/Atom kanálů. Je součástí balíku ownCloud. Tento plugin implementuje API %1.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation type="unfinished"/>
+        <translation>Standardní online kanály (RSS/RDF/ATOM)</translation>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
-        <translation type="unfinished"/>
+        <translation>Tento účet nabízí integraci se standardními RSS/RDF/ATOM kanály.</translation>
     </message>
 </context>
 <context>
@@ -3112,7 +2565,11 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n smazaná zpráva.</numerusform><numerusform>%n smazané zprávy.</numerusform><numerusform>%n smazaných zpráv.</numerusform></translation>
+        <translation>
+            <numerusform>%n smazaná zpráva.</numerusform>
+            <numerusform>%n smazané zprávy.</numerusform>
+            <numerusform>%n smazaných zpráv.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3136,7 +2593,624 @@ Je vyžadování verze API minimálně %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
+        <translation>
+            <numerusform>%n nepřečtená zpráva.</numerusform>
+            <numerusform>%n nepřečtené zprávy.</numerusform>
+            <numerusform>%n nepřečtených zpráv.</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBrowserMail</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable file of web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Browse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parameters to executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use sample arguments for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-mail client executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable file of e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <extracomment>Proxy server type.</extracomment>
+        <translation type="unfinished">Typ</translation>
+    </message>
+    <message>
+        <source>Host</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname or IP of your proxy server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Your username for proxy server authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Heslo</translation>
+    </message>
+    <message>
+        <source>Your password for proxy server authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that these settings are applied only on newly established connections.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select web browser executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executables (*)</source>
+        <extracomment>File filter for external browser selection dialog.
+----------
+File filter for external e-mail selection dialog.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executables (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select e-mail executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opera 12 or older</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mozilla Thunderbird</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Socks5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Http</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDatabase</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use in-memory database as the working database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
+&lt;ul&gt;
+&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
+&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
+&lt;/ul&gt;
+Disadvantages:
+&lt;ul&gt;
+&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
+&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
+&lt;/ul&gt;
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Heslo</translation>
+    </message>
+    <message>
+        <source>Test setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname looks ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Uživatelské jméno je prázdné.</translation>
+    </message>
+    <message>
+        <source>Username looks ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Heslo je prázdné.</translation>
+    </message>
+    <message>
+        <source>Password looks ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No connection test triggered so far.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You did not executed any connection test yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname of your MySQL server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username to login with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password for your username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database which you have full access to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDownloads</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open download manager when new download is started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target directory for downloaded files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ask for each individual downloaded file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save all downloaded files to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target directory where all downloaded files are saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Browse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select downloads target directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished">Stahování</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsFeedsMessages</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation type="unfinished">Kanály &amp;&amp; kategorie</translation>
+    </message>
+    <message>
+        <source>Update all feed on application startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update all feeds every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed connection timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message count format in feed list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages from all feeds on application exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keep message selection in the middle of the message list viewport</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom date/time format (overrides format loaded from active localization)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal message browser fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Change font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select new font for message viewer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds &amp; messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsGeneral</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch %1 on operating system startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for updates on application startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (not supported on this platform)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsGui</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icons &amp;&amp; skins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tray area &amp;&amp; notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tray icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide main window when it is minimized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start application hidden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable popup balloon tooltips</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open new tabs with left mouse button double-click on tab bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide tab bar if just one tab is visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close tabs with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right mouse button double-click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Middle mouse button single-click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar for feeds list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar for messages list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Statusbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar button style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select toolbar to edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished">Název</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished">Verze</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished">Autor</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Tray icon is not available.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no icon theme/system icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text beside icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text under icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow OS style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsLocalization</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished">Autor</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsShortcuts</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keyboard shortcuts</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3191,7 +3265,11 @@ Tato kategorie neobsahuje žádné položky.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation>
+            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3263,30 +3341,30 @@ ID účtu: %1</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Import byl úspěšný, ale některé kanály či kategorie nebyly importovány kvůli chybě.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation>Import byl úspěšný.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Průběhový pruh aktualizace kanálů</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation>Popisek průběhového pruhu aktualizace kanálů</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Průběhový pruh stahování souboru</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation>Popisek stahování souboru</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3364,15 +3442,23 @@ Nepřečtené zprávy: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation>
+            <numerusform>%n hodina</numerusform>
+            <numerusform>%n hodiny</numerusform>
+            <numerusform>%n hodin</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation>
+            <numerusform>%n minuta</numerusform>
+            <numerusform>%n minuty</numerusform>
+            <numerusform>%n minut</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"/>
+        <translation>a</translation>
     </message>
 </context>
 <context>
@@ -3434,17 +3520,21 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nepoužívá automatické aktualizace</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>používá globální nastavení</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation>
+            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
@@ -3476,15 +3566,15 @@ Poslední přihlášení: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synchronizovat</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Nelze přidat položku</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
     </message>
 </context>
 <context>
@@ -3520,7 +3610,7 @@ Poslední přihlášení: %5</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Obnovit aktuální webovou stránku</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -3535,7 +3625,7 @@ Poslední přihlášení: %5</translation>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="unfinished"/>
+        <translation>Příloha</translation>
     </message>
     <message>
         <source>Written by </source>
@@ -3547,7 +3637,7 @@ Poslední přihlášení: %5</translation>
     </message>
     <message>
         <source>unknown author</source>
-        <translation type="unfinished"/>
+        <translation>neznámý autor</translation>
     </message>
 </context>
 </TS>
