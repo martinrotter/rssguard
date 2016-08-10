@@ -34,7 +34,8 @@
 #     make install
 #
 # Variables:
-#   PREFIX - specifies base folder to which files are copied during "make install" step.
+#   PREFIX - specifies base folder to which files are copied during "make install"
+#            step, defaults to "$$OUT_PWD/usr" on Linux and to "$$OUT_PWD/app" on Windows.
 #   LRELEASE_EXECUTABLE - specifies the name/path of "lrelease" executable, defaults to "lrelease".
 #
 # Other information:
@@ -78,6 +79,10 @@ isEmpty(PREFIX) {
 
   win32 {
     PREFIX = $$OUT_PWD/app
+  }
+
+  unix:!mac {
+    PREFIX = $$OUT_PWD/usr
   }
 }
 
