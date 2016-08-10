@@ -2563,10 +2563,6 @@ Pelo menos o API nível %1 é necessário.</translation>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Navegador da web externo</translation>
     </message>
@@ -2734,10 +2730,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>AVISO: Note que alterar para outro tipo de armazenamento de dados NÃO copiará os dados existentes do armazenamento ativo para o novo selecionado.</translation>
     </message>
@@ -2869,10 +2861,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 <context>
     <name>SettingsDownloads</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Abrir gerenciador de download ao iniciar um novo download</translation>
     </message>
@@ -2907,10 +2895,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Feeds &amp;&amp; categorias</translation>
@@ -2983,10 +2967,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Launch %1 on operating system startup</source>
         <translation>Executar o %1 na inicialização do sistema operacional</translation>
     </message>
@@ -3009,10 +2989,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 </context>
 <context>
     <name>SettingsGui</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
         <translation>Ícones &amp;&amp; temas</translation>
@@ -3158,10 +3134,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Language</source>
         <translation>Idioma</translation>
     </message>
@@ -3176,10 +3148,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 </context>
 <context>
     <name>SettingsShortcuts</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Keyboard shortcuts</source>
         <translation>Atalhos do teclado</translation>

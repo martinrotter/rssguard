@@ -2564,10 +2564,6 @@ Een API niveau van tenminste %1 is vereist.</translation>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Externe webbrowser</translation>
     </message>
@@ -2735,10 +2731,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>WAARSCHUWING: Let op dat de overstap naar een ander type gegevens opslag NIET bestaande gegevens van dat moment kopiëren naar nieuw geselecteerde gegevens opslag.</translation>
     </message>
@@ -2871,10 +2863,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
 <context>
     <name>SettingsDownloads</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Open de download manager wanneer een nieuwe download start</translation>
     </message>
@@ -2909,10 +2897,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Feeds &amp;&amp; categorieën</translation>
@@ -2985,10 +2969,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Launch %1 on operating system startup</source>
         <translation>Laad %1 als systeem opstart</translation>
     </message>
@@ -3011,10 +2991,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
 </context>
 <context>
     <name>SettingsGui</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
         <translation>Pictogrammen &amp;&amp; skins</translation>
@@ -3160,10 +3136,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Language</source>
         <translation>Taal</translation>
     </message>
@@ -3178,10 +3150,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
 </context>
 <context>
     <name>SettingsShortcuts</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Keyboard shortcuts</source>
         <translation>Sneltoetsen toetsenbord</translation>

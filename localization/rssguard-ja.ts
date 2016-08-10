@@ -2541,10 +2541,6 @@ At least API level %1 is required.</source>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>外部ウェブブラウザー</translation>
     </message>
@@ -2710,10 +2706,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation type="unfinished"/>
     </message>
@@ -2835,10 +2827,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsDownloads</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation type="unfinished"/>
     </message>
@@ -2873,10 +2861,6 @@ Authors of this application are NOT responsible for lost data.</source>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>フィードとカテゴリ(&amp;&amp;)</translation>
@@ -2949,10 +2933,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Launch %1 on operating system startup</source>
         <translation>オペレーティングシステムの開始時に%1を起動</translation>
     </message>
@@ -2975,10 +2955,6 @@ Authors of this application are NOT responsible for lost data.</source>
 </context>
 <context>
     <name>SettingsGui</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
         <translation>アイコン &amp;&amp; スキン</translation>
@@ -3124,10 +3100,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Language</source>
         <translation>言語</translation>
     </message>
@@ -3142,10 +3114,6 @@ Authors of this application are NOT responsible for lost data.</source>
 </context>
 <context>
     <name>SettingsShortcuts</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Keyboard shortcuts</source>
         <translation>キーボードショートカット</translation>

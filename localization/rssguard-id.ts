@@ -2555,10 +2555,6 @@ Setidaknya API level %1 dibutuhkan.</translation>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Peramban web eksternal</translation>
     </message>
@@ -2726,10 +2722,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>PERINGATAN: Perhatikan bahwa beralih ke jenis penyimpanan data lain tidak akan menyalin data anda yang ada dari penyimpanan data yang sedang aktif ke salah satu yang baru dipilih.</translation>
     </message>
@@ -2861,10 +2853,6 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
 <context>
     <name>SettingsDownloads</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Buka pengelola unduhan ketika penguduhan baru dimulai</translation>
     </message>
@@ -2899,10 +2887,6 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Feed &amp;&amp; kategori</translation>
@@ -2975,10 +2959,6 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Launch %1 on operating system startup</source>
         <translation>Jalankan %1 pada startup sistem operasi</translation>
     </message>
@@ -3001,10 +2981,6 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
 </context>
 <context>
     <name>SettingsGui</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
         <translation>Ikon &amp;&amp; skin</translation>
@@ -3150,10 +3126,6 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Language</source>
         <translation>Bahasa</translation>
     </message>
@@ -3168,10 +3140,6 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
 </context>
 <context>
     <name>SettingsShortcuts</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Keyboard shortcuts</source>
         <translation>Pintasan keyboard</translation>

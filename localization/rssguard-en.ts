@@ -2587,10 +2587,6 @@ At least API level %1 is required.</translation>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation type="unfinished">External web browser</translation>
     </message>
@@ -2758,10 +2754,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation type="unfinished">WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</translation>
     </message>
@@ -2893,10 +2885,6 @@ Authors of this application are NOT responsible for lost data.</translation>
 <context>
     <name>SettingsDownloads</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation type="unfinished">Open download manager when new download is started</translation>
     </message>
@@ -2931,10 +2919,6 @@ Authors of this application are NOT responsible for lost data.</translation>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation type="unfinished">Feeds &amp;&amp; categories</translation>
@@ -3007,10 +2991,6 @@ Authors of this application are NOT responsible for lost data.</translation>
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Launch %1 on operating system startup</source>
         <translation type="unfinished">Launch %1 on operating system startup</translation>
     </message>
@@ -3033,10 +3013,6 @@ Authors of this application are NOT responsible for lost data.</translation>
 </context>
 <context>
     <name>SettingsGui</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
         <translation type="unfinished">Icons &amp;&amp; skins</translation>
@@ -3182,10 +3158,6 @@ Authors of this application are NOT responsible for lost data.</translation>
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Language</source>
         <translation type="unfinished">Language</translation>
     </message>
@@ -3200,10 +3172,6 @@ Authors of this application are NOT responsible for lost data.</translation>
 </context>
 <context>
     <name>SettingsShortcuts</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Keyboard shortcuts</source>
         <translation type="unfinished">Keyboard shortcuts</translation>

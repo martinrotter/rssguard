@@ -1714,15 +1714,15 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Vissa inställningar har ändrats och kommer att förloras</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation>Vissa inställningar har ändrats och genom att avbryta denna dialog, kommer du att förlora ändringarna.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation type="unfinished"/>
+        <translation>Vill du verkligen stänga denna dialog utan att spara några inställningar?</translation>
     </message>
 </context>
 <context>
@@ -2563,10 +2563,6 @@ Minst API-nivå %1 krävs.</translation>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Extern webbläsare</translation>
     </message>
@@ -2734,10 +2730,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>VARNING! Notera att byte till en annan datalagringstyp INTE kopierar befintliga data från den aktiva datalagringen till den nyvalda.</translation>
     </message>
@@ -2870,10 +2862,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
 <context>
     <name>SettingsDownloads</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Öppna nedladdningshanteraren när ny nedladdning startas</translation>
     </message>
@@ -2908,10 +2896,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Flöden &amp;&amp; kategorier</translation>
@@ -2984,10 +2968,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Launch %1 on operating system startup</source>
         <translation>Starta %1 vid systemstart</translation>
     </message>
@@ -3010,10 +2990,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
 </context>
 <context>
     <name>SettingsGui</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
         <translation>Ikoner &amp;&amp; teman</translation>
@@ -3159,10 +3135,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Language</source>
         <translation>Språk</translation>
     </message>
@@ -3177,10 +3149,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
 </context>
 <context>
     <name>SettingsShortcuts</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Keyboard shortcuts</source>
         <translation>Tangentbordsgenvägar</translation>

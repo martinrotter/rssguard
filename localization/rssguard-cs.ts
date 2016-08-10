@@ -1718,11 +1718,11 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation>Některá nastavení jsou změněna a zrušením tohoto dialogu o ně přijdete.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation type="unfinished"/>
+        <translation>Opravdu chcete zavřít tento dialog bez uložení nastavení?</translation>
     </message>
 </context>
 <context>
@@ -2566,10 +2566,6 @@ Je vyžadování verze API minimálně %1.</translation>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Externí webový prohlížeč</translation>
     </message>
@@ -2737,10 +2733,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>VAROVÁNÍ: Mějte na paměti, že přepnutí z jednoho databázového backendu na jiný neprovede zkopírování dat mezi těmito backendy.</translation>
     </message>
@@ -2872,10 +2864,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 <context>
     <name>SettingsDownloads</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Při začátku stahování otevírat správce stahování</translation>
     </message>
@@ -2910,10 +2898,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Kanály &amp;&amp; kategorie</translation>
@@ -2986,10 +2970,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Launch %1 on operating system startup</source>
         <translation>Spustit %1 při spuštění operačního systému</translation>
     </message>
@@ -3012,10 +2992,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 </context>
 <context>
     <name>SettingsGui</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
         <translation>Ikony &amp;&amp; skiny</translation>
@@ -3161,10 +3137,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Language</source>
         <translation>Lokalizace</translation>
     </message>
@@ -3179,10 +3151,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 </context>
 <context>
     <name>SettingsShortcuts</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Keyboard shortcuts</source>
         <translation>Klávesové zkratky</translation>

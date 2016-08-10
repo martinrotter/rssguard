@@ -2562,10 +2562,6 @@ At least API level %1 is required.</source>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>External web browser</source>
         <translation>Išorinė naršyklė</translation>
     </message>
@@ -2733,10 +2729,6 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>ĮSPĖJIMAS: Turėkite omenyje, kad perjungimas į kitą duomenų kaupiklio tipą NEnukopijuos jūsų esamų duomenų iš esamo aktyvaus duomenų kaupiklio į naujai pasirinktą kaupiklį.</translation>
     </message>
@@ -2858,10 +2850,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsDownloads</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open download manager when new download is started</source>
         <translation>Atverti atsiuntimų tvarkytuvę, kai pradedamas naujas atsiuntimas</translation>
     </message>
@@ -2896,10 +2884,6 @@ Authors of this application are NOT responsible for lost data.</source>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
         <translation>Kanalai ir kategorijos</translation>
@@ -2972,10 +2956,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Launch %1 on operating system startup</source>
         <translation>Paleisti %1 operacinės sistemos paleidimo metu</translation>
     </message>
@@ -2998,10 +2978,6 @@ Authors of this application are NOT responsible for lost data.</source>
 </context>
 <context>
     <name>SettingsGui</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
         <translation>Piktogramos ir apipavidalinimai</translation>
@@ -3147,10 +3123,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Language</source>
         <translation>Kalba</translation>
     </message>
@@ -3165,10 +3137,6 @@ Authors of this application are NOT responsible for lost data.</source>
 </context>
 <context>
     <name>SettingsShortcuts</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Keyboard shortcuts</source>
         <translation>Spartieji klavišai</translation>
