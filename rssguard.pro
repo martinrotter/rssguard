@@ -86,6 +86,8 @@ isEmpty(PREFIX) {
   }
 }
 
+message(rssguard: Compiled application will be copied to \"$$OUT_PWD\".)
+
 isEmpty(LRELEASE_EXECUTABLE) {
   LRELEASE_EXECUTABLE = lrelease
   message(rssguard: LRELEASE_EXECUTABLE variable is not set.)
@@ -121,12 +123,12 @@ isEmpty(APP_REVISION) {
 
 DEFINES += APP_REVISION='"\\\"$$APP_REVISION\\\""'
 
-message(rssguard: RSS Guard version is: '$$APP_VERSION'.)
-message(rssguard: Detected Qt version: '$$QT_VERSION'.)
-message(rssguard: Build directory: '$$DESTDIR'.)
-message(rssguard: Prefix directory: '$$PREFIX'.)
-message(rssguard: Build revision: '$$APP_REVISION'.)
-message(rssguard: lrelease executable name: '$$LRELEASE_EXECUTABLE'.)
+message(rssguard: RSS Guard version is: \"$$APP_VERSION\".)
+message(rssguard: Detected Qt version: \"$$QT_VERSION\".)
+message(rssguard: Build directory: \"$$DESTDIR\".)
+message(rssguard: Prefix directory: \"$$PREFIX\".)
+message(rssguard: Build revision: \"$$APP_REVISION\".)
+message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
 
 QT += core gui widgets webenginewidgets sql network xml printsupport
 CONFIG *= c++11 debug_and_release warn_on
