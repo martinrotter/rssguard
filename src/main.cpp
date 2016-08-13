@@ -39,6 +39,23 @@
 
 
 int main(int argc, char *argv[]) {
+  bool run_as_cron = false;
+
+  for (int i; i < argc; i++) {
+    const QString str = QString::fromLocal8Bit(argv[i]);
+
+    if (str == "-h") {
+      qDebug("Usage: rssguard [OPTIONS]\n\n"
+             "Option\tMeaning\n"
+             "aaaa\tbbbb");
+
+      return EXIT_SUCCESS;
+    }
+    else if (str == "-cron") {
+      run_as_cron = true;
+    }
+  }
+
   //: Abbreviation of language, e.g. en.
   //: Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code.
   //: Examples: "cs", "en", "it", "cs_CZ", "en_GB", "en_US".

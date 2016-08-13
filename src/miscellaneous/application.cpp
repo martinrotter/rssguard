@@ -20,6 +20,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/feedreader.h"
 #include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
@@ -42,7 +43,7 @@
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
-    m_updateFeedsLock(nullptr), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
+    m_feedReader(new FeedReader(this)), m_updateFeedsLock(nullptr), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
     m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
     m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
@@ -55,6 +56,10 @@ Application::Application(const QString &id, int &argc, char **argv)
 Application::~Application() {
   qDebug("Destroying Application instance.");
   qDeleteAll(m_feedServices);
+}
+
+FeedReader *Application::feedReader() {
+  return m_feedReader;
 }
 
 QList<ServiceEntryPoint*> Application::feedServices() {

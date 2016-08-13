@@ -46,6 +46,7 @@ class IconFactory;
 class QAction;
 class Mutex;
 class QWebEngineDownloadItem;
+class FeedReader;
 
 class Application : public QtSingleApplication {
     Q_OBJECT
@@ -54,6 +55,8 @@ class Application : public QtSingleApplication {
     // Constructors and destructors.
     explicit Application(const QString &id, int &argc, char **argv);
     virtual ~Application();
+
+    FeedReader *feedReader();
 
     // List of all installed "feed service plugins", including obligatory
     // "standard" service entry point.
@@ -174,6 +177,8 @@ class Application : public QtSingleApplication {
   private:
     void eliminateFirstRun();
     void eliminateFirstRun(const QString &version);
+
+    FeedReader *m_feedReader;
 
     // This read-write lock is used by application on its close.
     // Application locks this lock for WRITING.
