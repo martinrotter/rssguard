@@ -270,7 +270,7 @@ HEADERS +=  src/core/feeddownloader.h \
             src/gui/settings/settingsbrowsermail.h \
             src/gui/settings/settingsfeedsmessages.h \
             src/gui/settings/settingsdownloads.h \
-    src/miscellaneous/feedreader.h
+            src/miscellaneous/feedreader.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -391,7 +391,7 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/settings/settingsbrowsermail.cpp \
             src/gui/settings/settingsfeedsmessages.cpp \
             src/gui/settings/settingsdownloads.cpp \
-    src/miscellaneous/feedreader.cpp
+            src/miscellaneous/feedreader.cpp
 
 FORMS +=    src/gui/toolbareditor.ui \
             src/network-web/downloaditem.ui \
