@@ -17,7 +17,6 @@
 
 #include "gui/settings/settingsshortcuts.h"
 
-#include "gui/dialogs/formmain.h"
 #include "miscellaneous/application.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 
@@ -36,7 +35,7 @@ SettingsShortcuts::~SettingsShortcuts() {
 void SettingsShortcuts::loadSettings() {
   onBeginLoadSettings();
 
-  m_ui->m_shortcuts->populate(qApp->mainForm()->allActions());
+  m_ui->m_shortcuts->populate(qApp->userActions());
 
   onEndLoadSettings();
 }
@@ -45,7 +44,7 @@ void SettingsShortcuts::saveSettings() {
   onBeginSaveSettings();
 
   m_ui->m_shortcuts->updateShortcuts();
-  DynamicShortcuts::save(qApp->mainForm()->allActions());
+  DynamicShortcuts::save(qApp->userActions());
 
   onEndSaveSettings();
 }

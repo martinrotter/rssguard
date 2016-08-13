@@ -23,7 +23,6 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
 #include "core/feedsmodel.h"
-#include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
@@ -98,7 +97,7 @@ bool StandardCategory::performDragDropChange(RootItem *target_item) {
 }
 
 bool StandardCategory::editViaGui() {
-  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(serviceRoot(), qApp->mainForm()));
+  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(serviceRoot(), qApp->mainFormWidget()));
 
   form_pointer.data()->exec(this, nullptr);
   return false;

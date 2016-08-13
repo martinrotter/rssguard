@@ -118,6 +118,8 @@ class Application : public QtSingleApplication {
       return m_mainForm;
     }
 
+    QWidget *mainFormWidget();
+
     void setMainForm(FormMain *main_form) {
       m_mainForm = main_form;
     }

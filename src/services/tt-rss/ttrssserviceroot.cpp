@@ -22,8 +22,8 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasequeries.h"
-#include "gui/dialogs/formmain.h"
 #include "network-web/networkfactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssrecyclebin.h"
@@ -68,7 +68,7 @@ QString TtRssServiceRoot::code() const {
 }
 
 bool TtRssServiceRoot::editViaGui() {
-  QScopedPointer<FormEditAccount> form_pointer(new FormEditAccount(qApp->mainForm()));
+  QScopedPointer<FormEditAccount> form_pointer(new FormEditAccount(qApp->mainFormWidget()));
   form_pointer.data()->execForEdit(this);
 
   return true;
@@ -117,12 +117,12 @@ void TtRssServiceRoot::addNewFeed(const QString &url) {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add item"),
                          tr("Cannot add feed because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
     // Thus, cannot delete and quit the method.
     return;
   }
 
-  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainForm()));
+  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainFormWidget()));
 
   form_pointer.data()->exec(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();

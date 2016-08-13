@@ -23,7 +23,6 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
-#include "gui/dialogs/formmain.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/owncloud/owncloudrecyclebin.h"
 #include "services/owncloud/owncloudfeed.h"
@@ -52,7 +51,7 @@ bool OwnCloudServiceRoot::canBeDeleted() const {
 }
 
 bool OwnCloudServiceRoot::editViaGui() {
-  QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainForm()));
+  QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
   form_pointer.data()->execForEdit(this);
 
   return true;
@@ -203,12 +202,12 @@ void OwnCloudServiceRoot::addNewFeed(const QString &url) {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add item"),
                          tr("Cannot add feed because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
     // Thus, cannot delete and quit the method.
     return;
   }
 
-  QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainForm()));
+  QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainFormWidget()));
 
   form_pointer.data()->exec(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();

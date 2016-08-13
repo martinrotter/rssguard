@@ -18,7 +18,6 @@
 #include "miscellaneous/systemfactory.h"
 
 #include "network-web/networkfactory.h"
-#include "gui/dialogs/formmain.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
 
@@ -33,6 +32,8 @@
 #include <QDomElement>
 #include <QDomAttr>
 #include <QFuture>
+#include <QFileInfo>
+#include <QDir>
 #include <QFutureWatcher>
 #include <QtConcurrent/QtConcurrentRun>
 #include <QDesktopServices>
@@ -307,6 +308,6 @@ void SystemFactory::checkForUpdatesOnStartup() {
     qApp->showGuiMessage(tr("New version available"),
                          tr("Click the bubble for more information."),
                          QSystemTrayIcon::Information,
-                         nullptr, true, qApp->mainForm(), SLOT(showUpdates()));
+                         nullptr, true, qApp->mainFormWidget(), SLOT(showUpdates()));
   }
 }

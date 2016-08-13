@@ -23,7 +23,6 @@
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "miscellaneous/application.h"
-#include "gui/dialogs/formmain.h"
 
 #include <QTimer>
 
@@ -76,7 +75,7 @@ void FormTtRssFeedDetails::apply() {
       reject();
       qApp->showGuiMessage(tr("Cannot add feed"),
                            tr("Feed was not added due to error."),
-                           QSystemTrayIcon::Critical, qApp->mainForm(), true);
+                           QSystemTrayIcon::Critical, qApp->mainFormWidget(), true);
     }
   }
 

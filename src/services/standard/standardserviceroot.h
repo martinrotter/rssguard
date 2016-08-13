@@ -46,9 +46,6 @@ class StandardServiceRoot : public ServiceRoot {
     bool canBeEdited() const;
     bool canBeDeleted() const;
     bool deleteViaGui();
-
-    bool markAsReadUnread(ReadStatus status);
-
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
 

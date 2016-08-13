@@ -25,7 +25,6 @@
 #include "miscellaneous/mutex.h"
 #include "core/feedsmodel.h"
 #include "gui/messagebox.h"
-#include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/standardserviceentrypoint.h"
@@ -62,7 +61,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
 
   if (freshly_activated) {
     // In other words, if there are no feeds or categories added.
-    if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
+    if (MessageBox::show(qApp->mainFormWidget(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
                          tr("This new account does not include any feeds. You can now add default set of feeds."),
                          tr("Do you want to load initial set of feeds?"),
                          QString(), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
@@ -89,7 +88,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
         }
       }
       catch (ApplicationException &ex) {
-        MessageBox::show(qApp->mainForm(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
+        MessageBox::show(qApp->mainFormWidget(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
       }
     }
   }
@@ -117,10 +116,6 @@ bool StandardServiceRoot::deleteViaGui() {
   return ServiceRoot::deleteViaGui();
 }
 
-bool StandardServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
-  return ServiceRoot::markAsReadUnread(status);
-}
-
 bool StandardServiceRoot::supportsFeedAdding() const {
   return true;
 }
@@ -136,12 +131,12 @@ void StandardServiceRoot::addNewFeed(const QString &url) {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add item"),
                          tr("Cannot add feed because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
     // Thus, cannot delete and quit the method.
     return;
   }
 
-  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this, qApp->mainForm()));
+  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this, qApp->mainFormWidget()));
   form_pointer.data()->exec(nullptr, nullptr, url);
 
   qApp->feedUpdateLock()->unlock();
@@ -322,25 +317,25 @@ void StandardServiceRoot::addNewCategory() {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add category"),
                          tr("Cannot add category because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
     // Thus, cannot delete and quit the method.
     return;
   }
 
-  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this, qApp->mainForm()));
+  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this, qApp->mainFormWidget()));
   form_pointer.data()->exec(nullptr, nullptr);
 
   qApp->feedUpdateLock()->unlock();
 }
 
 void StandardServiceRoot::importFeeds() {
-  QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainForm()));
+  QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));
   form.data()->setMode(FeedsImportExportModel::Import);
   form.data()->exec();
 }
 
 void StandardServiceRoot::exportFeeds() {
-  QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainForm()));
+  QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));
   form.data()->setMode(FeedsImportExportModel::Export);
   form.data()->exec();
 }

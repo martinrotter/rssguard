@@ -25,7 +25,6 @@
 #include "gui/webviewer.h"
 #include "gui/discoverfeedsbutton.h"
 #include "gui/locationlineedit.h"
-#include "gui/dialogs/formmain.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QScrollBar>
@@ -40,11 +39,6 @@ void WebBrowser::createConnections() {
 
   connect(m_txtLocation,SIGNAL(submitted(QString)), this, SLOT(loadUrl(QString)));
   connect(m_webView, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
-
-  // Connect this WebBrowser to global TabWidget.
-  //TabWidget *tab_widget = qApp->mainForm()->tabWidget();
-  //connect(m_webView, SIGNAL(newTabRequested()), tab_widget, SLOT(addEmptyBrowser()));
-  //connect(m_webView, SIGNAL(linkMiddleClicked(QUrl)), tab_widget, SLOT(addLinkedBrowser(QUrl)));
 
   // Change location textbox status according to webpage status.
   connect(m_webView, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));

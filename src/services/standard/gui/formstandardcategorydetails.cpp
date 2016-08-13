@@ -25,7 +25,6 @@
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
-#include "gui/dialogs/formmain.h"
 #include "services/abstract/category.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardserviceroot.h"
@@ -131,7 +130,7 @@ void FormStandardCategoryDetails::apply() {
       qApp->showGuiMessage(tr("Cannot add category"),
                            tr("Category was not added due to error."),
                            QSystemTrayIcon::Critical,
-                           qApp->mainForm(), true);
+                           qApp->mainFormWidget(), true);
     }
   }
   else {

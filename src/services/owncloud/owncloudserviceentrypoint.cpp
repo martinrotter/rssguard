@@ -24,7 +24,6 @@
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/owncloudserviceroot.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
-#include "gui/dialogs/formmain.h"
 
 
 OwnCloudServiceEntryPoint::OwnCloudServiceEntryPoint() {
@@ -34,7 +33,7 @@ OwnCloudServiceEntryPoint::~OwnCloudServiceEntryPoint() {
 }
 
 ServiceRoot *OwnCloudServiceEntryPoint::createNewRoot() const {
-  QScopedPointer<FormEditOwnCloudAccount> form_acc(new FormEditOwnCloudAccount(qApp->mainForm()));
+  QScopedPointer<FormEditOwnCloudAccount> form_acc(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
   return form_acc->execForCreate();
 }
 

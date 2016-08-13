@@ -20,7 +20,6 @@
 #include "definitions/definitions.h"
 #include "gui/baselineedit.h"
 #include "gui/messagessearchlineedit.h"
-#include "gui/dialogs/formmain.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
@@ -39,7 +38,7 @@ MessagesToolBar::~MessagesToolBar() {
 }
 
 QList<QAction*> MessagesToolBar::availableActions() const {
-  QList<QAction*> available_actions = qApp->mainForm()->allActions();
+  QList<QAction*> available_actions = qApp->userActions();
 
   available_actions.append(m_actionSearchMessages);
   available_actions.append(m_actionMessageHighlighter);

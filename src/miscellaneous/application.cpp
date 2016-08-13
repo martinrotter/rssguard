@@ -127,6 +127,10 @@ Mutex *Application::feedUpdateLock() {
   return m_updateFeedsLock.data();
 }
 
+QWidget *Application::mainFormWidget() {
+  return m_mainForm;
+}
+
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
                                          const QString &target_path, const QString &backup_name) {
   if (!QFileInfo(target_path).isWritable()) {

@@ -22,7 +22,6 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
-#include "gui/dialogs/formmain.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 #include "services/tt-rss/ttrsscategory.h"
@@ -100,7 +99,7 @@ bool TtRssFeed::canBeEdited() const {
 }
 
 bool TtRssFeed::editViaGui() {
-  QPointer<FormTtRssFeedDetails> form_pointer = new FormTtRssFeedDetails(serviceRoot(), qApp->mainForm());
+  QPointer<FormTtRssFeedDetails> form_pointer = new FormTtRssFeedDetails(serviceRoot(), qApp->mainFormWidget());
 
   form_pointer.data()->exec(this, nullptr);
   delete form_pointer.data();

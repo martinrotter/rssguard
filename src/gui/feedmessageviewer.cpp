@@ -425,7 +425,7 @@ void FeedMessageViewer::showDbCleanupAssistant() {
   else {
     qApp->showGuiMessage(tr("Cannot cleanup database"),
                          tr("Cannot cleanup database, because another critical action is running."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
   }
 }
 

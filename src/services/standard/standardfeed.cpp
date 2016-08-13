@@ -26,7 +26,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/simplecrypt/simplecrypt.h"
 #include "network-web/networkfactory.h"
-#include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "services/abstract/recyclebin.h"
@@ -93,7 +92,7 @@ StandardServiceRoot *StandardFeed::serviceRoot() const {
 }
 
 bool StandardFeed::editViaGui() {
-  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(), qApp->mainForm()));
+  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(), qApp->mainFormWidget()));
   form_pointer.data()->exec(this, nullptr);
   return false;
 }

@@ -165,7 +165,7 @@ void FeedsView::addFeedIntoSelectedAccount() {
       qApp->showGuiMessage(tr("Not supported"),
                            tr("Selected account does not support adding of new feeds."),
                            QSystemTrayIcon::Warning,
-                           qApp->mainForm(), true);
+                           qApp->mainFormWidget(), true);
     }
   }
 }
@@ -183,7 +183,7 @@ void FeedsView::addCategoryIntoSelectedAccount() {
       qApp->showGuiMessage(tr("Not supported"),
                            tr("Selected account does not support adding of new categories."),
                            QSystemTrayIcon::Warning,
-                           qApp->mainForm(), true);
+                           qApp->mainFormWidget(), true);
     }
   }
 }
@@ -224,7 +224,7 @@ void FeedsView::editSelectedItem() {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot edit item"),
                          tr("Selected item cannot be edited because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
     // Thus, cannot delete and quit the method.
     return;
   }
@@ -236,7 +236,7 @@ void FeedsView::editSelectedItem() {
     qApp->showGuiMessage(tr("Cannot edit item"),
                          tr("Selected item cannot be edited, this is not (yet?) supported."),
                          QSystemTrayIcon::Warning,
-                         qApp->mainForm(),
+                         qApp->mainFormWidget(),
                          true);
   }
 
@@ -251,7 +251,7 @@ void FeedsView::deleteSelectedItem() {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot delete item"),
                          tr("Selected item cannot be deleted because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
 
     // Thus, cannot delete and quit the method.
     return;
@@ -268,7 +268,7 @@ void FeedsView::deleteSelectedItem() {
   if (selected_item != nullptr) {
     if (selected_item->canBeDeleted()) {
       // Ask user first.
-      if (MessageBox::show(qApp->mainForm(),
+      if (MessageBox::show(qApp->mainFormWidget(),
                            QMessageBox::Question,
                            tr("Deleting \"%1\"").arg(selected_item->title()),
                            tr("You are about to completely delete item \"%1\".").arg(selected_item->title()),
@@ -284,7 +284,7 @@ void FeedsView::deleteSelectedItem() {
         qApp->showGuiMessage(tr("Cannot delete \"%1\"").arg(selected_item->title()),
                              tr("This item cannot be deleted because something critically failed. Submit bug report."),
                              QSystemTrayIcon::Critical,
-                             qApp->mainForm(),
+                             qApp->mainFormWidget(),
                              true);
       }
     }
@@ -292,7 +292,7 @@ void FeedsView::deleteSelectedItem() {
       qApp->showGuiMessage(tr("Cannot delete \"%1\"").arg(selected_item->title()),
                            tr("This item cannot be deleted, because it does not support it\nor this functionality is not implemented yet."),
                            QSystemTrayIcon::Critical,
-                           qApp->mainForm(),
+                           qApp->mainFormWidget(),
                            true);
     }
   }

@@ -207,7 +207,7 @@ void DownloadItem::stop() {
 void DownloadItem::openFile() {
   if (!QDesktopServices::openUrl(QUrl::fromLocalFile(m_output.fileName()))) {
     qApp->showGuiMessage(tr("Cannot open file"), tr("Cannot open output file. Open it manually."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
   }
 }
 

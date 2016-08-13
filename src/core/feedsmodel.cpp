@@ -129,7 +129,7 @@ void FeedsModel::updateFeeds(const QList<Feed*> &feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(tr("Cannot update all items"),
                          tr("You cannot update all items because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
     return;
   }
 

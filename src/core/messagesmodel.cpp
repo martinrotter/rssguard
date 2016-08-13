@@ -22,7 +22,6 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
-#include "gui/dialogs/formmain.h"
 #include "services/abstract/serviceroot.h"
 #include "miscellaneous/databasequeries.h"
 
@@ -80,7 +79,7 @@ void MessagesModel::loadMessages(RootItem *item) {
       qApp->showGuiMessage(tr("Loading of messages from item '%1' failed.").arg(item->title()),
                            tr("Loading of messages failed, maybe messages could not be downloaded."),
                            QSystemTrayIcon::Critical,
-                           qApp->mainForm(),
+                           qApp->mainFormWidget(),
                            true);
     }
   }
