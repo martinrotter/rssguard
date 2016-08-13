@@ -86,7 +86,13 @@ isEmpty(PREFIX) {
   }
 }
 
-message(rssguard: Compiled application will be copied to \"$$OUT_PWD\".)
+isEmpty(DESTDIR) {
+  unix:!mac {
+    DESTDIR = $$OUT_PWD/bin
+  }
+}
+
+message(rssguard: Shadow copy build directory \"$$OUT_PWD\".)
 
 isEmpty(LRELEASE_EXECUTABLE) {
   LRELEASE_EXECUTABLE = lrelease
@@ -125,7 +131,7 @@ DEFINES += APP_REVISION='"\\\"$$APP_REVISION\\\""'
 
 message(rssguard: RSS Guard version is: \"$$APP_VERSION\".)
 message(rssguard: Detected Qt version: \"$$QT_VERSION\".)
-message(rssguard: Build directory: \"$$DESTDIR\".)
+message(rssguard: Build destination directory: \"$$DESTDIR\".)
 message(rssguard: Prefix directory: \"$$PREFIX\".)
 message(rssguard: Build revision: \"$$APP_REVISION\".)
 message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
