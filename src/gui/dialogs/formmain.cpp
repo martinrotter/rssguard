@@ -24,6 +24,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/feedreader.h"
 #include "network-web/webfactory.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
@@ -556,7 +557,7 @@ void FormMain::showWiki() {
 }
 
 void FormMain::showAddAccountDialog() {
-  QScopedPointer<FormAddAccount> form_update(new FormAddAccount(qApp->feedServices(),
+  QScopedPointer<FormAddAccount> form_update(new FormAddAccount(qApp->feedReader()->feedServices(),
                                                                 tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
                                                                 this));
   form_update->exec();

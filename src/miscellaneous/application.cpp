@@ -41,9 +41,10 @@
 #include <QWebEngineDownloadItem>
 
 
-Application::Application(const QString &id, int &argc, char **argv)
+Application::Application(const QString &id, bool run_minimal_without_gui, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
-    m_feedReader(new FeedReader(this)), m_updateFeedsLock(nullptr), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
+    m_runMinimalWithoutGui(run_minimal_without_gui), m_feedReader(new FeedReader(this)),
+    m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
     m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
     m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
@@ -55,22 +56,10 @@ Application::Application(const QString &id, int &argc, char **argv)
 
 Application::~Application() {
   qDebug("Destroying Application instance.");
-  qDeleteAll(m_feedServices);
 }
 
 FeedReader *Application::feedReader() {
   return m_feedReader;
-}
-
-QList<ServiceEntryPoint*> Application::feedServices() {
-  if (m_feedServices.isEmpty()) {
-    // NOTE: All installed services create their entry points here.
-    m_feedServices.append(new StandardServiceEntryPoint());
-    m_feedServices.append(new TtRssServiceEntryPoint());
-    m_feedServices.append(new OwnCloudServiceEntryPoint());
-  }
-
-  return m_feedServices;
 }
 
 QList<QAction*> Application::userActions() {

@@ -20,6 +20,12 @@
 
 #include <QObject>
 
+
+class FeedDownloader;
+class FeedsModel;
+class MessagesModel;
+class ServiceEntryPoint;
+
 class FeedReader : public QObject {
     Q_OBJECT
 
@@ -27,9 +33,24 @@ class FeedReader : public QObject {
     explicit FeedReader(QObject *parent = 0);
     virtual ~FeedReader();
 
-  signals:
+    // List of all installed "feed service plugins", including obligatory
+    // "standard" service entry point.
+    QList<ServiceEntryPoint*> feedServices();
+
+    FeedDownloader *feedDownloader() const;
+    FeedsModel *feedsModel() const;
+    MessagesModel *messagesModel() const;
 
   public slots:
+    void start();
+    void stop();
+
+  private:
+    QList<ServiceEntryPoint*> m_feedServices;
+
+    FeedDownloader *m_feedDownloader;
+    FeedsModel *m_feedsModel;
+    MessagesModel *m_messagesModel;
 };
 
 #endif // FEEDREADER_H

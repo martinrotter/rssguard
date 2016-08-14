@@ -39,20 +39,21 @@
 
 
 int main(int argc, char *argv[]) {
-  bool run_as_cron = false;
+  bool run_minimal_without_gui = false;
 
   for (int i; i < argc; i++) {
     const QString str = QString::fromLocal8Bit(argv[i]);
 
-    if (str == "-h") {
+    if (str == "-h" || str == "--help") {
       qDebug("Usage: rssguard [OPTIONS]\n\n"
-             "Option\tMeaning\n"
-             "aaaa\tbbbb");
+             "Option\t\tGNU long option\t\tMeaning\n"
+             "-h\t\t--help\t\t\tDisplays this help.\n"
+             "-c\t\t--cron\t\t\tStarts the application without GUI and will regularly update configured feeds.");
 
       return EXIT_SUCCESS;
     }
-    else if (str == "-cron") {
-      run_as_cron = true;
+    else if (str == "-c" || str == "--cron") {
+      run_minimal_without_gui = true;
     }
   }
 
@@ -70,7 +71,7 @@ int main(int argc, char *argv[]) {
   qInstallMessageHandler(Debugging::debugHandler);
 
   // Instantiate base application object.
-  Application application(APP_LOW_NAME, argc, argv);
+  Application application(APP_LOW_NAME, run_minimal_without_gui, argc, argv);
   qDebug("Instantiated Application class.");
 
   // Check if another instance is running.

@@ -53,14 +53,10 @@ class Application : public QtSingleApplication {
 
   public:
     // Constructors and destructors.
-    explicit Application(const QString &id, int &argc, char **argv);
+    explicit Application(const QString &id, bool run_minimal_without_gui, int &argc, char **argv);
     virtual ~Application();
 
     FeedReader *feedReader();
-
-    // List of all installed "feed service plugins", including obligatory
-    // "standard" service entry point.
-    QList<ServiceEntryPoint*> feedServices();
 
     // Globally accessible actions.
     QList<QAction*> userActions();
@@ -178,6 +174,7 @@ class Application : public QtSingleApplication {
     void eliminateFirstRun();
     void eliminateFirstRun(const QString &version);
 
+    bool m_runMinimalWithoutGui;
     FeedReader *m_feedReader;
 
     // This read-write lock is used by application on its close.
@@ -194,7 +191,6 @@ class Application : public QtSingleApplication {
     // action will be allowed to lock for reading.
     QScopedPointer<Mutex> m_updateFeedsLock;
 
-    QList<ServiceEntryPoint*> m_feedServices;
     QList<QAction*> m_userActions;
     FormMain *m_mainForm;
     SystemTrayIcon *m_trayIcon;

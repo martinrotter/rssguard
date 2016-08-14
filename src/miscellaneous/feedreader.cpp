@@ -17,10 +17,46 @@
 
 #include "miscellaneous/feedreader.h"
 
+#include "services/standard/standardserviceentrypoint.h"
+#include "services/owncloud/owncloudserviceentrypoint.h"
+#include "services/tt-rss/ttrssserviceentrypoint.h"
 
-FeedReader::FeedReader(QObject *parent) : QObject(parent) {
+
+FeedReader::FeedReader(QObject *parent) : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()) {
 }
 
 FeedReader::~FeedReader() {
   qDebug("Destroying FeedReader instance.");
+  qDeleteAll(m_feedServices);
+}
+
+QList<ServiceEntryPoint*> FeedReader::feedServices() {
+  if (m_feedServices.isEmpty()) {
+    // NOTE: All installed services create their entry points here.
+    m_feedServices.append(new StandardServiceEntryPoint());
+    m_feedServices.append(new TtRssServiceEntryPoint());
+    m_feedServices.append(new OwnCloudServiceEntryPoint());
+  }
+
+  return m_feedServices;
+}
+
+FeedDownloader *FeedReader::feedDownloader() const {
+  return m_feedDownloader;
+}
+
+FeedsModel *FeedReader::feedsModel() const {
+  return m_feedsModel;
+}
+
+MessagesModel *FeedReader::messagesModel() const {
+  return m_messagesModel;
+}
+
+void FeedReader::start() {
+
+}
+
+void FeedReader::stop() {
+
 }

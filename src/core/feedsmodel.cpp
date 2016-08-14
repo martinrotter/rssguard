@@ -28,6 +28,7 @@
 #include "miscellaneous/databasecleaner.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/feedreader.h"
 #include "gui/messagebox.h"
 #include "gui/statusbar.h"
 #include "gui/dialogs/formmain.h"
@@ -711,7 +712,7 @@ bool FeedsModel::emptyAllBins() {
 
 void FeedsModel::loadActivatedServiceAccounts() {
   // Iterate all globally available feed "service plugins".
-  foreach (const ServiceEntryPoint *entry_point, qApp->feedServices()) {
+  foreach (const ServiceEntryPoint *entry_point, qApp->feedReader()->feedServices()) {
     // Load all stored root nodes from the entry point and add those to the model.
     QList<ServiceRoot*> roots = entry_point->initializeSubtree();
 
