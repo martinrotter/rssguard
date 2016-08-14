@@ -29,7 +29,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
 
   public:
     // Constructors and destructors.
-    explicit FeedsProxyModel(QObject *parent = 0);
+    explicit FeedsProxyModel(FeedsModel *source_model, QObject *parent = 0);
     virtual ~FeedsProxyModel();
 
     // Access to the source model.

@@ -20,6 +20,7 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/debugging.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/feedreader.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -48,7 +49,8 @@ int main(int argc, char *argv[]) {
       qDebug("Usage: rssguard [OPTIONS]\n\n"
              "Option\t\tGNU long option\t\tMeaning\n"
              "-h\t\t--help\t\t\tDisplays this help.\n"
-             "-c\t\t--cron\t\t\tStarts the application without GUI and will regularly update configured feeds.");
+             "-c\t\t--cron\t\t\tStarts the application without GUI and will regularly update configured feeds. **\n\n"
+             "** ");
 
       return EXIT_SUCCESS;
     }
@@ -73,6 +75,8 @@ int main(int argc, char *argv[]) {
   // Instantiate base application object.
   Application application(APP_LOW_NAME, run_minimal_without_gui, argc, argv);
   qDebug("Instantiated Application class.");
+
+  application.feedReader()->start();
 
   // Check if another instance is running.
   if (application.sendMessage((QStringList() << APP_IS_RUNNING << application.arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR))) {

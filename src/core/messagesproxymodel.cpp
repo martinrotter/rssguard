@@ -20,9 +20,8 @@
 #include "core/messagesmodel.h"
 
 
-MessagesProxyModel::MessagesProxyModel(QObject *parent)
-  : QSortFilterProxyModel(parent) {
-  m_sourceModel = new MessagesModel(this);
+MessagesProxyModel::MessagesProxyModel(MessagesModel *source_model, QObject *parent)
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model) {
 
   setObjectName(QSL("MessagesProxyModel"));
   setSortRole(Qt::EditRole);

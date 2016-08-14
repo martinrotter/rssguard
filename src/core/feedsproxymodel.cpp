@@ -27,10 +27,9 @@
 #include <QTimer>
 
 
-FeedsProxyModel::FeedsProxyModel(QObject *parent)
-  : QSortFilterProxyModel(parent), m_selectedItem(nullptr), m_showUnreadOnly(false), m_hiddenIndices(QList<QPair<int,QModelIndex> >()) {
-  m_sourceModel = new FeedsModel(this);
-
+FeedsProxyModel::FeedsProxyModel(FeedsModel *source_model, QObject *parent)
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr),
+    m_showUnreadOnly(false), m_hiddenIndices(QList<QPair<int,QModelIndex> >()) {
   setObjectName(QSL("FeedsProxyModel"));
   setSortRole(Qt::EditRole);
   setSortCaseSensitivity(Qt::CaseInsensitive);

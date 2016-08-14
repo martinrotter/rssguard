@@ -38,8 +38,8 @@ MessagesView::MessagesView(QWidget *parent)
     m_contextMenu(nullptr),
     m_columnsAdjusted(false),
     m_batchUnreadSwitch(false) {
-  m_proxyModel = new MessagesProxyModel(this);
-  m_sourceModel = m_proxyModel->sourceModel();
+  m_sourceModel = new MessagesModel(this);
+  m_proxyModel = new MessagesProxyModel(m_sourceModel, this);
 
   // Forward count changes to the view.
   createConnections();

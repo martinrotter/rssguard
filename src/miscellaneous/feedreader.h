@@ -24,6 +24,8 @@
 class FeedDownloader;
 class FeedsModel;
 class MessagesModel;
+class MessagesProxyModel;
+class FeedsProxyModel;
 class ServiceEntryPoint;
 
 class FeedReader : public QObject {
@@ -40,6 +42,8 @@ class FeedReader : public QObject {
     FeedDownloader *feedDownloader() const;
     FeedsModel *feedsModel() const;
     MessagesModel *messagesModel() const;
+    FeedsProxyModel *feedProxyModel() const;
+    MessagesProxyModel *messagesProxyModel() const;
 
   public slots:
     void start();
@@ -50,7 +54,9 @@ class FeedReader : public QObject {
 
     FeedDownloader *m_feedDownloader;
     FeedsModel *m_feedsModel;
+    FeedsProxyModel *m_feedProxyModel;
     MessagesModel *m_messagesModel;
+    MessagesProxyModel *m_messagesProxyModel;
 };
 
 #endif // FEEDREADER_H

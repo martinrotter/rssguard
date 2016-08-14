@@ -28,7 +28,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
 
   public:
     // Constructors and destructors.
-    explicit MessagesProxyModel(QObject *parent = 0);
+    explicit MessagesProxyModel(MessagesModel *source_model, QObject *parent = 0);
     virtual ~MessagesProxyModel();
 
     // Source model getter.

@@ -21,6 +21,12 @@
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
+#include "core/feedsmodel.h"
+#include "core/feedsproxymodel.h"
+#include "core/messagesmodel.h"
+#include "core/messagesproxymodel.h"
+#include "core/feeddownloader.h"
+
 
 FeedReader::FeedReader(QObject *parent) : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()) {
 }
@@ -54,9 +60,21 @@ MessagesModel *FeedReader::messagesModel() const {
 }
 
 void FeedReader::start() {
-
+  m_feedDownloader = new FeedDownloader(this);
+  m_feedsModel = new FeedsModel(this);
+  m_feedProxyModel = new FeedsProxyModel(m_feedsModel, this);
+  m_messagesModel = new MessagesModel(this);
+  m_messagesProxyModel = new MessagesProxyModel(m_messagesModel, this);
 }
 
 void FeedReader::stop() {
 
+}
+
+MessagesProxyModel *FeedReader::messagesProxyModel() const {
+  return m_messagesProxyModel;
+}
+
+FeedsProxyModel *FeedReader::feedProxyModel() const {
+  return m_feedProxyModel;
 }

@@ -50,8 +50,8 @@ FeedsView::FeedsView(QWidget *parent)
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
-  m_proxyModel = new FeedsProxyModel(this);
-  m_sourceModel = m_proxyModel->sourceModel();
+    m_sourceModel = new FeedsModel(this);
+  m_proxyModel = new FeedsProxyModel(m_sourceModel, this);
 
   // Connections.
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
