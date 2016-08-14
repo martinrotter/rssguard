@@ -26,9 +26,16 @@
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
+#include "miscellaneous/databasecleaner.h"
+
+#include <QThread>
+#include <QTimer>
 
 
-FeedReader::FeedReader(QObject *parent) : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()) {
+FeedReader::FeedReader(QObject *parent)
+  : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()), m_autoUpdateTimer(new QTimer(this)),
+    m_feedDownloaderThread(nullptr), m_feedDownloader(nullptr),
+    m_dbCleanerThread(nullptr), m_dbCleaner(nullptr) {
   m_feedDownloader = new FeedDownloader(this);
   m_feedsModel = new FeedsModel(this);
   m_feedProxyModel = new FeedsProxyModel(m_feedsModel, this);
@@ -50,6 +57,23 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
   }
 
   return m_feedServices;
+}
+
+DatabaseCleaner *FeedReader::databaseCleaner() {
+  if (m_dbCleaner == nullptr) {
+    m_dbCleaner = new DatabaseCleaner();
+    m_dbCleanerThread = new QThread();
+
+    // Downloader setup.
+    qRegisterMetaType<CleanerOrders>("CleanerOrders");
+    m_dbCleaner->moveToThread(m_dbCleanerThread);
+    connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
+
+    // Connections are made, start the feed downloader thread.
+    m_dbCleanerThread->start();
+  }
+
+  return m_dbCleaner;
 }
 
 FeedDownloader *FeedReader::feedDownloader() const {

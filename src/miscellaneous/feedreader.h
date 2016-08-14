@@ -27,6 +27,9 @@ class MessagesModel;
 class MessagesProxyModel;
 class FeedsProxyModel;
 class ServiceEntryPoint;
+class DatabaseCleaner;
+class QTimer;
+class Feed;
 
 class FeedReader : public QObject {
     Q_OBJECT
@@ -38,6 +41,9 @@ class FeedReader : public QObject {
     // List of all installed "feed service plugins", including obligatory
     // "standard" service entry point.
     QList<ServiceEntryPoint*> feedServices();
+
+    // Access to DB cleaner.
+    DatabaseCleaner *databaseCleaner();
 
     FeedDownloader *feedDownloader() const;
     FeedsModel *feedsModel() const;
@@ -52,11 +58,22 @@ class FeedReader : public QObject {
   private:
     QList<ServiceEntryPoint*> m_feedServices;
 
-    FeedDownloader *m_feedDownloader;
     FeedsModel *m_feedsModel;
     FeedsProxyModel *m_feedProxyModel;
     MessagesModel *m_messagesModel;
     MessagesProxyModel *m_messagesProxyModel;
+
+    // Auto-update stuff.
+    QTimer *m_autoUpdateTimer;
+    bool m_globalAutoUpdateEnabled;
+    int m_globalAutoUpdateInitialInterval;
+    int m_globalAutoUpdateRemainingInterval;
+
+    QThread *m_feedDownloaderThread;
+    FeedDownloader *m_feedDownloader;
+
+    QThread *m_dbCleanerThread;
+    DatabaseCleaner *m_dbCleaner;
 };
 
 #endif // FEEDREADER_H

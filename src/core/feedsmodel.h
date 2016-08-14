@@ -87,7 +87,6 @@ class FeedsModel : public QAbstractItemModel {
     bool containsServiceRootFromEntryPoint(const ServiceEntryPoint *point) const;
 
     // Direct and the only global accessor to standard service root.
-    // NOTE: Standard service root is always activated.
     StandardServiceRoot *standardServiceRoot() const;
 
     // Returns the list of feeds which should be updated

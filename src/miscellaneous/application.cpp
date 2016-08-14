@@ -183,7 +183,7 @@ void Application::processExecutionMessage(const QString &message) {
     }
     else if (msg.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
       // Application was running, and someone wants to add new feed.
-      StandardServiceRoot *root = qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot();
+      StandardServiceRoot *root = qApp->feedReader()->feedsModel()->standardServiceRoot();
 
       if (root != nullptr) {
         root->checkArgumentForFeedAdding(msg);
