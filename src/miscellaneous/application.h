@@ -57,6 +57,7 @@ class Application : public QtSingleApplication {
     virtual ~Application();
 
     FeedReader *feedReader();
+    void setFeedReader(FeedReader *feed_reader);
 
     // Globally accessible actions.
     QList<QAction*> userActions();

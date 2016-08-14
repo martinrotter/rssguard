@@ -76,13 +76,13 @@ int main(int argc, char *argv[]) {
   Application application(APP_LOW_NAME, run_minimal_without_gui, argc, argv);
   qDebug("Instantiated Application class.");
 
-  application.feedReader()->start();
-
   // Check if another instance is running.
   if (application.sendMessage((QStringList() << APP_IS_RUNNING << application.arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR))) {
     qWarning("Another instance of the application is already running. Notifying it.");
     return EXIT_FAILURE;
   }
+
+  application.setFeedReader(new FeedReader(&application));
 
   // Register needed metatypes.
   qRegisterMetaType<QList<Message> >("QList<Message>");

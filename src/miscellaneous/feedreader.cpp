@@ -29,6 +29,11 @@
 
 
 FeedReader::FeedReader(QObject *parent) : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()) {
+  m_feedDownloader = new FeedDownloader(this);
+  m_feedsModel = new FeedsModel(this);
+  m_feedProxyModel = new FeedsProxyModel(m_feedsModel, this);
+  m_messagesModel = new MessagesModel(this);
+  m_messagesProxyModel = new MessagesProxyModel(m_messagesModel, this);
 }
 
 FeedReader::~FeedReader() {
@@ -60,15 +65,9 @@ MessagesModel *FeedReader::messagesModel() const {
 }
 
 void FeedReader::start() {
-  m_feedDownloader = new FeedDownloader(this);
-  m_feedsModel = new FeedsModel(this);
-  m_feedProxyModel = new FeedsProxyModel(m_feedsModel, this);
-  m_messagesModel = new MessagesModel(this);
-  m_messagesProxyModel = new MessagesProxyModel(m_messagesModel, this);
 }
 
 void FeedReader::stop() {
-
 }
 
 MessagesProxyModel *FeedReader::messagesProxyModel() const {

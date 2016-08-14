@@ -43,7 +43,7 @@
 
 Application::Application(const QString &id, bool run_minimal_without_gui, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
-    m_runMinimalWithoutGui(run_minimal_without_gui), m_feedReader(new FeedReader(this)),
+    m_runMinimalWithoutGui(run_minimal_without_gui), m_feedReader(nullptr),
     m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
     m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
     m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr) {
@@ -92,9 +92,13 @@ void Application::eliminateFirstRun(const QString &version) {
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, false);
 }
 
+void Application::setFeedReader(FeedReader *feed_reader) {
+    m_feedReader = feed_reader;
+}
+
 IconFactory *Application::icons() {
-  if (m_icons == nullptr) {
-    m_icons = new IconFactory(this);
+    if (m_icons == nullptr) {
+        m_icons = new IconFactory(this);
   }
 
   return m_icons;
