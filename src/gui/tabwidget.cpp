@@ -23,6 +23,8 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "gui/tabbar.h"
+#include "gui/messagesview.h"
+#include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/webbrowser.h"
 #include "gui/plaintoolbutton.h"
@@ -35,6 +37,7 @@
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent), m_menuMain(nullptr) {
   setTabBar(new TabBar(this));
   setupMainMenuButton();
+  initializeTabs();
   createConnections();
 }
 
@@ -133,6 +136,11 @@ void TabWidget::createConnections() {
   connect(tabBar(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
   connect(tabBar(), SIGNAL(emptySpaceDoubleClicked()), this, SLOT(addEmptyBrowser()));
   connect(tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(fixContentsAfterMove(int,int)));
+
+  connect(feedMessageViewer()->messagesView(), SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
+          this, SLOT(addNewspaperView(RootItem*,QList<Message>)));
+  connect(feedMessageViewer()->feedsView(), SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
+          this, SLOT(addNewspaperView(RootItem*,QList<Message>)));
 }
 
 void TabWidget::initializeTabs() {

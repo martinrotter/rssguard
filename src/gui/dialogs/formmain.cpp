@@ -34,6 +34,8 @@
 #include "gui/messagesview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"
+#include "gui/feedstoolbar.h"
+#include "gui/messagestoolbar.h"
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formsettings.h"
 #include "gui/dialogs/formupdate.h"
@@ -63,22 +65,27 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   m_ui->setupUi(this);
   qApp->setMainForm(this);
 
+  // Add these actions to the list of actions of the main window.
+  // This allows to use actions via shortcuts
+  // even if main menu is not visible.
+  addActions(allActions());
+
   m_statusBar = new StatusBar(this);
   setStatusBar(m_statusBar);
 
   // Prepare main window and tabs.
   prepareMenus();
 
+  // Prepare tabs.
+  //m_ui->m_tabWidget->initializeTabs();
+  tabWidget()->feedMessageViewer()->feedsToolBar()->loadChangeableActions();
+  tabWidget()->feedMessageViewer()->messagesToolBar()->loadChangeableActions();
+
   // Establish connections.
   createConnections();
 
-  // Add these actions to the list of actions of the main window.
-  // This allows to use actions via shortcuts
-  // even if main menu is not visible.
-  addActions(allActions());
-
-  // Prepare tabs.
-  m_ui->m_tabWidget->initializeTabs();
+  updateMessageButtonsAvailability();
+  updateFeedButtonsAvailability();
 
   // Setup some appearance of the window.
   setupIcons();
@@ -323,8 +330,12 @@ void FormMain::updateAccountsMenu() {
   m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceDelete);
 }
 
+void FormMain::onFeedUpdatesFinished(FeedDownloadResults results) {
+  statusBar()->clearProgressFeeds();
+}
+
 void FormMain::onFeedUpdatesStarted() {
-  m_ui->m_actionStopRunningItemsUpdate->setEnabled(false);
+  m_ui->m_actionStopRunningItemsUpdate->setEnabled(true);
   statusBar()->showProgressFeeds(0, tr("Feed update started"));
 }
 
@@ -334,8 +345,51 @@ void FormMain::onFeedUpdatesProgress(const Feed *feed, int current, int total) {
                                  tr("Updated feed '%1'").arg(feed->title()));
 }
 
-void FormMain::onFeedUpdatesFinished(FeedDownloadResults results) {
-  statusBar()->clearProgressFeeds();
+void FormMain::updateMessageButtonsAvailability() {
+  const bool one_message_selected = tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().size() == 1;
+  const bool atleast_one_message_selected = !tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().isEmpty();
+  const bool bin_loaded = tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem() != nullptr && tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem()->kind() == RootItemKind::Bin;
+
+  m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected && bin_loaded);
+  m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
+  m_ui->m_actionSwitchImportanceOfSelectedMessages->setEnabled(atleast_one_message_selected);
+}
+
+void FormMain::updateFeedButtonsAvailability() {
+  const bool is_update_running = qApp->feedReader()->isFeedUpdateRunning();
+  const bool critical_action_running = qApp->feedUpdateLock()->isLocked();
+  const RootItem *selected_item = tabWidget()->feedMessageViewer()->feedsView()->selectedItem();
+  const bool anything_selected = selected_item != nullptr;
+  const bool feed_selected = anything_selected && selected_item->kind() == RootItemKind::Feed;
+  const bool category_selected = anything_selected && selected_item->kind() == RootItemKind::Category;
+  const bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
+
+  m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
+  m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
+  m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
+  m_ui->m_actionClearSelectedItems->setEnabled(anything_selected);
+  m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
+  m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
+  m_ui->m_actionMarkSelectedItemsAsRead->setEnabled(anything_selected);
+  m_ui->m_actionMarkSelectedItemsAsUnread->setEnabled(anything_selected);
+  m_ui->m_actionUpdateAllItems->setEnabled(!critical_action_running);
+  m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
+  m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(anything_selected);
+  m_ui->m_actionExpandCollapseItem->setEnabled(anything_selected);
+
+  m_ui->m_actionServiceDelete->setEnabled(service_selected);
+  m_ui->m_actionServiceEdit->setEnabled(service_selected);
+  m_ui->m_actionAddFeedIntoSelectedAccount->setEnabled(anything_selected);
+  m_ui->m_actionAddCategoryIntoSelectedAccount->setEnabled(anything_selected);
+
+  m_ui->m_menuAddItem->setEnabled(!critical_action_running);
+  m_ui->m_menuAccounts->setEnabled(!critical_action_running);
+  m_ui->m_menuRecycleBin->setEnabled(!critical_action_running);
 }
 
 void FormMain::switchVisibility(bool force_hide) {
@@ -543,6 +597,84 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionTabsCloseAllExceptCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabsExceptCurrent);
   connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
   connect(m_ui->m_actionTabNewWebBrowser, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::addEmptyBrowser);
+
+  connect(tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::itemSelected, this, &FormMain::updateFeedButtonsAvailability);
+  connect(qApp->feedUpdateLock(), &Mutex::locked, this, &FormMain::updateFeedButtonsAvailability);
+  connect(qApp->feedUpdateLock(), &Mutex::unlocked, this, &FormMain::updateFeedButtonsAvailability);
+
+  connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
+  connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);
+  connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
+
+  // Toolbar forwardings.
+  connect(m_ui->m_actionAddFeedIntoSelectedAccount, SIGNAL(triggered()),
+          tabWidget()->feedMessageViewer()->feedsView(), SLOT(addFeedIntoSelectedAccount()));
+  connect(m_ui->m_actionAddCategoryIntoSelectedAccount, SIGNAL(triggered()),
+          tabWidget()->feedMessageViewer()->feedsView(), SLOT(addCategoryIntoSelectedAccount()));
+  connect(m_ui->m_actionSwitchImportanceOfSelectedMessages,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(switchSelectedMessagesImportance()));
+  connect(m_ui->m_actionDeleteSelectedMessages,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(deleteSelectedMessages()));
+  connect(m_ui->m_actionMarkSelectedMessagesAsRead,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(markSelectedMessagesRead()));
+  connect(m_ui->m_actionMarkSelectedMessagesAsUnread,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(markSelectedMessagesUnread()));
+  connect(m_ui->m_actionOpenSelectedSourceArticlesExternally,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(openSelectedSourceMessagesExternally()));
+  connect(m_ui->m_actionOpenSelectedMessagesInternally,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(openSelectedMessagesInternally()));
+  connect(m_ui->m_actionSendMessageViaEmail,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(sendSelectedMessageViaEmail()));
+  connect(m_ui->m_actionMarkAllItemsRead,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(markAllItemsRead()));
+  connect(m_ui->m_actionMarkSelectedItemsAsRead,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(markSelectedItemRead()));
+  connect(m_ui->m_actionExpandCollapseItem,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(expandCollapseCurrentItem()));
+  connect(m_ui->m_actionMarkSelectedItemsAsUnread,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(markSelectedItemUnread()));
+  connect(m_ui->m_actionClearSelectedItems,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(clearSelectedFeeds()));
+  connect(m_ui->m_actionClearAllItems,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(clearAllFeeds()));
+  connect(m_ui->m_actionUpdateSelectedItems,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(updateSelectedItems()));
+  connect(m_ui->m_actionUpdateAllItems,
+          SIGNAL(triggered()), qApp->feedReader(), SLOT(updateAllFeeds()));
+  connect(m_ui->m_actionStopRunningItemsUpdate,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(stopRunningFeedUpdate()));
+  connect(m_ui->m_actionEditSelectedItem,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(editSelectedItem()));
+  connect(m_ui->m_actionViewSelectedItemsNewspaperMode,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(openSelectedItemsInNewspaperMode()));
+  connect(m_ui->m_actionDeleteSelectedItem,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(deleteSelectedItem()));
+  connect(m_ui->m_actionSwitchFeedsList,
+          SIGNAL(triggered()), this, SLOT(switchFeedComponentVisibility()));
+  connect(m_ui->m_actionSelectNextItem,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(selectNextItem()));
+  connect(m_ui->m_actionSwitchToolBars,
+          SIGNAL(toggled(bool)), this, SLOT(setToolBarsEnabled(bool)));
+  connect(m_ui->m_actionSwitchListHeaders,
+          SIGNAL(toggled(bool)), this, SLOT(setListHeadersEnabled(bool)));
+  connect(m_ui->m_actionSelectPreviousItem,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(selectPreviousItem()));
+  connect(m_ui->m_actionSelectNextMessage,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectNextItem()));
+  connect(m_ui->m_actionSelectNextUnreadMessage,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectNextUnreadItem()));
+  connect(m_ui->m_actionSelectPreviousMessage,
+          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectPreviousItem()));
+  connect(m_ui->m_actionSwitchMessageListOrientation, SIGNAL(triggered()),
+          this, SLOT(switchMessageSplitterOrientation()));
+  connect(m_ui->m_actionShowOnlyUnreadItems, SIGNAL(toggled(bool)),
+          this, SLOT(toggleShowOnlyUnreadFeeds()));
+  connect(m_ui->m_actionRestoreSelectedMessages, SIGNAL(triggered()),
+          tabWidget()->feedMessageViewer()->messagesView(), SLOT(restoreSelectedMessages()));
+  connect(m_ui->m_actionRestoreAllRecycleBins, SIGNAL(triggered()),
+          tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(restoreAllBins()));
+  connect(m_ui->m_actionEmptyAllRecycleBins, SIGNAL(triggered()),
+          tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(emptyAllBins()));
 }
 
 void FormMain::backupDatabaseSettings() {

@@ -31,7 +31,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_u
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
 
-  connect(m_ui->m_spinDays, SIGNAL(valueChanged(int)), this, SLOT(updateDaysSuffix(int)));
+  connect(m_ui->m_spinDays, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &FormDatabaseCleanup::updateDaysSuffix);
   m_ui->m_spinDays->setValue(DEFAULT_DAYS_TO_DELETE_MSG);
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Information, tr("I am ready."), tr("I am ready."));
   loadDatabaseInfo();

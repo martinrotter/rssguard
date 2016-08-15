@@ -83,9 +83,6 @@ class FeedMessageViewer : public TabContent {
     // Toggles displayed feeds.
     void toggleShowOnlyUnreadFeeds();
 
-    void updateMessageButtonsAvailability();
-    void updateFeedButtonsAvailability();
-
   protected:
     // Initializes some properties of the widget.
     void initialize();

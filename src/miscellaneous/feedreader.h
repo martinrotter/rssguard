@@ -21,9 +21,9 @@
 #include <QObject>
 
 #include "services/abstract/feed.h"
+#include "core/feeddownloader.h"
 
 
-class FeedDownloader;
 class FeedsModel;
 class MessagesModel;
 class MessagesProxyModel;
@@ -77,6 +77,10 @@ class FeedReader : public QObject {
   signals:
     // Emitted when model requests update of some feeds.
     void feedsUpdateRequested(QList<Feed*> feeds);
+
+    void feedUpdatesStarted();
+    void feedUpdatesFinished(FeedDownloadResults updated_feeds);
+    void feedUpdatesProgress(const Feed *feed, int current, int total);
 
   private:
     QList<ServiceEntryPoint*> m_feedServices;

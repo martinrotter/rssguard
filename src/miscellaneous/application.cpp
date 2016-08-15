@@ -127,9 +127,9 @@ void Application::eliminateFirstRun(const QString &version) {
 void Application::setFeedReader(FeedReader *feed_reader) {
   m_feedReader = feed_reader;
 
-  connect(m_feedReader->feedDownloader(), &FeedDownloader::updateStarted, this, &Application::onFeedUpdatesStarted);
-  connect(m_feedReader->feedDownloader(), &FeedDownloader::updateProgress, this, &Application::onFeedUpdatesProgress);
-  connect(m_feedReader->feedDownloader(), &FeedDownloader::updateFinished, this, &Application::onFeedUpdatesFinished);
+  connect(m_feedReader, &FeedReader::feedUpdatesStarted, this, &Application::onFeedUpdatesStarted);
+  connect(m_feedReader, &FeedReader::feedUpdatesProgress, this, &Application::onFeedUpdatesProgress);
+  connect(m_feedReader, &FeedReader::feedUpdatesFinished, this, &Application::onFeedUpdatesFinished);
 }
 
 IconFactory *Application::icons() {

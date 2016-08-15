@@ -38,7 +38,6 @@ FeedReader::FeedReader(QObject *parent)
   : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()), m_autoUpdateTimer(new QTimer(this)),
     m_feedDownloaderThread(nullptr), m_feedDownloader(nullptr),
     m_dbCleanerThread(nullptr), m_dbCleaner(nullptr) {
-  m_feedDownloader = new FeedDownloader(this);
   m_feedsModel = new FeedsModel(this);
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
   m_messagesModel = new MessagesModel(this);
@@ -82,6 +81,10 @@ void FeedReader::updateFeeds(const QList<Feed*> &feeds) {
 
     connect(this, &FeedReader::feedsUpdateRequested, m_feedDownloader, &FeedDownloader::updateFeeds);
     connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloaderThread, &QThread::deleteLater);
+
+    connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::feedUpdatesFinished);
+    connect(m_feedDownloader, &FeedDownloader::updateProgress, this, &FeedReader::feedUpdatesProgress);
+    connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
 
     // Connections are made, start the feed downloader thread.
     m_feedDownloaderThread->start();
