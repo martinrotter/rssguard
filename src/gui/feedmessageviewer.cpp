@@ -214,7 +214,6 @@ void FeedMessageViewer::createConnections() {
   // to reload selections.
   connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)),
           m_messagesView, SLOT(reloadSelections(bool)));
-  connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateFinished()), this, SLOT(onFeedsUpdateFinished()));
 }
 
 void FeedMessageViewer::initialize() {
@@ -297,8 +296,4 @@ void FeedMessageViewer::refreshVisualProperties() {
   
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);
-}
-
-void FeedMessageViewer::onFeedsUpdateFinished() {
-  m_messagesView->reloadSelections(false);
 }

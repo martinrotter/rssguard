@@ -76,34 +76,6 @@ FeedsModel::~FeedsModel() {
   delete m_rootItem;
 }
 
-/*
-void FeedsModel::onFeedUpdatesStarted() {
-  //: Text display in status bar when feed update is started.
-  qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
-
-  emit feedsUpdateStarted();
-}
-
-void FeedsModel::onFeedUpdatesProgress(const Feed *feed, int current, int total) {
-  // Some feed got updated.
-  qApp->mainForm()->statusBar()->showProgressFeeds((current * 100.0) / total,
-                                                   //: Text display in status bar when particular feed is updated.
-                                                   tr("Updated feed '%1'").arg(feed->title()));
-}
-
-void FeedsModel::onFeedUpdatesFinished(const FeedDownloadResults &results) {
-  qApp->feedUpdateLock()->unlock();
-  qApp->mainForm()->statusBar()->clearProgressFeeds();
-
-  if (!results.updatedFeeds().isEmpty()) {
-    // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon, 0, false);
-  }
-
-  emit feedsUpdateFinished();
-}
-*/
-
 QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
   QMimeData *mime_data = new QMimeData();
   QByteArray encoded_data;

@@ -85,6 +85,7 @@ void FeedReader::updateFeeds(const QList<Feed*> &feeds) {
     connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::feedUpdatesFinished);
     connect(m_feedDownloader, &FeedDownloader::updateProgress, this, &FeedReader::feedUpdatesProgress);
     connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
+    connect(m_feedDownloader, &FeedDownloader::updateFinished, qApp->feedUpdateLock(), &Mutex::unlock);
 
     // Connections are made, start the feed downloader thread.
     m_feedDownloaderThread->start();

@@ -225,26 +225,30 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
 void Application::processExecutionMessage(const QString &message) {
   qDebug("Received '%s' execution message from another application instance.", qPrintable(message));
 
-  foreach (const QString &msg, message.split(ARGUMENTS_LIST_SEPARATOR)) {
-    if (msg == APP_IS_RUNNING) {
-      showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
-      mainForm()->display();
-    }
-    else if (msg == APP_QUIT_INSTANCE) {
-      quit();
-    }
-    else if (msg.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
-      // Application was running, and someone wants to add new feed.
-      StandardServiceRoot *root = qApp->feedReader()->feedsModel()->standardServiceRoot();
+  const QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR);
 
-      if (root != nullptr) {
-        root->checkArgumentForFeedAdding(msg);
+  if (messages.contains(APP_QUIT_INSTANCE)) {
+    quit();
+  }
+  else {
+    foreach (const QString &msg, message.split(ARGUMENTS_LIST_SEPARATOR)) {
+      if (msg == APP_IS_RUNNING) {
+        showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
+        mainForm()->display();
       }
-      else {
-        showGuiMessage(tr("Cannot add feed"),
-                       tr("Feed cannot be added because standard RSS/ATOM account is not enabled."),
-                       QSystemTrayIcon::Warning, qApp->mainForm(),
-                       true);
+      else if (msg.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
+        // Application was running, and someone wants to add new feed.
+        StandardServiceRoot *root = qApp->feedReader()->feedsModel()->standardServiceRoot();
+
+        if (root != nullptr) {
+          root->checkArgumentForFeedAdding(msg);
+        }
+        else {
+          showGuiMessage(tr("Cannot add feed"),
+                         tr("Feed cannot be added because standard RSS/ATOM account is not enabled."),
+                         QSystemTrayIcon::Warning, qApp->mainForm(),
+                         true);
+        }
       }
     }
   }
@@ -322,9 +326,11 @@ void Application::onAboutToQuit() {
 #endif
 
   qApp->feedReader()->stop();
-
   database()->saveDatabase();
-  mainForm()->saveSize();
+
+  if (mainForm() != nullptr) {
+    mainForm()->saveSize();
+  }
 
   if (locked_safely) {
     // Application obtained permission to close in a safe way.
@@ -356,8 +362,6 @@ void Application::onFeedUpdatesProgress(const Feed *feed, int current, int total
 }
 
 void Application::onFeedUpdatesFinished(FeedDownloadResults results) {
-  qApp->feedUpdateLock()->unlock();
-
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
     qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon, 0, false);

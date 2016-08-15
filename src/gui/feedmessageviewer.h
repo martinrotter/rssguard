@@ -73,9 +73,6 @@ class FeedMessageViewer : public TabContent {
     void refreshVisualProperties();
 
   private slots:
-    // Called when feed update finishes.
-    void onFeedsUpdateFinished();
-
     // Switches visibility of feed list and related
     // toolbar.
     void switchFeedComponentVisibility();

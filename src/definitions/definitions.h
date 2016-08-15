@@ -45,7 +45,7 @@
 #define ID_RECYCLE_BIN                        -2
 #define TRAY_ICON_BUBBLE_TIMEOUT              20000
 #define KEY_MESSAGES_VIEW                     "messages_view_column_"
-#define CLOSE_LOCK_TIMEOUT                    1500
+#define CLOSE_LOCK_TIMEOUT                    500
 #define DOWNLOAD_TIMEOUT                      5000
 #define MESSAGES_VIEW_DEFAULT_COL             170
 #define FEEDS_VIEW_COLUMN_COUNT               2

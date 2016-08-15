@@ -31,13 +31,15 @@ class Mutex : public QObject {
     virtual ~Mutex();
 
     // Main methods.
-    void lock();
     bool tryLock();
     bool tryLock(int timeout);
-    void unlock();
 
     // Identifies if mutes is locked or not.
     bool isLocked() const;
+
+  public slots:
+    void lock();
+    void unlock();
 
   protected:
     // These methods set proper value for m_isLocked and emit signals.

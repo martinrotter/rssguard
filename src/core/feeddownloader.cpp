@@ -105,10 +105,12 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
                      << feed->id() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  int updated_messages = messages.isEmpty() ? 0 : feed->updateMessages(messages);
+  if (!m_stopUpdate) {
+    int updated_messages = messages.isEmpty() ? 0 : feed->updateMessages(messages);
 
-  if (updated_messages > 0) {
-    m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));
+    if (updated_messages > 0) {
+      m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));
+    }
   }
 
   qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).", m_feedsUpdated, m_feedsTotalCount, feed->id());

@@ -331,7 +331,10 @@ void FormMain::updateAccountsMenu() {
 }
 
 void FormMain::onFeedUpdatesFinished(FeedDownloadResults results) {
+  Q_UNUSED(results)
+
   statusBar()->clearProgressFeeds();
+  tabWidget()->feedMessageViewer()->messagesView()->reloadSelections(false);
 }
 
 void FormMain::onFeedUpdatesStarted() {
