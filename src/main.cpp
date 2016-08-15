@@ -96,12 +96,14 @@ int main(int argc, char *argv[]) {
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
-  qApp->icons()->setupSearchPaths();
-  qApp->icons()->loadCurrentIconTheme();
-  qApp->skins()->loadCurrentSkin();
+  if (!run_minimal_without_gui) {
+    qApp->icons()->setupSearchPaths();
+    qApp->icons()->loadCurrentIconTheme();
+    qApp->skins()->loadCurrentSkin();
 
-  // Load localization and setup locale before any widget is constructed.
-  qApp->localization()->loadActiveLanguage();
+    // Load localization and setup locale before any widget is constructed.
+    qApp->localization()->loadActiveLanguage();
+  }
 
   // These settings needs to be set before any QSettings object.
   Application::setApplicationName(APP_NAME);
@@ -110,8 +112,6 @@ int main(int argc, char *argv[]) {
   Application::setOrganizationDomain(APP_URL);
   Application::setWindowIcon(QIcon(APP_ICON_PATH));
 
-  qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
-
   // Load activated accounts.
   qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
 
@@ -119,6 +119,8 @@ int main(int argc, char *argv[]) {
   QObject::connect(&application, &Application::messageReceived, &application, &Application::processExecutionMessage);
 
   if (!run_minimal_without_gui) {
+    qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
+
     // Instantiate main application window.
     FormMain main_window;
 

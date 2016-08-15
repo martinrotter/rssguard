@@ -24,13 +24,11 @@
 #include "core/feeddownloader.h"
 #include "services/abstract/rootitem.h"
 
-class DatabaseCleaner;
 class Category;
 class Feed;
 class ServiceRoot;
 class ServiceEntryPoint;
 class StandardServiceRoot;
-class QTimer;
 
 class FeedsModel : public QAbstractItemModel {
     Q_OBJECT
@@ -61,15 +59,8 @@ class FeedsModel : public QAbstractItemModel {
     int rowCount(const QModelIndex &parent) const;
 
     // Returns counts of ALL/UNREAD (non-deleted) messages for the model.
-    inline int countOfAllMessages() const {
-      return m_rootItem->countOfAllMessages();
-    }
-
-    inline int countOfUnreadMessages() const {
-      return m_rootItem->countOfUnreadMessages();
-    }
-
-    void reloadCountsOfWholeModel();
+    int countOfAllMessages() const;
+    int countOfUnreadMessages() const;
 
     // Removes item with given index.
     // NOTE: Also deletes item from memory.
@@ -117,20 +108,21 @@ class FeedsModel : public QAbstractItemModel {
     bool hasAnyFeedNewMessages() const;
 
     // Access to root item.
-    inline RootItem *rootItem() const {
-      return m_rootItem;
-    }
-
-    // Does necessary job before quitting this component.
-    void quit();
+    RootItem *rootItem() const;
 
     // Adds given service root account.
     bool addServiceAccount(ServiceRoot *root, bool freshly_activated);
 
+  public slots:
     // Loads feed/categories from the database.
     void loadActivatedServiceAccounts();
 
-  public slots:
+    // Does necessary job before quitting this component.
+    void quit();
+
+    // Reloads counts of all feeds/categories/whatever in the model.
+    void reloadCountsOfWholeModel();
+
     // Checks if new parent node is different from one used by original node.
     // If it is, then it reassigns original_node to new parent.
     void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);

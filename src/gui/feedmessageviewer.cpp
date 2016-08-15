@@ -301,7 +301,7 @@ void FeedMessageViewer::createConnections() {
   connect(form_main->m_ui->m_actionUpdateSelectedItems,
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedItems()));
   connect(form_main->m_ui->m_actionUpdateAllItems,
-          SIGNAL(triggered()), m_feedsView, SLOT(updateAllItems()));
+          SIGNAL(triggered()), qApp->feedReader(), SLOT(updateAllFeeds()));
   connect(form_main->m_ui->m_actionStopRunningItemsUpdate,
           SIGNAL(triggered()), m_feedsView->sourceModel(), SLOT(stopRunningFeedUpdate()));
   connect(form_main->m_ui->m_actionEditSelectedItem,

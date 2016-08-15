@@ -277,6 +277,14 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   }
 }
 
+int FeedsModel::countOfAllMessages() const {
+  return m_rootItem->countOfAllMessages();
+}
+
+int FeedsModel::countOfUnreadMessages() const {
+  return m_rootItem->countOfUnreadMessages();
+}
+
 void FeedsModel::reloadCountsOfWholeModel() {
   m_rootItem->updateCounts(true);
   reloadWholeLayout();
@@ -464,6 +472,10 @@ bool FeedsModel::hasAnyFeedNewMessages() const {
   return false;
 }
 
+RootItem *FeedsModel::rootItem() const {
+  return m_rootItem;
+}
+
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex indx = list.takeFirst();
@@ -486,6 +498,7 @@ void FeedsModel::reloadChangedItem(RootItem *item) {
 
 void FeedsModel::notifyWithCounts() {
   if (SystemTrayIcon::isSystemTrayActivated()) {
+    // TODO: Udělat přes signál, jádro by nemělo inkludovat GUI prvky.
     qApp->trayIcon()->setNumber(countOfUnreadMessages(), hasAnyFeedNewMessages());
   }
 }

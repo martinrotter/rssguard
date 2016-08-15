@@ -32,11 +32,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     explicit FeedsProxyModel(FeedsModel *source_model, QObject *parent = 0);
     virtual ~FeedsProxyModel();
 
-    // Access to the source model.
-    inline FeedsModel *sourceModel() const {
-      return m_sourceModel;
-    }
-
     // Returns index list of items which "match" given value.
     // Used for finding items according to entered title text.
     QModelIndexList match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const;

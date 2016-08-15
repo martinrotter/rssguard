@@ -68,7 +68,6 @@ class FeedsView : public QTreeView {
     void expandCollapseCurrentItem();
 
     // Feed updating.
-    void updateAllItems();
     void updateSelectedItems();
 
     // Feed read/unread manipulators.

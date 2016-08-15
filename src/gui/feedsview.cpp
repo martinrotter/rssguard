@@ -202,10 +202,6 @@ void FeedsView::expandCollapseCurrentItem() {
   }
 }
 
-void FeedsView::updateAllItems() {
-  qApp->feedReader()->updateAllFeeds();
-}
-
 void FeedsView::updateSelectedItems() {
   qApp->feedReader()->updateFeeds(selectedFeeds());
 }

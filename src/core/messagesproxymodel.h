@@ -31,11 +31,6 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     explicit MessagesProxyModel(MessagesModel *source_model, QObject *parent = 0);
     virtual ~MessagesProxyModel();
 
-    // Source model getter.
-    inline MessagesModel *sourceModel() {
-      return m_sourceModel;
-    }
-
     QModelIndex getNextPreviousUnreadItemIndex(int default_row);
 
     // Maps list of indexes.
@@ -45,6 +40,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Fix for matching indexes with respect to specifics of the message model.
     QModelIndexList match(const QModelIndex &start, int role, const QVariant &entered_value, int hits, Qt::MatchFlags flags) const;
 
+    // Performs sort of items.
     void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
   private:
