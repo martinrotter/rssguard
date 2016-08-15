@@ -186,7 +186,7 @@ void FormMain::updateAddItemMenu() {
   // NOTE: Clear here deletes items from memory but only those OWNED by the menu.
   m_ui->m_menuAddItem->clear();
 
-  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+  foreach (ServiceRoot *activated_root, qApp->feedReader()->feedsModel()->serviceRoots()) {
     QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
     root_menu->setIcon(activated_root->icon());
     root_menu->setToolTip(activated_root->description());
@@ -233,7 +233,7 @@ void FormMain::updateAddItemMenu() {
 void FormMain::updateRecycleBinMenu() {
   m_ui->m_menuRecycleBin->clear();
 
-  foreach (const ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+  foreach (const ServiceRoot *activated_root, qApp->feedReader()->feedsModel()->serviceRoots()) {
     QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuRecycleBin);
     root_menu->setIcon(activated_root->icon());
     root_menu->setToolTip(activated_root->description());
@@ -273,7 +273,7 @@ void FormMain::updateRecycleBinMenu() {
 void FormMain::updateAccountsMenu() {
   m_ui->m_menuAccounts->clear();
 
-  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+  foreach (ServiceRoot *activated_root, qApp->feedReader()->feedsModel()->serviceRoots()) {
     QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuAccounts);
     root_menu->setIcon(activated_root->icon());
     root_menu->setToolTip(activated_root->description());
@@ -558,7 +558,7 @@ void FormMain::showWiki() {
 
 void FormMain::showAddAccountDialog() {
   QScopedPointer<FormAddAccount> form_update(new FormAddAccount(qApp->feedReader()->feedServices(),
-                                                                tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
+                                                                qApp->feedReader()->feedsModel(),
                                                                 this));
   form_update->exec();
 }

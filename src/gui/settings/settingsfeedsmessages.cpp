@@ -19,6 +19,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/feedreader.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
@@ -124,10 +125,11 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());
 
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->updateAutoUpdateStatus();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->updateDateFormat();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->reloadWholeLayout();
+
+  qApp->feedReader()->updateAutoUpdateStatus();
+  qApp->feedReader()->feedsModel()->reloadWholeLayout();
+  qApp->feedReader()->messagesModel()->updateDateFormat();
+  qApp->feedReader()->messagesModel()->reloadWholeLayout();
 
   onEndSaveSettings();
 }

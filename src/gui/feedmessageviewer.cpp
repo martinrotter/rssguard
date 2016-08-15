@@ -23,6 +23,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/databasecleaner.h"
+#include "miscellaneous/feedreader.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
 #include "core/feedsproxymodel.h"
@@ -193,7 +194,7 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
 }
 
 void FeedMessageViewer::updateFeedButtonsAvailability() {
-  const bool is_update_running = feedsView()->sourceModel()->isFeedUpdateRunning();
+  const bool is_update_running = qApp->feedReader()->isFeedUpdateRunning();
   const bool critical_action_running = qApp->feedUpdateLock()->isLocked();
   const RootItem *selected_item = feedsView()->selectedItem();
   const bool anything_selected = selected_item != nullptr;
@@ -202,6 +203,8 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   const bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
   const FormMain *form_main = qApp->mainForm();
   
+  // TODO: přesunou do form main.
+
   form_main->m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
@@ -414,7 +417,7 @@ void FeedMessageViewer::initializeViews() {
 void FeedMessageViewer::showDbCleanupAssistant() {
   if (qApp->feedUpdateLock()->tryLock()) {
     QScopedPointer<FormDatabaseCleanup> form_pointer(new FormDatabaseCleanup(this));
-    form_pointer.data()->setCleaner(m_feedsView->sourceModel()->databaseCleaner());
+    form_pointer.data()->setCleaner(qApp->feedReader()->databaseCleaner());
     form_pointer.data()->exec();
     
     qApp->feedUpdateLock()->unlock();
@@ -443,7 +446,7 @@ void FeedMessageViewer::onFeedsUpdateFinished() {
 
 void FeedMessageViewer::onFeedsUpdateStarted() {
   // Check only "Stop running update" button.
-  const bool is_update_running = feedsView()->sourceModel()->isFeedUpdateRunning();
+  const bool is_update_running = qApp->feedReader()->isFeedUpdateRunning();
 
   qApp->mainForm()->m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
 }

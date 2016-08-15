@@ -84,6 +84,38 @@ bool Application::isFirstRun(const QString &version) {
   }
 }
 
+SystemFactory *Application::system() {
+  if (m_system == nullptr) {
+    m_system = new SystemFactory(this);
+  }
+
+  return m_system;
+}
+
+SkinFactory *Application::skins() {
+  if (m_skins == nullptr) {
+    m_skins = new SkinFactory(this);
+  }
+
+  return m_skins;
+}
+
+Localization *Application::localization() {
+  if (m_localization == nullptr) {
+    m_localization = new Localization(this);
+  }
+
+  return m_localization;
+}
+
+DatabaseFactory *Application::database() {
+  if (m_database == nullptr) {
+    m_database = new DatabaseFactory(this);
+  }
+
+  return m_database;
+}
+
 void Application::eliminateFirstRun() {
   settings()->setValue(GROUP(General), General::FirstRun, false);
 }
@@ -115,6 +147,14 @@ DownloadManager *Application::downloadManager() {
   return m_downloadManager;
 }
 
+Settings *Application::settings() {
+  if (m_settings == nullptr) {
+    m_settings = Settings::setupSettings(this);
+  }
+
+  return m_settings;
+}
+
 Mutex *Application::feedUpdateLock() {
   if (m_updateFeedsLock.isNull()) {
     // NOTE: Cannot use parent hierarchy because this method can be usually called
@@ -125,8 +165,16 @@ Mutex *Application::feedUpdateLock() {
   return m_updateFeedsLock.data();
 }
 
+FormMain *Application::mainForm() {
+  return m_mainForm;
+}
+
 QWidget *Application::mainFormWidget() {
   return m_mainForm;
+}
+
+void Application::setMainForm(FormMain *main_form) {
+  m_mainForm = main_form;
 }
 
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
@@ -201,8 +249,7 @@ void Application::processExecutionMessage(const QString &message) {
 SystemTrayIcon *Application::trayIcon() {
   if (m_trayIcon == nullptr) {
     m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
-    connect(m_trayIcon, SIGNAL(shown()),
-            m_mainForm->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(notifyWithCounts()));
+    connect(m_trayIcon, &SystemTrayIcon::shown, m_feedReader->feedsModel(), &FeedsModel::notifyWithCounts);
   }
 
   return m_trayIcon;

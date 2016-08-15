@@ -45,10 +45,7 @@
 #include <algorithm>
 
 
-FeedsModel::FeedsModel(QObject *parent)
-  : QAbstractItemModel(parent), m_autoUpdateTimer(new QTimer(this)),
-    m_feedDownloaderThread(nullptr), m_feedDownloader(nullptr),
-    m_dbCleanerThread(nullptr), m_dbCleaner(nullptr) {
+FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -66,9 +63,6 @@ FeedsModel::FeedsModel(QObject *parent)
 
   m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.") <<
                    /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
-
-  connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
-  updateAutoUpdateStatus();
 }
 
 FeedsModel::~FeedsModel() {
@@ -83,78 +77,12 @@ FeedsModel::~FeedsModel() {
 }
 
 void FeedsModel::quit() {
-  if (m_autoUpdateTimer->isActive()) {
-    m_autoUpdateTimer->stop();
-  }
-
-  // Close worker threads.
-  if (m_feedDownloaderThread != nullptr && m_feedDownloaderThread->isRunning()) {
-    m_feedDownloader->stopRunningUpdate();
-
-    qDebug("Quitting feed downloader thread.");
-    m_feedDownloaderThread->quit();
-
-    if (!m_feedDownloaderThread->wait(CLOSE_LOCK_TIMEOUT)) {
-      qCritical("Feed downloader thread is running despite it was told to quit. Terminating it.");
-      m_feedDownloaderThread->terminate();
-    }
-  }
-
-  if (m_dbCleanerThread != nullptr && m_dbCleanerThread->isRunning()) {
-    qDebug("Quitting database cleaner thread.");
-    m_dbCleanerThread->quit();
-
-    if (!m_dbCleanerThread->wait(CLOSE_LOCK_TIMEOUT)) {
-      qCritical("Database cleaner thread is running despite it was told to quit. Terminating it.");
-      m_dbCleanerThread->terminate();
-    }
-  }
-
-  // Close workers.
-  if (m_feedDownloader != nullptr) {
-    qDebug("Feed downloader exists. Deleting it from memory.");
-    m_feedDownloader->deleteLater();
-  }
-
-  if (m_dbCleaner != nullptr) {
-    qDebug("Database cleaner exists. Deleting it from memory.");
-    m_dbCleaner->deleteLater();
-  }
-
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
     markItemCleared(m_rootItem, true);
   }
 }
 
-void FeedsModel::updateFeeds(const QList<Feed*> &feeds) {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    qApp->showGuiMessage(tr("Cannot update all items"),
-                         tr("You cannot update all items because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
-    return;
-  }
-
-  if (m_feedDownloader == nullptr) {
-    m_feedDownloader = new FeedDownloader();
-    m_feedDownloaderThread = new QThread();
-
-    // Downloader setup.
-    qRegisterMetaType<QList<Feed*> >("QList<Feed*>");
-    m_feedDownloader->moveToThread(m_feedDownloaderThread);
-
-    connect(this, SIGNAL(feedsUpdateRequested(QList<Feed*>)), m_feedDownloader, SLOT(updateFeeds(QList<Feed*>)));
-    connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
-    connect(m_feedDownloader, SIGNAL(finished(FeedDownloadResults)), this, SLOT(onFeedUpdatesFinished(FeedDownloadResults)));
-    connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
-    connect(m_feedDownloader, SIGNAL(progress(const Feed*,int,int)), this, SLOT(onFeedUpdatesProgress(const Feed*,int,int)));
-
-    // Connections are made, start the feed downloader thread.
-    m_feedDownloaderThread->start();
-  }
-
-  emit feedsUpdateRequested(feeds);
-}
-
+/*
 void FeedsModel::onFeedUpdatesStarted() {
   //: Text display in status bar when feed update is started.
   qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
@@ -180,27 +108,7 @@ void FeedsModel::onFeedUpdatesFinished(const FeedDownloadResults &results) {
 
   emit feedsUpdateFinished();
 }
-
-void FeedsModel::updateAllFeeds() {
-  updateFeeds(m_rootItem->getSubTreeFeeds());
-}
-
-DatabaseCleaner *FeedsModel::databaseCleaner() {
-  if (m_dbCleaner == nullptr) {
-    m_dbCleaner = new DatabaseCleaner();
-    m_dbCleanerThread = new QThread();
-
-    // Downloader setup.
-    qRegisterMetaType<CleanerOrders>("CleanerOrders");
-    m_dbCleaner->moveToThread(m_dbCleanerThread);
-    connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
-
-    // Connections are made, start the feed downloader thread.
-    m_dbCleanerThread->start();
-  }
-
-  return m_dbCleaner;
-}
+*/
 
 QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
   QMimeData *mime_data = new QMimeData();
@@ -296,62 +204,6 @@ Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const {
   Qt::ItemFlags additional_flags = item_for_index->additionalFlags();
 
   return base_flags | additional_flags;
-}
-
-void FeedsModel::executeNextAutoUpdate() {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    qDebug("Delaying scheduled feed auto-updates for one minute due to another running update.");
-
-    // Cannot update, quit.
-    return;
-  }
-
-  // If global auto-update is enabled and its interval counter reached zero,
-  // then we need to restore it.
-  if (m_globalAutoUpdateEnabled && --m_globalAutoUpdateRemainingInterval < 0) {
-    // We should start next auto-update interval.
-    m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
-  }
-
-  qDebug("Starting auto-update event, pass %d/%d.", m_globalAutoUpdateRemainingInterval, m_globalAutoUpdateInitialInterval);
-
-  // Pass needed interval data and lets the model decide which feeds
-  // should be updated in this pass.
-  QList<Feed*> feeds_for_update = feedsForScheduledUpdate(m_globalAutoUpdateEnabled && m_globalAutoUpdateRemainingInterval == 0);
-
-  qApp->feedUpdateLock()->unlock();
-
-  if (!feeds_for_update.isEmpty()) {
-    // Request update for given feeds.
-    updateFeeds(feeds_for_update);
-
-    // NOTE: OSD/bubble informing about performing
-    // of scheduled update can be shown now.
-    qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
-                         tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
-                         QSystemTrayIcon::Information);
-  }
-}
-
-void FeedsModel::updateAutoUpdateStatus() {
-  // Restore global intervals.
-  // NOTE: Specific per-feed interval are left intact.
-  m_globalAutoUpdateInitialInterval = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt();
-  m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
-  m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool();
-
-  // Start global auto-update timer if it is not running yet.
-  // NOTE: The timer must run even if global auto-update
-  // is not enabled because user can still enable auto-update
-  // for individual feeds.
-  if (!m_autoUpdateTimer->isActive()) {
-    m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
-    m_autoUpdateTimer->start();
-    qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
-  }
-  else {
-    qDebug("Auto-update timer is already running.");
-  }
 }
 
 QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int role) const {
@@ -612,10 +464,6 @@ bool FeedsModel::hasAnyFeedNewMessages() const {
   return false;
 }
 
-bool FeedsModel::isFeedUpdateRunning() const {
-  return m_feedDownloader != nullptr && m_feedDownloader->isUpdateRunning();
-}
-
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex indx = list.takeFirst();
@@ -724,12 +572,6 @@ void FeedsModel::loadActivatedServiceAccounts() {
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
     QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
-  }
-}
-
-void FeedsModel::stopRunningFeedUpdate() {
-  if (m_feedDownloader != nullptr) {
-    m_feedDownloader->stopRunningUpdate();
   }
 }
 

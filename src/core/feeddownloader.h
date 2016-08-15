@@ -49,8 +49,6 @@ class FeedDownloadResults {
     QList<QPair<QString,int> > m_updatedFeeds;
 };
 
-class QMutex;
-
 // This class offers means to "update" feeds and "special" categories.
 // NOTE: This class is used within separate thread.
 class FeedDownloader : public QObject {
@@ -94,7 +92,6 @@ class FeedDownloader : public QObject {
     void finalizeUpdate();
 
     FeedDownloadResults m_results;
-    QMutex *m_msgUpdateMutex;
 
     int m_feedsUpdated;
     int m_feedsToUpdate;

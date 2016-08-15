@@ -40,9 +40,6 @@ class FeedsModel : public QAbstractItemModel {
     explicit FeedsModel(QObject *parent = 0);
     virtual ~FeedsModel();
 
-    // Access to DB cleaner.
-    DatabaseCleaner *databaseCleaner();
-
     // Model implementation.
     inline QVariant data(const QModelIndex &index, int role) const {
       // Return data according to item.
@@ -124,17 +121,8 @@ class FeedsModel : public QAbstractItemModel {
       return m_rootItem;
     }
 
-    bool isFeedUpdateRunning() const;
-
-    // Resets global auto-update intervals according to settings
-    // and starts/stop the timer as needed.
-    void updateAutoUpdateStatus();
-
     // Does necessary job before quitting this component.
     void quit();
-
-    // Schedules given feeds for update.
-    void updateFeeds(const QList<Feed*> &feeds);
 
     // Adds given service root account.
     bool addServiceAccount(ServiceRoot *root, bool freshly_activated);
@@ -143,11 +131,6 @@ class FeedsModel : public QAbstractItemModel {
     void loadActivatedServiceAccounts();
 
   public slots:
-    void stopRunningFeedUpdate();
-
-    // Schedules all feeds from all accounts for update.
-    void updateAllFeeds();
-
     // Checks if new parent node is different from one used by original node.
     // If it is, then it reassigns original_node to new parent.
     void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);
@@ -182,23 +165,7 @@ class FeedsModel : public QAbstractItemModel {
   private slots:
     void onItemDataChanged(const QList<RootItem*> &items);
 
-    // Is executed when next auto-update round could be done.
-    void executeNextAutoUpdate();
-
-    // Reacts on feed updates.
-    void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(const Feed *feed, int current, int total);
-    void onFeedUpdatesFinished(const FeedDownloadResults &results);
-
   signals:
-    // Update of feeds is finished.
-    void feedsUpdateFinished();
-
-    void feedsUpdateStarted();
-
-    // Emitted when model requests update of some feeds.
-    void feedsUpdateRequested(QList<Feed*> feeds);
-
     // Emitted if counts of messages are changed.
     void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);
 
@@ -221,18 +188,6 @@ class FeedsModel : public QAbstractItemModel {
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;
-
-    // Auto-update stuff.
-    QTimer *m_autoUpdateTimer;
-    bool m_globalAutoUpdateEnabled;
-    int m_globalAutoUpdateInitialInterval;
-    int m_globalAutoUpdateRemainingInterval;
-
-    QThread *m_feedDownloaderThread;
-    FeedDownloader *m_feedDownloader;
-
-    QThread *m_dbCleanerThread;
-    DatabaseCleaner *m_dbCleaner;
 };
 
 #endif // FEEDSMODEL_H

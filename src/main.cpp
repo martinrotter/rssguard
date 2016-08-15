@@ -42,19 +42,25 @@
 int main(int argc, char *argv[]) {
   bool run_minimal_without_gui = false;
 
-  for (int i; i < argc; i++) {
+  for (int i = 0; i < argc; i++) {
     const QString str = QString::fromLocal8Bit(argv[i]);
 
-    if (str == "-h" || str == "--help") {
+    if (str == "-h") {
       qDebug("Usage: rssguard [OPTIONS]\n\n"
-             "Option\t\tGNU long option\t\tMeaning\n"
-             "-h\t\t--help\t\t\tDisplays this help.\n"
-             "-c\t\t--cron\t\t\tStarts the application without GUI and will regularly update configured feeds. **\n\n"
-             "** ");
+             "Option\t\tMeaning\n"
+             "-h\t\tDisplays this help.\n"
+             "-q\t\tQuits minimal non-GUI instance of application already running on this machine.\n"
+             "-c\t\tStarts the application without GUI and will regularly update configured feeds.\n\n"
+             "Running with '-c' option starts application without GUI and/or tray icon. No "
+             "message boxes will be shown, no GUI. Only minimal functionality will be enabled, including periodic checking for "
+             "feed/message updates. Note that you must configure the application via GUI first! So to really get periodic "
+             "feed updates, you must import some feeds and set their auto-update policy first in the GUI.\n\n"
+             "You can quick the minimal non-GUI application instance either by just killing it or by running the application "
+             "executable again with -q option.");
 
       return EXIT_SUCCESS;
     }
-    else if (str == "-c" || str == "--cron") {
+    else if (str == "-c") {
       run_minimal_without_gui = true;
     }
   }
@@ -106,50 +112,56 @@ int main(int argc, char *argv[]) {
 
   qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
 
-  // Instantiate main application window.
-  FormMain main_window;
-
-  // Set correct information for main window.
-  main_window.setWindowTitle(APP_LONG_NAME);
-
-  // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(qApp->userActions());
-
-  // Display main window.
-  if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
-    qDebug("Hiding the main window when the application is starting.");
-    main_window.switchVisibility(true);
-  }
-  else {
-    qDebug("Showing the main window when the application is starting.");
-    main_window.show();
-  }
-
-  // Display tray icon if it is enabled and available.
-  if (SystemTrayIcon::isSystemTrayActivated()) {
-    qApp->showTrayIcon();
-  }
-
   // Load activated accounts.
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->loadActivatedServiceAccounts();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
+  qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
 
   // Setup single-instance behavior.
   QObject::connect(&application, &Application::messageReceived, &application, &Application::processExecutionMessage);
 
-  if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
-    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                                                           "version by clicking this popup notification.").arg(APP_LONG_NAME),
-                         QSystemTrayIcon::NoIcon, 0, false, &main_window, SLOT(showAbout()));
+  if (!run_minimal_without_gui) {
+    // Instantiate main application window.
+    FormMain main_window;
+
+    // Set correct information for main window.
+    main_window.setWindowTitle(APP_LONG_NAME);
+
+    // Now is a good time to initialize dynamic keyboard shortcuts.
+    DynamicShortcuts::load(qApp->userActions());
+
+    // Display main window.
+    if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
+      qDebug("Hiding the main window when the application is starting.");
+      main_window.switchVisibility(true);
+    }
+    else {
+      qDebug("Showing the main window when the application is starting.");
+      main_window.show();
+    }
+
+    // Display tray icon if it is enabled and available.
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      qApp->showTrayIcon();
+    }
+
+    if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
+      qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                                                      "version by clicking this popup notification.").arg(APP_LONG_NAME),
+                           QSystemTrayIcon::NoIcon, 0, false, &main_window, SLOT(showAbout()));
+    }
+    else {
+      qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_NAME), QSystemTrayIcon::NoIcon);
+    }
+
+    if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
+      QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
+    }
+
+    qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
+
+    // Enter global event loop.
+    return Application::exec();
   }
   else {
-    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_NAME), QSystemTrayIcon::NoIcon);
+    return Application::exec();
   }
-
-  if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-    QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
-  }
-
-  // Enter global event loop.
-  return Application::exec();
 }

@@ -22,6 +22,7 @@
 #include "core/feedsproxymodel.h"
 #include "services/abstract/rootitem.h"
 #include "miscellaneous/systemfactory.h"
+#include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
@@ -50,8 +51,8 @@ FeedsView::FeedsView(QWidget *parent)
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
-    m_sourceModel = new FeedsModel(this);
-  m_proxyModel = new FeedsProxyModel(m_sourceModel, this);
+  m_sourceModel = qApp->feedReader()->feedsModel();
+  m_proxyModel = qApp->feedReader()->feedsProxyModel();
 
   // Connections.
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
@@ -202,11 +203,11 @@ void FeedsView::expandCollapseCurrentItem() {
 }
 
 void FeedsView::updateAllItems() {
-  m_sourceModel->updateAllFeeds();
+  qApp->feedReader()->updateAllFeeds();
 }
 
 void FeedsView::updateSelectedItems() {
-  m_sourceModel->updateFeeds(selectedFeeds());
+  qApp->feedReader()->updateFeeds(selectedFeeds());
 }
 
 void FeedsView::clearSelectedFeeds() {

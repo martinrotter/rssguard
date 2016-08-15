@@ -19,6 +19,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/feedreader.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "gui/feedmessageviewer.h"
@@ -77,7 +78,7 @@ void DiscoverFeedsButton::linkTriggered(QAction *action) {
 void DiscoverFeedsButton::fillMenu() {
   menu()->clear();
 
-  foreach (const ServiceRoot *root, qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+  foreach (const ServiceRoot *root, qApp->feedReader()->feedsModel()->serviceRoots()) {
     QMenu *root_menu = menu()->addMenu(root->icon(), root->title());
 
     foreach (const QString &url, m_addresses) {

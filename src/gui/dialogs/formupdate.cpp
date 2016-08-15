@@ -187,11 +187,11 @@ void FormUpdate::startUpdate() {
     qDebug("Preparing to launch external installer '%s'.", qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
 
 #if defined(Q_OS_WIN)
-    HINSTANCE exec_result = ShellExecute(NULL,
-                                         NULL,
+    HINSTANCE exec_result = ShellExecute(nullptr,
+                                         nullptr,
                                          reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
-                                         NULL,
-                                         NULL,
+                                         nullptr,
+                                         nullptr,
                                          SW_NORMAL);
 
     if (((int)exec_result) <= 32) {

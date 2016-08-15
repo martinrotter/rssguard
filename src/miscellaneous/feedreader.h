@@ -20,6 +20,8 @@
 
 #include <QObject>
 
+#include "services/abstract/feed.h"
+
 
 class FeedDownloader;
 class FeedsModel;
@@ -29,7 +31,6 @@ class FeedsProxyModel;
 class ServiceEntryPoint;
 class DatabaseCleaner;
 class QTimer;
-class Feed;
 
 class FeedReader : public QObject {
     Q_OBJECT
@@ -48,18 +49,40 @@ class FeedReader : public QObject {
     FeedDownloader *feedDownloader() const;
     FeedsModel *feedsModel() const;
     MessagesModel *messagesModel() const;
-    FeedsProxyModel *feedProxyModel() const;
+    FeedsProxyModel *feedsProxyModel() const;
     MessagesProxyModel *messagesProxyModel() const;
 
+    // Schedules given feeds for update.
+    void updateFeeds(const QList<Feed*> &feeds);
+
+    bool isFeedUpdateRunning() const;
+
+    // Resets global auto-update intervals according to settings
+    // and starts/stop the timer as needed.
+    void updateAutoUpdateStatus();
+
   public slots:
+    // Schedules all feeds from all accounts for update.
+    void updateAllFeeds();
+
+    void stopRunningFeedUpdate();
+
     void start();
     void stop();
+
+  private slots:
+    // Is executed when next auto-update round could be done.
+    void executeNextAutoUpdate();
+
+  signals:
+    // Emitted when model requests update of some feeds.
+    void feedsUpdateRequested(QList<Feed*> feeds);
 
   private:
     QList<ServiceEntryPoint*> m_feedServices;
 
     FeedsModel *m_feedsModel;
-    FeedsProxyModel *m_feedProxyModel;
+    FeedsProxyModel *m_feedsProxyModel;
     MessagesModel *m_messagesModel;
     MessagesProxyModel *m_messagesProxyModel;
 

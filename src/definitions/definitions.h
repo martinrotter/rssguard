@@ -120,7 +120,7 @@
 #define APP_LOG_PATH        "data/log"
 #define APP_LOG_FILE        "log.txt"
 
-#define APP_QUIT_INSTANCE   "app_quit"
+#define APP_QUIT_INSTANCE   "-q"
 #define APP_IS_RUNNING      "app_is_running"
 #define APP_SKIN_DEFAULT    "base/vergilius.xml"
 #define APP_THEME_DEFAULT   "Faenza"

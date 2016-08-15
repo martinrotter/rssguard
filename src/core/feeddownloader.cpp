@@ -23,19 +23,16 @@
 #include <QThread>
 #include <QDebug>
 #include <QMetaType>
-#include <QMutex>
 #include <QThreadPool>
 
 
 FeedDownloader::FeedDownloader(QObject *parent)
-  : QObject(parent), m_results(FeedDownloadResults()), m_msgUpdateMutex(new QMutex()), m_feedsUpdated(0), m_feedsToUpdate(0),
+  : QObject(parent), m_results(FeedDownloadResults()), m_feedsUpdated(0), m_feedsToUpdate(0),
     m_feedsUpdating(0), m_feedsTotalCount(0), m_stopUpdate(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 }
 
 FeedDownloader::~FeedDownloader() {
-  m_msgUpdateMutex->unlock();
-  delete m_msgUpdateMutex;
   qDebug("Destroying FeedDownloader instance.");
 }
 
@@ -109,9 +106,7 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
                      << feed->customId() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  m_msgUpdateMutex->lock();
   int updated_messages = messages.isEmpty() ? 0 : feed->updateMessages(messages);
-  m_msgUpdateMutex->unlock();
 
   if (updated_messages > 0) {
     m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));

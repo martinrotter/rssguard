@@ -20,6 +20,7 @@
 #include "core/messagesproxymodel.h"
 #include "core/messagesmodel.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/feedreader.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "gui/dialogs/formmain.h"
@@ -38,8 +39,8 @@ MessagesView::MessagesView(QWidget *parent)
     m_contextMenu(nullptr),
     m_columnsAdjusted(false),
     m_batchUnreadSwitch(false) {
-  m_sourceModel = new MessagesModel(this);
-  m_proxyModel = new MessagesProxyModel(m_sourceModel, this);
+  m_sourceModel = qApp->feedReader()->messagesModel();
+  m_proxyModel = qApp->feedReader()->messagesProxyModel();
 
   // Forward count changes to the view.
   createConnections();

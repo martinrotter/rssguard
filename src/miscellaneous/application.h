@@ -68,61 +68,25 @@ class Application : public QtSingleApplication {
     // Check whether GIVEN VERSION of the application starts for the first time.
     bool isFirstRun(const QString &version);
 
-    inline SystemFactory *system() {
-      if (m_system == NULL) {
-        m_system = new SystemFactory(this);
-      }
-
-      return m_system;
-    }
-
-    inline SkinFactory *skins() {
-      if (m_skins == NULL) {
-        m_skins = new SkinFactory(this);
-      }
-
-      return m_skins;
-    }
-
-    inline Localization *localization() {
-      if (m_localization == NULL) {
-        m_localization = new Localization(this);
-      }
-
-      return m_localization;
-    }
-
-    inline DatabaseFactory *database() {
-      if (m_database == NULL) {
-        m_database = new DatabaseFactory(this);
-      }
-
-      return m_database;
-    }
-
+    SystemFactory *system();
+    SkinFactory *skins();
+    Localization *localization();
+    DatabaseFactory *database();
     IconFactory *icons();
     DownloadManager *downloadManager();
-
-    inline Settings *settings() {
-      if (m_settings == NULL) {
-        m_settings = Settings::setupSettings(this);
-      }
-
-      return m_settings;
-    }
+    Settings *settings();
 
     // Access to application-wide close lock.
     Mutex *feedUpdateLock();
 
-    inline FormMain *mainForm() {
-      return m_mainForm;
-    }
-
+    FormMain *mainForm();
     QWidget *mainFormWidget();
 
-    void setMainForm(FormMain *main_form) {
-      m_mainForm = main_form;
-    }
+    // Access to application tray icon. Always use this in cooperation with
+    // SystemTrayIcon::isSystemTrayActivated().
+    SystemTrayIcon *trayIcon();
+
+    void setMainForm(FormMain *main_form);
 
     inline QString tempFolderPath() {
       return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
@@ -141,10 +105,6 @@ class Application : public QtSingleApplication {
     void restoreDatabaseSettings(bool restore_database, bool restore_settings,
                                  const QString &source_database_file_path = QString(),
                                  const QString &source_settings_file_path = QString());
-
-    // Access to application tray icon. Always use this in cooperation with
-    // SystemTrayIcon::isSystemTrayActivated().
-    SystemTrayIcon *trayIcon();
 
     void showTrayIcon();
     void deleteTrayIcon();
