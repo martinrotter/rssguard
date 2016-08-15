@@ -230,8 +230,8 @@ void Application::processExecutionMessage(const QString &message) {
   if (messages.contains(APP_QUIT_INSTANCE)) {
     quit();
   }
-  else {
-    foreach (const QString &msg, message.split(ARGUMENTS_LIST_SEPARATOR)) {
+  else if (!m_runMinimalWithoutGui) {
+    foreach (const QString &msg, messages) {
       if (msg == APP_IS_RUNNING) {
         showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
         mainForm()->display();
@@ -284,7 +284,10 @@ void Application::showGuiMessage(const QString &title, const QString &message,
                                  QSystemTrayIcon::MessageIcon message_type, QWidget *parent,
                                  bool show_at_least_msgbox, QObject *invokation_target,
                                  const char *invokation_slot) {
-  if (SystemTrayIcon::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
+  if (m_runMinimalWithoutGui) {
+    qDebug("Silencing GUI message: '%s'.", qPrintable(message));
+  }
+  else if (SystemTrayIcon::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
     trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
   }
   else if (show_at_least_msgbox) {
