@@ -323,6 +323,21 @@ void FormMain::updateAccountsMenu() {
   m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceDelete);
 }
 
+void FormMain::onFeedUpdatesStarted() {
+  m_ui->m_actionStopRunningItemsUpdate->setEnabled(false);
+  statusBar()->showProgressFeeds(0, tr("Feed update started"));
+}
+
+void FormMain::onFeedUpdatesProgress(const Feed *feed, int current, int total) {
+  statusBar()->showProgressFeeds((current * 100.0) / total,
+                                 //: Text display in status bar when particular feed is updated.
+                                 tr("Updated feed '%1'").arg(feed->title()));
+}
+
+void FormMain::onFeedUpdatesFinished(FeedDownloadResults results) {
+  statusBar()->clearProgressFeeds();
+}
+
 void FormMain::switchVisibility(bool force_hide) {
   if (force_hide || isVisible()) {
     if (SystemTrayIcon::isSystemTrayActivated()) {

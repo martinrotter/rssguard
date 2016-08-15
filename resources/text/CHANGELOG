@@ -1,3 +1,9 @@
+3.3.4
+—————
+
+Changed:
+▪ Big application core refactoring. Many functions rewritten, some bad code removed.
+
 3.3.3
 —————
 

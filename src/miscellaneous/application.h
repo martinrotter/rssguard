@@ -30,6 +30,7 @@
 #include "gui/systemtrayicon.h"
 #include "network-web/downloadmanager.h"
 #include "services/abstract/serviceentrypoint.h"
+#include "core/feeddownloader.h"
 
 #include <QList>
 
@@ -130,6 +131,10 @@ class Application : public QtSingleApplication {
     void onSaveState(QSessionManager &manager);
     void onAboutToQuit();
     void downloadRequested(QWebEngineDownloadItem*download_item);
+
+    void onFeedUpdatesStarted();
+    void onFeedUpdatesProgress(const Feed *feed, int current, int total);
+    void onFeedUpdatesFinished(FeedDownloadResults results);
 
   private:
     void eliminateFirstRun();

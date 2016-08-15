@@ -341,3 +341,21 @@ void Application::downloadRequested(QWebEngineDownloadItem *download_item) {
   download_item->cancel();
   download_item->deleteLater();
 }
+
+void Application::onFeedUpdatesStarted() {
+}
+
+void Application::onFeedUpdatesProgress(const Feed *feed, int current, int total) {
+  Q_UNUSED(feed)
+  Q_UNUSED(current)
+  Q_UNUSED(total)
+}
+
+void Application::onFeedUpdatesFinished(FeedDownloadResults results) {
+  qApp->feedUpdateLock()->unlock();
+
+  if (!results.updatedFeeds().isEmpty()) {
+    // Now, inform about results via GUI message/notification.
+    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon, 0, false);
+  }
+}

@@ -78,6 +78,10 @@ class FormMain : public QMainWindow {
     void updateRecycleBinMenu();
     void updateAccountsMenu();
 
+    void onFeedUpdatesStarted();
+    void onFeedUpdatesProgress(const Feed *feed, int current, int total);
+    void onFeedUpdatesFinished(FeedDownloadResults results);
+
     // Displays various dialogs.
     void backupDatabaseSettings();
     void restoreDatabaseSettings();

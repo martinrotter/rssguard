@@ -438,10 +438,3 @@ void FeedMessageViewer::refreshVisualProperties() {
 void FeedMessageViewer::onFeedsUpdateFinished() {
   m_messagesView->reloadSelections(false);
 }
-
-void FeedMessageViewer::onFeedsUpdateStarted() {
-  // Check only "Stop running update" button.
-  const bool is_update_running = qApp->feedReader()->isFeedUpdateRunning();
-
-  qApp->mainForm()->m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
-}
