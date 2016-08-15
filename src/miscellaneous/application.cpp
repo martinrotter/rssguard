@@ -125,12 +125,16 @@ void Application::eliminateFirstRun(const QString &version) {
 }
 
 void Application::setFeedReader(FeedReader *feed_reader) {
-    m_feedReader = feed_reader;
+  m_feedReader = feed_reader;
+
+  connect(m_feedReader->feedDownloader(), &FeedDownloader::updateStarted, this, &Application::onFeedUpdatesStarted);
+  connect(m_feedReader->feedDownloader(), &FeedDownloader::updateProgress, this, &Application::onFeedUpdatesProgress);
+  connect(m_feedReader->feedDownloader(), &FeedDownloader::updateFinished, this, &Application::onFeedUpdatesFinished);
 }
 
 IconFactory *Application::icons() {
-    if (m_icons == nullptr) {
-        m_icons = new IconFactory(this);
+  if (m_icons == nullptr) {
+    m_icons = new IconFactory(this);
   }
 
   return m_icons;

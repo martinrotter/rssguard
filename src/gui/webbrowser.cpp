@@ -77,6 +77,7 @@ WebBrowser::WebBrowser(QWidget *parent) : TabContent(parent),
   // Initialize the components and layout.
   initializeLayout();
 
+  setFocusProxy(m_txtLocation);
   setTabOrder(m_txtLocation, m_toolBar);
   setTabOrder(m_toolBar, m_webView);
 
