@@ -117,9 +117,6 @@ class FeedsModel : public QAbstractItemModel {
     // Loads feed/categories from the database.
     void loadActivatedServiceAccounts();
 
-    // Does necessary job before quitting this component.
-    void quit();
-
     // Reloads counts of all feeds/categories/whatever in the model.
     void reloadCountsOfWholeModel();
 

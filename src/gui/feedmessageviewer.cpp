@@ -76,6 +76,26 @@ FeedMessageViewer::~FeedMessageViewer() {
   qDebug("Destroying FeedMessageViewer instance.");
 }
 
+WebBrowser *FeedMessageViewer::webBrowser() const {
+  return m_messagesBrowser;
+}
+
+FeedsView *FeedMessageViewer::feedsView() const {
+  return m_feedsView;
+}
+
+MessagesView *FeedMessageViewer::messagesView() const {
+  return m_messagesView;
+}
+
+MessagesToolBar *FeedMessageViewer::messagesToolBar() const {
+  return m_toolBarMessages;
+}
+
+FeedsToolBar *FeedMessageViewer::feedsToolBar() const {
+  return m_toolBarFeeds;
+}
+
 void FeedMessageViewer::saveSize() {
   Settings *settings = qApp->settings();
   
@@ -119,11 +139,6 @@ void FeedMessageViewer::loadSize() {
 
 void FeedMessageViewer::loadMessageViewerFonts() {  
   m_messagesBrowser->reloadFontSettings();
-}
-
-void FeedMessageViewer::quit() {
-  // Quit the feeds model (stops auto-update timer etc.).
-  m_feedsView->sourceModel()->quit();
 }
 
 bool FeedMessageViewer::areToolBarsEnabled() const {
@@ -270,8 +285,6 @@ void FeedMessageViewer::createConnections() {
           m_feedsView, SLOT(addFeedIntoSelectedAccount()));
   connect(form_main->m_ui->m_actionAddCategoryIntoSelectedAccount, SIGNAL(triggered()),
           m_feedsView, SLOT(addCategoryIntoSelectedAccount()));
-  connect(form_main->m_ui->m_actionCleanupDatabase,
-          SIGNAL(triggered()), this, SLOT(showDbCleanupAssistant()));
   connect(form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(switchSelectedMessagesImportance()));
   connect(form_main->m_ui->m_actionDeleteSelectedMessages,
@@ -412,24 +425,6 @@ void FeedMessageViewer::initializeViews() {
   
   updateMessageButtonsAvailability();
   updateFeedButtonsAvailability();
-}
-
-void FeedMessageViewer::showDbCleanupAssistant() {
-  if (qApp->feedUpdateLock()->tryLock()) {
-    QScopedPointer<FormDatabaseCleanup> form_pointer(new FormDatabaseCleanup(this));
-    form_pointer.data()->setCleaner(qApp->feedReader()->databaseCleaner());
-    form_pointer.data()->exec();
-    
-    qApp->feedUpdateLock()->unlock();
-    
-    m_messagesView->reloadSelections(false);
-    m_feedsView->sourceModel()->reloadCountsOfWholeModel();
-  }
-  else {
-    qApp->showGuiMessage(tr("Cannot cleanup database"),
-                         tr("Cannot cleanup database, because another critical action is running."),
-                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
-  }
 }
 
 void FeedMessageViewer::refreshVisualProperties() {

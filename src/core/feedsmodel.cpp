@@ -76,12 +76,6 @@ FeedsModel::~FeedsModel() {
   delete m_rootItem;
 }
 
-void FeedsModel::quit() {
-  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
-    markItemCleared(m_rootItem, true);
-  }
-}
-
 /*
 void FeedsModel::onFeedUpdatesStarted() {
   //: Text display in status bar when feed update is started.

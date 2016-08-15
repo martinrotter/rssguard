@@ -31,11 +31,13 @@
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
 #include "gui/statusbar.h"
+#include "gui/messagesview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formsettings.h"
 #include "gui/dialogs/formupdate.h"
+#include "gui/dialogs/formdatabasecleanup.h"
 #include "gui/dialogs/formbackupdatabasesettings.h"
 #include "gui/dialogs/formrestoredatabasesettings.h"
 #include "gui/dialogs/formaddaccount.h"
@@ -87,6 +89,24 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 
 FormMain::~FormMain() {
   qDebug("Destroying FormMain instance.");
+}
+
+void FormMain::showDbCleanupAssistant() {
+  if (qApp->feedUpdateLock()->tryLock()) {
+    QScopedPointer<FormDatabaseCleanup> form_pointer(new FormDatabaseCleanup(this));
+    form_pointer.data()->setCleaner(qApp->feedReader()->databaseCleaner());
+    form_pointer.data()->exec();
+
+    qApp->feedUpdateLock()->unlock();
+
+    tabWidget()->feedMessageViewer()->messagesView()->reloadSelections(false);
+    qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
+  }
+  else {
+    qApp->showGuiMessage(tr("Cannot cleanup database"),
+                         tr("Cannot cleanup database, because another critical action is running."),
+                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
+  }
 }
 
 QList<QAction*> FormMain::allActions() const {
@@ -494,6 +514,8 @@ void FormMain::createConnections() {
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
   connect(m_ui->m_actionDownloadManager, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(showDownloadManager()));
+
+  connect(m_ui->m_actionCleanupDatabase, SIGNAL(triggered()), this, SLOT(showDbCleanupAssistant()));
 
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));

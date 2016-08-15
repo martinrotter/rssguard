@@ -76,17 +76,17 @@ class FeedDownloader : public QObject {
 
   signals:
     // Emitted if feed updates started.
-    void started();
+    void updateStarted();
 
     // Emitted if all items from update queue are
     // processed.
-    void finished(FeedDownloadResults updated_feeds);
+    void updateFinished(FeedDownloadResults updated_feeds);
 
     // Emitted if any item is processed.
     // "Current" number indicates count of processed feeds
     // and "total" number indicates total number of feeds
     // which were in the initial queue.
-    void progress(const Feed *feed, int current, int total);
+    void updateProgress(const Feed *feed, int current, int total);
 
   private:
     void finalizeUpdate();

@@ -21,7 +21,6 @@
 #include "gui/tabcontent.h"
 
 #include "core/messagesmodel.h"
-#include "core/feeddownloader.h"
 
 #include <QTextBrowser>
 
@@ -45,28 +44,16 @@ class FeedMessageViewer : public TabContent {
     explicit FeedMessageViewer(QWidget *parent = 0);
     virtual ~FeedMessageViewer();
 
-    // WebBrowser getter from TabContent interface.
-    inline WebBrowser *webBrowser() const {
-      return m_messagesBrowser;
-    }
+    WebBrowser *webBrowser() const;
+    FeedsView *feedsView() const;
+    MessagesView *messagesView() const;
+    MessagesToolBar *messagesToolBar() const;
+    FeedsToolBar *feedsToolBar() const;
 
-    // FeedsView getter.
-    inline FeedsView *feedsView() const {
-      return m_feedsView;
-    }
+    bool areToolBarsEnabled() const;
+    bool areListHeadersEnabled() const;
 
-    inline MessagesView *messagesView() const {
-      return m_messagesView;
-    }
-
-    inline MessagesToolBar *messagesToolBar() const {
-      return m_toolBarMessages;
-    }
-
-    inline FeedsToolBar *feedsToolBar() const {
-      return m_toolBarFeeds;
-    }
-
+  public slots:
     // Loads/saves sizes and states of ALL
     // underlying widgets, this contains primarily
     // splitters, toolbar and views.
@@ -75,23 +62,12 @@ class FeedMessageViewer : public TabContent {
 
     void loadMessageViewerFonts();
 
-    // Destroys worker/feed downloader thread and
-    // stops any child widgets/workers.
-    void quit();
-
-    bool areToolBarsEnabled() const;
-    bool areListHeadersEnabled() const;
-
-  public slots:
     // Switches orientation horizontal/vertical.
     void switchMessageSplitterOrientation();
 
     // Enables/disables main toolbars or list headers.
     void setToolBarsEnabled(bool enable);
     void setListHeadersEnabled(bool enable);
-
-    // Runs "cleanup" of the database.
-    void showDbCleanupAssistant();
 
     // Reloads some changeable visual settings.
     void refreshVisualProperties();

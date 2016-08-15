@@ -61,7 +61,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
   m_feedsTotalCount = m_feedsToUpdate;
 
   // Job starts now.
-  emit started();
+  emit updateStarted();
 
   for (int i = 0; i < m_feedsTotalCount; i++) {
     if (m_stopUpdate) {
@@ -101,9 +101,8 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
   m_feedsUpdating--;
 
   // Now make sure, that messages are actually stored to SQL in a locked state.
-
   qDebug().nospace() << "Saving messages of feed "
-                     << feed->customId() << " in thread: \'"
+                     << feed->id() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
   int updated_messages = messages.isEmpty() ? 0 : feed->updateMessages(messages);
@@ -113,7 +112,7 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
   }
 
   qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).", m_feedsUpdated, m_feedsTotalCount, feed->id());
-  emit progress(feed, m_feedsUpdated, m_feedsTotalCount);
+  emit updateProgress(feed, m_feedsUpdated, m_feedsTotalCount);
 
   if (m_feedsToUpdate <= 0 && m_feedsUpdating <= 0) {
     finalizeUpdate();
@@ -132,7 +131,7 @@ void FeedDownloader::finalizeUpdate() {
   // NOTE: This means that now "update lock" can be unlocked
   // and feeds can be added/edited/deleted and application
   // can eventually quit.
-  emit finished(m_results);
+  emit updateFinished(m_results);
 }
 
 FeedDownloadResults::FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {

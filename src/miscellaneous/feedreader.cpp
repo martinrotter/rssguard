@@ -232,6 +232,10 @@ void FeedReader::stop() {
     qDebug("Database cleaner exists. Deleting it from memory.");
     m_dbCleaner->deleteLater();
   }
+
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
+    m_feedsModel->markItemCleared(m_feedsModel->rootItem(), true);
+  }
 }
 
 MessagesProxyModel *FeedReader::messagesProxyModel() const {

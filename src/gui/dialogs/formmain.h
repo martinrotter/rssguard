@@ -63,7 +63,7 @@ class FormMain : public QMainWindow {
     void loadSize();
     void saveSize();
 
-  public slots:
+  public slots:    
     // Displays window on top or switches its visibility.
     void display();
 
@@ -86,6 +86,7 @@ class FormMain : public QMainWindow {
     void showUpdates();
     void showWiki();
     void showAddAccountDialog();
+    void showDbCleanupAssistant();
     void reportABug();
     void donate();
 

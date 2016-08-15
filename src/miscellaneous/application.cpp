@@ -317,7 +317,8 @@ void Application::onAboutToQuit() {
   system()->removeTrolltechJunkRegistryKeys();
 #endif
 
-  mainForm()->tabWidget()->feedMessageViewer()->quit();
+  qApp->feedReader()->stop();
+
   database()->saveDatabase();
   mainForm()->saveSize();
 

@@ -61,7 +61,7 @@ class FeedReader : public QObject {
     // and starts/stop the timer as needed.
     void updateAutoUpdateStatus();
 
-  public slots:
+  public slots:   
     // Schedules all feeds from all accounts for update.
     void updateAllFeeds();
 
