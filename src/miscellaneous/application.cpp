@@ -181,6 +181,18 @@ void Application::setMainForm(FormMain *main_form) {
   m_mainForm = main_form;
 }
 
+QString Application::tempFolderPath() {
+  return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
+}
+
+QString Application::documentsFolderPath() {
+  return IOFactory::getSystemFolder(QStandardPaths::DocumentsLocation);
+}
+
+QString Application::homeFolderPath() {
+  return IOFactory::getSystemFolder(QStandardPaths::HomeLocation);
+}
+
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
                                          const QString &target_path, const QString &backup_name) {
   if (!QFileInfo(target_path).isWritable()) {

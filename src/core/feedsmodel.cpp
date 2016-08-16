@@ -33,6 +33,7 @@
 #include "gui/statusbar.h"
 #include "gui/dialogs/formmain.h"
 #include "core/feeddownloader.h"
+#include "services/abstract/serviceentrypoint.h"
 
 #include <QThread>
 #include <QSqlError>

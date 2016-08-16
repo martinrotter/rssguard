@@ -167,6 +167,10 @@ bool FeedDownloadResults::lessThan(const QPair<QString, int> &lhs, const QPair<Q
   return lhs.second > rhs.second;
 }
 
+void FeedDownloadResults::clear() {
+  m_updatedFeeds.clear();
+}
+
 QList<QPair<QString,int> > FeedDownloadResults::updatedFeeds() const {
   return m_updatedFeeds;
 }

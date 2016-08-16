@@ -37,12 +37,9 @@ class FeedDownloadResults {
 
     void appendUpdatedFeed(const QPair<QString,int> &feed);
     void sort();
+    void clear();
 
     static bool lessThan(const QPair<QString,int> &lhs, const QPair<QString,int> &rhs);
-
-    inline void clear() {
-      m_updatedFeeds.clear();
-    }
 
   private:
     // QString represents title if the feed, int represents count of newly downloaded messages.

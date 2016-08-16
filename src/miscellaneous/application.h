@@ -29,7 +29,6 @@
 #include "miscellaneous/iofactory.h"
 #include "gui/systemtrayicon.h"
 #include "network-web/downloadmanager.h"
-#include "services/abstract/serviceentrypoint.h"
 #include "core/feeddownloader.h"
 
 #include <QList>
@@ -76,30 +75,16 @@ class Application : public QtSingleApplication {
     IconFactory *icons();
     DownloadManager *downloadManager();
     Settings *settings();
-
-    // Access to application-wide close lock.
     Mutex *feedUpdateLock();
-
     FormMain *mainForm();
     QWidget *mainFormWidget();
-
-    // Access to application tray icon. Always use this in cooperation with
-    // SystemTrayIcon::isSystemTrayActivated().
     SystemTrayIcon *trayIcon();
 
+    QString tempFolderPath();
+    QString documentsFolderPath();
+    QString homeFolderPath();
+
     void setMainForm(FormMain *main_form);
-
-    inline QString tempFolderPath() {
-      return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
-    }
-
-    inline QString documentsFolderPath() {
-      return IOFactory::getSystemFolder(QStandardPaths::DocumentsLocation);
-    }
-
-    inline QString homeFolderPath() {
-      return IOFactory::getSystemFolder(QStandardPaths::HomeLocation);
-    }
 
     void backupDatabaseSettings(bool backup_database, bool backup_settings,
                                 const QString &target_path, const QString &backup_name);
