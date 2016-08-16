@@ -46,18 +46,14 @@
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/gui/formstandardimportexport.h"
+#include "services/owncloud/network/owncloudnetworkfactory.h"
 
 #include <QCloseEvent>
-#include <QSessionManager>
 #include <QRect>
 #include <QScopedPointer>
 #include <QDesktopWidget>
-#include <QReadWriteLock>
 #include <QTimer>
 #include <QFileDialog>
-#include <QTextStream>
-
-#include "services/owncloud/network/owncloudnetworkfactory.h"
 
 
 FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
@@ -96,6 +92,18 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 
 FormMain::~FormMain() {
   qDebug("Destroying FormMain instance.");
+}
+
+QMenu *FormMain::trayMenu() const {
+  return m_trayMenu;
+}
+
+TabWidget *FormMain::tabWidget() const {
+  return m_ui->m_tabWidget;
+}
+
+StatusBar *FormMain::statusBar() const {
+  return m_statusBar;
 }
 
 void FormMain::showDbCleanupAssistant() {

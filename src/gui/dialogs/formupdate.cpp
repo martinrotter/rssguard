@@ -18,14 +18,12 @@
 #include "gui/dialogs/formupdate.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/systemfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/downloader.h"
 #include "gui/messagebox.h"
-#include "gui/systemtrayicon.h"
 
 #include <QNetworkReply>
 #include <QProcess>

@@ -29,10 +29,8 @@ class FormMain : public QMainWindow {
     Q_OBJECT
 
     friend class TabWidget;
-    friend class FeedMessageViewer;
     friend class MessagesView;
     friend class FeedsView;
-    friend class MessagesToolBar;
 
   public:
     // Constructors and destructors.
@@ -40,19 +38,13 @@ class FormMain : public QMainWindow {
     virtual ~FormMain();
 
     // Returns menu for the tray icon.
-    inline QMenu *trayMenu() const {
-      return m_trayMenu;
-    }
+    QMenu *trayMenu() const;
 
     // Returns global tab widget.
-    inline TabWidget *tabWidget() const {
-      return m_ui->m_tabWidget;
-    }
+    TabWidget *tabWidget() const;
 
     // Access to statusbar.
-    inline StatusBar *statusBar() const {
-      return m_statusBar;
-    }
+    StatusBar *statusBar() const;
 
     // Returns list of all globally available actions.
     // NOTE: This is used for setting dynamic shortcuts

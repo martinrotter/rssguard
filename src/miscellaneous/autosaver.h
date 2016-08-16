@@ -20,10 +20,10 @@
 
 #include <QObject>
 #include <QBasicTimer>
-#include <QDateTime>
+#include <QTime>
 
 
-class AutoSaver : public QObject{
+class AutoSaver : public QObject {
     Q_OBJECT
 
   public:
