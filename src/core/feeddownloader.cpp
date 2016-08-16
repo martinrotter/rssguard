@@ -22,7 +22,6 @@
 
 #include <QThread>
 #include <QDebug>
-#include <QMetaType>
 #include <QThreadPool>
 
 
