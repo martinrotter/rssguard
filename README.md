@@ -21,7 +21,7 @@ Core features are:
     * SQLite (in-memory DBs too),
     * MySQL.
 
-See below for more information about features and other RSS Guard aspects. Also visit [Wiki](/wiki) for more detailed information or tutorials.
+See below for more information about features and other RSS Guard aspects. Also visit Wiki for more detailed information or tutorials.
 
 - - -
 Contacts
