@@ -46,6 +46,10 @@
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
         <translation>Feed cannot be added because standard RSS/ATOM account is not enabled.</translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished">New messages downloaded</translation>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -294,13 +298,27 @@ Click here to open parent directory.</translation>
         <source>Toolbar for feeds</source>
         <translation>Toolbar for feeds</translation>
     </message>
+</context>
+<context>
+    <name>FeedReader</name>
     <message>
-        <source>Cannot cleanup database</source>
-        <translation>Cannot cleanup database</translation>
+        <source>Cannot update all items</source>
+        <translation type="unfinished">Cannot update all items</translation>
     </message>
     <message>
-        <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Cannot cleanup database, because another critical action is running.</translation>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished">You cannot update all items because another critical operation is ongoing.</translation>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished">Starting auto-update of some feeds</translation>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -327,45 +345,12 @@ Click here to open parent directory.</translation>
         <translation>Root</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Starting auto-update of some feeds</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Cannot update all items</translation>
-    </message>
-    <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Feed update started</translation>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Updated feed &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>New messages downloaded</translation>
-    </message>
-    <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation>You can&apos;t transfer dragged item into different account, this is not supported.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Cannot perform drag &amp; drop operation</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>You cannot update all items because another critical operation is ongoing.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -1635,6 +1620,23 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>View &amp;fullscreen</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished">Cannot cleanup database</translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished">Cannot cleanup database, because another critical action is running.</translation>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished">Feed update started</translation>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation type="unfinished">Updated feed &apos;%1&apos;</translation>
     </message>
 </context>
 <context>

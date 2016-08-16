@@ -44,6 +44,10 @@
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
         <translation>Kanalas negali būti pridėtas, nes nėra įjungta standartinė RSS/ATOM paskyra.</translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -282,13 +286,24 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
         <source>Toolbar for feeds</source>
         <translation>Kanalų įrankių juosta</translation>
     </message>
+</context>
+<context>
+    <name>FeedReader</name>
     <message>
-        <source>Cannot cleanup database</source>
-        <translation>Nepavyksta išvalyti duomenų bazės</translation>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Nepavyksta išvalyti duomenų bazės, nes yra vykdomas kitas kritinis veiksmas.</translation>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -315,42 +330,12 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
         <translation>Šaknis</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Pradedamas kai kurių kanalų automatinis atnaujinimas</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Nepavyksta atnaujinti visų elementų</translation>
-    </message>
-    <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Kanalo atnaujinimas pradėtas</translation>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Atnaujintas kanalas &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>Atsiųstos naujos žinutės</translation>
-    </message>
-    <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation>Jūs negalite perkelti velkamą elementą į kitą paskyrą, tai yra nepalaikoma.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Negalima atlikti vilkimo operacijos</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Jūs negalite atnaujinti visų elementų, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -1616,6 +1601,23 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
+        <translation>Rodyti &amp;visame ekrane</translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1712,7 +1714,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Kai kurie nustatymai yra pakeisti ir bus prarasti</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>

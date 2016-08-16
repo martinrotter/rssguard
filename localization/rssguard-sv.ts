@@ -44,6 +44,10 @@
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
         <translation>Flödet kan inte läggas till eftersom standard RSS-/ATOM-konto inte aktiverats.</translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -281,13 +285,24 @@ Klicka här för att öppna målmappen.</translation>
         <source>Toolbar for feeds</source>
         <translation>Verktygsfält för flöden</translation>
     </message>
+</context>
+<context>
+    <name>FeedReader</name>
     <message>
-        <source>Cannot cleanup database</source>
-        <translation>Kan inte rensa databasen</translation>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -314,42 +329,12 @@ Klicka här för att öppna målmappen.</translation>
         <translation>Root</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Uppdaterar flöden automatiskt</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Kan inte uppdatera alla objekt</translation>
-    </message>
-    <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Flödesuppdatering startad</translation>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Uppdaterade flödet &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>Nya meddelanden nedladdade</translation>
-    </message>
-    <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation>Du kan inte överföra objekt till annat konto med dra &amp; släpp. Stöd saknas för detta.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Kan inte utföra dra och släpp-åtgärd</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Du kan inte uppdatera alla poster eftersom en annan kritisk operation pågår.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -1616,6 +1601,23 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>View &amp;fullscreen</source>
         <translation>Visa &amp;helskärmsläge</translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

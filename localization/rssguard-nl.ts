@@ -44,6 +44,10 @@
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
         <translation>Feed kan niet worden toegevoegd omdat standaard RSS / Atom account niet is ingeschakeld.</translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -282,13 +286,24 @@ Klik hier om map te openen.</translation>
         <source>Toolbar for feeds</source>
         <translation>Werkbalk voor feeds</translation>
     </message>
+</context>
+<context>
+    <name>FeedReader</name>
     <message>
-        <source>Cannot cleanup database</source>
-        <translation>Kan database niet opschonen</translation>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Je kunt database niet opschonenen omdat een andere kritische operatie gaande is.</translation>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -315,42 +330,12 @@ Klik hier om map te openen.</translation>
         <translation>Root</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Begint met auto-update van sommige feeds</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-update van %n feed.</numerusform><numerusform>Auto-update van %n feeds.</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Kan alle items niet bijwerken</translation>
-    </message>
-    <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Bijwerken feed is gestart</translation>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed bijwerken &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>Nieuw bericht gedownload</translation>
-    </message>
-    <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation>Je kan geen gesleepte item overdragen naar een ander account, dir wordt niet ondersteunt.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Kan de drag &amp; drop bewerking niet uitvoeren</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>U kunt niet alle items updaten omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -1618,6 +1603,23 @@ of deze functie bestaat nog niet.</translation>
         <source>View &amp;fullscreen</source>
         <translation>Toon &amp;beeldvullend</translation>
     </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1703,24 +1705,27 @@ of deze functie bestaat nog niet.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Sommige kritieke instellingen zijn veranderd en worden van kracht als het programma wordt herstart.
+
+Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Verander de instellingen categorie:
+%1. </translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Sommige instellingen zijn veranderd en worden niet opgeslagen</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation>Sommige instellingen zijn veranderd en als je deze dialoog annuleerd,  gaan deze instellingen verloren.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation type="unfinished"/>
+        <translation>Wil je echt deze dialoog sluiten zonder de instellingen op te slaan?</translation>
     </message>
 </context>
 <context>

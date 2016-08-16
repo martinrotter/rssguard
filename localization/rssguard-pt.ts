@@ -44,6 +44,10 @@
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
         <translation>O feed não pode ser adicionado pois a conta RSS/ATOM padrão não está ativada.</translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -281,13 +285,24 @@ Clique para abrir a pasta de destino.</translation>
         <source>Toolbar for feeds</source>
         <translation>Barra de ferramentas para feeds</translation>
     </message>
+</context>
+<context>
+    <name>FeedReader</name>
     <message>
-        <source>Cannot cleanup database</source>
-        <translation>Não foi possível limpar o banco de dados</translation>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Não foi possível limpar o banco de dados, pois outra ação crítica está em execução.</translation>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -314,42 +329,12 @@ Clique para abrir a pasta de destino.</translation>
         <translation>Raiz</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Iniciando atualização automática de alguns feeds</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>%n feed será atualizado automaticamente.</numerusform><numerusform>%n feeds serão atualizados automaticamente.</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Não é possível atualizar todos os itens</translation>
-    </message>
-    <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Atualização dos feeds iniciada</translation>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed &apos;%1&apos; atualizado</translation>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>Novas mensagens baixadas</translation>
-    </message>
-    <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation>Você não pode transferir um item arrastado para uma conta diferente, isto não é suportado.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Não foi possível realizar a operação de arrastar &amp; soltar</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Você não pode atualizar todos os itens pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -1617,6 +1602,23 @@ ou esta função ainda não foi implementada.</translation>
         <source>View &amp;fullscreen</source>
         <translation>Ver em &amp;tela cheia</translation>
     </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1702,24 +1704,27 @@ ou esta função ainda não foi implementada.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Algumas configurações críticas foram alteradas e serão aplicadas após reiniciar o aplicativo.
+
+Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Categorias de configurações alteradas:
+%1.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Algumas configurações foram alteradas e serão perdidas</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation>Algumas configurações foram alteradas e ao cancelar este diálogo, você perderá estas alterações.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation type="unfinished"/>
+        <translation>Deseja realmente fechar este diálogo sem salvar as configurações?</translation>
     </message>
 </context>
 <context>

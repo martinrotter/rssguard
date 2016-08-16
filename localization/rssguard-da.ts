@@ -44,6 +44,10 @@
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -278,13 +282,24 @@ Click here to open parent directory.</source>
         <source>Toolbar for feeds</source>
         <translation>Værktøjslinie for feeds</translation>
     </message>
+</context>
+<context>
+    <name>FeedReader</name>
     <message>
-        <source>Cannot cleanup database</source>
-        <translation>Kan ikke rense database</translation>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot cleanup database, because another critical action is running.</source>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -311,41 +326,11 @@ Click here to open parent directory.</source>
         <translation>Administrator</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Kan ikke ajourføre alle poster</translation>
-    </message>
-    <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>Nye meddelelser hentet</translation>
-    </message>
-    <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1611,6 +1596,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>

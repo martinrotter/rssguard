@@ -44,6 +44,10 @@
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
         <translation>Feed tidak dapat ditambahkan karena akun standar RSS/ATOM tidak dinyalakan.</translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -280,13 +284,24 @@ Klik disini untuk membuka direktori induk.</translation>
         <source>Toolbar for feeds</source>
         <translation>Bilah alat untuk feed</translation>
     </message>
+</context>
+<context>
+    <name>FeedReader</name>
     <message>
-        <source>Cannot cleanup database</source>
-        <translation>Tidak dapat membersihkan database</translation>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Tidak dapat membersihkan database, karena aksi genting lain sedang berjalan.</translation>
+        <source>You cannot update all items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -313,42 +328,12 @@ Klik disini untuk membuka direktori induk.</translation>
         <translation>Root</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Memulai pembaharuan otomatis beberapa feed</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Saya akan otomatis memperbaharui %n feed.</numerusform></translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Tidak dapat memperbaharui semua item</translation>
-    </message>
-    <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Pembaharuan feed dimulai</translation>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed terbaharui &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>Pesan baru terunduh</translation>
-    </message>
-    <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation>Anda tidak dapat memindahkan item tertarik ke akun berbeda, ini tidak didukung.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Tidak dapat melakukan operasi tarik &amp; jatuh</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Anda tidak dapat memperbaharui semua item karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -508,7 +493,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 merupakan sebuah pembaca feed yang sangat kecil.&lt;br&gt;&lt;br&gt;Perangkat lunak ini didistribusikan di bawah ketentuan dari Lisensi Publik Umum GNU, versi 3.&lt;br&gt;&lt;br&gt;Kontak:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;Anda dapat memperoleh kode sumber untuk %5 dari website-nya.&lt;br&gt;&lt;br&gt;&lt;br&gt;Hak cipta (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 merupakan sebuah pembaca feed yang sangat kecil.&lt;br&gt;&lt;br&gt;Perangkat lunak ini didistribusikan di bawah ketentuan dari Lisensi Publik Umum GNU, versi 3.&lt;br&gt;&lt;br&gt;Kontak:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~surel&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~situs web&lt;/li&gt;&lt;/ul&gt;Anda dapat memperoleh kode sumber untuk %5 dari situs web-nya.&lt;br&gt;&lt;br&gt;&lt;br&gt;Hak cipta (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
@@ -1386,7 +1371,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Tidak bisa membuka peramban eksternal. Arahkan ke website aplikasi secara manual.</translation>
+        <translation>Tidak bisa membuka peramban eksternal. Arahkan ke situs web aplikasi secara manual.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1426,7 +1411,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation>Kirim pesan yang dipilih via e-mail</translation>
+        <translation>Kirim pesan yang dipilih via surel</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
@@ -1616,6 +1601,23 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>View &amp;fullscreen</source>
         <translation>Tampilkan &amp;layar penuh</translation>
     </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1701,24 +1703,27 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa pengaturan penting berubah dan akan diterapkan setelah aplikasi restart.
+
+Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Kategori berubah dari pengaturan:
+%1.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa pengaturan diubah dan akan hilang</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa pengaturan berubah dan dengan membatalkan dialog ini, Anda akan kehilangan perubahan ini.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation type="unfinished"/>
+        <translation>Apakah anda ingin menutup dialog ini tanpa menyimpan pengaturan?</translation>
     </message>
 </context>
 <context>
@@ -2344,11 +2349,11 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation>Masalah dengan memulai klien e-mail eksternal</translation>
+        <translation>Masalah dengan memulai klien surel eksternal</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation>Klien e-mail eksternal tidak dapat dimulai.</translation>
+        <translation>Klien surel eksternal tidak dapat dimulai.</translation>
     </message>
     <message>
         <source>Newspaper view</source>
@@ -2600,19 +2605,19 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation>Klien e-mail eksternal</translation>
+        <translation>Klien surel eksternal</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation>Gunakan klien e-mail eksternal tersuai</translation>
+        <translation>Gunakan klien surel eksternal tersuai</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation>Klien e-mail yang dapat dijalankan</translation>
+        <translation>Klien surel yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation>Berkas dari klien e-mail yang dapat dijalankan</translation>
+        <translation>Berkas yang dapat dijalankan dari klien surel</translation>
     </message>
     <message>
         <source>Select client</source>
@@ -2688,7 +2693,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation>Pilih email yang dapat dijalankan</translation>
+        <translation>Pilih surel yang dapat dijalankan</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
@@ -2716,7 +2721,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Peramban web &amp; e-mail &amp; proxy</translation>
+        <translation>Peramban web &amp; surel &amp; proxy</translation>
     </message>
 </context>
 <context>
@@ -3087,7 +3092,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>E-mail</source>
-        <translation>E-mail</translation>
+        <translation>Surel</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
