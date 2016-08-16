@@ -45,6 +45,11 @@ FeedReader::FeedReader(QObject *parent)
 
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
   updateAutoUpdateStatus();
+
+  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
+    qDebug("Requesting update for all feeds on application startup.");
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
+  }
 }
 
 FeedReader::~FeedReader() {
@@ -156,9 +161,6 @@ FeedsModel *FeedReader::feedsModel() const {
 
 MessagesModel *FeedReader::messagesModel() const {
   return m_messagesModel;
-}
-
-void FeedReader::start() {
 }
 
 void FeedReader::executeNextAutoUpdate() {

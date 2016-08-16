@@ -21,8 +21,6 @@
 #include "miscellaneous/application.h"
 #include "core/feedsmodel.h"
 #include "services/abstract/rootitem.h"
-#include "services/standard/standardcategory.h"
-#include "services/standard/standardfeed.h"
 
 #include <QTimer>
 

@@ -22,8 +22,8 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/abstract/serviceroot.h"
 #include "miscellaneous/databasequeries.h"
+#include "services/abstract/serviceroot.h"
 
 
 MessagesModel::MessagesModel(QObject *parent)

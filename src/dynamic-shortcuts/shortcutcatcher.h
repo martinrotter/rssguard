@@ -57,7 +57,6 @@ class ShortcutCatcher : public QWidget {
     Q_OBJECT
 
     friend class ShortcutButton;
-    friend class DynamicShortcutsWidget;
 
   public:
     // Constructors and destructors.
@@ -67,30 +66,15 @@ class ShortcutCatcher : public QWidget {
     void controlModifierlessTimout();
     void updateDisplayShortcut();
 
-    inline QKeySequence shortcut() const {
-      return m_currentSequence;
-    }
-
-    inline void setDefaultShortcut(const QKeySequence &key) {
-      m_defaultSequence = key;
-      setShortcut(key);
-    }
-
-    inline void setShortcut(const QKeySequence &key) {
-      m_currentSequence = key;
-      doneRecording();
-    }
+    QKeySequence shortcut() const;
+    void setDefaultShortcut(const QKeySequence &key);
+    void setShortcut(const QKeySequence &key);
 
   public slots:
-    inline void resetShortcut() {
-      setShortcut(m_defaultSequence);
-    }
+    void resetShortcut();
+    void clearShortcut();
 
-    inline void clearShortcut() {
-      setShortcut(QKeySequence());
-    }
-
-  protected slots:
+  private slots:
     void startRecording();
     void doneRecording();
 

@@ -64,10 +64,7 @@ class FeedReader : public QObject {
   public slots:   
     // Schedules all feeds from all accounts for update.
     void updateAllFeeds();
-
     void stopRunningFeedUpdate();
-
-    void start();
     void stop();
 
   private slots:

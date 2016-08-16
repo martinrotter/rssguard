@@ -18,12 +18,12 @@
 #ifndef MESSAGESMODEL_H
 #define MESSAGESMODEL_H
 
-#include "definitions/definitions.h"
+#include <QSqlTableModel>
 
+#include "definitions/definitions.h"
 #include "core/message.h"
 #include "services/abstract/rootitem.h"
 
-#include <QSqlTableModel>
 #include <QFont>
 #include <QIcon>
 

@@ -21,7 +21,6 @@
 #include <QAbstractItemModel>
 
 #include "core/message.h"
-#include "core/feeddownloader.h"
 #include "services/abstract/rootitem.h"
 
 class Category;
@@ -61,10 +60,6 @@ class FeedsModel : public QAbstractItemModel {
     // Returns counts of ALL/UNREAD (non-deleted) messages for the model.
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
-
-    // Removes item with given index.
-    // NOTE: Also deletes item from memory.
-    void removeItem(const QModelIndex &index);
 
     // Returns all activated service roots.
     // NOTE: Service root nodes are lying directly UNDER
@@ -110,9 +105,6 @@ class FeedsModel : public QAbstractItemModel {
     // Access to root item.
     RootItem *rootItem() const;
 
-    // Adds given service root account.
-    bool addServiceAccount(ServiceRoot *root, bool freshly_activated);
-
   public slots:
     // Loads feed/categories from the database.
     void loadActivatedServiceAccounts();
@@ -123,6 +115,13 @@ class FeedsModel : public QAbstractItemModel {
     // Checks if new parent node is different from one used by original node.
     // If it is, then it reassigns original_node to new parent.
     void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);
+
+    // Adds given service root account.
+    bool addServiceAccount(ServiceRoot *root, bool freshly_activated);
+
+    // Removes item with given index.
+    // NOTE: Also deletes item from memory.
+    void removeItem(const QModelIndex &index);
 
     // Removes given item from the model/memory.
     void removeItem(RootItem *deleting_item);

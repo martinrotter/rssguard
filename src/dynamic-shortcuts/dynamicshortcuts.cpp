@@ -27,7 +27,7 @@
 DynamicShortcuts::DynamicShortcuts() {
 }
 
-void DynamicShortcuts::save(const QList<QAction*> actions) {
+void DynamicShortcuts::save(const QList<QAction*> &actions) {
   Settings *settings = qApp->settings();
 
   foreach (const QAction *action, actions) {
@@ -35,7 +35,7 @@ void DynamicShortcuts::save(const QList<QAction*> actions) {
   }
 }
 
-void DynamicShortcuts::load(const QList<QAction*> actions) {
+void DynamicShortcuts::load(const QList<QAction *> &actions) {
   Settings *settings = qApp->settings();
 
   foreach (QAction *action, actions) {

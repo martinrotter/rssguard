@@ -150,3 +150,25 @@ void ShortcutCatcher::updateDisplayShortcut() {
 
   m_btnChange->setText(str);
 }
+
+QKeySequence ShortcutCatcher::shortcut() const {
+  return m_currentSequence;
+}
+
+void ShortcutCatcher::setDefaultShortcut(const QKeySequence &key) {
+  m_defaultSequence = key;
+  setShortcut(key);
+}
+
+void ShortcutCatcher::setShortcut(const QKeySequence &key) {
+  m_currentSequence = key;
+  doneRecording();
+}
+
+void ShortcutCatcher::resetShortcut() {
+  setShortcut(m_defaultSequence);
+}
+
+void ShortcutCatcher::clearShortcut() {
+  setShortcut(QKeySequence());
+}

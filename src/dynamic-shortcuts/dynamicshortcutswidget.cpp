@@ -24,8 +24,6 @@
 #include <QGridLayout>
 #include <QAction>
 #include <QLabel>
-#include <QSpacerItem>
-#include <QPalette>
 
 
 DynamicShortcutsWidget::DynamicShortcutsWidget(QWidget *parent) : QWidget(parent) {

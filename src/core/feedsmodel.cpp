@@ -22,26 +22,18 @@
 #include "services/abstract/category.h"
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/recyclebin.h"
+#include "services/abstract/serviceentrypoint.h"
 #include "services/standard/standardserviceroot.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
-#include "miscellaneous/databasecleaner.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/mutex.h"
 #include "miscellaneous/feedreader.h"
-#include "gui/messagebox.h"
-#include "gui/statusbar.h"
-#include "gui/dialogs/formmain.h"
-#include "core/feeddownloader.h"
-#include "services/abstract/serviceentrypoint.h"
 
-#include <QThread>
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QPair>
 #include <QStack>
 #include <QMimeData>
-#include <QTimer>
 
 #include <algorithm>
 
@@ -141,7 +133,7 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
         qApp->showGuiMessage(tr("Cannot perform drag & drop operation"),
                              tr("You can't transfer dragged item into different account, this is not supported."),
                              QSystemTrayIcon::Warning,
-                             qApp->mainForm(),
+                             qApp->mainFormWidget(),
                              true);
 
         qDebug("Dragged item cannot be dragged into different account. Cancelling drag-drop action.");
@@ -547,11 +539,6 @@ void FeedsModel::loadActivatedServiceAccounts() {
     foreach (ServiceRoot *root, roots) {
       addServiceAccount(root, false);
     }
-  }
-
-  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
-    qDebug("Requesting update for all feeds on application startup.");
-    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
   }
 }
 
