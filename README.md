@@ -26,13 +26,11 @@ Core features are:
 
 See below for more information about features and other RSS Guard aspects. Also visit Wiki for more detailed information or tutorials.
 
-- - -
 Contacts
 --------
 * [author's e-mail](mailto:rotter.martinos@gmail.com),
 * [IRC channel at freenode](http://webchat.freenode.net/?channels=#rssguard) (My nick is #skunkos, I am not available on IRC all day long.).
 
-- - -
 Donate
 ------
 You can [support RSS Guard with tiny amounts of money via PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4).
@@ -47,20 +45,17 @@ People who donated:
 
 I say "thank you" for all your support, donators.
 
-- - -
 Feeds & Videos
 -----
 * [video channel at YouTube](http://www.youtube.com/playlist?list=PL-75mFFA3wujyMyea6W1qJEV_ulh6433j),
 * [screenshots](https://drive.google.com/folderview?id=0B8XNkQ-jUoBYdVRSNm1kQ3BUMzQ&usp=sharing).
 
-- - -
 Thanks to
 -----
 * **Elbert Pol** - huge contrubutions, including translating and testing in OS/2 environment.
 * **Asen Anastassov** - testing, providing great feedback.
 * **eson** - rock-solid translation into Sweden language.
 
-- - -
 Downloads
 ---------
 * [official downloads](https://github.com/martinrotter/rssguard/releases),
@@ -74,7 +69,6 @@ Note that packages from OBS are **NOT** meant to be used in production. Their ma
 
 ![RSS Guard is 100% clean.](http://www.softpedia.com/_img/softpedia_100_free.png)
 
-- - -
 Features
 --------
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the [Qt library](http://qt-project.org/) and it supports these operating systems:
@@ -135,7 +129,6 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * open-source development model and friendly author waiting for your feedback,
 * no ads, no hidden costs.
 
-- - -
 Philosophy
 ----------
 RSS Guard tends to be independent software. It's free, it's open-source. RSS Guard accepts donations but only to SUPPORT its development.
