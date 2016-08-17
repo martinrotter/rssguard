@@ -1,10 +1,15 @@
 dist: trusty
 
+language: cpp
+
 os:
   - linux
   
 compiler:
   - gcc
+  
+git:
+  submodules: false
   
 before_install:
   - sudo add-apt-repository ppa:beineri/opt-qt57-trusty -y
@@ -15,5 +20,6 @@ install: true
   
 script:
   - source /opt/qt57/bin/qt57-env.sh
-  - qmake .
+  - mkdir rssguard-build && cd rssguard-build
+  - qmake ..
   - make

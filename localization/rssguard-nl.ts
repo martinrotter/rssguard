@@ -303,7 +303,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Auto-update van %n feed(s).</numerusform><numerusform>Auto-update van %n feed(s).</numerusform></translation>
     </message>
 </context>
 <context>

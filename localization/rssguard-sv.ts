@@ -302,7 +302,7 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Jag uppdaterar %n flöde</numerusform><numerusform>Jag uppdaterar %n flöden</numerusform></translation>
     </message>
 </context>
 <context>
