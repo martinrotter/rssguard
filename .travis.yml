@@ -10,5 +10,9 @@ before_install:
   - sudo add-apt-repository ppa:beineri/opt-qt57-trusty
   - sudo apt-get update
   - sudo apt-get install qt57tools qt57base qt57webengine
+
+install: true
   
-qmake . && make
+script:
+  - qmake .
+  - make
