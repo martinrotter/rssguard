@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Nya meddelanden nedladdade</translation>
     </message>
 </context>
 <context>
@@ -290,15 +290,15 @@ Klicka här för att öppna målmappen.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte uppdatera alla objekt</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan inte uppdatera alla poster eftersom en annan kritisk operation pågår.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Uppdaterar flöden automatiskt</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -1604,20 +1604,20 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte rensa databasen</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Flödesuppdatering startad</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Uppdaterade flödet &apos;%1&apos;</translation>
     </message>
 </context>
 <context>

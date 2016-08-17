@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Staženy nové zprávy</translation>
     </message>
 </context>
 <context>
@@ -291,15 +291,15 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Nelze aktualizovat všechny položky</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze obnovit všechny soubory protože právě probíhá jiná důležitá operace.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Zahajuji auto-update některých kanálů</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -1604,20 +1604,20 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Nelze vyčistit databázi</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Databázi nelze v současné době vyčistit, protože běží jiná kritická akce. Zkuste to později.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Spuštěn update kanálů</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Aktualizován kanál &apos;%1&apos;</translation>
     </message>
 </context>
 <context>

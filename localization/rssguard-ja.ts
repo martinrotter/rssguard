@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>新しいメッセージがダウンロードされました</translation>
     </message>
 </context>
 <context>
@@ -287,7 +287,7 @@ Click here to open parent directory.</source>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>すべてのアイテムを更新できません</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
@@ -1600,20 +1600,20 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>データベースをクリーンアップできません</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>データベースをクリーンアップできません、外部による操作が実行中です。</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>フィードの更新を開始</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>フィード&apos;%1&apos;が更新されました</translation>
     </message>
 </context>
 <context>

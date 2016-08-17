@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Atsiųstos naujos žinutės</translation>
     </message>
 </context>
 <context>
@@ -291,15 +291,15 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta atnaujinti visų elementų</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs negalite atnaujinti visų elementų, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Pradedamas kai kurių kanalų automatinis atnaujinimas</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -1605,20 +1605,20 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta išvalyti duomenų bazės</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta išvalyti duomenų bazės, nes yra vykdomas kitas kritinis veiksmas.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo atnaujinimas pradėtas</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Atnaujintas kanalas &apos;%1&apos;</translation>
     </message>
 </context>
 <context>

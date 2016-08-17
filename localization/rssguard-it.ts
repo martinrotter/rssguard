@@ -287,7 +287,7 @@ Click here to open parent directory.</source>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Impossibile aggiornare tutti gli elementi</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
@@ -1608,12 +1608,12 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Aggiornamento feed iniziato</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Feed &apos;%1&apos; aggiornato</translation>
     </message>
 </context>
 <context>

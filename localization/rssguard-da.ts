@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Nye meddelelser hentet</translation>
     </message>
 </context>
 <context>
@@ -287,7 +287,7 @@ Click here to open parent directory.</source>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke ajourføre alle poster</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
@@ -1600,7 +1600,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke rense database</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>

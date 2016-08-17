@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Novas mensagens baixadas</translation>
     </message>
 </context>
 <context>
@@ -290,15 +290,15 @@ Clique para abrir a pasta de destino.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível atualizar todos os itens</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Você não pode atualizar todos os itens pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Iniciando atualização automática de alguns feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -1604,20 +1604,20 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível limpar o banco de dados</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível limpar o banco de dados, pois outra ação crítica está em execução.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Atualização dos feeds iniciada</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Feed &apos;%1&apos; atualizado</translation>
     </message>
 </context>
 <context>
