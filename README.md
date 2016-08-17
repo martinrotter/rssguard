@@ -1,5 +1,7 @@
 RSS Guard
 =========
+
+[![Build status](https://img.shields.io/travis/martinrotter/rssguard.svg)](https://travis-ci.org/martinrotter/rssguard)
 [![Total downloads](https://img.shields.io/github/downloads/martinrotter/rssguard/total.svg)](#)
 [![Version](https://img.shields.io/github/release/martinrotter/rssguard.svg)](#)
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](#)
