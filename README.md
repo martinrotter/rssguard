@@ -1,6 +1,7 @@
 RSS Guard
 =========
-[![Version](https://badge.fury.io/gh/martinrotter%2Frssguard.svg)](#)
+[![Total downloads](https://img.shields.io/github/downloads/martinrotter/rssguard/total.svg)](#)
+[![Version](https://img.shields.io/github/release/martinrotter/rssguard.svg)](#)
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](#)
 [![AUR](https://img.shields.io/aur/votes/rssguard.svg?maxAge=3600)](https://aur.archlinux.org/packages/rssguard/)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](#)
