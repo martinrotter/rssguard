@@ -653,7 +653,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionUpdateAllItems,
           SIGNAL(triggered()), qApp->feedReader(), SLOT(updateAllFeeds()));
   connect(m_ui->m_actionStopRunningItemsUpdate,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(stopRunningFeedUpdate()));
+          SIGNAL(triggered()), qApp->feedReader(), SLOT(stopRunningFeedUpdate()));
   connect(m_ui->m_actionEditSelectedItem,
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(editSelectedItem()));
   connect(m_ui->m_actionViewSelectedItemsNewspaperMode,
