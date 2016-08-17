@@ -7,12 +7,13 @@ compiler:
   - gcc
   
 before_install:
-  - sudo add-apt-repository ppa:beineri/opt-qt57-trusty
+  - sudo add-apt-repository ppa:beineri/opt-qt57-trusty -y
   - sudo apt-get update
-  - sudo apt-get install qt57tools qt57base qt57webengine
+  - sudo apt-get -y install qt57tools qt57base qt57webengine
 
 install: true
   
 script:
+  - source /opt/qt57/bin/qt57-env.sh
   - qmake .
   - make
