@@ -64,7 +64,9 @@ RequestExecutionLevel admin
 !insertmacro MUI_PAGE_INSTFILES
 
 ; Offer user to launch the application right when it is installed.
-!define MUI_FINISHPAGE_RUN "$INSTDIR\${EXE_NAME}"
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_TEXT "Start ${APP_NAME} now"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchApplication"
 
 !insertmacro MUI_PAGE_FINISH
 
@@ -191,6 +193,10 @@ SectionEnd
 
 ;--------------------------------
 ; Custom functions.
+
+Function LaunchApplication
+  Exec '"$WINDIR\explorer.exe" "$INSTDIR\${EXE_NAME}"'
+FunctionEnd
 
 Function un.RmDirsButOne
   Exch $R0 ; exclude dir
