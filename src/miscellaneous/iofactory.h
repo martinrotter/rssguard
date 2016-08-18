@@ -31,7 +31,9 @@ class IOFactory {
   private:
     IOFactory();
 
-  public:   
+  public:
+    static bool isFolderWritable(const QString &folder);
+
     // Returns system-wide folder according to type.
     static QString getSystemFolder(QStandardPaths::StandardLocation location);
 

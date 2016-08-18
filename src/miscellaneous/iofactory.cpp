@@ -24,10 +24,23 @@
 #include <QFileInfo>
 #include <QFile>
 #include <QObject>
+#include <QTemporaryFile>
 #include <QTextStream>
 
 
 IOFactory::IOFactory() {
+}
+
+bool IOFactory::isFolderWritable(const QString &folder) {
+  QString real_file = folder;
+
+  if (!real_file.endsWith(QDir::separator())) {
+    real_file += QDir::separator();
+  }
+
+  real_file += "test-permissions-file";
+
+  return QTemporaryFile(real_file).open();
 }
 
 QString IOFactory::getSystemFolder(QStandardPaths::StandardLocation location) {

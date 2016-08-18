@@ -332,7 +332,7 @@ SettingsProperties Settings::determineProperties() {
   const QString home_path = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
   const QString home_path_file = home_path + properties.m_settingsSuffix;
 
-  const bool portable_settings_available = QFileInfo(app_path).isWritable();
+  const bool portable_settings_available = IOFactory::isFolderWritable(app_path);
   const bool non_portable_settings_exist = QFile::exists(home_path_file);
 
   // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
