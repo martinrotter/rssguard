@@ -613,6 +613,11 @@ void FormMain::createConnections() {
   connect(qApp->feedUpdateLock(), &Mutex::locked, this, &FormMain::updateFeedButtonsAvailability);
   connect(qApp->feedUpdateLock(), &Mutex::unlocked, this, &FormMain::updateFeedButtonsAvailability);
 
+  connect(tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::currentMessageRemoved,
+          this, &FormMain::updateMessageButtonsAvailability);
+  connect(tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::currentMessageChanged,
+          this, &FormMain::updateMessageButtonsAvailability);
+
   connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
@@ -660,14 +665,14 @@ void FormMain::createConnections() {
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(openSelectedItemsInNewspaperMode()));
   connect(m_ui->m_actionDeleteSelectedItem,
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(deleteSelectedItem()));
-  connect(m_ui->m_actionSwitchFeedsList,
-          SIGNAL(triggered()), this, SLOT(switchFeedComponentVisibility()));
+  connect(m_ui->m_actionSwitchFeedsList, &QAction::triggered,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchFeedComponentVisibility);
   connect(m_ui->m_actionSelectNextItem,
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(selectNextItem()));
-  connect(m_ui->m_actionSwitchToolBars,
-          SIGNAL(toggled(bool)), this, SLOT(setToolBarsEnabled(bool)));
-  connect(m_ui->m_actionSwitchListHeaders,
-          SIGNAL(toggled(bool)), this, SLOT(setListHeadersEnabled(bool)));
+  connect(m_ui->m_actionSwitchToolBars, &QAction::toggled,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::setToolBarsEnabled);
+  connect(m_ui->m_actionSwitchListHeaders, &QAction::toggled,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::setListHeadersEnabled);
   connect(m_ui->m_actionSelectPreviousItem,
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(selectPreviousItem()));
   connect(m_ui->m_actionSelectNextMessage,
@@ -676,10 +681,10 @@ void FormMain::createConnections() {
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectNextUnreadItem()));
   connect(m_ui->m_actionSelectPreviousMessage,
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectPreviousItem()));
-  connect(m_ui->m_actionSwitchMessageListOrientation, SIGNAL(triggered()),
-          this, SLOT(switchMessageSplitterOrientation()));
-  connect(m_ui->m_actionShowOnlyUnreadItems, SIGNAL(toggled(bool)),
-          this, SLOT(toggleShowOnlyUnreadFeeds()));
+  connect(m_ui->m_actionSwitchMessageListOrientation, &QAction::triggered,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchMessageSplitterOrientation);
+  connect(m_ui->m_actionShowOnlyUnreadItems, &QAction::toggled,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
   connect(m_ui->m_actionRestoreSelectedMessages, SIGNAL(triggered()),
           tabWidget()->feedMessageViewer()->messagesView(), SLOT(restoreSelectedMessages()));
   connect(m_ui->m_actionRestoreAllRecycleBins, SIGNAL(triggered()),

@@ -200,8 +200,6 @@ void FeedMessageViewer::createConnections() {
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessageRemoved()), m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), m_messagesBrowser, SLOT(loadMessage(Message,RootItem*)));
-  connect(m_messagesView, SIGNAL(currentMessageRemoved()), this, SLOT(updateMessageButtonsAvailability()));
-  connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), this, SLOT(updateMessageButtonsAvailability()));
   connect(m_messagesBrowser, SIGNAL(markMessageRead(int,RootItem::ReadStatus)),
           m_messagesView->sourceModel(), SLOT(setMessageReadById(int,RootItem::ReadStatus)));
   connect(m_messagesBrowser, SIGNAL(markMessageImportant(int,RootItem::Importance)),

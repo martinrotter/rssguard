@@ -72,7 +72,6 @@ class FeedMessageViewer : public TabContent {
     // Reloads some changeable visual settings.
     void refreshVisualProperties();
 
-  private slots:
     // Switches visibility of feed list and related
     // toolbar.
     void switchFeedComponentVisibility();
