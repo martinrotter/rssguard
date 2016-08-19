@@ -46,7 +46,6 @@ void NewspaperPreviewer::showMoreMessages() {
       connect(prev, SIGNAL(requestMessageListReload(bool)), this, SIGNAL(requestMessageListReload(bool)));
 
       margins.setRight(0);
-      prev->hideToolbar();
       prev->layout()->setContentsMargins(margins);
       prev->setFixedHeight(300);
       prev->loadMessage(msg, m_root);
