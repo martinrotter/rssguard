@@ -10,6 +10,7 @@ compiler:
   
 git:
   submodules: false
+  depth: 3
   
 before_install:
   - sudo add-apt-repository ppa:beineri/opt-qt57-trusty -y

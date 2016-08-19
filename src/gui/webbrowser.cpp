@@ -37,19 +37,20 @@
 void WebBrowser::createConnections() {
   connect(m_webView, &WebViewer::messageStatusChangeRequested, this, &WebBrowser::receiveMessageStatusChangeRequest);
 
-  connect(m_txtLocation,SIGNAL(submitted(QString)), this, SLOT(loadUrl(QString)));
-  connect(m_webView, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
+  connect(m_txtLocation, &LocationLineEdit::submitted,
+          this, static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
+  connect(m_webView, &WebViewer::urlChanged, this, &WebBrowser::updateUrl);
 
   // Change location textbox status according to webpage status.
-  connect(m_webView, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));
-  connect(m_webView, SIGNAL(loadProgress(int)), this, SLOT(onLoadingProgress(int)));
-  connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(onLoadingFinished(bool)));
+  connect(m_webView, &WebViewer::loadStarted, this, &WebBrowser::onLoadingStarted);
+  connect(m_webView, &WebViewer::loadProgress, this, &WebBrowser::onLoadingProgress);
+  connect(m_webView, &WebViewer::loadFinished, this, &WebBrowser::onLoadingFinished);
 
   // Forward title/icon changes.
-  connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(m_webView, &WebViewer::titleChanged, this, &WebBrowser::onTitleChanged);
 
 #if QT_VERSION >= 0x050700
-  connect(m_webView, SIGNAL(iconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
+  connect(m_webView, &WebViewer::iconChanged, this, &WebBrowser::onIconChanged);
 #endif
 }
 
@@ -184,9 +185,11 @@ void WebBrowser::onTitleChanged(const QString &new_title) {
   }
 }
 
+#if QT_VERSION >= 0x050700
 void WebBrowser::onIconChanged(const QIcon &icon) {
   emit iconChanged(m_index, icon);
 }
+#endif
 
 void WebBrowser::initializeLayout() {
   m_toolBar->setFloatable(false);
