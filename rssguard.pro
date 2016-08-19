@@ -148,7 +148,7 @@ message(rssguard: Prefix directory: \"$$PREFIX\".)
 message(rssguard: Build revision: \"$$APP_REVISION\".)
 message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
 
-QT += core gui widgets sql network xml printsupport # webenginewidgets
+QT += core gui widgets sql network xml printsupport
 CONFIG *= c++11 debug_and_release warn_on
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION

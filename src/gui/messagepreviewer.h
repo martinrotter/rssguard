@@ -51,6 +51,7 @@ class MessagePreviewer : public QWidget {
   private slots:
     void markMessageAsRead();
     void markMessageAsUnread();
+    void markMessageAsReadUnread(RootItem::ReadStatus read);
     void switchMessageImportance(bool checked);
 
   signals:
