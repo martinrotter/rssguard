@@ -137,7 +137,14 @@ void WebViewer::clear() {
 QWebEngineView *WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
   Q_UNUSED(type)
 
-  return qApp->mainForm()->tabWidget()->widget(qApp->mainForm()->tabWidget()->addBrowser(false, false))->webBrowser()->viewer();
+  int index = qApp->mainForm()->tabWidget()->addBrowser(false, false);
+
+  if (index >= 0) {
+    return qApp->mainForm()->tabWidget()->widget(qApp->mainForm()->tabWidget()->addBrowser(false, false))->webBrowser()->viewer();
+  }
+  else {
+    return nullptr;
+  }
 }
 
 void WebViewer::wheelEvent(QWheelEvent *event) {

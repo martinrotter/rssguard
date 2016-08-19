@@ -26,9 +26,16 @@
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/webbrowser.h"
+
 #include "gui/plaintoolbutton.h"
 #include "gui/dialogs/formmain.h"
+
+#if defined(USE_WEBENGINE)
+#include "gui/webbrowser.h"
+#else
+#include "network-web/webfactory.h"
+#include "gui/newspaperpreviewer.h"
+#endif
 
 #include <QMenu>
 #include <QToolButton>
@@ -200,11 +207,19 @@ void TabWidget::closeAllTabs() {
 }
 
 int TabWidget::addNewspaperView(RootItem *root, const QList<Message> &messages) {
+#if defined(USE_WEBENGINE)
   WebBrowser *prev = new WebBrowser(this);
+#else
+  NewspaperPreviewer *prev = new NewspaperPreviewer(root, messages, this);
+#endif
+
   int index = addTab(prev, qApp->icons()->fromTheme(QSL("format-justify-fill")), tr("Newspaper view"), TabBar::Closable);
 
   setCurrentIndex(index);
+
+#if defined(USE_WEBENGINE)
   prev->loadMessages(messages, root);
+#endif
 
   return index;
 }
@@ -222,6 +237,8 @@ int TabWidget::addLinkedBrowser(const QString &initial_url) {
 }
 
 int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl &initial_url) {
+#if defined(USE_WEBENGINE)
+
   // Create new WebBrowser.
   WebBrowser *browser = new WebBrowser(this);
   int final_index;
@@ -258,6 +275,14 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl 
   }
 
   return final_index;
+#else
+  Q_UNUSED(move_after_current)
+  Q_UNUSED(make_active)
+
+  WebFactory::instance()->openUrlInExternalBrowser(initial_url.toString());
+
+  return -1;
+#endif
 }
 
 void TabWidget::removeTab(int index, bool clear_from_memory) {

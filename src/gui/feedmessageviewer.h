@@ -24,8 +24,12 @@
 
 #include <QTextBrowser>
 
-
+#if defined(USE_WEBENGINE)
 class WebBrowser;
+#else
+class MessagePreviewer;
+#endif
+
 class MessagesView;
 class MessagesToolBar;
 class FeedsToolBar;
@@ -44,7 +48,10 @@ class FeedMessageViewer : public TabContent {
     explicit FeedMessageViewer(QWidget *parent = 0);
     virtual ~FeedMessageViewer();
 
+#if defined(USE_WEBENGINE)
     WebBrowser *webBrowser() const;
+#endif
+
     FeedsView *feedsView() const;
     MessagesView *messagesView() const;
     MessagesToolBar *messagesToolBar() const;
@@ -102,7 +109,12 @@ class FeedMessageViewer : public TabContent {
     FeedsView *m_feedsView;
     QWidget *m_feedsWidget;
     QWidget *m_messagesWidget;
+
+#if defined(USE_WEBENGINE)
     WebBrowser *m_messagesBrowser;
+#else
+    MessagePreviewer *m_messagesBrowser;
+#endif
 };
 
 #endif // FEEDMESSAGEVIEWER_H

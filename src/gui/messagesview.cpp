@@ -25,7 +25,7 @@
 #include "network-web/webfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
-#include "gui/webbrowser.h"
+
 #include "gui/styleditemdelegatewithoutfocus.h"
 
 #include <QKeyEvent>
@@ -194,7 +194,9 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
         const QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
 
         if (mapped_index.column() == MSG_DB_IMPORTANT_INDEX) {
-          m_sourceModel->switchMessageImportance(mapped_index.row());
+          if (m_sourceModel->switchMessageImportance(mapped_index.row())) {
+            emit currentMessageChanged(m_sourceModel->messageAt(mapped_index.row()), m_sourceModel->loadedItem());
+          }
         }
       }
 
@@ -500,17 +502,6 @@ void MessagesView::searchMessages(const QString &pattern) {
 
 void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
   m_sourceModel->highlightMessages(filter);
-}
-
-void MessagesView::createNewspaperView(RootItem *selected_item, const QList<Message> &messages) {
-  WebBrowser *prev = new WebBrowser(this);
-  int index = qApp->mainForm()->tabWidget()->addTab(prev,
-                                                    qApp->icons()->fromTheme(QSL("text-x-script")),
-                                                    tr("Newspaper view"),
-                                                    TabBar::Closable);
-
-  qApp->mainForm()->tabWidget()->setCurrentIndex(index);
-  prev->loadMessages(messages, selected_item);
 }
 
 void MessagesView::adjustColumns() {

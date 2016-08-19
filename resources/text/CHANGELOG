@@ -1,6 +1,9 @@
 3.3.4
 —————
 
+Added:
+▪ RSS Guard now can be compiled WITHOUT QtWebEngine module. Minimal Qt required was also lowered to 5.6.0.
+
 Changed:
 ▪ Big application core refactoring. Many functions rewritten, some bad code removed.
 

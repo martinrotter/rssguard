@@ -91,6 +91,10 @@ class DownloadItem : public QWidget {
     bool m_canceledFileSelect;
 };
 
+#if defined(USE_WEBENGINE)
+class WebBrowser;
+#endif
+
 class DownloadManager : public TabContent {
     Q_OBJECT
     Q_PROPERTY(RemovePolicy removePolicy READ removePolicy WRITE setRemovePolicy)
@@ -108,9 +112,11 @@ class DownloadManager : public TabContent {
     explicit DownloadManager(QWidget *parent = 0);
     virtual ~DownloadManager();
 
+#if defined(USE_WEBENGINE)
     WebBrowser *webBrowser() const {
       return nullptr;
     }
+#endif
 
     QNetworkAccessManager *networkManager() const;
 

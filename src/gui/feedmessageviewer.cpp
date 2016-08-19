@@ -37,10 +37,16 @@
 #include "gui/messagebox.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
-#include "gui/webbrowser.h"
+
 #include "gui/dialogs/formdatabasecleanup.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
+
+#if defined(USE_WEBENGINE)
+#include "gui/webbrowser.h"
+#else
+#include "gui/messagepreviewer.h"
+#endif
 
 #include <QVBoxLayout>
 #include <QSplitter>
@@ -65,7 +71,11 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
+#if defined(USE_WEBENGINE)
     m_messagesBrowser(new WebBrowser(this)) {
+#else
+    m_messagesBrowser(new MessagePreviewer(this)) {
+#endif
   initialize();
   initializeViews();
   loadMessageViewerFonts();
@@ -76,9 +86,11 @@ FeedMessageViewer::~FeedMessageViewer() {
   qDebug("Destroying FeedMessageViewer instance.");
 }
 
+#if defined(USE_WEBENGINE)
 WebBrowser *FeedMessageViewer::webBrowser() const {
   return m_messagesBrowser;
 }
+#endif
 
 FeedsView *FeedMessageViewer::feedsView() const {
   return m_feedsView;
@@ -200,11 +212,12 @@ void FeedMessageViewer::createConnections() {
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessageRemoved()), m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), m_messagesBrowser, SLOT(loadMessage(Message,RootItem*)));
+
   connect(m_messagesBrowser, SIGNAL(markMessageRead(int,RootItem::ReadStatus)),
           m_messagesView->sourceModel(), SLOT(setMessageReadById(int,RootItem::ReadStatus)));
   connect(m_messagesBrowser, SIGNAL(markMessageImportant(int,RootItem::Importance)),
           m_messagesView->sourceModel(), SLOT(setMessageImportantById(int,RootItem::Importance)));
-  
+
   // If user selects feeds, load their messages.
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), m_messagesView, SLOT(loadItem(RootItem*)));
   

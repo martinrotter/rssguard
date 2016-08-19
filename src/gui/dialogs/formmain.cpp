@@ -173,7 +173,11 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSelectPreviousMessage;
   actions << m_ui->m_actionSelectNextUnreadMessage;
   actions << m_ui->m_actionExpandCollapseItem;
+
+#if defined(USE_WEBENGINE)
   actions << m_ui->m_actionTabNewWebBrowser;
+#endif
+
   actions << m_ui->m_actionTabsCloseAll;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
 
@@ -200,6 +204,11 @@ void FormMain::prepareMenus() {
 
     qDebug("Creating tray icon menu.");
   }
+
+#if !defined(USE_WEBENGINE)
+  m_ui->m_menuWebBrowserTabs->removeAction(m_ui->m_actionTabNewWebBrowser);
+  m_ui->m_menuWebBrowserTabs->setTitle(tr("Tabs"));
+#endif
 }
 
 void FormMain::switchFullscreenMode() {

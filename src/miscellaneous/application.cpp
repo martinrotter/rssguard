@@ -37,9 +37,11 @@
 #include <QSessionManager>
 #include <QThread>
 #include <QProcess>
+
+#if defined(USE_WEBENGINE)
 #include <QWebEngineProfile>
 #include <QWebEngineDownloadItem>
-
+#endif
 
 Application::Application(const QString &id, bool run_minimal_without_gui, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
@@ -50,8 +52,11 @@ Application::Application(const QString &id, bool run_minimal_without_gui, int &a
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
   connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
+
+#if defined(USE_WEBENGINE)
   connect(QWebEngineProfile::defaultProfile(), SIGNAL(downloadRequested(QWebEngineDownloadItem*)),
           this, SLOT(downloadRequested(QWebEngineDownloadItem*)));
+#endif
 }
 
 Application::~Application() {
@@ -361,11 +366,13 @@ void Application::onAboutToQuit() {
   }
 }
 
+#if defined(USE_WEBENGINE)
 void Application::downloadRequested(QWebEngineDownloadItem *download_item) {
   downloadManager()->download(download_item->url());
   download_item->cancel();
   download_item->deleteLater();
 }
+#endif
 
 void Application::onFeedUpdatesStarted() {
 }

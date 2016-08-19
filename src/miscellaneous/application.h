@@ -115,7 +115,10 @@ class Application : public QtSingleApplication {
     void onCommitData(QSessionManager &manager);
     void onSaveState(QSessionManager &manager);
     void onAboutToQuit();
+
+#if defined(USE_WEBENGINE)
     void downloadRequested(QWebEngineDownloadItem*download_item);
+#endif
 
     void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(const Feed *feed, int current, int total);

@@ -34,9 +34,13 @@
 #     make install
 #
 # Variables:
+#   USE_WEBENGINE - if specified, then QtWebEngine module for internal web browser is used.
+#                   Otherwise simple text component is used and some features will be disabled.
 #   PREFIX - specifies base folder to which files are copied during "make install"
 #            step, defaults to "$$OUT_PWD/usr" on Linux and to "$$OUT_PWD/app" on Windows.
 #   LRELEASE_EXECUTABLE - specifies the name/path of "lrelease" executable, defaults to "lrelease".
+#
+#
 #
 # Other information:
 #   - supports Windows, Linux, Mac OS X,
@@ -96,6 +100,10 @@ isEmpty(DESTDIR) {
   }
 }
 
+isEmpty(USE_WEBENGINE) {
+  USE_WEBENGINE = true
+}
+
 message(rssguard: Shadow copy build directory \"$$OUT_PWD\".)
 
 isEmpty(LRELEASE_EXECUTABLE) {
@@ -140,7 +148,7 @@ message(rssguard: Prefix directory: \"$$PREFIX\".)
 message(rssguard: Build revision: \"$$APP_REVISION\".)
 message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
 
-QT += core gui widgets webenginewidgets sql network xml printsupport
+QT += core gui widgets sql network xml printsupport # webenginewidgets
 CONFIG *= c++11 debug_and_release warn_on
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION
@@ -148,6 +156,15 @@ VERSION = $$APP_VERSION
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
 UI_DIR = $$OUT_PWD/ui
+
+equals(USE_WEBENGINE, true) {
+  message(rssguard: Application will be compiled WITH QtWebEngine module.)
+  QT += webenginewidgets
+  DEFINES += USE_WEBENGINE
+}
+else {
+  message(rssguard: Application will be compiled without QtWebEngine module. Some features will be disabled.)
+}
 
 # Make needed tweaks for RC file getting generated on Windows.
 win32 {
@@ -265,12 +282,6 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/tt-rss/ttrssrecyclebin.h \
             src/services/tt-rss/ttrssserviceentrypoint.h \
             src/services/tt-rss/ttrssserviceroot.h \
-            src/gui/webviewer.h \
-            src/gui/webbrowser.h \
-            src/network-web/webpage.h \
-            src/gui/locationlineedit.h \
-            src/network-web/googlesuggest.h \
-            src/gui/discoverfeedsbutton.h \
             src/gui/settings/settingspanel.h \
             src/gui/settings/settingsgeneral.h \
             src/gui/settings/settingsdatabase.h \
@@ -386,12 +397,6 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/tt-rss/ttrssrecyclebin.cpp \
             src/services/tt-rss/ttrssserviceentrypoint.cpp \
             src/services/tt-rss/ttrssserviceroot.cpp \
-            src/gui/webviewer.cpp \
-            src/gui/webbrowser.cpp \
-            src/network-web/webpage.cpp \
-            src/gui/locationlineedit.cpp \
-            src/network-web/googlesuggest.cpp \
-            src/gui/discoverfeedsbutton.cpp \
             src/gui/settings/settingspanel.cpp \
             src/gui/settings/settingsgeneral.cpp \
             src/gui/settings/settingsdatabase.cpp \
@@ -427,6 +432,34 @@ FORMS +=    src/gui/toolbareditor.ui \
             src/gui/settings/settingsbrowsermail.ui \
             src/gui/settings/settingsfeedsmessages.ui \
             src/gui/settings/settingsdownloads.ui
+
+equals(USE_WEBENGINE, true) {
+  HEADERS +=    src/gui/locationlineedit.h \
+                src/gui/webviewer.h \
+                src/gui/webbrowser.h \
+                src/gui/discoverfeedsbutton.h \
+                src/network-web/googlesuggest.h \
+                src/network-web/webpage.h
+
+  SOURCES +=    src/gui/locationlineedit.cpp \
+                src/gui/webviewer.cpp \
+                src/gui/webbrowser.cpp \
+                src/gui/discoverfeedsbutton.cpp \
+                src/network-web/googlesuggest.cpp \
+                src/network-web/webpage.cpp
+}
+else {
+  HEADERS +=    src/gui/messagepreviewer.h \
+                src/gui/messagetextbrowser.h \
+                src/gui/newspaperpreviewer.h
+
+  SOURCES +=    src/gui/messagepreviewer.cpp \
+                src/gui/messagetextbrowser.cpp \
+                src/gui/newspaperpreviewer.cpp
+
+  FORMS +=      src/gui/messagepreviewer.ui \
+                src/gui/newspaperpreviewer.ui
+}
 
 TRANSLATIONS += localization/qtbase-cs.ts \
                 localization/qtbase-da.ts \

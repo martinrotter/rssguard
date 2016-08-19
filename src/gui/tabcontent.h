@@ -20,8 +20,9 @@
 
 #include <QWidget>
 
-
+#if defined(USE_WEBENGINE)
 class WebBrowser;
+#endif
 
 // Base class for all widgets which are placed inside tabs of TabWidget
 class TabContent : public QWidget {
@@ -43,9 +44,11 @@ class TabContent : public QWidget {
       m_index = index;
     }
 
+#if defined(USE_WEBENGINE)
     // Obtains instance contained in this TabContent or nullptr.
     // This can be used for obtaining the menu from the instance and so on.
     virtual WebBrowser *webBrowser() const = 0;
+#endif
 
   protected:
     int m_index;
