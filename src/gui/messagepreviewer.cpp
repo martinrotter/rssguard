@@ -155,7 +155,7 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
                                                              QList<Message>() << m_message,
                                                              read);
-      m_message.m_isRead = true;
+      m_message.m_isRead = read == RootItem::Read;
 
       emit markMessageRead(m_message.m_id, read);
       updateButtons();
