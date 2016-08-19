@@ -53,6 +53,7 @@ SettingsGui::SettingsGui(Settings *settings, QWidget *parent) : SettingsPanel(se
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
 
+  connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_grpTray, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -70,6 +71,7 @@ SettingsGui::SettingsGui(Settings *settings, QWidget *parent) : SettingsPanel(se
   connect(m_ui->m_editorStatusbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
 
   connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::onSkinSelected);
+  connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars, &QStackedWidget::setCurrentIndex);
 }
 

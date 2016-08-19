@@ -47,7 +47,10 @@ void WebBrowser::createConnections() {
 
   // Forward title/icon changes.
   connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+
+#if QT_VERSION >= 0x050700
   connect(m_webView, SIGNAL(iconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
+#endif
 }
 
 void WebBrowser::updateUrl(const QUrl &url) {
