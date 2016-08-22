@@ -40,8 +40,6 @@
 
 
 int main(int argc, char *argv[]) {
-  bool run_minimal_without_gui = false;
-
   for (int i = 0; i < argc; i++) {
     const QString str = QString::fromLocal8Bit(argv[i]);
 
@@ -49,19 +47,9 @@ int main(int argc, char *argv[]) {
       qDebug("Usage: rssguard [OPTIONS]\n\n"
              "Option\t\tMeaning\n"
              "-h\t\tDisplays this help.\n"
-             "-q\t\tQuits minimal non-GUI instance of application already running on this machine.\n"
-             "-c\t\tStarts the application without GUI and will regularly update configured feeds.\n\n"
-             "Running with '-c' option starts application without GUI and/or tray icon. No "
-             "message boxes will be shown, no GUI. Only minimal functionality will be enabled, including periodic checking for "
-             "feed/message updates. Note that you must configure the application via GUI first! So to really get periodic "
-             "feed updates, you must import some feeds and set their auto-update policy first in the GUI.\n\n"
-             "You can quick the minimal non-GUI application instance either by just killing it or by running the application "
-             "executable again with -q option.");
+             "-q\t\tQuits minimal non-GUI instance of application already running on this machine.");
 
       return EXIT_SUCCESS;
-    }
-    else if (str == "-c") {
-      run_minimal_without_gui = true;
     }
   }
 
@@ -79,7 +67,7 @@ int main(int argc, char *argv[]) {
   qInstallMessageHandler(Debugging::debugHandler);
 
   // Instantiate base application object.
-  Application application(APP_LOW_NAME, run_minimal_without_gui, argc, argv);
+  Application application(APP_LOW_NAME, argc, argv);
   qDebug("Instantiated Application class.");
 
   // Check if another instance is running.
@@ -96,14 +84,12 @@ int main(int argc, char *argv[]) {
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
-  if (!run_minimal_without_gui) {
-    qApp->icons()->setupSearchPaths();
-    qApp->icons()->loadCurrentIconTheme();
-    qApp->skins()->loadCurrentSkin();
+  qApp->icons()->setupSearchPaths();
+  qApp->icons()->loadCurrentIconTheme();
+  qApp->skins()->loadCurrentSkin();
 
-    // Load localization and setup locale before any widget is constructed.
-    qApp->localization()->loadActiveLanguage();
-  }
+  // Load localization and setup locale before any widget is constructed.
+  qApp->localization()->loadActiveLanguage();
 
   // These settings needs to be set before any QSettings object.
   Application::setApplicationName(APP_NAME);
@@ -118,52 +104,47 @@ int main(int argc, char *argv[]) {
   // Setup single-instance behavior.
   QObject::connect(&application, &Application::messageReceived, &application, &Application::processExecutionMessage);
 
-  if (!run_minimal_without_gui) {
-    qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
+  qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
 
-    // Instantiate main application window.
-    FormMain main_window;
+  // Instantiate main application window.
+  FormMain main_window;
 
-    // Set correct information for main window.
-    main_window.setWindowTitle(APP_LONG_NAME);
+  // Set correct information for main window.
+  main_window.setWindowTitle(APP_LONG_NAME);
 
-    // Now is a good time to initialize dynamic keyboard shortcuts.
-    DynamicShortcuts::load(qApp->userActions());
+  // Now is a good time to initialize dynamic keyboard shortcuts.
+  DynamicShortcuts::load(qApp->userActions());
 
-    // Display main window.
-    if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
-      qDebug("Hiding the main window when the application is starting.");
-      main_window.switchVisibility(true);
-    }
-    else {
-      qDebug("Showing the main window when the application is starting.");
-      main_window.show();
-    }
-
-    // Display tray icon if it is enabled and available.
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->showTrayIcon();
-    }
-
-    if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
-      qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                                                      "version by clicking this popup notification.").arg(APP_LONG_NAME),
-                           QSystemTrayIcon::NoIcon, 0, false, &main_window, SLOT(showAbout()));
-    }
-    else {
-      qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_NAME), QSystemTrayIcon::NoIcon);
-    }
-
-    if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-      QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
-    }
-
-    qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
-
-    // Enter global event loop.
-    return Application::exec();
+  // Display main window.
+  if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
+    qDebug("Hiding the main window when the application is starting.");
+    main_window.switchVisibility(true);
   }
   else {
-    return Application::exec();
+    qDebug("Showing the main window when the application is starting.");
+    main_window.show();
   }
+
+  // Display tray icon if it is enabled and available.
+  if (SystemTrayIcon::isSystemTrayActivated()) {
+    qApp->showTrayIcon();
+  }
+
+  if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
+    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                                                    "version by clicking this popup notification.").arg(APP_LONG_NAME),
+                         QSystemTrayIcon::NoIcon, 0, false, &main_window, SLOT(showAbout()));
+  }
+  else {
+    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_NAME), QSystemTrayIcon::NoIcon);
+  }
+
+  if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
+  }
+
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
+
+  // Enter global event loop.
+  return Application::exec();
 }

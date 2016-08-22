@@ -43,9 +43,9 @@
 #include <QWebEngineDownloadItem>
 #endif
 
-Application::Application(const QString &id, bool run_minimal_without_gui, int &argc, char **argv)
+Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
-    m_runMinimalWithoutGui(run_minimal_without_gui), m_feedReader(nullptr),
+    m_feedReader(nullptr),
     m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
     m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
     m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr) {
@@ -247,7 +247,7 @@ void Application::processExecutionMessage(const QString &message) {
   if (messages.contains(APP_QUIT_INSTANCE)) {
     quit();
   }
-  else if (!m_runMinimalWithoutGui) {
+  else {
     foreach (const QString &msg, messages) {
       if (msg == APP_IS_RUNNING) {
         showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
@@ -301,10 +301,7 @@ void Application::showGuiMessage(const QString &title, const QString &message,
                                  QSystemTrayIcon::MessageIcon message_type, QWidget *parent,
                                  bool show_at_least_msgbox, QObject *invokation_target,
                                  const char *invokation_slot) {
-  if (m_runMinimalWithoutGui) {
-    qDebug("Silencing GUI message: '%s'.", qPrintable(message));
-  }
-  else if (SystemTrayIcon::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
+  if (SystemTrayIcon::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
     trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
   }
   else if (show_at_least_msgbox) {

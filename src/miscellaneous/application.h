@@ -53,7 +53,7 @@ class Application : public QtSingleApplication {
 
   public:
     // Constructors and destructors.
-    explicit Application(const QString &id, bool run_minimal_without_gui, int &argc, char **argv);
+    explicit Application(const QString &id, int &argc, char **argv);
     virtual ~Application();
 
     FeedReader *feedReader();
@@ -128,7 +128,6 @@ class Application : public QtSingleApplication {
     void eliminateFirstRun();
     void eliminateFirstRun(const QString &version);
 
-    bool m_runMinimalWithoutGui;
     FeedReader *m_feedReader;
 
     // This read-write lock is used by application on its close.
