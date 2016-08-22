@@ -376,6 +376,70 @@ ServiceRoot *RootItem::getParentServiceRoot() const {
   return nullptr;
 }
 
+RootItemKind::Kind RootItem::kind() const {
+  return m_kind;
+}
+
+void RootItem::setKind(RootItemKind::Kind kind) {
+  m_kind = kind;
+}
+
+QIcon RootItem::icon() const {
+  return m_icon;
+}
+
+void RootItem::setIcon(const QIcon &icon) {
+  m_icon = icon;
+}
+
+int RootItem::id() const {
+  return m_id;
+}
+
+void RootItem::setId(int id) {
+  m_id = id;
+}
+
+QString RootItem::title() const {
+  return m_title;
+}
+
+void RootItem::setTitle(const QString &title) {
+  m_title = title;
+}
+
+QDateTime RootItem::creationDate() const {
+  return m_creationDate;
+}
+
+void RootItem::setCreationDate(const QDateTime &creation_date) {
+  m_creationDate = creation_date;
+}
+
+QString RootItem::description() const {
+  return m_description;
+}
+
+void RootItem::setDescription(const QString &description) {
+  m_description = description;
+}
+
+QFont RootItem::normalFont() const {
+  return m_normalFont;
+}
+
+void RootItem::setNormalFont(const QFont &normal_font) {
+  m_normalFont = normal_font;
+}
+
+QFont RootItem::boldFont() const {
+  return m_boldFont;
+}
+
+void RootItem::setBoldFont(const QFont &bold_font) {
+  m_boldFont = bold_font;
+}
+
 bool RootItem::removeChild(RootItem *child) {
   return m_childItems.removeOne(child);
 }

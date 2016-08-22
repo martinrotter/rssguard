@@ -180,73 +180,33 @@ class RootItem : public QObject {
     // Returns the service root node which is direct or indirect parent of current item.
     ServiceRoot *getParentServiceRoot() const;
 
-    inline RootItemKind::Kind kind() const {
-      return m_kind;
-    }
-
-    inline void setKind(RootItemKind::Kind kind) {
-      m_kind = kind;
-    }
+    RootItemKind::Kind kind() const;
+    void setKind(RootItemKind::Kind kind);
 
     // Each item can have icon.
-    inline QIcon icon() const {
-      return m_icon;
-    }
-
-    inline void setIcon(const QIcon &icon) {
-      m_icon = icon;
-    }
+    QIcon icon() const;
+    void setIcon(const QIcon &icon);
 
     // This ALWAYS represents primary column number/ID under which
     // the item is stored in DB.
-    inline int id() const {
-      return m_id;
-    }
-
-    inline void setId(int id) {
-      m_id = id;
-    }
+    int id() const;
+    void setId(int id);
 
     // Each item has its title.
-    inline QString title() const {
-      return m_title;
-    }
+    QString title() const;
+    void setTitle(const QString &title);
 
-    inline void setTitle(const QString &title) {
-      m_title = title;
-    }
+    QDateTime creationDate() const;
+    void setCreationDate(const QDateTime &creation_date);
 
-    inline QDateTime creationDate() const {
-      return m_creationDate;
-    }
+    QString description() const;
+    void setDescription(const QString &description);
 
-    inline void setCreationDate(const QDateTime &creation_date) {
-      m_creationDate = creation_date;
-    }
+    QFont normalFont() const;
+    void setNormalFont(const QFont &normal_font);
 
-    inline QString description() const {
-      return m_description;
-    }
-
-    inline void setDescription(const QString &description) {
-      m_description = description;
-    }
-
-    inline QFont normalFont() const {
-      return m_normalFont;
-    }
-
-    inline void setNormalFont(const QFont &normal_font) {
-      m_normalFont = normal_font;
-    }
-
-    inline QFont boldFont() const {
-      return m_boldFont;
-    }
-
-    inline void setBoldFont(const QFont &bold_font) {
-      m_boldFont = bold_font;
-    }
+    QFont boldFont() const;
+    void setBoldFont(const QFont &bold_font);
 
     // NOTE: For standard feed/category, this WILL equal to id().
     int customId() const;

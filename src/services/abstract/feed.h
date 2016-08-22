@@ -72,21 +72,11 @@ class Feed : public RootItem, public QRunnable {
     int autoUpdateRemainingInterval() const;
     void setAutoUpdateRemainingInterval(int auto_update_remaining_interval);
 
-    inline Status status() const {
-      return m_status;
-    }
+    Status status() const;
+    void setStatus(const Status &status);
 
-    inline void setStatus(const Status &status) {
-      m_status = status;
-    }
-
-    inline QString url() const {
-      return m_url;
-    }
-
-    inline void setUrl(const QString &url) {
-      m_url = url;
-    }
+    QString url() const;
+    void setUrl(const QString &url);
 
     int updateMessages(const QList<Message> &messages);
     void updateCounts(bool including_total_count);

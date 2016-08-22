@@ -7,6 +7,9 @@ Added:
 Changed:
 ▪ Big application core refactoring. Many functions rewritten, some bad code removed.
 
+Fixed:
+▪ RSS Guard was not launchable in Windows XP. (bug #53)
+
 3.3.3
 —————
 

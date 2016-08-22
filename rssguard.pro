@@ -153,6 +153,17 @@ CONFIG *= c++11 debug_and_release warn_on
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION
 
+win32 {
+  # Makes sure we use correct subsystem on Windows.
+  !contains(QMAKE_TARGET.arch, x86_64) {
+    message(rssguard: Compilling x86 variant.)
+    QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
+  } else {
+    message(rssguard: Compilling x86_64 variant.)
+    QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.02
+  }
+}
+
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
 UI_DIR = $$OUT_PWD/ui

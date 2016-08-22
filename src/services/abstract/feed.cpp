@@ -111,6 +111,22 @@ void Feed::setAutoUpdateRemainingInterval(int auto_update_remaining_interval) {
   m_autoUpdateRemainingInterval = auto_update_remaining_interval;
 }
 
+Feed::Status Feed::status() const {
+  return m_status;
+}
+
+void Feed::setStatus(const Feed::Status &status) {
+  m_status = status;
+}
+
+QString Feed::url() const {
+  return m_url;
+}
+
+void Feed::setUrl(const QString &url) {
+  m_url = url;
+}
+
 void Feed::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   int account_id = getParentServiceRoot()->accountId();
