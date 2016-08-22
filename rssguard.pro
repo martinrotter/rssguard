@@ -41,10 +41,9 @@
 #   LRELEASE_EXECUTABLE - specifies the name/path of "lrelease" executable, defaults to "lrelease".
 #
 #
-#
 # Other information:
 #   - supports Windows, Linux, Mac OS X,
-#   - Qt 5.7 and higher is required,
+#   - Qt 5.6.0 and higher is required,
 #   - C++ 11 is required.
 #
 # Authors and contributors:
