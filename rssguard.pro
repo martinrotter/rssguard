@@ -84,7 +84,7 @@ APP_DONATE_URL                = "https://goo.gl/YFVJ0j"
 isEmpty(PREFIX) {
   message(rssguard: PREFIX variable is not set. This might indicate error.)
 
-  win32 {
+  win32|mac {
     PREFIX = $$OUT_PWD/app
   }
 
@@ -573,11 +573,8 @@ win32 {
   misc_sql.files = resources/misc/*.sql
   misc_sql.path = $$PREFIX/misc
 
-  qt_dlls_root.files = resources/binaries/windows/qt5-msvc2013/*.dll
+  qt_dlls_root.files = resources/binaries/windows/qt5-msvc2013/*.*
   qt_dlls_root.path = $$quote($$PREFIX/)
-
-  qt_exe_root.files = resources/binaries/windows/qt5-msvc2013/*.exe
-  qt_exe_root.path = $$quote($$PREFIX/)
 
   qt_dlls_bearer.files = resources/binaries/windows/qt5-msvc2013/bearer
   qt_dlls_bearer.path = $$quote($$PREFIX/)
@@ -593,12 +590,6 @@ win32 {
 
   qt_dlls_sqldrivers.files = resources/binaries/windows/qt5-msvc2013/sqldrivers
   qt_dlls_sqldrivers.path = $$quote($$PREFIX/)
-
-  qt_dlls_translations.files = resources/binaries/windows/qt5-msvc2013/translations
-  qt_dlls_translations.path = $$quote($$PREFIX/)
-
-  qt_dlls_resources.files = resources/binaries/windows/qt5-msvc2013/resources
-  qt_dlls_resources.path = $$quote($$PREFIX/)
 
   misc_icons.files = resources/graphics/misc
   misc_icons.path = $$quote($$PREFIX/icons/)
@@ -630,10 +621,24 @@ win32 {
   translations.files = $$OUT_PWD/l10n
   translations.path = $$quote($$PREFIX/)
 
-  INSTALLS += target misc_sql qt_dlls_root qt_exe_root qt_dlls_bearer qt_dlls_iconengines \
+  INSTALLS += target misc_sql qt_dlls_root qt_dlls_bearer qt_dlls_iconengines \
               qt_dlls_imageformats qt_dlls_platforms qt_dlls_sqldrivers \
-              qt_dlls_translations qt_dlls_resources misc_icons faenza skins \
+              misc_icons faenza skins \
               sql feeds texts ico app_icon app_plain_icon translations
+
+  equals(USE_WEBENGINE, true) {
+    # Copy extra resource files for QtWebEngine.
+    qtwebengine_translations.files = resources/binaries/windows/qt5-msvc2013/QtWebEngine/translations
+    qtwebengine_translations.path = $$quote($$PREFIX/)
+
+    qtwebengine_resources.files = resources/binaries/windows/qt5-msvc2013/QtWebEngine/resources
+    qtwebengine_resources.path = $$quote($$PREFIX/)
+
+    qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2013/QtWebEngine/*.*
+    qtwebengine_dlls.path = $$quote($$PREFIX/)
+
+    INSTALLS += qtwebengine_translations qtwebengine_resources qtwebengine_dlls
+  }
 }
 
 # Install all files on Linux.
