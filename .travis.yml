@@ -24,3 +24,4 @@ script:
   - mkdir rssguard-build && cd rssguard-build
   - qmake ..
   - make
+  - make install
