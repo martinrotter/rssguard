@@ -26,9 +26,11 @@
 
 
 FeedDownloader::FeedDownloader(QObject *parent)
-  : QObject(parent), m_results(FeedDownloadResults()), m_feedsUpdated(0), m_feedsToUpdate(0),
+  : QObject(parent), m_threadPool(new QThreadPool(this)), m_results(FeedDownloadResults()), m_feedsUpdated(0), m_feedsToUpdate(0),
     m_feedsUpdating(0), m_feedsTotalCount(0), m_stopUpdate(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
+
+  m_threadPool->setMaxThreadCount(6);
 }
 
 FeedDownloader::~FeedDownloader() {
@@ -80,7 +82,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 
     connect(feeds.at(i), &Feed::messagesObtained, this, &FeedDownloader::oneFeedUpdateFinished,
             (Qt::ConnectionType) (Qt::UniqueConnection | Qt::AutoConnection));
-    QThreadPool::globalInstance()->start(feeds.at(i));
+    m_threadPool->start(feeds.at(i));
 
     m_feedsUpdating++;
     m_feedsToUpdate--;
@@ -88,6 +90,9 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 }
 
 void FeedDownloader::stopRunningUpdate() {
+  m_threadPool->clear();
+
+  // We want indicate that no more feeds will be updated in this queue.
   m_stopUpdate = true;
 }
 

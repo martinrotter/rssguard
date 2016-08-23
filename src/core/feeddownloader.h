@@ -26,6 +26,7 @@
 
 
 class Feed;
+class QThreadPool;
 
 // Represents results of batch feed updates.
 class FeedDownloadResults {
@@ -88,6 +89,7 @@ class FeedDownloader : public QObject {
   private:
     void finalizeUpdate();
 
+    QThreadPool *m_threadPool;
     FeedDownloadResults m_results;
 
     int m_feedsUpdated;
