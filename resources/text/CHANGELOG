@@ -9,6 +9,7 @@ Changed:
 
 Fixed:
 ▪ RSS Guard was not launchable in Windows XP. (bug #53)
+▪ RSS Guard crashed when switching msg status during feed updates. (bug #41)
 
 3.3.3
 —————

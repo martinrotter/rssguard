@@ -78,11 +78,12 @@ class Feed : public RootItem, public QRunnable {
     QString url() const;
     void setUrl(const QString &url);
 
-    int updateMessages(const QList<Message> &messages);
-    void updateCounts(bool including_total_count);
-
     // Runs update in thread (thread pooled).
     void run();
+
+  public slots:
+    void updateCounts(bool including_total_count);
+    int updateMessages(const QList<Message> &messages);
 
   private:
     // Performs synchronous obtaining of new messages for this feed.
