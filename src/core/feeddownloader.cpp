@@ -30,7 +30,7 @@ FeedDownloader::FeedDownloader(QObject *parent)
     m_feedsUpdating(0), m_feedsTotalCount(0), m_stopUpdate(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 
-  m_threadPool->setMaxThreadCount(6);
+  m_threadPool->setMaxThreadCount(FEED_DOWNLOADER_MAX_THREADS);
 }
 
 FeedDownloader::~FeedDownloader() {
@@ -50,10 +50,6 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 
   qDebug().nospace() << "Starting feed updates from worker in thread: \'" << QThread::currentThreadId() << "\'.";
 
-  // It may be good to disable "stop" action when batch feed update
-  // starts.
-  m_stopUpdate = false;
-
   m_results.clear();
 
   m_feedsUpdated = 0;
@@ -65,21 +61,6 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
   emit updateStarted();
 
   for (int i = 0; i < m_feedsTotalCount; i++) {
-    if (m_stopUpdate) {
-      qDebug("Stopping batch feed update now.");
-
-      // We want indicate that no more feeds will be updated in this queue.
-      m_feedsToUpdate = 0;
-
-      if (m_feedsUpdating <= 0) {
-        // User forced to stop, no more feeds will start updating.
-        // If also no feeds are updating right now, finish.
-        finalizeUpdate();
-      }
-
-      break;
-    }
-
     connect(feeds.at(i), &Feed::messagesObtained, this, &FeedDownloader::oneFeedUpdateFinished,
             (Qt::ConnectionType) (Qt::UniqueConnection | Qt::AutoConnection));
     m_threadPool->start(feeds.at(i));
@@ -91,9 +72,6 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 
 void FeedDownloader::stopRunningUpdate() {
   m_threadPool->clear();
-
-  // We want indicate that no more feeds will be updated in this queue.
-  m_stopUpdate = true;
 }
 
 void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
@@ -109,22 +87,20 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
                      << feed->id() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  if (!m_stopUpdate) {
-    int updated_messages;
+  int updated_messages;
 
-    QMetaObject::invokeMethod(feed, "updateMessages", Qt::BlockingQueuedConnection,
-                              Q_RETURN_ARG(int, updated_messages),
-                              Q_ARG(QList<Message>, messages));
+  QMetaObject::invokeMethod(feed, "updateMessages", Qt::BlockingQueuedConnection,
+                            Q_RETURN_ARG(int, updated_messages),
+                            Q_ARG(QList<Message>, messages));
 
-    if (updated_messages > 0) {
-      m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));
-    }
+  if (updated_messages > 0) {
+    m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));
   }
 
   qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).", m_feedsUpdated, m_feedsTotalCount, feed->id());
   emit updateProgress(feed, m_feedsUpdated, m_feedsTotalCount);
 
-  if (m_feedsToUpdate <= 0 && m_feedsUpdating <= 0) {
+  if (m_threadPool->activeThreadCount() <= 0 || (m_feedsToUpdate <= 0 && m_feedsUpdating <= 0)) {
     finalizeUpdate();
   }
 }
@@ -132,10 +108,10 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
 void FeedDownloader::finalizeUpdate() {
   qDebug().nospace() << "Finished feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
 
-  m_results.sort();
+  m_feedsToUpdate = 0;
+  m_feedsUpdating = 0;
 
-  // Make sure that there is not "stop" action pending.
-  m_stopUpdate = false;
+  m_results.sort();
 
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked

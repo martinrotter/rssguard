@@ -144,7 +144,6 @@ void Feed::run() {
                      << QThread::currentThreadId() << "\'.";
 
   QList<Message> msgs = obtainNewMessages();
-
   emit messagesObtained(msgs);
 }
 
