@@ -19,9 +19,7 @@
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>RSS Guard</string>
-    <key>CFBundleDisplayName</key>
-    <string>RSS Guard</string>
+    <string>@EXECUTABLE@</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
