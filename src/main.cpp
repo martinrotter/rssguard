@@ -78,6 +78,9 @@ int main(int argc, char *argv[]) {
 
   application.setFeedReader(new FeedReader(&application));
 
+  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
   // Register needed metatypes.
   qRegisterMetaType<QList<Message> >("QList<Message>");
   qRegisterMetaType<QList<RootItem*> >("QList<RootItem*>");

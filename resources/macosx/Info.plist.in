@@ -2,7 +2,10 @@
 <!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
 <plist version="0.9">
 <dict>
-
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    <key>NSHighResolutionCapable</key>
+    <string>True</string>
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleExecutable</key>
@@ -22,7 +25,7 @@
     <key>CFBundleShortVersionString</key>
     <string>@SHORT_VERSION@</string>
     <key>CFBundleSignature</key>
-    <string>@TYPEINFO@<string>
+    <string>@TYPEINFO@</string>
     <key>CFBundleVersion</key>
     <string>1.0.0</string>
     <key>CSResourcesFileMapped</key>
