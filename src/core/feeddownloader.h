@@ -27,6 +27,7 @@
 
 class Feed;
 class QThreadPool;
+class QMutex;
 
 // Represents results of batch feed updates.
 class FeedDownloadResults {
