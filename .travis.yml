@@ -1,10 +1,11 @@
 dist: trusty
-
 language: cpp
+osx_image: xcode8
 
 os:
   - linux
-  
+  - osx
+
 compiler:
   - gcc
   
@@ -13,9 +14,7 @@ git:
   depth: 3
   
 before_install:
-  - sudo add-apt-repository ppa:beineri/opt-qt57-trusty -y
-  - sudo apt-get update
-  - sudo apt-get -y install qt57tools qt57base qt57webengine
+  - ./.travis-before-install.sh
 
 install: true
   
