@@ -1,6 +1,7 @@
 dist: trusty
 language: cpp
 osx_image: xcode8
+sudo: required
 
 os:
   - linux
@@ -18,7 +19,6 @@ before_install: ./.travis-before-install.sh
 install: true
   
 script:
-  - source /opt/qt57/bin/qt57-env.sh
   - mkdir rssguard-build && cd rssguard-build
   - qmake ..
   - make
