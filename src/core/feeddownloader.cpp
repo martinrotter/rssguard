@@ -23,6 +23,7 @@
 #include <QThread>
 #include <QDebug>
 #include <QThreadPool>
+#include <QMutexLocker>
 
 
 FeedDownloader::FeedDownloader(QObject *parent)
