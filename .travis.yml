@@ -13,8 +13,7 @@ git:
   submodules: false
   depth: 3
   
-before_install:
-  - ./.travis-before-install.sh
+before_install: ./.travis-before-install.sh
 
 install: true
   
