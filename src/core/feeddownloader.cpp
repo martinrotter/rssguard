@@ -24,6 +24,7 @@
 #include <QDebug>
 #include <QThreadPool>
 #include <QMutexLocker>
+#include <QString>
 
 
 FeedDownloader::FeedDownloader(QObject *parent)
