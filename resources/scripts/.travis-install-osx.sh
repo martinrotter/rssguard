@@ -6,4 +6,4 @@ make
 make install
 macdeployqt rssguard.app -dmg
 ls -lha
-curl --upload-file ./*.dmg https://transfer.sh/dmgdmg
+curl --upload-file ./*.dmg https://transfer.sh/rssguard.dmg
