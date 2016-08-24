@@ -10,5 +10,4 @@ else
   sudo add-apt-repository ppa:beineri/opt-qt57-trusty -y
   sudo apt-get update
   sudo apt-get -y install qt57tools qt57base qt57webengine
-  bash /opt/qt57/bin/qt57-env.sh
 fi
