@@ -14,13 +14,10 @@ git:
   submodules: false
   depth: 3
   
-before_install: ./.travis-before-install.sh
+before_install: ./resources/scripts/.travis-before-install.sh
 
 install: true
   
 script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then source /opt/qt57/bin/qt57-env.sh ; fi
-  - mkdir rssguard-build && cd rssguard-build
-  - qmake ..
-  - make
-  - make install
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./resources/scripts/.travis-install-linux.sh ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./resources/scripts/.travis-install-osx.sh ; fi
