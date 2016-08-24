@@ -72,9 +72,6 @@ class FeedReader : public QObject {
     void executeNextAutoUpdate();
 
   signals:
-    // Emitted when model requests update of some feeds.
-    void feedsUpdateRequested(QList<Feed*> feeds);
-
     void feedUpdatesStarted();
     void feedUpdatesFinished(FeedDownloadResults updated_feeds);
     void feedUpdatesProgress(const Feed *feed, int current, int total);

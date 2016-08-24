@@ -84,9 +84,7 @@ void FeedReader::updateFeeds(const QList<Feed*> &feeds) {
     qRegisterMetaType<QList<Feed*> >("QList<Feed*>");
     m_feedDownloader->moveToThread(m_feedDownloaderThread);
 
-    connect(this, &FeedReader::feedsUpdateRequested, m_feedDownloader, &FeedDownloader::updateFeeds);
     connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloaderThread, &QThread::deleteLater);
-
     connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::feedUpdatesFinished);
     connect(m_feedDownloader, &FeedDownloader::updateProgress, this, &FeedReader::feedUpdatesProgress);
     connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
@@ -96,7 +94,7 @@ void FeedReader::updateFeeds(const QList<Feed*> &feeds) {
     m_feedDownloaderThread->start();
   }
 
-  emit feedsUpdateRequested(feeds);
+  QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds", Q_ARG(QList<Feed*>, feeds));
 }
 
 void FeedReader::updateAutoUpdateStatus() {
@@ -126,7 +124,7 @@ void FeedReader::updateAllFeeds() {
 
 void FeedReader::stopRunningFeedUpdate() {
   if (m_feedDownloader != nullptr) {
-    m_feedDownloader->stopRunningUpdate();
+    QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate");
   }
 }
 
