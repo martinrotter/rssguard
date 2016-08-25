@@ -5,6 +5,9 @@ clone_depth: 1
 clone_folder: c:\rssguard
 
 branches:
+  only:
+    - master
+    - dev
   except:
     - build-artifacts
 
