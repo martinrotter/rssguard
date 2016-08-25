@@ -27,8 +27,6 @@ build_script:
 on_success:
   - git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-  - git config --global user.email "rotter.martinos@gmail.com"
-  - git config --global user.name "martinrotter"
   - git clone https://github.com/martinrotter/rssguard-builds.git
   - copy /Y .\*.7z .\rssguard-builds
   - cd rssguard-builds
