@@ -34,7 +34,6 @@ build_script:
 on_success:
   - dir
   - git clone -q --depth=1 --branch=build-artifacts https://github.com/martinrotter/rssguard.git c:\rssguard-artifacts
-  - cd ..\rssguard-artifacts
   - git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "rotter.martinos@gmail.com"
