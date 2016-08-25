@@ -39,7 +39,7 @@ on_success:
   - git config --global user.email "rotter.martinos@gmail.com"
   - git config --global user.name "martinrotter"
   - cd ..\rssguard-build
-  - for /f "tokens=*" %F in ('dir /s /b *.7z') do curl -T %F chunk.io --silent >> ..\rssguard-artifacts\windows-builds.txt
+  - for /f "tokens=*" %%F in ('dir /s /b *.7z') do curl -T %%F chunk.io --silent >> ..\rssguard-artifacts\windows-builds.txt
   - cd ..\rssguard-artifacts
   - git add *.*
   - git commit -m "New files."
