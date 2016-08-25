@@ -8,9 +8,9 @@ environment:
   QMAKESPEC: win32-msvc2013
 
 build_script:
-- cmd: >-
-    dir
-    mkdir rssguard-build
-    cd rssguard-build
-    C:\Qt\5.7\msvc2013\qmake C:\rssguard
-    nmake
+  - dir
+  - cd ..
+  - mkdir rssguard-build
+  - cd rssguard-build
+  - C:\Qt\5.7\msvc2013\qmake C:\rssguard
+  - nmake
