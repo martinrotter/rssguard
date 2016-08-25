@@ -12,7 +12,7 @@ compiler:
   
 git:
   submodules: false
-  depth: 3
+  depth: 40
   
 before_install: ./resources/scripts/.travis-before-install.sh
 
