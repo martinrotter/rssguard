@@ -26,7 +26,8 @@ build_script:
 
 on_success:
   - dir
-  - cd ..\rssguard
+  - git clone -q --depth=1 --branch=build-artifacts https://github.com/martinrotter/rssguard.git c:\rssguard-artifacts
+  - cd ..\rssguard-artifacts
   - git fetch
   - git checkout build-artifacts
   - git config --global credential.helper store
