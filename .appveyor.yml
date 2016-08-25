@@ -9,6 +9,7 @@ environment:
 
 build_script:
   - dir
+  - "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86
   - cd ..
   - mkdir rssguard-build
   - cd rssguard-build
