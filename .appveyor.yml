@@ -35,5 +35,5 @@ on_success:
   - git config --global user.email "rotter.martinos@gmail.com"
   - git config --global user.name "martinrotter"
   - copy /Y ..\rssguard-build\*.7z .\
-  - git commit -a -m 'New files.'
+  - git commit -m 'New files.'
   - git push origin build-artifacts
