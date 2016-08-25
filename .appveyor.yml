@@ -19,3 +19,4 @@ build_script:
   - cd rssguard-build
   - C:\Qt\5.7\msvc2013\bin\qmake.exe C:\rssguard
   - nmake
+  - nmake windows_all
