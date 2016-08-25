@@ -5,8 +5,8 @@ clone_depth: 1
 clone_folder: c:\rssguard
 build_script:
 - cmd: >-
-    cd ..
+    cd C:\
     mkdir rssguard-build
     cd rssguard-build
-    C:\Qt\5.7\msvc2013\qmake ..\rssguard
+    C:\Qt\5.7\msvc2013\qmake C:\rssguard
     nmake
