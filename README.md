@@ -1,7 +1,8 @@
 RSS Guard
 =========
 
-[![Build status](https://img.shields.io/travis/martinrotter/rssguard.svg?maxAge=360)](https://travis-ci.org/martinrotter/rssguard)
+[![AppVeyor](https://img.shields.io/appveyor/ci/martinrotter/rssguard.svg?maxAge=360)](https://ci.appveyor.com/project/martinrotter/rssguard)
+[![Travis CI](https://img.shields.io/travis/martinrotter/rssguard.svg?maxAge=360)](https://travis-ci.org/martinrotter/rssguard)
 [![Total downloads](https://img.shields.io/github/downloads/martinrotter/rssguard/total.svg?maxAge=360)](#)
 [![Version](https://img.shields.io/github/release/martinrotter/rssguard.svg?maxAge=360)](#)
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](#)
