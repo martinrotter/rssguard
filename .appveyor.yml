@@ -31,17 +31,17 @@ build_script:
   - nmake
   - nmake windows_all
 
-#on_success:
-#  - dir
-#  - git clone -q --depth=1 --branch=build-artifacts https://github.com/martinrotter/rssguard.git c:\rssguard-artifacts
-#  - cd ..\rssguard-artifacts
-#  - git fetch
-#  - git checkout build-artifacts
-#  - git config --global credential.helper store
-#  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-#  - git config --global user.email "rotter.martinos@gmail.com"
-#  - git config --global user.name "martinrotter"
-#  - copy /Y ..\rssguard-build\*.7z .\windows
-#  - git add windows\*.7z
-#  - git commit -m "New files."
-#  - git push origin build-artifacts
+on_success:
+  - dir
+  - git clone -q --depth=1 --branch=build-artifacts https://github.com/martinrotter/rssguard.git c:\rssguard-artifacts
+  - cd ..\rssguard-artifacts
+  - git fetch
+  - git checkout build-artifacts
+  - git config --global credential.helper store
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git config --global user.email "rotter.martinos@gmail.com"
+  - git config --global user.name "martinrotter"
+  - curl -T ..\rssguard-build\*.7z chunk.io --silent >> windows-builds.txt
+  - git add *.*
+  - git commit -m "New files."
+  - git push origin build-artifacts
