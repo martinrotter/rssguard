@@ -8,6 +8,8 @@ environment:
   QTDIR: 'C:\Qt\5.7\msvc2013'
   QMAKESPEC: win32-msvc2013
   COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86'
+  access_token:
+    secure: zYCOwcOlgTzvbD0CjJRDNQ==
    
 build_script:
   - git submodule update --init --recursive
@@ -21,4 +23,15 @@ build_script:
   - C:\Qt\5.7\msvc2013\bin\qmake.exe C:\rssguard
   - nmake
   - nmake windows_all
- 
+
+on_success:
+  - dir
+  - cd ..\rssguard
+  - git checkout origin/build-artifacts
+  - git config --global credential.helper store
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git config --global user.email "rotter.martinos@gmail.com"
+  - git config --global user.name "martinrotter"
+  - copy /Y ..\rssguard-build\*.7z .\
+  - git commit -a -m 'New files.'
+  - git push origin build-artifacts
