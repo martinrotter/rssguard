@@ -207,6 +207,12 @@ void FeedReader::stop() {
   if (m_feedDownloaderThread != nullptr && m_feedDownloaderThread->isRunning()) {
     m_feedDownloader->stopRunningUpdate();
 
+    if (m_feedDownloader->isUpdateRunning()) {
+      QEventLoop loop(this);
+      connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
+      loop.exec();
+    }
+
     qDebug("Quitting feed downloader thread.");
     m_feedDownloaderThread->quit();
 

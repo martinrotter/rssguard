@@ -44,8 +44,6 @@ FeedDownloader::~FeedDownloader() {
 }
 
 bool FeedDownloader::isUpdateRunning() const {
-  QMutexLocker locker(m_mutex);
-
   return !m_feeds.isEmpty() || m_feedsUpdating > 0;
 }
 
