@@ -27,7 +27,8 @@ build_script:
 on_success:
   - dir
   - cd ..\rssguard
-  - git checkout origin/build-artifacts
+  - git fetch
+  - git checkout build-artifacts
   - git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "rotter.martinos@gmail.com"
