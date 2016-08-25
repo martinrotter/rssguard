@@ -38,7 +38,7 @@ on_success:
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "rotter.martinos@gmail.com"
   - git config --global user.name "martinrotter"
-  - cd ..\rssbuard-build
+  - cd ..\rssguard-build
   - for /f "tokens=*" %F in ('dir /s /b *.7z') do curl -T %F chunk.io --silent >> ..\rssguard-artifacts\windows-builds.txt
   - cd ..\rssguard-artifacts
   - git add *.*
