@@ -144,11 +144,13 @@ void Feed::run() {
                      << QThread::currentThreadId() << "\'.";
 
   QList<Message> msgs = obtainNewMessages();
-
   emit messagesObtained(msgs);
 }
 
 int Feed::updateMessages(const QList<Message> &messages) {
+  qDebug().nospace() << "Updating messages in DB. Main thread: " <<
+                        (QThread::currentThread() == qApp->thread() ? "true." : "false.");
+
   int custom_id = customId();
   int account_id = getParentServiceRoot()->accountId();
   bool anything_updated = false;

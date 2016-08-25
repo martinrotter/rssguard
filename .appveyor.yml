@@ -1,0 +1,46 @@
+version: 666.{build}
+skip_tags: true
+image: Visual Studio 2013
+clone_depth: 1
+clone_folder: c:\rssguard
+
+branches:
+  only:
+    - master
+    - dev
+  except:
+    - build-artifacts
+
+environment:
+  QTDIR: 'C:\Qt\5.7\msvc2013'
+  QMAKESPEC: win32-msvc2013
+  COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86'
+  access_token:
+    secure: XCWdr9wPgK4gm6289WXCg2vtMA02eBSnj6eKHC+ps6Z5lgw0jsK09UQ5y9E9ZFwS
+   
+build_script:
+  - git submodule update --init --recursive
+  - set "QT_PLUGIN_PATH=%QTDIR%\plugins"
+  - set "PATH=%QTDIR%\bin;%PATH%"
+  - '%COMPILERBAT%'
+  - dir
+  - cd ..
+  - mkdir rssguard-build
+  - cd rssguard-build
+  - C:\Qt\5.7\msvc2013\bin\qmake.exe C:\rssguard
+  - nmake
+  - nmake windows_all
+
+on_success:
+  - dir
+  - git clone -q --depth=1 --branch=build-artifacts https://github.com/martinrotter/rssguard.git c:\rssguard-artifacts
+  - git config --global credential.helper store
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git config --global user.email "rotter.martinos@gmail.com"
+  - git config --global user.name "martinrotter"
+  - cd ..\rssguard-build
+  - for /f "tokens=*" %%F in ('dir /s /b *.7z') do curl --upload-file %%F https://transfer.sh/rssguard-win32.7z --silent >> ..\rssguard-artifacts\windows-builds.txt
+  - cd ..\rssguard-artifacts
+  - git add *.*
+  - git commit -m "New files."
+  - git push origin build-artifacts

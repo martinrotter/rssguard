@@ -1,7 +1,8 @@
 RSS Guard
 =========
 
-[![Build status](https://img.shields.io/travis/martinrotter/rssguard.svg?maxAge=360)](https://travis-ci.org/martinrotter/rssguard)
+[![AppVeyor](https://img.shields.io/appveyor/ci/martinrotter/rssguard.svg?maxAge=360)](https://ci.appveyor.com/project/martinrotter/rssguard)
+[![Travis CI](https://img.shields.io/travis/martinrotter/rssguard.svg?maxAge=360)](https://travis-ci.org/martinrotter/rssguard)
 [![Total downloads](https://img.shields.io/github/downloads/martinrotter/rssguard/total.svg?maxAge=360)](#)
 [![Version](https://img.shields.io/github/release/martinrotter/rssguard.svg?maxAge=360)](#)
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](#)
@@ -61,6 +62,7 @@ Downloads
 * [official downloads](https://github.com/martinrotter/rssguard/releases),
 * alternative downloads:
   * [Archlinux AUR package](https://aur.archlinux.org/packages/rssguard/),
+  * [Automatically generated test builds](https://github.com/martinrotter/rssguard/tree/build-artifacts),
   * [OBS/development releases](https://build.opensuse.org/package/show/home:skunkos:rssguard/rssguard-git) (click "Download package" in top/right corner of the website).
 
 [![Alternative RSS Guard downloads.](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
@@ -73,7 +75,7 @@ Features
 --------
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the [Qt library](http://qt-project.org/) and it supports these operating systems:
 
-* Windows XP and newer,
+* Windows Vista and newer,
 * GNU/Linux,
 * Mac OS X,
 * xBSD (possibly),

@@ -1,10 +1,12 @@
-dist: trusty
-
 language: cpp
+osx_image: xcode7.3
+sudo: required
+dist: trusty
 
 os:
   - linux
-  
+  - osx
+
 compiler:
   - gcc
   
@@ -12,15 +14,10 @@ git:
   submodules: false
   depth: 3
   
-before_install:
-  - sudo add-apt-repository ppa:beineri/opt-qt57-trusty -y
-  - sudo apt-get update
-  - sudo apt-get -y install qt57tools qt57base qt57webengine
+before_install: ./resources/scripts/.travis-before-install.sh
 
 install: true
   
 script:
-  - source /opt/qt57/bin/qt57-env.sh
-  - mkdir rssguard-build && cd rssguard-build
-  - qmake ..
-  - make
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./resources/scripts/.travis-install-linux.sh ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./resources/scripts/.travis-install-osx.sh ; fi
