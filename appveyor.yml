@@ -1,0 +1,12 @@
+version: 3.3.{build}
+skip_tags: true
+image: Visual Studio 2013
+clone_depth: 1
+clone_folder: c:\rssguard
+build_script:
+- cmd: >-
+    cd ..
+    mkdir rssguard-build
+    cd rssguard-build
+    qmake ../rssguard
+    nmake
