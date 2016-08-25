@@ -9,7 +9,7 @@ environment:
 
 build_script:
 - cmd: >-
-    C:\
+    dir
     mkdir rssguard-build
     cd rssguard-build
     C:\Qt\5.7\msvc2013\qmake C:\rssguard
