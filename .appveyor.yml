@@ -9,7 +9,7 @@ environment:
   QMAKESPEC: win32-msvc2013
   COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86'
   access_token:
-    secure: zYCOwcOlgTzvbD0CjJRDNQ==
+    secure: XCWdr9wPgK4gm6289WXCg2vtMA02eBSnj6eKHC+ps6Z5lgw0jsK09UQ5y9E9ZFwS
    
 build_script:
   - git submodule update --init --recursive
