@@ -275,6 +275,7 @@ SystemTrayIcon *Application::trayIcon() {
   if (m_trayIcon == nullptr) {
     m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
     connect(m_trayIcon, &SystemTrayIcon::shown, m_feedReader->feedsModel(), &FeedsModel::notifyWithCounts);
+    connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, m_trayIcon, &SystemTrayIcon::setNumber);
   }
 
   return m_trayIcon;

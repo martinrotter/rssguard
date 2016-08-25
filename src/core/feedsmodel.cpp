@@ -456,10 +456,7 @@ void FeedsModel::reloadChangedItem(RootItem *item) {
 }
 
 void FeedsModel::notifyWithCounts() {
-  if (SystemTrayIcon::isSystemTrayActivated()) {
-    // TODO: Udělat přes signál, jádro by nemělo inkludovat GUI prvky.
-    qApp->trayIcon()->setNumber(countOfUnreadMessages(), hasAnyFeedNewMessages());
-  }
+  emit messageCountsChanged(countOfUnreadMessages(), hasAnyFeedNewMessages());
 }
 
 void FeedsModel::onItemDataChanged(const QList<RootItem *> &items) {
