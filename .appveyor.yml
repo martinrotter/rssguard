@@ -4,6 +4,10 @@ image: Visual Studio 2013
 clone_depth: 1
 clone_folder: c:\rssguard
 
+branches:
+  except:
+    - build-artifacts
+
 environment:
   QTDIR: 'C:\Qt\5.7\msvc2013'
   QMAKESPEC: win32-msvc2013
