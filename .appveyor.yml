@@ -1,4 +1,4 @@
-version: {build}
+version: 666.{build}
 skip_tags: true
 image: Visual Studio 2013
 clone_depth: 1
