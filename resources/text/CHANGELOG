@@ -8,6 +8,7 @@ Changed:
 ▪ Big application core refactoring. Many functions rewritten, some bad code removed.
 
 Fixed:
+▪ RSS Guard could not stop ongoing feed updates. (bug #52)
 ▪ RSS Guard was not launchable in Windows XP. (bug #53)
 ▪ RSS Guard crashed when switching msg status during feed updates. (bug #41)
 

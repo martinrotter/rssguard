@@ -98,7 +98,7 @@ class FeedDownloader : public QObject {
 
     int m_feedsUpdated;
     int m_feedsUpdating;
-    int m_feedsTotalCount;
+    int m_feedsOriginalCount;
 };
 
 #endif // FEEDDOWNLOADER_H

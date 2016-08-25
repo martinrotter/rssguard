@@ -30,7 +30,7 @@
 FeedDownloader::FeedDownloader(QObject *parent)
   : QObject(parent), m_feeds(QList<Feed*>()), m_mutex(new QMutex()), m_threadPool(new QThreadPool(this)),
     m_results(FeedDownloadResults()), m_feedsUpdated(0),
-    m_feedsUpdating(0), m_feedsTotalCount(0) {
+    m_feedsUpdating(0), m_feedsOriginalCount(0) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
   m_threadPool->setMaxThreadCount(FEED_DOWNLOADER_MAX_THREADS);
 }
@@ -75,6 +75,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
     qDebug().nospace() << "Starting feed updates from worker in thread: \'" << QThread::currentThreadId() << "\'.";
 
     m_feeds = feeds;
+    m_feedsOriginalCount = m_feeds.size();
     m_results.clear();
     m_feedsUpdated = m_feedsUpdating = 0;
 
@@ -85,8 +86,6 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 }
 
 void FeedDownloader::stopRunningUpdate() {
-  //QMutexLocker locker(m_mutex);
-
   m_threadPool->clear();
   m_feeds.clear();
 }
@@ -119,8 +118,8 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
     m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));
   }
 
-  qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).", m_feedsUpdated, m_feedsTotalCount, feed->id());
-  emit updateProgress(feed, m_feedsUpdated, m_feedsTotalCount);
+  qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).", m_feedsUpdated, m_feedsOriginalCount, feed->id());
+  emit updateProgress(feed, m_feedsUpdated, m_feedsOriginalCount);
 
   if (m_feeds.isEmpty() && m_feedsUpdating <= 0) {
     finalizeUpdate();
