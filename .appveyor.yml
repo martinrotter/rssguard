@@ -5,11 +5,15 @@ clone_depth: 1
 clone_folder: c:\rssguard
 
 environment:
+  QTDIR: 'C:\Qt\5.7\msvc2013'
   QMAKESPEC: win32-msvc2013
+  COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86'
 
 build_script:
+  - set "QT_PLUGIN_PATH=%QTDIR%\plugins"
+  - set "PATH=%QTDIR%\bin;%PATH%"
+  - '%COMPILERBAT%'
   - dir
-  - C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat x86
   - cd ..
   - mkdir rssguard-build
   - cd rssguard-build
