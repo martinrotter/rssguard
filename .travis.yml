@@ -9,6 +9,15 @@ os:
 
 compiler:
   - gcc
+
+branches:
+  except:
+  - build-artifacts
+
+branches:
+  only:
+  - master
+  - dev
   
 git:
   submodules: false
