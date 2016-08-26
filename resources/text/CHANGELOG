@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ Development builds are now automatically compiled for Windows and Mac OS X. See https://github.com/martinrotter/rssguard/tree/build-artifacts for links and more information.
 ▪ RSS Guard now can be compiled WITHOUT QtWebEngine module. Minimal Qt required was also lowered to 5.6.0.
 
 Changed:
