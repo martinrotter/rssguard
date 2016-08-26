@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Nieuw bericht gedownload</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -291,19 +291,19 @@ Klik hier om map te openen.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation>Kan alle items niet bijwerken</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>U kunt niet alle items updaten omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Begint met auto-update van sommige feeds</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-update van %n feed(s).</numerusform><numerusform>Auto-update van %n feed(s).</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -1605,20 +1605,24 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>Kan database niet opschonen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Je kunt database niet opschonenen omdat een andere kritische operatie gaande is.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation>Bijwerken feed is gestart</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed bijwerken &apos;%1&apos;</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2166,6 +2170,53 @@ Je moet het handmatig installeren.</translation>
     </message>
 </context>
 <context>
+    <name>MessagePreviewer</name>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -2357,10 +2408,6 @@ Je moet het handmatig installeren.</translation>
         <source>External e-mail client could not be started.</source>
         <translation>Externe e-mail client kon niet worden gestart.</translation>
     </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Krantweergave</translation>
-    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -2441,6 +2488,25 @@ Je moet het handmatig installeren.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>onbekende inhoud</translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

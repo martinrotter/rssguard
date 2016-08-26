@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Atsiųstos naujos žinutės</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -291,15 +291,15 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation>Nepavyksta atnaujinti visų elementų</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Jūs negalite atnaujinti visų elementų, nes yra vykdoma kita kritinė operacija.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Pradedamas kai kurių kanalų automatinis atnaujinimas</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -1605,20 +1605,24 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>Nepavyksta išvalyti duomenų bazės</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Nepavyksta išvalyti duomenų bazės, nes yra vykdomas kitas kritinis veiksmas.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation>Kanalo atnaujinimas pradėtas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Atnaujintas kanalas &apos;%1&apos;</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2163,6 +2167,53 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
 </context>
 <context>
+    <name>MessagePreviewer</name>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -2354,10 +2405,6 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
         <source>External e-mail client could not be started.</source>
         <translation>Išorinės el. pašto kliento programos paleisti nepavyko.</translation>
     </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Laikraščio veiksena</translation>
-    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -2438,6 +2485,25 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>nežinomas turinys</translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

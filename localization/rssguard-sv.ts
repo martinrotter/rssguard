@@ -302,7 +302,7 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde</numerusform><numerusform>Jag uppdaterar %n flöden</numerusform></translation>
+        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
     </message>
 </context>
 <context>
@@ -1619,6 +1619,10 @@ att funktionen inte är implementerad än.</translation>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>Uppdaterade flödet &apos;%1&apos;</translation>
     </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2164,6 +2168,53 @@ Du måste installera det manuellt.</translation>
     </message>
 </context>
 <context>
+    <name>MessagePreviewer</name>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -2355,10 +2406,6 @@ Du måste installera det manuellt.</translation>
         <source>External e-mail client could not be started.</source>
         <translation>Extern e-postklient kunde inte startas.</translation>
     </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Tidningsvy</translation>
-    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -2439,6 +2486,25 @@ Du måste installera det manuellt.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>okänt innehåll</translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

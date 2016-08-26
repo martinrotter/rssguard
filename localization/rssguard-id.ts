@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Pesan baru terunduh</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -289,15 +289,15 @@ Klik disini untuk membuka direktori induk.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation>Tidak dapat memperbaharui semua item</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Anda tidak dapat memperbaharui semua item karena operasi genting lain sedang berlangsung.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Memulai pembaharuan otomatis beberapa feed</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -1603,20 +1603,24 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>Tidak dapat membersihkan database</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Tidak dapat membersihkan database, karena aksi genting lain sedang berjalan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation>Pembaharuan feed dimulai</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed terbaharui &apos;%1&apos;</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2164,6 +2168,53 @@ Anda harus instal secara manual.</translation>
     </message>
 </context>
 <context>
+    <name>MessagePreviewer</name>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -2355,10 +2406,6 @@ Anda harus instal secara manual.</translation>
         <source>External e-mail client could not be started.</source>
         <translation>Klien surel eksternal tidak dapat dimulai.</translation>
     </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Tampilan koran</translation>
-    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -2439,6 +2486,25 @@ Anda harus instal secara manual.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>konten tak dikenal</translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

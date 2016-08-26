@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Staženy nové zprávy</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -291,19 +291,19 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation>Nelze aktualizovat všechny položky</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Nelze obnovit všechny soubory protože právě probíhá jiná důležitá operace.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Zahajuji auto-update některých kanálů</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Budu aktualizovat %n kanál.</numerusform><numerusform>Budu aktualizovat %n kanály.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -1604,20 +1604,24 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>Nelze vyčistit databázi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Databázi nelze v současné době vyčistit, protože běží jiná kritická akce. Zkuste to později.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation>Spuštěn update kanálů</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Aktualizován kanál &apos;%1&apos;</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2163,6 +2167,53 @@ Musíte ho nainstalovat manuálně.</translation>
     </message>
 </context>
 <context>
+    <name>MessagePreviewer</name>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -2354,10 +2405,6 @@ Musíte ho nainstalovat manuálně.</translation>
         <source>External e-mail client could not be started.</source>
         <translation>Externí e-mailový klient nemohl být úspěšně spuštěn.</translation>
     </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation>Novinový náhled</translation>
-    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -2438,6 +2485,25 @@ Musíte ho nainstalovat manuálně.</translation>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>neznámý obsah</translation>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

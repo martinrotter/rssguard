@@ -1615,6 +1615,10 @@ or this functionality is not implemented yet.</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2153,6 +2157,53 @@ You must install it manually.</source>
     </message>
 </context>
 <context>
+    <name>MessagePreviewer</name>
+    <message>
+        <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What action do you want to take?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Incorrect link</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected hyperlink is invalid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark message as unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -2344,10 +2395,6 @@ You must install it manually.</source>
         <source>External e-mail client could not be started.</source>
         <translation type="unfinished"/>
     </message>
-    <message>
-        <source>Newspaper view</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -2427,6 +2474,25 @@ You must install it manually.</source>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>NewspaperPreviewer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Show more messages (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot show more messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot show more messages because parent feed was removed.</source>
         <translation type="unfinished"/>
     </message>
 </context>
