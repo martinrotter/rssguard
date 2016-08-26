@@ -61,9 +61,9 @@ Downloads
 ---------
 * [official downloads](https://github.com/martinrotter/rssguard/releases),
 * alternative downloads:
-  * [Archlinux AUR package](https://aur.archlinux.org/packages/rssguard/),
-  * [Automatically generated test builds](https://github.com/martinrotter/rssguard/tree/build-artifacts),
-  * [OBS/development releases](https://build.opensuse.org/package/show/home:skunkos:rssguard/rssguard-git) (click "Download package" in top/right corner of the website).
+  * [Archlinux AUR package (GNU/Linux)](https://aur.archlinux.org/packages/rssguard/),
+  * [Automatically generated development builds (Windows + Mac OS X)](https://github.com/martinrotter/rssguard/tree/build-artifacts),
+  * [OBS/development releases (GNU/Linux)](https://build.opensuse.org/package/show/home:skunkos:rssguard/rssguard-git) (click "Download package" in top/right corner of the website).
 
 [![Alternative RSS Guard downloads.](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
 
