@@ -1621,7 +1621,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>Abas</translation>
     </message>
 </context>
 <context>

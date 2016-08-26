@@ -1621,7 +1621,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>Flikar</translation>
     </message>
 </context>
 <context>
@@ -2171,47 +2171,47 @@ Du måste installera det manuellt.</translation>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation>Du klickade på en länk. Du kan ladda ner länkinnehållet eller öppna den i extern webbläsare.</translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation>Vad vill du göra?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna i extern webbläsare</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation>Felaktig länk</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda länken är ogiltig</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>Märk meddelandet som läst</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>Märk meddelandet som oläst</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>Växla meddelandets betydelse</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Klicka på denna länk för att ladda ner, eller för att öppna den i extern webbläsare.</translation>
     </message>
     <message>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>bild</translation>
     </message>
 </context>
 <context>
@@ -2492,19 +2492,19 @@ Du måste installera det manuellt.</translation>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Form</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Visa fler meddelanden (%n återstår)</numerusform><numerusform>Visa fler meddelanden (%n återstår)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte visa fler meddelanden</translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte visa fler meddelanden, eftersom överordnat flöde tagits bort.</translation>
     </message>
 </context>
 <context>

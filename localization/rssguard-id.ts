@@ -1620,7 +1620,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>Tab</translation>
     </message>
 </context>
 <context>

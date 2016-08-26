@@ -1617,7 +1617,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>כרטיסיות</translation>
     </message>
 </context>
 <context>

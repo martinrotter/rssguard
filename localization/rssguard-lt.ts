@@ -1622,7 +1622,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>Kortelės</translation>
     </message>
 </context>
 <context>

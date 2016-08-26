@@ -1622,7 +1622,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>Tabbladen</translation>
     </message>
 </context>
 <context>
