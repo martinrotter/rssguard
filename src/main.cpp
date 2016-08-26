@@ -46,8 +46,7 @@ int main(int argc, char *argv[]) {
     if (str == "-h") {
       qDebug("Usage: rssguard [OPTIONS]\n\n"
              "Option\t\tMeaning\n"
-             "-h\t\tDisplays this help.\n"
-             "-q\t\tQuits minimal non-GUI instance of application already running on this machine.");
+             "-h\t\tDisplays this help.");
 
       return EXIT_SUCCESS;
     }
