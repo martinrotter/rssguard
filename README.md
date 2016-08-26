@@ -65,9 +65,9 @@ Downloads
   * [Automatically generated development builds (Windows + Mac OS X)](https://github.com/martinrotter/rssguard/tree/build-artifacts),
   * [OBS/development releases (GNU/Linux)](https://build.opensuse.org/package/show/home:skunkos:rssguard/rssguard-git) (click "Download package" in top/right corner of the website).
 
-[![Alternative RSS Guard downloads.](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
+[![RSS Guard in Instalki](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
 
-Note that packages from OBS are **NOT** meant to be used in production. Their main purpose is to control if RSS Guard can be build without errors on those distros. Rely on "official" packages for your Linux distro made by your Linux distro maintainers.
+Note that some of "alternative downloads" are **NOT** meant to be used in production. Their main purpose is to control if RSS Guard can be build without errors. Rely on "official" packages for your Linux distro made by your Linux distro maintainers.
 
 ![RSS Guard is 100% clean.](http://www.softpedia.com/_img/softpedia_100_free.png)
 
