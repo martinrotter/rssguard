@@ -36,6 +36,8 @@
 # Variables:
 #   USE_WEBENGINE - if specified, then QtWebEngine module for internal web browser is used.
 #                   Otherwise simple text component is used and some features will be disabled.
+#                   Default value is "false". If QtWebEngine is installed during compilation, then
+#                   value of this variable is tweaked automatically.
 #   PREFIX - specifies base folder to which files are copied during "make install"
 #            step, defaults to "$$OUT_PWD/usr" on Linux and to "$$OUT_PWD/app" on Windows.
 #   LRELEASE_EXECUTABLE - specifies the name/path of "lrelease" executable, defaults to "lrelease".
