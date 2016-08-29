@@ -20,7 +20,6 @@ Core features are:
     * Tiny Tiny RSS (from RSS Guard 3.0.0),
     * ownCloud News (from RSS Guard 3.1.0).
 * multiplatformity,
-* server/client cron-like mode,
 * multiple data backend support.
     * SQLite (in-memory DBs too),
     * MySQL.
@@ -91,7 +90,6 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * support for all feed formats,
 * simple internal Chromium-based web viewer,
 * simplicity,
-* server/client cron-like mode,
 * import/export of feeds to/from OPML 2.0,
 * downloader with own tab and support for up to 6 parallel downloads,
 * message filter with regular expressions,

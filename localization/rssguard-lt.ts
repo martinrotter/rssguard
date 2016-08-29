@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Atsiųstos naujos žinutės</translation>
     </message>
 </context>
 <context>
@@ -291,19 +291,19 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta atnaujinti visų elementų</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs negalite atnaujinti visų elementų, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Pradedamas kai kurių kanalų automatinis atnaujinimas</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -1605,20 +1605,20 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta išvalyti duomenų bazės</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta išvalyti duomenų bazės, nes yra vykdomas kitas kritinis veiksmas.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo atnaujinimas pradėtas</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Atnaujintas kanalas &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -2178,15 +2178,15 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Atverti išorinėje naršyklėje</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation>Neteisinga nuoroda</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
@@ -2194,15 +2194,15 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>Žymėti žinutę kaip skaitytą</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>Žymėti žinutę kaip neskaitytą</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>Perjungti žinutės svarbą</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
@@ -2305,7 +2305,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"/>
+        <translation>Priedai</translation>
     </message>
     <message>
         <source>List of attachments.</source>

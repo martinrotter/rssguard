@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Neue Nachrichten wurden heruntergeladen</translation>
     </message>
 </context>
 <context>
@@ -289,19 +289,19 @@ Click here to open parent directory.</source>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Kann nicht alle Einträge aktualisieren</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Aufgrund einer anderen laufenden Aktion können nicht alle Einträge aktualisiert werden.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Beginne mit automatischer Aktualisierung einiger Feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>1 Feed wird automatisch aktualisiert.</numerusform><numerusform>%n Feeds werden automatisch aktualisiert.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -1602,20 +1602,20 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Kann Datenbank nicht bereinigen</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Kann die Datenbank aufgrund einer anderen Aktion hieran nicht bereinigen.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Aktualisierung der Feeds hat begonnen</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Feed &apos;%1&apos; wurde aktualisiert</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -1706,24 +1706,27 @@ or this functionality is not implemented yet.</source>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Einige wichtige Einstellungen wurden geändert, was erst nach einem Neustart zur Anwendung kommt. 
+
+Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Geänderte Kategorie mit Einstellungen:
+%1.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Die Handhabung einiger Einstellungen wurde verändert, die zugehörigen Werte gehen daher verloren.</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation>Einige Einstellungen wurden verändert. Durch Abbrechen gingen diese Änderungen verloren.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation type="unfinished"/>
+        <translation>Soll dieser Dialog wirklich beendet werden, ohne die Einstellungen zu speichern?</translation>
     </message>
 </context>
 <context>
@@ -2164,47 +2167,47 @@ You must install it manually.</source>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation>Sie haben auf einen Link geklickt. Der zugehörige Inhalt kann heruntergeladen oder in einem externen Browser angezeigt werden.</translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation>Was soll ausgeführt werden?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>In externem Browser öffnen</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Herunterladen</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation>Fehlerhafter Link</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Der ausgewählte Hyperlink ist fehlerhaft</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>Nachricht als gelesen markieren</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>Nachricht als ungelesen markieren</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>Einstufung der Wichtigkeit modifizieren</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Diesen Link klicken zum Herunterladen oder Öffnen in externem Browser.</translation>
     </message>
     <message>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>Graphik</translation>
     </message>
 </context>
 <context>
@@ -2485,7 +2488,7 @@ You must install it manually.</source>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formular</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
@@ -2493,11 +2496,11 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
+        <translation>Es können keine weiteren Nachrichten angezeigt werden</translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Es können keine weiteren Nachrichten angezeigt werden, weil der übergeordnete Feed entfernt wurde.</translation>
     </message>
 </context>
 <context>

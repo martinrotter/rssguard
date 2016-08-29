@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Nouveaux messages téléchargés</translation>
     </message>
 </context>
 <context>
@@ -209,39 +209,40 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ouvrir ce répertoire</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ouvrir ce répertoire. Ouvrez-le manuellement.</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargement terminé</translation>
     </message>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation type="unfinished"/>
+        <translation>Le fichier &apos;%1&apos; est téléchargé.
+Cliquez-ici pour ouvrir le répertoire parent.</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation type="unfinished"/>
+        <translation>URL: %1</translation>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Fichier local : %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation type="unfinished"/>
+        <translation>Sélection du fichier local annulée.</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation type="unfinished"/>
+        <translation>Nettoyage</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
@@ -253,19 +254,19 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>bytes</source>
-        <translation type="unfinished"/>
+        <translation>octets</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation type="unfinished"/>
+        <translation>Ko</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="unfinished"/>
+        <translation>Mo</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="unfinished"/>
+        <translation>Go</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
@@ -287,15 +288,15 @@ Click here to open parent directory.</source>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de mettre à jour tous les éléments</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Vous ne pouvez pas mettre à jour tous les éléments car une autre opération critique est en cours.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Lancement de la mise à jour automatique de certains flux</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -306,7 +307,7 @@ Click here to open parent directory.</source>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation type="unfinished"/>
+        <translation>Catégorie</translation>
     </message>
 </context>
 <context>
@@ -327,11 +328,11 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"/>
+        <translation>Vous ne pouvez pas transférer par glisser-déposer des éléments dans différents comptes, ce n&apos;est pas supporté.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de réaliser l&apos;opération de glisser-déposer</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -342,7 +343,7 @@ Click here to open parent directory.</source>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Séparation de barre d&apos;outils</translation>
     </message>
 </context>
 <context>
@@ -357,64 +358,65 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
+        <translation>Menu contextuel pour les espaces vides</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>L&apos;élément sélectionné ne peut être édité car une autre opération critique est en cours.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>L&apos;élément sélectionné ne peut être supprimé car une autre opération critique est en cours.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation>Menu contextuel des catégories</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation type="unfinished"/>
+        <translation>L&apos;élément sélectionné ne peut être édité, ceci n&apos;est pas (encore?) supporté.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Suppression &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Vous êtes sur le point de supprimer complètement l&apos;élément &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation type="unfinished"/>
+        <translation>Êtes-vous sûr(e)?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de supprimer &quot;%1&quot;</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="unfinished"/>
+        <translation>Cet élément ne peut être supprimé car quelque chose de critique a échoué. Envoyez un rapport d&apos;erreur.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="unfinished"/>
+        <translation>Cet élément ne peut être supprimé car ce n&apos;est pas supporté
+ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"/>
+        <translation>Menu contextuel pour les autres éléments</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Non supporté</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Le compte sélectionné ne supporte pas l&apos;ajout de flux.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation type="unfinished"/>
+        <translation>Le compte fourni ne supporte pas l&apos;ajout de nouvelles catégories.</translation>
     </message>
 </context>
 <context>
@@ -466,27 +468,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Settings type</source>
-        <translation type="unfinished"/>
+        <translation>Types de paramètres</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation type="unfinished"/>
+        <translation>Fichier de paramètres</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation type="unfinished"/>
+        <translation>Chemin racine de la Base de Données</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation type="unfinished"/>
+        <translation>COMPLÈTEMENT portable</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation type="unfinished"/>
+        <translation>PARTIELLEMENT portable</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation type="unfinished"/>
+        <translation>Ressources</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
@@ -501,11 +503,11 @@ or this functionality is not implemented yet.</source>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Ajout d&apos;un nouveau compte</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation type="unfinished"/>
+        <translation>Détails</translation>
     </message>
     <message>
         <source>Name</source>
@@ -525,26 +527,26 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation type="unfinished"/>
+        <translation>Ce compte peut seulement être ajouté une seule fois.</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Sauvegarde base de données/paramètrages</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation type="unfinished"/>
+        <translation>Sauvegarde des propriétés</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation type="unfinished"/>
+        <translation>Élément à sauvegarder</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation type="unfinished"/>
+        <translation>Base de données</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -552,66 +554,66 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Backup name</source>
-        <translation type="unfinished"/>
+        <translation>Nom de la sauvegarde</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Résultats des opérations</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation type="unfinished"/>
+        <translation>Nom commun pour les fichiers de sauvegarde</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Aucune opération n&apos;a encore été exécutée.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation type="unfinished"/>
+        <translation>La sauvegarde a été créée avec succès.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom de la sauvegarde ne peut être vide.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom de la sauvegarde semble bon.</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation type="unfinished"/>
+        <translation>Sauvegarde échouée.</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation type="unfinished"/>
+        <translation>Répertoire de destination</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Sélectionner le répertoire</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation type="unfinished"/>
+        <translation>La sauvegarde a été créée avec succès et stockée dans le répertoire cible.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner le répertoire de destination</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation type="unfinished"/>
+        <translation>Le répertoire de destination spécifié est bon.</translation>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Nettoyage de la base de données</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation type="unfinished"/>
+        <translation>Suppression de tous les messages plus anciens que</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
@@ -619,39 +621,39 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation type="unfinished"/>
+        <translation>Réduction du fichier de base de données</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation type="unfinished"/>
+        <translation>Informations sur la base de données</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation type="unfinished"/>
+        <translation>Taille du fichier de base de données</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation type="unfinished"/>
+        <translation>Type de la base de données</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation type="unfinished"/>
+        <translation>Progression</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation type="unfinished"/>
+        <translation>Je suis prêt.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation type="unfinished"/>
+        <translation>Nettoyage de la base de données en cours.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation type="unfinished"/>
+        <translation>Le nettoyage de la base de données est terminé.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation type="unfinished"/>
+        <translation>Le nettoyage de la base de données a échoué.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
@@ -1647,7 +1649,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Résultats des opérations</translation>
     </message>
     <message>
         <source>Restore database</source>
@@ -1659,7 +1661,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Aucune opération n&apos;a encore été exécutée.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
@@ -1675,7 +1677,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Sélectionner le répertoire</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
@@ -1887,7 +1889,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Résultats des opérations</translation>
     </message>
     <message>
         <source>No file is selected.</source>
@@ -1895,7 +1897,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Aucune opération n&apos;a encore été exécutée.</translation>
     </message>
     <message>
         <source>Destination file</source>
@@ -2373,7 +2375,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Séparation de barre d&apos;outils</translation>
     </message>
 </context>
 <context>
@@ -3344,7 +3346,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Séparation de barre d&apos;outils</translation>
     </message>
 </context>
 <context>
@@ -3452,7 +3454,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"/>
+        <translation>Séparation de barre d&apos;outils</translation>
     </message>
     <message>
         <source>Move action up</source>

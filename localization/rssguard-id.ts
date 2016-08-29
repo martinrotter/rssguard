@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Pesan baru terunduh</translation>
     </message>
 </context>
 <context>
@@ -289,19 +289,19 @@ Klik disini untuk membuka direktori induk.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat memperbaharui semua item</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Anda tidak dapat memperbaharui semua item karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Memulai pembaharuan otomatis beberapa feed</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>Saya akan dengan otomatis memperbaharui %n feed.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -1603,20 +1603,20 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat membersihkan database</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat membersihkan database, karena aksi genting lain sedang berjalan.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Pembaharuan feed dimulai</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Feed diperbaharui &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -2171,47 +2171,47 @@ Anda harus instal secara manual.</translation>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation>Anda meng-klik beberapa tautan. Anda dapat mengunduh konten tautan atau membukanya di peramban web eksternal.</translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation>Apa aksi yang anda ingin ambil?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Buka di peramban eksternal</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Unduh</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation>Tautan salah</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Hiperlink yang dipilih tidak sah.</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>Tandai pesan sebagai terbaca</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>Tandai pesan sebagai belum terbaca</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>Ganti pentingnya pesan</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Klik tautan ini untuk mengunduh ini atau membukanya dengan peramban eksternal.</translation>
     </message>
     <message>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>gambar</translation>
     </message>
 </context>
 <context>
@@ -2492,7 +2492,7 @@ Anda harus instal secara manual.</translation>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulir</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
@@ -2500,11 +2500,11 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menampilkan lebih banyak pesan</translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menampilkan lebih banyak pesan karena induk feed telah dihapus.</translation>
     </message>
 </context>
 <context>
