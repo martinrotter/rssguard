@@ -11,11 +11,11 @@ ls -lha
 
 git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
-git clone -q --depth=1 --branch=build-artifacts https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.git ./build-artifacts
-curl --upload-file ./rssguard-osx.dmg https://transfer.sh/rssguard-osx.dmg --silent >> ./build-artifacts/macosx-builds.txt
-cat ./build-artifacts/macosx-builds.txt
+git clone -q --depth=1 https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki.git ./build-wiki
+curl --upload-file ./rssguard-osx.dmg https://transfer.sh/rssguard-osx.dmg --silent >> ./build-wiki/Mac-OS-X-development-builds.md
+cat ./build-wiki/Mac-OS-X-development-builds.md
 
-cd ./build-artifacts
-git add *.txt
+cd ./build-wiki
+git add *.*
 git commit -m "New files."
-git push origin build-artifacts
+git push origin master
