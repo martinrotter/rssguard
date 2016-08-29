@@ -222,7 +222,7 @@ QPair<StandardFeed*,QNetworkReply::NetworkError> StandardFeed::guessFeed(const Q
                                                                   password);
   result.second = network_result.first;
 
-  if (result.second == QNetworkReply::NoError) {
+  if (result.second == QNetworkReply::NoError || !feed_contents.isEmpty()) {
     // Feed XML was obtained, now we need to try to guess
     // its encoding before we can read further data.
     QString xml_schema_encoding;

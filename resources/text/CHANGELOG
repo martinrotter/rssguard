@@ -6,6 +6,7 @@ Added:
 ▪ RSS Guard now can be compiled WITHOUT QtWebEngine module. Minimal Qt required was also lowered to 5.6.0.
 
 Changed:
+▪ Obtaining feed metadata including icons is now improved a bit.
 ▪ Big application core refactoring. Many functions rewritten, some bad code removed.
 
 Fixed:
