@@ -100,7 +100,19 @@ isEmpty(DESTDIR) {
 }
 
 isEmpty(USE_WEBENGINE) {
-  USE_WEBENGINE = true
+  USE_WEBENGINE = false
+  message(rssguard: USE_WEBENGINE variable is not set.)
+
+  !lessThan(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
+    qtHaveModule(webenginewidgets) {
+      USE_WEBENGINE = true
+      message("rssguard: WebEngine component IS installed, enabling it.")
+    }
+    else {
+      USE_WEBENGINE = false
+      message("rssguard: WebEngine component is probably NOT installed, disabling it.")
+    }
+  }
 }
 
 message(rssguard: Shadow copy build directory \"$$OUT_PWD\".)
@@ -148,6 +160,7 @@ message(rssguard: Build revision: \"$$APP_REVISION\".)
 message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
 
 QT += core gui widgets sql network xml printsupport
+
 CONFIG *= c++11 debug_and_release warn_on
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION
@@ -544,6 +557,10 @@ win32 {
   zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-win32.zip $$shell_path($$PREFIX/*)
 
   QMAKE_EXTRA_TARGETS += seven_zip zip
+}
+
+equals(USE_WEBENGINE, false) {
+  # Add extra file naming when building without webengine.
 }
 
 # Create NSIS installer target on Windows.
