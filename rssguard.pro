@@ -105,7 +105,7 @@ isEmpty(USE_WEBENGINE) {
   USE_WEBENGINE = false
   message(rssguard: USE_WEBENGINE variable is not set.)
 
-  !lessThan(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
+  !lessThan(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 2) {
     qtHaveModule(webenginewidgets) {
       USE_WEBENGINE = true
       message("rssguard: WebEngine component IS installed, enabling it.")
