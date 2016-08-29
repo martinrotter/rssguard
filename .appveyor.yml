@@ -8,8 +8,6 @@ branches:
   only:
     - master
     - dev
-  except:
-    - build-artifacts
 
 environment:
   QTDIR: 'C:\Qt\5.7\msvc2013'
@@ -33,14 +31,14 @@ build_script:
 
 on_success:
   - dir
-  - git clone -q --depth=1 --branch=build-artifacts https://github.com/martinrotter/rssguard.git c:\rssguard-artifacts
+  - git clone -q --depth=1 https://github.com/martinrotter/rssguard.wiki.git c:\rssguard-wiki
   - git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "rotter.martinos@gmail.com"
   - git config --global user.name "martinrotter"
   - cd ..\rssguard-build
-  - for /f "tokens=*" %%F in ('dir /s /b *.7z') do curl --upload-file %%F https://transfer.sh/rssguard-win32.7z --silent >> ..\rssguard-artifacts\windows-builds.txt
-  - cd ..\rssguard-artifacts
+  - for /f "tokens=*" %%F in ('dir /s /b *.7z') do curl --upload-file %%F https://transfer.sh/rssguard-win32.7z --silent >> ..\rssguard-wiki\Windows-development-builds.md
+  - cd ..\rssguard-wiki
   - git add *.*
   - git commit -m "New files."
-  - git push origin build-artifacts
+  - git push origin master
