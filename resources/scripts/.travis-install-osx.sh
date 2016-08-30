@@ -13,6 +13,7 @@ git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
 git clone -q --depth=1 https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki.git ./build-wiki
 curl --upload-file ./rssguard-osx.dmg https://transfer.sh/rssguard-osx.dmg --silent >> ./build-wiki/Mac-OS-X-development-builds.md
+echo >> ./build-wiki/Mac-OS-X-development-builds.md
 cat ./build-wiki/Mac-OS-X-development-builds.md
 
 cd ./build-wiki
