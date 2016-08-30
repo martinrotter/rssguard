@@ -8,8 +8,9 @@ os:
 compiler:
 - gcc
 branches:
-  only:
+  except:
   - master
+  only:
   - dev
 git:
   submodules: false
