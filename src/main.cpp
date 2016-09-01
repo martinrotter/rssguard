@@ -38,6 +38,7 @@
 #include <QDebug>
 #include <QTimer>
 
+
 int main(int argc, char *argv[]) {
   for (int i = 0; i < argc; i++) {
     const QString str = QString::fromLocal8Bit(argv[i]);

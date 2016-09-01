@@ -54,8 +54,8 @@ Application::Application(const QString &id, int &argc, char **argv)
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
 
 #if defined(USE_WEBENGINE)
-  connect(QWebEngineProfile::defaultProfile(), SIGNAL(downloadRequested(QWebEngineDownloadItem*)),
-          this, SLOT(downloadRequested(QWebEngineDownloadItem*)));
+  connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested,
+          this, &Application::downloadRequested);
 #endif
 }
 

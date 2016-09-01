@@ -150,6 +150,11 @@ isEmpty(APP_REVISION) {
   APP_REVISION = ""
 }
 
+equals(USE_WEBENGINE, false) {
+  # Add extra revision naming when building without webengine.
+  APP_REVISION = $$sprintf('%1-%2', $$APP_REVISION, nowebengine)
+}
+
 DEFINES += APP_REVISION='"\\\"$$APP_REVISION\\\""'
 
 message(rssguard: RSS Guard version is: \"$$APP_VERSION\".)
@@ -559,8 +564,16 @@ win32 {
   QMAKE_EXTRA_TARGETS += seven_zip zip
 }
 
-equals(USE_WEBENGINE, false) {
-  # Add extra file naming when building without webengine.
+unix:!mac {
+  seven_zip.target = 7zip
+  seven_zip.depends = install
+  seven_zip.commands = 7za a -t7z $$TARGET-$$APP_VERSION-$$APP_REVISION-win32.7z $$shell_path($$PREFIX/*)
+
+  zip.target = zip
+  zip.depends = install
+  zip.commands = 7za a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-win32.zip $$shell_path($$PREFIX/*)
+
+  QMAKE_EXTRA_TARGETS += seven_zip zip
 }
 
 # Create NSIS installer target on Windows.
