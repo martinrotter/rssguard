@@ -1,3 +1,13 @@
+3.3.5
+—————
+
+Added:
+
+Changed:
+▪ Made some tweaks regarding bug #41. Number of new messages is now determined in feed downloader working thread too.
+
+Fixed:
+
 3.3.4
 —————
 

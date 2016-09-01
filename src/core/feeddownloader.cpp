@@ -106,11 +106,13 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
                      << feed->id() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  int updated_messages;
+  int updated_messages = feed->updateMessages(messages);
 
+  /*
   QMetaObject::invokeMethod(feed, "updateMessages", Qt::BlockingQueuedConnection,
                             Q_RETURN_ARG(int, updated_messages),
                             Q_ARG(QList<Message>, messages));
+  */
 
   if (updated_messages > 0) {
     m_results.appendUpdatedFeed(QPair<QString,int>(feed->title(), updated_messages));

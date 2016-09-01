@@ -23,6 +23,8 @@
 #include "miscellaneous/databasequeries.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QThread>
+
 
 RecycleBin::RecycleBin(RootItem *parent_item) : RootItem(parent_item), m_totalCount(0),
   m_unreadCount(0), m_contextMenu(QList<QAction*>()) {
@@ -46,7 +48,10 @@ int RecycleBin::countOfAllMessages() const {
 }
 
 void RecycleBin::updateCounts(bool update_total_count) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  bool is_main_thread = QThread::currentThread() == qApp->thread();
+  QSqlDatabase database = is_main_thread ?
+                            qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
+                            qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
 
   m_unreadCount = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId(), false);
 

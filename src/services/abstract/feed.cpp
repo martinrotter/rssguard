@@ -49,16 +49,16 @@ QVariant Feed::data(int column, int role) const {
       switch (status()) {
         case NewMessages:
           return QColor(Qt::blue);
-
+          
         case Error:
         case ParsingError:
         case OtherError:
           return QColor(Qt::red);
-
+          
         default:
           return QVariant();
       }
-
+      
     default:
       return RootItem::data(column, role);
   }
@@ -84,7 +84,7 @@ void Feed::setCountOfUnreadMessages(int count_unread_messages) {
   if (status() == NewMessages && count_unread_messages < countOfUnreadMessages()) {
     setStatus(Normal);
   }
-
+  
   m_unreadCount = count_unread_messages;
 }
 
@@ -128,13 +128,16 @@ void Feed::setUrl(const QString &url) {
 }
 
 void Feed::updateCounts(bool including_total_count) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  bool is_main_thread = QThread::currentThread() == qApp->thread();
+  QSqlDatabase database = is_main_thread ?
+                            qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
+                            qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
   int account_id = getParentServiceRoot()->accountId();
-
+  
   if (including_total_count) {
     setCountOfAllMessages(DatabaseQueries::getMessageCountsForFeed(database, customId(), account_id, true));
   }
-
+  
   setCountOfUnreadMessages(DatabaseQueries::getMessageCountsForFeed(database, customId(), account_id, false));
 }
 
@@ -142,23 +145,25 @@ void Feed::run() {
   qDebug().nospace() << "Downloading new messages for feed "
                      << customId() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
-
+  
   QList<Message> msgs = obtainNewMessages();
   emit messagesObtained(msgs);
 }
 
 int Feed::updateMessages(const QList<Message> &messages) {
-  qDebug().nospace() << "Updating messages in DB. Main thread: " <<
-                        (QThread::currentThread() == qApp->thread() ? "true." : "false.");
+  bool is_main_thread = QThread::currentThread() == qApp->thread();
 
+  qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true." : "false."));
+  
   int custom_id = customId();
   int account_id = getParentServiceRoot()->accountId();
   bool anything_updated = false;
   bool ok;
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  int updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(),
-                                                         &anything_updated, &ok);
-
+  QSqlDatabase database = is_main_thread ?
+                            qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
+                            qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
+  int updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
+  
   if (ok) {
     if (updated_messages > 0) {
       setStatus(NewMessages);
@@ -166,19 +171,19 @@ int Feed::updateMessages(const QList<Message> &messages) {
     else {
       setStatus(Normal);
     }
-
+    
     QList<RootItem*> items_to_update;
-
+    
     updateCounts(true);
     items_to_update.append(this);
-
+    
     if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
       getParentServiceRoot()->recycleBin()->updateCounts(true);
       items_to_update.append(getParentServiceRoot()->recycleBin());
     }
-
+    
     getParentServiceRoot()->itemChanged(items_to_update);
   }
-
+  
   return updated_messages;
 }
