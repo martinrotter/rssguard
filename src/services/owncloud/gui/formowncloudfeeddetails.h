@@ -22,6 +22,8 @@
 
 
 class FormOwnCloudFeedDetails : public FormFeedDetails {
+    Q_OBJECT
+
   public:
     explicit FormOwnCloudFeedDetails(ServiceRoot *service_root, QWidget *parent = 0);
 
