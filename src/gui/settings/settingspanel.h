@@ -37,6 +37,9 @@ class SettingsPanel : public QWidget {
     bool requiresRestart() const;
     bool isDirty() const;
 
+    void setIsDirty(bool is_dirty);
+    void setRequiresRestart(bool requiresRestart);
+
   protected:
     void onBeginLoadSettings();
     void onEndLoadSettings();
@@ -51,9 +54,6 @@ class SettingsPanel : public QWidget {
     // NOTE: This will be probably called by subclasses when user changes some stuff.
     void dirtifySettings();
 
-    // These methods should not be probably called by subclasses.
-    void setIsDirty(bool is_dirty);
-    void setRequiresRestart(bool requiresRestart);
     void requireRestart();
 
   signals:

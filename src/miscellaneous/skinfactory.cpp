@@ -62,18 +62,12 @@ void SkinFactory::loadCurrentSkin() {
   qCritical("Failed to load selected or default skin. Quitting!");
 }
 
-void SkinFactory::loadSkinFromData(const Skin &skin) {
-  // Iterate supported styles and load one.
-  foreach (const QString &style, skin.m_stylesNames) {
-    if (qApp->setStyle(style) != 0) {
-      qDebug("Style '%s' loaded.", qPrintable(style));
-      break;
-    }
-  }
-
+void SkinFactory::loadSkinFromData(const Skin &skin) {  
   if (!skin.m_rawData.isEmpty()) {
     qApp->setStyleSheet(skin.m_rawData);
   }
+
+  qApp->setStyle(qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString());
 }
 
 void SkinFactory::setCurrentSkinName(const QString &skin_name) {
@@ -86,7 +80,6 @@ QString SkinFactory::selectedSkinName() const {
 
 Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
   Skin skin;
-  QString styles;
   QFile skin_file(APP_SKIN_PATH + QDir::separator() + skin_name);
   QDomDocument dokument;
 
@@ -102,10 +95,6 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
 
   // Obtain visible skin name.
   skin.m_visibleName = skin_node.namedItem(QSL("name")).toElement().text();
-
-  // Obtain style name.
-  styles = skin_node.namedItem(QSL("style")).toElement().text();
-  skin.m_stylesNames = styles.split(',', QString::SkipEmptyParts);
 
   // Obtain author.
   skin.m_author = skin_node.namedItem(QSL("author")).namedItem(QSL("name")).toElement().text();

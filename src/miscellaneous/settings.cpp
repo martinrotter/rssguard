@@ -151,6 +151,10 @@ DVALUE(char*) GUI::IconThemeDef  = APP_THEME_DEFAULT;
 DKEY GUI::Skin              = "skin";
 DVALUE(char*) GUI::SkinDef  = APP_SKIN_DEFAULT;
 
+DKEY GUI::Style              = "style";
+DVALUE(char*) GUI::StyleDef  = APP_STYLE_DEFAULT;
+
+
 // General.
 DKEY General::ID                              = "main";
 

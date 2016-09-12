@@ -76,12 +76,13 @@ void FormSettings::applySettings() {
   QStringList panels_for_restart;
 
   foreach (SettingsPanel *panel, m_panels) {
-    if (panel->requiresRestart()) {
-      panels_for_restart.append(panel->title().toLower());
-    }
-
     if (panel->isDirty()) {
       panel->saveSettings();
+    }
+
+    if (panel->requiresRestart()) {
+      panels_for_restart.append(panel->title().toLower());
+      panel->setRequiresRestart(false);
     }
   }
 

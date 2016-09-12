@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ Qt "styles" are now configurable via settings and not hardcoded in "skin" files. Default "style" is now "Fusion" and can be changed to anything else in settings.
 
 Changed:
 ▪ Made some tweaks regarding bug #41. Number of new messages is now determined in feed downloader working thread too.

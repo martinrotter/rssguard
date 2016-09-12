@@ -27,7 +27,6 @@
 struct Skin {
     QString m_baseName;
     QString m_visibleName;
-    QStringList m_stylesNames;
     QString m_author;
     QString m_email;
     QString m_version;

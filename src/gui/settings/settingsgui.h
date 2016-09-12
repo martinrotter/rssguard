@@ -41,9 +41,6 @@ class SettingsGui : public SettingsPanel {
     // Does check of controls before dialog can be submitted.
     bool eventFilter(QObject *obj, QEvent *e);
 
-  private slots:
-    void onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-
   private:
     Ui::SettingsGui *m_ui;
 };

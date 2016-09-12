@@ -191,7 +191,6 @@ void FeedReader::executeNextAutoUpdate() {
 
     // NOTE: OSD/bubble informing about performing
     // of scheduled update can be shown now.
-    // TODO: Co dělat v non-GUI módu.
     qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
                          tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
                          QSystemTrayIcon::Information);

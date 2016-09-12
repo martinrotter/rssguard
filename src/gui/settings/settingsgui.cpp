@@ -29,6 +29,7 @@
 #include "gui/statusbar.h"
 
 #include <QDropEvent>
+#include <QStyleFactory>
 
 
 SettingsGui::SettingsGui(Settings *settings, QWidget *parent) : SettingsPanel(settings, parent),  m_ui(new Ui::SettingsGui) {
@@ -69,9 +70,8 @@ SettingsGui::SettingsGui(Settings *settings, QWidget *parent) : SettingsPanel(se
   connect(m_ui->m_editorFeedsToolbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_editorMessagesToolbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_editorStatusbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_listStyles, &QListWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
 
-  connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::onSkinSelected);
-  connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars, &QStackedWidget::setCurrentIndex);
 }
 
@@ -152,7 +152,6 @@ void SettingsGui::loadSettings() {
 
     if (skin.m_baseName == selected_skin) {
       m_ui->m_treeSkins->setCurrentItem(new_item);
-      m_ui->m_lblActiveContents->setText(skin.m_visibleName);
     }
   }
 
@@ -161,6 +160,18 @@ void SettingsGui::loadSettings() {
     // Currently active skin is NOT available, select another one as selected
     // if possible.
     m_ui->m_treeSkins->setCurrentItem(m_ui->m_treeSkins->topLevelItem(0));
+  }
+
+  // Load styles.
+  foreach (const QString &style_name, QStyleFactory::keys()) {
+    m_ui->m_listStyles->addItem(style_name);
+  }
+
+  QList<QListWidgetItem*> items = m_ui->m_listStyles->findItems(settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString(),
+                                                                Qt::MatchFixedString);
+
+  if (!items.isEmpty()) {
+    m_ui->m_listStyles->setCurrentItem(items.at(0));
   }
 
   // Load tab settings.
@@ -222,13 +233,25 @@ void SettingsGui::saveSettings() {
   }
 
   // Save and activate new skin.
-  if (m_ui->m_treeSkins->selectedItems().size() > 0) {
+  if (!m_ui->m_treeSkins->selectedItems().isEmpty()) {
     const Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::UserRole).value<Skin>();
 
     if (qApp->skins()->selectedSkinName() != active_skin.m_baseName) {
       qApp->skins()->setCurrentSkinName(active_skin.m_baseName);
       requireRestart();
     }
+  }
+
+  // Set new style.
+  if (!m_ui->m_listStyles->selectedItems().isEmpty()) {
+    const QString new_style = m_ui->m_listStyles->currentItem()->text();
+    const QString old_style = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
+
+    if (old_style != new_style) {
+      requireRestart();
+    }
+
+    qApp->settings()->setValue(GROUP(GUI), GUI::Style, new_style);
   }
 
   // Save tab settings.
@@ -245,13 +268,4 @@ void SettingsGui::saveSettings() {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
 
   onEndSaveSettings();
-}
-
-void SettingsGui::onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous) {
-  Q_UNUSED(previous)
-
-  if (current != nullptr) {
-    const Skin skin = current->data(0, Qt::UserRole).value<Skin>();
-    m_ui->m_lblSelectedContents->setText(skin.m_visibleName);
-  }
 }

@@ -69,96 +69,64 @@
            <property name="fieldGrowthPolicy">
             <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
-           <item row="0" column="0" colspan="2">
-            <widget class="QGroupBox" name="groupBox">
-             <property name="title">
-              <string>Icons</string>
+           <item row="0" column="0">
+            <widget class="QLabel" name="m_lblIconTheme">
+             <property name="text">
+              <string>Icon theme</string>
              </property>
-             <layout class="QFormLayout" name="formLayout_8">
-              <property name="fieldGrowthPolicy">
-               <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-              </property>
-              <item row="0" column="0">
-               <widget class="QLabel" name="m_lblIconTheme">
-                <property name="text">
-                 <string>Icon theme</string>
-                </property>
-                <property name="buddy">
-                 <cstring>m_cmbIconTheme</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="m_cmbIconTheme"/>
-              </item>
-             </layout>
+             <property name="buddy">
+              <cstring>m_cmbIconTheme</cstring>
+             </property>
             </widget>
            </item>
-           <item row="1" column="0" colspan="2">
-            <widget class="QGroupBox" name="groupBox_2">
-             <property name="title">
-              <string>Skins</string>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="m_cmbIconTheme"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="m_lblStyle">
+             <property name="text">
+              <string>Style</string>
              </property>
-             <layout class="QFormLayout" name="formLayout_9">
-              <item row="0" column="0" colspan="2">
-               <widget class="QTreeWidget" name="m_treeSkins">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="indentation">
-                 <number>0</number>
-                </property>
-                <property name="rootIsDecorated">
-                 <bool>false</bool>
-                </property>
-                <property name="itemsExpandable">
-                 <bool>false</bool>
-                </property>
-                <property name="expandsOnDoubleClick">
-                 <bool>false</bool>
-                </property>
-                <attribute name="headerMinimumSectionSize">
-                 <number>80</number>
-                </attribute>
-                <column>
-                 <property name="text">
-                  <string notr="true">1</string>
-                 </property>
-                </column>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="m_lblActiveCaption">
-                <property name="text">
-                 <string>Active skin:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="m_lblActiveContents">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="m_lblSelectedCaption">
-                <property name="text">
-                 <string>Selected skin:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="m_lblSelectedContents">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QListWidget" name="m_listStyles"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="m_lblSkin">
+             <property name="text">
+              <string>Skin</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QTreeWidget" name="m_treeSkins">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="indentation">
+              <number>0</number>
+             </property>
+             <property name="rootIsDecorated">
+              <bool>false</bool>
+             </property>
+             <property name="itemsExpandable">
+              <bool>false</bool>
+             </property>
+             <property name="expandsOnDoubleClick">
+              <bool>false</bool>
+             </property>
+             <attribute name="headerMinimumSectionSize">
+              <number>80</number>
+             </attribute>
+             <column>
+              <property name="text">
+               <string notr="true">1</string>
+              </property>
+             </column>
             </widget>
            </item>
           </layout>
@@ -385,6 +353,23 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_tabUi</tabstop>
+  <tabstop>m_scrollIconSkins</tabstop>
+  <tabstop>m_cmbIconTheme</tabstop>
+  <tabstop>m_listStyles</tabstop>
+  <tabstop>m_treeSkins</tabstop>
+  <tabstop>m_checkHideWhenMinimized</tabstop>
+  <tabstop>m_checkHidden</tabstop>
+  <tabstop>m_checkEnableNotifications</tabstop>
+  <tabstop>m_checkNewTabDoubleClick</tabstop>
+  <tabstop>m_checkHideTabBarIfOneTabVisible</tabstop>
+  <tabstop>m_checkCloseTabsDoubleClick</tabstop>
+  <tabstop>m_checkCloseTabsMiddleClick</tabstop>
+  <tabstop>m_cmbToolbarButtonStyle</tabstop>
+  <tabstop>m_cmbSelectToolBar</tabstop>
+  <tabstop>m_grpTray</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -40,7 +40,6 @@ void SettingsPanel::onBeginSaveSettings() {
 
 void SettingsPanel::onEndSaveSettings() {
   setIsDirty(false);
-  setRequiresRestart(false);
 }
 
 void SettingsPanel::dirtifySettings() {

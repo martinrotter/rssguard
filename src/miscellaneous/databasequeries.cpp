@@ -607,7 +607,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   if (db.exec("UPDATE Messages "
               "SET custom_id = (SELECT id FROM Messages t WHERE t.id = Messages.id) "
               "WHERE Messages.custom_id IS NULL OR Messages.custom_id = '';").lastError().isValid()) {
-    qWarning("Failed to set custom ID for all messages.");
+    qWarning("Failed to set custom ID for all messages: '%s'.", qPrintable(db.lastError().text()));
   }
 
   if (!db.commit()) {

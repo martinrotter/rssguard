@@ -169,6 +169,9 @@ namespace GUI {
 
   KEY Skin;
   VALUE(char*) SkinDef;
+
+  KEY Style;
+  VALUE(char*) StyleDef;
 }
 
 // General.
