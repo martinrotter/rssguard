@@ -311,7 +311,6 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
 
 QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
                                                                      const QStringList &custom_ids) {
-  QList<QVariant> var_ids;
   QJsonObject json;
   QJsonArray ids;
   QByteArray raw_output;
@@ -565,7 +564,7 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
     msg.m_contents = message_map["body"].toString();
     msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].toDouble() * 1000);
     msg.m_createdFromFeed = true;
-    msg.m_customId = message_map["id"].toString();
+    msg.m_customId = QString::number(message_map["id"].toInt());
     msg.m_customHash = message_map["guidHash"].toString();
 
     QString enclosure_link = message_map["enclosureLink"].toString();
@@ -579,7 +578,7 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
       msg.m_enclosures.append(enclosure);
     }
 
-    msg.m_feedId = message_map["feedId"].toString();
+    msg.m_feedId = QString::number(message_map["feedId"].toInt());
     msg.m_isImportant = message_map["starred"].toBool();
     msg.m_isRead = !message_map["unread"].toBool();
     msg.m_title = message_map["title"].toString();

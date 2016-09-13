@@ -149,14 +149,12 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &u
 }
 
 NetworkResult NetworkFactory::performNetworkOperation(const QString &url, int timeout, const QByteArray &input_data,
-                                         const QString &input_content_type, QByteArray &output,
-                                         QNetworkAccessManager::Operation operation, bool protected_contents,
-                                         const QString &username, const QString &password, bool set_basic_header) {
+                                                      const QString &input_content_type, QByteArray &output,
+                                                      QNetworkAccessManager::Operation operation, bool protected_contents,
+                                                      const QString &username, const QString &password, bool set_basic_header) {
   Downloader downloader;
   QEventLoop loop;
   NetworkResult result;
-
-  QString str(input_data);
 
   downloader.appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
 

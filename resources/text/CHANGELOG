@@ -8,6 +8,7 @@ Changed:
 ▪ Made some tweaks regarding bug #41. Number of new messages is now determined in feed downloader working thread too.
 
 Fixed:
+▪ Fixed problem with updating states of messages in Nextcloud. Remove and re-add your account to fix the problem!! (bug #59)
 
 3.3.4
 —————
