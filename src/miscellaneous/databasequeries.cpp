@@ -529,6 +529,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         is_read_existing_message = query_select_with_url.value(2).toBool();
         is_important_existing_message = query_select_with_url.value(3).toBool();
       }
+      else if (query_select_with_url.lastError().isValid()) {
+        qDebug("Failed to check for existing message in DB via URL: '%s'.", qPrintable(query_select_with_url.lastError().text()));
+      }
 
       query_select_with_url.finish();
     }
@@ -543,6 +546,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         date_existing_message = query_select_with_id.value(1).value<qint64>();
         is_read_existing_message = query_select_with_id.value(2).toBool();
         is_important_existing_message = query_select_with_id.value(3).toBool();
+      }
+      else if (query_select_with_id.lastError().isValid()) {
+        qDebug("Failed to check for existing message in DB via ID: '%s'.", qPrintable(query_select_with_id.lastError().text()));
       }
 
       query_select_with_id.finish();
@@ -573,6 +579,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         if (query_update.exec() && !message.m_isRead) {
           updated_messages++;
         }
+        else if (query_update.lastError().isValid()) {
+          qDebug("Failed to update message in DB: '%s'.", qPrintable(query_update.lastError().text()));
+        }
 
         query_update.finish();
         qDebug("Updating message '%s' in DB.", qPrintable(message.m_title));
@@ -595,6 +604,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         updated_messages++;
+      }
+      else if (query_insert.lastError().isValid()) {
+        qDebug("Failed to insert message to DB: '%s'.", qPrintable(query_insert.lastError().text()));
       }
 
       query_insert.finish();
