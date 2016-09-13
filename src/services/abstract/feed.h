@@ -44,7 +44,7 @@ class Feed : public RootItem, public QRunnable {
     enum Status {
       Normal        = 0,
       NewMessages   = 1,
-      Error         = 2,
+      NetworkError  = 2,
       ParsingError  = 3,
       OtherError    = 4
     };
@@ -83,14 +83,14 @@ class Feed : public RootItem, public QRunnable {
 
   public slots:
     void updateCounts(bool including_total_count);
-    int updateMessages(const QList<Message> &messages);
+    int updateMessages(const QList<Message> &messages, bool error_during_obtaining);
 
   private:
     // Performs synchronous obtaining of new messages for this feed.
-    virtual QList<Message> obtainNewMessages() = 0;
+    virtual QList<Message> obtainNewMessages(bool *error_during_obtaining) = 0;
 
   signals:
-    void messagesObtained(QList<Message> messages);
+    void messagesObtained(QList<Message> messages, bool error_during_obtaining);
 
   private:
     QString m_url;

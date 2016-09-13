@@ -47,7 +47,7 @@ class TtRssFeed : public Feed {
     bool removeItself();
 
   private:
-    QList<Message> obtainNewMessages();
+    QList<Message> obtainNewMessages(bool *error_during_obtaining);
 };
 
 #endif // TTRSSFEED_H

@@ -50,7 +50,7 @@ QVariant Feed::data(int column, int role) const {
         case NewMessages:
           return QColor(Qt::blue);
           
-        case Error:
+        case NetworkError:
         case ParsingError:
         case OtherError:
           return QColor(Qt::red);
@@ -146,44 +146,44 @@ void Feed::run() {
                      << customId() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
   
-  QList<Message> msgs = obtainNewMessages();
-  emit messagesObtained(msgs);
+  bool error_during_obtaining;
+  QList<Message> msgs = obtainNewMessages(&error_during_obtaining);
+  emit messagesObtained(msgs, error_during_obtaining);
 }
 
-int Feed::updateMessages(const QList<Message> &messages) {
+int Feed::updateMessages(const QList<Message> &messages, bool error_during_obtaining) {
+  QList<RootItem*> items_to_update;
+  int updated_messages = 0;
   bool is_main_thread = QThread::currentThread() == qApp->thread();
 
   qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true." : "false."));
   
-  int custom_id = customId();
-  int account_id = getParentServiceRoot()->accountId();
-  bool anything_updated = false;
-  bool ok;
-  QSqlDatabase database = is_main_thread ?
-                            qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
-                            qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
-  int updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
-  
-  if (ok) {
-    if (updated_messages > 0) {
-      setStatus(NewMessages);
+  if (!error_during_obtaining) {
+    bool anything_updated = false;
+    bool ok = true;
+
+    if (!messages.isEmpty()) {
+      int custom_id = customId();
+      int account_id = getParentServiceRoot()->accountId();
+      QSqlDatabase database = is_main_thread ?
+                                qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
+                                qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
+      updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
     }
-    else {
-      setStatus(Normal);
+
+    if (ok) {
+      setStatus(updated_messages > 0 ? NewMessages : Normal);
+      updateCounts(true);
+
+      if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
+        getParentServiceRoot()->recycleBin()->updateCounts(true);
+        items_to_update.append(getParentServiceRoot()->recycleBin());
+      }
     }
-    
-    QList<RootItem*> items_to_update;
-    
-    updateCounts(true);
-    items_to_update.append(this);
-    
-    if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
-      getParentServiceRoot()->recycleBin()->updateCounts(true);
-      items_to_update.append(getParentServiceRoot()->recycleBin());
-    }
-    
-    getParentServiceRoot()->itemChanged(items_to_update);
   }
+
+  items_to_update.append(this);
+  getParentServiceRoot()->itemChanged(items_to_update);
   
   return updated_messages;
 }

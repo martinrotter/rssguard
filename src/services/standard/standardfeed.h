@@ -142,7 +142,7 @@ class StandardFeed : public Feed {
     void fetchMetadataForItself();
 
   private:
-    QList<Message> obtainNewMessages();
+    QList<Message> obtainNewMessages(bool *error_during_obtaining);
 
   private:
     bool m_passwordProtected;

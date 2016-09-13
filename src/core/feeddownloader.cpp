@@ -88,7 +88,7 @@ void FeedDownloader::stopRunningUpdate() {
   m_feeds.clear();
 }
 
-void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
+void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages, bool error_during_obtaining) {
   QMutexLocker locker(m_mutex);
 
   m_feedsUpdated++;
@@ -106,7 +106,7 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message> &messages) {
                      << feed->id() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  int updated_messages = feed->updateMessages(messages);
+  int updated_messages = feed->updateMessages(messages, error_during_obtaining);
 
   /*
   QMetaObject::invokeMethod(feed, "updateMessages", Qt::BlockingQueuedConnection,

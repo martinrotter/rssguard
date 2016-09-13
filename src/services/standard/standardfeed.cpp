@@ -430,7 +430,7 @@ bool StandardFeed::editItself(StandardFeed *new_feed_data) {
   return true;
 }
 
-QList<Message> StandardFeed::obtainNewMessages() {
+QList<Message> StandardFeed::obtainNewMessages(bool *error_during_obtaining) {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents,
@@ -438,11 +438,13 @@ QList<Message> StandardFeed::obtainNewMessages() {
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
-    setStatus(Error);
+    setStatus(NetworkError);
+    *error_during_obtaining = true;
     return QList<Message>();
   }
   else if (status() != NewMessages) {
     setStatus(Normal);
+    *error_during_obtaining = false;
   }
 
   // Encode downloaded data for further parsing.
@@ -507,4 +509,6 @@ StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(nullptr) {
 
   setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
+
+  m_networkError = QNetworkReply::NoError;
 }

@@ -71,7 +71,7 @@ class FeedDownloader : public QObject {
     void stopRunningUpdate();
 
   private slots:
-    void oneFeedUpdateFinished(const QList<Message> &messages);
+    void oneFeedUpdateFinished(const QList<Message> &messages, bool error_during_obtaining);
 
   signals:
     // Emitted if feed updates started.

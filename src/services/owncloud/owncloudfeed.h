@@ -45,7 +45,7 @@ class OwnCloudFeed : public Feed {
     OwnCloudServiceRoot *serviceRoot() const;
 
   private:
-    QList<Message> obtainNewMessages();
+    QList<Message> obtainNewMessages(bool *error_during_obtaining);
 };
 
 #endif // OWNCLOUDFEED_H

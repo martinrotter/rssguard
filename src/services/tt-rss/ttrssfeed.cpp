@@ -156,7 +156,7 @@ bool TtRssFeed::editItself(TtRssFeed *new_feed_data) {
   }
 }
 
-QList<Message> TtRssFeed::obtainNewMessages() {
+QList<Message> TtRssFeed::obtainNewMessages(bool *error_during_obtaining) {
   QList<Message> messages;
   int newly_added_messages = 0;
   int limit = MAX_MESSAGES;
@@ -167,7 +167,8 @@ QList<Message> TtRssFeed::obtainNewMessages() {
                                                                                  true, true, false);
 
     if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
-      setStatus(Feed::Error);
+      setStatus(Feed::NetworkError);
+      *error_during_obtaining = true;
       serviceRoot()->itemChanged(QList<RootItem*>() << this);
       return QList<Message>();
     }
@@ -181,6 +182,7 @@ QList<Message> TtRssFeed::obtainNewMessages() {
   }
   while (newly_added_messages > 0);
 
+  *error_during_obtaining = false;
   return messages;
 }
 
