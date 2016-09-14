@@ -3090,7 +3090,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished">Icons </translation>
+        <translation type="obsolete">Icons </translation>
     </message>
     <message>
         <source>Icon theme</source>
@@ -3098,15 +3098,15 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished">Skins</translation>
+        <translation type="obsolete">Skins</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished">Active skin </translation>
+        <translation type="obsolete">Active skin </translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished">Selected skin:</translation>
+        <translation type="obsolete">Selected skin:</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3224,6 +3224,14 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
         <source>User interface</source>
         <translation type="unfinished">User interface</translation>
+    </message>
+    <message>
+        <source>Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skin</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

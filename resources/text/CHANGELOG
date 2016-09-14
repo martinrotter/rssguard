@@ -1,3 +1,9 @@
+3.3.6
+—————
+
+Fixed:
+▪ Fixed problem with strings in core being rendered untranslated. (bug #60)
+
 3.3.5
 —————
 
