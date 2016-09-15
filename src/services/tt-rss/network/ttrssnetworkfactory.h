@@ -171,7 +171,8 @@ class TtRssNetworkFactory {
     //TtRssGetConfigResponse getConfig();
 
   private:
-    QString m_url;
+    QString m_bareUrl;
+    QString m_fullUrl;
     QString m_username;
     QString m_password;
     bool m_forceServerSideUpdate;

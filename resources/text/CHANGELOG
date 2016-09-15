@@ -1,6 +1,9 @@
 3.3.6
 —————
 
+Changed:
+▪ TT-RSS plugin now does NOT require service URL to be entered with "/api/" suffix. In other words, do not use that suffix now, RSS Guard will add it silently when it needs to.
+
 Fixed:
 ▪ Fixed problem with strings in core being rendered untranslated. (bug #60)
 
