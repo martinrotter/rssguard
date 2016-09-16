@@ -642,8 +642,8 @@ void FormMain::createConnections() {
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(deleteSelectedMessages()));
   connect(m_ui->m_actionMarkSelectedMessagesAsRead,
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(markSelectedMessagesRead()));
-  connect(m_ui->m_actionMarkSelectedMessagesAsUnread,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(markSelectedMessagesUnread()));
+  connect(m_ui->m_actionMarkSelectedMessagesAsUnread, &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::markSelectedMessagesUnread);
   connect(m_ui->m_actionOpenSelectedSourceArticlesExternally,
           SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(openSelectedSourceMessagesExternally()));
   connect(m_ui->m_actionOpenSelectedMessagesInternally,
