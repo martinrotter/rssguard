@@ -596,6 +596,17 @@ win32 {
   QMAKE_EXTRA_TARGETS += windows_all
 }
 
+# Create "make dmg" target on Mac OS X.
+mac {
+  dmg.target = dmg
+  dmg.depends = install
+  dmg.commands = \
+    macdeployqt rssguard.app -dmg && \
+    mv rssguard.dmg $$TARGET-$$APP_VERSION-$$APP_REVISION-osx.dmg
+
+  QMAKE_EXTRA_TARGETS += dmg
+}
+
 # Install all files on Windows.
 win32 {
   target.path = $$PREFIX
