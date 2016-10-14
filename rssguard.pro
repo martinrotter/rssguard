@@ -726,7 +726,8 @@ unix:!mac {
 
 mac {
   CONFIG += app_bundle
-  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10
+  QMAKE_RPATHDIR += @executable_path/../Frameworks
 
   QMAKE_INFO_PLIST = resources/macosx/Info.plist.in
   ICON = resources/macosx/$${TARGET}.icns
