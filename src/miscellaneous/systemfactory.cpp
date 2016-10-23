@@ -35,7 +35,6 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QFutureWatcher>
-#include <QtConcurrent/QtConcurrentRun>
 #include <QDesktopServices>
 
 
