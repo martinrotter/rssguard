@@ -628,6 +628,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
     if (ok != nullptr) {
       *ok = false;
+      updated_messages = 0;
     }
   }
   else {
