@@ -624,7 +624,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
   if (!db.commit()) {
     db.rollback();
-    qDebug("Transaction commit for message downloader failed.");
+    qDebug("Transaction commit for message downloader failed: '%s'.", qPrintable(db.lastError().text()));
 
     if (ok != nullptr) {
       *ok = false;
