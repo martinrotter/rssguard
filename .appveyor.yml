@@ -2,7 +2,7 @@ version: 666.{build}
 skip_tags: true
 image: Visual Studio 2013
 clone_depth: 1
-clone_folder: c:\rssguard
+clone_folder: C:\rssguard
 
 branches:
   only:
@@ -15,6 +15,10 @@ environment:
   COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86'
   access_token:
     secure: XCWdr9wPgK4gm6289WXCg2vtMA02eBSnj6eKHC+ps6Z5lgw0jsK09UQ5y9E9ZFwS
+  matrix:
+    - qmake_args: 'USE_WEBENGINE=false'
+    
+    - qmake_args: 'USE_WEBENGINE=true'
    
 build_script:
   - git submodule update --init --recursive
@@ -25,19 +29,19 @@ build_script:
   - cd ..
   - mkdir rssguard-build
   - cd rssguard-build
-  - C:\Qt\5.7\msvc2013\bin\qmake.exe C:\rssguard
+  - C:\Qt\5.7\msvc2013\bin\qmake.exe C:\rssguard "%qmake_args%"
   - nmake
   - nmake windows_all
 
 on_success:
   - dir
-  - git clone -q --depth=1 https://github.com/martinrotter/rssguard.wiki.git c:\rssguard-wiki
+  - git clone -q --depth=1 https://github.com/martinrotter/rssguard.wiki.git C:\rssguard-wiki
   - git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "rotter.martinos@gmail.com"
   - git config --global user.name "martinrotter"
   - cd ..\rssguard-build
-  - for /f "tokens=*" %%F in ('dir /s /b *.7z') do curl --upload-file %%F https://transfer.sh/rssguard-win32.7z --silent >> ..\rssguard-wiki\Windows-development-builds.md
+  - for /f "tokens=*" %%F in ('dir /b *.7z') do curl --upload-file %%F https://transfer.sh/%%F --silent >> ..\rssguard-wiki\Windows-development-builds.md
   - echo.>> ..\rssguard-wiki\Windows-development-builds.md
   - cd ..\rssguard-wiki
   - git add *.*

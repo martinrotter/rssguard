@@ -3,16 +3,21 @@
 mkdir rssguard-build && cd rssguard-build
 qmake ..
 make
-make install
-macdeployqt rssguard.app -dmg
-mv rssguard.dmg rssguard-osx.dmg
+make dmg
 
 ls -lha
+
+otool -L rssguard.app/Contents/MacOS/rssguard
 
 git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
 git clone -q --depth=1 https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki.git ./build-wiki
-curl --upload-file ./rssguard-osx.dmg https://transfer.sh/rssguard-osx.dmg --silent >> ./build-wiki/Mac-OS-X-development-builds.md
+
+set -- *.dmg
+dmgname="$1"
+echo $dmgname
+
+curl --upload-file ./$dmgname https://transfer.sh/$dmgname --silent >> ./build-wiki/Mac-OS-X-development-builds.md
 echo >> ./build-wiki/Mac-OS-X-development-builds.md
 cat ./build-wiki/Mac-OS-X-development-builds.md
 

@@ -40,7 +40,7 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   m_ui->m_txtHttpPassword->lineEdit()->setPlaceholderText(tr("HTTP authentication password"));
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
   m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account"));
-  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("FULL URL of your TT-RSS instance WITH trailing \"/api/\" string"));
+  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your TT-RSS instance WITHOUT trailing \"/api/\" string"));
   m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Information,
                                    tr("No test done yet."),
                                    tr("Here, results of connection test are shown."));
@@ -254,8 +254,8 @@ void FormEditAccount::onUrlChanged() {
   if (url.isEmpty()) {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL cannot be empty."));
   }
-  else if (!url.endsWith(QL1S("/api/"))) {
-    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Warning, tr("URL should end with \"/api/\"."));
+  else if (url.endsWith(QL1S("/api/")) || url.endsWith(QL1S("/api"))) {
+    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Warning, tr("URL should NOT end with \"/api/\"."));
   }
   else {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Ok, tr("URL is okay."));

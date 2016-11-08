@@ -73,7 +73,7 @@ APP_LOW_NAME                  = "rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2016 $$APP_AUTHOR"
-APP_VERSION                   = "3.3.5"
+APP_VERSION                   = "3.3.6"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
 APP_URL                       = "https://github.com/martinrotter/rssguard"
@@ -596,6 +596,17 @@ win32 {
   QMAKE_EXTRA_TARGETS += windows_all
 }
 
+# Create "make dmg" target on Mac OS X.
+mac {
+  dmg.target = dmg
+  dmg.depends = install
+  dmg.commands = \
+    macdeployqt rssguard.app -dmg && \
+    mv rssguard.dmg $$TARGET-$$APP_VERSION-$$APP_REVISION-osx.dmg
+
+  QMAKE_EXTRA_TARGETS += dmg
+}
+
 # Install all files on Windows.
 win32 {
   target.path = $$PREFIX
@@ -715,7 +726,8 @@ unix:!mac {
 
 mac {
   CONFIG += app_bundle
-  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10
+  QMAKE_RPATHDIR += @executable_path/../Frameworks
 
   QMAKE_INFO_PLIST = resources/macosx/Info.plist.in
   ICON = resources/macosx/$${TARGET}.icns

@@ -75,6 +75,9 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
+  // Load localization and setup locale before any widget is constructed.
+  qApp->localization()->loadActiveLanguage();
+
   application.setFeedReader(new FeedReader(&application));
 
   QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -89,9 +92,6 @@ int main(int argc, char *argv[]) {
   qApp->icons()->setupSearchPaths();
   qApp->icons()->loadCurrentIconTheme();
   qApp->skins()->loadCurrentSkin();
-
-  // Load localization and setup locale before any widget is constructed.
-  qApp->localization()->loadActiveLanguage();
 
   // These settings needs to be set before any QSettings object.
   Application::setApplicationName(APP_NAME);

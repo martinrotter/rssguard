@@ -82,17 +82,22 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
 
   // Now, we must find the same previously focused message.
   if (selected_message.m_id > 0) {
-    for (int i = 0; i < m_proxyModel->rowCount(); i++) {
-      QModelIndex msg_idx = m_proxyModel->index(i, MSG_DB_TITLE_INDEX);
-      Message msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(msg_idx).row());
+    if (m_proxyModel->rowCount() == 0) {
+      current_index = QModelIndex();
+    }
+    else {
+      for (int i = 0; i < m_proxyModel->rowCount(); i++) {
+        QModelIndex msg_idx = m_proxyModel->index(i, MSG_DB_TITLE_INDEX);
+        Message msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(msg_idx).row());
 
-      if (msg.m_id == selected_message.m_id) {
-        current_index = msg_idx;
-        break;
-      }
+        if (msg.m_id == selected_message.m_id) {
+          current_index = msg_idx;
+          break;
+        }
 
-      if (i == m_proxyModel->rowCount() - 1) {
-        current_index = QModelIndex();
+        if (i == m_proxyModel->rowCount() - 1) {
+          current_index = QModelIndex();
+        }
       }
     }
   }
@@ -340,16 +345,21 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
 
-  if (read == RootItem::Unread) {
-    // User selected to mark some messages as unread, if one
-    // of them will be marked as current, then it will be read again.
-    m_batchUnreadSwitch = true;
-  }
+  if (current_index.isValid()) {
+    if (read == RootItem::Unread) {
+      // User selected to mark some messages as unread, if one
+      // of them will be marked as current, then it will be read again.
+      m_batchUnreadSwitch = true;
+    }
 
-  setCurrentIndex(current_index);
-  scrollTo(current_index);
-  reselectIndexes(selected_indexes);
-  m_batchUnreadSwitch = false;
+    setCurrentIndex(current_index);
+    scrollTo(current_index);
+    reselectIndexes(selected_indexes);
+    m_batchUnreadSwitch = false;
+  }
+  else {
+    emit currentMessageRemoved();
+  }
 }
 
 void MessagesView::deleteSelectedMessages() {
@@ -425,11 +435,18 @@ void MessagesView::switchSelectedMessagesImportance() {
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
                                                                    mapped_current_index.column()));
 
-  m_batchUnreadSwitch = true;
-  setCurrentIndex(current_index);
-  scrollTo(current_index);
-  reselectIndexes(selected_indexes);
-  m_batchUnreadSwitch = false;
+  if (current_index.isValid()) {
+    m_batchUnreadSwitch = true;
+    scrollTo(current_index);
+    setCurrentIndex(current_index);
+    reselectIndexes(QModelIndexList() << selected_indexes);
+    m_batchUnreadSwitch = false;
+  }
+  else {
+    // Messages were probably removed from the model, nothing can
+    // be selected and no message can be displayed.
+    emit currentMessageRemoved();
+  }
 }
 
 void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
