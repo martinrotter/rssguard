@@ -27,6 +27,7 @@
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/webfactory.h"
 
 // Needed for setting ini file format on Mac OS.
 #ifdef Q_OS_MAC
@@ -86,6 +87,9 @@ int main(int argc, char *argv[]) {
   // Register needed metatypes.
   qRegisterMetaType<QList<Message> >("QList<Message>");
   qRegisterMetaType<QList<RootItem*> >("QList<RootItem*>");
+
+  // Just call this instance, so that is is created in main GUI thread.
+  WebFactory::instance();
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
