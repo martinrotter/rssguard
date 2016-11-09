@@ -94,7 +94,10 @@ void WebViewer::loadMessages(const QList<Message> &messages) {
 
       if (enclosure.m_mimeType.startsWith(QSL("image/"))) {
         // Add thumbnail image.
-        enclosure_images += skin.m_enclosureImageMarkup.arg(enclosure.m_url, enclosure.m_mimeType)  ;
+        enclosure_images += skin.m_enclosureImageMarkup.arg(
+                              enclosure.m_url,
+                              enclosure.m_mimeType,
+                              qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toString());
       }
     }
 

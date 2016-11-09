@@ -49,6 +49,9 @@ DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef    = false;
 // Messages.
 DKEY Messages::ID                            = "messages";
 
+DKEY Messages::MessageHeadImageHeight                = "message_head_image_height";
+DVALUE(int) Messages::MessageHeadImageHeightDef      = 36;
+
 DKEY Messages::UseCustomDate                 = "use_custom_date";
 DVALUE(bool) Messages::UseCustomDateDef      = false;
 

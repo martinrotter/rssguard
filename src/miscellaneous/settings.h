@@ -66,6 +66,9 @@ namespace Feeds {
 namespace Messages {
   KEY ID;
 
+  KEY MessageHeadImageHeight;
+  VALUE(int) MessageHeadImageHeightDef;
+
   KEY UseCustomDate;
   VALUE(bool) UseCustomDateDef;
 
