@@ -68,3 +68,7 @@ void Mutex::setUnlocked() {
 bool Mutex::isLocked() const {
   return m_isLocked;
 }
+
+Mutex::operator QMutex*() const {
+  return m_mutex.data();
+}

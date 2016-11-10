@@ -20,6 +20,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "gui/plaintoolbutton.h"
+#include "miscellaneous/mutex.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QToolButton>
@@ -28,7 +29,7 @@
 #include <QThread>
 
 
-StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
+StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent), m_mutex(new Mutex(QMutex::NonRecursive, this)) {
   setSizeGripEnabled(false);
   setContentsMargins(2, 0, 2, 2);
 
@@ -72,11 +73,11 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
 }
 
 StatusBar::~StatusBar() {
-  clear();
+  clear();  
   qDebug("Destroying StatusBar instance.");
 }
 
-QList<QAction*> StatusBar::availableActions() const {
+QList<QAction*> StatusBar::availableActions() const { 
   QList<QAction*> actions = qApp->userActions();
 
   // Now, add placeholder actions for custom stuff.
@@ -91,11 +92,15 @@ QList<QAction*> StatusBar::changeableActions() const {
 }
 
 void StatusBar::saveChangeableActions(const QStringList &actions) {
+  QMutexLocker locker(*m_mutex);
+
   qApp->settings()->setValue(GROUP(GUI), GUI::StatusbarActions, actions.join(QSL(",")));
   loadChangeableActions(actions);
 }
 
 void StatusBar::loadChangeableActions() {
+  QMutexLocker locker(*m_mutex);
+
   QStringList action_names = qApp->settings()->value(GROUP(GUI), SETTING(GUI::StatusbarActions)).toString().split(',',
                                                                                                                   QString::SkipEmptyParts);
 
@@ -105,6 +110,9 @@ void StatusBar::loadChangeableActions() {
 void StatusBar::loadChangeableActions(const QStringList &action_names) {
   clear();
 
+  bool progress_visible = actions().contains(m_barProgressFeedsAction) &&
+                          m_lblProgressFeeds->isVisible() &&
+                          m_barProgressFeeds->isVisible();
   QList<QAction*> available_actions = availableActions();
 
   // Iterate action names and add respectable actions into the toolbar.
@@ -123,7 +131,7 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
       widget_to_add = m_barProgressFeeds;
       action_to_add = m_barProgressFeedsAction;
 
-      widget_to_add->setVisible(false);
+      widget_to_add->setVisible(progress_visible);
     }
     else if (matching_action == m_lblProgressDownloadAction) {
       widget_to_add = m_lblProgressDownload;
@@ -135,7 +143,7 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
       widget_to_add = m_lblProgressFeeds;
       action_to_add = m_lblProgressFeedsAction;
 
-      widget_to_add->setVisible(false);
+      widget_to_add->setVisible(progress_visible);
     }
     else {
       if (action_name == SEPARATOR_ACTION_NAME) {

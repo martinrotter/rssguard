@@ -37,6 +37,8 @@ class Mutex : public QObject {
     // Identifies if mutes is locked or not.
     bool isLocked() const;
 
+    operator QMutex*() const;
+
   public slots:
     void lock();
     void unlock();

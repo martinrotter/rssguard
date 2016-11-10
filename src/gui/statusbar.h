@@ -22,9 +22,11 @@
 
 #include "gui/basetoolbar.h"
 
+
 class QProgressBar;
 class PlainToolButton;
 class QLabel;
+class Mutex;
 
 class StatusBar : public QStatusBar, public BaseBar {
     Q_OBJECT
@@ -53,6 +55,8 @@ class StatusBar : public QStatusBar, public BaseBar {
   private:
     void clear();
     void loadChangeableActions(const QStringList &action_names);
+
+    Mutex *m_mutex;
 
     QProgressBar *m_barProgressFeeds;
     QAction *m_barProgressFeedsAction;

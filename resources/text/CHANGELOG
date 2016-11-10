@@ -9,6 +9,8 @@ Changed:
 
 Fixed:
 ▪ Fixed problem with strings in core being rendered untranslated. (bug #60)
+▪ Fixed problem with feed updates progress bar flickering. (bug #73)
+▪ Partially fixed problem with incorrect number of downloaded messages being reported. (bug #70)
 
 3.3.5
 —————
