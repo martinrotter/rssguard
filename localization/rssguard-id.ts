@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="id">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="id" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -136,10 +134,8 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klik saya untuk menambah feed dari situs web ini.
-Situs web ini mengandung %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Klik saya untuk menambah feed dari situs web ini.
+Situs web ini mengandung %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -225,7 +221,7 @@ Situs web ini mengandung %n feed.</numerusform>
         <translation>Mengunduh selesai</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Berkas &apos;%1&apos; terunduh.
 Klik disini untuk membuka direktori induk.</translation>
@@ -251,15 +247,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n menit tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n menit tersisa</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n detik tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n detik tersisa</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -279,9 +271,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Mengunduh %n berkas...</numerusform>
-        </translation>
+        <translation><numerusform>Mengunduh %n berkas...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -299,21 +289,19 @@ Klik disini untuk membuka direktori induk.</translation>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation>Tidak dapat memperbaharui semua item</translation>
+        <translation>Tidak dapat memperbarui semua item</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Anda tidak dapat memperbaharui semua item karena operasi genting lain sedang berlangsung.</translation>
+        <translation>Anda tidak dapat memperbarui semua item karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Memulai pembaharuan otomatis beberapa feed</translation>
+        <translation>Memulai pembaruan otomatis beberapa feed</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Saya akan dengan otomatis memperbaharui %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Saya akan dengan otomatis memperbarui %n feed.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -630,9 +618,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> hari</numerusform>
-        </translation>
+        <translation><numerusform> hari</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -747,7 +733,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation>URL penuh dari instansi TT-RSS anda dengan mengikuti rangkaian &quot;/api/&quot;</translation>
+        <translation type="vanished">URL penuh dari instansi TT-RSS anda dengan mengikuti rangkaian &quot;/api/&quot;</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -847,7 +833,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation>URL sebaiknya diakhiri dengan &quot;/api/&quot;.</translation>
+        <translation type="vanished">URL sebaiknya diakhiri dengan &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -855,11 +841,19 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Eksekusi paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
+        <translation>Eksekusi paksa pembaruan dari sisi server ketika memperbarui feed dari RSS Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Membiarkan pilihan ini menyala menyebabkan pembaharuan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
+        <translation>Membiarkan pilihan ini menyala menyebabkan pembaruan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -870,7 +864,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Eksekusi paksa pembaharuan dari sisi server ketika memperbaharui feed dari RSS Guard</translation>
+        <translation>Eksekusi paksa pembaruan dari sisi server ketika memperbarui feed dari RSS Guard</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -898,7 +892,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Membiarkan pilihan ini menyala menyebabkan pembaharuan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
+        <translation>Membiarkan pilihan ini menyala menyebabkan pembaruan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -1013,11 +1007,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>Pembaharuan otomatis</translation>
+        <translation>Pembaruan otomatis</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Pilih strategi pembaharuan otomatis untuk feed ini. Strategi pembaharuan otomatis bawaan berarti feed akan diperbaharui dalam interval waktu yang disetel di pengaturan aplikasi.</translation>
+        <translation>Pilih strategi pembaruan otomatis untuk feed ini. Strategi pembaruan otomatis bawaan berarti feed akan diperbarui dalam interval waktu yang disetel di pengaturan aplikasi.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -1242,15 +1236,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation>Pembaharuan otomatis menggunakan jarak waktu global</translation>
+        <translation>Pembaruan otomatis menggunakan jarak waktu global</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation>Otomatis pembaharuan setiap</translation>
+        <translation>Otomatis pembaruan setiap</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation>Tanpa pembaharuan otomatis sama sekali</translation>
+        <translation>Tanpa pembaruan otomatis sama sekali</translation>
     </message>
 </context>
 <context>
@@ -1317,7 +1311,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation>Periksa jika pembaharuan terkini untuk aplikasi tersedia untuk diunduh.</translation>
+        <translation>Periksa jika pembaruan terkini untuk aplikasi tersedia untuk diunduh.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
@@ -1361,7 +1355,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>&amp;Periksa pembaharuan</translation>
+        <translation>&amp;Periksa pembaruan</translation>
     </message>
     <message>
         <source>Show/hide</source>
@@ -1437,11 +1431,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation>Per&amp;baharui semua item</translation>
+        <translation>Per&amp;barui semua item</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>Perbaha&amp;rui item yang dipilih</translation>
+        <translation>Perba&amp;rui item yang dipilih</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
@@ -1557,7 +1551,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation>Bar status</translation>
+        <translation>Bilah status</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
@@ -1585,7 +1579,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation>Hentikan pembaharuan yang berjalan</translation>
+        <translation>Hentikan pembaruan yang berjalan</translation>
     </message>
     <message>
         <source>No actions possible</source>
@@ -1625,12 +1619,12 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation>Pembaharuan feed dimulai</translation>
+        <translation>Pembaruan feed dimulai</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed diperbaharui &apos;%1&apos;</translation>
+        <translation>Feed diperbarui &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -2059,7 +2053,7 @@ Anda harus me-restart secara manual.</translation>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation>Daftar dengan pembaharuan tidak
+        <translation>Daftar dengan pembaruan tidak
 diunduh dengan berhasil.</translation>
     </message>
     <message>
@@ -2082,7 +2076,7 @@ yang ter-install sekarang.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Periksa untuk pembaharuan</translation>
+        <translation>Periksa untuk pembaruan</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2090,7 +2084,7 @@ yang ter-install sekarang.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Pemeriksaan pembaharuan gagal.</translation>
+        <translation>Pemeriksaan pembaruan gagal.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
@@ -2104,11 +2098,11 @@ Pergi ke situs web aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Tidak ada pembaharuan terkini tersedia.</translation>
+        <translation>Tidak ada pembaruan terkini tersedia.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation>Tidak dapat memperbaharui aplikasi</translation>
+        <translation>Tidak dapat memperbarui aplikasi</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
@@ -2116,15 +2110,15 @@ Pergi ke situs web aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Mengunduh pembaharuan</translation>
+        <translation>Unduh pembaruan</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation>Terunduh %1% (ukuran pembaharuan adalah %2 kB).</translation>
+        <translation>Terunduh %1% (ukuran pembaruan adalah %2 kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation>Mengunduh pembaharuan...</translation>
+        <translation>Mengunduh pembaruan...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
@@ -2160,7 +2154,7 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation>Tidak dapat meluncurkan pembaharu. Pembaharuan aplikasi secara manual.</translation>
+        <translation>Tidak dapat meluncurkan pembaru. Pembaruan aplikasi secara manual.</translation>
     </message>
 </context>
 <context>
@@ -2510,9 +2504,7 @@ Anda harus instal secara manual.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform>
-        </translation>
+        <translation><numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2552,15 +2544,13 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n feed lain.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n feed lain.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2616,9 +2606,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n pesan terhapus.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan terhapus.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2640,9 +2628,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n pesan belum dibaca.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan belum dibaca.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -2986,11 +2972,11 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation>Perbaharui semua feed pada startup aplikasi</translation>
+        <translation>Perbarui semua feed pada startup aplikasi</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation>Pembaharuan otomatis semua feed setiap</translation>
+        <translation>Pembaruan otomatis semua feed setiap</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -3048,6 +3034,10 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
         <source>Feeds &amp; messages</source>
         <translation>Feed &amp; pesan</translation>
     </message>
+    <message>
+        <source>Height of image attachments</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -3057,7 +3047,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation>Periksa untuk pembaharuan pada startup aplikasi</translation>
+        <translation>Periksa untuk pembaruan pada startup aplikasi</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
@@ -3080,7 +3070,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Icons</source>
-        <translation type="vanished">Ikon</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon theme</source>
@@ -3088,15 +3078,15 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Skins</source>
-        <translation type="vanished">Skin</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="vanished">Skin yang aktif:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="vanished">Skin yang dipilih:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3156,7 +3146,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Statusbar</source>
-        <translation>Bar status</translation>
+        <translation>Bilah status</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
@@ -3217,11 +3207,11 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3288,7 +3278,7 @@ Kategori ini tidak berisi item bersarang.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>tidak menggunakan pembaharuan otomatis</translation>
+        <translation>tidak menggunakan pembaruan otomatis</translation>
     </message>
     <message>
         <source>uses global settings</source>
@@ -3298,9 +3288,7 @@ Kategori ini tidak berisi item bersarang.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3313,7 +3301,7 @@ Auto-update status: %5</source>
 
 Status Jaringan: %6
 Encoding: %4
-Status pembaharuan otomatis: %5</translation>
+Status pembaruan otomatis: %5</translation>
     </message>
 </context>
 <context>
@@ -3383,15 +3371,15 @@ ID akun: %1</translation>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation>Bar perkembangan pembaharuan feed</translation>
+        <translation>Bilah perkembangan pembaruan feed</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation>Label pembaharuan feed</translation>
+        <translation>Label pembaruan feed</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation>Bar perkembangan pengunduhan berkas</translation>
+        <translation>Bilah perkembangan pengunduhan berkas</translation>
     </message>
     <message>
         <source>File download label</source>
@@ -3473,15 +3461,11 @@ Berita belum terbaca:%2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n jam</numerusform>
-        </translation>
+        <translation><numerusform>%n jam</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n menit</numerusform>
-        </translation>
+        <translation><numerusform>%n menit</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3547,7 +3531,7 @@ Berita belum terbaca:%2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>tidak menggunakan pembaharuan otomatis</translation>
+        <translation>tidak menggunakan pembaruan otomatis</translation>
     </message>
     <message>
         <source>uses global settings</source>
@@ -3557,9 +3541,7 @@ Berita belum terbaca:%2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaharuan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
@@ -3568,7 +3550,7 @@ Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation>%1%2
 
-Status pembaharuan otomatis: %3</translation>
+Status pembaruan otomatis: %3</translation>
     </message>
 </context>
 <context>

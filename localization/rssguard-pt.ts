@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -136,12 +134,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Clique para adicionar feeds deste site.
-Este site contém um feed.</numerusform>
-            <numerusform>Clique para adicionar feeds deste site.
-Este site contêm %n feed(s).</numerusform>
-        </translation>
+        <translation><numerusform>Clique para adicionar feeds deste site.
+Este site contém um feed.</numerusform><numerusform>Clique para adicionar feeds deste site.
+Este site contêm %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -227,7 +222,7 @@ Este site contêm %n feed(s).</numerusform>
         <translation>Download concluído</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Arquivo &apos;%1&apos; foi baixado.
 Clique para abrir a pasta de destino.</translation>
@@ -253,17 +248,11 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minuto restante</numerusform>
-            <numerusform>%n minutos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto restante</numerusform><numerusform>%n minutos restantes</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n segundo restante</numerusform>
-            <numerusform>%n segundos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n segundo restante</numerusform><numerusform>%n segundos restantes</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -283,10 +272,7 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Baixando %n arquivo...</numerusform>
-            <numerusform>Baixando %n arquivos...</numerusform>
-        </translation>
+        <translation><numerusform>Baixando %n arquivo...</numerusform><numerusform>Baixando %n arquivos...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -316,10 +302,7 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>%n feeds serão atualizados automaticamente.</numerusform>
-            <numerusform>%n feeds serão atualizados automaticamente.</numerusform>
-        </translation>
+        <translation><numerusform>%n feeds serão atualizados automaticamente.</numerusform><numerusform>%n feeds serão atualizados automaticamente.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -636,10 +619,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>%n dia</numerusform>
-            <numerusform>%n dias</numerusform>
-        </translation>
+        <translation><numerusform>%n dia</numerusform><numerusform>%n dias</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -754,7 +734,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation>URL COMPLETA para sua instância TT-RSS COM string &quot;/api/&quot; à direita</translation>
+        <translation type="vanished">URL COMPLETA para sua instância TT-RSS COM string &quot;/api/&quot; à direita</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -854,7 +834,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation>A URL deve terminar com &quot;/api/&quot;.</translation>
+        <translation type="vanished">A URL deve terminar com &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -867,6 +847,14 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation>Deixar esta opção marcada faz com que as atualizações provavelmente fiquem mais lentas e o tempo limite esgote com frequência.</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2517,10 +2505,7 @@ Você precisa instalá-lo manualmente.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Mostrar mais mensagens (%n restante)</numerusform>
-            <numerusform>Mostrar mais mensagens (%n restantes)</numerusform>
-        </translation>
+        <translation><numerusform>Mostrar mais mensagens (%n restante)</numerusform><numerusform>Mostrar mais mensagens (%n restantes)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2566,14 +2551,11 @@ Você precisa instalá-lo manualmente.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n outro feed.</numerusform>
-            <numerusform>
++ %n outro feed.</numerusform><numerusform>
 
-+ %n outros feeds.</numerusform>
-        </translation>
++ %n outros feeds.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2630,10 +2612,7 @@ Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n mensagem excluída.</numerusform>
-            <numerusform>%n mensagens excluídas.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensagem excluída.</numerusform><numerusform>%n mensagens excluídas.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2657,10 +2636,7 @@ Pelo menos o API nível %1 é necessário.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n mensagem não lida.</numerusform>
-            <numerusform>%n mensagem(ns) não lidas.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensagem não lida.</numerusform><numerusform>%n mensagem(ns) não lidas.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3066,6 +3042,10 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>Feeds &amp; messages</source>
         <translation>Feeds &amp; mensagens</translation>
     </message>
+    <message>
+        <source>Height of image attachments</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -3098,7 +3078,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Icons</source>
-        <translation type="vanished">Ícones</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon theme</source>
@@ -3106,15 +3086,15 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Skins</source>
-        <translation type="vanished">Temas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="vanished">Tema ativo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="vanished">Tema selecionado:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3235,11 +3215,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo</translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
 </context>
 <context>
@@ -3316,10 +3296,7 @@ Esta categoria nenhum possui itens aninhados.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-        </translation>
+        <translation><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3492,17 +3469,11 @@ Notícias não lidas: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n hora</numerusform>
-            <numerusform>%n hora(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n hora</numerusform><numerusform>%n hora(s)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minuto</numerusform>
-            <numerusform>%n minuto(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto</numerusform><numerusform>%n minuto(s)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3578,10 +3549,7 @@ Notícias não lidas: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>usa configurações específicas (%n minuto para a próxima atualização automática)</numerusform>
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-        </translation>
+        <translation><numerusform>usa configurações específicas (%n minuto para a próxima atualização automática)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

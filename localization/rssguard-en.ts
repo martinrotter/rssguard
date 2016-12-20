@@ -753,7 +753,7 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</translation>
+        <translation type="vanished">FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -853,7 +853,7 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation>URL should end with &quot;/api/&quot;.</translation>
+        <translation type="vanished">URL should end with &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -866,6 +866,14 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3057,6 +3065,10 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
         <source>Feeds &amp; messages</source>
         <translation type="unfinished">Feeds &amp; messages</translation>
+    </message>
+    <message>
+        <source>Height of image attachments</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
