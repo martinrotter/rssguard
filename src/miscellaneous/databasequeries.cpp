@@ -604,13 +604,15 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         updated_messages++;
+        qDebug("Added new message '%s' to DB.", qPrintable(message.m_title));
       }
       else if (query_insert.lastError().isValid()) {
-        qDebug("Failed to insert message to DB: '%s'.", qPrintable(query_insert.lastError().text()));
+        qDebug("Failed to insert message to DB: '%s' - message title is '%s'.",
+               qPrintable(query_insert.lastError().text()),
+               qPrintable(message.m_title));
       }
 
       query_insert.finish();
-      qDebug("Adding new message '%s' to DB.", qPrintable(message.m_title));
     }
   }
 
