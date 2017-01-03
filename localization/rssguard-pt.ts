@@ -850,11 +850,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>URL para sua instância TT-RSS SEM string &quot;/api/&quot; à direita</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>A URL NÃO deve terminar com &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
@@ -3044,7 +3044,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="unfinished"/>
+        <translation>Altura das imagens anexadas</translation>
     </message>
 </context>
 <context>

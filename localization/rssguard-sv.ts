@@ -850,11 +850,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>URL för din TT-RSS-instans UTAN vidhängande &quot;/api/-sträng&quot;.</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL:en skall INTE sluta med &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
@@ -3042,7 +3042,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="unfinished"/>
+        <translation>Höjd på bildbilagor</translation>
     </message>
 </context>
 <context>
