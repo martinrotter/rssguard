@@ -135,7 +135,7 @@ class DatabaseFactory : public QObject {
     QSqlDatabase mysqlInitializeDatabase(const QString &connection_name);
 
     // Updates database schema.
-    bool mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version);
+    bool mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version, const QString &db_name);
 
     // Runs "VACUUM" on the database.
     bool mysqlVacuumDatabase();

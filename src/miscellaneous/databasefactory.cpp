@@ -442,7 +442,7 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QS
   return true;
 }
 
-bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
+bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version, const QString &db_name) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
   const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
@@ -464,8 +464,8 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QSt
 
     QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
 
-    foreach (const QString &statement, statements) {
-      QSqlQuery query = database.exec(statement);
+    foreach (QString statement, statements) {
+      QSqlQuery query = database.exec(statement.replace(APP_DB_NAME_PLACEHOLDER, db_name));
 
       if (query.lastError().isValid()) {
         qFatal("Query for updating database schema failed: '%s'.", qPrintable(query.lastError().text()));
@@ -691,7 +691,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
       const QString installed_db_schema = query_db.value(0).toString();
 
       if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
-        if (mysqlUpdateDatabaseSchema(database, installed_db_schema)) {
+        if (mysqlUpdateDatabaseSchema(database, installed_db_schema, database_name)) {
           qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
                  qPrintable(installed_db_schema),
                  APP_DB_SCHEMA_VERSION);
