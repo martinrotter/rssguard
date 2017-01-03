@@ -156,7 +156,7 @@ int Feed::updateMessages(const QList<Message> &messages, bool error_during_obtai
   int updated_messages = 0;
   bool is_main_thread = QThread::currentThread() == qApp->thread();
 
-  qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true." : "false."));
+  qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true" : "false"));
   
   if (!error_during_obtaining) {
     bool anything_updated = false;
