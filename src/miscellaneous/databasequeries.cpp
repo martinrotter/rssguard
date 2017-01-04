@@ -564,13 +564,13 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message || message.m_isRead != is_read_existing_message || message.m_isImportant != is_important_existing_message)) ||
           /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message)) {
         // Message exists, it is changed, update it.
-        query_update.bindValue(QSL(":title"), message.m_title);
+        query_update.bindValue(QSL(":title"), message.m_title.toUtf8());
         query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
         query_update.bindValue(QSL(":is_important"), (int) message.m_isImportant);
         query_update.bindValue(QSL(":url"), message.m_url);
-        query_update.bindValue(QSL(":author"), message.m_author);
+        query_update.bindValue(QSL(":author"), message.m_author.toUtf8());
         query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-        query_update.bindValue(QSL(":contents"), message.m_contents);
+        query_update.bindValue(QSL(":contents"), message.m_contents.toUtf8());
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.bindValue(QSL(":id"), id_existing_message);
 
@@ -590,13 +590,13 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     else {
       // Message with this URL is not fetched in this feed yet.
       query_insert.bindValue(QSL(":feed"), feed_custom_id);
-      query_insert.bindValue(QSL(":title"), message.m_title);
+      query_insert.bindValue(QSL(":title"), message.m_title.toUtf8());
       query_insert.bindValue(QSL(":is_read"), (int) message.m_isRead);
       query_insert.bindValue(QSL(":is_important"), (int) message.m_isImportant);
       query_insert.bindValue(QSL(":url"), message.m_url);
-      query_insert.bindValue(QSL(":author"), message.m_author);
+      query_insert.bindValue(QSL(":author"), message.m_author.toUtf8());
       query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-      query_insert.bindValue(QSL(":contents"), message.m_contents);
+      query_insert.bindValue(QSL(":contents"), message.m_contents.toUtf8());
       query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
       query_insert.bindValue(QSL(":custom_id"), message.m_customId);
       query_insert.bindValue(QSL(":custom_hash"), message.m_customHash);
