@@ -78,6 +78,8 @@ class DatabaseFactory : public QObject {
     // Removes connection.
     void removeConnection(const QString &connection_name = QString());
 
+    QString obtainBeginTransactionSql() const;
+
     // Performs any needed database-related operation to be done
     // to gracefully exit the application.
     void saveDatabase();

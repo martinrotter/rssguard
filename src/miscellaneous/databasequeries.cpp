@@ -459,6 +459,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   QSqlQuery query_select_with_id(db);
   QSqlQuery query_update(db);
   QSqlQuery query_insert(db);
+  QSqlQuery query_begin_transaction(db);
 
   // Here we have query which will check for existence of the "same" message in given feed.
   // The two message are the "same" if:
@@ -487,9 +488,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                        "SET title = :title, is_read = :is_read, is_important = :is_important, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures "
                        "WHERE id = :id;");
 
-  if (!db.transaction()) {
-    db.rollback();
-    qDebug("Transaction start for message downloader failed: '%s'.", qPrintable(db.lastError().text()));
+  if (!query_begin_transaction.exec(qApp->database()->obtainBeginTransactionSql())) {
+    qCritical("Transaction start for message downloader failed: '%s'.", qPrintable(query_begin_transaction.lastError().text()));
     return updated_messages;
   }
 
@@ -530,7 +530,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         is_important_existing_message = query_select_with_url.value(3).toBool();
       }
       else if (query_select_with_url.lastError().isValid()) {
-        qDebug("Failed to check for existing message in DB via URL: '%s'.", qPrintable(query_select_with_url.lastError().text()));
+        qWarning("Failed to check for existing message in DB via URL: '%s'.", qPrintable(query_select_with_url.lastError().text()));
       }
 
       query_select_with_url.finish();
@@ -564,13 +564,13 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message || message.m_isRead != is_read_existing_message || message.m_isImportant != is_important_existing_message)) ||
           /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message)) {
         // Message exists, it is changed, update it.
-        query_update.bindValue(QSL(":title"), message.m_title.toUtf8());
+        query_update.bindValue(QSL(":title"), message.m_title);
         query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
         query_update.bindValue(QSL(":is_important"), (int) message.m_isImportant);
         query_update.bindValue(QSL(":url"), message.m_url);
-        query_update.bindValue(QSL(":author"), message.m_author.toUtf8());
+        query_update.bindValue(QSL(":author"), message.m_author);
         query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-        query_update.bindValue(QSL(":contents"), message.m_contents.toUtf8());
+        query_update.bindValue(QSL(":contents"), message.m_contents);
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.bindValue(QSL(":id"), id_existing_message);
 
@@ -580,7 +580,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
           updated_messages++;
         }
         else if (query_update.lastError().isValid()) {
-          qDebug("Failed to update message in DB: '%s'.", qPrintable(query_update.lastError().text()));
+          qWarning("Failed to update message in DB: '%s'.", qPrintable(query_update.lastError().text()));
         }
 
         query_update.finish();
@@ -590,13 +590,13 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     else {
       // Message with this URL is not fetched in this feed yet.
       query_insert.bindValue(QSL(":feed"), feed_custom_id);
-      query_insert.bindValue(QSL(":title"), message.m_title.toUtf8());
+      query_insert.bindValue(QSL(":title"), message.m_title);
       query_insert.bindValue(QSL(":is_read"), (int) message.m_isRead);
       query_insert.bindValue(QSL(":is_important"), (int) message.m_isImportant);
       query_insert.bindValue(QSL(":url"), message.m_url);
-      query_insert.bindValue(QSL(":author"), message.m_author.toUtf8());
+      query_insert.bindValue(QSL(":author"), message.m_author);
       query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-      query_insert.bindValue(QSL(":contents"), message.m_contents.toUtf8());
+      query_insert.bindValue(QSL(":contents"), message.m_contents);
       query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
       query_insert.bindValue(QSL(":custom_id"), message.m_customId);
       query_insert.bindValue(QSL(":custom_hash"), message.m_customHash);
@@ -607,9 +607,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         qDebug("Added new message '%s' to DB.", qPrintable(message.m_title));
       }
       else if (query_insert.lastError().isValid()) {
-        qDebug("Failed to insert message to DB: '%s' - message title is '%s'.",
-               qPrintable(query_insert.lastError().text()),
-               qPrintable(message.m_title));
+        qWarning("Failed to insert message to DB: '%s' - message title is '%s'.",
+                 qPrintable(query_insert.lastError().text()),
+                 qPrintable(message.m_title));
       }
 
       query_insert.finish();
@@ -625,8 +625,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   }
 
   if (!db.commit()) {
+    qCritical("Transaction commit for message downloader failed: '%s'.", qPrintable(db.lastError().text()));
     db.rollback();
-    qDebug("Transaction commit for message downloader failed: '%s'.", qPrintable(db.lastError().text()));
 
     if (ok != nullptr) {
       *ok = false;
@@ -647,8 +647,7 @@ bool DatabaseQueries::purgeMessagesFromBin(QSqlDatabase db, bool clear_only_read
   q.setForwardOnly(true);
 
   if (clear_only_read) {
-    q.prepare("UPDATE Messages SET is_pdeleted = 1 "
-              "WHERE is_read = 1 AND is_deleted = 1 AND account_id = :account_id;");
+    q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_read = 1 AND is_deleted = 1 AND account_id = :account_id;"));
   }
   else {
     q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));

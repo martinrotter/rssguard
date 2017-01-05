@@ -4,6 +4,7 @@
 Added:
 ▪ MySQL database backend now requires at least version 5.5, DB encoding is now changed to utf8mb4 character set. (bug #74)
 ▪ Height if message attachment image is now configurable, defaults to 36. (issue #69)
+▪ All textual contents of all messages are now locally saved in explicit UTF-8 encoding. This is partially because of MySQL backend. We need to keep encoding of data sent to DB and encoding of DB itself in parity.
 
 Changed:
 ▪ TT-RSS plugin now does NOT require service URL to be entered with "/api/" suffix. In other words, do not use that suffix now, RSS Guard will add it silently when it needs to.

@@ -148,6 +148,18 @@ void Feed::run() {
   
   bool error_during_obtaining;
   QList<Message> msgs = obtainNewMessages(&error_during_obtaining);
+
+  qDebug().nospace() << "Downloaded " << msgs.size() << " messages for feed "
+                     << customId() << " in thread: \'"
+                     << QThread::currentThreadId() << "\'.";
+
+  // Now, do some general operations on messages (tweak encoding etc.).
+  for (int i = 0; i < msgs.size(); i++) {
+    msgs[i].m_contents = msgs[i].m_contents.toUtf8();
+    msgs[i].m_author = msgs[i].m_author.toUtf8();
+    msgs[i].m_title = msgs[i].m_title.toUtf8();
+  }
+
   emit messagesObtained(msgs, error_during_obtaining);
 }
 

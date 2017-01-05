@@ -521,6 +521,15 @@ void DatabaseFactory::removeConnection(const QString &connection_name) {
   QSqlDatabase::removeDatabase(connection_name);
 }
 
+QString DatabaseFactory::obtainBeginTransactionSql() const {
+  if (m_activeDatabaseDriver == DatabaseFactory::SQLITE || m_activeDatabaseDriver == DatabaseFactory::SQLITE_MEMORY) {
+    return QSL("BEGIN IMMEDIATE TRANSACTION;");
+  }
+  else {
+    return QSL("START TRANSACTION;");
+  }
+}
+
 void DatabaseFactory::sqliteSaveMemoryDatabase() {
   qDebug("Saving in-memory working database back to persistent file-based storage.");
 
