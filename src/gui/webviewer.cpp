@@ -143,7 +143,7 @@ QWebEngineView *WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
   int index = qApp->mainForm()->tabWidget()->addBrowser(false, false);
 
   if (index >= 0) {
-    return qApp->mainForm()->tabWidget()->widget(qApp->mainForm()->tabWidget()->addBrowser(false, false))->webBrowser()->viewer();
+    return qApp->mainForm()->tabWidget()->widget(index)->webBrowser()->viewer();
   }
   else {
     return nullptr;
