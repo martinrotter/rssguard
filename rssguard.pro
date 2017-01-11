@@ -626,6 +626,9 @@ win32 {
   qt_dlls_imageformats.files = resources/binaries/windows/qt5-msvc2013/imageformats
   qt_dlls_imageformats.path = $$quote($$PREFIX/)
 
+  qt_dlls_position.files = resources/binaries/windows/qt5-msvc2013/position
+  qt_dlls_position.path = $$quote($$PREFIX/)
+
   qt_dlls_platforms.files = resources/binaries/windows/qt5-msvc2013/platforms/
   qt_dlls_platforms.path = $$quote($$PREFIX/)
 
