@@ -27,14 +27,41 @@ QTreeView::branch:open:has-children:has-siblings  {
   image: url(qss/branch-open.png);
 }
 
-QTreeView::item {
-  padding: 1px 1px 1px 1px;
-} 
-
 QTreeView[hideTree="true"]::branch:!has-chlidren:hasSiblings {
   border-image: none;
   image: none;
 }
+
+QTreeView::branch {
+  background-color: rgb(39, 43, 48);
+}
+
+QTreeView::item {
+  padding: 1px 1px 1px 1px;
+  border: 1px transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+QTreeView::item:hover {
+  background-color: #3e444c;
+  border: 1px transparent;
+}
+
+QTreeView::item:selected {
+  border: 1px transparent;
+}
+
+QTreeView::item:selected:active{
+  background-color: #3e444c;
+}
+
+QTreeView::item:selected:!active {
+  background-color: #3e444c;
+}
+
+
+
 
 QStatusBar::item {
   border: none;
@@ -46,17 +73,4 @@ QSplitter::handle, QSplitter::handle:pressed {
 
 QSplitter::handle:horizontal, QSplitter::handle:vertical {
   width: 1px;
-}
-
-QTabBar::tab {
-  border: 1px solid #868789;
-  border-bottom: 1px solid white;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  min-width: 8ex;
-  padding: 4px;
-}
-
-QTabBar::tab:selected, QTabBar::tab:hover {
-  border: 1px solid white;
 }
