@@ -65,6 +65,7 @@ void SkinFactory::loadCurrentSkin() {
 void SkinFactory::loadSkinFromData(const Skin &skin) {  
   if (!skin.m_rawData.isEmpty()) {
     qApp->setStyleSheet(skin.m_rawData);
+    //qApp->setStyleSheet("QWidget {rgb(39, 43, 48);}");
   }
 
   qApp->setStyle(qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString());

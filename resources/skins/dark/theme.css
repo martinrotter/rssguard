@@ -1,4 +1,7 @@
-/* This is Qt CSS theme file for the overall GUI of the application. */
+QWidget {
+  background-color: rgb(39, 43, 48);
+  color: #c8c8c8;
+}
 
 QTreeView::branch:has-siblings:!adjoins-item  {
   border-image: url(qss/dummy.png) 0;
@@ -35,4 +38,25 @@ QTreeView[hideTree="true"]::branch:!has-chlidren:hasSiblings {
 
 QStatusBar::item {
   border: none;
+}
+
+QSplitter::handle, QSplitter::handle:pressed {
+  background-color: #525559;
+}
+
+QSplitter::handle:horizontal, QSplitter::handle:vertical {
+  width: 1px;
+}
+
+QTabBar::tab {
+  border: 1px solid #868789;
+  border-bottom: 1px solid white;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  min-width: 8ex;
+  padding: 4px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+  border: 1px solid white;
 }
