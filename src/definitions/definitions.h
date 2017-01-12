@@ -123,7 +123,8 @@
 
 #define APP_QUIT_INSTANCE   "-q"
 #define APP_IS_RUNNING      "app_is_running"
-#define APP_SKIN_DEFAULT    "base/vergilius.xml"
+#define APP_SKIN_DEFAULT    "vergilius"
+#define APP_SKIN_METADATA_FILE "metadata.xml"
 #define APP_STYLE_DEFAULT   "Fusion"
 #define APP_THEME_DEFAULT   "Faenza"
 #define APP_NO_THEME        ""

@@ -1,0 +1,38 @@
+/* This is Qt CSS theme file for the overall GUI of the application. */
+
+QTreeView::branch:has-siblings:!adjoins-item  {
+  border-image: url(qss/dummy.png) 0;
+}
+
+QTreeView::branch:has-siblings:adjoins-item {
+  border-image: url(qss/dummy.png) 0;
+}
+
+QTreeView::branch:!has-children:!has-siblings:adjoins-item  {
+  border-image: url(qss/dummy.png) 0;
+}
+
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings  {
+  border-image: none;
+  image: url(qss/branch-closed.png);
+}
+
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings  {
+  border-image: none;
+  image: url(qss/branch-open.png);
+}
+
+QTreeView::item {
+  padding: 1px 1px 1px 1px;
+} 
+
+QTreeView[hideTree="true"]::branch:!has-chlidren:hasSiblings {
+  border-image: none;
+  image: none;
+}
+
+QStatusBar::item {
+  border: none;
+}
