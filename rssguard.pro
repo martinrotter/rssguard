@@ -641,8 +641,8 @@ win32 {
   faenza.files = resources/graphics/Faenza
   faenza.path = $$quote($$PREFIX/icons/)
 
-  skins.files = resources/skins/base
-  skins.path = $$quote($$PREFIX/skins/)
+  skins.files = resources/skins
+  skins.path = $$quote($$PREFIX/)
 
   sql.files = resources/misc
   sql.path = $$quote($$PREFIX/)
