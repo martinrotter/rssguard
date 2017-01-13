@@ -450,6 +450,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     return 0;
   }
 
+  bool use_transactions = qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool();
+
   // Does not make any difference, since each feed now has
   // its own "custom ID" (standard feeds have their custom ID equal to primary key ID).
   int updated_messages = 0;
@@ -488,7 +490,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                        "SET title = :title, is_read = :is_read, is_important = :is_important, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures "
                        "WHERE id = :id;");
 
-  if (!query_begin_transaction.exec(qApp->database()->obtainBeginTransactionSql())) {
+  if (use_transactions && !query_begin_transaction.exec(qApp->database()->obtainBeginTransactionSql())) {
     qCritical("Transaction start for message downloader failed: '%s'.", qPrintable(query_begin_transaction.lastError().text()));
     return updated_messages;
   }
@@ -624,7 +626,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     qWarning("Failed to set custom ID for all messages: '%s'.", qPrintable(db.lastError().text()));
   }
 
-  if (!db.commit()) {
+  if (use_transactions && !db.commit()) {
     qCritical("Transaction commit for message downloader failed: '%s'.", qPrintable(db.lastError().text()));
     db.rollback();
 

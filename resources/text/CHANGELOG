@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ User now can select if DB transactions are enabled or not. (bug #70)
 ▪ MySQL database backend now requires at least version 5.5, DB encoding is now changed to utf8mb4 character set. (bug #74)
 ▪ Height if message attachment image is now configurable, defaults to 36. (issue #69)
 ▪ All textual contents of all messages are now locally saved in explicit UTF-8 encoding. This is partially because of MySQL backend. We need to keep encoding of data sent to DB and encoding of DB itself in parity.

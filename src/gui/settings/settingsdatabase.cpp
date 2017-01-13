@@ -32,6 +32,7 @@ SettingsDatabase::SettingsDatabase(Settings *settings, QWidget *parent)
   connect(m_ui->m_txtMysqlDatabase->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlHostname->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlPassword->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_checkUseTransactions, &QCheckBox::toggled, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlUsername->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_spinMysqlPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &SettingsDatabase::dirtifySettings);
 
@@ -133,6 +134,7 @@ void SettingsDatabase::switchMysqlPasswordVisiblity(bool visible) {
 void SettingsDatabase::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_checkUseTransactions->setChecked(qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool());
   m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,  tr("No connection test triggered so far."), tr("You did not executed any connection test yet."));
 
   // Load SQLite.
@@ -180,6 +182,8 @@ void SettingsDatabase::saveSettings() {
   // Setup in-memory database status.
   const bool original_inmemory = settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool();
   const bool new_inmemory = m_ui->m_checkSqliteUseInMemoryDatabase->isChecked();
+
+  qApp->settings()->setValue(GROUP(Database), Database::UseTransactions, m_ui->m_checkUseTransactions->isChecked());
 
   // Save data storage settings.
   QString original_db_driver = settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
