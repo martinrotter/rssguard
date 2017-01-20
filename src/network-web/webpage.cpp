@@ -25,6 +25,7 @@
 
 
 WebPage::WebPage(QObject *parent) : QWebEnginePage(parent) {
+  setBackgroundColor(Qt::transparent);
 }
 
 WebViewer *WebPage::view() const {
