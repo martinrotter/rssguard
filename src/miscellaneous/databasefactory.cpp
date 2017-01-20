@@ -187,14 +187,7 @@ void DatabaseFactory::finishRestoration() {
 }
 
 void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
-  if (qApp->settings()->type() == SettingsProperties::Portable) {
-    m_sqliteDatabaseFilePath = qApp->applicationDirPath() + QDir::separator() + QString(APP_DB_SQLITE_PATH);
-  }
-  else {
-    m_sqliteDatabaseFilePath = qApp->homeFolderPath() + QDir::separator() +
-                               QString(APP_LOW_H_NAME) + QDir::separator() +
-                               QString(APP_DB_SQLITE_PATH);
-  }
+  m_sqliteDatabaseFilePath = qApp->settings()->userSettingsRootFolder() + QDir::separator() + QString(APP_DB_SQLITE_PATH);
 }
 
 QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {

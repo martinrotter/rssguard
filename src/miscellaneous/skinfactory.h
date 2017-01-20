@@ -69,7 +69,10 @@ class SkinFactory : public QObject {
     // Sets the desired skin as the active one if it exists.
     void setCurrentSkinName(const QString &skin_name);
 
+    QString getUserSkinBaseFolder() const;
+
   private:
+
     // Loads the skin from give skin_data.
     void loadSkinFromData(const Skin &skin);
 

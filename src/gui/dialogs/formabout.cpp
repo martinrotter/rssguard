@@ -51,20 +51,16 @@ FormAbout::~FormAbout() {
 void FormAbout::loadSettingsAndPaths() {
   if (qApp->settings()->type() == SettingsProperties::Portable) {
     m_ui->m_txtPathsSettingsType->setText(tr("FULLY portable"));
-    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->applicationDirPath() +
-                                                                   QDir::separator() +
-                                                                   QString(APP_DB_SQLITE_PATH)));
   }
   else {
     m_ui->m_txtPathsSettingsType->setText(tr("PARTIALLY portable"));
-    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->homeFolderPath() +
-                                                                   QDir::separator() +
-                                                                   QString(APP_LOW_H_NAME) +
-                                                                   QDir::separator() +
-                                                                   QString(APP_DB_SQLITE_PATH)));
   }
 
+  m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->settings()->userSettingsRootFolder() +
+                                                                 QDir::separator() +
+                                                                 QString(APP_DB_SQLITE_PATH)));
   m_ui->m_txtPathsSettingsFile->setText(QDir::toNativeSeparators(qApp->settings()->fileName()));
+  m_ui->m_txtPathsSkinsRoot->setText(QDir::toNativeSeparators(qApp->skins()->getUserSkinBaseFolder()));
 }
 
 void FormAbout::loadLicenseAndInformation() {

@@ -105,24 +105,21 @@
 
 #define APP_DB_SQLITE_DRIVER          "QSQLITE"
 #define APP_DB_SQLITE_INIT            "db_init_sqlite.sql"
-#define APP_DB_SQLITE_PATH            "data/database/local"
+#define APP_DB_SQLITE_PATH            "database/local"
 #define APP_DB_SQLITE_FILE            "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
 #define APP_DB_SCHEMA_VERSION         "7"
 #define APP_DB_UPDATE_FILE_PATTERN    "db_update_%1_%2_%3.sql"
 #define APP_DB_COMMENT_SPLIT          "-- !\n"
-#define APP_DB_WEB_PATH               "data/database/web"
 #define APP_DB_NAME_PLACEHOLDER       "##"
 
-#define APP_CFG_PATH        "data/config"
+#define APP_CFG_PATH        "config"
 #define APP_CFG_FILE        "config.ini"
-
-#define APP_LOG_PATH        "data/log"
-#define APP_LOG_FILE        "log.txt"
 
 #define APP_QUIT_INSTANCE   "-q"
 #define APP_IS_RUNNING      "app_is_running"
+#define APP_SKIN_USER_FOLDER "skins"
 #define APP_SKIN_DEFAULT    "vergilius"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 #define APP_STYLE_DEFAULT   "Fusion"

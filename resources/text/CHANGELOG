@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ User now can place custom user skins in user "data" folder. (issue #81) See "About" dialog for the exact path.
 ▪ User now can select if DB transactions are enabled or not. (bug #70) By default, DB transactions are now switched OFF, therefore anyone who wants better performance, must turn them ON in app settings.
 ▪ MySQL database backend now requires at least version 5.5, DB encoding is now changed to utf8mb4 character set. (bug #74)
 ▪ Height if message attachment image is now configurable, defaults to 36. (issue #69)

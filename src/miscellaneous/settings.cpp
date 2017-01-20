@@ -275,6 +275,15 @@ Settings::Settings(const QString &file_name, Format format, const SettingsProper
 Settings::~Settings() {  
 }
 
+QString Settings::userSettingsRootFolder() const {
+  if (qApp->settings()->type() == SettingsProperties::Portable) {
+    return getAppPathUserFolder();
+  }
+  else {
+    return getHomeUserFolder();
+  }
+}
+
 QString Settings::pathName() const {
   return QFileInfo(fileName()).absolutePath();
 }
@@ -309,6 +318,14 @@ void Settings::finishRestoration(const QString &desired_settings_file_path) {
   }
 }
 
+QString Settings::getAppPathUserFolder() {
+  return qApp->applicationDirPath() + QDir::separator() + QSL("data");
+}
+
+QString Settings::getHomeUserFolder() {
+  return qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
+}
+
 Settings *Settings::setupSettings(QObject *parent) {
   Settings *new_settings;
 
@@ -338,11 +355,12 @@ SettingsProperties Settings::determineProperties() {
 
   properties.m_settingsSuffix = QDir::separator() + QString(APP_CFG_PATH) + QDir::separator() + QString(APP_CFG_FILE);
 
-  const QString app_path = qApp->applicationDirPath();
-  const QString home_path = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
+  const QString exe_path = qApp->applicationDirPath();
+  const QString app_path = getAppPathUserFolder();
+  const QString home_path =  getHomeUserFolder();
   const QString home_path_file = home_path + properties.m_settingsSuffix;
 
-  const bool portable_settings_available = IOFactory::isFolderWritable(app_path);
+  const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);
   const bool non_portable_settings_exist = QFile::exists(home_path_file);
 
   // We will use PORTABLE settings only and only if it is available and NON-PORTABLE

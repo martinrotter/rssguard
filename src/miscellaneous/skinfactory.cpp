@@ -65,7 +65,6 @@ void SkinFactory::loadCurrentSkin() {
 void SkinFactory::loadSkinFromData(const Skin &skin) {  
   if (!skin.m_rawData.isEmpty()) {
     qApp->setStyleSheet(skin.m_rawData);
-    //qApp->setStyleSheet("QWidget {rgb(39, 43, 48);}");
   }
 
   qApp->setStyle(qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString());
@@ -75,74 +74,91 @@ void SkinFactory::setCurrentSkinName(const QString &skin_name) {
   qApp->settings()->setValue(GROUP(GUI), GUI::Skin, skin_name);
 }
 
+QString SkinFactory::getUserSkinBaseFolder() const {
+  return qApp->settings()->userSettingsRootFolder() + QDir::separator() + APP_SKIN_USER_FOLDER;
+}
+
 QString SkinFactory::selectedSkinName() const {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::Skin)).toString();
 }
 
 Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
   Skin skin;
-  QFile skin_file(APP_SKIN_PATH + QDir::separator() + skin_name + QDir::separator() + APP_SKIN_METADATA_FILE);
-  QDomDocument dokument;
+  QStringList base_skin_folders;
 
-  if (!skin_file.open(QIODevice::Text | QIODevice::ReadOnly) || !dokument.setContent(&skin_file, true)) {
-    if (ok) {
-      *ok = false;
+  base_skin_folders.append(APP_SKIN_PATH);
+  base_skin_folders.append(getUserSkinBaseFolder());
+
+  while (!base_skin_folders.isEmpty()) {
+    const QString skin_folder = base_skin_folders.takeAt(0) + QDir::separator() + skin_name + QDir::separator();
+    const QString metadata_file = skin_folder + APP_SKIN_METADATA_FILE;
+
+    if (QFile::exists(metadata_file)) {
+      QFile skin_file(metadata_file);
+
+      QDomDocument dokument;
+
+      if (!skin_file.open(QIODevice::Text | QIODevice::ReadOnly) || !dokument.setContent(&skin_file, true)) {
+        if (ok) {
+          *ok = false;
+        }
+
+        return skin;
+      }
+
+      const QDomNode skin_node = dokument.namedItem(QSL("skin"));
+
+      // Obtain visible skin name.
+      skin.m_visibleName = skin_name;
+
+      // Obtain author.
+      skin.m_author = skin_node.namedItem(QSL("author")).namedItem(QSL("name")).toElement().text();
+
+      // Obtain email.
+      skin.m_email = skin_node.namedItem(QSL("author")).namedItem(QSL("email")).toElement().text();
+
+      // Obtain version.
+      skin.m_version = skin_node.attributes().namedItem(QSL("version")).toAttr().value();
+
+      // Obtain other information.
+      skin.m_baseName = skin_name;
+
+      // Free resources.
+      skin_file.close();
+      skin_file.deleteLater();
+
+      // Here we use "/" instead of QDir::separator() because CSS2.1 url field
+      // accepts '/' as path elements separator.
+      //
+      // "##" is placeholder for the actual path to skin file. This is needed for using
+      // images within the QSS file.
+      // So if one uses "##/images/border.png" in QSS then it is
+      // replaced by fully absolute path and target file can
+      // be safely loaded.
+
+      skin.m_layoutMarkupWrapper = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_wrapper.html")));
+      skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+
+      skin.m_enclosureImageMarkup = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_enclosure_image.html")));
+      skin.m_enclosureImageMarkup = skin.m_enclosureImageMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+
+      skin.m_layoutMarkup = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_single_message.html")));
+      skin.m_layoutMarkup = skin.m_layoutMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+
+      skin.m_enclosureMarkup = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_enclosure_every.html")));
+      skin.m_enclosureMarkup = skin.m_enclosureMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+
+      skin.m_rawData = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("theme.css")));
+      skin.m_rawData = skin.m_rawData.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+
+      if (ok != nullptr) {
+        *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
+              !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty() &&
+              !skin.m_layoutMarkup.isEmpty();
+      }
+
+      break;
     }
-
-    return skin;
-  }
-
-  const QDomNode skin_node = dokument.namedItem(QSL("skin"));
-
-  // Obtain visible skin name.
-  skin.m_visibleName = skin_name;
-
-  // Obtain author.
-  skin.m_author = skin_node.namedItem(QSL("author")).namedItem(QSL("name")).toElement().text();
-
-  // Obtain email.
-  skin.m_email = skin_node.namedItem(QSL("author")).namedItem(QSL("email")).toElement().text();
-
-  // Obtain version.
-  skin.m_version = skin_node.attributes().namedItem(QSL("version")).toAttr().value();
-
-  // Obtain other information.
-  skin.m_baseName = skin_name;
-
-  // Free resources.
-  skin_file.close();
-  skin_file.deleteLater();
-
-  // Here we use "/" instead of QDir::separator() because CSS2.1 url field
-  // accepts '/' as path elements separator.
-  //
-  // "##" is placeholder for the actual path to skin file. This is needed for using
-  // images within the QSS file.
-  // So if one uses "##/images/border.png" in QSS then it is
-  // replaced by fully absolute path and target file can
-  // be safely loaded.
-
-  const QString base_folder = APP_SKIN_PATH + QDir::separator() + skin_name + QDir::separator();
-
-  skin.m_layoutMarkupWrapper = QString::fromUtf8(IOFactory::readTextFile(base_folder + QL1S("html_wrapper.html")));
-  skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-
-  skin.m_enclosureImageMarkup = QString::fromUtf8(IOFactory::readTextFile(base_folder + QL1S("html_enclosure_image.html")));
-  skin.m_enclosureImageMarkup = skin.m_enclosureImageMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-
-  skin.m_layoutMarkup = QString::fromUtf8(IOFactory::readTextFile(base_folder + QL1S("html_single_message.html")));
-  skin.m_layoutMarkup = skin.m_layoutMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-
-  skin.m_enclosureMarkup = QString::fromUtf8(IOFactory::readTextFile(base_folder + QL1S("html_enclosure_every.html")));
-  skin.m_enclosureMarkup = skin.m_enclosureMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-
-  skin.m_rawData = QString::fromUtf8(IOFactory::readTextFile(base_folder + QL1S("theme.css")));
-  skin.m_rawData = skin.m_rawData.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-
-  if (ok != nullptr) {
-    *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
-          !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty() &&
-          !skin.m_layoutMarkup.isEmpty();
   }
 
   return skin;
@@ -151,10 +167,14 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
 QList<Skin> SkinFactory::installedSkins() const {
   QList<Skin> skins;
   bool skin_load_ok;
-  const QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |
-                                                                     QDir::NoDotAndDotDot |
-                                                                     QDir::NoSymLinks |
-                                                                     QDir::Readable);
+  QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |
+                                                               QDir::NoDotAndDotDot |
+                                                               QDir::NoSymLinks |
+                                                               QDir::Readable);
+  skin_directories.append(QDir(getUserSkinBaseFolder()).entryList(QDir::Dirs |
+                                                                  QDir::NoDotAndDotDot |
+                                                                  QDir::NoSymLinks |
+                                                                  QDir::Readable));
 
   foreach (const QString &base_directory, skin_directories) {
     const Skin skin_info = skinInfo(base_directory, &skin_load_ok);
