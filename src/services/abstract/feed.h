@@ -85,12 +85,12 @@ class Feed : public RootItem, public QRunnable {
     void updateCounts(bool including_total_count);
     int updateMessages(const QList<Message> &messages, bool error_during_obtaining);
 
+  signals:
+    void messagesObtained(QList<Message> messages, bool error_during_obtaining);
+
   private:
     // Performs synchronous obtaining of new messages for this feed.
     virtual QList<Message> obtainNewMessages(bool *error_during_obtaining) = 0;
-
-  signals:
-    void messagesObtained(QList<Message> messages, bool error_during_obtaining);
 
   private:
     QString m_url;
