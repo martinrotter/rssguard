@@ -73,7 +73,7 @@ APP_LOW_NAME                  = "rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2016 $$APP_AUTHOR"
-APP_VERSION                   = "3.3.6"
+APP_VERSION                   = "3.3.7"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
 APP_URL                       = "https://github.com/martinrotter/rssguard"
@@ -509,6 +509,7 @@ TRANSLATIONS += localization/qtbase-cs.ts \
                 localization/rssguard-ja.ts \
                 localization/rssguard-lt.ts \
                 localization/rssguard-nl.ts \
+                localization/rssguard-pl.ts \
                 localization/rssguard-pt.ts \
                 localization/rssguard-sv.ts
 
@@ -524,6 +525,7 @@ TRANSLATIONS_WO_QT += $$PWD/localization/rssguard-cs.ts \
                       $$PWD/localization/rssguard-ja.ts \
                       $$PWD/localization/rssguard-lt.ts \
                       $$PWD/localization/rssguard-nl.ts \
+                      $$PWD/localization/rssguard-pl.ts \
                       $$PWD/localization/rssguard-pt.ts \
                       $$PWD/localization/rssguard-sv.ts
 
