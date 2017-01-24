@@ -37,12 +37,11 @@ QVariant MessageTextBrowser::loadResource(int type, const QUrl &name) {
         m_imagePlaceholder = qApp->icons()->miscPixmap(QSL("image-placeholder")).scaledToWidth(20, Qt::FastTransformation);
       }
 
-      emit imageRequested(name.toString());
       return m_imagePlaceholder;
     }
 
     default:
-      return QVariant();
+      return QTextBrowser::loadResource(type, name);
   }
 }
 

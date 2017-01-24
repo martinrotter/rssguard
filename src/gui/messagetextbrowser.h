@@ -30,9 +30,6 @@ class MessageTextBrowser : public QTextBrowser {
 
     QVariant loadResource(int type, const QUrl &name);
 
-  signals:
-    void imageRequested(const QString &image_url);
-
   protected:
     void wheelEvent(QWheelEvent *e);
 
