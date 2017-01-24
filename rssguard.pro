@@ -614,25 +614,25 @@ win32 {
   misc_sql.files = resources/misc/*.sql
   misc_sql.path = $$PREFIX/misc
 
-  qt_dlls_root.files = resources/binaries/windows/qt5-msvc2013/*.*
+  qt_dlls_root.files = resources/binaries/windows/qt5-msvc2015/*.*
   qt_dlls_root.path = $$quote($$PREFIX/)
 
-  qt_dlls_bearer.files = resources/binaries/windows/qt5-msvc2013/bearer
+  qt_dlls_bearer.files = resources/binaries/windows/qt5-msvc2015/bearer
   qt_dlls_bearer.path = $$quote($$PREFIX/)
 
-  qt_dlls_iconengines.files = resources/binaries/windows/qt5-msvc2013/iconengines
+  qt_dlls_iconengines.files = resources/binaries/windows/qt5-msvc2015/iconengines
   qt_dlls_iconengines.path = $$quote($$PREFIX/)
 
-  qt_dlls_imageformats.files = resources/binaries/windows/qt5-msvc2013/imageformats
+  qt_dlls_imageformats.files = resources/binaries/windows/qt5-msvc2015/imageformats
   qt_dlls_imageformats.path = $$quote($$PREFIX/)
 
-  qt_dlls_position.files = resources/binaries/windows/qt5-msvc2013/position
+  qt_dlls_position.files = resources/binaries/windows/qt5-msvc2015/position
   qt_dlls_position.path = $$quote($$PREFIX/)
 
-  qt_dlls_platforms.files = resources/binaries/windows/qt5-msvc2013/platforms/
+  qt_dlls_platforms.files = resources/binaries/windows/qt5-msvc2015/platforms/
   qt_dlls_platforms.path = $$quote($$PREFIX/)
 
-  qt_dlls_sqldrivers.files = resources/binaries/windows/qt5-msvc2013/sqldrivers
+  qt_dlls_sqldrivers.files = resources/binaries/windows/qt5-msvc2015/sqldrivers
   qt_dlls_sqldrivers.path = $$quote($$PREFIX/)
 
   misc_icons.files = resources/graphics/misc
@@ -672,13 +672,13 @@ win32 {
 
   equals(USE_WEBENGINE, true) {
     # Copy extra resource files for QtWebEngine.
-    qtwebengine_translations.files = resources/binaries/windows/qt5-msvc2013/QtWebEngine/translations
+    qtwebengine_translations.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/translations
     qtwebengine_translations.path = $$quote($$PREFIX/)
 
-    qtwebengine_resources.files = resources/binaries/windows/qt5-msvc2013/QtWebEngine/resources
+    qtwebengine_resources.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/resources
     qtwebengine_resources.path = $$quote($$PREFIX/)
 
-    qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2013/QtWebEngine/*.*
+    qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/*.*
     qtwebengine_dlls.path = $$quote($$PREFIX/)
 
     INSTALLS += qtwebengine_translations qtwebengine_resources qtwebengine_dlls

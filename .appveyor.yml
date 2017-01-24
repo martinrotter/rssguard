@@ -1,6 +1,6 @@
 version: 666.{build}
 skip_tags: true
-image: Visual Studio 2013
+os: Visual Studio 2015
 clone_depth: 1
 clone_folder: C:\rssguard
 
@@ -10,14 +10,13 @@ branches:
     - dev
 
 environment:
-  QTDIR: 'C:\Qt\5.7\msvc2013'
-  QMAKESPEC: win32-msvc2013
-  COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86'
+  QTDIR: 'C:\Qt\5.8\msvc2015'
+  QMAKESPEC: win32-msvc2015
+  COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86'
   access_token:
     secure: XCWdr9wPgK4gm6289WXCg2vtMA02eBSnj6eKHC+ps6Z5lgw0jsK09UQ5y9E9ZFwS
   matrix:
     - qmake_args: 'USE_WEBENGINE=false'
-    
     - qmake_args: 'USE_WEBENGINE=true'
    
 build_script:

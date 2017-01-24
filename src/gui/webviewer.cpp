@@ -44,7 +44,6 @@ bool WebViewer::canDecreaseZoom() {
 }
 
 void WebViewer::displayMessage() {
-  //load(QUrl(INTERNAL_URL_MESSAGE));
   setHtml(m_messageContents, QUrl::fromUserInput(INTERNAL_URL_MESSAGE));
 }
 
