@@ -626,9 +626,6 @@ win32 {
   qt_dlls_imageformats.files = resources/binaries/windows/qt5-msvc2015/imageformats
   qt_dlls_imageformats.path = $$quote($$PREFIX/)
 
-  qt_dlls_position.files = resources/binaries/windows/qt5-msvc2015/position
-  qt_dlls_position.path = $$quote($$PREFIX/)
-
   qt_dlls_platforms.files = resources/binaries/windows/qt5-msvc2015/platforms/
   qt_dlls_platforms.path = $$quote($$PREFIX/)
 
@@ -678,10 +675,13 @@ win32 {
     qtwebengine_resources.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/resources
     qtwebengine_resources.path = $$quote($$PREFIX/)
 
+    qtwebengine_position.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/position
+    qtwebengine_position.path = $$quote($$PREFIX/)
+
     qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/*.*
     qtwebengine_dlls.path = $$quote($$PREFIX/)
 
-    INSTALLS += qtwebengine_translations qtwebengine_resources qtwebengine_dlls
+    INSTALLS += qtwebengine_translations qtwebengine_resources qtwebengine_position qtwebengine_dlls
   }
 }
 
