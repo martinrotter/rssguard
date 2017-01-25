@@ -155,9 +155,10 @@ void Feed::run() {
 
   // Now, do some general operations on messages (tweak encoding etc.).
   for (int i = 0; i < msgs.size(); i++) {
-    msgs[i].m_contents = msgs[i].m_contents.toUtf8();
+    // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
+    msgs[i].m_contents = QUrl::fromPercentEncoding(msgs[i].m_contents.toUtf8());
     msgs[i].m_author = msgs[i].m_author.toUtf8();
-    msgs[i].m_title = msgs[i].m_title.toUtf8();
+    msgs[i].m_title = QUrl::fromPercentEncoding(msgs[i].m_title.toUtf8());
   }
 
   emit messagesObtained(msgs, error_during_obtaining);

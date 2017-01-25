@@ -1,3 +1,9 @@
+3.3.8
+—————
+
+Fixed:
+▪ Percent HTML encoding is now decoded when messages are downloaded. (bug #83)
+
 3.3.6
 —————
 
