@@ -542,8 +542,8 @@ TEXTS = resources/text/CHANGELOG \
 
 # Make sure QM translations are generated.
 lrelease.input = TRANSLATIONS
-lrelease.output = $$OUT_PWD/l10n/${QMAKE_FILE_BASE}.qm
-lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$OUT_PWD/l10n/${QMAKE_FILE_BASE}.qm
+lrelease.output = $$OUT_PWD/lang/${QMAKE_FILE_BASE}.qm
+lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$OUT_PWD/lang/${QMAKE_FILE_BASE}.qm
 lrelease.CONFIG += no_link target_predeps
 
 # Create new "make lupdate" target.
@@ -661,7 +661,7 @@ win32 {
   app_plain_icon.files = resources/graphics/$${TARGET}_plain.png
   app_plain_icon.path = $$quote($$PREFIX/)
 
-  translations.files = $$OUT_PWD/l10n
+  translations.files = $$OUT_PWD/lang
   translations.path = $$quote($$PREFIX/)
 
   INSTALLS += target misc_sql qt_dlls_root qt_dlls_bearer qt_dlls_iconengines \
@@ -721,7 +721,7 @@ unix:!mac {
   desktop_file_autostart.files = resources/desktop/$${TARGET}.desktop.autostart
   desktop_file_autostart.path = $$quote($$PREFIX/share/$${TARGET}/autostart/)
 
-  translations.files = $$OUT_PWD/l10n
+  translations.files = $$OUT_PWD/lang
   translations.path = $$quote($$PREFIX/share/$$TARGET/)
 
   INSTALLS += target misc_sql misc_icons misc_feeds \
@@ -765,7 +765,7 @@ mac {
   misc_texts.files = $$TEXTS
   misc_texts.path = Contents/Resources/information
 
-  translations.files = $$OUT_PWD/l10n
+  translations.files = $$OUT_PWD/lang
   translations.path =  Contents/Resources
 
   QMAKE_BUNDLE_DATA += misc_sql misc_icons faenza misc_feeds skins \
