@@ -1,3 +1,10 @@
+3.4.0
+—————
+
+Changed:
+▪ RSS Guard now uses "_" character as localization file names separator. (issue #75)
+▪ Localizations are now placed in "translations" subfolder instead of "l10n" subfolder. (issue #75)
+
 3.3.8
 —————
 

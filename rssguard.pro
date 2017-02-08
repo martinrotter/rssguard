@@ -489,45 +489,45 @@ else {
                 src/gui/newspaperpreviewer.ui
 }
 
-TRANSLATIONS += localization/qtbase-cs.ts \
-                localization/qtbase-da.ts \
-                localization/qtbase-de.ts \
-                localization/qtbase-fr.ts \
-                localization/qtbase-he.ts \
-                localization/qtbase-it.ts \
-                localization/qtbase-ja.ts \
-                localization/qtbase-sv.ts \
-                localization/rssguard-cs.ts \
-                localization/rssguard-da.ts \
-                localization/rssguard-de.ts \
-                localization/rssguard-en_GB.ts \
-                localization/rssguard-en.ts \
-                localization/rssguard-fr.ts \
-                localization/rssguard-he.ts \
-                localization/rssguard-id.ts \
-                localization/rssguard-it.ts \
-                localization/rssguard-ja.ts \
-                localization/rssguard-lt.ts \
-                localization/rssguard-nl.ts \
-                localization/rssguard-pl.ts \
-                localization/rssguard-pt.ts \
-                localization/rssguard-sv.ts
+TRANSLATIONS += localization/qtbase_cs.ts \
+                localization/qtbase_da.ts \
+                localization/qtbase_de.ts \
+                localization/qtbase_fr.ts \
+                localization/qtbase_he.ts \
+                localization/qtbase_it.ts \
+                localization/qtbase_ja.ts \
+                localization/qtbase_sv.ts \
+                localization/rssguard_cs.ts \
+                localization/rssguard_da.ts \
+                localization/rssguard_de.ts \
+                localization/rssguard_en_GB.ts \
+                localization/rssguard_en.ts \
+                localization/rssguard_fr.ts \
+                localization/rssguard_he.ts \
+                localization/rssguard_id.ts \
+                localization/rssguard_it.ts \
+                localization/rssguard_ja.ts \
+                localization/rssguard_lt.ts \
+                localization/rssguard_nl.ts \
+                localization/rssguard_pl.ts \
+                localization/rssguard_pt.ts \
+                localization/rssguard_sv.ts
 
-TRANSLATIONS_WO_QT += $$PWD/localization/rssguard-cs.ts \
-                      $$PWD/localization/rssguard-da.ts \
-                      $$PWD/localization/rssguard-de.ts \
-                      $$PWD/localization/rssguard-en_GB.ts \
-                      $$PWD/localization/rssguard-en.ts \
-                      $$PWD/localization/rssguard-fr.ts \
-                      $$PWD/localization/rssguard-he.ts \
-                      $$PWD/localization/rssguard-id.ts \
-                      $$PWD/localization/rssguard-it.ts \
-                      $$PWD/localization/rssguard-ja.ts \
-                      $$PWD/localization/rssguard-lt.ts \
-                      $$PWD/localization/rssguard-nl.ts \
-                      $$PWD/localization/rssguard-pl.ts \
-                      $$PWD/localization/rssguard-pt.ts \
-                      $$PWD/localization/rssguard-sv.ts
+TRANSLATIONS_WO_QT += $$PWD/localization/rssguard_cs.ts \
+                      $$PWD/localization/rssguard_da.ts \
+                      $$PWD/localization/rssguard_de.ts \
+                      $$PWD/localization/rssguard_en_GB.ts \
+                      $$PWD/localization/rssguard_en.ts \
+                      $$PWD/localization/rssguard_fr.ts \
+                      $$PWD/localization/rssguard_he.ts \
+                      $$PWD/localization/rssguard_id.ts \
+                      $$PWD/localization/rssguard_it.ts \
+                      $$PWD/localization/rssguard_ja.ts \
+                      $$PWD/localization/rssguard_lt.ts \
+                      $$PWD/localization/rssguard_nl.ts \
+                      $$PWD/localization/rssguard_pl.ts \
+                      $$PWD/localization/rssguard_pt.ts \
+                      $$PWD/localization/rssguard_sv.ts
 
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src \
@@ -542,8 +542,8 @@ TEXTS = resources/text/CHANGELOG \
 
 # Make sure QM translations are generated.
 lrelease.input = TRANSLATIONS
-lrelease.output = $$OUT_PWD/lang/${QMAKE_FILE_BASE}.qm
-lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$OUT_PWD/lang/${QMAKE_FILE_BASE}.qm
+lrelease.output = $$OUT_PWD/translations/${QMAKE_FILE_BASE}.qm
+lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$OUT_PWD/translations/${QMAKE_FILE_BASE}.qm
 lrelease.CONFIG += no_link target_predeps
 
 # Create new "make lupdate" target.
@@ -661,7 +661,7 @@ win32 {
   app_plain_icon.files = resources/graphics/$${TARGET}_plain.png
   app_plain_icon.path = $$quote($$PREFIX/)
 
-  translations.files = $$OUT_PWD/lang
+  translations.files = $$OUT_PWD/translations
   translations.path = $$quote($$PREFIX/)
 
   INSTALLS += target misc_sql qt_dlls_root qt_dlls_bearer qt_dlls_iconengines \
@@ -721,7 +721,7 @@ unix:!mac {
   desktop_file_autostart.files = resources/desktop/$${TARGET}.desktop.autostart
   desktop_file_autostart.path = $$quote($$PREFIX/share/$${TARGET}/autostart/)
 
-  translations.files = $$OUT_PWD/lang
+  translations.files = $$OUT_PWD/translations
   translations.path = $$quote($$PREFIX/share/$$TARGET/)
 
   INSTALLS += target misc_sql misc_icons misc_feeds \
@@ -765,7 +765,7 @@ mac {
   misc_texts.files = $$TEXTS
   misc_texts.path = Contents/Resources/information
 
-  translations.files = $$OUT_PWD/lang
+  translations.files = $$OUT_PWD/translations
   translations.path =  Contents/Resources
 
   QMAKE_BUNDLE_DATA += misc_sql misc_icons faenza misc_feeds skins \

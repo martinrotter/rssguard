@@ -43,7 +43,7 @@ void Localization::loadActiveLanguage() {
 
   qDebug("Starting to load active localization. Desired localization is '%s'.", qPrintable(desired_localization));
 
-  if (app_translator->load(QLocale(desired_localization), "rssguard", QSL("-"), APP_LANG_PATH)) {
+  if (app_translator->load(QLocale(desired_localization), "rssguard", QSL("_"), APP_LANG_PATH)) {
     const QString real_loaded_locale = app_translator->translate("QObject", "LANG_ABBREV");
 
     Application::installTranslator(app_translator);
@@ -59,7 +59,7 @@ void Localization::loadActiveLanguage() {
     desired_localization = DEFAULT_LOCALE;
   }
 
-  if (qt_translator->load(QLocale(desired_localization), "qtbase", QSL("-"), APP_LANG_PATH)) {
+  if (qt_translator->load(QLocale(desired_localization), "qtbase", QSL("_"), APP_LANG_PATH)) {
     Application::installTranslator(qt_translator);
     qDebug("Qt localization '%s' loaded successfully.", qPrintable(desired_localization));
   }
@@ -78,7 +78,7 @@ QList<Language> Localization::installedLanguages() const {
   QTranslator translator;
 
   // Iterate all found language files.
-  foreach (const QFileInfo &file, file_dir.entryInfoList(QStringList() << "rssguard-*.qm", QDir::Files, QDir::Name)) {
+  foreach (const QFileInfo &file, file_dir.entryInfoList(QStringList() << "rssguard_*.qm", QDir::Files, QDir::Name)) {
     if (translator.load(file.absoluteFilePath())) {
       Language new_language;
       new_language.m_code = translator.translate("QObject", "LANG_ABBREV");
