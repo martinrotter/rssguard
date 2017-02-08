@@ -500,6 +500,10 @@ ou esta função ainda não foi implementada.</translation>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versão:&lt;/b&gt; %1 (criado em %2/%3)&lt;br&gt;&lt;b&gt;Revisão:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Data de criação:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compilado contra %7)&lt;br&gt;</translation>
     </message>
+    <message>
+        <source>User skins root path</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -2935,6 +2939,14 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Data storage</source>
         <translation>Armazenamento de dados</translation>
+    </message>
+    <message>
+        <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use DB transactions when storing downloaded messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

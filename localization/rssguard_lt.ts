@@ -361,7 +361,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
+        <translation>Kontekstinis meniu tuščiai vietai</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
@@ -373,7 +373,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation>Kontekstinis meniu kategorijoms</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
@@ -407,7 +407,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"/>
+        <translation>Kontekstinis meniu kitiems elementams</translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -500,6 +500,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versija:&lt;/b&gt; %1 (sukurta sistemoje %2/%3)&lt;br&gt;&lt;b&gt;Poversijis:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Kūrimo data:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (sukompiliuota remiantis %7)&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>User skins root path</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1214,7 +1218,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos pasirinkimas</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
@@ -1852,7 +1856,7 @@ Jūs turite paleisti programą iš naujo rankiniu būdu.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Piktogramos pasirinkimas</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
@@ -1998,7 +2002,7 @@ Jūs turite paleisti programą iš naujo rankiniu būdu.</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Gauti internetinius metaduomenis</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
@@ -2200,7 +2204,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinktas saitas yra neteisingas.</translation>
     </message>
     <message>
         <source>Mark message as read</source>
@@ -2362,7 +2366,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių paieškos langelis</translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
@@ -2397,7 +2401,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation type="unfinished"/>
+        <translation>Kontekstinis meniu žinutėms</translation>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
@@ -2501,7 +2505,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Forma</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
@@ -2924,6 +2928,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Data storage</source>
         <translation>Duomenų kaupiklis</translation>
     </message>
+    <message>
+        <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use DB transactions when storing downloaded messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -3032,7 +3044,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="unfinished"/>
+        <translation>Paveikslų priedų aukštis</translation>
     </message>
 </context>
 <context>
@@ -3371,7 +3383,7 @@ Paskyros ID: %1</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation>Kanalo atnaujinimo etiketė</translation>
     </message>
     <message>
         <source>File download progress bar</source>
@@ -3379,7 +3391,7 @@ Paskyros ID: %1</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation>Failo atsiuntimo etiketė</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>

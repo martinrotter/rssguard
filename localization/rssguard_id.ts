@@ -499,6 +499,10 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versi:&lt;/b&gt; %1 (dibangun di %2/%3)&lt;br&gt;&lt;b&gt;Revisi:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Tanggal dibangun:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (dikompilasi terhadap %7)&lt;br&gt;</translation>
     </message>
+    <message>
+        <source>User skins root path</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -849,11 +853,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>URL dari instansi TT-RSS anda tanpa mengikuti rangkaian &quot;/api/&quot;</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL jangan diakhiri dengan &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
@@ -2928,6 +2932,14 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
         <source>Data storage</source>
         <translation>Penyimpanan data</translation>
     </message>
+    <message>
+        <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use DB transactions when storing downloaded messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -3036,7 +3048,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="unfinished"/>
+        <translation>Tinggi dari gambar lampiran</translation>
     </message>
 </context>
 <context>
@@ -3207,11 +3219,11 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"/>
+        <translation>Gaya</translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="unfinished"/>
+        <translation>Skin</translation>
     </message>
 </context>
 <context>
