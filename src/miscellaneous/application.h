@@ -84,6 +84,10 @@ class Application : public QtSingleApplication {
     QString documentsFolderPath();
     QString homeFolderPath();
 
+#if defined(Q_OS_LINUX)
+    QString getXdgConfigHomePath();
+#endif
+
     void setMainForm(FormMain *main_form);
 
     void backupDatabaseSettings(bool backup_database, bool backup_settings,

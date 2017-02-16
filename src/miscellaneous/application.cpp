@@ -186,6 +186,24 @@ void Application::setMainForm(FormMain *main_form) {
   m_mainForm = main_form;
 }
 
+#if defined(Q_OS_LINUX)
+QString Application::getXdgConfigHomePath() {
+  // TODO: Return ".config" folder on Linux.
+  // XDG_CONFIG_HOME
+  // Where user-specific configurations should be written (analogous to /etc).
+  // Should default to $HOME/.config.
+
+  const QString xdgConfigHome = qgetenv("XDG_CONFIG_HOME");
+
+  if (xdgConfigHome.isEmpty()) {
+    return qgetenv("HOME") + QDir::separator() + ".config";
+  }
+  else {
+    return xdgConfigHome;
+  }
+}
+#endif
+
 QString Application::tempFolderPath() {
   return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
 }
