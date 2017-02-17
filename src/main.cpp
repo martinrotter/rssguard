@@ -100,7 +100,11 @@ int main(int argc, char *argv[]) {
   // These settings needs to be set before any QSettings object.
   Application::setApplicationName(APP_NAME);
   Application::setApplicationVersion(APP_VERSION);
+
+#if !defined(Q_OS_LINUX)
   Application::setOrganizationName(APP_AUTHOR);
+#endif
+
   Application::setOrganizationDomain(APP_URL);
   Application::setWindowIcon(QIcon(APP_ICON_PATH));
 

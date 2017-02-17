@@ -62,7 +62,7 @@ void SettingsBrowserMail::changeDefaultBrowserArguments(int index) {
 void SettingsBrowserMail::selectBrowserExecutable() {
   const QString executable_file = QFileDialog::getOpenFileName(this,
                                                                tr("Select web browser executable"),
-                                                               qApp->homeFolderPath(),
+                                                               qApp->getHomeFolderPath(),
                                                                //: File filter for external browser selection dialog.
                                                              #if defined(Q_OS_LINUX)
                                                                tr("Executables (*)")
@@ -110,7 +110,7 @@ void SettingsBrowserMail::changeDefaultEmailArguments(int index) {
 void SettingsBrowserMail::selectEmailExecutable() {
   QString executable_file = QFileDialog::getOpenFileName(this,
                                                          tr("Select e-mail executable"),
-                                                         qApp->homeFolderPath(),
+                                                         qApp->getHomeFolderPath(),
                                                          //: File filter for external e-mail selection dialog.
                                                        #if defined(Q_OS_LINUX)
                                                          tr("Executables (*)")

@@ -322,17 +322,16 @@ QString Settings::getAppPathUserFolder() {
   return qApp->applicationDirPath() + QDir::separator() + QSL("data");
 }
 
-
-
 QString Settings::getHomeUserFolder() {
 #if defined(Q_OS_LINUX)
-  QString home_folder = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
+  // Fallback folder.
+  QString home_folder = qApp->getHomeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
 
   if (QDir().exists(home_folder)) {
     return home_folder;
   }
   else {
-    return qApp->getXdgConfigHomePath() + QDir::separator() + QString(APP_LOW_NAME);
+    return qApp->getXdgConfigHomePath() + QDir::separator() + QString(APP_NAME);
   }
 #else
   return qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QSL("data");

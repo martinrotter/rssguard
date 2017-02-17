@@ -122,7 +122,7 @@ void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
 
 void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
   const QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
-  const QString temp_directory = qApp->tempFolderPath();
+  const QString temp_directory = qApp->getTempFolderPath();
 
   if (!temp_directory.isEmpty()) {
     const QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);

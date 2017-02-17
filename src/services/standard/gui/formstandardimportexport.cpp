@@ -163,7 +163,7 @@ void FormStandardImportExport::selectExportFile() {
   filter += filter_txt_url_per_line;
 
   QString selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds export"),
-                                                       qApp->homeFolderPath(), filter, &selected_filter);
+                                                       qApp->getHomeFolderPath(), filter, &selected_filter);
 
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
@@ -199,7 +199,7 @@ void FormStandardImportExport::selectImportFile() {
   filter += ";;";
   filter += filter_txt_url_per_line;
 
-  const QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), qApp->homeFolderPath(),
+  const QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), qApp->getHomeFolderPath(),
                                                              filter, &selected_filter);
 
   if (!selected_file.isEmpty()) {

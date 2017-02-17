@@ -80,9 +80,9 @@ class Application : public QtSingleApplication {
     QWidget *mainFormWidget();
     SystemTrayIcon *trayIcon();
 
-    QString tempFolderPath();
-    QString documentsFolderPath();
-    QString homeFolderPath();
+    QString getTempFolderPath();
+    QString getDocumentsFolderPath();
+    QString getHomeFolderPath();
 
 #if defined(Q_OS_LINUX)
     QString getXdgConfigHomePath();
