@@ -186,11 +186,9 @@ void Application::setMainForm(FormMain *main_form) {
   m_mainForm = main_form;
 }
 
-#if defined(Q_OS_LINUX)
-QString Application::getXdgConfigHomePath() {
+QString Application::getConfigHomePath() {
   return IOFactory::getSystemFolder(QStandardPaths::ConfigLocation);
 }
-#endif
 
 QString Application::getTempFolderPath() {
   return IOFactory::getSystemFolder(QStandardPaths::TempLocation);

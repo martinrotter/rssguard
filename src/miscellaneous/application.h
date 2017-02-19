@@ -83,10 +83,7 @@ class Application : public QtSingleApplication {
     QString getTempFolderPath();
     QString getDocumentsFolderPath();
     QString getHomeFolderPath();
-
-#if defined(Q_OS_LINUX)
-    QString getXdgConfigHomePath();
-#endif
+    QString getConfigHomePath();
 
     void setMainForm(FormMain *main_form);
 

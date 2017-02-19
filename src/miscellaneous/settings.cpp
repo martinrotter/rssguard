@@ -323,19 +323,15 @@ QString Settings::getAppPathUserFolder() {
 }
 
 QString Settings::getHomeUserFolder() {
-#if defined(Q_OS_LINUX)
   // Fallback folder.
-  QString home_folder = qApp->getHomeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
+  QString home_folder = qApp->getHomeFolderPath() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
 
   if (QDir().exists(home_folder)) {
     return home_folder;
   }
   else {
-    return qApp->getXdgConfigHomePath() + QDir::separator() + QString(APP_NAME);
+    return qApp->getConfigHomePath() + QDir::separator() + QSL(APP_NAME);
   }
-#else
-  return qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
-#endif
 }
 
 Settings *Settings::setupSettings(QObject *parent) {
@@ -377,7 +373,12 @@ SettingsProperties Settings::determineProperties() {
 
   // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
   // settings was not initialized before.
+#if defined (Q_OS_LINUX)
+  // DO NOT use portable settings for Linux, it is really not used on that platform.
+  const bool will_we_use_portable_settings = false;
+#else
   const bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
+#endif
 
   if (will_we_use_portable_settings) {
     properties.m_type = SettingsProperties::Portable;
