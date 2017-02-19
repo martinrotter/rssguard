@@ -35,12 +35,12 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialo
   setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 
-  connect(m_ui->m_checkBackupDatabase, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_checkBackupSettings, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(performBackup()));
-  connect(m_ui->m_txtBackupName->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkBackupNames(QString)));
-  connect(m_ui->m_txtBackupName->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_btnSelectFolder, SIGNAL(clicked()), this, SLOT(selectFolder()));
+  connect(m_ui->m_checkBackupDatabase, &QCheckBox::toggled, this, &FormBackupDatabaseSettings::checkOkButton);
+  connect(m_ui->m_checkBackupSettings, &QCheckBox::toggled, this, &FormBackupDatabaseSettings::checkOkButton);
+  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormBackupDatabaseSettings::performBackup);
+  connect(m_ui->m_txtBackupName->lineEdit(), &BaseLineEdit::textChanged, this, &FormBackupDatabaseSettings::checkBackupNames);
+  connect(m_ui->m_txtBackupName->lineEdit(), &BaseLineEdit::textChanged, this, &FormBackupDatabaseSettings::checkOkButton);
+  connect(m_ui->m_btnSelectFolder, &QPushButton::clicked, this, &FormBackupDatabaseSettings::selectFolderInitial);
 
   selectFolder(qApp->getDocumentsFolderPath());
   m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + QL1S("_") + QDateTime::currentDateTime().toString(QSL("yyyyMMddHHmm")));
@@ -67,6 +67,10 @@ void FormBackupDatabaseSettings::performBackup() {
   catch (const ApplicationException &ex) {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(), tr("Backup failed."));
   }
+}
+
+void FormBackupDatabaseSettings::selectFolderInitial() {
+  selectFolder();
 }
 
 void FormBackupDatabaseSettings::selectFolder(QString path) {
