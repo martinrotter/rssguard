@@ -8,10 +8,8 @@ os:
 compiler:
 - gcc
 branches:
-  except:
-  - master
   only:
-  - dev
+  - master
 git:
   submodules: false
   depth: 40

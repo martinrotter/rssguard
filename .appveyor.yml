@@ -7,7 +7,6 @@ clone_folder: C:\rssguard
 branches:
   only:
     - master
-    - dev
 
 environment:
   QTDIR: 'C:\Qt\5.8\msvc2015'
