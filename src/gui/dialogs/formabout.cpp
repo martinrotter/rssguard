@@ -53,10 +53,10 @@ void FormAbout::loadSettingsAndPaths() {
     m_ui->m_txtPathsSettingsType->setText(tr("FULLY portable"));
   }
   else {
-    m_ui->m_txtPathsSettingsType->setText(tr("PARTIALLY portable"));
+    m_ui->m_txtPathsSettingsType->setText(tr("NOT portable"));
   }
 
-  m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->settings()->userSettingsRootFolder() +
+  m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->getUserDataPath() +
                                                                  QDir::separator() +
                                                                  QString(APP_DB_SQLITE_PATH)));
   m_ui->m_txtPathsSettingsFile->setText(QDir::toNativeSeparators(qApp->settings()->fileName()));

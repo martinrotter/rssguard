@@ -275,15 +275,6 @@ Settings::Settings(const QString &file_name, Format format, const SettingsProper
 Settings::~Settings() {  
 }
 
-QString Settings::userSettingsRootFolder() const {
-  if (qApp->settings()->type() == SettingsProperties::Portable) {
-    return getAppPathUserFolder();
-  }
-  else {
-    return getHomeUserFolder();
-  }
-}
-
 QString Settings::pathName() const {
   return QFileInfo(fileName()).absolutePath();
 }
@@ -318,24 +309,6 @@ void Settings::finishRestoration(const QString &desired_settings_file_path) {
   }
 }
 
-QString Settings::getAppPathUserFolder() {
-  // In "app" folder, we would like to separate all user data into own subfolder,
-  // therefore stick to "data" folder in this mode.
-  return qApp->applicationDirPath() + QDir::separator() + QSL("data");
-}
-
-QString Settings::getHomeUserFolder() {
-  // Fallback folder.
-  const QString home_folder = qApp->getHomeFolderPath() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
-
-  if (QDir().exists(home_folder)) {
-    return home_folder;
-  }
-  else {
-    return qApp->getConfigHomePath() + QDir::separator() + QSL(APP_NAME);
-  }
-}
-
 Settings *Settings::setupSettings(QObject *parent) {
   Settings *new_settings;
 
@@ -366,8 +339,8 @@ SettingsProperties Settings::determineProperties() {
   properties.m_settingsSuffix = QDir::separator() + QString(APP_CFG_PATH) + QDir::separator() + QString(APP_CFG_FILE);
 
   const QString exe_path = qApp->applicationDirPath();
-  const QString app_path = getAppPathUserFolder();
-  const QString home_path =  getHomeUserFolder();
+  const QString app_path = qApp->getUserDataAppPath();
+  const QString home_path = qApp->getUserDataHomePath();
   const QString home_path_file = home_path + properties.m_settingsSuffix;
 
   const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);

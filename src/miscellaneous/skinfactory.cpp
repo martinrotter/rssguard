@@ -75,7 +75,7 @@ void SkinFactory::setCurrentSkinName(const QString &skin_name) {
 }
 
 QString SkinFactory::getUserSkinBaseFolder() const {
-  return qApp->settings()->userSettingsRootFolder() + QDir::separator() + APP_SKIN_USER_FOLDER;
+  return qApp->getUserDataPath() + QDir::separator() + APP_SKIN_USER_FOLDER;
 }
 
 QString SkinFactory::selectedSkinName() const {

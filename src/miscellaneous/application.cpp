@@ -190,6 +190,33 @@ QString Application::getConfigHomePath() {
   return IOFactory::getSystemFolder(QStandardPaths::ConfigLocation);
 }
 
+QString Application::getUserDataAppPath() {
+  // In "app" folder, we would like to separate all user data into own subfolder,
+  // therefore stick to "data" folder in this mode.
+  return applicationDirPath() + QDir::separator() + QSL("data");
+}
+
+QString Application::getUserDataPath() {
+  if (settings()->type() == SettingsProperties::Portable) {
+    return getUserDataAppPath();
+  }
+  else {
+    return getUserDataHomePath();
+  }
+}
+
+QString Application::getUserDataHomePath() {
+  // Fallback folder.
+  const QString home_folder = getHomeFolderPath() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
+
+  if (QDir().exists(home_folder)) {
+    return home_folder;
+  }
+  else {
+    return getConfigHomePath() + QDir::separator() + QSL(APP_NAME);
+  }
+}
+
 QString Application::getTempFolderPath() {
   return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
 }

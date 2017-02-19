@@ -187,7 +187,7 @@ void DatabaseFactory::finishRestoration() {
 }
 
 void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
-  m_sqliteDatabaseFilePath = qApp->settings()->userSettingsRootFolder() + QDir::separator() + QString(APP_DB_SQLITE_PATH);
+  m_sqliteDatabaseFilePath = qApp->getUserDataPath() + QDir::separator() + QString(APP_DB_SQLITE_PATH);
 }
 
 QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {

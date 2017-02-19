@@ -85,6 +85,14 @@ class Application : public QtSingleApplication {
     QString getHomeFolderPath();
     QString getConfigHomePath();
 
+    // These return user ready folders.
+    QString getUserDataAppPath();
+    QString getUserDataHomePath();
+
+    // Returns the base folder to which store user data, the "data" folder.
+    // NOTE: Use this to get correct path under which store user data.
+    QString getUserDataPath();
+
     void setMainForm(FormMain *main_form);
 
     void backupDatabaseSettings(bool backup_database, bool backup_settings,

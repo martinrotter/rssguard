@@ -312,9 +312,6 @@ class Settings : public QSettings {
       return m_initializationStatus;
     }
 
-    // Returns the base folder to which store user data, the "data" folder.
-    QString userSettingsRootFolder() const;
-
     // Getters/setters for settings values.
     inline QVariant value(const QString &section, const QString &key, const QVariant &default_value = QVariant()) const {
       return QSettings::value(QString("%1/%2").arg(section, key), default_value);
@@ -344,9 +341,6 @@ class Settings : public QSettings {
 
     bool initiateRestoration(const QString &settings_backup_file_path);
     static void finishRestoration(const QString &desired_settings_file_path);
-
-    static QString getAppPathUserFolder();
-    static QString getHomeUserFolder();
 
     // Creates settings file in correct location.
     static Settings *setupSettings(QObject *parent);
