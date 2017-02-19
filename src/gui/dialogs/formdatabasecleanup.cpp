@@ -22,6 +22,8 @@
 #include "miscellaneous/databasefactory.h"
 
 #include <QCloseEvent>
+#include <QDialogButtonBox>
+#include <QPushButton>
 
 
 FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormDatabaseCleanup), m_cleaner(nullptr) {
@@ -49,11 +51,11 @@ void FormDatabaseCleanup::setCleaner(DatabaseCleaner *cleaner) {
 
   m_cleaner = cleaner;
 
-  connect(m_ui->m_btnBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(startPurging()));
-  connect(this, SIGNAL(purgeRequested(CleanerOrders)), m_cleaner, SLOT(purgeDatabaseData(CleanerOrders)));
-  connect(m_cleaner, SIGNAL(purgeStarted()), this, SLOT(onPurgeStarted()));
-  connect(m_cleaner, SIGNAL(purgeProgress(int,QString)), this, SLOT(onPurgeProgress(int,QString)));
-  connect(m_cleaner, SIGNAL(purgeFinished(bool)), this, SLOT(onPurgeFinished(bool)));
+  connect(m_ui->m_btnBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormDatabaseCleanup::startPurging);
+  connect(this, &FormDatabaseCleanup::purgeRequested, m_cleaner, &DatabaseCleaner::purgeDatabaseData);
+  connect(m_cleaner, &DatabaseCleaner::purgeStarted, this, &FormDatabaseCleanup::onPurgeStarted);
+  connect(m_cleaner, &DatabaseCleaner::purgeProgress, this, &FormDatabaseCleanup::onPurgeProgress);
+  connect(m_cleaner, &DatabaseCleaner::purgeFinished, this,&FormDatabaseCleanup::onPurgeFinished);
 }
 
 void FormDatabaseCleanup::closeEvent(QCloseEvent *event) {
