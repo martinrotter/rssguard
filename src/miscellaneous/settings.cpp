@@ -319,12 +319,14 @@ void Settings::finishRestoration(const QString &desired_settings_file_path) {
 }
 
 QString Settings::getAppPathUserFolder() {
+  // In "app" folder, we would like to separate all user data into own subfolder,
+  // therefore stick to "data" folder in this mode.
   return qApp->applicationDirPath() + QDir::separator() + QSL("data");
 }
 
 QString Settings::getHomeUserFolder() {
   // Fallback folder.
-  QString home_folder = qApp->getHomeFolderPath() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
+  const QString home_folder = qApp->getHomeFolderPath() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
 
   if (QDir().exists(home_folder)) {
     return home_folder;
