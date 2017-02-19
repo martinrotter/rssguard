@@ -338,13 +338,8 @@ SettingsProperties Settings::determineProperties() {
 
   properties.m_settingsSuffix = QDir::separator() + QString(APP_CFG_PATH) + QDir::separator() + QString(APP_CFG_FILE);
 
-  const QString exe_path = qApp->applicationDirPath();
   const QString app_path = qApp->getUserDataAppPath();
   const QString home_path = qApp->getUserDataHomePath();
-  const QString home_path_file = home_path + properties.m_settingsSuffix;
-
-  const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);
-  const bool non_portable_settings_exist = QFile::exists(home_path_file);
 
   // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
   // settings was not initialized before.
@@ -352,6 +347,10 @@ SettingsProperties Settings::determineProperties() {
   // DO NOT use portable settings for Linux, it is really not used on that platform.
   const bool will_we_use_portable_settings = false;
 #else
+  const QString exe_path = qApp->applicationDirPath();
+  const QString home_path_file = home_path + properties.m_settingsSuffix;
+  const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);
+  const bool non_portable_settings_exist = QFile::exists(home_path_file);
   const bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
 #endif
 

@@ -82,9 +82,9 @@ ShortcutCatcher::ShortcutCatcher(QWidget *parent)
   m_layout->addWidget(m_btnClear);
 
   // Establish needed connections.
-  connect(m_btnReset, SIGNAL(clicked()), this, SLOT(resetShortcut()));
-  connect(m_btnClear, SIGNAL(clicked()), this, SLOT(clearShortcut()));
-  connect(m_btnChange, SIGNAL(clicked()), this, SLOT(startRecording()));
+  connect(m_btnReset, &QToolButton::clicked, this, &ShortcutCatcher::resetShortcut);
+  connect(m_btnClear, &QToolButton::clicked, this, &ShortcutCatcher::clearShortcut);
+  connect(m_btnChange, &QToolButton::clicked, this, &ShortcutCatcher::startRecording);
 
   // Prepare initial state of the control.
   updateDisplayShortcut();

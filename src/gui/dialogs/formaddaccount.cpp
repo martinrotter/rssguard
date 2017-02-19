@@ -22,6 +22,9 @@
 #include "core/feedsmodel.h"
 #include "services/standard/standardserviceentrypoint.h"
 
+#include <QListWidget>
+#include <QDialogButtonBox>
+
 
 FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, FeedsModel *model, QWidget *parent)
   : QDialog(parent), m_ui(new Ui::FormAddAccount), m_model(model), m_entryPoints(entry_points) {
@@ -31,9 +34,9 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, Fe
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("document-new")));
 
-  connect(m_ui->m_listEntryPoints, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(addSelectedAccount()));
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(addSelectedAccount()));
-  connect(m_ui->m_listEntryPoints, SIGNAL(itemSelectionChanged()), this, SLOT(displayActiveEntryPointDetails()));
+  connect(m_ui->m_listEntryPoints, &QListWidget::itemDoubleClicked, this, &FormAddAccount::addSelectedAccount);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAddAccount::addSelectedAccount);
+  connect(m_ui->m_listEntryPoints, &QListWidget::itemSelectionChanged, this, &FormAddAccount::displayActiveEntryPointDetails);
   loadEntryPoints();
 }
 

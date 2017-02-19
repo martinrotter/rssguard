@@ -488,12 +488,12 @@ bool FeedsModel::addServiceAccount(ServiceRoot *root, bool freshly_activated) {
   endInsertRows();
 
   // Connect.
-  connect(root, SIGNAL(itemRemovalRequested(RootItem*)), this, SLOT(removeItem(RootItem*)));
-  connect(root, SIGNAL(itemReassignmentRequested(RootItem*,RootItem*)), this, SLOT(reassignNodeToNewParent(RootItem*,RootItem*)));
-  connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));
-  connect(root, SIGNAL(reloadMessageListRequested(bool)), this, SIGNAL(reloadMessageListRequested(bool)));
-  connect(root, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)));
-  connect(root, SIGNAL(itemExpandStateSaveRequested(RootItem*)), this, SIGNAL(itemExpandStateSaveRequested(RootItem*)));
+  connect(root, &ServiceRoot::itemRemovalRequested, this, static_cast<void (FeedsModel::*)(RootItem*)>(&FeedsModel::removeItem));
+  connect(root, &ServiceRoot::itemReassignmentRequested, this, &FeedsModel::reassignNodeToNewParent);
+  connect(root, &ServiceRoot::dataChanged, this, &FeedsModel::onItemDataChanged);
+  connect(root, &ServiceRoot::reloadMessageListRequested, this, &FeedsModel::reloadMessageListRequested);
+  connect(root, &ServiceRoot::itemExpandRequested, this, &FeedsModel::itemExpandRequested);
+  connect(root, &ServiceRoot::itemExpandStateSaveRequested, this, &FeedsModel::itemExpandStateSaveRequested);
 
   root->start(freshly_activated);
   return true;
