@@ -25,6 +25,7 @@
 #include <QPushButton>
 #include <QDialogButtonBox>
 #include <QStyle>
+#include <QCheckBox>
 
 
 MessageBox::MessageBox(QWidget *parent) : QMessageBox(parent) {
@@ -39,6 +40,19 @@ void MessageBox::setIcon(QMessageBox::Icon icon) {
 
   // Setup status icon.
   setIconPixmap(iconForStatus(icon).pixmap(icon_size, icon_size));
+}
+
+void MessageBox::setCheckBox(QMessageBox *msg_box, const QString &text, bool *data) {
+  // Add "don't show this again checkbox.
+  QCheckBox *check_box = new QCheckBox(msg_box);
+
+  check_box->setChecked(*data);
+  check_box->setText(text);
+  connect(check_box, &QCheckBox::toggled, [=](bool checked) {
+    *data = checked;
+  });
+
+  msg_box->setCheckBox(check_box);
 }
 
 QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
@@ -68,7 +82,8 @@ QMessageBox::StandardButton MessageBox::show(QWidget *parent,
                                              const QString &informative_text,
                                              const QString &detailed_text,
                                              QMessageBox::StandardButtons buttons,
-                                             QMessageBox::StandardButton default_button) {
+                                             QMessageBox::StandardButton default_button,
+                                             bool *dont_show_again) {
   // Create and find needed components.
   MessageBox msg_box(parent);
 
@@ -80,6 +95,10 @@ QMessageBox::StandardButton MessageBox::show(QWidget *parent,
   msg_box.setIcon(icon);
   msg_box.setStandardButtons(buttons);
   msg_box.setDefaultButton(default_button);
+
+  if (dont_show_again != nullptr) {
+    MessageBox::setCheckBox(&msg_box, tr("Do not show this dialog again."), dont_show_again);
+  }
 
   // Display it.
   if (msg_box.exec() == -1) {

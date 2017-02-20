@@ -33,6 +33,8 @@ class MessageBox : public QMessageBox {
     // Custom icon setting.
     void setIcon(Icon icon);
 
+    static void setCheckBox(QMessageBox *msg_box, const QString &text, bool *data);
+
     // Displays custom message box.
     static QMessageBox::StandardButton show(QWidget *parent,
                                             QMessageBox::Icon icon,
@@ -41,7 +43,8 @@ class MessageBox : public QMessageBox {
                                             const QString &informative_text = QString(),
                                             const QString &detailed_text = QString(),
                                             QMessageBox::StandardButtons buttons = QMessageBox::Ok,
-                                            QMessageBox::StandardButton default_button = QMessageBox::Ok);
+                                            QMessageBox::StandardButton default_button = QMessageBox::Ok,
+                                            bool *dont_show_again = nullptr);
 
     static QIcon iconForStatus(QMessageBox::Icon status);
 };
