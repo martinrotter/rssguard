@@ -164,6 +164,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionServiceAdd;
   actions << m_ui->m_actionServiceEdit;
   actions << m_ui->m_actionServiceDelete;
+  actions << m_ui->m_actionCleanupDatabase;
   actions << m_ui->m_actionAddFeedIntoSelectedAccount;
   actions << m_ui->m_actionAddCategoryIntoSelectedAccount;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;

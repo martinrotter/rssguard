@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ "Cleanup database" action has now configurable shortcut. (issue #90)
 ▪ Fixed #76, now user can choose to "not show the dialog again" when opening hyperlink from message previewer. This only concerns the lite version of RSS Guard which uses simpler text component for message previewing.
 
 Changed:
