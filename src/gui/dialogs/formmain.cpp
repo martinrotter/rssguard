@@ -242,7 +242,7 @@ void FormMain::updateAddItemMenu() {
                                                  tr("Add new category"),
                                                  m_ui->m_menuAddItem);
       root_menu->addAction(action_new_category);
-      connect(action_new_category, SIGNAL(triggered()), activated_root, SLOT(addNewCategory()));
+      connect(action_new_category, &QAction::triggered, activated_root, &ServiceRoot::addNewCategory);
     }
 
     if (activated_root->supportsFeedAdding()) {
@@ -250,6 +250,7 @@ void FormMain::updateAddItemMenu() {
                                              tr("Add new feed"),
                                              m_ui->m_menuAddItem);
       root_menu->addAction(action_new_feed);
+      // NOTE: Because of default arguments.
       connect(action_new_feed, SIGNAL(triggered()), activated_root, SLOT(addNewFeed()));
     }
 
@@ -581,37 +582,37 @@ void FormMain::saveSize() {
 
 void FormMain::createConnections() {
   // Status bar connections.
-  connect(m_ui->m_menuAddItem, SIGNAL(aboutToShow()), this, SLOT(updateAddItemMenu()));
-  connect(m_ui->m_menuRecycleBin, SIGNAL(aboutToShow()), this, SLOT(updateRecycleBinMenu()));
-  connect(m_ui->m_menuAccounts, SIGNAL(aboutToShow()), this, SLOT(updateAccountsMenu()));
+  connect(m_ui->m_menuAddItem, &QMenu::aboutToShow, this, &FormMain::updateAddItemMenu);
+  connect(m_ui->m_menuRecycleBin, &QMenu::aboutToShow, this, &FormMain::updateRecycleBinMenu);
+  connect(m_ui->m_menuAccounts, &QMenu::aboutToShow, this, &FormMain::updateAccountsMenu);
 
-  connect(m_ui->m_actionServiceDelete, SIGNAL(triggered()), m_ui->m_actionDeleteSelectedItem, SIGNAL(triggered()));
-  connect(m_ui->m_actionServiceEdit, SIGNAL(triggered()), m_ui->m_actionEditSelectedItem, SIGNAL(triggered()));
+  connect(m_ui->m_actionServiceDelete, &QAction::triggered, m_ui->m_actionDeleteSelectedItem, &QAction::triggered);
+  connect(m_ui->m_actionServiceEdit, &QAction::triggered, m_ui->m_actionEditSelectedItem, &QAction::triggered);
 
   // Menu "File" connections.
-  connect(m_ui->m_actionBackupDatabaseSettings, SIGNAL(triggered()), this, SLOT(backupDatabaseSettings()));
-  connect(m_ui->m_actionRestoreDatabaseSettings, SIGNAL(triggered()), this, SLOT(restoreDatabaseSettings()));
-  connect(m_ui->m_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
-  connect(m_ui->m_actionServiceAdd, SIGNAL(triggered()), this, SLOT(showAddAccountDialog()));
+  connect(m_ui->m_actionBackupDatabaseSettings, &QAction::triggered, this, &FormMain::backupDatabaseSettings);
+  connect(m_ui->m_actionRestoreDatabaseSettings, &QAction::triggered, this, &FormMain::restoreDatabaseSettings);
+  connect(m_ui->m_actionQuit, &QAction::triggered, qApp, SLOT(quit()));
+  connect(m_ui->m_actionServiceAdd, &QAction::triggered, this, SLOT(showAddAccountDialog()));
 
   // Menu "View" connections.
-  connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(switchFullscreenMode()));
-  connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), m_ui->m_menuBar, SLOT(setVisible(bool)));
-  connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
-  connect(m_ui->m_actionSwitchStatusBar, SIGNAL(toggled(bool)), statusBar(), SLOT(setVisible(bool)));
+  connect(m_ui->m_actionFullscreen, &QAction::toggled, this, SLOT(switchFullscreenMode()));
+  connect(m_ui->m_actionSwitchMainMenu, &QAction::toggled, m_ui->m_menuBar, SLOT(setVisible(bool)));
+  connect(m_ui->m_actionSwitchMainWindow, &QAction::triggered, this, SLOT(switchVisibility()));
+  connect(m_ui->m_actionSwitchStatusBar, &QAction::toggled, statusBar(), SLOT(setVisible(bool)));
 
   // Menu "Tools" connections.
-  connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
-  connect(m_ui->m_actionDownloadManager, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(showDownloadManager()));
+  connect(m_ui->m_actionSettings, &QAction::triggered, this, SLOT(showSettings()));
+  connect(m_ui->m_actionDownloadManager, &QAction::triggered, m_ui->m_tabWidget, SLOT(showDownloadManager()));
 
-  connect(m_ui->m_actionCleanupDatabase, SIGNAL(triggered()), this, SLOT(showDbCleanupAssistant()));
+  connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, SLOT(showDbCleanupAssistant()));
 
   // Menu "Help" connections.
-  connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
-  connect(m_ui->m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
-  connect(m_ui->m_actionReportBug, SIGNAL(triggered()), this, SLOT(reportABug()));
-  connect(m_ui->m_actionDonate, SIGNAL(triggered()), this, SLOT(donate()));
-  connect(m_ui->m_actionDisplayWiki, SIGNAL(triggered()), this, SLOT(showWiki()));
+  connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, SLOT(showAbout()));
+  connect(m_ui->m_actionCheckForUpdates, &QAction::triggered, this, SLOT(showUpdates()));
+  connect(m_ui->m_actionReportBug, &QAction::triggered, this, SLOT(reportABug()));
+  connect(m_ui->m_actionDonate, &QAction::triggered, this, SLOT(donate()));
+  connect(m_ui->m_actionDisplayWiki, &QAction::triggered, this, SLOT(showWiki()));
 
   // Tab widget connections.
   connect(m_ui->m_actionTabsCloseAllExceptCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabsExceptCurrent);
@@ -632,73 +633,73 @@ void FormMain::createConnections() {
   connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
 
   // Toolbar forwardings.
-  connect(m_ui->m_actionAddFeedIntoSelectedAccount, SIGNAL(triggered()),
+  connect(m_ui->m_actionAddFeedIntoSelectedAccount, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(), SLOT(addFeedIntoSelectedAccount()));
-  connect(m_ui->m_actionAddCategoryIntoSelectedAccount, SIGNAL(triggered()),
+  connect(m_ui->m_actionAddCategoryIntoSelectedAccount, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(), SLOT(addCategoryIntoSelectedAccount()));
   connect(m_ui->m_actionSwitchImportanceOfSelectedMessages,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(switchSelectedMessagesImportance()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(switchSelectedMessagesImportance()));
   connect(m_ui->m_actionDeleteSelectedMessages,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(deleteSelectedMessages()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(deleteSelectedMessages()));
   connect(m_ui->m_actionMarkSelectedMessagesAsRead,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(markSelectedMessagesRead()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(markSelectedMessagesRead()));
   connect(m_ui->m_actionMarkSelectedMessagesAsUnread, &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::markSelectedMessagesUnread);
   connect(m_ui->m_actionOpenSelectedSourceArticlesExternally,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(openSelectedSourceMessagesExternally()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(openSelectedSourceMessagesExternally()));
   connect(m_ui->m_actionOpenSelectedMessagesInternally,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(openSelectedMessagesInternally()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(openSelectedMessagesInternally()));
   connect(m_ui->m_actionSendMessageViaEmail,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(sendSelectedMessageViaEmail()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(sendSelectedMessageViaEmail()));
   connect(m_ui->m_actionMarkAllItemsRead,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(markAllItemsRead()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(markAllItemsRead()));
   connect(m_ui->m_actionMarkSelectedItemsAsRead,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(markSelectedItemRead()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(markSelectedItemRead()));
   connect(m_ui->m_actionExpandCollapseItem,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(expandCollapseCurrentItem()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(expandCollapseCurrentItem()));
   connect(m_ui->m_actionMarkSelectedItemsAsUnread,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(markSelectedItemUnread()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(markSelectedItemUnread()));
   connect(m_ui->m_actionClearSelectedItems,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(clearSelectedFeeds()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(clearSelectedFeeds()));
   connect(m_ui->m_actionClearAllItems,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(clearAllFeeds()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(clearAllFeeds()));
   connect(m_ui->m_actionUpdateSelectedItems,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(updateSelectedItems()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(updateSelectedItems()));
   connect(m_ui->m_actionUpdateAllItems,
-          SIGNAL(triggered()), qApp->feedReader(), SLOT(updateAllFeeds()));
+          &QAction::triggered, qApp->feedReader(), SLOT(updateAllFeeds()));
   connect(m_ui->m_actionStopRunningItemsUpdate,
-          SIGNAL(triggered()), qApp->feedReader(), SLOT(stopRunningFeedUpdate()));
+          &QAction::triggered, qApp->feedReader(), SLOT(stopRunningFeedUpdate()));
   connect(m_ui->m_actionEditSelectedItem,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(editSelectedItem()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(editSelectedItem()));
   connect(m_ui->m_actionViewSelectedItemsNewspaperMode,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(openSelectedItemsInNewspaperMode()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(openSelectedItemsInNewspaperMode()));
   connect(m_ui->m_actionDeleteSelectedItem,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(deleteSelectedItem()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(deleteSelectedItem()));
   connect(m_ui->m_actionSwitchFeedsList, &QAction::triggered,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchFeedComponentVisibility);
   connect(m_ui->m_actionSelectNextItem,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(selectNextItem()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(selectNextItem()));
   connect(m_ui->m_actionSwitchToolBars, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::setToolBarsEnabled);
   connect(m_ui->m_actionSwitchListHeaders, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::setListHeadersEnabled);
   connect(m_ui->m_actionSelectPreviousItem,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->feedsView(), SLOT(selectPreviousItem()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), SLOT(selectPreviousItem()));
   connect(m_ui->m_actionSelectNextMessage,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectNextItem()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectNextItem()));
   connect(m_ui->m_actionSelectNextUnreadMessage,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectNextUnreadItem()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectNextUnreadItem()));
   connect(m_ui->m_actionSelectPreviousMessage,
-          SIGNAL(triggered()), tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectPreviousItem()));
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), SLOT(selectPreviousItem()));
   connect(m_ui->m_actionSwitchMessageListOrientation, &QAction::triggered,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchMessageSplitterOrientation);
   connect(m_ui->m_actionShowOnlyUnreadItems, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
-  connect(m_ui->m_actionRestoreSelectedMessages, SIGNAL(triggered()),
+  connect(m_ui->m_actionRestoreSelectedMessages, &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(), SLOT(restoreSelectedMessages()));
-  connect(m_ui->m_actionRestoreAllRecycleBins, SIGNAL(triggered()),
+  connect(m_ui->m_actionRestoreAllRecycleBins, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(restoreAllBins()));
-  connect(m_ui->m_actionEmptyAllRecycleBins, SIGNAL(triggered()),
+  connect(m_ui->m_actionEmptyAllRecycleBins, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(emptyAllBins()));
 }
 
