@@ -1,6 +1,10 @@
 3.4.0
 —————
 
+Added:
+▪ "Cleanup database" action has now configurable shortcut. (issue #90)
+▪ Fixed #76, now user can choose to "not show the dialog again" when opening hyperlink from message previewer. This only concerns the lite version of RSS Guard which uses simpler text component for message previewing.
+
 Changed:
 ▪ (Linux only) Primary user data/config storage is now undex $HOME/.config. XDG_CONFIG_HOME variable is respected. If old user data is detected, then old user data path is used.
 ▪ RSS Guard now uses "_" character as localization file names separator. (issue #75)

@@ -276,6 +276,9 @@ namespace Keyboard {
 namespace Browser {
   KEY ID;
 
+  KEY OpenLinksInExternalBrowserRightAway;
+  VALUE(bool) OpenLinksInExternalBrowserRightAwayDef;
+
   KEY CustomExternalBrowserEnabled;
   VALUE(bool) CustomExternalBrowserEnabledDef;
 

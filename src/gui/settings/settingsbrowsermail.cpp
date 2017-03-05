@@ -29,6 +29,12 @@ SettingsBrowserMail::SettingsBrowserMail(Settings *settings, QWidget *parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsBrowserMail) {
   m_ui->setupUi(this);
 
+#if defined(USE_WEBENGINE)
+  m_ui->m_checkOpenLinksInExternal->setVisible(false);
+#else
+  connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
+#endif
+
   connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtProxyHost, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtProxyPassword, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
@@ -127,6 +133,11 @@ void SettingsBrowserMail::selectEmailExecutable() {
 void SettingsBrowserMail::loadSettings() {
   onBeginLoadSettings();
 
+#if !defined(USE_WEBENGINE)
+  m_ui->m_checkOpenLinksInExternal->setChecked(settings()->value(GROUP(Browser),
+                                                                 SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool());
+#endif
+
   // Load settings of web browser GUI.
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
   m_ui->m_txtExternalBrowserExecutable->setText(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString());
@@ -158,6 +169,10 @@ void SettingsBrowserMail::loadSettings() {
 
 void SettingsBrowserMail::saveSettings() {
   onBeginSaveSettings();
+
+#if !defined(USE_WEBENGINE)
+  settings()->setValue(GROUP(Browser), Browser::OpenLinksInExternalBrowserRightAway, m_ui->m_checkOpenLinksInExternal->isChecked());
+#endif
 
   // Save settings of GUI of web browser.
   settings()->setValue(GROUP(Browser), Browser::CustomExternalBrowserEnabled, m_ui->m_grpCustomExternalBrowser->isChecked());

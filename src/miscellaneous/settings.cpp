@@ -246,6 +246,9 @@ DKEY Keyboard::ID = "keyboard";
 // Web browser.
 DKEY Browser::ID                            = "browser";
 
+DKEY Browser::OpenLinksInExternalBrowserRightAway             = "open_link_externally_wo_confirmation";
+DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef  = false;
+
 DKEY Browser::CustomExternalBrowserEnabled                = "custom_external_browser";
 DVALUE(bool) Browser::CustomExternalBrowserEnabledDef     = false;
 
