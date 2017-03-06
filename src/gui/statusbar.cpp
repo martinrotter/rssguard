@@ -172,8 +172,8 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
         widget_to_add = tool_button;
         action_to_add = matching_action;
 
-        connect(tool_button, SIGNAL(clicked(bool)), matching_action, SLOT(trigger()));
-        connect(matching_action, SIGNAL(changed()), tool_button, SLOT(reactOnActionChange()));
+        connect(tool_button, &PlainToolButton::clicked, matching_action, &QAction::trigger);
+        connect(matching_action, &QAction::changed, tool_button, &PlainToolButton::reactOnSenderActionChange);
       }
       else {
         action_to_add = nullptr;

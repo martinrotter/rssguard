@@ -34,10 +34,10 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget *parent)
   setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 
-  connect(m_ui->m_btnSelectFolder, SIGNAL(clicked()), this, SLOT(selectFolder()));
-  connect(m_ui->m_groupDatabase, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_groupSettings, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(performRestoration()));
+  connect(m_ui->m_btnSelectFolder, &QPushButton::clicked, this, &FormRestoreDatabaseSettings::selectFolderWithGui);
+  connect(m_ui->m_groupDatabase, &QGroupBox::toggled, this, &FormRestoreDatabaseSettings::checkOkButton);
+  connect(m_ui->m_groupSettings, &QGroupBox::toggled, this, &FormRestoreDatabaseSettings::checkOkButton);
+  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormRestoreDatabaseSettings::performRestoration);
 
   selectFolder(qApp->getDocumentsFolderPath());
 }
@@ -73,6 +73,10 @@ void FormRestoreDatabaseSettings::checkOkButton() {
                                                                 m_ui->m_listDatabase->currentRow() >= 0) ||
                                                                (m_ui->m_groupSettings->isChecked() &&
                                                                 m_ui->m_listSettings->currentRow() >= 0)));
+}
+
+void FormRestoreDatabaseSettings::selectFolderWithGui() {
+  selectFolder();
 }
 
 void FormRestoreDatabaseSettings::selectFolder(QString folder) {

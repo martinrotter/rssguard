@@ -27,7 +27,7 @@
 NewspaperPreviewer::NewspaperPreviewer(RootItem *root, QList<Message> messages, QWidget *parent)
   : TabContent(parent), m_ui(new Ui::NewspaperPreviewer), m_root(root), m_messages(messages) {
   m_ui->setupUi(this); 
-  connect(m_ui->m_btnShowMoreMessages, SIGNAL(clicked(bool)), this, SLOT(showMoreMessages()));
+  connect(m_ui->m_btnShowMoreMessages, &QPushButton::clicked, this, &NewspaperPreviewer::showMoreMessages);
   showMoreMessages();
 }
 
@@ -43,7 +43,7 @@ void NewspaperPreviewer::showMoreMessages() {
       MessagePreviewer *prev = new MessagePreviewer(this);
       QMargins margins = prev->layout()->contentsMargins();
 
-      connect(prev, SIGNAL(requestMessageListReload(bool)), this, SIGNAL(requestMessageListReload(bool)));
+      connect(prev, &MessagePreviewer::requestMessageListReload, this, &NewspaperPreviewer::requestMessageListReload);
 
       margins.setRight(0);
       prev->layout()->setContentsMargins(margins);

@@ -44,7 +44,7 @@ FormUpdate::FormUpdate(QWidget *parent)
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("help-about")));
 
-  connect(m_btnUpdate, SIGNAL(clicked()), this, SLOT(startUpdate()));
+  connect(m_btnUpdate, &QPushButton::clicked, this, &FormUpdate::startUpdate);
   checkForUpdates();
 }
 
@@ -212,8 +212,8 @@ void FormUpdate::startUpdate() {
       // Initialie downloader.
       m_downloader = new Downloader(this);
 
-      connect(m_downloader, SIGNAL(progress(qint64,qint64)), this, SLOT(updateProgress(qint64,qint64)));
-      connect(m_downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)), this, SLOT(updateCompleted(QNetworkReply::NetworkError,QByteArray)));
+      connect(m_downloader, &Downloader::progress, this, &FormUpdate::updateProgress);
+      connect(m_downloader, &Downloader::completed, this, &FormUpdate::updateCompleted);
       updateProgress(0, 100);
     }
 

@@ -53,11 +53,11 @@ MessagesView::~MessagesView() {
 }
 
 void MessagesView::createConnections() {
-  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesExternally()));
+  connect(this, &MessagesView::doubleClicked, this, &MessagesView::openSelectedSourceMessagesExternally);
 
   // Adjust columns when layout gets changed.
-  connect(header(), SIGNAL(geometriesChanged()), this, SLOT(adjustColumns()));
-  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(onSortIndicatorChanged(int,Qt::SortOrder)));
+  connect(header(), &QHeaderView::geometriesChanged, this, &MessagesView::adjustColumns);
+  connect(header(), &QHeaderView::sortIndicatorChanged, this, &MessagesView::onSortIndicatorChanged);
 }
 
 void MessagesView::keyboardSearch(const QString &search) {

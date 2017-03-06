@@ -34,6 +34,7 @@ class FormRestoreDatabaseSettings : public QDialog {
   private slots:
     void performRestoration();
     void checkOkButton();
+    void selectFolderWithGui();
     void selectFolder(QString folder = QString());
 
   private:

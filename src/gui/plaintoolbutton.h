@@ -35,7 +35,8 @@ class PlainToolButton : public QToolButton {
 
   public slots:
     void setChecked(bool checked);
-    void reactOnActionChange(QAction *action = NULL);
+    void reactOnActionChange(QAction *action);
+    void reactOnSenderActionChange();
 
   protected:
     // Custom look.

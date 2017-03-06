@@ -67,13 +67,15 @@ void PlainToolButton::setChecked(bool checked) {
 }
 
 void PlainToolButton::reactOnActionChange(QAction *action) {
-  QAction *real_action = action == nullptr ? qobject_cast<QAction*>(sender()) : action;
-
-  if (real_action != nullptr) {
-    setEnabled(real_action->isEnabled());
-    setCheckable(real_action->isCheckable());
-    setChecked(real_action->isChecked());
-    setIcon(real_action->icon());
-    setToolTip(real_action->toolTip());
+  if (action != nullptr) {
+    setEnabled(action->isEnabled());
+    setCheckable(action->isCheckable());
+    setChecked(action->isChecked());
+    setIcon(action->icon());
+    setToolTip(action->toolTip());
   }
+}
+
+void PlainToolButton::reactOnSenderActionChange() {
+  reactOnActionChange(qobject_cast<QAction*>(sender()));
 }

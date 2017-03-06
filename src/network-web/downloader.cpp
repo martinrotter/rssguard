@@ -31,7 +31,7 @@ Downloader::Downloader(QObject *parent)
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
 
-  connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
+  connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
 }
 
 Downloader::~Downloader() {
@@ -147,10 +147,6 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
   emit progress(bytes_received, bytes_total);
 }
 
-void Downloader::timeout() {
-  cancel();
-}
-
 void Downloader::runDeleteRequest(const QNetworkRequest &request) {
   m_timer->start();
   m_activeReply = m_downloadManager->deleteResource(request);
@@ -159,8 +155,8 @@ void Downloader::runDeleteRequest(const QNetworkRequest &request) {
   m_activeReply->setProperty("username", m_targetUsername);
   m_activeReply->setProperty("password", m_targetPassword);
 
-  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
-  connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
+  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
 void Downloader::runPutRequest(const QNetworkRequest &request, const QByteArray &data) {
@@ -171,8 +167,8 @@ void Downloader::runPutRequest(const QNetworkRequest &request, const QByteArray 
   m_activeReply->setProperty("username", m_targetUsername);
   m_activeReply->setProperty("password", m_targetPassword);
 
-  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
-  connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
+  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
 void Downloader::runPostRequest(const QNetworkRequest &request, const QByteArray &data) {
@@ -183,8 +179,8 @@ void Downloader::runPostRequest(const QNetworkRequest &request, const QByteArray
   m_activeReply->setProperty("username", m_targetUsername);
   m_activeReply->setProperty("password", m_targetPassword);
 
-  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
-  connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
+  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
 void Downloader::runGetRequest(const QNetworkRequest &request) {
@@ -195,8 +191,8 @@ void Downloader::runGetRequest(const QNetworkRequest &request) {
   m_activeReply->setProperty("username", m_targetUsername);
   m_activeReply->setProperty("password", m_targetPassword);
 
-  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
-  connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
+  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
 QVariant Downloader::lastContentType() const {

@@ -149,7 +149,7 @@ class DownloadManager : public TabContent {
     void itemFinished();
 
   signals:
-    void downloadProgress(int progress, const QString &description);
+    void downloadProgressed(int progress, const QString &description);
     void downloadFinished();
 
   private:

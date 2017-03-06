@@ -166,7 +166,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString &url, int ti
   }
 
   // We need to quit event loop when the download finishes.
-  QObject::connect(&downloader, SIGNAL(completed(QNetworkReply::NetworkError)), &loop, SLOT(quit()));
+  QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
   downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
   loop.exec();
@@ -189,7 +189,7 @@ NetworkResult NetworkFactory::downloadFeedFile(const QString &url, int timeout,
   downloader.appendRawHeader("Accept", ACCEPT_HEADER_FOR_FEED_DOWNLOADER);
 
   // We need to quit event loop when the download finishes.
-  QObject::connect(&downloader, SIGNAL(completed(QNetworkReply::NetworkError)), &loop, SLOT(quit()));
+  QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
   downloader.downloadFile(url, timeout, protected_contents, username, password);
   loop.exec();

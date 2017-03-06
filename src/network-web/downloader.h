@@ -75,9 +75,6 @@ class Downloader : public QObject {
     // Called when progress of downloaded file changes.
     void progressInternal(qint64 bytes_received, qint64 bytes_total);
 
-    // Called when current operation times out.
-    void timeout();
-
   private:
     void runDeleteRequest(const QNetworkRequest &request);
     void runPutRequest(const QNetworkRequest &request, const QByteArray &data);

@@ -62,7 +62,7 @@ SystemTrayIcon::SystemTrayIcon(const QString &normal_icon, const QString &plain_
   setContextMenu(parent->trayMenu());
 
   // Create necessary connections.
-  connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onActivated(QSystemTrayIcon::ActivationReason)));
+  connect(this, &SystemTrayIcon::activated, this, &SystemTrayIcon::onActivated);
 }
 
 SystemTrayIcon::~SystemTrayIcon() {

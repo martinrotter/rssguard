@@ -49,10 +49,10 @@ DownloadItem::DownloadItem(QNetworkReply *reply, QWidget *parent) : QWidget(pare
 
   m_requestFileName = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool();
 
-  connect(m_ui->m_btnStopDownload, SIGNAL(clicked()), this, SLOT(stop()));
-  connect(m_ui->m_btnOpenFile, SIGNAL(clicked()), this, SLOT(openFile()));
-  connect(m_ui->m_btnTryAgain, SIGNAL(clicked()), this, SLOT(tryAgain()));
-  connect(m_ui->m_btnOpenFolder, SIGNAL(clicked()), this, SLOT(openFolder()));
+  connect(m_ui->m_btnStopDownload, &QToolButton::clicked, this, &DownloadItem::stop);
+  connect(m_ui->m_btnOpenFile, &QToolButton::clicked, this, &DownloadItem::openFile);
+  connect(m_ui->m_btnTryAgain, &QToolButton::clicked, this, &DownloadItem::tryAgain);
+  connect(m_ui->m_btnOpenFolder, &QToolButton::clicked, this, &DownloadItem::openFolder);
   init();
 }
 
@@ -72,11 +72,11 @@ void DownloadItem::init() {
   m_url = m_reply->url();
   m_reply->setParent(this);
 
-  connect(m_reply, SIGNAL(readyRead()), this, SLOT(downloadReadyRead()));
-  connect(m_reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(error(QNetworkReply::NetworkError)));
-  connect(m_reply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(downloadProgress(qint64, qint64)));
-  connect(m_reply, SIGNAL(metaDataChanged()), this, SLOT(metaDataChanged()));
-  connect(m_reply, SIGNAL(finished()), this, SLOT(finished()));
+  connect(m_reply, &QNetworkReply::readyRead, this, &DownloadItem::downloadReadyRead);
+  connect(m_reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &DownloadItem::error);
+  connect(m_reply, &QNetworkReply::downloadProgress, this, &DownloadItem::downloadProgress);
+  connect(m_reply, &QNetworkReply::metaDataChanged, this, &DownloadItem::metaDataChanged);
+  connect(m_reply, &QNetworkReply::finished, this, &DownloadItem::finished);
 
   // Reset info.
   m_ui->m_lblInfoDownload->clear();
@@ -452,7 +452,7 @@ DownloadManager::DownloadManager(QWidget *parent) : TabContent(parent), m_ui(new
   m_ui->m_viewDownloads->setModel(m_model);
 
   setDownloadDirectory(qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetDirectory)).toString());
-  connect(m_ui->m_btnCleanup, SIGNAL(clicked()), this, SLOT(cleanup()));
+  connect(m_ui->m_btnCleanup, &QPushButton::clicked, this, &DownloadManager::cleanup);
   load();
 }
 
@@ -527,9 +527,9 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply *reply) {
 }
 
 void DownloadManager::addItem(DownloadItem *item) {
-  connect(item, SIGNAL(statusChanged()), this, SLOT(updateRow()));
-  connect(item, SIGNAL(progress(qint64,qint64)), this, SLOT(itemProgress()));
-  connect(item, SIGNAL(downloadFinished()), this, SLOT(itemFinished()));
+  connect(item, &DownloadItem::statusChanged, this, static_cast<void (DownloadManager::*)()>(&DownloadManager::updateRow));
+  connect(item, &DownloadItem::progress, this, &DownloadManager::itemProgress);
+  connect(item, &DownloadItem::downloadFinished, this, &DownloadManager::itemFinished);
 
   const int row = m_downloads.count();
   m_model->beginInsertRows(QModelIndex(), row, row);
@@ -570,7 +570,7 @@ void DownloadManager::itemProgress() {
     emit downloadFinished();
   }
   else {
-    emit downloadProgress(progress, tr("Downloading %n file(s)...", "", activeDownloads()));
+    emit downloadProgressed(progress, tr("Downloading %n file(s)...", "", activeDownloads()));
   }
 }
 

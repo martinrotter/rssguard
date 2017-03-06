@@ -117,8 +117,7 @@ void MessagesToolBar::initializeSearchBox() {
   m_actionSearchMessages->setProperty("type", SEACRH_MESSAGES_ACTION_NAME);
   m_actionSearchMessages->setProperty("name", tr("Message search box"));
 
-  connect(m_txtSearchMessages, SIGNAL(textChanged(QString)),
-          this, SIGNAL(messageSearchPatternChanged(QString)));
+  connect(m_txtSearchMessages, &MessagesSearchLineEdit::textChanged, this, &MessagesToolBar::messageSearchPatternChanged);
 }
 
 void MessagesToolBar::initializeHighlighter() {

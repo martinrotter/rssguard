@@ -55,10 +55,10 @@ FeedsView::FeedsView(QWidget *parent)
   m_proxyModel = qApp->feedReader()->feedsProxyModel();
 
   // Connections.
-  connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
-  connect(m_sourceModel, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SLOT(onItemExpandRequested(QList<RootItem*>,bool)));
-  connect(m_sourceModel, SIGNAL(itemExpandStateSaveRequested(RootItem*)), this, SLOT(onItemExpandStateSaveRequested(RootItem*)));
-  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+  connect(m_sourceModel, &FeedsModel::requireItemValidationAfterDragDrop, this, &FeedsView::validateItemAfterDragDrop);
+  connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);
+  connect(m_sourceModel, &FeedsModel::itemExpandStateSaveRequested, this, &FeedsView::onItemExpandStateSaveRequested);
+  connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
   connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, this, &FeedsView::expandItemDelayed);
 
   setModel(m_proxyModel);
@@ -70,9 +70,9 @@ FeedsView::~FeedsView() {
 }
 
 void FeedsView::setSortingEnabled(bool enable) {
-  disconnect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+  disconnect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
   QTreeView::setSortingEnabled(enable);
-  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+  connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
 }
 
 QList<Feed*> FeedsView::selectedFeeds() const {

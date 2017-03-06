@@ -47,7 +47,7 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
       close_button->setFixedSize(iconSize());
 
       // Close underlying tab when button is clicked.
-      connect(close_button, SIGNAL(clicked()), this, SLOT(closeTabViaButton()));
+      connect(close_button, &PlainToolButton::clicked, this, &TabBar::closeTabViaButton);
       setTabButton(index, QTabBar::RightSide, close_button);
       break;
     }

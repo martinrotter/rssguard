@@ -206,25 +206,25 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
 
 void FeedMessageViewer::createConnections() {
   // Filtering & searching.
-  connect(m_toolBarMessages, SIGNAL(messageSearchPatternChanged(QString)), m_messagesView, SLOT(searchMessages(QString)));
-  connect(m_toolBarMessages, SIGNAL(messageFilterChanged(MessagesModel::MessageHighlighter)), m_messagesView, SLOT(filterMessages(MessagesModel::MessageHighlighter)));
+  connect(m_toolBarMessages, &MessagesToolBar::messageSearchPatternChanged, m_messagesView, &MessagesView::searchMessages);
+  connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, m_messagesView, &MessagesView::filterMessages);
   
   // Message changers.
-  connect(m_messagesView, SIGNAL(currentMessageRemoved()), m_messagesBrowser, SLOT(clear()));
-  connect(m_messagesView, SIGNAL(currentMessageChanged(Message,RootItem*)), m_messagesBrowser, SLOT(loadMessage(Message,RootItem*)));
+  connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
+  connect(m_messagesView, &MessagesView::currentMessageChanged, m_messagesBrowser, &MessagePreviewer::loadMessage);
 
-  connect(m_messagesBrowser, SIGNAL(markMessageRead(int,RootItem::ReadStatus)),
-          m_messagesView->sourceModel(), SLOT(setMessageReadById(int,RootItem::ReadStatus)));
-  connect(m_messagesBrowser, SIGNAL(markMessageImportant(int,RootItem::Importance)),
-          m_messagesView->sourceModel(), SLOT(setMessageImportantById(int,RootItem::Importance)));
+  connect(m_messagesBrowser, &MessagePreviewer::markMessageRead,
+          m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
+  connect(m_messagesBrowser, &MessagePreviewer::markMessageImportant,
+          m_messagesView->sourceModel(), &MessagesModel::setMessageImportantById);
 
   // If user selects feeds, load their messages.
-  connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), m_messagesView, SLOT(loadItem(RootItem*)));
+  connect(m_feedsView, &FeedsView::itemSelected, m_messagesView, &MessagesView::loadItem);
   
   // State of many messages is changed, then we need
   // to reload selections.
-  connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)),
-          m_messagesView, SLOT(reloadSelections(bool)));
+  connect(m_feedsView->sourceModel(), &FeedsModel::reloadMessageListRequested,
+          m_messagesView, &MessagesView::reloadSelections);
 }
 
 void FeedMessageViewer::initialize() {

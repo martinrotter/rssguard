@@ -27,7 +27,7 @@
 
 BaseNetworkAccessManager::BaseNetworkAccessManager(QObject *parent)
   : QNetworkAccessManager(parent) {
-  connect(this, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
+  connect(this, &BaseNetworkAccessManager::sslErrors, this, &BaseNetworkAccessManager::onSslErrors);
   loadSettings();
 }
 

@@ -52,8 +52,8 @@ void DiscoverFeedsButton::setFeedAddresses(const QStringList &addresses) {
   if (menu() == nullptr) {
     // Initialize the menu.
     setMenu(new QMenu(this));
-    connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(linkTriggered(QAction*)));
-    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(fillMenu()));
+    connect(menu(), &QMenu::triggered, this, &DiscoverFeedsButton::linkTriggered);
+    connect(menu(), &QMenu::aboutToShow, this, &DiscoverFeedsButton::fillMenu);
   }
 
   menu()->hide();

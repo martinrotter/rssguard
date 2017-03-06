@@ -60,7 +60,7 @@ void TabWidget::setupMainMenuButton() {
   m_btnMainMenu->setIcon(qApp->icons()->fromTheme(QSL("start-here")));
   m_btnMainMenu->setPopupMode(QToolButton::InstantPopup);
 
-  connect(m_btnMainMenu, SIGNAL(clicked()), this, SLOT(openMainMenu()));
+  connect(m_btnMainMenu, &PlainToolButton::clicked, this, &TabWidget::openMainMenu);
 }
 
 void TabWidget::openMainMenu() {
@@ -140,23 +140,18 @@ void TabWidget::tabRemoved(int index) {
 }
 
 void TabWidget::createConnections() {
-  connect(tabBar(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
-  connect(tabBar(), SIGNAL(emptySpaceDoubleClicked()), this, SLOT(addEmptyBrowser()));
-  connect(tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(fixContentsAfterMove(int,int)));
+  connect(tabBar(), &TabBar::tabCloseRequested, this, &TabWidget::closeTab);
+  connect(tabBar(), &TabBar::emptySpaceDoubleClicked, this, &TabWidget::addEmptyBrowser);
+  connect(tabBar(), &TabBar::tabMoved, this, &TabWidget::fixContentsAfterMove);
 
-  connect(feedMessageViewer()->messagesView(), SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
-          this, SLOT(addNewspaperView(RootItem*,QList<Message>)));
-  connect(feedMessageViewer()->feedsView(), SIGNAL(openMessagesInNewspaperView(RootItem*,QList<Message>)),
-          this, SLOT(addNewspaperView(RootItem*,QList<Message>)));
+  connect(feedMessageViewer()->messagesView(), &MessagesView::openMessagesInNewspaperView, this, &TabWidget::addNewspaperView);
+  connect(feedMessageViewer()->feedsView(), &FeedsView::openMessagesInNewspaperView, this, &TabWidget::addNewspaperView);
 }
 
 void TabWidget::initializeTabs() {
   // Create widget for "Feeds" page and add it.
   m_feedMessageViewer = new FeedMessageViewer(this);
-  const int index_of_browser = addTab(m_feedMessageViewer,
-                                      QIcon(),
-                                      tr("Feeds"),
-                                      TabBar::FeedReader);
+  const int index_of_browser = addTab(m_feedMessageViewer, QIcon(), tr("Feeds"), TabBar::FeedReader);
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
 }
 
@@ -257,8 +252,8 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl 
   }
 
   // Make connections.
-  connect(browser, SIGNAL(titleChanged(int,QString)), this, SLOT(changeTitle(int,QString)));
-  connect(browser, SIGNAL(iconChanged(int,QIcon)), this, SLOT(changeIcon(int,QIcon)));
+  connect(browser, &WebBrowser::titleChanged, this, &TabWidget::changeTitle);
+  connect(browser, &WebBrowser::iconChanged, this, &TabWidget::changeIcon);
 
   // Setup the tab index.
   browser->setIndex(final_index);

@@ -27,8 +27,8 @@ QPointer<SilentNetworkAccessManager> SilentNetworkAccessManager::s_instance;
 
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
   : BaseNetworkAccessManager(parent) {
-  connect(this, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
-          this, SLOT(onAuthenticationRequired(QNetworkReply*,QAuthenticator*)), Qt::DirectConnection);
+  connect(this, &SilentNetworkAccessManager::authenticationRequired,
+          this, &SilentNetworkAccessManager::onAuthenticationRequired, Qt::DirectConnection);
 }
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {

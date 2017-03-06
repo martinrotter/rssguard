@@ -49,13 +49,12 @@ Application::Application(const QString &id, int &argc, char **argv)
     m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
     m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
     m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr) {
-  connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
-  connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
-  connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
+  connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
+  connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
+  connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
 #if defined(USE_WEBENGINE)
-  connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested,
-          this, &Application::downloadRequested);
+  connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 #endif
 }
 
@@ -149,8 +148,8 @@ DownloadManager *Application::downloadManager() {
   if (m_downloadManager == nullptr) {
     m_downloadManager = new DownloadManager();
 
-    connect(m_downloadManager, SIGNAL(downloadFinished()), mainForm()->statusBar(), SLOT(clearProgressDownload()));
-    connect(m_downloadManager, SIGNAL(downloadProgress(int,QString)), mainForm()->statusBar(), SLOT(showProgressDownload(int,QString)));
+    connect(m_downloadManager, &DownloadManager::downloadFinished, mainForm()->statusBar(), &StatusBar::clearProgressDownload);
+    connect(m_downloadManager, &DownloadManager::downloadProgressed, mainForm()->statusBar(), &StatusBar::showProgressDownload);
   }
 
   return m_downloadManager;

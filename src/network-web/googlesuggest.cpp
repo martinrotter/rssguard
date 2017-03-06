@@ -74,9 +74,9 @@ GoogleSuggest::GoogleSuggest(LocationLineEdit *editor, QObject *parent)
   timer->setSingleShot(true);
   timer->setInterval(500);
 
-  connect(popup.data(), SIGNAL(itemClicked(QListWidgetItem*)), SLOT(doneCompletion()));
-  connect(timer, SIGNAL(timeout()), SLOT(autoSuggest()));
-  connect(editor, SIGNAL(textEdited(QString)), timer, SLOT(start()));
+  connect(popup.data(), &QListWidget::itemClicked, this, &GoogleSuggest::doneCompletion);
+  connect(timer, &QTimer::timeout, this, &GoogleSuggest::autoSuggest);
+  connect(editor, &LocationLineEdit::textEdited, timer, &QTimer::start);
 }
 
 GoogleSuggest::~GoogleSuggest() {
@@ -170,8 +170,8 @@ void GoogleSuggest::autoSuggest() {
   m_enteredText = QUrl::toPercentEncoding(editor->text());
   QString url = QString(GOOGLE_SUGGEST_URL).arg(m_enteredText);
 
-  connect(SilentNetworkAccessManager::instance()->get(QNetworkRequest(QString(url))), SIGNAL(finished()),
-          this, SLOT(handleNetworkData()));
+  connect(SilentNetworkAccessManager::instance()->get(QNetworkRequest(QString(url))), &QNetworkReply::finished,
+          this, &GoogleSuggest::handleNetworkData);
 }
 
 void GoogleSuggest::handleNetworkData() {

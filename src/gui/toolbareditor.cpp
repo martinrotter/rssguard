@@ -28,19 +28,19 @@ ToolBarEditor::ToolBarEditor(QWidget *parent)
   m_ui->setupUi(this);
 
   // Create connections.
-  connect(m_ui->m_btnInsertSeparator, SIGNAL(clicked()), this, SLOT(insertSeparator()));
-  connect(m_ui->m_btnInsertSpacer, SIGNAL(clicked()), this, SLOT(insertSpacer()));
+  connect(m_ui->m_btnInsertSeparator, &QPushButton::clicked, this, &ToolBarEditor::insertSeparator);
+  connect(m_ui->m_btnInsertSpacer, &QPushButton::clicked, this, &ToolBarEditor::insertSpacer);
 
-  connect(m_ui->m_btnAddSelectedAction, SIGNAL(clicked()), this, SLOT(addSelectedAction()));
-  connect(m_ui->m_btnDeleteAllActions, SIGNAL(clicked()), this, SLOT(deleteAllActions()));
-  connect(m_ui->m_btnDeleteSelectedAction, SIGNAL(clicked()), this, SLOT(deleteSelectedAction()));
-  connect(m_ui->m_btnMoveActionUp, SIGNAL(clicked()), this, SLOT(moveActionUp()));
-  connect(m_ui->m_btnMoveActionDown, SIGNAL(clicked()), this, SLOT(moveActionDown()));
+  connect(m_ui->m_btnAddSelectedAction, &QPushButton::clicked, this, &ToolBarEditor::addSelectedAction);
+  connect(m_ui->m_btnDeleteAllActions, &QPushButton::clicked, this, &ToolBarEditor::deleteAllActions);
+  connect(m_ui->m_btnDeleteSelectedAction, &QPushButton::clicked, this, &ToolBarEditor::deleteSelectedAction);
+  connect(m_ui->m_btnMoveActionUp, &QPushButton::clicked, this, &ToolBarEditor::moveActionUp);
+  connect(m_ui->m_btnMoveActionDown, &QPushButton::clicked, this, &ToolBarEditor::moveActionDown);
 
-  connect(m_ui->m_listAvailableActions, SIGNAL(itemSelectionChanged()), this, SLOT(updateActionsAvailability()));
-  connect(m_ui->m_listActivatedActions, SIGNAL(itemSelectionChanged()), this, SLOT(updateActionsAvailability()));
-  connect(m_ui->m_listActivatedActions, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(deleteSelectedAction()));
-  connect(m_ui->m_listAvailableActions, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(addSelectedAction()));
+  connect(m_ui->m_listAvailableActions, &QListWidget::itemSelectionChanged, this, &ToolBarEditor::updateActionsAvailability);
+  connect(m_ui->m_listActivatedActions, &QListWidget::itemSelectionChanged, this, &ToolBarEditor::updateActionsAvailability);
+  connect(m_ui->m_listActivatedActions, &QListWidget::itemDoubleClicked, this, &ToolBarEditor::deleteSelectedAction);
+  connect(m_ui->m_listAvailableActions, &QListWidget::itemDoubleClicked, this, &ToolBarEditor::addSelectedAction);
 
   m_ui->m_listActivatedActions->installEventFilter(this);
 }
