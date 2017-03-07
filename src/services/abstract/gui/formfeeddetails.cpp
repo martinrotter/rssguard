@@ -289,21 +289,21 @@ void FormFeedDetails::guessIconOnly() {
 
 void FormFeedDetails::createConnections() {
   // General connections.
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(apply()));
-  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onTitleChanged(QString)));
-  connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onDescriptionChanged(QString)));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUrlChanged(QString)));
-  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUsernameChanged(QString)));
-  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onPasswordChanged(QString)));
-  connect(m_ui->m_gbAuthentication, SIGNAL(toggled(bool)), this, SLOT(onAuthenticationSwitched()));
-  connect(m_ui->m_cmbAutoUpdateType, SIGNAL(currentIndexChanged(int)), this, SLOT(onAutoUpdateTypeChanged(int)));
-  connect(m_ui->m_btnFetchMetadata, SIGNAL(clicked()), this, SLOT(guessFeed()));
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::apply);
+  connect(m_ui->m_txtTitle->lineEdit(), &BaseLineEdit::textChanged, this, &FormFeedDetails::onTitleChanged);
+  connect(m_ui->m_txtDescription->lineEdit(), &BaseLineEdit::textChanged, this, &FormFeedDetails::onDescriptionChanged);
+  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormFeedDetails::onUrlChanged);
+  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormFeedDetails::onUsernameChanged);
+  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormFeedDetails::onPasswordChanged);
+  connect(m_ui->m_gbAuthentication, &QGroupBox::toggled, this, &FormFeedDetails::onAuthenticationSwitched);
+  connect(m_ui->m_cmbAutoUpdateType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &FormFeedDetails::onAutoUpdateTypeChanged);
+  connect(m_ui->m_btnFetchMetadata, &QPushButton::clicked, this, &FormFeedDetails::guessFeed);
 
   // Icon connections.
-  connect(m_actionFetchIcon, SIGNAL(triggered()), this, SLOT(guessIconOnly()));
-  connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));
-  connect(m_actionNoIcon, SIGNAL(triggered()), this, SLOT(onNoIconSelected()));
-  connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
+  connect(m_actionFetchIcon, &QAction::triggered, this, &FormFeedDetails::guessIconOnly);
+  connect(m_actionLoadIconFromFile, &QAction::triggered, this, &FormFeedDetails::onLoadIconFromFile);
+  connect(m_actionNoIcon, &QAction::triggered, this, &FormFeedDetails::onNoIconSelected);
+  connect(m_actionUseDefaultIcon, &QAction::triggered, this, &FormFeedDetails::onUseDefaultIcon);
 }
 
 void FormFeedDetails::setEditableFeed(Feed *editable_feed) {

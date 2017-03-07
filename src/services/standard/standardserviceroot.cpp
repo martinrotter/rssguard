@@ -224,8 +224,8 @@ QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {
   }
 
   // Make connections.
-  disconnect(m_actionFeedFetchMetadata, SIGNAL(triggered()), 0, 0);
-  connect(m_actionFeedFetchMetadata, SIGNAL(triggered()), feed, SLOT(fetchMetadataForItself()));
+  disconnect(m_actionFeedFetchMetadata, &QAction::triggered, 0, 0);
+  connect(m_actionFeedFetchMetadata, &QAction::triggered, feed, &StandardFeed::fetchMetadataForItself);
 
   return m_feedContextMenu;
 }
@@ -345,8 +345,8 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
     m_actionExportFeeds = new QAction(qApp->icons()->fromTheme("document-export"), tr("Export feeds"), this);
     m_actionImportFeeds = new QAction(qApp->icons()->fromTheme("document-import"), tr("Import feeds"), this);
 
-    connect(m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
-    connect(m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
+    connect(m_actionExportFeeds, &QAction::triggered, this, &StandardServiceRoot::exportFeeds);
+    connect(m_actionImportFeeds, &QAction::triggered, this, &StandardServiceRoot::importFeeds);
 
     m_serviceMenu.append(m_actionExportFeeds);
     m_serviceMenu.append(m_actionImportFeeds);

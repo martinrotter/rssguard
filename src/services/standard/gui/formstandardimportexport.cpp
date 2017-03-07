@@ -38,9 +38,9 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot *service_
   m_ui->setupUi(this);
   m_model = new FeedsImportExportModel(m_ui->m_treeFeeds);
 
-  connect(m_model, SIGNAL(parsingStarted()), this, SLOT(onParsingStarted()));
-  connect(m_model, SIGNAL(parsingFinished(int,int,bool)), this, SLOT(onParsingFinished(int,int,bool)));
-  connect(m_model, SIGNAL(parsingProgress(int,int)), this, SLOT(onParsingProgress(int,int)));
+  connect(m_model, &FeedsImportExportModel::parsingStarted, this, &FormStandardImportExport::onParsingStarted);
+  connect(m_model, &FeedsImportExportModel::parsingFinished, this, &FormStandardImportExport::onParsingFinished);
+  connect(m_model, &FeedsImportExportModel::parsingProgress, this, &FormStandardImportExport::onParsingProgress);
 
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 
@@ -48,10 +48,10 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot *service_
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->disconnect();
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
-  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(performAction()));
-  connect(m_ui->m_btnSelectFile, SIGNAL(clicked()), this, SLOT(selectFile()));
-  connect(m_ui->m_btnCheckAllItems, SIGNAL(clicked()), m_model, SLOT(checkAllItems()));
-  connect(m_ui->m_btnUncheckAllItems, SIGNAL(clicked()), m_model, SLOT(uncheckAllItems()));
+  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormStandardImportExport::performAction);
+  connect(m_ui->m_btnSelectFile, &QPushButton::clicked, this, &FormStandardImportExport::selectFile);
+  connect(m_ui->m_btnCheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::checkAllItems);
+  connect(m_ui->m_btnUncheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::uncheckAllItems);
 }
 
 FormStandardImportExport::~FormStandardImportExport() {

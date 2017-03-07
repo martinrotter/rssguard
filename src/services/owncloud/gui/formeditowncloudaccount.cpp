@@ -49,16 +49,16 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget *parent)
   setTabOrder(m_ui->m_checkShowPassword, m_ui->m_btnTestSetup);
   setTabOrder(m_ui->m_btnTestSetup, m_ui->m_buttonBox);
 
-  connect(m_ui->m_checkShowPassword, SIGNAL(toggled(bool)), this, SLOT(displayPassword(bool)));
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(onClickedOk()));
-  connect(m_ui->m_buttonBox, SIGNAL(rejected()), this, SLOT(onClickedCancel()));
-  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onPasswordChanged()));
-  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUsernameChanged()));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUrlChanged()));
-  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_btnTestSetup, SIGNAL(clicked()), this, SLOT(performTest()));
+  connect(m_ui->m_checkShowPassword, &QCheckBox::toggled, this, &FormEditOwnCloudAccount::displayPassword);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditOwnCloudAccount::onClickedOk);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditOwnCloudAccount::onClickedCancel);
+  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::onPasswordChanged);
+  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::onUsernameChanged);
+  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::onUrlChanged);
+  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::checkOkButton);
+  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::checkOkButton);
+  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::checkOkButton);
+  connect(m_ui->m_btnTestSetup, &QPushButton::clicked, this, &FormEditOwnCloudAccount::performTest);
 
   onPasswordChanged();
   onUsernameChanged();

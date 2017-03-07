@@ -80,7 +80,7 @@ QList<QAction*> OwnCloudServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
     m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
 
-    connect(m_actionSyncIn, SIGNAL(triggered()), this, SLOT(syncIn()));
+    connect(m_actionSyncIn, &QAction::triggered, this, &OwnCloudServiceRoot::syncIn);
     m_serviceMenu.append(m_actionSyncIn);
   }
 

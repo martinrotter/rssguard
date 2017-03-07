@@ -56,21 +56,21 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   setTabOrder(m_ui->m_checkShowHttpPassword, m_ui->m_btnTestSetup);
   setTabOrder(m_ui->m_btnTestSetup, m_ui->m_buttonBox);
 
-  connect(m_ui->m_checkShowPassword, SIGNAL(toggled(bool)), this, SLOT(displayPassword(bool)));
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(onClickedOk()));
-  connect(m_ui->m_buttonBox, SIGNAL(rejected()), this, SLOT(onClickedCancel()));
-  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onPasswordChanged()));
-  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUsernameChanged()));
-  connect(m_ui->m_txtHttpPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onHttpPasswordChanged()));
-  connect(m_ui->m_txtHttpUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onHttpUsernameChanged()));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUrlChanged()));
-  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_btnTestSetup, SIGNAL(clicked()), this, SLOT(performTest()));
-  connect(m_ui->m_gbHttpAuthentication, SIGNAL(toggled(bool)), this, SLOT(onHttpPasswordChanged()));
-  connect(m_ui->m_gbHttpAuthentication, SIGNAL(toggled(bool)), this, SLOT(onHttpUsernameChanged()));
-  connect(m_ui->m_checkShowHttpPassword, SIGNAL(toggled(bool)), this, SLOT(displayHttpPassword(bool)));
+  connect(m_ui->m_checkShowPassword, &QCheckBox::toggled, this, &FormEditAccount::displayPassword);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditAccount::onClickedOk);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditAccount::onClickedCancel);
+  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onPasswordChanged);
+  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onUsernameChanged);
+  connect(m_ui->m_txtHttpPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onHttpPasswordChanged);
+  connect(m_ui->m_txtHttpUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onHttpUsernameChanged);
+  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onUrlChanged);
+  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::checkOkButton);
+  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::checkOkButton);
+  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::checkOkButton);
+  connect(m_ui->m_btnTestSetup, &QPushButton::clicked, this, &FormEditAccount::performTest);
+  connect(m_ui->m_gbHttpAuthentication, &QGroupBox::toggled, this, &FormEditAccount::onHttpPasswordChanged);
+  connect(m_ui->m_gbHttpAuthentication, &QGroupBox::toggled, this, &FormEditAccount::onHttpUsernameChanged);
+  connect(m_ui->m_checkShowHttpPassword, &QCheckBox::toggled, this, &FormEditAccount::displayHttpPassword);
 
   onPasswordChanged();
   onUsernameChanged();

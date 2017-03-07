@@ -79,8 +79,8 @@ QList<QAction*> RecycleBin::contextMenu() {
                                         tr("Empty recycle bin"),
                                         this);
 
-    connect(restore_action, SIGNAL(triggered()), this, SLOT(restore()));
-    connect(empty_action, SIGNAL(triggered()), this, SLOT(empty()));
+    connect(restore_action, &QAction::triggered, this, &RecycleBin::restore);
+    connect(empty_action, &QAction::triggered, this, &RecycleBin::empty);
 
     m_contextMenu.append(restore_action);
     m_contextMenu.append(empty_action);
