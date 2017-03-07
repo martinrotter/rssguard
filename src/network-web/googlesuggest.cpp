@@ -76,7 +76,7 @@ GoogleSuggest::GoogleSuggest(LocationLineEdit *editor, QObject *parent)
 
   connect(popup.data(), &QListWidget::itemClicked, this, &GoogleSuggest::doneCompletion);
   connect(timer, &QTimer::timeout, this, &GoogleSuggest::autoSuggest);
-  connect(editor, &LocationLineEdit::textEdited, timer, &QTimer::start);
+  connect(editor, &LocationLineEdit::textEdited, timer, static_cast<void (QTimer::*)()>(&QTimer::start));
 }
 
 GoogleSuggest::~GoogleSuggest() {

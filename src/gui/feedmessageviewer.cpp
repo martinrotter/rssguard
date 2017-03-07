@@ -213,10 +213,17 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
   connect(m_messagesView, &MessagesView::currentMessageChanged, m_messagesBrowser, &MessagePreviewer::loadMessage);
 
+#if defined(USE_WEBENGINE)
+  connect(m_messagesBrowser, &WebBrowser::markMessageRead,
+          m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
+  connect(m_messagesBrowser, &WebBrowser::markMessageImportant,
+          m_messagesView->sourceModel(), &MessagesModel::setMessageImportantById);
+#else
   connect(m_messagesBrowser, &MessagePreviewer::markMessageRead,
           m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
   connect(m_messagesBrowser, &MessagePreviewer::markMessageImportant,
           m_messagesView->sourceModel(), &MessagesModel::setMessageImportantById);
+#endif
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, &FeedsView::itemSelected, m_messagesView, &MessagesView::loadItem);
