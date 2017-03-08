@@ -359,7 +359,7 @@
   </action>
   <action name="m_actionMarkAllItemsRead">
    <property name="text">
-    <string>&amp;Mark all items as &amp;read</string>
+    <string>&amp;Mark all items as read</string>
    </property>
    <property name="toolTip">
     <string>Marks all messages in all items read. This does not take message filters into account.</string>
