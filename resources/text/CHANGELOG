@@ -2,11 +2,12 @@
 —————
 
 Added:
+▪ New icons (CC 3.0 BY) inspired by the work of Dave Gandy.
 ▪ "Cleanup database" action has now configurable shortcut. (issue #90)
 ▪ Fixed #76, now user can choose to "not show the dialog again" when opening hyperlink from message previewer. This only concerns the lite version of RSS Guard which uses simpler text component for message previewing.
 
 Changed:
-▪ (Linux only) Primary user data/config storage is now undex $HOME/.config. XDG_CONFIG_HOME variable is respected. If old user data is detected, then old user data path is used.
+▪ (Linux only) Primary user data/config storage is now undex $HOME/.config/RSS Guard. XDG_CONFIG_HOME variable is respected. If old user data is detected, then old user data path is used. Note that the location of cache is now changed too to $XDG_{CACHE,DATA}_HOME/RSS Guard.
 ▪ RSS Guard now uses "_" character as localization file names separator. (issue #75)
 ▪ Localizations are now placed in "translations" subfolder instead of "l10n" subfolder. (issue #75)
 

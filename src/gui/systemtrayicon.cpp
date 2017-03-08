@@ -132,7 +132,7 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
 
     // FIXME: Here draw different background instead of different color of number.
     tray_painter.begin(&background);
-    tray_painter.setPen(any_new_message ? Qt::blue : Qt::black);
+    tray_painter.setPen(any_new_message ? Qt::black : Qt::black);
     tray_painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
     tray_painter.setRenderHint(QPainter::TextAntialiasing, true);
 
