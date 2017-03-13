@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="3.3.7">
-    <url platform="x86" os="Windows">https://github.com/martinrotter/rssguard/releases/download/3.3.7/rssguard-3.3.7-91edb4d7-win32.exe</url>
+  <release version="3.4.0">
+    <url platform="x86" os="Windows">https://github.com/martinrotter/rssguard/releases/download/3.4.0/rssguard-3.4.0-cb15ba92-win32.exe</url>
   </release>
 </releases>
