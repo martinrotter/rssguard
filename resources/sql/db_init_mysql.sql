@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '6');
+INSERT INTO Information VALUES (1, 'schema_version', '8');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     PRIMARY KEY,
@@ -95,6 +95,21 @@ CREATE TABLE IF NOT EXISTS Messages (
   is_pdeleted     INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
   enclosures      TEXT,
   account_id      INTEGER     NOT NULL,
+  custom_id       TEXT,
+  custom_hash     TEXT,
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+);
+-- !
+DROP TABLE IF EXISTS Labels;
+-- !
+CREATE TABLE IF NOT EXISTS Labels (
+  id              INTEGER     AUTO_INCREMENT PRIMARY KEY,
+  account_id      INTEGER     NOT NULL,
+  color_fg        TEXT        NOT NULL,
+  color_bg        TEXT        NOT NULL,
+  title           TEXT        NOT NULL,
+  description     TEXT,
   custom_id       TEXT,
   custom_hash     TEXT,
   
