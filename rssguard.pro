@@ -613,8 +613,8 @@ mac {
 win32 {
   target.path = $$PREFIX
 
-  misc_sql.files = resources/misc/*.sql
-  misc_sql.path = $$PREFIX/misc
+  misc_sql.files = resources/sql/*.sql
+  misc_sql.path = $$quote($$PREFIX/sql/)
 
   qt_dlls_root.files = resources/binaries/windows/qt5-msvc2015/*.*
   qt_dlls_root.path = $$quote($$PREFIX/)
@@ -643,9 +643,6 @@ win32 {
   skins.files = resources/skins
   skins.path = $$quote($$PREFIX/)
 
-  sql.files = resources/misc
-  sql.path = $$quote($$PREFIX/)
-
   feeds.files = resources/initial_feeds
   feeds.path = $$quote($$PREFIX/)
 
@@ -667,7 +664,7 @@ win32 {
   INSTALLS += target misc_sql qt_dlls_root qt_dlls_bearer qt_dlls_iconengines \
               qt_dlls_imageformats qt_dlls_platforms qt_dlls_sqldrivers \
               misc_icons faenza skins \
-              sql feeds texts ico app_icon app_plain_icon translations
+              feeds texts ico app_icon app_plain_icon translations
 
   equals(USE_WEBENGINE, true) {
     # Copy extra resource files for QtWebEngine.
@@ -692,8 +689,8 @@ unix:!mac {
   target.path = $$PREFIX/bin
 
   # Install SQL initializers.
-  misc_sql.files = resources/misc/*.sql
-  misc_sql.path = $$quote($$PREFIX/share/$$TARGET/misc/)
+  misc_sql.files = resources/sql/*.sql
+  misc_sql.path = $$quote($$PREFIX/share/$$TARGET/sql/)
 
   # Misc icons.
   misc_icons.files = resources/graphics/misc
@@ -739,7 +736,7 @@ mac {
   IDENTIFIER = org.$${TARGET}.RSSGuard
 
   # Install SQL initializers.
-  misc_sql.files = resources/misc
+  misc_sql.files = resources/sql
   misc_sql.path = Contents/Resources
 
   # Misc icons.

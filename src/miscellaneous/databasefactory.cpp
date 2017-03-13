@@ -216,13 +216,13 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     if (query_db.lastError().isValid()) {
       qWarning("Error occurred. In-memory SQLite database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
+      QFile file_init(APP_SQL_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
         qFatal("In-memory SQLite database initialization file '%s' from directory '%s' was not found. In-memory database is uninitialized.",
                APP_DB_SQLITE_INIT,
-               qPrintable(APP_MISC_PATH));
+               qPrintable(APP_SQL_PATH));
       }
 
       const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
@@ -329,13 +329,13 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
     if (!query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
       qWarning("Error occurred. File-based SQLite database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
+      QFile file_init(APP_SQL_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
         qFatal("SQLite database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
                APP_DB_SQLITE_INIT,
-               qPrintable(APP_MISC_PATH));
+               qPrintable(APP_SQL_PATH));
       }
 
       const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
@@ -402,7 +402,7 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QS
   }
 
   while (working_version != current_version) {
-    const QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
+    const QString update_file_name = QString(APP_SQL_PATH) + QDir::separator() +
                                      QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("sqlite"),
                                                                              QString::number(working_version),
                                                                              QString::number(working_version + 1));
@@ -440,7 +440,7 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QSt
   const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
   while (working_version != current_version) {
-    const QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
+    const QString update_file_name = QString(APP_SQL_PATH) + QDir::separator() +
                                      QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("mysql"),
                                                                              QString::number(working_version),
                                                                              QString::number(working_version + 1));
@@ -661,13 +661,13 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
       // If no "rssguard" database exists or schema version is wrong, then initialize it.
       qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_MYSQL_INIT);
+      QFile file_init(APP_SQL_PATH + QDir::separator() + APP_DB_MYSQL_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
         qFatal("MySQL database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
                APP_DB_MYSQL_INIT,
-               qPrintable(APP_MISC_PATH));
+               qPrintable(APP_SQL_PATH));
       }
 
       const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
