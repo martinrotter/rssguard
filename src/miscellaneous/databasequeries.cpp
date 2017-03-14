@@ -469,13 +469,13 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   //   2) they have same URL AND,
   //   3) they have same AUTHOR.
   query_select_with_url.setForwardOnly(true);
-  query_select_with_url.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
+  query_select_with_url.prepare("SELECT id, date_created, is_read, is_important, contents FROM Messages "
                                 "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
 
   // When we have custom ID of the message, we can check directly for existence
   // of that particular message.
   query_select_with_id.setForwardOnly(true);
-  query_select_with_id.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
+  query_select_with_id.prepare("SELECT id, date_created, is_read, is_important, contents FROM Messages "
                                "WHERE custom_id = :custom_id AND account_id = :account_id;");
 
   // Used to insert new messages.
@@ -515,6 +515,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     qint64 date_existing_message;
     bool is_read_existing_message;
     bool is_important_existing_message;
+    QString contents_existing_message;
 
     if (message.m_customId.isEmpty()) {
       // We need to recognize existing messages according URL & AUTHOR.
@@ -530,6 +531,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         date_existing_message = query_select_with_url.value(1).value<qint64>();
         is_read_existing_message = query_select_with_url.value(2).toBool();
         is_important_existing_message = query_select_with_url.value(3).toBool();
+        contents_existing_message = query_select_with_url.value(4).toString();
       }
       else if (query_select_with_url.lastError().isValid()) {
         qWarning("Failed to check for existing message in DB via URL: '%s'.", qPrintable(query_select_with_url.lastError().text()));
@@ -548,6 +550,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         date_existing_message = query_select_with_id.value(1).value<qint64>();
         is_read_existing_message = query_select_with_id.value(2).toBool();
         is_important_existing_message = query_select_with_id.value(3).toBool();
+        contents_existing_message = query_select_with_id.value(4).toString();
       }
       else if (query_select_with_id.lastError().isValid()) {
         qDebug("Failed to check for existing message in DB via ID: '%s'.", qPrintable(query_select_with_id.lastError().text()));
@@ -562,9 +565,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       //
       // Now, we update it if at least one of next conditions is true:
       //   1) Message has custom ID AND (its date OR read status OR starred status are changed).
-      //   2) Message has its date fetched from feed AND its date is different from date in DB.
+      //   2) Message has its date fetched from feed AND its date is different from date in DB and contents is changed.
       if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message || message.m_isRead != is_read_existing_message || message.m_isImportant != is_important_existing_message)) ||
-          /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message)) {
+          /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message && message.m_contents != contents_existing_message)) {
         // Message exists, it is changed, update it.
         query_update.bindValue(QSL(":title"), message.m_title);
         query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
