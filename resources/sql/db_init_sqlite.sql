@@ -110,3 +110,16 @@ CREATE TABLE IF NOT EXISTS Labels (
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
+-- !
+DROP TABLE IF EXISTS LabelsInMessages;
+-- !
+CREATE TABLE IF NOT EXISTS LabelsInMessages (
+  id                  INTEGER     PRIMARY KEY,
+  message_custom_id   TEXT        NOT NULL,
+  label_custom_id     TEXT        NOT NULL,
+  account_id          INTEGER     NOT NULL,
+  
+  FOREIGN KEY (message_custom_id) REFERENCES Messages (custom_id),
+  FOREIGN KEY (label_custom_id) REFERENCES Labels (custom_id),
+  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+);

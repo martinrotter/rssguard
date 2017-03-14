@@ -11,4 +11,13 @@ CREATE TABLE IF NOT EXISTS Labels (
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
+CREATE TABLE IF NOT EXISTS LabelsInMessages (
+  id                  INTEGER     AUTO_INCREMENT PRIMARY KEY,
+  message_custom_id   TEXT        NOT NULL,
+  label_custom_id     TEXT        NOT NULL,
+  account_id          INTEGER     NOT NULL,
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+);
+-- !
 UPDATE Information SET inf_value = '8' WHERE inf_key = 'schema_version';
