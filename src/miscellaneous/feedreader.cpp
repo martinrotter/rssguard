@@ -118,6 +118,18 @@ void FeedReader::updateAutoUpdateStatus() {
   }
 }
 
+bool FeedReader::autoUpdateEnabled() const {
+  return m_globalAutoUpdateEnabled;
+}
+
+int FeedReader::autoUpdateRemainingInterval() const {
+  return m_globalAutoUpdateRemainingInterval;
+}
+
+int FeedReader::autoUpdateInitialInterval() const {
+  return m_globalAutoUpdateInitialInterval;
+}
+
 void FeedReader::updateAllFeeds() {
   updateFeeds(m_feedsModel->rootItem()->getSubTreeFeeds());
 }

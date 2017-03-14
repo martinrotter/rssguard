@@ -21,6 +21,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/databasequeries.h"
+#include "miscellaneous/feedreader.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 

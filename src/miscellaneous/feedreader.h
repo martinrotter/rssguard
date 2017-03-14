@@ -61,6 +61,10 @@ class FeedReader : public QObject {
     // and starts/stop the timer as needed.
     void updateAutoUpdateStatus();
 
+    bool autoUpdateEnabled() const;
+    int autoUpdateRemainingInterval() const;
+    int autoUpdateInitialInterval() const;
+
   public slots:   
     // Schedules all feeds from all accounts for update.
     void updateAllFeeds();
