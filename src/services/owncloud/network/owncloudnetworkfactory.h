@@ -38,6 +38,7 @@ class OwnCloudResponse {
 
   protected:
     QJsonObject m_rawContent;
+    bool m_emptyString;
 };
 
 class OwnCloudUserResponse : public OwnCloudResponse {

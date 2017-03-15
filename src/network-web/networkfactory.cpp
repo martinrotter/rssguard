@@ -156,7 +156,9 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString &url, int ti
   QEventLoop loop;
   NetworkResult result;
 
-  downloader.appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
+  if (!input_content_type.isEmpty()) {
+    downloader.appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
+  }
 
   if (set_basic_header) {
     QString basic_value = username + ":" + password;

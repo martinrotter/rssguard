@@ -1,6 +1,9 @@
 3.4.1
 —————
 
+Added:
+▪ Auto-update status of feeds is now more general and complete. (
+
 Changed:
 ▪ Folder which holds SQL scripts got renamed to "sql".
 ▪ Tweaked some conditions for determining newly "updated" messages in ATOM format. (issue #103)

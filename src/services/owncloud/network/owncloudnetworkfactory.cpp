@@ -400,13 +400,14 @@ void OwnCloudNetworkFactory::setUserId(const QString &userId) {
 
 OwnCloudResponse::OwnCloudResponse(const QString &raw_content) {
   m_rawContent = QJsonDocument::fromJson(raw_content.toUtf8()).object();
+  m_emptyString = raw_content.isEmpty();
 }
 
 OwnCloudResponse::~OwnCloudResponse() {
 }
 
 bool OwnCloudResponse::isLoaded() const {
-  return !m_rawContent.isEmpty();
+  return !m_emptyString && !m_rawContent.isEmpty();
 }
 
 QString OwnCloudResponse::toString() const {
