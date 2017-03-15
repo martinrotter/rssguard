@@ -85,6 +85,9 @@ class Feed : public RootItem, public QRunnable {
     void updateCounts(bool including_total_count);
     int updateMessages(const QList<Message> &messages, bool error_during_obtaining);
 
+  protected:
+    QString getAutoUpdateStatusDescription() const;
+
   signals:
     void messagesObtained(QList<Message> messages, bool error_during_obtaining);
 

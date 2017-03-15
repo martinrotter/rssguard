@@ -119,29 +119,6 @@ QVariant StandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        QString auto_update_string;
-
-        switch (autoUpdateType()) {
-          case DontAutoUpdate:
-            //: Describes feed auto-update status.
-            auto_update_string = tr("does not use auto-update");
-            break;
-
-          case DefaultAutoUpdate:
-            //: Describes feed auto-update status.
-            auto_update_string = tr("uses global settings");
-            break;
-
-          case SpecificAutoUpdate:
-          default:
-            //: Describes feed auto-update status.
-            auto_update_string = tr("uses specific settings "
-                                    "(%n minute(s) to next auto-update)",
-                                    0,
-                                    autoUpdateRemainingInterval());
-            break;
-        }
-
         //: Tooltip for feed.
         return tr("%1 (%2)"
                   "%3\n\n"
@@ -151,11 +128,11 @@ QVariant StandardFeed::data(int column, int role) const {
                                                 StandardFeed::typeToString(type()),
                                                 description().isEmpty() ? QString() : QString('\n') + description(),
                                                 encoding(),
-                                                auto_update_string,
+                                                getAutoUpdateStatusDescription(),
                                                 NetworkFactory::networkErrorText(m_networkError));
       }
       else {
-        return Feed::data(column, role);
+        return QVariant();
       }
 
     default:

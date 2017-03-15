@@ -46,6 +46,19 @@ QList<Message> Feed::undeletedMessages() const {
 
 QVariant Feed::data(int column, int role) const {
   switch (role) {
+    case Qt::ToolTipRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        //: Tooltip for feed.
+        return tr("%1"
+                  "%2\n\n"
+                  "Auto-update status: %3").arg(title(),
+                                                description().isEmpty() ? QString() : QString('\n') + description(),
+                                                getAutoUpdateStatusDescription());
+      }
+      else {
+        return RootItem::data(column, role);
+      }
+
     case Qt::ForegroundRole:
       switch (status()) {
         case NewMessages:
@@ -200,4 +213,28 @@ int Feed::updateMessages(const QList<Message> &messages, bool error_during_obtai
   getParentServiceRoot()->itemChanged(items_to_update);
   
   return updated_messages;
+}
+
+QString Feed::getAutoUpdateStatusDescription() const {
+  QString auto_update_string;
+
+  switch (autoUpdateType()) {
+    case DontAutoUpdate:
+      //: Describes feed auto-update status.
+      auto_update_string = tr("does not use auto-update");
+      break;
+
+    case DefaultAutoUpdate:
+      //: Describes feed auto-update status.
+      auto_update_string = tr("uses global settings (%n minute(s) to next auto-update)", 0, qApp->feedReader()->autoUpdateRemainingInterval());
+      break;
+
+    case SpecificAutoUpdate:
+    default:
+      //: Describes feed auto-update status.
+      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-update)", 0, autoUpdateRemainingInterval());
+      break;
+  }
+
+  return auto_update_string;
 }
