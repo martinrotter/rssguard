@@ -101,7 +101,7 @@ DKEY GUI::MainWindowStartsMaximized             = "window_is_maximized";
 DVALUE(bool) GUI::MainWindowStartsMaximizedDef  = false;
 
 DKEY GUI::MainMenuVisible                 = "main_menu_visible";
-DVALUE(bool) GUI::MainMenuVisibleDef      = false;
+DVALUE(bool) GUI::MainMenuVisibleDef      = true;
 
 DKEY GUI::ToolbarsVisible                 = "enable_toolbars";
 DVALUE(bool) GUI::ToolbarsVisibleDef      = true;
