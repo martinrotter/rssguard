@@ -209,7 +209,6 @@ HEADERS +=  src/core/feeddownloader.h \
             src/core/message.h \
             src/core/messagesmodel.h \
             src/core/messagesproxymodel.h \
-            src/core/parsingfactory.h \
             src/definitions/definitions.h \
             src/dynamic-shortcuts/dynamicshortcuts.h \
             src/dynamic-shortcuts/dynamicshortcutswidget.h \
@@ -319,7 +318,10 @@ HEADERS +=  src/core/feeddownloader.h \
             src/gui/settings/settingsbrowsermail.h \
             src/gui/settings/settingsfeedsmessages.h \
             src/gui/settings/settingsdownloads.h \
-            src/miscellaneous/feedreader.h
+            src/miscellaneous/feedreader.h \
+    src/core/atomparser.h \
+    src/core/rssparser.h \
+    src/core/rdfparser.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -327,7 +329,6 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/core/message.cpp \
             src/core/messagesmodel.cpp \
             src/core/messagesproxymodel.cpp \
-            src/core/parsingfactory.cpp \
             src/dynamic-shortcuts/dynamicshortcuts.cpp \
             src/dynamic-shortcuts/dynamicshortcutswidget.cpp \
             src/dynamic-shortcuts/shortcutbutton.cpp \
@@ -434,7 +435,10 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/settings/settingsbrowsermail.cpp \
             src/gui/settings/settingsfeedsmessages.cpp \
             src/gui/settings/settingsdownloads.cpp \
-            src/miscellaneous/feedreader.cpp
+            src/miscellaneous/feedreader.cpp \
+    src/core/atomparser.cpp \
+    src/core/rssparser.cpp \
+    src/core/rdfparser.cpp
 
 FORMS +=    src/gui/toolbareditor.ui \
             src/network-web/downloaditem.ui \
