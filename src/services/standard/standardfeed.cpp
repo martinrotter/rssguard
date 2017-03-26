@@ -18,9 +18,9 @@
 #include "services/standard/standardfeed.h"
 
 #include "definitions/definitions.h"
-#include "core/rssparser.h"
-#include "core/rdfparser.h"
-#include "core/atomparser.h"
+#include "services/standard/rssparser.h"
+#include "services/standard/rdfparser.h"
+#include "services/standard/atomparser.h"
 #include "core/feedsmodel.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/textfactory.h"
@@ -454,7 +454,7 @@ QList<Message> StandardFeed::obtainNewMessages(bool *error_during_obtaining) {
       break;
 
     case StandardFeed::Atom10:
-      messages = AtomParser().parseXmlData(formatted_feed_contents);
+      messages = AtomParser(formatted_feed_contents).messages();
 
     default:
       break;

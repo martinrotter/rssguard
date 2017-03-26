@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/rdfparser.h"
+#include "services/standard/rdfparser.h"
 
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"

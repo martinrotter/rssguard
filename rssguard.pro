@@ -319,9 +319,10 @@ HEADERS +=  src/core/feeddownloader.h \
             src/gui/settings/settingsfeedsmessages.h \
             src/gui/settings/settingsdownloads.h \
             src/miscellaneous/feedreader.h \
-    src/core/atomparser.h \
-    src/core/rssparser.h \
-    src/core/rdfparser.h
+            src/services/standard/atomparser.h \
+            src/services/standard/feedparser.h \
+            src/services/standard/rdfparser.h \
+            src/services/standard/rssparser.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -436,9 +437,10 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/settings/settingsfeedsmessages.cpp \
             src/gui/settings/settingsdownloads.cpp \
             src/miscellaneous/feedreader.cpp \
-    src/core/atomparser.cpp \
-    src/core/rssparser.cpp \
-    src/core/rdfparser.cpp
+            src/services/standard/atomparser.cpp \
+            src/services/standard/feedparser.cpp \
+            src/services/standard/rdfparser.cpp \
+            src/services/standard/rssparser.cpp
 
 FORMS +=    src/gui/toolbareditor.ui \
             src/network-web/downloaditem.ui \

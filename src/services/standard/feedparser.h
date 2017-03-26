@@ -15,20 +15,31 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef ATOMPARSER_H
-#define ATOMPARSER_H
+#ifndef FEEDPARSER_H
+#define FEEDPARSER_H
+
+#include <QDomDocument>
+#include <QString>
 
 #include "core/message.h"
 
-#include <QList>
 
-
-class AtomParser {
+class FeedParser {
   public:
-    explicit AtomParser();
-    virtual ~AtomParser();
+    explicit FeedParser(const QString &data);
+    virtual ~FeedParser();
 
-    QList<Message> parseXmlData(const QString &data);
+    virtual QList<Message> messages();
+
+  protected:
+    QStringList textsFromPath(const QDomElement &element, const QString &namespace_uri, const QString &xml_path, bool only_first) const;
+    virtual QDomNodeList messageElements() = 0;
+    virtual QString feedAuthor() const = 0;
+    virtual Message extractMessage(const QDomElement &msg_element, QDateTime current_time) const = 0;
+
+  protected:
+    QString m_xmlData;
+    QDomDocument m_xml;
 };
 
-#endif // ATOMPARSER_H
+#endif // FEEDPARSER_H

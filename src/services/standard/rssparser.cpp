@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/atomparser.h"
+#include "services/standard/rssparser.h"
 
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
@@ -23,22 +23,21 @@
 #include <QDomDocument>
 
 
-AtomParser::AtomParser() {
+RssParser::RssParser() {
 }
 
-AtomParser::~AtomParser() {
+RssParser::~RssParser() {
 }
 
-QList<Message> AtomParser::parseXmlData(const QString &data) {
+QList<Message> RssParser::parseXmlData(const QString &data) {
   QList<Message> messages;
   QDomDocument xml_file;
   QDateTime current_time = QDateTime::currentDateTime();
-  const QString atom_ns = QSL("http://www.w3.org/2005/Atom");
 
   xml_file.setContent(data, true);
 
   // Pull out all messages.
-  QDomNodeList messages_in_xml = xml_file.elementsByTagName(QSL("entry"));
+  QDomNodeList messages_in_xml = xml_file.elementsByTagName(QSL("item"));
 
   for (int i = 0; i < messages_in_xml.size(); i++) {
     QDomNode message_item = messages_in_xml.item(i);
@@ -46,65 +45,69 @@ QList<Message> AtomParser::parseXmlData(const QString &data) {
 
     // Deal with titles & descriptions.
     QString elem_title = message_item.namedItem(QSL("title")).toElement().text().simplified();
-    QString elem_summary = message_item.namedItem(QSL("summary")).toElement().text();
+    QString elem_description = message_item.namedItem(QSL("encoded")).toElement().text();
+    QString elem_enclosure = message_item.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
+    QString elem_enclosure_type = message_item.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
-    if (elem_summary.isEmpty()) {
-      elem_summary = message_item.namedItem(QSL("content")).toElement().text();
+    if (elem_description.isEmpty()) {
+      elem_description = message_item.namedItem(QSL("description")).toElement().text();
     }
 
     // Now we obtained maximum of information for title & description.
     if (elem_title.isEmpty()) {
-      if (elem_summary.isEmpty()) {
+      if (elem_description.isEmpty()) {
         // BOTH title and description are empty, skip this message.
         continue;
       }
       else {
         // Title is empty but description is not.
-        new_message.m_title = WebFactory::instance()->stripTags(elem_summary.simplified());
-        new_message.m_contents = elem_summary;
+        new_message.m_title = WebFactory::instance()->stripTags(elem_description.simplified());
+        new_message.m_contents = elem_description;
       }
     }
     else {
-      // Title is not empty, description does not matter.
+      // Title is really not empty, description does not matter.
       new_message.m_title = WebFactory::instance()->stripTags(elem_title);
-      new_message.m_contents = elem_summary;
+      new_message.m_contents = elem_description;
     }
 
-    // Deal with link.
-    QDomNodeList elem_links = message_item.toElement().elementsByTagName(QSL("link"));
+    if (!elem_enclosure.isEmpty()) {
+      new_message.m_enclosures.append(Enclosure(elem_enclosure, elem_enclosure_type));
 
-    for (int i = 0; i < elem_links.size(); i++) {
-      QDomElement link = elem_links.at(i).toElement();
-
-      if (link.attribute(QSL("rel")) == QSL("enclosure")) {
-        new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
-
-        qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));
-      }
-      else {
-        new_message.m_url = link.attribute(QSL("href"));
-      }
+      qDebug("Adding enclosure '%s' for the message.", qPrintable(elem_enclosure));
     }
+
+    // Deal with link and author.
+    new_message.m_url = message_item.namedItem(QSL("link")).toElement().text();
 
     if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
       new_message.m_url = new_message.m_enclosures.first().m_url;
     }
 
-    // Deal with authors.
-    new_message.m_author = WebFactory::instance()->escapeHtml(message_item.namedItem(QSL("author")).namedItem(QSL("name")).toElement().text());
+    if (new_message.m_url.isEmpty()) {
+      // Try to get "href" attribute.
+      new_message.m_url = message_item.namedItem(QSL("link")).toElement().attribute(QSL("href"));
+    }
+
+    new_message.m_author = message_item.namedItem(QSL("author")).toElement().text();
+
+    if (new_message.m_author.isEmpty()) {
+      new_message.m_author = message_item.namedItem(QSL("creator")).toElement().text();
+    }
 
     // Deal with creation date.
-    new_message.m_created = TextFactory::parseDateTime(message_item.namedItem(QSL("updated")).toElement().text());
-    new_message.m_createdFromFeed = !new_message.m_created.isNull();
+    new_message.m_created = TextFactory::parseDateTime(message_item.namedItem(QSL("pubDate")).toElement().text());
 
-    if (!new_message.m_createdFromFeed) {
-      // Date was NOT obtained from the feed, set current date as creation date for the message.
+    if (new_message.m_created.isNull()) {
+      new_message.m_created = TextFactory::parseDateTime(message_item.namedItem(QSL("date")).toElement().text());
+    }
+
+    if (!(new_message.m_createdFromFeed = !new_message.m_created.isNull())) {
+      // Date was NOT obtained from the feed,
+      // set current date as creation date for the message.
       new_message.m_created = current_time;
     }
 
-    // WARNING: There is a difference between "" and QString() in terms of nullptr SQL values!
-    // This is because of difference in QString::isNull() and QString::isEmpty(), the "" is not null
-    // while QString() is.
     if (new_message.m_author.isNull()) {
       new_message.m_author = "";
     }
