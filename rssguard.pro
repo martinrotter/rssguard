@@ -86,8 +86,12 @@ APP_DONATE_URL                = "https://goo.gl/YFVJ0j"
 isEmpty(PREFIX) {
   message(rssguard: PREFIX variable is not set. This might indicate error.)
 
-  win32|mac {
+  win32 {
     PREFIX = $$OUT_PWD/app
+  }
+  
+  mac {
+    PREFIX = $$OUT_PWD/$$APP_LOW_NAME.app
   }
 
   unix:!mac {
@@ -572,14 +576,14 @@ win32 {
   QMAKE_EXTRA_TARGETS += seven_zip zip
 }
 
-unix:!mac {
+unix|mac {
   seven_zip.target = 7zip
   seven_zip.depends = install
-  seven_zip.commands = 7za a -t7z $$TARGET-$$APP_VERSION-$$APP_REVISION-win32.7z $$shell_path($$PREFIX/*)
+  seven_zip.commands = 7za a -t7z $$TARGET-$$APP_VERSION-$$APP_REVISION-unix-mac.7z $$shell_path($$PREFIX/*)
 
   zip.target = zip
   zip.depends = install
-  zip.commands = 7za a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-win32.zip $$shell_path($$PREFIX/*)
+  zip.commands = 7za a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-unix-mac.zip $$shell_path($$PREFIX/*)
 
   QMAKE_EXTRA_TARGETS += seven_zip zip
 }
@@ -602,17 +606,6 @@ win32 {
   windows_all.commands = echo "windows_all done..."
 
   QMAKE_EXTRA_TARGETS += windows_all
-}
-
-# Create "make dmg" target on Mac OS X.
-mac {
-  dmg.target = dmg
-  dmg.depends = install
-  dmg.commands = \
-    macdeployqt rssguard.app -dmg && \
-    mv rssguard.dmg $$TARGET-$$APP_VERSION-$$APP_REVISION-osx.dmg
-
-  QMAKE_EXTRA_TARGETS += dmg
 }
 
 # Install all files on Windows.
@@ -733,46 +726,42 @@ unix:!mac {
 }
 
 mac {
-  CONFIG += app_bundle
   QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
-  QMAKE_RPATHDIR += @executable_path/../Frameworks
-
   QMAKE_INFO_PLIST = resources/macosx/Info.plist.in
   ICON = resources/macosx/$${TARGET}.icns
   IDENTIFIER = org.$${TARGET}.RSSGuard
 
+  target.path = $$quote($$PREFIX/Contents/MacOs/)
+  
   # Install SQL initializers.
   misc_sql.files = resources/sql
-  misc_sql.path = Contents/Resources
+  misc_sql.path = $$quote($$PREFIX/Contents/Resources/)
 
   # Misc icons.
   misc_icons.files = resources/graphics/misc
-  misc_icons.path = Contents/Resources/icons
+  misc_icons.path = $$quote($$PREFIX/Contents/Resources/icons/)
 
   faenza.files = resources/graphics/Faenza
-  faenza.path = Contents/Resources/icons
+  faenza.path = $$quote($$PREFIX/Contents/Resources/icons/)
 
   # Initial feeds.
   misc_feeds.files = resources/initial_feeds
-  misc_feeds.path = Contents/Resources
+  misc_feeds.path = $$quote($$PREFIX/Contents/Resources/)
 
   skins.files = resources/skins
-  skins.path = Contents/Resources
+  skins.path = $$quote($$PREFIX/Contents/Resources)
 
   misc_icon.files = resources/graphics/$${TARGET}.png
-  misc_icon.path = Contents/Resources/icons
+  misc_icon.path = $$quote($$PREFIX/Contents/Resources/icons)
 
   misc_plain_icon.files = resources/graphics/$${TARGET}_plain.png
-  misc_plain_icon.path = Contents/Resources/icons
+  misc_plain_icon.path = $$quote($$PREFIX/Contents/Resources/icons/)
 
   misc_texts.files = $$TEXTS
-  misc_texts.path = Contents/Resources/information
+  misc_texts.path = $$quote($$PREFIX/Contents/Resources/information/)
 
   translations.files = $$OUT_PWD/translations
-  translations.path =  Contents/Resources
-
-  QMAKE_BUNDLE_DATA += misc_sql misc_icons faenza misc_feeds skins \
-                       misc_icon misc_plain_icon misc_texts translations
+  translations.path =  $$quote($$PREFIX/Contents/Resources/)
 
   INSTALLS += misc_sql misc_icons faenza misc_feeds skins \
               misc_icon misc_plain_icon misc_texts translations

@@ -3,6 +3,8 @@
 if test "$TRAVIS_OS_NAME" = "osx"; then
   # Mac OS X.
   brew update
+  brew install p7zip
+  brew link --force p7zip
   brew install qt5
   brew link --force qt5
   brew install curl
