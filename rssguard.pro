@@ -91,7 +91,7 @@ isEmpty(PREFIX) {
   }
   
   mac {
-    PREFIX = $$OUT_PWD/rssguard.app
+    PREFIX = $$OUT_PWD/$${APP_LOW_NAME}.app
   }
 
   unix:!mac {
@@ -726,10 +726,6 @@ unix:!mac {
 }
 
 mac {
-  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
-  QMAKE_INFO_PLIST = resources/macosx/Info.plist.in
-  ICON = resources/macosx/$${TARGET}.icns
-  IDENTIFIER = org.$${TARGET}.RSSGuard
   CONFIG -= app_bundle
 
   target.path = $$quote($$PREFIX/Contents/MacOs/)
@@ -764,6 +760,6 @@ mac {
   translations.files = $$OUT_PWD/translations
   translations.path =  $$quote($$PREFIX/Contents/Resources/)
 
-  INSTALLS += misc_sql misc_icons faenza misc_feeds skins \
+  INSTALLS += target misc_sql misc_icons faenza misc_feeds skins \
               misc_icon misc_plain_icon misc_texts translations
 }
