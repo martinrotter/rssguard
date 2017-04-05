@@ -91,7 +91,7 @@ isEmpty(PREFIX) {
   }
   
   mac {
-    PREFIX = $$OUT_PWD/$$APP_LOW_NAME.app
+    PREFIX = $$OUT_PWD/rssguard.app
   }
 
   unix:!mac {
@@ -730,6 +730,7 @@ mac {
   QMAKE_INFO_PLIST = resources/macosx/Info.plist.in
   ICON = resources/macosx/$${TARGET}.icns
   IDENTIFIER = org.$${TARGET}.RSSGuard
+  CONFIG -= app_bundle
 
   target.path = $$quote($$PREFIX/Contents/MacOs/)
   
