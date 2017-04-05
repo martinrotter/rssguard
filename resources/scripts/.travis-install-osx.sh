@@ -12,6 +12,8 @@ otool -L rssguard.app/Contents/MacOS/rssguard
 cd rssguard.app
 ls -lha
 
+cd ..
+
 git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
 git clone -q --depth=1 https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki.git ./build-wiki
