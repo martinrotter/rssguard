@@ -1,3 +1,5 @@
+#### I am quite ill, so further work on RSS Guard is now postponed for month, maybe two. I am sorry.
+
 RSS Guard
 =========
 
