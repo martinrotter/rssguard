@@ -34,16 +34,25 @@
 
 
 FormUpdate::FormUpdate(QWidget *parent)
-  : QDialog(parent), m_downloader(nullptr), m_readyToInstall(false), m_ui(new Ui::FormUpdate) {
+  : QDialog(parent), m_downloader(nullptr), m_readyToInstall(false), m_ui(new Ui::FormUpdate), m_lastDownloadedBytes(0) {
   m_ui->setupUi(this);
-  m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Download update"), QDialogButtonBox::ActionRole);
-  m_btnUpdate->setToolTip(tr("Download new installation files."));
   m_ui->m_lblCurrentRelease->setText(APP_VERSION);
+  m_ui->m_tabInfo->removeTab(1);
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("help-about")));
 
+  if (isSelfUpdateSupported()) {
+    m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Download selected update"), QDialogButtonBox::ActionRole);
+    m_btnUpdate->setToolTip(tr("Download new installation files."));
+  }
+  else {
+    m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Go to application website"), QDialogButtonBox::ActionRole);
+    m_btnUpdate->setToolTip(tr("Go to application website to get update packages manually."));
+  }
+
+  m_btnUpdate->setVisible(false);
   connect(m_btnUpdate, &QPushButton::clicked, this, &FormUpdate::startUpdate);
   checkForUpdates();
 }
@@ -51,12 +60,8 @@ FormUpdate::FormUpdate(QWidget *parent)
 FormUpdate::~FormUpdate() {
 }
 
-bool FormUpdate::isUpdateForThisSystem() const {
-  return m_updateInfo.m_urls.keys().contains(OS_ID);
-}
-
 bool FormUpdate::isSelfUpdateSupported() const {
-#if defined(Q_OS_WIN)
+#if defined(Q_OS_WIN) || defined(Q_OS_MAC)
   return true;
 #else
   return false;
@@ -64,51 +69,47 @@ bool FormUpdate::isSelfUpdateSupported() const {
 }
 
 void FormUpdate::checkForUpdates() {
-  const QPair<UpdateInfo, QNetworkReply::NetworkError> update = qApp->system()->checkForUpdates();
-
-  m_updateInfo = update.first;
+  const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> update = qApp->system()->checkForUpdates();
 
   if (update.second != QNetworkReply::NoError) {
+    m_updateInfo = UpdateInfo();
+    m_ui->m_tabInfo->setEnabled(false);
+
     //: Unknown release.
     m_ui->m_lblAvailableRelease->setText(tr("unknown"));
     m_ui->m_txtChanges->clear();
     m_ui->m_lblStatus->setStatus(WidgetWithStatus::Error,
                                  tr("Error: '%1'.").arg(NetworkFactory::networkErrorText(update.second)),
                                  tr("List with updates was not\ndownloaded successfully."));
-    m_btnUpdate->setEnabled(false);
-    m_btnUpdate->setToolTip(tr("Checking for updates failed."));
   }
   else {
-    m_ui->m_lblAvailableRelease->setText(update.first.m_availableVersion);
-    m_ui->m_txtChanges->setText(update.first.m_changes);
+    const bool self_update_supported = isSelfUpdateSupported();
 
-    const bool is_self_update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
+    m_updateInfo = update.first.at(0);
+    m_ui->m_tabInfo->setEnabled(true);
+    m_ui->m_lblAvailableRelease->setText(m_updateInfo.m_availableVersion);
+    m_ui->m_txtChanges->setText(m_updateInfo.m_changes);
 
-    if (SystemFactory::isVersionNewer(update.first.m_availableVersion, APP_VERSION)) {
+    if (SystemFactory::isVersionNewer(m_updateInfo.m_availableVersion, APP_VERSION)) {
+      m_btnUpdate->setVisible(true);
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded."));
-      m_btnUpdate->setEnabled(true);
-      m_btnUpdate->setToolTip(is_self_update_for_this_system ?
-                                tr("Download installation file for your OS.") :
-                                tr("Installation file is not available directly.\n"
-                                   "Go to application website to obtain it manually."));
 
-      m_btnUpdate->setText(is_self_update_for_this_system ? tr("Download update") : tr("Go to application website"));
+      if (self_update_supported) {
+        loadAvailableFiles();
+      }
     }
     else {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Warning,
                                    tr("No new release available."),
                                    tr("This release is not newer than\ncurrently installed one."));
-      m_btnUpdate->setEnabled(false);
-      m_btnUpdate->setToolTip(tr("No new update available."));
     }
   }
 }
 
 void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
-  if (bytes_received % 10 == 0) {
-    qApp->processEvents();
+  if (bytes_received - m_lastDownloadedBytes > 500000 || m_lastDownloadedBytes == 0) {
     m_ui->m_lblStatus->setStatus(WidgetWithStatus::Information,
                                  tr("Downloaded %1% (update size is %2 kB).").arg(QString::number(bytes_total == 0 ? 0 : (bytes_received * 100.0) / bytes_total,
                                                                                                   'f',
@@ -117,11 +118,14 @@ void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
                                                                                                   'f',
                                                                                                   2)),
                                  tr("Downloading update..."));
+    m_ui->m_lblStatus->repaint();
+
+    m_lastDownloadedBytes = bytes_received;
   }
 }
 
 void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
-  const QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
+  const QString url_file = m_ui->m_listFiles->currentItem()->data(Qt::UserRole).toString();
   const QString temp_directory = qApp->getTempFolderPath();
 
   if (!temp_directory.isEmpty()) {
@@ -151,13 +155,34 @@ void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
   }
 }
 
+void FormUpdate::loadAvailableFiles() {
+  m_ui->m_listFiles->clear();
+
+  foreach (const UpdateUrl &url, m_updateInfo.m_urls) {
+    QListWidgetItem *item = new QListWidgetItem(url.m_name + tr(" (size ") + url.m_size + QSL(")"));
+    item->setData(Qt::UserRole, url.m_fileUrl);
+    item->setToolTip(url.m_fileUrl);
+    m_ui->m_listFiles->addItem(item);
+  }
+
+  if (m_ui->m_listFiles->count() > 0) {
+    m_ui->m_listFiles->setCurrentRow(0);
+  }
+  else {
+    m_btnUpdate->setEnabled(false);
+  }
+
+  m_ui->m_tabInfo->addTab(m_ui->tabFiles, tr("Available update files"));
+  m_ui->m_tabInfo->setCurrentIndex(1);
+}
+
 void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray contents) {
   qDebug("Download of application update file was completed with code '%d'.", status);
 
   switch (status) {
     case QNetworkReply::NoError:
       saveUpdateFile(contents);
-      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"), tr("Package was downloaded successfully.\nYou must install it manually."));
+      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"), tr("Package was downloaded successfully.\nYou can install it now."));
       m_btnUpdate->setText(tr("Install"));
       m_btnUpdate->setEnabled(true);
       break;
@@ -171,10 +196,11 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
 
 void FormUpdate::startUpdate() {
   QString url_file;
-  const bool update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
+  const bool update_for_this_system = isSelfUpdateSupported();
 
-  if (update_for_this_system) {
-    url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;
+  if (update_for_this_system && m_ui->m_listFiles->currentItem() != nullptr) {
+    url_file = m_ui->m_listFiles->currentItem()->data(Qt::UserRole).toString();
+    m_ui->m_listFiles->setEnabled(false);
   }
   else {
     url_file = APP_URL;

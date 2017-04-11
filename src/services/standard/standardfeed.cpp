@@ -446,7 +446,7 @@ QList<Message> StandardFeed::obtainNewMessages(bool *error_during_obtaining) {
   switch (type()) {
     case StandardFeed::Rss0X:
     case StandardFeed::Rss2X:
-      messages = RssParser().parseXmlData(formatted_feed_contents);
+      messages = RssParser(formatted_feed_contents).messages();
       break;
 
     case StandardFeed::Rdf:

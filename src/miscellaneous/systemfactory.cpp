@@ -28,9 +28,9 @@
 #include <QString>
 #include <QProcess>
 #include <QFile>
-#include <QDomDocument>
-#include <QDomElement>
-#include <QDomAttr>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 #include <QFuture>
 #include <QFileInfo>
 #include <QDir>
@@ -205,18 +205,15 @@ QString SystemFactory::getUsername() const {
   return name;
 }
 
-QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() const {
-  QPair<UpdateInfo, QNetworkReply::NetworkError> result;
-  QByteArray releases_xml;
-  QByteArray changelog;
+QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() const {
+  QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> result;
+  QByteArray releases_json;
 
   result.second = NetworkFactory::performNetworkOperation(RELEASES_LIST, DOWNLOAD_TIMEOUT, QByteArray(), QString(),
-                                                          releases_xml, QNetworkAccessManager::GetOperation).first;
-  NetworkFactory::performNetworkOperation(CHANGELOG, DOWNLOAD_TIMEOUT, QByteArray(), QString(), changelog,
-                                          QNetworkAccessManager::GetOperation);
+                                                          releases_json, QNetworkAccessManager::GetOperation).first;
 
   if (result.second == QNetworkReply::NoError) {
-    result.first = parseUpdatesFile(releases_xml, changelog);
+    result.first = parseUpdatesFile(releases_json);
   }
 
   return result;
@@ -267,43 +264,47 @@ bool SystemFactory::openFolderFile(const QString &file_path) {
 #endif
 }
 
-UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) const {
-  UpdateInfo update;
-  QDomDocument document; document.setContent(updates_file, false);
-  const QDomNodeList releases = document.elementsByTagName(QSL("release"));
+QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray &updates_file) const {
+  QList<UpdateInfo> updates;
 
-  if (releases.size() == 1) {
-    QDomElement rel_elem = releases.at(0).toElement();
+  QJsonArray document = QJsonDocument::fromJson(updates_file).array();
 
-    update.m_availableVersion = rel_elem.attributes().namedItem(QSL("version")).toAttr().value();
-    update.m_changes = QString::fromUtf8(changelog);
+  for (int i = 0; i < document.size(); i++) {
+    QJsonObject release = document.at(i).toObject();
+    UpdateInfo update;
 
-    QDomNodeList urls = rel_elem.elementsByTagName(QSL("url"));
+    update.m_date = QDateTime::fromString(release["published_at"].toString(), QSL("yyyy-MM-ddTHH:mm:ssZ"));
+    update.m_availableVersion = release["tag_name"].toString();
+    update.m_changes = release["body"].toString();
 
-    for (int j = 0; j < urls.size(); j++) {
+    QJsonArray assets = release["assets"].toArray();
+
+    for (int j = 0; j < assets.size(); j++) {
+      QJsonObject asset = assets.at(j).toObject();
       UpdateUrl url;
-      QDomElement url_elem = urls.at(j).toElement();
 
-      url.m_fileUrl = url_elem.text();
-      url.m_os = url_elem.attributes().namedItem(QSL("os")).toAttr().value();
-      url.m_platform = url_elem.attributes().namedItem(QSL("platform")).toAttr().value();
+      url.m_fileUrl = asset["browser_download_url"].toString();
+      url.m_name = asset["name"].toString();
+      url.m_size = asset["size"].toVariant().toString() + tr(" bytes");
 
-      update.m_urls.insert(url.m_os, url);
+      update.m_urls.append(url);
     }
-  }
-  else {
-    update.m_availableVersion = QString();
+
+    updates.append(update);
   }
 
+  qSort(updates.begin(), updates.end(), [](const UpdateInfo &a, const UpdateInfo &b) -> bool {
+    return a.m_date > b.m_date;
+  });
 
-  return update;
+  return updates;
 }
 
 void SystemFactory::checkForUpdatesOnStartup() {
-  const UpdateCheck updates = checkForUpdates();
+  const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates = checkForUpdates();
 
-  if (updates.second == QNetworkReply::NoError && isVersionNewer(updates.first.m_availableVersion,
-                                                                 APP_VERSION)) {
+  if (!updates.first.isEmpty() && updates.second == QNetworkReply::NoError && isVersionNewer(updates.first.at(0).m_availableVersion,
+                                                                                             APP_VERSION)) {
     qApp->showGuiMessage(tr("New version available"),
                          tr("Click the bubble for more information."),
                          QSystemTrayIcon::Information,

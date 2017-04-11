@@ -38,15 +38,11 @@ class FormUpdate : public QDialog {
     explicit FormUpdate(QWidget *parent = 0);
     virtual ~FormUpdate();
 
-    // Returns true if current update provides
-    // installation file for current platform.
-    bool isUpdateForThisSystem() const;
-
     // Returns true if application can self-update
     // on current platform.
     bool isSelfUpdateSupported() const;
 
-  protected slots:
+  private slots:
     // Check for updates and interprets the results.
     void checkForUpdates();
     void startUpdate();
@@ -56,12 +52,15 @@ class FormUpdate : public QDialog {
     void saveUpdateFile(const QByteArray &file_contents);
 
   private:
+    void loadAvailableFiles();
+
     Downloader *m_downloader;
     bool m_readyToInstall;
     QString m_updateFilePath;
     QScopedPointer<Ui::FormUpdate> m_ui;
     UpdateInfo m_updateInfo;
     QPushButton *m_btnUpdate;
+    qint64 m_lastDownloadedBytes;
 };
 
 #endif // FORMUPDATE_H

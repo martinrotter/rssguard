@@ -94,3 +94,7 @@ QStringList FeedParser::textsFromPath(const QDomElement &element, const QString 
 
   return result;
 }
+
+QString FeedParser::feedAuthor() const {
+  return "";
+}

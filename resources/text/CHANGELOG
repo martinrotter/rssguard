@@ -5,7 +5,8 @@ Added:
 ▪ Auto-update status of feeds is now more general and complete. (issue #91)
 
 Changed:
-▪ Better ATOM parsing, respects now XML namespaces, bit better link parsing and other stuff. (issue #104)
+▪ Updating of RSS Guard now uses GitHub API. (issue #109)
+▪ Better ATOM/RSS parsing, respects now XML namespaces, bit better link parsing and other stuff. (issue #104)
 ▪ Folder which holds SQL scripts got renamed to "sql".
 ▪ Tweaked some conditions for determining newly "updated" messages in ATOM format. (issue #103)
 

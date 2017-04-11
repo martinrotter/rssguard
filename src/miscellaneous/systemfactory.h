@@ -29,18 +29,19 @@
 class UpdateUrl {
   public:
     QString m_fileUrl;
-    QString m_platform;
-    QString m_os;
+    QString m_name;
+    QString m_size;
 };
 
 class UpdateInfo {
   public:
-    explicit UpdateInfo() : m_availableVersion(QString()), m_changes(QString()) {
+    explicit UpdateInfo() : m_availableVersion(QString()), m_changes(QString()), m_urls(QList<UpdateUrl>()) {
     }
 
     QString m_availableVersion;
     QString m_changes;
-    QHash<QString, UpdateUrl> m_urls;
+    QList<UpdateUrl> m_urls;
+    QDateTime m_date;
 };
 
 Q_DECLARE_METATYPE(UpdateInfo)
@@ -84,7 +85,7 @@ class SystemFactory : public QObject {
     QString getUsername() const;
 
     // Tries to download list with new updates.
-    QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates() const;
+    QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> checkForUpdates() const;
 
     // Checks if update is newer than current application version.
     static bool isVersionNewer(const QString &new_version, const QString &base_version);
@@ -97,7 +98,7 @@ class SystemFactory : public QObject {
 
   private:
     // Performs parsing of downloaded file with list of updates.
-    UpdateInfo parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) const;
+    QList<UpdateInfo> parseUpdatesFile(const QByteArray &updates_file) const;
 };
 
 #endif // SYSTEMFACTORY_H

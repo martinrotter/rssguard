@@ -18,17 +18,21 @@
 #ifndef RSSPARSER_H
 #define RSSPARSER_H
 
+#include "services/standard/feedparser.h"
+
 #include "core/message.h"
 
 #include <QList>
 
 
-class RssParser {
+class RssParser : public FeedParser {
   public:
-    explicit RssParser();
+    explicit RssParser(const QString &data);
     virtual ~RssParser();
 
-    QList<Message> parseXmlData(const QString &data);
+  private:
+    QDomNodeList messageElements();
+    Message extractMessage(const QDomElement &msg_element, QDateTime current_time) const;
 };
 
 #endif // RSSPARSER_H

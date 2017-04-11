@@ -34,7 +34,7 @@ class FeedParser {
   protected:
     QStringList textsFromPath(const QDomElement &element, const QString &namespace_uri, const QString &xml_path, bool only_first) const;
     virtual QDomNodeList messageElements() = 0;
-    virtual QString feedAuthor() const = 0;
+    virtual QString feedAuthor() const;
     virtual Message extractMessage(const QDomElement &msg_element, QDateTime current_time) const = 0;
 
   protected:
