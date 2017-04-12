@@ -50,7 +50,7 @@ void MessagePreviewer::createConnections() {
         QAbstractButton *btn_cancel = box.addButton(QMessageBox::Cancel);
 
         bool always;
-        MessageBox::setCheckBox(&box, tr("Alway open links in external browser."), &always);
+        MessageBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
 
         box.setDefaultButton(QMessageBox::Cancel);
         box.exec();
