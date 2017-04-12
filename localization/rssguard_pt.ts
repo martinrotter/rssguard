@@ -276,6 +276,31 @@ Clique para abrir a pasta de destino.</translation>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -486,7 +511,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>PARCIALMENTE portátil</translation>
+        <translation type="vanished">PARCIALMENTE portátil</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -502,6 +527,10 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation>Caminho raiz dos temas do usuário</translation>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1476,7 +1505,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>&amp;Marcar todos os itens como lidos</translation>
+        <translation type="vanished">&amp;Marcar todos os itens como lidos</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1634,6 +1663,10 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Tabs</source>
         <translation>Abas</translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2044,7 +2077,7 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Alterações</translation>
+        <translation type="vanished">Alterações</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2089,21 +2122,21 @@ que a versão atual instalada.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Falha ao verificar por atualizações.</translation>
+        <translation type="vanished">Falha ao verificar por atualizações.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Baixe o arquivo de instalação para o seu sistema.</translation>
+        <translation type="vanished">Baixe o arquivo de instalação para o seu sistema.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>O arquivo de instalação não está disponível diretamente.
+        <translation type="vanished">O arquivo de instalação não está disponível diretamente.
 Vá até o site do aplicativo para obter manualmente.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Nenhuma nova atualização disponível.</translation>
+        <translation type="vanished">Nenhuma nova atualização disponível.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2115,7 +2148,7 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Baixar atualização</translation>
+        <translation type="vanished">Baixar atualização</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2150,7 +2183,7 @@ baixada.</translation>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>O pacote foi baixado com sucesso.
+        <translation type="vanished">O pacote foi baixado com sucesso.
 Você precisa instalá-lo manualmente.</translation>
     </message>
     <message>
@@ -2160,6 +2193,35 @@ Você precisa instalá-lo manualmente.</translation>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Não é possível executar o atualizador externo. Atualize o aplicativo manualmente.</translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2178,6 +2240,13 @@ Você precisa instalá-lo manualmente.</translation>
     <message>
         <source>Website address goes here</source>
         <translation>O endereço do site vai aqui</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2225,6 +2294,10 @@ Você precisa instalá-lo manualmente.</translation>
     <message>
         <source>image</source>
         <translation>imagem</translation>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2809,6 +2882,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation>Navegador da web &amp; e-mail &amp; proxy</translation>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -2942,11 +3019,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation>Note que ATIVAR esta opção irá tornar o salvamento de mensagens mais RÁPIDO, mas ele pode raramente causar alguns problemas com o salvamento de mensagens.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation>Usar transações do Banco de Dados ao armazenar mensagens baixadas</translation>
     </message>
 </context>
 <context>
@@ -3298,17 +3375,12 @@ Esta categoria nenhum possui itens aninhados.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>não usa a atualização automática</translation>
+        <translation type="vanished">não usa a atualização automática</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>usa as configurações globais</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform></translation>
+        <translation type="vanished">usa as configurações globais</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3423,6 +3495,10 @@ ID da Conta: %1</translation>
     <message>
         <source>anonymous</source>
         <translation>anônimo</translation>
+    </message>
+    <message>
+        <source> bytes</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

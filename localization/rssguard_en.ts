@@ -289,6 +289,39 @@ Click here to open parent directory.</translation>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished">%1%2
+
+Auto-update status: %3</translation>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -502,7 +535,7 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>PARTIALLY portable</translation>
+        <translation type="vanished">PARTIALLY portable</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -518,6 +551,10 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1495,7 +1532,7 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>&amp;Mark all items as &amp;read</translation>
+        <translation type="vanished">&amp;Mark all items as &amp;read</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1653,6 +1690,10 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>Tabs</source>
         <translation type="unfinished">Tabs</translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2060,7 +2101,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Changes</translation>
+        <translation type="vanished">Changes</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2105,21 +2146,21 @@ currently installed one.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Checking for updates failed.</translation>
+        <translation type="vanished">Checking for updates failed.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Download installation file for your OS.</translation>
+        <translation type="vanished">Download installation file for your OS.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Installation file is not available directly.
+        <translation type="vanished">Installation file is not available directly.
 Go to application website to obtain it manually.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>No new update available.</translation>
+        <translation type="vanished">No new update available.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2131,7 +2172,7 @@ Go to application website to obtain it manually.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Download update</translation>
+        <translation type="vanished">Download update</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2166,7 +2207,7 @@ downloaded.</translation>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Package was downloaded successfully.
+        <translation type="vanished">Package was downloaded successfully.
 You must install it manually.</translation>
     </message>
     <message>
@@ -2175,6 +2216,35 @@ You must install it manually.</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished">Changelog</translation>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2194,6 +2264,13 @@ You must install it manually.</translation>
     <message>
         <source>Website address goes here</source>
         <translation>Website address goes here</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2240,6 +2317,10 @@ You must install it manually.</translation>
     </message>
     <message>
         <source>image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2833,6 +2914,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation type="unfinished">Web browser &amp; e-mail &amp; proxy</translation>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -3322,20 +3407,12 @@ This category does not contain any nested items.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>does not use auto-update</translation>
+        <translation type="vanished">does not use auto-update</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>uses global settings</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="vanished">uses global settings</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3450,6 +3527,10 @@ Account ID: %1</translation>
     <message>
         <source>anonymous</source>
         <translation>anonymous</translation>
+    </message>
+    <message>
+        <source> bytes</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

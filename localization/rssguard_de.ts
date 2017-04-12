@@ -275,6 +275,31 @@ Click here to open parent directory.</source>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -484,7 +509,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>TEILWEISE portierbar</translation>
+        <translation type="vanished">TEILWEISE portierbar</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -500,6 +525,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation>Stammverzeichnis nutzereigener Skins</translation>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -852,11 +881,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>URL der TT-RSS Instanz OHNE abschließendes &quot;/api/&quot;</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL sollte NICHT auf &quot;/api/&quot; enden</translation>
     </message>
 </context>
 <context>
@@ -1474,7 +1503,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>Alle Einträge als ge&amp;lesen markieren</translation>
+        <translation type="vanished">Alle Einträge als ge&amp;lesen markieren</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1632,6 +1661,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Tabs</source>
         <translation>Reiter</translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2042,7 +2075,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Änderungen</translation>
+        <translation type="vanished">Änderungen</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2087,20 +2120,20 @@ die aktuell installierte.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Überprüfung auf Aktualisierungen ist fehlgeschlagen.</translation>
+        <translation type="vanished">Überprüfung auf Aktualisierungen ist fehlgeschlagen.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Installationsdateien für Ihr Betriebssystem herunterladen.</translation>
+        <translation type="vanished">Installationsdateien für Ihr Betriebssystem herunterladen.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Kein direkter Zugriff auf Installationsdatei möglich. Bitte manuell über die Webseite des Projektes herunterladen.</translation>
+        <translation type="vanished">Kein direkter Zugriff auf Installationsdatei möglich. Bitte manuell über die Webseite des Projektes herunterladen.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Keine neuen Aktualisierungen verfügbar.</translation>
+        <translation type="vanished">Keine neuen Aktualisierungen verfügbar.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2112,7 +2145,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Aktualisierung herunterladen</translation>
+        <translation type="vanished">Aktualisierung herunterladen</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2146,7 +2179,7 @@ downloaded.</source>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Paket wurde erfolgreich heruntergeladen. Es muss manuell installiert werden.</translation>
+        <translation type="vanished">Paket wurde erfolgreich heruntergeladen. Es muss manuell installiert werden.</translation>
     </message>
     <message>
         <source>Install</source>
@@ -2155,6 +2188,35 @@ You must install it manually.</source>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Kann externes Programm zur Aktualisierung nicht starten. Bitte Aktualisierung manuell durchführen.</translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2173,6 +2235,13 @@ You must install it manually.</source>
     <message>
         <source>Website address goes here</source>
         <translation>Die Webseitenadresse kommt hierhin</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2220,6 +2289,10 @@ You must install it manually.</source>
     <message>
         <source>image</source>
         <translation>Graphik</translation>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2504,7 +2577,7 @@ You must install it manually.</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Weitere Nachrichten anzeigen (%n verbleibend)</numerusform><numerusform>Weitere Nachrichten anzeigen (%n verbleibend)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2804,6 +2877,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation>Browser, Mail-Client, Proxy</translation>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -2938,11 +3015,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation>Die Verwendung dieser Option beschleunigt das Speichern neuer Nachrichten, kann aber in seltenen Fällen auch Probleme hierbei verursachen.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation>Speichern heruntergeladener Nachrichten per Datenbanktransaktionen handhaben</translation>
     </message>
 </context>
 <context>
@@ -3052,7 +3129,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="unfinished"/>
+        <translation>Höhe angehängter Abbildungen</translation>
     </message>
 </context>
 <context>
@@ -3195,7 +3272,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>(keins)</translation>
+        <translation>kein eigenes, sondern systemweit gesetztes verwenden</translation>
     </message>
     <message>
         <source>Icon only</source>
@@ -3223,11 +3300,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"/>
+        <translation>Stil der Bedienelemente</translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="unfinished"/>
+        <translation>Design</translation>
     </message>
 </context>
 <context>
@@ -3293,17 +3370,12 @@ This category does not contain any nested items.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>keine automatische Aktualisierung</translation>
+        <translation type="vanished">keine automatische Aktualisierung</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>verwendet globale Einstellungen</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute bis zur nächsten Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minuten bis zur nächsten Aktualisierung)</numerusform></translation>
+        <translation type="vanished">verwendet globale Einstellungen</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3418,6 +3490,10 @@ ID des Kontos: %1</translation>
     <message>
         <source>anonymous</source>
         <translation>anonymous</translation>
+    </message>
+    <message>
+        <source> bytes</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3651,7 +3727,7 @@ Letzte Anmeldung: %5</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Geschrieben von</translation>
+        <translation>Geschrieben von </translation>
     </message>
     <message>
         <source>Newspaper view</source>

@@ -274,6 +274,31 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -484,7 +509,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>PARTIELLEMENT portable</translation>
+        <translation type="vanished">PARTIELLEMENT portable</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -500,6 +525,10 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1633,6 +1662,10 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <source>Tabs</source>
         <translation>Onglets</translation>
     </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2039,7 +2072,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Changements</translation>
+        <translation type="vanished">Changements</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2084,21 +2117,21 @@ celle actuellement installée.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>La vérification des mises à jour à échouée.</translation>
+        <translation type="vanished">La vérification des mises à jour à échouée.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Télécharger les fichiers d&apos;installation pour votre OS.</translation>
+        <translation type="vanished">Télécharger les fichiers d&apos;installation pour votre OS.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Les fichiers d&apos;installation ne sont pas disponibles directement.
+        <translation type="vanished">Les fichiers d&apos;installation ne sont pas disponibles directement.
 Aller sur le site de l&apos;application pour les obtenir manuellement.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Pas ne nouvelles mises à jour disponible</translation>
+        <translation type="vanished">Pas ne nouvelles mises à jour disponible</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2154,6 +2187,35 @@ You must install it manually.</source>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2171,6 +2233,13 @@ You must install it manually.</source>
     <message>
         <source>Website address goes here</source>
         <translation>L&apos;adresse du site web pointe ici</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2217,6 +2286,10 @@ You must install it manually.</source>
     </message>
     <message>
         <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2787,6 +2860,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -3275,17 +3352,12 @@ This category does not contain any nested items.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Ne pas utiliser la mise à jour automatique</translation>
+        <translation type="vanished">Ne pas utiliser la mise à jour automatique</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Utiliser les paramètres globaux</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="vanished">Utiliser les paramètres globaux</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3393,6 +3465,10 @@ Account ID: %1</source>
     </message>
     <message>
         <source>anonymous</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> bytes</source>
         <translation type="unfinished"/>
     </message>
 </context>

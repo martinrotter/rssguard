@@ -137,6 +137,7 @@ This website contains %n feed(s).</source>
         <translation><numerusform>Kliknij tu, aby dodać kanał z tej strony.
 Ta strona web zawiera jeden kanał.</numerusform><numerusform>Kliknij tu, aby dodać kanały z tej strony.
 Ta strona web zawiera %n kanały</numerusform><numerusform>Kliknij tu, aby dodać kanały z tej strony.
+Ta strona web zawiera %n kanałów.</numerusform><numerusform>Kliknij tu, aby dodać kanały z tej strony.
 Ta strona web zawiera %n kanałów.</numerusform></translation>
     </message>
     <message>
@@ -249,11 +250,11 @@ Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>pozostała %n minuta</numerusform><numerusform>pozostały %n minuty</numerusform><numerusform>pozostało %n minut</numerusform></translation>
+        <translation><numerusform>pozostała %n minuta</numerusform><numerusform>pozostały %n minuty</numerusform><numerusform>pozostało %n minut</numerusform><numerusform>pozostało %n minut</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>pozostała %n sekunda</numerusform><numerusform>pozostało %n sekundy</numerusform><numerusform>pozostało %n sekund</numerusform></translation>
+        <translation><numerusform>pozostała %n sekunda</numerusform><numerusform>pozostało %n sekundy</numerusform><numerusform>pozostało %n sekund</numerusform><numerusform>pozostało %n sekund</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -273,7 +274,32 @@ Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Pobieranie %n pliku...</numerusform><numerusform>Pobieranie %n plików...</numerusform><numerusform>Pobieranie %n plików...</numerusform></translation>
+        <translation><numerusform>Pobieranie %n pliku...</numerusform><numerusform>Pobieranie %n plików...</numerusform><numerusform>Pobieranie %n plików...</numerusform><numerusform>Pobieranie %n plików...</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -303,7 +329,7 @@ Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-aktualizacja %n kanału.</numerusform><numerusform>Auto-aktualizacja %n kanałów.</numerusform><numerusform>Auto-aktualizacja %n kanałów.</numerusform></translation>
+        <translation><numerusform>Auto-aktualizacja %n kanału.</numerusform><numerusform>Auto-aktualizacja %n kanałów.</numerusform><numerusform>Auto-aktualizacja %n kanałów.</numerusform><numerusform>Auto-aktualizacja %n kanałów.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -487,7 +513,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>CZĘŚCIOWO przenośne</translation>
+        <translation type="vanished">CZĘŚCIOWO przenośne</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -503,6 +529,10 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -624,7 +654,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dzień</numerusform><numerusform>dni</numerusform><numerusform>dni</numerusform></translation>
+        <translation><numerusform>dzień</numerusform><numerusform>dni</numerusform><numerusform>dni</numerusform><numerusform>dni</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1477,7 +1507,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>&amp;Oznacz wszystkie wiadomości jako p&amp;rzeczytane</translation>
+        <translation type="vanished">&amp;Oznacz wszystkie wiadomości jako p&amp;rzeczytane</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1635,6 +1665,10 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     <message>
         <source>Tabs</source>
         <translation>Karty</translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2045,7 +2079,7 @@ Musisz ręcznie uruchomić ponownie aplikację.</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Zmiany</translation>
+        <translation type="vanished">Zmiany</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2090,21 +2124,21 @@ aktualnie zainstalowana.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Sprawdzanie aktualizacji nie powiodło się.</translation>
+        <translation type="vanished">Sprawdzanie aktualizacji nie powiodło się.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Pobierz plik instalacyjny dla twojego systemu operacyjnego.</translation>
+        <translation type="vanished">Pobierz plik instalacyjny dla twojego systemu operacyjnego.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Plik instalacyjny nie jest bezpośrednio dostępny.
+        <translation type="vanished">Plik instalacyjny nie jest bezpośrednio dostępny.
 Przejdź do strony programu i pobierz ręcznie.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Brak dostępnych aktualizacji.</translation>
+        <translation type="vanished">Brak dostępnych aktualizacji.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2116,7 +2150,7 @@ Przejdź do strony programu i pobierz ręcznie.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Pobierz aktualizację</translation>
+        <translation type="vanished">Pobierz aktualizację</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2151,7 +2185,7 @@ być pobrana.</translation>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Pakiet został poprawnie pobrany.
+        <translation type="vanished">Pakiet został poprawnie pobrany.
 Musisz go zainstalować ręcznie.</translation>
     </message>
     <message>
@@ -2161,6 +2195,35 @@ Musisz go zainstalować ręcznie.</translation>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Nie można uruchomić zewnętrznego aktualizatora. Zaktualizuj aplikację ręcznie.</translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2179,6 +2242,13 @@ Musisz go zainstalować ręcznie.</translation>
     <message>
         <source>Website address goes here</source>
         <translation>Wpisz tutaj adres strony internetowej</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2226,6 +2296,10 @@ Musisz go zainstalować ręcznie.</translation>
     <message>
         <source>image</source>
         <translation>Obraz</translation>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2510,7 +2584,7 @@ Musisz go zainstalować ręcznie.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Pokaż więcej wiadomości (pozostała %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostały %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostało %n)</numerusform></translation>
+        <translation><numerusform>Pokaż więcej wiadomości (pozostała %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostały %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostało %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostało %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2561,6 +2635,8 @@ Musisz go zainstalować ręcznie.</translation>
 + %n inny kanał.</numerusform><numerusform>
 
 + %n inne kanały.</numerusform><numerusform>
+
++ %n innych kanałów.</numerusform><numerusform>
 
 + %n innych kanałów.</numerusform></translation>
     </message>
@@ -2619,7 +2695,7 @@ Minimalny wymagany poziom API to %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n usunięta wiadomość.</numerusform><numerusform>%n usunięte wiadomości.</numerusform><numerusform>%n usuniętych wiadomości.</numerusform></translation>
+        <translation><numerusform>%n usunięta wiadomość.</numerusform><numerusform>%n usunięte wiadomości.</numerusform><numerusform>%n usuniętych wiadomości.</numerusform><numerusform>%n usuniętych wiadomości.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2643,7 +2719,7 @@ Minimalny wymagany poziom API to %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nieprzeczytana wiadomość.</numerusform><numerusform>%n nieprzeczytane wiadomości.</numerusform><numerusform>%n nieprzeczytanych wiadomości.</numerusform></translation>
+        <translation><numerusform>%n nieprzeczytana wiadomość.</numerusform><numerusform>%n nieprzeczytane wiadomości.</numerusform><numerusform>%n nieprzeczytanych wiadomości.</numerusform><numerusform>%n nieprzeczytanych wiadomości.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -2811,6 +2887,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation>Przeglądarka, e-mail i proxy</translation>
+    </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3301,17 +3381,12 @@ Ta kategoria nie zawiera żadnych zagnieżdżonych elementów.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>nie używa auto-aktualizacji</translation>
+        <translation type="vanished">nie używa auto-aktualizacji</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>używa ustawień globalnych</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>używa własnych ustawień (%n minuta do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minuty do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minut do następnej auto-aktualizacji)</numerusform></translation>
+        <translation type="vanished">używa ustawień globalnych</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3427,6 +3502,10 @@ ID konta: %1</translation>
         <source>anonymous</source>
         <translation>anonimowy</translation>
     </message>
+    <message>
+        <source> bytes</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SystemTrayIcon</name>
@@ -3484,11 +3563,11 @@ Nieprzeczytanych wiadomości: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n godzinę</numerusform><numerusform>%n godziny</numerusform><numerusform>%n godzin</numerusform></translation>
+        <translation><numerusform>%n godzinę</numerusform><numerusform>%n godziny</numerusform><numerusform>%n godzin</numerusform><numerusform>%n godzin</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform></translation>
+        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform><numerusform>%n minut</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3564,7 +3643,7 @@ Nieprzeczytanych wiadomości: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>używa własnych ustawień (%n minuta do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minuty do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minut do następnej auto-aktualizacji)</numerusform></translation>
+        <translation><numerusform>używa własnych ustawień (%n minuta do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minuty do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minut do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minut do następnej auto-aktualizacji)</numerusform></translation>
     </message>
     <message>
         <source>%1%2

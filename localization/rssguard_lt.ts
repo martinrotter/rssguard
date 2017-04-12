@@ -152,7 +152,7 @@ This website contains %n feed(s).</source>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="unfinished"/>
+        <translation>Ico</translation>
     </message>
     <message>
         <source>Filename</source>
@@ -274,6 +274,31 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
         <translation><numerusform>Atsiunčiamas %n failas...</numerusform><numerusform>Atsiunčiami %n failai...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -487,7 +512,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>DALINAI perkeliami</translation>
+        <translation type="vanished">DALINAI perkeliami</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -503,6 +528,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation>Naudotojo apipavidalinimų šakninis kelias</translation>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -676,7 +705,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti visas žvaigždute pažymėtas žinutes (įskaitant tas, kurios šiukšlinėje)</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -779,11 +808,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS serveris veikia gerai, vykdomas, naudojant API lygį %1, tuo tarpu reikalingas bent API lygis %2.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS serveris yra geras.</translation>
+        <translation>Tiny Tiny RSS serveris veikia gerai.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -855,11 +884,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų TT-RSS egzemplioriaus URL BE galinės &quot;/api/&quot; eilutės</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL NETURĖTŲ užsibaigti su &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
@@ -918,19 +947,19 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti naują ownCloud naujienų paskyrą</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Redaguoti esamą ownCloud naujienų paskyrą</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinktas ownCloud naujienų serveris vykdo nepalaikomą versiją (%1). Reikalinga bent versija %2.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinktas ownCloud naujienų serveris vykdo nepalaikomą versiją.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -978,11 +1007,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>ownCloud naujienų serveris veikia gerai, vykdomas, naudojant versiją %1, tuo tarpu reikalinga bent versija %2.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>ownCloud naujienų serveris veikia gerai.</translation>
     </message>
 </context>
 <context>
@@ -1317,7 +1346,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation type="unfinished"/>
+        <translation>Tikrinti ar yra prieinamas atsisiųsti naujas programos atnaujinimas.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
@@ -1457,7 +1486,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="unfinished"/>
+        <translation>Žymėti visas žinutes (be žinučių filtrų) iš pasirinkto elemento kaip skaitytas.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
@@ -1465,7 +1494,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="unfinished"/>
+        <translation>Žymėti visas žinutes (be žinučių filtrų) iš pasirinkto elemento kaip neskaitytas.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
@@ -1477,7 +1506,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>Žymėti visus elementus kaip &amp;skaitytus</translation>
+        <translation type="vanished">Žymėti visus elementus kaip &amp;skaitytus</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1541,7 +1570,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Nėra šiukšlinės</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -1636,6 +1665,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Tabs</source>
         <translation>Kortelės</translation>
     </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1728,7 +1761,8 @@ Jūs turite paleisti programą iš naujo rankiniu būdu.</translation>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Pakeistos nustatymų kategorijos:
+%1.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
@@ -2044,7 +2078,7 @@ Jūs turite paleisti programą iš naujo rankiniu būdu.</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Pakeitimai</translation>
+        <translation type="vanished">Pakeitimai</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2067,7 +2101,7 @@ sėkmingai atsisiųstas.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation>Klaida: &apos;%1&apos;.</translation>
+        <translation>Klaida: &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
@@ -2085,25 +2119,25 @@ currently installed one.</source>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti naujus įdiegimo failus.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Nepavyko patikrinti ar yra atnaujinimų.</translation>
+        <translation type="vanished">Nepavyko patikrinti ar yra atnaujinimų.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">Atsisiųsti įdiegimo failą, skirtą jūsų OS.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Įdiegimo failas nėra prieinamas tiesiogiai.
+        <translation type="vanished">Įdiegimo failas nėra prieinamas tiesiogiai.
 Pereikite į programos svetainę, kad jį gautumėte.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Naujas atnaujinimas nėra prieinamas.</translation>
+        <translation type="vanished">Naujas atnaujinimas nėra prieinamas.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2111,11 +2145,11 @@ Pereikite į programos svetainę, kad jį gautumėte.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta naršyti į įdiegimo failą. Rankiniu būdu patikrinkite projekto svetainėje naujus įdiegimo atsisiuntimus.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Atsisiųsti atnaujinimą</translation>
+        <translation type="vanished">Atsisiųsti atnaujinimą</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2150,7 +2184,7 @@ atsisiųsta.</translation>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Paketas buvo sėkmingai atsisiųstas.
+        <translation type="vanished">Paketas buvo sėkmingai atsisiųstas.
 Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
@@ -2160,6 +2194,35 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Nepavyksta paleisti išorinės atnaujinimo programos. Atnaujinkite rankiniu būdu.</translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2178,6 +2241,13 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <message>
         <source>Website address goes here</source>
         <translation>Čia turi būti svetainės adresas</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2220,11 +2290,15 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite šią nuorodą, kad ją atsisiųstumėte arba atvertumėte, naudojant išorinę naršyklę.</translation>
     </message>
     <message>
         <source>image</source>
         <translation>paveikslas</translation>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2235,15 +2309,15 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation>Skaityta</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation type="unfinished"/>
+        <translation>Ištrinta</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"/>
+        <translation>Svarbi</translation>
     </message>
     <message>
         <source>Feed</source>
@@ -2311,11 +2385,11 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="unfinished"/>
+        <translation>Ištrinta visiems laikams</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Ar žinutė ištrinta visiems laikams iš šiukšlinės?</translation>
     </message>
     <message>
         <source>Attachments</source>
@@ -2524,7 +2598,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sinchronizuoti</translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -2549,7 +2623,7 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
+        <translation> </translation>
     </message>
     <message numerus="yes">
         <source>
@@ -2587,11 +2661,15 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Ši paslauga siūlo integraciją su Tiny Tiny RSS.
+
+Tiny Tiny RSS yra atvirojo kodo saitynu pagrįsta naujienų kanalų (RSS/Atom) skaitytuvė, kuri yra sukurta leisti jums skaityti naujienas iš bet kurios vietos ir tuo pačiu metu kaip įmanoma labiau būti panašia į tikrąją darbalaukio programą.
+
+Reikalingas bent API lygis %1.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>Naujienų programėlė yra RSS/Atom kanalų skaitytuvė. Ji yra ownCloud rinkinio dalis suite. Šis įskiepis įgyvendina %1 API.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
@@ -2807,6 +2885,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation>Naršyklė, el. paštas ir įg. serveris</translation>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -2820,7 +2902,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti atmintyje esančią duomenų bazę kaip darbinę duomenų bazę</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -2834,7 +2916,17 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"/>
+        <translation>Atmintyje esančios darbinės duomenų bazės naudojimas turi kelis privalumus ir vilkaduobes. Prieš įjungdami šią ypatybę, įsitikinkite, kad esate su jomis susipažinę. Privalumai:
+&lt;ul&gt;
+&lt;li&gt;greitesnės manipuliacijos su kanalais/žinutėmis (ypač, kai rodoma tūkstančiai žinučių),&lt;/li&gt;
+&lt;li&gt;visa duomenų bazė yra saugoma operatyviojoje atmintyje (RAM), taigi, jūsų standusis diskas gali daugiau ilsėtis.&lt;/li&gt;
+&lt;/ul&gt;
+Vilkaduobės:
+&lt;ul&gt;
+&lt;li&gt;jei programa užstringa, jūsų paskutinio seanso pakeitimai yra prarandami,&lt;/li&gt;
+&lt;li&gt;programos paleidimas ir išjungimas gali užtrukti šiek tiek ilgiau (daugiausia 2 sekundėmis).&lt;/li&gt;
+&lt;/ul&gt;
+Šios programos autoriai NEATSAKO už duomenų praradimą.</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -2930,11 +3022,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation>Turėkite omenyje, kad šio parametro ĮJUNGIMAS padarys naujų žinučių įrašymą GREITESNĮ, tačiau retkarčiais jis gali sukelti klaidas, susijusias su žinučių įrašymu.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation>Saugant atsisiųstas žinutes, naudoti duomenų bazės operacijas</translation>
     </message>
 </context>
 <context>
@@ -3286,17 +3378,12 @@ This category does not contain any nested items.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>nenaudoja automatinio atnaujinimo</translation>
+        <translation type="vanished">nenaudoja automatinio atnaujinimo</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>naudoja visuotinius nustatymus</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
+        <translation type="vanished">naudoja visuotinius nustatymus</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3410,6 +3497,10 @@ Paskyros ID: %1</translation>
     </message>
     <message>
         <source>anonymous</source>
+        <translation>anonimas</translation>
+    </message>
+    <message>
+        <source> bytes</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3581,7 +3672,7 @@ Paskutinis prisijungimas: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sinchronizuoti </translation>
     </message>
     <message>
         <source>Cannot add item</source>

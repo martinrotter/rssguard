@@ -273,6 +273,31 @@ Click here to open parent directory.</source>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -498,6 +523,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1631,6 +1660,10 @@ or this functionality is not implemented yet.</source>
         <source>Tabs</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2149,6 +2182,35 @@ You must install it manually.</source>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2165,6 +2227,13 @@ You must install it manually.</source>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2212,6 +2281,10 @@ You must install it manually.</source>
     </message>
     <message>
         <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2782,6 +2855,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -3267,11 +3344,6 @@ This category does not contain any nested items.</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"/>
     </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
     <message>
         <source>%1 (%2)%3
 
@@ -3378,6 +3450,10 @@ Account ID: %1</source>
     </message>
     <message>
         <source>anonymous</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> bytes</source>
         <translation type="unfinished"/>
     </message>
 </context>

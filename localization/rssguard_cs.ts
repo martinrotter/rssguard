@@ -277,6 +277,31 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -486,7 +511,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>ČÁSTEČNĚ portable</translation>
+        <translation type="vanished">ČÁSTEČNĚ portable</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -502,6 +527,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation>Kořenový adresář uživatelských skinů</translation>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1476,7 +1505,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>&amp;Označit všechny zprávy jako přečtené</translation>
+        <translation type="vanished">&amp;Označit všechny zprávy jako přečtené</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1634,6 +1663,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Tabs</source>
         <translation>Panely</translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2044,7 +2077,7 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Změny</translation>
+        <translation type="vanished">Změny</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2087,21 +2120,21 @@ currently installed one.</source>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Kontrola aktualizací selhala.</translation>
+        <translation type="vanished">Kontrola aktualizací selhala.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Stáhnout instalační soubor pro Váš OS.</translation>
+        <translation type="vanished">Stáhnout instalační soubor pro Váš OS.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Instalační soubor není přímo dostupný.
+        <translation type="vanished">Instalační soubor není přímo dostupný.
 Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Žádná nová aktualizace není k dispozici.</translation>
+        <translation type="vanished">Žádná nová aktualizace není k dispozici.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2113,7 +2146,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Stáhnout aktualizaci</translation>
+        <translation type="vanished">Stáhnout aktualizaci</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2148,7 +2181,7 @@ stažena.</translation>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Balíček byl úspěšně stažen.
+        <translation type="vanished">Balíček byl úspěšně stažen.
 Musíte ho nainstalovat manuálně.</translation>
     </message>
     <message>
@@ -2158,6 +2191,35 @@ Musíte ho nainstalovat manuálně.</translation>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Nebylo možné spustit externí updater. Aplikaci musíte updatovat sami.</translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2176,6 +2238,13 @@ Musíte ho nainstalovat manuálně.</translation>
     <message>
         <source>Website address goes here</source>
         <translation>Adresu webové stránky zadejte sem</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2223,6 +2292,10 @@ Musíte ho nainstalovat manuálně.</translation>
     <message>
         <source>image</source>
         <translation>obrázek</translation>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2809,6 +2882,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation>Webový prohlížeč &amp; e-mail &amp; proxy</translation>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -2942,11 +3019,11 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation>Zapnutí této možnosti udělá ukládání zpráv rychlejším, ale mohou se při tom občas objevit nějaké problémy.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation>Použít databázové transakce při ukládání zpráv</translation>
     </message>
 </context>
 <context>
@@ -3298,17 +3375,12 @@ Tato kategorie neobsahuje žádné položky.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>nepoužívá auto-aktualizace</translation>
+        <translation type="vanished">nepoužívá auto-aktualizace</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>používá globální nastavení</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation type="vanished">používá globální nastavení</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3424,6 +3496,10 @@ ID účtu: %1</translation>
         <source>anonymous</source>
         <translation>anonym</translation>
     </message>
+    <message>
+        <source> bytes</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SystemTrayIcon</name>
@@ -3489,7 +3565,7 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source> and </source>
-        <translation>a</translation>
+        <translation> a </translation>
     </message>
 </context>
 <context>

@@ -275,6 +275,31 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -485,7 +510,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>Sebagian portable</translation>
+        <translation type="vanished">Sebagian portable</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -501,6 +526,10 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation>Jalur sumber gaya pengguna</translation>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1475,7 +1504,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>Tandai &amp;semua item sebagai terbaca</translation>
+        <translation type="vanished">Tandai &amp;semua item sebagai terbaca</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1633,6 +1662,10 @@ atau fungsi ini belum diimplementasikan.</translation>
     <message>
         <source>Tabs</source>
         <translation>Tab</translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2043,7 +2076,7 @@ Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Perubahan</translation>
+        <translation type="vanished">Perubahan</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2088,21 +2121,21 @@ yang ter-install sekarang.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Pemeriksaan pembaruan gagal.</translation>
+        <translation type="vanished">Pemeriksaan pembaruan gagal.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Mengunduh berkas instalasi untuk sistem operasi anda.</translation>
+        <translation type="vanished">Mengunduh berkas instalasi untuk sistem operasi anda.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Berkas instalasi tidak tersedia secara langsung.
+        <translation type="vanished">Berkas instalasi tidak tersedia secara langsung.
 Pergi ke situs web aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Tidak ada pembaruan terkini tersedia.</translation>
+        <translation type="vanished">Tidak ada pembaruan terkini tersedia.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2114,7 +2147,7 @@ Pergi ke situs web aplikasi untuk mendapatkannya secara manual.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Unduh pembaruan</translation>
+        <translation type="vanished">Unduh pembaruan</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2149,7 +2182,7 @@ diunduh.</translation>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Paket diunduh dengan sukses.
+        <translation type="vanished">Paket diunduh dengan sukses.
 Anda harus instal secara manual.</translation>
     </message>
     <message>
@@ -2159,6 +2192,35 @@ Anda harus instal secara manual.</translation>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Tidak dapat meluncurkan pembaru. Pembaruan aplikasi secara manual.</translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2177,6 +2239,13 @@ Anda harus instal secara manual.</translation>
     <message>
         <source>Website address goes here</source>
         <translation>Alamat situs web menuju kesini</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2224,6 +2293,10 @@ Anda harus instal secara manual.</translation>
     <message>
         <source>image</source>
         <translation>gambar</translation>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2801,6 +2874,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation>Peramban web &amp; surel &amp; proxy</translation>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -2934,11 +3011,11 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation>Perhatikan bahwa mengaktifkan pilihan ini akan membuat penyimpanan pesan baru jadi lebih cepat, namun mungkin dengan jarang dapat menyebabkan masalah dengan penyimpanan pesan.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation>Gunakan transaksi DB ketika menyimpan pesan yang diunduh</translation>
     </message>
 </context>
 <context>
@@ -3290,17 +3367,12 @@ Kategori ini tidak berisi item bersarang.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>tidak menggunakan pembaruan otomatis</translation>
+        <translation type="vanished">tidak menggunakan pembaruan otomatis</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>menggunakan pengaturan global</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform></translation>
+        <translation type="vanished">menggunakan pengaturan global</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3415,6 +3487,10 @@ ID akun: %1</translation>
     <message>
         <source>anonymous</source>
         <translation>anonymous</translation>
+    </message>
+    <message>
+        <source> bytes</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

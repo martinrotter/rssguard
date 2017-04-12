@@ -273,6 +273,31 @@ Click here to open parent directory.</source>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -482,7 +507,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>DELVIS portabel</translation>
+        <translation type="vanished">DELVIS portabel</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -498,6 +523,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1631,6 +1660,10 @@ or this functionality is not implemented yet.</source>
         <source>Tabs</source>
         <translation>Faneblade</translation>
     </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2037,7 +2070,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Ændringer</translation>
+        <translation type="vanished">Ændringer</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2080,11 +2113,11 @@ currently installed one.</source>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Tjek for opdateringer mislykkedes.</translation>
+        <translation type="vanished">Tjek for opdateringer mislykkedes.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Hent installationsfil til dit styresystem</translation>
+        <translation type="vanished">Hent installationsfil til dit styresystem</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
@@ -2105,7 +2138,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Hent opdatering</translation>
+        <translation type="vanished">Hent opdatering</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2149,6 +2182,35 @@ You must install it manually.</source>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2166,6 +2228,13 @@ You must install it manually.</source>
     <message>
         <source>Website address goes here</source>
         <translation>Hjemmesideadresse indføres her</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2212,6 +2281,10 @@ You must install it manually.</source>
     </message>
     <message>
         <source>image</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2788,6 +2861,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation>Netlæser &amp; e-post &amp; proxyserver</translation>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -3266,17 +3343,12 @@ This category does not contain any nested items.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>bruger ikke automatisk ajourføring</translation>
+        <translation type="vanished">bruger ikke automatisk ajourføring</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>bruger globale indstillinger</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="vanished">bruger globale indstillinger</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3385,6 +3457,10 @@ Account ID: %1</source>
     <message>
         <source>anonymous</source>
         <translation>anonym</translation>
+    </message>
+    <message>
+        <source> bytes</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

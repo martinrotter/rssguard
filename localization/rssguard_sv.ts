@@ -276,6 +276,31 @@ Klicka här för att öppna målmappen.</translation>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -486,7 +511,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation>PARTIELLT portabel</translation>
+        <translation type="vanished">PARTIELLT portabel</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -502,6 +527,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>User skins root path</source>
+        <translation>Mapp för användarteman</translation>
+    </message>
+    <message>
+        <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1476,7 +1505,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation>&amp;Märk alla objekt som &amp;lästa</translation>
+        <translation type="vanished">&amp;Märk alla objekt som &amp;lästa</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1634,6 +1663,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Tabs</source>
         <translation>Flikar</translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as read</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2044,7 +2077,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation>Ändringar</translation>
+        <translation type="vanished">Ändringar</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2088,21 +2121,21 @@ currently installed one.</source>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation>Kunde inte söka efter uppdatering.</translation>
+        <translation type="vanished">Kunde inte söka efter uppdatering.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Ladda ner installationsfil för ditt system.</translation>
+        <translation type="vanished">Ladda ner installationsfil för ditt system.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation>Installationsfilen är inte direkt tillgänglig.
+        <translation type="vanished">Installationsfilen är inte direkt tillgänglig.
 Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation>Ingen ny uppdatering tillgänglig.</translation>
+        <translation type="vanished">Ingen ny uppdatering tillgänglig.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
@@ -2114,7 +2147,7 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation>Ladda ner uppdatering</translation>
+        <translation type="vanished">Ladda ner uppdatering</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2149,7 +2182,7 @@ laddas ner.</translation>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation>Paketet har laddats ner.
+        <translation type="vanished">Paketet har laddats ner.
 Du måste installera det manuellt.</translation>
     </message>
     <message>
@@ -2159,6 +2192,35 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Kan inte starta extern uppdaterare. Uppdatera programmet manuellt.</translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download selected update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to application website to get update packages manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> (size </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Available update files</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.
+You can install it now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2177,6 +2239,13 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>Website address goes here</source>
         <translation>Webbadress anges här</translation>
+    </message>
+</context>
+<context>
+    <name>MessageBox</name>
+    <message>
+        <source>Do not show this dialog again.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2224,6 +2293,10 @@ Du måste installera det manuellt.</translation>
     <message>
         <source>image</source>
         <translation>bild</translation>
+    </message>
+    <message>
+        <source>Alway open links in external browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2806,6 +2879,10 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Web browser &amp; e-mail &amp; proxy</source>
         <translation>Webbläsare, e-post &amp; proxy</translation>
     </message>
+    <message>
+        <source>Always open links from simple internal text browser in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -2940,11 +3017,11 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation>Notera att när detta alternativ är PÅ, sparas nya meddelanden SNABBARE, men det kan ibland orsaka vissa problem att spara meddelanden.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation>Använd DB-transaktioner vid lagring av nerladdade meddelanden</translation>
     </message>
 </context>
 <context>
@@ -3296,17 +3373,12 @@ Denna kategori innehåller inga objekt.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>uppdateras inte automatiskt</translation>
+        <translation type="vanished">uppdateras inte automatiskt</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Globala inställningar</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform></translation>
+        <translation type="vanished">Globala inställningar</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3421,6 +3493,10 @@ Konto-ID: %1</translation>
     <message>
         <source>anonymous</source>
         <translation>anonym</translation>
+    </message>
+    <message>
+        <source> bytes</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
