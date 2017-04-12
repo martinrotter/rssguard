@@ -558,7 +558,7 @@ lrelease.CONFIG += no_link target_predeps
 
 # Create new "make lupdate" target.
 lupdate.target = lupdate
-lupdate.commands = lupdate -no-obsolete $$shell_path($$PWD/rssguard.pro) -ts $$shell_path($$TRANSLATIONS_WO_QT)
+lupdate.commands = lupdate $$shell_path($$PWD/rssguard.pro) -ts $$shell_path($$TRANSLATIONS_WO_QT)
 
 QMAKE_EXTRA_TARGETS += lupdate
 QMAKE_EXTRA_COMPILERS += lrelease
