@@ -283,22 +283,24 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Automatinio atnaujinimo būsena: %3</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nenaudoja automatinio atnaujinimo</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -532,7 +534,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"/>
+        <translation>NEPERKELIAMI</translation>
     </message>
 </context>
 <context>
@@ -1667,7 +1669,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"/>
+        <translation>Žymėti visus elementus kaip &amp;skaitytus</translation>
     </message>
 </context>
 <context>
@@ -2197,32 +2199,33 @@ Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Keitimų žurnalas</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="unfinished"/>
+        <translation>Prieinami failai</translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti pasirinktą atnaujinimą</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation>Pereikite į programos svetainę, kad rankiniu būdu gautumėte atnaujinimo paketus.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="unfinished"/>
+        <translation> (dydis </translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation>Prieinami atnaujinimo failai</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation>Paketas buvo sėkmingai atsisiųstas.
+Jūs dabar galite jį įdiegti.</translation>
     </message>
 </context>
 <context>
@@ -2247,7 +2250,7 @@ You can install it now.</source>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"/>
+        <translation>Daugiau neberodyti šio dialogo.</translation>
     </message>
 </context>
 <context>
@@ -2297,7 +2300,7 @@ You can install it now.</source>
         <translation>paveikslas</translation>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2887,7 +2890,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Visada atverti nuorodas iš paprastos vidinės tekstų naršyklės į išorinę saityno naršyklę</translation>
     </message>
 </context>
 <context>
@@ -3501,7 +3504,7 @@ Paskyros ID: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"/>
+        <translation> baitų</translation>
     </message>
 </context>
 <context>

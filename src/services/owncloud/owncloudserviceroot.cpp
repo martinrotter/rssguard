@@ -33,7 +33,8 @@
 
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_recycleBin(new OwnCloudRecycleBin(this)),
+  : ServiceRoot(parent), m_cacheSaveMutex(new Mutex(QMutex::NonRecursive, this)), m_cachedStatesRead(QMap<RootItem::ReadStatus, QStringList>()),
+    m_cachedStatesImportant(QMap<RootItem::Importance, QStringList>()), m_recycleBin(new OwnCloudRecycleBin(this)),
     m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new OwnCloudNetworkFactory()) {
   setIcon(OwnCloudServiceEntryPoint().icon());
 }
@@ -112,12 +113,64 @@ OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
   return m_network;
 }
 
+void OwnCloudServiceRoot::addMessageStatesToCache(const QStringList &ids_of_messages, RootItem::ReadStatus read) {
+  m_cacheSaveMutex->lock();
+
+  QStringList &list_act = m_cachedStatesRead[read];
+  QStringList &list_other = m_cachedStatesRead[read == RootItem::Read ? RootItem::Unread : RootItem::Read];
+
+  // Store changes, they will be sent to server later.
+  list_act.append(ids_of_messages);
+
+  QSet<QString> set_act = list_act.toSet();
+  QSet<QString> set_other = list_other.toSet();
+
+  // Now, we want to remove all IDS from list_other, which are contained in list.
+  set_other -= set_act;
+
+  list_act.clear(); list_act.append(set_act.toList());
+  list_other.clear(); list_other.append(set_other.toList());
+
+  m_cacheSaveMutex->unlock();
+}
+
+void OwnCloudServiceRoot::saveAllCachedData() {
+  if (m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty()) {
+    // No cached changes.
+    return;
+  }
+
+  m_cacheSaveMutex->lock();
+
+  // Make copy of changes.
+  QMap<RootItem::ReadStatus, QStringList> cached_data_read = m_cachedStatesRead;
+  cached_data_read.detach();
+
+  QMap<RootItem::Importance, QStringList> cached_data_imp = m_cachedStatesImportant;
+  cached_data_imp.detach();
+
+  m_cachedStatesRead.clear();
+  m_cachedStatesImportant.clear();
+
+  m_cacheSaveMutex->unlock();
+
+  // Save the actual data.
+  for (int i = 0; i < cached_data_read.size(); i++) {
+    auto key = cached_data_read.keys().at(i);
+    QStringList ids = cached_data_read[key];
+
+    if (!ids.isEmpty()) {
+      network()->markMessagesRead(key, ids);
+    }
+  }
+}
+
 bool OwnCloudServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages,
                                                   RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
 
-  QNetworkReply::NetworkError reply = network()->markMessagesRead(read, customIDsOfMessages(messages));
-  return reply == QNetworkReply::NoError;
+  addMessageStatesToCache(customIDsOfMessages(messages), read);
+  return true;
 }
 
 bool OwnCloudServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item,
@@ -185,8 +238,8 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
 
     if (saved) {
       if (DatabaseQueries::createOwnCloudAccount(database, id_to_assign, m_network->authUsername(),
-                                             m_network->authPassword(), m_network->url(),
-                                             m_network->forceServerSideUpdate())) {
+                                                 m_network->authPassword(), m_network->url(),
+                                                 m_network->forceServerSideUpdate())) {
         setId(id_to_assign);
         setAccountId(id_to_assign);
         updateTitle();

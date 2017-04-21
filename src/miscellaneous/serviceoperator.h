@@ -15,25 +15,22 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "services/owncloud/owncloudrecyclebin.h"
+#ifndef SERVICEOPERATOR_H
+#define SERVICEOPERATOR_H
 
-#include "services/owncloud/owncloudserviceroot.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
-
-#include <QNetworkReply>
+#include <QObject>
 
 
-OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem *parent) : RecycleBin(parent) {
-}
+class ServiceOperator : public QObject {
+    Q_OBJECT
 
-OwnCloudRecycleBin::~OwnCloudRecycleBin() {
-}
+  public:
+    explicit ServiceOperator(QObject *parent = 0);
+    virtual ~ServiceOperator();
 
-OwnCloudServiceRoot *OwnCloudRecycleBin::serviceRoot() {
-  return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
-}
+  signals:
 
-bool OwnCloudRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-  return RecycleBin::markAsReadUnread(status);
-}
+  public slots:
+};
+
+#endif // SERVICEOPERATOR_H

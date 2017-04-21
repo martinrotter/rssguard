@@ -20,9 +20,12 @@
 
 #include "services/abstract/serviceroot.h"
 
+#include <QMap>
+
 
 class OwnCloudNetworkFactory;
 class OwnCloudRecycleBin;
+class Mutex;
 
 class OwnCloudServiceRoot : public ServiceRoot {
     Q_OBJECT
@@ -45,17 +48,25 @@ class OwnCloudServiceRoot : public ServiceRoot {
 
     OwnCloudNetworkFactory *network() const;
 
+    void addMessageStatesToCache(const QStringList &ids_of_messages, ReadStatus read);
+
     bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
     bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes);
 
     void updateTitle();
     void saveAccountDataToDatabase();
 
+    void saveAllCachedData();
+
   public slots:
     void addNewFeed(const QString &url);
     void addNewCategory();
 
   private:
+    Mutex *m_cacheSaveMutex;
+    QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
+    QMap<RootItem::Importance, QStringList> m_cachedStatesImportant;
+
     QMap<int,QVariant> storeCustomFeedsData();
     void restoreCustomFeedsData(const QMap<int,QVariant> &data, const QHash<int,Feed*> &feeds);
     RootItem *obtainNewTreeForSyncIn() const;

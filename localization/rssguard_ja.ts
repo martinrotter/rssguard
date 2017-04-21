@@ -2184,7 +2184,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>変更履歴</translation>
     </message>
     <message>
         <source>Available files</source>
@@ -2284,7 +2284,7 @@ You can install it now.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -35,7 +35,6 @@
 #include "services/owncloud/owncloudserviceentrypoint.h"
 
 #include <QSessionManager>
-#include <QThread>
 #include <QProcess>
 
 #if defined(USE_WEBENGINE)
@@ -373,7 +372,7 @@ void Application::onAboutToQuit() {
   system()->removeTrolltechJunkRegistryKeys();
 #endif
 
-  qApp->feedReader()->stop();
+  qApp->feedReader()->quit();
   database()->saveDatabase();
 
   if (mainForm() != nullptr) {

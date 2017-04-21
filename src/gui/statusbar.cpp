@@ -26,7 +26,6 @@
 #include <QToolButton>
 #include <QLabel>
 #include <QProgressBar>
-#include <QThread>
 
 
 StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent), m_mutex(new Mutex(QMutex::NonRecursive, this)) {

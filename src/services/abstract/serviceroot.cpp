@@ -192,6 +192,9 @@ QList<Message> ServiceRoot::undeletedMessages() const {
   return DatabaseQueries::getUndeletedMessagesForAccount(database, accountId());
 }
 
+void ServiceRoot::saveAllCachedData() {
+}
+
 void ServiceRoot::itemChanged(const QList<RootItem*> &items) {
   emit dataChanged(items);
 }

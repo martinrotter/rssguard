@@ -59,6 +59,7 @@ class ServiceRoot : public RootItem {
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> addItemMenu();
 
+    // Returns actions to display as context menu.
     QList<QAction*> contextMenu();
 
     // Returns list of specific actions to be shown in main window menu
@@ -82,6 +83,8 @@ class ServiceRoot : public RootItem {
     // user explicitly deletes existing service instance.
     virtual void start(bool freshly_activated) = 0;
     virtual void stop() = 0;
+
+    virtual void saveAllCachedData();
 
     // Account ID corresponds with DB attribute Accounts (id).
     int accountId() const;

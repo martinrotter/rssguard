@@ -20,6 +20,7 @@
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
+#include "services/abstract/serviceroot.h"
 
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
@@ -32,10 +33,12 @@
 
 #include <QThread>
 #include <QTimer>
+#include <QtConcurrent/QtConcurrentRun>
 
 
 FeedReader::FeedReader(QObject *parent)
-  : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()), m_autoUpdateTimer(new QTimer(this)),
+  : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()),
+    m_cacheSaveFutureWatcher(new QFutureWatcher<void>(this)), m_autoUpdateTimer(new QTimer(this)),
     m_feedDownloaderThread(nullptr), m_feedDownloader(nullptr),
     m_dbCleanerThread(nullptr), m_dbCleaner(nullptr) {
   m_feedsModel = new FeedsModel(this);
@@ -43,8 +46,10 @@ FeedReader::FeedReader(QObject *parent)
   m_messagesModel = new MessagesModel(this);
   m_messagesProxyModel = new MessagesProxyModel(m_messagesModel, this);
 
+  connect(m_cacheSaveFutureWatcher, &QFutureWatcher<void>::finished, this, &FeedReader::asyncCacheSaveFinished);
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
   updateAutoUpdateStatus();
+  asyncCacheSaveFinished();
 
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
@@ -209,10 +214,59 @@ void FeedReader::executeNextAutoUpdate() {
   }
 }
 
-void FeedReader::stop() {
+void FeedReader::checkServicesForAsyncOperations() {
+  checkServicesForAsyncOperations(false);
+}
+
+void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
+  if (m_cacheSaveFutureWatcher->future().isRunning()) {
+    qDebug("Previous future is still running.");
+
+
+    // If we want to wait for future synchronously, we want to make sure that
+    // we save all cached data (app exit).
+    if (wait_for_future) {
+      qWarning("Waiting for previously started saving of cached service data.");
+      m_cacheSaveFutureWatcher->future().waitForFinished();
+    }
+    else {
+      qWarning("Some cached service data are being saved now, so aborting this saving cycle.");
+      // Some cache saving is now running.
+      return;
+    }
+  }
+
+  QFuture<void> future = QtConcurrent::run([&] {
+    foreach (ServiceRoot *service, m_feedsModel->serviceRoots()) {
+      // Store any cached data.
+      service->saveAllCachedData();
+    }
+  });
+
+  if (wait_for_future) {
+    qDebug("Waiting for saving of cached service data to finish.");
+    future.waitForFinished();
+  }
+  else {
+    m_cacheSaveFutureWatcher->setFuture(future);
+  }
+}
+
+void FeedReader::asyncCacheSaveFinished() {
+  qDebug("I will start next check for cached service data in 30 seconds.");
+
+  QTimer::singleShot(30000, [&] {
+    qDebug("Starting next check for cached service data in NOW.");
+    checkServicesForAsyncOperations(false);
+  });
+}
+
+void FeedReader::quit() {
   if (m_autoUpdateTimer->isActive()) {
     m_autoUpdateTimer->stop();
   }
+
+  checkServicesForAsyncOperations(true);
 
   // Close worker threads.
   if (m_feedDownloaderThread != nullptr && m_feedDownloaderThread->isRunning()) {

@@ -283,22 +283,24 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Status auto-aktualizace: %3</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nepoužívá auto-aktualizace</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>používá globální nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -531,7 +533,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"/>
+        <translation>NEportable</translation>
     </message>
 </context>
 <context>
@@ -1666,7 +1668,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Označit všechny zprávy jako přečtené</translation>
     </message>
 </context>
 <context>
@@ -2194,32 +2196,33 @@ Musíte ho nainstalovat manuálně.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Historie verzí</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="unfinished"/>
+        <translation>Dostupné soubory</translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation>Stáhnout vybranou aktualizaci</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation>Přejděte na web aplikace pro získání balíčku aktualizace manuálně.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="unfinished"/>
+        <translation>(velikost</translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation>Dostupné soubory aktualizace</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation>Balíček byl úspěšně stažen.
+Nyní ho můžete nainstalovat.</translation>
     </message>
 </context>
 <context>
@@ -2244,7 +2247,7 @@ You can install it now.</source>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"/>
+        <translation>Znovu toto upozornění nezobrazovat.</translation>
     </message>
 </context>
 <context>
@@ -2294,8 +2297,8 @@ You can install it now.</source>
         <translation>obrázek</translation>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
-        <translation type="unfinished"/>
+        <source>Always open links in external browser.</source>
+        <translation>Vždy otevírat odkazy v ext. prohlížeči.</translation>
     </message>
 </context>
 <context>
@@ -2884,7 +2887,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Odkazy z jednoduchého interního prohlížeče vždy otevírat v externím webovém prohlížeči.</translation>
     </message>
 </context>
 <context>
@@ -3498,7 +3501,7 @@ ID účtu: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"/>
+        <translation>bajtů</translation>
     </message>
 </context>
 <context>
