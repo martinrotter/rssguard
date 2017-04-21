@@ -84,8 +84,6 @@ class ServiceRoot : public RootItem {
     virtual void start(bool freshly_activated) = 0;
     virtual void stop() = 0;
 
-    // Is called in short intervals in worker thread.
-    // Service can save its cached data (if any) here.
     virtual void saveAllCachedData();
 
     // Account ID corresponds with DB attribute Accounts (id).

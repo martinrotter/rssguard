@@ -219,8 +219,8 @@ void FeedReader::checkServicesForAsyncOperations() {
 }
 
 void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
-  if (m_cacheSaveFutureWatcher->future().isStarted() || m_cacheSaveFutureWatcher->future().isRunning()) {
-    qDebug("Previous future is still running or was already started.");
+  if (m_cacheSaveFutureWatcher->future().isRunning()) {
+    qDebug("Previous future is still running.");
 
 
     // If we want to wait for future synchronously, we want to make sure that
