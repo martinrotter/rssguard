@@ -295,12 +295,12 @@ Status auto-aktualizace: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>používá globální nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -533,7 +533,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"/>
+        <translation>NEportable</translation>
     </message>
 </context>
 <context>
@@ -2298,7 +2298,7 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Vždy otevírat odkazy v ext. prohlížeči.</translation>
     </message>
 </context>
 <context>
