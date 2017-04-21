@@ -284,12 +284,14 @@ Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Stan auto-aktualizacji: %3</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nie używa auto-aktualizacji</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
@@ -2198,7 +2200,7 @@ Musisz go zainstalować ręcznie.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Lista zmian</translation>
     </message>
     <message>
         <source>Available files</source>
@@ -2298,7 +2300,7 @@ You can install it now.</source>
         <translation>Obraz</translation>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>

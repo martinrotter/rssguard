@@ -285,7 +285,7 @@ Auto-update status: %3</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Ne pas utiliser la mise à jour automatique</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
@@ -2189,7 +2189,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Changelog</translation>
     </message>
     <message>
         <source>Available files</source>
@@ -2289,7 +2289,7 @@ You can install it now.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>

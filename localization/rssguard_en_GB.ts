@@ -2284,7 +2284,7 @@ You can install it now.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>

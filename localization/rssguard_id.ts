@@ -281,12 +281,14 @@ Klik disini untuk membuka direktori induk.</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Status pembaruan otomatis: %3</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>tidak menggunakan pembaruan otomatis</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
@@ -2195,7 +2197,7 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Daftar perubahan</translation>
     </message>
     <message>
         <source>Available files</source>
@@ -2295,7 +2297,7 @@ You can install it now.</source>
         <translation>gambar</translation>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -283,22 +283,24 @@ Klik hier om map te openen.</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Auto update status: %3</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>automatisch bijwerken niet gebruiken</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>gebruik algemene instellingen (%n minuut(en) tot volgende auto-update)</numerusform><numerusform>gebruik globale instellingen (%n minut(en) voor volgende automatische update)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut(en) tot volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minut(en) tot volgende auto-update)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -532,7 +534,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"/>
+        <translation>NIET portable</translation>
     </message>
 </context>
 <context>
@@ -1667,7 +1669,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Markeer alle items als gelezen</translation>
     </message>
 </context>
 <context>
@@ -2197,32 +2199,33 @@ Je moet het handmatig installeren.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Changelog</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="unfinished"/>
+        <translation>Beschikbare bestanden</translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation>Download geselecteerde update</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation>Ga naar Rssguard website om update handmatig te verkrijgen</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="unfinished"/>
+        <translation>(grootte</translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation>Beschikbare update bestanden</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation>Pakket was succesvol gedownload.
+Installeer het nu.</translation>
     </message>
 </context>
 <context>
@@ -2247,7 +2250,7 @@ You can install it now.</source>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"/>
+        <translation>Laat deze dialoog niet meer zien</translation>
     </message>
 </context>
 <context>
@@ -2297,7 +2300,7 @@ You can install it now.</source>
         <translation>Beeld</translation>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2885,7 +2888,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Open links altijd van een simpele interne tekstbrowser in de externe browser.</translation>
     </message>
 </context>
 <context>
@@ -3500,7 +3503,7 @@ Account ID: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"/>
+        <translation>bytes</translation>
     </message>
 </context>
 <context>

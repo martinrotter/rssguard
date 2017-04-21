@@ -2320,7 +2320,7 @@ You can install it now.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

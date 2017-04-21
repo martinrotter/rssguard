@@ -282,22 +282,24 @@ Klicka här för att öppna målmappen.</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Autouppdateringsstatus: %3</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>uppdateras inte automatiskt</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -531,7 +533,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"/>
+        <translation>INTE portabel</translation>
     </message>
 </context>
 <context>
@@ -1666,7 +1668,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Märk alla objekt som lästa</translation>
     </message>
 </context>
 <context>
@@ -2195,32 +2197,33 @@ Du måste installera det manuellt.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Ändringslogg</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="unfinished"/>
+        <translation>Tillgängliga filer</translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner vald uppdatering</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation>Gå till programmets webbsida för att hämta uppdateringspaketet manuellt.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="unfinished"/>
+        <translation>(storlek</translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation>Tillgängliga uppdateringsfiler</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation>Paketet har laddats ner.
+Du kan installera det nu.</translation>
     </message>
 </context>
 <context>
@@ -2245,7 +2248,7 @@ You can install it now.</source>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"/>
+        <translation>Visa inte denna dialog igen.</translation>
     </message>
 </context>
 <context>
@@ -2295,7 +2298,7 @@ You can install it now.</source>
         <translation>bild</translation>
     </message>
     <message>
-        <source>Alway open links in external browser.</source>
+        <source>Always open links in external browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2881,7 +2884,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna alltid länkar från intern textläsare, i extern webbläsare.</translation>
     </message>
 </context>
 <context>
@@ -3496,7 +3499,7 @@ Konto-ID: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"/>
+        <translation>byte</translation>
     </message>
 </context>
 <context>

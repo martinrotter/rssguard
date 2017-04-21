@@ -38,7 +38,6 @@ ServiceRoot *OwnCloudServiceEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {
-  // Check DB if standard account is enabled.
   QSqlDatabase database = qApp->database()->connection(QSL("OwnCloudServiceEntryPoint"), DatabaseFactory::FromSettings);
 
   return DatabaseQueries::getOwnCloudAccounts(database);
@@ -49,7 +48,7 @@ bool OwnCloudServiceEntryPoint::isSingleInstanceService() const {
 }
 
 QString OwnCloudServiceEntryPoint::name() const {
-  return QSL("ownCloud News");
+  return QSL("NextCloud News");
 }
 
 QString OwnCloudServiceEntryPoint::code() const {
@@ -57,7 +56,7 @@ QString OwnCloudServiceEntryPoint::code() const {
 }
 
 QString OwnCloudServiceEntryPoint::description() const {
-  return QObject::tr("The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.").arg(API_VERSION);
+  return QObject::tr("The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.").arg(API_VERSION);
 }
 
 QString OwnCloudServiceEntryPoint::version() const {
@@ -69,6 +68,6 @@ QString OwnCloudServiceEntryPoint::author() const {
 }
 
 QIcon OwnCloudServiceEntryPoint::icon() const {
-  return qApp->icons()->miscIcon(QSL("owncloud"));
+  return qApp->icons()->miscIcon(QSL("nextcloud"));
 }
 
