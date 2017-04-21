@@ -198,7 +198,6 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
 }
 
 void OwnCloudServiceRoot::saveAllCachedData() {
-  QThread::msleep(2000);
 }
 
 void OwnCloudServiceRoot::addNewFeed(const QString &url) {
