@@ -31,8 +31,6 @@
 #include "services/owncloud/gui/formeditowncloudaccount.h"
 #include "services/owncloud/gui/formowncloudfeeddetails.h"
 
-#include <QThread>
-
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new OwnCloudRecycleBin(this)),
