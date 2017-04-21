@@ -94,7 +94,7 @@ class FeedReader : public QObject {
     MessagesModel *m_messagesModel;
     MessagesProxyModel *m_messagesProxyModel;
 
-    QFutureWatcher<void> m_cacheSaveFutureWatcher;
+    QFutureWatcher<void> *m_cacheSaveFutureWatcher;
 
     // Auto-update stuff.
     QTimer *m_autoUpdateTimer;

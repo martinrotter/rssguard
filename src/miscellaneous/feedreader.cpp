@@ -38,7 +38,7 @@
 
 FeedReader::FeedReader(QObject *parent)
   : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()),
-    m_cacheSaveFutureWatcher(QFutureWatcher<void>()), m_autoUpdateTimer(new QTimer(this)),
+    m_cacheSaveFutureWatcher(new QFutureWatcher<void>(this)), m_autoUpdateTimer(new QTimer(this)),
     m_feedDownloaderThread(nullptr), m_feedDownloader(nullptr),
     m_dbCleanerThread(nullptr), m_dbCleaner(nullptr) {
   m_feedsModel = new FeedsModel(this);
@@ -46,7 +46,7 @@ FeedReader::FeedReader(QObject *parent)
   m_messagesModel = new MessagesModel(this);
   m_messagesProxyModel = new MessagesProxyModel(m_messagesModel, this);
 
-  connect(&m_cacheSaveFutureWatcher, &QFutureWatcher<void>::finished, this, &FeedReader::asyncCacheSaveFinished);
+  connect(m_cacheSaveFutureWatcher, &QFutureWatcher<void>::finished, this, &FeedReader::asyncCacheSaveFinished);
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
   updateAutoUpdateStatus();
   asyncCacheSaveFinished();
@@ -219,7 +219,7 @@ void FeedReader::checkServicesForAsyncOperations() {
 }
 
 void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
-  if (m_cacheSaveFutureWatcher.future().isStarted() || m_cacheSaveFutureWatcher.future().isRunning()) {
+  if (m_cacheSaveFutureWatcher->future().isStarted() || m_cacheSaveFutureWatcher->future().isRunning()) {
     qDebug("Previous future is still running or was already started.");
 
 
@@ -227,7 +227,7 @@ void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
     // we save all cached data (app exit).
     if (wait_for_future) {
       qWarning("Waiting for previously started saving of cached service data.");
-      m_cacheSaveFutureWatcher.future().waitForFinished();
+      m_cacheSaveFutureWatcher->future().waitForFinished();
     }
     else {
       qWarning("Some cached service data are being saved now, so aborting this saving cycle.");
@@ -248,7 +248,7 @@ void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
     future.waitForFinished();
   }
   else {
-    m_cacheSaveFutureWatcher.setFuture(future);
+    m_cacheSaveFutureWatcher->setFuture(future);
   }
 }
 
