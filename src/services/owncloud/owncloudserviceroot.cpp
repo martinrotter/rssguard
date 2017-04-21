@@ -31,6 +31,8 @@
 #include "services/owncloud/gui/formeditowncloudaccount.h"
 #include "services/owncloud/gui/formowncloudfeeddetails.h"
 
+#include <QThread>
+
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new OwnCloudRecycleBin(this)),
@@ -193,6 +195,10 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
       }
     }
   }
+}
+
+void OwnCloudServiceRoot::saveAllCachedData() {
+  QThread::msleep(2000);
 }
 
 void OwnCloudServiceRoot::addNewFeed(const QString &url) {

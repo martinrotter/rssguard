@@ -51,6 +51,8 @@ class OwnCloudServiceRoot : public ServiceRoot {
     void updateTitle();
     void saveAccountDataToDatabase();
 
+    void saveAllCachedData();
+
   public slots:
     void addNewFeed(const QString &url);
     void addNewCategory();

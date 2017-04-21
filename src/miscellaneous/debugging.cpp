@@ -23,6 +23,8 @@
 
 #include <cstdio>
 #include <cstdlib>
+#include <chrono>
+#include <ctime>
 
 
 Debugging::Debugging() {
@@ -31,13 +33,18 @@ Debugging::Debugging() {
 void Debugging::performLog(const char *message, QtMsgType type, const char *file, const char *function, int line) {
   const char *type_string = typeToString(type);
 
+  std::time_t t = std::time(nullptr);
+  char mbstr[32];
+
+  std::strftime(mbstr, sizeof(mbstr), "%y/%d/%m %H:%M:%S", std::localtime(&t));
+
   // Write to console.
   if (file == 0 || function == 0 || line < 0) {
-    fprintf(stderr, "[%s] %s: %s\n", APP_LOW_NAME, type_string, message);
+    fprintf(stderr, "[%s] %s: %s (%s)\n", APP_LOW_NAME, type_string, message, mbstr);
   }
   else {
-    fprintf(stderr, "[%s] %s\n  Type: %s\n  File: %s (line %d)\n  Function: %s\n\n",
-            APP_LOW_NAME, message, type_string, file, line, function);
+    fprintf(stderr, "[%s] %s (%s)\n  Type: %s\n  File: %s (line %d)\n  Function: %s\n\n",
+            APP_LOW_NAME, message, mbstr, type_string, file, line, function);
   }
 
   if (type == QtFatalMsg) {

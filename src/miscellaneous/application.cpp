@@ -373,7 +373,7 @@ void Application::onAboutToQuit() {
   system()->removeTrolltechJunkRegistryKeys();
 #endif
 
-  qApp->feedReader()->stop();
+  qApp->feedReader()->quit();
   database()->saveDatabase();
 
   if (mainForm() != nullptr) {

@@ -23,12 +23,15 @@
 #include "services/abstract/feed.h"
 #include "core/feeddownloader.h"
 
+#include <QFutureWatcher>
+
 
 class FeedsModel;
 class MessagesModel;
 class MessagesProxyModel;
 class FeedsProxyModel;
 class ServiceEntryPoint;
+class ServiceOperator;
 class DatabaseCleaner;
 class QTimer;
 
@@ -69,11 +72,14 @@ class FeedReader : public QObject {
     // Schedules all feeds from all accounts for update.
     void updateAllFeeds();
     void stopRunningFeedUpdate();
-    void stop();
+    void quit();
 
   private slots:
     // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();
+    void checkServicesForAsyncOperations();
+    void checkServicesForAsyncOperations(bool wait_for_future);
+    void asyncCacheSaveFinished();
 
   signals:
     void feedUpdatesStarted();
@@ -88,11 +94,15 @@ class FeedReader : public QObject {
     MessagesModel *m_messagesModel;
     MessagesProxyModel *m_messagesProxyModel;
 
+    QFutureWatcher<void> m_cacheSaveFutureWatcher;
+
     // Auto-update stuff.
     QTimer *m_autoUpdateTimer;
     bool m_globalAutoUpdateEnabled;
     int m_globalAutoUpdateInitialInterval;
     int m_globalAutoUpdateRemainingInterval;
+
+    ServiceOperator *m_serviceOperator;
 
     QThread *m_feedDownloaderThread;
     FeedDownloader *m_feedDownloader;
