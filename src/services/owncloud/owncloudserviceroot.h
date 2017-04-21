@@ -48,6 +48,8 @@ class OwnCloudServiceRoot : public ServiceRoot {
 
     OwnCloudNetworkFactory *network() const;
 
+    void addMessageStatesToCache(const QStringList &ids_of_messages, ReadStatus read);
+
     bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
     bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes);
 

@@ -34,13 +34,6 @@ OwnCloudServiceRoot *OwnCloudRecycleBin::serviceRoot() {
 }
 
 bool OwnCloudRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  QStringList ids = getParentServiceRoot()->customIDSOfMessagesForItem(this);
-  QNetworkReply::NetworkError response = serviceRoot()->network()->markMessagesRead(status, ids);
-
-  if (response != QNetworkReply::NoError) {
-    return false;
-  }
-  else {
-    return RecycleBin::markAsReadUnread(status);
-  }
+  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
+  return RecycleBin::markAsReadUnread(status);
 }

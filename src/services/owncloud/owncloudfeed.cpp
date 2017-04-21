@@ -89,15 +89,8 @@ bool OwnCloudFeed::removeItself() {
 }
 
 bool OwnCloudFeed::markAsReadUnread(RootItem::ReadStatus status) {
-  QStringList ids = getParentServiceRoot()->customIDSOfMessagesForItem(this);
-  QNetworkReply::NetworkError response = serviceRoot()->network()->markMessagesRead(status, ids);
-
-  if (response != QNetworkReply::NoError) {
-    return false;
-  }
-  else {
-    return getParentServiceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
-  }
+  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
+  return getParentServiceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
 }
 
 bool OwnCloudFeed::cleanMessages(bool clear_only_read) {

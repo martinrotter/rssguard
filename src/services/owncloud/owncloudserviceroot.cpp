@@ -113,6 +113,27 @@ OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
   return m_network;
 }
 
+void OwnCloudServiceRoot::addMessageStatesToCache(const QStringList &ids_of_messages, RootItem::ReadStatus read) {
+  m_cacheSaveMutex->lock();
+
+  QStringList &list_act = m_cachedStatesRead[read];
+  QStringList &list_other = m_cachedStatesRead[read == RootItem::Read ? RootItem::Unread : RootItem::Read];
+
+  // Store changes, they will be sent to server later.
+  list_act.append(ids_of_messages);
+
+  QSet<QString> set_act = list_act.toSet();
+  QSet<QString> set_other = list_other.toSet();
+
+  // Now, we want to remove all IDS from list_other, which are contained in list.
+  set_other -= set_act;
+
+  list_act.clear(); list_act.append(set_act.toList());
+  list_other.clear(); list_other.append(set_other.toList());
+
+  m_cacheSaveMutex->unlock();
+}
+
 void OwnCloudServiceRoot::saveAllCachedData() {
   if (m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty()) {
     // No cached changes.
@@ -148,25 +169,7 @@ bool OwnCloudServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const
                                                   RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
 
-  m_cacheSaveMutex->lock();
-
-  QStringList &list_act = m_cachedStatesRead[read];
-  QStringList &list_other = m_cachedStatesRead[read == RootItem::Read ? RootItem::Unread : RootItem::Read];
-
-  // Store changes, they will be sent to server later.
-  list_act.append(customIDsOfMessages(messages));
-
-  QSet<QString> set_act = list_act.toSet();
-  QSet<QString> set_other = list_other.toSet();
-
-  // Now, we want to remove all IDS from list_other, which are contained in list.
-  set_other -= set_act;
-
-  list_act.clear(); list_act.append(set_act.toList());
-  list_other.clear(); list_other.append(set_other.toList());
-
-  m_cacheSaveMutex->unlock();
-
+  addMessageStatesToCache(customIDsOfMessages(messages), read);
   return true;
 }
 
