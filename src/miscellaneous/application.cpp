@@ -35,7 +35,6 @@
 #include "services/owncloud/owncloudserviceentrypoint.h"
 
 #include <QSessionManager>
-#include <QThread>
 #include <QProcess>
 
 #if defined(USE_WEBENGINE)
