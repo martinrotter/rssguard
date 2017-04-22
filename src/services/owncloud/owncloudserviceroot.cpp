@@ -154,10 +154,13 @@ void OwnCloudServiceRoot::saveAllCachedData() {
 
   m_cacheSaveMutex->unlock();
 
+  QMapIterator<RootItem::ReadStatus, QStringList> i(cached_data_read);
+
   // Save the actual data.
-  for (int i = 0; i < cached_data_read.size(); i++) {
-    auto key = cached_data_read.keys().at(i);
-    QStringList ids = cached_data_read[key];
+  while (i.hasNext()) {
+    i.next();
+    auto key = i.key();
+    QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
       network()->markMessagesRead(key, ids);

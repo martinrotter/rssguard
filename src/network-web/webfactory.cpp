@@ -91,9 +91,11 @@ QString WebFactory::escapeHtml(const QString &html) {
   }
 
   QString output = html;
+  QMapIterator<QString, QString> i(m_escapes);
 
-  foreach (const QString &key, m_escapes.keys()) {
-    output = output.replace(key, m_escapes.value(key));
+  while (i.hasNext()) {
+    i.next();
+    output = output.replace(i.key(), i.value());
   }
 
   return output;
@@ -105,9 +107,11 @@ QString WebFactory::deEscapeHtml(const QString &text) {
   }
 
   QString output = text;
+  QMapIterator<QString, QString> i(m_deEscapes);
 
-  foreach (const QString &key, m_deEscapes.keys()) {
-    output = output.replace(key, m_deEscapes.value(key));
+  while (i.hasNext()) {
+    i.next();
+    output = output.replace(i.key(), i.value());
   }
 
   return output;

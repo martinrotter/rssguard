@@ -98,7 +98,6 @@ class WebBrowser;
 class DownloadManager : public TabContent {
     Q_OBJECT
     Q_PROPERTY(RemovePolicy removePolicy READ removePolicy WRITE setRemovePolicy)
-    Q_ENUMS(RemovePolicy)
 
     friend class DownloadModel;
 
@@ -108,6 +107,8 @@ class DownloadManager : public TabContent {
       OnExit,
       OnSuccessfullDownload
     };
+
+    Q_ENUM(RemovePolicy)
 
     explicit DownloadManager(QWidget *parent = 0);
     virtual ~DownloadManager();

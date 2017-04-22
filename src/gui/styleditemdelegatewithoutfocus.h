@@ -23,6 +23,8 @@
 
 
 class StyledItemDelegateWithoutFocus : public QStyledItemDelegate {
+    Q_OBJECT
+
   public:
     // Constructors.
     explicit StyledItemDelegateWithoutFocus(QObject *parent = 0);

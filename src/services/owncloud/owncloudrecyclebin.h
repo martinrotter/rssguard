@@ -24,6 +24,8 @@
 class OwnCloudServiceRoot;
 
 class OwnCloudRecycleBin : public RecycleBin {
+    Q_OBJECT
+
   public:
     explicit OwnCloudRecycleBin(RootItem *parent = NULL);
     virtual ~OwnCloudRecycleBin();
