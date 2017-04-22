@@ -287,11 +287,17 @@ QMap<int,QVariant> OwnCloudServiceRoot::storeCustomFeedsData() {
   return custom_data;
 }
 
-void OwnCloudServiceRoot::restoreCustomFeedsData(const QMap<int,QVariant> &data, const QHash<int,Feed*> &feeds) {
-  foreach (int custom_id, data.keys()) {
+void OwnCloudServiceRoot::restoreCustomFeedsData(const QMap<int, QVariant> &data, const QHash<int, Feed*> &feeds) {
+  QMapIterator<int, QVariant> i(data);
+
+  while (i.hasNext()) {
+    i.next();
+
+    const int custom_id = i.key();
+
     if (feeds.contains(custom_id)) {
       Feed *feed = feeds.value(custom_id);
-      QVariantMap feed_custom_data = data.value(custom_id).toMap();
+      QVariantMap feed_custom_data = i.value().toMap();
 
       feed->setAutoUpdateInitialInterval(feed_custom_data.value(QSL("auto_update_interval")).toInt());
       feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(feed_custom_data.value(QSL("auto_update_type")).toInt()));
