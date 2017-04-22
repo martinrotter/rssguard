@@ -33,6 +33,7 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("tinytinyrss")));
 
+  m_ui->m_lblTestResult->label()->setWordWrap(true);
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                      "of feeds will be probably much slower and may time-out often."));
   m_ui->m_lblDescription->setText(tr("Note that at least API level %1 is required.").arg(MINIMAL_API_LEVEL));
