@@ -317,11 +317,11 @@ class Settings : public QSettings {
 
     // Getters/setters for settings values.
     inline QVariant value(const QString &section, const QString &key, const QVariant &default_value = QVariant()) const {
-      return QSettings::value(QString("%1/%2").arg(section, key), default_value);
+      return QSettings::value(QString(QSL("%1/%2")).arg(section, key), default_value);
     }
 
     inline void setValue(const QString &section,  const QString &key, const QVariant &value) {
-      QSettings::setValue(QString("%1/%2").arg(section, key), value);
+      QSettings::setValue(QString(QSL("%1/%2")).arg(section, key), value);
     }
 
     inline void setValue(const QString &key, const QVariant &value) {
@@ -329,11 +329,11 @@ class Settings : public QSettings {
     }
 
     inline bool contains(const QString &section, const QString &key) const {
-      return QSettings::contains(QString("%1/%2").arg(section, key));
+      return QSettings::contains(QString(QSL("%1/%2")).arg(section, key));
     }
 
     inline void remove(const QString &section, const QString &key) {
-      QSettings::remove(QString("%1/%2").arg(section, key));
+      QSettings::remove(QString(QSL("%1/%2")).arg(section, key));
     }
 
     // Returns the path which contains the settings.

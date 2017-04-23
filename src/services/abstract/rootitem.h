@@ -152,7 +152,7 @@ class RootItem : public QObject {
       m_childItems.clear();
     }
 
-    inline void setChildItems(QList<RootItem*> child_items) {
+    inline void setChildItems(const QList<RootItem*> &child_items) {
       m_childItems = child_items;
     }
 

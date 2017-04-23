@@ -241,7 +241,7 @@ void FeedsProxyModel::invalidateReadFeedsFilter(bool set_new_value, bool show_un
     setShowUnreadOnly(show_unread_only);
   }
 
-  QTimer::singleShot(0, this, SLOT(invalidateFilter()));
+  QTimer::singleShot(0, this, &FeedsProxyModel::invalidateFilter);
 }
 
 void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {

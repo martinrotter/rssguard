@@ -86,12 +86,12 @@ QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
     }
   }
 
-  mime_data->setData(MIME_TYPE_ITEM_POINTER, encoded_data);
+  mime_data->setData(QSL(MIME_TYPE_ITEM_POINTER), encoded_data);
   return mime_data;
 }
 
 QStringList FeedsModel::mimeTypes() const {
-  return QStringList() << MIME_TYPE_ITEM_POINTER;
+  return QStringList() << QSL(MIME_TYPE_ITEM_POINTER);
 }
 
 bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) {
@@ -105,7 +105,7 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
     return false;
   }
 
-  QByteArray dragged_items_data = data->data(MIME_TYPE_ITEM_POINTER);
+  QByteArray dragged_items_data = data->data(QSL(MIME_TYPE_ITEM_POINTER));
 
   if (dragged_items_data.isEmpty()) {
     return false;
