@@ -191,7 +191,7 @@ void FormMain::prepareMenus() {
 #if defined(Q_OS_WIN)
     m_trayMenu = new TrayIconMenu(APP_NAME, this);
 #else
-    m_trayMenu = new QMenu(APP_NAME, this);
+    m_trayMenu = new QMenu(QSL(APP_NAME), this);
 #endif
 
     // Add needed items to the menu.
@@ -252,7 +252,7 @@ void FormMain::updateAddItemMenu() {
                                              m_ui->m_menuAddItem);
       root_menu->addAction(action_new_feed);
       // NOTE: Because of default arguments.
-      connect(action_new_feed, SIGNAL(triggered()), activated_root, SLOT(addNewFeed()));
+      connect(action_new_feed, SIGNAL(triggered(bool)), activated_root, SLOT(addNewFeed()));
     }
 
     if (!specific_root_actions.isEmpty()) {
@@ -349,7 +349,7 @@ void FormMain::updateAccountsMenu() {
   m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceDelete);
 }
 
-void FormMain::onFeedUpdatesFinished(FeedDownloadResults results) {
+void FormMain::onFeedUpdatesFinished(const FeedDownloadResults &results) {
   Q_UNUSED(results)
 
   statusBar()->clearProgressFeeds();

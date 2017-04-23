@@ -87,7 +87,7 @@ class StandardFeed : public Feed {
       return m_type;
     }
 
-    inline void setType(const Type &type) {
+    inline void setType(Type type) {
       m_type = type;
     }
 

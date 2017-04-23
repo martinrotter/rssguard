@@ -72,7 +72,8 @@ void ShortcutButton::keyPressEvent(QKeyEvent *event) {
   }
 
   if (!m_catcher->m_isRecording) {
-    return QPushButton::keyPressEvent(event);
+    QPushButton::keyPressEvent(event);
+    return;
   }
 
   event->accept();
@@ -124,7 +125,8 @@ void ShortcutButton::keyReleaseEvent(QKeyEvent *event) {
   }
 
   if (!m_catcher->m_isRecording) {
-    return QPushButton::keyReleaseEvent(event);
+    QPushButton::keyReleaseEvent(event);
+    return;
   }
 
   event->accept();

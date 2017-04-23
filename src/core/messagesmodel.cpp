@@ -74,7 +74,7 @@ void MessagesModel::loadMessages(RootItem *item) {
   }
   else {
     if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
-      setFilter("true != true");
+      setFilter(QSL("true != true"));
       qWarning("Loading of messages from item '%s' failed.", qPrintable(item->title()));
       qApp->showGuiMessage(tr("Loading of messages from item '%1' failed.").arg(item->title()),
                            tr("Loading of messages failed, maybe messages could not be downloaded."),
@@ -201,7 +201,7 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       else if (index_column == MSG_DB_AUTHOR_INDEX) {
         const QString author_name = QSqlTableModel::data(idx, role).toString();
 
-        return author_name.isEmpty() ? "-" : author_name;
+        return author_name.isEmpty() ? QSL("-") : author_name;
       }
       else if (index_column != MSG_DB_IMPORTANT_INDEX && index_column != MSG_DB_READ_INDEX) {
         return QSqlTableModel::data(idx, role);

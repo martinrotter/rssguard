@@ -75,7 +75,7 @@ class FormMain : public QMainWindow {
 
     void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(const Feed *feed, int current, int total);
-    void onFeedUpdatesFinished(FeedDownloadResults results);
+    void onFeedUpdatesFinished(const FeedDownloadResults &results);
 
     // Displays various dialogs.
     void backupDatabaseSettings();

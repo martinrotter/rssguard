@@ -38,7 +38,7 @@ class BaseBar {
     virtual void loadChangeableActions() = 0;
 
   protected:
-    QAction *findMatchingAction(const QString &action, const QList<QAction*> actions) const;
+    QAction *findMatchingAction(const QString &action, const QList<QAction *> &actions) const;
 };
 
 class BaseToolBar : public QToolBar, public BaseBar {
