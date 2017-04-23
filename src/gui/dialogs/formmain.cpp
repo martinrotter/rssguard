@@ -759,7 +759,7 @@ void FormMain::showAddAccountDialog() {
 }
 
 void FormMain::reportABug() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW)) {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(QSL(APP_URL_ISSUES_NEW))) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
@@ -767,7 +767,7 @@ void FormMain::reportABug() {
 }
 
 void FormMain::donate() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_DONATE_URL)) {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(QSL(APP_DONATE_URL))) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
