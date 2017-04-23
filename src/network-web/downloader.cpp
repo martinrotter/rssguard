@@ -53,8 +53,11 @@ void Downloader::manipulateData(const QString &url, QNetworkAccessManager::Opera
   QNetworkRequest request;
   QString non_const_url = url;
 
-  foreach (const QByteArray &header_name, m_customHeaders.keys()) {
-    request.setRawHeader(header_name, m_customHeaders.value(header_name));
+  QHashIterator<QByteArray, QByteArray> i(m_customHeaders);
+
+  while (i.hasNext()) {
+    i.next();
+    request.setRawHeader(i.key(), i.value());
   }
 
   m_inputData = data;

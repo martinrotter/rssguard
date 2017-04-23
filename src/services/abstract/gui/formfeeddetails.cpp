@@ -58,7 +58,7 @@ FormFeedDetails::FormFeedDetails(ServiceRoot *service_root, QWidget *parent)
 FormFeedDetails::~FormFeedDetails() {
 }
 
-int FormFeedDetails::exec(Feed *input_feed, RootItem *parent_to_select, const QString &url) {
+int FormFeedDetails::addEditFeed(Feed *input_feed, RootItem *parent_to_select, const QString &url) {
   // Load categories.
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 

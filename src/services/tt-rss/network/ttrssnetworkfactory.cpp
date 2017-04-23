@@ -468,9 +468,9 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
   if (status() == API_STATUS_OK) {
     // We have data, construct object tree according to data.
     QJsonArray items_to_process = m_rawContent["content"].toObject()["categories"].toObject()["items"].toArray();
-    QList<QPair<RootItem*,QJsonValue> > pairs;
+    QVector<QPair<RootItem*,QJsonValue> > pairs;
 
-    foreach (QJsonValue item, items_to_process) {
+    foreach (const QJsonValue &item, items_to_process) {
       pairs.append(QPair<RootItem*,QJsonValue>(parent, item));
     }
 
@@ -487,7 +487,7 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           if (item_id == 0) {
             // This is "Uncategorized" category, all its feeds belong to top-level root.
             if (item.contains("items")) {
-              foreach (QJsonValue child_feed, item["items"].toArray()) {
+              foreach (const QJsonValue &child_feed, item["items"].toArray()) {
                 pairs.append(QPair<RootItem*,QJsonValue>(parent, child_feed));
               }
             }
@@ -500,7 +500,7 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             act_parent->appendChild(category);
 
             if (item.contains("items")) {
-              foreach (QJsonValue child, item["items"].toArray()) {
+              foreach (const QJsonValue &child, item["items"].toArray()) {
                 pairs.append(QPair<RootItem*,QJsonValue>(category, child));
               }
             }
@@ -550,7 +550,7 @@ TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() {
 QList<Message> TtRssGetHeadlinesResponse::messages() const {
   QList<Message> messages;
 
-  foreach (QJsonValue item, m_rawContent["content"].toArray()) {
+  foreach (const QJsonValue &item, m_rawContent["content"].toArray()) {
     QJsonObject mapped = item.toObject();
     Message message;
 
@@ -570,7 +570,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
 
     if (mapped.contains(QSL("attachments"))) {
       // Process enclosures.
-      foreach (QJsonValue attachment, mapped["attachments"].toArray()) {
+      foreach (const QJsonValue &attachment, mapped["attachments"].toArray()) {
         QJsonObject mapped_attachemnt = attachment.toObject();
         Enclosure enclosure;
 

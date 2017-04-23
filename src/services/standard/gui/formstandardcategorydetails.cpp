@@ -74,7 +74,7 @@ void FormStandardCategoryDetails::setEditableCategory(StandardCategory *editable
   m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
-int FormStandardCategoryDetails::exec(StandardCategory *input_category, RootItem *parent_to_select) {
+int FormStandardCategoryDetails::addEditCategory(StandardCategory *input_category, RootItem *parent_to_select) {
   // Load categories.
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, input_category);
 

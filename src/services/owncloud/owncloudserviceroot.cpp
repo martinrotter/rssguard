@@ -265,7 +265,7 @@ void OwnCloudServiceRoot::addNewFeed(const QString &url) {
 
   QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainFormWidget()));
 
-  form_pointer.data()->exec(nullptr, this, url);
+  form_pointer.data()->addEditFeed(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();
 }
 

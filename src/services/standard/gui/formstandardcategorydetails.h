@@ -45,7 +45,7 @@ class FormStandardCategoryDetails : public QDialog {
 
   public slots:
     // Executes add/edit standard category dialog.
-    int exec(StandardCategory *input_category, RootItem *parent_to_select);
+    int addEditCategory(StandardCategory *input_category, RootItem *parent_to_select);
 
   protected slots:
     // Applies changes.

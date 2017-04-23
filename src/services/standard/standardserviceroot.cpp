@@ -137,7 +137,7 @@ void StandardServiceRoot::addNewFeed(const QString &url) {
   }
 
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this, qApp->mainFormWidget()));
-  form_pointer.data()->exec(nullptr, nullptr, url);
+  form_pointer.data()->addEditFeed(nullptr, nullptr, url);
 
   qApp->feedUpdateLock()->unlock();
 }
@@ -180,7 +180,7 @@ void StandardServiceRoot::loadFromDatabase(){
 }
 
 void StandardServiceRoot::checkArgumentsForFeedAdding() {
-  foreach (QString arg, qApp->arguments().mid(1)) {
+  foreach (const QString &arg, qApp->arguments().mid(1)) {
     checkArgumentForFeedAdding(arg);
   }
 }
@@ -323,7 +323,7 @@ void StandardServiceRoot::addNewCategory() {
   }
 
   QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this, qApp->mainFormWidget()));
-  form_pointer.data()->exec(nullptr, nullptr);
+  form_pointer.data()->addEditCategory(nullptr, nullptr);
 
   qApp->feedUpdateLock()->unlock();
 }
