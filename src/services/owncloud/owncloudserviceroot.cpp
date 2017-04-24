@@ -135,12 +135,13 @@ void OwnCloudServiceRoot::addMessageStatesToCache(const QStringList &ids_of_mess
 }
 
 void OwnCloudServiceRoot::saveAllCachedData() {
+  m_cacheSaveMutex->lock();
+
   if (m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty()) {
     // No cached changes.
+    m_cacheSaveMutex->unlock();
     return;
   }
-
-  m_cacheSaveMutex->lock();
 
   // Make copy of changes.
   QMap<RootItem::ReadStatus, QStringList> cached_data_read = m_cachedStatesRead;
