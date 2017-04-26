@@ -468,10 +468,10 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 }
 
 StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(nullptr) {
-  setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
+  setTitle(QString::fromUtf8(record.value(FDS_DB_TITLE_INDEX).toByteArray()));
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setCustomId(id());
-  setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
+  setDescription(QString::fromUtf8(record.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
   setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
   setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
