@@ -1193,6 +1193,8 @@ int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, con
                              int auto_update_interval, StandardFeed::Type feed_format, bool *ok) {
   QSqlQuery q(db);
 
+  qDebug() << "Adding feed with title '" << title.toUtf8() << "' to DB.";
+
   q.setForwardOnly(true);
   q.prepare("INSERT INTO Feeds "
             "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type, account_id) "
