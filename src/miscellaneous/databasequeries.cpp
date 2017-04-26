@@ -1199,8 +1199,8 @@ int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, con
   q.prepare("INSERT INTO Feeds "
             "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type, account_id) "
             "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type, :account_id);");
-  q.bindValue(QSL(":title"), title);
-  q.bindValue(QSL(":description"), description);
+  q.bindValue(QSL(":title"), title.toUtf8());
+  q.bindValue(QSL(":description"), description.toUtf8());
   q.bindValue(QSL(":date_created"), creation_date.toMSecsSinceEpoch());
   q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
   q.bindValue(QSL(":category"), parent_id);
