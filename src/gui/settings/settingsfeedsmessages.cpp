@@ -50,6 +50,10 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings *settings, QWidget *parent
   connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, &SettingsFeedsMessages::changeMessagesFont);
+
+  if (!m_ui->m_spinFeedUpdateTimeout->suffix().startsWith(' ')) {
+    m_ui->m_spinFeedUpdateTimeout->setSuffix(QSL(" ") + m_ui->m_spinFeedUpdateTimeout->suffix());
+  }
 }
 
 SettingsFeedsMessages::~SettingsFeedsMessages() {
