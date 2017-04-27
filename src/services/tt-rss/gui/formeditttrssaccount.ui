@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FormEditAccount</class>
- <widget class="QDialog" name="FormEditAccount">
+ <class>FormEditTtRssAccount</class>
+ <widget class="QDialog" name="FormEditTtRssAccount">
   <property name="geometry">
    <rect>
     <x>0</x>

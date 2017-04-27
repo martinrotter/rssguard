@@ -16,7 +16,7 @@
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
 
-#include "services/tt-rss/gui/formeditaccount.h"
+#include "services/tt-rss/gui/formeditttrssaccount.h"
 
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssserviceroot.h"
@@ -25,8 +25,8 @@
 #include "network-web/networkfactory.h"
 
 
-FormEditAccount::FormEditAccount(QWidget *parent)
-  : QDialog(parent), m_ui(new Ui::FormEditAccount), m_editableRoot(nullptr) {
+FormEditTtRssAccount::FormEditTtRssAccount(QWidget *parent)
+  : QDialog(parent), m_ui(new Ui::FormEditTtRssAccount), m_editableRoot(nullptr) {
   m_ui->setupUi(this);
   m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
 
@@ -57,21 +57,21 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   setTabOrder(m_ui->m_checkShowHttpPassword, m_ui->m_btnTestSetup);
   setTabOrder(m_ui->m_btnTestSetup, m_ui->m_buttonBox);
 
-  connect(m_ui->m_checkShowPassword, &QCheckBox::toggled, this, &FormEditAccount::displayPassword);
-  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditAccount::onClickedOk);
-  connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditAccount::onClickedCancel);
-  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onPasswordChanged);
-  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onUsernameChanged);
-  connect(m_ui->m_txtHttpPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onHttpPasswordChanged);
-  connect(m_ui->m_txtHttpUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onHttpUsernameChanged);
-  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::onUrlChanged);
-  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::checkOkButton);
-  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::checkOkButton);
-  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditAccount::checkOkButton);
-  connect(m_ui->m_btnTestSetup, &QPushButton::clicked, this, &FormEditAccount::performTest);
-  connect(m_ui->m_gbHttpAuthentication, &QGroupBox::toggled, this, &FormEditAccount::onHttpPasswordChanged);
-  connect(m_ui->m_gbHttpAuthentication, &QGroupBox::toggled, this, &FormEditAccount::onHttpUsernameChanged);
-  connect(m_ui->m_checkShowHttpPassword, &QCheckBox::toggled, this, &FormEditAccount::displayHttpPassword);
+  connect(m_ui->m_checkShowPassword, &QCheckBox::toggled, this, &FormEditTtRssAccount::displayPassword);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditTtRssAccount::onClickedOk);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditTtRssAccount::onClickedCancel);
+  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::onPasswordChanged);
+  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::onUsernameChanged);
+  connect(m_ui->m_txtHttpPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::onHttpPasswordChanged);
+  connect(m_ui->m_txtHttpUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::onHttpUsernameChanged);
+  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::onUrlChanged);
+  connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::checkOkButton);
+  connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::checkOkButton);
+  connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::checkOkButton);
+  connect(m_ui->m_btnTestSetup, &QPushButton::clicked, this, &FormEditTtRssAccount::performTest);
+  connect(m_ui->m_gbHttpAuthentication, &QGroupBox::toggled, this, &FormEditTtRssAccount::onHttpPasswordChanged);
+  connect(m_ui->m_gbHttpAuthentication, &QGroupBox::toggled, this, &FormEditTtRssAccount::onHttpUsernameChanged);
+  connect(m_ui->m_checkShowHttpPassword, &QCheckBox::toggled, this, &FormEditTtRssAccount::displayHttpPassword);
 
   onPasswordChanged();
   onUsernameChanged();
@@ -83,16 +83,16 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   displayHttpPassword(false);
 }
 
-FormEditAccount::~FormEditAccount() {
+FormEditTtRssAccount::~FormEditTtRssAccount() {
 }
 
-TtRssServiceRoot *FormEditAccount::execForCreate() {
+TtRssServiceRoot *FormEditTtRssAccount::execForCreate() {
   setWindowTitle(tr("Add new Tiny Tiny RSS account"));
   exec();
   return m_editableRoot;
 }
 
-void FormEditAccount::execForEdit(TtRssServiceRoot *existing_root) {
+void FormEditTtRssAccount::execForEdit(TtRssServiceRoot *existing_root) {
   setWindowTitle(tr("Edit existing Tiny Tiny RSS account"));
   m_editableRoot = existing_root;
 
@@ -107,15 +107,15 @@ void FormEditAccount::execForEdit(TtRssServiceRoot *existing_root) {
   exec();
 }
 
-void FormEditAccount::displayPassword(bool display) {
+void FormEditTtRssAccount::displayPassword(bool display) {
   m_ui->m_txtPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
 }
 
-void FormEditAccount::displayHttpPassword(bool display) {
+void FormEditTtRssAccount::displayHttpPassword(bool display) {
   m_ui->m_txtHttpPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
 }
 
-void FormEditAccount::performTest() {
+void FormEditTtRssAccount::performTest() {
   TtRssNetworkFactory factory;
 
   factory.setUsername(m_ui->m_txtUsername->lineEdit()->text());
@@ -173,7 +173,7 @@ void FormEditAccount::performTest() {
   }
 }
 
-void FormEditAccount::onClickedOk() {
+void FormEditTtRssAccount::onClickedOk() {
   bool editing_account = true;
 
   if (m_editableRoot == nullptr) {
@@ -201,11 +201,11 @@ void FormEditAccount::onClickedOk() {
   }
 }
 
-void FormEditAccount::onClickedCancel() {
+void FormEditTtRssAccount::onClickedCancel() {
   reject();
 }
 
-void FormEditAccount::onUsernameChanged() {
+void FormEditTtRssAccount::onUsernameChanged() {
   const QString username = m_ui->m_txtUsername->lineEdit()->text();
 
   if (username.isEmpty()) {
@@ -216,7 +216,7 @@ void FormEditAccount::onUsernameChanged() {
   }
 }
 
-void FormEditAccount::onPasswordChanged() {
+void FormEditTtRssAccount::onPasswordChanged() {
   const QString password = m_ui->m_txtPassword->lineEdit()->text();
 
   if (password.isEmpty()) {
@@ -227,7 +227,7 @@ void FormEditAccount::onPasswordChanged() {
   }
 }
 
-void FormEditAccount::onHttpUsernameChanged() {
+void FormEditTtRssAccount::onHttpUsernameChanged() {
   const  bool is_username_ok = !m_ui->m_gbHttpAuthentication->isChecked() || !m_ui->m_txtHttpUsername->lineEdit()->text().isEmpty();
 
   m_ui->m_txtHttpUsername->setStatus(is_username_ok ?
@@ -238,7 +238,7 @@ void FormEditAccount::onHttpUsernameChanged() {
                                        tr("Username is empty."));
 }
 
-void FormEditAccount::onHttpPasswordChanged() {
+void FormEditTtRssAccount::onHttpPasswordChanged() {
   const bool is_username_ok = !m_ui->m_gbHttpAuthentication->isChecked() || !m_ui->m_txtHttpPassword->lineEdit()->text().isEmpty();
 
   m_ui->m_txtHttpPassword->setStatus(is_username_ok ?
@@ -249,7 +249,7 @@ void FormEditAccount::onHttpPasswordChanged() {
                                        tr("Password is empty."));
 }
 
-void FormEditAccount::onUrlChanged() {
+void FormEditTtRssAccount::onUrlChanged() {
   const QString url = m_ui->m_txtUrl->lineEdit()->text();
 
   if (url.isEmpty()) {
@@ -263,7 +263,7 @@ void FormEditAccount::onUrlChanged() {
   }
 }
 
-void FormEditAccount::checkOkButton() {
+void FormEditTtRssAccount::checkOkButton() {
   m_btnOk->setEnabled(!m_ui->m_txtUsername->lineEdit()->text().isEmpty() &&
                       !m_ui->m_txtPassword->lineEdit()->text().isEmpty() &&
                       !m_ui->m_txtUrl->lineEdit()->text().isEmpty());

@@ -182,7 +182,7 @@ void OwnCloudServiceRoot::updateTitle() {
     host = m_network->url();
   }
 
-  setTitle(m_network->authUsername() + QL1S("@") + host + QSL(" (ownCloud News)"));
+  setTitle(m_network->authUsername() + QL1S("@") + host + QSL(" (Nextcloud News)"));
 }
 
 void OwnCloudServiceRoot::saveAccountDataToDatabase() {

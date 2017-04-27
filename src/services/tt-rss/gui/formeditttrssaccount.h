@@ -15,27 +15,26 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-
 #ifndef FORMEDITACCOUNT_H
 #define FORMEDITACCOUNT_H
 
 #include <QDialog>
 
-#include "ui_formeditaccount.h"
+#include "ui_formeditttrssaccount.h"
 
 
 namespace Ui {
-  class FormEditAccount;
+  class FormEditTtRssAccount;
 }
 
 class TtRssServiceRoot;
 
-class FormEditAccount : public QDialog {
+class FormEditTtRssAccount : public QDialog {
     Q_OBJECT
 
   public:
-    explicit FormEditAccount(QWidget *parent = 0);
-    virtual ~FormEditAccount();
+    explicit FormEditTtRssAccount(QWidget *parent = 0);
+    virtual ~FormEditTtRssAccount();
 
     TtRssServiceRoot *execForCreate();
     void execForEdit(TtRssServiceRoot *existing_root);
@@ -55,7 +54,7 @@ class FormEditAccount : public QDialog {
     void checkOkButton();
 
   private:
-    QScopedPointer<Ui::FormEditAccount> m_ui;
+    QScopedPointer<Ui::FormEditTtRssAccount> m_ui;
     TtRssServiceRoot *m_editableRoot;
     QPushButton *m_btnOk;
 };

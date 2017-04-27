@@ -73,7 +73,7 @@ APP_LOW_NAME                  = "rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2016 $$APP_AUTHOR"
-APP_VERSION                   = "3.4.0"
+APP_VERSION                   = "3.4.1"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
 APP_URL                       = "https://github.com/martinrotter/rssguard"
@@ -305,7 +305,6 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/standard/standardserviceentrypoint.h \
             src/services/standard/standardserviceroot.h \
             src/services/tt-rss/definitions.h \
-            src/services/tt-rss/gui/formeditaccount.h \
             src/services/tt-rss/gui/formttrssfeeddetails.h \
             src/services/tt-rss/network/ttrssnetworkfactory.h \
             src/services/tt-rss/ttrsscategory.h \
@@ -328,7 +327,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/standard/rdfparser.h \
             src/services/standard/rssparser.h \
             src/miscellaneous/serviceoperator.h \
-            src/services/abstract/cacheforserviceroot.h
+            src/services/abstract/cacheforserviceroot.h \
+            src/services/tt-rss/gui/formeditttrssaccount.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -425,7 +425,6 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/standard/standardfeedsimportexportmodel.cpp \
             src/services/standard/standardserviceentrypoint.cpp \
             src/services/standard/standardserviceroot.cpp \
-            src/services/tt-rss/gui/formeditaccount.cpp \
             src/services/tt-rss/gui/formttrssfeeddetails.cpp \
             src/services/tt-rss/network/ttrssnetworkfactory.cpp \
             src/services/tt-rss/ttrsscategory.cpp \
@@ -448,7 +447,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/standard/rdfparser.cpp \
             src/services/standard/rssparser.cpp \
             src/miscellaneous/serviceoperator.cpp \
-            src/services/abstract/cacheforserviceroot.cpp
+            src/services/abstract/cacheforserviceroot.cpp \
+            src/services/tt-rss/gui/formeditttrssaccount.cpp
 
 FORMS +=    src/gui/toolbareditor.ui \
             src/network-web/downloaditem.ui \
@@ -465,7 +465,6 @@ FORMS +=    src/gui/toolbareditor.ui \
             src/services/owncloud/gui/formeditowncloudaccount.ui \
             src/services/standard/gui/formstandardcategorydetails.ui \
             src/services/standard/gui/formstandardimportexport.ui \
-            src/services/tt-rss/gui/formeditaccount.ui \
             src/gui/settings/settingsgeneral.ui \
             src/gui/settings/settingsdatabase.ui \
             src/gui/settings/settingsshortcuts.ui \
@@ -473,7 +472,8 @@ FORMS +=    src/gui/toolbareditor.ui \
             src/gui/settings/settingslocalization.ui \
             src/gui/settings/settingsbrowsermail.ui \
             src/gui/settings/settingsfeedsmessages.ui \
-            src/gui/settings/settingsdownloads.ui
+            src/gui/settings/settingsdownloads.ui \
+            src/services/tt-rss/gui/formeditttrssaccount.ui
 
 equals(USE_WEBENGINE, true) {
   HEADERS +=    src/gui/locationlineedit.h \

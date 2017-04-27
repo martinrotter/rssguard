@@ -30,7 +30,7 @@
 #include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
-#include "services/tt-rss/gui/formeditaccount.h"
+#include "services/tt-rss/gui/formeditttrssaccount.h"
 #include "services/tt-rss/gui/formttrssfeeddetails.h"
 
 #include <QSqlTableModel>
@@ -68,7 +68,7 @@ QString TtRssServiceRoot::code() const {
 }
 
 bool TtRssServiceRoot::editViaGui() {
-  QScopedPointer<FormEditAccount> form_pointer(new FormEditAccount(qApp->mainFormWidget()));
+  QScopedPointer<FormEditTtRssAccount> form_pointer(new FormEditTtRssAccount(qApp->mainFormWidget()));
   form_pointer.data()->execForEdit(this);
 
   return true;

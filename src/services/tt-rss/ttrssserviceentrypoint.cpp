@@ -22,7 +22,7 @@
 #include "miscellaneous/databasequeries.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssserviceroot.h"
-#include "services/tt-rss/gui/formeditaccount.h"
+#include "services/tt-rss/gui/formeditttrssaccount.h"
 
 #include <QPointer>
 
@@ -66,7 +66,7 @@ QString TtRssServiceEntryPoint::code() const {
 }
 
 ServiceRoot *TtRssServiceEntryPoint::createNewRoot() const {
-  QScopedPointer<FormEditAccount> form_acc(new FormEditAccount(qApp->mainFormWidget()));
+  QScopedPointer<FormEditTtRssAccount> form_acc(new FormEditTtRssAccount(qApp->mainFormWidget()));
   return form_acc->execForCreate();
 }
 
