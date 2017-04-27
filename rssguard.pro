@@ -327,7 +327,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/standard/feedparser.h \
             src/services/standard/rdfparser.h \
             src/services/standard/rssparser.h \
-            src/miscellaneous/serviceoperator.h
+            src/miscellaneous/serviceoperator.h \
+            src/services/abstract/cacheforserviceroot.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -446,7 +447,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/standard/feedparser.cpp \
             src/services/standard/rdfparser.cpp \
             src/services/standard/rssparser.cpp \
-            src/miscellaneous/serviceoperator.cpp
+            src/miscellaneous/serviceoperator.cpp \
+            src/services/abstract/cacheforserviceroot.cpp
 
 FORMS +=    src/gui/toolbareditor.ui \
             src/network-web/downloaditem.ui \

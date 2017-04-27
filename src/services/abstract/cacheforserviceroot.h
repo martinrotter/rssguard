@@ -15,26 +15,31 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "services/owncloud/owncloudrecyclebin.h"
+#ifndef CACHEFORSERVICEROOT_H
+#define CACHEFORSERVICEROOT_H
 
-#include "services/owncloud/owncloudserviceroot.h"
-#include "services/abstract/cacheforserviceroot.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/abstract/serviceroot.h"
 
-#include <QNetworkReply>
+#include <QStringList>
+#include <QPair>
+#include <QMap>
 
 
-OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem *parent) : RecycleBin(parent) {
-}
+class Mutex;
 
-OwnCloudRecycleBin::~OwnCloudRecycleBin() {
-}
+class CacheForServiceRoot {
+  public:
+    explicit CacheForServiceRoot();
+    virtual ~CacheForServiceRoot();
 
-OwnCloudServiceRoot *OwnCloudRecycleBin::serviceRoot() {
-  return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
-}
+    void addMessageStatesToCache(const QStringList &ids_of_messages, RootItem::ReadStatus read);
 
-bool OwnCloudRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-  return RecycleBin::markAsReadUnread(status);
-}
+  protected:
+    QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QStringList>> takeMessageCache();
+
+    Mutex *m_cacheSaveMutex;
+    QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
+    QMap<RootItem::Importance, QStringList> m_cachedStatesImportant;
+};
+
+#endif // CACHEFORSERVICEROOT_H

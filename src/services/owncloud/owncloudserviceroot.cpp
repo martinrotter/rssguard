@@ -33,8 +33,7 @@
 
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_cacheSaveMutex(new Mutex(QMutex::NonRecursive, this)), m_cachedStatesRead(QMap<RootItem::ReadStatus, QStringList>()),
-    m_cachedStatesImportant(QMap<RootItem::Importance, QStringList>()), m_recycleBin(new OwnCloudRecycleBin(this)),
+  : ServiceRoot(parent), CacheForServiceRoot(), m_recycleBin(new OwnCloudRecycleBin(this)),
     m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new OwnCloudNetworkFactory()) {
   setIcon(OwnCloudServiceEntryPoint().icon());
 }
@@ -113,51 +112,11 @@ OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
   return m_network;
 }
 
-void OwnCloudServiceRoot::addMessageStatesToCache(const QStringList &ids_of_messages, RootItem::ReadStatus read) {
-  m_cacheSaveMutex->lock();
-
-  QStringList &list_act = m_cachedStatesRead[read];
-  QStringList &list_other = m_cachedStatesRead[read == RootItem::Read ? RootItem::Unread : RootItem::Read];
-
-  // Store changes, they will be sent to server later.
-  list_act.append(ids_of_messages);
-
-  QSet<QString> set_act = list_act.toSet();
-  QSet<QString> set_other = list_other.toSet();
-
-  // Now, we want to remove all IDS from list_other, which are contained in list.
-  set_other -= set_act;
-
-  list_act.clear(); list_act.append(set_act.toList());
-  list_other.clear(); list_other.append(set_other.toList());
-
-  m_cacheSaveMutex->unlock();
-}
-
 void OwnCloudServiceRoot::saveAllCachedData() {
-  m_cacheSaveMutex->lock();
+  QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QStringList>> msgCache = takeMessageCache();
+  QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
 
-  if (m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty()) {
-    // No cached changes.
-    m_cacheSaveMutex->unlock();
-    return;
-  }
-
-  // Make copy of changes.
-  QMap<RootItem::ReadStatus, QStringList> cached_data_read = m_cachedStatesRead;
-  cached_data_read.detach();
-
-  QMap<RootItem::Importance, QStringList> cached_data_imp = m_cachedStatesImportant;
-  cached_data_imp.detach();
-
-  m_cachedStatesRead.clear();
-  m_cachedStatesImportant.clear();
-
-  m_cacheSaveMutex->unlock();
-
-  QMapIterator<RootItem::ReadStatus, QStringList> i(cached_data_read);
-
-  // Save the actual data.
+  // Save the actual data read/unread.
   while (i.hasNext()) {
     i.next();
     auto key = i.key();
@@ -169,7 +128,8 @@ void OwnCloudServiceRoot::saveAllCachedData() {
   }
 }
 
-bool OwnCloudServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages,
+bool OwnCloudServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item,
+                                                  const QList<Message> &messages,
                                                   RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
 
