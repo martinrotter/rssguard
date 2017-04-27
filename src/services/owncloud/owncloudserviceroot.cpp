@@ -108,6 +108,11 @@ QString OwnCloudServiceRoot::code() const {
   return OwnCloudServiceEntryPoint().code();
 }
 
+bool OwnCloudServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
+  addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
+  return ServiceRoot::markAsReadUnread(status);
+}
+
 OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
   return m_network;
 }

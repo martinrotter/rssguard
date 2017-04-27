@@ -39,7 +39,7 @@
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_recycleBin(new TtRssRecycleBin(this)),
+  : ServiceRoot(parent), CacheForServiceRoot(), m_recycleBin(new TtRssRecycleBin(this)),
     m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory()) {
   setIcon(TtRssServiceEntryPoint().icon());
 }
@@ -88,18 +88,8 @@ bool TtRssServiceRoot::deleteViaGui() {
 }
 
 bool TtRssServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
-  QStringList ids = customIDSOfMessagesForItem(this);
-  TtRssUpdateArticleResponse response = m_network->updateArticles(ids, UpdateArticle::Unread,
-                                                                  status == RootItem::Unread ?
-                                                                    UpdateArticle::SetToTrue :
-                                                                    UpdateArticle::SetToFalse);
-
-  if (m_network->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
-    return false;
-  }
-  else {
-    return ServiceRoot::markAsReadUnread(status);
-  }
+  addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
+  return ServiceRoot::markAsReadUnread(status);
 }
 
 bool TtRssServiceRoot::supportsFeedAdding() const {
@@ -166,6 +156,37 @@ RecycleBin *TtRssServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
 
+void TtRssServiceRoot::saveAllCachedData() {
+  /*TtRssUpdateArticleResponse response = m_network->updateArticles(customIDsOfMessages(messages),
+                                                                  UpdateArticle::Unread,
+                                                                  read == RootItem::Unread ?
+                                                                    UpdateArticle::SetToTrue :
+                                                                    UpdateArticle::SetToFalse);
+
+  if (m_network->lastError() == QNetworkReply::NoError && response.updateStatus() == STATUS_OK) {
+    return true;
+  }
+  else {
+    return false;
+  }*/
+
+  QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QStringList>> msgCache = takeMessageCache();
+  QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
+
+  // Save the actual data read/unread.
+  while (i.hasNext()) {
+    i.next();
+    auto key = i.key();
+    QStringList ids = i.value();
+
+    if (!ids.isEmpty()) {
+      network()->updateArticles(ids,
+                                UpdateArticle::Unread,
+                                key == RootItem::Unread ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse);
+    }
+  }
+}
+
 QList<QAction*> TtRssServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
     m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
@@ -180,18 +201,8 @@ QList<QAction*> TtRssServiceRoot::serviceMenu() {
 bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
 
-  TtRssUpdateArticleResponse response = m_network->updateArticles(customIDsOfMessages(messages),
-                                                                  UpdateArticle::Unread,
-                                                                  read == RootItem::Unread ?
-                                                                    UpdateArticle::SetToTrue :
-                                                                    UpdateArticle::SetToFalse);
-
-  if (m_network->lastError() == QNetworkReply::NoError && response.updateStatus() == STATUS_OK) {
-    return true;
-  }
-  else {
-    return false;
-  }
+  addMessageStatesToCache(customIDsOfMessages(messages), read);
+  return true;
 }
 
 bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes) {

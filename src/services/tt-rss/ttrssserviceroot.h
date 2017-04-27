@@ -19,6 +19,7 @@
 #define TTRSSSERVICEROOT_H
 
 #include "services/abstract/serviceroot.h"
+#include "services/abstract/cacheforserviceroot.h"
 
 #include <QCoreApplication>
 
@@ -28,7 +29,7 @@ class TtRssFeed;
 class TtRssNetworkFactory;
 class TtRssRecycleBin;
 
-class TtRssServiceRoot : public ServiceRoot {
+class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     Q_OBJECT
 
   public:
@@ -48,6 +49,7 @@ class TtRssServiceRoot : public ServiceRoot {
     QVariant data(int column, int role) const;
     QList<QAction*> serviceMenu();
     RecycleBin *recycleBin() const;
+    void saveAllCachedData();
 
     bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
     bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes);

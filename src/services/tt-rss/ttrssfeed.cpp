@@ -124,18 +124,8 @@ bool TtRssFeed::deleteViaGui() {
 }
 
 bool TtRssFeed::markAsReadUnread(RootItem::ReadStatus status) {
-  QStringList ids = getParentServiceRoot()->customIDSOfMessagesForItem(this);
-  TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
-                                                                                 status == RootItem::Unread ?
-                                                                                   UpdateArticle::SetToTrue :
-                                                                                   UpdateArticle::SetToFalse);
-
-  if (serviceRoot()->network()->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
-    return false;
-  }
-  else {
-    return getParentServiceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
-  }
+  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
+  return getParentServiceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
 }
 
 bool TtRssFeed::cleanMessages(bool clear_only_read) {
