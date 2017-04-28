@@ -10,6 +10,9 @@ Changed:
 ▪ Folder which holds SQL scripts got renamed to "sql".
 ▪ Tweaked some conditions for determining newly "updated" messages in ATOM format. (issue #103)
 
+Fixed:
+▪ Crash in TT-RSS plugin on application exit, when TT-RSS user needed to be logged out.
+
 3.4.0
 —————
 

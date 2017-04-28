@@ -61,10 +61,6 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
 FeedsModel::~FeedsModel() {
   qDebug("Destroying FeedsModel instance.");
 
-  foreach (ServiceRoot *account, serviceRoots()) {
-    account->stop();
-  }
-
   // Delete all model items.
   delete m_rootItem;
 }
@@ -536,6 +532,12 @@ void FeedsModel::loadActivatedServiceAccounts() {
     foreach (ServiceRoot *root, roots) {
       addServiceAccount(root, false);
     }
+  }
+}
+
+void FeedsModel::stopServiceAccounts() {
+  foreach (ServiceRoot *account, serviceRoots()) {
+    account->stop();
   }
 }
 
