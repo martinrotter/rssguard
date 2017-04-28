@@ -32,14 +32,15 @@ class CacheForServiceRoot {
     explicit CacheForServiceRoot();
     virtual ~CacheForServiceRoot();
 
+    void addMessageStatesToCache(const QList<Message> &ids_of_messages, RootItem::Importance importance);
     void addMessageStatesToCache(const QStringList &ids_of_messages, RootItem::ReadStatus read);
 
   protected:
-    QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QStringList>> takeMessageCache();
+    QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message> > > takeMessageCache();
 
     Mutex *m_cacheSaveMutex;
     QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
-    QMap<RootItem::Importance, QStringList> m_cachedStatesImportant;
+    QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
 };
 
 #endif // CACHEFORSERVICEROOT_H

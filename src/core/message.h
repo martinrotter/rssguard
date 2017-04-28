@@ -69,6 +69,17 @@ class Message {
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false
     bool m_createdFromFeed;
+
+    friend inline bool operator==(const Message &lhs, const Message &rhs) {
+      return lhs.m_accountId == rhs.m_accountId && lhs.m_id == rhs.m_id;
+    }
+
+    friend inline bool operator!=(const Message &lhs, const Message &rhs) {
+      return !(lhs == rhs);
+    }
 };
+
+uint qHash(Message key, uint seed);
+uint qHash(const Message &key);
 
 #endif // MESSAGE_H

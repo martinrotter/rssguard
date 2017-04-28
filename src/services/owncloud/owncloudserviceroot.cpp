@@ -118,7 +118,7 @@ OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
 }
 
 void OwnCloudServiceRoot::saveAllCachedData() {
-  QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QStringList>> msgCache = takeMessageCache();
+  QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
 
   // Save the actual data read/unread.
@@ -129,6 +129,26 @@ void OwnCloudServiceRoot::saveAllCachedData() {
 
     if (!ids.isEmpty()) {
       network()->markMessagesRead(key, ids);
+    }
+  }
+
+  QMapIterator<RootItem::Importance, QList<Message>> j(msgCache.second);
+
+  // Save the actual data important/not important.
+  while (j.hasNext()) {
+    j.next();
+    auto key = j.key();
+    QList<Message> messages = j.value();
+
+    if (!messages.isEmpty()) {
+      QStringList feed_ids, guid_hashes;
+
+      foreach (const Message &msg, messages) {
+        feed_ids.append(msg.m_feedId);
+        guid_hashes.append(msg.m_customHash);
+      }
+
+      network()->markMessagesStarred(key, feed_ids, guid_hashes);
     }
   }
 }
@@ -147,34 +167,24 @@ bool OwnCloudServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_ite
   Q_UNUSED(selected_item)
 
   // Now, we need to separate the changes because of ownCloud API limitations.
-  QStringList mark_starred_feed_ids, mark_starred_guid_hashes;
-  QStringList mark_unstarred_feed_ids, mark_unstarred_guid_hashes;
+  QList<Message> mark_starred_msgs;
+  QList<Message> mark_unstarred_msgs;
 
   foreach (const ImportanceChange &pair, changes) {
     if (pair.second == RootItem::Important) {
-      mark_starred_feed_ids.append(pair.first.m_feedId);
-      mark_starred_guid_hashes.append(pair.first.m_customHash);
+      mark_starred_msgs.append(pair.first);
     }
     else {
-      mark_unstarred_feed_ids.append(pair.first.m_feedId);
-      mark_unstarred_guid_hashes.append(pair.first.m_customHash);
+      mark_unstarred_msgs.append(pair.first);
     }
   }
 
-  // OK, now perform the online update itself.
-
-  if (!mark_starred_feed_ids.isEmpty()) {
-    if (network()->markMessagesStarred(RootItem::Important, mark_starred_feed_ids, mark_starred_guid_hashes) !=
-        QNetworkReply::NoError) {
-      return false;
-    }
+  if (!mark_starred_msgs.isEmpty()) {
+    addMessageStatesToCache(mark_starred_msgs, RootItem::Important);
   }
 
-  if (!mark_unstarred_feed_ids.isEmpty()) {
-    if (network()->markMessagesStarred(RootItem::NotImportant, mark_unstarred_feed_ids, mark_unstarred_guid_hashes) !=
-        QNetworkReply::NoError) {
-      return false;
-    }
+  if (!mark_unstarred_msgs.isEmpty()) {
+    addMessageStatesToCache(mark_unstarred_msgs, RootItem::NotImportant);
   }
 
   return true;

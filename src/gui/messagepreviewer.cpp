@@ -189,11 +189,11 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
       DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
                                                 QStringList() << QString::number(m_message.m_id));
 
-      m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                                      QList<ImportanceChange>() << ImportanceChange(m_message,
-                                                                                                                    m_message.m_isImportant ?
-                                                                                                                      RootItem::NotImportant :
-                                                                                                                      RootItem::Important));
+      m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
+                                                                     QList<ImportanceChange>() << ImportanceChange(m_message,
+                                                                                                                   m_message.m_isImportant ?
+                                                                                                                     RootItem::NotImportant :
+                                                                                                                     RootItem::Important));
 
       emit markMessageImportant(m_message.m_id, checked ? RootItem::Important : RootItem::NotImportant);
       m_message.m_isImportant = checked;

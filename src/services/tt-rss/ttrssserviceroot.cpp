@@ -170,7 +170,7 @@ void TtRssServiceRoot::saveAllCachedData() {
     return false;
   }*/
 
-  QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QStringList>> msgCache = takeMessageCache();
+  QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
 
   // Save the actual data read/unread.

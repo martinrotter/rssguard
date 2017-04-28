@@ -101,3 +101,12 @@ Message Message::fromSqlRecord(const QSqlRecord &record, bool *result) {
 
   return message;
 }
+
+uint qHash(Message key, uint seed) {
+  Q_UNUSED(seed)
+  return (key.m_accountId * 10000) + key.m_id;
+}
+
+uint qHash(const Message &key) {
+  return (key.m_accountId * 10000) + key.m_id;
+}

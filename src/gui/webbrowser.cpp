@@ -290,11 +290,11 @@ void WebBrowser::switchMessageImportance(int id, bool checked) {
       DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
                                                 QStringList() << QString::number(msg->m_id));
 
-      m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                                      QList<ImportanceChange>() << ImportanceChange(*msg,
-                                                                                                                    msg->m_isImportant ?
-                                                                                                                      RootItem::NotImportant :
-                                                                                                                      RootItem::Important));
+      m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
+                                                                     QList<ImportanceChange>() << ImportanceChange(*msg,
+                                                                                                                   msg->m_isImportant ?
+                                                                                                                     RootItem::NotImportant :
+                                                                                                                     RootItem::Important));
 
       emit markMessageImportant(msg->m_id, msg->m_isImportant ? RootItem::NotImportant : RootItem::Important);
       msg->m_isImportant = checked;
