@@ -20,6 +20,7 @@
 #include "network-web/silentnetworkaccessmanager.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
+#include "gui/guiutilities.h"
 
 #include <QNetworkProxy>
 #include <QFileDialog>
@@ -28,6 +29,10 @@
 SettingsBrowserMail::SettingsBrowserMail(Settings *settings, QWidget *parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsBrowserMail) {
   m_ui->setupUi(this);
+
+  GuiUtilities::setLabelAsNotice(m_ui->label, false);
+  GuiUtilities::setLabelAsNotice(m_ui->m_lblExternalEmailInfo, false);
+  GuiUtilities::setLabelAsNotice(m_ui->m_lblProxyInfo, false);
 
 #if defined(USE_WEBENGINE)
   m_ui->m_checkOpenLinksInExternal->setVisible(false);

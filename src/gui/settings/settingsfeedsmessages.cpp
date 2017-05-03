@@ -25,6 +25,7 @@
 #include "gui/feedsview.h"
 #include "gui/messagesview.h"
 #include "gui/timespinbox.h"
+#include "gui/guiutilities.h"
 
 #include <QFontDialog>
 
@@ -33,6 +34,8 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings *settings, QWidget *parent
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsFeedsMessages){
   m_ui->setupUi(this);
   initializeMessageDateFormats();
+
+  GuiUtilities::setLabelAsNotice(m_ui->label_9, false);
 
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
