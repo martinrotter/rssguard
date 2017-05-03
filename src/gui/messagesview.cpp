@@ -541,7 +541,7 @@ void MessagesView::adjustColumns() {
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);
     hideColumn(MSG_DB_DELETED_INDEX);
-    hideColumn(MSG_DB_FEED_INDEX);
+    //hideColumn(MSG_DB_FEED_INDEX);
     hideColumn(MSG_DB_URL_INDEX);
     hideColumn(MSG_DB_CONTENTS_INDEX);
     hideColumn(MSG_DB_PDELETED_INDEX);

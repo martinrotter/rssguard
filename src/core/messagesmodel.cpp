@@ -27,18 +27,23 @@
 
 
 MessagesModel::MessagesModel(QObject *parent)
-  : QSqlTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
+  : QSqlRelationalTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
     m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()) {
   setupFonts();
   setupIcons();
   setupHeaderData();
   updateDateFormat();
 
+
+
   // Set desired table and edit strategy.
   // NOTE: Changes to the database are actually NOT submitted
   // via model, but via DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable(QSL("Messages"));
+
+  setJoinMode(QSqlRelationalTableModel::LeftJoin);
+  setRelation(MSG_DB_FEED_INDEX, QSqlRelation("Feeds", "custom_id", "title"));
   loadMessages(nullptr);
 }
 

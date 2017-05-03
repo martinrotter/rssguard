@@ -18,7 +18,7 @@
 #ifndef MESSAGESMODEL_H
 #define MESSAGESMODEL_H
 
-#include <QSqlTableModel>
+#include <QSqlRelationalTableModel>
 
 #include "definitions/definitions.h"
 #include "core/message.h"
@@ -28,7 +28,7 @@
 #include <QIcon>
 
 
-class MessagesModel : public QSqlTableModel {
+class MessagesModel : public QSqlRelationalTableModel {
     Q_OBJECT
 
   public:

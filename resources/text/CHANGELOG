@@ -3,6 +3,7 @@
 
 Added:
 ▪ Auto-update status of feeds is now more general and complete. (issue #91)
+▪ Display feed title in list of messages. (issue #97)
 
 Changed:
 ▪ Updating of RSS Guard now uses GitHub API. (issue #109)
