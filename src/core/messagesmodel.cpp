@@ -189,7 +189,7 @@ Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
 QString MessagesModel::selectStatement() const {
   //return QSqlRelationalTableModel::selectStatement();
 
-  return QL1S("SELECT Messages.\"id\" as \"id\", \"is_read\", \"is_deleted\", \"is_important\", Feeds.\"title\" as \"feed_title\", Messages.\"title\" as \"title\", Messages.\"url\" as \"url\", \"author\", Messages.\"date_created\" as \"date_created\", \"contents\", \"is_pdeleted\", \"enclosures\", Messages.\"account_id\" as \"account_id\", Messages.\"custom_id\" as \"custom_id\", \"custom_hash\", Messages.\"feed\" as \"feed_custom_id\" "
+  return QL1S("SELECT Messages.id, is_read, is_deleted, is_important, Feeds.title, Messages.title, Messages.url, author, Messages.date_created, contents, is_pdeleted, enclosures, Messages.account_id, Messages.custom_id, custom_hash, Messages.feed "
               "FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id WHERE ") +
       filter() + " " + orderByClause();
 }
