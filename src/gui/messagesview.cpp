@@ -563,4 +563,6 @@ void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   // Repopulate the shit.
   m_sourceModel->sort(column, order);
   emit currentMessageRemoved();
+
+  qDebug("Current order by clause is '%s'.", qPrintable(m_sourceModel->orderByClause()));
 }

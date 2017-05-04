@@ -72,7 +72,7 @@ bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &ri
   Q_UNUSED(left)
   Q_UNUSED(right)
 
-  // NOTE: Porovnání se provádí již při dotazu v databázi, netřeba řešit zde.
+  // NOTE: Comparisons are done by SQL servers itself, not client-side.
   return false;
 }
 
