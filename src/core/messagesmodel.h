@@ -52,6 +52,8 @@ class MessagesModel : public QSqlRelationalTableModel {
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
+    QString selectStatement() const;
+
     // Returns message at given index.
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;

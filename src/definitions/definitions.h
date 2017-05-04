@@ -151,7 +151,7 @@
 #define MSG_DB_READ_INDEX               1
 #define MSG_DB_DELETED_INDEX            2
 #define MSG_DB_IMPORTANT_INDEX          3
-#define MSG_DB_FEED_INDEX               4
+#define MSG_DB_FEED_TITLE_INDEX         4
 #define MSG_DB_TITLE_INDEX              5
 #define MSG_DB_URL_INDEX                6
 #define MSG_DB_AUTHOR_INDEX             7
@@ -162,6 +162,7 @@
 #define MSG_DB_ACCOUNT_ID_INDEX         12
 #define MSG_DB_CUSTOM_ID_INDEX          13
 #define MSG_DB_CUSTOM_HASH_INDEX        14
+#define MSG_DB_FEED_CUSTOM_ID_INDEX     15
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX           0

@@ -39,8 +39,6 @@ MessagesModel::MessagesModel(QObject *parent)
   // via model, but via DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable(QSL("Messages"));
-  setRelation(MSG_DB_FEED_INDEX, QSqlRelation("Feeds", "custom_id", "title"));
-
   loadMessages(nullptr);
 }
 
@@ -76,7 +74,7 @@ void MessagesModel::loadMessages(RootItem *item) {
   m_selectedItem = item;
 
   if (item == nullptr) {
-    setFilter("true != true");
+    setFilter("0 > 1");
   }
   else {
     if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
@@ -89,6 +87,8 @@ void MessagesModel::loadMessages(RootItem *item) {
                            true);
     }
   }
+
+  qDebug("Select statement when selecting msg from item:\n'%s'", qPrintable(selectStatement()));
 
   fetchAllData();
 }
@@ -167,7 +167,8 @@ void MessagesModel::setupHeaderData() {
                   /*: Tooltip for attachments of message.*/ tr("Attachments") <<
                   /*: Tooltip for account ID of message.*/ tr("Account ID") <<
                   /*: Tooltip for custom ID of message.*/ tr("Custom ID") <<
-                  /*: Tooltip for custom hash string of message.*/ tr("Custom hash");
+                  /*: Tooltip for custom hash string of message.*/ tr("Custom hash") <<
+                  /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID");;
 
   m_tooltipData << tr("Id of the message.") << tr("Is message read?") <<
                    tr("Is message deleted?") << tr("Is message important?") <<
@@ -176,13 +177,21 @@ void MessagesModel::setupHeaderData() {
                    tr("Author of the message.") << tr("Creation date of the message.") <<
                    tr("Contents of the message.") << tr("Is message permanently deleted from recycle bin?") <<
                    tr("List of attachments.") << tr("Account ID of the message.") << tr("Custom ID of the message") <<
-                   tr("Custom hash of the message.");
+                   tr("Custom hash of the message.") << tr("Custom ID of feed of the message.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
   Q_UNUSED(index)
 
   return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
+}
+
+QString MessagesModel::selectStatement() const {
+  //return QSqlRelationalTableModel::selectStatement();
+
+  return QL1S("SELECT Messages.\"id\" as \"id\", \"is_read\", \"is_deleted\", \"is_important\", Feeds.\"title\" as \"feed_title\", Messages.\"title\" as \"title\", Messages.\"url\" as \"url\", \"author\", Messages.\"date_created\" as \"date_created\", \"contents\", \"is_pdeleted\", \"enclosures\", Messages.\"account_id\" as \"account_id\", Messages.\"custom_id\" as \"custom_id\", \"custom_hash\", Messages.\"feed\" as \"feed_custom_id\" "
+              "FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id WHERE ") +
+      filter() + " " + orderByClause();
 }
 
 QVariant MessagesModel::data(int row, int column, int role) const {

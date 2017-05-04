@@ -84,7 +84,7 @@ Message Message::fromSqlRecord(const QSqlRecord &record, bool *result) {
   message.m_id = record.value(MSG_DB_ID_INDEX).toInt();
   message.m_isRead = record.value(MSG_DB_READ_INDEX).toBool();
   message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();
-  message.m_feedId = record.value(MSG_DB_FEED_INDEX).toString();
+  message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toString();
   message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = record.value(MSG_DB_URL_INDEX).toString();
   message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();
