@@ -39,6 +39,8 @@ MessagesModel::MessagesModel(QObject *parent)
   // via model, but via DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable(QSL("Messages"));
+  //setRelation(MSG_DB_FEED_INDEX, QSqlRelation("Feeds", "custom_id", "title"));
+
   loadMessages(nullptr);
 }
 

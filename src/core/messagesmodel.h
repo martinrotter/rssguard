@@ -44,14 +44,13 @@ class MessagesModel : public QSqlRelationalTableModel {
     explicit MessagesModel(QObject *parent = 0);
     virtual ~MessagesModel();
 
-    QString orderByClause() const;
-
     // Model implementation.
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QVariant data(int row, int column, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
+    QString orderByClause() const;
     QString selectStatement() const;
 
     // Returns message at given index.
