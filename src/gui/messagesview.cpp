@@ -52,6 +52,24 @@ MessagesView::~MessagesView() {
   qDebug("Destroying MessagesView instance.");
 }
 
+void MessagesView::sort(int column, Qt::SortOrder order, bool repopulate_data, bool change_header, bool emit_changed_from_header) {
+  if (change_header && !emit_changed_from_header) {
+    header()->blockSignals(true);
+  }
+
+  if (repopulate_data) {
+    m_sourceModel->sort(column, order);
+  }
+  else {
+    m_sourceModel->setSort(column, order);
+  }
+
+  if (change_header) {
+    header()->setSortIndicator(column, order);
+    header()->blockSignals(false);
+  }
+}
+
 void MessagesView::createConnections() {
   connect(this, &MessagesView::doubleClicked, this, &MessagesView::openSelectedSourceMessagesExternally);
 
@@ -78,7 +96,7 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
   // Reload the model now.
-  m_sourceModel->sort(col, ord);
+  sort(col, ord, true, false, false);
 
   // Now, we must find the same previously focused message.
   if (selected_message.m_id > 0) {
@@ -141,7 +159,7 @@ void MessagesView::setupAppearance() {
   setItemDelegate(new StyledItemDelegateWithoutFocus(this));
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setStretchLastSection(false);
-  header()->setSortIndicatorShown(false);
+  header()->setSortIndicatorShown(true);
 }
 
 void MessagesView::keyPressEvent(QKeyEvent *event) {
@@ -268,7 +286,7 @@ void MessagesView::loadItem(RootItem *item) {
   const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
   scrollToTop();
-  m_sourceModel->setSort(col, ord);
+  sort(col, ord, false, true, false);
   m_sourceModel->loadMessages(item);
 
   // Messages are loaded, make sure that previously
@@ -562,7 +580,7 @@ void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   qApp->settings()->sync();
 
   // Repopulate the shit.
-  m_sourceModel->sort(column, order);
+  sort(column, order, true, false, false);
   emit currentMessageRemoved();
 
   qDebug("Current order by clause is '%s'.", qPrintable(m_sourceModel->orderByClause()));
