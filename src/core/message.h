@@ -48,7 +48,7 @@ class Message {
 
     // Creates Message from given record, which contains
     // row from query SELECT * FROM Messages WHERE ....;
-    static Message fromSqlRecord(const QSqlRecord &record, bool *result = NULL);
+    static Message fromSqlRecord(const QSqlRecord &record, bool *result = nullptr);
 
     QString m_title;
     QString m_url;

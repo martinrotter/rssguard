@@ -29,7 +29,7 @@ class TtRssFeed : public Feed {
     Q_OBJECT
 
   public:
-    explicit TtRssFeed(RootItem *parent = NULL);
+    explicit TtRssFeed(RootItem *parent = nullptr);
     explicit TtRssFeed(const QSqlRecord &record);
     virtual ~TtRssFeed();
 

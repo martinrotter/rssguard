@@ -27,7 +27,7 @@ class TtRssRecycleBin : public RecycleBin {
     Q_OBJECT
 
   public:
-    explicit TtRssRecycleBin(RootItem *parent = NULL);
+    explicit TtRssRecycleBin(RootItem *parent = nullptr);
     virtual ~TtRssRecycleBin();
 
     TtRssServiceRoot *serviceRoot();

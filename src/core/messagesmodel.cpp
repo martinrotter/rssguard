@@ -25,25 +25,40 @@
 #include "miscellaneous/databasequeries.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QSqlField>
+
 
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlRelationalTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
-    m_fieldNames(QHash<int,QString>()), m_sortColumn(QList<int>()), m_sortOrder(QList<Qt::SortOrder>()),
+    m_fieldNames(QMap<int,QString>()), m_sortColumn(QList<int>()), m_sortOrder(QList<Qt::SortOrder>()),
     m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()) {
   setupFonts();
   setupIcons();
   setupHeaderData();
   updateDateFormat();
 
-  //m_fieldNames[0] =
+  m_fieldNames[MSG_DB_ID_INDEX] = "Messages.id";
+  m_fieldNames[MSG_DB_READ_INDEX] = "Messages.is_read";
+  m_fieldNames[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";
+  m_fieldNames[MSG_DB_IMPORTANT_INDEX] = "Messages.is_important";
+  m_fieldNames[MSG_DB_FEED_TITLE_INDEX] = "Feeds.title";
+  m_fieldNames[MSG_DB_TITLE_INDEX] = "Messages.title";
+  m_fieldNames[MSG_DB_URL_INDEX] = "Messages.url";
+  m_fieldNames[MSG_DB_AUTHOR_INDEX] = "Messages.author";
+  m_fieldNames[MSG_DB_DCREATED_INDEX] = "Messages.date_created";
+  m_fieldNames[MSG_DB_CONTENTS_INDEX] = "Messages.contents";
+  m_fieldNames[MSG_DB_PDELETED_INDEX] = "Messages.is_pdeleted";
+  m_fieldNames[MSG_DB_ENCLOSURES_INDEX] = "Messages.enclosures";
+  m_fieldNames[MSG_DB_ACCOUNT_ID_INDEX] = "Messages.account_id";
+  m_fieldNames[MSG_DB_CUSTOM_ID_INDEX]  = "Messages.custom_id";
+  m_fieldNames[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
+  m_fieldNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
 
   // Set desired table and edit strategy.
   // NOTE: Changes to the database are actually NOT submitted
   // via model, but via DIRECT SQL calls are used to do persistent messages.
-  setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable(QSL("Messages"));
-  //setRelation(MSG_DB_FEED_INDEX, QSqlRelation("Feeds", "custom_id", "title"));
-
+  setEditStrategy(QSqlTableModel::OnManualSubmit);
   loadMessages(nullptr);
 }
 
@@ -51,23 +66,31 @@ MessagesModel::~MessagesModel() {
   qDebug("Destroying MessagesModel instance.");
 }
 
-QString MessagesModel::selectStatement() const {
-  //return QSqlRelationalTableModel::selectStatement();
+QString MessagesModel::formatFields() const {
+  return m_fieldNames.values().join(QSL(", "));
+}
 
-  return QL1S("SELECT Messages.id, is_read, is_deleted, is_important, Feeds.title, Messages.title, Messages.url, author, Messages.date_created, contents, is_pdeleted, enclosures, Messages.account_id, Messages.custom_id, custom_hash, Messages.feed "
-              "FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id WHERE ") +
-      filter() + " " + orderByClause();
+QString MessagesModel::selectStatement() const {
+  return QL1S("SELECT ") + formatFields() +
+      QSL(" FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id WHERE ") +
+      filter() + orderByClause() + QL1C(';');
 }
 
 QString MessagesModel::orderByClause() const {
+  if (m_sortColumn.isEmpty()) {
+    return QString();
+  }
+  else {
+    QStringList sorts;
 
-  auto aaa = record().fieldName(4);
+    for (int i = m_sortColumn.size() - 1; i >= 0; i--) {
+      QString field_name(m_fieldNames[m_sortColumn[i]]);
 
-  return QSqlRelationalTableModel::orderByClause();
+      sorts.append(field_name + (m_sortOrder[i] == Qt::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
+    }
 
-  QString clause(QSL("ORDER BY "));
-
-
+    return QL1S(" ORDER BY ") + sorts.join(QSL(", "));
+  }
 }
 
 void MessagesModel::setupIcons() {
@@ -101,6 +124,8 @@ void MessagesModel::addSortState(int column, Qt::SortOrder order) {
 
   m_sortColumn.append(column);
   m_sortOrder.append(order);
+
+  qDebug("Added sort state, select statement is now:\n'%s'", qPrintable(selectStatement()));
 }
 
 void MessagesModel::setupFonts() {
@@ -126,8 +151,6 @@ void MessagesModel::loadMessages(RootItem *item) {
                            true);
     }
   }
-
-  qDebug("Select statement when selecting msg from item:\n'%s'", qPrintable(selectStatement()));
 
   fetchAllData();
 }

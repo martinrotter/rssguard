@@ -27,7 +27,7 @@ class OwnCloudFeed : public Feed {
     Q_OBJECT
 
   public:
-    explicit OwnCloudFeed(RootItem *parent = NULL);
+    explicit OwnCloudFeed(RootItem *parent = nullptr);
     explicit OwnCloudFeed(const QSqlRecord &record);
     virtual ~OwnCloudFeed();
 

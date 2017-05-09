@@ -61,7 +61,7 @@ class SkinFactory : public QObject {
     QString selectedSkinName() const;
 
     // Gets skin about a particular skin.
-    Skin skinInfo(const QString &skin_name, bool *ok = NULL) const;
+    Skin skinInfo(const QString &skin_name, bool *ok = nullptr) const;
 
     // Returns list of installed skins.
     QList<Skin> installedSkins() const;

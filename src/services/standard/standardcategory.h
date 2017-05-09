@@ -35,7 +35,7 @@ class StandardCategory : public Category {
 
   public:
     // Constructors and destructors
-    explicit StandardCategory(RootItem *parent_item = NULL);
+    explicit StandardCategory(RootItem *parent_item = nullptr);
     explicit StandardCategory(const StandardCategory &other);
     explicit StandardCategory(const QSqlRecord &record);
     virtual ~StandardCategory();

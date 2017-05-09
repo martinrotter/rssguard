@@ -50,9 +50,6 @@ class MessagesModel : public QSqlRelationalTableModel {
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
-    QString orderByClause() const;
-    QString selectStatement() const;
-
     // Returns message at given index.
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
@@ -102,13 +99,17 @@ class MessagesModel : public QSqlRelationalTableModel {
     void setupFonts();
     void setupIcons();
 
+    QString orderByClause() const;
+    QString selectStatement() const;
+    QString formatFields() const;
+
     // Fetches ALL available data to the model.
     void fetchAllData();
 
     // NOTE: These two lists contain data for multicolumn sorting.
     // They are always same length. Most important sort column/order
     // are located in the end of these lists.
-    QHash<int,QString> m_fieldNames;
+    QMap<int,QString> m_fieldNames;
     QList<int> m_sortColumn;
     QList<Qt::SortOrder> m_sortOrder;
 

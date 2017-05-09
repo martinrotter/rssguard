@@ -25,7 +25,7 @@ class RecycleBin : public RootItem {
     Q_OBJECT
 
   public:
-    explicit RecycleBin(RootItem *parent_item = NULL);
+    explicit RecycleBin(RootItem *parent_item = nullptr);
     virtual ~RecycleBin();
 
     QVariant data(int column, int role) const;

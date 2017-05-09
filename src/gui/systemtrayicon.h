@@ -57,8 +57,8 @@ class SystemTrayIcon : public QSystemTrayIcon {
     void setNumber(int number = -1, bool any_new_message = false);
     
     void showMessage(const QString &title, const QString &message, MessageIcon icon = Information,
-                     int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, QObject *click_target = NULL,
-                     const char *click_slot = NULL);
+                     int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, QObject *click_target = nullptr,
+                     const char *click_slot = nullptr);
 
     // Returns true if tray icon CAN be constructed on this machine.
     static bool isSystemTrayAvailable();

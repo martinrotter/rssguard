@@ -34,7 +34,7 @@ class StandardServiceRoot : public ServiceRoot {
     Q_OBJECT
 
   public:
-    explicit StandardServiceRoot(RootItem *parent = NULL);
+    explicit StandardServiceRoot(RootItem *parent = nullptr);
     virtual ~StandardServiceRoot();
 
     // Start/stop root.

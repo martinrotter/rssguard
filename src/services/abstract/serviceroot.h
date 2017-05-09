@@ -42,7 +42,7 @@ class ServiceRoot : public RootItem {
     Q_OBJECT
 
   public:
-    explicit ServiceRoot(RootItem *parent = NULL);
+    explicit ServiceRoot(RootItem *parent = nullptr);
     virtual ~ServiceRoot();
 
     bool deleteViaGui();

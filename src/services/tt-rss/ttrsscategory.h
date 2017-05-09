@@ -29,7 +29,7 @@ class TtRssCategory : public Category {
     Q_OBJECT
 
   public:
-    explicit TtRssCategory(RootItem *parent = NULL);
+    explicit TtRssCategory(RootItem *parent = nullptr);
     explicit TtRssCategory(const QSqlRecord &record);
     virtual ~TtRssCategory();
 

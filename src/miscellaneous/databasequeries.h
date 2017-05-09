@@ -49,26 +49,26 @@ class DatabaseQueries {
 
     // Obtain counts of unread/all messages.
     static QMap<int,QPair<int,int> > getMessageCountsForCategory(QSqlDatabase db, int custom_id, int account_id,
-                                                                 bool including_total_counts, bool *ok = NULL);
+                                                                 bool including_total_counts, bool *ok = nullptr);
     static QMap<int,QPair<int,int> > getMessageCountsForAccount(QSqlDatabase db, int account_id,
-                                                                bool including_total_counts, bool *ok = NULL);
+                                                                bool including_total_counts, bool *ok = nullptr);
     static int getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id, int account_id,
-                                       bool including_total_counts, bool *ok = NULL);
-    static int getMessageCountsForBin(QSqlDatabase db, int account_id, bool including_total_counts, bool *ok = NULL);
+                                       bool including_total_counts, bool *ok = nullptr);
+    static int getMessageCountsForBin(QSqlDatabase db, int account_id, bool including_total_counts, bool *ok = nullptr);
 
     // Get messages (for newspaper view for example).
-    static QList<Message> getUndeletedMessagesForFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = NULL);
-    static QList<Message> getUndeletedMessagesForBin(QSqlDatabase db, int account_id, bool *ok = NULL);
-    static QList<Message> getUndeletedMessagesForAccount(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static QList<Message> getUndeletedMessagesForFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = nullptr);
+    static QList<Message> getUndeletedMessagesForBin(QSqlDatabase db, int account_id, bool *ok = nullptr);
+    static QList<Message> getUndeletedMessagesForAccount(QSqlDatabase db, int account_id, bool *ok = nullptr);
 
     // Custom ID accumulators.
-    static QStringList customIdsOfMessagesFromAccount(QSqlDatabase db, int account_id, bool *ok = NULL);
-    static QStringList customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool *ok = NULL);
-    static QStringList customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = NULL);
+    static QStringList customIdsOfMessagesFromAccount(QSqlDatabase db, int account_id, bool *ok = nullptr);
+    static QStringList customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool *ok = nullptr);
+    static QStringList customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool *ok = nullptr);
 
     // Common accounts methods.
     static int updateMessages(QSqlDatabase db, const QList<Message> &messages, int feed_custom_id,
-                              int account_id, const QString &url, bool *any_message_changed, bool *ok = NULL);
+                              int account_id, const QString &url, bool *any_message_changed, bool *ok = nullptr);
     static bool deleteAccount(QSqlDatabase db, int account_id);
     static bool deleteAccountData(QSqlDatabase db, int account_id, bool delete_messages_too);
     static bool cleanFeeds(QSqlDatabase db, const QStringList &ids, bool clean_read_only, int account_id);
@@ -78,21 +78,21 @@ class DatabaseQueries {
                              int auto_update_interval);
 
     // ownCloud account.
-    static QList<ServiceRoot*> getOwnCloudAccounts(QSqlDatabase db, bool *ok = NULL);
+    static QList<ServiceRoot*> getOwnCloudAccounts(QSqlDatabase db, bool *ok = nullptr);
     static bool deleteOwnCloudAccount(QSqlDatabase db, int account_id);
     static bool overwriteOwnCloudAccount(QSqlDatabase db, const QString &username, const QString &password,
                                          const QString &url, bool force_server_side_feed_update, int account_id);
     static bool createOwnCloudAccount(QSqlDatabase db, int id_to_assign, const QString &username, const QString &password,
                                       const QString &url, bool force_server_side_feed_update);
-    static int createAccount(QSqlDatabase db, const QString &code, bool *ok = NULL);
-    static Assignment getOwnCloudCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
-    static Assignment getOwnCloudFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static int createAccount(QSqlDatabase db, const QString &code, bool *ok = nullptr);
+    static Assignment getOwnCloudCategories(QSqlDatabase db, int account_id, bool *ok = nullptr);
+    static Assignment getOwnCloudFeeds(QSqlDatabase db, int account_id, bool *ok = nullptr);
 
     // Standard account.
     static bool deleteFeed(QSqlDatabase db, int feed_custom_id, int account_id);
     static bool deleteCategory(QSqlDatabase db, int id);
     static int addCategory(QSqlDatabase db, int parent_id, int account_id, const QString &title,
-                           const QString &description, QDateTime creation_date, const QIcon &icon, bool *ok = NULL);
+                           const QString &description, QDateTime creation_date, const QIcon &icon, bool *ok = nullptr);
     static bool editCategory(QSqlDatabase db, int parent_id, int category_id,
                              const QString &title, const QString &description, const QIcon &icon);
     static int addFeed(QSqlDatabase db, int parent_id, int account_id, const QString &title,
@@ -100,18 +100,18 @@ class DatabaseQueries {
                        const QString &encoding, const QString &url, bool is_protected,
                        const QString &username, const QString &password,
                        Feed::AutoUpdateType auto_update_type,
-                       int auto_update_interval, StandardFeed::Type feed_format, bool *ok = NULL);
+                       int auto_update_interval, StandardFeed::Type feed_format, bool *ok = nullptr);
     static bool editFeed(QSqlDatabase db, int parent_id, int feed_id, const QString &title,
                          const QString &description, const QIcon &icon,
                          const QString &encoding, const QString &url, bool is_protected,
                          const QString &username, const QString &password, Feed::AutoUpdateType auto_update_type,
                          int auto_update_interval, StandardFeed::Type feed_format);
-    static QList<ServiceRoot*> getAccounts(QSqlDatabase db, bool *ok = NULL);
-    static Assignment getCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
-    static Assignment getFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static QList<ServiceRoot*> getAccounts(QSqlDatabase db, bool *ok = nullptr);
+    static Assignment getCategories(QSqlDatabase db, int account_id, bool *ok = nullptr);
+    static Assignment getFeeds(QSqlDatabase db, int account_id, bool *ok = nullptr);
 
     // TT-RSS acccount.
-    static QList<ServiceRoot*> getTtRssAccounts(QSqlDatabase db, bool *ok = NULL);
+    static QList<ServiceRoot*> getTtRssAccounts(QSqlDatabase db, bool *ok = nullptr);
     static bool deleteTtRssAccount(QSqlDatabase db, int account_id);
     static bool overwriteTtRssAccount(QSqlDatabase db, const QString &username, const QString &password,
                                       bool auth_protected, const QString &auth_username, const QString &auth_password,
@@ -120,8 +120,8 @@ class DatabaseQueries {
                                    const QString &password, bool auth_protected, const QString &auth_username,
                                    const QString &auth_password, const QString &url,
                                    bool force_server_side_feed_update);
-    static Assignment getTtRssCategories(QSqlDatabase db, int account_id, bool *ok = NULL);
-    static Assignment getTtRssFeeds(QSqlDatabase db, int account_id, bool *ok = NULL);
+    static Assignment getTtRssCategories(QSqlDatabase db, int account_id, bool *ok = nullptr);
+    static Assignment getTtRssFeeds(QSqlDatabase db, int account_id, bool *ok = nullptr);
 
   private:
     explicit DatabaseQueries();

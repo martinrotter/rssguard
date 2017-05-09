@@ -50,7 +50,7 @@ class Feed : public RootItem, public QRunnable {
     };
 
     // Constructors.
-    explicit Feed(RootItem *parent = NULL);
+    explicit Feed(RootItem *parent = nullptr);
     virtual ~Feed();
 
     QList<Message> undeletedMessages() const;

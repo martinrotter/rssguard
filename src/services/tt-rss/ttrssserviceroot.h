@@ -33,7 +33,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     Q_OBJECT
 
   public:
-    explicit TtRssServiceRoot(RootItem *parent = NULL);
+    explicit TtRssServiceRoot(RootItem *parent = nullptr);
     virtual ~TtRssServiceRoot();
 
     void start(bool freshly_activated);

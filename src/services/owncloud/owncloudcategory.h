@@ -25,7 +25,7 @@ class OwnCloudCategory : public Category {
     Q_OBJECT
 
   public:
-    explicit OwnCloudCategory(RootItem *parent = NULL);
+    explicit OwnCloudCategory(RootItem *parent = nullptr);
     explicit OwnCloudCategory(const QSqlRecord &record);
     virtual ~OwnCloudCategory();
 };

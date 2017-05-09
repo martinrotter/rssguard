@@ -48,7 +48,7 @@ class StandardFeed : public Feed {
     };
 
     // Constructors and destructors.
-    explicit StandardFeed(RootItem *parent_item = NULL);
+    explicit StandardFeed(RootItem *parent_item = nullptr);
     explicit StandardFeed(const StandardFeed &other);
     explicit StandardFeed(const QSqlRecord &record);
     virtual ~StandardFeed();
