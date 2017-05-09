@@ -83,7 +83,7 @@ QString MessagesModel::orderByClause() const {
   else {
     QStringList sorts;
 
-    for (int i = m_sortColumn.size() - 1; i >= 0; i--) {
+    for (int i = 0; i < m_sortColumn.size(); i++) {
       QString field_name(m_fieldNames[m_sortColumn[i]]);
 
       sorts.append(field_name + (m_sortOrder[i] == Qt::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
@@ -109,6 +109,7 @@ void MessagesModel::fetchAllData() {
 
 void MessagesModel::addSortState(int column, Qt::SortOrder order) {
   int existing = m_sortColumn.indexOf(column);
+  bool is_ctrl_pressed = (QApplication::queryKeyboardModifiers() & Qt::ControlModifier) == Qt::ControlModifier;
 
   if (existing >= 0) {
     m_sortColumn.removeAt(existing);
@@ -122,8 +123,15 @@ void MessagesModel::addSortState(int column, Qt::SortOrder order) {
     m_sortOrder.removeAt(0);
   }
 
-  m_sortColumn.append(column);
-  m_sortOrder.append(order);
+  if (is_ctrl_pressed) {
+    // User is activating the multicolumn sort mode.
+    m_sortColumn.append(column);
+    m_sortOrder.append(order);
+  }
+  else {
+    m_sortColumn.prepend(column);
+    m_sortOrder.prepend(order);
+  }
 
   qDebug("Added sort state, select statement is now:\n'%s'", qPrintable(selectStatement()));
 }

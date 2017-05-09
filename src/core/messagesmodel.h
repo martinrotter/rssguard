@@ -108,7 +108,7 @@ class MessagesModel : public QSqlRelationalTableModel {
 
     // NOTE: These two lists contain data for multicolumn sorting.
     // They are always same length. Most important sort column/order
-    // are located in the end of these lists.
+    // are located at the start of lists;
     QMap<int,QString> m_fieldNames;
     QList<int> m_sortColumn;
     QList<Qt::SortOrder> m_sortOrder;
