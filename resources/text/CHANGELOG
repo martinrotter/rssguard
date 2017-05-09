@@ -4,6 +4,7 @@
 Added:
 ▪ Auto-update status of feeds is now more general and complete. (issue #91)
 ▪ Display feed title in list of messages. (issue #97)
+▪ Displayed feeds can now be sorted by multiple columns. Do you want to sort by author, and THEN by title? Simply click first "Title" column, then on "Author" column. If you hold CTRL during sorting, the sort is done in reverse column order.
 
 Changed:
 ▪ Updating of RSS Guard now uses GitHub API. (issue #109)
