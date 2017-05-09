@@ -20,6 +20,3 @@ script:
   ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./resources/scripts/.travis-install-osx.sh
   ; fi
-env:
-  global:
-    secure: ehouipwNC5wa2qbFnPKaRzI0BEm85o6l6ZVS6KPnosbd5tlH7DYqr/wO0Qr4N43Z4m6gDXTccHAgb2+SrQB7brWV06/00F2LPj5i6QPPTyV1ztpatzhrRZ477zFTzinihqroMSOpx9dctaWY+Fwb6ge5Gd57qmiLCwomJomjWwhizwws2tgZ5XfU1OXAGAolwy2k5/3zE2T/qtnqJvKEYrECY68l1WjYQ1W168mDcErJXMwh0xhvFPcDU/L1/4TfeafSdqZe4W2uxO3qwnxl3rT4B42tVk6MyvrnobYQC8x7OQg40b2k79h83AO5ckjy7xpgI8NtJ7171l2hBGPgESeyR4oHqiuf8EFY3yvurZz5o08MdgDxpsGfSNCAaKw3p13bxdOXUysnazuZN/gFTg610yY7hiMz4MKw7T7YLTssVP8myt1KzvvQy1VqUSjWTjU+WhzxxJbvFgL+WFfsMofumLUBRp9bcPu3a1wcdn4vKy3MPILhPOztCAstVrU9WLaY+zkSVOm1RwLGySQbnScjJvKN6ATNfk4FEnEFGJE+UHKqg4hyLnuVjx5m24AbwKIrLXLPQzIYoadTgA45R97t6ChHiR/bnTxkCP/aIg3TajX5H+bTqnLAk3KCnH3OVpNgA/6KvSnX3CHEY97yVWi+XRMpnLey5cRwKGuWXfM=
