@@ -26,6 +26,7 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
+#define MAX_MULTICOLUMN_SORT_STATES           3
 #define ENCLOSURES_OUTER_SEPARATOR            '#'
 #define ECNLOSURES_INNER_SEPARATOR            '&'
 #define URI_SCHEME_FEED_SHORT                 "feed:"

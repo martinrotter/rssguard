@@ -57,6 +57,8 @@ void MessagesView::sort(int column, Qt::SortOrder order, bool repopulate_data, b
     header()->blockSignals(true);
   }
 
+  m_sourceModel->addSortState(column, order);
+
   if (repopulate_data) {
     m_sourceModel->sort(column, order);
   }

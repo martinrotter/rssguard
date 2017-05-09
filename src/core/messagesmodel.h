@@ -59,9 +59,10 @@ class MessagesModel : public QSqlRelationalTableModel {
     RootItem::Importance messageImportance(int row_index) const;
 
     RootItem *loadedItem() const;
-
     void updateDateFormat();
     void reloadWholeLayout();
+
+    void addSortState(int column, Qt::SortOrder order);
 
     // CORE messages manipulators.
     // NOTE: These are used to change properties of one message.
@@ -79,9 +80,6 @@ class MessagesModel : public QSqlRelationalTableModel {
     bool setBatchMessagesDeleted(const QModelIndexList &messages);
     bool setBatchMessagesRead(const QModelIndexList &messages, RootItem::ReadStatus read);
     bool setBatchMessagesRestored(const QModelIndexList &messages);
-
-    // Fetches ALL available data to the model.
-    void fetchAllData();
 
     // Filters messages
     void highlightMessages(MessageHighlighter highlight);
@@ -103,6 +101,16 @@ class MessagesModel : public QSqlRelationalTableModel {
     void setupHeaderData();
     void setupFonts();
     void setupIcons();
+
+    // Fetches ALL available data to the model.
+    void fetchAllData();
+
+    // NOTE: These two lists contain data for multicolumn sorting.
+    // They are always same length. Most important sort column/order
+    // are located in the end of these lists.
+    QHash<int,QString> m_fieldNames;
+    QList<int> m_sortColumn;
+    QList<Qt::SortOrder> m_sortOrder;
 
     MessageHighlighter m_messageHighlighter;
 

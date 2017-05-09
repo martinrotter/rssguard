@@ -28,11 +28,14 @@
 
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlRelationalTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
+    m_fieldNames(QHash<int,QString>()), m_sortColumn(QList<int>()), m_sortOrder(QList<Qt::SortOrder>()),
     m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()) {
   setupFonts();
   setupIcons();
   setupHeaderData();
   updateDateFormat();
+
+  //m_fieldNames[0] =
 
   // Set desired table and edit strategy.
   // NOTE: Changes to the database are actually NOT submitted
@@ -48,8 +51,23 @@ MessagesModel::~MessagesModel() {
   qDebug("Destroying MessagesModel instance.");
 }
 
+QString MessagesModel::selectStatement() const {
+  //return QSqlRelationalTableModel::selectStatement();
+
+  return QL1S("SELECT Messages.id, is_read, is_deleted, is_important, Feeds.title, Messages.title, Messages.url, author, Messages.date_created, contents, is_pdeleted, enclosures, Messages.account_id, Messages.custom_id, custom_hash, Messages.feed "
+              "FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id WHERE ") +
+      filter() + " " + orderByClause();
+}
+
 QString MessagesModel::orderByClause() const {
+
+  auto aaa = record().fieldName(4);
+
   return QSqlRelationalTableModel::orderByClause();
+
+  QString clause(QSL("ORDER BY "));
+
+
 }
 
 void MessagesModel::setupIcons() {
@@ -64,6 +82,25 @@ void MessagesModel::fetchAllData() {
   while (canFetchMore()) {
     fetchMore();
   }
+}
+
+void MessagesModel::addSortState(int column, Qt::SortOrder order) {
+  int existing = m_sortColumn.indexOf(column);
+
+  if (existing >= 0) {
+    m_sortColumn.removeAt(existing);
+    m_sortOrder.removeAt(existing);
+  }
+
+  if (m_sortColumn.size() > MAX_MULTICOLUMN_SORT_STATES) {
+    // We support only limited number of sort states
+    // due to DB performance.
+    m_sortColumn.removeAt(0);
+    m_sortOrder.removeAt(0);
+  }
+
+  m_sortColumn.append(column);
+  m_sortOrder.append(order);
 }
 
 void MessagesModel::setupFonts() {
@@ -186,14 +223,6 @@ Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
   Q_UNUSED(index)
 
   return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
-}
-
-QString MessagesModel::selectStatement() const {
-  //return QSqlRelationalTableModel::selectStatement();
-
-  return QL1S("SELECT Messages.id, is_read, is_deleted, is_important, Feeds.title, Messages.title, Messages.url, author, Messages.date_created, contents, is_pdeleted, enclosures, Messages.account_id, Messages.custom_id, custom_hash, Messages.feed "
-              "FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id WHERE ") +
-      filter() + " " + orderByClause();
 }
 
 QVariant MessagesModel::data(int row, int column, int role) const {

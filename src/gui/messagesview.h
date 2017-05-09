@@ -36,8 +36,6 @@ class MessagesView : public QTreeView {
     explicit MessagesView(QWidget *parent = 0);
     virtual ~MessagesView();
 
-    void sort(int column, Qt::SortOrder order, bool repopulate_data, bool change_header, bool emit_changed_from_header);
-
     // Model accessors.
     inline MessagesProxyModel *model() const {
       return m_proxyModel;
@@ -101,6 +99,8 @@ class MessagesView : public QTreeView {
     void currentMessageRemoved();
 
   private:
+    void sort(int column, Qt::SortOrder order, bool repopulate_data, bool change_header, bool emit_changed_from_header);
+
     // Creates needed connections.
     void createConnections();
 
