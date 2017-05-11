@@ -29,7 +29,7 @@
 
 
 MessagesModel::MessagesModel(QObject *parent)
-  : QSqlRelationalTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
+  : QSqlTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
     m_fieldNames(QMap<int,QString>()), m_sortColumn(QList<int>()), m_sortOrder(QList<Qt::SortOrder>()),
     m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()) {
   setupFonts();
