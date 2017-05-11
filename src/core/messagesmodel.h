@@ -59,6 +59,7 @@ class MessagesModel : public QSqlTableModel {
     void updateDateFormat();
     void reloadWholeLayout();
 
+    // Adds this new state to queue of sort states.
     void addSortState(int column, Qt::SortOrder order);
 
     // CORE messages manipulators.
@@ -99,12 +100,13 @@ class MessagesModel : public QSqlTableModel {
     void setupFonts();
     void setupIcons();
 
+    // Fetches ALL available data to the model.
+    void fetchAllData();
+
+    // Direct SQL stuff.
     QString orderByClause() const;
     QString selectStatement() const;
     QString formatFields() const;
-
-    // Fetches ALL available data to the model.
-    void fetchAllData();
 
     // NOTE: These two lists contain data for multicolumn sorting.
     // They are always same length. Most important sort column/order

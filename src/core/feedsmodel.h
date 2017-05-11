@@ -109,6 +109,7 @@ class FeedsModel : public QAbstractItemModel {
     // Loads feed/categories from the database.
     void loadActivatedServiceAccounts();
 
+    // Stops all accounts before exit.
     void stopServiceAccounts();
 
     // Reloads counts of all feeds/categories/whatever in the model.
@@ -124,8 +125,6 @@ class FeedsModel : public QAbstractItemModel {
     // Removes item with given index.
     // NOTE: Also deletes item from memory.
     void removeItem(const QModelIndex &index);
-
-    // Removes given item from the model/memory.
     void removeItem(RootItem *deleting_item);
 
     // Recycle bins operations.

@@ -399,6 +399,8 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 
   // Commit changes.
   if (DatabaseQueries::markMessageImportant(database(), message.m_id, next_importance)) {
+    emit dataChanged(index(row_index, 0), index(row_index, MSG_DB_FEED_CUSTOM_ID_INDEX), QVector<int>() << Qt::FontRole);
+
     return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem,
                                                                                   QList<QPair<Message,RootItem::Importance> >() << pair);
   }
