@@ -26,6 +26,7 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
+#define DEFAULT_SQL_MESSAGES_FILTER           "0 > 1"
 #define MAX_MULTICOLUMN_SORT_STATES           3
 #define ENCLOSURES_OUTER_SEPARATOR            '#'
 #define ECNLOSURES_INNER_SEPARATOR            '&'

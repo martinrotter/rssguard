@@ -329,7 +329,9 @@ HEADERS +=  src/core/feeddownloader.h \
             src/miscellaneous/serviceoperator.h \
             src/services/abstract/cacheforserviceroot.h \
             src/services/tt-rss/gui/formeditttrssaccount.h \
-            src/gui/guiutilities.h
+            src/gui/guiutilities.h \
+            src/core/messagesmodelcache.h \
+            src/core/messagesmodelsqllayer.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -450,7 +452,9 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/miscellaneous/serviceoperator.cpp \
             src/services/abstract/cacheforserviceroot.cpp \
             src/services/tt-rss/gui/formeditttrssaccount.cpp \
-            src/gui/guiutilities.cpp
+            src/gui/guiutilities.cpp \
+            src/core/messagesmodelcache.cpp \
+            src/core/messagesmodelsqllayer.cpp
 
 FORMS +=    src/gui/toolbareditor.ui \
             src/network-web/downloaditem.ui \

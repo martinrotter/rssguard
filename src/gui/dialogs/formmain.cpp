@@ -114,7 +114,7 @@ void FormMain::showDbCleanupAssistant() {
 
     qApp->feedUpdateLock()->unlock();
 
-    tabWidget()->feedMessageViewer()->messagesView()->reloadSelections(false);
+    tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
     qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
   }
   else {
@@ -353,7 +353,7 @@ void FormMain::onFeedUpdatesFinished(const FeedDownloadResults &results) {
   Q_UNUSED(results)
 
   statusBar()->clearProgressFeeds();
-  tabWidget()->feedMessageViewer()->messagesView()->reloadSelections(false);
+  tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
 }
 
 void FormMain::onFeedUpdatesStarted() {

@@ -18,6 +18,7 @@
 #include "services/abstract/serviceroot.h"
 
 #include "core/feedsmodel.h"
+#include "core/messagesmodel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -25,8 +26,6 @@
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
-
-#include <QSqlTableModel>
 
 
 ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent), m_accountId(NO_PARENT_CATEGORY) {
@@ -386,7 +385,7 @@ void ServiceRoot::setAccountId(int account_id) {
   m_accountId = account_id;
 }
 
-bool ServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
+bool ServiceRoot::loadMessagesForItem(RootItem *item, MessagesModel *model) {
   if (item->kind() == RootItemKind::Bin) {
     model->setFilter(QString("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(QString::number(accountId())));
   }

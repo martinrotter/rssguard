@@ -50,9 +50,7 @@ class MessagesView : public QTreeView {
 
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
-    // If "mark_current_index_read" is 0, then message with
-    // "current" index is not marked as read.
-    void reloadSelections(bool mark_current_index_read);
+    void reloadSelections();
 
     // Loads un-deleted messages from selected feeds.
     void loadItem(RootItem *item);
@@ -122,7 +120,6 @@ class MessagesView : public QTreeView {
     MessagesModel *m_sourceModel;
 
     bool m_columnsAdjusted;
-    bool m_batchUnreadSwitch;
 };
 
 #endif // MESSAGESVIEW_H

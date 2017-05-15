@@ -28,7 +28,7 @@
 class FeedsModel;
 class RecycleBin;
 class QAction;
-class QSqlTableModel;
+class MessagesModel;
 
 // Car here represents ID of the item.
 typedef QList<QPair<int,RootItem*> > Assignment;
@@ -102,7 +102,7 @@ class ServiceRoot : public RootItem {
     // and then use method QSqlTableModel::setFilter(....).
     // NOTE: It would be more preferable if all messages are downloaded
     // right when feeds are updated.
-    virtual bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
+    virtual bool loadMessagesForItem(RootItem *item, MessagesModel *model);
 
     // Called BEFORE this read status update (triggered by user in message list) is stored in DB,
     // when false is returned, change is aborted.

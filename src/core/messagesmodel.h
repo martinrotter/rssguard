@@ -18,7 +18,8 @@
 #ifndef MESSAGESMODEL_H
 #define MESSAGESMODEL_H
 
-#include <QSqlTableModel>
+#include <QSqlQueryModel>
+#include "core/messagesmodelsqllayer.h"
 
 #include "definitions/definitions.h"
 #include "core/message.h"
@@ -28,7 +29,9 @@
 #include <QIcon>
 
 
-class MessagesModel : public QSqlTableModel {
+class MessagesModelCache;
+
+class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     Q_OBJECT
 
   public:
@@ -44,7 +47,12 @@ class MessagesModel : public QSqlTableModel {
     explicit MessagesModel(QObject *parent = 0);
     virtual ~MessagesModel();
 
+    // Fetches ALL available data to the model.
+    // NOTE: This activates the SQL query and populates the model with new data.
+    void repopulate();
+
     // Model implementation.
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QVariant data(int row, int column, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
@@ -59,27 +67,17 @@ class MessagesModel : public QSqlTableModel {
     void updateDateFormat();
     void reloadWholeLayout();
 
-    // Adds this new state to queue of sort states.
-    void addSortState(int column, Qt::SortOrder order);
-
-    // CORE messages manipulators.
-    // NOTE: These are used to change properties of one message.
-    // NOTE: Model is NOT reset after one of these methods are applied
-    // but changes ARE written to the database.
+    // SINGLE message manipulators.
     bool switchMessageImportance(int row_index);
     bool setMessageRead(int row_index, RootItem::ReadStatus read);
 
     // BATCH messages manipulators.
-    // NOTE: These methods are used for changing of attributes of
-    // many messages via DIRECT SQL calls.
-    // NOTE: Model is reset after one of these methods is applied and
-    // changes ARE written to the database.
     bool switchBatchMessageImportance(const QModelIndexList &messages);
     bool setBatchMessagesDeleted(const QModelIndexList &messages);
     bool setBatchMessagesRead(const QModelIndexList &messages, RootItem::ReadStatus read);
     bool setBatchMessagesRestored(const QModelIndexList &messages);
 
-    // Filters messages
+    // Highlights messages.
     void highlightMessages(MessageHighlighter highlight);
 
     // Loads messages of given feeds.
@@ -91,30 +89,12 @@ class MessagesModel : public QSqlTableModel {
     bool setMessageImportantById(int id, RootItem::Importance important);
     bool setMessageReadById(int id, RootItem::ReadStatus read);
 
-  private slots:
-    // To disable persistent changes submissions.
-    bool submitAll();
-
   private:
     void setupHeaderData();
     void setupFonts();
     void setupIcons();
 
-    // Fetches ALL available data to the model.
-    void fetchAllData();
-
-    // Direct SQL stuff.
-    QString orderByClause() const;
-    QString selectStatement() const;
-    QString formatFields() const;
-
-    // NOTE: These two lists contain data for multicolumn sorting.
-    // They are always same length. Most important sort column/order
-    // are located at the start of lists;
-    QMap<int,QString> m_fieldNames;
-    QList<int> m_sortColumn;
-    QList<Qt::SortOrder> m_sortOrder;
-
+    MessagesModelCache *m_cache;
     MessageHighlighter m_messageHighlighter;
 
     QString m_customDateFormat;
@@ -124,6 +104,8 @@ class MessagesModel : public QSqlTableModel {
 
     QFont m_normalFont;
     QFont m_boldFont;
+    QFont m_normalStrikedFont;
+    QFont m_boldStrikedFont;
 
     QIcon m_favoriteIcon;
     QIcon m_readIcon;
