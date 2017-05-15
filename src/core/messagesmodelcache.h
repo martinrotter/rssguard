@@ -45,7 +45,7 @@ class MessagesModelCache : public QObject {
       m_msgCache.clear();
     }
 
-    void setData(const QModelIndex &index, const QVariant &value, QSqlRecord &record);
+    void setData(const QModelIndex &index, const QVariant &value, const QSqlRecord &record);
     QVariant data(const QModelIndex &idx);
 
   private:

@@ -26,7 +26,7 @@ MessagesModelCache::MessagesModelCache(QObject *parent) : QObject(parent), m_msg
 MessagesModelCache::~MessagesModelCache() {
 }
 
-void MessagesModelCache::setData(const QModelIndex &index, const QVariant &value, QSqlRecord &record) {
+void MessagesModelCache::setData(const QModelIndex &index, const QVariant &value, const QSqlRecord &record) {
   if (!m_msgCache.contains(index.row())) {
     m_msgCache[index.row()] = record;
   }
