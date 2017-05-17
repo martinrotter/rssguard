@@ -543,6 +543,8 @@ RootItem *OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     feed->setTitle(item["title"].toString());
     feed->setCustomId(item["id"].toInt());
 
+    qDebug("Custom ID of next fetched Nextcloud feed is '%d'.", item["id"].toInt());
+
     cats.value(item["folderId"].toInt())->appendChild(feed);
   }
 
