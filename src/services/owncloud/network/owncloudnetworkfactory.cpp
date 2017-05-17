@@ -330,6 +330,8 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::R
 
   json["items"] = ids;
 
+  qDebug() << QSL("Raw output for marking msgs read with Nextcloud is : \n\n") << QString::fromUtf8(raw_output);
+
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(final_url,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
