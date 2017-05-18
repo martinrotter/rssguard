@@ -178,8 +178,10 @@ void Feed::run() {
 
     // Sanitize title. Remove newlines etc.
     msgs[i].m_title = QUrl::fromPercentEncoding(msgs[i].m_title.toUtf8())
-                      .remove(QRegExp(QSL("[\\n\\r\\t]")))
-                      .replace(QRegExp(QSL("[]")), QSL(" "));
+                      // Replace all continuous white space.
+                      .replace(QRegExp(QSL("[\\s]{2,}")), QSL(" "))
+                      // Remove all newlines and leading white space.
+                      .remove(QRegExp(QSL("([\\n\\r])|(^\\s)")));
   }
 
   emit messagesObtained(msgs, error_during_obtaining);
