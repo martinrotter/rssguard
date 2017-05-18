@@ -175,7 +175,11 @@ void Feed::run() {
     // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
     msgs[i].m_contents = QUrl::fromPercentEncoding(msgs[i].m_contents.toUtf8());
     msgs[i].m_author = msgs[i].m_author.toUtf8();
-    msgs[i].m_title = QUrl::fromPercentEncoding(msgs[i].m_title.toUtf8());
+
+    // Sanitize title. Remove newlines etc.
+    msgs[i].m_title = QUrl::fromPercentEncoding(msgs[i].m_title.toUtf8())
+                      .remove(QRegExp(QSL("[\\n\\r\\t]")))
+                      .replace(QRegExp(QSL("[]")), QSL(" "));
   }
 
   emit messagesObtained(msgs, error_during_obtaining);
