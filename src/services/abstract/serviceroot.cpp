@@ -322,6 +322,8 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
         break;
     }
 
+    qDebug() << "Custom IDs of messages for some operation are:" << list;
+
     return list;
   }
 }
