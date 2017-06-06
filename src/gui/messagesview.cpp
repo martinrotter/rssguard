@@ -365,9 +365,10 @@ void MessagesView::deleteSelectedMessages() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesDeleted(mapped_indexes);
-  current_index = m_proxyModel->index(current_index.row(), current_index.column());
+  current_index = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
   if (current_index.isValid()) {
+    setCurrentIndex(current_index);
     emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
   }
   else {

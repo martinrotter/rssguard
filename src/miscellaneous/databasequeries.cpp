@@ -115,8 +115,9 @@ bool DatabaseQueries::deleteOrRestoreMessagesToFromBin(QSqlDatabase db, const QS
   QSqlQuery q(db);
   q.setForwardOnly(true);
 
-  return q.exec(QString(QSL("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);")).arg(ids.join(QSL(", ")),
-                                                                                          QString::number(deleted ? 1 : 0)));
+  return q.exec(QString(QSL("UPDATE Messages SET is_deleted = %2, is_pdeleted = %3 WHERE id IN (%1);")).arg(ids.join(QSL(", ")),
+                                                                                                            QString::number(deleted ? 1 : 0),
+                                                                                                            QString::number(0)));
 }
 
 bool DatabaseQueries::restoreBin(QSqlDatabase db, int account_id) {

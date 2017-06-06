@@ -227,13 +227,21 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
 
     case Qt::FontRole: {
       QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
-      QVariant data_read = m_cache->containsData(idx_read .row()) ? m_cache->data(idx_read ) : QSqlQueryModel::data(idx_read );
+      QVariant data_read = data(idx_read, Qt::EditRole);
 
-      QModelIndex idx_del = index(idx.row(), MSG_DB_DELETED_INDEX);
-      QVariant data_del = m_cache->containsData(idx_del.row()) ? m_cache->data(idx_del) : QSqlQueryModel::data(idx_del);
-      const bool is_bin = qobject_cast<RecycleBin*>(loadedItem());
-      const bool is_deleted = data_del.toBool();
-      const bool striked = is_bin ^ is_deleted;
+      const bool is_bin = qobject_cast<RecycleBin*>(loadedItem()) != nullptr;
+      bool is_deleted;
+
+      if (is_bin) {
+        QModelIndex idx_del = index(idx.row(), MSG_DB_PDELETED_INDEX);
+        is_deleted = data(idx_del, Qt::EditRole).toBool();
+      }
+      else {
+        QModelIndex idx_del = index(idx.row(), MSG_DB_DELETED_INDEX);
+        is_deleted = data(idx_del, Qt::EditRole).toBool();
+      }
+
+      const bool striked = is_deleted;
 
       if (data_read.toBool()) {
         return striked ? m_normalStrikedFont : m_normalFont;
@@ -417,7 +425,12 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages) {
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
 
-    setData(index(message.row(), MSG_DB_DELETED_INDEX), 1);
+    if (qobject_cast<RecycleBin*>(m_selectedItem) != nullptr) {
+      setData(index(message.row(), MSG_DB_PDELETED_INDEX), 1);
+    }
+    else {
+      setData(index(message.row(), MSG_DB_DELETED_INDEX), 1);
+    }
   }
 
   reloadWholeLayout();
@@ -482,6 +495,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
 
+    setData(index(message.row(), MSG_DB_PDELETED_INDEX), 0);
     setData(index(message.row(), MSG_DB_DELETED_INDEX), 0);
   }
 

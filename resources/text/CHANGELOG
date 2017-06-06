@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ Messages which are not removed or restored are not instantly deleted from list, they are striked-through instead. This is more resource friendly.
 ▪ Message list is now not reloaded when doing batch message operations.
 ▪ Message list SQL queries are now fully adjustable. This will allow for integration of labels functionality in the future.
 ▪ Auto-update status of feeds is now more general and complete. (issue #91)
@@ -15,6 +16,7 @@ Changed:
 ▪ Tweaked some conditions for determining newly "updated" messages in ATOM format. (issue #103)
 
 Fixed:
+▪ Fixed regression when restoring deleted messages.
 ▪ Crash in TT-RSS plugin on application exit, when TT-RSS user needed to be logged out.
 
 3.4.0
