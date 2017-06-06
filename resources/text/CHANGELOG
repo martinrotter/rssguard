@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ Auto-update notification is now switchable. (issue #119)
 ▪ Messages which are not removed or restored are not instantly deleted from list, they are striked-through instead. This is more resource friendly.
 ▪ Message list is now not reloaded when doing batch message operations.
 ▪ Message list SQL queries are now fully adjustable. This will allow for integration of labels functionality in the future.

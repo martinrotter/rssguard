@@ -46,6 +46,9 @@ namespace Feeds {
   KEY UpdateTimeout;
   VALUE(int) UpdateTimeoutDef;
 
+  KEY EnableAutoUpdateNotification;
+  VALUE(bool) EnableAutoUpdateNotificationDef;
+
   KEY CountFormat;
   VALUE(char*) CountFormatDef;
 

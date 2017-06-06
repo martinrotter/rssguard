@@ -31,6 +31,9 @@ DKEY Feeds::ID                            = "feeds";
 DKEY Feeds::UpdateTimeout                 = "feed_update_timeout";
 DVALUE(int) Feeds::UpdateTimeoutDef       = DOWNLOAD_TIMEOUT;
 
+DKEY Feeds::EnableAutoUpdateNotification              = "enable_auto_update_notification";
+DVALUE(bool) Feeds::EnableAutoUpdateNotificationDef   = true;
+
 DKEY Feeds::CountFormat                   = "count_format";
 DVALUE(char*) Feeds::CountFormatDef       = "(%unread)";
 

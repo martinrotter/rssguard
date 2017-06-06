@@ -208,9 +208,11 @@ void FeedReader::executeNextAutoUpdate() {
 
     // NOTE: OSD/bubble informing about performing
     // of scheduled update can be shown now.
-    qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
-                         tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
-                         QSystemTrayIcon::Information);
+    if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool()) {
+      qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
+                           tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
+                           QSystemTrayIcon::Information);
+    }
   }
 }
 
