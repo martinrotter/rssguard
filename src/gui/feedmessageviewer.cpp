@@ -113,20 +113,12 @@ void FeedMessageViewer::saveSize() {
   
   m_feedsView->saveAllExpandStates();
   
+
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, QString(m_feedSplitter->saveState().toBase64()));
   settings->setValue(GROUP(GUI), GUI::SplitterMessages, QString(m_messageSplitter->saveState().toBase64()));
-  
-  // States of splitters are stored, let's store
-  // widths of columns.
-  int width_column_author = m_messagesView->columnWidth(MSG_DB_AUTHOR_INDEX);
-  int width_column_date = m_messagesView->columnWidth(MSG_DB_DCREATED_INDEX);
-  
-  if (width_column_author != 0 && width_column_date != 0) {
-    settings->setValue(GROUP(GUI), KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX), width_column_author);
-    settings->setValue(GROUP(GUI), KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX), width_column_date);
-  }
-  
+  settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->header()->saveState().toBase64()));
+
   // Store "visibility" of toolbars and list headers.
   settings->setValue(GROUP(GUI), GUI::ToolbarsVisible, m_toolBarsEnabled);
   settings->setValue(GROUP(GUI), GUI::ListHeadersVisible, m_listHeadersEnabled);
@@ -134,19 +126,12 @@ void FeedMessageViewer::saveSize() {
 
 void FeedMessageViewer::loadSize() {
   const Settings *settings = qApp->settings();
-  const int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
   
   // Restore offsets of splitters.
   m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds)).toString().toLocal8Bit()));
   m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterMessages)).toString().toLocal8Bit()));
   
-  // Splitters are restored, now, restore widths of columns.
-  m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX, settings->value(GROUP(GUI),
-                                                                      KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
-                                                                      default_msg_section_size).toInt());
-  m_messagesView->setColumnWidth(MSG_DB_DCREATED_INDEX, settings->value(GROUP(GUI),
-                                                                        KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
-                                                                        default_msg_section_size).toInt());
+  m_messagesView->header()->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::MessageViewState)).toString().toLocal8Bit()));
 }
 
 void FeedMessageViewer::loadMessageViewerFonts() {  

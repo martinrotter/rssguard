@@ -88,8 +88,8 @@ void MessagesView::reloadSelections() {
   QModelIndex current_index = selectionModel()->currentIndex();
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   const Message selected_message = m_sourceModel->messageAt(mapped_current_index.row());
-  const int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
-  const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
+  const int col = header()->sortIndicatorSection();
+  const Qt::SortOrder ord = header()->sortIndicatorOrder();
 
   // Reload the model now.
   sort(col, ord, true, false, false);
@@ -268,8 +268,8 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
 }
 
 void MessagesView::loadItem(RootItem *item) {
-  const int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
-  const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
+  const int col = header()->sortIndicatorSection();
+  const Qt::SortOrder ord = header()->sortIndicatorOrder();
 
   scrollToTop();
   sort(col, ord, false, true, false);
@@ -513,7 +513,6 @@ void MessagesView::adjustColumns() {
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);
     hideColumn(MSG_DB_DELETED_INDEX);
-    //hideColumn(MSG_DB_FEED_INDEX);
     hideColumn(MSG_DB_URL_INDEX);
     hideColumn(MSG_DB_CONTENTS_INDEX);
     hideColumn(MSG_DB_PDELETED_INDEX);
@@ -528,11 +527,6 @@ void MessagesView::adjustColumns() {
 }
 
 void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
-  // Save current setup.
-  qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortColumnMessages, column);
-  qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortOrderMessages, order);
-  qApp->settings()->sync();
-
   // Repopulate the shit.
   sort(column, order, true, false, false);
   emit currentMessageRemoved();

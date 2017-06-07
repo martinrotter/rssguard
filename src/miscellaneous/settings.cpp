@@ -73,6 +73,9 @@ NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QFont(
 // GUI.
 DKEY GUI::ID                                      = "gui";
 
+DKEY GUI::MessageViewState                        = "msg_view_state";
+DVALUE(QString) GUI::MessageViewStateDef          = QString();
+
 DKEY GUI::SplitterFeeds                           = "splitter_feeds";
 DVALUE(char*) GUI::SplitterFeedsDef               = "";
 
@@ -138,12 +141,6 @@ DVALUE(bool) GUI::HideTabBarIfOnlyOneTabDef    = false;
 
 DKEY GUI::MessagesToolbarDefaultButtons             = "messages_toolbar";
 DVALUE(char*) GUI::MessagesToolbarDefaultButtonsDef = "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,spacer,search";
-
-DKEY GUI::DefaultSortColumnMessages                = "default_sort_column_messages";
-DVALUE(int) GUI::DefaultSortColumnMessagesDef      = MSG_DB_DCREATED_INDEX;
-
-DKEY GUI::DefaultSortOrderMessages                       = "default_sort_order_messages";
-DVALUE(Qt::SortOrder) GUI::DefaultSortOrderMessagesDef   = Qt::DescendingOrder;
 
 DKEY GUI::DefaultSortColumnFeeds                     = "default_sort_column_feeds";
 DVALUE(int) GUI::DefaultSortColumnFeedsDef           = FDS_MODEL_TITLE_INDEX;

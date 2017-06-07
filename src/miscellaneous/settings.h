@@ -27,6 +27,7 @@
 #include <QNetworkProxy>
 #include <QStringList>
 #include <QColor>
+#include <QByteArray>
 
 #define KEY extern const char*
 #define DKEY const char*
@@ -91,6 +92,9 @@ namespace Messages {
 // GUI.
 namespace GUI {
   KEY ID;
+
+  KEY MessageViewState;
+  VALUE(QString) MessageViewStateDef;
 
   KEY SplitterFeeds;
   VALUE(char*) SplitterFeedsDef;
@@ -157,12 +161,6 @@ namespace GUI {
 
   KEY MessagesToolbarDefaultButtons;
   VALUE(char*) MessagesToolbarDefaultButtonsDef;
-
-  KEY DefaultSortColumnMessages;
-  VALUE(int) DefaultSortColumnMessagesDef;
-
-  KEY DefaultSortOrderMessages;
-  VALUE(Qt::SortOrder) DefaultSortOrderMessagesDef;
 
   KEY DefaultSortColumnFeeds;
   VALUE(int) DefaultSortColumnFeedsDef;
