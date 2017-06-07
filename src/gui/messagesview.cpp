@@ -25,7 +25,7 @@
 #include "network-web/webfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
-
+#include "gui/treeviewcolumnsmenu.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
 
 #include <QKeyEvent>
@@ -43,6 +43,12 @@ MessagesView::MessagesView(QWidget *parent)
   createConnections();
   setModel(m_proxyModel);
   setupAppearance();
+
+  header()->setContextMenuPolicy(Qt::CustomContextMenu);
+  connect(header(), &QHeaderView::customContextMenuRequested, [=](const QPoint &point) {
+    TreeViewColumnsMenu mm(header());
+    mm.exec(header()->mapToGlobal(point));
+  });
 }
 
 MessagesView::~MessagesView() {

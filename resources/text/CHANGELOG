@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ Columns in message list can be hidden/shown/reordered with context menu. (issue #115)
 ▪ Auto-update notification is now switchable. (issue #119)
 ▪ Messages which are not removed or restored are not instantly deleted from list, they are striked-through instead. This is more resource friendly.
 ▪ Message list is now not reloaded when doing batch message operations.
