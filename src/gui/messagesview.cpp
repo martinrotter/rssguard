@@ -168,14 +168,15 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
   const QModelIndex clicked_index = indexAt(event->pos());
 
   if (!clicked_index.isValid()) {
-    qDebug("Context menu for MessagesView will not be shown because user clicked on invalid item.");
-    return;
+    TreeViewColumnsMenu menu(header());
+    menu.exec(event->globalPos());
   }
+  else {
+    // Context menu is not initialized, initialize.
+    initializeContextMenu();
 
-  // Context menu is not initialized, initialize.
-  initializeContextMenu();
-
-  m_contextMenu->exec(event->globalPos());
+    m_contextMenu->exec(event->globalPos());
+  }
 }
 
 void MessagesView::initializeContextMenu() {
