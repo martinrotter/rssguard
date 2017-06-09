@@ -151,8 +151,11 @@ void MessagesView::setupAppearance() {
   setAllColumnsShowFocus(false);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
   setItemDelegate(new StyledItemDelegateWithoutFocus(this));
+
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
-  header()->setStretchLastSection(false);
+  header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
+  header()->setCascadingSectionResizes(false);
+  header()->setStretchLastSection(true);
   header()->setSortIndicatorShown(true);
 }
 
@@ -510,12 +513,15 @@ void MessagesView::adjustColumns() {
     header()->setSectionResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
     header()->setSectionResizeMode(MSG_DB_FEED_TITLE_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
+    header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
+
+    //header()->resizeSection(MSG_DB_READ_INDEX, MESSAGES_VIEW_MINIMUM_COL);
+    //header()->resizeSection(MSG_DB_IMPORTANT_INDEX, MESSAGES_VIEW_MINIMUM_COL);
 
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);

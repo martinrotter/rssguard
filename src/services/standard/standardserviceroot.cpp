@@ -27,6 +27,7 @@
 #include "gui/messagebox.h"
 #include "exceptions/applicationexception.h"
 #include "services/abstract/recyclebin.h"
+#include "services/abstract/labelsrootitem.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardcategory.h"
@@ -175,7 +176,10 @@ void StandardServiceRoot::loadFromDatabase(){
   assembleFeeds(feeds);
 
   // As the last item, add recycle bin, which is needed.
-  appendChild(m_recycleBin);
+  appendChild(recycleBin());
+
+  //appendChild(new LabelsRootItem(this));
+
   updateCounts(true);
 }
 

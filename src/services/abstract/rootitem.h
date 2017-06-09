@@ -37,7 +37,8 @@ namespace RootItemKind {
     Bin         = 2,
     Feed        = 4,
     Category    = 8,
-    ServiceRoot = 16
+    ServiceRoot = 16,
+    LabelsRoot  = 32
   };
 
   inline Kind operator|(Kind a, Kind b) {

@@ -48,6 +48,7 @@
 #define CLOSE_LOCK_TIMEOUT                    500
 #define DOWNLOAD_TIMEOUT                      5000
 #define MESSAGES_VIEW_DEFAULT_COL             170
+#define MESSAGES_VIEW_MINIMUM_COL             36
 #define FEEDS_VIEW_COLUMN_COUNT               2
 #define FEED_DOWNLOADER_MAX_THREADS           6
 #define DEFAULT_DAYS_TO_DELETE_MSG            14
