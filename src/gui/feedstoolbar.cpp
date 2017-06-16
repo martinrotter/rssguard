@@ -21,6 +21,8 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
 
+#include <QWidgetAction>
+
 
 FeedsToolBar::FeedsToolBar(const QString &title, QWidget *parent) : BaseToolBar(title, parent) {
   // Update right margin of filter textbox.
@@ -42,20 +44,12 @@ QList<QAction*> FeedsToolBar::changeableActions() const {
 
 void FeedsToolBar::saveChangeableActions(const QStringList &actions) {
   qApp->settings()->setValue(GROUP(GUI), GUI::FeedsToolbarActions, actions.join(QSL(",")));
-  loadChangeableActions(actions);
+  loadSpecificActions(getSpecificActions(actions));
 }
 
-void FeedsToolBar::loadChangeableActions() {
-  QStringList action_names = qApp->settings()->value(GROUP(GUI), SETTING(GUI::FeedsToolbarActions)).toString().split(',',
-                                                                                                                     QString::SkipEmptyParts);
-
-  loadChangeableActions(action_names);
-}
-
-void FeedsToolBar::loadChangeableActions(const QStringList &actions) {
+QList<QAction*> FeedsToolBar::getSpecificActions(const QStringList &actions) {
   QList<QAction*> available_actions = availableActions();
-
-  clear();
+  QList<QAction*> spec_actions;
 
   // Iterate action names and add respectable actions into the toolbar.
   foreach (const QString &action_name, actions) {
@@ -63,21 +57,49 @@ void FeedsToolBar::loadChangeableActions(const QStringList &actions) {
 
     if (matching_action != nullptr) {
       // Add existing standard action.
-      addAction(matching_action);
+      spec_actions.append(matching_action);
     }
     else if (action_name == SEPARATOR_ACTION_NAME) {
       // Add new separator.
-      addSeparator();
+      QAction *act = new QAction(this);
+      act->setSeparator(true);
+
+      spec_actions.append(act);
     }
     else if (action_name == SPACER_ACTION_NAME) {
       // Add new spacer.
       QWidget *spacer = new QWidget(this);
       spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-      QAction *action = addWidget(spacer);
+      QWidgetAction *action = new QWidgetAction(this);
+
+      action->setDefaultWidget(spacer);
       action->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
       action->setProperty("type", SPACER_ACTION_NAME);
       action->setProperty("name", tr("Toolbar spacer"));
+
+      spec_actions.append(action);
     }
   }
+
+  return spec_actions;
+}
+
+void FeedsToolBar::loadSpecificActions(const QList<QAction*> &actions) {
+  clear();
+
+  foreach (QAction *act, actions) {
+    addAction(act);
+  }
+}
+
+QStringList FeedsToolBar::defaultActions() const {
+  return QString(GUI::FeedsToolbarActionsDef).split(',',
+                                                    QString::SkipEmptyParts);
+}
+
+QStringList FeedsToolBar::savedActions() const {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::FeedsToolbarActions)).toString().split(',',
+                                                                                                 QString::SkipEmptyParts);
+
 }

@@ -72,7 +72,7 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent), m_mutex(new Mutex(QM
 }
 
 StatusBar::~StatusBar() {
-  clear();  
+  clear();
   qDebug("Destroying StatusBar instance.");
 }
 
@@ -94,28 +94,26 @@ void StatusBar::saveChangeableActions(const QStringList &actions) {
   QMutexLocker locker(*m_mutex);
 
   qApp->settings()->setValue(GROUP(GUI), GUI::StatusbarActions, actions.join(QSL(",")));
-  loadChangeableActions(actions);
+  loadSpecificActions(getSpecificActions(actions));
 }
 
-void StatusBar::loadChangeableActions() {
-  QMutexLocker locker(*m_mutex);
-
-  QStringList action_names = qApp->settings()->value(GROUP(GUI), SETTING(GUI::StatusbarActions)).toString().split(',',
-                                                                                                                  QString::SkipEmptyParts);
-
-  loadChangeableActions(action_names);
+QStringList StatusBar::defaultActions() const {
+  return QString(GUI::StatusbarActionsDef).split(',', QString::SkipEmptyParts);
 }
 
-void StatusBar::loadChangeableActions(const QStringList &action_names) {
-  clear();
+QStringList StatusBar::savedActions() const {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::StatusbarActions)).toString().split(',', QString::SkipEmptyParts);
+}
 
-  bool progress_visible = actions().contains(m_barProgressFeedsAction) &&
+QList<QAction*> StatusBar::getSpecificActions(const QStringList &actions) {
+  bool progress_visible = this->actions().contains(m_barProgressFeedsAction) &&
                           m_lblProgressFeeds->isVisible() &&
                           m_barProgressFeeds->isVisible();
   QList<QAction*> available_actions = availableActions();
+  QList<QAction*> spec_actions;
 
   // Iterate action names and add respectable actions into the toolbar.
-  foreach (const QString &action_name, action_names) {
+  foreach (const QString &action_name, actions) {
     QAction *matching_action = findMatchingAction(action_name, available_actions);
     QAction *action_to_add;
     QWidget *widget_to_add;
@@ -186,8 +184,32 @@ void StatusBar::loadChangeableActions(const QStringList &action_names) {
 
     if (action_to_add != nullptr && widget_to_add != nullptr) {
       action_to_add->setProperty("widget", QVariant::fromValue((void*) widget_to_add));
-      addPermanentWidget(widget_to_add);
-      addAction(action_to_add);
+      spec_actions.append(action_to_add);
+    }
+  }
+
+  return spec_actions;
+}
+
+void StatusBar::loadSpecificActions(const QList<QAction*> &actions) {
+  foreach (QAction *act, this->actions()) {
+    QWidget *widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
+
+    if (widget != nullptr) {
+      removeWidget(widget);
+    }
+  }
+
+  clear();
+
+  foreach (QAction *act, actions) {
+    QWidget *widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
+
+    addAction(act);
+
+    // And also add widget.
+    if (widget != nullptr) {
+      addPermanentWidget(widget);
     }
   }
 }

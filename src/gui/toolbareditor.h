@@ -40,6 +40,7 @@ class ToolBarEditor : public QWidget {
     // Toolbar operations.
     void loadFromToolBar(BaseBar *tool_bar);
     void saveToolBar();
+    void resetToolBar();
 
     inline QListWidget *activeItemsWidget() const {
       return m_ui->m_listActivatedActions;

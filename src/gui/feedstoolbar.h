@@ -32,12 +32,12 @@ class FeedsToolBar : public BaseToolBar {
     QList<QAction*> availableActions() const;
     QList<QAction*> changeableActions() const;
     void saveChangeableActions(const QStringList &actions);
-    void loadChangeableActions();
 
-    // Loads actions as specified by external actions list.
-    // NOTE: This is used primarily for reloading actions
-    // when they are changed from settings.
-    void loadChangeableActions(const QStringList &actions);
+    QList<QAction*> getSpecificActions(const QStringList &actions);
+    void loadSpecificActions(const QList<QAction*> &actions);
+
+    QStringList defaultActions() const;
+    QStringList savedActions() const;
 };
 
 #endif // FEEDSTOOLBAR_H

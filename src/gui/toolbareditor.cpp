@@ -120,6 +120,12 @@ void ToolBarEditor::saveToolBar() {
   m_toolBar->saveChangeableActions(action_names);
 }
 
+void ToolBarEditor::resetToolBar() {
+  if (m_toolBar != nullptr) {
+
+  }
+}
+
 bool ToolBarEditor::eventFilter(QObject *object, QEvent *event) {
   if (object == m_ui->m_listActivatedActions) {
     if (event->type() == QEvent::KeyPress) {
