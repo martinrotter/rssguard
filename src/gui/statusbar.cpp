@@ -200,6 +200,10 @@ void StatusBar::loadSpecificActions(const QList<QAction*> &actions) {
     }
   }
 
+  removeWidget(m_barProgressDownload);
+  removeWidget(m_barProgressFeeds);
+  removeWidget(m_lblProgressDownload);
+  removeWidget(m_lblProgressFeeds);
   clear();
 
   foreach (QAction *act, actions) {

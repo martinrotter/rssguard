@@ -40,7 +40,6 @@ class ToolBarEditor : public QWidget {
     // Toolbar operations.
     void loadFromToolBar(BaseBar *tool_bar);
     void saveToolBar();
-    void resetToolBar();
 
     inline QListWidget *activeItemsWidget() const {
       return m_ui->m_listActivatedActions;
@@ -67,10 +66,14 @@ class ToolBarEditor : public QWidget {
     void deleteSelectedAction();
     void deleteAllActions();
 
+    void resetToolBar();
+
   signals:
     void setupChanged();
 
   private:
+    void loadEditor(const QList<QAction*> activated_actions, const QList<QAction*> available_actions);
+
     QScopedPointer<Ui::ToolBarEditor> m_ui;
     BaseBar *m_toolBar;
 };

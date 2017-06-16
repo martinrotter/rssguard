@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ Toolbar editor can reset toolbars.
 ▪ Toolbar editor now uses iconified tool buttons.
 ▪ Double mouse click on feed or recycle bin items in feeds list now opens all messages of the item in newspaper mode.
 ▪ Columns in message list can be hidden/shown/reordered with context menu. (issue #115)
