@@ -505,6 +505,24 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
   }
 }
 
+void FeedsView::mouseDoubleClickEvent(QMouseEvent *event) {
+  QModelIndex idx = indexAt(event->pos());
+
+  if (idx.isValid()) {
+    RootItem *item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
+
+    if (item->kind() == RootItemKind::Feed || item->kind() == RootItemKind::Bin) {
+      const QList<Message> messages = m_sourceModel->messagesForItem(item);
+
+      if (!messages.isEmpty()) {
+        emit openMessagesInNewspaperView(item, messages);
+      }
+    }
+  }
+
+  QTreeView::mouseDoubleClickEvent(event);
+}
+
 void FeedsView::saveSortState(int column, Qt::SortOrder order) {
   qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortColumnFeeds, column);
   qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortOrderFeeds, order);

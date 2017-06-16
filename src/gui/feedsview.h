@@ -110,6 +110,8 @@ class FeedsView : public QTreeView {
     // Show custom context menu.
     void contextMenuEvent(QContextMenuEvent *event);
 
+    void mouseDoubleClickEvent(QMouseEvent *event);
+
   private slots:
     void expandItemDelayed(const QModelIndex &idx);
     void markSelectedItemReadStatus(RootItem::ReadStatus read);
