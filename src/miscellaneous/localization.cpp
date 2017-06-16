@@ -89,6 +89,7 @@ QList<Language> Localization::installedLanguages() const {
       languages << new_language;
     }
   }
+
   return languages;
 }
 

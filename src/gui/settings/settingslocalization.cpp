@@ -58,6 +58,8 @@ void SettingsLocalization::loadSettings() {
     item->setIcon(0, qApp->icons()->miscIcon(QString(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
   }
 
+  m_ui->m_treeLanguages->sortByColumn(0, Qt::AscendingOrder);
+
   QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(qApp->localization()->loadedLanguage(), Qt::MatchContains, 1);
 
   if (!matching_items.isEmpty()) {
