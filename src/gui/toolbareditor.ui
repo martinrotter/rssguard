@@ -65,16 +65,31 @@
    <item row="1" column="1">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="m_btnMoveActionUp">
-       <property name="text">
+      <widget class="QToolButton" name="m_btnMoveActionUp">
+       <property name="toolTip">
         <string>Move action up</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="m_btnMoveActionDown">
-       <property name="text">
+      <widget class="QToolButton" name="m_btnMoveActionDown">
+       <property name="toolTip">
         <string>Move action down</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -86,23 +101,28 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="m_btnInsertSeparator">
-       <property name="text">
+      <widget class="QToolButton" name="m_btnInsertSeparator">
+       <property name="toolTip">
         <string>Insert separator</string>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="m_btnInsertSpacer">
-       <property name="text">
-        <string>Insert spacer</string>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="m_btnAddSelectedAction">
-       <property name="text">
-        <string>Add selected action</string>
+      <widget class="QToolButton" name="m_btnInsertSpacer">
+       <property name="toolTip">
+        <string>Insert spacer</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -114,16 +134,41 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="m_btnDeleteSelectedAction">
-       <property name="text">
-        <string>Delete selected action</string>
+      <widget class="QToolButton" name="m_btnAddSelectedAction">
+       <property name="toolTip">
+        <string>Add selected action</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="m_btnDeleteAllActions">
-       <property name="text">
+      <widget class="QToolButton" name="m_btnDeleteSelectedAction">
+       <property name="toolTip">
+        <string>Delete selected action</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="m_btnDeleteAllActions">
+       <property name="toolTip">
         <string>Delete all actions</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -166,6 +211,17 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_listActivatedActions</tabstop>
+  <tabstop>m_listAvailableActions</tabstop>
+  <tabstop>m_btnMoveActionUp</tabstop>
+  <tabstop>m_btnMoveActionDown</tabstop>
+  <tabstop>m_btnInsertSeparator</tabstop>
+  <tabstop>m_btnInsertSpacer</tabstop>
+  <tabstop>m_btnAddSelectedAction</tabstop>
+  <tabstop>m_btnDeleteSelectedAction</tabstop>
+  <tabstop>m_btnDeleteAllActions</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
