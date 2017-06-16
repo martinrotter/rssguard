@@ -42,6 +42,8 @@ void TreeViewColumnsMenu::prepareMenu() {
 }
 
 void TreeViewColumnsMenu::actionTriggered(bool toggle) {
+  Q_UNUSED(toggle)
+
   QAction *send_act = qobject_cast<QAction*>(sender());
 
   header()->setSectionHidden(send_act->data().toInt(), !send_act->isChecked());
