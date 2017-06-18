@@ -52,7 +52,7 @@ QList<QAction*> MessagesToolBar::changeableActions() const {
 
 void MessagesToolBar::saveChangeableActions(const QStringList& actions) {
   qApp->settings()->setValue(GROUP(GUI), GUI::MessagesToolbarDefaultButtons, actions.join(QSL(",")));
-  loadChangeableActions(actions);
+  loadSpecificActions(getSpecificActions(actions));
 
   // If user hidden search messages box, then remove the filter.
   if (!changeableActions().contains(m_actionSearchMessages)) {
@@ -60,10 +60,9 @@ void MessagesToolBar::saveChangeableActions(const QStringList& actions) {
   }
 }
 
-void MessagesToolBar::loadChangeableActions(const QStringList& actions) {
+QList<QAction*> MessagesToolBar::getSpecificActions(const QStringList &actions) {
   QList<QAction*> available_actions = availableActions();
-
-  clear();
+  QList<QAction*> spec_actions;
 
   // Iterate action names and add respectable actions into the toolbar.
   foreach (const QString &action_name, actions) {
@@ -71,30 +70,47 @@ void MessagesToolBar::loadChangeableActions(const QStringList& actions) {
 
     if (matching_action != nullptr) {
       // Add existing standard action.
-      addAction(matching_action);
+      spec_actions.append(matching_action);
     }
     else if (action_name == SEPARATOR_ACTION_NAME) {
       // Add new separator.
-      addSeparator();
+      QAction *act = new QAction(this);
+      act->setSeparator(true);
+
+      spec_actions.append(act);
     }
     else if (action_name == SEACRH_MESSAGES_ACTION_NAME) {
       // Add search box.
-      addAction(m_actionSearchMessages);
+      spec_actions.append(m_actionSearchMessages);
     }
     else if (action_name == HIGHLIGHTER_ACTION_NAME) {
       // Add filter button.
-      addAction(m_actionMessageHighlighter);
+      spec_actions.append(m_actionMessageHighlighter);
     }
     else if (action_name == SPACER_ACTION_NAME) {
       // Add new spacer.
       QWidget *spacer = new QWidget(this);
       spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-      QAction *action = addWidget(spacer);
+      QWidgetAction *action = new QWidgetAction(this);
+
+      action->setDefaultWidget(spacer);
       action->setIcon(qApp->icons()->fromTheme(QSL("go-jump")));
       action->setProperty("type", SPACER_ACTION_NAME);
       action->setProperty("name", tr("Toolbar spacer"));
+
+      spec_actions.append(action);
     }
+  }
+
+  return spec_actions;
+}
+
+void MessagesToolBar::loadSpecificActions(const QList<QAction*> &actions) {
+  clear();
+
+  foreach (QAction *act, actions) {
+    addAction(act);
   }
 }
 
@@ -145,10 +161,13 @@ void MessagesToolBar::initializeHighlighter() {
           this, SLOT(handleMessageHighlighterChange(QAction*)));
 }
 
-void MessagesToolBar::loadChangeableActions() {
-  QStringList action_names = qApp->settings()->value(GROUP(GUI),
-                                                     SETTING(GUI::MessagesToolbarDefaultButtons)).toString().split(',',
-                                                                                                                   QString::SkipEmptyParts);
+QStringList MessagesToolBar::defaultActions() const {
+  return QString(GUI::MessagesToolbarDefaultButtonsDef).split(',',
+                                                              QString::SkipEmptyParts);
+}
 
-  loadChangeableActions(action_names);
+QStringList MessagesToolBar::savedActions() const {
+  return qApp->settings()->value(GROUP(GUI),
+                                 SETTING(GUI::MessagesToolbarDefaultButtons)).toString().split(',',
+                                                                                               QString::SkipEmptyParts);
 }

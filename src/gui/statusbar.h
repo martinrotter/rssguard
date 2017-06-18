@@ -39,7 +39,10 @@ class StatusBar : public QStatusBar, public BaseBar {
     QList<QAction*> availableActions() const;
     QList<QAction*> changeableActions() const;
     void saveChangeableActions(const QStringList &actions);
-    void loadChangeableActions();
+    QStringList defaultActions() const;
+    QStringList savedActions() const;
+    QList<QAction*> getSpecificActions(const QStringList &actions);
+    void loadSpecificActions(const QList<QAction*> &actions);
 
   public slots:
     // Progress bar operations
@@ -54,7 +57,6 @@ class StatusBar : public QStatusBar, public BaseBar {
 
   private:
     void clear();
-    void loadChangeableActions(const QStringList &action_names);
 
     Mutex *m_mutex;
 

@@ -2,6 +2,9 @@
 —————
 
 Added:
+▪ Toolbar editor can reset toolbars.
+▪ Toolbar editor now uses iconified tool buttons.
+▪ Double mouse click on feed or recycle bin items in feeds list now opens all messages of the item in newspaper mode.
 ▪ Columns in message list can be hidden/shown/reordered with context menu. (issue #115)
 ▪ Auto-update notification is now switchable. (issue #119)
 ▪ Messages which are not removed or restored are not instantly deleted from list, they are striked-through instead. This is more resource friendly.

@@ -28,14 +28,15 @@ ToolBarEditor::ToolBarEditor(QWidget *parent)
   m_ui->setupUi(this);
 
   // Create connections.
-  connect(m_ui->m_btnInsertSeparator, &QPushButton::clicked, this, &ToolBarEditor::insertSeparator);
-  connect(m_ui->m_btnInsertSpacer, &QPushButton::clicked, this, &ToolBarEditor::insertSpacer);
+  connect(m_ui->m_btnInsertSeparator, &QToolButton::clicked, this, &ToolBarEditor::insertSeparator);
+  connect(m_ui->m_btnInsertSpacer, &QToolButton::clicked, this, &ToolBarEditor::insertSpacer);
 
-  connect(m_ui->m_btnAddSelectedAction, &QPushButton::clicked, this, &ToolBarEditor::addSelectedAction);
-  connect(m_ui->m_btnDeleteAllActions, &QPushButton::clicked, this, &ToolBarEditor::deleteAllActions);
-  connect(m_ui->m_btnDeleteSelectedAction, &QPushButton::clicked, this, &ToolBarEditor::deleteSelectedAction);
-  connect(m_ui->m_btnMoveActionUp, &QPushButton::clicked, this, &ToolBarEditor::moveActionUp);
-  connect(m_ui->m_btnMoveActionDown, &QPushButton::clicked, this, &ToolBarEditor::moveActionDown);
+  connect(m_ui->m_btnAddSelectedAction, &QToolButton::clicked, this, &ToolBarEditor::addSelectedAction);
+  connect(m_ui->m_btnDeleteAllActions, &QToolButton::clicked, this, &ToolBarEditor::deleteAllActions);
+  connect(m_ui->m_btnDeleteSelectedAction, &QToolButton::clicked, this, &ToolBarEditor::deleteSelectedAction);
+  connect(m_ui->m_btnMoveActionUp, &QToolButton::clicked, this, &ToolBarEditor::moveActionUp);
+  connect(m_ui->m_btnMoveActionDown, &QToolButton::clicked, this, &ToolBarEditor::moveActionDown);
+  connect(m_ui->m_btnReset, &QToolButton::clicked, this, &ToolBarEditor::resetToolBar);
 
   connect(m_ui->m_listAvailableActions, &QListWidget::itemSelectionChanged, this, &ToolBarEditor::updateActionsAvailability);
   connect(m_ui->m_listActivatedActions, &QListWidget::itemSelectionChanged, this, &ToolBarEditor::updateActionsAvailability);
@@ -43,6 +44,15 @@ ToolBarEditor::ToolBarEditor(QWidget *parent)
   connect(m_ui->m_listAvailableActions, &QListWidget::itemDoubleClicked, this, &ToolBarEditor::addSelectedAction);
 
   m_ui->m_listActivatedActions->installEventFilter(this);
+
+  m_ui->m_btnInsertSeparator->setIcon(qApp->icons()->fromTheme(QSL("insert-object")));
+  m_ui->m_btnInsertSpacer->setIcon(qApp->icons()->fromTheme(QSL("go-jump")));
+  m_ui->m_btnAddSelectedAction->setIcon(qApp->icons()->fromTheme(QSL("back")));
+  m_ui->m_btnDeleteAllActions->setIcon(qApp->icons()->fromTheme(QSL("application-exit")));
+  m_ui->m_btnDeleteSelectedAction->setIcon(qApp->icons()->fromTheme(QSL("forward")));
+  m_ui->m_btnMoveActionDown->setIcon(qApp->icons()->fromTheme(QSL("down")));
+  m_ui->m_btnMoveActionUp->setIcon(qApp->icons()->fromTheme(QSL("up")));
+  m_ui->m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("reload")));
 }
 
 ToolBarEditor::~ToolBarEditor() {
@@ -54,6 +64,29 @@ void ToolBarEditor::loadFromToolBar(BaseBar *tool_bar) {
 
   QList<QAction*> activated_actions = m_toolBar->changeableActions();
   QList<QAction*> available_actions = m_toolBar->availableActions();
+
+  loadEditor(activated_actions, available_actions);
+}
+
+void ToolBarEditor::saveToolBar() {
+  QStringList action_names;
+
+  for (int i = 0; i < m_ui->m_listActivatedActions->count(); i++) {
+    action_names.append(m_ui->m_listActivatedActions->item(i)->data(Qt::UserRole).toString());
+  }
+
+  m_toolBar->saveChangeableActions(action_names);
+}
+
+void ToolBarEditor::resetToolBar() {
+  if (m_toolBar != nullptr) {
+    loadEditor(m_toolBar->getSpecificActions(m_toolBar->defaultActions()), m_toolBar->availableActions());
+  }
+}
+
+void ToolBarEditor::loadEditor(const QList<QAction *> activated_actions, const QList<QAction *> available_actions) {
+  m_ui->m_listActivatedActions->clear();
+  m_ui->m_listAvailableActions->clear();
 
   foreach (const QAction *action, activated_actions) {
     QListWidgetItem *action_item = new QListWidgetItem(action->icon(), action->text().replace('&', ""), m_ui->m_listActivatedActions);
@@ -98,18 +131,8 @@ void ToolBarEditor::loadFromToolBar(BaseBar *tool_bar) {
   }
 
   m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
-  m_ui->m_listAvailableActions->setCurrentRow(0);
+  m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->count() >= 0 ? 0 : -1);
   m_ui->m_listActivatedActions->setCurrentRow(m_ui->m_listActivatedActions->count() >= 0 ? 0 : -1);
-}
-
-void ToolBarEditor::saveToolBar() {
-  QStringList action_names;
-
-  for (int i = 0; i < m_ui->m_listActivatedActions->count(); i++) {
-    action_names.append(m_ui->m_listActivatedActions->item(i)->data(Qt::UserRole).toString());
-  }
-
-  m_toolBar->saveChangeableActions(action_names);
 }
 
 bool ToolBarEditor::eventFilter(QObject *object, QEvent *event) {

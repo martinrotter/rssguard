@@ -229,8 +229,8 @@ void FeedMessageViewer::initialize() {
   m_toolBarMessages->setMovable(false);
   m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
 
-  m_toolBarFeeds->loadChangeableActions();
-  m_toolBarMessages->loadChangeableActions();
+  m_toolBarFeeds->loadSavedActions();
+  m_toolBarMessages->loadSavedActions();
 
   m_messagesBrowser->clear();
 

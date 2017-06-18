@@ -74,8 +74,8 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 
   // Prepare tabs.
   //m_ui->m_tabWidget->initializeTabs();
-  tabWidget()->feedMessageViewer()->feedsToolBar()->loadChangeableActions();
-  tabWidget()->feedMessageViewer()->messagesToolBar()->loadChangeableActions();
+  tabWidget()->feedMessageViewer()->feedsToolBar()->loadSavedActions();
+  tabWidget()->feedMessageViewer()->messagesToolBar()->loadSavedActions();
 
   // Establish connections.
   createConnections();
@@ -87,7 +87,7 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   setupIcons();
   loadSize();
 
-  m_statusBar->loadChangeableActions();
+  m_statusBar->loadSavedActions();
 }
 
 FormMain::~FormMain() {
