@@ -57,6 +57,7 @@
 TEMPLATE    = app
 TARGET      = rssguard
 DEFINES	    *= QT_USE_QSTRINGBUILDER
+QMAKE_MAC_SDK = macosx10.12
 
 message(rssguard: Welcome RSS Guard qmake script.)
 
@@ -742,7 +743,7 @@ unix:!mac {
 }
 
 mac {
-  CONFIG -= app_bundle
+  CONFIG += app_bundle
 
   target.path = $$quote($$PREFIX/Contents/MacOs/)
   
