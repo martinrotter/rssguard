@@ -116,6 +116,9 @@ class Application : public QtSingleApplication {
     }
 
   public slots:
+    // Restarts the application.
+    void restart();
+
     // Processes incoming message from another RSS Guard instance.
     void processExecutionMessage(const QString &message);
 
@@ -163,6 +166,7 @@ class Application : public QtSingleApplication {
     IconFactory *m_icons;
     DatabaseFactory *m_database;
     DownloadManager *m_downloadManager;
+    bool m_shouldRestart;
 };
 
 #endif // APPLICATION_H
