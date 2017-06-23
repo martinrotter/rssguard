@@ -57,7 +57,6 @@
 TEMPLATE    = app
 TARGET      = rssguard
 DEFINES	    *= QT_USE_QSTRINGBUILDER
-QMAKE_MAC_SDK = macosx10.12
 
 message(rssguard: Welcome RSS Guard qmake script.)
 
@@ -90,9 +89,9 @@ isEmpty(PREFIX) {
   win32 {
     PREFIX = $$OUT_PWD/app
   }
-  
+
   mac {
-    PREFIX = $$OUT_PWD/$${APP_LOW_NAME}.app
+    PREFIX = $$quote($$OUT_PWD/$${APP_NAME}.app)
   }
 
   unix:!mac {
@@ -743,10 +742,31 @@ unix:!mac {
 }
 
 mac {
-  CONFIG += app_bundle
+  IDENTIFIER = org.$${TARGET}.RSSGuard
+  CONFIG -= app_bundle
+  ICON = resources/macosx/$${TARGET}.icns
+  QMAKE_MAC_SDK = macosx10.12
+  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
 
-  target.path = $$quote($$PREFIX/Contents/MacOs/)
-  
+  target.path = $$quote($$PREFIX/Contents/MacOS/)
+
+  # Install app icon.
+  icns_icon.files = resources/macosx/$${TARGET}.icns
+  icns_icon.path = $$quote($$PREFIX/Contents/Resources/)
+
+  # Install Info.plist.
+  info_plist.files = resources/macosx/Info.plist.in
+  info_plist.path  = $$quote($$PREFIX/Contents/)
+
+  # Process the just installed Info.plist.
+  info_plist2.extra = @sed -e "s,@EXECUTABLE@,$$TARGET,g" -e "s,@SHORT_VERSION@,$$APP_VERSION,g" -e "s,@APP_NAME@,\"$$APP_NAME\",g" -e "s,@ICON@,$$basename(ICON),g"  -e "s,@TYPEINFO@,"????",g" $$shell_quote($$PREFIX/Contents/Info.plist.in) > $$shell_quote($$PREFIX/Contents/Info.plist) && \
+                      rm -f $$shell_quote($$PREFIX/Contents/Info.plist.in)
+  info_plist2.path = $$quote($$PREFIX/Contents/)
+
+  # Install PkgInfo
+  pkginfo.extra = @printf "APPL????" > $$shell_quote($$PREFIX/Contents/PkgInfo)
+  pkginfo.path = $$quote($$PREFIX/Contents/)
+
   # Install SQL initializers.
   misc_sql.files = resources/sql
   misc_sql.path = $$quote($$PREFIX/Contents/Resources/)
@@ -777,6 +797,8 @@ mac {
   translations.files = $$OUT_PWD/translations
   translations.path =  $$quote($$PREFIX/Contents/Resources/)
 
-  INSTALLS += target misc_sql misc_icons faenza misc_feeds skins \
+  INSTALLS += target icns_icon info_plist info_plist2 pkginfo \
+              misc_sql misc_icons faenza misc_feeds skins \
               misc_icon misc_plain_icon misc_texts translations
+
 }
