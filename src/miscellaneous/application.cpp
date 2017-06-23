@@ -47,7 +47,7 @@ Application::Application(const QString &id, int &argc, char **argv)
     m_feedReader(nullptr),
     m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
     m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
-    m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr) {
+    m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr), m_shouldRestart(false) {
   connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
   connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
@@ -391,6 +391,26 @@ void Application::onAboutToQuit() {
     // that some critical action can be processed right now.
     qDebug("Close lock timed-out.");
   }
+
+  // Now, we can check if application should just quit or restart itself.
+  if (m_shouldRestart) {
+    finish();
+    qDebug("Killing local peer connection to allow another instance to start.");
+
+    // TODO: Start RSS Guard with sleep before it cross-platform way if possible.
+    // sleep 5 && "<rssguard-start>".
+    if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
+      qDebug("New application instance was started.");
+    }
+    else {
+      qWarning("New application instance was not started successfully.");
+    }
+  }
+}
+
+void Application::restart() {
+  m_shouldRestart = true;
+  quit();
 }
 
 #if defined(USE_WEBENGINE)
