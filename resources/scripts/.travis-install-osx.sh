@@ -20,9 +20,11 @@ git clone -q --depth=1 https://martinrotter:${GH_TOKEN}@github.com/martinrotter/
 
 set -- *.zip
 dmgname="$1"
-echo $dmgname
+dmgnamenospace="${dmgname// /-}"
+echo "DMGNAME IS: $dmgname"
+echo "DMGNAME NO SPACE IS: $dmgnamenospace"
 
-curl --upload-file ./$dmgname https://transfer.sh/$dmgname --silent >> ./build-wiki/Mac-OS-X-development-builds.md
+curl --upload-file "./$dmgname" "https://transfer.sh/$dmgnamenospace" --silent >> ./build-wiki/Mac-OS-X-development-builds.md
 echo >> ./build-wiki/Mac-OS-X-development-builds.md
 cat ./build-wiki/Mac-OS-X-development-builds.md
 

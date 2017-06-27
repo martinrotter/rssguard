@@ -595,11 +595,11 @@ win32 {
 unix|mac {
   seven_zip.target = 7zip
   seven_zip.depends = install
-  seven_zip.commands = 7za a -t7z $$TARGET-$$APP_VERSION-$$APP_REVISION-unix-mac.7z $$shell_path($$PREFIX/*)
+  seven_zip.commands = 7za a -t7z "$$TARGET-$$APP_VERSION-$$APP_REVISION-unix-mac.7z" $$shell_path($$PREFIX/*)
 
   zip.target = zip
   zip.depends = install
-  zip.commands = 7za a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-unix-mac.zip $$shell_path($$PREFIX/*)
+  zip.commands = 7za a -tzip "$$TARGET-$$APP_VERSION-$$APP_REVISION-unix-mac.zip" $$shell_path($$PREFIX/*)
 
   QMAKE_EXTRA_TARGETS += seven_zip zip
 }
