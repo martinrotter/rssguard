@@ -7,9 +7,9 @@ make install
 make zip
 
 ls -lha
-otool -L rssguard.app/Contents/MacOS/rssguard
+otool -L "RSS Guard.app/Contents/MacOS/rssguard"
 
-cd rssguard.app
+cd "RSS Guard.app"
 ls -lha
 
 cd ..
