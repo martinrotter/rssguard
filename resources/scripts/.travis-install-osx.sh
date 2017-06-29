@@ -4,7 +4,7 @@ mkdir rssguard-build && cd rssguard-build
 qmake ..
 make
 make install
-make zip
+make dmg
 
 ls -lha
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
@@ -18,7 +18,7 @@ git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
 git clone -q --depth=1 https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki.git ./build-wiki
 
-set -- *.zip
+set -- *.dmg
 dmgname="$1"
 dmgnamenospace="${dmgname// /-}"
 echo "DMGNAME IS: $dmgname"

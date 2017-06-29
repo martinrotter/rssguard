@@ -613,7 +613,11 @@ mac {
   zip.depends = install
   zip.commands = 7za a -tzip "$$TARGET-$$APP_VERSION-$$APP_REVISION-mac.zip" $$shell_quote($$shell_path($$PREFIX))
 
-  QMAKE_EXTRA_TARGETS += seven_zip zip
+  dmg.target = dmg
+  dmg.depends = install
+  dmg.commands = macdeployqt $$shell_quote($$shell_path($$PREFIX)) -dmg
+
+  QMAKE_EXTRA_TARGETS += seven_zip zip dmg
 }
 
 # Create NSIS installer target on Windows.
