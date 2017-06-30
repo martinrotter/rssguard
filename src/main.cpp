@@ -83,6 +83,9 @@ int main(int argc, char *argv[]) {
 
   QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#ifdef Q_OS_MAC
+  QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
+#endif
 
   // Register needed metatypes.
   qRegisterMetaType<QList<Message> >("QList<Message>");
