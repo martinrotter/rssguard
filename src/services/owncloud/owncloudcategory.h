@@ -21,6 +21,8 @@
 #include "services/abstract/category.h"
 
 
+class OwnCloudServiceRoot;
+
 class OwnCloudCategory : public Category {
     Q_OBJECT
 
@@ -28,6 +30,11 @@ class OwnCloudCategory : public Category {
     explicit OwnCloudCategory(RootItem *parent = nullptr);
     explicit OwnCloudCategory(const QSqlRecord &record);
     virtual ~OwnCloudCategory();
+
+    bool markAsReadUnread(ReadStatus status);
+
+  private:
+    OwnCloudServiceRoot *serviceRoot() const;
 };
 
 #endif // OWNCLOUDSERVICECATEGORY_H

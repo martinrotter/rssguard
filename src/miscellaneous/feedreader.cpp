@@ -224,7 +224,6 @@ void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
   if (m_cacheSaveFutureWatcher->future().isRunning()) {
     qDebug("Previous future is still running.");
 
-
     // If we want to wait for future synchronously, we want to make sure that
     // we save all cached data (app exit).
     if (wait_for_future) {

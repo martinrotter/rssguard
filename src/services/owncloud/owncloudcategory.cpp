@@ -17,6 +17,7 @@
 
 #include "services/owncloud/owncloudcategory.h"
 
+#include "services/owncloud/owncloudserviceroot.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
@@ -31,6 +32,15 @@ OwnCloudCategory::OwnCloudCategory(const QSqlRecord &record) : Category(nullptr)
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toInt());
+}
+
+OwnCloudServiceRoot *OwnCloudCategory::serviceRoot() const {
+  return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
+}
+
+bool OwnCloudCategory::markAsReadUnread(RootItem::ReadStatus status) {
+  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
+  return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
 }
 
 OwnCloudCategory::~OwnCloudCategory() {

@@ -58,6 +58,7 @@ class FeedReader : public QObject {
     // Schedules given feeds for update.
     void updateFeeds(const QList<Feed*> &feeds);
 
+    // True if feed update is running right now.
     bool isFeedUpdateRunning() const;
 
     // Resets global auto-update intervals according to settings
