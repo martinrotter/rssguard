@@ -36,6 +36,10 @@ TabBar::~TabBar() {
 }
 
 void TabBar::setTabType(int index, const TabBar::TabType &type) {
+  const QTabBar::ButtonPosition button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
+                                                                                                 0,
+                                                                                                 this));
+
   switch (type) {
     case TabBar::DownloadManager:
     case TabBar::Closable: {
@@ -48,14 +52,14 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
 
       // Close underlying tab when button is clicked.
       connect(close_button, &PlainToolButton::clicked, this, &TabBar::closeTabViaButton);
-      setTabButton(index, QTabBar::RightSide, close_button);
+      setTabButton(index, button_position, close_button);
       break;
     }
 
     case TabBar::NonClosable:
     case TabBar::FeedReader:
     default:
-      setTabButton(index, QTabBar::RightSide, 0);
+      setTabButton(index, button_position, 0);
       break;
   }
 
