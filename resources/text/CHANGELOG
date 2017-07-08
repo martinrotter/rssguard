@@ -21,6 +21,7 @@ Changed:
 ▪ Tweaked some conditions for determining newly "updated" messages in ATOM format. (issue #103)
 
 Fixed:
+▪ Settings and database are now stored in more standard directories on Mac OS X (#127)
 ▪ Fixed regression when restoring deleted messages.
 ▪ Crash in TT-RSS plugin on application exit, when TT-RSS user needed to be logged out.
 

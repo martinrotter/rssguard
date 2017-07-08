@@ -346,7 +346,7 @@ SettingsProperties Settings::determineProperties() {
 
   // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
   // settings was not initialized before.
-#if defined (Q_OS_LINUX)
+#if defined (Q_OS_LINUX) || defined (Q_OS_MACOS)
   // DO NOT use portable settings for Linux, it is really not used on that platform.
   const bool will_we_use_portable_settings = false;
 #else
