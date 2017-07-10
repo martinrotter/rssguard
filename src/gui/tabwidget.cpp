@@ -238,16 +238,22 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl 
   WebBrowser *browser = new WebBrowser(this);
   int final_index;
 
+#if defined (Q_OS_MACOS)
+  const QString browser_tab_name = tr("  Web browser");
+#else
+  const QString browser_tab_name = tr("Web browser");
+#endif
+
   if (move_after_current) {
     // Insert web browser after current tab.
     final_index = insertTab(currentIndex() + 1, browser, qApp->icons()->fromTheme(QSL("text-html")),
-                            tr("Web browser"), TabBar::Closable);
+                            browser_tab_name, TabBar::Closable);
   }
   else {
     // Add new browser as the last tab.
     final_index = addTab(browser, qApp->icons()->fromTheme(QSL("text-html")),
                          //: Web browser default tab title.
-                         tr("Web browser"),
+                         browser_tab_name,
                          TabBar::Closable);
   }
 
@@ -318,11 +324,29 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label, const
 
 void TabWidget::changeIcon(int index, const QIcon &new_icon) {
   setTabIcon(index, new_icon);
+
+#if defined (Q_OS_MACOS)
+  if (tabBar()->tabType(index) != TabBar::FeedReader && !tabIcon(index).isNull()) {
+    // We have closable tab with some icon, fix the title.
+    if (!tabText(index).startsWith(QSL("  "))) {
+      setTabText(index, QSL("  ") + tabText(index));
+    }
+  }
+#endif
 }
 
 void TabWidget::changeTitle(int index, const QString &new_title) {
   setTabText(index, TextFactory::shorten(new_title));
   setTabToolTip(index, new_title);
+
+#if defined (Q_OS_MACOS)
+  if (tabBar()->tabType(index) != TabBar::FeedReader && !tabIcon(index).isNull()) {
+    // We have closable tab with some icon, fix the title.
+    if (!tabText(index).startsWith(QSL("  "))) {
+      setTabText(index, QSL("  ") + tabText(index));
+    }
+  }
+#endif
 }
 
 void TabWidget::fixContentsAfterMove(int from, int to) {
