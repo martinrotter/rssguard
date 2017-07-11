@@ -134,7 +134,9 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionBackupDatabaseSettings;
   actions << m_ui->m_actionRestart;
   actions << m_ui->m_actionQuit;
+#if !defined(Q_OS_MAC)
   actions << m_ui->m_actionFullscreen;
+#endif
   actions << m_ui->m_actionAboutGuard;
   actions << m_ui->m_actionSwitchFeedsList;
   actions << m_ui->m_actionSwitchMainWindow;
@@ -216,6 +218,7 @@ void FormMain::prepareMenus() {
 
 #if defined(Q_OS_MAC)
   m_ui->m_actionSwitchMainMenu->setVisible(false);
+  m_ui->m_actionFullscreen->setVisible(false);
 #endif
 }
 
