@@ -39,6 +39,7 @@
 #include <QDebug>
 #include <QTimer>
 
+extern void disableWindowTabbing();
 
 int main(int argc, char *argv[]) {
   for (int i = 0; i < argc; i++) {
@@ -85,6 +86,7 @@ int main(int argc, char *argv[]) {
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #ifdef Q_OS_MAC
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
+  disableWindowTabbing();
 #endif
 
   // Register needed metatypes.
