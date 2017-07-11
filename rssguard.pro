@@ -459,8 +459,10 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/core/messagesmodelcache.cpp \
             src/core/messagesmodelsqllayer.cpp \
             src/gui/treeviewcolumnsmenu.cpp \
-    src/services/abstract/labelsrootitem.cpp \
-    src/services/abstract/label.cpp
+            src/services/abstract/labelsrootitem.cpp \
+            src/services/abstract/label.cpp
+
+OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 
 FORMS +=    src/gui/toolbareditor.ui \
             src/network-web/downloaditem.ui \
@@ -763,6 +765,7 @@ mac {
   ICON = resources/macosx/$${TARGET}.icns
   QMAKE_MAC_SDK = macosx10.12
   QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
+  LIBS += -framework AppKit
 
   target.path = $$quote($$PREFIX/Contents/MacOS/)
 
