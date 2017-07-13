@@ -530,6 +530,7 @@ TRANSLATIONS += localization/qtbase_cs.ts \
                 localization/rssguard_de.ts \
                 localization/rssguard_en_GB.ts \
                 localization/rssguard_en.ts \
+                localization/rssguard_es.ts \
                 localization/rssguard_fr.ts \
                 localization/rssguard_he.ts \
                 localization/rssguard_id.ts \
@@ -546,6 +547,7 @@ TRANSLATIONS_WO_QT += $$PWD/localization/rssguard_cs.ts \
                       $$PWD/localization/rssguard_de.ts \
                       $$PWD/localization/rssguard_en_GB.ts \
                       $$PWD/localization/rssguard_en.ts \
+                      $$PWD/localization/rssguard_es.ts \
                       $$PWD/localization/rssguard_fr.ts \
                       $$PWD/localization/rssguard_he.ts \
                       $$PWD/localization/rssguard_id.ts \

@@ -1,292 +1,278 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation type="vanished">(categoria)</translation>
+        <translation>(categoría)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="vanished">(feed)</translation>
+        <translation>(fuente)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="vanished">O aplicativo já está em execução</translation>
+        <translation>La aplicación está en ejecución.</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="vanished">A pasta de saída não possui permissão de escrita</translation>
+        <translation>La carpeta de salida no tiene permisos de escritura</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation type="vanished">Arquivo de configurações copiado com sucesso para pasta de saída.</translation>
+        <translation>El archivo de configuración no se copió satisfactoriamente a la carpeta de salida.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="vanished">Arquivo de banco de dados copiado com sucesso para a pasta de saída.</translation>
+        <translation>El archivo de base de datos no se copió satisfactoriamente a la carpeta de salida.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="vanished">A restauração do banco de dados não foi iniciada. Certifique-se de possuir permissão de escrita na pasta de saída.</translation>
+        <translation>La restauración de la base de datos no fue iniciada. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="vanished">A restauração das configurações não foi iniciada. Certifique-se de possuir permissão de escrita na pasta de saída.</translation>
+        <translation>La restauración de la configuración no fue iniciada. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="vanished">Não foi possível adicionar o feed</translation>
+        <translation>No es posible añadir la fuente</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation type="vanished">O feed não pode ser adicionado pois a conta RSS/ATOM padrão não está ativada.</translation>
+        <translation>No puede añadirse la fuente debido a que la cuenta estándar RSS/ATOM no está activada. </translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="vanished">Novas mensagens baixadas</translation>
+        <translation>Nuevos mensajes descargados</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation type="vanished">Compactando banco de dados...</translation>
+        <translation>Comprimiendo archivo de base de datos...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation type="vanished">Banco de dados compactado...</translation>
+        <translation>Archivo de base de datos comprimido...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation type="vanished">Removendo mensagens lidas...</translation>
+        <translation>Borrando mensajes leídos...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation type="vanished">Mensagens lidas removidas...</translation>
+        <translation>Mensajes leídos depurados...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation type="vanished">A lixeira foi limpa...</translation>
+        <translation>Papelera de reciclaje depurada...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation type="vanished">Removendo mensagens antigas...</translation>
+        <translation>Borrando mensajes antiguos...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation type="vanished">Limpando a lixeira...</translation>
+        <translation>Depurando papelera de reciclaje...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation type="vanished">Mensagens antigas removidas...</translation>
+        <translation>Mensajes antiguos depurados...</translation>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="vanished">Servidor MySQL funcionando como esperado.</translation>
+        <translation>El servidor MySQL funciona según lo previsto.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="vanished">Nenhum servidor MySQL em execução na local de destino.</translation>
+        <translation>Ningún servidor MySQL se está ejecutando en el destino.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation type="vanished">Acesso negado. Nome de usuário ou senha incorreta.</translation>
+        <translation>Acceso denegado. El nombre de usuario o la contraseña que ha introducido no son válidos.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="vanished">Erro desconhecido.</translation>
+        <translation>Error desconocido.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="vanished">MySQL/MariaDB (banco de dados dedicado)</translation>
+        <translation>MySQL/MariaDB (base de datos exclusiva)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="vanished">SQLite (banco de dados incorporado)</translation>
+        <translation>SQLite (base de datos integrada)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="vanished">O banco de dados selecionado não existe (ainda). Ele será criado agora.</translation>
+        <translation>La base de datos seleccionada no existe (aún). Ésta será creada. No hay problema.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation type="vanished">Banco da dados MySQL não disponível</translation>
+        <translation>La base de datos MySQL no está disponible</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="vanished">O %1 não pode usar o armazenamento MySQL, ele não está disponível. O %1 irá alterar para o banco de dados SQLite. Inicie seu servidor MySQL e faça os ajustes nas configurações do aplicativo.</translation>
+        <translation>%1 no puede utilizar MySQL para el almacenamiento, no está disponible. %1 está cambiando a la base de datos SQLite. Inicie su servidor MySQL y haga los ajustes en la configuración de la aplicación.</translation>
     </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="vanished">Este site não contém nenhum feed.</translation>
+        <translation>Este portal no contiene fuentes.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="vanished">
-            <numerusform>Clique para adicionar feeds deste site.
-Este site contém um feed.</numerusform>
-            <numerusform>Clique para adicionar feeds deste site.
-Este site contêm %n feed(s).</numerusform>
-        </translation>
+        <translation><numerusform>Pulse aquí para añadir la fuente de este portal.
+Este portal contiene %n fuente().</numerusform><numerusform>Pulse aquí para añadir las fuentes de este portal.
+Este portal contiene %n fuente(s).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="vanished">Não suportado</translation>
+        <translation>No admitido</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="vanished">A conta fornecida não suporta adicionar feeds.</translation>
+        <translation>La cuenta no admite añadir fuentes.</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="vanished">Ícone</translation>
+        <translation>Ico</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation type="vanished">Nome do arquivo</translation>
+        <translation>Nombre de archivo</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation type="vanished">Erro ao abrir arquivo de saída: %1</translation>
+        <translation>Error al abrir el archivo de salida: %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation type="vanished">&amp;Tentar novamente</translation>
+        <translation>&amp;Inténtelo de nuevo</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation type="vanished">&amp;Parar</translation>
+        <translation>&amp;Detener</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation type="vanished">&amp;Abrir arquivo</translation>
+        <translation>&amp;Abrir archivo</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation type="vanished">Local do destino para arquivo baixado</translation>
+        <translation>Seleccionar destino para el archivo descargado</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="vanished">Erro: %1</translation>
+        <translation>Error: %1</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="vanished">Pasta de download não pôde ser criada</translation>
+        <translation>No pudo crearse la carpeta de descarga</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation type="vanished">Erro ao salvar arquivo: %1</translation>
+        <translation>Error al guardar el archivo: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation type="vanished">%1 de %2 (%3 por segundo) - %4</translation>
+        <translation>%1 de %2 (%3 por segundo) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation type="vanished">%1 de %2 - download concluído</translation>
+        <translation>%1 de %2 - descarga completada</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation type="vanished">Abrir &amp;pasta</translation>
+        <translation>Abrir &amp;carpeta</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation type="vanished">Não foi possível abrir o arquivo</translation>
+        <translation>No es posible abrir el archivo</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation type="vanished">Não foi possível abrir o arquivo de saída. Abra-o manualmente.</translation>
+        <translation>No es posible abrir el archivo de salida. Ábralo de forma manual.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="vanished">Não foi possível abrir a pasta</translation>
+        <translation>No es posible abrir la carpeta</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation type="vanished">Não foi possível abrir a pasta de saída. Abra-a manualmente.</translation>
+        <translation>No es posible abrir la carpeta de salida. Ábrala de forma manual.</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation type="vanished">Download concluído</translation>
+        <translation>Descarga finalizada</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation type="vanished">Arquivo &apos;%1&apos; foi baixado.
-Clique para abrir a pasta de destino.</translation>
+        <translation>Archivo &apos;%1&apos; descargado.
+Pulse aquí para abrir la carpeta principal</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation type="vanished">URL: %1</translation>
+        <translation>Dirección URL: %1</translation>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation type="vanished">Arquivo local: %1</translation>
+        <translation>Archivo local: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation type="vanished">Seleção do arquivo local cancelada.</translation>
+        <translation>Selección de archivo local cancelada</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation type="vanished">Limpar</translation>
+        <translation>Depurar</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation type="vanished">
-            <numerusform>%n minuto restante</numerusform>
-            <numerusform>%n minutos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto restante</numerusform><numerusform>%n minutos restantes</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation type="vanished">
-            <numerusform>%n segundo restante</numerusform>
-            <numerusform>%n segundos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n segundo restante</numerusform><numerusform>%n segundos restantes</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation type="vanished">bytes</translation>
+        <translation>bytes</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation type="vanished">KB</translation>
+        <translation>kB</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="vanished">MB</translation>
+        <translation>MB</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="vanished">GB</translation>
+        <translation>GB</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation type="vanished">
-            <numerusform>Baixando %n arquivo...</numerusform>
-            <numerusform>Baixando %n arquivos...</numerusform>
-        </translation>
+        <translation><numerusform>Descargando %n archivo()...</numerusform><numerusform>Descargando %n archivo(s)...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -296,70 +282,61 @@ Clique para abrir a pasta de destino.</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1%2
+        <translation>%1%2
 
-Status da atualização automática: %3</translation>
+Estado de la actualización automática: %3</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">não usa a atualização automática</translation>
+        <translation>no utilizar la actualización automática</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">
-            <numerusform>usa configurações globais (%n minuto(s) para a próxima atualização automática)</numerusform>
-            <numerusform>usa configurações globais (%n minuto(s) para a próxima atualização automática)</numerusform>
-        </translation>
+        <translation><numerusform>utilice configuración general (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración general (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-        </translation>
+        <translation><numerusform>utilice configuración específica (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation type="vanished">Barra de ferramentas para mensagens</translation>
+        <translation>Barra de herramientas para los mensajes</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation type="vanished">Barra de ferramentas para feeds</translation>
+        <translation>Barra de herramientas para las fuentes</translation>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation type="vanished">Não é possível atualizar todos os itens</translation>
+        <translation>No es posible actualizar todos los elementos</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="vanished">Você não pode atualizar todos os itens pois outra operação crítica está em andamento.</translation>
+        <translation>No puede actualizar todos los elementos debido a que otra operación crítica está en ejecución.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="vanished">Iniciando atualização automática de alguns feeds</translation>
+        <translation>Iniciando la actualización automática de algunas fuentes</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="vanished">
-            <numerusform>%n feeds serão atualizados automaticamente.</numerusform>
-            <numerusform>%n feeds serão atualizados automaticamente.</numerusform>
-        </translation>
+        <translation><numerusform>Voy a realizar la actualización automática de %n fuente().</numerusform><numerusform>Voy a realizar la actualización automática de %n fuente(s).</numerusform></translation>
     </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation type="vanished">Categoria </translation>
+        <translation>Categoría</translation>
     </message>
 </context>
 <context>
@@ -367,172 +344,172 @@ Status da atualização automática: %3</translation>
     <message>
         <source>Title</source>
         <extracomment>Title text in the feed list header.</extracomment>
-        <translation type="vanished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation type="vanished">Títulos de feeds/categorias.</translation>
+        <translation>Títulos de las fuentes/categorías</translation>
     </message>
     <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
-        <translation type="vanished">Raiz</translation>
+        <translation>Raíz</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="vanished">Você não pode transferir um item arrastado para uma conta diferente, isto não é suportado.</translation>
+        <translation>No puede soltar el elemento arrastrado en otra cuenta diferente, esto no está implementado.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="vanished">Não foi possível realizar a operação de arrastar &amp; soltar</translation>
+        <translation>No es posible realizar la operación de arrastrar y soltar</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="vanished">Quantidade de mensagens não lidas/todas.</translation>
+        <translation>Recuento de los mensajes no leídos/totales</translation>
     </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="vanished">Espaçador da barra de ferramentas</translation>
+        <translation>Espaciador de la barra de herramientas</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation type="vanished">Não é possível editar o item</translation>
+        <translation>No es posible editar el elemento</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation type="vanished">Não é possível excluir o item</translation>
+        <translation>No es posible borrar el elemento</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="vanished">Menu de contexto para espaço vazio</translation>
+        <translation>Menú contextual del espacio en blanco</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="vanished">O item selecionado não pode ser editado pois outra operação crítica está em andamento.</translation>
+        <translation>No es posible editar el elemento seleccionado debido a que otra operación crítica está en ejecución.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="vanished">O item selecionado não pode ser excluído pois outra operação crítica está em andamento.</translation>
+        <translation>No es posible borrar el elemento seleccionado debido a que otra operación crítica está en ejecución.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="vanished">Menu de contexto para categorias</translation>
+        <translation>Menú contextual para categorías</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation type="vanished">O item selecionado não pode ser editado, isto (ainda) não é suportado.</translation>
+        <translation>No es posible editar el elemento seleccionado, esto no está implementado (¿aún?).</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation type="vanished">Excluindo &quot;%1&quot;</translation>
+        <translation>Borrando &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation type="vanished">Você esta prestes a excluir o item &quot;%1&quot;.</translation>
+        <translation>Usted está a punto de borrar por completo el elemento &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation type="vanished">Tem certeza?</translation>
+        <translation>¿Está usted seguro?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation type="vanished">Não foi possível excluir &quot;%1&quot;</translation>
+        <translation>No es posible borrar &quot;%1&quot;</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="vanished">Este item não pode ser excluído pois algo crítico falhou. Envie um relatório de bug.</translation>
+        <translation>No es posible borrar este elemento debido a que algo falló de manera crítica. Envíe un informe del error.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="vanished">Este item não pode ser excluído, pois não há suporte
-ou esta função ainda não foi implementada.</translation>
+        <translation>No es posible borrar este elemento, debido a que esto no está admitido
+o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="vanished">Menu de contexto para outros itens</translation>
+        <translation>Menú contextual para los demás elementos</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="vanished">Não suportado</translation>
+        <translation>No admitido</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation type="vanished">A conta selecionada não suporta adicionar novos feeds.</translation>
+        <translation>La cuenta seleccionada no admite añadir nuevas fuentes.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation type="vanished">A conta selecionada não suporta adicionar novas categorias.</translation>
+        <translation>La cuenta seleccionada no admite añadir nuevas categorías.</translation>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
     <message>
         <source>Information</source>
-        <translation type="vanished">Informação</translation>
+        <translation>Información</translation>
     </message>
     <message>
         <source>Licenses</source>
-        <translation type="vanished">Licenças</translation>
+        <translation>Licencias</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation type="vanished">Licença GNU GPL License (aplica-se ao código fonte do RSS Guard)</translation>
+        <translation>Licencia Pública General de GNU (válida para el código fuente de RSS Guard)</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation type="vanished">Licença GNU GPL</translation>
+        <translation>Licencia Pública General de GNU</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation type="vanished">Licença BSD (aplica-se ao código fonte do QtSingleApplication)</translation>
+        <translation>Licencia BSD (válida para el código fuente de QtSingleApplication)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation type="vanished">A página de licenças está disponível somente no idioma Inglês.</translation>
+        <translation>La página Licencias sólo está disponible en inglés.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="vanished">Log de alterações</translation>
+        <translation>Lista de cambios</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation type="vanished">A página do log de alterações está disponível somente no idioma Inglês.</translation>
+        <translation>La página Lista de cambios sólo está disponible en inglés.</translation>
     </message>
     <message>
         <source>License not found.</source>
-        <translation type="vanished">Licença não encontrada.</translation>
+        <translation>Licencia no encontrada.</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation type="vanished">Log de alterações não encontrado.</translation>
+        <translation>Lista de cambios no encontrada.</translation>
     </message>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
-        <translation type="vanished">Sobre o %1</translation>
+        <translation>Aproximadamente %1</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation type="vanished">Tipo de configurações</translation>
+        <translation>Tipo de configuración</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation type="vanished">Arquivo de configurações</translation>
+        <translation>Archivo de configuración</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation type="vanished">Caminho da raiz do banco de dados</translation>
+        <translation>Ruta completa de acceso a la base de datos</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation type="vanished">TOTALMENTE portátil</translation>
+        <translation>TOTALMENTE portátil</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
@@ -540,1982 +517,1983 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation type="vanished">Recursos</translation>
+        <translation>Recursos</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="vanished">&lt;body&gt;O %5 é um leitor de feeds (muito) pequeno.&lt;br&gt;&lt;br&gt;Este software é distribuído sob os termos da GNU General Public License, versão 3.&lt;br&gt;&lt;br&gt;Contato:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;Você pode obter o código fonte do %5 a partir do seu site.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 es un lector de RSS (muy) pequeño.&lt;br&gt;&lt;br&gt;Este programa informático se distribuye bajo los términos de la Licencia Pública General GNU, versión 3.&lt;br&gt;&lt;br&gt;Contactos:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~correo electrónico&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~portal&lt;/li&gt;&lt;/ul&gt;Puede obtener el código fuente de %5 desde su portal.&lt;br&gt;&lt;br&gt;&lt;br&gt;Derechos de autor (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versão:&lt;/b&gt; %1 (criado em %2/%3)&lt;br&gt;&lt;b&gt;Revisão:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Data de criação:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compilado contra %7)&lt;br&gt;</translation>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versión:&lt;/b&gt; %1 (compilado en %2/%3)&lt;br&gt;&lt;b&gt;Revisión:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Fecha de compilación:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compilado en %7)&lt;br&gt;</translation>
     </message>
     <message>
         <source>User skins root path</source>
-        <translation type="vanished">Caminho raiz dos temas do usuário</translation>
+        <translation>Ruta completa de acceso a las carátulas del usuario</translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="vanished">NÃO portátil</translation>
+        <translation>NO portátil</translation>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation type="vanished">Adicionar nova conta</translation>
+        <translation>Añadir nueva cuenta</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation type="vanished">Detalhes</translation>
+        <translation>Detalles</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Nome</translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="vanished">Versão</translation>
+        <translation>Versión</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="vanished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="vanished">Descrição</translation>
+        <translation>Descripción</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation type="vanished">Esta conta pode ser adicionada somente uma vez.</translation>
+        <translation>Esta cuenta sólo se puede añadir una vez.</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation type="vanished">Backup do banco de dados/configurações</translation>
+        <translation>Hacer una copia de respaldo de la base de datos/configuración</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation type="vanished">Propriedades do backup</translation>
+        <translation>Propiedades de la copia de respaldo</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation type="vanished">Itens para fazer backup</translation>
+        <translation>Elementos a respaldar</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation type="vanished">Banco de dados</translation>
+        <translation>Base de datos</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Configurações</translation>
+        <translation>Configuración</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation type="vanished">Nome do backup</translation>
+        <translation>Nombre de la copia de respaldo</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="vanished">Resultados da operação</translation>
+        <translation>Resultados de la operación</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation type="vanished">Nome comum para arquivos de backup</translation>
+        <translation>Designación usual para las copias de respaldo</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="vanished">Nenhuma operação executada ainda.</translation>
+        <translation>Hasta el momento no se ha ejecutado ninguna operación.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation type="vanished">Backup criado com sucesso.</translation>
+        <translation>La copia de respaldo se ha creado satisfactoriamente.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation type="vanished">O nome do backup não pode estar vazio.</translation>
+        <translation>El campo del nombre de la copia de respaldo no puede estar vacío.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation type="vanished">O nome do backup está correto.</translation>
+        <translation>El nombre de la copia de  respaldo parece válido.</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation type="vanished">Falha no backup.</translation>
+        <translation>La copia de respaldo falló.</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation type="vanished">Pasta de saída</translation>
+        <translation>Carpeta de salida</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="vanished">Pasta &amp;selecionada</translation>
+        <translation>&amp;Seleccionar carpeta</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation type="vanished">O backup foi criado com sucesso e foi armazenado na pasta de destino.</translation>
+        <translation>La copia de respaldo se ha creado satisfactoriamente y se ha guardado en la carpeta de destino.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation type="vanished">Selecione a pasta de destino</translation>
+        <translation>Seleccionar carpeta de destino</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation type="vanished">Pasta de destino correta foi especifica.</translation>
+        <translation>Se ha especificado una carpeta de destino válida.</translation>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation type="vanished">Limpar banco de dados</translation>
+        <translation>Depurar base de datos</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation type="vanished">Remover mensagens mais antigas que</translation>
+        <translation>Borrar todo mensaje más antiguo que</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation type="vanished">
-            <numerusform>%n dia</numerusform>
-            <numerusform>%n dias</numerusform>
-        </translation>
+        <translation><numerusform>día()</numerusform><numerusform>día(s)</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation type="vanished">Compactar banco de dados</translation>
+        <translation>Comprimir archivo de base de datos</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation type="vanished">Informações do banco de dados</translation>
+        <translation>Información de la base de datos</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation type="vanished">Tamanho do banco de dados</translation>
+        <translation>Tamaño del archivo de la base de datos</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation type="vanished">Tipo do banco de dados</translation>
+        <translation>Tipo de base de datos:</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation type="vanished">Progresso</translation>
+        <translation>Progreso</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation type="vanished">Pronto.</translation>
+        <translation>Estoy preparado.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation type="vanished">Limpeza do banco de dados em execução.</translation>
+        <translation>La depuración de la base de datos está en ejecución.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation type="vanished">Limpeza do banco de dados concluída.</translation>
+        <translation>La depuración de la base de datos ha concluido.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation type="vanished">Falha na limpeza do banco de dados.</translation>
+        <translation>La depuración de la base de datos falló.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="vanished">Limpar configurações (todos os itens marcados serão totalmente apagados do banco de dados)</translation>
+        <translation>Configuración de la depuración (todos los elementos marcados se borraran completamente de la base de datos)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation type="vanished">Remover todas as mensagens lidas (não aquelas da lixeira)</translation>
+        <translation>Borrar todos los mensajes leídos (sin incluir los de la papelera de reciclaje)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation type="vanished">Remover todas as mensagens da lixeira</translation>
+        <translation>Borrar todos los mensajes de la papelera de reciclaje</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation type="vanished">Remover todas as mensagens com estrela (incluindo as da lixeira)</translation>
+        <translation>Borrar todos los mensajes destacados (incluidos los de la papelera de reciclaje)</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="vanished">desconhecido</translation>
+        <translation>desconocido</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation type="vanished">arquivo: %1, dados: %2</translation>
+        <translation>archivo: %1, datos: %2</translation>
     </message>
 </context>
 <context>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="vanished">Alguns feeds necessitam de autenticação, incluindo feeds do GMail. Esquemas de autenticação BASIC, NTLM-2 e DIGEST-MD5 são suportados.</translation>
+        <translation>Algunas fuentes necesitan autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="vanished">Autenticação</translation>
+        <translation>Autentificación</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="vanished">Usuário</translation>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Senha</translation>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="vanished">Mostrar senha</translation>
+        <translation>Mostrar contraseña</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="vanished">Necessita de autenticação HTTP</translation>
+        <translation>Requiere autentificación por HTTP</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="vanished">URL</translation>
+        <translation>Dirección URL</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="vanished">&amp;Testar configuração</translation>
+        <translation>&amp;Configuración de prueba</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="vanished">Usuário da autenticação HTTP</translation>
+        <translation>Autentificación de nombre de usuario por HTTP</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="vanished">Senha da autenticação HTTP</translation>
+        <translation>Autentificación de contraseña por HTTP</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="vanished">Senha para sua conta TT-RSS</translation>
+        <translation>Contraseña para su cuenta TT-RSS</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="vanished">Usuário para sua conta TT-RSS</translation>
+        <translation>Nombre de usuario para su cuenta TT-RSS</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="vanished">URL COMPLETA para sua instância TT-RSS COM string &quot;/api/&quot; à direita</translation>
+        <translation type="vanished">Dirección URL COMPLETA de su instancia TT-RSS CON la secuencia &quot;/api/&quot; al final</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="vanished">Nenhum teste executado ainda.</translation>
+        <translation>No se ha hecho ninguna prueba todavía.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="vanished">Aqui são exibidos os resultados do teste de conexão.</translation>
+        <translation>Se muestran aquí los resultados de la prueba de conexión.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="vanished">Adicionar nova conta Tiny Tiny RSS</translation>
+        <translation>Añadir nueva cuenta Tiny Tiny RSS</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="vanished">Editar conta Tiny Tiny RSS existente</translation>
+        <translation>Editar la cuenta Tiny Tiny RSS actual</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="vanished">O acesso API no servidor selecionado não está ativado.</translation>
+        <translation>El acceso a la API en el servidor seleccionado no está habilitado.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="vanished">As credenciais fornecidas estão incorretas.</translation>
+        <translation>Las credenciales ingresadas son incorrectas.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="vanished">Ocorreu outro erro, entre em contato com os desenvolvedores.</translation>
+        <translation>Se presentó otro error, contacte a los desarrolladores.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="vanished">O servidor Tiny Tiny RSS selecionado está executando uma versão não suportada do API (%1). Pelo menos o API nível %2 é necessário.</translation>
+        <translation>El servidor Tiny Tiny RSS seleccionado está ejecutando una versión no admitida de la API (%1). Se necesita como mínimo una API de nivel %2.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="vanished">O servidor Tiny Tiny RSS selecionado está executando uma versão não suportada do API.</translation>
+        <translation>El servidor Tiny Tiny RSS seleccionado está ejecutando una versión no admitida de la API.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="vanished">O servidor Tiny Tiny RSS está correto, sendo executado com API nível %1, sendo que, pelo menos o API nível %2 é necessário.</translation>
+        <translation>El servidor Tiny Tiny RSS es válido, se está ejecutando con una API de nivel %1 aun cuando se necesita como mínimo una API de nivel %2</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="vanished">O servidor Tiny Tiny RSS está correto.</translation>
+        <translation>El servidor Tiny Tiny RSS es válido.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="vanished">Erro de rede: &apos;%1&apos;.</translation>
+        <translation>Error de red: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="vanished">Erro de rede, você entrou o endpoint e senha correta do API do Tiny Tiny RSS?</translation>
+        <translation>Error de red, ¿Ha ingresado correctamente el punto final y la contraseña de la API de Tiny Tiny RSS?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="vanished">O nome de usuário não pode estar vazio.</translation>
+        <translation>El campo del nombre de usuario no puede estar vacío. </translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="vanished">O nome de usuário está correto.</translation>
+        <translation>El nombre de usuario es válido.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="vanished">A senha não pode estar vazia.</translation>
+        <translation>El campo de la contraseña no puede estar vacío. </translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="vanished">A senha está correta.</translation>
+        <translation>La contraseña es válida.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="vanished">O nome de usuário está correto ou não é necessário.</translation>
+        <translation>El nombre de usuario es válido o no se necesita.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="vanished">O nome de usuário está vazio.</translation>
+        <translation>El campo del nombre de usuario está vacío.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="vanished">A senha está correta ou não é necessária.</translation>
+        <translation>La contraseña es válida o no se necesita.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="vanished">A senha está vazia.</translation>
+        <translation>El campo de la contraseña está vacío.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="vanished">A URL não pode estar vazia.</translation>
+        <translation>El campo de la dirección URL no puede estar vacío.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="vanished">A URL está correta correta.</translation>
+        <translation>La dirección URL es válida.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="vanished">Note que pelo menos o API nível %1 é necessário.</translation>
+        <translation>Tenga en cuenta que se requiere como mínimo una API de nivel %1.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation type="vanished">A URL deve terminar com &quot;/api/&quot;.</translation>
+        <translation type="vanished">La dirección URL debe terminar con la secuencia &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="vanished">Erro não especificado, você forneceu a URL correta?</translation>
+        <translation>Error sin especificar, ¿Ingresó la dirección URL correcta?</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="vanished">Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard</translation>
+        <translation>Cuando se actualizan las fuentes desde RSS Guard se fuerza la actualización del lado del servidor.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="vanished">Deixar esta opção marcada faz com que as atualizações provavelmente fiquem mais lentas e o tempo limite esgote com frequência.</translation>
+        <translation>Al dejar activada esta opción hace que las actualizaciones de las fuentes sean probablemente mucho más lentas y que puedan interrumpirse frecuentemente.</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="vanished">URL para sua instância TT-RSS SEM string &quot;/api/&quot; à direita</translation>
+        <translation>Dirección URL de su instancia TT-RSS SIN la secuencia &quot;/api/&quot; al final</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="vanished">A URL NÃO deve terminar com &quot;/api/&quot;.</translation>
+        <translation>La dirección URL NO debe terminar con la secuencia &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="vanished">URL </translation>
+        <translation>Dirección URL </translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="vanished">Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard.</translation>
+        <translation>Cuando se actualizan las fuentes desde RSS Guard se fuerza la actualización del lado del servidor.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="vanished">Alguns feeds necessitam de autenticação, incluindo feeds do GMail. Esquemas de autenticação BASIC, NTLM-2 e DIGEST-MD5 são suportados.</translation>
+        <translation>Algunas fuentes requieren autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="vanished">Autenticação</translation>
+        <translation>Autentificación</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="vanished">Usuário</translation>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Senha</translation>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="vanished">Mostrar senha</translation>
+        <translation>Mostrar contraseña</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="vanished">&amp;Testar configuração</translation>
+        <translation>&amp;Configuración de prueba</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="vanished">Deixar esta opção marcada faz com que as atualizações provavelmente fiquem mais lentas e o tempo limite esgote com frequência.</translation>
+        <translation>Al dejar activada esta opción hace que las actualizaciones de las fuentes sean probablemente mucho más lentas y que puedan interrumpirse frecuentemente.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation type="vanished">Note que pelo menos a versão %1 é necessária.</translation>
+        <translation>Tenga en cuenta que se requiere como mínimo la versión %1.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation type="vanished">URL do seu servidor ownCloud, sem nenhum caminho API</translation>
+        <translation>Dirección URL de su servidor ownCloud, sin ninguna ruta API</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="vanished">Nenhum teste executado ainda.</translation>
+        <translation>No se ha hecho ninguna prueba todavía.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="vanished">Aqui são exibidos os resultados do teste de conexão.</translation>
+        <translation>Se muestran aquí los resultados de la prueba de conexión.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation type="vanished">Adicionar nova conta ownCloud News</translation>
+        <translation>Añadir nueva cuenta ownCloud News</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation type="vanished">Editar conta ownCloud News existente</translation>
+        <translation>Editar la cuenta ownCloud News actual</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="vanished">O servidor ownCloud News selecionado está executando uma versão não suportada (%1). Pelo menos a versão %2 é necessária.</translation>
+        <translation>El servidor ownCloud News seleccionado está ejecutando una versión no admitida (%1). Se requiere como mínimo una versión %2.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="vanished">O servidor ownCloud News selecionado está executando uma versão não suportada.</translation>
+        <translation>El servidor ownCloud News seleccionado está ejecutando una versión no admitida.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="vanished">Erro de rede: &apos;%1&apos;.</translation>
+        <translation>Error de red: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="vanished">Erro de rede, você entrou o endpoint e senha correta do ownCloud?</translation>
+        <translation>Error de red, ¿Ha ingresado correctamente el punto final y la contraseña de ownCloud?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="vanished">Erro não especificado, você forneceu a URL correta?</translation>
+        <translation>Error sin especificar, ¿Ingresó la dirección URL correcta?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="vanished">O nome de usuário não pode estar vazio.</translation>
+        <translation>El campo del nombre de usuario no puede estar vacío. </translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="vanished">O nome de usuário está correto.</translation>
+        <translation>El nombre de usuario es válido</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="vanished">A senha não pode estar vazia.</translation>
+        <translation>El campo de la contraseña no puede estar vacío. </translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="vanished">A senha está correta.</translation>
+        <translation>La contraseña es válida.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="vanished">A URL não pode estar vazia.</translation>
+        <translation>El campo de la dirección URL no puede estar vacío.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="vanished">A URL está correta correta.</translation>
+        <translation>La dirección URL es válida.</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="vanished">Senha da sua conta ownCloud</translation>
+        <translation>Contraseña para su cuenta ownCloud</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="vanished">Nome de usuário da sua conta ownCloud</translation>
+        <translation>Nombre de usuario para su cuenta ownCloud</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="vanished">O servidor ownCloud News está correto, sendo executado na versão %1, onde pelo menos a versão %2 é necessária.</translation>
+        <translation>El servidor ownCloud News es válido, se está ejecutando con una versión %1 aun cuando se necesita como mínimo una versión %2.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="vanished">O servidor ownCloudNews está correto.</translation>
+        <translation>El servidor ownCloud News es válido.</translation>
     </message>
 </context>
 <context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="vanished">Categoria principal</translation>
+        <translation>Categoría principal</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="vanished">Escolha o item principal para o seu feed.</translation>
+        <translation>Seleccionar elemento principal para su fuente.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="vanished">Selecione o tipo do feed padrão.</translation>
+        <translation>Seccionar tipo de fuente estándar.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="vanished">Codificação</translation>
+        <translation>Codificación</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="vanished">Selecione a codificação do feed padrão. Se você não tem certeza qual codificação, então use &quot;UTF-8&quot;.</translation>
+        <translation>Seleccionar la codificación para la fuente estándar. Si tiene dudas sobre la codificación, entonces seleccione la codificación &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="vanished">Atualização automática</translation>
+        <translation>Actualización automática</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="vanished">Selecione a estratégia de atualização automática para este feed. A estratégia padrão significa que o feed será atualizado em intervalos de tempo definidos nas configurações do aplicativo.</translation>
+        <translation>Seleccionar estrategia de actualización automática para esta fuente. La estrategia de actualización automática predeterminada hace que el canal se actualice a los intervalos de tiempo determinados en la configuración de la aplicación.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="vanished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="vanished">Descrição</translation>
+        <translation>Descripción</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="vanished">URL</translation>
+        <translation>Dirección URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="vanished">Buscar agora</translation>
+        <translation>Recuperarlo ahora</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="vanished">Ícone</translation>
+        <translation>Icono</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="vanished">Selecione o ícone do seu feed.</translation>
+        <translation>Seleccionar icono para su fuente.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="vanished">Alguns feeds necessitam de autenticação, incluindo feeds do GMail. Esquemas de autenticação BASIC, NTLM-2 e DIGEST-MD5 são suportados.</translation>
+        <translation>Algunas fuentes necesitan autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="vanished">Necessita de autenticação HTTP</translation>
+        <translation>Necesita autentificación por HTTP</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="vanished">Usuário</translation>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Senha</translation>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="vanished">Obter metadados</translation>
+        <translation>Recuperar los metadatos</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="vanished">Adicionar novo feed</translation>
+        <translation>Añadir nueva fuente</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation type="vanished">Editar o feed &apos;%1&apos;</translation>
+        <translation>Editar fuente &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="vanished">O nome do feed está correto.</translation>
+        <translation>El nombre de la fuente es válido.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="vanished">O nome do feed é muito curto.</translation>
+        <translation>El nombre de la fuente es muy corto.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="vanished">A descrição está vazia.</translation>
+        <translation>El campo de la descripción está vacío.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="vanished">A descrição está correta.</translation>
+        <translation>La descripción es válida.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="vanished">A URL está correta.</translation>
+        <translation>La dirección URL es válida.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="vanished">A URL não atende o padrão normal. Sua URL inicia com &quot;http://&quot; ou &quot;https://&quot;.</translation>
+        <translation>La dirección URL no cumple con el patrón estándar. ¿Su dirección URL comienza con el prefijo &quot;http://&quot; o &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="vanished">A URL está vazia.</translation>
+        <translation>El campo de la dirección URL está vacío.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="vanished">O nome de usuário está correto ou não é necessário.</translation>
+        <translation>El nombre de usuario es válido o no se necesita.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="vanished">O nome de usuário está vazio.</translation>
+        <translation>El campo del nombre de usuario está vacío.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="vanished">A senha está correta ou não é necessária.</translation>
+        <translation>La contraseña es válida o no se necesita.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="vanished">A senha está vazia.</translation>
+        <translation>El campo de la contraseña está vacío.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="vanished">Selecione o ícone para o feed</translation>
+        <translation>Seleccionar archivo de icono para la fuente</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="vanished">Imagens (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Imágenes (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="vanished">Selecione o ícone</translation>
+        <translation>Seleccionar icono</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="vanished">Procurar em:</translation>
+        <translation>Examinar:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="vanished">Nome do ícone:</translation>
+        <translation>Nombre del icono:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="vanished">Tipo do ícone:</translation>
+        <translation>Tipo de icono:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="vanished">Todos os metadados buscados com sucesso.</translation>
+        <translation>Todos los metadatos se recuperaron satisfactoriamente.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="vanished">Metadado de feed e ícone buscado.</translation>
+        <translation>Se recuperaron los metadatos de las fuentes y de los iconos.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="vanished">Resultado: %1.</translation>
+        <translation>Resultado: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="vanished">Metadado de feed e ícone não buscado.</translation>
+        <translation>No se recuperaron los metadatos de las fuentes o de los iconos.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="vanished">Erro: %1.</translation>
+        <translation>Error: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="vanished">Nenhum metadado buscado.</translation>
+        <translation>No se recuperaron los metadatos.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="vanished">Ícone buscado com sucesso.</translation>
+        <translation>Se recuperaron los iconos satisfactoriamente.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="vanished">Metadado de ícone buscado.</translation>
+        <translation>Se recuperaron los metadatos de los iconos.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="vanished">Metadado de ícone não buscado.</translation>
+        <translation>No se recuperaron los metadatos de los iconos.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="vanished">Nenhum ícone buscado.</translation>
+        <translation>No se recuperaron los iconos.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="vanished">Título do feed</translation>
+        <translation>Título de la fuente</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="vanished">Defina o título para o seu feed.</translation>
+        <translation>Asignar título a su fuente.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="vanished">Descrição do feed</translation>
+        <translation>Descripción de la fuente</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="vanished">Defina a descrição para o seu feed.</translation>
+        <translation>Asignar descripción a su fuente.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="vanished">Feed completo incluindo esquema</translation>
+        <translation>Dirección URL completa de la fuente incluido su esquema</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="vanished">Defina a URL para o seu feed.</translation>
+        <translation>Asignar dirección URL a su fuente.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="vanished">Defina o nome de usuário para acessar o feed.</translation>
+        <translation>Asignar nombre de usuario para acceder a la fuente.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="vanished">Defina a senha para acessar o feed.</translation>
+        <translation>Asignar contraseña para acceder a la fuente.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="vanished">Seleção de ícone</translation>
+        <translation>Selección de iconos</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="vanished">Carregar ícone do arquivo...</translation>
+        <translation>Cargando icono del archivo...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="vanished">Não usar ícone</translation>
+        <translation>No utilizar el icono</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="vanished">Usar ícone padrão</translation>
+        <translation>Utilizar icono predeterminado</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="vanished">Buscar ícone do feed</translation>
+        <translation>Recuperar iconos de la fuente.</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="vanished">Nenhum metadado obtido ainda.</translation>
+        <translation>No se han recuperado metadatos hasta ahora.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="vanished">Atualização automática usando intervalo global</translation>
+        <translation>Actualización automática según el intervalo general</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="vanished">Atualizar a cada</translation>
+        <translation>Actualización automática cada</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="vanished">Não atualizar automaticamnete</translation>
+        <translation>No realizar ninguna actualización automática</translation>
     </message>
 </context>
 <context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation type="vanished">&amp;Arquivo</translation>
+        <translation>&amp;Archivo</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="vanished">A&amp;juda</translation>
+        <translation>&amp;Ayuda</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation type="vanished">&amp;Visualizar</translation>
+        <translation>&amp;Ver</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation type="vanished">&amp;Ferramentas</translation>
+        <translation>&amp;Herramientas</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation type="vanished">&amp;Sair</translation>
+        <translation>&amp;Salir</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation type="vanished">&amp;Configurações</translation>
+        <translation>&amp;Configuración</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation type="vanished">&amp;Mensagens</translation>
+        <translation>&amp;Mensajes</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation type="vanished">Alterar &amp;importância das mensagens selecionadas</translation>
+        <translation>Cambiar la &amp;importancia de los mensajes seleccionados</translation>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation type="vanished">Fecha o aplicativo.</translation>
+        <translation>Cerrar la aplicación.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation type="vanished">Exibe as configurações do aplicativo.</translation>
+        <translation>Mostrar la configuración de la aplicación.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation type="vanished">Altera para o modo tela cheia.</translation>
+        <translation>Cambiar modo pantalla completa.</translation>
     </message>
     <message>
         <source>No actions available</source>
-        <translation type="vanished">Nenhuma ação disponível</translation>
+        <translation>Sin acciones disponibles</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation type="vanished">Nenhuma ação disponível no momento.</translation>
+        <translation>Sin acciones disponibles ahora.</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="vanished">Oculta a janela principal se ela está visível ou exibe se ela está oculta.</translation>
+        <translation>Oculta la ventana principal si está visible y la muestra si está oculta.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="vanished">Oculta ou exibe a lista de feeds/categorias.</translation>
+        <translation>Oculta o muestra la lista de fuentes/categorías.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation type="vanished">Verifica se há novas atualizações disponíveis para download.</translation>
+        <translation>Revisar si la aplicación tiene nuevas actualizaciones disponibles para la descarga.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation type="vanished">&amp;Sobre o aplicativo</translation>
+        <translation>&amp;Acerca de la aplicación</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation type="vanished">Exibe informações adicionais sobre este aplicativo.</translation>
+        <translation>Muestra información adicional sobre esta aplicación.</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="vanished">&amp;Excluir mensagens selecionadas</translation>
+        <translation>&amp;Borrar mensajes seleccionados</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation type="vanished">Oculta ou exibe o menu principal.</translation>
+        <translation>Oculta o muestra el menú principal.</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation type="vanished">Marcar mensagens selecionadas como &amp;lidas</translation>
+        <translation>Marcar los &amp;mensajes seleccionados como &amp;leídos</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation type="vanished">Marcar mensagens selecionadas como &amp;não lidas</translation>
+        <translation>Marcar los &amp;mensajes seleccionados como &amp;no leídos</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="vanished">Abrir artigos fonte selecionados no navegador &amp;externo</translation>
+        <translation>Abrir los mensajes seleccionados en un &amp;navegador externo</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation type="vanished">Abrir mensagens selecionadas no navegador &amp;interno</translation>
+        <translation>Abrir los mensajes seleccionados en el &amp;navegador interno</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation type="vanished">Selecionar &amp;próxima mensagem</translation>
+        <translation>Seleccionar &amp;siguiente mensaje</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation type="vanished">Selecionar mensagem &amp;anterior</translation>
+        <translation>Seleccionar &amp;anterior mensaje</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation type="vanished">Verificar por at&amp;ualizações</translation>
+        <translation>Buscar &amp;actualizaciones</translation>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation type="vanished">Exibir/ocultar</translation>
+        <translation>Mostrar/ocultar</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation type="vanished">Lista de &amp;feeds</translation>
+        <translation>&amp;Lista de fuentes</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation type="vanished">&amp;Menu principal</translation>
+        <translation>&amp;Menú principal</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation type="vanished">Alterar visibilidade da &amp;janela principal</translation>
+        <translation>Cambiar la visibilidad de la &amp;ventana principal</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation type="vanished">Não é possível abrir o navegador externo</translation>
+        <translation>No es posible abrir el navegador externo</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation type="vanished">Não é possível abrir o navegador externo. Navegue até o site do aplicativo manualmente.</translation>
+        <translation>No es posible abrir el navegador externo. Navegue hacia el portal de la aplicación de forma manual.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation type="vanished">Barras de Ferramen&amp;tas</translation>
+        <translation>&amp;Barras de herramientas</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation type="vanished">Alterna a visibilidade das barras de ferramentas principais.</translation>
+        <translation>Cambiar la visibilidad de las barras de herramientas principales.</translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation type="vanished">Cabeçalhos da lista de &amp;feeds/mensagens</translation>
+        <translation>&amp;Encabezados de la lista de fuentes/mensajes</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation type="vanished">&amp;Doar pelo PayPal</translation>
+        <translation>&amp;Donar mediante PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation type="vanished">Exibir &amp;wiki</translation>
+        <translation>Mostrar &amp;wiki</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation type="vanished">&amp;Restaurar banco de dados/configurações</translation>
+        <translation>&amp;Restaurar base de datos/configuración</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation type="vanished">&amp;Backup do banco de dados/configurações</translation>
+        <translation>&amp;Respaldar base de datos/configuración</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="vanished">Alterar orientação do layout da lista de mensagens</translation>
+        <translation>Cambiar modo de visualización de la lista de mensajes</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation type="vanished">&amp;Downloads</translation>
+        <translation>&amp;Descargas</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation type="vanished">Enviar mensagem selecionada por e-mail</translation>
+        <translation>Enviar mensaje seleccionado por correo electrónico</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation type="vanished">&amp;Limpar banco de dados</translation>
+        <translation>&amp;Depurar base de datos</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation type="vanished">Adicionar &amp;novo item</translation>
+        <translation>Añadir &amp;nuevo elemento</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="vanished">Atualizar &amp;todos os itens</translation>
+        <translation>Actualizar &amp;todos los elementos</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="vanished">Atualizar itens &amp;selecionados</translation>
+        <translation>Actualizar &amp;elementos seleccionados</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="vanished">&amp;Editar item selecionado</translation>
+        <translation>&amp;Editar elemento seleccionado</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="vanished">E&amp;xcluir item selecionado</translation>
+        <translation>&amp;Borrar elemento seleccionado</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="vanished">&amp;Marcar itens selecionados como lidos</translation>
+        <translation>&amp;Marcar elementos seleccionados como leídos</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="vanished">Marca todas as mensagens (sem filtros de mensagem) dos itens selecionados como lidos.</translation>
+        <translation>Marcar todos los mensajes (sin filtrar) de los elementos seleccionados como leídos.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="vanished">&amp;Marcar itens selecionados como não lidos</translation>
+        <translation>&amp;Marcar elementos seleccionados como no leídos</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="vanished">Marca todas as mensagens (sem filtros de mensagem) dos itens selecionados como não lidos.</translation>
+        <translation>Marcar todos los mensajes (sin filtrar) de los elementos seleccionados como no leídos.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="vanished">&amp;Limpar itens selecionados</translation>
+        <translation>&amp;Depurar elementos seleccionados</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation type="vanished">Exclui todas as mensagens dos itens selecionados.</translation>
+        <translation>Borra todos los mensajes de los elementos seleccionados.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation type="vanished">&amp;Marcar todos os itens como lidos</translation>
+        <translation type="vanished">&amp;Marcar todos los elementos como &amp;leídos</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="vanished">Marca todas as mensagens em todos os itens como lidos. Isto não leva em conta os filtros de mensagem da conta.</translation>
+        <translation>Marca todos los mensajes en todos los elementos leídos. Esto no tiene en cuenta los filtros de mensajes.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="vanished">Visualizar itens selecionados no modo &amp;publicação</translation>
+        <translation>Ver elementos seleccionados en &amp;modo diario</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="vanished">Exibe todas as mensagens do item selecionado em uma nova aba no modo &quot;publicação&quot;. Note que mensagens não são marcadas como lidas automaticamente.</translation>
+        <translation>Muestra todos los mensajes del elemento seleccionado en una nueva pestaña &quot;modo diario&quot;. Tenga en cuenta que los mensajes no se marcan como leídos de forma automática. </translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="vanished">&amp;Limpar  todos os itens</translation>
+        <translation>&amp;Depurar todos los elementos</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation type="vanished">Exclui todas as mensagens de todos os itens.</translation>
+        <translation>Borra todos los mensajes de todos los elementos.</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation type="vanished">Selecionar &amp;próximo item</translation>
+        <translation>Seleccionar &amp;siguiente elemento</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation type="vanished">Selecionar item &amp;anterior</translation>
+        <translation>Seleccionar &amp;anterior elemento</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation type="vanished">Exibir somente itens não lidos</translation>
+        <translation>Mostrar sólo elementos no leídos</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="vanished">&amp;Expandir/recolher item selecionado</translation>
+        <translation>&amp;Expandir/contraer el elemento seleccionado</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="vanished">&amp;Restaurar mensagens selecionadas</translation>
+        <translation>&amp;Restaurar mensajes seleccionados</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="vanished">Nenhuma ação possível</translation>
+        <translation>Sin acciones posibles</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation type="vanished">&amp;Lixeira(s)</translation>
+        <translation>&amp;Papelera(s) de reciclaje</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="vanished">&amp;Restaurar todas as lixeiras</translation>
+        <translation>&amp;Restaurar todas las papeleras de reciclaje</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="vanished">&amp;Esvaziar todas as lixeiras</translation>
+        <translation>&amp;Vaciar todas las papeleras de reciclaje</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation type="vanished">Selecionar &amp;próxima mensagem não lida</translation>
+        <translation>Seleccionar siguiente &amp;mensaje no leído</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="vanished">Nenhuma lixeira</translation>
+        <translation>Sin papelera de reciclaje</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="vanished">Feeds &amp;&amp; categorias</translation>
+        <translation>Fuentes &amp;&amp; categorías</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation type="vanished">&amp;Contas</translation>
+        <translation>&amp;Cuentas</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation type="vanished">&amp;Adicionar nova conta</translation>
+        <translation>&amp;Añadir nueva cuenta</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation type="vanished">Barra de status</translation>
+        <translation>Barra de estado</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation type="vanished">&amp;Editar conta selecionada</translation>
+        <translation>&amp;Editar cuenta seleccionada</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation type="vanished">E&amp;xcluir conta selecionada</translation>
+        <translation>&amp;Borrar cuenta seleccionada</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation type="vanished">Adicionar novo feed na conta selecionada</translation>
+        <translation>Añadir nueva fuente en la cuenta seleccionada</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation type="vanished">Adicionar nova categoria na conta selecionada</translation>
+        <translation>Añadir nueva categoría en la cuenta seleccionada</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="vanished">Adicionar nova categoria</translation>
+        <translation>Añadir nueva categoría</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="vanished">Adicionar novo feed</translation>
+        <translation>Añadir nueva fuente</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation type="vanished">Parar atualização</translation>
+        <translation>Detener actualización en ejecución</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="vanished">Nenhuma ação possível</translation>
+        <translation>Sin acciones posibles</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="vanished">Navegador da web &amp;&amp; abas</translation>
+        <translation>Navegador &amp;&amp; pestañas</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="vanished">Relatar um &amp;bug...</translation>
+        <translation>Informar de un &amp;fallo...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="vanished">Nova aba do navegador</translation>
+        <translation>Nueva pestaña del navegador</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="vanished">Fechar todas as abas</translation>
+        <translation>Cerrar todas las pestañas</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="vanished">Fechar todas as abas, exceto a atual</translation>
+        <translation>Cerrar las demás pestañas</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="vanished">Ver em &amp;tela cheia</translation>
+        <translation>Ver &amp;pantalla completa</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="vanished">Não foi possível limpar o banco de dados</translation>
+        <translation>No es posible depurar la base de datos</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="vanished">Não foi possível limpar o banco de dados, pois outra ação crítica está em execução.</translation>
+        <translation>No es posible depurar la base de datos, debido a que otra operación crítica está en ejecución.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="vanished">Atualização dos feeds iniciada</translation>
+        <translation>Inició la actualización de la fuente</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="vanished">Feed &apos;%1&apos; atualizado</translation>
+        <translation>Fuente &apos;%1&apos; actualizada</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="vanished">Abas</translation>
+        <translation>Pestañas</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="vanished">&amp;Marcar todos os itens como lidos</translation>
+        <translation>&amp;Marcar todos los elementos como leídos</translation>
     </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="vanished">Feed adicionado</translation>
+        <translation>Fuente añadida</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="vanished">O feed foi adicionado, sincronizando agora.</translation>
+        <translation>Se añadió la fuente, activando ahora la sincronización.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="vanished">Não foi possível adicionar o feed</translation>
+        <translation>No es posible añadir la fuente</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="vanished">O feed não foi adicionado devido a um erro.</translation>
+        <translation>No se añadió la fuente debido a un error.</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation type="vanished">Restaurar banco de dados/configurações</translation>
+        <translation>Restaurar base de datos/configuración</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="vanished">Resultados da operação</translation>
+        <translation>Resultados de la operación</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation type="vanished">Restaurar banco de dados</translation>
+        <translation>Restaurar base de datos</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation type="vanished">Restaurar configurações</translation>
+        <translation>Restaurar configuración</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="vanished">Nenhuma operação executada ainda.</translation>
+        <translation>Hasta el momento no se ha ejecutado ninguna operación.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation type="vanished">A restauração foi iniciada. Reinicie para continuar.</translation>
+        <translation>La restauración fue iniciada. Reinicie para continuar.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation type="vanished">Você precisa reiniciar o aplicativo para concluir a restauração.</translation>
+        <translation>Necesita reiniciar la aplicación para completar el proceso de restauración.</translation>
     </message>
     <message>
         <source>Source directory</source>
-        <translation type="vanished">Pasta de origem</translation>
+        <translation>Carpeta de origen</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="vanished">Pasta &amp;selecionada</translation>
+        <translation>&amp;Seleccionar carpeta</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation type="vanished">O banco de dados e/ou configurações não foram copiados para a pasta de restauração.</translation>
+        <translation>No se copió satisfactoriamente la base de datos o la configuración a la carpeta de restauración.</translation>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation type="vanished">Selecione a pasta de origem</translation>
+        <translation>Seleccionar carpeta de origen</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation type="vanished">Pasta de origem correta foi especificada.</translation>
+        <translation>Se ha especificado una carpeta de origen válida.</translation>
     </message>
 </context>
 <context>
     <name>FormSettings</name>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Configurações</translation>
+        <translation>Configuración</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation type="vanished">Configurações críticas foram alteradas</translation>
+        <translation>Se cambió una configuración crítica</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation type="vanished">Algumas configurações críticas foram alteradas e serão aplicadas após reiniciar o aplicativo.
+        <translation>Se cambió una configuración crítica y se aplicará una vez que la aplicación reinicie.
 
-Você precisa reiniciar manualmente.</translation>
+Tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="vanished">Categorias de configurações alteradas:
+        <translation>Se cambiaron las categorías de la configuración:
 %1.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="vanished">Algumas configurações foram alteradas e serão perdidas</translation>
+        <translation>Se cambió la configuración y estos cambios se perderán</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="vanished">Algumas configurações foram alteradas e ao cancelar este diálogo, você perderá estas alterações.</translation>
+        <translation>Se cambió la configuración y al cancelar este diálogo usted perdería todos los cambios.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation type="vanished">Deseja realmente fechar este diálogo sem salvar as configurações?</translation>
+        <translation>¿Realmente quiere cerrar este dialogo sin guardar la configuración?</translation>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="vanished">Categoria principal</translation>
+        <translation>Categoría principal</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="vanished">Selecione o item principal para sua categoria.</translation>
+        <translation>Seleccionar elemento principal para su categoría.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="vanished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="vanished">Descrição</translation>
+        <translation>Descripción</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="vanished">Ícone</translation>
+        <translation>Icono</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="vanished">Selecione o ícone para sua categoria.</translation>
+        <translation>Seleccionar icono para su categoría.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="vanished">Adicionar nova categoria</translation>
+        <translation>Añadir nueva categoría</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation type="vanished">Editar categoria existente</translation>
+        <translation>Editar categoría actual</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="vanished">Não foi possível adicionar a categoria</translation>
+        <translation>No es posible añadir la categoría</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation type="vanished">A categoria não foi adicionada devido a um erro.</translation>
+        <translation>No se  añadió la categoría debido a un error.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation type="vanished">Não é possível editar a categoria</translation>
+        <translation>No es posible editar la categoría</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="vanished">A categoria não foi editada devido a um erro.</translation>
+        <translation>No se editó la categoría debido a un error.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="vanished">O nome da categoria está correto.</translation>
+        <translation>El nombre de la categoría es válido.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="vanished">O nome da categoria é muito curto.</translation>
+        <translation>El nombre de la categoría es muy corto.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="vanished">A descrição está vazia.</translation>
+        <translation>El campo de la descripción está vacío.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="vanished">A descrição está correta.</translation>
+        <translation>La descripción es válida.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="vanished">Selecione o ícone da categoria</translation>
+        <translation>Seleccionar archivo de icono para la categoría</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="vanished">Imagens (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Imágenes (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="vanished">Selecione o ícone</translation>
+        <translation>Seleccionar icono</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="vanished">Procurar em:</translation>
+        <translation>Examinar:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="vanished">Nome do ícone:</translation>
+        <translation>Nombre del icono:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="vanished">Tipo do ícone:</translation>
+        <translation>Tipo de icono:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="vanished">Título da categoria</translation>
+        <translation>Título de la categoría</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="vanished">Defina o título da sua categoria.</translation>
+        <translation>Asignar titulo a su categoría</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="vanished">Descrição da categoria</translation>
+        <translation>Descripción de la categoría</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="vanished">Defina a descrição da sua categoria.</translation>
+        <translation>Asignar descripción a su categoría.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="vanished">Seleção de ícone</translation>
+        <translation>Selección del icono</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="vanished">Carregar ícone do arquivo...</translation>
+        <translation>Cargando icono del archivo...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="vanished">Não usar ícone</translation>
+        <translation>No utilizar el icono</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="vanished">Usar ícone padrão</translation>
+        <translation>Utilizar icono predeterminado</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Cannot add feed</source>
-        <translation type="vanished">Não foi possível adicionar o feed</translation>
+        <translation>No es posible añadir la fuente</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="vanished">O feed não foi adicionado devido a um erro.</translation>
+        <translation>No se añadió la fuente debido a un error.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="vanished">Não é possível editar o feed</translation>
+        <translation>No es posible editar la fuente</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="vanished">O feed não foi editado devido a um erro.</translation>
+        <translation>No se editó la fuente debido a un error.</translation>
     </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation type="vanished">&amp;Selecionar arquivo</translation>
+        <translation>&amp;Seleccionar archivo</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation type="vanished">&amp;Marcar todos os itens</translation>
+        <translation>&amp;Marcar todos los elementos</translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation type="vanished">&amp;Desmarcar todos os itens</translation>
+        <translation>&amp;Desmarcar todos los elementos</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="vanished">Resultados da operação</translation>
+        <translation>Resultados de la operación</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="vanished">Nenhum arquivo selecionado.</translation>
+        <translation>Ningún archivo está seleccionado.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="vanished">Nenhuma operação executada ainda.</translation>
+        <translation>Hasta el momento no se ha ejecutado ninguna operación.</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation type="vanished">Arquivo de destino</translation>
+        <translation>Archivo de destino</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation type="vanished">Feeds &amp;&amp; categorias de origem</translation>
+        <translation>Fuentes de origen &amp;&amp; categorías</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="vanished">Exportar feeds</translation>
+        <translation>Exportar fuentes</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation type="vanished">Arquivo de origem</translation>
+        <translation>Archivo de origen</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation type="vanished">Feeds &amp;&amp; categorias de destino</translation>
+        <translation>Fuentes de destino &amp;&amp; categorías</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="vanished">Importar feeds</translation>
+        <translation>Importar fuentes</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation type="vanished">Arquivos OPML 2.0 (*.opml)</translation>
+        <translation>Archivos OPML 2.0 (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="vanished">Selecione o arquivo para exportar os feeds</translation>
+        <translation>Seleccionar archivo para exportar las fuentes</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation type="vanished">Arquivo selecionado.</translation>
+        <translation>El archivo está seleccionado.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="vanished">Selecione o arquivo para importar os feeds</translation>
+        <translation>Seleccionar archivo para importar las fuentes</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation type="vanished">Não foi possível abrir o arquivo de origem.</translation>
+        <translation>No es posible abrir el archivo de origen.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation type="vanished">Os feeds foram carregados.</translation>
+        <translation>Las fuentes fueron cargadas.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="vanished">Erro, arquivo malformado. Selecione outro arquivo.</translation>
+        <translation>Error, el archivo no es válido. Seleccione otro archivo.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="vanished">Erro ocorrido. Arquivo malformado. Selecione outro arquivo.</translation>
+        <translation>Se presentó un error. El archivo no es válido. Seleccione otro archivo.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation type="vanished">Feeds exportados com sucesso.</translation>
+        <translation>Las fuentes se exportaron satisfactoriamente.</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="vanished">Ocorreu um erro crítico.</translation>
+        <translation>Se presentó un error crítico.</translation>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation type="vanished">Analisando dados...</translation>
+        <translation>Analizando datos...</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation type="vanished">Não é possível salvar no arquivo de destino: &apos;%1&apos;.</translation>
+        <translation>No es posible escribir en el archivo de destino: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="vanished">Nó raiz</translation>
+        <translation>Nodo raíz</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="vanished">Escolha o item principal para o seu feed.</translation>
+        <translation>Seleccionar elemento principal para su fuente.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="vanished">Arquivos TXT [uma URL por linha] (*.txt)</translation>
+        <translation>Archivos TXT [una dirección URL por guión] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="vanished">Obter metadados on-line</translation>
+        <translation>Obtener metadatos en línea</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="vanished">Os metadados para seus feeds podem ser buscados online.  Observe que a ação pode demorar alguns minutos, dependendo do número de feeds.</translation>
+        <translation>Los metadatos de sus fuentes se pueden recuperar en línea. Tenga en cuenta que esta operación puede durar varios minutos, según la cantidad de fuentes.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation type="vanished">Você deseja buscar metadados dos feeds on-line?</translation>
+        <translation>¿Quiere recuperar los metadatos de la fuente en línea?</translation>
     </message>
 </context>
 <context>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="vanished">Feed adicionado</translation>
+        <translation>Fuente añadida</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="vanished">O feed foi adicionado, sincronizando agora.</translation>
+        <translation>Se añadió la fuente, activando ahora la sincronización</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="vanished">Não foi possível adicionar o feed</translation>
+        <translation>No es posible añadir la fuente</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="vanished">O feed não foi adicionado devido a um erro.</translation>
+        <translation>No se añadió la fuente debido a un error.</translation>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation type="vanished">Versão atual</translation>
+        <translation>Versión actual</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation type="vanished">Versão disponível</translation>
+        <translation>Versión disponible</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation type="vanished">Alterações</translation>
+        <translation type="vanished">Cambios</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation type="vanished">Status</translation>
+        <translation>Estado</translation>
     </message>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation type="vanished">desconhecido</translation>
+        <translation>desconocido</translation>
     </message>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation type="vanished">Lista com atualizações
-não foi baixado com sucesso.</translation>
+        <translation>La lista con las actualizaciones no se
+descargó satisfactoriamente.</translation>
     </message>
     <message>
         <source>New release available.</source>
-        <translation type="vanished">Nova versão disponível.</translation>
+        <translation>Nueva versión disponible.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation type="vanished">Erro: &apos;%1&apos;.</translation>
+        <translation>Error: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation type="vanished">Nenhuma nova versão disponível.</translation>
+        <translation>No hay nuevas versiones disponibles.</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation type="vanished">Esta versão não é mais nova
-que a versão atual instalada.</translation>
+        <translation>Esta versión no es más reciente que
+la actualmente instalada</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation type="vanished">Verificar por atualizações</translation>
+        <translation>Buscar actualizaciones</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation type="vanished">Baixar novos arquivos de instalação.</translation>
+        <translation>Descargar nuevos archivos de instalación.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation type="vanished">Falha ao verificar por atualizações.</translation>
+        <translation type="vanished">Falló la búsqueda de actualizaciones.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation type="vanished">Baixe o arquivo de instalação para o seu sistema.</translation>
+        <translation type="vanished">Descargar archivo de instalación para su sistema operativo.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation type="vanished">O arquivo de instalação não está disponível diretamente.
-Vá até o site do aplicativo para obter manualmente.</translation>
+        <translation type="vanished">El archivo de instalación no está disponible directamente. 
+Navegue al portal de la aplicación para obtenerlo de forma manual.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation type="vanished">Nenhuma nova atualização disponível.</translation>
+        <translation type="vanished">No hay nuevas actualizaciones disponibles.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation type="vanished">Não foi possível atualizar o aplicativo</translation>
+        <translation>No es posible actualizar la aplicación</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation type="vanished">Não foi possível navegar até o arquivo de instalação. Verifique por novos arquivos de instalação no site do projeto.</translation>
+        <translation>No es posible navegar hasta el archivo de instalación. Busque de forma manual nuevos archivos de instalación en el portal del proyecto.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation type="vanished">Baixar atualização</translation>
+        <translation type="vanished">Descargar actualización</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation type="vanished">%1% baixado (tamanho da atualização: %2 kB).</translation>
+        <translation>Descargado %1% (el tamaño de la actualización es de %2 kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="vanished">Baixando atualização...</translation>
+        <translation>Descargando actualización...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation type="vanished">Baixado com sucesso</translation>
+        <translation>Descarga satisfactoria</translation>
     </message>
     <message>
         <source>Error occured</source>
-        <translation type="vanished">Ocorreu um erro</translation>
+        <translation>Se presentó un error</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation type="vanished">Ocorreu um erro durante o download do pacote.</translation>
+        <translation>Se presentó un error durante la descarga del paquete.</translation>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation type="vanished">Ir para o site do aplicativo</translation>
+        <translation>Ir al portal de la aplicación</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation type="vanished">Esta é a nova versão que pode ser
-baixada.</translation>
+        <translation>Esta es la nueva versión que puede
+descargarse.</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You must install it manually.</source>
-        <translation type="vanished">O pacote foi baixado com sucesso.
-Você precisa instalá-lo manualmente.</translation>
+        <translation type="vanished">El paquete fue descargado satisfactoriamente.
+Usted debe instalarlo de forma manual.</translation>
     </message>
     <message>
         <source>Install</source>
-        <translation type="vanished">Instalar</translation>
+        <translation>Instalar</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="vanished">Não é possível executar o atualizador externo. Atualize o aplicativo manualmente.</translation>
+        <translation>No es posible iniciar el actualizador externo. Actualice la aplicación de forma manual.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="vanished">Log de alterações</translation>
+        <translation>Lista de cambios</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="vanished">Arquivos disponíveis</translation>
+        <translation>Archivos disponibles</translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="vanished">Baixar atualização selecionada</translation>
+        <translation>Descargar actualización seleccionada</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="vanished">Acesse o site do aplicativo para obter os pacotes de atualização manualmente.</translation>
+        <translation>Ir al portal de la aplicación para obtener los paquetes de actualización de forma manual.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="vanished">(tamanho</translation>
+        <translation> (tamaño</translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="vanished">Arquivos de atualização disponíveis</translation>
+        <translation>Archivos de actualización disponibles</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="vanished">O pacote foi baixado com sucesso.
-Você pode instalá-lo agora.</translation>
+        <translation>El paquete se descargó satisfactoriamente.
+Puede instalarlo ahora.</translation>
     </message>
 </context>
 <context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation type="vanished">Não foi possível abrir o arquivo &apos;%1&apos; para leitura.</translation>
+        <translation>No es posible abrir el archivo &apos;%1&apos; para su lectura.</translation>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation type="vanished">Não foi possível abrir o arquivo &apos;%1&apos; para escrita.</translation>
+        <translation>No es posible abrir el archivo &apos;%1&apos; para su escritura.</translation>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="vanished">O endereço do site vai aqui</translation>
+        <translation>La dirección del portal va aquí</translation>
     </message>
 </context>
 <context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="vanished">Não exibir novamente.</translation>
+        <translation>No mostrar este diálogo otra vez.</translation>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="vanished">Você clicou em algum link. Você pode baixar o conteúdo do link ou abri-lo no navegador externo.</translation>
+        <translation>Usted abrió algún enlace. Puede descargar los contenidos del enlace o abrirlo en un navegador externo.</translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="vanished">O que você gostaria de fazer?</translation>
+        <translation>¿Qué operación desea realizar?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="vanished">Abrir no navegaodr externo</translation>
+        <translation>Abrir en un navegador externo</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="vanished">Baixar</translation>
+        <translation>Descargar</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="vanished">Link incorreto</translation>
+        <translation>Enlace erróneo</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="vanished">O hiperlink selecionado é inválido.</translation>
+        <translation>El hiperenlace seleccionado no es válido.</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="vanished">Marcar mensagem como lida</translation>
+        <translation>Marcar mensaje como leído</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="vanished">Marcar mensagem como não lida</translation>
+        <translation>Marcar mensaje como no leído</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="vanished">Alterrar importância da mensagem</translation>
+        <translation>Cambiar importancia del mensaje</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="vanished">Clique neste link para baixar ou abrir no navegador externo.</translation>
+        <translation>Pulse este enlace para su descarga o ábralo con un navegador externo.</translation>
     </message>
     <message>
         <source>image</source>
-        <translation type="vanished">imagem</translation>
+        <translation>imagen</translation>
+    </message>
+    <message>
+        <source>Always open links in external browser.</source>
+        <translation>Abrir siempre los enlaces en un navegador externo.</translation>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="vanished">ID</translation>
+        <translation>Identificador</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Lida</translation>
+        <translation>Leído</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation type="vanished">Excluída</translation>
+        <translation>Borrado</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="vanished">Importante</translation>
+        <translation>Importante</translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation type="vanished">Feed</translation>
+        <translation>Fuente</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="vanished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Url</source>
-        <translation type="vanished">URL</translation>
+        <translation>Dirección URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="vanished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="vanished">Criado em</translation>
+        <translation>Creado en</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="vanished">Conteúdo</translation>
+        <translation>Contenido</translation>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="vanished">ID da mensagem.</translation>
+        <translation>Identificador del mensaje.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation type="vanished">A mensagem foi lida?</translation>
+        <translation>¿El mensaje está leído?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation type="vanished">A mensagem foi excluída?</translation>
+        <translation>¿Se borró el mensaje?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="vanished">A mensagem é importante?</translation>
+        <translation>¿Es importante el mensaje?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="vanished">ID da mensagem na qual esta mensagem pertence.</translation>
+        <translation>Identificador de la fuente a la que este mensaje pertenece.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation type="vanished">Título da mensagem.</translation>
+        <translation>Título del mensaje.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation type="vanished">URL da mensagem.</translation>
+        <translation>Dirección URL del mensaje.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation type="vanished">Autor da mensagem.</translation>
+        <translation>Autor del mensaje.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="vanished">Data de criação da mensagem.</translation>
+        <translation>Fecha de creación del mensaje.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation type="vanished">Conteúdo da mensagem.</translation>
+        <translation>Contenido del mensaje.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="vanished">Excluída permanentemente</translation>
+        <translation>Borrado de forma permanente.</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="vanished">A mensagem foi excluída permanentemente da lixeira?</translation>
+        <translation>¿Se borró permanentemente el mensaje de la papelera de reciclaje?</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="vanished">Anexos</translation>
+        <translation>Archivos adjuntos</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="vanished">Lista de anexos.</translation>
+        <translation>Lista de archivos adjuntos</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation type="vanished">Falha ao carregar mensagens. Talvez as mensagens não puderam ser baixadas.</translation>
+        <translation>Falló la carga de los mensajes, es posible que los mensajes no puedan descargarse.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation type="vanished">Falha ao carregar mensagens do item &apos;%1&apos;.</translation>
+        <translation>Falló la carga de los mensajes del elemento &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Account ID</source>
-        <translation type="vanished">ID da Conta</translation>
+        <translation>Identificador de cuenta</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation type="vanished">ID Personalizado</translation>
+        <translation>Identificador personalizado</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation type="vanished">ID da conta desta mensagem.</translation>
+        <translation>Identificador de cuenta del mensaje.</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation type="vanished">ID personalizada da mensagem</translation>
+        <translation>Identificador personalizado del mensaje</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="vanished">Hash personalizado</translation>
+        <translation>Función resumen personalizada</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="vanished">Hash personalizado da mensagem,</translation>
+        <translation>Función resumen personalizada del mensaje.</translation>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation type="vanished">Localizar mensagens</translation>
+        <translation>Buscar mensajes</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation type="vanished">Caixa de pesquisa de mensagens</translation>
+        <translation>Campo de búsqueda de mensajes</translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation type="vanished">Menu para destacar mensagens</translation>
+        <translation>Menú para mensajes resaltados</translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation type="vanished">Sem destaque extra</translation>
+        <translation>Sin resalte adicional</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="vanished">Destacar mensagens não lidas</translation>
+        <translation>Resaltar mensajes no leídos</translation>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation type="vanished">Destacar mensagens importantes</translation>
+        <translation>Resaltar mensajes importantes</translation>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation type="vanished">Exibir todas as mensagens</translation>
+        <translation>Mostrar todos los mensajes</translation>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation type="vanished">Destacador de mensagens</translation>
+        <translation>Resaltador de mensajes</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="vanished">Espaçador da barra de ferramentas</translation>
+        <translation>Espaciador de la barra de herramientas</translation>
     </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation type="vanished">Menu de contexto para mensagens</translation>
+        <translation>Menú contextual para mensajes</translation>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation type="vanished">Problema ao iniciar o navegador externo</translation>
+        <translation>Problema al iniciar el navegador externo</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation type="vanished">O navegador externo não pôde ser iniciado.</translation>
+        <translation>No pudo iniciarse el navegador externo.</translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation type="vanished">Problema ao iniciar cliente de e-mail externo</translation>
+        <translation>Problema al iniciar el gestor de correo externo</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation type="vanished">O cliente de e-mail externo não pôde ser iniciado.</translation>
+        <translation>No pudo iniciarse el gestor de correo externo.</translation>
     </message>
 </context>
 <context>
@@ -2523,117 +2501,114 @@ Você pode instalá-lo agora.</translation>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">erro de protocolo</translation>
+        <translation>error de protocolo</translation>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">servidor não encontrado</translation>
+        <translation>servidor no encontrado</translation>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">conexão negada</translation>
+        <translation>conexión rechazada</translation>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">tempo limite da conexão esgotado</translation>
+        <translation>la conexión ha expirado</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">Falha de conexão SSL</translation>
+        <translation>Falló la presentación SSL</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">conexão do servidor proxy negada</translation>
+        <translation>la conexión del servidor proxy fue rechazada</translation>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">falha temporária</translation>
+        <translation>fallo temporal</translation>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">falha na autenticação</translation>
+        <translation>autentificación fallida</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">autenticação proxy necessária</translation>
+        <translation>se requiere autentificación del proxy</translation>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">servidor proxy não encontrado</translation>
+        <translation>servidor proxy no encontrado</translation>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">conteúdo não encontrado</translation>
+        <translation>contenido no encontrado</translation>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">erro desconhecido</translation>
+        <translation>error desconocido</translation>
     </message>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">nenhum erro</translation>
+        <translation>sin errores</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation type="vanished">acesso ao conteúdo negado</translation>
+        <translation>el acceso al contenido fue denegado</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation type="vanished">o tempo limite da conexão esgotou ou foi cancelada</translation>
+        <translation>la conexión ha expirado o fue cancelada</translation>
     </message>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="vanished">conteúdo desconhecido</translation>
+        <translation>contenido desconocido</translation>
     </message>
 </context>
 <context>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulário</translation>
+        <translation>Formulario</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="vanished">
-            <numerusform>Mostrar mais mensagens (%n restante)</numerusform>
-            <numerusform>Mostrar mais mensagens (%n restantes)</numerusform>
-        </translation>
+        <translation><numerusform>Mostrar más mensajes (%n restante)</numerusform><numerusform>Mostrar más mensajes (%n restantes)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="vanished">Não é possível mostrar mais mensagens</translation>
+        <translation>No es posible mostrar más mensajes</translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="vanished">Não é possível mostrar mais mensagens pois o feed principal foi removido.</translation>
+        <translation>No es posible mostrar más mensajes debido a que se borró la fuente principal.</translation>
     </message>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="vanished">Sincronizar em</translation>
+        <translation>Sincronizar</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="vanished">Não é possível adicionar o item</translation>
+        <translation>No es posible añadir el elemento</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="vanished">Não é possível adicionar feeds porque outra operação crítica está em curso.</translation>
+        <translation>No es posible añadir la fuente debido a que otra operación crítica está en ejecución.</translation>
     </message>
 </context>
 <context>
@@ -2641,47 +2616,44 @@ Você pode instalá-lo agora.</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation type="vanished">pt</translation>
+        <translation>en</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation type="vanished">Igor Rückert</translation>
+        <translation>Martin Rotter</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="vanished">igorruckert@yahoo.com.br</translation>
+        <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation type="vanished">
-            <numerusform>
+        <translation><numerusform>
 
-+ %n outro feed.</numerusform>
-            <numerusform>
++ %n fuente restante.</numerusform><numerusform>
 
-+ %n outros feeds.</numerusform>
-        </translation>
++ %n fuentes restantes.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="vanished">Bem-vindo ao %1.
+        <translation>Bienvenido a %1.
 
-Por favor, veja o NOVO conteúdo incluído nesta
-versão, clicando nesta notificação popup.</translation>
+Por favor, consulte las NUEVAS funciones incluidas en esta
+versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation type="vanished">Bem-vindo ao %1.</translation>
+        <translation>Bienvenido a %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation type="vanished">Carregar conjunto inicial de feeds</translation>
+        <translation>Cargar conjunto inicial de fuentes</translation>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -2689,57 +2661,54 @@ versão, clicando nesta notificação popup.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="vanished">Este serviço oferece integração com o Tiny Tiny RSS.
+        <translation>Este servicio ofrece integración con Tiny Tiny RSS.
 
-O Tiny Tiny RSS é um leitor e agregador de feeds de notícias (RSS/Atom) baseado na web de código aberto, desenvolvido para permitir que você leia notícias de qualquer local, enquando se sente o mais próximo possível de um aplicativo real para desktop.
+Tiny Tiny RSS es un lector o agregador de código abierto para fuentes de noticias en línea (RSS/Atom), diseñado para permitirle consultar las noticias desde cualquier lugar, con un diseño lo más similar posible a una auténtica aplicación de escritorio.
 
-Pelo menos o API nível %1 é necessário.</translation>
+Se necesita como mínimo una API de nivel %1.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="vanished">O app News é um agregador de feeds RSS/Atom. Ele é parte da suíte ownCloud. Este plugin implementa o API %1.</translation>
+        <translation>La aplicación News es un agregador de fuentes RSS/Atom. Hace parte del conjunto ownCloud. Este complemento ejecuta la API %1.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation type="vanished">Feeds online padrão (RSS/RDF/ATOM)</translation>
+        <translation>Fuentes estándar (RSS/RDF/ATOM) en línea</translation>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
-        <translation type="vanished">Este serviço oferece integração com feeds online padrão RSS/RDF/ATOM e podcasts.</translation>
+        <translation>Este servicio ofrece la integración con fuentes y con trasmisiones estándar RSS/RDF/ATOM en línea</translation>
     </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="vanished">Lixeira</translation>
+        <translation>Papelera de reciclaje</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="vanished">A lixeira contém todas as mensagens excluídas de todos os feeds.</translation>
+        <translation>La papelera de reciclaje contiene los mensajes borrados de todas las fuentes.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="vanished">
-            <numerusform>%n mensagem excluída.</numerusform>
-            <numerusform>%n mensagens excluídas.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensaje() borrado.</numerusform><numerusform>%n mensaje(s) borrados.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
 
 %1</source>
-        <translation type="vanished">Lixeira
+        <translation>Papelera de reciclaje
 
 %1</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="vanished">Restaurar lixeira</translation>
+        <translation>Restaurar papelera de reciclaje</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="vanished">Esvaziar lixeira</translation>
+        <translation>Vaciar papelera de reciclaje</translation>
     </message>
 </context>
 <context>
@@ -2747,196 +2716,193 @@ Pelo menos o API nível %1 é necessário.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="vanished">
-            <numerusform>%n mensagem não lida.</numerusform>
-            <numerusform>%n mensagem(ns) não lidas.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensaje() no leído.</numerusform><numerusform>%n mensaje(s) no leídos.</numerusform></translation>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
         <source>External web browser</source>
-        <translation type="vanished">Navegador da web externo</translation>
+        <translation>Navegador externo</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se desmarcado, então o navegador padrão do sistema será usado.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Si no está marcado, se utilizará entonces el navegador predeterminado del sistema.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="vanished">Usar navegador externo personalizado</translation>
+        <translation>Utilizar navegador externo personalizado</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="vanished">Executável no navegador</translation>
+        <translation>Ejecutable del navegador</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="vanished">Arquivo executável do navegador da web</translation>
+        <translation>Archivo ejecutable del navegador</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="vanished">&amp;Procurar</translation>
+        <translation>&amp;Explorar</translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="vanished">Parâmetros do executável</translation>
+        <translation>Parámetros del ejecutable</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="vanished">Parâmetros do executável</translation>
+        <translation>Parámetros para el ejecutable</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="vanished">Usar argumentos modelo para</translation>
+        <translation>Utilizar argumentos de la muestra para</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="vanished">Selecione o navegador</translation>
+        <translation>Seleccionar navegador</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="vanished">Note que &quot;%1&quot; (sem aspas) é o marcador para a URL da mensagem selecionada..</translation>
+        <translation>Tenga en cuenta que &quot;%1&quot; (sin comillas) es un marcador de posición para la dirección URL del mensaje seleccionado.</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="vanished">Cliente de e-mail externo</translation>
+        <translation>Gestor de correo externo</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="vanished">Usar cliente de e-mail externo personalizado</translation>
+        <translation>Utilizar gestor de correo externo personalizado</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="vanished">Executável do cliente de e-mail</translation>
+        <translation>Ejecutable del gestor de correo</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="vanished">Arquivo executável do cliente de e-mail</translation>
+        <translation>Archivo ejecutable del gestor de correo</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation type="vanished">Selecione o cliente</translation>
+        <translation>Seleccionar gestor de correo</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="vanished">Marcadores:
- • %1 - título da mensagem selecionada,
- • %2 - corpo da mensagem selecionada.</translation>
+        <translation>Marcadores de posición:
+ • %1 - título del mensaje seleccionado,
+ • %2 - cuerpo del mensaje seleccionado.</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="vanished">Proxy</translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation type="vanished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation type="vanished">Host</translation>
+        <translation>Servidor</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="vanished">Nome do host ou IP do servidor proxy</translation>
+        <translation>Nombre del servidor o dirección IP de su servidor proxy</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Porta</translation>
+        <translation>Puerto</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="vanished">Usuário</translation>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="vanished">Seu nome de usuário para autenticação no servidor proxy</translation>
+        <translation>Su nombre de usuario para la autentificación del servidor proxy</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Senha</translation>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="vanished">Sua senha para autenticação no servidor proxy</translation>
+        <translation>Su contraseña para la autentificación del servidor proxy</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="vanished">Exibir senha</translation>
+        <translation>Mostrar contraseña</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="vanished">Note que estas configurações são aplicadas somente em novas conexões estabelecidas.</translation>
+        <translation>Tenga en cuenta que esta configuración sólo aplica para las conexiones creadas recientemente.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="vanished">Selecione o executável do navegador da web</translation>
+        <translation>Seleccionar ejecutable del navegador</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation type="vanished">Executáveis (*)</translation>
+        <translation>Ejecutables (*)</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation type="vanished">Executáveis (*.*)</translation>
+        <translation>Ejecutables (*.*)</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="vanished">Selecione o executável para e-mail</translation>
+        <translation>Seleccionar ejecutable de correo electrónico</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation type="vanished">Opera 12 ou mais antigo</translation>
+        <translation>Opera 12 o anterior</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="vanished">Mozilla Thunderbird</translation>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="vanished">Sem proxy</translation>
+        <translation>Sin proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="vanished">Proxy do sistema</translation>
+        <translation>Proxy del sistema</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="vanished">Socks5</translation>
+        <translation>Socks5</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="vanished">HTTP</translation>
+        <translation>Http</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="vanished">Navegador da web &amp; e-mail &amp; proxy</translation>
+        <translation>Navegador &amp; correo electrónico &amp; proxy</translation>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="vanished">Sempre abrir links do navegador de texto interno simples no navegador externo.</translation>
+        <translation>Abrir siempre los enlaces del visualizador de texto interno en el navegador web externo</translation>
     </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="vanished">AVISO: Note que alterar para outro tipo de armazenamento de dados NÃO copiará os dados existentes do armazenamento ativo para o novo selecionado.</translation>
+        <translation>ADVERTENCIA: Tenga en cuenta que al cambiar a otro tipo de almacenamiento de datos NO se copiaran sus datos existentes en el almacén de datos activo al recién seleccionado.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="vanished">Driver do banco de dados</translation>
+        <translation>Motor de la base de datos</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="vanished">Usar banco de dados na memória como banco de dados ativo</translation>
+        <translation>Utilizar base de datos en memoria como base de datos activa</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -2950,423 +2916,439 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="vanished">O uso do banco de dados ativo na memória possui várias vantagens e desvantagens. Certifique-se de estar familiarizado com estes antes de ativar esse recurso. Vantagens:
+        <translation>El uso de una base de datos activa en memoria tiene varias ventajas y desventajas. Asegúrese de estar familiarizado antes de activar esta función. Ventajas::
 &lt;ul&gt;
-&lt;li&gt;maior velocidade na manipulação de feeds/mensagens (especialmente com milhares de mensagens exibidas),&lt;/li&gt;
-&lt;li&gt;todo o banco de dados armazenado na RAM, assim seu disco rígido não trabalho tanto.&lt;/li&gt;
+&lt;li&gt;mayor velocidad para manejar fuentes/mensajes (particularmente visualizando miles de mensajes),&lt;/li&gt;
+&lt;li&gt;toda la base de datos se almacena en memoria RAM, por tanto su disco duro puede descansar más.&lt;/li&gt;
 &lt;/ul&gt;
-Desvantagens:
+Desventajas:
 &lt;ul&gt;
-&lt;li&gt;se o aplicativo travar, as alterações feitas na última sessão serão perdidas,&lt;/li&gt;
-&lt;li&gt;a inicialização e encerramento do aplicativo pode demorar um pouco mais (máx. 2 segundos).&lt;/li&gt;
+&lt;li&gt;si la aplicación falla, se perderán los cambios de la última sesión,&lt;/li&gt;
+&lt;li&gt;el arranque y el cierre de la aplicación pueden durar más (máximo 2 segundos).&lt;/li&gt;
 &lt;/ul&gt;
-Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</translation>
+Los autores de esta aplicación NO son responsables de los datos que se lleguen a perder.</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation type="vanished">Nome do host</translation>
+        <translation>Nombre del servidor</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Porta</translation>
+        <translation>Puerto</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="vanished">Usuário</translation>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Senha</translation>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="vanished">Testar configuração</translation>
+        <translation>Configuración de prueba</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="vanished">Note que a velocidade do servidor MySQL usado e a latência da conexão influenciam FORTEMENTE no desempenho final deste aplicativo. Usar conexões lentas ao banco de dados ocasionam um desempenho ruim ao navegar por feeds ou mensagens.</translation>
+        <translation>Tenga en cuenta que la velocidad del servidor MySQL utilizado y la latencia del medio de conexión utilizado influencian MUCHO en el desempeño final de esta aplicación. Utilizar conexiones de bases de datos lentas lleva a un mal desempeño al momento de consultar fuentes o mensajes.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="vanished">E&amp;xibir senha</translation>
+        <translation>&amp;Mostrar contraseña</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="vanished">Banco de dados ativo</translation>
+        <translation>Base de datos activa</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="vanished">O nome do host está vazio.</translation>
+        <translation>El campo del nombre del servidor está vacío.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="vanished">O nome do host parece estar correto.</translation>
+        <translation>El nombre del servidor parece válido.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="vanished">O nome de usuário está vazio.</translation>
+        <translation>El campo del nombre de usuario está vacío.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="vanished">O nome de usuário parece estar correto.</translation>
+        <translation>El nombre de usuario parece válido.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="vanished">A senha está vazia.</translation>
+        <translation>El campo de la contraseña está vacío.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="vanished">A senha parece estar correta.</translation>
+        <translation>La contraseña parece válida.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="vanished">O banco de dados ativo está vazio.</translation>
+        <translation>El campo de la base de datos activa está vacío.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="vanished">O banco de dados ativo está correto.</translation>
+        <translation>La base de datos activa es válida.</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="vanished">Nenhum teste de conexão acionado até agora.</translation>
+        <translation>No se ha activado ninguna prueba de conexión hasta ahora.</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="vanished">Você ainda não executou nenhum teste de conexão.</translation>
+        <translation>No ha ejecutado ninguna prueba de conexión todavía.</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="vanished">Nome do host do seu servidor MySQL</translation>
+        <translation>Nombre de su servidor MySQL</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="vanished">Nome de usuário para fazer login</translation>
+        <translation>Nombre de usuario para iniciar sesión</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="vanished">Senha do seu usuário</translation>
+        <translation>Contraseña para su nombre de usuario</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="vanished">Banco de dados ativo, ao qual você possui acesso completo.</translation>
+        <translation>Base de datos activa a la que tiene acceso pleno.</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="vanished">Armazenamento de dados</translation>
+        <translation>Almacenamiento de datos</translation>
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="vanished">Note que ATIVAR esta opção irá tornar o salvamento de mensagens mais RÁPIDO, mas ele pode raramente causar alguns problemas com o salvamento de mensagens.</translation>
+        <translation>Tenga en cuenta que al ACTIVAR esta opción permitirá que los nuevos mensajes se guarden MÁS RÁPIDO, mas ocasionalmente puede tener algunos problemas al guardarlos.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="vanished">Usar transações do Banco de Dados ao armazenar mensagens baixadas</translation>
+        <translation>Utilizar transacciones de bases de datos al almacenar mensajes descargados</translation>
     </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="vanished">Abrir gerenciador de download ao iniciar um novo download</translation>
+        <translation>Abrir el gestor de descargas al iniciar la descarga</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="vanished">Pasta de destino para arquivos baixados</translation>
+        <translation>Carpeta de destino para los archivos descargados</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="vanished">Perguntar para cada arquivo baixado</translation>
+        <translation>Preguntar para cada archivo descargado</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="vanished">Salvar arquivos baixados para</translation>
+        <translation>Guardar todos los archivos descargados en</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="vanished">Pasta de destino onde todos os arquivos baixados são salvos</translation>
+        <translation>Carpeta de destino donde todos los archivos descargados son guardados</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="vanished">&amp;Procurar</translation>
+        <translation>&amp;Explorar</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="vanished">Selecione a pasta de destino dos downloads</translation>
+        <translation>Seleccionar carpeta de destino para las descargas</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="vanished">Downloads</translation>
+        <translation>Descargas</translation>
     </message>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="vanished">Feeds &amp;&amp; categorias</translation>
+        <translation>Fuentes &amp;&amp; categorías</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="vanished">Atualizar todos os feeds ao iniciar o aplicativo</translation>
+        <translation>Actualizar todas las fuentes al iniciar la aplicación</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="vanished">Atualizar todos os feeds a cada</translation>
+        <translation>Actualización automática de todas las fuentes cada</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="vanished">Tempo limite de conexão</translation>
+        <translation>Tiempo de espera de conexión de la fuente</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="vanished">Tempo limite de conexão é o intervalo de tempo que é reservado para baixar novas mensagens do feed. Se o intervalo de tempo esgotar, então o processo de download será cancelado.</translation>
+        <translation>El tiempo de espera de conexión es el lapso de tiempo reservado para descargar nuevos mensajes de la fuente. Si transcurre este lapso de tiempo, entonces el proceso de descarga es interrumpido.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation type="vanished"> ms</translation>
+        <translation> ms</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="vanished">Formato de contagem de mensagens na lista de feeds</translation>
+        <translation>Formato de recuento de mensajes en la lista de fuentes</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="vanished">Entre o formato da contagem de mensagens exibido próximo a cada feed/categoria na lista de feeds. Use as strings &quot;%all&quot; e &quot;%unread&quot;, que são marcadores para a contagem atual das mensagens no total (ou não lidas).</translation>
+        <translation>Ingrese el formato de recuento de mensajes que aparece junto a cada fuente/categoría en la lista de fuentes. Utilice las secuencias &quot;%all&quot; y &quot;%unread&quot; que son los marcadores de posición para el recuento real de mensajes totales (o no leídos).</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation type="vanished">Mensagens</translation>
+        <translation>Mensajes</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="vanished">Remover todas as mensagens lidas de todos os feeds ao sair do aplicativo</translation>
+        <translation>Borrar todos los mensajes leídos de todas las fuentes al cerrar la aplicación</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="vanished">Manter seleção de mensagem no meio da lista de mensagens</translation>
+        <translation>Mantener la selección de mensajes en el centro de la ventana gráfica de la lista de mensajes</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="vanished">Usar formato de data/hora persoanlizado (substitui o formato ativo carregado)</translation>
+        <translation>Utilizar formato personalizado de fecha/hora (reemplaza el formato cargado según la ubicación vigente)</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="vanished">Fontes do navegador de mensagens interno</translation>
+        <translation>Tipo de letra del visualizador de mensajes interno</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="vanished">Alterar &amp;fonte</translation>
+        <translation>&amp;Cambiar tipo de letra</translation>
     </message>
     <message>
         <source>Select new font for message viewer</source>
-        <translation type="vanished">Selecione a nova fonte para visualização da mensagem</translation>
+        <translation>Seleccionar nuevo tipo de letra para el visualizador de mensajes</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="vanished">Prévia da fonte</translation>
+        <translation>Vista previa del tipo de letra</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="vanished">Feeds &amp; mensagens</translation>
+        <translation>Fuentes &amp; mensajes</translation>
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="vanished">Altura das imagens anexadas</translation>
+        <translation>Tamaño de las imágenes adjuntas</translation>
     </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="vanished">Executar o %1 na inicialização do sistema operacional</translation>
+        <translation>Ejecutar %1 al arrancar el sistema operativo</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="vanished">Verificar por atualizações ao iniciar o aplicativo</translation>
+        <translation>Buscar actualizaciones al iniciar la aplicación</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="vanished">Remover chave do registro da Trolltech (HKCU\Software\Trolltech) ao sair do aplicativo (Use por sua conta em risco!)</translation>
+        <translation>Borrar las claves de registro basura de Trolltech (HKCU\Software\Trolltech) cuando cierre la aplicación (¡Utilícelo bajo su propia responsabilidad!)</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="vanished"> (não suportado nesta plataforma)</translation>
+        <translation>(no está admitido en esta plataforma)</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="vanished">Geral</translation>
+        <translation>General</translation>
     </message>
 </context>
 <context>
     <name>SettingsGui</name>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="vanished">Ícones &amp;&amp; temas</translation>
+        <translation>Iconos &amp;&amp; carátulas</translation>
+    </message>
+    <message>
+        <source>Icons</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation type="vanished">Tema dos ícones</translation>
+        <translation>Tema de iconos</translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="vanished">Área de notificação &amp;&amp; notificações</translation>
+        <translation>Área de la bandeja &amp;&amp; notificaciones</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="vanished">Ícone da área de notificação</translation>
+        <translation>Icono de la bandeja</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="vanished">Ocultar janela principal quando minimizada</translation>
+        <translation>Ocultar ventana principal al minimizar</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="vanished">Iniciar aplicativo ocultado</translation>
+        <translation>Iniciar aplicación oculta</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="vanished">Ativar dicas no balão de notificação</translation>
+        <translation>Habilitar ayudas visuales emergentes</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="vanished">Abas</translation>
+        <translation>Pestañas</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="vanished">Abrir novas abas como clique duplo do botão esquerdo do mouse na barra de abas</translation>
+        <translation>Abrir una pestaña nueva al pulsar dos veces con el botón izquierdo del ratón en la barra de pestañas</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="vanished">Ocultar barra de abas se somente uma aba está visível</translation>
+        <translation>Ocultar la barra de pestañas si sólo hay una pestaña visible</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="vanished">Fechar abas com</translation>
+        <translation>Cerrar pestañas con</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="vanished">Clique duplo do botão direito do mouse</translation>
+        <translation>Pulsar dos veces con el botón derecho del ratón</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="vanished">Um clique no botão do meio do mouse</translation>
+        <translation>Pulsar una vez con el botón central del ratón</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation type="vanished">Barras de Ferramentas</translation>
+        <translation>Barras de herramientas</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="vanished">Barras de ferramentas para lista de feeds</translation>
+        <translation>Barra de herramientas para la lista de fuentes</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="vanished">Barras de ferramentas para lista de mensagens</translation>
+        <translation>Barra de herramienta para la lista de mensajes</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="vanished">Barra de status</translation>
+        <translation>Barra de estado</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="vanished">Estilo dos botões da barra de ferramentas</translation>
+        <translation>Estilo de botón de la barra de herramientas</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="vanished">Selecione a barra de ferramentas para editar</translation>
+        <translation>Seleccionar barra de herramientas a editar</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Nome</translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="vanished">Versão</translation>
+        <translation>Versión</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="vanished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="vanished">E-mail</translation>
+        <translation>Correo electrónico</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="vanished">(Ícone na área de notificação não está disponível.)</translation>
+        <translation>(El icono de la bandeja no está disponible)</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="vanished">nenhum tema do ícone/tema do ícone do sistema</translation>
+        <translation>sin tema de iconos/tema de iconos del sistema</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation type="vanished">Somente ícone</translation>
+        <translation>Sólo el icono</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation type="vanished">Somente texto</translation>
+        <translation>Sólo el texto</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation type="vanished">Texto ao lado no ícone</translation>
+        <translation>El texto junto al icono</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation type="vanished">Texto abaixo do ícone</translation>
+        <translation>El texto bajo el icono</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation type="vanished">Seguir estilo do sistema</translation>
+        <translation>Aplicar el estilo del sistema operativo</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation type="vanished">Interface do usuário</translation>
+        <translation>Interfaz de usuario</translation>
     </message>
     <message>
         <source>Style</source>
-        <translation type="vanished">Estilo</translation>
+        <translation>Estilo</translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="vanished">Tema</translation>
+        <translation>Carátula</translation>
     </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
     <message>
         <source>Language</source>
-        <translation type="vanished">Idioma</translation>
+        <translation>Idioma</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation type="vanished">Código</translation>
+        <translation>Código</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="vanished">Autor</translation>
+        <translation>Autor</translation>
     </message>
 </context>
 <context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation type="vanished">Atalhos do teclado</translation>
+        <translation>Accesos rápidos de teclado</translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation type="vanished">Redefine o atalho original.</translation>
+        <translation>Restaurar acceso rápido original</translation>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation type="vanished">Limpa o atalho atual.</translation>
+        <translation>Borrar acceso rápido actual</translation>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation type="vanished">Clique e aperte o novo atalho.</translation>
+        <translation>Pulse e ingrese el nuevo acceso rápido</translation>
     </message>
 </context>
 <context>
@@ -3374,34 +3356,34 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="vanished">%1 (categoria)%2%3</translation>
+        <translation>%1 (categoría)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation type="vanished">
-Esta categoria nenhum possui itens aninhados.</translation>
+        <translation>
+Esta categoría no contiene ningún elemento anidado.</translation>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="vanished">Metadado não obtido</translation>
+        <translation>No se recuperaron los metadatos</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="vanished">Metadado não obtido pelo motivo: %1.</translation>
+        <translation>No se recuperaron los metadatos debido a que: %1.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">não usa a atualização automática</translation>
+        <translation type="vanished">no utilizar la actualización automática</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">usa as configurações globais</translation>
+        <translation type="vanished">utiliza la configuración general</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3410,116 +3392,116 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1 (%2)%3
+        <translation>%1 (%2)%3
 
-Status da rede: %6
-Codificação: %4
-Status da atualização automática: %5</translation>
+Estado de la red: %6
+Codificación: %4
+Estado de la actualización automática: %5</translation>
     </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="vanished">Esta é a conta de serviço obrigatório para feeds RSS/RDF/ATOM padrão.</translation>
+        <translation>Esta es la cuenta de servicio obligatorio para fuentes estándar RSS/RDF/ATOM </translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="vanished">Deseja carregar o conjunto inicial de feeds?</translation>
+        <translation>¿Quiere cargar el conjunto inicial de fuentes?</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="vanished">Erro ao carregar feeds iniciais</translation>
+        <translation>Se presentó un error al cargar las fuentes iniciales</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="vanished">Obter metadados</translation>
+        <translation>Recuperar metadatos</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="vanished">Exportar feeds</translation>
+        <translation>Exportar fuentes</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="vanished">Importar feeds</translation>
+        <translation>Importar fuentes</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation type="vanished">Esta é a conta de serviço para feeds RSS/RDF/ATOM padrão.
+        <translation>Esta es la cuenta de servicio para fuentes estándar RSS/RDF/ATOM 
 
-ID da Conta: %1</translation>
+Identificador de cuenta: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="vanished">Esta nova conta não inclui nenhum feed. Você pode adicionar agora um conjunto padrão de feeds.</translation>
+        <translation>Esta nueva cuenta no contiene fuentes. Puede añadirle ahora el conjunto predeterminado de fuentes.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="vanished">Não é possível adicionar o item</translation>
+        <translation>No es posible añadir elementos</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="vanished">Não é possível adicionar feeds porque outra operação crítica está em curso.</translation>
+        <translation>No es posible añadir la fuente debido a que otra operación crítica está en ejecución.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="vanished">Não foi possível adicionar a categoria</translation>
+        <translation>No es posible añadir la categoría</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation type="vanished">Não é possível adicionar a categoria porque outra operação crítica está em curso.</translation>
+        <translation>No es posible añadir la categoría debido a que otra operación crítica está en ejecución.</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="vanished">Importado com sucesso, mas alguns feeds/categorias não foram importados devido a um erro.</translation>
+        <translation>Importación satisfactoria, mas no se importaron algunas fuentes/categorías debido a un error.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="vanished">A importação foi totalmente bem sucedida.</translation>
+        <translation>La importación fue totalmente satisfactoria.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="vanished">Barra de progresso de atualização de feeds</translation>
+        <translation>Barra de progreso de actualización de la fuente</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="vanished">Rótulo da atualização de feeds</translation>
+        <translation>Etiqueta de actualización de la fuente</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="vanished">Barra de progresso do download de arquivos</translation>
+        <translation>Barra de progreso de descarga del archivo</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="vanished">Rótulo do download de arquivos</translation>
+        <translation>Etiqueta de descarga del archivo</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="vanished">Espaçador da barra de ferramentas</translation>
+        <translation>Espaciador de la barra de herramientas</translation>
     </message>
 </context>
 <context>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation type="vanished">Nova versão disponível</translation>
+        <translation>Nueva versión disponible</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation type="vanished">Clique na bolha para mais informações.</translation>
+        <translation>Pulse en el globo para más información.</translation>
     </message>
     <message>
         <source>anonymous</source>
-        <translation type="vanished">anônimo</translation>
+        <translation>anónimo</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="vanished">bytes</translation>
+        <translation> bytes</translation>
     </message>
 </context>
 <context>
@@ -3527,126 +3509,120 @@ ID da Conta: %1</translation>
     <message>
         <source>%1
 Unread news: %2</source>
-        <translation type="vanished">%1
-Notícias não lidas: %2</translation>
+        <translation>%1
+Noticias no leídas: %2</translation>
     </message>
 </context>
 <context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation type="vanished">Fecha esta aba.</translation>
+        <translation>Cerrar esta pestaña.</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation type="vanished">Fechar aba</translation>
+        <translation>Cerrar pestaña</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation type="vanished">Feeds</translation>
+        <translation>Fuentes</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation type="vanished">Navegue pelo seus feeds e mensagens</translation>
+        <translation>Examinar sus fuentes y mensajes</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation type="vanished">Exibe o menu principal.</translation>
+        <translation>Muestra el menú principal.</translation>
     </message>
     <message>
         <source>Main menu</source>
-        <translation type="vanished">Menu principal</translation>
+        <translation>Menú principal</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="vanished">Downloads</translation>
+        <translation>Descargas</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="vanished">Visualização da publicação</translation>
+        <translation>Vista en modo diario</translation>
     </message>
     <message>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
-        <translation type="vanished">Navegador da web</translation>
+        <translation>Navegador web</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="vanished">
-            <numerusform>%n hora</numerusform>
-            <numerusform>%n hora(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n hora()</numerusform><numerusform>%n hora(s)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="vanished">
-            <numerusform>%n minuto</numerusform>
-            <numerusform>%n minuto(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto()</numerusform><numerusform>%n minuto(s)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="vanished">e </translation>
+        <translation>y</translation>
     </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation type="vanished">Ações ativadas</translation>
+        <translation>Acciones activadas</translation>
     </message>
     <message>
         <source>Available actions</source>
-        <translation type="vanished">Ações disponíveis</translation>
+        <translation>Acciones disponibles</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation type="vanished">Inserir separador</translation>
+        <translation>Insertar separador</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation type="vanished">Inserir espaçador</translation>
+        <translation>Insertar espaciador</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation type="vanished">Separador</translation>
+        <translation>Separador</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="vanished">Espaçador da barra de ferramentas</translation>
+        <translation>Espaciador de la barra de herramientas</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation type="vanished">Mover ação para cima</translation>
+        <translation>Subir acción</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation type="vanished">Mover ação para baixo</translation>
+        <translation>Bajar acción</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation type="vanished">Adicionar ação selecionada</translation>
+        <translation>Añadir acción seleccionada</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation type="vanished">Excluir ação selecionada</translation>
+        <translation>Borrar acción seleccionada</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation type="vanished">Excluir todas as ações</translation>
+        <translation>Borrar todas las acciones</translation>
     </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="vanished">Fecha as caixas de diálogo restritas abertas primeiro.</translation>
+        <translation>Cerrar primero los diálogos modales abiertos.</translation>
     </message>
 </context>
 <context>
@@ -3654,29 +3630,26 @@ Notícias não lidas: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">não usa a atualização automática</translation>
+        <translation>no realizar actualizaciones automáticas</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">usa as configurações globais</translation>
+        <translation>utiliza la configuración general</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">
-            <numerusform>usa configurações específicas (%n minuto para a próxima atualização automática)</numerusform>
-            <numerusform>usa configurações específicas (%n minuto(s) para a próxima atualização automática)</numerusform>
-        </translation>
+        <translation><numerusform>utiliza la configuración específica (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1%2
+        <translation>%1%2
 
-Status da atualização automática: %3</translation>
+Estado de la actualización automática: %3</translation>
     </message>
 </context>
 <context>
@@ -3689,88 +3662,88 @@ Username: %1
 Server: %2
 Last error: %4
 Last login on: %5</source>
-        <translation type="vanished">Tiny Tiny RSS
+        <translation>Tiny Tiny RSS
 
-ID da Conta: %3
-Usuário: %1
+Identificador de cuenta: %3
+Nombre de usuario: %1
 Servidor: %2
-Último erro: %4
-Último login em: %5</translation>
+Último error: %4
+Último inicio de sesión: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="vanished">Sincronizar em</translation>
+        <translation>Sincronizar</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="vanished">Não é possível adicionar o item</translation>
+        <translation>No es posible añadir el elemento</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="vanished">Não é possível adicionar feeds porque outra operação crítica está em andamento.</translation>
+        <translation>No es posible añadir la fuente debido a que otra operación crítica está en ejecución.</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="vanished">Painel de navegação</translation>
+        <translation>Panel de navegación</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="vanished">Sem título</translation>
+        <translation>Sin título</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="vanished">Voltar</translation>
+        <translation>Anterior</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="vanished">Volta.</translation>
+        <translation>Regresar.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="vanished">Avançar</translation>
+        <translation>Siguiente</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="vanished">Avança.</translation>
+        <translation>Avanzar.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="vanished">Recarregar</translation>
+        <translation>Recargar</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="vanished">Recarrega a página atual.</translation>
+        <translation>Recargar página actual</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="vanished">Parar</translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="vanished">Interrompe o carregamento da página.</translation>
+        <translation>Detener la carga de la página.</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation type="vanished">Anexo</translation>
+        <translation>Archivo adjunto</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="vanished">Escrito por </translation>
+        <translation>Escrito por</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="vanished">Visualização da publicação</translation>
+        <translation>Vista en modo diario</translation>
     </message>
     <message>
         <source>unknown author</source>
-        <translation type="vanished">autor desconhecido</translation>
+        <translation>autor desconocido</translation>
     </message>
 </context>
 </TS>
