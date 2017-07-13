@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pl" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pl">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -134,11 +136,14 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Kliknij tu, aby dodać kanał z tej strony.
-Ta strona web zawiera jeden kanał.</numerusform><numerusform>Kliknij tu, aby dodać kanały z tej strony.
-Ta strona web zawiera %n kanały</numerusform><numerusform>Kliknij tu, aby dodać kanały z tej strony.
-Ta strona web zawiera %n kanałów.</numerusform><numerusform>Kliknij tu, aby dodać kanały z tej strony.
-Ta strona web zawiera %n kanałów.</numerusform></translation>
+        <translation>
+            <numerusform>Kliknij tu, aby dodać kanał z tej strony.
+Ta strona web zawiera jeden kanał.</numerusform>
+            <numerusform>Kliknij tu, aby dodać kanały z tej strony.
+Ta strona web zawiera %n kanały</numerusform>
+            <numerusform>Kliknij tu, aby dodać kanały z tej strony.
+Ta strona web zawiera %n kanałów.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -224,7 +229,7 @@ Ta strona web zawiera %n kanałów.</numerusform></translation>
         <translation>Pobieranie zakończone</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Plik &apos;%1&apos; został pobrany.
 Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
@@ -250,11 +255,19 @@ Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>pozostała %n minuta</numerusform><numerusform>pozostały %n minuty</numerusform><numerusform>pozostało %n minut</numerusform><numerusform>pozostało %n minut</numerusform></translation>
+        <translation>
+            <numerusform>pozostała %n minuta</numerusform>
+            <numerusform>pozostały %n minuty</numerusform>
+            <numerusform>pozostało %n minut</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>pozostała %n sekunda</numerusform><numerusform>pozostało %n sekundy</numerusform><numerusform>pozostało %n sekund</numerusform><numerusform>pozostało %n sekund</numerusform></translation>
+        <translation>
+            <numerusform>pozostała %n sekunda</numerusform>
+            <numerusform>pozostało %n sekundy</numerusform>
+            <numerusform>pozostało %n sekund</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -274,7 +287,11 @@ Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Pobieranie %n pliku...</numerusform><numerusform>Pobieranie %n plików...</numerusform><numerusform>Pobieranie %n plików...</numerusform><numerusform>Pobieranie %n plików...</numerusform></translation>
+        <translation>
+            <numerusform>Pobieranie %n pliku...</numerusform>
+            <numerusform>Pobieranie %n plików...</numerusform>
+            <numerusform>Pobieranie %n plików...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -296,12 +313,20 @@ Stan auto-aktualizacji: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform>używa własnych ustawień (%n minuta do następnej auto-aktualizacji)</numerusform>
+            <numerusform>używa własnych ustawień (%n minuty do następnej auto-aktualizacji)</numerusform>
+            <numerusform>używa własnych ustawień (%n minut do następnej auto-aktualizacji)</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -331,7 +356,11 @@ Stan auto-aktualizacji: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-aktualizacja %n kanału.</numerusform><numerusform>Auto-aktualizacja %n kanałów.</numerusform><numerusform>Auto-aktualizacja %n kanałów.</numerusform><numerusform>Auto-aktualizacja %n kanałów.</numerusform></translation>
+        <translation>
+            <numerusform>Auto-aktualizacja %n kanału.</numerusform>
+            <numerusform>Auto-aktualizacja %n kanałów.</numerusform>
+            <numerusform>Auto-aktualizacja %n kanałów.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -527,15 +556,15 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>User skins root path</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -656,7 +685,11 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dzień</numerusform><numerusform>dni</numerusform><numerusform>dni</numerusform><numerusform>dni</numerusform></translation>
+        <translation>
+            <numerusform>dzień</numerusform>
+            <numerusform>dni</numerusform>
+            <numerusform>dni</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -722,52 +755,48 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
 <context>
     <name>FormEditAccount</name>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Authentication</source>
-        <translation>Uwierzytelnianie</translation>
+        <translation type="vanished">Uwierzytelnianie</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Nazwa użytkownika</translation>
+        <translation type="vanished">Nazwa użytkownika</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Hasło</translation>
+        <translation type="vanished">Hasło</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Wyświetl hasło</translation>
+        <translation type="vanished">Wyświetl hasło</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Wymagane uwierzytelnienie HTTP</translation>
+        <translation type="vanished">Wymagane uwierzytelnienie HTTP</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="vanished">URL</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Testuj konfigurację</translation>
+        <translation type="vanished">&amp;Testuj konfigurację</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>Nazwa użytkownika uwierzytelniania HTTP</translation>
+        <translation type="vanished">Nazwa użytkownika uwierzytelniania HTTP</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>Hasło uwierzytelnienia HTTP</translation>
+        <translation type="vanished">Hasło uwierzytelnienia HTTP</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>Hasło do twojego konta TT-RSS</translation>
+        <translation type="vanished">Hasło do twojego konta TT-RSS</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>Nazwa użytkownika do twojego konta TT-RSS</translation>
+        <translation type="vanished">Nazwa użytkownika do twojego konta TT-RSS</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
@@ -775,99 +804,99 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Nie wykonano jeszcze testu.</translation>
+        <translation type="vanished">Nie wykonano jeszcze testu.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Tutaj będą widoczne wyniki połączenia testowego.</translation>
+        <translation type="vanished">Tutaj będą widoczne wyniki połączenia testowego.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Dodaj nowe konto Tiny Tiny RSS</translation>
+        <translation type="vanished">Dodaj nowe konto Tiny Tiny RSS</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Edycja istniejącego konta Tiny Tiny RSS</translation>
+        <translation type="vanished">Edycja istniejącego konta Tiny Tiny RSS</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>Dostęp API na wybranym serwerze nie jest włączony.</translation>
+        <translation type="vanished">Dostęp API na wybranym serwerze nie jest włączony.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation>Wprowadzone poświadczenia są niepoprawne.</translation>
+        <translation type="vanished">Wprowadzone poświadczenia są niepoprawne.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation>Wystąpił inny błąd, skontaktuj się z twórcą.</translation>
+        <translation type="vanished">Wystąpił inny błąd, skontaktuj się z twórcą.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Na wybranym serwerze Tiny Tiny RSS działa niewspierana wersja API. (%1). Minimalny wymagany poziom API to %2.</translation>
+        <translation type="vanished">Na wybranym serwerze Tiny Tiny RSS działa niewspierana wersja API. (%1). Minimalny wymagany poziom API to %2.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Na wybranym serwerze Tiny Tiny RSS działa niewspierana wersja API.</translation>
+        <translation type="vanished">Na wybranym serwerze Tiny Tiny RSS działa niewspierana wersja API.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Serwer Tiny Tiny RSS działa z API na poziomie %1. Wymagany poziom API to %2 lub lub wyższy.</translation>
+        <translation type="vanished">Serwer Tiny Tiny RSS działa z API na poziomie %1. Wymagany poziom API to %2 lub lub wyższy.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Serwer Tiny Tiny RSS jest ok</translation>
+        <translation type="vanished">Serwer Tiny Tiny RSS jest ok</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Błąd sieci: &apos;%1&apos;.</translation>
+        <translation type="vanished">Błąd sieci: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Błąd sieci, czy na pewno został wpisany poprawny poprawny końcowy API dla Tiny Tiny RSS i hasło?</translation>
+        <translation type="vanished">Błąd sieci, czy na pewno został wpisany poprawny poprawny końcowy API dla Tiny Tiny RSS i hasło?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Nazwa użytkownika nie może być pusta.</translation>
+        <translation type="vanished">Nazwa użytkownika nie może być pusta.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Nazwa użytkownika jest w porządku.</translation>
+        <translation type="vanished">Nazwa użytkownika jest w porządku.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Hasło nie może być puste.</translation>
+        <translation type="vanished">Hasło nie może być puste.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Hasło jest w porządku.</translation>
+        <translation type="vanished">Hasło jest w porządku.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Nazwa użytkownika jest w porządku lub nie jest potrzebna.</translation>
+        <translation type="vanished">Nazwa użytkownika jest w porządku lub nie jest potrzebna.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Nazwa użytkownika jest pusta</translation>
+        <translation type="vanished">Nazwa użytkownika jest pusta</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Hasło jest w porządku lub nie jest potrzebne.</translation>
+        <translation type="vanished">Hasło jest w porządku lub nie jest potrzebne.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Hasło jest puste.</translation>
+        <translation type="vanished">Hasło jest puste.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URL nie może być pusty.</translation>
+        <translation type="vanished">URL nie może być pusty.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL jest ok.</translation>
+        <translation type="vanished">URL jest ok.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation>Zauważ, że wymagany jest poziom API przynajmniej %1</translation>
+        <translation type="vanished">Zauważ, że wymagany jest poziom API przynajmniej %1</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
@@ -875,23 +904,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Nieokreślony błąd, na pewno został wprowadzony poprawny URL?</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">Nieokreślony błąd, na pewno został wprowadzony poprawny URL?</translation>
     </message>
 </context>
 <context>
@@ -902,11 +915,11 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -930,7 +943,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
@@ -970,7 +983,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1015,6 +1028,173 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     <message>
         <source>ownCloud News server is okay.</source>
         <translation>Serwer ownCloud News działa bez problemów.</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditTtRssAccount</name>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished">Uwierzytelnianie</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Nazwa użytkownika</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Hasło</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished">Wyświetl hasło</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished">Wymagane uwierzytelnienie HTTP</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished">&amp;Testuj konfigurację</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation type="unfinished">Zauważ, że wymagany jest poziom API przynajmniej %1</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation type="unfinished">Nazwa użytkownika uwierzytelniania HTTP</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation type="unfinished">Hasło uwierzytelnienia HTTP</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished">Hasło do twojego konta TT-RSS</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished">Nazwa użytkownika do twojego konta TT-RSS</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished">Nie wykonano jeszcze testu.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished">Tutaj będą widoczne wyniki połączenia testowego.</translation>
+    </message>
+    <message>
+        <source>Add new Tiny Tiny RSS account</source>
+        <translation type="unfinished">Dodaj nowe konto Tiny Tiny RSS</translation>
+    </message>
+    <message>
+        <source>Edit existing Tiny Tiny RSS account</source>
+        <translation type="unfinished">Edycja istniejącego konta Tiny Tiny RSS</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished">Dostęp API na wybranym serwerze nie jest włączony.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation type="unfinished">Wprowadzone poświadczenia są niepoprawne.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished">Wystąpił inny błąd, skontaktuj się z twórcą.</translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
+        <translation type="unfinished">Na wybranym serwerze Tiny Tiny RSS działa niewspierana wersja API. (%1). Minimalny wymagany poziom API to %2.</translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished">Na wybranym serwerze Tiny Tiny RSS działa niewspierana wersja API.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
+        <translation type="unfinished">Serwer Tiny Tiny RSS działa z API na poziomie %1. Wymagany poziom API to %2 lub lub wyższy.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation type="unfinished">Serwer Tiny Tiny RSS jest ok</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished">Błąd sieci: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished">Błąd sieci, czy na pewno został wpisany poprawny poprawny końcowy API dla Tiny Tiny RSS i hasło?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished">Nieokreślony błąd, na pewno został wprowadzony poprawny URL?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished">Nazwa użytkownika nie może być pusta.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished">Nazwa użytkownika jest w porządku.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished">Hasło nie może być puste.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished">Hasło jest w porządku.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished">Nazwa użytkownika jest w porządku lub nie jest potrzebna.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Nazwa użytkownika jest pusta</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished">Hasło jest w porządku lub nie jest potrzebne.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished">URL nie może być pusty.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished">URL jest ok.</translation>
     </message>
 </context>
 <context>
@@ -1077,7 +1257,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -1166,7 +1346,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Icon name:</source>
@@ -1573,7 +1753,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -1670,7 +1850,11 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restart</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1742,6 +1926,10 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <source>Good source directory is specified.</source>
         <translation>Wybrano dobry katalog źródłowy.</translation>
     </message>
+    <message>
+        <source>Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1757,7 +1945,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation>Niektóre ustawienia krytyczne zostały zmienione i zostaną zastosowane dopiero po restarcie aplikacji.
+        <translation type="vanished">Niektóre ustawienia krytyczne zostały zmienione i zostaną zastosowane dopiero po restarcie aplikacji.
 
 Musisz ręcznie uruchomić ponownie aplikację.</translation>
     </message>
@@ -1778,6 +1966,16 @@ Musisz ręcznie uruchomić ponownie aplikację.</translation>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
         <translation>Na pewno chcesz zamknąć to okno bez zapisywania ustawień?</translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+
+You have to restart manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to restart now?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1865,7 +2063,7 @@ Musisz ręcznie uruchomić ponownie aplikację.</translation>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Icon name:</source>
@@ -2204,28 +2402,28 @@ Musisz go zainstalować ręcznie.</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2240,6 +2438,13 @@ You can install it now.</source>
     </message>
 </context>
 <context>
+    <name>LabelsRootItem</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -2250,7 +2455,7 @@ You can install it now.</source>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2301,7 +2506,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2312,7 +2517,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deleted</source>
@@ -2364,7 +2569,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -2428,11 +2633,19 @@ You can install it now.</source>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID of feed of the message.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2490,11 +2703,11 @@ You can install it now.</source>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2522,7 +2735,7 @@ You can install it now.</source>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
@@ -2582,11 +2795,15 @@ You can install it now.</source>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Pokaż więcej wiadomości (pozostała %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostały %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostało %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostało %n)</numerusform></translation>
+        <translation>
+            <numerusform>Pokaż więcej wiadomości (pozostała %n)</numerusform>
+            <numerusform>Pokaż więcej wiadomości (pozostały %n)</numerusform>
+            <numerusform>Pokaż więcej wiadomości (pozostało %n)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2626,21 +2843,23 @@ You can install it now.</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n inny kanał.</numerusform><numerusform>
++ %n inny kanał.</numerusform>
+            <numerusform>
 
-+ %n inne kanały.</numerusform><numerusform>
++ %n inne kanały.</numerusform>
+            <numerusform>
 
-+ %n innych kanałów.</numerusform><numerusform>
-
-+ %n innych kanałów.</numerusform></translation>
++ %n innych kanałów.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2673,16 +2892,16 @@ Tiny Tiny RSS to open source-owy internetowy czytnik kanałów (RSS/Atom) i agre
 Minimalny wymagany poziom API to %1.</translation>
     </message>
     <message>
-        <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
         <translation>Standardowe kanały online (RSS/RDF/ATOM)</translation>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Ta usługa oferuje integrację ze standardowymi kanałami on-line RSS/RDF/Atom i podcastów.</translation>
+    </message>
+    <message>
+        <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2697,7 +2916,11 @@ Minimalny wymagany poziom API to %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n usunięta wiadomość.</numerusform><numerusform>%n usunięte wiadomości.</numerusform><numerusform>%n usuniętych wiadomości.</numerusform><numerusform>%n usuniętych wiadomości.</numerusform></translation>
+        <translation>
+            <numerusform>%n usunięta wiadomość.</numerusform>
+            <numerusform>%n usunięte wiadomości.</numerusform>
+            <numerusform>%n usuniętych wiadomości.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2721,7 +2944,11 @@ Minimalny wymagany poziom API to %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nieprzeczytana wiadomość.</numerusform><numerusform>%n nieprzeczytane wiadomości.</numerusform><numerusform>%n nieprzeczytanych wiadomości.</numerusform><numerusform>%n nieprzeczytanych wiadomości.</numerusform></translation>
+        <translation>
+            <numerusform>%n nieprzeczytana wiadomość.</numerusform>
+            <numerusform>%n nieprzeczytane wiadomości.</numerusform>
+            <numerusform>%n nieprzeczytanych wiadomości.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -2768,7 +2995,7 @@ Minimalny wymagany poziom API to %1.</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>External e-mail client</source>
@@ -2841,7 +3068,7 @@ Minimalny wymagany poziom API to %1.</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select web browser executable</source>
@@ -2892,7 +3119,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3027,11 +3254,11 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3113,7 +3340,7 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
@@ -3141,7 +3368,11 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable &quot;auto-update started&quot; notification</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3174,24 +3405,8 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
         <translation>Ikony i skórki</translation>
     </message>
     <message>
-        <source>Icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Icon theme</source>
         <translation>Motyw ikon</translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3312,11 +3527,11 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3506,7 +3721,7 @@ ID konta: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3557,19 +3772,30 @@ Nieprzeczytanych wiadomości: %2</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <extracomment>Web browser default tab title.</extracomment>
         <translation>Przeglądarka</translation>
+    </message>
+    <message>
+        <source>  Web browser</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n godzinę</numerusform><numerusform>%n godziny</numerusform><numerusform>%n godzin</numerusform><numerusform>%n godzin</numerusform></translation>
+        <translation>
+            <numerusform>%n godzinę</numerusform>
+            <numerusform>%n godziny</numerusform>
+            <numerusform>%n godzin</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform><numerusform>%n minut</numerusform></translation>
+        <translation>
+            <numerusform>%n minuta</numerusform>
+            <numerusform>%n minuty</numerusform>
+            <numerusform>%n minut</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -3622,6 +3848,10 @@ Nieprzeczytanych wiadomości: %2</translation>
         <source>Delete all actions</source>
         <translation>Usuń wszystkie akcje</translation>
     </message>
+    <message>
+        <source>Reset toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
@@ -3645,7 +3875,11 @@ Nieprzeczytanych wiadomości: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>używa własnych ustawień (%n minuta do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minuty do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minut do następnej auto-aktualizacji)</numerusform><numerusform>używa własnych ustawień (%n minut do następnej auto-aktualizacji)</numerusform></translation>
+        <translation>
+            <numerusform>używa własnych ustawień (%n minuta do następnej auto-aktualizacji)</numerusform>
+            <numerusform>używa własnych ustawień (%n minuty do następnej auto-aktualizacji)</numerusform>
+            <numerusform>używa własnych ustawień (%n minut do następnej auto-aktualizacji)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2

@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -135,9 +137,12 @@ Gelezen berichten gewist...</translation>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klik hier om feeds toe tevoegen van deze website.
-Deze website heeft %n feed.</numerusform><numerusform>Klik hier om feeds toe tevoegen van deze website.
-Deze website heeft %n feed(s).</numerusform></translation>
+        <translation>
+            <numerusform>Klik hier om feeds toe tevoegen van deze website.
+Deze website heeft %n feed.</numerusform>
+            <numerusform>Klik hier om feeds toe tevoegen van deze website.
+Deze website heeft %n feed(s).</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -223,7 +228,7 @@ Deze website heeft %n feed(s).</numerusform></translation>
         <translation>Download klaar</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Bestand &apos;%1&apos; is klaar
 Klik hier om map te openen.</translation>
@@ -249,11 +254,17 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende minuut</numerusform>
+            <numerusform>%n resterende minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende seconde</numerusform>
+            <numerusform>%n resterende seconden</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -273,7 +284,10 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
+        <translation>
+            <numerusform>Dowloading %n bestand...</numerusform>
+            <numerusform>Downloading %n bestanden...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -295,12 +309,18 @@ Auto update status: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik algemene instellingen (%n minuut(en) tot volgende auto-update)</numerusform><numerusform>gebruik globale instellingen (%n minut(en) voor volgende automatische update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik algemene instellingen (%n minuut(en) tot volgende auto-update)</numerusform>
+            <numerusform>gebruik globale instellingen (%n minut(en) voor volgende automatische update)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut(en) tot volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minut(en) tot volgende auto-update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut(en) tot volgende auto-update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minut(en) tot volgende auto-update)</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -330,7 +350,10 @@ Auto update status: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-update van %n feed(s).</numerusform><numerusform>Auto-update van %n feed(s).</numerusform></translation>
+        <translation>
+            <numerusform>Auto-update van %n feed(s).</numerusform>
+            <numerusform>Auto-update van %n feed(s).</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -655,7 +678,10 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
+        <translation>
+            <numerusform> dag</numerusform>
+            <numerusform> dagen</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -722,51 +748,51 @@ of deze functie bestaat nog niet.</translation>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+        <translation type="vanished">Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Verificatie</translation>
+        <translation type="vanished">Verificatie</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Gebruikersnaam</translation>
+        <translation type="vanished">Gebruikersnaam</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Paswoord</translation>
+        <translation type="vanished">Paswoord</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Toon paswoord</translation>
+        <translation type="vanished">Toon paswoord</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Vereist HTTP verificatie</translation>
+        <translation type="vanished">Vereist HTTP verificatie</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="vanished">URL</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test instelling</translation>
+        <translation type="vanished">&amp;Test instelling</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>HTTP verificatie gebruikersnaam</translation>
+        <translation type="vanished">HTTP verificatie gebruikersnaam</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>HTTP verificatie paswoord</translation>
+        <translation type="vanished">HTTP verificatie paswoord</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>Paswoord voor je TT-RSS account</translation>
+        <translation type="vanished">Paswoord voor je TT-RSS account</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>Gebruikersnaam voor je TT-RSS account</translation>
+        <translation type="vanished">Gebruikersnaam voor je TT-RSS account</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
@@ -774,99 +800,99 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Nog geen test uitgevoerd.</translation>
+        <translation type="vanished">Nog geen test uitgevoerd.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Hier, worden resultaten van verbinding getoond.</translation>
+        <translation type="vanished">Hier, worden resultaten van verbinding getoond.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Voeg nieuwe Tiny Tiny RSS account toe</translation>
+        <translation type="vanished">Voeg nieuwe Tiny Tiny RSS account toe</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Bewerk bestaande Tiny Tiny RSS account</translation>
+        <translation type="vanished">Bewerk bestaande Tiny Tiny RSS account</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>API toegang op geselecteerde server staat uit.</translation>
+        <translation type="vanished">API toegang op geselecteerde server staat uit.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation>Ingevoerde verificatiegegevens zijn onjuist.</translation>
+        <translation type="vanished">Ingevoerde verificatiegegevens zijn onjuist.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation>Andere fout opgetreden, contact ontwikkelaars.</translation>
+        <translation type="vanished">Andere fout opgetreden, contact ontwikkelaars.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Geselecteerde Tiny Tiny RSS server draait een niet- ondersteunde versie van API (%1). Tenminste API level %2 is vereist.</translation>
+        <translation type="vanished">Geselecteerde Tiny Tiny RSS server draait een niet- ondersteunde versie van API (%1). Tenminste API level %2 is vereist.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Geselecteerde Tiny Tiny RSS-server draait een niet-ondersteunde versie van API.</translation>
+        <translation type="vanished">Geselecteerde Tiny Tiny RSS-server draait een niet-ondersteunde versie van API.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS server is ok, draait met API level %2, terwijl op z&apos;n minst API level %2 vereist is.</translation>
+        <translation type="vanished">Tiny Tiny RSS server is ok, draait met API level %2, terwijl op z&apos;n minst API level %2 vereist is.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS server is ok.</translation>
+        <translation type="vanished">Tiny Tiny RSS server is ok.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerk fout: &apos;%1&apos;</translation>
+        <translation type="vanished">Netwerk fout: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Netwerk fout, heb je de juiste Tiny Tiny RSS API eindpunt en paswoord?</translation>
+        <translation type="vanished">Netwerk fout, heb je de juiste Tiny Tiny RSS API eindpunt en paswoord?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Gebruikersnaam kan niet leeg zijn.</translation>
+        <translation type="vanished">Gebruikersnaam kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Gebruikersnaam is goed.</translation>
+        <translation type="vanished">Gebruikersnaam is goed.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Paswoord kan niet leeg zijn.</translation>
+        <translation type="vanished">Paswoord kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Paswoord is ok.</translation>
+        <translation type="vanished">Paswoord is ok.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
+        <translation type="vanished">Gebruikersnaam is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
+        <translation type="vanished">Gebruikersnaam is leeg.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Paswoord is ok of het is niet nodig.</translation>
+        <translation type="vanished">Paswoord is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
+        <translation type="vanished">Paswoord is leeg.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>Url mag niet leeg zijn.</translation>
+        <translation type="vanished">Url mag niet leeg zijn.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>Url is goed.</translation>
+        <translation type="vanished">Url is goed.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation>Merk op dat tenminste een API-niveau is vereist van %1.</translation>
+        <translation type="vanished">Merk op dat tenminste een API-niveau is vereist van %1.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
@@ -874,23 +900,23 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Onbekende fout, heb je de URL correct ingevoerd?</translation>
+        <translation type="vanished">Onbekende fout, heb je de URL correct ingevoerd?</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
+        <translation type="vanished">Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
+        <translation type="vanished">Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>URL van uw TT-RSS bijvoorbeeld met het slepen van de &quot;/ api /&quot; aanvraag</translation>
+        <translation type="vanished">URL van uw TT-RSS bijvoorbeeld met het slepen van de &quot;/ api /&quot; aanvraag</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>URL zou NIET moeten eindigen met &quot;/api/&quot;.</translation>
+        <translation type="vanished">URL zou NIET moeten eindigen met &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
@@ -1014,6 +1040,173 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>ownCloud News server is okay.</source>
         <translation>OwnCloud Nieuws server is ok.</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditTtRssAccount</name>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished">URL</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished">Verificatie</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Paswoord</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished">Toon paswoord</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished">Vereist HTTP verificatie</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished">&amp;Test instelling</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished">Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished">Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation type="unfinished">Merk op dat tenminste een API-niveau is vereist van %1.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation type="unfinished">HTTP verificatie gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation type="unfinished">HTTP verificatie paswoord</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished">Paswoord voor je TT-RSS account</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished">Gebruikersnaam voor je TT-RSS account</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished">URL van uw TT-RSS bijvoorbeeld met het slepen van de &quot;/ api /&quot; aanvraag</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished">Nog geen test uitgevoerd.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished">Hier, worden resultaten van verbinding getoond.</translation>
+    </message>
+    <message>
+        <source>Add new Tiny Tiny RSS account</source>
+        <translation type="unfinished">Voeg nieuwe Tiny Tiny RSS account toe</translation>
+    </message>
+    <message>
+        <source>Edit existing Tiny Tiny RSS account</source>
+        <translation type="unfinished">Bewerk bestaande Tiny Tiny RSS account</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished">API toegang op geselecteerde server staat uit.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation type="unfinished">Ingevoerde verificatiegegevens zijn onjuist.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished">Andere fout opgetreden, contact ontwikkelaars.</translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
+        <translation type="unfinished">Geselecteerde Tiny Tiny RSS server draait een niet- ondersteunde versie van API (%1). Tenminste API level %2 is vereist.</translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished">Geselecteerde Tiny Tiny RSS-server draait een niet-ondersteunde versie van API.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
+        <translation type="unfinished">Tiny Tiny RSS server is ok, draait met API level %2, terwijl op z&apos;n minst API level %2 vereist is.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation type="unfinished">Tiny Tiny RSS server is ok.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished">Netwerk fout: &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished">Netwerk fout, heb je de juiste Tiny Tiny RSS API eindpunt en paswoord?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished">Onbekende fout, heb je de URL correct ingevoerd?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished">Gebruikersnaam kan niet leeg zijn.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished">Gebruikersnaam is goed.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished">Paswoord kan niet leeg zijn.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished">Paswoord is ok.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished">Gebruikersnaam is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Gebruikersnaam is leeg.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished">Paswoord is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Paswoord is leeg.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished">Url mag niet leeg zijn.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation type="unfinished">URL zou NIET moeten eindigen met &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished">Url is goed.</translation>
     </message>
 </context>
 <context>
@@ -1671,6 +1864,10 @@ of deze functie bestaat nog niet.</translation>
         <source>&amp;Mark all items as read</source>
         <translation>&amp;Markeer alle items als gelezen</translation>
     </message>
+    <message>
+        <source>&amp;Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1741,6 +1938,10 @@ of deze functie bestaat nog niet.</translation>
         <source>Good source directory is specified.</source>
         <translation>Juiste source map is opgegeven.</translation>
     </message>
+    <message>
+        <source>Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1756,7 +1957,7 @@ of deze functie bestaat nog niet.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation>Sommige kritieke instellingen zijn veranderd en worden van kracht als het programma wordt herstart.
+        <translation type="vanished">Sommige kritieke instellingen zijn veranderd en worden van kracht als het programma wordt herstart.
 
 Je moet handmatig herstarten.</translation>
     </message>
@@ -1777,6 +1978,16 @@ Je moet handmatig herstarten.</translation>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
         <translation>Wil je echt deze dialoog sluiten zonder de instellingen op te slaan?</translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+
+You have to restart manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to restart now?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2240,6 +2451,13 @@ Installeer het nu.</translation>
     </message>
 </context>
 <context>
+    <name>LabelsRootItem</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -2301,7 +2519,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2433,6 +2651,14 @@ Installeer het nu.</translation>
     <message>
         <source>Custom hash of the message.</source>
         <translation>Aangepaste hash van bericht.</translation>
+    </message>
+    <message>
+        <source>Feed ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID of feed of the message.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2586,7 +2812,10 @@ Installeer het nu.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Toon een bericht (%n resterende)</numerusform><numerusform>Toon meer berichten (%n resterende)</numerusform></translation>
+        <translation>
+            <numerusform>Toon een bericht (%n resterende)</numerusform>
+            <numerusform>Toon meer berichten (%n resterende)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2632,11 +2861,14 @@ Installeer het nu.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n andere feed.</numerusform><numerusform>
++ %n andere feed.</numerusform>
+            <numerusform>
 
-+ %n andere feeds.</numerusform></translation>
++ %n andere feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2670,7 +2902,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation>De Nieuws app is een RSS/Atom feed aggegrator. Het is deel van de ownCloud suite. Deze plugin implementeert %1 API.</translation>
+        <translation type="vanished">De Nieuws app is een RSS/Atom feed aggegrator. Het is deel van de ownCloud suite. Deze plugin implementeert %1 API.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
@@ -2679,6 +2911,10 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Deze service biedt integratie met standaard online RSS/RDF/Atom-feeds en podcasts.</translation>
+    </message>
+    <message>
+        <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2693,7 +2929,10 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2717,7 +2956,10 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3140,6 +3382,10 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <source>Height of image attachments</source>
         <translation>Hoogte van afbeelding lijst</translation>
     </message>
+    <message>
+        <source>Enable &quot;auto-update started&quot; notification</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -3171,24 +3417,8 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Pictogrammen &amp;&amp; skins</translation>
     </message>
     <message>
-        <source>Icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Icon theme</source>
         <translation>Pictogram thema</translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3555,19 +3785,28 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <extracomment>Web browser default tab title.</extracomment>
         <translation>Webbrowser</translation>
+    </message>
+    <message>
+        <source>  Web browser</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n uur</numerusform><numerusform>%n ur(en)</numerusform></translation>
+        <translation>
+            <numerusform>%n uur</numerusform>
+            <numerusform>%n ur(en)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuut</numerusform><numerusform>%n minut(en)</numerusform></translation>
+        <translation>
+            <numerusform>%n minuut</numerusform>
+            <numerusform>%n minut(en)</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -3620,6 +3859,10 @@ Ongelezen nieuws: %2</translation>
         <source>Delete all actions</source>
         <translation>Verwijder alle maatregels</translation>
     </message>
+    <message>
+        <source>Reset toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
@@ -3643,7 +3886,10 @@ Ongelezen nieuws: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2

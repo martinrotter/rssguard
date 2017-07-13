@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="lt">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -134,10 +136,14 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalas.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalai.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalų.</numerusform></translation>
+        <translation>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalas.</numerusform>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalai.</numerusform>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalų.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -223,7 +229,7 @@ This website contains %n feed(s).</source>
         <translation>Atsiuntimas užbaigtas</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Failas &quot;%1&quot; yra atsisiųstas.
 Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
@@ -249,11 +255,19 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>Liko %n minutė</numerusform><numerusform>Liko %n minutės</numerusform><numerusform>Liko %n minučių</numerusform></translation>
+        <translation>
+            <numerusform>Liko %n minutė</numerusform>
+            <numerusform>Liko %n minutės</numerusform>
+            <numerusform>Liko %n minučių</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>Liko %n sekundė</numerusform><numerusform>Liko %n sekundės</numerusform><numerusform>Liko %n sekundžių</numerusform></translation>
+        <translation>
+            <numerusform>Liko %n sekundė</numerusform>
+            <numerusform>Liko %n sekundės</numerusform>
+            <numerusform>Liko %n sekundžių</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -273,7 +287,11 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Atsiunčiamas %n failas...</numerusform><numerusform>Atsiunčiami %n failai...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform></translation>
+        <translation>
+            <numerusform>Atsiunčiamas %n failas...</numerusform>
+            <numerusform>Atsiunčiami %n failai...</numerusform>
+            <numerusform>Atsiunčiama %n failų...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -295,12 +313,20 @@ Automatinio atnaujinimo būsena: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
+        <translation>
+            <numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
+        <translation>
+            <numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -330,7 +356,11 @@ Automatinio atnaujinimo būsena: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
+        <translation>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -655,7 +685,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> diena</numerusform><numerusform> dienos</numerusform><numerusform> dienų</numerusform></translation>
+        <translation>
+            <numerusform> diena</numerusform>
+            <numerusform> dienos</numerusform>
+            <numerusform> dienų</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -722,51 +756,51 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos.</translation>
+        <translation type="vanished">Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Atpažinimas</translation>
+        <translation type="vanished">Atpažinimas</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Naudotojo vardas</translation>
+        <translation type="vanished">Naudotojo vardas</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Slaptažodis</translation>
+        <translation type="vanished">Slaptažodis</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Rodyti slaptažodį</translation>
+        <translation type="vanished">Rodyti slaptažodį</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Reikalauja HTTP atpažinimo</translation>
+        <translation type="vanished">Reikalauja HTTP atpažinimo</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="vanished">URL</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Išbandyti sąranką</translation>
+        <translation type="vanished">&amp;Išbandyti sąranką</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>HTTP atpažinimo naudotojo vardas</translation>
+        <translation type="vanished">HTTP atpažinimo naudotojo vardas</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>HTTP atpažinimo slaptažodis</translation>
+        <translation type="vanished">HTTP atpažinimo slaptažodis</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>Jūsų TT-RSS paskyros slaptažodis</translation>
+        <translation type="vanished">Jūsų TT-RSS paskyros slaptažodis</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>Jūsų TT-RSS paskyros naudotojo vardas</translation>
+        <translation type="vanished">Jūsų TT-RSS paskyros naudotojo vardas</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
@@ -774,99 +808,99 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Kol kas nebuvo atlikta jokių bandymų.</translation>
+        <translation type="vanished">Kol kas nebuvo atlikta jokių bandymų.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Čia yra rodomi ryšio bandymo rezultatai.</translation>
+        <translation type="vanished">Čia yra rodomi ryšio bandymo rezultatai.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Pridėti naują Tiny Tiny RSS paskyrą</translation>
+        <translation type="vanished">Pridėti naują Tiny Tiny RSS paskyrą</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Redaguoti esamą Tiny Tiny RSS paskyrą</translation>
+        <translation type="vanished">Redaguoti esamą Tiny Tiny RSS paskyrą</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>API prieiga pasirinktame serveryje nėra įjungta.</translation>
+        <translation type="vanished">API prieiga pasirinktame serveryje nėra įjungta.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation>Įrašyti prisijungimo duomenys neteisingi.</translation>
+        <translation type="vanished">Įrašyti prisijungimo duomenys neteisingi.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation>Įvyko kitokia klaida, susisiekite su kūrėjais.</translation>
+        <translation type="vanished">Įvyko kitokia klaida, susisiekite su kūrėjais.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikomą API versiją (%1). Reikalinga bent %2 lygio API.</translation>
+        <translation type="vanished">Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikomą API versiją (%1). Reikalinga bent %2 lygio API.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikoma API versiją.</translation>
+        <translation type="vanished">Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikoma API versiją.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS serveris veikia gerai, vykdomas, naudojant API lygį %1, tuo tarpu reikalingas bent API lygis %2.</translation>
+        <translation type="vanished">Tiny Tiny RSS serveris veikia gerai, vykdomas, naudojant API lygį %1, tuo tarpu reikalingas bent API lygis %2.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS serveris veikia gerai.</translation>
+        <translation type="vanished">Tiny Tiny RSS serveris veikia gerai.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Tinklo klaida: &apos;%1&apos;.</translation>
+        <translation type="vanished">Tinklo klaida: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Tinklo klaida, ar jūs įrašėte teisingą Tiny Tiny RSS API galutinį tašką ir slaptažodį?</translation>
+        <translation type="vanished">Tinklo klaida, ar jūs įrašėte teisingą Tiny Tiny RSS API galutinį tašką ir slaptažodį?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Naudotojo vardas negali būti tuščias.</translation>
+        <translation type="vanished">Naudotojo vardas negali būti tuščias.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Naudotojo vardas yra geras.</translation>
+        <translation type="vanished">Naudotojo vardas yra geras.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Slaptažodis negali būti tuščias.</translation>
+        <translation type="vanished">Slaptažodis negali būti tuščias.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Slaptažodis yra geras.</translation>
+        <translation type="vanished">Slaptažodis yra geras.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Naudotojo vardas yra geras arba jo nereikia.</translation>
+        <translation type="vanished">Naudotojo vardas yra geras arba jo nereikia.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Naudotojo vardas tuščias.</translation>
+        <translation type="vanished">Naudotojo vardas tuščias.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Slaptažodis yra geras arba jo nereikia.</translation>
+        <translation type="vanished">Slaptažodis yra geras arba jo nereikia.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Slaptažodis tuščias.</translation>
+        <translation type="vanished">Slaptažodis tuščias.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URL negali būti tuščias.</translation>
+        <translation type="vanished">URL negali būti tuščias.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL yra geras.</translation>
+        <translation type="vanished">URL yra geras.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation>Turėkite omenyje, kad yra reikalaujamas bent %1 API lygis.</translation>
+        <translation type="vanished">Turėkite omenyje, kad yra reikalaujamas bent %1 API lygis.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
@@ -874,23 +908,23 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Neapibrėžta klaida, ar įrašėte teisingą URL?</translation>
+        <translation type="vanished">Neapibrėžta klaida, ar įrašėte teisingą URL?</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard</translation>
+        <translation type="vanished">Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką.</translation>
+        <translation type="vanished">Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką.</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>Jūsų TT-RSS egzemplioriaus URL BE galinės &quot;/api/&quot; eilutės</translation>
+        <translation type="vanished">Jūsų TT-RSS egzemplioriaus URL BE galinės &quot;/api/&quot; eilutės</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>URL NETURĖTŲ užsibaigti su &quot;/api/&quot;.</translation>
+        <translation type="vanished">URL NETURĖTŲ užsibaigti su &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
@@ -1014,6 +1048,173 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>ownCloud News server is okay.</source>
         <translation>ownCloud naujienų serveris veikia gerai.</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditTtRssAccount</name>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished">Reikalauja HTTP atpažinimo</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation type="unfinished">Turėkite omenyje, kad yra reikalaujamas bent %1 API lygis.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation type="unfinished">HTTP atpažinimo naudotojo vardas</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation type="unfinished">HTTP atpažinimo slaptažodis</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished">Jūsų TT-RSS paskyros slaptažodis</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished">Jūsų TT-RSS paskyros naudotojo vardas</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished">Jūsų TT-RSS egzemplioriaus URL BE galinės &quot;/api/&quot; eilutės</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished">Kol kas nebuvo atlikta jokių bandymų.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished">Čia yra rodomi ryšio bandymo rezultatai.</translation>
+    </message>
+    <message>
+        <source>Add new Tiny Tiny RSS account</source>
+        <translation type="unfinished">Pridėti naują Tiny Tiny RSS paskyrą</translation>
+    </message>
+    <message>
+        <source>Edit existing Tiny Tiny RSS account</source>
+        <translation type="unfinished">Redaguoti esamą Tiny Tiny RSS paskyrą</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished">API prieiga pasirinktame serveryje nėra įjungta.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation type="unfinished">Įrašyti prisijungimo duomenys neteisingi.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished">Įvyko kitokia klaida, susisiekite su kūrėjais.</translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
+        <translation type="unfinished">Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikomą API versiją (%1). Reikalinga bent %2 lygio API.</translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished">Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikoma API versiją.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
+        <translation type="unfinished">Tiny Tiny RSS serveris veikia gerai, vykdomas, naudojant API lygį %1, tuo tarpu reikalingas bent API lygis %2.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation type="unfinished">Tiny Tiny RSS serveris veikia gerai.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished">Tinklo klaida: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished">Tinklo klaida, ar jūs įrašėte teisingą Tiny Tiny RSS API galutinį tašką ir slaptažodį?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished">Neapibrėžta klaida, ar įrašėte teisingą URL?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished">Naudotojo vardas negali būti tuščias.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished">Naudotojo vardas yra geras.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished">Slaptažodis negali būti tuščias.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished">Slaptažodis yra geras.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished">Naudotojo vardas yra geras arba jo nereikia.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Naudotojo vardas tuščias.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished">Slaptažodis yra geras arba jo nereikia.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Slaptažodis tuščias.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished">URL negali būti tuščias.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation type="unfinished">URL NETURĖTŲ užsibaigti su &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished">URL yra geras.</translation>
     </message>
 </context>
 <context>
@@ -1671,6 +1872,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>&amp;Mark all items as read</source>
         <translation>Žymėti visus elementus kaip &amp;skaitytus</translation>
     </message>
+    <message>
+        <source>&amp;Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -1741,6 +1946,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Good source directory is specified.</source>
         <translation>Yra nurodytas geras šaltinio katalogas.</translation>
     </message>
+    <message>
+        <source>Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1756,7 +1965,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted.
 
 You have to restart manually.</source>
-        <translation>Buvo pakeisti kai kurie kritiniai nustatymai ir jie bus pritaikyti po programos paleidimo iš naujo.
+        <translation type="vanished">Buvo pakeisti kai kurie kritiniai nustatymai ir jie bus pritaikyti po programos paleidimo iš naujo.
 
 Jūs turite paleisti programą iš naujo rankiniu būdu.</translation>
     </message>
@@ -1777,6 +1986,16 @@ Jūs turite paleisti programą iš naujo rankiniu būdu.</translation>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
         <translation>Ar tikrai norite užverti šį dialogą, neįrašant jokių nustatymų?</translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+
+You have to restart manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to restart now?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2240,6 +2459,13 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
 </context>
 <context>
+    <name>LabelsRootItem</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -2301,7 +2527,7 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2433,6 +2659,14 @@ Jūs dabar galite jį įdiegti.</translation>
     <message>
         <source>Custom hash of the message.</source>
         <translation>Tinkinta žinutės maiša.</translation>
+    </message>
+    <message>
+        <source>Feed ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID of feed of the message.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2586,7 +2820,11 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform></translation>
+        <translation>
+            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
+            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
+            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2632,13 +2870,17 @@ Jūs dabar galite jį įdiegti.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n kita žinutė.</numerusform><numerusform>
++ %n kita žinutė.</numerusform>
+            <numerusform>
 
-+ %n kitos žinutės.</numerusform><numerusform>
++ %n kitos žinutės.</numerusform>
+            <numerusform>
 
-+ %n kitų žinučių.</numerusform></translation>
++ %n kitų žinučių.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2672,7 +2914,7 @@ Reikalingas bent API lygis %1.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation>Naujienų programėlė yra RSS/Atom kanalų skaitytuvė. Ji yra ownCloud rinkinio dalis suite. Šis įskiepis įgyvendina %1 API.</translation>
+        <translation type="vanished">Naujienų programėlė yra RSS/Atom kanalų skaitytuvė. Ji yra ownCloud rinkinio dalis suite. Šis įskiepis įgyvendina %1 API.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
@@ -2681,6 +2923,10 @@ Reikalingas bent API lygis %1.</translation>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Ši paslauga siūlo integraciją su standartiniais internetiniais RSS/RDF/ATOM kanalais ir tinklalaidėmis.</translation>
+    </message>
+    <message>
+        <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2695,7 +2941,11 @@ Reikalingas bent API lygis %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n ištrinta žinutė.</numerusform><numerusform>%n ištrintos žinutės.</numerusform><numerusform>%n ištrintų žinučių.</numerusform></translation>
+        <translation>
+            <numerusform>%n ištrinta žinutė.</numerusform>
+            <numerusform>%n ištrintos žinutės.</numerusform>
+            <numerusform>%n ištrintų žinučių.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2719,7 +2969,11 @@ Reikalingas bent API lygis %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n neskaityta žinutė.</numerusform><numerusform>%n neskaitytos žinutės.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform></translation>
+        <translation>
+            <numerusform>%n neskaityta žinutė.</numerusform>
+            <numerusform>%n neskaitytos žinutės.</numerusform>
+            <numerusform>%n neskaitytų žinučių.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3141,6 +3395,10 @@ Vilkaduobės:
         <source>Height of image attachments</source>
         <translation>Paveikslų priedų aukštis</translation>
     </message>
+    <message>
+        <source>Enable &quot;auto-update started&quot; notification</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -3172,24 +3430,8 @@ Vilkaduobės:
         <translation>Piktogramos ir apipavidalinimai</translation>
     </message>
     <message>
-        <source>Icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Icon theme</source>
         <translation>Piktogramų tema</translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3555,19 +3797,30 @@ Neskaitytų naujienų: %2</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <extracomment>Web browser default tab title.</extracomment>
         <translation>Saityno naršyklė</translation>
+    </message>
+    <message>
+        <source>  Web browser</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n valandą</numerusform><numerusform>%n valandas</numerusform><numerusform>%n valandų</numerusform></translation>
+        <translation>
+            <numerusform>%n valandą</numerusform>
+            <numerusform>%n valandas</numerusform>
+            <numerusform>%n valandų</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minutę</numerusform><numerusform>%n minutes</numerusform><numerusform>%n minučių</numerusform></translation>
+        <translation>
+            <numerusform>%n minutę</numerusform>
+            <numerusform>%n minutes</numerusform>
+            <numerusform>%n minučių</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -3620,6 +3873,10 @@ Neskaitytų naujienų: %2</translation>
         <source>Delete all actions</source>
         <translation>Ištrinti visus veiksmus</translation>
     </message>
+    <message>
+        <source>Reset toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
@@ -3643,7 +3900,11 @@ Neskaitytų naujienų: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
+        <translation>
+            <numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
