@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="id">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="id" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -136,10 +134,8 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klik saya untuk menambah feed dari situs web ini.
-Situs web ini mengandung %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Klik saya untuk menambah feed dari situs web ini.
+Situs web ini mengandung %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -225,7 +221,7 @@ Situs web ini mengandung %n feed.</numerusform>
         <translation>Mengunduh selesai</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Berkas &apos;%1&apos; terunduh.
 Klik disini untuk membuka direktori induk.</translation>
@@ -251,15 +247,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n menit tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n menit tersisa</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n detik tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n detik tersisa</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -279,9 +271,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Mengunduh %n berkas...</numerusform>
-        </translation>
+        <translation><numerusform>Mengunduh %n berkas...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -303,16 +293,12 @@ Status pembaruan otomatis: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -342,9 +328,7 @@ Status pembaruan otomatis: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Saya akan dengan otomatis memperbarui %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Saya akan dengan otomatis memperbarui %n feed.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -548,7 +532,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -669,9 +653,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> hari</numerusform>
-        </translation>
+        <translation><numerusform> hari</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -900,14 +882,6 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation type="vanished">Membiarkan pilihan ini menyala menyebabkan pembaruan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
     </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="vanished">URL dari instansi TT-RSS anda tanpa mengikuti rangkaian &quot;/api/&quot;</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="vanished">URL jangan diakhiri dengan &quot;/api/&quot;.</translation>
-    </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
@@ -1036,167 +1010,167 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished">URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished">Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished">Autentikasi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Nama pengguna</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Kata sandi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished">Tampilkan kata sandi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished">Membutuhkan autentikasi HTTP</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished">&amp;Tes setelan</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished">Eksekusi paksa pembaruan dari sisi server ketika memperbarui feed dari RSS Guard</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished">Membiarkan pilihan ini menyala menyebabkan pembaruan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished">Perhatikan bahwa setidaknya API level %1 dibutuhkan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="unfinished">Autentikasi HTTP nama pengguna</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="unfinished">Autentikasi HTTP kata sandi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished">Kata sandi untuk akun TT-RSS anda</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished">Nama pengguna untuk akun TT-RSS anda</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished">URL dari instansi TT-RSS anda tanpa mengikuti rangkaian &quot;/api/&quot;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished">Belum ada tes yang dilakukan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished">Ini, hasil dari tes koneksi ditampilkan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished">Tambah akun Tiny Tiny RSS baru</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished">Sunting akun Tiny Tiny RSS yang ada</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished">Akses API pada server yang dipilih tidak diaktifkan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished">Kredensial masukkan salah.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished">Eror lain terjadi, hubungi pengembang.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished">Server Tiny Tiny RSS yang dipilih menjalankan versi API (%1) yang tidak didukung. Setidaknya API level %2 dibutuhkan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished">Server Tiny Tiny RSS yang dipilih menjalankan versi API yang tidak didukung.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished">Server Tiny Tiny RSS ok, berjalan dengan API level %1, walau setidaknya API level %2 dibutuhkan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished">Server Tiny Tiny RSS ok.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished">Eror jaringan: &apos;%1&apos;.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished">Eror jaringan, sudahkan anda memasukkan endpoint API Tiny Tiny RSS and kata sandi yang benar?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished">Eror tidak ditentukan, apakah anda memasukkan URL yang benar?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished">Kata sandi tidak dapat kosong.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished">Kata sandi ok.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished">Nama pengguna ok atau ini tidak diperlukan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished">Kata sandi ok atau ini tidak diperlukan.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished">URL tidak dapat kosong.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished">URL jangan diakhiri dengan &quot;/api/&quot;.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished">URL ok.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1852,11 +1826,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tandai semua item sebagai terbaca</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1930,7 +1904,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1942,14 +1916,6 @@ atau fungsi ini belum diimplementasikan.</translation>
     <message>
         <source>Critical settings were changed</source>
         <translation>Pengaturan genting berubah</translation>
-    </message>
-    <message>
-        <source>Some critical settings were changed and will be applied after the application gets restarted.
-
-You have to restart manually.</source>
-        <translation type="vanished">Beberapa pengaturan penting berubah dan akan diterapkan setelah aplikasi restart.
-
-Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Changed categories of settings:
@@ -1973,11 +1939,11 @@ Anda harus me-restart secara manual.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2404,28 +2370,28 @@ Anda harus instal secara manual.</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="unfinished"></translation>
+        <translation>Berkas tersedia</translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"></translation>
+        <translation>Unduh pembaharuan yang dipilih</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunjungi situs aplikasi untuk mendapatkan paket pembaharuan secara manual.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="unfinished"></translation>
+        <translation> (ukuran </translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"></translation>
+        <translation>Berkas pembaharuan tersedia</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"></translation>
+        <translation>Paket telah berhasil diunduh. Anda dapat instal sekarang.</translation>
     </message>
 </context>
 <context>
@@ -2443,7 +2409,7 @@ You can install it now.</source>
     <name>LabelsRootItem</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2457,7 +2423,7 @@ You can install it now.</source>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jangan tampilkan dialog ini lagi.</translation>
     </message>
 </context>
 <context>
@@ -2508,7 +2474,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selalu buka tautan di peramban eksternal.</translation>
     </message>
 </context>
 <context>
@@ -2643,11 +2609,11 @@ You can install it now.</source>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2801,9 +2767,7 @@ You can install it now.</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform>
-        </translation>
+        <translation><numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2843,15 +2807,13 @@ You can install it now.</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n feed lain.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n feed lain.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2896,7 +2858,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2911,9 +2873,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n pesan terhapus.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan terhapus.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2935,9 +2895,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n pesan belum dibaca.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan belum dibaca.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3108,7 +3066,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Selalu buka tautan dari peramban teks internal sederhana di peramban web exkternal</translation>
     </message>
 </context>
 <context>
@@ -3361,7 +3319,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3394,8 +3352,24 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
         <translation>Ikon &amp;&amp; skin</translation>
     </message>
     <message>
+        <source>Icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Icon theme</source>
         <translation>Tema ikon</translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3710,7 +3684,7 @@ ID akun: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3765,22 +3739,18 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>  Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n jam</numerusform>
-        </translation>
+        <translation><numerusform>%n jam</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n menit</numerusform>
-        </translation>
+        <translation><numerusform>%n menit</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3835,7 +3805,7 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3860,9 +3830,7 @@ Berita belum terbaca:%2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
