@@ -286,6 +286,21 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl 
 #endif
 }
 
+void TabWidget::indentTabText(int index){
+#if defined (Q_OS_MACOS)
+  if (tabBar()->tabType(index) != TabBar::FeedReader && !tabIcon(index).isNull()) {
+    // We have closable tab with some icon, fix the title.
+    const QString text = tabText(index);
+
+    if (!text.startsWith(QSL("  "))) {
+      setTabText(index, QSL("  ") + text);
+    }
+  }
+#else
+  Q_UNUSED(index)
+#endif
+}
+
 void TabWidget::removeTab(int index, bool clear_from_memory) {
   if (clear_from_memory) {
     widget(index)->deleteLater();
@@ -297,6 +312,7 @@ void TabWidget::removeTab(int index, bool clear_from_memory) {
 int TabWidget::addTab(TabContent *widget, const QIcon &icon, const QString &label, const TabBar::TabType &type) {
   const int index = QTabWidget::addTab(widget, icon, label);
   tabBar()->setTabType(index, type);
+  indentTabText(index);
 
   return index;
 }
@@ -304,6 +320,7 @@ int TabWidget::addTab(TabContent *widget, const QIcon &icon, const QString &labe
 int TabWidget::addTab(TabContent *widget, const QString &label, const TabBar::TabType &type) {
   const int index = QTabWidget::addTab(widget, label);
   tabBar()->setTabType(index, type);
+  indentTabText(index);
 
   return index;
 }
@@ -311,6 +328,7 @@ int TabWidget::addTab(TabContent *widget, const QString &label, const TabBar::Ta
 int TabWidget::insertTab(int index, QWidget *widget, const QIcon &icon, const QString &label, const TabBar::TabType &type) {
   const int tab_index = QTabWidget::insertTab(index, widget, icon, label);
   tabBar()->setTabType(tab_index, type);
+  indentTabText(index);
 
   return tab_index;
 }
@@ -318,35 +336,20 @@ int TabWidget::insertTab(int index, QWidget *widget, const QIcon &icon, const QS
 int TabWidget::insertTab(int index, QWidget *widget, const QString &label, const TabBar::TabType &type) {
   const int tab_index = QTabWidget::insertTab(index, widget, label);
   tabBar()->setTabType(tab_index, type);
+  indentTabText(index);
 
   return tab_index;
 }
 
 void TabWidget::changeIcon(int index, const QIcon &new_icon) {
   setTabIcon(index, new_icon);
-
-#if defined (Q_OS_MACOS)
-  if (tabBar()->tabType(index) != TabBar::FeedReader && !tabIcon(index).isNull()) {
-    // We have closable tab with some icon, fix the title.
-    if (!tabText(index).startsWith(QSL("  "))) {
-      setTabText(index, QSL("  ") + tabText(index));
-    }
-  }
-#endif
+  indentTabText(index);
 }
 
 void TabWidget::changeTitle(int index, const QString &new_title) {
   setTabText(index, TextFactory::shorten(new_title));
   setTabToolTip(index, new_title);
-
-#if defined (Q_OS_MACOS)
-  if (tabBar()->tabType(index) != TabBar::FeedReader && !tabIcon(index).isNull()) {
-    // We have closable tab with some icon, fix the title.
-    if (!tabText(index).startsWith(QSL("  "))) {
-      setTabText(index, QSL("  ") + tabText(index));
-    }
-  }
-#endif
+  indentTabText(index);
 }
 
 void TabWidget::fixContentsAfterMove(int from, int to) {

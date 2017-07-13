@@ -89,23 +89,13 @@ class TabWidget : public QTabWidget {
     void tabRemoved(int index);
 
   public slots:
-    // Fixes tabs indexes.
-    void fixContentsAfterMove(int from, int to);
-
     // Called when number of tab pages changes.
     void checkTabBarVisibility();
-
-    // Changes icon/text of the tab.
-    void changeTitle(int index, const QString &new_title);
-    void changeIcon(int index, const QIcon &new_icon);
 
     // Tab closing.
     bool closeTab(int index);
     void closeAllTabsExceptCurrent();
     void closeAllTabs();
-
-    // Opens main menu.
-    void openMainMenu();
 
     // Displays download manager.
     void showDownloadManager();
@@ -123,7 +113,20 @@ class TabWidget : public QTabWidget {
     // General method for adding WebBrowsers.
     int addBrowser(bool move_after_current, bool make_active, const QUrl &initial_url = QUrl());
 
+  private slots:
+    // Fixes tabs indexes.
+    void fixContentsAfterMove(int from, int to);
+
+    // Changes icon/text of the tab.
+    void changeTitle(int index, const QString &new_title);
+    void changeIcon(int index, const QIcon &new_icon);
+
+    // Opens main menu.
+    void openMainMenu();
+
   private:
+    void indentTabText(int index);
+
     PlainToolButton *m_btnMainMenu;
     QMenu *m_menuMain;
     FeedMessageViewer *m_feedMessageViewer;
