@@ -594,7 +594,7 @@ win32 {
   QMAKE_EXTRA_TARGETS += seven_zip zip
 }
 
-unix|!mac {
+unix:!mac {
   seven_zip.target = 7zip
   seven_zip.depends = install
   seven_zip.commands = 7za a -t7z "$$TARGET-$$APP_VERSION-$$APP_REVISION-linux.7z" $$shell_quote($$shell_path($$PREFIX/*))
