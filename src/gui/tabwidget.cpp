@@ -57,7 +57,7 @@ void TabWidget::setupMainMenuButton() {
   m_btnMainMenu->setAutoRaise(true);
   m_btnMainMenu->setPadding(3);
   m_btnMainMenu->setToolTip(tr("Displays main menu."));
-  m_btnMainMenu->setIcon(qApp->icons()->fromTheme(QSL("start-here")));
+  m_btnMainMenu->setIcon(qApp->icons()->fromTheme(QSL("go-home")));
   m_btnMainMenu->setPopupMode(QToolButton::InstantPopup);
 
   connect(m_btnMainMenu, &PlainToolButton::clicked, this, &TabWidget::openMainMenu);
