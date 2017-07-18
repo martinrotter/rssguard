@@ -328,7 +328,13 @@ void FeedsView::openSelectedItemsInNewspaperMode() {
 }
 
 void FeedsView::selectNextItem() {
-  const QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
+  const QModelIndex &curr_idx = currentIndex();
+
+  if (m_proxyModel->hasChildren(curr_idx) && !isExpanded(curr_idx)) {
+    expand(curr_idx);
+  }
+
+  const QModelIndex &index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
@@ -337,7 +343,13 @@ void FeedsView::selectNextItem() {
 }
 
 void FeedsView::selectPreviousItem() {
-  const QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+  const QModelIndex &curr_idx = currentIndex();
+
+  if (m_proxyModel->hasChildren(curr_idx) && !isExpanded(curr_idx)) {
+    expand(curr_idx);
+  }
+
+  const QModelIndex &index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
