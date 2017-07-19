@@ -333,8 +333,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/core/messagesmodelcache.h \
             src/core/messagesmodelsqllayer.h \
             src/gui/treeviewcolumnsmenu.h \
-    src/services/abstract/labelsrootitem.h \
-    src/services/abstract/label.h
+            src/services/abstract/labelsrootitem.h \
+            src/services/abstract/label.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -503,6 +503,35 @@ equals(USE_WEBENGINE, true) {
                 src/gui/discoverfeedsbutton.cpp \
                 src/network-web/googlesuggest.cpp \
                 src/network-web/webpage.cpp
+
+  # Add Ad-Block sources.
+  HEADERS +=    src/network-web/adblock/adblockaddsubscriptiondialog.h \
+                src/network-web/adblock/adblockdialog.h \
+                src/network-web/adblock/adblockicon.h \
+                src/network-web/adblock/adblockmanager.h \
+                src/network-web/adblock/adblockmatcher.h \
+                src/network-web/adblock/adblockrule.h \
+                src/network-web/adblock/adblocksearchtree.h \
+                src/network-web/adblock/adblocksubscription.h \
+                src/network-web/adblock/adblocktreewidget.h \
+                src/network-web/adblock/adblockurlinterceptor.h \
+                src/network-web/urlinterceptor.h \
+                src/network-web/networkurlinterceptor.h
+
+  SOURCES +=    src/network-web/adblock/adblockaddsubscriptiondialog.cpp \
+                src/network-web/adblock/adblockdialog.cpp \
+                src/network-web/adblock/adblockicon.cpp \
+                src/network-web/adblock/adblockmanager.cpp \
+                src/network-web/adblock/adblockmatcher.cpp \
+                src/network-web/adblock/adblockrule.cpp \
+                src/network-web/adblock/adblocksearchtree.cpp \
+                src/network-web/adblock/adblocksubscription.cpp \
+                src/network-web/adblock/adblocktreewidget.cpp \
+                src/network-web/adblock/adblockurlinterceptor.cpp \
+                src/network-web/networkurlinterceptor.cpp
+
+  FORMS +=      src/network-web/adblock/adblockaddsubscriptiondialog.ui \
+                src/network-web/adblock/adblockdialog.ui
 }
 else {
   HEADERS +=    src/gui/messagepreviewer.h \
