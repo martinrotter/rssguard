@@ -58,8 +58,7 @@
 #include <QWebEngineUrlRequestInfo>
 
 
-static QString toSecondLevelDomain(const QUrl &url)
-{
+static QString toSecondLevelDomain(const QUrl &url) {
   const QString topLevelDomain = url.topLevelDomain();
   const QString urlHost = url.host();
 
@@ -69,12 +68,12 @@ static QString toSecondLevelDomain(const QUrl &url)
 
   QString domain = urlHost.left(urlHost.size() - topLevelDomain.size());
 
-  if (domain.count(QSL('.')) == 0) {
+  if (domain.count(QL1C('.')) == 0) {
     return urlHost;
   }
 
-  while (domain.count(QSL('.')) != 0) {
-    domain = domain.mid(domain.indexOf(QSL('.')) + 1);
+  while (domain.count(QL1C('.')) != 0) {
+    domain = domain.mid(domain.indexOf(QL1C('.')) + 1);
   }
 
   return domain + topLevelDomain;
@@ -90,7 +89,7 @@ AdBlockRule::~AdBlockRule() {
   delete m_regExp;
 }
 
-AdBlockRule* AdBlockRule::copy() const {
+AdBlockRule *AdBlockRule::copy() const {
   AdBlockRule *rule = new AdBlockRule();
 
   rule->m_subscription = m_subscription;
@@ -157,7 +156,7 @@ bool AdBlockRule::isException() const {
 }
 
 bool AdBlockRule::isComment() const {
-  return m_filter.startsWith(QSL('!'));
+  return m_filter.startsWith(QL1C('!'));
 }
 
 bool AdBlockRule::isEnabled() const {
@@ -267,6 +266,7 @@ bool AdBlockRule::matchDomain(const QString &domain) const {
         return false;
       }
     }
+
     return true;
   }
   else {
@@ -531,8 +531,9 @@ void AdBlockRule::parseDomains(const QString &domains, const QChar &separator) {
 }
 
 bool AdBlockRule::filterIsOnlyDomain(const QString &filter) const {
-  if (!filter.endsWith(QL1C('^')) || !filter.startsWith(QL1S("||")))
+  if (!filter.endsWith(QL1C('^')) || !filter.startsWith(QL1S("||"))) {
     return false;
+  }
 
   for (int i = 0; i < filter.size(); ++i) {
     switch (filter.at(i).toLatin1()) {
@@ -543,6 +544,7 @@ bool AdBlockRule::filterIsOnlyDomain(const QString &filter) const {
       case '&':
       case '*':
         return false;
+
       default:
         break;
     }
@@ -557,8 +559,10 @@ bool AdBlockRule::filterIsOnlyEndsMatch(const QString &filter) const {
       case '^':
       case '*':
         return false;
+
       case '|':
         return i == filter.size() - 1;
+
       default:
         break;
     }
