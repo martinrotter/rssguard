@@ -19,42 +19,45 @@
 #ifndef ADBLOCKICON_H
 #define ADBLOCKICON_H
 
-#include "qzcommon.h"
-#include "clickablelabel.h"
-#include "adblockrule.h"
+#include "gui/clickablelabel.h"
+
+#include "network-web/adblock/adblockrule.h"
+
 
 class QMenu;
 class QUrl;
+class QAction;
+class QTimer;
 
 class BrowserWindow;
 
-class QUPZILLA_EXPORT AdBlockIcon : public ClickableLabel
-{
+class AdBlockIcon : public ClickableLabel {
     Q_OBJECT
-public:
+
+  public:
     explicit AdBlockIcon(BrowserWindow* window, QWidget* parent = 0);
-    ~AdBlockIcon();
+    virtual ~AdBlockIcon();
 
     void popupBlocked(const QString &ruleString, const QUrl &url);
-    QAction* menuAction();
+    QAction *menuAction();
 
-public slots:
+  public slots:
     void setEnabled(bool enabled);
-    void createMenu(QMenu* menu = 0);
+    void createMenu(QMenu *menu = 0);
 
-private slots:
+  private slots:
     void showMenu(const QPoint &pos);
     void toggleCustomFilter();
 
     void animateIcon();
     void stopAnimation();
 
-private:
-    BrowserWindow* m_window;
-    QAction* m_menuAction;
+  private:
+    BrowserWindow *m_window;
+    QAction *m_menuAction;
 
     QVector<QPair<AdBlockRule*, QUrl> > m_blockedPopups;
-    QTimer* m_flashTimer;
+    QTimer *m_flashTimer;
 
     int m_timerTicks;
     bool m_enabled;

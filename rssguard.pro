@@ -334,7 +334,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/core/messagesmodelsqllayer.h \
             src/gui/treeviewcolumnsmenu.h \
             src/services/abstract/labelsrootitem.h \
-            src/services/abstract/label.h
+            src/services/abstract/label.h \
+            src/gui/clickablelabel.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -460,7 +461,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/core/messagesmodelsqllayer.cpp \
             src/gui/treeviewcolumnsmenu.cpp \
             src/services/abstract/labelsrootitem.cpp \
-            src/services/abstract/label.cpp
+            src/services/abstract/label.cpp \
+            src/gui/clickablelabel.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 
