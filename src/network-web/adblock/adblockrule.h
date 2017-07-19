@@ -103,6 +103,7 @@ class AdBlockRule {
     bool matchObjectSubrequest(const QWebEngineUrlRequestInfo &request) const;
 
   protected:
+    bool matchDomain(const QString &pattern, const QString &domain) const;
     bool stringMatch(const QString &domain, const QString &encodedUrl) const;
     bool isMatchingDomain(const QString &domain, const QString &filter) const;
     bool isMatchingRegExpStrings(const QString &url) const;
