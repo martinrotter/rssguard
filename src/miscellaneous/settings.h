@@ -28,6 +28,7 @@
 #include <QStringList>
 #include <QColor>
 #include <QByteArray>
+#include <QDateTime>
 
 #define KEY extern const char*
 #define DKEY const char*
@@ -45,6 +46,12 @@ namespace AdBlock {
 
   KEY AdBlockEnabled;
   VALUE(bool) AdBlockEnabledDef;
+
+  KEY DisabledRules;
+  VALUE(QStringList) DisabledRulesDef;
+
+  KEY LastUpdatedOn;
+  VALUE(QDateTime) LastUpdatedOnDef;
 }
 
 // Feeds.

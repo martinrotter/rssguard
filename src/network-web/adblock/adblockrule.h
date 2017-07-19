@@ -51,26 +51,24 @@
 #include <QStringList>
 #include <QStringMatcher>
 
-#include "qzcommon.h"
-#include "qzregexp.h"
+#include "miscellaneous/simpleregexp.h"
+
 
 class QUrl;
 class QWebEngineUrlRequestInfo;
-
 class AdBlockSubscription;
 
-class QUPZILLA_EXPORT AdBlockRule
-{
+class AdBlockRule {
     Q_DISABLE_COPY(AdBlockRule)
 
-public:
-    AdBlockRule(const QString &filter = QString(), AdBlockSubscription* subscription = 0);
-    ~AdBlockRule();
+  public:
+    explicit AdBlockRule(const QString &filter = QString(), AdBlockSubscription *subscription = 0);
+    virtual ~AdBlockRule();
 
-    AdBlockRule* copy() const;
+    AdBlockRule *copy() const;
 
-    AdBlockSubscription* subscription() const;
-    void setSubscription(AdBlockSubscription* subscription);
+    AdBlockSubscription *subscription() const;
+    void setSubscription(AdBlockSubscription *subscription);
 
     QString filter() const;
     void setFilter(const QString &filter);
@@ -104,36 +102,36 @@ public:
     bool matchStyleSheet(const QWebEngineUrlRequestInfo &request) const;
     bool matchObjectSubrequest(const QWebEngineUrlRequestInfo &request) const;
 
-protected:
+  protected:
     bool stringMatch(const QString &domain, const QString &encodedUrl) const;
     bool isMatchingDomain(const QString &domain, const QString &filter) const;
     bool isMatchingRegExpStrings(const QString &url) const;
     QStringList parseRegExpFilter(const QString &filter) const;
 
-private:
+  private:
     enum RuleType {
-        CssRule = 0,
-        DomainMatchRule = 1,
-        RegExpMatchRule = 2,
-        StringEndsMatchRule = 3,
-        StringContainsMatchRule = 4,
-        Invalid = 5
+      CssRule = 0,
+      DomainMatchRule = 1,
+      RegExpMatchRule = 2,
+      StringEndsMatchRule = 3,
+      StringContainsMatchRule = 4,
+      Invalid = 5
     };
 
     enum RuleOption {
-        DomainRestrictedOption = 1,
-        ThirdPartyOption = 2,
-        ObjectOption = 4,
-        SubdocumentOption = 8,
-        XMLHttpRequestOption = 16,
-        ImageOption = 32,
-        ScriptOption = 64,
-        StyleSheetOption = 128,
-        ObjectSubrequestOption = 256,
+      DomainRestrictedOption = 1,
+      ThirdPartyOption = 2,
+      ObjectOption = 4,
+      SubdocumentOption = 8,
+      XMLHttpRequestOption = 16,
+      ImageOption = 32,
+      ScriptOption = 64,
+      StyleSheetOption = 128,
+      ObjectSubrequestOption = 256,
 
-        // Exception only options
-        DocumentOption = 1024,
-        ElementHideOption = 2048
+      // Exception only options.
+      DocumentOption = 1024,
+      ElementHideOption = 2048
     };
 
     Q_DECLARE_FLAGS(RuleOptions, RuleOption)
@@ -151,7 +149,7 @@ private:
     QString createRegExpFromFilter(const QString &filter) const;
     QList<QStringMatcher> createStringMatchers(const QStringList &filters) const;
 
-    AdBlockSubscription* m_subscription;
+    AdBlockSubscription *m_subscription;
 
     RuleType m_type;
     RuleOptions m_options;
@@ -172,12 +170,12 @@ private:
     QStringList m_blockedDomains;
 
     struct RegExp {
-        QzRegExp regExp;
+        SimpleRegExp regExp;
         QList<QStringMatcher> matchers;
     };
 
     // Use dynamic allocation to save memory
-    RegExp* m_regExp;
+    RegExp *m_regExp;
 
     friend class AdBlockMatcher;
     friend class AdBlockSearchTree;

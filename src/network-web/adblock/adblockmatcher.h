@@ -22,20 +22,18 @@
 #include <QUrl>
 #include <QObject>
 
-#include "qzcommon.h"
-#include "adblocksearchtree.h"
+#include "network-web/adblock/adblocksearchtree.h"
+
 
 class QWebEngineUrlRequestInfo;
-
 class AdBlockManager;
 
-class QUPZILLA_EXPORT AdBlockMatcher : public QObject
-{
+class AdBlockMatcher : public QObject {
     Q_OBJECT
 
-public:
+  public:
     explicit AdBlockMatcher(AdBlockManager* manager);
-    ~AdBlockMatcher();
+    virtual ~AdBlockMatcher();
 
     const AdBlockRule* match(const QWebEngineUrlRequestInfo &request, const QString &urlDomain, const QString &urlString) const;
 
@@ -45,12 +43,12 @@ public:
     QString elementHidingRules() const;
     QString elementHidingRulesForDomain(const QString &domain) const;
 
-public slots:
+  public slots:
     void update();
     void clear();
 
-private:
-    AdBlockManager* m_manager;
+  private:
+    AdBlockManager *m_manager;
 
     QVector<AdBlockRule*> m_createdRules;
     QVector<const AdBlockRule*> m_networkExceptionRules;

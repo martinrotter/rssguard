@@ -334,8 +334,7 @@ HEADERS +=  src/core/feeddownloader.h \
             src/core/messagesmodelsqllayer.h \
             src/gui/treeviewcolumnsmenu.h \
             src/services/abstract/labelsrootitem.h \
-            src/services/abstract/label.h \
-            src/gui/clickablelabel.h
+            src/services/abstract/label.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -461,8 +460,7 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/core/messagesmodelsqllayer.cpp \
             src/gui/treeviewcolumnsmenu.cpp \
             src/services/abstract/labelsrootitem.cpp \
-            src/services/abstract/label.cpp \
-            src/gui/clickablelabel.cpp
+            src/services/abstract/label.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 
@@ -518,7 +516,9 @@ equals(USE_WEBENGINE, true) {
                 src/network-web/adblock/adblocktreewidget.h \
                 src/network-web/adblock/adblockurlinterceptor.h \
                 src/network-web/urlinterceptor.h \
-                src/network-web/networkurlinterceptor.h
+                src/network-web/networkurlinterceptor.h \
+                src/gui/clickablelabel.h \
+                src/miscellaneous/simpleregexp.h
 
   SOURCES +=    src/network-web/adblock/adblockaddsubscriptiondialog.cpp \
                 src/network-web/adblock/adblockdialog.cpp \
@@ -530,7 +530,9 @@ equals(USE_WEBENGINE, true) {
                 src/network-web/adblock/adblocksubscription.cpp \
                 src/network-web/adblock/adblocktreewidget.cpp \
                 src/network-web/adblock/adblockurlinterceptor.cpp \
-                src/network-web/networkurlinterceptor.cpp
+                src/network-web/networkurlinterceptor.cpp \
+                src/gui/clickablelabel.cpp \
+                src/miscellaneous/simpleregexp.cpp
 
   FORMS +=      src/network-web/adblock/adblockaddsubscriptiondialog.ui \
                 src/network-web/adblock/adblockdialog.ui

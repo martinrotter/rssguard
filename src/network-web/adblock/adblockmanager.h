@@ -67,6 +67,8 @@ class AdBlockManager : public QObject {
 
     AdBlockCustomList *customList() const;
 
+    QString storedListsPath() const;
+
     static AdBlockManager *instance();
 
   signals:
