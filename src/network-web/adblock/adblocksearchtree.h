@@ -22,24 +22,21 @@
 #include <QChar>
 #include <QHash>
 
-#include "qzcommon.h"
 
 class QWebEngineUrlRequestInfo;
-
 class AdBlockRule;
 
-class QUPZILLA_EXPORT AdBlockSearchTree
-{
-public:
+class AdBlockSearchTree {
+  public:
     explicit AdBlockSearchTree();
-    ~AdBlockSearchTree();
+    virtual ~AdBlockSearchTree();
 
     void clear();
 
-    bool add(const AdBlockRule* rule);
-    const AdBlockRule* find(const QWebEngineUrlRequestInfo &request, const QString &domain, const QString &urlString) const;
+    bool add(const AdBlockRule *rule);
+    const AdBlockRule *find(const QWebEngineUrlRequestInfo &request, const QString &domain, const QString &urlString) const;
 
-private:
+  private:
     struct Node {
         QChar c;
         const AdBlockRule* rule;
@@ -48,10 +45,10 @@ private:
         Node() : c(0) , rule(0) { }
     };
 
-    const AdBlockRule* prefixSearch(const QWebEngineUrlRequestInfo &request, const QString &domain,
-                                    const QString &urlString, const QChar* string, int len) const;
+    const AdBlockRule *prefixSearch(const QWebEngineUrlRequestInfo &request, const QString &domain,
+                                    const QString &urlString, const QChar *string, int len) const;
 
-    void deleteNode(Node* node);
+    void deleteNode(Node *node);
 
     Node* m_root;
 };

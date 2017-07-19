@@ -20,9 +20,12 @@
 #include "network-web/adblock/adblockrule.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblocksubscription.h"
+#include "miscellaneous/application.h"
+#include "network-web/webpage.h"
 
 #include <QMenu>
 #include <QTimer>
+
 
 AdBlockIcon::AdBlockIcon(BrowserWindow* window, QWidget* parent)
   : ClickableLabel(parent), m_window(window), m_menuAction(0), m_flashTimer(0), m_timerTicks(0), m_enabled(false) {
@@ -55,7 +58,8 @@ void AdBlockIcon::popupBlocked(const QString &ruleString, const QUrl &url) {
   pair.second = url;
   m_blockedPopups.append(pair);
 
-  mApp->desktopNotifications()->showNotification(QPixmap(":html/adblock_big.png"), tr("Blocked popup window"), tr("AdBlock blocked unwanted popup window."));
+
+  qApp->showGuiMessage(tr("Blocked popup window"), tr("AdBlock blocked unwanted popup window."), QSystemTrayIcon::Information);
 
   if (!m_flashTimer) {
     m_flashTimer = new QTimer(this);
@@ -68,7 +72,7 @@ void AdBlockIcon::popupBlocked(const QString &ruleString, const QUrl &url) {
   m_flashTimer->setInterval(500);
   m_flashTimer->start();
 
-  connect(m_flashTimer, SIGNAL(timeout()), this, SLOT(animateIcon()));
+  connect(m_flashTimer, &QTimer::timeout, this, &AdBlockIcon::animateIcon);
 }
 
 QAction *AdBlockIcon::menuAction() {

@@ -43,7 +43,7 @@ class AdBlockAddSubscriptionDialog : public QDialog {
     void indexChanged(int index);
 
   private:
-    Ui::AdBlockAddSubscriptionDialog* m_ui;
+    Ui::AdBlockAddSubscriptionDialog *m_ui;
 
     struct Subscription {
         QString m_title;

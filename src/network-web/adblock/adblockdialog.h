@@ -45,7 +45,6 @@ class AdBlockDialog : public QWidget {
     void removeSubscription();
 
     void currentChanged(int index);
-    void filterString(const QString &string);
     void enableAdBlock(bool state);
 
     void aboutToShowMenu();

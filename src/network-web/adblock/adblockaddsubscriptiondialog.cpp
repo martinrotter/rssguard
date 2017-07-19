@@ -20,6 +20,8 @@
 
 #include "definitions/definitions.h"
 
+#include <QComboBox>
+
 
 AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
   : QDialog(parent), m_ui(new Ui::AdBlockAddSubscriptionDialog) {
@@ -33,7 +35,7 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
                        << Subscription(QSL("IsraelList (Hebrew)"), QSL("http://secure.fanboy.co.nz/israelilist/IsraelList.txt"))
                        << Subscription(QSL("NLBlock (Dutch)"), QSL("http://www.verzijlbergh.com/adblock/nlblock.txt"))
                        << Subscription(QSL("Peter Lowe's list (English)"), QSL("http://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext"))
-                       << Subscription(QSL("PLgeneral (Polish))", QSL("http://www.niecko.pl/adblock/adblock.txt"))
+                       << Subscription(QSL("PLgeneral (Polish)"), QSL("http://www.niecko.pl/adblock/adblock.txt"))
                        << Subscription(QSL("Schacks Adblock Plus liste (Danish)"), QSL("http://adblock.schack.dk/block.txt"))
                        << Subscription(QSL("Xfiles (Italian)"), QSL("http://mozilla.gfsolone.com/filtri.txt"))
                        << Subscription(QSL("EasyPrivacy (English)"), QSL("http://easylist-downloads.adblockplus.org/easyprivacy.txt"))
@@ -47,7 +49,8 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
     m_ui->comboBox->addItem(subscription.m_title);
   }
 
-  connect(m_ui->comboBox, &QComboBox::currentIndexChanged, this, &AdBlockAddSubscriptionDialog::indexChanged);
+  connect(m_ui->comboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this, &AdBlockAddSubscriptionDialog::indexChanged);
   indexChanged(0);
 }
 
@@ -62,7 +65,7 @@ QString AdBlockAddSubscriptionDialog::url() const {
 void AdBlockAddSubscriptionDialog::indexChanged(int index) {
   const Subscription subscription = m_knownSubscriptions.at(index);
 
-  // "Other..." entry
+  // "Other..." entry.
   if (subscription.m_url.isEmpty()) {
     m_ui->title->clear();
     m_ui->url->clear();

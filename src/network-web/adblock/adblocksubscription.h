@@ -50,19 +50,19 @@
 #include <QVector>
 #include <QUrl>
 
-#include "qzcommon.h"
-#include "adblockrule.h"
-#include "adblocksearchtree.h"
+#include "network-web/adblock/adblockrule.h"
+#include "network-web/adblock/adblocksearchtree.h"
+
 
 class QUrl;
 class QNetworkReply;
 
-class QUPZILLA_EXPORT AdBlockSubscription : public QObject
-{
+class AdBlockSubscription : public QObject {
     Q_OBJECT
-public:
-    explicit AdBlockSubscription(const QString &title, QObject* parent = 0);
-    ~AdBlockSubscription();
+
+  public:
+    explicit AdBlockSubscription(const QString &title, QObject *parent = 0);
+    virtual ~AdBlockSubscription();
 
     QString title() const;
 
@@ -75,11 +75,11 @@ public:
     virtual void loadSubscription(const QStringList &disabledRules);
     virtual void saveSubscription();
 
-    const AdBlockRule* rule(int offset) const;
+    const AdBlockRule *rule(int offset) const;
     QVector<AdBlockRule*> allRules() const;
 
-    const AdBlockRule* enableRule(int offset);
-    const AdBlockRule* disableRule(int offset);
+    const AdBlockRule *enableRule(int offset);
+    const AdBlockRule *disableRule(int offset);
 
     virtual bool canEditRules() const;
     virtual bool canBeRemoved() const;
@@ -88,24 +88,24 @@ public:
     virtual bool removeRule(int offset);
     virtual const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
 
-public slots:
+  public slots:
     void updateSubscription();
 
-signals:
+  signals:
     void subscriptionChanged();
     void subscriptionUpdated();
     void subscriptionError(const QString &message);
 
-protected slots:
+  protected slots:
     void subscriptionDownloaded();
 
-protected:
+  protected:
     virtual bool saveDownloadedData(const QByteArray &data);
 
     QNetworkReply *m_reply;
     QVector<AdBlockRule*> m_rules;
 
-private:
+  private:
     QString m_title;
     QString m_filePath;
 
@@ -113,11 +113,11 @@ private:
     bool m_updated;
 };
 
-class AdBlockCustomList : public AdBlockSubscription
-{
+class AdBlockCustomList : public AdBlockSubscription {
     Q_OBJECT
-public:
-    explicit AdBlockCustomList(QObject* parent = 0);
+
+  public:
+    explicit AdBlockCustomList(QObject *parent = 0);
 
     void loadSubscription(const QStringList &disabledRules);
     void saveSubscription();
@@ -128,9 +128,9 @@ public:
     bool containsFilter(const QString &filter) const;
     bool removeFilter(const QString &filter);
 
-    int addRule(AdBlockRule* rule);
+    int addRule(AdBlockRule *rule);
     bool removeRule(int offset);
-    const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
+    const AdBlockRule *replaceRule(AdBlockRule *rule, int offset);
 };
 
 #endif // ADBLOCKSUBSCRIPTION_H
