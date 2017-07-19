@@ -140,8 +140,7 @@ void AdBlockSubscription::updateSubscription() {
   connect(m_reply, &QNetworkReply::finished, this, &AdBlockSubscription::subscriptionDownloaded);
 }
 
-void AdBlockSubscription::subscriptionDownloaded()
-{
+void AdBlockSubscription::subscriptionDownloaded() {
   if (m_reply != qobject_cast<QNetworkReply*>(sender())) {
     return;
   }
@@ -168,52 +167,53 @@ void AdBlockSubscription::subscriptionDownloaded()
   emit subscriptionChanged();
 }
 
-bool AdBlockSubscription::saveDownloadedData(const QByteArray &data)
-{
+bool AdBlockSubscription::saveDownloadedData(const QByteArray &data) {
   QSaveFile file(m_filePath);
 
   if (!file.open(QFile::WriteOnly)) {
-    qWarning() << "AdBlockSubscription::" << __FUNCTION__ << "Unable to open adblock file for writing:" << m_filePath;
+    qWarning("Unable to open AdBlock file '%s' for writing.", qPrintable(m_filePath));
     return false;
   }
-
-  // Write subscription header
-  file.write(QString("Title: %1\nUrl: %2\n").arg(title(), url().toString()).toUtf8());
-  file.write(data);
-  file.commit();
-  return true;
+  else {
+    // Write subscription header
+    file.write(QString("Title: %1\nUrl: %2\n").arg(title(), url().toString()).toUtf8());
+    file.write(data);
+    file.commit();
+    return true;
+  }
 }
 
-const AdBlockRule* AdBlockSubscription::rule(int offset) const
-{
-  if (!QzTools::containsIndex(m_rules, offset)) {
+const AdBlockRule *AdBlockSubscription::rule(int offset) const {
+  if (offset >= 0 && offset < m_rules.size()) {
+    return m_rules[offset];
+  }
+  else {
     return 0;
   }
-
-  return m_rules[offset];
 }
 
-QVector<AdBlockRule*> AdBlockSubscription::allRules() const
-{
+QVector<AdBlockRule*> AdBlockSubscription::allRules() const {
   return m_rules;
 }
 
-const AdBlockRule* AdBlockSubscription::enableRule(int offset)
-{
-  if (!QzTools::containsIndex(m_rules, offset)) {
+const AdBlockRule *AdBlockSubscription::enableRule(int offset) {
+  if (offset >= 0 && offset < m_rules.size()) {
+    AdBlockRule *rule = m_rules[offset];
+    rule->setEnabled(true);
+    AdBlockManager::instance()->removeDisabledRule(rule->filter());
+
+    emit subscriptionChanged();
+
+    if (rule->isCssRule()) {
+      // TODO: opravdu?
+      //mApp->reloadUserStyleSheet();
+    }
+
+    return rule;
+  }
+  else {
     return 0;
   }
-
-  AdBlockRule* rule = m_rules[offset];
-  rule->setEnabled(true);
-  AdBlockManager::instance()->removeDisabledRule(rule->filter());
-
-  emit subscriptionChanged();
-
-  if (rule->isCssRule())
-    mApp->reloadUserStyleSheet();
-
-  return rule;
 }
 
 const AdBlockRule* AdBlockSubscription::disableRule(int offset)

@@ -180,6 +180,7 @@ void AdBlockIcon::animateIcon() {
   }
 
   if (pixmap()->isNull()) {
+    // TODO: Nastavit ikony.
     setPixmap(QIcon(QSL(":icons/other/adblock.png")).pixmap(16));
   }
   else {
@@ -197,6 +198,7 @@ void AdBlockIcon::stopAnimation() {
 
 void AdBlockIcon::setEnabled(bool enabled) {
   if (enabled) {
+    // TODO: Nastavit ikony.
     setPixmap(QIcon(QSL(":icons/other/adblock.png")).pixmap(16));
   }
   else {
