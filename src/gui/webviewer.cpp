@@ -43,6 +43,10 @@ bool WebViewer::canDecreaseZoom() {
   return zoomFactor() >= MIN_ZOOM_FACTOR + ZOOM_FACTOR_STEP;
 }
 
+WebPage *WebViewer::page() const {
+  return qobject_cast<WebPage*>(QWebEngineView::page());
+}
+
 void WebViewer::displayMessage() {
   setHtml(m_messageContents, QUrl::fromUserInput(INTERNAL_URL_MESSAGE));
 }

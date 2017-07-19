@@ -22,6 +22,9 @@
 #include "network-web/adblock/adblocksubscription.h"
 #include "miscellaneous/application.h"
 #include "network-web/webpage.h"
+#include "gui/webbrowser.h"
+#include "gui/webviewer.h"
+#include "gui/dialogs/formmain.h"
 
 #include <QMenu>
 #include <QTimer>
@@ -58,7 +61,6 @@ void AdBlockIcon::popupBlocked(const QString &ruleString, const QUrl &url) {
   pair.second = url;
   m_blockedPopups.append(pair);
 
-
   qApp->showGuiMessage(tr("Blocked popup window"), tr("AdBlock blocked unwanted popup window."), QSystemTrayIcon::Information);
 
   if (!m_flashTimer) {
@@ -87,7 +89,7 @@ QAction *AdBlockIcon::menuAction() {
   return m_menuAction;
 }
 
-void AdBlockIcon::createMenu(QMenu* menu) {
+void AdBlockIcon::createMenu(QMenu *menu) {
   if (!menu) {
     menu = qobject_cast<QMenu*>(sender());
 
@@ -101,10 +103,10 @@ void AdBlockIcon::createMenu(QMenu* menu) {
   AdBlockManager* manager = AdBlockManager::instance();
   AdBlockCustomList* customList = manager->customList();
 
-  WebPage *page = m_window->weView()->page();
+  WebPage *page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->viewer()->page();
   const QUrl pageUrl = page->url();
 
-  menu->addAction(tr("Show AdBlock &Settings"), manager, SLOT(showDialog()));
+  menu->addAction(tr("Show AdBlock &settings"), manager, SLOT(showDialog()));
   menu->addSeparator();
 
   if (!pageUrl.host().isEmpty() && m_enabled && manager->canRunOnScheme(pageUrl.scheme())) {

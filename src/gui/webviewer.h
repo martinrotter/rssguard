@@ -37,6 +37,8 @@ class WebViewer : public QWebEngineView {
       return m_messageContents;
     }
 
+    WebPage *page() const;
+
   public slots:
     // Page zoom modifiers.
     bool increaseWebPageZoom();
