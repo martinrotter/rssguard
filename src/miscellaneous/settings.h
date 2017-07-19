@@ -40,6 +40,13 @@
 #define GROUP(x) x::ID
 
 
+namespace AdBlock {
+  KEY ID;
+
+  KEY AdBlockEnabled;
+  VALUE(bool) AdBlockEnabledDef;
+}
+
 // Feeds.
 namespace Feeds {
   KEY ID;

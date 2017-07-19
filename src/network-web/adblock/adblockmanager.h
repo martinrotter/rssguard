@@ -24,7 +24,6 @@
 #include <QPointer>
 #include <QMutex>
 
-#include "qzcommon.h"
 
 class QUrl;
 class QWebEngineUrlRequestInfo;
@@ -36,13 +35,12 @@ class AdBlockCustomList;
 class AdBlockSubscription;
 class AdBlockUrlInterceptor;
 
-class QUPZILLA_EXPORT AdBlockManager : public QObject
-{
+class AdBlockManager : public QObject {
     Q_OBJECT
 
-public:
-    AdBlockManager(QObject* parent = 0);
-    ~AdBlockManager();
+  public:
+    explicit AdBlockManager(QObject *parent = 0);
+    virtual ~AdBlockManager();
 
     void load();
     void save();
@@ -53,7 +51,7 @@ public:
     QString elementHidingRules(const QUrl &url) const;
     QString elementHidingRulesForDomain(const QUrl &url) const;
 
-    AdBlockSubscription* subscriptionByName(const QString &name) const;
+    AdBlockSubscription *subscriptionByName(const QString &name) const;
     QList<AdBlockSubscription*> subscriptions() const;
 
     bool block(QWebEngineUrlRequestInfo &request);
@@ -64,33 +62,33 @@ public:
 
     bool addSubscriptionFromUrl(const QUrl &url);
 
-    AdBlockSubscription* addSubscription(const QString &title, const QString &url);
-    bool removeSubscription(AdBlockSubscription* subscription);
+    AdBlockSubscription *addSubscription(const QString &title, const QString &url);
+    bool removeSubscription(AdBlockSubscription *subscription);
 
-    AdBlockCustomList* customList() const;
+    AdBlockCustomList *customList() const;
 
-    static AdBlockManager* instance();
+    static AdBlockManager *instance();
 
-signals:
+  signals:
     void enabledChanged(bool enabled);
 
-public slots:
+  public slots:
     void setEnabled(bool enabled);
     void showRule();
 
     void updateMatcher();
     void updateAllSubscriptions();
 
-    AdBlockDialog* showDialog();
+    AdBlockDialog *showDialog();
 
-private:
+  private:
     inline bool canBeBlocked(const QUrl &url) const;
 
     bool m_loaded;
     bool m_enabled;
 
     QList<AdBlockSubscription*> m_subscriptions;
-    AdBlockMatcher* m_matcher;
+    AdBlockMatcher *m_matcher;
     QStringList m_disabledRules;
 
     AdBlockUrlInterceptor *m_interceptor;

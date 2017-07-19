@@ -16,11 +16,10 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "adblockicon.h"
-#include "adblockrule.h"
-#include "adblockmanager.h"
-#include "adblocksubscription.h"
-#include "tabwidget.h"
+#include "network-web/adblock/adblockicon.h"
+#include "network-web/adblock/adblockrule.h"
+#include "network-web/adblock/adblockmanager.h"
+#include "network-web/adblock/adblocksubscription.h"
 
 #include <QMenu>
 #include <QTimer>

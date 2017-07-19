@@ -25,6 +25,12 @@
 #include <QLocale>
 
 
+// AdBlock.
+DKEY AdBlock::ID                        = "adblock";
+
+DKEY AdBlock::AdBlockEnabled            = "enabled";
+DVALUE(bool) AdBlock::AdBlockEnabledDef = false;
+
 // Feeds.
 DKEY Feeds::ID                            = "feeds";
 
