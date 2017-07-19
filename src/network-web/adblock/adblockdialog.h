@@ -21,24 +21,23 @@
 
 #include <QWidget>
 
-#include "qzcommon.h"
 #include "ui_adblockdialog.h"
+
 
 class AdBlockSubscription;
 class AdBlockTreeWidget;
 class AdBlockManager;
 class AdBlockRule;
 
-class QUPZILLA_EXPORT AdBlockDialog : public QWidget, public Ui_AdBlockDialog
-{
+class AdBlockDialog : public QWidget {
     Q_OBJECT
 
-public:
+  public:
     explicit AdBlockDialog(QWidget* parent = 0);
 
     void showRule(const AdBlockRule* rule) const;
 
-private slots:
+  private slots:
     void addRule();
     void removeRule();
 
@@ -55,17 +54,19 @@ private slots:
     void loadSubscriptions();
     void load();
 
-private:
-    AdBlockManager* m_manager;
-    AdBlockTreeWidget* m_currentTreeWidget;
-    AdBlockSubscription* m_currentSubscription;
+  private:
+    AdBlockManager *m_manager;
+    AdBlockTreeWidget *m_currentTreeWidget;
+    AdBlockSubscription *m_currentSubscription;
 
-    QAction* m_actionAddRule;
-    QAction* m_actionRemoveRule;
-    QAction* m_actionAddSubscription;
-    QAction* m_actionRemoveSubscription;
+    QAction *m_actionAddRule;
+    QAction *m_actionRemoveRule;
+    QAction *m_actionAddSubscription;
+    QAction *m_actionRemoveSubscription;
 
     bool m_loaded;
+
+    Ui::AdBlockDialog *m_ui;
 };
 
 #endif // ADBLOCKDIALOG_H
