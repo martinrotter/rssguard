@@ -22,39 +22,38 @@
 #include <QDialog>
 #include <QVector>
 
-#include "qzcommon.h"
+#include "ui_adblockaddsubscriptiondialog.h"
 
-namespace Ui
-{
-class AdBlockAddSubscriptionDialog;
+
+namespace Ui {
+  class AdBlockAddSubscriptionDialog;
 }
 
-class QUPZILLA_EXPORT AdBlockAddSubscriptionDialog : public QDialog
-{
+class AdBlockAddSubscriptionDialog : public QDialog {
     Q_OBJECT
 
-public:
+  public:
     explicit AdBlockAddSubscriptionDialog(QWidget* parent = 0);
-    ~AdBlockAddSubscriptionDialog();
+    virtual ~AdBlockAddSubscriptionDialog();
 
     QString title() const;
     QString url() const;
 
-private slots:
+  private slots:
     void indexChanged(int index);
 
-private:
-    Ui::AdBlockAddSubscriptionDialog* ui;
+  private:
+    Ui::AdBlockAddSubscriptionDialog* m_ui;
 
     struct Subscription {
-        QString title;
-        QString url;
+        QString m_title;
+        QString m_url;
 
         Subscription() {}
 
         Subscription(const QString &t, const QString &u) {
-            title = t;
-            url = u;
+          m_title = t;
+          m_url = u;
         }
     };
 
