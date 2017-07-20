@@ -49,7 +49,9 @@
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
+    #if defined(USE_WEBENGINE)
     m_urlInterceptor(new NetworkUrlInterceptor(this)),
+    #endif
     m_feedReader(nullptr),
     m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
     m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
@@ -322,9 +324,11 @@ SystemTrayIcon *Application::trayIcon() {
   return m_trayIcon;
 }
 
+#if defined(USE_WEBENGINE)
 NetworkUrlInterceptor *Application::urlIinterceptor() {
   return m_urlInterceptor;
 }
+#endif
 
 void Application::showTrayIcon() {
   qDebug("Showing tray icon.");

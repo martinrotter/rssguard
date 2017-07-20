@@ -62,13 +62,16 @@
 
 FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain) {
+  m_ui->setupUi(this);
+
 #if defined(USE_WEBENGINE)
   m_adblockIcon = new AdBlockIcon(this);
   m_adblockIconAction = m_adblockIcon->menuAction();
   m_adblockIconAction->setObjectName(QSL("m_adblockIconAction"));
+
+  m_ui->m_menuTools->addAction(m_adblockIconAction);
 #endif
 
-  m_ui->setupUi(this);
   qApp->setMainForm(this);
 
   // Add these actions to the list of actions of the main window.

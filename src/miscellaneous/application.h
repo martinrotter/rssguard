@@ -47,7 +47,10 @@ class QAction;
 class Mutex;
 class QWebEngineDownloadItem;
 class FeedReader;
+
+#if defined(USE_WEBENGINE)
 class NetworkUrlInterceptor;
+#endif
 
 class Application : public QtSingleApplication {
     Q_OBJECT
@@ -80,7 +83,10 @@ class Application : public QtSingleApplication {
     FormMain *mainForm();
     QWidget *mainFormWidget();
     SystemTrayIcon *trayIcon();
+
+#if defined(USE_WEBENGINE)
     NetworkUrlInterceptor *urlIinterceptor();
+#endif
 
     QString getTempFolderPath();
     QString getDocumentsFolderPath();
@@ -158,7 +164,10 @@ class Application : public QtSingleApplication {
     // action will be allowed to lock for reading.
     QScopedPointer<Mutex> m_updateFeedsLock;
 
+#if defined(USE_WEBENGINE)
     NetworkUrlInterceptor *m_urlInterceptor;
+#endif
+
     QList<QAction*> m_userActions;
     FormMain *m_mainForm;
     SystemTrayIcon *m_trayIcon;
