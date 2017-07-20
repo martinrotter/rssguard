@@ -258,6 +258,9 @@ DKEY Keyboard::ID = "keyboard";
 // Web browser.
 DKEY Browser::ID                            = "browser";
 
+KEY Browser::SendDNT                        = "send_dnt";
+VALUE(bool) Browser::SendDNTDef             = false;
+
 DKEY Browser::OpenLinksInExternalBrowserRightAway             = "open_link_externally_wo_confirmation";
 DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef  = false;
 

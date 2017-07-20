@@ -60,7 +60,7 @@ void AdBlockManager::setEnabled(bool enabled) {
   m_enabled = enabled;
   emit enabledChanged(enabled);
 
-  qApp->settings()->setValue(GROUP(Adblock), AdBlock::AdBlockEnabled, m_enabled);
+  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, m_enabled);
   load();
   // TODO: Reload user stylesheet.
   //mApp->reloadUserStyleSheet();
@@ -102,7 +102,8 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo &request) {
 
     if (request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
       // We are blocking main URL frame, we can display "AdBlock error page" or redirect to somewhere.
-      QMessageBox::warning(nullptr, "blocked website");
+      // TODO: dodělat lepší
+      QMessageBox::warning(nullptr, "blocked website", "blocket");
 
       // TODO request.redirect() přesměrovat na "chybovou stranku";
       //QUrl url(QSL("rssguard:adblock"));
@@ -190,7 +191,9 @@ AdBlockSubscription *AdBlockManager::addSubscription(const QString &title, const
   subscription->loadSubscription(m_disabledRules);
 
   m_subscriptions.insert(m_subscriptions.count() - 1, subscription);
-  connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
+
+  // TODO: po změně subskripce přehrat user css?
+  //connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
   connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
 
   return subscription;
@@ -290,14 +293,15 @@ void AdBlockManager::load() {
   }
 
   // Append CustomList.
-  AdBlockCustomList* customList = new AdBlockCustomList(this);
+  AdBlockCustomList *customList = new AdBlockCustomList(this);
   m_subscriptions.append(customList);
 
   // Load all subscriptions
   foreach (AdBlockSubscription *subscription, m_subscriptions) {
     subscription->loadSubscription(m_disabledRules);
 
-    connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
+    // TODO: po zmene subskripce prehrat user css?
+    //connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
     connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
   }
 

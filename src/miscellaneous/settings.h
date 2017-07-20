@@ -291,6 +291,9 @@ namespace Keyboard {
 namespace Browser {
   KEY ID;
 
+  KEY SendDNT;
+  VALUE(bool) SendDNTDef;
+
   KEY OpenLinksInExternalBrowserRightAway;
   VALUE(bool) OpenLinksInExternalBrowserRightAwayDef;
 

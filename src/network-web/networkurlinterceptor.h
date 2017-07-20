@@ -21,14 +21,14 @@
 
 #include <QWebEngineUrlRequestInterceptor>
 
-#include "qzcommon.h"
 
 class UrlInterceptor;
 
-class QUPZILLA_EXPORT NetworkUrlInterceptor : public QWebEngineUrlRequestInterceptor
-{
-public:
-    explicit NetworkUrlInterceptor(QObject* parent = Q_NULLPTR);
+class NetworkUrlInterceptor : public QWebEngineUrlRequestInterceptor {
+    Q_OBJECT
+
+  public:
+    explicit NetworkUrlInterceptor(QObject *parent = nullptr);
 
     void interceptRequest(QWebEngineUrlRequestInfo &info) Q_DECL_OVERRIDE;
 
@@ -37,7 +37,7 @@ public:
 
     void loadSettings();
 
-private:
+  private:
     QList<UrlInterceptor*> m_interceptors;
     bool m_sendDNT;
 };

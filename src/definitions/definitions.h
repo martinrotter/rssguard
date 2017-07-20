@@ -26,6 +26,7 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
+#define IS_IN_ARRAY(offset, array)            ((offset >= 0) && (offset < array.count()))
 #define ADBLOCK_CUSTOMLIST_NAME               "customlist.txt"
 #define ADBLOCK_LISTS_SUBDIRECTORY            "adblock"
 #define ADBLOCK_EASYLIST_URL                  "https://easylist-downloads.adblockplus.org/easylist.txt"

@@ -19,19 +19,20 @@
 #ifndef ADBLOCKURLINTERCEPTOR_H
 #define ADBLOCKURLINTERCEPTOR_H
 
-#include "urlinterceptor.h"
-#include "qzcommon.h"
+#include "network-web/urlinterceptor.h"
+
 
 class AdBlockManager;
 
-class QUPZILLA_EXPORT AdBlockUrlInterceptor : public UrlInterceptor
-{
-public:
-    explicit AdBlockUrlInterceptor(AdBlockManager* manager);
+class AdBlockUrlInterceptor : public UrlInterceptor {
+    Q_OBJECT
+
+  public:
+    explicit AdBlockUrlInterceptor(AdBlockManager *manager);
 
     void interceptRequest(QWebEngineUrlRequestInfo &info);
 
-private:
+  private:
     AdBlockManager *m_manager;
 };
 

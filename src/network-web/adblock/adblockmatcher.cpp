@@ -32,7 +32,7 @@ AdBlockMatcher::~AdBlockMatcher() {
   clear();
 }
 
-const AdBlockRule* AdBlockMatcher::match(const QWebEngineUrlRequestInfo &request, const QString &urlDomain, const QString &urlString) const {
+const AdBlockRule *AdBlockMatcher::match(const QWebEngineUrlRequestInfo &request, const QString &urlDomain, const QString &urlString) const {
   // Exception rules.
   if (m_networkExceptionTree.find(request, urlDomain, urlString)) {
     return 0;
@@ -41,7 +41,7 @@ const AdBlockRule* AdBlockMatcher::match(const QWebEngineUrlRequestInfo &request
   int count = m_networkExceptionRules.count();
 
   for (int i = 0; i < count; ++i) {
-    const AdBlockRule* rule = m_networkExceptionRules.at(i);
+    const AdBlockRule *rule = m_networkExceptionRules.at(i);
 
     if (rule->networkMatch(request, urlDomain, urlString)) {
       return 0;
@@ -56,7 +56,7 @@ const AdBlockRule* AdBlockMatcher::match(const QWebEngineUrlRequestInfo &request
   count = m_networkBlockRules.count();
 
   for (int i = 0; i < count; ++i) {
-    const AdBlockRule* rule = m_networkBlockRules.at(i);
+    const AdBlockRule *rule = m_networkBlockRules.at(i);
 
     if (rule->networkMatch(request, urlDomain, urlString)) {
       return rule;
@@ -104,7 +104,7 @@ QString AdBlockMatcher::elementHidingRulesForDomain(const QString &domain) const
   int count = m_domainRestrictedCssRules.count();
 
   for (int i = 0; i < count; ++i) {
-    const AdBlockRule* rule = m_domainRestrictedCssRules.at(i);
+    const AdBlockRule *rule = m_domainRestrictedCssRules.at(i);
 
     if (!rule->matchDomain(domain)) {
       continue;
@@ -135,8 +135,8 @@ void AdBlockMatcher::update() {
   QHash<QString, const AdBlockRule*> cssRulesHash;
   QVector<const AdBlockRule*> exceptionCssRules;
 
-  foreach (AdBlockSubscription* subscription, m_manager->subscriptions()) {
-    foreach (const AdBlockRule* rule, subscription->allRules()) {
+  foreach (AdBlockSubscription *subscription, m_manager->subscriptions()) {
+    foreach (const AdBlockRule *rule, subscription->allRules()) {
       // Don't add internally disabled rules to cache.
       if (rule->isInternalDisabled()) {
         continue;
@@ -178,7 +178,7 @@ void AdBlockMatcher::update() {
   foreach (const AdBlockRule *rule, exceptionCssRules) {
     const AdBlockRule *originalRule = cssRulesHash.value(rule->cssSelector());
 
-    // If we don't have this selector, the exception does nothing
+    // If we don't have this selector, the exception does nothing.
     if (!originalRule) {
       continue;
     }
@@ -192,11 +192,11 @@ void AdBlockMatcher::update() {
   }
 
   // Apparently, excessive amount of selectors for one CSS rule is not what WebKit likes.
-  // (In my testings, 4931 is the number that makes it crash)
-  // So let's split it by 1000 selectors...
+  // (In my testings, 4931 is the number that makes it crash).
+  // So let's split it by 1000 selectors.
   int hidingRulesCount = 0;
-
   QHashIterator<QString, const AdBlockRule*> it(cssRulesHash);
+
   while (it.hasNext()) {
     it.next();
     const AdBlockRule *rule = it.value();

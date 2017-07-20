@@ -86,7 +86,7 @@ class AdBlockSubscription : public QObject {
 
     virtual int addRule(AdBlockRule* rule);
     virtual bool removeRule(int offset);
-    virtual const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
+    virtual const AdBlockRule *replaceRule(AdBlockRule *rule, int offset);
 
   public slots:
     void updateSubscription();

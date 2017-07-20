@@ -16,45 +16,41 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "networkurlinterceptor.h"
-#include "urlinterceptor.h"
-#include "settings.h"
-#include "mainapplication.h"
-#include "useragentmanager.h"
+#include "network-web/networkurlinterceptor.h"
+
+#include "network-web/urlinterceptor.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
+
 
 NetworkUrlInterceptor::NetworkUrlInterceptor(QObject *parent)
-    : QWebEngineUrlRequestInterceptor(parent)
-    , m_sendDNT(false)
-{
+  : QWebEngineUrlRequestInterceptor(parent), m_sendDNT(false) {
 }
 
-void NetworkUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo &info)
-{
-    if (m_sendDNT)
-        info.setHttpHeader(QByteArrayLiteral("DNT"), QByteArrayLiteral("1"));
+void NetworkUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo &info) {
+  if (m_sendDNT) {
+    info.setHttpHeader(QByteArrayLiteral("DNT"), QByteArrayLiteral("1"));
+  }
 
-    info.setHttpHeader(QByteArrayLiteral("User-Agent"), mApp->userAgentManager()->userAgentForUrl(info.firstPartyUrl()).toUtf8());
+  // TODO: mužeme zde nastavovat custom věci pro každej webengine sitovej pozadavek
+  // treba user agenta
+  //info.setHttpHeader(QByteArrayLiteral("User-Agent"), mApp->userAgentManager()->userAgentForUrl(info.firstPartyUrl()).toUtf8());
 
-    foreach (UrlInterceptor *interceptor, m_interceptors) {
-        interceptor->interceptRequest(info);
-    }
+  foreach (UrlInterceptor *interceptor, m_interceptors) {
+    interceptor->interceptRequest(info);
+  }
 }
 
-void NetworkUrlInterceptor::installUrlInterceptor(UrlInterceptor *interceptor)
-{
-    if (!m_interceptors.contains(interceptor))
-        m_interceptors.append(interceptor);
+void NetworkUrlInterceptor::installUrlInterceptor(UrlInterceptor *interceptor) {
+  if (!m_interceptors.contains(interceptor)) {
+    m_interceptors.append(interceptor);
+  }
 }
 
-void NetworkUrlInterceptor::removeUrlInterceptor(UrlInterceptor *interceptor)
-{
-    m_interceptors.removeOne(interceptor);
+void NetworkUrlInterceptor::removeUrlInterceptor(UrlInterceptor *interceptor) {
+  m_interceptors.removeOne(interceptor);
 }
 
-void NetworkUrlInterceptor::loadSettings()
-{
-    Settings settings;
-    settings.beginGroup("Web-Browser-Settings");
-    m_sendDNT = settings.value("DoNotTrack", false).toBool();
-    settings.endGroup();
+void NetworkUrlInterceptor::loadSettings() {
+  m_sendDNT = qApp->settings()->value(GROUP(Browser), SETTING(Browser::SendDNT)).toBool();
 }

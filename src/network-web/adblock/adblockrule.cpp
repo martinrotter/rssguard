@@ -454,7 +454,7 @@ void AdBlockRule::parseFilter() {
 
     parsedLine = parsedLine.left(optionsIndex);
   }
-  .
+
   // Rule is classic regexp.
   if (parsedLine.startsWith(QL1C('/')) && parsedLine.endsWith(QL1C('/'))) {
     parsedLine = parsedLine.mid(1);
@@ -659,7 +659,7 @@ bool AdBlockRule::stringMatch(const QString &domain, const QString &encodedUrl) 
   return false;
 }
 
-bool AdBlockRule::matchDomain(const QString &pattern, const QString &domain) {
+bool AdBlockRule::matchDomain(const QString &pattern, const QString &domain) const {
   if (pattern == domain) {
     return true;
   }

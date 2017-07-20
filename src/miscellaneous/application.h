@@ -47,6 +47,7 @@ class QAction;
 class Mutex;
 class QWebEngineDownloadItem;
 class FeedReader;
+class NetworkUrlInterceptor;
 
 class Application : public QtSingleApplication {
     Q_OBJECT
@@ -156,6 +157,7 @@ class Application : public QtSingleApplication {
     // action will be allowed to lock for reading.
     QScopedPointer<Mutex> m_updateFeedsLock;
 
+    NetworkUrlInterceptor *m_urlInterceptor;
     QList<QAction*> m_userActions;
     FormMain *m_mainForm;
     SystemTrayIcon *m_trayIcon;

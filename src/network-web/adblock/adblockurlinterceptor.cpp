@@ -16,17 +16,17 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "adblockurlinterceptor.h"
-#include "adblockmanager.h"
+#include "network-web/adblock/adblockurlinterceptor.h"
+
+#include "network-web/adblock/adblockmanager.h"
+
 
 AdBlockUrlInterceptor::AdBlockUrlInterceptor(AdBlockManager *manager)
-    : UrlInterceptor(manager)
-    , m_manager(manager)
-{
+  : UrlInterceptor(manager), m_manager(manager) {
 }
 
-void AdBlockUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo &info)
-{
-    if (m_manager->block(info))
-        info.block(true);
+void AdBlockUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo &info) {
+  if (m_manager->block(info)) {
+    info.block(true);
+  }
 }

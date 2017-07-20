@@ -20,9 +20,11 @@
 #define ADBLOCKMATCHER_H
 
 #include <QUrl>
-#include <QObject>
 
 #include "network-web/adblock/adblocksearchtree.h"
+
+#include <QObject>
+#include <QVector>
 
 
 class QWebEngineUrlRequestInfo;

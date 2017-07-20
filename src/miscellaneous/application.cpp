@@ -27,6 +27,8 @@
 #include "gui/statusbar.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
+#include "network-web/urlinterceptor.h"
+#include "network-web/networkurlinterceptor.h"
 
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardserviceroot.h"
@@ -44,6 +46,7 @@
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
+    m_urlInterceptor(new NetworkUrlInterceptor(this)),
     m_feedReader(nullptr),
     m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
     m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
@@ -54,6 +57,8 @@ Application::Application(const QString &id, int &argc, char **argv)
 
 #if defined(USE_WEBENGINE)
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
+
+  QWebEngineProfile::setRequestInterceptor(m_urlInterceptor);
 #endif
 }
 

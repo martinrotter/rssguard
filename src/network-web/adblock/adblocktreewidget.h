@@ -19,41 +19,41 @@
 #ifndef ADBLOCKTREEWIDGET_H
 #define ADBLOCKTREEWIDGET_H
 
-#include <QTreeWidget>
+#include "gui/treewidget.h"
 
 
 class AdBlockSubscription;
 class AdBlockRule;
 
-class AdBlockTreeWidget : public QTreeWidget
-{
+class AdBlockTreeWidget : public TreeWidget {
     Q_OBJECT
-public:
-    explicit AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget* parent = 0);
 
-    AdBlockSubscription* subscription() const;
+  public:
+    explicit AdBlockTreeWidget(AdBlockSubscription *subscription, QWidget *parent = 0);
 
-    void showRule(const AdBlockRule* rule);
+    AdBlockSubscription *subscription() const;
+
+    void showRule(const AdBlockRule *rule);
     void refresh();
 
-public slots:
+  public slots:
     void addRule();
     void removeRule();
 
-private slots:
+  private slots:
     void contextMenuRequested(const QPoint &pos);
-    void itemChanged(QTreeWidgetItem* item);
+    void itemChanged(QTreeWidgetItem *item);
     void copyFilter();
 
     void subscriptionUpdated();
     void subscriptionError(const QString &message);
 
-private:
-    void adjustItemFeatures(QTreeWidgetItem* item, const AdBlockRule* rule);
+  private:
+    void adjustItemFeatures(QTreeWidgetItem *item, const AdBlockRule *rule);
     void keyPressEvent(QKeyEvent* event);
 
-    AdBlockSubscription* m_subscription;
-    QTreeWidgetItem* m_topItem;
+    AdBlockSubscription *m_subscription;
+    QTreeWidgetItem *m_topItem;
 
     QString m_ruleToBeSelected;
     bool m_itemChangingBlock;
