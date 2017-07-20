@@ -59,6 +59,10 @@ Application::Application(const QString &id, int &argc, char **argv)
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 
   QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
+
+  // TODO: Teď tam žádný nastavení není, ale jestli se DNT třeba
+  // přidá do dialogu nastavení, tak toto volat při ukládání nastavení.
+  m_urlInterceptor->loadSettings();
 #endif
 }
 
