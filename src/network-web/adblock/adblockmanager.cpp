@@ -102,8 +102,6 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
       // We are blocking main URL frame, we can display "AdBlock error page" or
       // redirect to somewhere.
       // TODO: dodělat lepší
-      qApp->showGuiMessage(request.requestUrl().toString(), "aaa", QSystemTrayIcon::Warning);
-      request.redirect(QUrl("http://www.seznam.cz"));
 
       // TODO request.redirect() přesměrovat na "chybovou stranku";
       // QUrl url(QSL("rssguard:adblock"));
@@ -114,7 +112,7 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
       // url.setQuery(query);
       // request.redirect(url);
 
-      //request.block(true);
+      request.block(true);
     }
     else {
       request.block(true);

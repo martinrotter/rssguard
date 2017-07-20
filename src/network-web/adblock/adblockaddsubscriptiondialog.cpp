@@ -29,7 +29,7 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
 
   m_knownSubscriptions << Subscription(QSL("EasyList (English)"), ADBLOCK_EASYLIST_URL)
                        << Subscription(QSL("BSI Lista Polska (Polish)"), QSL("http://www.bsi.info.pl/filtrABP.txt"))
-                       << Subscription(QSL("Czech List (Czech)"), QSL("http://adblock.dajbych.net/adblock.txt"))
+                       << Subscription(QSL("EasyList Czech and Slovak (Czech)"), QSL("https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt"))
                        << Subscription(QSL("dutchblock (Dutch)"), QSL("http://groenewoudt.net/dutchblock/list.txt"))
                        << Subscription(QSL("Filtros Nauscopicos (Spanish)"), QSL("http://abp.mozilla-hispano.org/nauscopio/filtros.txt"))
                        << Subscription(QSL("IsraelList (Hebrew)"), QSL("http://secure.fanboy.co.nz/israelilist/IsraelList.txt"))
