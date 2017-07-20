@@ -284,16 +284,6 @@ void AdBlockManager::load() {
     m_subscriptions.append(subscription);
   }
 
-  // Prepend EasyList if subscriptions are empty.
-  if (m_subscriptions.isEmpty()) {
-    AdBlockSubscription* easyList = new AdBlockSubscription(tr("EasyList"), this);
-
-    easyList->setUrl(QUrl(ADBLOCK_EASYLIST_URL));
-    easyList->setFilePath(storedListsPath() + QDir::separator() + QSL("easylist.txt"));
-
-    m_subscriptions.prepend(easyList);
-  }
-
   // Append CustomList.
   AdBlockCustomList *customList = new AdBlockCustomList(this);
   m_subscriptions.append(customList);
@@ -308,7 +298,7 @@ void AdBlockManager::load() {
     connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
   }
 
-  if (lastUpdate.addDays(5) < QDateTime::currentDateTime()) {
+  if (lastUpdate.addDays(ADBLOCK_UPDATE_DAYS_INTERVAL) < QDateTime::currentDateTime()) {
     QTimer::singleShot(1000 * 60, this, SLOT(updateAllSubscriptions()));
   }
 
