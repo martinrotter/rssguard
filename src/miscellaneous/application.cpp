@@ -27,8 +27,6 @@
 #include "gui/statusbar.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
-#include "network-web/urlinterceptor.h"
-#include "network-web/networkurlinterceptor.h"
 
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardserviceroot.h"
@@ -40,6 +38,8 @@
 #include <QProcess>
 
 #if defined(USE_WEBENGINE)
+#include "network-web/urlinterceptor.h"
+#include "network-web/networkurlinterceptor.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 
