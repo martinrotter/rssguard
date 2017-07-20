@@ -24,6 +24,7 @@
 #include <QPointer>
 #include <QStringList>
 
+
 class QUrl;
 class QWebEngineUrlRequestInfo;
 class AdBlockMatcher;
@@ -60,15 +61,15 @@ class AdBlockManager : public QObject {
 
     bool addSubscriptionFromUrl(const QUrl& url);
 
-    AdBlockSubscription* addSubscription(const QString& title,
-        const QString& url);
+    AdBlockSubscription *addSubscription(const QString& title,
+        const QString &url);
     bool removeSubscription(AdBlockSubscription* subscription);
 
-    AdBlockCustomList* customList() const;
+    AdBlockCustomList *customList() const;
 
-    QString storedListsPath() const;
+    static QString storedListsPath();
 
-    static AdBlockManager* instance();
+    static AdBlockManager *instance();
 
   signals:
     void enabledChanged(bool enabled);
@@ -80,10 +81,10 @@ class AdBlockManager : public QObject {
     void updateMatcher();
     void updateAllSubscriptions();
 
-    AdBlockDialog* showDialog();
+    AdBlockDialog *showDialog();
 
   private:
-    inline bool canBeBlocked(const QUrl& url) const;
+    inline bool canBeBlocked(const QUrl &url) const;
 
     bool m_loaded;
     bool m_enabled;

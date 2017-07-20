@@ -102,7 +102,8 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
       // We are blocking main URL frame, we can display "AdBlock error page" or
       // redirect to somewhere.
       // TODO: dodělat lepší
-      QMessageBox::warning(nullptr, "blocked website", "blocket");
+      qApp->showGuiMessage(request.requestUrl().toString(), "aaa", QSystemTrayIcon::Warning);
+      request.redirect(QUrl("http://www.seznam.cz"));
 
       // TODO request.redirect() přesměrovat na "chybovou stranku";
       // QUrl url(QSL("rssguard:adblock"));
@@ -113,12 +114,13 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
       // url.setQuery(query);
       // request.redirect(url);
 
-      request.block(true);
+      //request.block(true);
     }
     else {
       request.block(true);
     }
   }
+
   return res;
 }
 
@@ -227,7 +229,7 @@ AdBlockCustomList *AdBlockManager::customList() const {
   return 0;
 }
 
-QString AdBlockManager::storedListsPath() const {
+QString AdBlockManager::storedListsPath() {
   return qApp->getUserDataPath() + QDir::separator() + ADBLOCK_LISTS_SUBDIRECTORY;
 }
 
@@ -297,7 +299,7 @@ void AdBlockManager::load() {
   m_subscriptions.append(customList);
 
   // Load all subscriptions
-  foreach (AdBlockSubscription* subscription, m_subscriptions) {
+  foreach (AdBlockSubscription *subscription, m_subscriptions) {
     subscription->loadSubscription(m_disabledRules);
 
     // TODO: po zmene subskripce prehrat user css?

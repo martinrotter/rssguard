@@ -35,7 +35,7 @@ class AdBlockIcon : public ClickableLabel {
     Q_OBJECT
 
   public:
-    explicit AdBlockIcon(BrowserWindow* window, QWidget* parent = 0);
+    explicit AdBlockIcon(QWidget* parent = 0);
     virtual ~AdBlockIcon();
 
     void popupBlocked(const QString &ruleString, const QUrl &url);
@@ -53,7 +53,6 @@ class AdBlockIcon : public ClickableLabel {
     void stopAnimation();
 
   private:
-    BrowserWindow *m_window;
     QAction *m_menuAction;
 
     QVector<QPair<AdBlockRule*, QUrl> > m_blockedPopups;

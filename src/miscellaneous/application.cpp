@@ -40,6 +40,9 @@
 #include <QProcess>
 
 #if defined(USE_WEBENGINE)
+#include "network-web/adblock/adblockicon.h"
+#include "network-web/adblock/adblockmanager.h"
+
 #include <QWebEngineProfile>
 #include <QWebEngineDownloadItem>
 #endif
@@ -194,7 +197,7 @@ void Application::setMainForm(FormMain *main_form) {
 }
 
 QString Application::getConfigHomePath() {
-  return IOFactory::getSystemFolder(QStandardPaths::ConfigLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::GenericConfigLocation);
 }
 
 QString Application::getUserDataAppPath() {
@@ -373,6 +376,10 @@ void Application::onSaveState(QSessionManager &manager) {
 void Application::onAboutToQuit() {
   eliminateFirstRun();
   eliminateFirstRun(APP_VERSION);
+
+#if defined(USE_WEBENGINE)
+  AdBlockManager::instance()->save();
+#endif
 
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
   const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);

@@ -34,7 +34,7 @@ class AdBlockMatcher : public QObject {
     Q_OBJECT
 
   public:
-    explicit AdBlockMatcher(AdBlockManager* manager);
+    explicit AdBlockMatcher(AdBlockManager *manager);
     virtual ~AdBlockMatcher();
 
     const AdBlockRule* match(const QWebEngineUrlRequestInfo &request, const QString &urlDomain, const QString &urlString) const;

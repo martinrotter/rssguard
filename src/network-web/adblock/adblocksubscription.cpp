@@ -51,6 +51,7 @@
 #include "definitions/definitions.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "miscellaneous/iofactory.h"
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 
 #include <QFile>
@@ -271,7 +272,7 @@ AdBlockSubscription::~AdBlockSubscription() {
 
 AdBlockCustomList::AdBlockCustomList(QObject *parent)
   : AdBlockSubscription(tr("Custom rules"), parent) {
-  setFilePath(AdBlockManager::instance()->storedListsPath() + QDir::separator() + ADBLOCK_CUSTOMLIST_NAME);
+  setFilePath(AdBlockManager::storedListsPath() + QDir::separator() + ADBLOCK_CUSTOMLIST_NAME);
 }
 
 void AdBlockCustomList::loadSubscription(const QStringList &disabledRules) {
@@ -281,7 +282,14 @@ void AdBlockCustomList::loadSubscription(const QStringList &disabledRules) {
 
   const QString ddg1 = QSL("@@||duckduckgo.com^$document");
   const QString ddg2 = QSL("duckduckgo.com#@#.has-ad");
-  const QString rules = QString::fromUtf8(IOFactory::readTextFile(filePath()));
+  QString rules;
+
+  try {
+    rules = QString::fromUtf8(IOFactory::readTextFile(filePath()));
+  }
+  catch (ApplicationException&) {
+
+  }
 
   QFile file(filePath());
 

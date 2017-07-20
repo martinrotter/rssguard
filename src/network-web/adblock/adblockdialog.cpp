@@ -42,12 +42,12 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
   m_ui->adblockCheckBox->setChecked(m_manager->isEnabled());
 
   QMenu* menu = new QMenu(m_ui->buttonOptions);
-  m_actionAddRule = menu->addAction(tr("Add Rule"), this, SLOT(addRule()));
-  m_actionRemoveRule = menu->addAction(tr("Remove Rule"), this, SLOT(removeRule()));
+  m_actionAddRule = menu->addAction(tr("Add rule"), this, SLOT(addRule()));
+  m_actionRemoveRule = menu->addAction(tr("Remove rule"), this, SLOT(removeRule()));
   menu->addSeparator();
-  m_actionAddSubscription = menu->addAction(tr("Add Subscription"), this, SLOT(addSubscription()));
-  m_actionRemoveSubscription = menu->addAction(tr("Remove Subscription"), this, SLOT(removeSubscription()));
-  menu->addAction(tr("Update Subscriptions"), m_manager, SLOT(updateAllSubscriptions()));
+  m_actionAddSubscription = menu->addAction(tr("Add subscription"), this, SLOT(addSubscription()));
+  m_actionRemoveSubscription = menu->addAction(tr("Remove subscription"), this, SLOT(removeSubscription()));
+  menu->addAction(tr("Update subscriptions"), m_manager, SLOT(updateAllSubscriptions()));
   menu->addSeparator();
   menu->addAction(tr("Learn about writing rules..."), this, SLOT(learnAboutRules()));
 
@@ -56,7 +56,7 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
 
   connect(m_ui->adblockCheckBox, SIGNAL(toggled(bool)), this, SLOT(enableAdBlock(bool)));
   connect(m_ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(currentChanged(int)));
-  connect(m_ui->buttonBox, SIGNAL(accepted()), this, SLOT(close()));
+  connect(m_ui->buttonBox, &QDialogButtonBox::clicked, this, &AdBlockDialog::close);
 
   load();
 

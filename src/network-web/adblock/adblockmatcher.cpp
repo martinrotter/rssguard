@@ -24,7 +24,7 @@
 #include "definitions/definitions.h"
 
 
-AdBlockMatcher::AdBlockMatcher(AdBlockManager* manager)
+AdBlockMatcher::AdBlockMatcher(AdBlockManager *manager)
   : QObject(manager), m_manager(manager) {
 }
 

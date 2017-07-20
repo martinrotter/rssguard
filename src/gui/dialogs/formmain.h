@@ -23,6 +23,10 @@
 #include "ui_formmain.h"
 
 
+#if defined(USE_WEBENGINE)
+class AdBlockIcon;
+#endif
+
 class StatusBar;
 
 class FormMain : public QMainWindow {
@@ -54,6 +58,12 @@ class FormMain : public QMainWindow {
     // Loads/saves visual state of the application.
     void loadSize();
     void saveSize();
+
+#if defined(USE_WEBENGINE)
+    AdBlockIcon *adblockIcon() const {
+      return m_adblockIcon;
+    }
+#endif
 
   public slots:    
     // Displays window on top or switches its visibility.
@@ -101,6 +111,11 @@ class FormMain : public QMainWindow {
 
     // Sets up proper icons for this widget.
     void setupIcons();
+
+#if defined(USE_WEBENGINE)
+    AdBlockIcon *m_adblockIcon;
+    QAction *m_adblockIconAction;
+#endif
 
     QScopedPointer<Ui::FormMain> m_ui;
     QMenu *m_trayMenu;

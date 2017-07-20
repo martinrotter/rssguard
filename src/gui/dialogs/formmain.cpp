@@ -55,9 +55,19 @@
 #include <QTimer>
 #include <QFileDialog>
 
+#if defined(USE_WEBENGINE)
+#include "network-web/adblock/adblockicon.h"
+#endif
+
 
 FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain) {
+#if defined(USE_WEBENGINE)
+  m_adblockIcon = new AdBlockIcon(this);
+  m_adblockIconAction = m_adblockIcon->menuAction();
+  m_adblockIconAction->setObjectName(QSL("m_adblockIconAction"));
+#endif
+
   m_ui->setupUi(this);
   qApp->setMainForm(this);
 
@@ -65,6 +75,10 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   // This allows to use actions via shortcuts
   // even if main menu is not visible.
   addActions(allActions());
+
+#if defined(USE_WEBENGINE)
+  addAction(m_adblockIconAction);
+#endif
 
   m_statusBar = new StatusBar(this);
   setStatusBar(m_statusBar);
@@ -182,6 +196,7 @@ QList<QAction*> FormMain::allActions() const {
 
 #if defined(USE_WEBENGINE)
   actions << m_ui->m_actionTabNewWebBrowser;
+  actions << m_adblockIconAction;
 #endif
 
   actions << m_ui->m_actionTabsCloseAll;

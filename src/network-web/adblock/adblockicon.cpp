@@ -28,17 +28,20 @@
 #include "gui/dialogs/formmain.h"
 
 #include <QMenu>
+#include <QMessageBox>
 #include <QTimer>
 
 
-AdBlockIcon::AdBlockIcon(BrowserWindow* window, QWidget* parent)
-  : ClickableLabel(parent), m_window(window), m_menuAction(0), m_flashTimer(0), m_timerTicks(0), m_enabled(false) {
+AdBlockIcon::AdBlockIcon(QWidget* parent)
+  : ClickableLabel(parent), m_menuAction(0), m_flashTimer(0), m_timerTicks(0), m_enabled(false) {
   setCursor(Qt::PointingHandCursor);
   setToolTip(tr("AdBlock lets you block unwanted content on web pages"));
   setFixedSize(16, 16);
 
   connect(this, SIGNAL(clicked(QPoint)), this, SLOT(showMenu(QPoint)));
   connect(AdBlockManager::instance(), SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
+
+  m_enabled = AdBlockManager::instance()->isEnabled();
 }
 
 AdBlockIcon::~AdBlockIcon() {
@@ -81,8 +84,9 @@ void AdBlockIcon::popupBlocked(const QString &ruleString, const QUrl &url) {
 QAction *AdBlockIcon::menuAction() {
   if (!m_menuAction) {
     m_menuAction = new QAction(tr("AdBlock"), this);
-    m_menuAction->setMenu(new QMenu);
+    m_menuAction->setMenu(new QMenu(this));
     connect(m_menuAction->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
+    connect(m_menuAction, &QAction::triggered, AdBlockManager::instance(), &AdBlockManager::showDialog);
   }
 
   m_menuAction->setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
@@ -201,6 +205,10 @@ void AdBlockIcon::setEnabled(bool enabled) {
   }
   else {
     setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED).pixmap(16));
+  }
+
+  if (m_menuAction != nullptr) {
+    m_menuAction->setIcon(enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
   }
 
   m_enabled = enabled;
