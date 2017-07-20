@@ -80,6 +80,7 @@ class Application : public QtSingleApplication {
     FormMain *mainForm();
     QWidget *mainFormWidget();
     SystemTrayIcon *trayIcon();
+    NetworkUrlInterceptor *urlIinterceptor();
 
     QString getTempFolderPath();
     QString getDocumentsFolderPath();

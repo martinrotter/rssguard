@@ -58,7 +58,7 @@ Application::Application(const QString &id, int &argc, char **argv)
 #if defined(USE_WEBENGINE)
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 
-  QWebEngineProfile::setRequestInterceptor(m_urlInterceptor);
+  QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
 #endif
 }
 
@@ -313,6 +313,10 @@ SystemTrayIcon *Application::trayIcon() {
   }
 
   return m_trayIcon;
+}
+
+NetworkUrlInterceptor *Application::urlIinterceptor() {
+  return m_urlInterceptor;
 }
 
 void Application::showTrayIcon() {

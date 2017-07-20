@@ -17,6 +17,7 @@
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
 #include "network-web/adblock/adblockicon.h"
+
 #include "network-web/adblock/adblockrule.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblocksubscription.h"
@@ -84,8 +85,7 @@ QAction *AdBlockIcon::menuAction() {
     connect(m_menuAction->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
   }
 
-  m_menuAction->setIcon(QIcon(m_enabled ? ":icons/other/adblock.png" : ":icons/other/adblock-disabled.png"));
-
+  m_menuAction->setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
   return m_menuAction;
 }
 
@@ -180,8 +180,7 @@ void AdBlockIcon::animateIcon() {
   }
 
   if (pixmap()->isNull()) {
-    // TODO: Nastavit ikony.
-    setPixmap(QIcon(QSL(":icons/other/adblock.png")).pixmap(16));
+    setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE).pixmap(16));
   }
   else {
     setPixmap(QPixmap());
@@ -198,11 +197,10 @@ void AdBlockIcon::stopAnimation() {
 
 void AdBlockIcon::setEnabled(bool enabled) {
   if (enabled) {
-    // TODO: Nastavit ikony.
-    setPixmap(QIcon(QSL(":icons/other/adblock.png")).pixmap(16));
+    setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE).pixmap(16));
   }
   else {
-    setPixmap(QIcon(QSL(":icons/other/adblock-disabled.png")).pixmap(16));
+    setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED).pixmap(16));
   }
 
   m_enabled = enabled;

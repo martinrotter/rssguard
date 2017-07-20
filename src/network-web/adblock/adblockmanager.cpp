@@ -24,6 +24,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "network-web/networkurlinterceptor.h"
 
 #include <QDateTime>
 #include <QTextStream>
@@ -312,9 +313,7 @@ void AdBlockManager::load() {
   m_matcher->update();
   m_loaded = true;
 
-  // TODO: instalovat interceptor, asi dát tu logiku
-  // někam sem, nedávat třeba do Application
-  //mApp->networkManager()->installUrlInterceptor(m_interceptor);
+  qApp->urlIinterceptor()->installUrlInterceptor(m_interceptor);
 }
 
 void AdBlockManager::updateMatcher() {
