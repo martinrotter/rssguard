@@ -32,20 +32,27 @@
 #include <QTimer>
 
 
-AdBlockIcon::AdBlockIcon(QWidget* parent)
-	: ClickableLabel(parent), m_menuAction(0), m_flashTimer(0), m_timerTicks(0), m_enabled(false) {
-	setCursor(Qt::PointingHandCursor);
+AdBlockIcon::AdBlockIcon(QObject* parent)
+  : QAction(parent), m_flashTimer(0), m_timerTicks(0), m_enabled(AdBlockManager::instance()->isEnabled()) {
 	setToolTip(tr("AdBlock lets you block unwanted content on web pages"));
-	setFixedSize(16, 16);
+  setText(QSL("AdBlock"));
+  setMenu(new QMenu());
+  setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
+
 	connect(this, SIGNAL(clicked(QPoint)), this, SLOT(showMenu(QPoint)));
 	connect(AdBlockManager::instance(), SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
-	m_enabled = AdBlockManager::instance()->isEnabled();
+  connect(menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
+  connect(this, &QAction::triggered, AdBlockManager::instance(), &AdBlockManager::showDialog);
 }
 
 AdBlockIcon::~AdBlockIcon() {
 	for (int i = 0; i < m_blockedPopups.count(); ++i) {
 		delete m_blockedPopups.at(i).first;
 	}
+
+  if (menu() != nullptr) {
+    menu()->deleteLater();
+  }
 }
 
 void AdBlockIcon::popupBlocked(const QString& ruleString, const QUrl& url) {
@@ -75,18 +82,6 @@ void AdBlockIcon::popupBlocked(const QString& ruleString, const QUrl& url) {
 	m_flashTimer->setInterval(500);
 	m_flashTimer->start();
 	connect(m_flashTimer, &QTimer::timeout, this, &AdBlockIcon::animateIcon);
-}
-
-QAction* AdBlockIcon::menuAction() {
-	if (!m_menuAction) {
-		m_menuAction = new QAction(tr("AdBlock"), this);
-		m_menuAction->setMenu(new QMenu(this));
-		connect(m_menuAction->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
-    connect(m_menuAction, &QAction::triggered, AdBlockManager::instance(), &AdBlockManager::showDialog);
-	}
-
-	m_menuAction->setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
-	return m_menuAction;
 }
 
 void AdBlockIcon::createMenu(QMenu* menu) {
@@ -159,12 +154,12 @@ void AdBlockIcon::animateIcon() {
 		return;
 	}
 
-	if (pixmap()->isNull()) {
-		setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE).pixmap(16));
+  if (icon().isNull()) {
+    setIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
 	}
 
 	else {
-		setPixmap(QPixmap());
+    setIcon(QIcon());
 	}
 }
 
@@ -177,15 +172,10 @@ void AdBlockIcon::stopAnimation() {
 
 void AdBlockIcon::setEnabled(bool enabled) {
 	if (enabled) {
-		setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE).pixmap(16));
+    setIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
 	}
-
 	else {
-		setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED).pixmap(16));
-	}
-
-	if (m_menuAction != nullptr) {
-		m_menuAction->setIcon(enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
+    setIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
 	}
 
 	m_enabled = enabled;

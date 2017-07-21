@@ -63,20 +63,23 @@
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 	: QMainWindow(parent, f), m_ui(new Ui::FormMain) {
 	m_ui->setupUi(this);
+
 #if defined(USE_WEBENGINE)
 	m_adblockIcon = new AdBlockIcon(this);
-	m_adblockIconAction = m_adblockIcon->menuAction();
-	m_adblockIconAction->setObjectName(QSL("m_adblockIconAction"));
-	m_ui->m_menuTools->addAction(m_adblockIconAction);
+  m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
+  m_ui->m_menuTools->addAction(m_adblockIcon);
 #endif
+
 	qApp->setMainForm(this);
 	// Add these actions to the list of actions of the main window.
 	// This allows to use actions via shortcuts
 	// even if main menu is not visible.
 	addActions(allActions());
+
 #if defined(USE_WEBENGINE)
-	addAction(m_adblockIconAction);
+  addAction(m_adblockIcon);
 #endif
+
 	m_statusBar = new StatusBar(this);
 	setStatusBar(m_statusBar);
 	// Prepare main window and tabs.
@@ -183,7 +186,7 @@ QList<QAction*> FormMain::allActions() const {
 	actions << m_ui->m_actionExpandCollapseItem;
 #if defined(USE_WEBENGINE)
 	actions << m_ui->m_actionTabNewWebBrowser;
-	actions << m_adblockIconAction;
+  actions << m_adblockIcon;
 #endif
 	actions << m_ui->m_actionTabsCloseAll;
 	actions << m_ui->m_actionTabsCloseAllExceptCurrent;

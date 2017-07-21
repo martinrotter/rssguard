@@ -114,7 +114,6 @@ class FormMain : public QMainWindow {
 
 #if defined(USE_WEBENGINE)
 		AdBlockIcon* m_adblockIcon;
-		QAction* m_adblockIconAction;
 #endif
 
 		QScopedPointer<Ui::FormMain> m_ui;

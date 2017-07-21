@@ -19,7 +19,7 @@
 #ifndef ADBLOCKICON_H
 #define ADBLOCKICON_H
 
-#include "gui/clickablelabel.h"
+#include <QAction>
 
 #include "network-web/adblock/adblockrule.h"
 
@@ -31,15 +31,14 @@ class QTimer;
 
 class BrowserWindow;
 
-class AdBlockIcon : public ClickableLabel {
+class AdBlockIcon : public QAction {
 		Q_OBJECT
 
 	public:
-		explicit AdBlockIcon(QWidget* parent = 0);
+    explicit AdBlockIcon(QObject* parent = 0);
 		virtual ~AdBlockIcon();
 
 		void popupBlocked(const QString& ruleString, const QUrl& url);
-		QAction* menuAction();
 
 	public slots:
 		void setEnabled(bool enabled);
@@ -53,8 +52,6 @@ class AdBlockIcon : public ClickableLabel {
 		void stopAnimation();
 
 	private:
-		QAction* m_menuAction;
-
 		QVector<QPair<AdBlockRule*, QUrl>> m_blockedPopups;
 		QTimer* m_flashTimer;
 
