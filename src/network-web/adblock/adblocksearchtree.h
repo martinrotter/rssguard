@@ -27,30 +27,30 @@ class QWebEngineUrlRequestInfo;
 class AdBlockRule;
 
 class AdBlockSearchTree {
-  public:
-    explicit AdBlockSearchTree();
-    virtual ~AdBlockSearchTree();
+	public:
+		explicit AdBlockSearchTree();
+		virtual ~AdBlockSearchTree();
 
-    void clear();
+		void clear();
 
-    bool add(const AdBlockRule *rule);
-    const AdBlockRule *find(const QWebEngineUrlRequestInfo &request, const QString &domain, const QString &urlString) const;
+		bool add(const AdBlockRule* rule);
+		const AdBlockRule* find(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString) const;
 
-  private:
-    struct Node {
-        QChar c;
-        const AdBlockRule* rule;
-        QHash<QChar, Node*> children;
+	private:
+		struct Node {
+			QChar c;
+			const AdBlockRule* rule;
+			QHash<QChar, Node*> children;
 
-        Node() : c(0) , rule(0) { }
-    };
+			Node() : c(0), rule(0) { }
+		};
 
-    const AdBlockRule *prefixSearch(const QWebEngineUrlRequestInfo &request, const QString &domain,
-                                    const QString &urlString, const QChar *string, int len) const;
+		const AdBlockRule* prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain,
+		                                const QString& urlString, const QChar* string, int len) const;
 
-    void deleteNode(Node *node);
+		void deleteNode(Node* node);
 
-    Node* m_root;
+		Node* m_root;
 };
 
 #endif // ADBLOCKSEARCHTREE_H

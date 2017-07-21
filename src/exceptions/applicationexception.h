@@ -22,14 +22,14 @@
 
 
 class ApplicationException {
-  public:
-    explicit ApplicationException(const QString &message = QString());
-    virtual ~ApplicationException();
+	public:
+		explicit ApplicationException(const QString& message = QString());
+		virtual ~ApplicationException();
 
-    QString message() const;
+		QString message() const;
 
-  private:
-    QString m_message;
+	private:
+		QString m_message;
 };
 
 #endif // APPLICATIONEXCEPTION_H

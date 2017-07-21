@@ -22,19 +22,19 @@
 
 
 class OwnCloudServiceEntryPoint : public ServiceEntryPoint {
-  public:
-    explicit OwnCloudServiceEntryPoint();
-    virtual ~OwnCloudServiceEntryPoint();
+	public:
+		explicit OwnCloudServiceEntryPoint();
+		virtual ~OwnCloudServiceEntryPoint();
 
-    ServiceRoot *createNewRoot() const;
-    QList<ServiceRoot*> initializeSubtree() const;
-    bool isSingleInstanceService() const;
-    QString name() const;
-    QString code() const;
-    QString description() const;
-    QString version() const;
-    QString author() const;
-    QIcon icon() const;
+		ServiceRoot* createNewRoot() const;
+		QList<ServiceRoot*> initializeSubtree() const;
+		bool isSingleInstanceService() const;
+		QString name() const;
+		QString code() const;
+		QString description() const;
+		QString version() const;
+		QString author() const;
+		QIcon icon() const;
 };
 
 #endif // OWNCLOUDSERVICEENTRYPOINT_H

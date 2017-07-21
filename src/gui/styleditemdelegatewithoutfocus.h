@@ -23,14 +23,14 @@
 
 
 class StyledItemDelegateWithoutFocus : public QStyledItemDelegate {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors.
-    explicit StyledItemDelegateWithoutFocus(QObject *parent = 0);
-    virtual ~StyledItemDelegateWithoutFocus();
+	public:
+		// Constructors.
+		explicit StyledItemDelegateWithoutFocus(QObject* parent = 0);
+		virtual ~StyledItemDelegateWithoutFocus();
 
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+		void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 };
 

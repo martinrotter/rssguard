@@ -25,59 +25,59 @@
 
 
 struct Skin {
-    QString m_baseName;
-    QString m_visibleName;
-    QString m_author;
-    QString m_email;
-    QString m_version;
-    QString m_rawData;
-    QString m_layoutMarkupWrapper;
-    QString m_enclosureImageMarkup;
-    QString m_layoutMarkup;
-    QString m_enclosureMarkup;
+	QString m_baseName;
+	QString m_visibleName;
+	QString m_author;
+	QString m_email;
+	QString m_version;
+	QString m_rawData;
+	QString m_layoutMarkupWrapper;
+	QString m_enclosureImageMarkup;
+	QString m_layoutMarkup;
+	QString m_enclosureMarkup;
 };
 
 Q_DECLARE_METATYPE(Skin)
 
 class SkinFactory : public QObject {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructor.
-    explicit SkinFactory(QObject *parent = 0);
+	public:
+		// Constructor.
+		explicit SkinFactory(QObject* parent = 0);
 
-    // Destructor.
-    virtual ~SkinFactory();
+		// Destructor.
+		virtual ~SkinFactory();
 
-    // Loads skin name from settings and sets it as active.
-    void loadCurrentSkin();
+		// Loads skin name from settings and sets it as active.
+		void loadCurrentSkin();
 
-    inline Skin currentSkin() const {
-      return m_currentSkin;
-    }
+		inline Skin currentSkin() const {
+			return m_currentSkin;
+		}
 
-    // Returns the name of the skin, that should be activated
-    // after application restart.
-    QString selectedSkinName() const;
+		// Returns the name of the skin, that should be activated
+		// after application restart.
+		QString selectedSkinName() const;
 
-    // Gets skin about a particular skin.
-    Skin skinInfo(const QString &skin_name, bool *ok = nullptr) const;
+		// Gets skin about a particular skin.
+		Skin skinInfo(const QString& skin_name, bool* ok = nullptr) const;
 
-    // Returns list of installed skins.
-    QList<Skin> installedSkins() const;
+		// Returns list of installed skins.
+		QList<Skin> installedSkins() const;
 
-    // Sets the desired skin as the active one if it exists.
-    void setCurrentSkinName(const QString &skin_name);
+		// Sets the desired skin as the active one if it exists.
+		void setCurrentSkinName(const QString& skin_name);
 
-    QString getUserSkinBaseFolder() const;
+		QString getUserSkinBaseFolder() const;
 
-  private:
+	private:
 
-    // Loads the skin from give skin_data.
-    void loadSkinFromData(const Skin &skin);
+		// Loads the skin from give skin_data.
+		void loadSkinFromData(const Skin& skin);
 
-    // Holds name of the current skin.
-    Skin m_currentSkin;
+		// Holds name of the current skin.
+		Skin m_currentSkin;
 };
 
 #endif // SKINFACTORY_H

@@ -52,19 +52,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class ShortcutCatcher;
 
 class ShortcutButton : public QPushButton {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit ShortcutButton(ShortcutCatcher *catcher, QWidget *parent = 0);
-    virtual ~ShortcutButton();
+	public:
+		// Constructors and destructors.
+		explicit ShortcutButton(ShortcutCatcher* catcher, QWidget* parent = 0);
+		virtual ~ShortcutButton();
 
-  protected:
-    void keyPressEvent(QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
+	protected:
+		void keyPressEvent(QKeyEvent* event);
+		void keyReleaseEvent(QKeyEvent* event);
 
-  private:
-    ShortcutCatcher *m_catcher;
+	private:
+		ShortcutCatcher* m_catcher;
 };
 
 #endif // SHORTCUTBUTTON_H

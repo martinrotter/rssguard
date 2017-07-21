@@ -20,9 +20,8 @@
 #include "miscellaneous/iconfactory.h"
 
 
-LabelsRootItem::LabelsRootItem(RootItem *parent_item) : RootItem(parent_item) {
-  setTitle(tr("Labels"));
-  setIcon(qApp->icons()->fromTheme(QSL("stock_bookmark")));
-
-  setKind(RootItemKind::LabelsRoot);
+LabelsRootItem::LabelsRootItem(RootItem* parent_item) : RootItem(parent_item) {
+	setTitle(tr("Labels"));
+	setIcon(qApp->icons()->fromTheme(QSL("stock_bookmark")));
+	setKind(RootItemKind::LabelsRoot);
 }

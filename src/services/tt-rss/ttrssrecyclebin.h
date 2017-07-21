@@ -24,14 +24,14 @@
 class TtRssServiceRoot;
 
 class TtRssRecycleBin : public RecycleBin {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit TtRssRecycleBin(RootItem *parent = nullptr);
-    virtual ~TtRssRecycleBin();
+	public:
+		explicit TtRssRecycleBin(RootItem* parent = nullptr);
+		virtual ~TtRssRecycleBin();
 
-    TtRssServiceRoot *serviceRoot();
-    bool markAsReadUnread(ReadStatus status);
+		TtRssServiceRoot* serviceRoot();
+		bool markAsReadUnread(ReadStatus status);
 };
 
 #endif // TTRSSRECYCLEBIN_H

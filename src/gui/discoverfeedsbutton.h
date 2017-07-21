@@ -22,24 +22,24 @@
 
 
 class DiscoverFeedsButton : public QToolButton {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors.
-    explicit DiscoverFeedsButton(QWidget *parent = 0);
-    virtual ~DiscoverFeedsButton();
+	public:
+		// Constructors.
+		explicit DiscoverFeedsButton(QWidget* parent = 0);
+		virtual ~DiscoverFeedsButton();
 
-    // Feed addresses manipulators.
-    void clearFeedAddresses();
-    void setFeedAddresses(const QStringList &addresses);
+		// Feed addresses manipulators.
+		void clearFeedAddresses();
+		void setFeedAddresses(const QStringList& addresses);
 
-  private slots:
-    // User chose any of addresses.
-    void linkTriggered(QAction *action);
-    void fillMenu();
+	private slots:
+		// User chose any of addresses.
+		void linkTriggered(QAction* action);
+		void fillMenu();
 
-  private:
-    QStringList m_addresses;
+	private:
+		QStringList m_addresses;
 };
 
 #endif // DISCOVERFEEDSBUTTON_H

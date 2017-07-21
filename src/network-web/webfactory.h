@@ -29,44 +29,44 @@
 class QWebEngineSettings;
 
 class WebFactory : public QObject {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Destructor.
-    virtual ~WebFactory();
+	public:
+		// Destructor.
+		virtual ~WebFactory();
 
-    // Strips "<....>" (HTML, XML) tags from given text.
-    QString stripTags(QString text);
+		// Strips "<....>" (HTML, XML) tags from given text.
+		QString stripTags(QString text);
 
-    // HTML entity escaping.
-    QString escapeHtml(const QString &html);
-    QString deEscapeHtml(const QString &text);
+		// HTML entity escaping.
+		QString escapeHtml(const QString& html);
+		QString deEscapeHtml(const QString& text);
 
-    // BUG: Version for Qt < 4.8 has one issue, it will wrongly
-    // count .co.uk (and others) as second-level domain
-    QString toSecondLevelDomain(const QUrl &url);
+		// BUG: Version for Qt < 4.8 has one issue, it will wrongly
+		// count .co.uk (and others) as second-level domain
+		QString toSecondLevelDomain(const QUrl& url);
 
-    // Singleton getter.
-    static WebFactory *instance();
+		// Singleton getter.
+		static WebFactory* instance();
 
-  public slots:
-    // Opens given string URL in external browser.
-    bool openUrlInExternalBrowser(const QString &url);
-    bool sendMessageViaEmail(const Message &message);
+	public slots:
+		// Opens given string URL in external browser.
+		bool openUrlInExternalBrowser(const QString& url);
+		bool sendMessageViaEmail(const Message& message);
 
-  private:
-    // Constructor.
-    explicit WebFactory(QObject *parent = 0);
+	private:
+		// Constructor.
+		explicit WebFactory(QObject* parent = 0);
 
-    // Escape sequences generators.
-    void generetaEscapes();
-    void generateDeescapes();
+		// Escape sequences generators.
+		void generetaEscapes();
+		void generateDeescapes();
 
-    QMap<QString, QString> m_escapes;
-    QMap<QString, QString> m_deEscapes;
+		QMap<QString, QString> m_escapes;
+		QMap<QString, QString> m_deEscapes;
 
-    // Singleton.
-    static QPointer<WebFactory> s_instance;
+		// Singleton.
+		static QPointer<WebFactory> s_instance;
 };
 
 #endif // WEBFACTORY_H

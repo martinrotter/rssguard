@@ -50,93 +50,94 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QKeyEvent>
 
 
-ShortcutButton::ShortcutButton(ShortcutCatcher *catcher, QWidget *parent)
-  : QPushButton(parent), m_catcher(catcher) {
-  setMinimumWidth(100);
+ShortcutButton::ShortcutButton(ShortcutCatcher* catcher, QWidget* parent)
+	: QPushButton(parent), m_catcher(catcher) {
+	setMinimumWidth(100);
 }
 
 ShortcutButton::~ShortcutButton() {
 }
 
-void ShortcutButton::keyPressEvent(QKeyEvent *event) {
-  int pressed_key = event->key();
+void ShortcutButton::keyPressEvent(QKeyEvent* event) {
+	int pressed_key = event->key();
 
-  if (pressed_key == -1) {
-    m_catcher->doneRecording();
-  }
+	if (pressed_key == -1) {
+		m_catcher->doneRecording();
+	}
 
-  const Qt::KeyboardModifiers new_modifiers = event->modifiers() & (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
+	const Qt::KeyboardModifiers new_modifiers = event->modifiers() & (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
-  if (!m_catcher->m_isRecording && (pressed_key == Qt::Key_Return || pressed_key == Qt::Key_Space)) {
-    return;
-  }
+	if (!m_catcher->m_isRecording && (pressed_key == Qt::Key_Return || pressed_key == Qt::Key_Space)) {
+		return;
+	}
 
-  if (!m_catcher->m_isRecording) {
-    QPushButton::keyPressEvent(event);
-    return;
-  }
+	if (!m_catcher->m_isRecording) {
+		QPushButton::keyPressEvent(event);
+		return;
+	}
 
-  event->accept();
-  m_catcher->m_modifierKeys = new_modifiers;
+	event->accept();
+	m_catcher->m_modifierKeys = new_modifiers;
 
-  switch(pressed_key) {
-    case Qt::Key_AltGr:
-      return;
+	switch (pressed_key) {
+		case Qt::Key_AltGr:
+			return;
 
-    case Qt::Key_Shift:
-    case Qt::Key_Control:
-    case Qt::Key_Alt:
-    case Qt::Key_Meta:
-    case Qt::Key_Menu:
-      m_catcher->controlModifierlessTimout();
-      m_catcher->updateDisplayShortcut();
-      break;
+		case Qt::Key_Shift:
+		case Qt::Key_Control:
+		case Qt::Key_Alt:
+		case Qt::Key_Meta:
+		case Qt::Key_Menu:
+			m_catcher->controlModifierlessTimout();
+			m_catcher->updateDisplayShortcut();
+			break;
 
-    default:
-      // We now have a valid key press.
-      if (pressed_key) {
-        if ((pressed_key == Qt::Key_Backtab) && (m_catcher->m_modifierKeys & Qt::SHIFT)) {
-          pressed_key = Qt::Key_Tab | m_catcher->m_modifierKeys;
-        }
-        else {
-          pressed_key |= m_catcher->m_modifierKeys;
-        }
+		default:
 
-        if (m_catcher->m_numKey == 0) {
-          m_catcher->m_currentSequence = QKeySequence(pressed_key);
-        }
+			// We now have a valid key press.
+			if (pressed_key) {
+				if ((pressed_key == Qt::Key_Backtab) && (m_catcher->m_modifierKeys & Qt::SHIFT)) {
+					pressed_key = Qt::Key_Tab | m_catcher->m_modifierKeys;
+				}
 
-        m_catcher->m_numKey++;
+				else {
+					pressed_key |= m_catcher->m_modifierKeys;
+				}
 
-        if (m_catcher->m_numKey >= 4) {
-          m_catcher->doneRecording();
-          return;
-        }
+				if (m_catcher->m_numKey == 0) {
+					m_catcher->m_currentSequence = QKeySequence(pressed_key);
+				}
 
-        m_catcher->controlModifierlessTimout();
-        m_catcher->updateDisplayShortcut();
-      }
-  }
+				m_catcher->m_numKey++;
+
+				if (m_catcher->m_numKey >= 4) {
+					m_catcher->doneRecording();
+					return;
+				}
+
+				m_catcher->controlModifierlessTimout();
+				m_catcher->updateDisplayShortcut();
+			}
+	}
 }
 
-void ShortcutButton::keyReleaseEvent(QKeyEvent *event) {
-  if (event->key() == -1){
-    return;
-  }
+void ShortcutButton::keyReleaseEvent(QKeyEvent* event) {
+	if (event->key() == -1) {
+		return;
+	}
 
-  if (!m_catcher->m_isRecording) {
-    QPushButton::keyReleaseEvent(event);
-    return;
-  }
+	if (!m_catcher->m_isRecording) {
+		QPushButton::keyReleaseEvent(event);
+		return;
+	}
 
-  event->accept();
+	event->accept();
+	const Qt::KeyboardModifiers new_modifiers = event->modifiers() &
+	                                            (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
-  const Qt::KeyboardModifiers new_modifiers = event->modifiers() &
-                                        (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
-
-  if (((uint) new_modifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
-    m_catcher->m_modifierKeys = new_modifiers;
-    m_catcher->controlModifierlessTimout();
-    m_catcher->updateDisplayShortcut();
-  }
+	if (((uint) new_modifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
+		m_catcher->m_modifierKeys = new_modifiers;
+		m_catcher->controlModifierlessTimout();
+		m_catcher->updateDisplayShortcut();
+	}
 }

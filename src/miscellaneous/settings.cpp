@@ -101,7 +101,8 @@ DKEY GUI::FeedsToolbarActions                     = "feeds_toolbar";
 DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead";
 
 DKEY GUI::StatusbarActions              = "status_bar";
-DVALUE(char*) GUI::StatusbarActionsDef  = "m_lblProgressFeedsAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_actionFullscreen,m_actionQuit";
+DVALUE(char*) GUI::StatusbarActionsDef  =
+    "m_lblProgressFeedsAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_actionFullscreen,m_actionQuit";
 
 DKEY GUI::MainWindowInitialSize                 = "window_size";
 DKEY GUI::MainWindowInitialPosition             = "window_position";
@@ -152,7 +153,8 @@ DKEY GUI::HideTabBarIfOnlyOneTab               = "hide_tabbar_one_tab";
 DVALUE(bool) GUI::HideTabBarIfOnlyOneTabDef    = false;
 
 DKEY GUI::MessagesToolbarDefaultButtons             = "messages_toolbar";
-DVALUE(char*) GUI::MessagesToolbarDefaultButtonsDef = "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,spacer,search";
+DVALUE(char*) GUI::MessagesToolbarDefaultButtonsDef =
+    "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,spacer,search";
 
 DKEY GUI::DefaultSortColumnFeeds                     = "default_sort_column_feeds";
 DVALUE(int) GUI::DefaultSortColumnFeedsDef           = FDS_MODEL_TITLE_INDEX;
@@ -286,102 +288,97 @@ DVALUE(char*) Browser::CustomExternalEmailArgumentsDef    = "";
 // Categories.
 DKEY CategoriesExpandStates::ID                         = "categories_expand_states";
 
-Settings::Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &status, QObject *parent)
-  : QSettings(file_name, format, parent), m_initializationStatus(status) {
+Settings::Settings(const QString& file_name, Format format, const SettingsProperties::SettingsType& status, QObject* parent)
+	: QSettings(file_name, format, parent), m_initializationStatus(status) {
 }
 
-Settings::~Settings() {  
+Settings::~Settings() {
 }
 
 QString Settings::pathName() const {
-  return QFileInfo(fileName()).absolutePath();
+	return QFileInfo(fileName()).absolutePath();
 }
 
 QSettings::Status Settings::checkSettings() {
-  qDebug("Syncing settings.");
-
-  sync();
-  return status();
+	qDebug("Syncing settings.");
+	sync();
+	return status();
 }
 
-bool Settings::initiateRestoration(const QString &settings_backup_file_path) {
-  return IOFactory::copyFile(settings_backup_file_path,
-                             QFileInfo(fileName()).absolutePath() + QDir::separator() +
-                             BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS);
+bool Settings::initiateRestoration(const QString& settings_backup_file_path) {
+	return IOFactory::copyFile(settings_backup_file_path,
+	                           QFileInfo(fileName()).absolutePath() + QDir::separator() +
+	                           BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS);
 }
 
-void Settings::finishRestoration(const QString &desired_settings_file_path) {
-  const QString backup_settings_file = QFileInfo(desired_settings_file_path).absolutePath() + QDir::separator() +
-                                       BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS;
+void Settings::finishRestoration(const QString& desired_settings_file_path) {
+	const QString backup_settings_file = QFileInfo(desired_settings_file_path).absolutePath() + QDir::separator() +
+	                                     BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS;
 
-  if (QFile::exists(backup_settings_file)) {
-    qWarning("Backup settings file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_settings_file)));
+	if (QFile::exists(backup_settings_file)) {
+		qWarning("Backup settings file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_settings_file)));
 
-    if (IOFactory::copyFile(backup_settings_file, desired_settings_file_path)) {
-      QFile::remove(backup_settings_file);
-      qDebug("Settings file was restored successully.");
-    }
-    else {
-      qCritical("Settings file was NOT restored due to error when copying the file.");
-    }
-  }
+		if (IOFactory::copyFile(backup_settings_file, desired_settings_file_path)) {
+			QFile::remove(backup_settings_file);
+			qDebug("Settings file was restored successully.");
+		}
+
+		else {
+			qCritical("Settings file was NOT restored due to error when copying the file.");
+		}
+	}
 }
 
-Settings *Settings::setupSettings(QObject *parent) {
-  Settings *new_settings;
+Settings* Settings::setupSettings(QObject* parent) {
+	Settings* new_settings;
+	// If settings file exists (and is writable) in executable file working directory
+	// (in subdirectory APP_CFG_PATH), then use it (portable settings).
+	// Otherwise use settings file stored in home path.
+	const SettingsProperties properties = determineProperties();
+	finishRestoration(properties.m_absoluteSettingsFileName);
+	// Portable settings are available, use them.
+	new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
 
-  // If settings file exists (and is writable) in executable file working directory
-  // (in subdirectory APP_CFG_PATH), then use it (portable settings).
-  // Otherwise use settings file stored in home path.
-  const SettingsProperties properties = determineProperties();
+	// Check if portable settings are available.
+	if (properties.m_type == SettingsProperties::Portable) {
+		qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
+	}
 
-  finishRestoration(properties.m_absoluteSettingsFileName);
+	else {
+		qDebug("Initializing settings in '%s' (non-portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
+	}
 
-  // Portable settings are available, use them.
-  new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
-
-  // Check if portable settings are available.
-  if (properties.m_type == SettingsProperties::Portable) {
-    qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
-  }
-  else {
-    qDebug("Initializing settings in '%s' (non-portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
-  }
-
-  return new_settings;
+	return new_settings;
 }
 
 SettingsProperties Settings::determineProperties() {
-  SettingsProperties properties;
-
-  properties.m_settingsSuffix = QDir::separator() + QSL(APP_CFG_PATH) + QDir::separator() + QSL(APP_CFG_FILE);
-
-  const QString app_path = qApp->getUserDataAppPath();
-  const QString home_path = qApp->getUserDataHomePath();
-
-  // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
-  // settings was not initialized before.
+	SettingsProperties properties;
+	properties.m_settingsSuffix = QDir::separator() + QSL(APP_CFG_PATH) + QDir::separator() + QSL(APP_CFG_FILE);
+	const QString app_path = qApp->getUserDataAppPath();
+	const QString home_path = qApp->getUserDataHomePath();
+	// We will use PORTABLE settings only and only if it is available and NON-PORTABLE
+	// settings was not initialized before.
 #if defined (Q_OS_LINUX) || defined (Q_OS_MACOS)
-  // DO NOT use portable settings for Linux, it is really not used on that platform.
-  const bool will_we_use_portable_settings = false;
+	// DO NOT use portable settings for Linux, it is really not used on that platform.
+	const bool will_we_use_portable_settings = false;
 #else
-  const QString exe_path = qApp->applicationDirPath();
-  const QString home_path_file = home_path + properties.m_settingsSuffix;
-  const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);
-  const bool non_portable_settings_exist = QFile::exists(home_path_file);
-  const bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
+	const QString exe_path = qApp->applicationDirPath();
+	const QString home_path_file = home_path + properties.m_settingsSuffix;
+	const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);
+	const bool non_portable_settings_exist = QFile::exists(home_path_file);
+	const bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
 #endif
 
-  if (will_we_use_portable_settings) {
-    properties.m_type = SettingsProperties::Portable;
-    properties.m_baseDirectory = app_path;
-  }
-  else {
-    properties.m_type = SettingsProperties::NonPortable;
-    properties.m_baseDirectory = home_path;
-  }
+	if (will_we_use_portable_settings) {
+		properties.m_type = SettingsProperties::Portable;
+		properties.m_baseDirectory = app_path;
+	}
 
-  properties.m_absoluteSettingsFileName = properties.m_baseDirectory + properties.m_settingsSuffix;
+	else {
+		properties.m_type = SettingsProperties::NonPortable;
+		properties.m_baseDirectory = home_path;
+	}
 
-  return properties;
+	properties.m_absoluteSettingsFileName = properties.m_baseDirectory + properties.m_settingsSuffix;
+	return properties;
 }

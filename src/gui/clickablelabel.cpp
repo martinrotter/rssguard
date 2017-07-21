@@ -25,61 +25,63 @@
 
 
 ClickableLabel::ClickableLabel(QWidget* parent)
-  : QLabel(parent) {
+	: QLabel(parent) {
 }
 
 QString ClickableLabel::themeIcon() const {
-  return m_themeIcon;
+	return m_themeIcon;
 }
 
-void ClickableLabel::setThemeIcon(const QString &name) {
-  m_themeIcon = name;
-  updateIcon();
+void ClickableLabel::setThemeIcon(const QString& name) {
+	m_themeIcon = name;
+	updateIcon();
 }
 
 QIcon ClickableLabel::fallbackIcon() const {
-  return m_fallbackIcon;
+	return m_fallbackIcon;
 }
 
-void ClickableLabel::setFallbackIcon(const QIcon &fallbackIcon) {
-  m_fallbackIcon = fallbackIcon;
-  updateIcon();
+void ClickableLabel::setFallbackIcon(const QIcon& fallbackIcon) {
+	m_fallbackIcon = fallbackIcon;
+	updateIcon();
 }
 
 void ClickableLabel::updateIcon() {
-  if (!m_themeIcon.isEmpty()) {
+	if (!m_themeIcon.isEmpty()) {
+		const QIcon icon = qApp->icons()->fromTheme(m_themeIcon);
 
-    const QIcon icon = qApp->icons()->fromTheme(m_themeIcon);
+		if (!icon.isNull()) {
+			setPixmap(icon.pixmap(size()));
+			return;
+		}
+	}
 
-    if (!icon.isNull()) {
-      setPixmap(icon.pixmap(size()));
-      return;
-    }
-  }
-
-  if (!m_fallbackIcon.isNull()) {
-    setPixmap(m_fallbackIcon.pixmap(size()));
-  }
+	if (!m_fallbackIcon.isNull()) {
+		setPixmap(m_fallbackIcon.pixmap(size()));
+	}
 }
 
-void ClickableLabel::resizeEvent(QResizeEvent *ev) {
-  QLabel::resizeEvent(ev);
-  updateIcon();
+void ClickableLabel::resizeEvent(QResizeEvent* ev) {
+	QLabel::resizeEvent(ev);
+	updateIcon();
 }
 
 void ClickableLabel::mouseReleaseEvent(QMouseEvent* ev) {
-  if (ev->button() == Qt::LeftButton && rect().contains(ev->pos())) {
-    if (ev->modifiers() == Qt::ControlModifier) {
-      emit middleClicked(ev->globalPos());
-    }
-    else {
-      emit clicked(ev->globalPos());
-    }
-  }
-  else if (ev->button() == Qt::MiddleButton && rect().contains(ev->pos())) {
-    emit middleClicked(ev->globalPos());
-  }
-  else {
-    QLabel::mouseReleaseEvent(ev);
-  }
+	if (ev->button() == Qt::LeftButton && rect().contains(ev->pos())) {
+		if (ev->modifiers() == Qt::ControlModifier) {
+			emit middleClicked(ev->globalPos());
+		}
+
+		else {
+			emit clicked(ev->globalPos());
+		}
+	}
+
+	else if (ev->button() == Qt::MiddleButton && rect().contains(ev->pos())) {
+		emit middleClicked(ev->globalPos());
+	}
+
+	else {
+		QLabel::mouseReleaseEvent(ev);
+	}
 }

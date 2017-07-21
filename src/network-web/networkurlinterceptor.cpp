@@ -23,34 +23,34 @@
 #include "miscellaneous/settings.h"
 
 
-NetworkUrlInterceptor::NetworkUrlInterceptor(QObject *parent)
-  : QWebEngineUrlRequestInterceptor(parent), m_sendDNT(false) {
+NetworkUrlInterceptor::NetworkUrlInterceptor(QObject* parent)
+	: QWebEngineUrlRequestInterceptor(parent), m_sendDNT(false) {
 }
 
-void NetworkUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo &info) {
-  if (m_sendDNT) {
-    info.setHttpHeader(QByteArrayLiteral("DNT"), QByteArrayLiteral("1"));
-  }
+void NetworkUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo& info) {
+	if (m_sendDNT) {
+		info.setHttpHeader(QByteArrayLiteral("DNT"), QByteArrayLiteral("1"));
+	}
 
-  // TODO: mužeme zde nastavovat custom věci pro každej webengine sitovej pozadavek
-  // treba user agenta
-  //info.setHttpHeader(QByteArrayLiteral("User-Agent"), mApp->userAgentManager()->userAgentForUrl(info.firstPartyUrl()).toUtf8());
+	// TODO: mužeme zde nastavovat custom věci pro každej webengine sitovej pozadavek
+	// treba user agenta
+	//info.setHttpHeader(QByteArrayLiteral("User-Agent"), mApp->userAgentManager()->userAgentForUrl(info.firstPartyUrl()).toUtf8());
 
-  foreach (UrlInterceptor *interceptor, m_interceptors) {
-    interceptor->interceptRequest(info);
-  }
+	foreach (UrlInterceptor* interceptor, m_interceptors) {
+		interceptor->interceptRequest(info);
+	}
 }
 
-void NetworkUrlInterceptor::installUrlInterceptor(UrlInterceptor *interceptor) {
-  if (!m_interceptors.contains(interceptor)) {
-    m_interceptors.append(interceptor);
-  }
+void NetworkUrlInterceptor::installUrlInterceptor(UrlInterceptor* interceptor) {
+	if (!m_interceptors.contains(interceptor)) {
+		m_interceptors.append(interceptor);
+	}
 }
 
-void NetworkUrlInterceptor::removeUrlInterceptor(UrlInterceptor *interceptor) {
-  m_interceptors.removeOne(interceptor);
+void NetworkUrlInterceptor::removeUrlInterceptor(UrlInterceptor* interceptor) {
+	m_interceptors.removeOne(interceptor);
 }
 
 void NetworkUrlInterceptor::loadSettings() {
-  m_sendDNT = qApp->settings()->value(GROUP(Browser), SETTING(Browser::SendDNT)).toBool();
+	m_sendDNT = qApp->settings()->value(GROUP(Browser), SETTING(Browser::SendDNT)).toBool();
 }

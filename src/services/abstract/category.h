@@ -22,13 +22,13 @@
 
 
 class Category : public RootItem {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit Category(RootItem *parent = nullptr);
-    virtual ~Category();
+	public:
+		explicit Category(RootItem* parent = nullptr);
+		virtual ~Category();
 
-    void updateCounts(bool including_total_count);
+		void updateCounts(bool including_total_count);
 };
 
 #endif // CATEGORY_H

@@ -26,112 +26,110 @@ AdBlockSearchTree::AdBlockSearchTree() : m_root(new Node) {
 }
 
 AdBlockSearchTree::~AdBlockSearchTree() {
-  deleteNode(m_root);
+	deleteNode(m_root);
 }
 
 void AdBlockSearchTree::clear() {
-  deleteNode(m_root);
-  m_root = new Node;
+	deleteNode(m_root);
+	m_root = new Node;
 }
 
-bool AdBlockSearchTree::add(const AdBlockRule *rule) {
-  if (rule->m_type != AdBlockRule::StringContainsMatchRule) {
-    return false;
-  }
+bool AdBlockSearchTree::add(const AdBlockRule* rule) {
+	if (rule->m_type != AdBlockRule::StringContainsMatchRule) {
+		return false;
+	}
 
-  const QString filter = rule->m_matchString;
-  int len = filter.size();
+	const QString filter = rule->m_matchString;
+	int len = filter.size();
 
-  if (len <= 0) {
-    qDebug("AdBlockSearchTree: Inserting rule with filter len <= 0!");
-    return false;
-  }
+	if (len <= 0) {
+		qDebug("AdBlockSearchTree: Inserting rule with filter len <= 0!");
+		return false;
+	}
 
-  Node* node = m_root;
+	Node* node = m_root;
 
-  for (int i = 0; i < len; ++i) {
-    const QChar c = filter.at(i);
-    Node *next = node->children.value(c);
+	for (int i = 0; i < len; ++i) {
+		const QChar c = filter.at(i);
+		Node* next = node->children.value(c);
 
-    if (!next) {
-      next = new Node;
-      next->c = c;
-      node->children[c] = next;
-    }
+		if (!next) {
+			next = new Node;
+			next->c = c;
+			node->children[c] = next;
+		}
 
-    node = next;
-  }
+		node = next;
+	}
 
-  node->rule = rule;
-
-  return true;
+	node->rule = rule;
+	return true;
 }
 
-const AdBlockRule *AdBlockSearchTree::find(const QWebEngineUrlRequestInfo &request, const QString &domain, const QString &urlString) const {
-  int len = urlString.size();
+const AdBlockRule* AdBlockSearchTree::find(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString) const {
+	int len = urlString.size();
 
-  if (len <= 0) {
-    return 0;
-  }
+	if (len <= 0) {
+		return 0;
+	}
 
-  const QChar *string = urlString.constData();
+	const QChar* string = urlString.constData();
 
-  for (int i = 0; i < len; ++i) {
-    const AdBlockRule *rule = prefixSearch(request, domain, urlString, string++, len - i);
+	for (int i = 0; i < len; ++i) {
+		const AdBlockRule* rule = prefixSearch(request, domain, urlString, string++, len - i);
 
-    if (rule) {
-      return rule;
-    }
-  }
+		if (rule) {
+			return rule;
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
-const AdBlockRule *AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInfo &request, const QString &domain, const QString &urlString, const QChar *string, int len) const {
-  if (len <= 0) {
-    return 0;
-  }
+const AdBlockRule* AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString, const QChar* string, int len) const {
+	if (len <= 0) {
+		return 0;
+	}
 
-  QChar c = string[0];
+	QChar c = string[0];
+	Node* node = m_root->children.value(c);
 
-  Node *node = m_root->children.value(c);
+	if (!node) {
+		return nullptr;
+	}
 
-  if (!node) {
-    return nullptr;
-  }
+	for (int i = 1; i < len; ++i) {
+		const QChar c = (++string)[0];
 
-  for (int i = 1; i < len; ++i) {
-    const QChar c = (++string)[0];
+		if (node->rule && node->rule->networkMatch(request, domain, urlString)) {
+			return node->rule;
+		}
 
-    if (node->rule && node->rule->networkMatch(request, domain, urlString)) {
-      return node->rule;
-    }
+		node = node->children.value(c);
 
-    node = node->children.value(c);
+		if (!node) {
+			return nullptr;
+		}
+	}
 
-    if (!node) {
-      return nullptr;
-    }
-  }
+	if (node->rule && node->rule->networkMatch(request, domain, urlString)) {
+		return node->rule;
+	}
 
-  if (node->rule && node->rule->networkMatch(request, domain, urlString)) {
-    return node->rule;
-  }
-
-  return nullptr;
+	return nullptr;
 }
 
 void AdBlockSearchTree::deleteNode(AdBlockSearchTree::Node* node) {
-  if (!node) {
-    return;
-  }
+	if (!node) {
+		return;
+	}
 
-  QHashIterator<QChar, Node*> i(node->children);
+	QHashIterator<QChar, Node*> i(node->children);
 
-  while (i.hasNext()) {
-    i.next();
-    deleteNode(i.value());
-  }
+	while (i.hasNext()) {
+		i.next();
+		deleteNode(i.value());
+	}
 
-  delete node;
+	delete node;
 }

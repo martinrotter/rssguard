@@ -23,107 +23,108 @@
 #include "exceptions/applicationexception.h"
 
 
-AtomParser::AtomParser(const QString &data) : FeedParser(data), m_atomNamespace(QSL("http://www.w3.org/2005/Atom")) {
+AtomParser::AtomParser(const QString& data) : FeedParser(data), m_atomNamespace(QSL("http://www.w3.org/2005/Atom")) {
 }
 
 AtomParser::~AtomParser() {
 }
 
 QString AtomParser::feedAuthor() const {
-  QDomNodeList authors = m_xml.documentElement().elementsByTagNameNS(m_atomNamespace, QSL("author"));
-  QStringList author_str;
+	QDomNodeList authors = m_xml.documentElement().elementsByTagNameNS(m_atomNamespace, QSL("author"));
+	QStringList author_str;
 
-  for (int i = 0; i < authors.size(); i++) {
-    QDomNodeList names = authors.at(i).toElement().elementsByTagNameNS(m_atomNamespace, QSL("name"));
+	for (int i = 0; i < authors.size(); i++) {
+		QDomNodeList names = authors.at(i).toElement().elementsByTagNameNS(m_atomNamespace, QSL("name"));
 
-    if (!names.isEmpty()) {
-      author_str.append(names.at(0).toElement().text());
-    }
-  }
+		if (!names.isEmpty()) {
+			author_str.append(names.at(0).toElement().text());
+		}
+	}
 
-  return author_str.join(", ");
+	return author_str.join(", ");
 }
 
-Message AtomParser::extractMessage(const QDomElement &msg_element, QDateTime current_time) const {
-  Message new_message;
-  QString title = textsFromPath(msg_element, m_atomNamespace, QSL("title"), true).join(QSL(", "));
-  QString summary = textsFromPath(msg_element, m_atomNamespace, QSL("content"), true).join(QSL(", "));
+Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime current_time) const {
+	Message new_message;
+	QString title = textsFromPath(msg_element, m_atomNamespace, QSL("title"), true).join(QSL(", "));
+	QString summary = textsFromPath(msg_element, m_atomNamespace, QSL("content"), true).join(QSL(", "));
 
-  if (summary.isEmpty()) {
-    summary = textsFromPath(msg_element, m_atomNamespace, QSL("summary"), true).join(QSL(", "));
-  }
+	if (summary.isEmpty()) {
+		summary = textsFromPath(msg_element, m_atomNamespace, QSL("summary"), true).join(QSL(", "));
+	}
 
-  // Now we obtained maximum of information for title & description.
-  if (title.isEmpty() && summary.isEmpty()) {
-    // BOTH title and description are empty, skip this message.
-    throw new ApplicationException(QSL("Not enough data for the message."));
-  }
+	// Now we obtained maximum of information for title & description.
+	if (title.isEmpty() && summary.isEmpty()) {
+		// BOTH title and description are empty, skip this message.
+		throw new ApplicationException(QSL("Not enough data for the message."));
+	}
 
-  // Title is not empty, description does not matter.
-  new_message.m_title = WebFactory::instance()->stripTags(title);
-  new_message.m_contents = summary;
-  new_message.m_author = WebFactory::instance()->escapeHtml(messageAuthor(msg_element));
+	// Title is not empty, description does not matter.
+	new_message.m_title = WebFactory::instance()->stripTags(title);
+	new_message.m_contents = summary;
+	new_message.m_author = WebFactory::instance()->escapeHtml(messageAuthor(msg_element));
+	QString updated = textsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
+	// Deal with creation date.
+	new_message.m_created = TextFactory::parseDateTime(updated);
+	new_message.m_createdFromFeed = !new_message.m_created.isNull();
 
-  QString updated = textsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
+	if (!new_message.m_createdFromFeed) {
+		// Date was NOT obtained from the feed, set current date as creation date for the message.
+		new_message.m_created = current_time;
+	}
 
-  // Deal with creation date.
-  new_message.m_created = TextFactory::parseDateTime(updated);
-  new_message.m_createdFromFeed = !new_message.m_created.isNull();
+	// Deal with links
+	QDomNodeList elem_links = msg_element.toElement().elementsByTagNameNS(m_atomNamespace, QSL("link"));
+	QString last_link_alternate, last_link_other;
 
-  if (!new_message.m_createdFromFeed) {
-    // Date was NOT obtained from the feed, set current date as creation date for the message.
-    new_message.m_created = current_time;
-  }
+	for (int i = 0; i < elem_links.size(); i++) {
+		QDomElement link = elem_links.at(i).toElement();
+		QString attribute = link.attribute(QSL("rel"));
 
-  // Deal with links
-  QDomNodeList elem_links = msg_element.toElement().elementsByTagNameNS(m_atomNamespace, QSL("link"));
-  QString last_link_alternate, last_link_other;
+		if (attribute == QSL("enclosure")) {
+			new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
+			qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));
+		}
 
-  for (int i = 0; i < elem_links.size(); i++) {
-    QDomElement link = elem_links.at(i).toElement();
-    QString attribute = link.attribute(QSL("rel"));
+		else if (attribute.isEmpty() || attribute == QSL("alternate")) {
+			last_link_alternate = link.attribute(QSL("href"));
+		}
 
-    if (attribute == QSL("enclosure")) {
-      new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
+		else {
+			last_link_other = link.attribute(QSL("href"));
+		}
+	}
 
-      qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));
-    }
-    else if (attribute.isEmpty() || attribute == QSL("alternate")) {
-      last_link_alternate = link.attribute(QSL("href"));
-    }
-    else {
-      last_link_other = link.attribute(QSL("href"));
-    }
-  }
+	if (!last_link_alternate.isEmpty()) {
+		new_message.m_url = last_link_alternate;
+	}
 
-  if (!last_link_alternate.isEmpty()) {
-    new_message.m_url = last_link_alternate;
-  }
-  else if (!last_link_other.isEmpty()) {
-    new_message.m_url = last_link_other;
-  }
-  else if (!new_message.m_enclosures.isEmpty()) {
-    new_message.m_url = new_message.m_enclosures.first().m_url;
-  }
+	else if (!last_link_other.isEmpty()) {
+		new_message.m_url = last_link_other;
+	}
 
-  return new_message;
+	else if (!new_message.m_enclosures.isEmpty()) {
+		new_message.m_url = new_message.m_enclosures.first().m_url;
+	}
+
+	return new_message;
 }
 
-QString AtomParser::messageAuthor(const QDomElement &msg_element) const {
-  QDomNodeList authors = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("author"));
-  QStringList author_str;
+QString AtomParser::messageAuthor(const QDomElement& msg_element) const {
+	QDomNodeList authors = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("author"));
+	QStringList author_str;
 
-  for (int i = 0; i < authors.size(); i++) {
-    QDomNodeList names = authors.at(i).toElement().elementsByTagNameNS(m_atomNamespace, QSL("name"));
+	for (int i = 0; i < authors.size(); i++) {
+		QDomNodeList names = authors.at(i).toElement().elementsByTagNameNS(m_atomNamespace, QSL("name"));
 
-    if (!names.isEmpty()) {
-      author_str.append(names.at(0).toElement().text());
-    }
-  }
+		if (!names.isEmpty()) {
+			author_str.append(names.at(0).toElement().text());
+		}
+	}
 
-  return author_str.join(", ");
+	return author_str.join(", ");
 }
 
 QDomNodeList AtomParser::messageElements() {
-  return m_xml.elementsByTagNameNS(m_atomNamespace, QSL("entry"));
+	return m_xml.elementsByTagNameNS(m_atomNamespace, QSL("entry"));
 }

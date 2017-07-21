@@ -24,39 +24,39 @@
 
 
 namespace Ui {
-  class FormEditTtRssAccount;
+	class FormEditTtRssAccount;
 }
 
 class TtRssServiceRoot;
 
 class FormEditTtRssAccount : public QDialog {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit FormEditTtRssAccount(QWidget *parent = 0);
-    virtual ~FormEditTtRssAccount();
+	public:
+		explicit FormEditTtRssAccount(QWidget* parent = 0);
+		virtual ~FormEditTtRssAccount();
 
-    TtRssServiceRoot *execForCreate();
-    void execForEdit(TtRssServiceRoot *existing_root);
+		TtRssServiceRoot* execForCreate();
+		void execForEdit(TtRssServiceRoot* existing_root);
 
-  private slots:
-    void displayPassword(bool display);
-    void displayHttpPassword(bool display);
-    void performTest();
-    void onClickedOk();
-    void onClickedCancel();
+	private slots:
+		void displayPassword(bool display);
+		void displayHttpPassword(bool display);
+		void performTest();
+		void onClickedOk();
+		void onClickedCancel();
 
-    void onUsernameChanged();
-    void onPasswordChanged();
-    void onHttpUsernameChanged();
-    void onHttpPasswordChanged();
-    void onUrlChanged();
-    void checkOkButton();
+		void onUsernameChanged();
+		void onPasswordChanged();
+		void onHttpUsernameChanged();
+		void onHttpPasswordChanged();
+		void onUrlChanged();
+		void checkOkButton();
 
-  private:
-    QScopedPointer<Ui::FormEditTtRssAccount> m_ui;
-    TtRssServiceRoot *m_editableRoot;
-    QPushButton *m_btnOk;
+	private:
+		QScopedPointer<Ui::FormEditTtRssAccount> m_ui;
+		TtRssServiceRoot* m_editableRoot;
+		QPushButton* m_btnOk;
 };
 
 #endif // FORMEDITACCOUNT_H

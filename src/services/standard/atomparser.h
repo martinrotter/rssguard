@@ -27,18 +27,18 @@
 
 
 class AtomParser : public FeedParser {
-  public:
-    explicit AtomParser(const QString &data);
-    virtual ~AtomParser();
+	public:
+		explicit AtomParser(const QString& data);
+		virtual ~AtomParser();
 
-  private:
-    QDomNodeList messageElements();
-    QString feedAuthor() const;
-    Message extractMessage(const QDomElement &msg_element, QDateTime current_time) const;
-    QString messageAuthor(const QDomElement &msg_element) const;
+	private:
+		QDomNodeList messageElements();
+		QString feedAuthor() const;
+		Message extractMessage(const QDomElement& msg_element, QDateTime current_time) const;
+		QString messageAuthor(const QDomElement& msg_element) const;
 
-  private:
-    QString m_atomNamespace;    
+	private:
+		QString m_atomNamespace;
 };
 
 #endif // ATOMPARSER_H

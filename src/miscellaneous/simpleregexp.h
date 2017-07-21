@@ -24,19 +24,19 @@
 
 
 class SimpleRegExp : public QRegularExpression {
-  public:
-    explicit SimpleRegExp();
-    explicit SimpleRegExp(const QString &pattern, Qt::CaseSensitivity cs = Qt::CaseSensitive);
-    explicit SimpleRegExp(const SimpleRegExp &re);
+	public:
+		explicit SimpleRegExp();
+		explicit SimpleRegExp(const QString& pattern, Qt::CaseSensitivity cs = Qt::CaseSensitive);
+		explicit SimpleRegExp(const SimpleRegExp& re);
 
-    void setMinimal(bool minimal);
-    int indexIn(const QString &str, int offset = 0) const;
-    int matchedLength() const;
-    QString cap(int nth = 0) const;
+		void setMinimal(bool minimal);
+		int indexIn(const QString& str, int offset = 0) const;
+		int matchedLength() const;
+		QString cap(int nth = 0) const;
 
-  private:
-    QStringList m_capturedTexts;
-    int m_matchedLength;
+	private:
+		QStringList m_capturedTexts;
+		int m_matchedLength;
 };
 
 #endif // SIMPLEREGEXP_H

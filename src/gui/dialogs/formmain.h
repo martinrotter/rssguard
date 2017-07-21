@@ -30,96 +30,96 @@ class AdBlockIcon;
 class StatusBar;
 
 class FormMain : public QMainWindow {
-    Q_OBJECT
+		Q_OBJECT
 
-    friend class TabWidget;
-    friend class MessagesView;
-    friend class FeedsView;
+		friend class TabWidget;
+		friend class MessagesView;
+		friend class FeedsView;
 
-  public:
-    // Constructors and destructors.
-    explicit FormMain(QWidget *parent = 0, Qt::WindowFlags f = 0);
-    virtual ~FormMain();
+	public:
+		// Constructors and destructors.
+		explicit FormMain(QWidget* parent = 0, Qt::WindowFlags f = 0);
+		virtual ~FormMain();
 
-    // Returns menu for the tray icon.
-    QMenu *trayMenu() const;
+		// Returns menu for the tray icon.
+		QMenu* trayMenu() const;
 
-    // Returns global tab widget.
-    TabWidget *tabWidget() const;
+		// Returns global tab widget.
+		TabWidget* tabWidget() const;
 
-    // Access to statusbar.
-    StatusBar *statusBar() const;
+		// Access to statusbar.
+		StatusBar* statusBar() const;
 
-    // Returns list of all globally available actions.
-    // NOTE: This is used for setting dynamic shortcuts
-    // for given actions.
-    QList<QAction*> allActions() const;
+		// Returns list of all globally available actions.
+		// NOTE: This is used for setting dynamic shortcuts
+		// for given actions.
+		QList<QAction*> allActions() const;
 
-    // Loads/saves visual state of the application.
-    void loadSize();
-    void saveSize();
-
-#if defined(USE_WEBENGINE)
-    AdBlockIcon *adblockIcon() const {
-      return m_adblockIcon;
-    }
-#endif
-
-  public slots:    
-    // Displays window on top or switches its visibility.
-    void display();
-
-    // Switches visibility of main window.
-    void switchVisibility(bool force_hide = false);
-
-    // Turns on/off fullscreen mode
-    void switchFullscreenMode();
-
-  private slots:
-    void updateAddItemMenu();
-    void updateRecycleBinMenu();
-    void updateAccountsMenu();
-
-    void updateMessageButtonsAvailability();
-    void updateFeedButtonsAvailability();
-
-    void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(const Feed *feed, int current, int total);
-    void onFeedUpdatesFinished(const FeedDownloadResults &results);
-
-    // Displays various dialogs.
-    void backupDatabaseSettings();
-    void restoreDatabaseSettings();
-    void showSettings();
-    void showAbout();
-    void showUpdates();
-    void showWiki();
-    void showAddAccountDialog();
-    void showDbCleanupAssistant();
-    void reportABug();
-    void donate();
-
-  private:
-    // Event handler reimplementations.
-    void changeEvent(QEvent *event);
-
-    // Creates all needed menus and sets them up.
-    void prepareMenus();
-
-    // Creates needed connections for this window.
-    void createConnections();
-
-    // Sets up proper icons for this widget.
-    void setupIcons();
+		// Loads/saves visual state of the application.
+		void loadSize();
+		void saveSize();
 
 #if defined(USE_WEBENGINE)
-    AdBlockIcon *m_adblockIcon;
-    QAction *m_adblockIconAction;
+		AdBlockIcon* adblockIcon() const {
+			return m_adblockIcon;
+		}
 #endif
 
-    QScopedPointer<Ui::FormMain> m_ui;
-    QMenu *m_trayMenu;
-    StatusBar *m_statusBar;
+	public slots:
+		// Displays window on top or switches its visibility.
+		void display();
+
+		// Switches visibility of main window.
+		void switchVisibility(bool force_hide = false);
+
+		// Turns on/off fullscreen mode
+		void switchFullscreenMode();
+
+	private slots:
+		void updateAddItemMenu();
+		void updateRecycleBinMenu();
+		void updateAccountsMenu();
+
+		void updateMessageButtonsAvailability();
+		void updateFeedButtonsAvailability();
+
+		void onFeedUpdatesStarted();
+		void onFeedUpdatesProgress(const Feed* feed, int current, int total);
+		void onFeedUpdatesFinished(const FeedDownloadResults& results);
+
+		// Displays various dialogs.
+		void backupDatabaseSettings();
+		void restoreDatabaseSettings();
+		void showSettings();
+		void showAbout();
+		void showUpdates();
+		void showWiki();
+		void showAddAccountDialog();
+		void showDbCleanupAssistant();
+		void reportABug();
+		void donate();
+
+	private:
+		// Event handler reimplementations.
+		void changeEvent(QEvent* event);
+
+		// Creates all needed menus and sets them up.
+		void prepareMenus();
+
+		// Creates needed connections for this window.
+		void createConnections();
+
+		// Sets up proper icons for this widget.
+		void setupIcons();
+
+#if defined(USE_WEBENGINE)
+		AdBlockIcon* m_adblockIcon;
+		QAction* m_adblockIconAction;
+#endif
+
+		QScopedPointer<Ui::FormMain> m_ui;
+		QMenu* m_trayMenu;
+		StatusBar* m_statusBar;
 };
 
 #endif // FORMMAIN_H

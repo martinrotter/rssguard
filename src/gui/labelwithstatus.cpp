@@ -22,25 +22,23 @@
 #include <QHBoxLayout>
 
 
-LabelWithStatus::LabelWithStatus(QWidget *parent)
-  : WidgetWithStatus(parent) {
-  m_wdgInput = new QLabel(this);
-
-  // Set correct size for the tool button.
-  int label_height = m_wdgInput->sizeHint().height();
-  m_btnStatus->setFixedSize(label_height, label_height);
-
-  // Compose the layout.
-  m_layout->addWidget(m_wdgInput);
-  m_layout->addWidget(m_btnStatus);
+LabelWithStatus::LabelWithStatus(QWidget* parent)
+	: WidgetWithStatus(parent) {
+	m_wdgInput = new QLabel(this);
+	// Set correct size for the tool button.
+	int label_height = m_wdgInput->sizeHint().height();
+	m_btnStatus->setFixedSize(label_height, label_height);
+	// Compose the layout.
+	m_layout->addWidget(m_wdgInput);
+	m_layout->addWidget(m_btnStatus);
 }
 
 LabelWithStatus::~LabelWithStatus() {
 }
 
 void LabelWithStatus::setStatus(WidgetWithStatus::StatusType status,
-                                const QString &label_text,
-                                const QString &status_text) {
-  WidgetWithStatus::setStatus(status, status_text);
-  label()->setText(label_text);
+                                const QString& label_text,
+                                const QString& status_text) {
+	WidgetWithStatus::setStatus(status, status_text);
+	label()->setText(label_text);
 }

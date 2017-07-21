@@ -24,18 +24,18 @@
 class QAction;
 
 class DynamicShortcuts {
-  public:
-    // Checks the application settings and then initializes shortcut of
-    // each action from actions from the settings.
-    static void load(const QList<QAction*> &actions);
+	public:
+		// Checks the application settings and then initializes shortcut of
+		// each action from actions from the settings.
+		static void load(const QList<QAction*>& actions);
 
-    // Stores shortcut of each action from actions into the application
-    // settings.
-    static void save(const QList<QAction*> &actions);
+		// Stores shortcut of each action from actions into the application
+		// settings.
+		static void save(const QList<QAction*>& actions);
 
-  private:
-    // Constructor.
-    explicit DynamicShortcuts();
+	private:
+		// Constructor.
+		explicit DynamicShortcuts();
 };
 
 #endif // DYNAMICSHORTCUTS_H

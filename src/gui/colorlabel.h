@@ -22,20 +22,20 @@
 
 
 class ColorLabel : public QLabel {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit ColorLabel(QWidget *parent = 0);
-    virtual ~ColorLabel();
+	public:
+		explicit ColorLabel(QWidget* parent = 0);
+		virtual ~ColorLabel();
 
-    QColor color() const;
-    void setColor(const QColor &color);
+		QColor color() const;
+		void setColor(const QColor& color);
 
-  protected:
-    void paintEvent(QPaintEvent *event);
+	protected:
+		void paintEvent(QPaintEvent* event);
 
-  private:
-    QColor m_color;
+	private:
+		QColor m_color;
 };
 
 #endif // COLORLABEL_H

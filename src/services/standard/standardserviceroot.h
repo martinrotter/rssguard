@@ -31,63 +31,63 @@ class FeedsImportExportModel;
 class QMenu;
 
 class StandardServiceRoot : public ServiceRoot {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit StandardServiceRoot(RootItem *parent = nullptr);
-    virtual ~StandardServiceRoot();
+	public:
+		explicit StandardServiceRoot(RootItem* parent = nullptr);
+		virtual ~StandardServiceRoot();
 
-    // Start/stop root.
-    void start(bool freshly_activated);
-    void stop();
+		// Start/stop root.
+		void start(bool freshly_activated);
+		void stop();
 
-    QString code() const;
+		QString code() const;
 
-    bool canBeEdited() const;
-    bool canBeDeleted() const;
-    bool deleteViaGui();
-    bool supportsFeedAdding() const;
-    bool supportsCategoryAdding() const;
+		bool canBeEdited() const;
+		bool canBeDeleted() const;
+		bool deleteViaGui();
+		bool supportsFeedAdding() const;
+		bool supportsCategoryAdding() const;
 
-    QVariant data(int column, int role) const;
-    Qt::ItemFlags additionalFlags() const;
+		QVariant data(int column, int role) const;
+		Qt::ItemFlags additionalFlags() const;
 
-    // Access to recycle bin.
-    RecycleBin *recycleBin() const;
+		// Access to recycle bin.
+		RecycleBin* recycleBin() const;
 
-    // Returns menu to be shown in "Services -> service" menu.
-    QList<QAction*> serviceMenu();
+		// Returns menu to be shown in "Services -> service" menu.
+		QList<QAction*> serviceMenu();
 
-    // Returns context specific menu actions for given feed.
-    QList<QAction*> getContextMenuForFeed(StandardFeed *feed);
+		// Returns context specific menu actions for given feed.
+		QList<QAction*> getContextMenuForFeed(StandardFeed* feed);
 
-    // Takes structure residing under given root item and adds feeds/categories from
-    // it to active structure.
-    // NOTE: This is used for import/export of the model.
-    bool mergeImportExportModel(FeedsImportExportModel *model, RootItem *target_root_node, QString &output_message);
+		// Takes structure residing under given root item and adds feeds/categories from
+		// it to active structure.
+		// NOTE: This is used for import/export of the model.
+		bool mergeImportExportModel(FeedsImportExportModel* model, RootItem* target_root_node, QString& output_message);
 
-    void loadFromDatabase();
-    void checkArgumentForFeedAdding(const QString &argument);
+		void loadFromDatabase();
+		void checkArgumentForFeedAdding(const QString& argument);
 
-  public slots:
-    void addNewFeed(const QString &url = QString());
-    void addNewCategory();
-    void importFeeds();
-    void exportFeeds();
+	public slots:
+		void addNewFeed(const QString& url = QString());
+		void addNewCategory();
+		void importFeeds();
+		void exportFeeds();
 
-  private:
-    QString processFeedUrl(const QString &feed_url);
-    void checkArgumentsForFeedAdding();
+	private:
+		QString processFeedUrl(const QString& feed_url);
+		void checkArgumentsForFeedAdding();
 
-    RecycleBin *m_recycleBin;
-    QAction *m_actionExportFeeds;
-    QAction *m_actionImportFeeds;
-    QList<QAction*> m_serviceMenu;
-    QList<QAction*> m_feedContextMenu;
-    QAction *m_actionFeedFetchMetadata;
+		RecycleBin* m_recycleBin;
+		QAction* m_actionExportFeeds;
+		QAction* m_actionImportFeeds;
+		QList<QAction*> m_serviceMenu;
+		QList<QAction*> m_feedContextMenu;
+		QAction* m_actionFeedFetchMetadata;
 
-    QMap<int,QVariant> storeCustomFeedsData();
-    void restoreCustomFeedsData(const QMap<int,QVariant> &data, const QHash<int,Feed*> &feeds);
+		QMap<int, QVariant> storeCustomFeedsData();
+		void restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds);
 };
 
 #endif // STANDARDSERVICEROOT_H

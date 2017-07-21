@@ -24,28 +24,28 @@
 
 
 class FormRestoreDatabaseSettings : public QDialog {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit FormRestoreDatabaseSettings(QWidget *parent = 0);
-    virtual ~FormRestoreDatabaseSettings();
+	public:
+		// Constructors and destructors.
+		explicit FormRestoreDatabaseSettings(QWidget* parent = 0);
+		virtual ~FormRestoreDatabaseSettings();
 
-    bool shouldRestart() const {
-      return m_shouldRestart;
-    }
+		bool shouldRestart() const {
+			return m_shouldRestart;
+		}
 
-  private slots:
-    void performRestoration();
-    void checkOkButton();
-    void selectFolderWithGui();
-    void selectFolder(QString folder = QString());
+	private slots:
+		void performRestoration();
+		void checkOkButton();
+		void selectFolderWithGui();
+		void selectFolder(QString folder = QString());
 
-  private:
-    QScopedPointer<Ui::FormRestoreDatabaseSettings> m_ui;
-    QPushButton *m_btnRestart;
+	private:
+		QScopedPointer<Ui::FormRestoreDatabaseSettings> m_ui;
+		QPushButton* m_btnRestart;
 
-    bool m_shouldRestart;
+		bool m_shouldRestart;
 };
 
 #endif // FORMRESTOREDATABASESETTINGS_H

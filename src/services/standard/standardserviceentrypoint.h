@@ -22,20 +22,20 @@
 
 
 class StandardServiceEntryPoint : public ServiceEntryPoint {
-  public:
-    explicit StandardServiceEntryPoint();
-    virtual ~StandardServiceEntryPoint();
+	public:
+		explicit StandardServiceEntryPoint();
+		virtual ~StandardServiceEntryPoint();
 
-    bool isSingleInstanceService() const;
-    QString name() const;
-    QString description() const;
-    QString version() const;
-    QString author() const;
-    QIcon icon() const;
-    QString code() const;
+		bool isSingleInstanceService() const;
+		QString name() const;
+		QString description() const;
+		QString version() const;
+		QString author() const;
+		QIcon icon() const;
+		QString code() const;
 
-    ServiceRoot *createNewRoot() const;
-    QList<ServiceRoot*> initializeSubtree() const;
+		ServiceRoot* createNewRoot() const;
+		QList<ServiceRoot*> initializeSubtree() const;
 };
 
 #endif // STANDARDSERVICEENTRYPOINT_H

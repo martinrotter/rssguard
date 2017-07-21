@@ -24,36 +24,36 @@
 
 
 namespace Ui {
-  class FormEditAccount;
+	class FormEditAccount;
 }
 
 class OwnCloudServiceRoot;
 
 class FormEditOwnCloudAccount : public QDialog {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit FormEditOwnCloudAccount(QWidget *parent = 0);
-    virtual ~FormEditOwnCloudAccount();
+	public:
+		explicit FormEditOwnCloudAccount(QWidget* parent = 0);
+		virtual ~FormEditOwnCloudAccount();
 
-    OwnCloudServiceRoot *execForCreate();
-    void execForEdit(OwnCloudServiceRoot *existing_root);
+		OwnCloudServiceRoot* execForCreate();
+		void execForEdit(OwnCloudServiceRoot* existing_root);
 
-  private slots:
-    void displayPassword(bool display);
-    void performTest();
-    void onClickedOk();
-    void onClickedCancel();
+	private slots:
+		void displayPassword(bool display);
+		void performTest();
+		void onClickedOk();
+		void onClickedCancel();
 
-    void onUsernameChanged();
-    void onPasswordChanged();
-    void onUrlChanged();
-    void checkOkButton();
+		void onUsernameChanged();
+		void onPasswordChanged();
+		void onUrlChanged();
+		void checkOkButton();
 
-  private:
-    QScopedPointer<Ui::FormEditOwnCloudAccount> m_ui;
-    OwnCloudServiceRoot *m_editableRoot;
-    QPushButton *m_btnOk;
+	private:
+		QScopedPointer<Ui::FormEditOwnCloudAccount> m_ui;
+		OwnCloudServiceRoot* m_editableRoot;
+		QPushButton* m_btnOk;
 };
 
 #endif // FORMEDITOWNCLOUDACCOUNT_H

@@ -22,15 +22,15 @@
 
 
 class ServiceOperator : public QObject {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit ServiceOperator(QObject *parent = 0);
-    virtual ~ServiceOperator();
+	public:
+		explicit ServiceOperator(QObject* parent = 0);
+		virtual ~ServiceOperator();
 
-  signals:
+	signals:
 
-  public slots:
+	public slots:
 };
 
 #endif // SERVICEOPERATOR_H

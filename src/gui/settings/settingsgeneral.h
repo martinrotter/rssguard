@@ -24,21 +24,21 @@
 
 
 class SettingsGeneral : public SettingsPanel {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit SettingsGeneral(Settings *settings, QWidget *parent = 0);
-    virtual ~SettingsGeneral();
+	public:
+		explicit SettingsGeneral(Settings* settings, QWidget* parent = 0);
+		virtual ~SettingsGeneral();
 
-    inline QString title() const {
-      return tr("General");
-    }
+		inline QString title() const {
+			return tr("General");
+		}
 
-    void loadSettings();
-    void saveSettings();
+		void loadSettings();
+		void saveSettings();
 
-  private:
-    Ui::SettingsGeneral *m_ui;
+	private:
+		Ui::SettingsGeneral* m_ui;
 };
 
 #endif // SETTINGSGENERAL_H

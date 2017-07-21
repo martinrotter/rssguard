@@ -42,338 +42,338 @@
 
 
 namespace AdBlock {
-  KEY ID;
+	KEY ID;
 
-  KEY AdBlockEnabled;
-  VALUE(bool) AdBlockEnabledDef;
+	KEY AdBlockEnabled;
+	VALUE(bool) AdBlockEnabledDef;
 
-  KEY DisabledRules;
-  VALUE(QStringList) DisabledRulesDef;
+	KEY DisabledRules;
+	VALUE(QStringList) DisabledRulesDef;
 
-  KEY LastUpdatedOn;
-  VALUE(QDateTime) LastUpdatedOnDef;
+	KEY LastUpdatedOn;
+	VALUE(QDateTime) LastUpdatedOnDef;
 }
 
 // Feeds.
 namespace Feeds {
-  KEY ID;
+	KEY ID;
 
-  KEY UpdateTimeout;
-  VALUE(int) UpdateTimeoutDef;
+	KEY UpdateTimeout;
+	VALUE(int) UpdateTimeoutDef;
 
-  KEY EnableAutoUpdateNotification;
-  VALUE(bool) EnableAutoUpdateNotificationDef;
+	KEY EnableAutoUpdateNotification;
+	VALUE(bool) EnableAutoUpdateNotificationDef;
 
-  KEY CountFormat;
-  VALUE(char*) CountFormatDef;
+	KEY CountFormat;
+	VALUE(char*) CountFormatDef;
 
-  KEY AutoUpdateInterval;
-  VALUE(int) AutoUpdateIntervalDef;
+	KEY AutoUpdateInterval;
+	VALUE(int) AutoUpdateIntervalDef;
 
-  KEY AutoUpdateEnabled;
-  VALUE(bool) AutoUpdateEnabledDef;
+	KEY AutoUpdateEnabled;
+	VALUE(bool) AutoUpdateEnabledDef;
 
-  KEY FeedsUpdateOnStartup;
-  VALUE(bool) FeedsUpdateOnStartupDef;
+	KEY FeedsUpdateOnStartup;
+	VALUE(bool) FeedsUpdateOnStartupDef;
 
-  KEY ShowOnlyUnreadFeeds;
-  VALUE(bool) ShowOnlyUnreadFeedsDef;
+	KEY ShowOnlyUnreadFeeds;
+	VALUE(bool) ShowOnlyUnreadFeedsDef;
 }
 
 // Messages.
 namespace Messages {
-  KEY ID;
+	KEY ID;
 
-  KEY MessageHeadImageHeight;
-  VALUE(int) MessageHeadImageHeightDef;
+	KEY MessageHeadImageHeight;
+	VALUE(int) MessageHeadImageHeightDef;
 
-  KEY UseCustomDate;
-  VALUE(bool) UseCustomDateDef;
+	KEY UseCustomDate;
+	VALUE(bool) UseCustomDateDef;
 
-  KEY CustomDateFormat;
-  VALUE(char*) CustomDateFormatDef;
+	KEY CustomDateFormat;
+	VALUE(char*) CustomDateFormatDef;
 
-  KEY ClearReadOnExit;
-  VALUE(bool) ClearReadOnExitDef;
+	KEY ClearReadOnExit;
+	VALUE(bool) ClearReadOnExitDef;
 
-  KEY KeepCursorInCenter;
-  VALUE(bool) KeepCursorInCenterDef;
+	KEY KeepCursorInCenter;
+	VALUE(bool) KeepCursorInCenterDef;
 
-  KEY PreviewerFontStandard;
-  NON_CONST_VALUE(QString) PreviewerFontStandardDef;
+	KEY PreviewerFontStandard;
+	NON_CONST_VALUE(QString) PreviewerFontStandardDef;
 }
 
 // GUI.
 namespace GUI {
-  KEY ID;
+	KEY ID;
 
-  KEY MessageViewState;
-  VALUE(QString) MessageViewStateDef;
+	KEY MessageViewState;
+	VALUE(QString) MessageViewStateDef;
 
-  KEY SplitterFeeds;
-  VALUE(char*) SplitterFeedsDef;
+	KEY SplitterFeeds;
+	VALUE(char*) SplitterFeedsDef;
 
-  KEY SplitterMessages;
-  VALUE(char*) SplitterMessagesDef;
+	KEY SplitterMessages;
+	VALUE(char*) SplitterMessagesDef;
 
-  KEY ToolbarStyle;
-  VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;
+	KEY ToolbarStyle;
+	VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;
 
-  KEY FeedsToolbarActions;
-  VALUE(char*) FeedsToolbarActionsDef;
+	KEY FeedsToolbarActions;
+	VALUE(char*) FeedsToolbarActionsDef;
 
-  KEY StatusbarActions;
-  VALUE(char*) StatusbarActionsDef;
+	KEY StatusbarActions;
+	VALUE(char*) StatusbarActionsDef;
 
-  KEY MainWindowInitialSize;
-  KEY MainWindowInitialPosition;
+	KEY MainWindowInitialSize;
+	KEY MainWindowInitialPosition;
 
-  KEY IsMainWindowMaximizedBeforeFullscreen;
-  VALUE(bool) IsMainWindowMaximizedBeforeFullscreenDef;
+	KEY IsMainWindowMaximizedBeforeFullscreen;
+	VALUE(bool) IsMainWindowMaximizedBeforeFullscreenDef;
 
-  KEY MainWindowStartsFullscreen;
-  VALUE(bool) MainWindowStartsFullscreenDef;
+	KEY MainWindowStartsFullscreen;
+	VALUE(bool) MainWindowStartsFullscreenDef;
 
-  KEY MainWindowStartsHidden;
-  VALUE(bool) MainWindowStartsHiddenDef;
+	KEY MainWindowStartsHidden;
+	VALUE(bool) MainWindowStartsHiddenDef;
 
-  KEY MainWindowStartsMaximized;
-  VALUE(bool) MainWindowStartsMaximizedDef;
+	KEY MainWindowStartsMaximized;
+	VALUE(bool) MainWindowStartsMaximizedDef;
 
-  KEY MainMenuVisible;
-  VALUE(bool) MainMenuVisibleDef;
+	KEY MainMenuVisible;
+	VALUE(bool) MainMenuVisibleDef;
 
-  KEY ToolbarsVisible;
-  VALUE(bool) ToolbarsVisibleDef;
+	KEY ToolbarsVisible;
+	VALUE(bool) ToolbarsVisibleDef;
 
-  KEY ListHeadersVisible;
-  VALUE(bool) ListHeadersVisibleDef;
+	KEY ListHeadersVisible;
+	VALUE(bool) ListHeadersVisibleDef;
 
-  KEY StatusBarVisible;
-  VALUE(bool) StatusBarVisibleDef;
+	KEY StatusBarVisible;
+	VALUE(bool) StatusBarVisibleDef;
 
-  KEY HideMainWindowWhenMinimized;
-  VALUE(bool) HideMainWindowWhenMinimizedDef;
+	KEY HideMainWindowWhenMinimized;
+	VALUE(bool) HideMainWindowWhenMinimizedDef;
 
-  KEY UseTrayIcon;
-  VALUE(bool) UseTrayIconDef;
+	KEY UseTrayIcon;
+	VALUE(bool) UseTrayIconDef;
 
-  KEY EnableNotifications;
-  VALUE(bool) EnableNotificationsDef;
+	KEY EnableNotifications;
+	VALUE(bool) EnableNotificationsDef;
 
-  KEY TabCloseMiddleClick;
-  VALUE(bool) TabCloseMiddleClickDef;
+	KEY TabCloseMiddleClick;
+	VALUE(bool) TabCloseMiddleClickDef;
 
-  KEY TabCloseDoubleClick;
-  VALUE(bool) TabCloseDoubleClickDef;
+	KEY TabCloseDoubleClick;
+	VALUE(bool) TabCloseDoubleClickDef;
 
-  KEY TabNewDoubleClick;
-  VALUE(bool) TabNewDoubleClickDef;
+	KEY TabNewDoubleClick;
+	VALUE(bool) TabNewDoubleClickDef;
 
-  KEY HideTabBarIfOnlyOneTab;
-  VALUE(bool) HideTabBarIfOnlyOneTabDef;
+	KEY HideTabBarIfOnlyOneTab;
+	VALUE(bool) HideTabBarIfOnlyOneTabDef;
 
-  KEY MessagesToolbarDefaultButtons;
-  VALUE(char*) MessagesToolbarDefaultButtonsDef;
+	KEY MessagesToolbarDefaultButtons;
+	VALUE(char*) MessagesToolbarDefaultButtonsDef;
 
-  KEY DefaultSortColumnFeeds;
-  VALUE(int) DefaultSortColumnFeedsDef;
+	KEY DefaultSortColumnFeeds;
+	VALUE(int) DefaultSortColumnFeedsDef;
 
-  KEY DefaultSortOrderFeeds;
-  VALUE(Qt::SortOrder) DefaultSortOrderFeedsDef;
+	KEY DefaultSortOrderFeeds;
+	VALUE(Qt::SortOrder) DefaultSortOrderFeedsDef;
 
-  KEY IconTheme;
-  VALUE(char*) IconThemeDef;
+	KEY IconTheme;
+	VALUE(char*) IconThemeDef;
 
-  KEY Skin;
-  VALUE(char*) SkinDef;
+	KEY Skin;
+	VALUE(char*) SkinDef;
 
-  KEY Style;
-  VALUE(char*) StyleDef;
+	KEY Style;
+	VALUE(char*) StyleDef;
 }
 
 // General.
 namespace General {
-  KEY ID;
+	KEY ID;
 
-  KEY UpdateOnStartup;
-  VALUE(bool) UpdateOnStartupDef;
+	KEY UpdateOnStartup;
+	VALUE(bool) UpdateOnStartupDef;
 
-  KEY RemoveTrolltechJunk;
-  VALUE(bool) RemoveTrolltechJunkDef;
+	KEY RemoveTrolltechJunk;
+	VALUE(bool) RemoveTrolltechJunkDef;
 
-  KEY FirstRun;
-  VALUE(bool) FirstRunDef;
+	KEY FirstRun;
+	VALUE(bool) FirstRunDef;
 
-  KEY Language;
-  VALUE(QString) LanguageDef;
+	KEY Language;
+	VALUE(QString) LanguageDef;
 }
 
 // Downloads.
 namespace Downloads {
-  KEY ID;
+	KEY ID;
 
-  KEY AlwaysPromptForFilename;
-  VALUE(bool) AlwaysPromptForFilenameDef;
+	KEY AlwaysPromptForFilename;
+	VALUE(bool) AlwaysPromptForFilenameDef;
 
-  KEY TargetDirectory;
-  VALUE(QString) TargetDirectoryDef;
+	KEY TargetDirectory;
+	VALUE(QString) TargetDirectoryDef;
 
-  KEY RemovePolicy;
-  VALUE(int) RemovePolicyDef;
+	KEY RemovePolicy;
+	VALUE(int) RemovePolicyDef;
 
-  KEY TargetExplicitDirectory;
-  VALUE(QString) TargetExplicitDirectoryDef;
+	KEY TargetExplicitDirectory;
+	VALUE(QString) TargetExplicitDirectoryDef;
 
-  KEY ShowDownloadsWhenNewDownloadStarts;
-  VALUE(bool) ShowDownloadsWhenNewDownloadStartsDef;
+	KEY ShowDownloadsWhenNewDownloadStarts;
+	VALUE(bool) ShowDownloadsWhenNewDownloadStartsDef;
 
-  KEY ItemUrl;
-  KEY ItemLocation;
-  KEY ItemDone;
+	KEY ItemUrl;
+	KEY ItemLocation;
+	KEY ItemDone;
 }
 
 // Proxy.
 namespace Proxy {
-  KEY ID;
+	KEY ID;
 
-  KEY Type;
-  VALUE(QNetworkProxy::ProxyType) TypeDef;
+	KEY Type;
+	VALUE(QNetworkProxy::ProxyType) TypeDef;
 
-  KEY Host;
-  VALUE(QString) HostDef;
+	KEY Host;
+	VALUE(QString) HostDef;
 
-  KEY Username;
-  VALUE(QString) UsernameDef;
+	KEY Username;
+	VALUE(QString) UsernameDef;
 
-  KEY Password;
-  VALUE(QString) PasswordDef;
+	KEY Password;
+	VALUE(QString) PasswordDef;
 
-  KEY Port;
-  VALUE(int) PortDef;
+	KEY Port;
+	VALUE(int) PortDef;
 }
 
 // Database.
 namespace Database {
-  KEY ID;
+	KEY ID;
 
-  KEY UseTransactions;
-  VALUE(bool) UseTransactionsDef;
+	KEY UseTransactions;
+	VALUE(bool) UseTransactionsDef;
 
-  KEY UseInMemory;
-  VALUE(bool) UseInMemoryDef;
+	KEY UseInMemory;
+	VALUE(bool) UseInMemoryDef;
 
-  KEY MySQLHostname;
-  VALUE(QString) MySQLHostnameDef;
+	KEY MySQLHostname;
+	VALUE(QString) MySQLHostnameDef;
 
-  KEY MySQLUsername;
-  VALUE(QString) MySQLUsernameDef;
+	KEY MySQLUsername;
+	VALUE(QString) MySQLUsernameDef;
 
-  KEY MySQLPassword;
-  VALUE(QString) MySQLPasswordDef;
+	KEY MySQLPassword;
+	VALUE(QString) MySQLPasswordDef;
 
-  KEY MySQLPort;
-  VALUE(int) MySQLPortDef;
+	KEY MySQLPort;
+	VALUE(int) MySQLPortDef;
 
-  KEY MySQLDatabase;
-  VALUE(char*) MySQLDatabaseDef;
+	KEY MySQLDatabase;
+	VALUE(char*) MySQLDatabaseDef;
 
-  KEY ActiveDriver;
-  VALUE(char*) ActiveDriverDef;
+	KEY ActiveDriver;
+	VALUE(char*) ActiveDriverDef;
 }
 
 // Keyboard.
 namespace Keyboard {
-  KEY ID;
+	KEY ID;
 }
 
 // Web browser.
 namespace Browser {
-  KEY ID;
+	KEY ID;
 
-  KEY SendDNT;
-  VALUE(bool) SendDNTDef;
+	KEY SendDNT;
+	VALUE(bool) SendDNTDef;
 
-  KEY OpenLinksInExternalBrowserRightAway;
-  VALUE(bool) OpenLinksInExternalBrowserRightAwayDef;
+	KEY OpenLinksInExternalBrowserRightAway;
+	VALUE(bool) OpenLinksInExternalBrowserRightAwayDef;
 
-  KEY CustomExternalBrowserEnabled;
-  VALUE(bool) CustomExternalBrowserEnabledDef;
+	KEY CustomExternalBrowserEnabled;
+	VALUE(bool) CustomExternalBrowserEnabledDef;
 
-  KEY CustomExternalBrowserExecutable;
-  VALUE(QString) CustomExternalBrowserExecutableDef;
+	KEY CustomExternalBrowserExecutable;
+	VALUE(QString) CustomExternalBrowserExecutableDef;
 
-  KEY CustomExternalBrowserArguments;
-  VALUE(char*) CustomExternalBrowserArgumentsDef;
+	KEY CustomExternalBrowserArguments;
+	VALUE(char*) CustomExternalBrowserArgumentsDef;
 
-  KEY CustomExternalEmailEnabled;
-  VALUE(bool) CustomExternalEmailEnabledDef;
+	KEY CustomExternalEmailEnabled;
+	VALUE(bool) CustomExternalEmailEnabledDef;
 
-  KEY CustomExternalEmailExecutable;
-  VALUE(QString) CustomExternalEmailExecutableDef;
+	KEY CustomExternalEmailExecutable;
+	VALUE(QString) CustomExternalEmailExecutableDef;
 
-  KEY CustomExternalEmailArguments;
-  VALUE(char*) CustomExternalEmailArgumentsDef;
+	KEY CustomExternalEmailArguments;
+	VALUE(char*) CustomExternalEmailArgumentsDef;
 }
 
 // Categories.
 namespace CategoriesExpandStates {
-  KEY ID;
+	KEY ID;
 }
 
 class Settings : public QSettings {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Destructor.
-    virtual ~Settings();
+	public:
+		// Destructor.
+		virtual ~Settings();
 
-    // Type of used settings.
-    inline SettingsProperties::SettingsType type() const {
-      return m_initializationStatus;
-    }
+		// Type of used settings.
+		inline SettingsProperties::SettingsType type() const {
+			return m_initializationStatus;
+		}
 
-    // Getters/setters for settings values.
-    inline QVariant value(const QString &section, const QString &key, const QVariant &default_value = QVariant()) const {
-      return QSettings::value(QString(QSL("%1/%2")).arg(section, key), default_value);
-    }
+		// Getters/setters for settings values.
+		inline QVariant value(const QString& section, const QString& key, const QVariant& default_value = QVariant()) const {
+			return QSettings::value(QString(QSL("%1/%2")).arg(section, key), default_value);
+		}
 
-    inline void setValue(const QString &section,  const QString &key, const QVariant &value) {
-      QSettings::setValue(QString(QSL("%1/%2")).arg(section, key), value);
-    }
+		inline void setValue(const QString& section,  const QString& key, const QVariant& value) {
+			QSettings::setValue(QString(QSL("%1/%2")).arg(section, key), value);
+		}
 
-    inline void setValue(const QString &key, const QVariant &value) {
-      QSettings::setValue(key, value);
-    }
+		inline void setValue(const QString& key, const QVariant& value) {
+			QSettings::setValue(key, value);
+		}
 
-    inline bool contains(const QString &section, const QString &key) const {
-      return QSettings::contains(QString(QSL("%1/%2")).arg(section, key));
-    }
+		inline bool contains(const QString& section, const QString& key) const {
+			return QSettings::contains(QString(QSL("%1/%2")).arg(section, key));
+		}
 
-    inline void remove(const QString &section, const QString &key) {
-      QSettings::remove(QString(QSL("%1/%2")).arg(section, key));
-    }
+		inline void remove(const QString& section, const QString& key) {
+			QSettings::remove(QString(QSL("%1/%2")).arg(section, key));
+		}
 
-    // Returns the path which contains the settings.
-    QString pathName() const;
+		// Returns the path which contains the settings.
+		QString pathName() const;
 
-    // Synchronizes settings.
-    QSettings::Status checkSettings();
+		// Synchronizes settings.
+		QSettings::Status checkSettings();
 
-    bool initiateRestoration(const QString &settings_backup_file_path);
-    static void finishRestoration(const QString &desired_settings_file_path);
+		bool initiateRestoration(const QString& settings_backup_file_path);
+		static void finishRestoration(const QString& desired_settings_file_path);
 
-    // Creates settings file in correct location.
-    static Settings *setupSettings(QObject *parent);
+		// Creates settings file in correct location.
+		static Settings* setupSettings(QObject* parent);
 
-    // Returns properties of the actual application-wide settings.
-    static SettingsProperties determineProperties();
+		// Returns properties of the actual application-wide settings.
+		static SettingsProperties determineProperties();
 
-  private:
-    // Constructor.
-    explicit Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &type, QObject *parent = 0);
+	private:
+		// Constructor.
+		explicit Settings(const QString& file_name, Format format, const SettingsProperties::SettingsType& type, QObject* parent = 0);
 
-    SettingsProperties::SettingsType m_initializationStatus;
+		SettingsProperties::SettingsType m_initializationStatus;
 };
 
 #endif // SETTINGS_H

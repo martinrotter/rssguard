@@ -24,17 +24,17 @@
 #include <QNetworkReply>
 
 
-OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem *parent) : RecycleBin(parent) {
+OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem* parent) : RecycleBin(parent) {
 }
 
 OwnCloudRecycleBin::~OwnCloudRecycleBin() {
 }
 
-OwnCloudServiceRoot *OwnCloudRecycleBin::serviceRoot() {
-  return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
+OwnCloudServiceRoot* OwnCloudRecycleBin::serviceRoot() {
+	return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
 }
 
 bool OwnCloudRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-  return RecycleBin::markAsReadUnread(status);
+	serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
+	return RecycleBin::markAsReadUnread(status);
 }

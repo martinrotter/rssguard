@@ -22,15 +22,16 @@
 #include <QLabel>
 
 
-void GuiUtilities::setLabelAsNotice(QLabel *label, bool is_warning) {
-  label->setMargin(6);
+void GuiUtilities::setLabelAsNotice(QLabel* label, bool is_warning) {
+	label->setMargin(6);
 
-  if (is_warning) {
-    label->setStyleSheet(QSL("font-weight: bold; font-style: italic; color: red"));
-  }
-  else {
-    label->setStyleSheet(QSL("font-style: italic;"));
-  }
+	if (is_warning) {
+		label->setStyleSheet(QSL("font-weight: bold; font-style: italic; color: red"));
+	}
+
+	else {
+		label->setStyleSheet(QSL("font-style: italic;"));
+	}
 }
 
 GuiUtilities::GuiUtilities() {

@@ -24,26 +24,26 @@
 
 
 class SettingsFeedsMessages : public SettingsPanel {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit SettingsFeedsMessages(Settings *settings, QWidget *parent = 0);
-    virtual ~SettingsFeedsMessages();
+	public:
+		explicit SettingsFeedsMessages(Settings* settings, QWidget* parent = 0);
+		virtual ~SettingsFeedsMessages();
 
-    inline QString title() const {
-      return tr("Feeds & messages");
-    }
+		inline QString title() const {
+			return tr("Feeds & messages");
+		}
 
-    void loadSettings();
-    void saveSettings();
+		void loadSettings();
+		void saveSettings();
 
-  private slots:
-    void changeMessagesFont();
+	private slots:
+		void changeMessagesFont();
 
-  private:
-    void initializeMessageDateFormats();
+	private:
+		void initializeMessageDateFormats();
 
-    Ui::SettingsFeedsMessages *m_ui;
+		Ui::SettingsFeedsMessages* m_ui;
 };
 
 #endif // SETTINGSFEEDSMESSAGES_H

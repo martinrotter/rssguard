@@ -29,50 +29,50 @@
 
 
 namespace Ui {
-  class MessagePreviewer;
+	class MessagePreviewer;
 }
 
 class QToolBar;
 
 class MessagePreviewer : public QWidget {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit MessagePreviewer(QWidget *parent = 0);
-    virtual ~MessagePreviewer();
+	public:
+		explicit MessagePreviewer(QWidget* parent = 0);
+		virtual ~MessagePreviewer();
 
-    void reloadFontSettings();
+		void reloadFontSettings();
 
-  public slots:
-    void clear();
-    void hideToolbar();
-    void loadMessage(const Message &message, RootItem *root);
+	public slots:
+		void clear();
+		void hideToolbar();
+		void loadMessage(const Message& message, RootItem* root);
 
-  private slots:
-    void markMessageAsRead();
-    void markMessageAsUnread();
-    void markMessageAsReadUnread(RootItem::ReadStatus read);
-    void switchMessageImportance(bool checked);
+	private slots:
+		void markMessageAsRead();
+		void markMessageAsUnread();
+		void markMessageAsReadUnread(RootItem::ReadStatus read);
+		void switchMessageImportance(bool checked);
 
-  signals:
-    void markMessageRead(int id, RootItem::ReadStatus read);
-    void markMessageImportant(int id, RootItem::Importance important);
-    void requestMessageListReload(bool mark_current_as_read);
+	signals:
+		void markMessageRead(int id, RootItem::ReadStatus read);
+		void markMessageImportant(int id, RootItem::Importance important);
+		void requestMessageListReload(bool mark_current_as_read);
 
-  private:
-    void createConnections();
-    void updateButtons();
-    QString prepareHtmlForMessage(const Message &message);
+	private:
+		void createConnections();
+		void updateButtons();
+		QString prepareHtmlForMessage(const Message& message);
 
-    QToolBar *m_toolBar;
-    QScopedPointer<Ui::MessagePreviewer> m_ui;
-    Message m_message;
-    QStringList m_pictures;
-    QPointer<RootItem> m_root;
+		QToolBar* m_toolBar;
+		QScopedPointer<Ui::MessagePreviewer> m_ui;
+		Message m_message;
+		QStringList m_pictures;
+		QPointer<RootItem> m_root;
 
-    QAction *m_actionMarkRead;
-    QAction *m_actionMarkUnread;
-    QAction *m_actionSwitchImportance;
+		QAction* m_actionMarkRead;
+		QAction* m_actionMarkUnread;
+		QAction* m_actionSwitchImportance;
 };
 
 #endif // MESSAGEPREVIEWER_H

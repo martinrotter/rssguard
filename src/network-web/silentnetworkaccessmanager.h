@@ -26,22 +26,22 @@
 // Network manager used for more communication for feeds.
 // This network manager does not provide any GUI interaction options.
 class SilentNetworkAccessManager : public BaseNetworkAccessManager {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit SilentNetworkAccessManager(QObject *parent = 0);
-    virtual ~SilentNetworkAccessManager();
+	public:
+		// Constructors and destructors.
+		explicit SilentNetworkAccessManager(QObject* parent = 0);
+		virtual ~SilentNetworkAccessManager();
 
-    // Returns pointer to global silent network manager
-    static SilentNetworkAccessManager *instance();
+		// Returns pointer to global silent network manager
+		static SilentNetworkAccessManager* instance();
 
-  public slots:
-    // This cannot do any GUI stuff.
-    void onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator);
+	public slots:
+		// This cannot do any GUI stuff.
+		void onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator);
 
-  private:
-    static QPointer<SilentNetworkAccessManager> s_instance;
+	private:
+		static QPointer<SilentNetworkAccessManager> s_instance;
 };
 
 #endif // SILENTNETWORKACCESSMANAGER_H

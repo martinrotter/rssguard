@@ -32,34 +32,34 @@ class QTimer;
 class BrowserWindow;
 
 class AdBlockIcon : public ClickableLabel {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit AdBlockIcon(QWidget* parent = 0);
-    virtual ~AdBlockIcon();
+	public:
+		explicit AdBlockIcon(QWidget* parent = 0);
+		virtual ~AdBlockIcon();
 
-    void popupBlocked(const QString &ruleString, const QUrl &url);
-    QAction *menuAction();
+		void popupBlocked(const QString& ruleString, const QUrl& url);
+		QAction* menuAction();
 
-  public slots:
-    void setEnabled(bool enabled);
-    void createMenu(QMenu *menu = 0);
+	public slots:
+		void setEnabled(bool enabled);
+		void createMenu(QMenu* menu = 0);
 
-  private slots:
-    void showMenu(const QPoint &pos);
-    void toggleCustomFilter();
+	private slots:
+		void showMenu(const QPoint& pos);
+		void toggleCustomFilter();
 
-    void animateIcon();
-    void stopAnimation();
+		void animateIcon();
+		void stopAnimation();
 
-  private:
-    QAction *m_menuAction;
+	private:
+		QAction* m_menuAction;
 
-    QVector<QPair<AdBlockRule*, QUrl> > m_blockedPopups;
-    QTimer *m_flashTimer;
+		QVector<QPair<AdBlockRule*, QUrl>> m_blockedPopups;
+		QTimer* m_flashTimer;
 
-    int m_timerTicks;
-    bool m_enabled;
+		int m_timerTicks;
+		bool m_enabled;
 };
 
 #endif // ADBLOCKICON_H

@@ -56,27 +56,27 @@ class QListWidget;
 class QNetworkAccessManager;
 
 class GoogleSuggest : public QObject {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors.
-    explicit GoogleSuggest(LocationLineEdit *editor, QObject *parent = 0);
-    virtual ~GoogleSuggest();
+	public:
+		// Constructors.
+		explicit GoogleSuggest(LocationLineEdit* editor, QObject* parent = 0);
+		virtual ~GoogleSuggest();
 
-    bool eventFilter(QObject *object, QEvent *event);
-    void showCompletion(const QStringList &choices);
+		bool eventFilter(QObject* object, QEvent* event);
+		void showCompletion(const QStringList& choices);
 
-  public slots:
-    void doneCompletion();
-    void preventSuggest();
-    void autoSuggest();
-    void handleNetworkData();
+	public slots:
+		void doneCompletion();
+		void preventSuggest();
+		void autoSuggest();
+		void handleNetworkData();
 
-  private:
-    LocationLineEdit *editor;
-    QScopedPointer<QListWidget> popup;
-    QTimer *timer;
-    QString m_enteredText;
+	private:
+		LocationLineEdit* editor;
+		QScopedPointer<QListWidget> popup;
+		QTimer* timer;
+		QString m_enteredText;
 };
 
 #endif // GOOGLESUGGEST_H

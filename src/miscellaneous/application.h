@@ -53,132 +53,132 @@ class NetworkUrlInterceptor;
 #endif
 
 class Application : public QtSingleApplication {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit Application(const QString &id, int &argc, char **argv);
-    virtual ~Application();
+	public:
+		// Constructors and destructors.
+		explicit Application(const QString& id, int& argc, char** argv);
+		virtual ~Application();
 
-    FeedReader *feedReader();
-    void setFeedReader(FeedReader *feed_reader);
+		FeedReader* feedReader();
+		void setFeedReader(FeedReader* feed_reader);
 
-    // Globally accessible actions.
-    QList<QAction*> userActions();
+		// Globally accessible actions.
+		QList<QAction*> userActions();
 
-    // Check whether this application starts for the first time (ever).
-    bool isFirstRun();
+		// Check whether this application starts for the first time (ever).
+		bool isFirstRun();
 
-    // Check whether GIVEN VERSION of the application starts for the first time.
-    bool isFirstRun(const QString &version);
+		// Check whether GIVEN VERSION of the application starts for the first time.
+		bool isFirstRun(const QString& version);
 
-    SystemFactory *system();
-    SkinFactory *skins();
-    Localization *localization();
-    DatabaseFactory *database();
-    IconFactory *icons();
-    DownloadManager *downloadManager();
-    Settings *settings();
-    Mutex *feedUpdateLock();
-    FormMain *mainForm();
-    QWidget *mainFormWidget();
-    SystemTrayIcon *trayIcon();
-
-#if defined(USE_WEBENGINE)
-    NetworkUrlInterceptor *urlIinterceptor();
-#endif
-
-    QString getTempFolderPath();
-    QString getDocumentsFolderPath();
-    QString getHomeFolderPath();
-    QString getConfigHomePath();
-
-    // These return user ready folders.
-    QString getUserDataAppPath();
-    QString getUserDataHomePath();
-
-    // Returns the base folder to which store user data, the "data" folder.
-    // NOTE: Use this to get correct path under which store user data.
-    QString getUserDataPath();
-
-    void setMainForm(FormMain *main_form);
-
-    void backupDatabaseSettings(bool backup_database, bool backup_settings,
-                                const QString &target_path, const QString &backup_name);
-    void restoreDatabaseSettings(bool restore_database, bool restore_settings,
-                                 const QString &source_database_file_path = QString(),
-                                 const QString &source_settings_file_path = QString());
-
-    void showTrayIcon();
-    void deleteTrayIcon();
-
-    // Displays given simple message in tray icon bubble or OSD
-    // or in message box if tray icon is disabled.
-    void showGuiMessage(const QString &title, const QString &message, QSystemTrayIcon::MessageIcon message_type,
-                        QWidget *parent = nullptr, bool show_at_least_msgbox = false,
-                        QObject *invokation_target = nullptr, const char *invokation_slot = nullptr);
-
-    // Returns pointer to "GOD" application singleton.
-    inline static Application *instance() {
-      return static_cast<Application*>(QCoreApplication::instance());
-    }
-
-  public slots:
-    // Restarts the application.
-    void restart();
-
-    // Processes incoming message from another RSS Guard instance.
-    void processExecutionMessage(const QString &message);
-
-  private slots:
-    // Last-minute reactors.
-    void onCommitData(QSessionManager &manager);
-    void onSaveState(QSessionManager &manager);
-    void onAboutToQuit();
+		SystemFactory* system();
+		SkinFactory* skins();
+		Localization* localization();
+		DatabaseFactory* database();
+		IconFactory* icons();
+		DownloadManager* downloadManager();
+		Settings* settings();
+		Mutex* feedUpdateLock();
+		FormMain* mainForm();
+		QWidget* mainFormWidget();
+		SystemTrayIcon* trayIcon();
 
 #if defined(USE_WEBENGINE)
-    void downloadRequested(QWebEngineDownloadItem*download_item);
+		NetworkUrlInterceptor* urlIinterceptor();
 #endif
 
-    void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(const Feed *feed, int current, int total);
-    void onFeedUpdatesFinished(FeedDownloadResults results);
+		QString getTempFolderPath();
+		QString getDocumentsFolderPath();
+		QString getHomeFolderPath();
+		QString getConfigHomePath();
 
-  private:
-    void eliminateFirstRun();
-    void eliminateFirstRun(const QString &version);
+		// These return user ready folders.
+		QString getUserDataAppPath();
+		QString getUserDataHomePath();
 
-    FeedReader *m_feedReader;
+		// Returns the base folder to which store user data, the "data" folder.
+		// NOTE: Use this to get correct path under which store user data.
+		QString getUserDataPath();
 
-    // This read-write lock is used by application on its close.
-    // Application locks this lock for WRITING.
-    // This means that if application locks that lock, then
-    // no other transaction-critical action can acquire lock
-    // for reading and won't be executed, so no critical action
-    // will be running when application quits
-    //
-    // EACH critical action locks this lock for READING.
-    // Several actions can lock this lock for reading.
-    // But of user decides to close the application (in other words,
-    // tries to lock the lock for writing), then no other
-    // action will be allowed to lock for reading.
-    QScopedPointer<Mutex> m_updateFeedsLock;
+		void setMainForm(FormMain* main_form);
+
+		void backupDatabaseSettings(bool backup_database, bool backup_settings,
+		                            const QString& target_path, const QString& backup_name);
+		void restoreDatabaseSettings(bool restore_database, bool restore_settings,
+		                             const QString& source_database_file_path = QString(),
+		                             const QString& source_settings_file_path = QString());
+
+		void showTrayIcon();
+		void deleteTrayIcon();
+
+		// Displays given simple message in tray icon bubble or OSD
+		// or in message box if tray icon is disabled.
+		void showGuiMessage(const QString& title, const QString& message, QSystemTrayIcon::MessageIcon message_type,
+		                    QWidget* parent = nullptr, bool show_at_least_msgbox = false,
+		                    QObject* invokation_target = nullptr, const char* invokation_slot = nullptr);
+
+		// Returns pointer to "GOD" application singleton.
+		inline static Application* instance() {
+			return static_cast<Application*>(QCoreApplication::instance());
+		}
+
+	public slots:
+		// Restarts the application.
+		void restart();
+
+		// Processes incoming message from another RSS Guard instance.
+		void processExecutionMessage(const QString& message);
+
+	private slots:
+		// Last-minute reactors.
+		void onCommitData(QSessionManager& manager);
+		void onSaveState(QSessionManager& manager);
+		void onAboutToQuit();
 
 #if defined(USE_WEBENGINE)
-    NetworkUrlInterceptor *m_urlInterceptor;
+		void downloadRequested(QWebEngineDownloadItem* download_item);
 #endif
 
-    QList<QAction*> m_userActions;
-    FormMain *m_mainForm;
-    SystemTrayIcon *m_trayIcon;
-    Settings *m_settings;
-    SystemFactory *m_system;
-    SkinFactory *m_skins;
-    Localization *m_localization;
-    IconFactory *m_icons;
-    DatabaseFactory *m_database;
-    DownloadManager *m_downloadManager;
-    bool m_shouldRestart;
+		void onFeedUpdatesStarted();
+		void onFeedUpdatesProgress(const Feed* feed, int current, int total);
+		void onFeedUpdatesFinished(FeedDownloadResults results);
+
+	private:
+		void eliminateFirstRun();
+		void eliminateFirstRun(const QString& version);
+
+		FeedReader* m_feedReader;
+
+		// This read-write lock is used by application on its close.
+		// Application locks this lock for WRITING.
+		// This means that if application locks that lock, then
+		// no other transaction-critical action can acquire lock
+		// for reading and won't be executed, so no critical action
+		// will be running when application quits
+		//
+		// EACH critical action locks this lock for READING.
+		// Several actions can lock this lock for reading.
+		// But of user decides to close the application (in other words,
+		// tries to lock the lock for writing), then no other
+		// action will be allowed to lock for reading.
+		QScopedPointer<Mutex> m_updateFeedsLock;
+
+#if defined(USE_WEBENGINE)
+		NetworkUrlInterceptor* m_urlInterceptor;
+#endif
+
+		QList<QAction*> m_userActions;
+		FormMain* m_mainForm;
+		SystemTrayIcon* m_trayIcon;
+		Settings* m_settings;
+		SystemFactory* m_system;
+		SkinFactory* m_skins;
+		Localization* m_localization;
+		IconFactory* m_icons;
+		DatabaseFactory* m_database;
+		DownloadManager* m_downloadManager;
+		bool m_shouldRestart;
 };
 
 #endif // APPLICATION_H

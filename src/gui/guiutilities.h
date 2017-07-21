@@ -22,11 +22,11 @@
 class QLabel;
 
 class GuiUtilities {
-  public:
-    static void setLabelAsNotice(QLabel *label, bool is_warning);
+	public:
+		static void setLabelAsNotice(QLabel* label, bool is_warning);
 
-  private:
-    explicit GuiUtilities();
+	private:
+		explicit GuiUtilities();
 };
 
 #endif // GUIUTILITIES_H

@@ -24,52 +24,46 @@
 #include <QFileDialog>
 
 
-SettingsDownloads::SettingsDownloads(Settings *settings, QWidget *parent)
-  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsDownloads) {
-  m_ui->setupUi(this);
-
-  connect(m_ui->m_checkOpenManagerWhenDownloadStarts, &QCheckBox::toggled, this, &SettingsDownloads::dirtifySettings);
-  connect(m_ui->m_txtDownloadsTargetDirectory, &QLineEdit::textChanged, this, &SettingsDownloads::dirtifySettings);
-  connect(m_ui->m_rbDownloadsAskEachFile, &QRadioButton::toggled, this, &SettingsDownloads::dirtifySettings);
-
-  connect(m_ui->m_btnDownloadsTargetDirectory, &QPushButton::clicked, this, &SettingsDownloads::selectDownloadsDirectory);
+SettingsDownloads::SettingsDownloads(Settings* settings, QWidget* parent)
+	: SettingsPanel(settings, parent), m_ui(new Ui::SettingsDownloads) {
+	m_ui->setupUi(this);
+	connect(m_ui->m_checkOpenManagerWhenDownloadStarts, &QCheckBox::toggled, this, &SettingsDownloads::dirtifySettings);
+	connect(m_ui->m_txtDownloadsTargetDirectory, &QLineEdit::textChanged, this, &SettingsDownloads::dirtifySettings);
+	connect(m_ui->m_rbDownloadsAskEachFile, &QRadioButton::toggled, this, &SettingsDownloads::dirtifySettings);
+	connect(m_ui->m_btnDownloadsTargetDirectory, &QPushButton::clicked, this, &SettingsDownloads::selectDownloadsDirectory);
 }
 
 SettingsDownloads::~SettingsDownloads() {
-  delete m_ui;
+	delete m_ui;
 }
 
 void SettingsDownloads::selectDownloadsDirectory() {
-  const QString target_directory = QFileDialog::getExistingDirectory(this,
-                                                                     tr("Select downloads target directory"),
-                                                                     m_ui->m_txtDownloadsTargetDirectory->text()
-                                                                     );
+	const QString target_directory = QFileDialog::getExistingDirectory(this,
+	                                 tr("Select downloads target directory"),
+	                                 m_ui->m_txtDownloadsTargetDirectory->text()
+	                                                                  );
 
-  if (!target_directory.isEmpty()) {
-    m_ui->m_txtDownloadsTargetDirectory->setText(QDir::toNativeSeparators(target_directory));
-  }
+	if (!target_directory.isEmpty()) {
+		m_ui->m_txtDownloadsTargetDirectory->setText(QDir::toNativeSeparators(target_directory));
+	}
 }
 
 void SettingsDownloads::loadSettings() {
-  onBeginLoadSettings();
-
-  m_ui->m_checkOpenManagerWhenDownloadStarts->setChecked(settings()->value(GROUP(Downloads),
-                                                                           SETTING(Downloads::ShowDownloadsWhenNewDownloadStarts)).toBool());
-  m_ui->m_txtDownloadsTargetDirectory->setText(QDir::toNativeSeparators(settings()->value(GROUP(Downloads),
-                                                                                          SETTING(Downloads::TargetDirectory)).toString()));
-  m_ui->m_rbDownloadsAskEachFile->setChecked(settings()->value(GROUP(Downloads),
-                                                               SETTING(Downloads::AlwaysPromptForFilename)).toBool());
-
-  onEndLoadSettings();
+	onBeginLoadSettings();
+	m_ui->m_checkOpenManagerWhenDownloadStarts->setChecked(settings()->value(GROUP(Downloads),
+	                                                       SETTING(Downloads::ShowDownloadsWhenNewDownloadStarts)).toBool());
+	m_ui->m_txtDownloadsTargetDirectory->setText(QDir::toNativeSeparators(settings()->value(GROUP(Downloads),
+	                                             SETTING(Downloads::TargetDirectory)).toString()));
+	m_ui->m_rbDownloadsAskEachFile->setChecked(settings()->value(GROUP(Downloads),
+	                                           SETTING(Downloads::AlwaysPromptForFilename)).toBool());
+	onEndLoadSettings();
 }
 
 void SettingsDownloads::saveSettings() {
-  onBeginSaveSettings();
-
-  settings()->setValue(GROUP(Downloads), Downloads::ShowDownloadsWhenNewDownloadStarts, m_ui->m_checkOpenManagerWhenDownloadStarts->isChecked());
-  settings()->setValue(GROUP(Downloads), Downloads::TargetDirectory, m_ui->m_txtDownloadsTargetDirectory->text());
-  settings()->setValue(GROUP(Downloads), Downloads::AlwaysPromptForFilename, m_ui->m_rbDownloadsAskEachFile->isChecked());
-  qApp->downloadManager()->setDownloadDirectory(m_ui->m_txtDownloadsTargetDirectory->text());
-
-  onEndSaveSettings();
+	onBeginSaveSettings();
+	settings()->setValue(GROUP(Downloads), Downloads::ShowDownloadsWhenNewDownloadStarts, m_ui->m_checkOpenManagerWhenDownloadStarts->isChecked());
+	settings()->setValue(GROUP(Downloads), Downloads::TargetDirectory, m_ui->m_txtDownloadsTargetDirectory->text());
+	settings()->setValue(GROUP(Downloads), Downloads::AlwaysPromptForFilename, m_ui->m_rbDownloadsAskEachFile->isChecked());
+	qApp->downloadManager()->setDownloadDirectory(m_ui->m_txtDownloadsTargetDirectory->text());
+	onEndSaveSettings();
 }

@@ -26,35 +26,35 @@
 
 
 class FormDatabaseCleanup : public QDialog {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors.
-    explicit FormDatabaseCleanup(QWidget *parent = 0);
-    virtual ~FormDatabaseCleanup();
+	public:
+		// Constructors.
+		explicit FormDatabaseCleanup(QWidget* parent = 0);
+		virtual ~FormDatabaseCleanup();
 
-    void setCleaner(DatabaseCleaner *cleaner);
+		void setCleaner(DatabaseCleaner* cleaner);
 
-  protected:
-    void closeEvent(QCloseEvent *event);
-    void keyPressEvent(QKeyEvent *event);
+	protected:
+		void closeEvent(QCloseEvent* event);
+		void keyPressEvent(QKeyEvent* event);
 
-  private slots:
-    void updateDaysSuffix(int number);
-    void startPurging();
-    void onPurgeStarted();
-    void onPurgeProgress(int progress, const QString &description);
-    void onPurgeFinished(bool finished);
+	private slots:
+		void updateDaysSuffix(int number);
+		void startPurging();
+		void onPurgeStarted();
+		void onPurgeProgress(int progress, const QString& description);
+		void onPurgeFinished(bool finished);
 
-  signals:
-    void purgeRequested(const CleanerOrders &which_data);
+	signals:
+		void purgeRequested(const CleanerOrders& which_data);
 
-  private:
-    void loadDatabaseInfo();
+	private:
+		void loadDatabaseInfo();
 
-  private:
-    QScopedPointer<Ui::FormDatabaseCleanup> m_ui;
-    DatabaseCleaner *m_cleaner;
+	private:
+		QScopedPointer<Ui::FormDatabaseCleanup> m_ui;
+		DatabaseCleaner* m_cleaner;
 };
 
 #endif // FORMDATABASECLEANUP_H

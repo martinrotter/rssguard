@@ -35,123 +35,123 @@ class StandardServiceRoot;
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
 class StandardFeed : public Feed {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Describes possible types of feeds.
-    // NOTE: This is equivalent to attribute Feeds(type).
-    enum Type {
-      Rss0X   = 0,
-      Rss2X   = 1,
-      Rdf     = 2,  // Sometimes denoted as RSS 1.0.
-      Atom10  = 3
-    };
+	public:
+		// Describes possible types of feeds.
+		// NOTE: This is equivalent to attribute Feeds(type).
+		enum Type {
+			Rss0X   = 0,
+			Rss2X   = 1,
+			Rdf     = 2,  // Sometimes denoted as RSS 1.0.
+			Atom10  = 3
+		};
 
-    // Constructors and destructors.
-    explicit StandardFeed(RootItem *parent_item = nullptr);
-    explicit StandardFeed(const StandardFeed &other);
-    explicit StandardFeed(const QSqlRecord &record);
-    virtual ~StandardFeed();
+		// Constructors and destructors.
+		explicit StandardFeed(RootItem* parent_item = nullptr);
+		explicit StandardFeed(const StandardFeed& other);
+		explicit StandardFeed(const QSqlRecord& record);
+		virtual ~StandardFeed();
 
-    StandardServiceRoot *serviceRoot() const;
-    QList<QAction*> contextMenu();
+		StandardServiceRoot* serviceRoot() const;
+		QList<QAction*> contextMenu();
 
-    bool canBeEdited() const {
-      return true;
-    }
+		bool canBeEdited() const {
+			return true;
+		}
 
-    bool canBeDeleted() const {
-      return true;
-    }
+		bool canBeDeleted() const {
+			return true;
+		}
 
-    bool editViaGui();
-    bool deleteViaGui();
+		bool editViaGui();
+		bool deleteViaGui();
 
-    bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clean_read_only);
+		bool markAsReadUnread(ReadStatus status);
+		bool cleanMessages(bool clean_read_only);
 
-    QVariant data(int column, int role) const;
+		QVariant data(int column, int role) const;
 
-    // Obtains data related to this feed.
-    Qt::ItemFlags additionalFlags() const;
-    bool performDragDropChange(RootItem *target_item);
+		// Obtains data related to this feed.
+		Qt::ItemFlags additionalFlags() const;
+		bool performDragDropChange(RootItem* target_item);
 
-    // Removes this standard feed from persistent
-    // storage.
-    bool removeItself();
-    bool addItself(RootItem *parent);
-    bool editItself(StandardFeed *new_feed_data);
+		// Removes this standard feed from persistent
+		// storage.
+		bool removeItself();
+		bool addItself(RootItem* parent);
+		bool editItself(StandardFeed* new_feed_data);
 
-    // Other getters/setters.
-    inline Type type() const {
-      return m_type;
-    }
+		// Other getters/setters.
+		inline Type type() const {
+			return m_type;
+		}
 
-    inline void setType(Type type) {
-      m_type = type;
-    }
+		inline void setType(Type type) {
+			m_type = type;
+		}
 
-    inline bool passwordProtected() const {
-      return m_passwordProtected;
-    }
+		inline bool passwordProtected() const {
+			return m_passwordProtected;
+		}
 
-    inline void setPasswordProtected(bool passwordProtected) {
-      m_passwordProtected = passwordProtected;
-    }
+		inline void setPasswordProtected(bool passwordProtected) {
+			m_passwordProtected = passwordProtected;
+		}
 
-    inline QString username() const {
-      return m_username;
-    }
+		inline QString username() const {
+			return m_username;
+		}
 
-    inline void setUsername(const QString &username) {
-      m_username = username;
-    }
+		inline void setUsername(const QString& username) {
+			m_username = username;
+		}
 
-    inline QString password() const {
-      return m_password;
-    }
+		inline QString password() const {
+			return m_password;
+		}
 
-    inline void setPassword(const QString &password) {
-      m_password = password;
-    }
+		inline void setPassword(const QString& password) {
+			m_password = password;
+		}
 
-    inline QString encoding() const {
-      return m_encoding;
-    }
+		inline QString encoding() const {
+			return m_encoding;
+		}
 
-    inline void setEncoding(const QString &encoding) {
-      m_encoding = encoding;
-    }
+		inline void setEncoding(const QString& encoding) {
+			m_encoding = encoding;
+		}
 
-    QNetworkReply::NetworkError networkError() const;
+		QNetworkReply::NetworkError networkError() const;
 
-    // Tries to guess feed hidden under given URL
-    // and uses given credentials.
-    // Returns pointer to guessed feed (if at least partially
-    // guessed) and retrieved error/status code from network layer
-    // or NULL feed.
-    static QPair<StandardFeed*,QNetworkReply::NetworkError> guessFeed(const QString &url,
-                                                                      const QString &username = QString(),
-                                                                      const QString &password = QString());
+		// Tries to guess feed hidden under given URL
+		// and uses given credentials.
+		// Returns pointer to guessed feed (if at least partially
+		// guessed) and retrieved error/status code from network layer
+		// or NULL feed.
+		static QPair<StandardFeed*, QNetworkReply::NetworkError> guessFeed(const QString& url,
+		        const QString& username = QString(),
+		        const QString& password = QString());
 
-    // Converts particular feed type to string.
-    static QString typeToString(Type type);
+		// Converts particular feed type to string.
+		static QString typeToString(Type type);
 
-  public slots:
-    // Fetches metadata for the feed.
-    void fetchMetadataForItself();
+	public slots:
+		// Fetches metadata for the feed.
+		void fetchMetadataForItself();
 
-  private:
-    QList<Message> obtainNewMessages(bool *error_during_obtaining);
+	private:
+		QList<Message> obtainNewMessages(bool* error_during_obtaining);
 
-  private:
-    bool m_passwordProtected;
-    QString m_username;
-    QString m_password;
+	private:
+		bool m_passwordProtected;
+		QString m_username;
+		QString m_password;
 
-    Type m_type;
-    QNetworkReply::NetworkError m_networkError;
-    QString m_encoding;
+		Type m_type;
+		QNetworkReply::NetworkError m_networkError;
+		QString m_encoding;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::Type)

@@ -26,460 +26,463 @@
 #include <QVariant>
 
 
-RootItem::RootItem(RootItem *parent_item)
-  : QObject(nullptr),
-    m_kind(RootItemKind::Root),
-    m_id(NO_PARENT_CATEGORY),
-    m_customId(NO_PARENT_CATEGORY),
-    m_title(QString()),
-    m_description(QString()),
-    m_icon(QIcon()),
-    m_creationDate(QDateTime()),
-    m_childItems(QList<RootItem*>()),
-    m_parentItem(parent_item) {
-  setupFonts();
+RootItem::RootItem(RootItem* parent_item)
+	: QObject(nullptr),
+	  m_kind(RootItemKind::Root),
+	  m_id(NO_PARENT_CATEGORY),
+	  m_customId(NO_PARENT_CATEGORY),
+	  m_title(QString()),
+	  m_description(QString()),
+	  m_icon(QIcon()),
+	  m_creationDate(QDateTime()),
+	  m_childItems(QList<RootItem*>()),
+	  m_parentItem(parent_item) {
+	setupFonts();
 }
 
 RootItem::~RootItem() {
-  qDeleteAll(m_childItems);
+	qDeleteAll(m_childItems);
 }
 
 QString RootItem::hashCode() const {
-  ServiceRoot *root = getParentServiceRoot();
-  int acc_id = root == nullptr ? 0 : root->accountId();
-
-  return
-      QString::number(acc_id) + QL1S("-") +
-      QString::number(kind()) + QL1S("-") +
-      QString::number(id());
+	ServiceRoot* root = getParentServiceRoot();
+	int acc_id = root == nullptr ? 0 : root->accountId();
+	return
+	    QString::number(acc_id) + QL1S("-") +
+	    QString::number(kind()) + QL1S("-") +
+	    QString::number(id());
 }
 
 QList<QAction*> RootItem::contextMenu() {
-  return QList<QAction*>();
+	return QList<QAction*>();
 }
 
 bool RootItem::canBeEdited() const {
-  return false;
+	return false;
 }
 
 bool RootItem::editViaGui() {
-  return false;
+	return false;
 }
 
 bool RootItem::canBeDeleted() const {
-  return false;
+	return false;
 }
 
 bool RootItem::deleteViaGui() {
-  return false;
+	return false;
 }
 
 bool RootItem::markAsReadUnread(ReadStatus status) {
-  bool result = true;
+	bool result = true;
 
-  foreach (RootItem *child, m_childItems) {
-    result &= child->markAsReadUnread(status);
-  }
+	foreach (RootItem* child, m_childItems) {
+		result &= child->markAsReadUnread(status);
+	}
 
-  return result;
+	return result;
 }
 
 QList<Message> RootItem::undeletedMessages() const {
-  QList<Message> messages;
+	QList<Message> messages;
 
-  foreach (RootItem *child, m_childItems) {
-    messages.append(child->undeletedMessages());
-  }
+	foreach (RootItem* child, m_childItems) {
+		messages.append(child->undeletedMessages());
+	}
 
-  return messages;
+	return messages;
 }
 
 bool RootItem::cleanMessages(bool clear_only_read) {
-  bool result = true;
+	bool result = true;
 
-  foreach (RootItem *child, m_childItems) {
-    if (child->kind() != RootItemKind::Bin) {
-      result &= child->cleanMessages(clear_only_read);
-    }
-  }
+	foreach (RootItem* child, m_childItems) {
+		if (child->kind() != RootItemKind::Bin) {
+			result &= child->cleanMessages(clear_only_read);
+		}
+	}
 
-  return result;
+	return result;
 }
 
 void RootItem::updateCounts(bool including_total_count) {
-  foreach (RootItem *child, m_childItems) {
-    child->updateCounts(including_total_count);
-  }
+	foreach (RootItem* child, m_childItems) {
+		child->updateCounts(including_total_count);
+	}
 }
 
 void RootItem::setupFonts() {
-  m_normalFont = Application::font("FeedsView");
-  m_boldFont = m_normalFont;
-  m_boldFont.setBold(true);
+	m_normalFont = Application::font("FeedsView");
+	m_boldFont = m_normalFont;
+	m_boldFont.setBold(true);
 }
 
 int RootItem::row() const {
-  if (m_parentItem) {
-    return m_parentItem->m_childItems.indexOf(const_cast<RootItem*>(this));
-  }
-  else {
-    // This item has no parent. Therefore, its row index is 0.
-    return 0;
-  }
+	if (m_parentItem) {
+		return m_parentItem->m_childItems.indexOf(const_cast<RootItem*>(this));
+	}
+
+	else {
+		// This item has no parent. Therefore, its row index is 0.
+		return 0;
+	}
 }
 
 QVariant RootItem::data(int column, int role) const {
-  Q_UNUSED(column)
-  Q_UNUSED(role)
+	Q_UNUSED(column)
+	Q_UNUSED(role)
 
-  switch (role) {
-    case Qt::ToolTipRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        //: Tooltip for "unread" column of feed list.
-        return tr("%n unread message(s).", 0, countOfUnreadMessages());
-      }
-      else {
-        return QVariant();
-      }
+	switch (role) {
+		case Qt::ToolTipRole:
+			if (column == FDS_MODEL_TITLE_INDEX) {
+				return m_title;
+			}
 
-    case Qt::EditRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return countOfUnreadMessages();
-      }
-      else {
-        return QVariant();
-      }
+			else if (column == FDS_MODEL_COUNTS_INDEX) {
+				//: Tooltip for "unread" column of feed list.
+				return tr("%n unread message(s).", 0, countOfUnreadMessages());
+			}
 
-    case Qt::FontRole:
-      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
+			else {
+				return QVariant();
+			}
 
-    case Qt::DisplayRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        int count_all = countOfAllMessages();
-        int count_unread = countOfUnreadMessages();
+		case Qt::EditRole:
+			if (column == FDS_MODEL_TITLE_INDEX) {
+				return m_title;
+			}
 
-        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-            .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL("-") : QString::number(count_unread))
-            .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL("-") : QString::number(count_all));
-      }
-      else {
-        return QVariant();
-      }
+			else if (column == FDS_MODEL_COUNTS_INDEX) {
+				return countOfUnreadMessages();
+			}
 
-    case Qt::DecorationRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return icon();
-      }
-      else {
-        return QVariant();
-      }
+			else {
+				return QVariant();
+			}
 
-    case Qt::TextAlignmentRole:
-      if (column == FDS_MODEL_COUNTS_INDEX) {
-        return Qt::AlignCenter;
-      }
-      else {
-        return QVariant();
-      }
+		case Qt::FontRole:
+			return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
-    default:
-      return QVariant();
-  }
+		case Qt::DisplayRole:
+			if (column == FDS_MODEL_TITLE_INDEX) {
+				return m_title;
+			}
+
+			else if (column == FDS_MODEL_COUNTS_INDEX) {
+				int count_all = countOfAllMessages();
+				int count_unread = countOfUnreadMessages();
+				return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
+				       .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL("-") : QString::number(count_unread))
+				       .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL("-") : QString::number(count_all));
+			}
+
+			else {
+				return QVariant();
+			}
+
+		case Qt::DecorationRole:
+			if (column == FDS_MODEL_TITLE_INDEX) {
+				return icon();
+			}
+
+			else {
+				return QVariant();
+			}
+
+		case Qt::TextAlignmentRole:
+			if (column == FDS_MODEL_COUNTS_INDEX) {
+				return Qt::AlignCenter;
+			}
+
+			else {
+				return QVariant();
+			}
+
+		default:
+			return QVariant();
+	}
 }
 
 Qt::ItemFlags RootItem::additionalFlags() const {
-  return Qt::NoItemFlags;
+	return Qt::NoItemFlags;
 }
 
-bool RootItem::performDragDropChange(RootItem *target_item) {
-  Q_UNUSED(target_item)
-
-  return false;
+bool RootItem::performDragDropChange(RootItem* target_item) {
+	Q_UNUSED(target_item)
+	return false;
 }
 
 int RootItem::countOfAllMessages() const {
-  int total_count = 0;
+	int total_count = 0;
 
-  foreach (RootItem *child_item, m_childItems) {
-    total_count += child_item->countOfAllMessages();
-  }
+	foreach (RootItem* child_item, m_childItems) {
+		total_count += child_item->countOfAllMessages();
+	}
 
-  return total_count;
+	return total_count;
 }
 
-bool RootItem::isChildOf(const RootItem *root) const {
-  if (root == nullptr) {
-    return false;
-  }
+bool RootItem::isChildOf(const RootItem* root) const {
+	if (root == nullptr) {
+		return false;
+	}
 
-  const RootItem *this_item = this;
+	const RootItem* this_item = this;
 
-  while (this_item->kind() != RootItemKind::Root) {
-    if (root->childItems().contains(const_cast<RootItem* const>(this_item))) {
-      return true;
-    }
-    else {
-      this_item = this_item->parent();
-    }
-  }
+	while (this_item->kind() != RootItemKind::Root) {
+		if (root->childItems().contains(const_cast<RootItem* const>(this_item))) {
+			return true;
+		}
 
-  return false;
+		else {
+			this_item = this_item->parent();
+		}
+	}
+
+	return false;
 }
 
-bool RootItem::isParentOf(const RootItem *child) const {
-  if (child == nullptr) {
-    return false;
-  }
-  else {
-    return child->isChildOf(this);
-  }
+bool RootItem::isParentOf(const RootItem* child) const {
+	if (child == nullptr) {
+		return false;
+	}
+
+	else {
+		return child->isChildOf(this);
+	}
 }
 
 QList<RootItem*> RootItem::getSubTree() const {
-  QList<RootItem*> children;
-  QList<RootItem*> traversable_items;
+	QList<RootItem*> children;
+	QList<RootItem*> traversable_items;
+	traversable_items.append(const_cast<RootItem* const>(this));
 
-  traversable_items.append(const_cast<RootItem* const>(this));
+	// Iterate all nested items.
+	while (!traversable_items.isEmpty()) {
+		RootItem* active_item = traversable_items.takeFirst();
+		children.append(active_item);
+		traversable_items.append(active_item->childItems());
+	}
 
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem *active_item = traversable_items.takeFirst();
-
-    children.append(active_item);
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
+	return children;
 }
 
 QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) const {
-  QList<RootItem*> children;
-  QList<RootItem*> traversable_items;
+	QList<RootItem*> children;
+	QList<RootItem*> traversable_items;
+	traversable_items.append(const_cast<RootItem* const>(this));
 
-  traversable_items.append(const_cast<RootItem* const>(this));
+	// Iterate all nested items.
+	while (!traversable_items.isEmpty()) {
+		RootItem* active_item = traversable_items.takeFirst();
 
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem *active_item = traversable_items.takeFirst();
+		if ((active_item->kind() & kind_of_item) > 0) {
+			children.append(active_item);
+		}
 
-    if ((active_item->kind() & kind_of_item) > 0) {
-      children.append(active_item);
-    }
+		traversable_items.append(active_item->childItems());
+	}
 
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
+	return children;
 }
 
 QList<Category*> RootItem::getSubTreeCategories() const {
-  QList<Category*> children;
-  QList<RootItem*> traversable_items;
+	QList<Category*> children;
+	QList<RootItem*> traversable_items;
+	traversable_items.append(const_cast<RootItem* const>(this));
 
-  traversable_items.append(const_cast<RootItem* const>(this));
+	// Iterate all nested items.
+	while (!traversable_items.isEmpty()) {
+		RootItem* active_item = traversable_items.takeFirst();
 
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem *active_item = traversable_items.takeFirst();
+		if (active_item->kind() == RootItemKind::Category) {
+			children.append(active_item->toCategory());
+		}
 
-    if (active_item->kind() == RootItemKind::Category) {
-      children.append(active_item->toCategory());
-    }
+		traversable_items.append(active_item->childItems());
+	}
 
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
+	return children;
 }
 
-QHash<int,Category*> RootItem::getHashedSubTreeCategories() const {
-  QHash<int,Category*> children;
-  QList<RootItem*> traversable_items;
+QHash<int, Category*> RootItem::getHashedSubTreeCategories() const {
+	QHash<int, Category*> children;
+	QList<RootItem*> traversable_items;
+	traversable_items.append(const_cast<RootItem* const>(this));
 
-  traversable_items.append(const_cast<RootItem* const>(this));
+	// Iterate all nested items.
+	while (!traversable_items.isEmpty()) {
+		RootItem* active_item = traversable_items.takeFirst();
 
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem *active_item = traversable_items.takeFirst();
+		if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->customId())) {
+			children.insert(active_item->customId(), active_item->toCategory());
+		}
 
-    if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->customId())) {
-      children.insert(active_item->customId(), active_item->toCategory());
-    }
+		traversable_items.append(active_item->childItems());
+	}
 
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
+	return children;
 }
 
-QHash<int,Feed*> RootItem::getHashedSubTreeFeeds() const {
-  QHash<int,Feed*> children;
-  QList<RootItem*> traversable_items;
+QHash<int, Feed*> RootItem::getHashedSubTreeFeeds() const {
+	QHash<int, Feed*> children;
+	QList<RootItem*> traversable_items;
+	traversable_items.append(const_cast<RootItem* const>(this));
 
-  traversable_items.append(const_cast<RootItem* const>(this));
+	// Iterate all nested items.
+	while (!traversable_items.isEmpty()) {
+		RootItem* active_item = traversable_items.takeFirst();
 
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem *active_item = traversable_items.takeFirst();
+		if (active_item->kind() == RootItemKind::Feed && !children.contains(active_item->customId())) {
+			children.insert(active_item->customId(), active_item->toFeed());
+		}
 
-    if (active_item->kind() == RootItemKind::Feed && !children.contains(active_item->customId())) {
-      children.insert(active_item->customId(), active_item->toFeed());
-    }
+		traversable_items.append(active_item->childItems());
+	}
 
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
+	return children;
 }
 
 QList<Feed*> RootItem::getSubTreeFeeds() const {
-  QList<Feed*> children;
-  QList<RootItem*> traversable_items;
+	QList<Feed*> children;
+	QList<RootItem*> traversable_items;
+	traversable_items.append(const_cast<RootItem* const>(this));
 
-  traversable_items.append(const_cast<RootItem* const>(this));
+	// Iterate all nested items.
+	while (!traversable_items.isEmpty()) {
+		RootItem* active_item = traversable_items.takeFirst();
 
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem *active_item = traversable_items.takeFirst();
+		if (active_item->kind() == RootItemKind::Feed) {
+			children.append(active_item->toFeed());
+		}
 
-    if (active_item->kind() == RootItemKind::Feed) {
-      children.append(active_item->toFeed());
-    }
+		traversable_items.append(active_item->childItems());
+	}
 
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
+	return children;
 }
 
-ServiceRoot *RootItem::getParentServiceRoot() const {
-  const RootItem *working_parent = this;
+ServiceRoot* RootItem::getParentServiceRoot() const {
+	const RootItem* working_parent = this;
 
-  while (working_parent->kind() != RootItemKind::Root) {
-    if (working_parent->kind() == RootItemKind::ServiceRoot) {
-      return working_parent->toServiceRoot();
-    }
-    else {
-      working_parent = working_parent->parent();
-    }
-  }
+	while (working_parent->kind() != RootItemKind::Root) {
+		if (working_parent->kind() == RootItemKind::ServiceRoot) {
+			return working_parent->toServiceRoot();
+		}
 
-  return nullptr;
+		else {
+			working_parent = working_parent->parent();
+		}
+	}
+
+	return nullptr;
 }
 
 RootItemKind::Kind RootItem::kind() const {
-  return m_kind;
+	return m_kind;
 }
 
 void RootItem::setKind(RootItemKind::Kind kind) {
-  m_kind = kind;
+	m_kind = kind;
 }
 
 QIcon RootItem::icon() const {
-  return m_icon;
+	return m_icon;
 }
 
-void RootItem::setIcon(const QIcon &icon) {
-  m_icon = icon;
+void RootItem::setIcon(const QIcon& icon) {
+	m_icon = icon;
 }
 
 int RootItem::id() const {
-  return m_id;
+	return m_id;
 }
 
 void RootItem::setId(int id) {
-  m_id = id;
+	m_id = id;
 }
 
 QString RootItem::title() const {
-  return m_title;
+	return m_title;
 }
 
-void RootItem::setTitle(const QString &title) {
-  m_title = title;
+void RootItem::setTitle(const QString& title) {
+	m_title = title;
 }
 
 QDateTime RootItem::creationDate() const {
-  return m_creationDate;
+	return m_creationDate;
 }
 
-void RootItem::setCreationDate(const QDateTime &creation_date) {
-  m_creationDate = creation_date;
+void RootItem::setCreationDate(const QDateTime& creation_date) {
+	m_creationDate = creation_date;
 }
 
 QString RootItem::description() const {
-  return m_description;
+	return m_description;
 }
 
-void RootItem::setDescription(const QString &description) {
-  m_description = description;
+void RootItem::setDescription(const QString& description) {
+	m_description = description;
 }
 
 QFont RootItem::normalFont() const {
-  return m_normalFont;
+	return m_normalFont;
 }
 
-void RootItem::setNormalFont(const QFont &normal_font) {
-  m_normalFont = normal_font;
+void RootItem::setNormalFont(const QFont& normal_font) {
+	m_normalFont = normal_font;
 }
 
 QFont RootItem::boldFont() const {
-  return m_boldFont;
+	return m_boldFont;
 }
 
-void RootItem::setBoldFont(const QFont &bold_font) {
-  m_boldFont = bold_font;
+void RootItem::setBoldFont(const QFont& bold_font) {
+	m_boldFont = bold_font;
 }
 
-bool RootItem::removeChild(RootItem *child) {
-  return m_childItems.removeOne(child);
+bool RootItem::removeChild(RootItem* child) {
+	return m_childItems.removeOne(child);
 }
 
 int RootItem::customId() const {
-  return m_customId;
+	return m_customId;
 }
 
 void RootItem::setCustomId(int custom_id) {
-  m_customId = custom_id;
+	m_customId = custom_id;
 }
 
-Category *RootItem::toCategory() const {
-  return static_cast<Category*>(const_cast<RootItem*>(this));
+Category* RootItem::toCategory() const {
+	return static_cast<Category*>(const_cast<RootItem*>(this));
 }
 
-Feed *RootItem::toFeed() const {
-  return static_cast<Feed*>(const_cast<RootItem*>(this));
+Feed* RootItem::toFeed() const {
+	return static_cast<Feed*>(const_cast<RootItem*>(this));
 }
 
-ServiceRoot *RootItem::toServiceRoot() const {
-  return static_cast<ServiceRoot*>(const_cast<RootItem*>(this));
+ServiceRoot* RootItem::toServiceRoot() const {
+	return static_cast<ServiceRoot*>(const_cast<RootItem*>(this));
 }
 
 int RootItem::countOfUnreadMessages() const {
-  int total_count = 0;
+	int total_count = 0;
 
-  foreach (RootItem *child_item, m_childItems) {
-    total_count += child_item->countOfUnreadMessages();
-  }
+	foreach (RootItem* child_item, m_childItems) {
+		total_count += child_item->countOfUnreadMessages();
+	}
 
-  return total_count;
+	return total_count;
 }
 
 bool RootItem::removeChild(int index) {
-  if (index >= 0 && index < m_childItems.size()) {
-    m_childItems.removeAt(index);
-    return true;
-  }
-  else {
-    return false;
-  }
+	if (index >= 0 && index < m_childItems.size()) {
+		m_childItems.removeAt(index);
+		return true;
+	}
+
+	else {
+		return false;
+	}
 }

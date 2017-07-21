@@ -30,42 +30,42 @@ class AdBlockManager;
 class AdBlockRule;
 
 class AdBlockDialog : public QWidget {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit AdBlockDialog(QWidget* parent = 0);
+	public:
+		explicit AdBlockDialog(QWidget* parent = 0);
 
-    void showRule(const AdBlockRule* rule) const;
+		void showRule(const AdBlockRule* rule) const;
 
-  private slots:
-    void addRule();
-    void removeRule();
+	private slots:
+		void addRule();
+		void removeRule();
 
-    void addSubscription();
-    void removeSubscription();
+		void addSubscription();
+		void removeSubscription();
 
-    void currentChanged(int index);
-    void enableAdBlock(bool state);
+		void currentChanged(int index);
+		void enableAdBlock(bool state);
 
-    void aboutToShowMenu();
-    void learnAboutRules();
+		void aboutToShowMenu();
+		void learnAboutRules();
 
-    void loadSubscriptions();
-    void load();
+		void loadSubscriptions();
+		void load();
 
-  private:
-    AdBlockManager *m_manager;
-    AdBlockTreeWidget *m_currentTreeWidget;
-    AdBlockSubscription *m_currentSubscription;
+	private:
+		AdBlockManager* m_manager;
+		AdBlockTreeWidget* m_currentTreeWidget;
+		AdBlockSubscription* m_currentSubscription;
 
-    QAction *m_actionAddRule;
-    QAction *m_actionRemoveRule;
-    QAction *m_actionAddSubscription;
-    QAction *m_actionRemoveSubscription;
+		QAction* m_actionAddRule;
+		QAction* m_actionRemoveRule;
+		QAction* m_actionAddSubscription;
+		QAction* m_actionRemoveSubscription;
 
-    bool m_loaded;
+		bool m_loaded;
 
-    Ui::AdBlockDialog *m_ui;
+		Ui::AdBlockDialog* m_ui;
 };
 
 #endif // ADBLOCKDIALOG_H

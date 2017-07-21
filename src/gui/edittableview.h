@@ -22,17 +22,17 @@
 
 
 class EditTableView : public QTableView {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit EditTableView(QWidget *parent = 0);
+	public:
+		explicit EditTableView(QWidget* parent = 0);
 
-  public slots:
-    void removeSelected();
-    void removeAll();
+	public slots:
+		void removeSelected();
+		void removeAll();
 
-  private:
-    void keyPressEvent(QKeyEvent *event);
+	private:
+		void keyPressEvent(QKeyEvent* event);
 };
 
 #endif // EDITTABLEVIEW_H

@@ -27,78 +27,78 @@
 
 
 class UpdateUrl {
-  public:
-    QString m_fileUrl;
-    QString m_name;
-    QString m_size;
+	public:
+		QString m_fileUrl;
+		QString m_name;
+		QString m_size;
 };
 
 class UpdateInfo {
-  public:
-    explicit UpdateInfo() : m_availableVersion(QString()), m_changes(QString()), m_urls(QList<UpdateUrl>()) {
-    }
+	public:
+		explicit UpdateInfo() : m_availableVersion(QString()), m_changes(QString()), m_urls(QList<UpdateUrl>()) {
+		}
 
-    QString m_availableVersion;
-    QString m_changes;
-    QList<UpdateUrl> m_urls;
-    QDateTime m_date;
+		QString m_availableVersion;
+		QString m_changes;
+		QList<UpdateUrl> m_urls;
+		QDateTime m_date;
 };
 
 Q_DECLARE_METATYPE(UpdateInfo)
 
 class SystemFactory : public QObject {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Specifies possible states of auto-start functionality.
-    enum AutoStartStatus {
-      Enabled,
-      Disabled,
-      Unavailable
-    };
+	public:
+		// Specifies possible states of auto-start functionality.
+		enum AutoStartStatus {
+			Enabled,
+			Disabled,
+			Unavailable
+		};
 
-    // Constructors and destructors.
-    explicit SystemFactory(QObject *parent = 0);
+		// Constructors and destructors.
+		explicit SystemFactory(QObject* parent = 0);
 
-    // Constructors and destructors.
-    virtual ~SystemFactory();
+		// Constructors and destructors.
+		virtual ~SystemFactory();
 
-    // Returns current status of auto-start function.
-    SystemFactory::AutoStartStatus getAutoStartStatus() const;
+		// Returns current status of auto-start function.
+		SystemFactory::AutoStartStatus getAutoStartStatus() const;
 
-    // Sets new status for auto-start function.
-    // Function returns false if setting of
-    // new status failed.
-    bool setAutoStartStatus(const SystemFactory::AutoStartStatus &new_status);
+		// Sets new status for auto-start function.
+		// Function returns false if setting of
+		// new status failed.
+		bool setAutoStartStatus(const SystemFactory::AutoStartStatus& new_status);
 
 #if defined(Q_OS_WIN)
-    bool removeTrolltechJunkRegistryKeys();
+		bool removeTrolltechJunkRegistryKeys();
 #endif
 
 #if defined(Q_OS_LINUX)
-    // Returns standard location where auto-start .desktop files
-    // should be placed.
-    QString getAutostartDesktopFileLocation() const;
+		// Returns standard location where auto-start .desktop files
+		// should be placed.
+		QString getAutostartDesktopFileLocation() const;
 #endif
 
-    // Retrieves username of currently logged-in user.
-    QString getUsername() const;
+		// Retrieves username of currently logged-in user.
+		QString getUsername() const;
 
-    // Tries to download list with new updates.
-    QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> checkForUpdates() const;
+		// Tries to download list with new updates.
+		QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> checkForUpdates() const;
 
-    // Checks if update is newer than current application version.
-    static bool isVersionNewer(const QString &new_version, const QString &base_version);
-    static bool isVersionEqualOrNewer(const QString &new_version, const QString &base_version);
+		// Checks if update is newer than current application version.
+		static bool isVersionNewer(const QString& new_version, const QString& base_version);
+		static bool isVersionEqualOrNewer(const QString& new_version, const QString& base_version);
 
-    static bool openFolderFile(const QString &file_path);
+		static bool openFolderFile(const QString& file_path);
 
-  public slots:
-    void checkForUpdatesOnStartup();
+	public slots:
+		void checkForUpdatesOnStartup();
 
-  private:
-    // Performs parsing of downloaded file with list of updates.
-    QList<UpdateInfo> parseUpdatesFile(const QByteArray &updates_file) const;
+	private:
+		// Performs parsing of downloaded file with list of updates.
+		QList<UpdateInfo> parseUpdatesFile(const QByteArray& updates_file) const;
 };
 
 #endif // SYSTEMFACTORY_H

@@ -31,42 +31,42 @@ class StandardServiceRoot;
 // NOTE: This class should be derived to create PARTICULAR category types.
 // NOTE: This class should not be instantiated directly.
 class StandardCategory : public Category {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors
-    explicit StandardCategory(RootItem *parent_item = nullptr);
-    explicit StandardCategory(const StandardCategory &other);
-    explicit StandardCategory(const QSqlRecord &record);
-    virtual ~StandardCategory();
+	public:
+		// Constructors and destructors
+		explicit StandardCategory(RootItem* parent_item = nullptr);
+		explicit StandardCategory(const StandardCategory& other);
+		explicit StandardCategory(const QSqlRecord& record);
+		virtual ~StandardCategory();
 
-    StandardServiceRoot *serviceRoot() const;
+		StandardServiceRoot* serviceRoot() const;
 
-    // Returns the actual data representation of standard category.
-    QVariant data(int column, int role) const;
-    Qt::ItemFlags additionalFlags() const;
-    bool performDragDropChange(RootItem *target_item);
+		// Returns the actual data representation of standard category.
+		QVariant data(int column, int role) const;
+		Qt::ItemFlags additionalFlags() const;
+		bool performDragDropChange(RootItem* target_item);
 
-    bool canBeEdited() const {
-      return true;
-    }
+		bool canBeEdited() const {
+			return true;
+		}
 
-    bool canBeDeleted() const {
-      return true;
-    }
+		bool canBeDeleted() const {
+			return true;
+		}
 
-    bool editViaGui();
-    bool deleteViaGui();
+		bool editViaGui();
+		bool deleteViaGui();
 
-    bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clean_read_only);
+		bool markAsReadUnread(ReadStatus status);
+		bool cleanMessages(bool clean_read_only);
 
-    // Removes category and all its children from persistent
-    // database.
-    bool removeItself();
+		// Removes category and all its children from persistent
+		// database.
+		bool removeItself();
 
-    bool addItself(RootItem *parent);
-    bool editItself(StandardCategory *new_category_data);
+		bool addItself(RootItem* parent);
+		bool editItself(StandardCategory* new_category_data);
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

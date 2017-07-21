@@ -18,7 +18,7 @@
 #include "miscellaneous/serviceoperator.h"
 
 
-ServiceOperator::ServiceOperator(QObject *parent) : QObject(parent) {
+ServiceOperator::ServiceOperator(QObject* parent) : QObject(parent) {
 }
 
 ServiceOperator::~ServiceOperator() {

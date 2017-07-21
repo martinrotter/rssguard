@@ -22,16 +22,16 @@
 
 
 class FormStandardFeedDetails : public FormFeedDetails {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit FormStandardFeedDetails(ServiceRoot *service_root, QWidget *parent = 0);
+	public:
+		explicit FormStandardFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
 
-  protected slots:
-    void apply();
+	protected slots:
+		void apply();
 
-  protected:
-    void setEditableFeed(Feed *editable_feed);
+	protected:
+		void setEditableFeed(Feed* editable_feed);
 };
 
 #endif // FORMSSFEEDDETAILS_H

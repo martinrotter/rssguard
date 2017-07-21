@@ -24,29 +24,29 @@
 
 
 class SettingsBrowserMail : public SettingsPanel {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit SettingsBrowserMail(Settings *settings, QWidget *parent = 0);
-    virtual ~SettingsBrowserMail();
+	public:
+		explicit SettingsBrowserMail(Settings* settings, QWidget* parent = 0);
+		virtual ~SettingsBrowserMail();
 
-    inline QString title() const {
-      return tr("Web browser & e-mail & proxy");
-    }
+		inline QString title() const {
+			return tr("Web browser & e-mail & proxy");
+		}
 
-    void loadSettings();
-    void saveSettings();
+		void loadSettings();
+		void saveSettings();
 
-  private slots:
-    void changeDefaultBrowserArguments(int index);
-    void selectBrowserExecutable();
-    void changeDefaultEmailArguments(int index);
-    void selectEmailExecutable();
-    void displayProxyPassword(int state);
-    void onProxyTypeChanged(int index);
+	private slots:
+		void changeDefaultBrowserArguments(int index);
+		void selectBrowserExecutable();
+		void changeDefaultEmailArguments(int index);
+		void selectEmailExecutable();
+		void displayProxyPassword(int state);
+		void onProxyTypeChanged(int index);
 
-  private:
-    Ui::SettingsBrowserMail *m_ui;
+	private:
+		Ui::SettingsBrowserMail* m_ui;
 };
 
 #endif // SETTINGSBROWSERMAIL_H

@@ -22,22 +22,22 @@
 
 
 class BaseLineEdit : public QLineEdit {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit BaseLineEdit(QWidget *parent = 0);
-    virtual ~BaseLineEdit();
+	public:
+		// Constructors and destructors.
+		explicit BaseLineEdit(QWidget* parent = 0);
+		virtual ~BaseLineEdit();
 
-  public slots:
-    void submit(const QString &text);
+	public slots:
+		void submit(const QString& text);
 
-  protected:
-    void keyPressEvent(QKeyEvent *event);
+	protected:
+		void keyPressEvent(QKeyEvent* event);
 
-  signals:
-    // Emitted if user hits ENTER button.
-    void submitted(const QString &text);
+	signals:
+		// Emitted if user hits ENTER button.
+		void submitted(const QString& text);
 };
 
 #endif // BASELINEEDIT_H

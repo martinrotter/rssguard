@@ -54,45 +54,45 @@ class QToolButton;
 class ShortcutButton;
 
 class ShortcutCatcher : public QWidget {
-    Q_OBJECT
+		Q_OBJECT
 
-    friend class ShortcutButton;
+		friend class ShortcutButton;
 
-  public:
-    // Constructors and destructors.
-    explicit ShortcutCatcher(QWidget *parent = 0);
-    virtual ~ShortcutCatcher();
+	public:
+		// Constructors and destructors.
+		explicit ShortcutCatcher(QWidget* parent = 0);
+		virtual ~ShortcutCatcher();
 
-    void controlModifierlessTimout();
-    void updateDisplayShortcut();
+		void controlModifierlessTimout();
+		void updateDisplayShortcut();
 
-    QKeySequence shortcut() const;
-    void setDefaultShortcut(const QKeySequence &key);
-    void setShortcut(const QKeySequence &key);
+		QKeySequence shortcut() const;
+		void setDefaultShortcut(const QKeySequence& key);
+		void setShortcut(const QKeySequence& key);
 
-  public slots:
-    void resetShortcut();
-    void clearShortcut();
+	public slots:
+		void resetShortcut();
+		void clearShortcut();
 
-  private slots:
-    void startRecording();
-    void doneRecording();
+	private slots:
+		void startRecording();
+		void doneRecording();
 
-  signals:
-    void shortcutChanged(const QKeySequence &seguence);
+	signals:
+		void shortcutChanged(const QKeySequence& seguence);
 
-  private:
-    QToolButton *m_btnReset;
-    QToolButton *m_btnClear;
-    ShortcutButton *m_btnChange;
-    QHBoxLayout *m_layout;
+	private:
+		QToolButton* m_btnReset;
+		QToolButton* m_btnClear;
+		ShortcutButton* m_btnChange;
+		QHBoxLayout* m_layout;
 
-    QKeySequence m_currentSequence;
-    QKeySequence m_defaultSequence;
+		QKeySequence m_currentSequence;
+		QKeySequence m_defaultSequence;
 
-    bool m_isRecording;
-    int m_numKey;
-    uint m_modifierKeys;
+		bool m_isRecording;
+		int m_numKey;
+		uint m_modifierKeys;
 };
 
 #endif // KEYSEQUENCECATCHER_H

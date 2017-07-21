@@ -22,8 +22,8 @@
 
 
 class Label : public RootItem {
-  public:
-    explicit Label(RootItem *parent_item = nullptr);
+	public:
+		explicit Label(RootItem* parent_item = nullptr);
 };
 
 #endif // LABEL_H

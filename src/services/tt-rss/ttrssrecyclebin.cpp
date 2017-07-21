@@ -22,17 +22,17 @@
 #include "services/tt-rss/ttrssserviceroot.h"
 
 
-TtRssRecycleBin::TtRssRecycleBin(RootItem *parent) : RecycleBin(parent) {
+TtRssRecycleBin::TtRssRecycleBin(RootItem* parent) : RecycleBin(parent) {
 }
 
 TtRssRecycleBin::~TtRssRecycleBin() {
 }
 
-TtRssServiceRoot *TtRssRecycleBin::serviceRoot() {
-  return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
+TtRssServiceRoot* TtRssRecycleBin::serviceRoot() {
+	return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }
 
 bool TtRssRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-  return RecycleBin::markAsReadUnread(status);
+	serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
+	return RecycleBin::markAsReadUnread(status);
 }

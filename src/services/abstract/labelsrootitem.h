@@ -22,8 +22,8 @@
 
 
 class LabelsRootItem : public RootItem {
-  public:
-    explicit LabelsRootItem(RootItem *parent_item = nullptr);
+	public:
+		explicit LabelsRootItem(RootItem* parent_item = nullptr);
 };
 
 #endif // LABELSROOTITEM_H

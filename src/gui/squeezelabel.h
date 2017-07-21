@@ -22,16 +22,16 @@
 
 
 class SqueezeLabel : public QLabel {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit SqueezeLabel(QWidget *parent = 0);
+	public:
+		explicit SqueezeLabel(QWidget* parent = 0);
 
-  protected:
-    void paintEvent(QPaintEvent *event);
+	protected:
+		void paintEvent(QPaintEvent* event);
 
-  private:
-    QString m_squeezedTextCache;
+	private:
+		QString m_squeezedTextCache;
 };
 
 #endif // SQUEEZELABEL_H

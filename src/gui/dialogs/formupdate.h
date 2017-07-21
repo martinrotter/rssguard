@@ -31,36 +31,36 @@
 class Downloader;
 
 class FormUpdate : public QDialog {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit FormUpdate(QWidget *parent = 0);
-    virtual ~FormUpdate();
+	public:
+		// Constructors and destructors.
+		explicit FormUpdate(QWidget* parent = 0);
+		virtual ~FormUpdate();
 
-    // Returns true if application can self-update
-    // on current platform.
-    bool isSelfUpdateSupported() const;
+		// Returns true if application can self-update
+		// on current platform.
+		bool isSelfUpdateSupported() const;
 
-  private slots:
-    // Check for updates and interprets the results.
-    void checkForUpdates();
-    void startUpdate();
+	private slots:
+		// Check for updates and interprets the results.
+		void checkForUpdates();
+		void startUpdate();
 
-    void updateProgress(qint64 bytes_received, qint64 bytes_total);
-    void updateCompleted(QNetworkReply::NetworkError status, QByteArray contents);
-    void saveUpdateFile(const QByteArray &file_contents);
+		void updateProgress(qint64 bytes_received, qint64 bytes_total);
+		void updateCompleted(QNetworkReply::NetworkError status, QByteArray contents);
+		void saveUpdateFile(const QByteArray& file_contents);
 
-  private:
-    void loadAvailableFiles();
+	private:
+		void loadAvailableFiles();
 
-    Downloader *m_downloader;
-    bool m_readyToInstall;
-    QString m_updateFilePath;
-    QScopedPointer<Ui::FormUpdate> m_ui;
-    UpdateInfo m_updateInfo;
-    QPushButton *m_btnUpdate;
-    qint64 m_lastDownloadedBytes;
+		Downloader* m_downloader;
+		bool m_readyToInstall;
+		QString m_updateFilePath;
+		QScopedPointer<Ui::FormUpdate> m_ui;
+		UpdateInfo m_updateInfo;
+		QPushButton* m_btnUpdate;
+		qint64 m_lastDownloadedBytes;
 };
 
 #endif // FORMUPDATE_H

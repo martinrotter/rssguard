@@ -28,74 +28,73 @@
 #include <QDateTime>
 
 
-FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormBackupDatabaseSettings) {
-  m_ui->setupUi(this);
-  m_ui->m_txtBackupName->lineEdit()->setPlaceholderText(tr("Common name for backup files"));
+FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent) : QDialog(parent), m_ui(new Ui::FormBackupDatabaseSettings) {
+	m_ui->setupUi(this);
+	m_ui->m_txtBackupName->lineEdit()->setPlaceholderText(tr("Common name for backup files"));
+	setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
+	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+	connect(m_ui->m_checkBackupDatabase, &QCheckBox::toggled, this, &FormBackupDatabaseSettings::checkOkButton);
+	connect(m_ui->m_checkBackupSettings, &QCheckBox::toggled, this, &FormBackupDatabaseSettings::checkOkButton);
+	connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormBackupDatabaseSettings::performBackup);
+	connect(m_ui->m_txtBackupName->lineEdit(), &BaseLineEdit::textChanged, this, &FormBackupDatabaseSettings::checkBackupNames);
+	connect(m_ui->m_txtBackupName->lineEdit(), &BaseLineEdit::textChanged, this, &FormBackupDatabaseSettings::checkOkButton);
+	connect(m_ui->m_btnSelectFolder, &QPushButton::clicked, this, &FormBackupDatabaseSettings::selectFolderInitial);
+	selectFolder(qApp->getDocumentsFolderPath());
+	m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + QL1S("_") + QDateTime::currentDateTime().toString(QSL("yyyyMMddHHmm")));
+	m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
-  setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-
-  connect(m_ui->m_checkBackupDatabase, &QCheckBox::toggled, this, &FormBackupDatabaseSettings::checkOkButton);
-  connect(m_ui->m_checkBackupSettings, &QCheckBox::toggled, this, &FormBackupDatabaseSettings::checkOkButton);
-  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormBackupDatabaseSettings::performBackup);
-  connect(m_ui->m_txtBackupName->lineEdit(), &BaseLineEdit::textChanged, this, &FormBackupDatabaseSettings::checkBackupNames);
-  connect(m_ui->m_txtBackupName->lineEdit(), &BaseLineEdit::textChanged, this, &FormBackupDatabaseSettings::checkOkButton);
-  connect(m_ui->m_btnSelectFolder, &QPushButton::clicked, this, &FormBackupDatabaseSettings::selectFolderInitial);
-
-  selectFolder(qApp->getDocumentsFolderPath());
-  m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + QL1S("_") + QDateTime::currentDateTime().toString(QSL("yyyyMMddHHmm")));
-  m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
-
-  if (qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE &&
-      qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE_MEMORY) {
-    m_ui->m_checkBackupDatabase->setDisabled(true);
-  }
+	if (qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE &&
+	        qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE_MEMORY) {
+		m_ui->m_checkBackupDatabase->setDisabled(true);
+	}
 }
 
 FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
-  qDebug("Destroying FormBackupDatabaseSettings instance.");
+	qDebug("Destroying FormBackupDatabaseSettings instance.");
 }
 
 void FormBackupDatabaseSettings::performBackup() {
-  try {
-    qApp->backupDatabaseSettings(m_ui->m_checkBackupDatabase->isChecked(), m_ui->m_checkBackupSettings->isChecked(),
-                                 m_ui->m_lblSelectFolder->label()->text(), m_ui->m_txtBackupName->lineEdit()->text());
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok,
-                                 tr("Backup was created successfully and stored in target directory."),
-                                 tr("Backup was created successfully."));
-  }
-  catch (const ApplicationException &ex) {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(), tr("Backup failed."));
-  }
+	try {
+		qApp->backupDatabaseSettings(m_ui->m_checkBackupDatabase->isChecked(), m_ui->m_checkBackupSettings->isChecked(),
+		                             m_ui->m_lblSelectFolder->label()->text(), m_ui->m_txtBackupName->lineEdit()->text());
+		m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok,
+		                             tr("Backup was created successfully and stored in target directory."),
+		                             tr("Backup was created successfully."));
+	}
+
+	catch (const ApplicationException& ex) {
+		m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(), tr("Backup failed."));
+	}
 }
 
 void FormBackupDatabaseSettings::selectFolderInitial() {
-  selectFolder();
+	selectFolder();
 }
 
 void FormBackupDatabaseSettings::selectFolder(QString path) {
-  if (path.isEmpty()) {
-    path = QFileDialog::getExistingDirectory(this, tr("Select destination directory"), m_ui->m_lblSelectFolder->label()->text());
-  }
+	if (path.isEmpty()) {
+		path = QFileDialog::getExistingDirectory(this, tr("Select destination directory"), m_ui->m_lblSelectFolder->label()->text());
+	}
 
-  if (!path.isEmpty()) {
-    m_ui->m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(path),
-                                       tr("Good destination directory is specified."));
-  }
+	if (!path.isEmpty()) {
+		m_ui->m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(path),
+		                                   tr("Good destination directory is specified."));
+	}
 }
 
-void FormBackupDatabaseSettings::checkBackupNames(const QString &name) {
-  if (name.simplified().isEmpty()) {
-    m_ui->m_txtBackupName->setStatus(WidgetWithStatus::Error, tr("Backup name cannot be empty."));
-  }
-  else {
-    m_ui->m_txtBackupName->setStatus(WidgetWithStatus::Ok, tr("Backup name looks okay."));
-  }
+void FormBackupDatabaseSettings::checkBackupNames(const QString& name) {
+	if (name.simplified().isEmpty()) {
+		m_ui->m_txtBackupName->setStatus(WidgetWithStatus::Error, tr("Backup name cannot be empty."));
+	}
+
+	else {
+		m_ui->m_txtBackupName->setStatus(WidgetWithStatus::Ok, tr("Backup name looks okay."));
+	}
 }
 
 void FormBackupDatabaseSettings::checkOkButton() {
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(m_ui->m_txtBackupName->lineEdit()->text().simplified().isEmpty() ||
-                                                               m_ui->m_lblSelectFolder->label()->text().simplified().isEmpty() ||
-                                                               (!m_ui->m_checkBackupDatabase->isChecked() &&
-                                                                !m_ui->m_checkBackupSettings->isChecked()));
+	m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(m_ui->m_txtBackupName->lineEdit()->text().simplified().isEmpty() ||
+	        m_ui->m_lblSelectFolder->label()->text().simplified().isEmpty() ||
+	        (!m_ui->m_checkBackupDatabase->isChecked() &&
+	         !m_ui->m_checkBackupSettings->isChecked()));
 }

@@ -25,35 +25,35 @@
 
 class QMouseEvent;
 
-class ClickableLabel : public QLabel{
-    Q_OBJECT
-    Q_PROPERTY(QSize fixedsize READ size WRITE setFixedSize)
-    Q_PROPERTY(int fixedwidth READ width WRITE setFixedWidth)
-    Q_PROPERTY(int fixedheight READ height WRITE setFixedHeight)
-    Q_PROPERTY(QString themeIcon READ themeIcon WRITE setThemeIcon)
-    Q_PROPERTY(QIcon fallbackIcon READ fallbackIcon WRITE setFallbackIcon)
+class ClickableLabel : public QLabel {
+		Q_OBJECT
+		Q_PROPERTY(QSize fixedsize READ size WRITE setFixedSize)
+		Q_PROPERTY(int fixedwidth READ width WRITE setFixedWidth)
+		Q_PROPERTY(int fixedheight READ height WRITE setFixedHeight)
+		Q_PROPERTY(QString themeIcon READ themeIcon WRITE setThemeIcon)
+		Q_PROPERTY(QIcon fallbackIcon READ fallbackIcon WRITE setFallbackIcon)
 
-  public:
-    explicit ClickableLabel(QWidget *parent = 0);
+	public:
+		explicit ClickableLabel(QWidget* parent = 0);
 
-    QString themeIcon() const;
-    void setThemeIcon(const QString &name);
+		QString themeIcon() const;
+		void setThemeIcon(const QString& name);
 
-    QIcon fallbackIcon() const;
-    void setFallbackIcon(const QIcon &fallbackIcon);
+		QIcon fallbackIcon() const;
+		void setFallbackIcon(const QIcon& fallbackIcon);
 
-  signals:
-    void clicked(QPoint);
-    void middleClicked(QPoint);
+	signals:
+		void clicked(QPoint);
+		void middleClicked(QPoint);
 
-  private:
-    void updateIcon();
+	private:
+		void updateIcon();
 
-    void resizeEvent(QResizeEvent *ev);
-    void mouseReleaseEvent(QMouseEvent* ev);
+		void resizeEvent(QResizeEvent* ev);
+		void mouseReleaseEvent(QMouseEvent* ev);
 
-    QString m_themeIcon;
-    QIcon m_fallbackIcon;
+		QString m_themeIcon;
+		QIcon m_fallbackIcon;
 
 };
 

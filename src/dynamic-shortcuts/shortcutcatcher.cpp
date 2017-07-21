@@ -52,123 +52,118 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QHBoxLayout>
 
 
-ShortcutCatcher::ShortcutCatcher(QWidget *parent)
-  : QWidget(parent) {
-  // Setup layout of the control
-  m_layout = new QHBoxLayout(this);
-  m_layout->setMargin(0);
-  m_layout->setSpacing(1);
-
-  // Create reset button.
-  m_btnReset = new PlainToolButton(this);
-  m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("document-revert")));
-  m_btnReset->setFocusPolicy(Qt::NoFocus);
-  m_btnReset->setToolTip(tr("Reset to original shortcut."));
-
-  // Create clear button.
-  m_btnClear = new PlainToolButton(this);
-  m_btnClear->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
-  m_btnClear->setFocusPolicy(Qt::NoFocus);
-  m_btnClear->setToolTip(tr("Clear current shortcut."));
-
-  // Clear main shortcut catching button.
-  m_btnChange = new ShortcutButton(this);
-  m_btnChange->setFocusPolicy(Qt::StrongFocus);
-  m_btnChange->setToolTip(tr("Click and hit new shortcut."));
-
-  // Add both buttons to the layout.
-  m_layout->addWidget(m_btnChange);
-  m_layout->addWidget(m_btnReset);
-  m_layout->addWidget(m_btnClear);
-
-  // Establish needed connections.
-  connect(m_btnReset, &QToolButton::clicked, this, &ShortcutCatcher::resetShortcut);
-  connect(m_btnClear, &QToolButton::clicked, this, &ShortcutCatcher::clearShortcut);
-  connect(m_btnChange, &QToolButton::clicked, this, &ShortcutCatcher::startRecording);
-
-  // Prepare initial state of the control.
-  updateDisplayShortcut();
+ShortcutCatcher::ShortcutCatcher(QWidget* parent)
+	: QWidget(parent) {
+	// Setup layout of the control
+	m_layout = new QHBoxLayout(this);
+	m_layout->setMargin(0);
+	m_layout->setSpacing(1);
+	// Create reset button.
+	m_btnReset = new PlainToolButton(this);
+	m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("document-revert")));
+	m_btnReset->setFocusPolicy(Qt::NoFocus);
+	m_btnReset->setToolTip(tr("Reset to original shortcut."));
+	// Create clear button.
+	m_btnClear = new PlainToolButton(this);
+	m_btnClear->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
+	m_btnClear->setFocusPolicy(Qt::NoFocus);
+	m_btnClear->setToolTip(tr("Clear current shortcut."));
+	// Clear main shortcut catching button.
+	m_btnChange = new ShortcutButton(this);
+	m_btnChange->setFocusPolicy(Qt::StrongFocus);
+	m_btnChange->setToolTip(tr("Click and hit new shortcut."));
+	// Add both buttons to the layout.
+	m_layout->addWidget(m_btnChange);
+	m_layout->addWidget(m_btnReset);
+	m_layout->addWidget(m_btnClear);
+	// Establish needed connections.
+	connect(m_btnReset, &QToolButton::clicked, this, &ShortcutCatcher::resetShortcut);
+	connect(m_btnClear, &QToolButton::clicked, this, &ShortcutCatcher::clearShortcut);
+	connect(m_btnChange, &QToolButton::clicked, this, &ShortcutCatcher::startRecording);
+	// Prepare initial state of the control.
+	updateDisplayShortcut();
 }
 
 ShortcutCatcher::~ShortcutCatcher() {
-  delete m_btnReset;
-  delete m_btnChange;
-  delete m_btnClear;
-  delete m_layout;
+	delete m_btnReset;
+	delete m_btnChange;
+	delete m_btnClear;
+	delete m_layout;
 }
 
 void ShortcutCatcher::startRecording() {
-  m_numKey = 0;
-  m_modifierKeys = 0;
-  m_currentSequence = QKeySequence();
-  m_isRecording = true;
-  m_btnChange->setDown(true);
-  m_btnChange->grabKeyboard();
-
-  updateDisplayShortcut();
+	m_numKey = 0;
+	m_modifierKeys = 0;
+	m_currentSequence = QKeySequence();
+	m_isRecording = true;
+	m_btnChange->setDown(true);
+	m_btnChange->grabKeyboard();
+	updateDisplayShortcut();
 }
 
 void ShortcutCatcher::doneRecording() {
-  m_isRecording = false;
-  m_btnChange->releaseKeyboard();
-  m_btnChange->setDown(false);
-
-  updateDisplayShortcut();
-
-  emit shortcutChanged(m_currentSequence);
+	m_isRecording = false;
+	m_btnChange->releaseKeyboard();
+	m_btnChange->setDown(false);
+	updateDisplayShortcut();
+	emit shortcutChanged(m_currentSequence);
 }
 
 void ShortcutCatcher::controlModifierlessTimout() {
-  if (m_numKey && !m_modifierKeys) {
-    doneRecording();
-  }
+	if (m_numKey && !m_modifierKeys) {
+		doneRecording();
+	}
 }
 
 void ShortcutCatcher::updateDisplayShortcut() {
-  QString str = m_currentSequence.toString(QKeySequence::NativeText);
-  str.replace(QL1S("&"), QL1S("&&"));
+	QString str = m_currentSequence.toString(QKeySequence::NativeText);
+	str.replace(QL1S("&"), QL1S("&&"));
 
-  if (m_isRecording) {
-    if (m_modifierKeys) {
-      if (!str.isEmpty()) {
-        str.append(QSL(","));
-      }
-      if (m_modifierKeys & Qt::META) {
-        str += QL1S("Meta + ");
-      }
-      if (m_modifierKeys & Qt::CTRL) {
-        str += QL1S("Ctrl + ");
-      }
-      if (m_modifierKeys & Qt::ALT) {
-        str += QL1S("Alt + ");
-      }
-      if (m_modifierKeys & Qt::SHIFT) {
-        str += QL1S("Shift + ");
-      }
-    }
-  }
+	if (m_isRecording) {
+		if (m_modifierKeys) {
+			if (!str.isEmpty()) {
+				str.append(QSL(","));
+			}
 
-  m_btnChange->setText(str);
+			if (m_modifierKeys & Qt::META) {
+				str += QL1S("Meta + ");
+			}
+
+			if (m_modifierKeys & Qt::CTRL) {
+				str += QL1S("Ctrl + ");
+			}
+
+			if (m_modifierKeys & Qt::ALT) {
+				str += QL1S("Alt + ");
+			}
+
+			if (m_modifierKeys & Qt::SHIFT) {
+				str += QL1S("Shift + ");
+			}
+		}
+	}
+
+	m_btnChange->setText(str);
 }
 
 QKeySequence ShortcutCatcher::shortcut() const {
-  return m_currentSequence;
+	return m_currentSequence;
 }
 
-void ShortcutCatcher::setDefaultShortcut(const QKeySequence &key) {
-  m_defaultSequence = key;
-  setShortcut(key);
+void ShortcutCatcher::setDefaultShortcut(const QKeySequence& key) {
+	m_defaultSequence = key;
+	setShortcut(key);
 }
 
-void ShortcutCatcher::setShortcut(const QKeySequence &key) {
-  m_currentSequence = key;
-  doneRecording();
+void ShortcutCatcher::setShortcut(const QKeySequence& key) {
+	m_currentSequence = key;
+	doneRecording();
 }
 
 void ShortcutCatcher::resetShortcut() {
-  setShortcut(m_defaultSequence);
+	setShortcut(m_defaultSequence);
 }
 
 void ShortcutCatcher::clearShortcut() {
-  setShortcut(QKeySequence());
+	setShortcut(QKeySequence());
 }

@@ -26,16 +26,16 @@
 class TtRssServiceRoot;
 
 class TtRssCategory : public Category {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit TtRssCategory(RootItem *parent = nullptr);
-    explicit TtRssCategory(const QSqlRecord &record);
-    virtual ~TtRssCategory();
+	public:
+		explicit TtRssCategory(RootItem* parent = nullptr);
+		explicit TtRssCategory(const QSqlRecord& record);
+		virtual ~TtRssCategory();
 
-    TtRssServiceRoot *serviceRoot() const;
-    bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clear_only_read);
+		TtRssServiceRoot* serviceRoot() const;
+		bool markAsReadUnread(ReadStatus status);
+		bool cleanMessages(bool clear_only_read);
 };
 
 #endif // TTRSSCATEGORY_H

@@ -27,26 +27,26 @@ class Settings;
 class SettingsPanel;
 
 class FormSettings : public QDialog {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit FormSettings(QWidget *parent = 0);
-    virtual ~FormSettings();
+	public:
+		// Constructors and destructors.
+		explicit FormSettings(QWidget* parent = 0);
+		virtual ~FormSettings();
 
-  private slots:
-    // Saves settings into global configuration.
-    void saveSettings();
-    void applySettings();
-    void cancelSettings();
-    
-  private:
-    void addSettingsPanel(SettingsPanel *panel);
+	private slots:
+		// Saves settings into global configuration.
+		void saveSettings();
+		void applySettings();
+		void cancelSettings();
 
-    QList<SettingsPanel*> m_panels;
-    QScopedPointer<Ui::FormSettings> m_ui;
-    QPushButton *m_btnApply;
-    Settings *m_settings;
+	private:
+		void addSettingsPanel(SettingsPanel* panel);
+
+		QList<SettingsPanel*> m_panels;
+		QScopedPointer<Ui::FormSettings> m_ui;
+		QPushButton* m_btnApply;
+		Settings* m_settings;
 };
 
 #endif // FORMSETTINGS_H

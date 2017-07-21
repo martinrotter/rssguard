@@ -27,7 +27,7 @@
 #include <QPointer>
 
 
-TtRssServiceEntryPoint::TtRssServiceEntryPoint(){
+TtRssServiceEntryPoint::TtRssServiceEntryPoint() {
 }
 
 
@@ -35,44 +35,43 @@ TtRssServiceEntryPoint::~TtRssServiceEntryPoint() {
 }
 
 bool TtRssServiceEntryPoint::isSingleInstanceService() const {
-  return false;
+	return false;
 }
 
 QString TtRssServiceEntryPoint::name() const {
-  return QSL("Tiny Tiny RSS");
+	return QSL("Tiny Tiny RSS");
 }
 
 QString TtRssServiceEntryPoint::description() const {
-  return QObject::tr("This service offers integration with Tiny Tiny RSS.\n\n"
-                     "Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, "
-                     "designed to allow you to read news from any location, while feeling as close to a real "
-                     "desktop application as possible.\n\nAt least API level %1 is required.").arg(MINIMAL_API_LEVEL);
+	return QObject::tr("This service offers integration with Tiny Tiny RSS.\n\n"
+	                   "Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, "
+	                   "designed to allow you to read news from any location, while feeling as close to a real "
+	                   "desktop application as possible.\n\nAt least API level %1 is required.").arg(MINIMAL_API_LEVEL);
 }
 
 QString TtRssServiceEntryPoint::version() const {
-  return APP_VERSION;
+	return APP_VERSION;
 }
 
 QString TtRssServiceEntryPoint::author() const {
-  return APP_AUTHOR;
+	return APP_AUTHOR;
 }
 
 QIcon TtRssServiceEntryPoint::icon() const {
-  return qApp->icons()->miscIcon(QSL("tt-rss"));
+	return qApp->icons()->miscIcon(QSL("tt-rss"));
 }
 
 QString TtRssServiceEntryPoint::code() const {
-  return SERVICE_CODE_TT_RSS;
+	return SERVICE_CODE_TT_RSS;
 }
 
-ServiceRoot *TtRssServiceEntryPoint::createNewRoot() const {
-  QScopedPointer<FormEditTtRssAccount> form_acc(new FormEditTtRssAccount(qApp->mainFormWidget()));
-  return form_acc->execForCreate();
+ServiceRoot* TtRssServiceEntryPoint::createNewRoot() const {
+	QScopedPointer<FormEditTtRssAccount> form_acc(new FormEditTtRssAccount(qApp->mainFormWidget()));
+	return form_acc->execForCreate();
 }
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() const {
-  // Check DB if standard account is enabled.
-  QSqlDatabase database = qApp->database()->connection(QSL("TtRssServiceEntryPoint"), DatabaseFactory::FromSettings);
-
-  return DatabaseQueries::getTtRssAccounts(database);
+	// Check DB if standard account is enabled.
+	QSqlDatabase database = qApp->database()->connection(QSL("TtRssServiceEntryPoint"), DatabaseFactory::FromSettings);
+	return DatabaseQueries::getTtRssAccounts(database);
 }

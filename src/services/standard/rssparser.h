@@ -26,13 +26,13 @@
 
 
 class RssParser : public FeedParser {
-  public:
-    explicit RssParser(const QString &data);
-    virtual ~RssParser();
+	public:
+		explicit RssParser(const QString& data);
+		virtual ~RssParser();
 
-  private:
-    QDomNodeList messageElements();
-    Message extractMessage(const QDomElement &msg_element, QDateTime current_time) const;
+	private:
+		QDomNodeList messageElements();
+		Message extractMessage(const QDomElement& msg_element, QDateTime current_time) const;
 };
 
 #endif // RSSPARSER_H

@@ -23,20 +23,20 @@
 
 
 class TtRssServiceEntryPoint : public ServiceEntryPoint {
-  public:
-    explicit TtRssServiceEntryPoint();
-    virtual ~TtRssServiceEntryPoint();
+	public:
+		explicit TtRssServiceEntryPoint();
+		virtual ~TtRssServiceEntryPoint();
 
-    bool isSingleInstanceService() const;
-    QString name() const;
-    QString description() const;
-    QString version() const;
-    QString author() const;
-    QIcon icon() const;
-    QString code() const;
+		bool isSingleInstanceService() const;
+		QString name() const;
+		QString description() const;
+		QString version() const;
+		QString author() const;
+		QIcon icon() const;
+		QString code() const;
 
-    ServiceRoot *createNewRoot() const;
-    QList<ServiceRoot*> initializeSubtree() const;
+		ServiceRoot* createNewRoot() const;
+		QList<ServiceRoot*> initializeSubtree() const;
 };
 
 #endif // TTRSSSERVICEENTRYPOINT_H

@@ -25,47 +25,47 @@
 
 
 struct Language {
-    QString m_name;
-    QString m_code;
-    QString m_author;
-    QString m_email;
+	QString m_name;
+	QString m_code;
+	QString m_author;
+	QString m_email;
 };
 
 class Localization : public QObject {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructor.
-    explicit Localization(QObject *parent = 0);
+	public:
+		// Constructor.
+		explicit Localization(QObject* parent = 0);
 
-    // Destructor.
-    virtual ~Localization();
+		// Destructor.
+		virtual ~Localization();
 
-    // Returns code of language that should
-    // be loaded according to settings.
-    QString desiredLanguage() const;
+		// Returns code of language that should
+		// be loaded according to settings.
+		QString desiredLanguage() const;
 
-    // Loads currently active language.
-    void loadActiveLanguage();
+		// Loads currently active language.
+		void loadActiveLanguage();
 
-    // Returns list of installed application localizations.
-    // This list is used ie. in settings dialog.
-    QList<Language> installedLanguages() const;
+		// Returns list of installed application localizations.
+		// This list is used ie. in settings dialog.
+		QList<Language> installedLanguages() const;
 
-    // Returns empty string or loaded language
-    // name if it is really loaded.
-    inline QString loadedLanguage() const {
-      return m_loadedLanguage;
-    }
+		// Returns empty string or loaded language
+		// name if it is really loaded.
+		inline QString loadedLanguage() const {
+			return m_loadedLanguage;
+		}
 
-    inline QLocale loadedLocale() const {
-      return m_loadedLocale;
-    }
+		inline QLocale loadedLocale() const {
+			return m_loadedLocale;
+		}
 
-  private:
-    // Code of loaded language.
-    QString m_loadedLanguage;
-    QLocale m_loadedLocale;
+	private:
+		// Code of loaded language.
+		QString m_loadedLanguage;
+		QLocale m_loadedLocale;
 };
 
 #endif // LOCALIZATION_H

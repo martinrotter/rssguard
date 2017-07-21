@@ -30,117 +30,117 @@ class Feed;
 class Category;
 
 class FeedsView : public QTreeView {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit FeedsView(QWidget *parent = 0);
-    virtual ~FeedsView();
+	public:
+		// Constructors and destructors.
+		explicit FeedsView(QWidget* parent = 0);
+		virtual ~FeedsView();
 
-    // Fundamental accessors.
-    inline FeedsProxyModel *model() const {
-      return m_proxyModel;
-    }
+		// Fundamental accessors.
+		inline FeedsProxyModel* model() const {
+			return m_proxyModel;
+		}
 
-    inline FeedsModel *sourceModel() const {
-      return m_sourceModel;
-    }
+		inline FeedsModel* sourceModel() const {
+			return m_sourceModel;
+		}
 
-    void setSortingEnabled(bool enable);
-    
-    // Returns list of selected/all feeds.
-    // NOTE: This is recursive method which returns all descendants.
-    QList<Feed*> selectedFeeds() const;
+		void setSortingEnabled(bool enable);
 
-    // Returns pointers to selected feed/category if they are really
-    // selected.
-    RootItem *selectedItem() const;
+		// Returns list of selected/all feeds.
+		// NOTE: This is recursive method which returns all descendants.
+		QList<Feed*> selectedFeeds() const;
 
-    // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
-    void saveAllExpandStates();
-    void loadAllExpandStates();
+		// Returns pointers to selected feed/category if they are really
+		// selected.
+		RootItem* selectedItem() const;
 
-  public slots:   
-    void sortByColumn(int column, Qt::SortOrder order);
+		// Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
+		void saveAllExpandStates();
+		void loadAllExpandStates();
 
-    void addFeedIntoSelectedAccount();
-    void addCategoryIntoSelectedAccount();
-    void expandCollapseCurrentItem();
+	public slots:
+		void sortByColumn(int column, Qt::SortOrder order);
 
-    // Feed updating.
-    void updateSelectedItems();
+		void addFeedIntoSelectedAccount();
+		void addCategoryIntoSelectedAccount();
+		void expandCollapseCurrentItem();
 
-    // Feed read/unread manipulators.
-    void markSelectedItemRead();
-    void markSelectedItemUnread();
-    void markAllItemsRead();
+		// Feed updating.
+		void updateSelectedItems();
 
-    // Newspaper accessors.
-    void openSelectedItemsInNewspaperMode();
+		// Feed read/unread manipulators.
+		void markSelectedItemRead();
+		void markSelectedItemUnread();
+		void markAllItemsRead();
 
-    // Feed clearers.
-    void clearSelectedFeeds();
-    void clearAllFeeds();
+		// Newspaper accessors.
+		void openSelectedItemsInNewspaperMode();
 
-    // Base manipulators.
-    void editSelectedItem();
-    void deleteSelectedItem();
+		// Feed clearers.
+		void clearSelectedFeeds();
+		void clearAllFeeds();
 
-    // Selects next/previous item (feed/category) in the list.
-    void selectNextItem();
-    void selectPreviousItem();
+		// Base manipulators.
+		void editSelectedItem();
+		void deleteSelectedItem();
 
-    // Switches visibility of the widget.
-    void switchVisibility();
+		// Selects next/previous item (feed/category) in the list.
+		void selectNextItem();
+		void selectPreviousItem();
 
-  signals:
-    // Emitted if user selects new feeds.
-    void itemSelected(RootItem *item);
+		// Switches visibility of the widget.
+		void switchVisibility();
 
-    // Requests opening of given messages in newspaper mode.
-    void openMessagesInNewspaperView(RootItem *root, const QList<Message> &messages);
+	signals:
+		// Emitted if user selects new feeds.
+		void itemSelected(RootItem* item);
 
-  protected:
-    // Handle selections.
-    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+		// Requests opening of given messages in newspaper mode.
+		void openMessagesInNewspaperView(RootItem* root, const QList<Message>& messages);
 
-    // React on "Del" key.
-    void keyPressEvent(QKeyEvent *event);
+	protected:
+		// Handle selections.
+		void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
 
-    // Show custom context menu.
-    void contextMenuEvent(QContextMenuEvent *event);
+		// React on "Del" key.
+		void keyPressEvent(QKeyEvent* event);
 
-    void mouseDoubleClickEvent(QMouseEvent *event);
+		// Show custom context menu.
+		void contextMenuEvent(QContextMenuEvent* event);
 
-  private slots:
-    void expandItemDelayed(const QModelIndex &idx);
-    void markSelectedItemReadStatus(RootItem::ReadStatus read);
-    void markAllItemsReadStatus(RootItem::ReadStatus read);
+		void mouseDoubleClickEvent(QMouseEvent* event);
 
-    void saveSortState(int column, Qt::SortOrder order);
-    void validateItemAfterDragDrop(const QModelIndex &source_index);
-    void onItemExpandRequested(const QList<RootItem*> &items, bool exp);
-    void onItemExpandStateSaveRequested(RootItem *item);
+	private slots:
+		void expandItemDelayed(const QModelIndex& idx);
+		void markSelectedItemReadStatus(RootItem::ReadStatus read);
+		void markAllItemsReadStatus(RootItem::ReadStatus read);
 
-  private:
-    // Initializes context menus.
-    QMenu *initializeContextMenuCategories(RootItem *clicked_item);
-    QMenu *initializeContextMenuFeeds(RootItem *clicked_item);
-    QMenu *initializeContextMenuEmptySpace();
-    QMenu *initializeContextMenuOtherItem(RootItem *clicked_item);
+		void saveSortState(int column, Qt::SortOrder order);
+		void validateItemAfterDragDrop(const QModelIndex& source_index);
+		void onItemExpandRequested(const QList<RootItem*>& items, bool exp);
+		void onItemExpandStateSaveRequested(RootItem* item);
 
-    // Sets up appearance of this widget.
-    void setupAppearance();
+	private:
+		// Initializes context menus.
+		QMenu* initializeContextMenuCategories(RootItem* clicked_item);
+		QMenu* initializeContextMenuFeeds(RootItem* clicked_item);
+		QMenu* initializeContextMenuEmptySpace();
+		QMenu* initializeContextMenuOtherItem(RootItem* clicked_item);
 
-    void saveExpandStates(RootItem *item);
+		// Sets up appearance of this widget.
+		void setupAppearance();
 
-    QMenu *m_contextMenuCategories;
-    QMenu *m_contextMenuFeeds;
-    QMenu *m_contextMenuEmptySpace;
-    QMenu *m_contextMenuOtherItems;
+		void saveExpandStates(RootItem* item);
 
-    FeedsModel *m_sourceModel;
-    FeedsProxyModel *m_proxyModel;
+		QMenu* m_contextMenuCategories;
+		QMenu* m_contextMenuFeeds;
+		QMenu* m_contextMenuEmptySpace;
+		QMenu* m_contextMenuOtherItems;
+
+		FeedsModel* m_sourceModel;
+		FeedsProxyModel* m_proxyModel;
 };
 
 #endif // FEEDSVIEW_H

@@ -18,5 +18,5 @@
 #include "services/abstract/label.h"
 
 
-Label::Label(RootItem *parent_item) : RootItem(parent_item) {
+Label::Label(RootItem* parent_item) : RootItem(parent_item) {
 }

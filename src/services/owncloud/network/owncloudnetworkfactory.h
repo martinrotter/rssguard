@@ -29,129 +29,129 @@
 
 
 class OwnCloudResponse {
-  public:
-    explicit OwnCloudResponse(const QString &raw_content = QString());
-    virtual ~OwnCloudResponse();
+	public:
+		explicit OwnCloudResponse(const QString& raw_content = QString());
+		virtual ~OwnCloudResponse();
 
-    bool isLoaded() const;
-    QString toString() const;
+		bool isLoaded() const;
+		QString toString() const;
 
-  protected:
-    QJsonObject m_rawContent;
-    bool m_emptyString;
+	protected:
+		QJsonObject m_rawContent;
+		bool m_emptyString;
 };
 
 class OwnCloudUserResponse : public OwnCloudResponse {
-  public:
-    explicit OwnCloudUserResponse(const QString &raw_content = QString());
-    virtual ~OwnCloudUserResponse();
+	public:
+		explicit OwnCloudUserResponse(const QString& raw_content = QString());
+		virtual ~OwnCloudUserResponse();
 
-    QString userId() const;
-    QString displayName() const;
-    QDateTime lastLoginTime() const;
-    QIcon avatar() const;
+		QString userId() const;
+		QString displayName() const;
+		QDateTime lastLoginTime() const;
+		QIcon avatar() const;
 };
 
 class OwnCloudGetMessagesResponse : public OwnCloudResponse {
-  public:
-    explicit OwnCloudGetMessagesResponse(const QString &raw_content = QString());
-    virtual ~OwnCloudGetMessagesResponse();
+	public:
+		explicit OwnCloudGetMessagesResponse(const QString& raw_content = QString());
+		virtual ~OwnCloudGetMessagesResponse();
 
-    QList<Message> messages() const;
+		QList<Message> messages() const;
 };
 
 class OwnCloudStatusResponse : public OwnCloudResponse {
-  public:
-    explicit OwnCloudStatusResponse(const QString &raw_content = QString());
-    virtual ~OwnCloudStatusResponse();
+	public:
+		explicit OwnCloudStatusResponse(const QString& raw_content = QString());
+		virtual ~OwnCloudStatusResponse();
 
-    QString version() const;
-    bool misconfiguredCron() const;
+		QString version() const;
+		bool misconfiguredCron() const;
 };
 
 class RootItem;
 
 class OwnCloudGetFeedsCategoriesResponse {
-  public:
-    explicit OwnCloudGetFeedsCategoriesResponse(const QString &raw_categories = QString(),
-                                                const QString &raw_feeds = QString());
-    virtual ~OwnCloudGetFeedsCategoriesResponse();
+	public:
+		explicit OwnCloudGetFeedsCategoriesResponse(const QString& raw_categories = QString(),
+		                                            const QString& raw_feeds = QString());
+		virtual ~OwnCloudGetFeedsCategoriesResponse();
 
-    // Returns tree of feeds/categories.
-    // Top-level root of the tree is not needed here.
-    // Returned items do not have primary IDs assigned.
-    RootItem *feedsCategories(bool obtain_icons) const;
+		// Returns tree of feeds/categories.
+		// Top-level root of the tree is not needed here.
+		// Returned items do not have primary IDs assigned.
+		RootItem* feedsCategories(bool obtain_icons) const;
 
-  private:
-    QString m_contentCategories;
-    QString m_contentFeeds;
+	private:
+		QString m_contentCategories;
+		QString m_contentFeeds;
 };
 
 class OwnCloudNetworkFactory {
-  public:
-    explicit OwnCloudNetworkFactory();
-    virtual ~OwnCloudNetworkFactory();
+	public:
+		explicit OwnCloudNetworkFactory();
+		virtual ~OwnCloudNetworkFactory();
 
-    QString url() const;
-    void setUrl(const QString &url);
+		QString url() const;
+		void setUrl(const QString& url);
 
-    bool forceServerSideUpdate() const;
-    void setForceServerSideUpdate(bool force_update);
+		bool forceServerSideUpdate() const;
+		void setForceServerSideUpdate(bool force_update);
 
-    QString authUsername() const;
-    void setAuthUsername(const QString &auth_username);
+		QString authUsername() const;
+		void setAuthUsername(const QString& auth_username);
 
-    QString authPassword() const;
-    void setAuthPassword(const QString &auth_password);
+		QString authPassword() const;
+		void setAuthPassword(const QString& auth_password);
 
-    QString userId() const;
-    void setUserId(const QString &userId);
+		QString userId() const;
+		void setUserId(const QString& userId);
 
-    QNetworkReply::NetworkError lastError() const;
+		QNetworkReply::NetworkError lastError() const;
 
-    // Operations.
+		// Operations.
 
-    // Get user info.
-    OwnCloudUserResponse userInfo();
+		// Get user info.
+		OwnCloudUserResponse userInfo();
 
-    // Get version info.
-    OwnCloudStatusResponse status();
+		// Get version info.
+		OwnCloudStatusResponse status();
 
-    // Get feeds & categories (used for sync-in).
-    OwnCloudGetFeedsCategoriesResponse feedsCategories();
+		// Get feeds & categories (used for sync-in).
+		OwnCloudGetFeedsCategoriesResponse feedsCategories();
 
-    // Feed operations.
-    bool deleteFeed(int feed_id);
-    bool createFeed(const QString &url, int parent_id);
-    bool renameFeed(const QString &new_name, int feed_id);
+		// Feed operations.
+		bool deleteFeed(int feed_id);
+		bool createFeed(const QString& url, int parent_id);
+		bool renameFeed(const QString& new_name, int feed_id);
 
-    // Get messages for given feed.
-    OwnCloudGetMessagesResponse getMessages(int feed_id);
+		// Get messages for given feed.
+		OwnCloudGetMessagesResponse getMessages(int feed_id);
 
-    // Misc methods.
-    QNetworkReply::NetworkError triggerFeedUpdate(int feed_id);
-    QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, const QStringList &custom_ids);
-    QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance, const QStringList &feed_ids,
-                                                    const QStringList &guid_hashes);
+		// Misc methods.
+		QNetworkReply::NetworkError triggerFeedUpdate(int feed_id);
+		QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
+		QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance, const QStringList& feed_ids,
+		                                                const QStringList& guid_hashes);
 
-  private:
-    QString m_url;
-    QString m_fixedUrl;
-    bool m_forceServerSideUpdate;
-    QString m_authUsername;
-    QString m_authPassword;
-    QNetworkReply::NetworkError m_lastError;
+	private:
+		QString m_url;
+		QString m_fixedUrl;
+		bool m_forceServerSideUpdate;
+		QString m_authUsername;
+		QString m_authPassword;
+		QNetworkReply::NetworkError m_lastError;
 
-    // Endpoints.
-    QString m_urlUser;
-    QString m_urlStatus;
-    QString m_urlFolders;
-    QString m_urlFeeds;
-    QString m_urlMessages;
-    QString m_urlFeedsUpdate;
-    QString m_urlDeleteFeed;
-    QString m_urlRenameFeed;
-    QString m_userId;
+		// Endpoints.
+		QString m_urlUser;
+		QString m_urlStatus;
+		QString m_urlFolders;
+		QString m_urlFeeds;
+		QString m_urlMessages;
+		QString m_urlFeedsUpdate;
+		QString m_urlDeleteFeed;
+		QString m_urlRenameFeed;
+		QString m_userId;
 };
 
 #endif // OWNCLOUDNETWORKFACTORY_H

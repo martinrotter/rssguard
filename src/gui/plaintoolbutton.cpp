@@ -25,57 +25,56 @@
 #include <QAction>
 
 
-PlainToolButton::PlainToolButton(QWidget *parent) : QToolButton(parent), m_padding(0) {
+PlainToolButton::PlainToolButton(QWidget* parent) : QToolButton(parent), m_padding(0) {
 }
 
 PlainToolButton::~PlainToolButton() {
 }
 
-void PlainToolButton::paintEvent(QPaintEvent *e) {
-  Q_UNUSED(e)
+void PlainToolButton::paintEvent(QPaintEvent* e) {
+	Q_UNUSED(e)
+	QPainter p(this);
+	QRect rect(QPoint(0, 0), size());
+	// Set padding.
+	rect.adjust(m_padding, m_padding, -m_padding, -m_padding);
 
-  QPainter p(this);
-  QRect rect(QPoint(0, 0), size());
+	if (isEnabled()) {
+		if (underMouse() || isChecked()) {
+			p.setOpacity(0.7);
+		}
+	}
 
-  // Set padding.
-  rect.adjust(m_padding, m_padding, -m_padding, -m_padding);
+	else {
+		p.setOpacity(0.3);
+	}
 
-  if (isEnabled()) {
-    if (underMouse() || isChecked()) {
-      p.setOpacity(0.7);
-    }
-  }
-  else {
-    p.setOpacity(0.3);
-  }
-
-  icon().paint(&p, rect);
+	icon().paint(&p, rect);
 }
 
 int PlainToolButton::padding() const {
-  return m_padding;
+	return m_padding;
 }
 
 void PlainToolButton::setPadding(int padding) {
-  m_padding = padding;
-  repaint();
+	m_padding = padding;
+	repaint();
 }
 
 void PlainToolButton::setChecked(bool checked) {
-  QToolButton::setChecked(checked);
-  repaint();
+	QToolButton::setChecked(checked);
+	repaint();
 }
 
-void PlainToolButton::reactOnActionChange(QAction *action) {
-  if (action != nullptr) {
-    setEnabled(action->isEnabled());
-    setCheckable(action->isCheckable());
-    setChecked(action->isChecked());
-    setIcon(action->icon());
-    setToolTip(action->toolTip());
-  }
+void PlainToolButton::reactOnActionChange(QAction* action) {
+	if (action != nullptr) {
+		setEnabled(action->isEnabled());
+		setCheckable(action->isCheckable());
+		setChecked(action->isChecked());
+		setIcon(action->icon());
+		setToolTip(action->toolTip());
+	}
 }
 
 void PlainToolButton::reactOnSenderActionChange() {
-  reactOnActionChange(qobject_cast<QAction*>(sender()));
+	reactOnActionChange(qobject_cast<QAction*>(sender()));
 }

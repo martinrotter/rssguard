@@ -18,12 +18,12 @@
 #include "exceptions/applicationexception.h"
 
 
-ApplicationException::ApplicationException(const QString &message) : m_message(message) {
+ApplicationException::ApplicationException(const QString& message) : m_message(message) {
 }
 
 ApplicationException::~ApplicationException() {
 }
 
 QString ApplicationException::message() const {
-  return m_message;
+	return m_message;
 }

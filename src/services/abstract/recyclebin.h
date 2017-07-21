@@ -22,47 +22,47 @@
 
 
 class RecycleBin : public RootItem {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit RecycleBin(RootItem *parent_item = nullptr);
-    virtual ~RecycleBin();
+	public:
+		explicit RecycleBin(RootItem* parent_item = nullptr);
+		virtual ~RecycleBin();
 
-    QVariant data(int column, int role) const;
+		QVariant data(int column, int role) const;
 
-    QList<QAction*> contextMenu();
-    QList<Message> undeletedMessages() const;
+		QList<QAction*> contextMenu();
+		QList<Message> undeletedMessages() const;
 
-    bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clear_only_read);
+		bool markAsReadUnread(ReadStatus status);
+		bool cleanMessages(bool clear_only_read);
 
-    int countOfUnreadMessages() const;
-    int countOfAllMessages() const;
+		int countOfUnreadMessages() const;
+		int countOfAllMessages() const;
 
-    void updateCounts(bool update_total_count);
+		void updateCounts(bool update_total_count);
 
-  public slots:
-    /////////////////////////////////////////
-    // /* Members to override.
-    /////////////////////////////////////////
+	public slots:
+		/////////////////////////////////////////
+		// /* Members to override.
+		/////////////////////////////////////////
 
-    // Empties the bin - removes all messages from it (does not remove
-    // them from DB, just permanently hide them, so that they are not
-    // re-downloaded).
-    virtual bool empty();
+		// Empties the bin - removes all messages from it (does not remove
+		// them from DB, just permanently hide them, so that they are not
+		// re-downloaded).
+		virtual bool empty();
 
-    // Performs complete restoration of all messages contained in the bin
-    virtual bool restore();
+		// Performs complete restoration of all messages contained in the bin
+		virtual bool restore();
 
-    /////////////////////////////////////////
-    // Members to override. */
-    /////////////////////////////////////////
+		/////////////////////////////////////////
+		// Members to override. */
+		/////////////////////////////////////////
 
-  private:
-    int m_totalCount;
-    int m_unreadCount;
+	private:
+		int m_totalCount;
+		int m_unreadCount;
 
-    QList<QAction*> m_contextMenu;
+		QList<QAction*> m_contextMenu;
 };
 
 #endif // RECYCLEBIN_H

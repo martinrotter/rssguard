@@ -25,37 +25,36 @@
 
 QPointer<SilentNetworkAccessManager> SilentNetworkAccessManager::s_instance;
 
-SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
-  : BaseNetworkAccessManager(parent) {
-  connect(this, &SilentNetworkAccessManager::authenticationRequired,
-          this, &SilentNetworkAccessManager::onAuthenticationRequired, Qt::DirectConnection);
+SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent)
+	: BaseNetworkAccessManager(parent) {
+	connect(this, &SilentNetworkAccessManager::authenticationRequired,
+	        this, &SilentNetworkAccessManager::onAuthenticationRequired, Qt::DirectConnection);
 }
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
-  qDebug("Destroying SilentNetworkAccessManager instance.");
+	qDebug("Destroying SilentNetworkAccessManager instance.");
 }
 
-SilentNetworkAccessManager *SilentNetworkAccessManager::instance() {
-  if (s_instance.isNull()) {
-    s_instance = new SilentNetworkAccessManager(qApp);
-  }
+SilentNetworkAccessManager* SilentNetworkAccessManager::instance() {
+	if (s_instance.isNull()) {
+		s_instance = new SilentNetworkAccessManager(qApp);
+	}
 
-  return s_instance;
+	return s_instance;
 }
 
-void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) { 
-  if (reply->property("protected").toBool()) {
-    // This feed contains authentication information, it is good.
-    authenticator->setUser(reply->property("username").toString());
-    authenticator->setPassword(reply->property("password").toString());
-    reply->setProperty("authentication-given", true);
+void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator) {
+	if (reply->property("protected").toBool()) {
+		// This feed contains authentication information, it is good.
+		authenticator->setUser(reply->property("username").toString());
+		authenticator->setPassword(reply->property("password").toString());
+		reply->setProperty("authentication-given", true);
+		qDebug("Item '%s' requested authentication and got it.", qPrintable(reply->url().toString()));
+	}
 
-    qDebug("Item '%s' requested authentication and got it.", qPrintable(reply->url().toString()));
-  }
-  else {
-    reply->setProperty("authentication-given", false);
-
-    // Authentication is required but this feed does not contain it.
-    qWarning("Item '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
-  }
+	else {
+		reply->setProperty("authentication-given", false);
+		// Authentication is required but this feed does not contain it.
+		qWarning("Item '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
+	}
 }

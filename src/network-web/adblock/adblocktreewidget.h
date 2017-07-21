@@ -26,37 +26,37 @@ class AdBlockSubscription;
 class AdBlockRule;
 
 class AdBlockTreeWidget : public TreeWidget {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit AdBlockTreeWidget(AdBlockSubscription *subscription, QWidget *parent = 0);
+	public:
+		explicit AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget* parent = 0);
 
-    AdBlockSubscription *subscription() const;
+		AdBlockSubscription* subscription() const;
 
-    void showRule(const AdBlockRule *rule);
-    void refresh();
+		void showRule(const AdBlockRule* rule);
+		void refresh();
 
-  public slots:
-    void addRule();
-    void removeRule();
+	public slots:
+		void addRule();
+		void removeRule();
 
-  private slots:
-    void contextMenuRequested(const QPoint &pos);
-    void itemChanged(QTreeWidgetItem *item);
-    void copyFilter();
+	private slots:
+		void contextMenuRequested(const QPoint& pos);
+		void itemChanged(QTreeWidgetItem* item);
+		void copyFilter();
 
-    void subscriptionUpdated();
-    void subscriptionError(const QString &message);
+		void subscriptionUpdated();
+		void subscriptionError(const QString& message);
 
-  private:
-    void adjustItemFeatures(QTreeWidgetItem *item, const AdBlockRule *rule);
-    void keyPressEvent(QKeyEvent* event);
+	private:
+		void adjustItemFeatures(QTreeWidgetItem* item, const AdBlockRule* rule);
+		void keyPressEvent(QKeyEvent* event);
 
-    AdBlockSubscription *m_subscription;
-    QTreeWidgetItem *m_topItem;
+		AdBlockSubscription* m_subscription;
+		QTreeWidgetItem* m_topItem;
 
-    QString m_ruleToBeSelected;
-    bool m_itemChangingBlock;
+		QString m_ruleToBeSelected;
+		bool m_itemChangingBlock;
 };
 
 #endif // ADBLOCKTREEWIDGET_H

@@ -24,14 +24,14 @@
 class OwnCloudServiceRoot;
 
 class OwnCloudRecycleBin : public RecycleBin {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit OwnCloudRecycleBin(RootItem *parent = nullptr);
-    virtual ~OwnCloudRecycleBin();
+	public:
+		explicit OwnCloudRecycleBin(RootItem* parent = nullptr);
+		virtual ~OwnCloudRecycleBin();
 
-    OwnCloudServiceRoot *serviceRoot();
-    bool markAsReadUnread(ReadStatus status);
+		OwnCloudServiceRoot* serviceRoot();
+		bool markAsReadUnread(ReadStatus status);
 };
 
 #endif // OWNCLOUDRECYCLEBIN_H

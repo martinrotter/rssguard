@@ -31,52 +31,52 @@ StandardServiceEntryPoint::~StandardServiceEntryPoint() {
 }
 
 bool StandardServiceEntryPoint::isSingleInstanceService() const {
-  return true;
+	return true;
 }
 
 QString StandardServiceEntryPoint::name() const {
-  return QObject::tr("Standard online feeds (RSS/RDF/ATOM)");
+	return QObject::tr("Standard online feeds (RSS/RDF/ATOM)");
 }
 
 QString StandardServiceEntryPoint::description() const {
-  return QObject::tr("This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.");
+	return QObject::tr("This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.");
 }
 
 QString StandardServiceEntryPoint::version() const {
-  return APP_VERSION;
+	return APP_VERSION;
 }
 
 QString StandardServiceEntryPoint::author() const {
-  return APP_AUTHOR;
+	return APP_AUTHOR;
 }
 
 QIcon StandardServiceEntryPoint::icon() const {
-  return QIcon(APP_ICON_PATH);
+	return QIcon(APP_ICON_PATH);
 }
 
 QString StandardServiceEntryPoint::code() const {
-  return SERVICE_CODE_STD_RSS;
+	return SERVICE_CODE_STD_RSS;
 }
 
-ServiceRoot *StandardServiceEntryPoint::createNewRoot() const {
-  // Switch DB.
-  QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
-  bool ok;
-  int new_id = DatabaseQueries::createAccount(database, code(), &ok);
+ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
+	// Switch DB.
+	QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
+	bool ok;
+	int new_id = DatabaseQueries::createAccount(database, code(), &ok);
 
-  if (ok) {
-    StandardServiceRoot *root = new StandardServiceRoot();
-    root->setAccountId(new_id);
-    return root;
-  }
-  else {
-    return nullptr;
-  }
+	if (ok) {
+		StandardServiceRoot* root = new StandardServiceRoot();
+		root->setAccountId(new_id);
+		return root;
+	}
+
+	else {
+		return nullptr;
+	}
 }
 
 QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
-  // Check DB if standard account is enabled.
-  QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
-
-  return DatabaseQueries::getAccounts(database);
+	// Check DB if standard account is enabled.
+	QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
+	return DatabaseQueries::getAccounts(database);
 }

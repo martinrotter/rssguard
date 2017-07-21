@@ -27,39 +27,40 @@
 #include <QVariant>
 
 
-TtRssCategory::TtRssCategory(RootItem *parent) : Category(parent) {
-  setIcon(qApp->icons()->fromTheme(QSL("folder")));
+TtRssCategory::TtRssCategory(RootItem* parent) : Category(parent) {
+	setIcon(qApp->icons()->fromTheme(QSL("folder")));
 }
 
-TtRssCategory::TtRssCategory(const QSqlRecord &record) : Category(nullptr) {
-  setIcon(qApp->icons()->fromTheme(QSL("folder")));
-  setId(record.value(CAT_DB_ID_INDEX).toInt());
-  setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
-  setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toInt());
+TtRssCategory::TtRssCategory(const QSqlRecord& record) : Category(nullptr) {
+	setIcon(qApp->icons()->fromTheme(QSL("folder")));
+	setId(record.value(CAT_DB_ID_INDEX).toInt());
+	setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
+	setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toInt());
 }
 
 TtRssCategory::~TtRssCategory() {
 }
 
-TtRssServiceRoot *TtRssCategory::serviceRoot() const {
-  return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
+TtRssServiceRoot* TtRssCategory::serviceRoot() const {
+	return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }
 
 bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
-  const QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
-  TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
-                                                                                 status == RootItem::Unread ?
-                                                                                   UpdateArticle::SetToTrue :
-                                                                                   UpdateArticle::SetToFalse);
+	const QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
+	TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
+	                                      status == RootItem::Unread ?
+	                                      UpdateArticle::SetToTrue :
+	                                      UpdateArticle::SetToFalse);
 
-  if (serviceRoot()->network()->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
-    return false;
-  }
-  else {
-    return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
-  }
+	if (serviceRoot()->network()->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
+		return false;
+	}
+
+	else {
+		return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
+	}
 }
 
 bool TtRssCategory::cleanMessages(bool clear_only_read) {
-  return serviceRoot()->cleanFeeds(getSubTreeFeeds(), clear_only_read);
+	return serviceRoot()->cleanFeeds(getSubTreeFeeds(), clear_only_read);
 }

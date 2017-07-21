@@ -33,183 +33,172 @@
 
 
 AdBlockIcon::AdBlockIcon(QWidget* parent)
-  : ClickableLabel(parent), m_menuAction(0), m_flashTimer(0), m_timerTicks(0), m_enabled(false) {
-  setCursor(Qt::PointingHandCursor);
-  setToolTip(tr("AdBlock lets you block unwanted content on web pages"));
-  setFixedSize(16, 16);
-
-  connect(this, SIGNAL(clicked(QPoint)), this, SLOT(showMenu(QPoint)));
-  connect(AdBlockManager::instance(), SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
-
-  m_enabled = AdBlockManager::instance()->isEnabled();
+	: ClickableLabel(parent), m_menuAction(0), m_flashTimer(0), m_timerTicks(0), m_enabled(false) {
+	setCursor(Qt::PointingHandCursor);
+	setToolTip(tr("AdBlock lets you block unwanted content on web pages"));
+	setFixedSize(16, 16);
+	connect(this, SIGNAL(clicked(QPoint)), this, SLOT(showMenu(QPoint)));
+	connect(AdBlockManager::instance(), SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
+	m_enabled = AdBlockManager::instance()->isEnabled();
 }
 
 AdBlockIcon::~AdBlockIcon() {
-  for (int i = 0; i < m_blockedPopups.count(); ++i) {
-    delete m_blockedPopups.at(i).first;
-  }
+	for (int i = 0; i < m_blockedPopups.count(); ++i) {
+		delete m_blockedPopups.at(i).first;
+	}
 }
 
-void AdBlockIcon::popupBlocked(const QString &ruleString, const QUrl &url) {
-  int index = ruleString.lastIndexOf(QLatin1String(" ("));
+void AdBlockIcon::popupBlocked(const QString& ruleString, const QUrl& url) {
+	int index = ruleString.lastIndexOf(QLatin1String(" ("));
+	const QString subscriptionName = ruleString.left(index);
+	const QString filter = ruleString.mid(index + 2, ruleString.size() - index - 3);
+	AdBlockSubscription* subscription = AdBlockManager::instance()->subscriptionByName(subscriptionName);
 
-  const QString subscriptionName = ruleString.left(index);
-  const QString filter = ruleString.mid(index + 2, ruleString.size() - index - 3);
-  AdBlockSubscription *subscription = AdBlockManager::instance()->subscriptionByName(subscriptionName);
-  if (filter.isEmpty() || !subscription) {
-    return;
-  }
+	if (filter.isEmpty() || !subscription) {
+		return;
+	}
 
-  QPair<AdBlockRule*, QUrl> pair;
-  pair.first = new AdBlockRule(filter, subscription);
-  pair.second = url;
-  m_blockedPopups.append(pair);
+	QPair<AdBlockRule*, QUrl> pair;
+	pair.first = new AdBlockRule(filter, subscription);
+	pair.second = url;
+	m_blockedPopups.append(pair);
+	qApp->showGuiMessage(tr("Blocked popup window"), tr("AdBlock blocked unwanted popup window."), QSystemTrayIcon::Information);
 
-  qApp->showGuiMessage(tr("Blocked popup window"), tr("AdBlock blocked unwanted popup window."), QSystemTrayIcon::Information);
+	if (!m_flashTimer) {
+		m_flashTimer = new QTimer(this);
+	}
 
-  if (!m_flashTimer) {
-    m_flashTimer = new QTimer(this);
-  }
+	if (m_flashTimer->isActive()) {
+		stopAnimation();
+	}
 
-  if (m_flashTimer->isActive()) {
-    stopAnimation();
-  }
-
-  m_flashTimer->setInterval(500);
-  m_flashTimer->start();
-
-  connect(m_flashTimer, &QTimer::timeout, this, &AdBlockIcon::animateIcon);
+	m_flashTimer->setInterval(500);
+	m_flashTimer->start();
+	connect(m_flashTimer, &QTimer::timeout, this, &AdBlockIcon::animateIcon);
 }
 
-QAction *AdBlockIcon::menuAction() {
-  if (!m_menuAction) {
-    m_menuAction = new QAction(tr("AdBlock"), this);
-    m_menuAction->setMenu(new QMenu(this));
-    connect(m_menuAction->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
-    connect(m_menuAction, &QAction::triggered, AdBlockManager::instance(), &AdBlockManager::showDialog);
-  }
+QAction* AdBlockIcon::menuAction() {
+	if (!m_menuAction) {
+		m_menuAction = new QAction(tr("AdBlock"), this);
+		m_menuAction->setMenu(new QMenu(this));
+		connect(m_menuAction->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
+		connect(m_menuAction, &QAction::triggered, AdBlockManager::instance(), &AdBlockManager::showDialog);
+	}
 
-  m_menuAction->setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
-  return m_menuAction;
+	m_menuAction->setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
+	return m_menuAction;
 }
 
-void AdBlockIcon::createMenu(QMenu *menu) {
-  if (!menu) {
-    menu = qobject_cast<QMenu*>(sender());
+void AdBlockIcon::createMenu(QMenu* menu) {
+	if (!menu) {
+		menu = qobject_cast<QMenu*>(sender());
 
-    if (!menu) {
-      return;
-    }
-  }
+		if (!menu) {
+			return;
+		}
+	}
 
-  menu->clear();
+	menu->clear();
+	AdBlockManager* manager = AdBlockManager::instance();
+	AdBlockCustomList* customList = manager->customList();
+	WebPage* page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->viewer()->page();
+	const QUrl pageUrl = page->url();
+	menu->addAction(tr("Show AdBlock &settings"), manager, SLOT(showDialog()));
+	menu->addSeparator();
 
-  AdBlockManager* manager = AdBlockManager::instance();
-  AdBlockCustomList* customList = manager->customList();
+	if (!pageUrl.host().isEmpty() && m_enabled && manager->canRunOnScheme(pageUrl.scheme())) {
+		const QString host = page->url().host().contains(QLatin1String("www.")) ? pageUrl.host().mid(4) : pageUrl.host();
+		const QString hostFilter = QString("@@||%1^$document").arg(host);
+		const QString pageFilter = QString("@@|%1|$document").arg(pageUrl.toString());
+		QAction* act = menu->addAction(tr("Disable on %1").arg(host));
+		act->setCheckable(true);
+		act->setChecked(customList->containsFilter(hostFilter));
+		act->setData(hostFilter);
+		connect(act, SIGNAL(triggered()), this, SLOT(toggleCustomFilter()));
+		act = menu->addAction(tr("Disable only on this page"));
+		act->setCheckable(true);
+		act->setChecked(customList->containsFilter(pageFilter));
+		act->setData(pageFilter);
+		connect(act, SIGNAL(triggered()), this, SLOT(toggleCustomFilter()));
+		menu->addSeparator();
+	}
 
-  WebPage *page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->viewer()->page();
-  const QUrl pageUrl = page->url();
+	if (!m_blockedPopups.isEmpty()) {
+		menu->addAction(tr("Blocked popup windows"))->setEnabled(false);
 
-  menu->addAction(tr("Show AdBlock &settings"), manager, SLOT(showDialog()));
-  menu->addSeparator();
-
-  if (!pageUrl.host().isEmpty() && m_enabled && manager->canRunOnScheme(pageUrl.scheme())) {
-    const QString host = page->url().host().contains(QLatin1String("www.")) ? pageUrl.host().mid(4) : pageUrl.host();
-    const QString hostFilter = QString("@@||%1^$document").arg(host);
-    const QString pageFilter = QString("@@|%1|$document").arg(pageUrl.toString());
-
-    QAction *act = menu->addAction(tr("Disable on %1").arg(host));
-    act->setCheckable(true);
-    act->setChecked(customList->containsFilter(hostFilter));
-    act->setData(hostFilter);
-    connect(act, SIGNAL(triggered()), this, SLOT(toggleCustomFilter()));
-
-    act = menu->addAction(tr("Disable only on this page"));
-    act->setCheckable(true);
-    act->setChecked(customList->containsFilter(pageFilter));
-    act->setData(pageFilter);
-    connect(act, SIGNAL(triggered()), this, SLOT(toggleCustomFilter()));
-
-    menu->addSeparator();
-  }
-
-  if (!m_blockedPopups.isEmpty()) {
-    menu->addAction(tr("Blocked popup windows"))->setEnabled(false);
-
-    for (int i = 0; i < m_blockedPopups.count(); i++) {
-      const QPair<AdBlockRule*, QUrl> &pair = m_blockedPopups.at(i);
-
-      QString address = pair.second.toString().right(55);
-      QString actionText = tr("%1 with (%2)").arg(address, pair.first->filter()).replace(QL1C('&'), QL1S("&&"));
-
-      QAction *action = menu->addAction(actionText, manager, SLOT(showRule()));
-      action->setData(QVariant::fromValue((void*)pair.first));
-    }
-  }
+		for (int i = 0; i < m_blockedPopups.count(); i++) {
+			const QPair<AdBlockRule*, QUrl>& pair = m_blockedPopups.at(i);
+			QString address = pair.second.toString().right(55);
+			QString actionText = tr("%1 with (%2)").arg(address, pair.first->filter()).replace(QL1C('&'), QL1S("&&"));
+			QAction* action = menu->addAction(actionText, manager, SLOT(showRule()));
+			action->setData(QVariant::fromValue((void*)pair.first));
+		}
+	}
 }
 
-void AdBlockIcon::showMenu(const QPoint &pos) {
-  QMenu menu;
-  createMenu(&menu);
-
-  menu.exec(pos);
+void AdBlockIcon::showMenu(const QPoint& pos) {
+	QMenu menu;
+	createMenu(&menu);
+	menu.exec(pos);
 }
 
 void AdBlockIcon::toggleCustomFilter() {
-  QAction *action = qobject_cast<QAction*>(sender());
+	QAction* action = qobject_cast<QAction*>(sender());
 
-  if (!action) {
-    return;
-  }
+	if (!action) {
+		return;
+	}
 
-  const QString filter = action->data().toString();
-  AdBlockManager *manager = AdBlockManager::instance();
-  AdBlockCustomList *customList = manager->customList();
+	const QString filter = action->data().toString();
+	AdBlockManager* manager = AdBlockManager::instance();
+	AdBlockCustomList* customList = manager->customList();
 
-  if (customList->containsFilter(filter)) {
-    customList->removeFilter(filter);
-  }
-  else {
-    AdBlockRule *rule = new AdBlockRule(filter, customList);
-    customList->addRule(rule);
-  }
+	if (customList->containsFilter(filter)) {
+		customList->removeFilter(filter);
+	}
+
+	else {
+		AdBlockRule* rule = new AdBlockRule(filter, customList);
+		customList->addRule(rule);
+	}
 }
 
 void AdBlockIcon::animateIcon() {
-  ++m_timerTicks;
+	++m_timerTicks;
 
-  if (m_timerTicks > 10) {
-    stopAnimation();
-    return;
-  }
+	if (m_timerTicks > 10) {
+		stopAnimation();
+		return;
+	}
 
-  if (pixmap()->isNull()) {
-    setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE).pixmap(16));
-  }
-  else {
-    setPixmap(QPixmap());
-  }
+	if (pixmap()->isNull()) {
+		setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE).pixmap(16));
+	}
+
+	else {
+		setPixmap(QPixmap());
+	}
 }
 
 void AdBlockIcon::stopAnimation() {
-  m_timerTicks = 0;
-  m_flashTimer->stop();
-  disconnect(m_flashTimer, SIGNAL(timeout()), this, SLOT(animateIcon()));
-
-  setEnabled(m_enabled);
+	m_timerTicks = 0;
+	m_flashTimer->stop();
+	disconnect(m_flashTimer, SIGNAL(timeout()), this, SLOT(animateIcon()));
+	setEnabled(m_enabled);
 }
 
 void AdBlockIcon::setEnabled(bool enabled) {
-  if (enabled) {
-    setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE).pixmap(16));
-  }
-  else {
-    setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED).pixmap(16));
-  }
+	if (enabled) {
+		setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE).pixmap(16));
+	}
 
-  if (m_menuAction != nullptr) {
-    m_menuAction->setIcon(enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
-  }
+	else {
+		setPixmap(qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED).pixmap(16));
+	}
 
-  m_enabled = enabled;
+	if (m_menuAction != nullptr) {
+		m_menuAction->setIcon(enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
+	}
+
+	m_enabled = enabled;
 }

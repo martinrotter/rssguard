@@ -23,43 +23,44 @@
 #include "services/abstract/feed.h"
 
 
-Category::Category(RootItem *parent) : RootItem(parent) {
-  setKind(RootItemKind::Category);
+Category::Category(RootItem* parent) : RootItem(parent) {
+	setKind(RootItemKind::Category);
 }
 
 Category::~Category() {
 }
 
 void Category::updateCounts(bool including_total_count) {
-  QList<Feed*> feeds;
+	QList<Feed*> feeds;
 
-  foreach (RootItem *child, getSubTree()) {
-    if (child->kind() == RootItemKind::Feed) {
-      feeds.append(child->toFeed());
-    }
-    else if (child->kind() != RootItemKind::Category && child->kind() != RootItemKind::ServiceRoot) {
-      child->updateCounts(including_total_count);
-    }
-  }
+	foreach (RootItem* child, getSubTree()) {
+		if (child->kind() == RootItemKind::Feed) {
+			feeds.append(child->toFeed());
+		}
 
-  if (feeds.isEmpty()) {
-    return;
-  }
+		else if (child->kind() != RootItemKind::Category && child->kind() != RootItemKind::ServiceRoot) {
+			child->updateCounts(including_total_count);
+		}
+	}
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  bool ok;
-  QMap<int,QPair<int,int> > counts = DatabaseQueries::getMessageCountsForCategory(database, customId(), getParentServiceRoot()->accountId(),
-                                                                                  including_total_count, &ok);
+	if (feeds.isEmpty()) {
+		return;
+	}
 
-  if (ok) {
-    foreach (Feed *feed, feeds) {
-      if (counts.contains(feed->customId())) {
-        feed->setCountOfUnreadMessages(counts.value(feed->customId()).first);
+	QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+	bool ok;
+	QMap<int, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForCategory(database, customId(), getParentServiceRoot()->accountId(),
+	                                    including_total_count, &ok);
 
-        if (including_total_count) {
-          feed->setCountOfAllMessages(counts.value(feed->customId()).second);
-        }
-      }
-    }
-  }
+	if (ok) {
+		foreach (Feed* feed, feeds) {
+			if (counts.contains(feed->customId())) {
+				feed->setCountOfUnreadMessages(counts.value(feed->customId()).first);
+
+				if (including_total_count) {
+					feed->setCountOfAllMessages(counts.value(feed->customId()).second);
+				}
+			}
+		}
+	}
 }

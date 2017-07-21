@@ -24,7 +24,7 @@
 
 
 namespace Ui {
-  class FormStandardCategoryDetails;
+	class FormStandardCategoryDetails;
 }
 
 class Category;
@@ -36,54 +36,54 @@ class QMenu;
 class QAction;
 
 class FormStandardCategoryDetails : public QDialog {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit FormStandardCategoryDetails(StandardServiceRoot *service_root, QWidget *parent = 0);
-    virtual ~FormStandardCategoryDetails();
+	public:
+		// Constructors and destructors.
+		explicit FormStandardCategoryDetails(StandardServiceRoot* service_root, QWidget* parent = 0);
+		virtual ~FormStandardCategoryDetails();
 
-  public slots:
-    // Executes add/edit standard category dialog.
-    int addEditCategory(StandardCategory *input_category, RootItem *parent_to_select);
+	public slots:
+		// Executes add/edit standard category dialog.
+		int addEditCategory(StandardCategory* input_category, RootItem* parent_to_select);
 
-  protected slots:
-    // Applies changes.
-    void apply();
+	protected slots:
+		// Applies changes.
+		void apply();
 
-    // Trigerred when title/description changes.
-    void onTitleChanged(const QString &new_title);
-    void onDescriptionChanged(const QString &new_description);
+		// Trigerred when title/description changes.
+		void onTitleChanged(const QString& new_title);
+		void onDescriptionChanged(const QString& new_description);
 
-    // Icon selectors.
-    void onNoIconSelected();
-    void onLoadIconFromFile();
-    void onUseDefaultIcon();
+		// Icon selectors.
+		void onNoIconSelected();
+		void onLoadIconFromFile();
+		void onUseDefaultIcon();
 
-  protected:
-    // Creates needed connections.
-    void createConnections();
+	protected:
+		// Creates needed connections.
+		void createConnections();
 
-    // Sets the category which will be edited.
-    void setEditableCategory(StandardCategory *editable_category);
+		// Sets the category which will be edited.
+		void setEditableCategory(StandardCategory* editable_category);
 
-    // Initializes the dialog.
-    void initialize();
+		// Initializes the dialog.
+		void initialize();
 
-    // Loads categories into the dialog + give root "category"
-    // and make sure that no childs of input category (including)
-    // input category are loaded.
-    void loadCategories(const QList<Category *> categories, RootItem *root_item, StandardCategory *input_category);
+		// Loads categories into the dialog + give root "category"
+		// and make sure that no childs of input category (including)
+		// input category are loaded.
+		void loadCategories(const QList<Category*> categories, RootItem* root_item, StandardCategory* input_category);
 
-  private:
-    QScopedPointer<Ui::FormStandardCategoryDetails> m_ui;
-    StandardCategory *m_editableCategory;
-    StandardServiceRoot *m_serviceRoot;
+	private:
+		QScopedPointer<Ui::FormStandardCategoryDetails> m_ui;
+		StandardCategory* m_editableCategory;
+		StandardServiceRoot* m_serviceRoot;
 
-    QMenu *m_iconMenu;
-    QAction *m_actionLoadIconFromFile;
-    QAction *m_actionUseDefaultIcon;
-    QAction *m_actionNoIcon;
+		QMenu* m_iconMenu;
+		QAction* m_actionLoadIconFromFile;
+		QAction* m_actionUseDefaultIcon;
+		QAction* m_actionNoIcon;
 };
 
 #endif // FORMCATEGORYDETAILS_H

@@ -27,31 +27,31 @@
 typedef QPair<QNetworkReply::NetworkError, QVariant> NetworkResult;
 
 class NetworkFactory {
-    Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
+		Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
 
-  private:
-    // Constructor.
-    explicit NetworkFactory();
+	private:
+		// Constructor.
+		explicit NetworkFactory();
 
-  public:
-    static QStringList extractFeedLinksFromHtmlPage(const QUrl &url, const QString &html);
+	public:
+		static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);
 
-    // Returns human readable text for given network error.
-    static QString networkErrorText(QNetworkReply::NetworkError error_code);
+		// Returns human readable text for given network error.
+		static QString networkErrorText(QNetworkReply::NetworkError error_code);
 
-    // Performs SYNCHRONOUS download if favicon for the site,
-    // given URL belongs to.
-    static QNetworkReply::NetworkError downloadIcon(const QList<QString> &urls, int timeout, QIcon &output);
+		// Performs SYNCHRONOUS download if favicon for the site,
+		// given URL belongs to.
+		static QNetworkReply::NetworkError downloadIcon(const QList<QString>& urls, int timeout, QIcon& output);
 
-    static NetworkResult performNetworkOperation(const QString &url, int timeout, const QByteArray &input_data,
-                                                 const QString &input_content_type, QByteArray &output,
-                                                 QNetworkAccessManager::Operation operation,
-                                                 bool protected_contents = false, const QString &username = QString(),
-                                                 const QString &password = QString(), bool set_basic_header = false);
+		static NetworkResult performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
+		                                             const QString& input_content_type, QByteArray& output,
+		                                             QNetworkAccessManager::Operation operation,
+		                                             bool protected_contents = false, const QString& username = QString(),
+		                                             const QString& password = QString(), bool set_basic_header = false);
 
-    static NetworkResult downloadFeedFile(const QString &url, int timeout, QByteArray &output,
-                                          bool protected_contents = false, const QString &username = QString(),
-                                          const QString &password = QString());
+		static NetworkResult downloadFeedFile(const QString& url, int timeout, QByteArray& output,
+		                                      bool protected_contents = false, const QString& username = QString(),
+		                                      const QString& password = QString());
 };
 
 #endif // NETWORKFACTORY_H

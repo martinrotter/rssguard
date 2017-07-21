@@ -30,51 +30,51 @@ class TtRssNetworkFactory;
 class TtRssRecycleBin;
 
 class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit TtRssServiceRoot(RootItem *parent = nullptr);
-    virtual ~TtRssServiceRoot();
+	public:
+		explicit TtRssServiceRoot(RootItem* parent = nullptr);
+		virtual ~TtRssServiceRoot();
 
-    void start(bool freshly_activated);
-    void stop();
-    QString code() const;
-    bool canBeEdited() const;
-    bool canBeDeleted() const;
-    bool editViaGui();
-    bool deleteViaGui();
-    bool markAsReadUnread(ReadStatus status);
-    bool supportsFeedAdding() const;
-    bool supportsCategoryAdding() const;
-    QVariant data(int column, int role) const;
-    QList<QAction*> serviceMenu();
-    RecycleBin *recycleBin() const;
-    void saveAllCachedData();
+		void start(bool freshly_activated);
+		void stop();
+		QString code() const;
+		bool canBeEdited() const;
+		bool canBeDeleted() const;
+		bool editViaGui();
+		bool deleteViaGui();
+		bool markAsReadUnread(ReadStatus status);
+		bool supportsFeedAdding() const;
+		bool supportsCategoryAdding() const;
+		QVariant data(int column, int role) const;
+		QList<QAction*> serviceMenu();
+		RecycleBin* recycleBin() const;
+		void saveAllCachedData();
 
-    bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
-    bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes);
+		bool onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
+		bool onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
 
-    // Access to network.
-    TtRssNetworkFactory *network() const;
+		// Access to network.
+		TtRssNetworkFactory* network() const;
 
-    void saveAccountDataToDatabase();
-    void updateTitle();
+		void saveAccountDataToDatabase();
+		void updateTitle();
 
-  public slots:
-    void addNewFeed(const QString &url = QString());
-    void addNewCategory();
+	public slots:
+		void addNewFeed(const QString& url = QString());
+		void addNewCategory();
 
-  private:
-    RootItem *obtainNewTreeForSyncIn() const;
-    QMap<int,QVariant> storeCustomFeedsData();
-    void restoreCustomFeedsData(const QMap<int,QVariant> &data, const QHash<int,Feed*> &feeds);
+	private:
+		RootItem* obtainNewTreeForSyncIn() const;
+		QMap<int, QVariant> storeCustomFeedsData();
+		void restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds);
 
-    void loadFromDatabase();
+		void loadFromDatabase();
 
-    TtRssRecycleBin *m_recycleBin;
-    QAction *m_actionSyncIn;
-    QList<QAction*> m_serviceMenu;
-    TtRssNetworkFactory *m_network;
+		TtRssRecycleBin* m_recycleBin;
+		QAction* m_actionSyncIn;
+		QList<QAction*> m_serviceMenu;
+		TtRssNetworkFactory* m_network;
 };
 
 #endif // TTRSSSERVICEROOT_H

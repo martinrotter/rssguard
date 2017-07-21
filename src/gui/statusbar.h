@@ -29,48 +29,48 @@ class QLabel;
 class Mutex;
 
 class StatusBar : public QStatusBar, public BaseBar {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit StatusBar(QWidget *parent = 0);
-    virtual ~StatusBar();
+	public:
+		// Constructors and destructors.
+		explicit StatusBar(QWidget* parent = 0);
+		virtual ~StatusBar();
 
-    QList<QAction*> availableActions() const;
-    QList<QAction*> changeableActions() const;
-    void saveChangeableActions(const QStringList &actions);
-    QStringList defaultActions() const;
-    QStringList savedActions() const;
-    QList<QAction*> getSpecificActions(const QStringList &actions);
-    void loadSpecificActions(const QList<QAction*> &actions);
+		QList<QAction*> availableActions() const;
+		QList<QAction*> changeableActions() const;
+		void saveChangeableActions(const QStringList& actions);
+		QStringList defaultActions() const;
+		QStringList savedActions() const;
+		QList<QAction*> getSpecificActions(const QStringList& actions);
+		void loadSpecificActions(const QList<QAction*>& actions);
 
-  public slots:
-    // Progress bar operations
-    void showProgressFeeds(int progress, const QString &label);
-    void clearProgressFeeds();
+	public slots:
+		// Progress bar operations
+		void showProgressFeeds(int progress, const QString& label);
+		void clearProgressFeeds();
 
-    void showProgressDownload(int progress, const QString &tooltip);
-    void clearProgressDownload();
+		void showProgressDownload(int progress, const QString& tooltip);
+		void clearProgressDownload();
 
-  protected:
-    bool eventFilter(QObject *watched, QEvent *event);
+	protected:
+		bool eventFilter(QObject* watched, QEvent* event);
 
-  private:
-    void clear();
+	private:
+		void clear();
 
-    Mutex *m_mutex;
+		Mutex* m_mutex;
 
-    QProgressBar *m_barProgressFeeds;
-    QAction *m_barProgressFeedsAction;
+		QProgressBar* m_barProgressFeeds;
+		QAction* m_barProgressFeedsAction;
 
-    QLabel *m_lblProgressFeeds;
-    QAction *m_lblProgressFeedsAction;
+		QLabel* m_lblProgressFeeds;
+		QAction* m_lblProgressFeedsAction;
 
-    QProgressBar *m_barProgressDownload;
-    QAction *m_barProgressDownloadAction;
+		QProgressBar* m_barProgressDownload;
+		QAction* m_barProgressDownloadAction;
 
-    QLabel *m_lblProgressDownload;
-    QAction *m_lblProgressDownloadAction;
+		QLabel* m_lblProgressDownload;
+		QAction* m_lblProgressDownloadAction;
 };
 
 #endif // STATUSBAR_H
