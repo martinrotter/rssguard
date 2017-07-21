@@ -37,16 +37,12 @@
 AdBlockDialog::AdBlockDialog(QWidget* parent)
   : QDialog(parent), m_ui(new Ui::AdBlockDialog), m_manager(AdBlockManager::instance()), m_currentTreeWidget(0), m_currentSubscription(0),
     m_loaded(false) {
-  setAttribute(Qt::WA_DeleteOnClose);
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
-
   m_ui->setupUi(this);
   m_ui->m_cbEnable->setChecked(m_manager->isEnabled());
 
-#if defined(Q_OS_MACOS)
-  m_ui->m_tabSubscriptions->setDocumentMode(false);
-#endif
+  setAttribute(Qt::WA_DeleteOnClose);
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+  setWindowIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
 
   QPushButton* btn_options = m_ui->m_buttonBox->addButton(QDialogButtonBox::FirstButton);
   btn_options->setText(tr("Options"));
