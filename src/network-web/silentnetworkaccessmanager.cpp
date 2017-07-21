@@ -22,8 +22,8 @@
 #include <QNetworkReply>
 #include <QAuthenticator>
 
+Q_GLOBAL_STATIC(SilentNetworkAccessManager, qz_silent_acmanager)
 
-QPointer<SilentNetworkAccessManager> SilentNetworkAccessManager::s_instance;
 
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent)
 	: BaseNetworkAccessManager(parent) {
@@ -36,11 +36,7 @@ SilentNetworkAccessManager::~SilentNetworkAccessManager() {
 }
 
 SilentNetworkAccessManager* SilentNetworkAccessManager::instance() {
-	if (s_instance.isNull()) {
-		s_instance = new SilentNetworkAccessManager(qApp);
-	}
-
-	return s_instance;
+  return qz_silent_acmanager();
 }
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator) {

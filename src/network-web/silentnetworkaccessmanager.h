@@ -38,10 +38,7 @@ class SilentNetworkAccessManager : public BaseNetworkAccessManager {
 
 	public slots:
 		// This cannot do any GUI stuff.
-		void onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator);
-
-	private:
-		static QPointer<SilentNetworkAccessManager> s_instance;
+    void onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator);
 };
 
 #endif // SILENTNETWORKACCESSMANAGER_H
