@@ -24,12 +24,11 @@
 #include <QUrl>
 #include <QDesktopServices>
 
+Q_GLOBAL_STATIC(WebFactory, qz_webfactory)
 
-QPointer<WebFactory> WebFactory::s_instance;
 
-WebFactory::WebFactory(QObject* parent)
-	: QObject(parent), m_escapes(QMap<QString, QString>()),
-	  m_deEscapes(QMap<QString, QString>()) {
+WebFactory::WebFactory()
+  : m_escapes(QMap<QString, QString>()), m_deEscapes(QMap<QString, QString>()) {
 }
 
 WebFactory::~WebFactory() {
@@ -72,11 +71,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) {
 }
 
 WebFactory* WebFactory::instance() {
-	if (s_instance.isNull()) {
-		s_instance = new WebFactory(qApp);
-	}
-
-	return s_instance;
+  return qz_webfactory();
 }
 
 QString WebFactory::stripTags(QString text) {
@@ -85,7 +80,7 @@ QString WebFactory::stripTags(QString text) {
 
 QString WebFactory::escapeHtml(const QString& html) {
 	if (m_escapes.isEmpty()) {
-		generetaEscapes();
+    genereteEscapes();
 	}
 
 	QString output = html;
@@ -136,7 +131,7 @@ QString WebFactory::toSecondLevelDomain(const QUrl& url) {
 	return domain + top_level_domain;
 }
 
-void WebFactory::generetaEscapes() {
+void WebFactory::genereteEscapes() {
 	m_escapes[QSL("&lt;")]     = QL1C('<');
 	m_escapes[QSL("&gt;")]     = QL1C('>');
 	m_escapes[QSL("&amp;")]    = QL1C('&');

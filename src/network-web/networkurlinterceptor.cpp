@@ -32,9 +32,7 @@ void NetworkUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo& info) {
 		info.setHttpHeader(QByteArrayLiteral("DNT"), QByteArrayLiteral("1"));
 	}
 
-	// TODO: mužeme zde nastavovat custom věci pro každej webengine sitovej pozadavek
-	// treba user agenta
-	//info.setHttpHeader(QByteArrayLiteral("User-Agent"), mApp->userAgentManager()->userAgentForUrl(info.firstPartyUrl()).toUtf8());
+  // NOTE: Here we can add custom headers for each webengine request, for example "User-Agent".
 
 	foreach (UrlInterceptor* interceptor, m_interceptors) {
 		interceptor->interceptRequest(info);

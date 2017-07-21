@@ -26,7 +26,7 @@
 
 
 // AdBlock.
-DKEY AdBlock::ID                        = "adblock";
+DKEY AdBlock::ID                              = "adblock";
 
 DKEY AdBlock::DisabledRules                   = "disabled_rules";
 DVALUE(QStringList) AdBlock::DisabledRulesDef = QStringList();

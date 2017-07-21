@@ -45,6 +45,8 @@
 
 #include <QWebEngineProfile>
 #include <QWebEngineDownloadItem>
+#include <QWebEngineScript>
+#include <QWebEngineScriptCollection>
 #endif
 
 Application::Application(const QString& id, int& argc, char** argv)
@@ -65,8 +67,9 @@ Application::Application(const QString& id, int& argc, char** argv)
 #if defined(USE_WEBENGINE)
 	connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 	QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
-	// TODO: Teď tam žádný nastavení není, ale jestli se DNT třeba
-	// přidá do dialogu nastavení, tak toto volat při ukládání nastavení.
+
+  // TODO: Call load settings when saving app settings from dialog.
+  // Will need add that if I add more settings in the future.
 	m_urlInterceptor->loadSettings();
 #endif
 }

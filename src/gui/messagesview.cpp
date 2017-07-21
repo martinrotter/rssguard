@@ -453,7 +453,6 @@ void MessagesView::selectPreviousItem() {
 }
 
 void MessagesView::selectNextUnreadItem() {
-	// FIXME: Use this to solve #112.
 	const QModelIndexList selected_rows = selectionModel()->selectedRows();
 	int active_row;
 

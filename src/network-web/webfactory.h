@@ -18,20 +18,18 @@
 #ifndef WEBFACTORY_H
 #define WEBFACTORY_H
 
-#include <QObject>
-
 #include "core/messagesmodel.h"
 
-#include <QPointer>
 #include <QMap>
 
 
 class QWebEngineSettings;
 
-class WebFactory : public QObject {
-		Q_OBJECT
-
+class WebFactory {
 	public:
+    // Constructor.
+    explicit WebFactory();
+
 		// Destructor.
 		virtual ~WebFactory();
 
@@ -42,8 +40,6 @@ class WebFactory : public QObject {
 		QString escapeHtml(const QString& html);
 		QString deEscapeHtml(const QString& text);
 
-		// BUG: Version for Qt < 4.8 has one issue, it will wrongly
-		// count .co.uk (and others) as second-level domain
 		QString toSecondLevelDomain(const QUrl& url);
 
 		// Singleton getter.
@@ -55,18 +51,12 @@ class WebFactory : public QObject {
 		bool sendMessageViaEmail(const Message& message);
 
 	private:
-		// Constructor.
-		explicit WebFactory(QObject* parent = 0);
-
 		// Escape sequences generators.
-		void generetaEscapes();
+    void genereteEscapes();
 		void generateDeescapes();
 
-		QMap<QString, QString> m_escapes;
+    QMap<QString, QString> m_escapes;
 		QMap<QString, QString> m_deEscapes;
-
-		// Singleton.
-		static QPointer<WebFactory> s_instance;
 };
 
 #endif // WEBFACTORY_H
