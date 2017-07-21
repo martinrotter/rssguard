@@ -9,7 +9,6 @@
 --max-continuation-indent=100
 --break-blocks=all
 --unpad-paren
---delete-empty-lines
 --pad-oper
 --pad-comma
 --pad-header

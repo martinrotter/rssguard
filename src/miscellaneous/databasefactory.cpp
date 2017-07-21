@@ -257,7 +257,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 		// Attach database.
 		copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
 		// Copy all stuff.
-		// WARNING: All tables belong here.
 		QStringList tables;
 
 		if (copy_contents.exec(QSL("SELECT name FROM storage.sqlite_master WHERE type='table';"))) {
@@ -534,7 +533,6 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 	// Attach database.
 	copy_contents.exec(QString(QSL("ATTACH DATABASE '%1' AS 'storage';")).arg(file_database.databaseName()));
 	// Copy all stuff.
-	// WARNING: All tables belong here.
 	QStringList tables;
 
 	if (copy_contents.exec(QSL("SELECT name FROM storage.sqlite_master WHERE type='table';"))) {

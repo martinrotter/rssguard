@@ -49,16 +49,19 @@
 
 Application::Application(const QString& id, int& argc, char** argv)
 	: QtSingleApplication(id, argc, argv),
+
 #if defined(USE_WEBENGINE)
 	  m_urlInterceptor(new NetworkUrlInterceptor(this)),
 #endif
-	  m_feedReader(nullptr),
+
+    m_feedReader(nullptr),
 	  m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
 	  m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
 	  m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr), m_shouldRestart(false) {
 	connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
 	connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
 	connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
+
 #if defined(USE_WEBENGINE)
 	connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 	QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
