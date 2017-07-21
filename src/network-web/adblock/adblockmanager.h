@@ -75,12 +75,9 @@ class AdBlockManager : public QObject {
 
 	public slots:
 		void setEnabled(bool enabled);
-		void showRule();
-
 		void updateMatcher();
 		void updateAllSubscriptions();
-
-		AdBlockDialog* showDialog();
+    void showDialog();
 
 	private:
 		inline bool canBeBlocked(const QUrl& url) const;

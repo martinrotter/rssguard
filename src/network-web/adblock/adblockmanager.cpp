@@ -357,23 +357,10 @@ AdBlockSubscription* AdBlockManager::subscriptionByName(const QString& name) con
 	return 0;
 }
 
-AdBlockDialog* AdBlockManager::showDialog() {
+void AdBlockManager::showDialog() {
 	if (!m_adBlockDialog) {
-		m_adBlockDialog = new AdBlockDialog;
+    m_adBlockDialog = new AdBlockDialog();
 	}
 
-	m_adBlockDialog.data()->show();
-	m_adBlockDialog.data()->raise();
-	m_adBlockDialog.data()->activateWindow();
-	return m_adBlockDialog.data();
-}
-
-void AdBlockManager::showRule() {
-	if (QAction* action = qobject_cast<QAction*>(sender())) {
-		const AdBlockRule* rule = static_cast<const AdBlockRule*>(action->data().value<void*>());
-
-		if (rule) {
-			showDialog()->showRule(rule);
-		}
-	}
+  m_adBlockDialog.data()->exec();
 }

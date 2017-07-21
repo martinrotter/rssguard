@@ -82,7 +82,7 @@ QAction* AdBlockIcon::menuAction() {
 		m_menuAction = new QAction(tr("AdBlock"), this);
 		m_menuAction->setMenu(new QMenu(this));
 		connect(m_menuAction->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
-		connect(m_menuAction, &QAction::triggered, AdBlockManager::instance(), &AdBlockManager::showDialog);
+    connect(m_menuAction, &QAction::triggered, AdBlockManager::instance(), &AdBlockManager::showDialog);
 	}
 
 	m_menuAction->setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
@@ -121,18 +121,6 @@ void AdBlockIcon::createMenu(QMenu* menu) {
 		act->setData(pageFilter);
 		connect(act, SIGNAL(triggered()), this, SLOT(toggleCustomFilter()));
 		menu->addSeparator();
-	}
-
-	if (!m_blockedPopups.isEmpty()) {
-		menu->addAction(tr("Blocked popup windows"))->setEnabled(false);
-
-		for (int i = 0; i < m_blockedPopups.count(); i++) {
-			const QPair<AdBlockRule*, QUrl>& pair = m_blockedPopups.at(i);
-			QString address = pair.second.toString().right(55);
-			QString actionText = tr("%1 with (%2)").arg(address, pair.first->filter()).replace(QL1C('&'), QL1S("&&"));
-			QAction* action = menu->addAction(actionText, manager, SLOT(showRule()));
-			action->setData(QVariant::fromValue((void*)pair.first));
-		}
 	}
 }
 
