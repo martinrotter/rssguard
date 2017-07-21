@@ -7,35 +7,67 @@
     <x>0</x>
     <y>0</y>
     <width>557</width>
-    <height>162</height>
+    <height>145</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Add Subscription</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="1" column="0" colspan="2">
-    <widget class="QComboBox" name="comboBox"/>
+   <item row="0" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="m_cbUsePredefined">
+       <property name="text">
+        <string>Use predefined subscription</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_cmbPresets">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="m_lblTitle">
+     <property name="text">
+      <string>Title</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_txtTitle</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="m_txtTitle">
+     <property name="placeholderText">
+      <string>Title of subscription</string>
+     </property>
+    </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="m_lblUrl">
      <property name="text">
-      <string>Title:</string>
+      <string>URL</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_txtUrl</cstring>
      </property>
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QLineEdit" name="title"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Address:</string>
+    <widget class="QLineEdit" name="m_txtUrl">
+     <property name="placeholderText">
+      <string>Absolute URL to online subscription file</string>
      </property>
     </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="url"/>
    </item>
    <item row="4" column="1">
     <widget class="QDialogButtonBox" name="buttonBox">
@@ -47,15 +79,27 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Add new subscription to AdBlock:</string>
+   <item row="3" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_cbUsePredefined</tabstop>
+  <tabstop>m_cmbPresets</tabstop>
+  <tabstop>m_txtTitle</tabstop>
+  <tabstop>m_txtUrl</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -65,12 +109,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>283</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
-     <y>274</y>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -81,12 +125,12 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>351</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
-     <y>274</y>
+     <y>132</y>
     </hint>
    </hints>
   </connection>

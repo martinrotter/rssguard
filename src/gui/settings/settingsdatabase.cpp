@@ -30,7 +30,8 @@ SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
 	GuiUtilities::setLabelAsNotice(m_ui->m_lblDataStorageWarning, true);
 	GuiUtilities::setLabelAsNotice(m_ui->m_lblMysqlInfo, false);
 	GuiUtilities::setLabelAsNotice(m_ui->m_lblSqliteInMemoryWarnings, true);
-	connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsDatabase::dirtifySettings);
+	connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsDatabase::dirtifySettings);
 	connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::dirtifySettings);
 	connect(m_ui->m_txtMysqlDatabase->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
 	connect(m_ui->m_txtMysqlHostname->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
@@ -38,14 +39,16 @@ SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
 	connect(m_ui->m_checkUseTransactions, &QCheckBox::toggled, this, &SettingsDatabase::dirtifySettings);
 	connect(m_ui->m_txtMysqlUsername->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
 	connect(m_ui->m_spinMysqlPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &SettingsDatabase::dirtifySettings);
-	connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsDatabase::selectSqlBackend);
+	connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsDatabase::selectSqlBackend);
 	connect(m_ui->m_checkMysqlShowPassword, &QCheckBox::toggled, this, &SettingsDatabase::switchMysqlPasswordVisiblity);
 	connect(m_ui->m_txtMysqlUsername->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlUsernameChanged);
 	connect(m_ui->m_txtMysqlHostname->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlHostnameChanged);
 	connect(m_ui->m_txtMysqlPassword->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlPasswordChanged);
 	connect(m_ui->m_txtMysqlDatabase->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlDatabaseChanged);
 	connect(m_ui->m_btnMysqlTestSetup, &QPushButton::clicked, this, &SettingsDatabase::mysqlTestConnection);
-	connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsDatabase::requireRestart);
+	connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsDatabase::requireRestart);
 	connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::requireRestart);
 	connect(m_ui->m_spinMysqlPort, &QSpinBox::editingFinished, this, &SettingsDatabase::requireRestart);
 	connect(m_ui->m_txtMysqlHostname->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
@@ -140,7 +143,8 @@ void SettingsDatabase::switchMysqlPasswordVisiblity(bool visible) {
 void SettingsDatabase::loadSettings() {
 	onBeginLoadSettings();
 	m_ui->m_checkUseTransactions->setChecked(qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool());
-	m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,  tr("No connection test triggered so far."), tr("You did not executed any connection test yet."));
+	m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,  tr("No connection test triggered so far."),
+	                                      tr("You did not executed any connection test yet."));
 	// Load SQLite.
 	m_ui->m_cmbDatabaseDriver->addItem(qApp->database()->humanDriverName(DatabaseFactory::SQLITE), APP_DB_SQLITE_DRIVER);
 	// Load in-memory database status.
@@ -160,13 +164,15 @@ void SettingsDatabase::loadSettings() {
 		m_ui->m_txtMysqlDatabase->lineEdit()->setPlaceholderText(tr("Working database which you have full access to."));
 		m_ui->m_txtMysqlHostname->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
 		m_ui->m_txtMysqlUsername->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
-		m_ui->m_txtMysqlPassword->lineEdit()->setText(TextFactory::decrypt(settings()->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString()));
+		m_ui->m_txtMysqlPassword->lineEdit()->setText(TextFactory::decrypt(settings()->value(GROUP(Database),
+		                                              SETTING(Database::MySQLPassword)).toString()));
 		m_ui->m_txtMysqlDatabase->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
 		m_ui->m_spinMysqlPort->setValue(settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
 		m_ui->m_checkMysqlShowPassword->setChecked(false);
 	}
 
-	int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString());
+	int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings()->value(GROUP(Database),
+	                            SETTING(Database::ActiveDriver)).toString());
 
 	if (index_current_backend >= 0) {
 		m_ui->m_cmbDatabaseDriver->setCurrentIndex(index_current_backend);

@@ -56,7 +56,7 @@ Application::Application(const QString& id, int& argc, char** argv)
 	  m_urlInterceptor(new NetworkUrlInterceptor(this)),
 #endif
 
-    m_feedReader(nullptr),
+	  m_feedReader(nullptr),
 	  m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
 	  m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
 	  m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr), m_shouldRestart(false) {
@@ -68,8 +68,8 @@ Application::Application(const QString& id, int& argc, char** argv)
 	connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 	QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
 
-  // TODO: Call load settings when saving app settings from dialog.
-  // Will need add that if I add more settings in the future.
+	// TODO: Call load settings when saving app settings from dialog.
+	// Will need add that if I add more settings in the future.
 	m_urlInterceptor->loadSettings();
 #endif
 }

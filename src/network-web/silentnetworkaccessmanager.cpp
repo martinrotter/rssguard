@@ -36,7 +36,7 @@ SilentNetworkAccessManager::~SilentNetworkAccessManager() {
 }
 
 SilentNetworkAccessManager* SilentNetworkAccessManager::instance() {
-  return qz_silent_acmanager();
+	return qz_silent_acmanager();
 }
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator) {

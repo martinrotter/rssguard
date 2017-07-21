@@ -37,7 +37,8 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 #else
 	connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
 #endif
-	connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsBrowserMail::dirtifySettings);
+	connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsBrowserMail::dirtifySettings);
 	connect(m_ui->m_txtProxyHost, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
 	connect(m_ui->m_txtProxyPassword, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
 	connect(m_ui->m_txtProxyUsername, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
@@ -48,11 +49,14 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 	connect(m_ui->m_txtExternalBrowserExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
 	connect(m_ui->m_txtExternalEmailArguments, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
 	connect(m_ui->m_txtExternalEmailExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-	connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsBrowserMail::onProxyTypeChanged);
+	connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsBrowserMail::onProxyTypeChanged);
 	connect(m_ui->m_checkShowPassword, &QCheckBox::stateChanged, this, &SettingsBrowserMail::displayProxyPassword);
-	connect(m_ui->m_cmbExternalBrowserPreset, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsBrowserMail::changeDefaultBrowserArguments);
+	connect(m_ui->m_cmbExternalBrowserPreset, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsBrowserMail::changeDefaultBrowserArguments);
 	connect(m_ui->m_btnExternalBrowserExecutable, &QPushButton::clicked, this, &SettingsBrowserMail::selectBrowserExecutable);
-	connect(m_ui->m_cmbExternalEmailPreset, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsBrowserMail::changeDefaultEmailArguments);
+	connect(m_ui->m_cmbExternalEmailPreset, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsBrowserMail::changeDefaultEmailArguments);
 	connect(m_ui->m_btnExternalEmailExecutable, &QPushButton::clicked, this, &SettingsBrowserMail::selectEmailExecutable);
 }
 
@@ -139,8 +143,10 @@ void SettingsBrowserMail::loadSettings() {
 #endif
 	// Load settings of web browser GUI.
 	m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
-	m_ui->m_txtExternalBrowserExecutable->setText(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString());
-	m_ui->m_txtExternalBrowserArguments->setText(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString());
+	m_ui->m_txtExternalBrowserExecutable->setText(settings()->value(GROUP(Browser),
+	                                              SETTING(Browser::CustomExternalBrowserExecutable)).toString());
+	m_ui->m_txtExternalBrowserArguments->setText(settings()->value(GROUP(Browser),
+	                                             SETTING(Browser::CustomExternalBrowserArguments)).toString());
 	m_ui->m_grpCustomExternalBrowser->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool());
 	// Load settings of e-mail.
 	m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), QSL("-compose \"subject='%1',body='%2'\""));
@@ -152,7 +158,8 @@ void SettingsBrowserMail::loadSettings() {
 	m_ui->m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::Socks5Proxy);
 	m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
 	// Load the settings.
-	QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
+	QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(settings()->value(GROUP(Proxy),
+	                                               SETTING(Proxy::Type)).toInt());
 	m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
 	m_ui->m_txtProxyHost->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Host)).toString());
 	m_ui->m_txtProxyUsername->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());

@@ -28,7 +28,7 @@ Q_GLOBAL_STATIC(WebFactory, qz_webfactory)
 
 
 WebFactory::WebFactory()
-  : m_escapes(QMap<QString, QString>()), m_deEscapes(QMap<QString, QString>()) {
+	: m_escapes(QMap<QString, QString>()), m_deEscapes(QMap<QString, QString>()) {
 }
 
 WebFactory::~WebFactory() {
@@ -71,7 +71,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) {
 }
 
 WebFactory* WebFactory::instance() {
-  return qz_webfactory();
+	return qz_webfactory();
 }
 
 QString WebFactory::stripTags(QString text) {
@@ -80,7 +80,7 @@ QString WebFactory::stripTags(QString text) {
 
 QString WebFactory::escapeHtml(const QString& html) {
 	if (m_escapes.isEmpty()) {
-    genereteEscapes();
+		genereteEscapes();
 	}
 
 	QString output = html;

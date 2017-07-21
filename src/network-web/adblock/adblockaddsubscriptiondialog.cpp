@@ -28,37 +28,41 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
 	m_ui->setupUi(this);
 	m_knownSubscriptions << Subscription(QSL("EasyList (English)"), ADBLOCK_EASYLIST_URL)
 	                     << Subscription(QSL("BSI Lista Polska (Polish)"), QSL("http://www.bsi.info.pl/filtrABP.txt"))
-	                     << Subscription(QSL("EasyList Czech and Slovak (Czech)"), QSL("https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt"))
+	                     << Subscription(QSL("EasyList Czech and Slovak (Czech)"),
+	                                     QSL("https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt"))
 	                     << Subscription(QSL("dutchblock (Dutch)"), QSL("http://groenewoudt.net/dutchblock/list.txt"))
 	                     << Subscription(QSL("Filtros Nauscopicos (Spanish)"), QSL("http://abp.mozilla-hispano.org/nauscopio/filtros.txt"))
 	                     << Subscription(QSL("IsraelList (Hebrew)"), QSL("http://secure.fanboy.co.nz/israelilist/IsraelList.txt"))
 	                     << Subscription(QSL("NLBlock (Dutch)"), QSL("http://www.verzijlbergh.com/adblock/nlblock.txt"))
-	                     << Subscription(QSL("Peter Lowe's list (English)"), QSL("http://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext"))
+	                     << Subscription(QSL("Peter Lowe's list (English)"),
+	                                     QSL("http://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext"))
 	                     << Subscription(QSL("PLgeneral (Polish)"), QSL("http://www.niecko.pl/adblock/adblock.txt"))
 	                     << Subscription(QSL("Schacks Adblock Plus liste (Danish)"), QSL("http://adblock.schack.dk/block.txt"))
 	                     << Subscription(QSL("Xfiles (Italian)"), QSL("http://mozilla.gfsolone.com/filtri.txt"))
 	                     << Subscription(QSL("EasyPrivacy (English)"), QSL("http://easylist-downloads.adblockplus.org/easyprivacy.txt"))
 	                     << Subscription(QSL("RU Adlist (Russian)"), QSL("https://easylist-downloads.adblockplus.org/advblock.txt"))
-	                     << Subscription(QSL("ABPindo (Indonesian)"), QSL("https://raw.githubusercontent.com/heradhis/indonesianadblockrules/master/subscriptions/abpindo.txt"))
+	                     << Subscription(QSL("ABPindo (Indonesian)"),
+	                                     QSL("https://raw.githubusercontent.com/heradhis/indonesianadblockrules/master/subscriptions/abpindo.txt"))
 	                     << Subscription(QSL("Easylist China (Chinese)"), QSL("https://easylist-downloads.adblockplus.org/easylistchina.txt"))
-	                     << Subscription(QSL("Anti-Adblock Killer"), QSL("https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer-filters.txt"))
+	                     << Subscription(QSL("Anti-Adblock Killer"),
+	                                     QSL("https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer-filters.txt"))
 	                     << Subscription(tr("Other..."), QString());
 
 	foreach (const Subscription& subscription, m_knownSubscriptions) {
-		m_ui->comboBox->addItem(subscription.m_title);
+		m_ui->m_cmbPresets->addItem(subscription.m_title);
 	}
 
-	connect(m_ui->comboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-	        this, &AdBlockAddSubscriptionDialog::indexChanged);
+	connect(m_ui->comboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &AdBlockAddSubscriptionDialog::indexChanged);
 	indexChanged(0);
 }
 
 QString AdBlockAddSubscriptionDialog::title() const {
-	return m_ui->title->text();
+	return m_ui->m_txtTitle->text();
 }
 
 QString AdBlockAddSubscriptionDialog::url() const {
-	return m_ui->url->text();
+	return m_ui->m_txtUrl->text();
 }
 
 void AdBlockAddSubscriptionDialog::indexChanged(int index) {
@@ -66,10 +70,9 @@ void AdBlockAddSubscriptionDialog::indexChanged(int index) {
 
 	// "Other..." entry.
 	if (subscription.m_url.isEmpty()) {
-		m_ui->title->clear();
-		m_ui->url->clear();
+		m_ui->m_txtTitle->clear();
+		m_ui->m_txtUrl->clear();
 	}
-
 	else {
 		int pos = subscription.m_title.indexOf(QLatin1Char('('));
 		QString title = subscription.m_title;
@@ -78,10 +81,10 @@ void AdBlockAddSubscriptionDialog::indexChanged(int index) {
 			title = title.left(pos).trimmed();
 		}
 
-		m_ui->title->setText(title);
-		m_ui->title->setCursorPosition(0);
-		m_ui->url->setText(subscription.m_url);
-		m_ui->url->setCursorPosition(0);
+		m_ui->m_txtTitle->setText(title);
+		m_ui->m_txtTitle->setCursorPosition(0);
+		m_ui->m_txtUrl->setText(subscription.m_url);
+		m_ui->m_txtUrl->setCursorPosition(0);
 	}
 }
 

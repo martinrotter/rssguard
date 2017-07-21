@@ -27,8 +27,8 @@ class QWebEngineSettings;
 
 class WebFactory {
 	public:
-    // Constructor.
-    explicit WebFactory();
+		// Constructor.
+		explicit WebFactory();
 
 		// Destructor.
 		virtual ~WebFactory();
@@ -52,10 +52,10 @@ class WebFactory {
 
 	private:
 		// Escape sequences generators.
-    void genereteEscapes();
+		void genereteEscapes();
 		void generateDeescapes();
 
-    QMap<QString, QString> m_escapes;
+		QMap<QString, QString> m_escapes;
 		QMap<QString, QString> m_deEscapes;
 };
 

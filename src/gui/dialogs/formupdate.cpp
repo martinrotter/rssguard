@@ -181,7 +181,8 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
 	switch (status) {
 		case QNetworkReply::NoError:
 			saveUpdateFile(contents);
-			m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"), tr("Package was downloaded successfully.\nYou can install it now."));
+			m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"),
+			                             tr("Package was downloaded successfully.\nYou can install it now."));
 			m_btnUpdate->setText(tr("Install"));
 			m_btnUpdate->setEnabled(true);
 			break;

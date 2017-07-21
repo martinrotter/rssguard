@@ -7,7 +7,7 @@
 --indent-preproc-define
 --indent-col1-comments
 --max-continuation-indent=100
---break-blocks=all
+--break-blocks
 --unpad-paren
 --pad-oper
 --pad-comma
@@ -19,7 +19,7 @@
 --add-braces
 --convert-tabs
 --close-templates
---max-code-length=200
+--max-code-length=140
 --lineend=linux
 -t -p
 -M60Ucv

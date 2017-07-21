@@ -41,7 +41,8 @@ void FormStandardFeedDetails::apply() {
 	new_feed->setPasswordProtected(m_ui->m_gbAuthentication->isChecked());
 	new_feed->setUsername(m_ui->m_txtUsername->lineEdit()->text());
 	new_feed->setPassword(m_ui->m_txtPassword->lineEdit()->text());
-	new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+	new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
+	                                m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
 	new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
 
 	if (m_editableFeed == nullptr) {

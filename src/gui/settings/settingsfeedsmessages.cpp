@@ -46,10 +46,13 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
 	connect(m_ui->m_spinHeightImageAttachments, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
 	        this, &SettingsFeedsMessages::dirtifySettings);
 	connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, m_ui->m_spinAutoUpdateInterval, &TimeSpinBox::setEnabled);
-	connect(m_ui->m_spinFeedUpdateTimeout, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &SettingsFeedsMessages::dirtifySettings);
-	connect(m_ui->m_cmbMessagesDateTimeFormat, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsFeedsMessages::dirtifySettings);
+	connect(m_ui->m_spinFeedUpdateTimeout, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
+	        &SettingsFeedsMessages::dirtifySettings);
+	connect(m_ui->m_cmbMessagesDateTimeFormat, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsFeedsMessages::dirtifySettings);
 	connect(m_ui->m_cmbCountsFeedList, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
-	connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsFeedsMessages::dirtifySettings);
+	connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsFeedsMessages::dirtifySettings);
 	connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, &SettingsFeedsMessages::changeMessagesFont);
 
 	if (!m_ui->m_spinFeedUpdateTimeout->suffix().startsWith(' ')) {
@@ -100,7 +103,8 @@ void SettingsFeedsMessages::loadSettings() {
 	m_ui->m_spinHeightImageAttachments->setValue(settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt());
 	initializeMessageDateFormats();
 	m_ui->m_checkMessagesDateTimeFormat->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool());
-	const int index_format = m_ui->m_cmbMessagesDateTimeFormat->findData(settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString());
+	const int index_format = m_ui->m_cmbMessagesDateTimeFormat->findData(settings()->value(GROUP(Messages),
+	                         SETTING(Messages::CustomDateFormat)).toString());
 
 	if (index_format >= 0) {
 		m_ui->m_cmbMessagesDateTimeFormat->setCurrentIndex(index_format);

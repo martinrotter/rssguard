@@ -32,7 +32,8 @@ AdBlockMatcher::~AdBlockMatcher() {
 	clear();
 }
 
-const AdBlockRule* AdBlockMatcher::match(const QWebEngineUrlRequestInfo& request, const QString& urlDomain, const QString& urlString) const {
+const AdBlockRule* AdBlockMatcher::match(const QWebEngineUrlRequestInfo& request, const QString& urlDomain,
+                                         const QString& urlString) const {
 	// Exception rules.
 	if (m_networkExceptionTree.find(request, urlDomain, urlString)) {
 		return 0;

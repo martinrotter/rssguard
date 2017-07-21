@@ -124,8 +124,10 @@ void FeedMessageViewer::loadSize() {
 	const Settings* settings = qApp->settings();
 	// Restore offsets of splitters.
 	m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds)).toString().toLocal8Bit()));
-	m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterMessages)).toString().toLocal8Bit()));
-	m_messagesView->header()->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::MessageViewState)).toString().toLocal8Bit()));
+	m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI),
+	                                                       SETTING(GUI::SplitterMessages)).toString().toLocal8Bit()));
+	m_messagesView->header()->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI),
+	                                       SETTING(GUI::MessageViewState)).toString().toLocal8Bit()));
 }
 
 void FeedMessageViewer::loadMessageViewerFonts() {

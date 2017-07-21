@@ -43,7 +43,8 @@ void FormTtRssFeedDetails::apply() {
 	if (m_editableFeed != nullptr) {
 		// User edited auto-update status. Save it.
 		TtRssFeed* new_feed_data = new TtRssFeed();
-		new_feed_data->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+		new_feed_data->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
+		                                     m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
 		new_feed_data->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
 		qobject_cast<TtRssFeed*>(m_editableFeed)->editItself(new_feed_data);
 		delete new_feed_data;

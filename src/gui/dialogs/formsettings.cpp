@@ -33,7 +33,8 @@
 #include "gui/settings/settingsshortcuts.h"
 
 
-FormSettings::FormSettings(QWidget* parent) : QDialog(parent), m_panels(QList<SettingsPanel*>()), m_ui(new Ui::FormSettings), m_settings(qApp->settings()) {
+FormSettings::FormSettings(QWidget* parent) : QDialog(parent), m_panels(QList<SettingsPanel*>()), m_ui(new Ui::FormSettings),
+	m_settings(qApp->settings()) {
 	m_ui->setupUi(this);
 	// Set flags and attributes.
 	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);

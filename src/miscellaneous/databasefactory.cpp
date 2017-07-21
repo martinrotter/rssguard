@@ -654,7 +654,8 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
 		QSqlQuery query_db(database);
 		query_db.setForwardOnly(true);
 
-		if (!query_db.exec(QString("USE %1").arg(database_name)) || !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
+		if (!query_db.exec(QString("USE %1").arg(database_name))
+		        || !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
 			// If no "rssguard" database exists or schema version is wrong, then initialize it.
 			qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
 			QFile file_init(APP_SQL_PATH + QDir::separator() + APP_DB_MYSQL_INIT);

@@ -31,7 +31,8 @@
 
 
 AdBlockDialog::AdBlockDialog(QWidget* parent)
-	: QWidget(parent), m_ui(new Ui::AdBlockDialog), m_manager(AdBlockManager::instance()), m_currentTreeWidget(0), m_currentSubscription(0), m_loaded(false) {
+	: QWidget(parent), m_ui(new Ui::AdBlockDialog), m_manager(AdBlockManager::instance()), m_currentTreeWidget(0), m_currentSubscription(0),
+	  m_loaded(false) {
 	setAttribute(Qt::WA_DeleteOnClose);
 	m_ui->setupUi(this);
 #ifdef Q_OS_MACOS

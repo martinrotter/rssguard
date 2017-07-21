@@ -127,7 +127,8 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
 			}
 
 			if (recurse && hasChildren(idx)) {
-				result += match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text), (all_hits ? -1 : hits - result.count()), flags);
+				result += match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text), (all_hits ? -1 : hits - result.count()),
+				                flags);
 			}
 		}
 

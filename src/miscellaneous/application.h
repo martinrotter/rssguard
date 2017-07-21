@@ -120,7 +120,7 @@ class Application : public QtSingleApplication {
 
 		// Returns pointer to "GOD" application singleton.
 		inline static Application* instance() {
-      return static_cast<Application*>(QCoreApplication::instance());
+			return static_cast<Application*>(QCoreApplication::instance());
 		}
 
 	public slots:

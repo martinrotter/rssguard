@@ -102,7 +102,7 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
 		res = true;
 
 		if (request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
-      // NOTE: We are blocking main URL frame, we can display "AdBlock error page" or
+			// NOTE: We are blocking main URL frame, we can display "AdBlock error page" or
 			// redirect to somewhere.
 			request.block(true);
 		}
@@ -182,7 +182,7 @@ AdBlockSubscription* AdBlockManager::addSubscription(const QString& title, const
 	subscription->setFilePath(filePath);
 	subscription->loadSubscription(m_disabledRules);
 	m_subscriptions.insert(m_subscriptions.count() - 1, subscription);
-  // TODO: Reload user stylesheet.
+	// TODO: Reload user stylesheet.
 	// connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
 	connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
 	return subscription;
@@ -272,11 +272,11 @@ void AdBlockManager::load() {
 	AdBlockCustomList* customList = new AdBlockCustomList(this);
 	m_subscriptions.append(customList);
 
-  // Load all subscriptions.
+	// Load all subscriptions.
 	foreach (AdBlockSubscription* subscription, m_subscriptions) {
 		subscription->loadSubscription(m_disabledRules);
-    // TODO: Reload user stylesheet.
-    // connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
+		// TODO: Reload user stylesheet.
+		// connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
 		connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
 	}
 

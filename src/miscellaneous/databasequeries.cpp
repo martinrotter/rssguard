@@ -551,9 +551,11 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 			// Now, we update it if at least one of next conditions is true:
 			//   1) Message has custom ID AND (its date OR read status OR starred status are changed).
 			//   2) Message has its date fetched from feed AND its date is different from date in DB and contents is changed.
-			if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message || message.m_isRead != is_read_existing_message
+			if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message
+			                                               || message.m_isRead != is_read_existing_message
 			                                               || message.m_isImportant != is_important_existing_message)) ||
-			            /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message && message.m_contents != contents_existing_message)) {
+			            /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message
+			                     && message.m_contents != contents_existing_message)) {
 				// Message exists, it is changed, update it.
 				query_update.bindValue(QSL(":title"), message.m_title);
 				query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
@@ -730,7 +732,8 @@ bool DatabaseQueries::cleanFeeds(QSqlDatabase db, const QStringList& ids, bool c
 bool DatabaseQueries::purgeLeftoverMessages(QSqlDatabase db, int account_id) {
 	QSqlQuery q(db);
 	q.setForwardOnly(true);
-	q.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
+	q.prepare(
+	    QSL("DELETE FROM Messages WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
 	q.bindValue(QSL(":account_id"), account_id);
 
 	if (!q.exec()) {

@@ -144,14 +144,16 @@ void FormEditTtRssAccount::performTest() {
 
 		else if (result.apiLevel() < MINIMAL_API_LEVEL) {
 			m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
-			                                 tr("Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(QString::number(result.apiLevel()),
+			                                 tr("Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(QString::number(
+			                                             result.apiLevel()),
 			                                         QString::number(MINIMAL_API_LEVEL)),
 			                                 tr("Selected Tiny Tiny RSS server is running unsupported version of API."));
 		}
 
 		else {
 			m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Ok,
-			                                 tr("Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.").arg(QString::number(result.apiLevel()),
+			                                 tr("Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.").arg(QString::number(
+			                                             result.apiLevel()),
 			                                         QString::number(MINIMAL_API_LEVEL)),
 			                                 tr("Tiny Tiny RSS server is okay."));
 		}

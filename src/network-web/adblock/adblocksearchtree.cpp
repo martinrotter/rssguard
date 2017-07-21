@@ -86,7 +86,8 @@ const AdBlockRule* AdBlockSearchTree::find(const QWebEngineUrlRequestInfo& reque
 	return 0;
 }
 
-const AdBlockRule* AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString, const QChar* string, int len) const {
+const AdBlockRule* AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString,
+                                                   const QChar* string, int len) const {
 	if (len <= 0) {
 		return 0;
 	}

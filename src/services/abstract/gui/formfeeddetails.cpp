@@ -134,7 +134,8 @@ void FormFeedDetails::onUrlChanged(const QString& new_url) {
 
 	else if (!new_url.simplified().isEmpty()) {
 		// New url is not well-formed but is not empty on the other hand.
-		m_ui->m_txtUrl->setStatus(LineEditWithStatus::Warning, tr("The URL does not meet standard pattern. Does your URL start with \"http://\" or \"https://\" prefix."));
+		m_ui->m_txtUrl->setStatus(LineEditWithStatus::Warning,
+		                          tr("The URL does not meet standard pattern. Does your URL start with \"http://\" or \"https://\" prefix."));
 	}
 
 	else {
@@ -301,7 +302,8 @@ void FormFeedDetails::createConnections() {
 	connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormFeedDetails::onUsernameChanged);
 	connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormFeedDetails::onPasswordChanged);
 	connect(m_ui->m_gbAuthentication, &QGroupBox::toggled, this, &FormFeedDetails::onAuthenticationSwitched);
-	connect(m_ui->m_cmbAutoUpdateType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &FormFeedDetails::onAutoUpdateTypeChanged);
+	connect(m_ui->m_cmbAutoUpdateType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &FormFeedDetails::onAutoUpdateTypeChanged);
 	connect(m_ui->m_btnFetchMetadata, &QPushButton::clicked, this, &FormFeedDetails::guessFeed);
 	// Icon connections.
 	connect(m_actionFetchIcon, &QAction::triggered, this, &FormFeedDetails::guessIconOnly);

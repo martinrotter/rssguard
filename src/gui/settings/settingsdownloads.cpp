@@ -61,7 +61,8 @@ void SettingsDownloads::loadSettings() {
 
 void SettingsDownloads::saveSettings() {
 	onBeginSaveSettings();
-	settings()->setValue(GROUP(Downloads), Downloads::ShowDownloadsWhenNewDownloadStarts, m_ui->m_checkOpenManagerWhenDownloadStarts->isChecked());
+	settings()->setValue(GROUP(Downloads), Downloads::ShowDownloadsWhenNewDownloadStarts,
+	                     m_ui->m_checkOpenManagerWhenDownloadStarts->isChecked());
 	settings()->setValue(GROUP(Downloads), Downloads::TargetDirectory, m_ui->m_txtDownloadsTargetDirectory->text());
 	settings()->setValue(GROUP(Downloads), Downloads::AlwaysPromptForFilename, m_ui->m_rbDownloadsAskEachFile->isChecked());
 	qApp->downloadManager()->setDownloadDirectory(m_ui->m_txtDownloadsTargetDirectory->text());

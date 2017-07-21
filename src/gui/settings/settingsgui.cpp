@@ -62,12 +62,14 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
 	connect(m_ui->m_checkCloseTabsMiddleClick, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
 	connect(m_ui->m_checkNewTabDoubleClick, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
 	connect(m_ui->m_grbCloseTabs, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
-	connect(m_ui->m_cmbToolbarButtonStyle, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::dirtifySettings);
+	connect(m_ui->m_cmbToolbarButtonStyle, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+	        &SettingsGui::dirtifySettings);
 	connect(m_ui->m_editorFeedsToolbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
 	connect(m_ui->m_editorMessagesToolbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
 	connect(m_ui->m_editorStatusbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
 	connect(m_ui->m_listStyles, &QListWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
-	connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars, &QStackedWidget::setCurrentIndex);
+	connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars,
+	        &QStackedWidget::setCurrentIndex);
 }
 
 SettingsGui::~SettingsGui() {

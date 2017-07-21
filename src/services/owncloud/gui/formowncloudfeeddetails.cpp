@@ -43,7 +43,8 @@ void FormOwnCloudFeedDetails::apply() {
 		bool renamed = false;
 
 		if (m_ui->m_txtTitle->lineEdit()->text() != m_editableFeed->title()) {
-			if (!qobject_cast<OwnCloudServiceRoot*>(m_serviceRoot)->network()->renameFeed(m_ui->m_txtTitle->lineEdit()->text(), m_editableFeed->customId())) {
+			if (!qobject_cast<OwnCloudServiceRoot*>(m_serviceRoot)->network()->renameFeed(m_ui->m_txtTitle->lineEdit()->text(),
+			        m_editableFeed->customId())) {
 				qWarning("ownCloud: Došlo k problému při prejmenování kanálu s ownCloud ID '%d'.", m_editableFeed->customId());
 			}
 
@@ -54,7 +55,8 @@ void FormOwnCloudFeedDetails::apply() {
 
 		// User edited auto-update status. Save it.
 		OwnCloudFeed* new_feed_data = new OwnCloudFeed();
-		new_feed_data->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+		new_feed_data->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
+		                                     m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
 		new_feed_data->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
 		qobject_cast<OwnCloudFeed*>(m_editableFeed)->editItself(new_feed_data);
 		delete new_feed_data;
@@ -65,9 +67,11 @@ void FormOwnCloudFeedDetails::apply() {
 	}
 
 	else {
-		const RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+		const RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(
+		                                                    m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
 		const int category_id = parent->kind() == RootItemKind::ServiceRoot ? 0 : parent->customId();
-		const bool response = qobject_cast<OwnCloudServiceRoot*>(m_serviceRoot)->network()->createFeed(m_ui->m_txtUrl->lineEdit()->text(), category_id);
+		const bool response = qobject_cast<OwnCloudServiceRoot*>(m_serviceRoot)->network()->createFeed(m_ui->m_txtUrl->lineEdit()->text(),
+		                      category_id);
 
 		if (response) {
 			// Feed was added online.
