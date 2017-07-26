@@ -27,7 +27,7 @@ build_script:
   - cd ..
   - mkdir rssguard-build
   - cd rssguard-build
-  - %QTDIR%\bin\qmake.exe C:\rssguard "%qmake_args%"
+  - "%QTDIR%\bin\qmake.exe" C:\rssguard "%qmake_args%"
   - nmake
   - nmake windows_all
 
