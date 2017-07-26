@@ -10,7 +10,7 @@ branches:
 
 environment:
   QTDIR: 'C:\Qt\5.9.1\msvc2015'
-  QMAKESPEC: win32-msvc2015
+  QMAKESPEC: win32-msvc
   COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86'
   access_token:
     secure: XCWdr9wPgK4gm6289WXCg2vtMA02eBSnj6eKHC+ps6Z5lgw0jsK09UQ5y9E9ZFwS
@@ -27,7 +27,7 @@ build_script:
   - cd ..
   - mkdir rssguard-build
   - cd rssguard-build
-  - C:\Qt\5.9.1\msvc2015\bin\qmake.exe C:\rssguard "%qmake_args%"
+  - qmake.exe C:\rssguard "%qmake_args%"
   - nmake
   - nmake windows_all
 
