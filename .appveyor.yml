@@ -1,6 +1,6 @@
 version: 666.{build}
 skip_tags: true
-os: Visual Studio 2015
+os: Visual Studio 2017
 clone_depth: 1
 clone_folder: C:\rssguard
 
@@ -9,9 +9,9 @@ branches:
     - master
 
 environment:
-  QTDIR: 'C:\Qt\5.9.1\msvc2015'
+  QTDIR: 'C:\Qt\5.9\msvc2017_64'
   QMAKESPEC: win32-msvc
-  COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86'
+  COMPILERBAT: 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat'
   access_token:
     secure: XCWdr9wPgK4gm6289WXCg2vtMA02eBSnj6eKHC+ps6Z5lgw0jsK09UQ5y9E9ZFwS
   matrix:
