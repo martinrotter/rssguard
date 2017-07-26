@@ -46,6 +46,7 @@
 # Other information:
 #   - supports Windows, Linux, Mac OS X,
 #   - Qt 5.6.0 and higher is required,
+#   - Qt 5.9.0 and hiher is recommended,
 #   - C++ 11 is required.
 #
 # Authors and contributors:
