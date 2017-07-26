@@ -9,7 +9,7 @@ branches:
     - master
 
 environment:
-  QTDIR: 'C:\Qt\5.8\msvc2015'
+  QTDIR: 'C:\Qt\5.9.1\msvc2015'
   QMAKESPEC: win32-msvc2015
   COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86'
   access_token:

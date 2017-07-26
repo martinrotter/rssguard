@@ -185,7 +185,7 @@ win32 {
   }
 }
 
-DISTFILES += .astylerc
+DISTFILES += resources/scripts/astyle/.astylerc
 
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
