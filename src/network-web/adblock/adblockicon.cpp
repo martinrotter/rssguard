@@ -39,7 +39,6 @@ AdBlockIcon::AdBlockIcon(QObject* parent)
   setMenu(new QMenu());
   setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
 
-	connect(this, SIGNAL(clicked(QPoint)), this, SLOT(showMenu(QPoint)));
 	connect(AdBlockManager::instance(), SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
   connect(menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
   connect(this, &QAction::triggered, AdBlockManager::instance(), &AdBlockManager::showDialog);

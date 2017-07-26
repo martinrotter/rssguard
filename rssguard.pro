@@ -74,7 +74,7 @@ APP_LOW_NAME                  = "rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2016 $$APP_AUTHOR"
-APP_VERSION                   = "3.4.1"
+APP_VERSION                   = "3.4.2"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
 APP_URL                       = "https://github.com/martinrotter/rssguard"
@@ -690,20 +690,8 @@ win32 {
   qt_dlls_root.files = resources/binaries/windows/qt5-msvc2015/*.*
   qt_dlls_root.path = $$quote($$PREFIX/)
 
-  qt_dlls_bearer.files = resources/binaries/windows/qt5-msvc2015/bearer
-  qt_dlls_bearer.path = $$quote($$PREFIX/)
-
-  qt_dlls_iconengines.files = resources/binaries/windows/qt5-msvc2015/iconengines
-  qt_dlls_iconengines.path = $$quote($$PREFIX/)
-
-  qt_dlls_imageformats.files = resources/binaries/windows/qt5-msvc2015/imageformats
-  qt_dlls_imageformats.path = $$quote($$PREFIX/)
-
-  qt_dlls_platforms.files = resources/binaries/windows/qt5-msvc2015/platforms/
-  qt_dlls_platforms.path = $$quote($$PREFIX/)
-
-  qt_dlls_sqldrivers.files = resources/binaries/windows/qt5-msvc2015/sqldrivers
-  qt_dlls_sqldrivers.path = $$quote($$PREFIX/)
+  qt_dlls_plugins.files = resources/binaries/windows/qt5-msvc2015/*
+  qt_dlls_plugins.path = $$quote($$PREFIX/)
 
   misc_icons.files = resources/graphics/misc
   misc_icons.path = $$quote($$PREFIX/icons/)
@@ -732,8 +720,7 @@ win32 {
   translations.files = $$OUT_PWD/translations
   translations.path = $$quote($$PREFIX/)
 
-  INSTALLS += target misc_sql qt_dlls_root qt_dlls_bearer qt_dlls_iconengines \
-              qt_dlls_imageformats qt_dlls_platforms qt_dlls_sqldrivers \
+  INSTALLS += target misc_sql qt_dlls_root qt_dlls_plugins \
               misc_icons faenza skins \
               feeds texts ico app_icon app_plain_icon translations
 
@@ -745,13 +732,16 @@ win32 {
     qtwebengine_resources.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/resources
     qtwebengine_resources.path = $$quote($$PREFIX/)
 
+    qtwebengine_dlls_print.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/printsupport
+    qtwebengine_dlls_print.path = $$quote($$PREFIX/)
+
     qtwebengine_position.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/position
     qtwebengine_position.path = $$quote($$PREFIX/)
 
     qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/*.*
     qtwebengine_dlls.path = $$quote($$PREFIX/)
 
-    INSTALLS += qtwebengine_translations qtwebengine_resources qtwebengine_position qtwebengine_dlls
+    INSTALLS += qtwebengine_translations qtwebengine_resources qtwebengine_dlls_print qtwebengine_position qtwebengine_dlls
   }
 }
 

@@ -218,7 +218,7 @@ void FormUpdate::startUpdate() {
 		                                     nullptr,
 		                                     SW_NORMAL);
 
-		if (((int)exec_result) <= 32) {
+    if (exec_result <= (HINSTANCE)32) {
 			qDebug("External updater was not launched due to error.");
 			qApp->showGuiMessage(tr("Cannot update application"),
 			                     tr("Cannot launch external updater. Update application manually."),
