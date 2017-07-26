@@ -2,7 +2,12 @@
 —————
 
 Added:
+▪ Some minor tweaks/fixes.
 ▪ New Ad-Block feature for internal web browser. Based on Qt examples and QupZilla. Original license GNU GPLv3 is retained. (#123)
+▪ New Qt 5.9.1 release.
+▪ New SSL libraries.
+▪ Binaries are now compiled on x64-only mode for Windows!!!
+
 
 3.4.1
 —————
