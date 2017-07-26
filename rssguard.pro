@@ -684,14 +684,14 @@ win32 {
 win32 {
   target.path = $$PREFIX
 
-  misc_sql.files = resources/sql/*.sql
-  misc_sql.path = $$quote($$PREFIX/sql/)
-
   qt_dlls_root.files = resources/binaries/windows/qt5-msvc2015/*.*
   qt_dlls_root.path = $$quote($$PREFIX/)
 
   qt_dlls_plugins.files = resources/binaries/windows/qt5-msvc2015/*
   qt_dlls_plugins.path = $$quote($$PREFIX/)
+
+  misc_sql.files = resources/sql/*.sql
+  misc_sql.path = $$quote($$PREFIX/sql/)
 
   misc_icons.files = resources/graphics/misc
   misc_icons.path = $$quote($$PREFIX/icons/)
@@ -726,22 +726,13 @@ win32 {
 
   equals(USE_WEBENGINE, true) {
     # Copy extra resource files for QtWebEngine.
-    qtwebengine_translations.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/translations
-    qtwebengine_translations.path = $$quote($$PREFIX/)
-
-    qtwebengine_resources.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/resources
-    qtwebengine_resources.path = $$quote($$PREFIX/)
-
-    qtwebengine_dlls_print.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/printsupport
-    qtwebengine_dlls_print.path = $$quote($$PREFIX/)
-
-    qtwebengine_position.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/position
-    qtwebengine_position.path = $$quote($$PREFIX/)
-
-    qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2015/QtWebEngine/*.*
+    qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2015-webengine/*
     qtwebengine_dlls.path = $$quote($$PREFIX/)
 
-    INSTALLS += qtwebengine_translations qtwebengine_resources qtwebengine_dlls_print qtwebengine_position qtwebengine_dlls
+    qtwebengine.files = resources/binaries/windows/qt5-msvc2015-webengine/*.*
+    qtwebengine.path = $$quote($$PREFIX/)
+
+    INSTALLS += qtwebengine_dlls qtwebengine
   }
 }
 
