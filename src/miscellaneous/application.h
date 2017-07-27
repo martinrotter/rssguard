@@ -148,6 +148,10 @@ class Application : public QtSingleApplication {
 		void eliminateFirstRun();
 		void eliminateFirstRun(const QString& version);
 
+#if defined(USE_WEBENGINE)
+    NetworkUrlInterceptor* m_urlInterceptor;
+#endif
+
 		FeedReader* m_feedReader;
 
 		// This read-write lock is used by application on its close.
@@ -163,10 +167,6 @@ class Application : public QtSingleApplication {
 		// tries to lock the lock for writing), then no other
 		// action will be allowed to lock for reading.
 		QScopedPointer<Mutex> m_updateFeedsLock;
-
-#if defined(USE_WEBENGINE)
-		NetworkUrlInterceptor* m_urlInterceptor;
-#endif
 
 		QList<QAction*> m_userActions;
 		FormMain* m_mainForm;
