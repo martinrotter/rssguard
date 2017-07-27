@@ -25,6 +25,7 @@
 #include "gui/tabwidget.h"
 #include "gui/webbrowser.h"
 #include "network-web/adblock/adblockicon.h"
+#include "network-web/adblock/adblockmanager.h"
 
 #include <QWheelEvent>
 
@@ -143,8 +144,10 @@ void WebViewer::clear() {
 
 void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
 	event->accept();
+
 	QMenu* menu = page()->createStandardContextMenu();
-  menu->addAction(qApp->mainForm()->adblockIcon());
+  menu->addAction(AdBlockManager::instance()->adblockIcon());
+
 	const QPoint pos = event->globalPos();
 	QPoint p(pos.x(), pos.y() + 1);
 	menu->popup(p);

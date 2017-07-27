@@ -85,6 +85,10 @@ FeedReader* Application::feedReader() {
 QList<QAction*> Application::userActions() {
 	if (m_mainForm != nullptr && m_userActions.isEmpty()) {
 		m_userActions = m_mainForm->allActions();
+
+#if defined(USE_WEBENGINE)
+    m_userActions.append(AdBlockManager::instance()->adblockIcon());
+#endif
 	}
 
 	return m_userActions;

@@ -22,7 +22,7 @@
 #include "miscellaneous/settings.h"
 #include "network-web/adblock/adblockdialog.h"
 #include "network-web/adblock/adblockmatcher.h"
-
+#include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblocksubscription.h"
 #include "network-web/adblock/adblockurlinterceptor.h"
 #include "network-web/networkurlinterceptor.h"
@@ -43,6 +43,10 @@ Q_GLOBAL_STATIC(AdBlockManager, qz_adblock_manager)
 
 AdBlockManager::AdBlockManager(QObject* parent)
 	: QObject(parent), m_loaded(false), m_enabled(true), m_matcher(new AdBlockMatcher(this)), m_interceptor(new AdBlockUrlInterceptor(this)) {
+
+  m_adblockIcon = new AdBlockIcon(this);
+  m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
+
 	load();
 }
 

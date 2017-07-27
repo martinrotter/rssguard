@@ -33,6 +33,7 @@ class AdBlockSubscription;
 class AdBlockRule;
 class AdBlockDialog;
 class AdBlockUrlInterceptor;
+class AdBlockIcon;
 
 class AdBlockManager : public QObject {
 		Q_OBJECT
@@ -66,6 +67,10 @@ class AdBlockManager : public QObject {
 
 		AdBlockCustomList* customList() const;
 
+    inline AdBlockIcon* adblockIcon() const {
+      return m_adblockIcon;
+    }
+
 		static QString storedListsPath();
 
 		static AdBlockManager* instance();
@@ -84,6 +89,8 @@ class AdBlockManager : public QObject {
 
 		bool m_loaded;
 		bool m_enabled;
+
+    AdBlockIcon* m_adblockIcon;
 
 		QList<AdBlockSubscription*> m_subscriptions;
 		AdBlockMatcher* m_matcher;
