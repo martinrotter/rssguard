@@ -103,16 +103,20 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
 	const AdBlockRule* blockedRule = m_matcher->match(request, urlDomain, urlString);
 
 	if (blockedRule) {
-		res = true;
-
 		if (request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
-			// NOTE: We are blocking main URL frame, we can display "AdBlock error page" or
-			// redirect to somewhere.
-			request.block(true);
+      QUrlQuery query;
+      QUrl url(QSL("rssguard:adblockedpage"));
+
+      query.addQueryItem(QSL("rule"), blockedRule->filter());
+      query.addQueryItem(QSL("subscription"), blockedRule->subscription()->title());
+      url.setQuery(query);
+
+      request.redirect(url);
 		}
 
 		else {
-			request.block(true);
+      res = true;
+      request.block(true);
 		}
 	}
 

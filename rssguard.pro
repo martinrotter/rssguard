@@ -498,16 +498,18 @@ equals(USE_WEBENGINE, true) {
                 src/gui/webbrowser.h \
                 src/gui/discoverfeedsbutton.h \
                 src/network-web/googlesuggest.h \
-                src/network-web/webpage.h
+                src/network-web/webpage.h \
+                src/network-web/rssguardschemehandler.h
 
   SOURCES +=    src/gui/locationlineedit.cpp \
                 src/gui/webviewer.cpp \
                 src/gui/webbrowser.cpp \
                 src/gui/discoverfeedsbutton.cpp \
                 src/network-web/googlesuggest.cpp \
-                src/network-web/webpage.cpp
+                src/network-web/webpage.cpp \
+                src/network-web/rssguardschemehandler.cpp
 
-  # Add Ad-Block sources.
+  # Add AdBlock sources.
   HEADERS +=    src/network-web/adblock/adblockaddsubscriptiondialog.h \
                 src/network-web/adblock/adblockdialog.h \
                 src/network-web/adblock/adblockicon.h \

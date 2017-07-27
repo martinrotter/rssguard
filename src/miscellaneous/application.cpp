@@ -42,6 +42,7 @@
 #include "network-web/networkurlinterceptor.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
+#include "network-web/rssguardschemehandler.h"
 
 #include <QWebEngineProfile>
 #include <QWebEngineDownloadItem>
@@ -71,6 +72,10 @@ Application::Application(const QString& id, int& argc, char** argv)
 	// TODO: Call load settings when saving app settings from dialog.
 	// Will need add that if I add more settings in the future.
 	m_urlInterceptor->loadSettings();
+
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(
+      QByteArray(APP_LOW_NAME),
+      new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
 #endif
 }
 

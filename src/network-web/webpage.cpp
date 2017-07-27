@@ -70,7 +70,6 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool
 		setHtml(view()->messageContents(), QUrl(INTERNAL_URL_MESSAGE));
 		return true;
 	}
-
 	else {
 		return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
 	}

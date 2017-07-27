@@ -26,7 +26,5 @@ AdBlockUrlInterceptor::AdBlockUrlInterceptor(AdBlockManager* manager)
 }
 
 void AdBlockUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo& info) {
-	if (m_manager->block(info)) {
-		info.block(true);
-	}
+  info.block(m_manager->block(info));
 }

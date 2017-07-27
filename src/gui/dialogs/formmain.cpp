@@ -73,7 +73,6 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 	prepareMenus();
 
 	// Prepare tabs.
-	//m_ui->m_tabWidget->initializeTabs();
 	tabWidget()->feedMessageViewer()->feedsToolBar()->loadSavedActions();
 	tabWidget()->feedMessageViewer()->messagesToolBar()->loadSavedActions();
 
