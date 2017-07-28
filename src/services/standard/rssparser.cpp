@@ -20,6 +20,7 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/application.h"
 #include "exceptions/applicationexception.h"
 
 #include <QDomDocument>
@@ -64,14 +65,14 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
 
 		else {
 			// Title is empty but description is not.
-			new_message.m_title = WebFactory::instance()->stripTags(elem_description.simplified());
+      new_message.m_title = qApp->web()->stripTags(elem_description.simplified());
 			new_message.m_contents = elem_description;
 		}
 	}
 
 	else {
 		// Title is really not empty, description does not matter.
-		new_message.m_title = WebFactory::instance()->stripTags(elem_title);
+    new_message.m_title = qApp->web()->stripTags(elem_title);
 		new_message.m_contents = elem_description;
 	}
 

@@ -19,6 +19,7 @@
 
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
+#include "miscellaneous/application.h"
 
 #include "exceptions/applicationexception.h"
 
@@ -64,9 +65,9 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
   }
 
   // Title is not empty, description does not matter.
-  new_message.m_title = WebFactory::instance()->stripTags(title);
+  new_message.m_title = qApp->web()->stripTags(title);
   new_message.m_contents = summary;
-  new_message.m_author = WebFactory::instance()->escapeHtml(messageAuthor(msg_element));
+  new_message.m_author = qApp->web()->escapeHtml(messageAuthor(msg_element));
   QString updated = textsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
   // Deal with creation date.
   new_message.m_created = TextFactory::parseDateTime(updated);

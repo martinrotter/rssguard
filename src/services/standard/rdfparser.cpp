@@ -19,6 +19,7 @@
 
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
+#include "miscellaneous/application.h"
 
 #include <QDomDocument>
 
@@ -53,14 +54,14 @@ QList<Message> RdfParser::parseXmlData(const QString& data) {
 
 			else {
 				// Title is empty but description is not.
-				new_message.m_title = WebFactory::instance()->escapeHtml(WebFactory::instance()->stripTags(elem_description.simplified()));
+        new_message.m_title = qApp->web()->escapeHtml(qApp->web()->stripTags(elem_description.simplified()));
 				new_message.m_contents = elem_description;
 			}
 		}
 
 		else {
 			// Title is really not empty, description does not matter.
-			new_message.m_title = WebFactory::instance()->escapeHtml(WebFactory::instance()->stripTags(elem_title));
+      new_message.m_title = qApp->web()->escapeHtml(qApp->web()->stripTags(elem_title));
 			new_message.m_contents = elem_description;
 		}
 

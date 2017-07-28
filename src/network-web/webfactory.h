@@ -18,6 +18,8 @@
 #ifndef WEBFACTORY_H
 #define WEBFACTORY_H
 
+#include <QObject>
+
 #include "core/messagesmodel.h"
 
 #include <QMap>
@@ -25,10 +27,12 @@
 
 class QWebEngineSettings;
 
-class WebFactory {
+class WebFactory : public QObject {
+    Q_OBJECT
+
 	public:
-		// Constructor.
-		explicit WebFactory();
+    // Constructor.
+    explicit WebFactory(QObject* parent = nullptr);
 
 		// Destructor.
 		virtual ~WebFactory();
@@ -41,9 +45,6 @@ class WebFactory {
 		QString deEscapeHtml(const QString& text);
 
 		QString toSecondLevelDomain(const QUrl& url);
-
-		// Singleton getter.
-		static WebFactory* instance();
 
 	public slots:
 		// Opens given string URL in external browser.

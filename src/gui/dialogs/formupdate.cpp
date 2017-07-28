@@ -250,7 +250,7 @@ void FormUpdate::startUpdate() {
 
 	else {
 		// Self-update and package are not available.
-		if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
+    if (!qApp->web()->openUrlInExternalBrowser(url_file)) {
 			qApp->showGuiMessage(tr("Cannot update application"),
 			                     tr("Cannot navigate to installation file. Check new installation downloads manually on project website."),
 			                     QSystemTrayIcon::Warning,

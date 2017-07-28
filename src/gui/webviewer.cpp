@@ -146,7 +146,7 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
 	event->accept();
 
 	QMenu* menu = page()->createStandardContextMenu();
-  menu->addAction(AdBlockManager::instance()->adblockIcon());
+  menu->addAction(AdBlockManager::instance()->adBlockIcon());
 
 	const QPoint pos = event->globalPos();
 	QPoint p(pos.x(), pos.y() + 1);

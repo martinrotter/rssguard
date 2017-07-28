@@ -47,6 +47,7 @@ class QAction;
 class Mutex;
 class QWebEngineDownloadItem;
 class FeedReader;
+class WebFactory;
 
 #if defined(USE_WEBENGINE)
 class NetworkUrlInterceptor;
@@ -72,6 +73,7 @@ class Application : public QtSingleApplication {
 		// Check whether GIVEN VERSION of the application starts for the first time.
 		bool isFirstRun(const QString& version);
 
+    WebFactory* web();
 		SystemFactory* system();
 		SkinFactory* skins();
 		Localization* localization();
@@ -172,6 +174,7 @@ class Application : public QtSingleApplication {
 		FormMain* m_mainForm;
 		SystemTrayIcon* m_trayIcon;
 		Settings* m_settings;
+    WebFactory* m_webFactory;
 		SystemFactory* m_system;
 		SkinFactory* m_skins;
 		Localization* m_localization;

@@ -55,12 +55,20 @@
 #include <QTimer>
 #include <QFileDialog>
 
+#if defined (USE_WEBENGINE)
+#include "network-web/adblock/adblockmanager.h"
+#include "network-web/adblock/adblockicon.h"
+#endif
+
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 	: QMainWindow(parent, f), m_ui(new Ui::FormMain) {
 	m_ui->setupUi(this);
-
   qApp->setMainForm(this);
+
+#if defined (USE_WEBENGINE)
+  m_ui->m_menuWebBrowserTabs->addAction(AdBlockManager::instance()->adBlockIcon());
+#endif
 
 	// Add these actions to the list of actions of the main window.
 	// This allows to use actions via shortcuts
@@ -724,7 +732,7 @@ void FormMain::showUpdates() {
 }
 
 void FormMain::showWiki() {
-	if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_WIKI)) {
+  if (!qApp->web()->openUrlInExternalBrowser(APP_URL_WIKI)) {
 		qApp->showGuiMessage(tr("Cannot open external browser"),
 		                     tr("Cannot open external browser. Navigate to application website manually."),
 		                     QSystemTrayIcon::Warning, this, true);
@@ -739,7 +747,7 @@ void FormMain::showAddAccountDialog() {
 }
 
 void FormMain::reportABug() {
-	if (!WebFactory::instance()->openUrlInExternalBrowser(QSL(APP_URL_ISSUES_NEW))) {
+  if (!qApp->web()->openUrlInExternalBrowser(QSL(APP_URL_ISSUES_NEW))) {
 		qApp->showGuiMessage(tr("Cannot open external browser"),
 		                     tr("Cannot open external browser. Navigate to application website manually."),
 		                     QSystemTrayIcon::Warning, this, true);
@@ -747,7 +755,7 @@ void FormMain::reportABug() {
 }
 
 void FormMain::donate() {
-	if (!WebFactory::instance()->openUrlInExternalBrowser(QSL(APP_DONATE_URL))) {
+  if (!qApp->web()->openUrlInExternalBrowser(QSL(APP_DONATE_URL))) {
 		qApp->showGuiMessage(tr("Cannot open external browser"),
 		                     tr("Cannot open external browser. Navigate to application website manually."),
 		                     QSystemTrayIcon::Warning, this, true);

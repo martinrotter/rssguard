@@ -144,7 +144,7 @@ void AdBlockDialog::aboutToShowMenu() {
 }
 
 void AdBlockDialog::learnAboutRules() {
-  WebFactory::instance()->openUrlInExternalBrowser(QSL(ADBLOCK_HOWTO_FILTERS));
+  qApp->web()->openUrlInExternalBrowser(QSL(ADBLOCK_HOWTO_FILTERS));
 }
 
 void AdBlockDialog::loadSubscriptions() {

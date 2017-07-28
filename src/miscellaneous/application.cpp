@@ -33,6 +33,7 @@
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
+#include "network-web/webfactory.h"
 
 #include <QSessionManager>
 #include <QProcess>
@@ -59,7 +60,7 @@ Application::Application(const QString& id, int& argc, char** argv)
 
 	  m_feedReader(nullptr),
 	  m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
-	  m_trayIcon(nullptr), m_settings(nullptr), m_system(nullptr), m_skins(nullptr),
+    m_trayIcon(nullptr), m_settings(nullptr), m_webFactory(new WebFactory(this)), m_system(nullptr), m_skins(nullptr),
 	  m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr), m_shouldRestart(false) {
 	connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
 	connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
@@ -92,7 +93,7 @@ QList<QAction*> Application::userActions() {
 		m_userActions = m_mainForm->allActions();
 
 #if defined(USE_WEBENGINE)
-    m_userActions.append(AdBlockManager::instance()->adblockIcon());
+    m_userActions.append(AdBlockManager::instance()->adBlockIcon());
 #endif
 	}
 
@@ -111,7 +112,11 @@ bool Application::isFirstRun(const QString& version) {
 
 	else {
 		return false;
-	}
+  }
+}
+
+WebFactory* Application::web() {
+  return m_webFactory;
 }
 
 SystemFactory* Application::system() {

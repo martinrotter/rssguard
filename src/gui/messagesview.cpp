@@ -286,7 +286,7 @@ void MessagesView::openSelectedSourceMessagesExternally() {
 	foreach (const QModelIndex& index, selectionModel()->selectedRows()) {
 		const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
-		if (!WebFactory::instance()->openUrlInExternalBrowser(link)) {
+    if (!qApp->web()->openUrlInExternalBrowser(link)) {
 			qApp->showGuiMessage(tr("Problem with starting external web browser"),
 			                     tr("External web browser could not be started."),
 			                     QSystemTrayIcon::Critical);
@@ -316,7 +316,7 @@ void MessagesView::sendSelectedMessageViaEmail() {
 	if (selectionModel()->selectedRows().size() == 1) {
 		const Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
 
-		if (!WebFactory::instance()->sendMessageViaEmail(message)) {
+    if (!qApp->web()->sendMessageViaEmail(message)) {
 			MessageBox::show(this,
 			                 QMessageBox::Critical,
 			                 tr("Problem with starting external e-mail client"),

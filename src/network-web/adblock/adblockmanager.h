@@ -67,7 +67,7 @@ class AdBlockManager : public QObject {
 
 		AdBlockCustomList* customList() const;
 
-    inline AdBlockIcon* adblockIcon() const {
+    inline AdBlockIcon* adBlockIcon() const {
       return m_adblockIcon;
     }
 
