@@ -161,7 +161,7 @@ void WebFactory::createMenu(QMenu* menu) {
   }
 
   menu->clear();
-  menu->addActions(QList<QAction*> {
+  menu->addActions(QList<QAction*>({
     createEngineSettingsAction(tr("Auto-load images"), QWebEngineSettings::AutoLoadImages),
     createEngineSettingsAction(tr("JS enabled"), QWebEngineSettings::JavascriptEnabled),
     createEngineSettingsAction(tr("JS can open popup windows"), QWebEngineSettings::JavascriptCanOpenWindows),
@@ -183,7 +183,7 @@ void WebFactory::createMenu(QMenu* menu) {
     createEngineSettingsAction(tr("Print element backgrounds"), QWebEngineSettings::PrintElementBackgrounds),
     createEngineSettingsAction(tr("Allow running insecure content"), QWebEngineSettings::AllowRunningInsecureContent),
     createEngineSettingsAction(tr("Allow geolocation on insecure origins"), QWebEngineSettings::AllowGeolocationOnInsecureOrigins)
-  });
+  }));
 }
 
 void WebFactory::webEngineSettingChanged(bool enabled) {
