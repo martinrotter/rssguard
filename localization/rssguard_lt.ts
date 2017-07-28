@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="lt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -16,145 +14,145 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Antraštė</translation>
+        <translation>Antraštė</translation>
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>%1 (Error: %2)</source>
-        <translation type="unfinished"></translation>
+        <source>%1 (error: %2)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -281,14 +279,10 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalas.</numerusform>
-            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalai.</numerusform>
-            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalų.</numerusform>
-        </translation>
+        <translation><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalas.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalai.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalų.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -374,7 +368,7 @@ This website contains %n feed(s).</source>
         <translation>Atsiuntimas užbaigtas</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Failas &quot;%1&quot; yra atsisiųstas.
 Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
@@ -400,19 +394,11 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>Liko %n minutė</numerusform>
-            <numerusform>Liko %n minutės</numerusform>
-            <numerusform>Liko %n minučių</numerusform>
-        </translation>
+        <translation><numerusform>Liko %n minutė</numerusform><numerusform>Liko %n minutės</numerusform><numerusform>Liko %n minučių</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>Liko %n sekundė</numerusform>
-            <numerusform>Liko %n sekundės</numerusform>
-            <numerusform>Liko %n sekundžių</numerusform>
-        </translation>
+        <translation><numerusform>Liko %n sekundė</numerusform><numerusform>Liko %n sekundės</numerusform><numerusform>Liko %n sekundžių</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -432,11 +418,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Atsiunčiamas %n failas...</numerusform>
-            <numerusform>Atsiunčiami %n failai...</numerusform>
-            <numerusform>Atsiunčiama %n failų...</numerusform>
-        </translation>
+        <translation><numerusform>Atsiunčiamas %n failas...</numerusform><numerusform>Atsiunčiami %n failai...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -458,20 +440,12 @@ Automatinio atnaujinimo būsena: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
-        </translation>
+        <translation><numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
-        </translation>
+        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -501,11 +475,7 @@ Automatinio atnaujinimo būsena: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform>
-            <numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform>
-            <numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform>
-        </translation>
+        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -830,11 +800,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> diena</numerusform>
-            <numerusform> dienos</numerusform>
-            <numerusform> dienų</numerusform>
-        </translation>
+        <translation><numerusform> diena</numerusform><numerusform> dienos</numerusform><numerusform> dienų</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -2951,11 +2917,7 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
-            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
-            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
-        </translation>
+        <translation><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3001,17 +2963,13 @@ Jūs dabar galite jį įdiegti.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n kita žinutė.</numerusform>
-            <numerusform>
++ %n kita žinutė.</numerusform><numerusform>
 
-+ %n kitos žinutės.</numerusform>
-            <numerusform>
++ %n kitos žinutės.</numerusform><numerusform>
 
-+ %n kitų žinučių.</numerusform>
-        </translation>
++ %n kitų žinučių.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3072,11 +3030,7 @@ Reikalingas bent API lygis %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n ištrinta žinutė.</numerusform>
-            <numerusform>%n ištrintos žinutės.</numerusform>
-            <numerusform>%n ištrintų žinučių.</numerusform>
-        </translation>
+        <translation><numerusform>%n ištrinta žinutė.</numerusform><numerusform>%n ištrintos žinutės.</numerusform><numerusform>%n ištrintų žinučių.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3100,11 +3054,7 @@ Reikalingas bent API lygis %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n neskaityta žinutė.</numerusform>
-            <numerusform>%n neskaitytos žinutės.</numerusform>
-            <numerusform>%n neskaitytų žinučių.</numerusform>
-        </translation>
+        <translation><numerusform>%n neskaityta žinutė.</numerusform><numerusform>%n neskaitytos žinutės.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3561,8 +3511,24 @@ Vilkaduobės:
         <translation>Piktogramos ir apipavidalinimai</translation>
     </message>
     <message>
+        <source>Icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Icon theme</source>
         <translation>Piktogramų tema</translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3731,11 +3697,11 @@ Vilkaduobės:
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3946,19 +3912,11 @@ Neskaitytų naujienų: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n valandą</numerusform>
-            <numerusform>%n valandas</numerusform>
-            <numerusform>%n valandų</numerusform>
-        </translation>
+        <translation><numerusform>%n valandą</numerusform><numerusform>%n valandas</numerusform><numerusform>%n valandų</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minutę</numerusform>
-            <numerusform>%n minutes</numerusform>
-            <numerusform>%n minučių</numerusform>
-        </translation>
+        <translation><numerusform>%n minutę</numerusform><numerusform>%n minutes</numerusform><numerusform>%n minučių</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -4038,11 +3996,7 @@ Neskaitytų naujienų: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
-        </translation>
+        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
@@ -4133,91 +4087,91 @@ Paskutinis prisijungimas: %5</translation>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

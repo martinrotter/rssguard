@@ -173,7 +173,7 @@ void AdBlockTreeWidget::subscriptionUpdated() {
 void AdBlockTreeWidget::subscriptionError(const QString& message) {
 	refresh();
 	m_itemChangingBlock = true;
-	m_topItem->setText(0, tr("%1 (Error: %2)").arg(m_subscription->title(), message));
+  m_topItem->setText(0, tr("%1 (error: %2)").arg(m_subscription->title(), message));
 	m_itemChangingBlock = false;
 }
 

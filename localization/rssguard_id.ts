@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="id">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="id" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -16,145 +14,145 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Judul</translation>
+        <translation>Judul</translation>
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished">URL</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>%1 (Error: %2)</source>
-        <translation type="unfinished"></translation>
+        <source>%1 (error: %2)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -281,10 +279,8 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klik saya untuk menambah feed dari situs web ini.
-Situs web ini mengandung %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Klik saya untuk menambah feed dari situs web ini.
+Situs web ini mengandung %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -370,7 +366,7 @@ Situs web ini mengandung %n feed.</numerusform>
         <translation>Mengunduh selesai</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Berkas &apos;%1&apos; terunduh.
 Klik disini untuk membuka direktori induk.</translation>
@@ -396,15 +392,11 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n menit tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n menit tersisa</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n detik tersisa</numerusform>
-        </translation>
+        <translation><numerusform>%n detik tersisa</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -424,9 +416,7 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Mengunduh %n berkas...</numerusform>
-        </translation>
+        <translation><numerusform>Mengunduh %n berkas...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -448,16 +438,12 @@ Status pembaruan otomatis: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -487,9 +473,7 @@ Status pembaruan otomatis: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Saya akan dengan otomatis memperbarui %n feed.</numerusform>
-        </translation>
+        <translation><numerusform>Saya akan dengan otomatis memperbarui %n feed.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -693,7 +677,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -814,9 +798,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> hari</numerusform>
-        </translation>
+        <translation><numerusform> hari</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1993,7 +1975,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2067,7 +2049,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2108,7 +2090,7 @@ Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2574,7 +2556,7 @@ You can install it now.</source>
     <name>LabelsRootItem</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2774,11 +2756,11 @@ You can install it now.</source>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2932,9 +2914,7 @@ You can install it now.</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform>
-        </translation>
+        <translation><numerusform>Tampilkan lebih banyak pesan (%n tersisa)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2974,15 +2954,13 @@ You can install it now.</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n feed lain.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n feed lain.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3027,7 +3005,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3042,9 +3020,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n pesan terhapus.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan terhapus.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3066,9 +3042,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n pesan belum dibaca.</numerusform>
-        </translation>
+        <translation><numerusform>%n pesan belum dibaca.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3492,7 +3466,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3525,8 +3499,24 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
         <translation>Ikon &amp;&amp; skin</translation>
     </message>
     <message>
+        <source>Icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Icon theme</source>
         <translation>Tema ikon</translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3695,11 +3685,11 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3852,7 +3842,7 @@ ID akun: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3910,15 +3900,11 @@ Berita belum terbaca:%2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n jam</numerusform>
-        </translation>
+        <translation><numerusform>%n jam</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n menit</numerusform>
-        </translation>
+        <translation><numerusform>%n menit</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -3973,7 +3959,7 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3998,9 +3984,7 @@ Berita belum terbaca:%2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform>
-        </translation>
+        <translation><numerusform>menggunakan pengaturan yang spesifik (%n menit menuju pembaruan otomatis selanjutnya)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
@@ -4091,91 +4075,91 @@ Login terakhir pada: %5</translation>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

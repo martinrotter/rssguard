@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -16,145 +14,145 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Dirección URL</translation>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>%1 (Error: %2)</source>
-        <translation type="unfinished"></translation>
+        <source>%1 (error: %2)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -281,12 +279,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Pulse aquí para añadir la fuente de este portal.
-Este portal contiene %n fuente().</numerusform>
-            <numerusform>Pulse aquí para añadir las fuentes de este portal.
-Este portal contiene %n fuente(s).</numerusform>
-        </translation>
+        <translation><numerusform>Pulse aquí para añadir la fuente de este portal.
+Este portal contiene %n fuente().</numerusform><numerusform>Pulse aquí para añadir las fuentes de este portal.
+Este portal contiene %n fuente(s).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -372,7 +367,7 @@ Este portal contiene %n fuente(s).</numerusform>
         <translation>Descarga finalizada</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Archivo &apos;%1&apos; descargado.
 Pulse aquí para abrir la carpeta principal</translation>
@@ -398,17 +393,11 @@ Pulse aquí para abrir la carpeta principal</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minuto restante</numerusform>
-            <numerusform>%n minutos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto restante</numerusform><numerusform>%n minutos restantes</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n segundo restante</numerusform>
-            <numerusform>%n segundos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n segundo restante</numerusform><numerusform>%n segundos restantes</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -428,10 +417,7 @@ Pulse aquí para abrir la carpeta principal</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Descargando %n archivo()...</numerusform>
-            <numerusform>Descargando %n archivo(s)...</numerusform>
-        </translation>
+        <translation><numerusform>Descargando %n archivo()...</numerusform><numerusform>Descargando %n archivo(s)...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -453,18 +439,12 @@ Estado de la actualización automática: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>utilice configuración general (%n minuto() para la siguiente actualización automática)</numerusform>
-            <numerusform>utiliza la configuración general (%n minuto(s) para la siguiente actualización automática)</numerusform>
-        </translation>
+        <translation><numerusform>utilice configuración general (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración general (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>utilice configuración específica (%n minuto() para la siguiente actualización automática)</numerusform>
-            <numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform>
-        </translation>
+        <translation><numerusform>utilice configuración específica (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -494,10 +474,7 @@ Estado de la actualización automática: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Voy a realizar la actualización automática de %n fuente().</numerusform>
-            <numerusform>Voy a realizar la actualización automática de %n fuente(s).</numerusform>
-        </translation>
+        <translation><numerusform>Voy a realizar la actualización automática de %n fuente().</numerusform><numerusform>Voy a realizar la actualización automática de %n fuente(s).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -822,10 +799,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>día()</numerusform>
-            <numerusform>día(s)</numerusform>
-        </translation>
+        <translation><numerusform>día()</numerusform><numerusform>día(s)</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -2941,10 +2915,7 @@ Puede instalarlo ahora.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Mostrar más mensajes (%n restante)</numerusform>
-            <numerusform>Mostrar más mensajes (%n restantes)</numerusform>
-        </translation>
+        <translation><numerusform>Mostrar más mensajes (%n restante)</numerusform><numerusform>Mostrar más mensajes (%n restantes)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2990,14 +2961,11 @@ Puede instalarlo ahora.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n fuente restante.</numerusform>
-            <numerusform>
++ %n fuente restante.</numerusform><numerusform>
 
-+ %n fuentes restantes.</numerusform>
-        </translation>
++ %n fuentes restantes.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3058,10 +3026,7 @@ Se necesita como mínimo una API de nivel %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n mensaje() borrado.</numerusform>
-            <numerusform>%n mensaje(s) borrados.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensaje() borrado.</numerusform><numerusform>%n mensaje(s) borrados.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3085,10 +3050,7 @@ Se necesita como mínimo una API de nivel %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n mensaje() no leído.</numerusform>
-            <numerusform>%n mensaje(s) no leídos.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensaje() no leído.</numerusform><numerusform>%n mensaje(s) no leídos.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3545,8 +3507,24 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation>Iconos &amp;&amp; carátulas</translation>
     </message>
     <message>
+        <source>Icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Icon theme</source>
         <translation>Tema de iconos</translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3715,11 +3693,11 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3930,17 +3908,11 @@ Noticias no leídas: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n hora()</numerusform>
-            <numerusform>%n hora(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n hora()</numerusform><numerusform>%n hora(s)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minuto()</numerusform>
-            <numerusform>%n minuto(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto()</numerusform><numerusform>%n minuto(s)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -4020,10 +3992,7 @@ Noticias no leídas: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>utiliza la configuración específica (%n minuto() para la siguiente actualización automática)</numerusform>
-            <numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform>
-        </translation>
+        <translation><numerusform>utiliza la configuración específica (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
@@ -4114,91 +4083,91 @@ Servidor: %2
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

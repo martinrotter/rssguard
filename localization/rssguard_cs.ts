@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="cs">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -16,145 +14,145 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat seznam</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Použit předdefinovaný seznam</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Nadpis</translation>
+        <translation>Nadpis</translation>
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Název seznamu</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished">URL</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"></translation>
+        <translation>URL k online umístění souboru seznamu</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní pravidla</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>AdBlock a jeho nastavení</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit AdBlock</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnosti</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat pravidlo</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstranit pravidlo</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat seznam</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat seznam</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat seznam</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"></translation>
+        <translation>Naučit se psát vlastní pravidla...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"></translation>
+        <translation>AdBlock vám umožňuje blokovat nevyžádaný obsah na webových stránkách.</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit nastavení &amp;AdBlocku</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázat na %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázat pouze na této stránce</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete přidat seznam &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat seznam AdBlocku</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze načíst seznam!</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat pravidlo</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat pravidlo</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat vlastní pravidlo</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadejte nové pravidlo sem:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (nedávno aktualizováno)</translation>
     </message>
     <message>
-        <source>%1 (Error: %2)</source>
-        <translation type="unfinished"></translation>
+        <source>%1 (error: %2)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -281,14 +279,10 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanál.</numerusform>
-            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanály.</numerusform>
-            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanálů.</numerusform>
-        </translation>
+        <translation><numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanál.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanály.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanálů.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -374,7 +368,7 @@ Tato stránka obsahuje %n kanálů.</numerusform>
         <translation>Stahování dokončeno</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Soubor &apos;%1&apos; je stažen.
 Klikněte sem pro otevření nadřazeného adresáře.</translation>
@@ -400,19 +394,11 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minuta do konce</numerusform>
-            <numerusform>%n minuty do konce</numerusform>
-            <numerusform>%n minut do konce</numerusform>
-        </translation>
+        <translation><numerusform>%n minuta do konce</numerusform><numerusform>%n minuty do konce</numerusform><numerusform>%n minut do konce</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n vteřina do konce</numerusform>
-            <numerusform>%n vteřiny do konce</numerusform>
-            <numerusform>%n vteřin do konce</numerusform>
-        </translation>
+        <translation><numerusform>%n vteřina do konce</numerusform><numerusform>%n vteřiny do konce</numerusform><numerusform>%n vteřin do konce</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -432,11 +418,7 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Stahuji %n soubor...</numerusform>
-            <numerusform>Stahuji %n soubory...</numerusform>
-            <numerusform>Stahuji %n souborů...</numerusform>
-        </translation>
+        <translation><numerusform>Stahuji %n soubor...</numerusform><numerusform>Stahuji %n soubory...</numerusform><numerusform>Stahuji %n souborů...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -458,20 +440,12 @@ Status auto-aktualizace: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>používá globální nastavení (%n minuta do další aktualizace)</numerusform>
-            <numerusform>používá globální nastavení (%n minuty do další aktualizace)</numerusform>
-            <numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform>
-        </translation>
+        <translation><numerusform>používá globální nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
-            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
-            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
-        </translation>
+        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -501,11 +475,7 @@ Status auto-aktualizace: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Budu aktualizovat %n kanálů.</numerusform>
-            <numerusform>Budu aktualizovat %n kanálů.</numerusform>
-            <numerusform>Budu aktualizovat %n kanálů.</numerusform>
-        </translation>
+        <translation><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -829,11 +799,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> den</numerusform>
-            <numerusform> dny</numerusform>
-            <numerusform> dnů</numerusform>
-        </translation>
+        <translation><numerusform> den</numerusform><numerusform> dny</numerusform><numerusform> dnů</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -2948,11 +2914,7 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Zobrazit další zprávy (zbývá %n)</numerusform>
-            <numerusform>Zobrazit další zprávy (zbývá %n)</numerusform>
-            <numerusform>Zobrazit další zprávy (zbývá %n)</numerusform>
-        </translation>
+        <translation><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2998,17 +2960,13 @@ Nyní ho můžete nainstalovat.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n další kanál.</numerusform>
-            <numerusform>
++ %n další kanál.</numerusform><numerusform>
 
-+ %n další kanály.</numerusform>
-            <numerusform>
++ %n další kanály.</numerusform><numerusform>
 
-+ %n dalších kanálů.</numerusform>
-        </translation>
++ %n dalších kanálů.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3069,11 +3027,7 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n smazaná zpráva.</numerusform>
-            <numerusform>%n smazané zprávy.</numerusform>
-            <numerusform>%n smazaných zpráv.</numerusform>
-        </translation>
+        <translation><numerusform>%n smazaná zpráva.</numerusform><numerusform>%n smazané zprávy.</numerusform><numerusform>%n smazaných zpráv.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3097,11 +3051,7 @@ Je vyžadování verze API minimálně %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n nepřečtená zpráva.</numerusform>
-            <numerusform>%n nepřečtené zprávy.</numerusform>
-            <numerusform>%n nepřečtených zpráv.</numerusform>
-        </translation>
+        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3558,8 +3508,24 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Ikony &amp;&amp; skiny</translation>
     </message>
     <message>
+        <source>Icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Icon theme</source>
         <translation>Téma ikon</translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3728,11 +3694,11 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation>Tato stránka byla zablokována AdBlockem</translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Zablokováno seznamem: &quot;%1&quot;&lt;br/&gt;Zablokováno filtrem: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -3943,19 +3909,11 @@ Nepřečtené zprávy: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n hodina</numerusform>
-            <numerusform>%n hodiny</numerusform>
-            <numerusform>%n hodin</numerusform>
-        </translation>
+        <translation><numerusform>%n hodina</numerusform><numerusform>%n hodiny</numerusform><numerusform>%n hodin</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minuta</numerusform>
-            <numerusform>%n minuty</numerusform>
-            <numerusform>%n minut</numerusform>
-        </translation>
+        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -4035,11 +3993,7 @@ Nepřečtené zprávy: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
-            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
-            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
-        </translation>
+        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
@@ -4130,91 +4084,91 @@ Poslední přihlášení: %5</translation>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení webového enginu</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"></translation>
+        <translation>Načítat obrázky</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>JS povolen</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"></translation>
+        <translation>JS může otevírat popup okna</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>JS může přistupovat ke schránce</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"></translation>
+        <translation>Odkazy mohou získat focus</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokální uložiště povoleno</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokální obsah může načítat vzdálené URL</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>XSS auditing povolen</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Částečná navigace povolena</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokální obsah může přistupovat k lokálním souborům</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Auditing odkazů povolen</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Animovat skrolování</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Chybové stránky povoleny</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Pluginy povoleny</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Fullscreen povolen</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Zachycení obrazovky povoleno</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>WebGL povoleno</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"></translation>
+        <translation>Akcelerovat 2D plátno</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Tisknout pozadí elementů</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit běh nezabezpečeného obsahu</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit geolokaci nezabezpečeného původu</translation>
     </message>
 </context>
 <context>

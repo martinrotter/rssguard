@@ -153,7 +153,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 (Error: %2)</source>
+        <source>%1 (error: %2)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
