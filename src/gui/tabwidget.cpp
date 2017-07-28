@@ -268,7 +268,7 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
 #else
 	Q_UNUSED(move_after_current)
 	Q_UNUSED(make_active)
-	WebFactory::instance()->openUrlInExternalBrowser(initial_url.toString());
+  qApp->web()->openUrlInExternalBrowser(initial_url.toString());
 	return -1;
 #endif
 }
