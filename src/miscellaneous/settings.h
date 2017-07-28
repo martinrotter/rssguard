@@ -41,6 +41,10 @@
 #define GROUP(x) x::ID
 
 
+namespace WebEngineAttributes {
+  KEY ID;
+}
+
 namespace AdBlock {
 	KEY ID;
 

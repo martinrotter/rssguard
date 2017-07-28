@@ -25,6 +25,8 @@
 #include <QLocale>
 
 
+DKEY WebEngineAttributes::ID                  = "web_engine_attributes";
+
 // AdBlock.
 DKEY AdBlock::ID                              = "adblock";
 

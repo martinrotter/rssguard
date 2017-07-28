@@ -52,7 +52,6 @@ class WebViewer : public QWebEngineView {
 
 	protected:
 		void contextMenuEvent(QContextMenuEvent* event);
-
 		QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
 		void wheelEvent(QWheelEvent* event);
 

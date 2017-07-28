@@ -68,6 +68,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 
 #if defined (USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->addAction(AdBlockManager::instance()->adBlockIcon());
+  m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
 
 	// Add these actions to the list of actions of the main window.

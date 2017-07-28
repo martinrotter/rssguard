@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ All (well, almost all) web-engine attributes can be disabled/enabled, including JS/plugins. (#57)
 ▪ Some minor tweaks/fixes.
 ▪ New Ad-Block feature for internal web browser. Based on Qt examples and QupZilla. Original license GNU GPLv3 is retained. (#123)
 ▪ New Qt 5.9.1 release.

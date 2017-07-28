@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sv">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -8,6 +10,151 @@
     <message>
         <source> (feed)</source>
         <translation>(flöde)</translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockAddSubscriptionDialog</name>
+    <message>
+        <source>Add subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use predefined subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title of subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Absolute URL to online subscription file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockCustomList</name>
+    <message>
+        <source>Custom rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockDialog</name>
+    <message>
+        <source>AdBlock configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable AdBlock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update subscriptions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Learn about writing rules...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockIcon</name>
+    <message>
+        <source>AdBlock lets you block unwanted content on web pages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocked popup window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>AdBlock blocked unwanted popup window.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show AdBlock &amp;settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable on %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable only on this page</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockManager</name>
+    <message>
+        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add AdBlock subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockSubscription</name>
+    <message>
+        <source>Cannot load subscription!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockTreeWidget</name>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add custom rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please write your rule here:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (recently updated)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (Error: %2)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -134,9 +281,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller ett annat flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller ett annat flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -222,7 +372,7 @@ Denna webbsida innehåller %n flöden.</numerusform></translation>
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; är nedlladdad.
 Klicka här för att öppna målmappen.</translation>
@@ -248,11 +398,17 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -272,7 +428,10 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
+        <translation>
+            <numerusform>Laddar ner %n fil...</numerusform>
+            <numerusform>Laddar ner %n filer...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -294,12 +453,18 @@ Autouppdateringsstatus: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -329,7 +494,10 @@ Autouppdateringsstatus: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+        <translation>
+            <numerusform>Jag uppdaterar %n flöde automatiskt</numerusform>
+            <numerusform>Jag uppdaterar %n flöden automatiskt</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -654,7 +822,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagar</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1011,167 +1182,167 @@ att funktionen inte är implementerad än.</translation>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autentisering</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Visa lösenord</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Kräver HTTP-autentisering</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testa inställning</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Notera att API-nivå %1 är miniminivå.</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn för HTTP-autentisering</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord för HTTP-autentisering</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord för ditt TT RSS-konto</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn för ditt TT RSS-konto</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>URL för din TT-RSS-instans UTAN vidhängande &quot;/api/-sträng&quot;.</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt Tiny Tiny RSS-konto</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Redigera befintligt </translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>API-åtkomst är inte aktiverad på den valda servern.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation>Inloggningsuppgifter är felaktiga.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation>Annat fel uppstod! Kontakta utvecklaren.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda Tiny Tiny RSS-servern kör en API-version (%1) som inte stöds. Minst API-nivå %2 krävs.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda Tiny Tiny RSS-servern kör en API-version som inte stöds.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS-servern är okay. Den kör API-nivå %1 och minimikravet är nivå %2.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS-servern är okay.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksfel! Har du angett korrekt Tiny Tiny RSS API-slutpunkt och lösenord?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn okay.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord okay.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamnet är ok, eller behövs inte. </translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Lösenordet är ok, eller behövs inte. </translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL saknas.</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL:en skall INTE sluta med &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL okay.</translation>
     </message>
 </context>
 <context>
@@ -1831,7 +2002,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Starta om</translation>
     </message>
 </context>
 <context>
@@ -1905,7 +2076,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"/>
+        <translation>Starta om</translation>
     </message>
 </context>
 <context>
@@ -1940,11 +2111,13 @@ att funktionen inte är implementerad än.</translation>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Vissa kritiska inställningar har ändrats och kommer att verkställas efter att programmet har startats om. 
+
+Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"/>
+        <translation>Vill du starta om nu?</translation>
     </message>
 </context>
 <context>
@@ -2410,7 +2583,7 @@ Du kan installera det nu.</translation>
     <name>LabelsRootItem</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Etiketter</translation>
     </message>
 </context>
 <context>
@@ -2610,11 +2783,11 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"/>
+        <translation>Flödes-ID</translation>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Anpassat ID för meddelandeflödet.</translation>
     </message>
 </context>
 <context>
@@ -2768,7 +2941,10 @@ Du kan installera det nu.</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Visa fler meddelanden (%n återstår)</numerusform><numerusform>Visa fler meddelanden (%n återstår)</numerusform></translation>
+        <translation>
+            <numerusform>Visa fler meddelanden (%n återstår)</numerusform>
+            <numerusform>Visa fler meddelanden (%n återstår)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -2814,9 +2990,12 @@ Du kan installera det nu.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>+ %n annat flöde.</numerusform><numerusform>
+        <translation>
+            <numerusform>+ %n annat flöde.</numerusform>
+            <numerusform>
 
-+ %n andra flöden.</numerusform></translation>
++ %n andra flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -2862,7 +3041,7 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>Nyhetsappen är en RSS/Atom flödesaggregator. Den är en del av Nextcloud-sviten. Denna tilläggsmodul implementerar %1 API.</translation>
     </message>
 </context>
 <context>
@@ -2877,7 +3056,10 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -2901,7 +3083,10 @@ Minst API-nivå %1 krävs.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3326,7 +3511,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation>Aktivera avisering för &quot;Automatisk uppdatering startad&quot;</translation>
     </message>
 </context>
 <context>
@@ -3359,24 +3544,8 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Ikoner &amp;&amp; teman</translation>
     </message>
     <message>
-        <source>Icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Icon theme</source>
         <translation>Ikontema</translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -3539,6 +3708,17 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Click and hit new shortcut.</source>
         <translation>Klicka och välj ny snabbtangent.</translation>
+    </message>
+</context>
+<context>
+    <name>SkinFactory</name>
+    <message>
+        <source>This page was blocked by AdBlock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3744,20 +3924,22 @@ Olästa nyheter: %2</translation>
         <source>Web browser</source>
         <translation>Webbläsare</translation>
     </message>
-    <message>
-        <source>  Web browser</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
+        <translation>
+            <numerusform>%n timma</numerusform>
+            <numerusform>%n timmar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
+        <translation>
+            <numerusform>%n minut</numerusform>
+            <numerusform>%n minuter</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -3812,7 +3994,7 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation type="unfinished"/>
+        <translation>Återställ verktygsfältet</translation>
     </message>
 </context>
 <context>
@@ -3837,7 +4019,10 @@ Olästa nyheter: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2
@@ -3922,6 +4107,97 @@ Senast inloggad: %5</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stoppa inläsning av webbsidan.</translation>
+    </message>
+</context>
+<context>
+    <name>WebFactory</name>
+    <message>
+        <source>Web engine settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-load images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JS enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JS can open popup windows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JS can access clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hyperlinks can get focus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local storage enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local content can access remote URLs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>XSS auditing enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Spatial navigation enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local content can access local files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hyperlink auditing enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Animate scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error pages enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plugins enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fullscreen enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screen capture enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WebGL enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accelerate 2D canvas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print element backgrounds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow running insecure content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow geolocation on insecure origins</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

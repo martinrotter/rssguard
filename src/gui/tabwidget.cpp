@@ -229,10 +229,9 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
 	// Create new WebBrowser.
 	WebBrowser* browser = new WebBrowser(this);
 	int final_index;
+  QString browser_tab_name = tr("Web browser");
 #if defined (Q_OS_MACOS)
-	const QString browser_tab_name = tr("  Web browser");
-#else
-	const QString browser_tab_name = tr("Web browser");
+  browser_tab_name = browser_tab_name.prepend(QSL("  "));
 #endif
 
 	if (move_after_current) {
@@ -244,7 +243,6 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
 	else {
 		// Add new browser as the last tab.
 		final_index = addTab(browser, qApp->icons()->fromTheme(QSL("text-html")),
-		                     //: Web browser default tab title.
 		                     browser_tab_name,
 		                     TabBar::Closable);
 	}

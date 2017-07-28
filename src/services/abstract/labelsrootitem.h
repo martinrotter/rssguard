@@ -22,6 +22,8 @@
 
 
 class LabelsRootItem : public RootItem {
+    Q_OBJECT
+
 	public:
 		explicit LabelsRootItem(RootItem* parent_item = nullptr);
 };

@@ -18,18 +18,33 @@
 #include "network-web/webfactory.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QRegExp>
 #include <QProcess>
 #include <QUrl>
 #include <QDesktopServices>
 
+#if defined (USE_WEBENGINE)
+#include <QWebEngineProfile>
+#endif
+
 
 WebFactory::WebFactory(QObject* parent)
   : QObject(parent), m_escapes(QMap<QString, QString>()), m_deEscapes(QMap<QString, QString>()) {
+#if defined (USE_WEBENGINE)
+  m_engineSettings = nullptr;
+#endif
 }
 
 WebFactory::~WebFactory() {
+#if defined (USE_WEBENGINE)
+
+  if (m_engineSettings != nullptr && m_engineSettings->menu() != nullptr) {
+    m_engineSettings->menu()->deleteLater();
+  }
+
+#endif
 }
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {
@@ -45,7 +60,7 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
 		// NOTE: http://en.wikipedia.org/wiki/Mailto
 		return QDesktopServices::openUrl(QString("mailto:?subject=%1&body=%2").arg(QString(QUrl::toPercentEncoding(message.m_title)),
 		                                 QString(QUrl::toPercentEncoding(stripTags(message.m_contents)))));
-	}
+  }
 }
 
 bool WebFactory::openUrlInExternalBrowser(const QString& url) {
@@ -122,8 +137,77 @@ QString WebFactory::toSecondLevelDomain(const QUrl& url) {
 		domain = domain.mid(domain.indexOf(QL1C('.')) + 1);
 	}
 
-	return domain + top_level_domain;
+  return domain + top_level_domain;
 }
+
+#if defined (USE_WEBENGINE)
+QAction* WebFactory::engineSettingsAction() {
+  if (m_engineSettings == nullptr) {
+    m_engineSettings = new QAction(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web engine settings"), this);
+    m_engineSettings->setMenu(new QMenu());
+    connect(m_engineSettings->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
+  }
+
+  return m_engineSettings;
+}
+
+void WebFactory::createMenu(QMenu* menu) {
+  if (menu == nullptr) {
+    menu = qobject_cast<QMenu*>(sender());
+
+    if (menu == nullptr) {
+      return;
+    }
+  }
+
+  menu->clear();
+  menu->addActions(QList<QAction*> {
+    createEngineSettingsAction(tr("Auto-load images"), QWebEngineSettings::AutoLoadImages),
+    createEngineSettingsAction(tr("JS enabled"), QWebEngineSettings::JavascriptEnabled),
+    createEngineSettingsAction(tr("JS can open popup windows"), QWebEngineSettings::JavascriptCanOpenWindows),
+    createEngineSettingsAction(tr("JS can access clipboard"), QWebEngineSettings::JavascriptCanAccessClipboard),
+    createEngineSettingsAction(tr("Hyperlinks can get focus"), QWebEngineSettings::LinksIncludedInFocusChain),
+    createEngineSettingsAction(tr("Local storage enabled"), QWebEngineSettings::LocalStorageEnabled),
+    createEngineSettingsAction(tr("Local content can access remote URLs"), QWebEngineSettings::LocalContentCanAccessRemoteUrls),
+    createEngineSettingsAction(tr("XSS auditing enabled"), QWebEngineSettings::XSSAuditingEnabled),
+    createEngineSettingsAction(tr("Spatial navigation enabled"), QWebEngineSettings::SpatialNavigationEnabled),
+    createEngineSettingsAction(tr("Local content can access local files"), QWebEngineSettings::LocalContentCanAccessFileUrls),
+    createEngineSettingsAction(tr("Hyperlink auditing enabled"), QWebEngineSettings::HyperlinkAuditingEnabled),
+    createEngineSettingsAction(tr("Animate scrolling"), QWebEngineSettings::ScrollAnimatorEnabled),
+    createEngineSettingsAction(tr("Error pages enabled"), QWebEngineSettings::ErrorPageEnabled),
+    createEngineSettingsAction(tr("Plugins enabled"), QWebEngineSettings::PluginsEnabled),
+    createEngineSettingsAction(tr("Fullscreen enabled"), QWebEngineSettings::FullScreenSupportEnabled),
+    createEngineSettingsAction(tr("Screen capture enabled"), QWebEngineSettings::ScreenCaptureEnabled),
+    createEngineSettingsAction(tr("WebGL enabled"), QWebEngineSettings::WebGLEnabled),
+    createEngineSettingsAction(tr("Accelerate 2D canvas"), QWebEngineSettings::Accelerated2dCanvasEnabled),
+    createEngineSettingsAction(tr("Print element backgrounds"), QWebEngineSettings::PrintElementBackgrounds),
+    createEngineSettingsAction(tr("Allow running insecure content"), QWebEngineSettings::AllowRunningInsecureContent),
+    createEngineSettingsAction(tr("Allow geolocation on insecure origins"), QWebEngineSettings::AllowGeolocationOnInsecureOrigins)
+  });
+}
+
+void WebFactory::webEngineSettingChanged(bool enabled) {
+  const QAction* const act = qobject_cast<QAction*>(sender());
+  QWebEngineSettings::WebAttribute attribute = static_cast<QWebEngineSettings::WebAttribute>(act->data().toInt());
+
+  qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
+  QWebEngineProfile::defaultProfile()->settings()->setAttribute(attribute, act->isChecked());
+}
+
+QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute) {
+  QAction* act = new QAction(title, m_engineSettings->menu());
+
+  act->setData(attribute);
+  act->setCheckable(true);
+
+  act->setChecked(qApp->settings()->value(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), true).toBool());
+  QWebEngineProfile::defaultProfile()->settings()->setAttribute(attribute, act->isChecked());
+
+  connect(act, &QAction::toggled, this, &WebFactory::webEngineSettingChanged);
+
+  return act;
+}
+#endif
 
 void WebFactory::genereteEscapes() {
 	m_escapes[QSL("&lt;")]     = QL1C('<');

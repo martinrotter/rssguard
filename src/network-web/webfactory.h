@@ -24,8 +24,14 @@
 
 #include <QMap>
 
+#if defined (USE_WEBENGINE)
+#include <QWebEngineSettings>
+#endif
 
-class QWebEngineSettings;
+
+#if defined (USE_WEBENGINE)
+class QMenu;
+#endif
 
 class WebFactory : public QObject {
     Q_OBJECT
@@ -46,10 +52,23 @@ class WebFactory : public QObject {
 
 		QString toSecondLevelDomain(const QUrl& url);
 
+#if defined (USE_WEBENGINE)
+    QAction* engineSettingsAction();
+#endif
+
 	public slots:
 		// Opens given string URL in external browser.
 		bool openUrlInExternalBrowser(const QString& url);
 		bool sendMessageViaEmail(const Message& message);
+
+#if defined (USE_WEBENGINE)
+  private slots:
+    void createMenu(QMenu* menu = nullptr);
+    void webEngineSettingChanged(bool enabled);
+
+  private:
+    QAction* createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute);
+#endif
 
 	private:
 		// Escape sequences generators.
@@ -58,6 +77,10 @@ class WebFactory : public QObject {
 
 		QMap<QString, QString> m_escapes;
 		QMap<QString, QString> m_deEscapes;
+
+#if defined (USE_WEBENGINE)
+    QAction* m_engineSettings;
+#endif
 };
 
 #endif // WEBFACTORY_H
