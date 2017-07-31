@@ -164,29 +164,28 @@ void WebFactory::createMenu(QMenu* menu) {
 
   menu->clear();
 
-  QList<QAction*> actions = {
-    createEngineSettingsAction(tr("Auto-load images"), QWebEngineSettings::AutoLoadImages),
-    createEngineSettingsAction(tr("JS enabled"), QWebEngineSettings::JavascriptEnabled),
-    createEngineSettingsAction(tr("JS can open popup windows"), QWebEngineSettings::JavascriptCanOpenWindows),
-    createEngineSettingsAction(tr("JS can access clipboard"), QWebEngineSettings::JavascriptCanAccessClipboard),
-    createEngineSettingsAction(tr("Hyperlinks can get focus"), QWebEngineSettings::LinksIncludedInFocusChain),
-    createEngineSettingsAction(tr("Local storage enabled"), QWebEngineSettings::LocalStorageEnabled),
-    createEngineSettingsAction(tr("Local content can access remote URLs"), QWebEngineSettings::LocalContentCanAccessRemoteUrls),
-    createEngineSettingsAction(tr("XSS auditing enabled"), QWebEngineSettings::XSSAuditingEnabled),
-    createEngineSettingsAction(tr("Spatial navigation enabled"), QWebEngineSettings::SpatialNavigationEnabled),
-    createEngineSettingsAction(tr("Local content can access local files"), QWebEngineSettings::LocalContentCanAccessFileUrls),
-    createEngineSettingsAction(tr("Hyperlink auditing enabled"), QWebEngineSettings::HyperlinkAuditingEnabled),
-    createEngineSettingsAction(tr("Animate scrolling"), QWebEngineSettings::ScrollAnimatorEnabled),
-    createEngineSettingsAction(tr("Error pages enabled"), QWebEngineSettings::ErrorPageEnabled),
-    createEngineSettingsAction(tr("Plugins enabled"), QWebEngineSettings::PluginsEnabled),
-    createEngineSettingsAction(tr("Fullscreen enabled"), QWebEngineSettings::FullScreenSupportEnabled),
-    createEngineSettingsAction(tr("Screen capture enabled"), QWebEngineSettings::ScreenCaptureEnabled),
-    createEngineSettingsAction(tr("WebGL enabled"), QWebEngineSettings::WebGLEnabled),
-    createEngineSettingsAction(tr("Accelerate 2D canvas"), QWebEngineSettings::Accelerated2dCanvasEnabled),
-    createEngineSettingsAction(tr("Print element backgrounds"), QWebEngineSettings::PrintElementBackgrounds),
-    createEngineSettingsAction(tr("Allow running insecure content"), QWebEngineSettings::AllowRunningInsecureContent),
-    createEngineSettingsAction(tr("Allow geolocation on insecure origins"), QWebEngineSettings::AllowGeolocationOnInsecureOrigins)
-  };
+  QList<QAction*> actions;
+  actions << createEngineSettingsAction(tr("Auto-load images"), QWebEngineSettings::AutoLoadImages);
+  actions << createEngineSettingsAction(tr("JS enabled"), QWebEngineSettings::JavascriptEnabled);
+  actions << createEngineSettingsAction(tr("JS can open popup windows"), QWebEngineSettings::JavascriptCanOpenWindows);
+  actions << createEngineSettingsAction(tr("JS can access clipboard"), QWebEngineSettings::JavascriptCanAccessClipboard);
+  actions << createEngineSettingsAction(tr("Hyperlinks can get focus"), QWebEngineSettings::LinksIncludedInFocusChain);
+  actions << createEngineSettingsAction(tr("Local storage enabled"), QWebEngineSettings::LocalStorageEnabled);
+  actions << createEngineSettingsAction(tr("Local content can access remote URLs"), QWebEngineSettings::LocalContentCanAccessRemoteUrls);
+  actions << createEngineSettingsAction(tr("XSS auditing enabled"), QWebEngineSettings::XSSAuditingEnabled);
+  actions << createEngineSettingsAction(tr("Spatial navigation enabled"), QWebEngineSettings::SpatialNavigationEnabled);
+  actions << createEngineSettingsAction(tr("Local content can access local files"), QWebEngineSettings::LocalContentCanAccessFileUrls);
+  actions << createEngineSettingsAction(tr("Hyperlink auditing enabled"), QWebEngineSettings::HyperlinkAuditingEnabled);
+  actions << createEngineSettingsAction(tr("Animate scrolling"), QWebEngineSettings::ScrollAnimatorEnabled);
+  actions << createEngineSettingsAction(tr("Error pages enabled"), QWebEngineSettings::ErrorPageEnabled);
+  actions << createEngineSettingsAction(tr("Plugins enabled"), QWebEngineSettings::PluginsEnabled);
+  actions << createEngineSettingsAction(tr("Fullscreen enabled"), QWebEngineSettings::FullScreenSupportEnabled);
+  actions << createEngineSettingsAction(tr("Screen capture enabled"), QWebEngineSettings::ScreenCaptureEnabled);
+  actions << createEngineSettingsAction(tr("WebGL enabled"), QWebEngineSettings::WebGLEnabled);
+  actions << createEngineSettingsAction(tr("Accelerate 2D canvas"), QWebEngineSettings::Accelerated2dCanvasEnabled);
+  actions << createEngineSettingsAction(tr("Print element backgrounds"), QWebEngineSettings::PrintElementBackgrounds);
+  actions << createEngineSettingsAction(tr("Allow running insecure content"), QWebEngineSettings::AllowRunningInsecureContent);
+  actions << createEngineSettingsAction(tr("Allow geolocation on insecure origins"), QWebEngineSettings::AllowGeolocationOnInsecureOrigins);
 
   menu->addActions(actions);
 }
