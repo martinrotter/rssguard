@@ -145,6 +145,8 @@ QAction* WebFactory::engineSettingsAction() {
   if (m_engineSettings == nullptr) {
     m_engineSettings = new QAction(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web engine settings"), this);
     m_engineSettings->setMenu(new QMenu());
+
+    createMenu(m_engineSettings->menu());
     connect(m_engineSettings->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
   }
 
