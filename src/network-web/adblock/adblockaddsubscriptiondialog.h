@@ -41,7 +41,7 @@ class AdBlockAddSubscriptionDialog : public QDialog {
 
 	private slots:
 		void indexChanged(int index);
-    void presetsEnabledChanged(bool enabled);
+		void presetsEnabledChanged(bool enabled);
 
 	private:
 		Ui::AdBlockAddSubscriptionDialog* m_ui;

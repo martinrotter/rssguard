@@ -18,15 +18,19 @@
 #ifndef GUIUTILITIES_H
 #define GUIUTILITIES_H
 
+#include <QWidget>
+#include <QLabel>
 
-class QLabel;
 
 class GuiUtilities {
 	public:
-		static void setLabelAsNotice(QLabel* label, bool is_warning);
+		static void setLabelAsNotice(QLabel& label, bool is_warning);
+		static void applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title = QString());
 
 	private:
 		explicit GuiUtilities();
 };
+
+inline GuiUtilities::GuiUtilities() {}
 
 #endif // GUIUTILITIES_H

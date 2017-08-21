@@ -28,7 +28,7 @@ class FormRestoreDatabaseSettings : public QDialog {
 
 	public:
 		// Constructors and destructors.
-		explicit FormRestoreDatabaseSettings(QWidget* parent = 0);
+		explicit FormRestoreDatabaseSettings(QWidget& parent);
 		virtual ~FormRestoreDatabaseSettings();
 
 		bool shouldRestart() const {
@@ -42,7 +42,7 @@ class FormRestoreDatabaseSettings : public QDialog {
 		void selectFolder(QString folder = QString());
 
 	private:
-		QScopedPointer<Ui::FormRestoreDatabaseSettings> m_ui;
+		Ui::FormRestoreDatabaseSettings m_ui;
 		QPushButton* m_btnRestart;
 
 		bool m_shouldRestart;

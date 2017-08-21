@@ -60,7 +60,7 @@ Application::Application(const QString& id, int& argc, char** argv)
 
 	  m_feedReader(nullptr),
 	  m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
-    m_trayIcon(nullptr), m_settings(nullptr), m_webFactory(new WebFactory(this)), m_system(nullptr), m_skins(nullptr),
+	  m_trayIcon(nullptr), m_settings(nullptr), m_webFactory(new WebFactory(this)), m_system(nullptr), m_skins(nullptr),
 	  m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr), m_shouldRestart(false) {
 	connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
 	connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
@@ -74,9 +74,9 @@ Application::Application(const QString& id, int& argc, char** argv)
 	// Will need add that if I add more settings in the future.
 	m_urlInterceptor->loadSettings();
 
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(
-      QByteArray(APP_LOW_NAME),
-      new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
+	QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(
+	    QByteArray(APP_LOW_NAME),
+	    new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
 #endif
 }
 
@@ -93,7 +93,7 @@ QList<QAction*> Application::userActions() {
 		m_userActions = m_mainForm->allActions();
 
 #if defined(USE_WEBENGINE)
-    m_userActions.append(AdBlockManager::instance()->adBlockIcon());
+		m_userActions.append(AdBlockManager::instance()->adBlockIcon());
 #endif
 	}
 
@@ -112,11 +112,11 @@ bool Application::isFirstRun(const QString& version) {
 
 	else {
 		return false;
-  }
+	}
 }
 
 WebFactory* Application::web() {
-  return m_webFactory;
+	return m_webFactory;
 }
 
 SystemFactory* Application::system() {
@@ -224,7 +224,7 @@ QString Application::getUserDataAppPath() {
 	return applicationDirPath() + QDir::separator() + QSL("data");
 }
 
-QString Application::getUserDataPath() {
+QString Application::userDataPath() {
 	if (settings()->type() == SettingsProperties::Portable) {
 		return getUserDataAppPath();
 	}
@@ -368,17 +368,14 @@ void Application::deleteTrayIcon() {
 
 void Application::showGuiMessage(const QString& title, const QString& message,
                                  QSystemTrayIcon::MessageIcon message_type, QWidget* parent,
-                                 bool show_at_least_msgbox, QObject* invokation_target,
-                                 const char* invokation_slot) {
+                                 bool show_at_least_msgbox, std::function<void()> functor) {
 	if (SystemTrayIcon::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
-		trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
+		trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, functor);
 	}
-
 	else if (show_at_least_msgbox) {
 		// Tray icon or OSD is not available, display simple text box.
 		MessageBox::show(parent, (QMessageBox::Icon) message_type, title, message);
 	}
-
 	else {
 		qDebug("Silencing GUI message: '%s'.", qPrintable(message));
 	}
@@ -422,7 +419,6 @@ void Application::onAboutToQuit() {
 		// We locked the lock to exit peacefully, unlock it to avoid warnings.
 		feedUpdateLock()->unlock();
 	}
-
 	else {
 		// Request for write lock timed-out. This means
 		// that some critical action can be processed right now.
@@ -439,7 +435,6 @@ void Application::onAboutToQuit() {
 		if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
 			qDebug("New application instance was started.");
 		}
-
 		else {
 			qWarning("New application instance was not started successfully.");
 		}

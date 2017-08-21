@@ -34,32 +34,32 @@ RssGuardSchemeHandler::~RssGuardSchemeHandler() {
 }
 
 void RssGuardSchemeHandler::requestStarted(QWebEngineUrlRequestJob* job) {
-  // Decide which data we want.
-  QByteArray data = targetData(job->requestUrl());
+	// Decide which data we want.
+	QByteArray data = targetData(job->requestUrl());
 
-  if (data.isEmpty()) {
-    job->fail(QWebEngineUrlRequestJob::UrlNotFound);
-  }
-  else {
-    QBuffer* buf = new QBuffer(job);
-    buf->setData(data);
+	if (data.isEmpty()) {
+		job->fail(QWebEngineUrlRequestJob::UrlNotFound);
+	}
+	else {
+		QBuffer* buf = new QBuffer(job);
+		buf->setData(data);
 
-    job->reply(QByteArray("text/html"), buf);
-  }
+		job->reply(QByteArray("text/html"), buf);
+	}
 }
 
 QByteArray RssGuardSchemeHandler::targetData(const QUrl& url) {
-  const QString& url_string = url.toString();
+	const QString& url_string = url.toString();
 
-  if (url_string.contains(QSL(ADBLOCK_ADBLOCKED_PAGE))) {
-    QUrlQuery query(url);
+	if (url_string.contains(QSL(ADBLOCK_ADBLOCKED_PAGE))) {
+		QUrlQuery query(url);
 
-    const QString& subscription = query.queryItemValue(QSL("subscription"));
-    const QString& rule = query.queryItemValue(QSL("rule"));
+		const QString& subscription = query.queryItemValue(QSL("subscription"));
+		const QString& rule = query.queryItemValue(QSL("rule"));
 
-    return qApp->skins()->adBlockedPage(subscription, rule).toUtf8();
-  }
-  else {
-    return QByteArray();
-  }
+		return qApp->skins()->adBlockedPage(subscription, rule).toUtf8();
+	}
+	else {
+		return QByteArray();
+	}
 }

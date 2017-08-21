@@ -31,7 +31,7 @@ class FormSettings : public QDialog {
 
 	public:
 		// Constructors and destructors.
-		explicit FormSettings(QWidget* parent = 0);
+		explicit FormSettings(QWidget& parent);
 		virtual ~FormSettings();
 
 	private slots:
@@ -43,10 +43,11 @@ class FormSettings : public QDialog {
 	private:
 		void addSettingsPanel(SettingsPanel* panel);
 
-		QList<SettingsPanel*> m_panels;
-		QScopedPointer<Ui::FormSettings> m_ui;
+		Ui::FormSettings m_ui;
 		QPushButton* m_btnApply;
-		Settings* m_settings;
+
+		QList<SettingsPanel*> m_panels;
+		Settings& m_settings;
 };
 
 #endif // FORMSETTINGS_H

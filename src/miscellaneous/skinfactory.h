@@ -31,7 +31,7 @@ struct Skin {
 	QString m_email;
 	QString m_version;
 	QString m_rawData;
-  QString m_adblocked;
+	QString m_adblocked;
 	QString m_layoutMarkupWrapper;
 	QString m_enclosureImageMarkup;
 	QString m_layoutMarkup;
@@ -61,7 +61,7 @@ class SkinFactory : public QObject {
 		// after application restart.
 		QString selectedSkinName() const;
 
-    QString adBlockedPage(const QString& subscription, const QString& rule);
+		QString adBlockedPage(const QString& subscription, const QString& rule);
 
 		// Gets skin about a particular skin.
 		Skin skinInfo(const QString& skin_name, bool* ok = nullptr) const;
@@ -72,7 +72,7 @@ class SkinFactory : public QObject {
 		// Sets the desired skin as the active one if it exists.
 		void setCurrentSkinName(const QString& skin_name);
 
-		QString getUserSkinBaseFolder() const;
+		QString customSkinBaseFolder() const;
 
 	private:
 

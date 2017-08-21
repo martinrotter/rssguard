@@ -28,25 +28,20 @@ if [ $# -eq 0 ]; then
 fi
 
 ASTYLE_CMD="astyle"
-ASTYLE_RC=".astylerc"
+ASTYLE_RC="$(dirname $0)/.astylerc"
 
 # Check all args.
 for dir in "$@"; do
-    if [ ! -d "${dir}" ]; then
-        echo "\"${dir}\" is not a directory..."
-        usage
-    fi
+  if [ ! -d "${dir}" ]; then
+      echo "\"${dir}\" is not a directory..."
+      usage
+  fi
 done
 
 # Run the thing.
 for dir in "$@"; do
   pushd "${dir}"
-  
-  if [ ! -r "$ASTYLE_RC" ]; then
-    echo "No $ASTYLE_RC in pwd \"$PWD\"..."
-    continue
-  fi
-  
+   
   for f in $(find . \
                 -name '*.c' \
                 -o -name '*.cc' \

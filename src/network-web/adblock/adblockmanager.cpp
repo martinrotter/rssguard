@@ -44,8 +44,8 @@ Q_GLOBAL_STATIC(AdBlockManager, qz_adblock_manager)
 AdBlockManager::AdBlockManager(QObject* parent)
 	: QObject(parent), m_loaded(false), m_enabled(true), m_matcher(new AdBlockMatcher(this)), m_interceptor(new AdBlockUrlInterceptor(this)) {
 
-  m_adblockIcon = new AdBlockIcon(this);
-  m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
+	m_adblockIcon = new AdBlockIcon(this);
+	m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
 
 	load();
 }
@@ -104,19 +104,19 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
 
 	if (blockedRule) {
 		if (request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
-      QUrlQuery query;
-      QUrl url(QSL("rssguard:adblockedpage"));
+			QUrlQuery query;
+			QUrl url(QSL("rssguard:adblockedpage"));
 
-      query.addQueryItem(QSL("rule"), blockedRule->filter());
-      query.addQueryItem(QSL("subscription"), blockedRule->subscription()->title());
-      url.setQuery(query);
+			query.addQueryItem(QSL("rule"), blockedRule->filter());
+			query.addQueryItem(QSL("subscription"), blockedRule->subscription()->title());
+			url.setQuery(query);
 
-      request.redirect(url);
+			request.redirect(url);
 		}
 
 		else {
-      res = true;
-      request.block(true);
+			res = true;
+			request.block(true);
 		}
 	}
 
@@ -223,7 +223,7 @@ AdBlockCustomList* AdBlockManager::customList() const {
 }
 
 QString AdBlockManager::storedListsPath() {
-	return qApp->getUserDataPath() + QDir::separator() + ADBLOCK_LISTS_SUBDIRECTORY;
+	return qApp->userDataPath() + QDir::separator() + ADBLOCK_LISTS_SUBDIRECTORY;
 }
 
 void AdBlockManager::load() {
@@ -367,8 +367,8 @@ AdBlockSubscription* AdBlockManager::subscriptionByName(const QString& name) con
 
 void AdBlockManager::showDialog() {
 	if (!m_adBlockDialog) {
-    m_adBlockDialog = new AdBlockDialog();
+		m_adBlockDialog = new AdBlockDialog();
 	}
 
-  m_adBlockDialog.data()->exec();
+	m_adBlockDialog.data()->exec();
 }

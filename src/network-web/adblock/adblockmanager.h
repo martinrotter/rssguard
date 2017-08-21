@@ -67,9 +67,9 @@ class AdBlockManager : public QObject {
 
 		AdBlockCustomList* customList() const;
 
-    inline AdBlockIcon* adBlockIcon() const {
-      return m_adblockIcon;
-    }
+		inline AdBlockIcon* adBlockIcon() const {
+			return m_adblockIcon;
+		}
 
 		static QString storedListsPath();
 
@@ -82,7 +82,7 @@ class AdBlockManager : public QObject {
 		void setEnabled(bool enabled);
 		void updateMatcher();
 		void updateAllSubscriptions();
-    void showDialog();
+		void showDialog();
 
 	private:
 		inline bool canBeBlocked(const QUrl& url) const;
@@ -90,7 +90,7 @@ class AdBlockManager : public QObject {
 		bool m_loaded;
 		bool m_enabled;
 
-    AdBlockIcon* m_adblockIcon;
+		AdBlockIcon* m_adblockIcon;
 
 		QList<AdBlockSubscription*> m_subscriptions;
 		AdBlockMatcher* m_matcher;

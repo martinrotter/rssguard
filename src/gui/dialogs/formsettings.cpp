@@ -33,27 +33,30 @@
 #include "gui/settings/settingsshortcuts.h"
 
 
-FormSettings::FormSettings(QWidget* parent) : QDialog(parent), m_panels(QList<SettingsPanel*>()), m_ui(new Ui::FormSettings),
-	m_settings(qApp->settings()) {
-	m_ui->setupUi(this);
+FormSettings::FormSettings(QWidget& parent)
+	: QDialog(&parent), m_panels(QList<SettingsPanel*>()), m_settings(*qApp->settings()) {
+	m_ui.setupUi(this);
+
 	// Set flags and attributes.
 	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
 	setWindowIcon(qApp->icons()->fromTheme(QSL("emblem-system")));
-	m_btnApply = m_ui->m_buttonBox->button(QDialogButtonBox::Apply);
+	m_btnApply = m_ui.m_buttonBox->button(QDialogButtonBox::Apply);
 	m_btnApply->setEnabled(false);
+
 	// Establish needed connections.
-	connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormSettings::saveSettings);
-	connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormSettings::cancelSettings);
+	connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormSettings::saveSettings);
+	connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormSettings::cancelSettings);
 	connect(m_btnApply, &QPushButton::clicked, this, &FormSettings::applySettings);
-	addSettingsPanel(new SettingsGeneral(m_settings, this));
-	addSettingsPanel(new SettingsDatabase(m_settings, this));
-	addSettingsPanel(new SettingsGui(m_settings, this));
-	addSettingsPanel(new SettingsLocalization(m_settings, this));
-	addSettingsPanel(new SettingsShortcuts(m_settings, this));
-	addSettingsPanel(new SettingsBrowserMail(m_settings, this));
-	addSettingsPanel(new SettingsDownloads(m_settings, this));
-	addSettingsPanel(new SettingsFeedsMessages(m_settings, this));
-	m_ui->m_listSettings->setCurrentRow(0);
+	addSettingsPanel(new SettingsGeneral(&m_settings, this));
+	addSettingsPanel(new SettingsDatabase(&m_settings, this));
+	addSettingsPanel(new SettingsGui(&m_settings, this));
+	addSettingsPanel(new SettingsLocalization(&m_settings, this));
+	addSettingsPanel(new SettingsShortcuts(&m_settings, this));
+	addSettingsPanel(new SettingsBrowserMail(&m_settings, this));
+	addSettingsPanel(new SettingsDownloads(&m_settings, this));
+	addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
+
+	m_ui.m_listSettings->setCurrentRow(0);
 }
 
 FormSettings::~FormSettings() {
@@ -67,7 +70,7 @@ void FormSettings::saveSettings() {
 
 void FormSettings::applySettings() {
 	// Save all settings.
-	m_settings->checkSettings();
+	m_settings.checkSettings();
 	QStringList panels_for_restart;
 
 	foreach (SettingsPanel* panel, m_panels) {
@@ -130,10 +133,11 @@ void FormSettings::cancelSettings() {
 }
 
 void FormSettings::addSettingsPanel(SettingsPanel* panel) {
-	m_ui->m_listSettings->addItem(panel->title());
+	m_ui.m_listSettings->addItem(panel->title());
 	m_panels.append(panel);
-	m_ui->m_stackedSettings->addWidget(panel);
+	m_ui.m_stackedSettings->addWidget(panel);
 	panel->loadSettings();
+
 	connect(panel, &SettingsPanel::settingsChanged, [this]() {
 		m_btnApply->setEnabled(true);
 	});

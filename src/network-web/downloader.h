@@ -34,7 +34,7 @@ class Downloader : public QObject {
 
 	public:
 		// Constructors and destructors.
-		explicit Downloader(QObject* parent = 0);
+		explicit Downloader(QObject* parent = nullptr);
 		virtual ~Downloader();
 
 		// Access to last received full output data/error/content-type.
@@ -55,9 +55,6 @@ class Downloader : public QObject {
 		                bool protected_contents = false, const QString& username = QString(),
 		                const QString& password = QString());
 
-		// Performs asynchronous upload of given data as HTTP POST.
-		// User needs to setup "Content-Encoding" header which
-		// matches encoding of the data.
 		void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
 		                    const QByteArray& data = QByteArray(),
 		                    int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,

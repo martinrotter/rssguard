@@ -26,6 +26,8 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
+#include "gui/dialogs/formupdate.h"
+#include "gui/dialogs/formabout.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 
@@ -103,20 +105,20 @@ int main(int argc, char* argv[]) {
 	Application::setOrganizationDomain(APP_URL);
 	Application::setWindowIcon(QIcon(APP_ICON_PATH));
 
-  // Load activated accounts.
+	// Load activated accounts.
 	qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
 
-  // Setup single-instance behavior.
+	// Setup single-instance behavior.
 	QObject::connect(&application, &Application::messageReceived, &application, &Application::processExecutionMessage);
 	qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
 
-  // Instantiate main application window.
+	// Instantiate main application window.
 	FormMain main_window;
 
-  // Set correct information for main window.
+	// Set correct information for main window.
 	main_window.setWindowTitle(APP_LONG_NAME);
 
-  // Now is a good time to initialize dynamic keyboard shortcuts.
+	// Now is a good time to initialize dynamic keyboard shortcuts.
 	DynamicShortcuts::load(qApp->userActions());
 
 	// Display main window.
@@ -137,8 +139,10 @@ int main(int argc, char* argv[]) {
 
 	if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
 		qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-		                                                "version by clicking this popup notification.").arg(APP_LONG_NAME),
-		                     QSystemTrayIcon::NoIcon, 0, false, &main_window, SLOT(showAbout()));
+                                                    "version by clicking this popup notification.").arg(APP_LONG_NAME),
+    QSystemTrayIcon::NoIcon, 0, false, [] {
+      FormAbout(qApp->mainForm()).exec();
+    });
 	}
 
 	else {
@@ -146,7 +150,20 @@ int main(int argc, char* argv[]) {
 	}
 
 	if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-		QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
+		QObject::connect(qApp->system(), &SystemFactory::updatesChecked, [](QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates) {
+			QObject::disconnect(qApp->system(), &SystemFactory::updatesChecked, nullptr, nullptr);
+
+			if (!updates.first.isEmpty() && updates.second == QNetworkReply::NoError &&
+			        !SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, APP_VERSION)) {
+				qApp->showGuiMessage(QObject::tr("New version available"),
+				                     QObject::tr("Click the bubble for more information."),
+                             QSystemTrayIcon::Information, qApp->mainForm(), false,
+        [] {
+          FormUpdate(qApp->mainForm()).exec();
+        });
+			}
+		});
+		qApp->system()->checkForUpdates();
 	}
 
 	qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();

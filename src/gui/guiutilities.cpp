@@ -19,20 +19,24 @@
 
 #include "definitions/definitions.h"
 
-#include <QLabel>
 
-
-void GuiUtilities::setLabelAsNotice(QLabel* label, bool is_warning) {
-	label->setMargin(6);
+void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning) {
+	label.setMargin(6);
 
 	if (is_warning) {
-		label->setStyleSheet(QSL("font-weight: bold; font-style: italic; color: red"));
+		label.setStyleSheet(QSL("font-weight: bold; font-style: italic; color: red"));
 	}
 
 	else {
-		label->setStyleSheet(QSL("font-style: italic;"));
+		label.setStyleSheet(QSL("font-style: italic;"));
 	}
 }
 
-GuiUtilities::GuiUtilities() {
+void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title) {
+	widget.setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+	widget.setWindowIcon(icon);
+
+	if (!title.isEmpty()) {
+		widget.setWindowTitle(title);
+	}
 }

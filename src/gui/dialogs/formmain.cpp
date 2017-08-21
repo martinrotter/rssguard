@@ -64,19 +64,19 @@
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 	: QMainWindow(parent, f), m_ui(new Ui::FormMain) {
 	m_ui->setupUi(this);
-  qApp->setMainForm(this);
+	qApp->setMainForm(this);
 
 #if defined (USE_WEBENGINE)
-  m_ui->m_menuWebBrowserTabs->addAction(AdBlockManager::instance()->adBlockIcon());
-  m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
+	m_ui->m_menuWebBrowserTabs->addAction(AdBlockManager::instance()->adBlockIcon());
+	m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
 
 	// Add these actions to the list of actions of the main window.
 	// This allows to use actions via shortcuts
 	// even if main menu is not visible.
-  addActions(qApp->userActions());
+	addActions(qApp->userActions());
 
-  setStatusBar(m_statusBar = new StatusBar(this));
+	setStatusBar(m_statusBar = new StatusBar(this));
 
 	// Prepare main window and tabs.
 	prepareMenus();
@@ -85,7 +85,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 	tabWidget()->feedMessageViewer()->feedsToolBar()->loadSavedActions();
 	tabWidget()->feedMessageViewer()->messagesToolBar()->loadSavedActions();
 
-  // Establish connections.
+	// Establish connections.
 	createConnections();
 	updateMessageButtonsAvailability();
 	updateFeedButtonsAvailability();
@@ -582,27 +582,39 @@ void FormMain::createConnections() {
 	connect(m_ui->m_menuAccounts, &QMenu::aboutToShow, this, &FormMain::updateAccountsMenu);
 	connect(m_ui->m_actionServiceDelete, &QAction::triggered, m_ui->m_actionDeleteSelectedItem, &QAction::triggered);
 	connect(m_ui->m_actionServiceEdit, &QAction::triggered, m_ui->m_actionEditSelectedItem, &QAction::triggered);
+
 	// Menu "File" connections.
 	connect(m_ui->m_actionBackupDatabaseSettings, &QAction::triggered, this, &FormMain::backupDatabaseSettings);
 	connect(m_ui->m_actionRestoreDatabaseSettings, &QAction::triggered, this, &FormMain::restoreDatabaseSettings);
 	connect(m_ui->m_actionQuit, &QAction::triggered, qApp, &Application::quit);
 	connect(m_ui->m_actionServiceAdd, &QAction::triggered, this, &FormMain::showAddAccountDialog);
 	connect(m_ui->m_actionRestart, &QAction::triggered, qApp, &Application::restart);
+
 	// Menu "View" connections.
 	connect(m_ui->m_actionFullscreen, &QAction::toggled, this, &FormMain::switchFullscreenMode);
 	connect(m_ui->m_actionSwitchMainMenu, &QAction::toggled, m_ui->m_menuBar, &QMenuBar::setVisible);
 	connect(m_ui->m_actionSwitchMainWindow, &QAction::triggered, this, &FormMain::switchVisibility);
 	connect(m_ui->m_actionSwitchStatusBar, &QAction::toggled, statusBar(), &StatusBar::setVisible);
+
 	// Menu "Tools" connections.
-	connect(m_ui->m_actionSettings, &QAction::triggered, this, &FormMain::showSettings);
+	connect(m_ui->m_actionSettings, &QAction::triggered, [this]() {
+		FormSettings(*this).exec();
+	});
+
 	connect(m_ui->m_actionDownloadManager, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::showDownloadManager);
 	connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, &FormMain::showDbCleanupAssistant);
+
 	// Menu "Help" connections.
-	connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, &FormMain::showAbout);
-	connect(m_ui->m_actionCheckForUpdates, &QAction::triggered, this, &FormMain::showUpdates);
+	connect(m_ui->m_actionAboutGuard, &QAction::triggered, [this]() {
+		FormAbout(this).exec();
+	});
+	connect(m_ui->m_actionCheckForUpdates, &QAction::triggered, [this]() {
+		FormUpdate(this).exec();
+	});
 	connect(m_ui->m_actionReportBug, &QAction::triggered, this, &FormMain::reportABug);
 	connect(m_ui->m_actionDonate, &QAction::triggered, this, &FormMain::donate);
 	connect(m_ui->m_actionDisplayWiki, &QAction::triggered, this, &FormMain::showWiki);
+
 	// Tab widget connections.
 	connect(m_ui->m_actionTabsCloseAllExceptCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabsExceptCurrent);
 	connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
@@ -617,6 +629,7 @@ void FormMain::createConnections() {
 	connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
 	connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);
 	connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
+
 	// Toolbar forwardings.
 	connect(m_ui->m_actionAddFeedIntoSelectedAccount, &QAction::triggered,
 	        tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::addFeedIntoSelectedAccount);
@@ -694,10 +707,10 @@ void FormMain::backupDatabaseSettings() {
 }
 
 void FormMain::restoreDatabaseSettings() {
-	QScopedPointer<FormRestoreDatabaseSettings> form(new FormRestoreDatabaseSettings(this));
-	form->exec();
+	FormRestoreDatabaseSettings form(*this);
+	form.exec();
 
-	if (form->shouldRestart()) {
+	if (form.shouldRestart()) {
 		qApp->restart();
 	}
 }
@@ -722,18 +735,8 @@ void FormMain::changeEvent(QEvent* event) {
 	QMainWindow::changeEvent(event);
 }
 
-void FormMain::showAbout() {
-	QScopedPointer<FormAbout> form_pointer(new FormAbout(this));
-	form_pointer->exec();
-}
-
-void FormMain::showUpdates() {
-	QScopedPointer<FormUpdate> form_update(new FormUpdate(this));
-	form_update->exec();
-}
-
 void FormMain::showWiki() {
-  if (!qApp->web()->openUrlInExternalBrowser(APP_URL_WIKI)) {
+	if (!qApp->web()->openUrlInExternalBrowser(APP_URL_WIKI)) {
 		qApp->showGuiMessage(tr("Cannot open external browser"),
 		                     tr("Cannot open external browser. Navigate to application website manually."),
 		                     QSystemTrayIcon::Warning, this, true);
@@ -748,7 +751,7 @@ void FormMain::showAddAccountDialog() {
 }
 
 void FormMain::reportABug() {
-  if (!qApp->web()->openUrlInExternalBrowser(QSL(APP_URL_ISSUES_NEW))) {
+	if (!qApp->web()->openUrlInExternalBrowser(QSL(APP_URL_ISSUES_NEW))) {
 		qApp->showGuiMessage(tr("Cannot open external browser"),
 		                     tr("Cannot open external browser. Navigate to application website manually."),
 		                     QSystemTrayIcon::Warning, this, true);
@@ -756,14 +759,9 @@ void FormMain::reportABug() {
 }
 
 void FormMain::donate() {
-  if (!qApp->web()->openUrlInExternalBrowser(QSL(APP_DONATE_URL))) {
+	if (!qApp->web()->openUrlInExternalBrowser(QSL(APP_DONATE_URL))) {
 		qApp->showGuiMessage(tr("Cannot open external browser"),
 		                     tr("Cannot open external browser. Navigate to application website manually."),
 		                     QSystemTrayIcon::Warning, this, true);
 	}
-}
-
-void FormMain::showSettings() {
-	QScopedPointer<FormSettings> form_pointer(new FormSettings(this));
-	form_pointer->exec();
 }

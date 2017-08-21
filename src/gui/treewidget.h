@@ -35,7 +35,7 @@ class TreeWidget : public QTreeWidget {
 		}
 		void setDefaultItemShowMode(ItemShowMode mode) {
 			m_showMode = mode;
-    }
+		}
 
 		QList<QTreeWidgetItem*> allItems();
 

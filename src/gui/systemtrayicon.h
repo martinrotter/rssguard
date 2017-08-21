@@ -57,8 +57,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
 		void setNumber(int number = -1, bool any_new_message = false);
 
 		void showMessage(const QString& title, const QString& message, MessageIcon icon = Information,
-		                 int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, QObject* click_target = nullptr,
-		                 const char* click_slot = nullptr);
+                     int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, std::function<void()> functor = nullptr);
 
 		// Returns true if tray icon CAN be constructed on this machine.
 		static bool isSystemTrayAvailable();
@@ -83,10 +82,9 @@ class SystemTrayIcon : public QSystemTrayIcon {
 	private:
 		QIcon m_normalIcon;
 		QPixmap m_plainPixmap;
-		QFont m_font;
+    QFont m_font = QFont();
 
-		QObject* m_bubbleClickTarget;
-		char* m_bubbleClickSlot;
+    QMetaObject::Connection m_connection;
 };
 
 #endif // SYSTEMTRAYICON_H

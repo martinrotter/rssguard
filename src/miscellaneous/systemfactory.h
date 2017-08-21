@@ -20,6 +20,8 @@
 
 #include <QObject>
 
+#include "network-web/downloader.h"
+
 #include <QMetaType>
 #include <QHash>
 #include <QPair>
@@ -35,9 +37,6 @@ class UpdateUrl {
 
 class UpdateInfo {
 	public:
-		explicit UpdateInfo() : m_availableVersion(QString()), m_changes(QString()), m_urls(QList<UpdateUrl>()) {
-		}
-
 		QString m_availableVersion;
 		QString m_changes;
 		QList<UpdateUrl> m_urls;
@@ -51,25 +50,22 @@ class SystemFactory : public QObject {
 
 	public:
 		// Specifies possible states of auto-start functionality.
-		enum AutoStartStatus {
+		enum class AutoStartStatus {
 			Enabled,
 			Disabled,
 			Unavailable
 		};
 
-		// Constructors and destructors.
-		explicit SystemFactory(QObject* parent = 0);
-
-		// Constructors and destructors.
+		explicit SystemFactory(QObject* parent = nullptr);
 		virtual ~SystemFactory();
 
 		// Returns current status of auto-start function.
-		SystemFactory::AutoStartStatus getAutoStartStatus() const;
+		SystemFactory::AutoStartStatus autoStartStatus() const;
 
 		// Sets new status for auto-start function.
 		// Function returns false if setting of
 		// new status failed.
-		bool setAutoStartStatus(const SystemFactory::AutoStartStatus& new_status);
+		bool setAutoStartStatus(AutoStartStatus new_status);
 
 #if defined(Q_OS_WIN)
 		bool removeTrolltechJunkRegistryKeys();
@@ -78,14 +74,14 @@ class SystemFactory : public QObject {
 #if defined(Q_OS_LINUX)
 		// Returns standard location where auto-start .desktop files
 		// should be placed.
-		QString getAutostartDesktopFileLocation() const;
+		QString autostartDesktopFileLocation() const;
 #endif
 
 		// Retrieves username of currently logged-in user.
-		QString getUsername() const;
+		QString loggedInUser() const;
 
 		// Tries to download list with new updates.
-		QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> checkForUpdates() const;
+		void checkForUpdates() const;
 
 		// Checks if update is newer than current application version.
 		static bool isVersionNewer(const QString& new_version, const QString& base_version);
@@ -93,8 +89,8 @@ class SystemFactory : public QObject {
 
 		static bool openFolderFile(const QString& file_path);
 
-	public slots:
-		void checkForUpdatesOnStartup();
+	signals:
+		void updatesChecked(QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates) const;
 
 	private:
 		// Performs parsing of downloaded file with list of updates.

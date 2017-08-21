@@ -29,7 +29,7 @@
 DynamicShortcutsWidget::DynamicShortcutsWidget(QWidget* parent) : QWidget(parent) {
 	// Create layout for this control and set is as active.
 	m_layout = new QGridLayout(this);
-  m_layout->setMargin(0);
+	m_layout->setMargin(0);
 	setLayout(m_layout);
 }
 

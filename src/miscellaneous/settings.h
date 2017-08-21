@@ -42,7 +42,7 @@
 
 
 namespace WebEngineAttributes {
-  KEY ID;
+	KEY ID;
 }
 
 namespace AdBlock {

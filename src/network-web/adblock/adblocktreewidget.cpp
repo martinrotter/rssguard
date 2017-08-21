@@ -34,7 +34,7 @@ AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget*
 	setHeaderHidden(true);
 	setAlternatingRowColors(true);
 	setLayoutDirection(Qt::LeftToRight);
-  setIndentation(5);
+	setIndentation(5);
 
 	connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequested(QPoint)));
 	connect(this, SIGNAL(itemChanged(QTreeWidgetItem*, int)), this, SLOT(itemChanged(QTreeWidgetItem*)));
@@ -173,7 +173,7 @@ void AdBlockTreeWidget::subscriptionUpdated() {
 void AdBlockTreeWidget::subscriptionError(const QString& message) {
 	refresh();
 	m_itemChangingBlock = true;
-  m_topItem->setText(0, tr("%1 (error: %2)").arg(m_subscription->title(), message));
+	m_topItem->setText(0, tr("%1 (error: %2)").arg(m_subscription->title(), message));
 	m_itemChangingBlock = false;
 }
 

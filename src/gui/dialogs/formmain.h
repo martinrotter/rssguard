@@ -80,9 +80,6 @@ class FormMain : public QMainWindow {
 		// Displays various dialogs.
 		void backupDatabaseSettings();
 		void restoreDatabaseSettings();
-		void showSettings();
-		void showAbout();
-		void showUpdates();
 		void showWiki();
 		void showAddAccountDialog();
 		void showDbCleanupAssistant();

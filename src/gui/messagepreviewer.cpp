@@ -36,7 +36,7 @@ void MessagePreviewer::createConnections() {
 			                                                   SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
 
 			if (open_externally_now) {
-        qApp->web()->openUrlInExternalBrowser(url.toString());
+				qApp->web()->openUrlInExternalBrowser(url.toString());
 			}
 
 			else {
@@ -59,7 +59,7 @@ void MessagePreviewer::createConnections() {
 				}
 
 				if (box.clickedButton() == btn_open) {
-          qApp->web()->openUrlInExternalBrowser(url.toString());
+					qApp->web()->openUrlInExternalBrowser(url.toString());
 				}
 
 				else if (box.clickedButton() == btn_download) {

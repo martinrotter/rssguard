@@ -23,19 +23,18 @@
 #include "ui_formupdate.h"
 
 #include "miscellaneous/systemfactory.h"
+#include "network-web/downloader.h"
 
 #include <QPushButton>
 #include <QNetworkReply>
 
-
-class Downloader;
 
 class FormUpdate : public QDialog {
 		Q_OBJECT
 
 	public:
 		// Constructors and destructors.
-		explicit FormUpdate(QWidget* parent = 0);
+		explicit FormUpdate(QWidget* parent);
 		virtual ~FormUpdate();
 
 		// Returns true if application can self-update
@@ -54,13 +53,14 @@ class FormUpdate : public QDialog {
 	private:
 		void loadAvailableFiles();
 
-		Downloader* m_downloader;
-		bool m_readyToInstall;
-		QString m_updateFilePath;
-		QScopedPointer<Ui::FormUpdate> m_ui;
-		UpdateInfo m_updateInfo;
+		Ui::FormUpdate m_ui;
 		QPushButton* m_btnUpdate;
-		qint64 m_lastDownloadedBytes;
+
+		Downloader m_downloader;
+		QString m_updateFilePath;
+		UpdateInfo m_updateInfo;
+		bool m_readyToInstall = false;
+		qint64 m_lastDownloadedBytes = 0;
 };
 
 #endif // FORMUPDATE_H

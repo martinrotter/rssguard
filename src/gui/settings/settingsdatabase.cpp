@@ -27,9 +27,9 @@
 SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
 	: SettingsPanel(settings, parent), m_ui(new Ui::SettingsDatabase) {
 	m_ui->setupUi(this);
-	GuiUtilities::setLabelAsNotice(m_ui->m_lblDataStorageWarning, true);
-	GuiUtilities::setLabelAsNotice(m_ui->m_lblMysqlInfo, false);
-	GuiUtilities::setLabelAsNotice(m_ui->m_lblSqliteInMemoryWarnings, true);
+	GuiUtilities::setLabelAsNotice(*m_ui->m_lblDataStorageWarning, true);
+	GuiUtilities::setLabelAsNotice(*m_ui->m_lblMysqlInfo, false);
+	GuiUtilities::setLabelAsNotice(*m_ui->m_lblSqliteInMemoryWarnings, true);
 	connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
 	        &SettingsDatabase::dirtifySettings);
 	connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::dirtifySettings);

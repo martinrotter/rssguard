@@ -34,11 +34,11 @@ class QMenu;
 #endif
 
 class WebFactory : public QObject {
-    Q_OBJECT
+		Q_OBJECT
 
 	public:
-    // Constructor.
-    explicit WebFactory(QObject* parent = nullptr);
+		// Constructor.
+		explicit WebFactory(QObject* parent = nullptr);
 
 		// Destructor.
 		virtual ~WebFactory();
@@ -53,7 +53,7 @@ class WebFactory : public QObject {
 		QString toSecondLevelDomain(const QUrl& url);
 
 #if defined (USE_WEBENGINE)
-    QAction* engineSettingsAction();
+		QAction* engineSettingsAction();
 #endif
 
 	public slots:
@@ -62,12 +62,12 @@ class WebFactory : public QObject {
 		bool sendMessageViaEmail(const Message& message);
 
 #if defined (USE_WEBENGINE)
-  private slots:
-    void createMenu(QMenu* menu = nullptr);
-    void webEngineSettingChanged(bool enabled);
+	private slots:
+		void createMenu(QMenu* menu = nullptr);
+		void webEngineSettingChanged(bool enabled);
 
-  private:
-    QAction* createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute);
+	private:
+		QAction* createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute);
 #endif
 
 	private:
@@ -79,7 +79,7 @@ class WebFactory : public QObject {
 		QMap<QString, QString> m_deEscapes;
 
 #if defined (USE_WEBENGINE)
-    QAction* m_engineSettings;
+		QAction* m_engineSettings;
 #endif
 };
 

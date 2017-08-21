@@ -46,7 +46,7 @@ SystemFactory::SystemFactory(QObject* parent) : QObject(parent) {
 SystemFactory::~SystemFactory() {
 }
 
-SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
+SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 	// User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)
 	QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
@@ -57,17 +57,17 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
 	                               Application::applicationFilePath();
 
 	if (autostart_enabled) {
-		return SystemFactory::Enabled;
+		return AutoStartStatus::Enabled;
 	}
 
 	else {
-		return SystemFactory::Disabled;
+		return AutoStartStatus::Disabled;
 	}
 
 #elif defined(Q_OS_LINUX)
 	// Use proper freedesktop.org way to auto-start the application on Linux.
 	// INFO: http://standards.freedesktop.org/autostart-spec/latest/
-	const QString desktop_file_location = getAutostartDesktopFileLocation();
+	const QString desktop_file_location = autostartDesktopFileLocation();
 
 	// No correct path was found.
 	if (desktop_file_location.isEmpty()) {
@@ -94,7 +94,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
 }
 
 #if defined(Q_OS_LINUX)
-QString SystemFactory::getAutostartDesktopFileLocation() const {
+QString SystemFactory::autostartDesktopFileLocation() const {
 	const QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
 	QString desktop_file_location;
 
@@ -119,11 +119,11 @@ QString SystemFactory::getAutostartDesktopFileLocation() const {
 }
 #endif
 
-bool SystemFactory::setAutoStartStatus(const AutoStartStatus& new_status) {
-	const SystemFactory::AutoStartStatus current_status = SystemFactory::getAutoStartStatus();
+bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
+	const SystemFactory::AutoStartStatus current_status = SystemFactory::autoStartStatus();
 
 	// Auto-start feature is not even available, exit.
-	if (current_status == SystemFactory::Unavailable) {
+	if (current_status == AutoStartStatus::Unavailable) {
 		return false;
 	}
 
@@ -131,12 +131,12 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus& new_status) {
 	QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"), QSettings::NativeFormat);
 
 	switch (new_status) {
-		case SystemFactory::Enabled:
+		case AutoStartStatus::Enabled:
 			registry_key.setValue(APP_LOW_NAME,
 			                      Application::applicationFilePath().replace(QL1C('/'), QL1C('\\')));
 			return true;
 
-		case SystemFactory::Disabled:
+		case AutoStartStatus::Disabled:
 			registry_key.remove(APP_LOW_NAME);
 			return true;
 
@@ -147,11 +147,11 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus& new_status) {
 #elif defined(Q_OS_LINUX)
 	// Note that we expect here that no other program uses
 	// "rssguard.desktop" desktop file.
-	const QString destination_file = getAutostartDesktopFileLocation();
+	const QString destination_file = autostartDesktopFileLocation();
 	const QString destination_folder = QFileInfo(destination_file).absolutePath();
 
 	switch (new_status) {
-		case SystemFactory::Enabled: {
+		case AutoStartStatus::Enabled: {
 			if (QFile::exists(destination_file)) {
 				if (!QFile::remove(destination_file)) {
 					return false;
@@ -166,7 +166,7 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus& new_status) {
 			return QFile::copy(source_autostart_desktop_file, destination_file);
 		}
 
-		case SystemFactory::Disabled:
+		case AutoStartStatus::Disabled:
 			return QFile::remove(destination_file);
 
 		default:
@@ -193,7 +193,7 @@ bool SystemFactory::removeTrolltechJunkRegistryKeys() {
 }
 #endif
 
-QString SystemFactory::getUsername() const {
+QString SystemFactory::loggedInUser() const {
 	QString name = qgetenv("USER");
 
 	if (name.isEmpty()) {
@@ -207,17 +207,24 @@ QString SystemFactory::getUsername() const {
 	return name;
 }
 
-QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() const {
-	QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> result;
-	QByteArray releases_json;
-	result.second = NetworkFactory::performNetworkOperation(RELEASES_LIST, DOWNLOAD_TIMEOUT, QByteArray(), QString(),
-	                                                        releases_json, QNetworkAccessManager::GetOperation).first;
+void SystemFactory::checkForUpdates() const {
+	Downloader* downloader = new Downloader();
 
-	if (result.second == QNetworkReply::NoError) {
-		result.first = parseUpdatesFile(releases_json);
-	}
+	connect(downloader, &Downloader::completed, [this, downloader]() {
+		QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> result;
+		result.second = downloader->lastOutputError();
 
-	return result;
+		if (result.second == QNetworkReply::NoError) {
+			QByteArray obtained_data = downloader->lastOutputData();
+			result.first = parseUpdatesFile(obtained_data);
+		}
+
+		emit updatesChecked(result);
+
+		downloader->deleteLater();
+	});
+
+	downloader->downloadFile(RELEASES_LIST);
 }
 
 bool SystemFactory::isVersionNewer(const QString& new_version, const QString& base_version) {
@@ -296,16 +303,4 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray& updates_file
 		return a.m_date > b.m_date;
 	});
 	return updates;
-}
-
-void SystemFactory::checkForUpdatesOnStartup() {
-	const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates = checkForUpdates();
-
-	if (!updates.first.isEmpty() && updates.second == QNetworkReply::NoError && isVersionNewer(updates.first.at(0).m_availableVersion,
-	        APP_VERSION)) {
-		qApp->showGuiMessage(tr("New version available"),
-		                     tr("Click the bubble for more information."),
-		                     QSystemTrayIcon::Information,
-		                     nullptr, true, qApp->mainFormWidget(), SLOT(showUpdates()));
-	}
 }

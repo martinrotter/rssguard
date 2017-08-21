@@ -229,9 +229,9 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
 	// Create new WebBrowser.
 	WebBrowser* browser = new WebBrowser(this);
 	int final_index;
-  QString browser_tab_name = tr("Web browser");
+	QString browser_tab_name = tr("Web browser");
 #if defined (Q_OS_MACOS)
-  browser_tab_name = browser_tab_name.prepend(QSL("  "));
+	browser_tab_name = browser_tab_name.prepend(QSL("  "));
 #endif
 
 	if (move_after_current) {
@@ -268,7 +268,7 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
 #else
 	Q_UNUSED(move_after_current)
 	Q_UNUSED(make_active)
-  qApp->web()->openUrlInExternalBrowser(initial_url.toString());
+	qApp->web()->openUrlInExternalBrowser(initial_url.toString());
 	return -1;
 #endif
 }

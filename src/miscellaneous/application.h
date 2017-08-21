@@ -73,7 +73,7 @@ class Application : public QtSingleApplication {
 		// Check whether GIVEN VERSION of the application starts for the first time.
 		bool isFirstRun(const QString& version);
 
-    WebFactory* web();
+		WebFactory* web();
 		SystemFactory* system();
 		SkinFactory* skins();
 		Localization* localization();
@@ -101,7 +101,7 @@ class Application : public QtSingleApplication {
 
 		// Returns the base folder to which store user data, the "data" folder.
 		// NOTE: Use this to get correct path under which store user data.
-		QString getUserDataPath();
+		QString userDataPath();
 
 		void setMainForm(FormMain* main_form);
 
@@ -118,7 +118,7 @@ class Application : public QtSingleApplication {
 		// or in message box if tray icon is disabled.
 		void showGuiMessage(const QString& title, const QString& message, QSystemTrayIcon::MessageIcon message_type,
 		                    QWidget* parent = nullptr, bool show_at_least_msgbox = false,
-		                    QObject* invokation_target = nullptr, const char* invokation_slot = nullptr);
+                        std::function<void()> functor = nullptr);
 
 		// Returns pointer to "GOD" application singleton.
 		inline static Application* instance() {
@@ -151,7 +151,7 @@ class Application : public QtSingleApplication {
 		void eliminateFirstRun(const QString& version);
 
 #if defined(USE_WEBENGINE)
-    NetworkUrlInterceptor* m_urlInterceptor;
+		NetworkUrlInterceptor* m_urlInterceptor;
 #endif
 
 		FeedReader* m_feedReader;
@@ -174,7 +174,7 @@ class Application : public QtSingleApplication {
 		FormMain* m_mainForm;
 		SystemTrayIcon* m_trayIcon;
 		Settings* m_settings;
-    WebFactory* m_webFactory;
+		WebFactory* m_webFactory;
 		SystemFactory* m_system;
 		SkinFactory* m_skins;
 		Localization* m_localization;

@@ -27,16 +27,16 @@ class QWebEngineUrlRequestJob;
 class QBuffer;
 
 class RssGuardSchemeHandler : public QWebEngineUrlSchemeHandler {
-    Q_OBJECT
+		Q_OBJECT
 
-  public:
-    explicit RssGuardSchemeHandler(QObject* parent = nullptr);
-    virtual ~RssGuardSchemeHandler();
+	public:
+		explicit RssGuardSchemeHandler(QObject* parent = nullptr);
+		virtual ~RssGuardSchemeHandler();
 
-    void requestStarted(QWebEngineUrlRequestJob* job);
+		void requestStarted(QWebEngineUrlRequestJob* job);
 
-  private:
-    QByteArray targetData(const QUrl& url);
+	private:
+		QByteArray targetData(const QUrl& url);
 };
 
 #endif // RSSGUARDSCHEMEHANDLER_H
