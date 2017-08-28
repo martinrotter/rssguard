@@ -71,7 +71,6 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
 					result.append(idx);
 				}
 			}
-
 			// QString based matching.
 			else {
 				if (entered_text.isEmpty()) {
@@ -157,28 +156,23 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 				// User wants to sort according to counts.
 				return left_item->countOfUnreadMessages() < right_item->countOfUnreadMessages();
 			}
-
 			else {
 				// In other cases, sort by title.
 				return QString::localeAwareCompare(left_item->title(), right_item->title()) < 0;
 			}
 		}
-
 		else if (left_item->kind() == RootItemKind::Bin) {
 			// Left item is recycle bin. Make sure it is "biggest" item if we have selected ascending order.
 			return sortOrder() == Qt::DescendingOrder;
 		}
-
 		else if (right_item->kind() == RootItemKind::Bin) {
 			// Right item is recycle bin. Make sure it is "smallest" item if we have selected descending order.
 			return sortOrder() == Qt::AscendingOrder;
 		}
-
 		else if (left_item->kind() == RootItemKind::Feed) {
 			// Left item is feed, right item is category.
 			return false;
 		}
-
 		else {
 			// Left item is category, right item is feed.
 			// NOTE: Category is in fact "more" than feed but we consider it to be "less" because it should be "placed"
@@ -187,7 +181,6 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 			return true;
 		}
 	}
-
 	else {
 		return false;
 	}
@@ -226,12 +219,10 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 		// Recycle bin is always displayed.
 		return true;
 	}
-
 	else if (item->isParentOf(m_selectedItem)/* || item->isChildOf(m_selectedItem)*/ || m_selectedItem == item) {
 		// Currently selected item and all its parents and children must be displayed.
 		return true;
 	}
-
 	else {
 		// NOTE: If item has < 0 of unread message it may mean, that the count
 		// of unread messages is not (yet) known, display that item too.

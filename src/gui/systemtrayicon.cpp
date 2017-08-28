@@ -49,14 +49,12 @@ bool TrayIconMenu::event(QEvent* event) {
 SystemTrayIcon::SystemTrayIcon(const QString& normal_icon, const QString& plain_icon, FormMain* parent)
 	: QSystemTrayIcon(parent),
 	  m_normalIcon(normal_icon),
-    m_plainPixmap(plain_icon) {
+	  m_plainPixmap(plain_icon) {
 	qDebug("Creating SystemTrayIcon instance.");
 	m_font.setBold(true);
-
 	// Initialize icon.
 	setNumber();
 	setContextMenu(parent->trayMenu());
-
 	// Create necessary connections.
 	connect(this, &SystemTrayIcon::activated, this, &SystemTrayIcon::onActivated);
 }
@@ -96,11 +94,9 @@ void SystemTrayIcon::showPrivate() {
 	// the settings window) gets closed. Behavior for main window
 	// is handled explicitly by FormMain::closeEvent() method.
 	qApp->setQuitOnLastWindowClosed(false);
-
 	// Display the tray icon.
 	QSystemTrayIcon::show();
 	emit shown();
-
 	qDebug("Tray icon displayed.");
 }
 
@@ -125,7 +121,6 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
 		setToolTip(tr("%1\nUnread news: %2").arg(QSL(APP_LONG_NAME), QString::number(number)));
 		QPixmap background(m_plainPixmap);
 		QPainter tray_painter;
-
 		// FIXME: Here draw different background instead of different color of number.
 		tray_painter.begin(&background);
 		tray_painter.setPen(any_new_message ? Qt::black : Qt::black);
@@ -163,14 +158,14 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
 
 void SystemTrayIcon::showMessage(const QString& title, const QString& message, QSystemTrayIcon::MessageIcon icon,
                                  int milliseconds_timeout_hint, std::function<void()> functor) {
-  if (m_connection) {
+	if (m_connection) {
 		// Disconnect previous bubble click signalling.
-    disconnect(m_connection);
+		disconnect(m_connection);
 	}
 
-  if (functor) {
+	if (functor) {
 		// Establish new connection for bubble click.
-    m_connection = connect(this, &SystemTrayIcon::messageClicked, functor);
+		m_connection = connect(this, &SystemTrayIcon::messageClicked, functor);
 	}
 
 	// NOTE: If connections do not work, then use QMetaObject::invokeMethod(...).

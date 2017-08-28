@@ -55,7 +55,6 @@ QVariant Feed::data(int column, int role) const {
 				                                        description().isEmpty() ? QString() : QString('\n') + description(),
 				                                        getAutoUpdateStatusDescription());
 			}
-
 			else {
 				return RootItem::data(column, role);
 			}

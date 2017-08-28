@@ -44,7 +44,6 @@ qint64 DatabaseFactory::getDatabaseFileSize() const {
 	if (m_activeDatabaseDriver == SQLITE || m_activeDatabaseDriver == SQLITE_MEMORY) {
 		return QFileInfo(sqliteDatabaseFilePath()).size();
 	}
-
 	else {
 		return 0;
 	}
@@ -60,7 +59,6 @@ qint64 DatabaseFactory::getDatabaseDataSize() const {
 			query.next();
 			result *= query.value(0).value<qint64>();
 		}
-
 		else {
 			return 0;
 		}
@@ -69,14 +67,12 @@ qint64 DatabaseFactory::getDatabaseDataSize() const {
 			query.next();
 			result *= query.value(0).value<qint64>();
 		}
-
 		else {
 			return 0;
 		}
 
 		return result;
 	}
-
 	else if (m_activeDatabaseDriver == MYSQL) {
 		QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 		qint64 result = 1;
@@ -91,12 +87,10 @@ qint64 DatabaseFactory::getDatabaseDataSize() const {
 
 			return result;
 		}
-
 		else {
 			return 0;
 		}
 	}
-
 	else {
 		return 0;
 	}
@@ -120,18 +114,15 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString& 
 			database.close();
 			return MySQLOk;
 		}
-
 		else {
 			database.close();
 			return MySQLUnknownError;
 		}
 	}
-
 	else if (database.lastError().isValid()) {
 		// Connection failed, do cleanup and return specific error code.
 		return static_cast<MySQLError>(database.lastError().number());
 	}
-
 	else {
 		return MySQLUnknownError;
 	}
@@ -187,7 +178,6 @@ void DatabaseFactory::finishRestoration() {
 			QFile::remove(backup_database_file);
 			qDebug("Database file was restored successully.");
 		}
-
 		else {
 			qCritical("Database file was NOT restored due to error when copying the file.");
 		}
@@ -205,7 +195,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 	if (!database.open()) {
 		qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
 	}
-
 	else {
 		QSqlQuery query_db(database);
 		query_db.setForwardOnly(true);
@@ -244,7 +233,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 			database.commit();
 			qDebug("In-memory SQLite database backend should be ready now.");
 		}
-
 		else {
 			query_db.next();
 			qDebug("In-memory SQLite database connection seems to be established.");
@@ -264,7 +252,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 				tables.append(copy_contents.value(0).toString());
 			}
 		}
-
 		else {
 			qFatal("Cannot obtain list of table names from file-base SQLite database.");
 		}
@@ -311,7 +298,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
 		qFatal("File-based SQLite database was NOT opened. Delivered error message: '%s'",
 		       qPrintable(database.lastError().text()));
 	}
-
 	else {
 		QSqlQuery query_db(database);
 		query_db.setForwardOnly(true);
@@ -351,7 +337,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
 			query_db.finish();
 			qDebug("File-based SQLite database backend should be ready now.");
 		}
-
 		else {
 			query_db.next();
 			const QString installed_db_schema = query_db.value(0).toString();
@@ -363,7 +348,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
 					       qPrintable(installed_db_schema),
 					       APP_DB_SCHEMA_VERSION);
 				}
-
 				else {
 					qFatal("Database schema was not updated from '%s' to '%s' successully.",
 					       qPrintable(installed_db_schema),
@@ -395,7 +379,6 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QS
 	if (IOFactory::copyFile(sqliteDatabaseFilePath(), sqliteDatabaseFilePath() + ".bak")) {
 		qDebug("Creating backup of SQLite DB file.");
 	}
-
 	else {
 		qFatal("Creation of backup SQLite DB file failed.");
 	}
@@ -500,11 +483,9 @@ QString DatabaseFactory::humanDriverName(const QString& driver_code) const {
 	if (driver_code == APP_DB_SQLITE_DRIVER) {
 		return humanDriverName(SQLITE);
 	}
-
 	else if (driver_code == APP_DB_MYSQL_DRIVER) {
 		return humanDriverName(MYSQL);
 	}
-
 	else {
 		return humanDriverName(SQLITE);
 	}
@@ -519,7 +500,6 @@ QString DatabaseFactory::obtainBeginTransactionSql() const {
 	if (m_activeDatabaseDriver == DatabaseFactory::SQLITE || m_activeDatabaseDriver == DatabaseFactory::SQLITE_MEMORY) {
 		return QSL("BEGIN IMMEDIATE TRANSACTION;");
 	}
-
 	else {
 		return QSL("START TRANSACTION;");
 	}
@@ -540,7 +520,6 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 			tables.append(copy_contents.value(0).toString());
 		}
 	}
-
 	else {
 		qFatal("Cannot obtain list of table names from file-base SQLite database.");
 	}
@@ -563,7 +542,6 @@ void DatabaseFactory::determineDriver() {
 		m_activeDatabaseDriver = MYSQL;
 		qDebug("Working database source was as MySQL database.");
 	}
-
 	else {
 		// User wants to use SQLite, which is always available. Check if file-based
 		// or in-memory database will be used.
@@ -572,7 +550,6 @@ void DatabaseFactory::determineDriver() {
 			m_activeDatabaseDriver = SQLITE_MEMORY;
 			qDebug("Working database source was determined as SQLite in-memory database.");
 		}
-
 		else {
 			// Use strictly file-base SQLite database.
 			m_activeDatabaseDriver = SQLITE;
@@ -592,7 +569,6 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString& connection_name) {
 		// Return initialized database.
 		return mysqlInitializeDatabase(connection_name);
 	}
-
 	else {
 		QSqlDatabase database;
 
@@ -602,7 +578,6 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString& connection_name) {
 			// setup its properties.
 			database = QSqlDatabase::database(connection_name);
 		}
-
 		else {
 			// Database connection with this name does not exist
 			// yet, add it and set it up.
@@ -618,7 +593,6 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString& connection_name) {
 			qFatal("MySQL database was NOT opened. Delivered error message: '%s'.",
 			       qPrintable(database.lastError().text()));
 		}
-
 		else {
 			qDebug("MySQL database connection '%s' to file '%s' seems to be established.",
 			       qPrintable(connection_name),
@@ -649,7 +623,6 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
 		                    "and make adjustments in application settings.").arg(APP_NAME));
 		return connection(objectName(), FromSettings);
 	}
-
 	else {
 		QSqlQuery query_db(database);
 		query_db.setForwardOnly(true);
@@ -683,7 +656,6 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
 			database.commit();
 			qDebug("MySQL database backend should be ready now.");
 		}
-
 		else {
 			// Database was previously initialized. Now just check the schema version.
 			query_db.next();
@@ -695,7 +667,6 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
 					       qPrintable(installed_db_schema),
 					       APP_DB_SCHEMA_VERSION);
 				}
-
 				else {
 					qFatal("Database schema was not updated from '%s' to '%s' successully.",
 					       qPrintable(installed_db_schema),
@@ -727,7 +698,6 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
 			// It is not initialized yet.
 			return sqliteInitializeInMemoryDatabase();
 		}
-
 		else {
 			QSqlDatabase database = QSqlDatabase::database();
 			database.setDatabaseName(QSL(":memory:"));
@@ -736,7 +706,6 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
 				qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'.",
 				       qPrintable(database.lastError().text()));
 			}
-
 			else {
 				qDebug("In-memory SQLite database connection seems to be established.");
 			}
@@ -744,14 +713,12 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
 			return database;
 		}
 	}
-
 	else {
 		// We request file-based database.
 		if (!m_sqliteFileBasedDatabaseinitialized) {
 			// File-based database is not yet initialised.
 			return sqliteInitializeFileBasedDatabase(connection_name);
 		}
-
 		else {
 			QSqlDatabase database;
 
@@ -761,7 +728,6 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
 				// setup its properties.
 				database = QSqlDatabase::database(connection_name);
 			}
-
 			else {
 				// Database connection with this name does not exist
 				// yet, add it and set it up.
@@ -776,7 +742,6 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
 				qFatal("File-based SQLite database was NOT opened. Delivered error message: '%s'.",
 				       qPrintable(database.lastError().text()));
 			}
-
 			else {
 				qDebug("File-based SQLite database connection '%s' to file '%s' seems to be established.",
 				       qPrintable(connection_name),
@@ -794,12 +759,10 @@ bool DatabaseFactory::sqliteVacuumDatabase() {
 	if (m_activeDatabaseDriver == SQLITE) {
 		database = sqliteConnection(objectName(), StrictlyFileBased);
 	}
-
 	else if (m_activeDatabaseDriver == SQLITE_MEMORY) {
 		sqliteSaveMemoryDatabase();
 		database = sqliteConnection(objectName(), StrictlyFileBased);
 	}
-
 	else {
 		return false;
 	}

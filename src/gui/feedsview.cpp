@@ -78,7 +78,6 @@ QList<Feed*> FeedsView::selectedFeeds() const {
 	if (current_index.isValid()) {
 		return m_sourceModel->feedsForIndex(m_proxyModel->mapToSource(current_index));
 	}
-
 	else {
 		return QList<Feed*>();
 	}
@@ -90,7 +89,6 @@ RootItem* FeedsView::selectedItem() const {
 	if (selected_rows.isEmpty()) {
 		return nullptr;
 	}
-
 	else {
 		RootItem* selected_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(selected_rows.at(0)));
 		return selected_item == m_sourceModel->rootItem() ? nullptr : selected_item;
@@ -143,7 +141,6 @@ void FeedsView::sortByColumn(int column, Qt::SortOrder order) {
 	if (column == old_column && order == old_order) {
 		m_proxyModel->sort(column, order);
 	}
-
 	else {
 		QTreeView::sortByColumn(column, order);
 	}
@@ -158,7 +155,6 @@ void FeedsView::addFeedIntoSelectedAccount() {
 		if (root->supportsFeedAdding()) {
 			root->addNewFeed();
 		}
-
 		else {
 			qApp->showGuiMessage(tr("Not supported"),
 			                     tr("Selected account does not support adding of new feeds."),
@@ -177,7 +173,6 @@ void FeedsView::addCategoryIntoSelectedAccount() {
 		if (root->supportsCategoryAdding()) {
 			root->addNewCategory();
 		}
-
 		else {
 			qApp->showGuiMessage(tr("Not supported"),
 			                     tr("Selected account does not support adding of new categories."),
@@ -227,7 +222,6 @@ void FeedsView::editSelectedItem() {
 	if (selectedItem()->canBeEdited()) {
 		selectedItem()->editViaGui();
 	}
-
 	else {
 		qApp->showGuiMessage(tr("Cannot edit item"),
 		                     tr("Selected item cannot be edited, this is not (yet?) supported."),
@@ -283,7 +277,6 @@ void FeedsView::deleteSelectedItem() {
 				                     true);
 			}
 		}
-
 		else {
 			qApp->showGuiMessage(tr("Cannot delete \"%1\"").arg(selected_item->title()),
 			                     tr("This item cannot be deleted, because it does not support it\nor this functionality is not implemented yet."),
@@ -371,7 +364,6 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
 	if (m_contextMenuCategories == nullptr) {
 		m_contextMenuCategories = new QMenu(tr("Context menu for categories"), this);
 	}
-
 	else {
 		m_contextMenuCategories->clear();
 	}
@@ -397,7 +389,6 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
 	if (m_contextMenuFeeds == nullptr) {
 		m_contextMenuFeeds = new QMenu(tr("Context menu for categories"), this);
 	}
-
 	else {
 		m_contextMenuFeeds->clear();
 	}
@@ -433,7 +424,6 @@ QMenu* FeedsView::initializeContextMenuOtherItem(RootItem* clicked_item) {
 	if (m_contextMenuOtherItems == nullptr) {
 		m_contextMenuOtherItems = new QMenu(tr("Context menu for other items"), this);
 	}
-
 	else {
 		m_contextMenuOtherItems->clear();
 	}
@@ -444,7 +434,6 @@ QMenu* FeedsView::initializeContextMenuOtherItem(RootItem* clicked_item) {
 		m_contextMenuOtherItems->addSeparator();
 		m_contextMenuOtherItems->addActions(specific_actions);
 	}
-
 	else {
 		m_contextMenuOtherItems->addAction(qApp->mainForm()->m_ui->m_actionNoActions);
 	}
@@ -502,17 +491,14 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
 			// Display context menu for categories.
 			initializeContextMenuCategories(clicked_item)->exec(event->globalPos());
 		}
-
 		else if (clicked_item->kind() == RootItemKind::Feed) {
 			// Display context menu for feeds.
 			initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
 		}
-
 		else {
 			initializeContextMenuOtherItem(clicked_item)->exec(event->globalPos());
 		}
 	}
-
 	else {
 		// Display menu for empty space.
 		initializeContextMenuEmptySpace()->exec(event->globalPos());

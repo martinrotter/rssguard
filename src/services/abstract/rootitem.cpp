@@ -121,7 +121,6 @@ int RootItem::row() const {
 	if (m_parentItem) {
 		return m_parentItem->m_childItems.indexOf(const_cast<RootItem*>(this));
 	}
-
 	else {
 		// This item has no parent. Therefore, its row index is 0.
 		return 0;
@@ -137,12 +136,10 @@ QVariant RootItem::data(int column, int role) const {
 			if (column == FDS_MODEL_TITLE_INDEX) {
 				return m_title;
 			}
-
 			else if (column == FDS_MODEL_COUNTS_INDEX) {
 				//: Tooltip for "unread" column of feed list.
 				return tr("%n unread message(s).", 0, countOfUnreadMessages());
 			}
-
 			else {
 				return QVariant();
 			}
@@ -151,11 +148,9 @@ QVariant RootItem::data(int column, int role) const {
 			if (column == FDS_MODEL_TITLE_INDEX) {
 				return m_title;
 			}
-
 			else if (column == FDS_MODEL_COUNTS_INDEX) {
 				return countOfUnreadMessages();
 			}
-
 			else {
 				return QVariant();
 			}
@@ -167,7 +162,6 @@ QVariant RootItem::data(int column, int role) const {
 			if (column == FDS_MODEL_TITLE_INDEX) {
 				return m_title;
 			}
-
 			else if (column == FDS_MODEL_COUNTS_INDEX) {
 				int count_all = countOfAllMessages();
 				int count_unread = countOfUnreadMessages();
@@ -175,7 +169,6 @@ QVariant RootItem::data(int column, int role) const {
 				       .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL("-") : QString::number(count_unread))
 				       .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL("-") : QString::number(count_all));
 			}
-
 			else {
 				return QVariant();
 			}
@@ -184,7 +177,6 @@ QVariant RootItem::data(int column, int role) const {
 			if (column == FDS_MODEL_TITLE_INDEX) {
 				return icon();
 			}
-
 			else {
 				return QVariant();
 			}
@@ -193,7 +185,6 @@ QVariant RootItem::data(int column, int role) const {
 			if (column == FDS_MODEL_COUNTS_INDEX) {
 				return Qt::AlignCenter;
 			}
-
 			else {
 				return QVariant();
 			}
@@ -233,7 +224,6 @@ bool RootItem::isChildOf(const RootItem* root) const {
 		if (root->childItems().contains(const_cast<RootItem* const>(this_item))) {
 			return true;
 		}
-
 		else {
 			this_item = this_item->parent();
 		}
@@ -246,7 +236,6 @@ bool RootItem::isParentOf(const RootItem* child) const {
 	if (child == nullptr) {
 		return false;
 	}
-
 	else {
 		return child->isChildOf(this);
 	}
@@ -369,7 +358,6 @@ ServiceRoot* RootItem::getParentServiceRoot() const {
 		if (working_parent->kind() == RootItemKind::ServiceRoot) {
 			return working_parent->toServiceRoot();
 		}
-
 		else {
 			working_parent = working_parent->parent();
 		}
@@ -481,7 +469,6 @@ bool RootItem::removeChild(int index) {
 		m_childItems.removeAt(index);
 		return true;
 	}
-
 	else {
 		return false;
 	}

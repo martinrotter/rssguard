@@ -93,7 +93,6 @@ void TabBar::wheelEvent(QWheelEvent* event) {
 			                number_of_tabs - 1 :
 			                current_index - 1);
 		}
-
 		else if (event->delta() < 0) {
 			// Scroll to the RIGHT tab.
 			setCurrentIndex(current_index == number_of_tabs - 1 ?
@@ -137,7 +136,6 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent* event) {
 			}
 		}
 	}
-
 	else {
 		emit emptySpaceDoubleClicked();
 	}

@@ -39,37 +39,26 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
 	  m_loaded(false) {
 	m_ui->setupUi(this);
 	m_ui->m_cbEnable->setChecked(m_manager->isEnabled());
-
 	setAttribute(Qt::WA_DeleteOnClose);
 	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 	setWindowIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
-
 	QPushButton* btn_options = m_ui->m_buttonBox->addButton(QDialogButtonBox::FirstButton);
 	btn_options->setText(tr("Options"));
-
 	QMenu* menu = new QMenu(btn_options);
-
 	m_actionAddRule = menu->addAction(tr("Add rule"), this, &AdBlockDialog::addRule);
 	m_actionRemoveRule = menu->addAction(tr("Remove rule"), this, &AdBlockDialog::removeRule);
-
 	menu->addSeparator();
-
 	m_actionAddSubscription = menu->addAction(tr("Add subscription"), this, &AdBlockDialog::addSubscription);
 	m_actionRemoveSubscription = menu->addAction(tr("Remove subscription"), this, &AdBlockDialog::removeSubscription);
-
 	menu->addAction(tr("Update subscriptions"), m_manager, &AdBlockManager::updateAllSubscriptions);
 	menu->addSeparator();
 	menu->addAction(tr("Learn about writing rules..."), this, &AdBlockDialog::learnAboutRules);
 	btn_options->setMenu(menu);
-
-
-
 	connect(menu, &QMenu::aboutToShow, this, &AdBlockDialog::aboutToShowMenu);
 	connect(m_ui->m_cbEnable, &QCheckBox::toggled, this, &AdBlockDialog::enableAdBlock);
 	connect(m_ui->m_tabSubscriptions, &QTabWidget::currentChanged, this, &AdBlockDialog::currentChanged);
 	connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &AdBlockDialog::close);
 	load();
-
 	m_ui->m_buttonBox->setFocus();
 }
 

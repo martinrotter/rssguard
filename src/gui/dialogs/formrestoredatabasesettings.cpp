@@ -28,13 +28,10 @@
 FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent)
 	: QDialog(&parent), m_shouldRestart(false) {
 	m_ui.setupUi(this);
-
 	m_btnRestart = m_ui.m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ActionRole);
 	m_ui.m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
-
 	setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
 	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-
 	connect(m_btnRestart, &QPushButton::clicked, this, [ = ]() {
 		m_shouldRestart = true;
 		close();
@@ -94,7 +91,6 @@ void FormRestoreDatabaseSettings::selectFolder(QString folder) {
 		m_ui.m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(folder),
 		                                  tr("Good source directory is specified."));
 	}
-
 	else {
 		return;
 	}

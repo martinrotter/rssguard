@@ -47,7 +47,6 @@ void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, 
 		reply->setProperty("authentication-given", true);
 		qDebug("Item '%s' requested authentication and got it.", qPrintable(reply->url().toString()));
 	}
-
 	else {
 		reply->setProperty("authentication-given", false);
 		// Authentication is required but this feed does not contain it.

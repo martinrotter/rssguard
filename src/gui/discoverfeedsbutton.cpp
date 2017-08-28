@@ -67,7 +67,6 @@ void DiscoverFeedsButton::linkTriggered(QAction* action) {
 	if (root->supportsFeedAdding()) {
 		root->addNewFeed(url);
 	}
-
 	else {
 		qApp->showGuiMessage(tr("Not supported"),
 		                     tr("Given account does not support adding feeds."),

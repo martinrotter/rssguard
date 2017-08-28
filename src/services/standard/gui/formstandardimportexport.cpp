@@ -129,7 +129,6 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
 		m_ui->m_treeFeeds->setModel(m_model);
 		m_ui->m_treeFeeds->expandAll();
 	}
-
 	else {
 		m_ui->m_groupFeeds->setEnabled(false);
 		m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error, file is not well-formed. Select another file."),
@@ -164,7 +163,6 @@ void FormStandardImportExport::selectExportFile() {
 				selected_file += QL1S(".opml");
 			}
 		}
-
 		else if (selected_filter == filter_txt_url_per_line) {
 			m_conversionType = TXTUrlPerLine;
 
@@ -195,7 +193,6 @@ void FormStandardImportExport::selectImportFile() {
 		if (selected_filter == filter_opml20) {
 			m_conversionType = OPML20;
 		}
-
 		else if (selected_filter == filter_txt_url_per_line) {
 			m_conversionType = TXTUrlPerLine;
 		}
@@ -218,7 +215,6 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
 		input_data = input_file.readAll();
 		input_file.close();
 	}
-
 	else {
 		m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot open source file."), tr("Cannot open source file."));
 		return;
@@ -275,12 +271,10 @@ void FormStandardImportExport::exportFeeds() {
 			IOFactory::writeTextFile(m_ui->m_lblSelectFile->label()->text(), result_data);
 			m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were exported successfully."), tr("Feeds were exported successfully."));
 		}
-
 		catch (IOException& ex) {
 			m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot write into destination file: '%1'."), ex.message());
 		}
 	}
-
 	else {
 		m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Critical error occurred."), tr("Critical error occurred."));
 	}
@@ -294,7 +288,6 @@ void FormStandardImportExport::importFeeds() {
 		m_serviceRoot->requestItemExpand(parent->getSubTree(), true);
 		m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, output_message, output_message);
 	}
-
 	else {
 		m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, output_message, output_message);
 	}

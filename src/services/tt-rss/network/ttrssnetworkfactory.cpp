@@ -57,7 +57,6 @@ void TtRssNetworkFactory::setUrl(const QString& url) {
 	if (!m_bareUrl.endsWith(QSL("api/"))) {
 		m_fullUrl = m_bareUrl + QSL("api/");
 	}
-
 	else {
 		m_fullUrl = m_bareUrl;
 	}
@@ -109,7 +108,6 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
 		m_sessionId = login_response.sessionId();
 		m_lastLoginTime = QDateTime::currentDateTime();
 	}
-
 	else {
 		qWarning("TT-RSS: Login failed with error %d.", network_reply.first);
 	}
@@ -134,14 +132,12 @@ TtRssResponse TtRssNetworkFactory::logout() {
 		if (m_lastError == QNetworkReply::NoError) {
 			m_sessionId.clear();
 		}
-
 		else {
 			qWarning("TT-RSS: Logout failed with error %d.", network_reply.first);
 		}
 
 		return TtRssResponse(QString::fromUtf8(result_raw));
 	}
-
 	else {
 		qWarning("TT-RSS: Cannot logout because session ID is empty.");
 		m_lastError = QNetworkReply::NoError;
@@ -383,7 +379,6 @@ int TtRssResponse::seq() const {
 	if (!isLoaded()) {
 		return CONTENT_NOT_LOADED;
 	}
-
 	else {
 		return m_rawContent["seq"].toInt();
 	}
@@ -393,7 +388,6 @@ int TtRssResponse::status() const {
 	if (!isLoaded()) {
 		return CONTENT_NOT_LOADED;
 	}
-
 	else {
 		return m_rawContent["status"].toInt();
 	}
@@ -417,7 +411,6 @@ int TtRssLoginResponse::apiLevel() const {
 	if (!isLoaded()) {
 		return CONTENT_NOT_LOADED;
 	}
-
 	else {
 		return m_rawContent["content"].toObject()["api_level"].toInt();
 	}
@@ -427,7 +420,6 @@ QString TtRssLoginResponse::sessionId() const {
 	if (!isLoaded()) {
 		return QString();
 	}
-
 	else {
 		return m_rawContent["content"].toObject()["session_id"].toString();
 	}
@@ -437,7 +429,6 @@ QString TtRssResponse::error() const {
 	if (!isLoaded()) {
 		return QString();
 	}
-
 	else {
 		return m_rawContent["content"].toObject()["error"].toString();
 	}
@@ -447,7 +438,6 @@ bool TtRssResponse::hasError() const {
 	if (!isLoaded()) {
 		return false;
 	}
-
 	else {
 		return m_rawContent["content"].toObject().contains("error");
 	}
@@ -492,7 +482,6 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
 							}
 						}
 					}
-
 					else {
 						TtRssCategory* category = new TtRssCategory();
 						category->setTitle(item["name"].toString());
@@ -506,7 +495,6 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
 						}
 					}
 				}
-
 				else {
 					// We have feed.
 					TtRssFeed* feed = new TtRssFeed();
@@ -595,7 +583,6 @@ QString TtRssUpdateArticleResponse::updateStatus() const {
 	if (m_rawContent.contains(QSL("content"))) {
 		return m_rawContent["content"].toObject()["status"].toString();
 	}
-
 	else {
 		return QString();
 	}
@@ -605,7 +592,6 @@ int TtRssUpdateArticleResponse::articlesUpdated() const {
 	if (m_rawContent.contains(QSL("content"))) {
 		return m_rawContent["content"].toObject()["updated"].toInt();
 	}
-
 	else {
 		return 0;
 	}
@@ -621,7 +607,6 @@ int TtRssSubscribeToFeedResponse::code() const {
 	if (m_rawContent.contains(QSL("content"))) {
 		return m_rawContent["content"].toObject()["status"].toObject()["code"].toInt();
 	}
-
 	else {
 		return STF_UNKNOWN;
 	}
@@ -641,7 +626,6 @@ QString TtRssUnsubscribeFeedResponse::code() const {
 		if (map.contains(QSL("error"))) {
 			return map["error"].toString();
 		}
-
 		else if (map.contains(QSL("status"))) {
 			return map["status"].toString();
 		}

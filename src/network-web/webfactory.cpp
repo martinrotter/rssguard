@@ -54,7 +54,6 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
 		return QProcess::startDetached(QString("\"") + browser + QSL("\" ") + arguments.arg(message.m_title,
 		                               stripTags(message.m_contents)));
 	}
-
 	else {
 		// Send it via mailto protocol.
 		// NOTE: http://en.wikipedia.org/wiki/Mailto
@@ -77,7 +76,6 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) {
 
 		return result;
 	}
-
 	else {
 		return QDesktopServices::openUrl(url);
 	}
@@ -145,7 +143,6 @@ QAction* WebFactory::engineSettingsAction() {
 	if (m_engineSettings == nullptr) {
 		m_engineSettings = new QAction(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web engine settings"), this);
 		m_engineSettings->setMenu(new QMenu());
-
 		createMenu(m_engineSettings->menu());
 		connect(m_engineSettings->menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
 	}
@@ -163,7 +160,6 @@ void WebFactory::createMenu(QMenu* menu) {
 	}
 
 	menu->clear();
-
 	QList<QAction*> actions;
 	actions << createEngineSettingsAction(tr("Auto-load images"), QWebEngineSettings::AutoLoadImages);
 	actions << createEngineSettingsAction(tr("JS enabled"), QWebEngineSettings::JavascriptEnabled);
@@ -185,33 +181,26 @@ void WebFactory::createMenu(QMenu* menu) {
 	actions << createEngineSettingsAction(tr("Accelerate 2D canvas"), QWebEngineSettings::Accelerated2dCanvasEnabled);
 	actions << createEngineSettingsAction(tr("Print element backgrounds"), QWebEngineSettings::PrintElementBackgrounds);
 	actions << createEngineSettingsAction(tr("Allow running insecure content"), QWebEngineSettings::AllowRunningInsecureContent);
-
 #if !defined(Q_OS_LINUX)
 	actions << createEngineSettingsAction(tr("Allow geolocation on insecure origins"), QWebEngineSettings::AllowGeolocationOnInsecureOrigins);
 #endif
-
 	menu->addActions(actions);
 }
 
 void WebFactory::webEngineSettingChanged(bool enabled) {
 	const QAction* const act = qobject_cast<QAction*>(sender());
 	QWebEngineSettings::WebAttribute attribute = static_cast<QWebEngineSettings::WebAttribute>(act->data().toInt());
-
 	qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
 	QWebEngineProfile::defaultProfile()->settings()->setAttribute(attribute, act->isChecked());
 }
 
 QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute) {
 	QAction* act = new QAction(title, m_engineSettings->menu());
-
 	act->setData(attribute);
 	act->setCheckable(true);
-
 	act->setChecked(qApp->settings()->value(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), true).toBool());
 	QWebEngineProfile::defaultProfile()->settings()->setAttribute(attribute, act->isChecked());
-
 	connect(act, &QAction::toggled, this, &WebFactory::webEngineSettingChanged);
-
 	return act;
 }
 #endif

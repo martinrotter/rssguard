@@ -55,7 +55,6 @@ bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
 	if (serviceRoot()->network()->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
 		return false;
 	}
-
 	else {
 		return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
 	}

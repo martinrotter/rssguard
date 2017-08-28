@@ -50,7 +50,6 @@ void SkinFactory::loadCurrentSkin() {
 			qDebug("Skin '%s' loaded.", qPrintable(skin_name));
 			return;
 		}
-
 		else {
 			qWarning("Failed to load skin '%s'.", qPrintable(skin_name));
 		}
@@ -84,7 +83,6 @@ QString SkinFactory::adBlockedPage(const QString& subscription, const QString& r
 	                                                         tr("Blocked by set: \"%1\"<br/>Blocked by filter: \"%2\"")
 	                                                         .arg(subscription,
 	                                                                 rule));
-
 	return currentSkin().m_layoutMarkupWrapper.arg(tr("This page was blocked by AdBlock"), adblocked);
 }
 

@@ -64,7 +64,6 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order) {
 		m_sortColumns.append(column);
 		m_sortOrders.append(order);
 	}
-
 	else {
 		m_sortColumns.prepend(column);
 		m_sortOrders.prepend(order);
@@ -91,7 +90,6 @@ QString MessagesModelSqlLayer::orderByClause() const {
 	if (m_sortColumns.isEmpty()) {
 		return QString();
 	}
-
 	else {
 		QStringList sorts;
 

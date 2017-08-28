@@ -69,7 +69,6 @@ ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
 		root->setAccountId(new_id);
 		return root;
 	}
-
 	else {
 		return nullptr;
 	}

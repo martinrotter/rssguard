@@ -62,7 +62,6 @@ bool OwnCloudFeed::deleteViaGui() {
 		serviceRoot()->requestItemRemoval(this);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -76,7 +75,6 @@ bool OwnCloudFeed::editItself(OwnCloudFeed* new_feed_data) {
 		// Persistent storage update failed, no way to continue now.
 		return false;
 	}
-
 	else {
 		setAutoUpdateType(new_feed_data->autoUpdateType());
 		setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
@@ -111,7 +109,6 @@ QList<Message> OwnCloudFeed::obtainNewMessages(bool* error_during_obtaining) {
 		serviceRoot()->itemChanged(QList<RootItem*>() << this);
 		return QList<Message>();
 	}
-
 	else {
 		*error_during_obtaining = false;
 		return messages.messages();

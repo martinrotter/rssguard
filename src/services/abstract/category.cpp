@@ -37,7 +37,6 @@ void Category::updateCounts(bool including_total_count) {
 		if (child->kind() == RootItemKind::Feed) {
 			feeds.append(child->toFeed());
 		}
-
 		else if (child->kind() != RootItemKind::Category && child->kind() != RootItemKind::ServiceRoot) {
 			child->updateCounts(including_total_count);
 		}

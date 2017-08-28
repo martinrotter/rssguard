@@ -59,7 +59,6 @@ void FormDatabaseCleanup::closeEvent(QCloseEvent* event) {
 	if (m_ui->m_progressBar->isEnabled()) {
 		event->ignore();
 	}
-
 	else {
 		QDialog::closeEvent(event);
 	}
@@ -69,7 +68,6 @@ void FormDatabaseCleanup::keyPressEvent(QKeyEvent* event) {
 	if (m_ui->m_progressBar->isEnabled()) {
 		event->ignore();
 	}
-
 	else {
 		QDialog::keyPressEvent(event);
 	}
@@ -110,7 +108,6 @@ void FormDatabaseCleanup::onPurgeFinished(bool finished) {
 	if (finished) {
 		m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Database cleanup is completed."), tr("Database cleanup is completed."));
 	}
-
 	else {
 		m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Database cleanup failed."), tr("Database cleanup failed."));
 	}

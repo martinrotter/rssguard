@@ -36,7 +36,6 @@ QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosure
 			enclosure.m_mimeType = QByteArray::fromBase64(mime_url.at(0).toLocal8Bit());
 			enclosure.m_url = QByteArray::fromBase64(mime_url.at(1).toLocal8Bit());
 		}
-
 		else {
 			enclosure.m_url = QByteArray::fromBase64(single_enclosure.toLocal8Bit());
 		}
@@ -54,7 +53,6 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
 		if (enclosure.m_mimeType.isEmpty()) {
 			enclosures_str.append(enclosure.m_url.toLocal8Bit().toBase64());
 		}
-
 		else {
 			enclosures_str.append(QString(enclosure.m_mimeType.toLocal8Bit().toBase64()) +
 			                      ECNLOSURES_INNER_SEPARATOR +

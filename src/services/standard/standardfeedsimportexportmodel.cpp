@@ -187,7 +187,6 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 							active_model_item->appendChild(guessed.first);
 							succeded++;
 						}
-
 						else {
 							QString feed_title = child_element.attribute(QSL("text"));
 							QString feed_encoding = child_element.attribute(QSL("encoding"), DEFAULT_FEED_ENCODING);
@@ -205,11 +204,9 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 							if (feed_type == QL1S("RSS1")) {
 								new_feed->setType(StandardFeed::Rdf);
 							}
-
 							else if (feed_type == QL1S("ATOM")) {
 								new_feed->setType(StandardFeed::Atom10);
 							}
-
 							else {
 								new_feed->setType(StandardFeed::Rss2X);
 							}
@@ -219,14 +216,12 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 							if (fetch_metadata_online && guessed.second != QNetworkReply::NoError) {
 								failed++;
 							}
-
 							else {
 								succeded++;
 							}
 						}
 					}
 				}
-
 				else {
 					// This must be CATEGORY.
 					// Add category and continue.
@@ -293,7 +288,6 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 				root_item->appendChild(guessed.first);
 				succeded++;
 			}
-
 			else {
 				StandardFeed* feed = new StandardFeed();
 				feed->setUrl(url);
@@ -306,7 +300,6 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 				if (fetch_metadata_online && guessed.second != QNetworkReply::NoError) {
 					failed++;
 				}
-
 				else {
 					succeded++;
 				}
@@ -314,7 +307,6 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 
 			qApp->processEvents();
 		}
-
 		else {
 			qWarning("Detected empty URL when parsing input TXT [one URL per line] data.");
 			failed++;

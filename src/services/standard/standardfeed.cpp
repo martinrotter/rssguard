@@ -101,7 +101,6 @@ bool StandardFeed::deleteViaGui() {
 		serviceRoot()->requestItemRemoval(this);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -131,7 +130,6 @@ QVariant StandardFeed::data(int column, int role) const {
 				                                        getAutoUpdateStatusDescription(),
 				                                        NetworkFactory::networkErrorText(m_networkError));
 			}
-
 			else {
 				return QVariant();
 			}
@@ -176,7 +174,6 @@ void StandardFeed::fetchMetadataForItself() {
 		// this item, particularly the icon.
 		serviceRoot()->itemChanged(QList<RootItem*>() << this);
 	}
-
 	else {
 		qApp->showGuiMessage(tr("Metadata not fetched"),
 		                     tr("Metadata was not fetched because: %1.").arg(NetworkFactory::networkErrorText(metadata.second)),
@@ -226,7 +223,6 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 			xml_contents_encoded = custom_codec->toUnicode(feed_contents);
 			result.first->setEncoding(xml_schema_encoding);
 		}
-
 		else {
 			// Feed encoding probably not guessed, set it as
 			// default.
@@ -270,7 +266,6 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 				icon_possible_locations.prepend(source_link);
 			}
 		}
-
 		else if (root_tag_name == QL1S("rss")) {
 			// We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
 			QString rss_type = root_element.attribute("version", "2.0");
@@ -278,7 +273,6 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 			if (rss_type == QL1S("0.91") || rss_type == QL1S("0.92") || rss_type == QL1S("0.93")) {
 				result.first->setType(Rss0X);
 			}
-
 			else {
 				result.first->setType(Rss2X);
 			}
@@ -292,7 +286,6 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 				icon_possible_locations.prepend(source_link);
 			}
 		}
-
 		else if (root_tag_name == QL1S("feed")) {
 			// We found ATOM feed.
 			result.first->setType(Atom10);
@@ -304,7 +297,6 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 				icon_possible_locations.prepend(source_link);
 			}
 		}
-
 		else {
 			// File was downloaded and it really was XML file
 			// but feed format was NOT recognized.
@@ -338,7 +330,6 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 		delete feed_new;
 		return true;
 	}
-
 	else {
 		delete feed_new;
 		return false;
@@ -362,7 +353,6 @@ bool StandardFeed::addItself(RootItem* parent) {
 		// Query failed.
 		return false;
 	}
-
 	else {
 		// New feed was added, fetch is primary id from the database.
 		setId(new_id);
@@ -415,7 +405,6 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
 		*error_during_obtaining = true;
 		return QList<Message>();
 	}
-
 	else if (status() != NewMessages) {
 		setStatus(Normal);
 		*error_during_obtaining = false;
@@ -430,7 +419,6 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
 		// Use non-converted data.
 		formatted_feed_contents = feed_contents;
 	}
-
 	else {
 		formatted_feed_contents = codec->toUnicode(feed_contents);
 	}
@@ -478,7 +466,6 @@ StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(nullptr) {
 	if (record.value(FDS_DB_PASSWORD_INDEX).toString().isEmpty()) {
 		setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
 	}
-
 	else {
 		setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
 	}

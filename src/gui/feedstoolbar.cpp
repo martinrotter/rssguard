@@ -59,14 +59,12 @@ QList<QAction*> FeedsToolBar::getSpecificActions(const QStringList& actions) {
 			// Add existing standard action.
 			spec_actions.append(matching_action);
 		}
-
 		else if (action_name == SEPARATOR_ACTION_NAME) {
 			// Add new separator.
 			QAction* act = new QAction(this);
 			act->setSeparator(true);
 			spec_actions.append(act);
 		}
-
 		else if (action_name == SPACER_ACTION_NAME) {
 			// Add new spacer.
 			QWidget* spacer = new QWidget(this);

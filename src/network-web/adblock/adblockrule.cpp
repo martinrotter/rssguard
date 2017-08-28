@@ -178,7 +178,6 @@ bool AdBlockRule::urlMatch(const QUrl& url) const {
 	if (!hasOption(DocumentOption) && !hasOption(ElementHideOption)) {
 		return false;
 	}
-
 	else {
 		const QString encodedUrl = url.toEncoded();
 		const QString domain = url.host();
@@ -259,7 +258,6 @@ bool AdBlockRule::matchDomain(const QString& domain) const {
 			}
 		}
 	}
-
 	else if (m_allowedDomains.isEmpty()) {
 		foreach (const QString& d, m_blockedDomains) {
 			if (isMatchingDomain(domain, d)) {
@@ -269,7 +267,6 @@ bool AdBlockRule::matchDomain(const QString& domain) const {
 
 		return true;
 	}
-
 	else {
 		foreach (const QString& d, m_blockedDomains) {
 			if (isMatchingDomain(domain, d)) {
@@ -378,70 +375,58 @@ void AdBlockRule::parseFilter() {
 				parseDomains(option.mid(7), QL1C('|'));
 				++handledOptions;
 			}
-
 			else if (option == QL1S("match-case")) {
 				m_caseSensitivity = Qt::CaseSensitive;
 				++handledOptions;
 			}
-
 			else if (option.endsWith(QL1S("third-party"))) {
 				setOption(ThirdPartyOption);
 				setException(ThirdPartyOption, option.startsWith(QL1C('~')));
 				++handledOptions;
 			}
-
 			else if (option.endsWith(QL1S("object"))) {
 				setOption(ObjectOption);
 				setException(ObjectOption, option.startsWith(QL1C('~')));
 				++handledOptions;
 			}
-
 			else if (option.endsWith(QL1S("subdocument"))) {
 				setOption(SubdocumentOption);
 				setException(SubdocumentOption, option.startsWith(QL1C('~')));
 				++handledOptions;
 			}
-
 			else if (option.endsWith(QL1S("xmlhttprequest"))) {
 				setOption(XMLHttpRequestOption);
 				setException(XMLHttpRequestOption, option.startsWith(QL1C('~')));
 				++handledOptions;
 			}
-
 			else if (option.endsWith(QL1S("image"))) {
 				setOption(ImageOption);
 				setException(ImageOption, option.startsWith(QL1C('~')));
 				++handledOptions;
 			}
-
 			else if (option.endsWith(QL1S("script"))) {
 				setOption(ScriptOption);
 				setException(ScriptOption, option.startsWith(QL1C('~')));
 				++handledOptions;
 			}
-
 			else if (option.endsWith(QL1S("stylesheet"))) {
 				setOption(StyleSheetOption);
 				setException(StyleSheetOption, option.startsWith(QL1C('~')));
 				++handledOptions;
 			}
-
 			else if (option.endsWith(QL1S("object-subrequest"))) {
 				setOption(ObjectSubrequestOption);
 				setException(ObjectSubrequestOption, option.startsWith(QL1C('~')));
 				++handledOptions;
 			}
-
 			else if (option == QL1S("document") && m_isException) {
 				setOption(DocumentOption);
 				++handledOptions;
 			}
-
 			else if (option == QL1S("elemhide") && m_isException) {
 				setOption(ElementHideOption);
 				++handledOptions;
 			}
-
 			else if (option == QL1S("collapse")) {
 				// Hiding placeholders of blocked elements is enabled by default.
 				++handledOptions;
@@ -521,7 +506,6 @@ void AdBlockRule::parseDomains(const QString& domains, const QChar& separator) {
 		if (domain.startsWith(QL1C('~'))) {
 			m_blockedDomains.append(domain.mid(1));
 		}
-
 		else {
 			m_allowedDomains.append(domain);
 		}
@@ -603,14 +587,12 @@ QString AdBlockRule::createRegExpFromFilter(const QString& filter) const {
 						parsed.append(QL1S("^[\\w\\-]+:\\/+(?!\\/)(?:[^\\/]+\\.)?"));
 						i++;
 					}
-
 					else {
 						parsed.append('^');
 					}
 
 					break;
 				}
-
 				else if (i == filter.size() - 1) {
 					parsed.append(QL1C('$'));
 					break;
@@ -622,7 +604,6 @@ QString AdBlockRule::createRegExpFromFilter(const QString& filter) const {
 				if (!wordCharacter(c)) {
 					parsed.append(QL1C('\\') + c);
 				}
-
 				else {
 					parsed.append(c);
 				}
@@ -649,20 +630,16 @@ bool AdBlockRule::stringMatch(const QString& domain, const QString& encodedUrl) 
 	if (m_type == StringContainsMatchRule) {
 		return encodedUrl.contains(m_matchString, m_caseSensitivity);
 	}
-
 	else if (m_type == DomainMatchRule) {
 		return isMatchingDomain(domain, m_matchString);
 	}
-
 	else if (m_type == StringEndsMatchRule) {
 		return encodedUrl.endsWith(m_matchString, m_caseSensitivity);
 	}
-
 	else if (m_type == RegExpMatchRule) {
 		if (!isMatchingRegExpStrings(encodedUrl)) {
 			return false;
 		}
-
 		else {
 			return (m_regExp->regExp.indexIn(encodedUrl) != -1);
 		}

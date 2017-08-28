@@ -62,7 +62,6 @@ bool OwnCloudServiceRoot::deleteViaGui() {
 	if (DatabaseQueries::deleteOwnCloudAccount(database, accountId())) {
 		return ServiceRoot::deleteViaGui();
 	}
-
 	else {
 		return false;
 	}
@@ -170,7 +169,6 @@ bool OwnCloudServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_ite
 		if (pair.second == RootItem::Important) {
 			mark_starred_msgs.append(pair.first);
 		}
-
 		else {
 			mark_unstarred_msgs.append(pair.first);
 		}
@@ -208,7 +206,6 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
 			itemChanged(QList<RootItem*>() << this);
 		}
 	}
-
 	else {
 		bool saved;
 		int id_to_assign = DatabaseQueries::createAccount(database, code(), &saved);
@@ -280,7 +277,6 @@ RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
 	if (m_network->lastError() == QNetworkReply::NoError) {
 		return feed_cats_response.feedsCategories(true);
 	}
-
 	else {
 		return nullptr;
 	}

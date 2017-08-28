@@ -98,7 +98,6 @@ void SettingsGui::loadSettings() {
 	if (SystemTrayIcon::isSystemTrayAvailable()) {
 		m_ui->m_grpTray->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
 	}
-
 	// Tray icon is not supported on this machine.
 	else {
 		m_ui->m_grpTray->setTitle(m_ui->m_grpTray->title() + QL1C(' ') + tr("(Tray icon is not available.)"));
@@ -118,7 +117,6 @@ void SettingsGui::loadSettings() {
 			//: Label for disabling icon theme.
 			m_ui->m_cmbIconTheme->addItem(tr("no icon theme/system icon theme"), APP_NO_THEME);
 		}
-
 		else {
 			m_ui->m_cmbIconTheme->addItem(icon_theme_name, icon_theme_name);
 		}
@@ -129,7 +127,6 @@ void SettingsGui::loadSettings() {
 		// Because "no icon theme" lies at the index 0.
 		m_ui->m_cmbIconTheme->setCurrentIndex(0);
 	}
-
 	else {
 		m_ui->m_cmbIconTheme->setCurrentText(current_theme);
 	}
@@ -203,7 +200,6 @@ void SettingsGui::saveSettings() {
 		if (m_ui->m_grpTray->isChecked()) {
 			qApp->showTrayIcon();
 		}
-
 		else {
 			qApp->deleteTrayIcon();
 		}

@@ -91,7 +91,6 @@ QByteArray SimpleCrypt::encryptToByteArray(QByteArray plaintext) {
 		ba = qCompress(ba, 9); //maximum compression
 		flags |= CryptoFlagCompression;
 	}
-
 	else if (m_compressionMode == CompressionAuto) {
 		QByteArray compressed = qCompress(ba, 9);
 
@@ -108,7 +107,6 @@ QByteArray SimpleCrypt::encryptToByteArray(QByteArray plaintext) {
 		QDataStream s(&integrityProtection, QIODevice::WriteOnly);
 		s << qChecksum(ba.constData(), ba.length());
 	}
-
 	else if (m_protectionMode == ProtectionHash) {
 		flags |= CryptoFlagHash;
 		QCryptographicHash hash(QCryptographicHash::Sha1);
@@ -221,7 +219,6 @@ QByteArray SimpleCrypt::decryptToByteArray(QByteArray cypher) {
 		quint16 checksum = qChecksum(ba.constData(), ba.length());
 		integrityOk = (checksum == storedChecksum);
 	}
-
 	else if (flags.testFlag(CryptoFlagHash)) {
 		if (ba.length() < 20) {
 			m_lastError = ErrorIntegrityFailed;

@@ -74,7 +74,6 @@ Qt::HANDLE QtLockedFile::getMutexHandle(int idx, bool doCreate) {
 			return 0;
 		}
 	}
-
 	else {
 		QT_WA({ mutex = OpenMutexW(SYNCHRONIZE | MUTEX_MODIFY_STATE, FALSE, (TCHAR*)mname.utf16()); },
 		{ mutex = OpenMutexA(SYNCHRONIZE | MUTEX_MODIFY_STATE, FALSE, mname.toLocal8Bit().constData()); });
@@ -159,7 +158,6 @@ bool QtLockedFile::lock(LockMode mode, bool block) {
 			rmutex = 0;
 			ok = false;
 		}
-
 		else if (!rmutex) {
 			rmutex = getMutexHandle(idx, true);
 
@@ -179,7 +177,6 @@ bool QtLockedFile::lock(LockMode mode, bool block) {
 			return false;
 		}
 	}
-
 	else {
 		Q_ASSERT(rmutexes.isEmpty());
 
@@ -226,7 +223,6 @@ bool QtLockedFile::unlock() {
 		CloseHandle(rmutex);
 		rmutex = 0;
 	}
-
 	else {
 		foreach (Qt::HANDLE mutex, rmutexes) {
 			ReleaseMutex(mutex);

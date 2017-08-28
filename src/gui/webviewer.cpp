@@ -58,7 +58,6 @@ bool WebViewer::increaseWebPageZoom() {
 		setZoomFactor(zoomFactor() + ZOOM_FACTOR_STEP);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -69,7 +68,6 @@ bool WebViewer::decreaseWebPageZoom() {
 		setZoomFactor(zoomFactor() - ZOOM_FACTOR_STEP);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -82,7 +80,6 @@ bool WebViewer::resetWebPageZoom() {
 		setZoomFactor(new_factor);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -145,11 +142,9 @@ void WebViewer::clear() {
 
 void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
 	event->accept();
-
 	QMenu* menu = page()->createStandardContextMenu();
 	menu->addAction(AdBlockManager::instance()->adBlockIcon());
 	menu->addAction(qApp->web()->engineSettingsAction());
-
 	const QPoint pos = event->globalPos();
 	QPoint p(pos.x(), pos.y() + 1);
 	menu->popup(p);
@@ -162,7 +157,6 @@ QWebEngineView* WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
 	if (index >= 0) {
 		return qApp->mainForm()->tabWidget()->widget(index)->webBrowser()->viewer();
 	}
-
 	else {
 		return nullptr;
 	}
@@ -175,7 +169,6 @@ void WebViewer::wheelEvent(QWheelEvent* event) {
 		if (event->delta() > 0) {
 			increaseWebPageZoom();
 		}
-
 		else if (event->delta() < 0) {
 			decreaseWebPageZoom();
 		}

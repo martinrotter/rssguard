@@ -264,7 +264,6 @@ void DownloadItem::downloadReadyRead() {
 		m_ui->m_lblInfoDownload->setText(tr("Error when saving file: %1").arg(m_output.errorString()));
 		m_ui->m_btnStopDownload->click();
 	}
-
 	else {
 		m_startedSaving = true;
 
@@ -344,7 +343,6 @@ double DownloadItem::currentSpeed() const {
 	if (!downloading()) {
 		return -1.0;
 	}
-
 	else {
 		return m_bytesReceived * 1000.0 / m_downloadTime.elapsed();
 	}
@@ -373,12 +371,10 @@ void DownloadItem::updateDownloadInfoLabel() {
 		                                                        DownloadManager::dataString((int)speed),
 		                                                        remaining);
 	}
-
 	else {
 		if (m_bytesReceived == bytes_total) {
 			info = DownloadManager::dataString(m_output.size());
 		}
-
 		else {
 			info = tr("%1 of %2 - download completed").arg(DownloadManager::dataString(m_bytesReceived),
 			                                               DownloadManager::dataString(m_bytesReceived));
@@ -416,9 +412,9 @@ void DownloadItem::finished() {
 	if (downloadedSuccessfully()) {
 		qApp->showGuiMessage(tr("Download finished"),
 		                     tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(m_output.fileName())),
-    QSystemTrayIcon::Information, 0, false, [this] {
-      openFolder();
-    });
+		QSystemTrayIcon::Information, 0, false, [this] {
+			openFolder();
+		});
 	}
 }
 
@@ -474,7 +470,6 @@ int DownloadManager::downloadProgress() const {
 	if (bytes_total <= 0) {
 		return -1;
 	}
-
 	else {
 		return (bytes_received * 100.0) / bytes_total;
 	}
@@ -552,7 +547,6 @@ void DownloadManager::itemProgress() {
 	if (progress < 0) {
 		emit downloadFinished();
 	}
-
 	else {
 		emit downloadProgressed(progress, tr("Downloading %n file(s)...", "", activeDownloads()));
 	}
@@ -688,7 +682,6 @@ QString DownloadManager::timeString(double time_remaining) {
 		time_remaining = floor(time_remaining);
 		remaining = tr("%n minutes remaining", "", (int) time_remaining);
 	}
-
 	else {
 		time_remaining = floor(time_remaining);
 		remaining = tr("%n seconds remaining", "", (int) time_remaining);
@@ -705,17 +698,14 @@ QString DownloadManager::dataString(qint64 size) {
 		new_size = size;
 		unit = tr("bytes");
 	}
-
 	else if (size < 1024 * 1024) {
 		new_size = (double)size / (double)1024;
 		unit = tr("kB");
 	}
-
 	else if (size < 1024 * 1024 * 1024) {
 		new_size = (double)size / (double)(1024 * 1024);
 		unit = tr("MB");
 	}
-
 	else {
 		new_size = (double)size / (double)(1024 * 1024 * 1024);
 		unit = tr("GB");

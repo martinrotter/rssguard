@@ -40,7 +40,6 @@ void SimpleRegExp::setMinimal(bool minimal) {
 	if (minimal) {
 		opt = patternOptions() | QRegularExpression::InvertedGreedinessOption;
 	}
-
 	else {
 		opt = patternOptions() & ~QRegularExpression::InvertedGreedinessOption;
 	}
@@ -57,7 +56,6 @@ int SimpleRegExp::indexIn(const QString& str, int offset) const {
 		that->m_capturedTexts.clear();
 		return -1;
 	}
-
 	else {
 		that->m_matchedLength = m.capturedLength();
 		that->m_capturedTexts = m.capturedTexts();
@@ -73,7 +71,6 @@ QString SimpleRegExp::cap(int nth) const {
 	if (nth >= 0 && m_capturedTexts.size() > nth) {
 		return m_capturedTexts.at(nth);
 	}
-
 	else {
 		return QString();
 	}

@@ -90,13 +90,11 @@ void ToolBarEditor::loadEditor(const QList<QAction*> activated_actions, const QL
 			action_item->setText(tr("Separator"));
 			action_item->setToolTip(tr("Separator"));
 		}
-
 		else if (action->property("type").isValid()) {
 			action_item->setData(Qt::UserRole, action->property("type").toString());
 			action_item->setText(action->property("name").toString());
 			action_item->setToolTip(action_item->text());
 		}
-
 		else {
 			action_item->setData(Qt::UserRole, action->objectName());
 			action_item->setToolTip(action->toolTip());
@@ -113,13 +111,11 @@ void ToolBarEditor::loadEditor(const QList<QAction*> activated_actions, const QL
 				action_item->setToolTip(tr("Separator"));
 				action_item->setIcon(qApp->icons()->fromTheme(QSL("insert-object")));
 			}
-
 			else if (action->property("type").isValid()) {
 				action_item->setData(Qt::UserRole, action->property("type").toString());
 				action_item->setText(action->property("name").toString());
 				action_item->setToolTip(action_item->text());
 			}
-
 			else {
 				action_item->setData(Qt::UserRole, action->objectName());
 				action_item->setToolTip(action->toolTip());
@@ -141,12 +137,10 @@ bool ToolBarEditor::eventFilter(QObject* object, QEvent* event) {
 				deleteSelectedAction();
 				return true;
 			}
-
 			else if (key_event->key() == Qt::Key_Down && key_event->modifiers() & Qt::ControlModifier) {
 				moveActionDown();
 				return true;
 			}
-
 			else if (key_event->key() == Qt::Key_Up && key_event->modifiers() & Qt::ControlModifier) {
 				moveActionUp();
 				return true;
@@ -238,7 +232,6 @@ void ToolBarEditor::deleteSelectedAction() {
 			m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item));
 			updateActionsAvailability();
 		}
-
 		else {
 			m_ui->m_listAvailableActions->insertItem(
 			    m_ui->m_listAvailableActions->currentRow() + 1,

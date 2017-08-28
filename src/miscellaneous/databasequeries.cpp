@@ -169,7 +169,6 @@ bool including_total_counts, bool* ok) {
 		          "WHERE feed IN (SELECT custom_id FROM Feeds WHERE category = :category AND account_id = :account_id) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
 		          "GROUP BY feed;");
 	}
-
 	else {
 		q.prepare("SELECT feed, sum((is_read + 1) % 2) FROM Messages "
 		          "WHERE feed IN (SELECT custom_id FROM Feeds WHERE category = :category AND account_id = :account_id) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
@@ -188,7 +187,6 @@ bool including_total_counts, bool* ok) {
 				int total_count = q.value(2).toInt();
 				counts.insert(feed_id, QPair<int, int>(unread_count, total_count));
 			}
-
 			else {
 				counts.insert(feed_id, QPair<int, int>(unread_count, 0));
 			}
@@ -198,7 +196,6 @@ bool including_total_counts, bool* ok) {
 			*ok = true;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -219,7 +216,6 @@ bool including_total_counts, bool* ok) {
 		          "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
 		          "GROUP BY feed;");
 	}
-
 	else {
 		q.prepare("SELECT feed, sum((is_read + 1) % 2) FROM Messages "
 		          "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
@@ -237,7 +233,6 @@ bool including_total_counts, bool* ok) {
 				int total_count = q.value(2).toInt();
 				counts.insert(feed_id, QPair<int, int>(unread_count, total_count));
 			}
-
 			else {
 				counts.insert(feed_id, QPair<int, int>(unread_count, 0));
 			}
@@ -247,7 +242,6 @@ bool including_total_counts, bool* ok) {
 			*ok = true;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -266,7 +260,6 @@ int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id
 		q.prepare("SELECT count(*) FROM Messages "
 		          "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
 	}
-
 	else {
 		q.prepare("SELECT count(*) FROM Messages "
 		          "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :account_id;");
@@ -282,7 +275,6 @@ int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id
 
 		return q.value(0).toInt();
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -300,7 +292,6 @@ int DatabaseQueries::getMessageCountsForBin(QSqlDatabase db, int account_id, boo
 		q.prepare("SELECT count(*) FROM Messages "
 		          "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
 	}
-
 	else {
 		q.prepare("SELECT count(*) FROM Messages "
 		          "WHERE is_read = 0 AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
@@ -315,7 +306,6 @@ int DatabaseQueries::getMessageCountsForBin(QSqlDatabase db, int account_id, boo
 
 		return q.value(0).toInt();
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -349,7 +339,6 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, int
 			*ok = true;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -382,7 +371,6 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(QSqlDatabase db, int 
 			*ok = true;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -415,7 +403,6 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(QSqlDatabase db, 
 			*ok = true;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -482,7 +469,6 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 		if (message.m_url.startsWith(QL1S("//"))) {
 			message.m_url = QString(URI_SCHEME_HTTP) + message.m_url.mid(2);
 		}
-
 		else if (message.m_url.startsWith(QL1S("/"))) {
 			QString new_message_url = QUrl(url).toString(QUrl::RemoveUserInfo |
 			                                             QUrl::RemovePath |
@@ -515,14 +501,12 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 				is_important_existing_message = query_select_with_url.value(3).toBool();
 				contents_existing_message = query_select_with_url.value(4).toString();
 			}
-
 			else if (query_select_with_url.lastError().isValid()) {
 				qWarning("Failed to check for existing message in DB via URL: '%s'.", qPrintable(query_select_with_url.lastError().text()));
 			}
 
 			query_select_with_url.finish();
 		}
-
 		else {
 			// We can recognize existing messages via their custom ID.
 			// NOTE: This concerns messages from custom accounts, like TT-RSS or ownCloud News.
@@ -536,7 +520,6 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 				is_important_existing_message = query_select_with_id.value(3).toBool();
 				contents_existing_message = query_select_with_id.value(4).toString();
 			}
-
 			else if (query_select_with_id.lastError().isValid()) {
 				qDebug("Failed to check for existing message in DB via ID: '%s'.", qPrintable(query_select_with_id.lastError().text()));
 			}
@@ -571,7 +554,6 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 				if (query_update.exec() && !message.m_isRead) {
 					updated_messages++;
 				}
-
 				else if (query_update.lastError().isValid()) {
 					qWarning("Failed to update message in DB: '%s'.", qPrintable(query_update.lastError().text()));
 				}
@@ -580,7 +562,6 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 				qDebug("Updating message '%s' in DB.", qPrintable(message.m_title));
 			}
 		}
-
 		else {
 			// Message with this URL is not fetched in this feed yet.
 			query_insert.bindValue(QSL(":feed"), feed_custom_id);
@@ -600,7 +581,6 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 				updated_messages++;
 				qDebug("Added new message '%s' to DB.", qPrintable(message.m_title));
 			}
-
 			else if (query_insert.lastError().isValid()) {
 				qWarning("Failed to insert message to DB: '%s' - message title is '%s'.",
 				         qPrintable(query_insert.lastError().text()),
@@ -628,7 +608,6 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 			updated_messages = 0;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = true;
@@ -645,7 +624,6 @@ bool DatabaseQueries::purgeMessagesFromBin(QSqlDatabase db, bool clear_only_read
 	if (clear_only_read) {
 		q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_read = 1 AND is_deleted = 1 AND account_id = :account_id;"));
 	}
-
 	else {
 		q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));
 	}
@@ -671,7 +649,6 @@ bool DatabaseQueries::deleteAccount(QSqlDatabase db, int account_id) {
 			qCritical("Removing of account from DB failed, this is critical: '%s'.", qPrintable(query.lastError().text()));
 			return false;
 		}
-
 		else {
 			query.finish();
 		}
@@ -709,7 +686,6 @@ bool DatabaseQueries::cleanFeeds(QSqlDatabase db, const QStringList& ids, bool c
 		                  "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = :account_id;")
 		          .arg(ids.join(QSL(", "))));
 	}
-
 	else {
 		q.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
 		                  "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
@@ -723,7 +699,6 @@ bool DatabaseQueries::cleanFeeds(QSqlDatabase db, const QStringList& ids, bool c
 		qDebug("Cleaning of feeds failed: '%s'.", qPrintable(q.lastError().text()));
 		return false;
 	}
-
 	else {
 		return true;
 	}
@@ -740,7 +715,6 @@ bool DatabaseQueries::purgeLeftoverMessages(QSqlDatabase db, int account_id) {
 		qWarning("Removing of left over messages failed: '%s'.", qPrintable(q.lastError().text()));
 		return false;
 	}
-
 	else {
 		return true;
 	}
@@ -767,12 +741,10 @@ bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem* tree_root, int
 			if (query_category.exec()) {
 				child->setId(query_category.lastInsertId().toInt());
 			}
-
 			else {
 				return false;
 			}
 		}
-
 		else if (child->kind() == RootItemKind::Feed) {
 			Feed* feed = child->toFeed();
 			query_feed.bindValue(QSL(":title"), feed->title());
@@ -787,7 +759,6 @@ bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem* tree_root, int
 			if (query_feed.exec()) {
 				feed->setId(query_feed.lastInsertId().toInt());
 			}
-
 			else {
 				return false;
 			}
@@ -807,7 +778,6 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(QSqlDatabase db, int
 	if (ok != nullptr) {
 		*ok = q.exec();
 	}
-
 	else {
 		q.exec();
 	}
@@ -829,7 +799,6 @@ QStringList DatabaseQueries::customIdsOfMessagesFromBin(QSqlDatabase db, int acc
 	if (ok != nullptr) {
 		*ok = q.exec();
 	}
-
 	else {
 		q.exec();
 	}
@@ -852,7 +821,6 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(QSqlDatabase db, int fe
 	if (ok != nullptr) {
 		*ok = q.exec();
 	}
-
 	else {
 		q.exec();
 	}
@@ -885,7 +853,6 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(QSqlDatabase db, bool* 
 			*ok = true;
 		}
 	}
-
 	else {
 		qWarning("OwnCloud: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
 
@@ -921,7 +888,6 @@ QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(QSqlDatabase db, bool* ok)
 			*ok = true;
 		}
 	}
-
 	else {
 		qWarning("TT-RSS: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
 
@@ -956,7 +922,6 @@ bool DatabaseQueries::overwriteOwnCloudAccount(QSqlDatabase db, const QString& u
 	if (query.exec()) {
 		return true;
 	}
-
 	else {
 		qWarning("ownCloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
 		return false;
@@ -978,7 +943,6 @@ bool DatabaseQueries::createOwnCloudAccount(QSqlDatabase db, int id_to_assign, c
 	if (q.exec()) {
 		return true;
 	}
-
 	else {
 		qWarning("ownCloud: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
 		return false;
@@ -1011,7 +975,6 @@ int DatabaseQueries::createAccount(QSqlDatabase db, const QString& code, bool* o
 
 		return id_to_assign;
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -1134,7 +1097,6 @@ int DatabaseQueries::addCategory(QSqlDatabase db, int parent_id, int account_id,
 		// Query failed.
 		return 0;
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = true;
@@ -1191,7 +1153,6 @@ int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, con
 	if (password.isEmpty()) {
 		q.bindValue(QSL(":password"), password);
 	}
-
 	else {
 		q.bindValue(QSL(":password"), TextFactory::encrypt(password));
 	}
@@ -1214,7 +1175,6 @@ int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, con
 
 		return new_id;
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -1248,7 +1208,6 @@ bool DatabaseQueries::editFeed(QSqlDatabase db, int parent_id, int feed_id, cons
 	if (password.isEmpty()) {
 		q.bindValue(QSL(":password"), password);
 	}
-
 	else {
 		q.bindValue(QSL(":password"), TextFactory::encrypt(password));
 	}
@@ -1291,7 +1250,6 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(QSqlDatabase db, bool* ok) {
 			*ok = true;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = false;
@@ -1317,7 +1275,6 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
 			*ok = false;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = true;
@@ -1409,7 +1366,6 @@ bool DatabaseQueries::overwriteTtRssAccount(QSqlDatabase db, const QString& user
 	if (q.exec()) {
 		return true;
 	}
-
 	else {
 		qWarning("TT-RSS: Updating account failed: '%s'.", qPrintable(q.lastError().text()));
 		return false;
@@ -1435,7 +1391,6 @@ bool DatabaseQueries::createTtRssAccount(QSqlDatabase db, int id_to_assign, cons
 	if (q.exec()) {
 		return true;
 	}
-
 	else {
 		qWarning("TT-RSS: Saving of new account failed: '%s'.", qPrintable(q.lastError().text()));
 		return false;
@@ -1457,7 +1412,6 @@ Assignment DatabaseQueries::getTtRssCategories(QSqlDatabase db, int account_id, 
 			*ok = false;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = true;
@@ -1489,7 +1443,6 @@ Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool*
 			*ok = false;
 		}
 	}
-
 	else {
 		if (ok != nullptr) {
 			*ok = true;

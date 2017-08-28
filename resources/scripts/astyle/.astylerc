@@ -21,5 +21,6 @@
 --close-templates
 --max-code-length=140
 --lineend=linux
+--delete-empty-lines
 -t -p
 -M60Ucv

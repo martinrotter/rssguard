@@ -116,7 +116,6 @@ QString AdBlockMatcher::elementHidingRulesForDomain(const QString& domain) const
 			rules.append(QSL("{display:none !important;}\n"));
 			addedRulesCount = 0;
 		}
-
 		else {
 			rules.append(rule->cssSelector() + QLatin1Char(','));
 			addedRulesCount++;
@@ -153,26 +152,21 @@ void AdBlockMatcher::update() {
 				if (rule->isException()) {
 					exceptionCssRules.append(rule);
 				}
-
 				else {
 					cssRulesHash.insert(rule->cssSelector(), rule);
 				}
 			}
-
 			else if (rule->isDocument()) {
 				m_documentRules.append(rule);
 			}
-
 			else if (rule->isElemhide()) {
 				m_elemhideRules.append(rule);
 			}
-
 			else if (rule->isException()) {
 				if (!m_networkExceptionTree.add(rule)) {
 					m_networkExceptionRules.append(rule);
 				}
 			}
-
 			else {
 				if (!m_networkBlockTree.add(rule)) {
 					m_networkBlockRules.append(rule);
@@ -209,13 +203,11 @@ void AdBlockMatcher::update() {
 		if (rule->isDomainRestricted()) {
 			m_domainRestrictedCssRules.append(rule);
 		}
-
 		else if (Q_UNLIKELY(hidingRulesCount == 1000)) {
 			m_elementHidingRules.append(rule->cssSelector());
 			m_elementHidingRules.append(QL1S("{display:none !important;} "));
 			hidingRulesCount = 0;
 		}
-
 		else {
 			m_elementHidingRules.append(rule->cssSelector() + QLatin1Char(','));
 			hidingRulesCount++;

@@ -67,7 +67,6 @@ QVariant StandardCategory::data(int column, int role) const {
 				                      tr("\nThis category does not contain any nested items.") :
 				                      QString());
 			}
-
 			else {
 				return Category::data(column, role);
 			}
@@ -91,7 +90,6 @@ bool StandardCategory::performDragDropChange(RootItem* target_item) {
 		delete category_new;
 		return true;
 	}
-
 	else {
 		delete category_new;
 		return false;
@@ -109,7 +107,6 @@ bool StandardCategory::deleteViaGui() {
 		serviceRoot()->requestItemRemoval(this);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -132,7 +129,6 @@ bool StandardCategory::removeItself() {
 		if (child->kind() == RootItemKind::Category) {
 			children_removed &= static_cast<StandardCategory*>(child)->removeItself();
 		}
-
 		else if (child->kind() == RootItemKind::Feed) {
 			children_removed &= static_cast<StandardFeed*>(child)->removeItself();
 		}
@@ -143,7 +139,6 @@ bool StandardCategory::removeItself() {
 		QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 		return DatabaseQueries::deleteCategory(database, id());
 	}
-
 	else {
 		return false;
 	}
@@ -158,7 +153,6 @@ bool StandardCategory::addItself(RootItem* parent) {
 	if (new_id <= 0) {
 		return false;
 	}
-
 	else {
 		setId(new_id);
 		setCustomId(new_id);
@@ -181,7 +175,6 @@ bool StandardCategory::editItself(StandardCategory* new_category_data) {
 		// Editing is done.
 		return true;
 	}
-
 	else {
 		return false;
 	}

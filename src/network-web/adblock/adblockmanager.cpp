@@ -43,10 +43,8 @@ Q_GLOBAL_STATIC(AdBlockManager, qz_adblock_manager)
 
 AdBlockManager::AdBlockManager(QObject* parent)
 	: QObject(parent), m_loaded(false), m_enabled(true), m_matcher(new AdBlockMatcher(this)), m_interceptor(new AdBlockUrlInterceptor(this)) {
-
 	m_adblockIcon = new AdBlockIcon(this);
 	m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
-
 	load();
 }
 
@@ -74,7 +72,6 @@ void AdBlockManager::setEnabled(bool enabled) {
 	if (m_enabled) {
 		m_matcher->update();
 	}
-
 	else {
 		m_matcher->clear();
 	}
@@ -106,14 +103,11 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
 		if (request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
 			QUrlQuery query;
 			QUrl url(QSL("rssguard:adblockedpage"));
-
 			query.addQueryItem(QSL("rule"), blockedRule->filter());
 			query.addQueryItem(QSL("subscription"), blockedRule->subscription()->title());
 			url.setQuery(query);
-
 			request.redirect(url);
 		}
-
 		else {
 			res = true;
 			request.block(true);
@@ -146,7 +140,6 @@ bool AdBlockManager::addSubscriptionFromUrl(const QUrl& url) {
 		if (pair.first == QL1S("location")) {
 			subscriptionUrl = pair.second;
 		}
-
 		else if (pair.first == QL1S("title")) {
 			subscriptionTitle = pair.second;
 		}
@@ -339,7 +332,6 @@ QString AdBlockManager::elementHidingRules(const QUrl& url) const {
 	if (!isEnabled() || !canRunOnScheme(url.scheme()) || !canBeBlocked(url)) {
 		return QString();
 	}
-
 	else {
 		return m_matcher->elementHidingRules();
 	}
@@ -349,7 +341,6 @@ QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
 	if (!isEnabled() || !canRunOnScheme(url.scheme()) || !canBeBlocked(url)) {
 		return QString();
 	}
-
 	else {
 		return m_matcher->elementHidingRulesForDomain(url.host());
 	}

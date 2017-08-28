@@ -30,9 +30,7 @@
 FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
 	m_ui.setupUi(this);
 	m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
-
 	GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("help-about")), tr("About %1").arg(APP_NAME));
-
 	loadLicenseAndInformation();
 	loadSettingsAndPaths();
 }
@@ -45,7 +43,6 @@ void FormAbout::loadSettingsAndPaths() {
 	if (qApp->settings()->type() == SettingsProperties::Portable) {
 		m_ui.m_txtPathsSettingsType->setText(tr("FULLY portable"));
 	}
-
 	else {
 		m_ui.m_txtPathsSettingsType->setText(tr("NOT portable"));
 	}

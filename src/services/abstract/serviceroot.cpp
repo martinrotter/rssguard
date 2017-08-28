@@ -43,7 +43,6 @@ bool ServiceRoot::deleteViaGui() {
 		requestItemRemoval(this);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -58,7 +57,6 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
 		requestReloadMessageList(status == RootItem::Read);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -83,7 +81,6 @@ void ServiceRoot::updateCounts(bool including_total_count) {
 		if (child->kind() == RootItemKind::Feed) {
 			feeds.append(child->toFeed());
 		}
-
 		else if (child->kind() != RootItemKind::Category && child->kind() != RootItemKind::ServiceRoot) {
 			child->updateCounts(including_total_count);
 		}
@@ -106,7 +103,6 @@ void ServiceRoot::updateCounts(bool including_total_count) {
 					feed->setCountOfAllMessages(counts.value(feed->customId()).second);
 				}
 			}
-
 			else {
 				feed->setCountOfUnreadMessages(0);
 
@@ -163,7 +159,6 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 		requestReloadMessageList(true);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -280,7 +275,6 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
 		// Not item from this account.
 		return QStringList();
 	}
-
 	else {
 		QStringList list;
 
@@ -335,7 +329,6 @@ bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus r
 		requestReloadMessageList(read == RootItem::Read);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -385,7 +378,6 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
 		model->setFilter(QString("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(QString::number(
 		                     accountId())));
 	}
-
 	else {
 		QList<Feed*> children = item->getSubTreeFeeds();
 		QString filter_clause = textualFeedIds(children).join(QSL(", "));
@@ -440,13 +432,11 @@ bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Mes
 	if (selected_item->kind() == RootItemKind::Bin) {
 		itemChanged(QList<RootItem*>() << bin);
 	}
-
 	else {
 		if (bin != nullptr) {
 			bin->updateCounts(true);
 			itemChanged(QList<RootItem*>() << selected_item << bin);
 		}
-
 		else {
 			itemChanged(QList<RootItem*>() << selected_item);
 		}
@@ -477,12 +467,10 @@ void ServiceRoot::assembleFeeds(Assignment feeds) {
 			// This is top-level feed, add it to the root item.
 			appendChild(feed.second);
 		}
-
 		else if (categories.contains(feed.first)) {
 			// This feed belongs to this category.
 			categories.value(feed.first)->appendChild(feed.second);
 		}
-
 		else {
 			qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
 		}

@@ -146,7 +146,6 @@ void FeedMessageViewer::switchMessageSplitterOrientation() {
 	if (m_messageSplitter->orientation() == Qt::Vertical) {
 		m_messageSplitter->setOrientation(Qt::Horizontal);
 	}
-
 	else {
 		m_messageSplitter->setOrientation(Qt::Vertical);
 	}
@@ -170,7 +169,6 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
 	if (sen != nullptr) {
 		m_feedsWidget->setVisible(sen->isChecked());
 	}
-
 	else {
 		m_feedsWidget->setVisible(!m_feedsWidget->isVisible());
 	}
@@ -182,7 +180,6 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
 	if (origin == nullptr) {
 		m_feedsView->model()->invalidateReadFeedsFilter(true, false);
 	}
-
 	else {
 		m_feedsView->model()->invalidateReadFeedsFilter(true, origin->isChecked());
 	}

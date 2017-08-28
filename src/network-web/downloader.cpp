@@ -65,7 +65,6 @@ void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Opera
 		qDebug("Replacing URI schemes for '%s'.", qPrintable(non_const_url));
 		request.setUrl(non_const_url.replace(QRegExp(QString('^') + URI_SCHEME_FEED), QString(URI_SCHEME_HTTP)));
 	}
-
 	else {
 		request.setUrl(non_const_url);
 	}
@@ -77,15 +76,12 @@ void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Opera
 	if (operation == QNetworkAccessManager::PostOperation) {
 		runPostRequest(request, m_inputData);
 	}
-
 	else if (operation == QNetworkAccessManager::GetOperation) {
 		runGetRequest(request);
 	}
-
 	else if (operation == QNetworkAccessManager::PutOperation) {
 		runPutRequest(request, m_inputData);
 	}
-
 	else if (operation == QNetworkAccessManager::DeleteOperation) {
 		runDeleteRequest(request);
 	}
@@ -106,7 +102,6 @@ void Downloader::finished() {
 		if (redirection_url.host().isEmpty()) {
 			request.setUrl(QUrl(reply->request().url().scheme() + QSL("://") + reply->request().url().host() + redirection_url.toString()));
 		}
-
 		else {
 			request.setUrl(redirection_url);
 		}
@@ -117,20 +112,16 @@ void Downloader::finished() {
 		if (reply_operation == QNetworkAccessManager::GetOperation) {
 			runGetRequest(request);
 		}
-
 		else if (reply_operation == QNetworkAccessManager::PostOperation) {
 			runPostRequest(request, m_inputData);
 		}
-
 		else if (reply_operation == QNetworkAccessManager::PutOperation) {
 			runPutRequest(request, m_inputData);
 		}
-
 		else if (reply_operation == QNetworkAccessManager::DeleteOperation) {
 			runDeleteRequest(request);
 		}
 	}
-
 	else {
 		// No redirection is indicated. Final file is obtained in our "reply" object.
 		// Read the data into output buffer.
@@ -187,7 +178,6 @@ void Downloader::runGetRequest(const QNetworkRequest& request) {
 	m_activeReply->setProperty("protected", m_targetProtected);
 	m_activeReply->setProperty("username", m_targetUsername);
 	m_activeReply->setProperty("password", m_targetPassword);
-
 	connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
 	connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }

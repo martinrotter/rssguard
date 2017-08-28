@@ -108,7 +108,6 @@ void TreeWidget::filterString(const QString& string) {
 				}
 			}
 		}
-
 		else {
 			item->setHidden(true);
 
@@ -125,7 +124,6 @@ void TreeWidget::filterString(const QString& string) {
 		if (stringIsEmpty) {
 			parentItem->setExpanded(m_showMode == ItemsExpanded);
 		}
-
 		else {
 			parentItem->setExpanded(true);
 		}

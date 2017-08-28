@@ -102,7 +102,6 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
 		parent_root->requestReloadMessageList(status == RootItem::Read);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -118,7 +117,6 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
 		parent_root->requestReloadMessageList(true);
 		return true;;
 	}
-
 	else {
 		return false;
 	}
@@ -138,7 +136,6 @@ bool RecycleBin::restore() {
 		parent_root->requestReloadMessageList(true);
 		return true;
 	}
-
 	else {
 		return false;
 	}

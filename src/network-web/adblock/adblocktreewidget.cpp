@@ -35,7 +35,6 @@ AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget*
 	setAlternatingRowColors(true);
 	setLayoutDirection(Qt::LeftToRight);
 	setIndentation(5);
-
 	connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequested(QPoint)));
 	connect(this, SIGNAL(itemChanged(QTreeWidgetItem*, int)), this, SLOT(itemChanged(QTreeWidgetItem*)));
 	connect(m_subscription, SIGNAL(subscriptionUpdated()), this, SLOT(subscriptionUpdated()));
@@ -50,7 +49,6 @@ void AdBlockTreeWidget::showRule(const AdBlockRule* rule) {
 	if (!m_topItem && rule) {
 		m_ruleToBeSelected = rule->filter();
 	}
-
 	else if (!m_ruleToBeSelected.isEmpty()) {
 		QList<QTreeWidgetItem*> items = findItems(m_ruleToBeSelected, Qt::MatchRecursive);
 
@@ -101,13 +99,11 @@ void AdBlockTreeWidget::itemChanged(QTreeWidgetItem* item) {
 		const AdBlockRule* rule = m_subscription->disableRule(offset);
 		adjustItemFeatures(item, rule);
 	}
-
 	else if (item->checkState(0) == Qt::Checked && !oldRule->isEnabled()) {
 		// Enable rule.
 		const AdBlockRule* rule = m_subscription->enableRule(offset);
 		adjustItemFeatures(item, rule);
 	}
-
 	else if (m_subscription->canEditRules()) {
 		// Custom rule has been changed.
 		AdBlockRule* newRule = new AdBlockRule(item->text(0), m_subscription);
@@ -199,7 +195,6 @@ void AdBlockTreeWidget::adjustItemFeatures(QTreeWidgetItem* item, const AdBlockR
 		item->setForeground(0, QColor(Qt::darkGreen));
 		item->setFont(0, QFont());
 	}
-
 	else if (rule->isCssRule()) {
 		item->setForeground(0, QColor(Qt::darkBlue));
 		item->setFont(0, QFont());

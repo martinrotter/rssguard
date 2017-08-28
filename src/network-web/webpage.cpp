@@ -42,24 +42,19 @@ void WebPage::javaScriptAlert(const QUrl& securityOrigin, const QString& msg) {
 		if (action == QSL("read")) {
 			emit messageStatusChangeRequested(message_id, MarkRead);
 		}
-
 		else if (action == QSL("unread")) {
 			emit messageStatusChangeRequested(message_id, MarkUnread);
 		}
-
 		else if (action == QSL("starred")) {
 			emit messageStatusChangeRequested(message_id, MarkStarred);
 		}
-
 		else if (action == QSL("unstarred")) {
 			emit messageStatusChangeRequested(message_id, MarkUnstarred);
 		}
-
 		else {
 			QWebEnginePage::javaScriptAlert(securityOrigin, msg);
 		}
 	}
-
 	else {
 		QWebEnginePage::javaScriptAlert(securityOrigin, msg);
 	}

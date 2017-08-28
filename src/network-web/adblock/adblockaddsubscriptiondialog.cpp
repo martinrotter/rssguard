@@ -57,10 +57,8 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
 	connect(m_ui->m_cmbPresets, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
 	        &AdBlockAddSubscriptionDialog::indexChanged);
 	connect(m_ui->m_cbUsePredefined, &QCheckBox::toggled, this, &AdBlockAddSubscriptionDialog::presetsEnabledChanged);
-
 	m_ui->m_cbUsePredefined->setChecked(true);
 	indexChanged(0);
-
 	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 	setWindowIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
 }

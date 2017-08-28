@@ -176,7 +176,6 @@ bool AdBlockSubscription::saveDownloadedData(const QByteArray& data) {
 		qWarning("Unable to open AdBlock file '%s' for writing.", qPrintable(m_filePath));
 		return false;
 	}
-
 	else {
 		// Write subscription header
 		file.write(QString("Title: %1\nUrl: %2\n").arg(title(), url().toString()).toUtf8());
@@ -190,7 +189,6 @@ const AdBlockRule* AdBlockSubscription::rule(int offset) const {
 	if (IS_IN_ARRAY(offset, m_rules)) {
 		return m_rules[offset];
 	}
-
 	else {
 		return 0;
 	}
@@ -213,7 +211,6 @@ const AdBlockRule* AdBlockSubscription::enableRule(int offset) {
 
 		return rule;
 	}
-
 	else {
 		return 0;
 	}
@@ -282,7 +279,6 @@ void AdBlockCustomList::loadSubscription(const QStringList& disabledRules) {
 	try {
 		rules = QString::fromUtf8(IOFactory::readTextFile(filePath()));
 	}
-
 	catch (ApplicationException&) {
 	}
 

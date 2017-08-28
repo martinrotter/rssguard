@@ -50,7 +50,6 @@ void Localization::loadActiveLanguage() {
 		       qPrintable(real_loaded_locale));
 		desired_localization = real_loaded_locale;
 	}
-
 	else {
 		qWarning("Application localization '%s' was not loaded. Loading '%s' instead.",
 		         qPrintable(desired_localization),
@@ -62,7 +61,6 @@ void Localization::loadActiveLanguage() {
 		Application::installTranslator(qt_translator);
 		qDebug("Qt localization '%s' loaded successfully.", qPrintable(desired_localization));
 	}
-
 	else {
 		qWarning("Qt localization '%s' was not loaded.", qPrintable(desired_localization));
 	}

@@ -28,7 +28,6 @@ void EditTableView::keyPressEvent(QKeyEvent* event) {
 		removeSelected();
 		event->accept();
 	}
-
 	else {
 		QAbstractItemView::keyPressEvent(event);
 	}

@@ -80,7 +80,6 @@ bool TtRssServiceRoot::deleteViaGui() {
 	if (DatabaseQueries::deleteTtRssAccount(database, accountId())) {
 		return ServiceRoot::deleteViaGui();
 	}
-
 	else {
 		return false;
 	}
@@ -141,7 +140,6 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
 				                                                   m_network->lastLoginTime().toString(Qt::DefaultLocaleShortDate) :
 				                                                   QSL("-"));
 			}
-
 			else {
 				return ServiceRoot::data(column, role);
 			}
@@ -215,7 +213,6 @@ bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, 
 		if (pair.second == RootItem::Important) {
 			mark_starred_msgs.append(pair.first);
 		}
-
 		else {
 			mark_unstarred_msgs.append(pair.first);
 		}
@@ -249,7 +246,6 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
 			itemChanged(QList<RootItem*>() << this);
 		}
 	}
-
 	else {
 		bool saved;
 		int id_to_assign = DatabaseQueries::createAccount(database, code(), &saved);
@@ -295,7 +291,6 @@ RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
 	if (m_network->lastError() == QNetworkReply::NoError) {
 		return feed_cats_response.feedsCategories(true, m_network->url());
 	}
-
 	else {
 		return nullptr;
 	}

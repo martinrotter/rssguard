@@ -77,7 +77,6 @@ int FormFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_select, c
 			if (parent_to_select->kind() == RootItemKind::Category) {
 				m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
 			}
-
 			else if (parent_to_select->kind() == RootItemKind::Feed) {
 				int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
 
@@ -90,12 +89,10 @@ int FormFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_select, c
 		if (!url.isEmpty()) {
 			m_ui->m_txtUrl->lineEdit()->setText(url);
 		}
-
 		else if (Application::clipboard()->mimeData()->hasText()) {
 			m_ui->m_txtUrl->lineEdit()->setText(Application::clipboard()->text());
 		}
 	}
-
 	else {
 		// User is editing existing category.
 		setWindowTitle(tr("Edit feed '%1'").arg(input_feed->title()));
@@ -110,7 +107,6 @@ void FormFeedDetails::onTitleChanged(const QString& new_title) {
 	if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
 		m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("Feed name is ok."));
 	}
-
 	else {
 		m_ui->m_txtTitle->setStatus(LineEditWithStatus::Error, tr("Feed name is too short."));
 	}
@@ -120,7 +116,6 @@ void FormFeedDetails::onDescriptionChanged(const QString& new_description) {
 	if (new_description.simplified().isEmpty()) {
 		m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Description is empty."));
 	}
-
 	else {
 		m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description is ok."));
 	}
@@ -131,13 +126,11 @@ void FormFeedDetails::onUrlChanged(const QString& new_url) {
 		// New url is well-formed.
 		m_ui->m_txtUrl->setStatus(LineEditWithStatus::Ok, tr("The URL is ok."));
 	}
-
 	else if (!new_url.simplified().isEmpty()) {
 		// New url is not well-formed but is not empty on the other hand.
 		m_ui->m_txtUrl->setStatus(LineEditWithStatus::Warning,
 		                          tr("The URL does not meet standard pattern. Does your URL start with \"http://\" or \"https://\" prefix."));
 	}
-
 	else {
 		// New url is empty.
 		m_ui->m_txtUrl->setStatus(LineEditWithStatus::Error, tr("The URL is empty."));
@@ -230,7 +223,6 @@ void FormFeedDetails::guessFeed() {
 		if (encoding_index >= 0) {
 			m_ui->m_cmbEncoding->setCurrentIndex(encoding_index);
 		}
-
 		else {
 			m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findText(DEFAULT_FEED_ENCODING,
 			                                     Qt::MatchFixedString));
@@ -241,7 +233,6 @@ void FormFeedDetails::guessFeed() {
 			                                    tr("All metadata fetched successfully."),
 			                                    tr("Feed and icon metadata fetched."));
 		}
-
 		else {
 			m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Warning,
 			                                    tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
@@ -251,7 +242,6 @@ void FormFeedDetails::guessFeed() {
 		// Remove temporary feed object.
 		delete result.first;
 	}
-
 	else {
 		// No feed guessed, even no icon available.
 		m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Error,
@@ -274,7 +264,6 @@ void FormFeedDetails::guessIconOnly() {
 			                                    tr("Icon fetched successfully."),
 			                                    tr("Icon metadata fetched."));
 		}
-
 		else {
 			m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Warning,
 			                                    tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
@@ -284,7 +273,6 @@ void FormFeedDetails::guessIconOnly() {
 		// Remove temporary feed object.
 		delete result.first;
 	}
-
 	else {
 		// No feed guessed, even no icon available.
 		m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Error,

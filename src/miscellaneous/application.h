@@ -118,7 +118,7 @@ class Application : public QtSingleApplication {
 		// or in message box if tray icon is disabled.
 		void showGuiMessage(const QString& title, const QString& message, QSystemTrayIcon::MessageIcon message_type,
 		                    QWidget* parent = nullptr, bool show_at_least_msgbox = false,
-                        std::function<void()> functor = nullptr);
+		                    std::function<void()> functor = nullptr);
 
 		// Returns pointer to "GOD" application singleton.
 		inline static Application* instance() {

@@ -55,7 +55,6 @@ void FeedDownloader::updateAvailableFeeds() {
 			m_feeds.removeFirst();
 			m_feedsUpdating++;
 		}
-
 		else {
 			// We want to start update of some feeds but all working threads are occupied.
 			break;
@@ -70,7 +69,6 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 		qDebug("No feeds to update in worker thread, aborting update.");
 		finalizeUpdate();
 	}
-
 	else {
 		qDebug().nospace() << "Starting feed updates from worker in thread: \'" << QThread::currentThreadId() << "\'.";
 		m_feeds = feeds;

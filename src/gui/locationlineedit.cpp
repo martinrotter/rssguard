@@ -45,7 +45,6 @@ void LocationLineEdit::mousePressEvent(QMouseEvent* event) {
 		// User clicked and all text was selected.
 		m_mouseSelectsAllText = false;
 	}
-
 	else {
 		BaseLineEdit::mousePressEvent(event);
 	}

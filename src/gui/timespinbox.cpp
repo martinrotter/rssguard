@@ -37,7 +37,6 @@ double TimeSpinBox::valueFromText(const QString& text) const {
 	if (ok) {
 		return value;
 	}
-
 	else {
 		QRegExp rx("\\b[0-9]{1,}\\b");
 		QStringList numbers;
@@ -56,7 +55,6 @@ double TimeSpinBox::valueFromText(const QString& text) const {
 		if (numbers.size() == 2) {
 			return (numbers.at(0).toDouble() * 60.0) + numbers.at(1).toDouble();
 		}
-
 		else {
 			return -1.0;
 		}

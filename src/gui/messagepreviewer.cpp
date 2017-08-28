@@ -38,7 +38,6 @@ void MessagePreviewer::createConnections() {
 			if (open_externally_now) {
 				qApp->web()->openUrlInExternalBrowser(url.toString());
 			}
-
 			else {
 				// User clicked some URL. Open it in external browser or download?
 				MessageBox box(qApp->mainForm());
@@ -61,7 +60,6 @@ void MessagePreviewer::createConnections() {
 				if (box.clickedButton() == btn_open) {
 					qApp->web()->openUrlInExternalBrowser(url.toString());
 				}
-
 				else if (box.clickedButton() == btn_download) {
 					qApp->downloadManager()->download(url);
 				}
@@ -71,7 +69,6 @@ void MessagePreviewer::createConnections() {
 				btn_cancel->deleteLater();
 			}
 		}
-
 		else {
 			MessageBox::show(qApp->mainForm(), QMessageBox::Warning, tr("Incorrect link"),
 			                 tr("Selected hyperlink is invalid."));

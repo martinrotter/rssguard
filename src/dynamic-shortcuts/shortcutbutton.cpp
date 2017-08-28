@@ -99,7 +99,6 @@ void ShortcutButton::keyPressEvent(QKeyEvent* event) {
 				if ((pressed_key == Qt::Key_Backtab) && (m_catcher->m_modifierKeys & Qt::SHIFT)) {
 					pressed_key = Qt::Key_Tab | m_catcher->m_modifierKeys;
 				}
-
 				else {
 					pressed_key |= m_catcher->m_modifierKeys;
 				}

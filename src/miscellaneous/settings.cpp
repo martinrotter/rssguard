@@ -324,7 +324,6 @@ void Settings::finishRestoration(const QString& desired_settings_file_path) {
 			QFile::remove(backup_settings_file);
 			qDebug("Settings file was restored successully.");
 		}
-
 		else {
 			qCritical("Settings file was NOT restored due to error when copying the file.");
 		}
@@ -345,7 +344,6 @@ Settings* Settings::setupSettings(QObject* parent) {
 	if (properties.m_type == SettingsProperties::Portable) {
 		qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
 	}
-
 	else {
 		qDebug("Initializing settings in '%s' (non-portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
 	}
@@ -375,7 +373,6 @@ SettingsProperties Settings::determineProperties() {
 		properties.m_type = SettingsProperties::Portable;
 		properties.m_baseDirectory = app_path;
 	}
-
 	else {
 		properties.m_type = SettingsProperties::NonPortable;
 		properties.m_baseDirectory = home_path;

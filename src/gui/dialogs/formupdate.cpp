@@ -40,10 +40,8 @@ FormUpdate::FormUpdate(QWidget* parent)
 	m_ui.m_lblCurrentRelease->setText(APP_VERSION);
 	m_ui.m_tabInfo->removeTab(1);
 	m_ui.m_buttonBox->setEnabled(false);
-
 	// Set flags and attributes.
 	GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("help-about")));
-
 	connect(&m_downloader, &Downloader::progress, this, &FormUpdate::updateProgress);
 	connect(&m_downloader, &Downloader::completed, this, &FormUpdate::updateCompleted);
 
@@ -111,7 +109,6 @@ void FormUpdate::checkForUpdates() {
 			}
 		}
 	});
-
 	qApp->system()->checkForUpdates();
 }
 
@@ -233,15 +230,12 @@ void FormUpdate::startUpdate() {
 
 #endif
 	}
-
 	else if (update_for_this_system) {
 		updateProgress(0, 100);
-
 		m_btnUpdate->setText(tr("Downloading update..."));
 		m_btnUpdate->setEnabled(false);
 		m_downloader.downloadFile(url_file);
 	}
-
 	else {
 		// Self-update and package are not available.
 		if (!qApp->web()->openUrlInExternalBrowser(url_file)) {

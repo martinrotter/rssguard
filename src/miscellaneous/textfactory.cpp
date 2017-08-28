@@ -96,13 +96,11 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
 					// the original UTC.
 					return dt.addSecs(- QTime(0, 0, 0, 0).secsTo(time_zone_offset));
 				}
-
 				else {
 					// Vice versa.
 					return dt.addSecs(QTime(0, 0, 0, 0).secsTo(time_zone_offset));
 				}
 			}
-
 			else {
 				return dt;
 			}
@@ -129,7 +127,6 @@ QString TextFactory::shorten(const QString& input, int text_length_limit) {
 	if (input.size() > text_length_limit) {
 		return input.left(text_length_limit - ELLIPSIS_LENGTH) + QString(ELLIPSIS_LENGTH, QL1C('.'));
 	}
-
 	else {
 		return input;
 	}
@@ -143,7 +140,6 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
 		try {
 			s_encryptionKey = (quint64) QString(IOFactory::readTextFile(encryption_file_path)).toLongLong();
 		}
-
 		catch (ApplicationException) {
 			// Well, key does not exist or is invalid, generate and save one.
 			s_encryptionKey = generateSecretEncryptionKey();

@@ -59,7 +59,6 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 	if (autostart_enabled) {
 		return AutoStartStatus::Enabled;
 	}
-
 	else {
 		return AutoStartStatus::Disabled;
 	}
@@ -82,7 +81,6 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 		bool hidden_value = desktop_settings.value(QSL("Desktop Entry/Hidden"), false).toBool();
 		return hidden_value ? SystemFactory::Disabled : SystemFactory::Enabled;
 	}
-
 	else {
 		return SystemFactory::Disabled;
 	}
@@ -103,7 +101,6 @@ QString SystemFactory::autostartDesktopFileLocation() const {
 		// in 'autostart' subdirectory.
 		desktop_file_location = xdg_config_path + QSL("/autostart/") + APP_DESKTOP_ENTRY_FILE;
 	}
-
 	else {
 		// Desired variable is not set, look for the default 'autostart' subdirectory.
 		const QString home_directory(qgetenv("HOME"));
@@ -186,7 +183,6 @@ bool SystemFactory::removeTrolltechJunkRegistryKeys() {
 		registry_key.sync();
 		return registry_key.status() == QSettings::NoError;
 	}
-
 	else {
 		return false;
 	}
@@ -209,7 +205,6 @@ QString SystemFactory::loggedInUser() const {
 
 void SystemFactory::checkForUpdates() const {
 	Downloader* downloader = new Downloader();
-
 	connect(downloader, &Downloader::completed, [this, downloader]() {
 		QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> result;
 		result.second = downloader->lastOutputError();
@@ -220,10 +215,8 @@ void SystemFactory::checkForUpdates() const {
 		}
 
 		emit updatesChecked(result);
-
 		downloader->deleteLater();
 	});
-
 	downloader->downloadFile(RELEASES_LIST);
 }
 
@@ -239,7 +232,6 @@ bool SystemFactory::isVersionNewer(const QString& new_version, const QString& ba
 			// New version is indeed higher thatn current version.
 			return true;
 		}
-
 		else if (new_number < base_number) {
 			return false;
 		}
@@ -250,12 +242,10 @@ bool SystemFactory::isVersionNewer(const QString& new_version, const QString& ba
 		// Versions are the same.
 		return false;
 	}
-
 	else {
 		if (new_version_tkn.isEmpty()) {
 			return false;
 		}
-
 		else {
 			return new_version_tkn.join(QString()).toInt() > 0;
 		}

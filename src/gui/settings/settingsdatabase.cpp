@@ -84,7 +84,6 @@ void SettingsDatabase::onMysqlHostnameChanged(const QString& new_hostname) {
 	if (new_hostname.isEmpty()) {
 		m_ui->m_txtMysqlHostname->setStatus(LineEditWithStatus::Warning, tr("Hostname is empty."));
 	}
-
 	else {
 		m_ui->m_txtMysqlHostname->setStatus(LineEditWithStatus::Ok, tr("Hostname looks ok."));
 	}
@@ -94,7 +93,6 @@ void SettingsDatabase::onMysqlUsernameChanged(const QString& new_username) {
 	if (new_username.isEmpty()) {
 		m_ui->m_txtMysqlUsername->setStatus(LineEditWithStatus::Warning, tr("Username is empty."));
 	}
-
 	else {
 		m_ui->m_txtMysqlUsername->setStatus(LineEditWithStatus::Ok, tr("Username looks ok."));
 	}
@@ -104,7 +102,6 @@ void SettingsDatabase::onMysqlPasswordChanged(const QString& new_password) {
 	if (new_password.isEmpty()) {
 		m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::Warning, tr("Password is empty."));
 	}
-
 	else {
 		m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::Ok, tr("Password looks ok."));
 	}
@@ -114,7 +111,6 @@ void SettingsDatabase::onMysqlDatabaseChanged(const QString& new_database) {
 	if (new_database.isEmpty()) {
 		m_ui->m_txtMysqlDatabase->setStatus(LineEditWithStatus::Warning, tr("Working database is empty."));
 	}
-
 	else {
 		m_ui->m_txtMysqlDatabase->setStatus(LineEditWithStatus::Ok, tr("Working database is ok."));
 	}
@@ -126,11 +122,9 @@ void SettingsDatabase::selectSqlBackend(int index) {
 	if (selected_db_driver == APP_DB_SQLITE_DRIVER) {
 		m_ui->m_stackedDatabaseDriver->setCurrentIndex(0);
 	}
-
 	else if (selected_db_driver == APP_DB_MYSQL_DRIVER) {
 		m_ui->m_stackedDatabaseDriver->setCurrentIndex(1);
 	}
-
 	else {
 		qWarning("GUI for given database driver '%s' is not available.", qPrintable(selected_db_driver));
 	}

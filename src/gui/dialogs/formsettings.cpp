@@ -36,13 +36,11 @@
 FormSettings::FormSettings(QWidget& parent)
 	: QDialog(&parent), m_panels(QList<SettingsPanel*>()), m_settings(*qApp->settings()) {
 	m_ui.setupUi(this);
-
 	// Set flags and attributes.
 	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
 	setWindowIcon(qApp->icons()->fromTheme(QSL("emblem-system")));
 	m_btnApply = m_ui.m_buttonBox->button(QDialogButtonBox::Apply);
 	m_btnApply->setEnabled(false);
-
 	// Establish needed connections.
 	connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormSettings::saveSettings);
 	connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormSettings::cancelSettings);
@@ -55,7 +53,6 @@ FormSettings::FormSettings(QWidget& parent)
 	addSettingsPanel(new SettingsBrowserMail(&m_settings, this));
 	addSettingsPanel(new SettingsDownloads(&m_settings, this));
 	addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
-
 	m_ui.m_listSettings->setCurrentRow(0);
 }
 
@@ -115,7 +112,6 @@ void FormSettings::cancelSettings() {
 	if (changed_panels.isEmpty()) {
 		reject();
 	}
-
 	else {
 		const QStringList changed_settings_description = changed_panels.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
 
@@ -137,7 +133,6 @@ void FormSettings::addSettingsPanel(SettingsPanel* panel) {
 	m_panels.append(panel);
 	m_ui.m_stackedSettings->addWidget(panel);
 	panel->loadSettings();
-
 	connect(panel, &SettingsPanel::settingsChanged, [this]() {
 		m_btnApply->setEnabled(true);
 	});

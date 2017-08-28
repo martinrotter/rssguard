@@ -48,7 +48,6 @@ bool DynamicShortcutsWidget::areShortcutsUnique() const {
 			// Problem, two identical non-empty shortcuts found.
 			return false;
 		}
-
 		else {
 			all_shortcuts.append(binding.second->shortcut());
 		}

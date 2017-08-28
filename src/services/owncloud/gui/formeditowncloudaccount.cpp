@@ -101,7 +101,6 @@ void FormEditOwnCloudAccount::performTest() {
 			                                         MINIMAL_OC_VERSION),
 			                                 tr("Selected ownCloud News server is running unsupported version."));
 		}
-
 		else {
 			m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Ok,
 			                                 tr("ownCloud News server is okay, running with version %1, while at least version %2 is required.").arg(result.version(),
@@ -109,13 +108,11 @@ void FormEditOwnCloudAccount::performTest() {
 			                                 tr("ownCloud News server is okay."));
 		}
 	}
-
 	else if (factory.lastError()  != QNetworkReply::NoError) {
 		m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
 		                                 tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
 		                                 tr("Network error, have you entered correct ownCloud endpoint and password?"));
 	}
-
 	else {
 		m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
 		                                 tr("Unspecified error, did you enter correct URL?"),
@@ -156,7 +153,6 @@ void FormEditOwnCloudAccount::onUsernameChanged() {
 	if (username.isEmpty()) {
 		m_ui->m_txtUsername->setStatus(WidgetWithStatus::Error, tr("Username cannot be empty."));
 	}
-
 	else {
 		m_ui->m_txtUsername->setStatus(WidgetWithStatus::Ok, tr("Username is okay."));
 	}
@@ -168,7 +164,6 @@ void FormEditOwnCloudAccount::onPasswordChanged() {
 	if (password.isEmpty()) {
 		m_ui->m_txtPassword->setStatus(WidgetWithStatus::Error, tr("Password cannot be empty."));
 	}
-
 	else {
 		m_ui->m_txtPassword->setStatus(WidgetWithStatus::Ok, tr("Password is okay."));
 	}
@@ -180,7 +175,6 @@ void FormEditOwnCloudAccount::onUrlChanged() {
 	if (url.isEmpty()) {
 		m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL cannot be empty."));
 	}
-
 	else {
 		m_ui->m_txtUrl->setStatus(WidgetWithStatus::Ok, tr("URL is okay."));
 	}

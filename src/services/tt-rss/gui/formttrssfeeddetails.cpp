@@ -49,7 +49,6 @@ void FormTtRssFeedDetails::apply() {
 		qobject_cast<TtRssFeed*>(m_editableFeed)->editItself(new_feed_data);
 		delete new_feed_data;
 	}
-
 	else {
 		RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
 		TtRssServiceRoot* root = parent->kind() == RootItemKind::Category ?
@@ -70,7 +69,6 @@ void FormTtRssFeedDetails::apply() {
 			qApp->showGuiMessage(tr("Feed added"), tr("Feed was added, triggering sync in now."), QSystemTrayIcon::Information);
 			QTimer::singleShot(100, root, SLOT(syncIn()));
 		}
-
 		else {
 			reject();
 			qApp->showGuiMessage(tr("Cannot add feed"),

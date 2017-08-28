@@ -103,7 +103,6 @@ void TabWidget::checkTabBarVisibility() {
 		setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
 		m_btnMainMenu->setVisible(true);
 	}
-
 	else {
 		setCornerWidget(0, Qt::TopLeftCorner);
 		setCornerWidget(0, Qt::TopRightCorner);
@@ -166,12 +165,10 @@ bool TabWidget::closeTab(int index) {
 		removeTab(index, true);
 		return true;
 	}
-
 	else if (tabBar()->tabType(index) == TabBar::DownloadManager) {
 		removeTab(index, false);
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -239,7 +236,6 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
 		final_index = insertTab(currentIndex() + 1, browser, qApp->icons()->fromTheme(QSL("text-html")),
 		                        browser_tab_name, TabBar::Closable);
 	}
-
 	else {
 		// Add new browser as the last tab.
 		final_index = addTab(browser, qApp->icons()->fromTheme(QSL("text-html")),

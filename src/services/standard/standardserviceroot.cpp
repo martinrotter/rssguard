@@ -72,7 +72,6 @@ void StandardServiceRoot::start(bool freshly_activated) {
 			if (QFile::exists(target_opml_file.arg(current_locale))) {
 				file_to_load = target_opml_file.arg(current_locale);
 			}
-
 			else if (QFile::exists(target_opml_file.arg(DEFAULT_LOCALE))) {
 				file_to_load = target_opml_file.arg(DEFAULT_LOCALE);
 			}
@@ -88,7 +87,6 @@ void StandardServiceRoot::start(bool freshly_activated) {
 					requestItemExpand(getSubTree(), true);
 				}
 			}
-
 			catch (ApplicationException& ex) {
 				MessageBox::show(qApp->mainFormWidget(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
 			}
@@ -149,7 +147,6 @@ QVariant StandardServiceRoot::data(int column, int role) const {
 			if (column == FDS_MODEL_TITLE_INDEX) {
 				return tr("This is service account for standard RSS/RDF/ATOM feeds.\n\nAccount ID: %1").arg(accountId());
 			}
-
 			else {
 				return ServiceRoot::data(column, role);
 			}
@@ -202,12 +199,10 @@ QString StandardServiceRoot::processFeedUrl(const QString& feed_url) {
 		if (without_feed_prefix.startsWith(QL1S("https:")) || without_feed_prefix.startsWith(QL1S("http:"))) {
 			return without_feed_prefix;
 		}
-
 		else {
 			return feed_url;
 		}
 	}
-
 	else {
 		return feed_url;
 	}
@@ -264,7 +259,6 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
 					original_parents.push(new_category);
 					new_parents.push(source_category);
 				}
-
 				else {
 					delete new_category;
 					// Add category failed, but this can mean that the same category (with same title)
@@ -282,13 +276,11 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
 						original_parents.push(existing_category);
 						new_parents.push(source_category);
 					}
-
 					else {
 						some_feed_category_error = true;
 					}
 				}
 			}
-
 			else if (source_item->kind() == RootItemKind::Feed) {
 				StandardFeed* source_feed = static_cast<StandardFeed*>(source_item);
 				StandardFeed* new_feed = new StandardFeed(*source_feed);
@@ -297,7 +289,6 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
 				if (new_feed->addItself(target_parent)) {
 					requestItemReassignment(new_feed, target_parent);
 				}
-
 				else {
 					delete new_feed;
 					some_feed_category_error = true;
@@ -309,7 +300,6 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
 	if (some_feed_category_error) {
 		output_message = tr("Import successful, but some feeds/categories were not imported due to error.");
 	}
-
 	else {
 		output_message = tr("Import was completely successful.");
 	}

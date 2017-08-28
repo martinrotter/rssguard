@@ -40,7 +40,6 @@ void Debugging::performLog(const char* message, QtMsgType type, const char* file
 	if (file == 0 || function == 0 || line < 0) {
 		fprintf(stderr, "[%s] %s: %s (%s)\n", APP_LOW_NAME, type_string, message, mbstr);
 	}
-
 	else {
 		fprintf(stderr, "[%s] %s (%s)\n  Type: %s\n  File: %s (line %d)\n  Function: %s\n\n",
 		        APP_LOW_NAME, message, mbstr, type_string, file, line, function);

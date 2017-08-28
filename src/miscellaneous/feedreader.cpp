@@ -114,7 +114,6 @@ void FeedReader::updateAutoUpdateStatus() {
 		m_autoUpdateTimer->start();
 		qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
 	}
-
 	else {
 		qDebug("Auto-update timer is already running.");
 	}
@@ -222,7 +221,6 @@ void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
 			qWarning("Waiting for previously started saving of cached service data.");
 			m_cacheSaveFutureWatcher->future().waitForFinished();
 		}
-
 		else {
 			qWarning("Some cached service data are being saved now, so aborting this saving cycle.");
 			// Some cache saving is now running.
@@ -241,7 +239,6 @@ void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
 		qDebug("Waiting for saving of cached service data to finish.");
 		future.waitForFinished();
 	}
-
 	else {
 		m_cacheSaveFutureWatcher->setFuture(future);
 	}

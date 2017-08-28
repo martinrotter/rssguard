@@ -280,7 +280,6 @@ void QtSingleApplication::setActivationWindow(QWidget* aw, bool activateOnMessag
 	if (activateOnMessage) {
 		connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::activateWindow);
 	}
-
 	else {
 		disconnect(peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::activateWindow);
 	}

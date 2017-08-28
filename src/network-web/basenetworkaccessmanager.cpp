@@ -43,11 +43,9 @@ void BaseNetworkAccessManager::loadSettings() {
 		// No extra setting is needed, set new proxy and exit this method.
 		setProxy(QNetworkProxy::NoProxy);
 	}
-
 	else if (selected_proxy_type == QNetworkProxy::DefaultProxy) {
 		setProxy(QNetworkProxy::applicationProxy());
 	}
-
 	else {
 		const Settings* settings = qApp->settings();
 		// Custom proxy is selected, set it up.

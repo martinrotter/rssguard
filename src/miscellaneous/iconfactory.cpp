@@ -56,7 +56,6 @@ QPixmap IconFactory::pixmap(const QString& name) {
 	if (QIcon::themeName() == APP_NO_THEME) {
 		return QPixmap();
 	}
-
 	else {
 		return QIcon::fromTheme(name).pixmap(64, 64);
 	}
@@ -106,7 +105,6 @@ void IconFactory::loadCurrentIconTheme() {
 		qDebug("Loading icon theme '%s'.", qPrintable(theme_name_from_settings));
 		QIcon::setThemeName(theme_name_from_settings);
 	}
-
 	else {
 		// Desired icon theme is not currently available.
 		// Install "default" icon theme instead.

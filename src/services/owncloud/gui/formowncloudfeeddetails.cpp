@@ -47,7 +47,6 @@ void FormOwnCloudFeedDetails::apply() {
 			        m_editableFeed->customId())) {
 				qWarning("ownCloud: Došlo k problému při prejmenování kanálu s ownCloud ID '%d'.", m_editableFeed->customId());
 			}
-
 			else {
 				renamed = true;
 			}
@@ -65,7 +64,6 @@ void FormOwnCloudFeedDetails::apply() {
 			QTimer::singleShot(200, m_serviceRoot, SLOT(syncIn()));
 		}
 	}
-
 	else {
 		const RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(
 		                                                    m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
@@ -79,7 +77,6 @@ void FormOwnCloudFeedDetails::apply() {
 			qApp->showGuiMessage(tr("Feed added"), tr("Feed was added, triggering sync in now."), QSystemTrayIcon::Information);
 			QTimer::singleShot(100, m_serviceRoot, SLOT(syncIn()));
 		}
-
 		else {
 			reject();
 			qApp->showGuiMessage(tr("Cannot add feed"),

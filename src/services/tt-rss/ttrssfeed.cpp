@@ -86,7 +86,6 @@ QVariant TtRssFeed::data(int column, int role) const {
 				                                        description().isEmpty() ? QString() : QString('\n') + description(),
 				                                        auto_update_string);
 			}
-
 			else {
 				return Feed::data(column, role);
 			}
@@ -118,7 +117,6 @@ bool TtRssFeed::deleteViaGui() {
 		serviceRoot()->requestItemRemoval(this);
 		return true;
 	}
-
 	else {
 		qWarning("TT-RSS: Unsubscribing from feed failed, received JSON: '%s'", qPrintable(response.toString()));
 		return false;
@@ -143,7 +141,6 @@ bool TtRssFeed::editItself(TtRssFeed* new_feed_data) {
 		setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
 		return true;
 	}
-
 	else {
 		return false;
 	}
@@ -165,7 +162,6 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
 			serviceRoot()->itemChanged(QList<RootItem*>() << this);
 			return QList<Message>();
 		}
-
 		else {
 			QList<Message> new_messages = headlines.messages();
 			messages.append(new_messages);

@@ -61,7 +61,6 @@ void FormBackupDatabaseSettings::performBackup() {
 		                             tr("Backup was created successfully and stored in target directory."),
 		                             tr("Backup was created successfully."));
 	}
-
 	catch (const ApplicationException& ex) {
 		m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(), tr("Backup failed."));
 	}
@@ -86,7 +85,6 @@ void FormBackupDatabaseSettings::checkBackupNames(const QString& name) {
 	if (name.simplified().isEmpty()) {
 		m_ui->m_txtBackupName->setStatus(WidgetWithStatus::Error, tr("Backup name cannot be empty."));
 	}
-
 	else {
 		m_ui->m_txtBackupName->setStatus(WidgetWithStatus::Ok, tr("Backup name looks okay."));
 	}

@@ -59,7 +59,6 @@ QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_
 			// We found unread message, mark it.
 			return proxy_index;
 		}
-
 		else {
 			default_row++;
 		}
@@ -83,7 +82,6 @@ QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& ind
 			// Construct new source index.
 			mapped_indexes << mapFromSource(m_sourceModel->index(index.row(), index.column()));
 		}
-
 		else {
 			mapped_indexes << mapFromSource(index);
 		}
@@ -119,7 +117,6 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start, int role,
 					result.append(idx);
 				}
 			}
-
 			// QString based matching.
 			else {
 				if (entered_text.isEmpty()) {

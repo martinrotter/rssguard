@@ -87,7 +87,6 @@ int FormStandardCategoryDetails::addEditCategory(StandardCategory* input_categor
 			if (parent_to_select->kind() == RootItemKind::Category) {
 				m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
 			}
-
 			else if (parent_to_select->kind() == RootItemKind::Feed) {
 				int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
 
@@ -97,7 +96,6 @@ int FormStandardCategoryDetails::addEditCategory(StandardCategory* input_categor
 			}
 		}
 	}
-
 	else {
 		// User is editing existing category.
 		setWindowTitle(tr("Edit existing category"));
@@ -122,7 +120,6 @@ void FormStandardCategoryDetails::apply() {
 			m_serviceRoot->requestItemReassignment(new_category, parent);
 			accept();
 		}
-
 		else {
 			delete new_category;
 			qApp->showGuiMessage(tr("Cannot add category"),
@@ -131,7 +128,6 @@ void FormStandardCategoryDetails::apply() {
 			                     qApp->mainFormWidget(), true);
 		}
 	}
-
 	else {
 		new_category->setParent(parent);
 		bool edited = m_editableCategory->editItself(new_category);
@@ -140,7 +136,6 @@ void FormStandardCategoryDetails::apply() {
 			m_serviceRoot->requestItemReassignment(m_editableCategory, new_category->parent());
 			accept();
 		}
-
 		else {
 			qApp->showGuiMessage(tr("Cannot edit category"),
 			                     tr("Category was not edited due to error."),
@@ -156,7 +151,6 @@ void FormStandardCategoryDetails::onTitleChanged(const QString& new_title) {
 		m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
 		m_ui->m_txtTitle->setStatus(WidgetWithStatus::Ok, tr("Category name is ok."));
 	}
-
 	else {
 		m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 		m_ui->m_txtTitle->setStatus(WidgetWithStatus::Error, tr("Category name is too short."));
@@ -167,7 +161,6 @@ void FormStandardCategoryDetails::onDescriptionChanged(const QString& new_descri
 	if (new_description.simplified().isEmpty()) {
 		m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Description is empty."));
 	}
-
 	else {
 		m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description is ok."));
 	}

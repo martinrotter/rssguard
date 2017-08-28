@@ -52,7 +52,6 @@ void OwnCloudNetworkFactory::setUrl(const QString& url) {
 	if (url.endsWith('/')) {
 		m_fixedUrl = url;
 	}
-
 	else {
 		m_fixedUrl = url + '/';
 	}
@@ -189,7 +188,6 @@ bool OwnCloudNetworkFactory::deleteFeed(int feed_id) {
 		qWarning("ownCloud: Obtaining of categories failed with error %d.", network_reply.first);
 		return false;
 	}
-
 	else {
 		return true;
 	}
@@ -214,7 +212,6 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
 		qWarning("ownCloud: Creating of category failed with error %d.", network_reply.first);
 		return false;
 	}
-
 	else {
 		return true;
 	}
@@ -239,7 +236,6 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, int feed_id) {
 		qWarning("ownCloud: Renaming of feed failed with error %d.", network_reply.first);
 		return false;
 	}
-
 	else {
 		return true;
 	}
@@ -279,7 +275,6 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
 		if (lastError() != QNetworkReply::NoError) {
 			return lastError();
 		}
-
 		else {
 			// We have new user ID, set it up.
 			setUserId(info.userId());
@@ -314,7 +309,6 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::R
 	if (status == RootItem::Read) {
 		final_url = m_fixedUrl + API_PATH + "items/read/multiple";
 	}
-
 	else {
 		final_url = m_fixedUrl + API_PATH + "items/unread/multiple";
 	}
@@ -353,7 +347,6 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(RootItem
 	if (importance == RootItem::Important) {
 		final_url = m_fixedUrl + API_PATH + "items/star/multiple";
 	}
-
 	else {
 		final_url = m_fixedUrl + API_PATH + "items/unstar/multiple";
 	}
@@ -417,7 +410,6 @@ QString OwnCloudUserResponse::displayName() const {
 	if (isLoaded()) {
 		return m_rawContent["displayName"].toString();
 	}
-
 	else {
 		return QString();
 	}
@@ -427,7 +419,6 @@ QString OwnCloudUserResponse::userId() const {
 	if (isLoaded()) {
 		return m_rawContent["userId"].toString();
 	}
-
 	else {
 		return QString();
 	}
@@ -437,7 +428,6 @@ QDateTime OwnCloudUserResponse::lastLoginTime() const {
 	if (isLoaded()) {
 		return QDateTime::fromMSecsSinceEpoch(m_rawContent["lastLoginTimestamp"].toDouble());
 	}
-
 	else {
 		return QDateTime();
 	}
@@ -468,7 +458,6 @@ QString OwnCloudStatusResponse::version() const {
 	if (isLoaded()) {
 		return m_rawContent["version"].toString();
 	}
-
 	else {
 		return QString();
 	}
@@ -478,7 +467,6 @@ bool OwnCloudStatusResponse::misconfiguredCron() const {
 	if (isLoaded()) {
 		return m_rawContent["warnings"].toObject()["improperlyConfiguredCron"].toBool();
 	}
-
 	else {
 		return false;
 	}

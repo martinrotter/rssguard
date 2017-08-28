@@ -38,7 +38,6 @@ AdBlockIcon::AdBlockIcon(AdBlockManager* parent)
 	setText(QSL("AdBlock"));
 	setMenu(new QMenu());
 	setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
-
 	connect(m_manager, SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
 	connect(menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
 	connect(this, &QAction::triggered, m_manager, &AdBlockManager::showDialog);
@@ -136,7 +135,6 @@ void AdBlockIcon::toggleCustomFilter() {
 	if (customList->containsFilter(filter)) {
 		customList->removeFilter(filter);
 	}
-
 	else {
 		AdBlockRule* rule = new AdBlockRule(filter, customList);
 		customList->addRule(rule);
@@ -154,7 +152,6 @@ void AdBlockIcon::animateIcon() {
 	if (icon().isNull()) {
 		setIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
 	}
-
 	else {
 		setIcon(QIcon());
 	}

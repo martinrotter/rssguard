@@ -65,15 +65,12 @@ Application::Application(const QString& id, int& argc, char** argv)
 	connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
 	connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
 	connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
-
 #if defined(USE_WEBENGINE)
 	connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 	QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
-
 	// TODO: Call load settings when saving app settings from dialog.
 	// Will need add that if I add more settings in the future.
 	m_urlInterceptor->loadSettings();
-
 	QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(
 	    QByteArray(APP_LOW_NAME),
 	    new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
@@ -91,7 +88,6 @@ FeedReader* Application::feedReader() {
 QList<QAction*> Application::userActions() {
 	if (m_mainForm != nullptr && m_userActions.isEmpty()) {
 		m_userActions = m_mainForm->allActions();
-
 #if defined(USE_WEBENGINE)
 		m_userActions.append(AdBlockManager::instance()->adBlockIcon());
 #endif
@@ -109,7 +105,6 @@ bool Application::isFirstRun(const QString& version) {
 		// Check this only if checked version is equal to actual version.
 		return settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, true).toBool();
 	}
-
 	else {
 		return false;
 	}
@@ -228,7 +223,6 @@ QString Application::userDataPath() {
 	if (settings()->type() == SettingsProperties::Portable) {
 		return getUserDataAppPath();
 	}
-
 	else {
 		return getUserDataHomePath();
 	}
@@ -241,7 +235,6 @@ QString Application::getUserDataHomePath() {
 	if (QDir().exists(home_folder)) {
 		return home_folder;
 	}
-
 	else {
 		return getConfigHomePath() + QDir::separator() + QSL(APP_NAME);
 	}
@@ -307,14 +300,12 @@ void Application::processExecutionMessage(const QString& message) {
 	if (messages.contains(APP_QUIT_INSTANCE)) {
 		quit();
 	}
-
 	else {
 		foreach (const QString& msg, messages) {
 			if (msg == APP_IS_RUNNING) {
 				showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
 				mainForm()->display();
 			}
-
 			else if (msg.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
 				// Application was running, and someone wants to add new feed.
 				StandardServiceRoot* root = qApp->feedReader()->feedsModel()->standardServiceRoot();
@@ -322,7 +313,6 @@ void Application::processExecutionMessage(const QString& message) {
 				if (root != nullptr) {
 					root->checkArgumentForFeedAdding(msg);
 				}
-
 				else {
 					showGuiMessage(tr("Cannot add feed"),
 					               tr("Feed cannot be added because standard RSS/ATOM account is not enabled."),

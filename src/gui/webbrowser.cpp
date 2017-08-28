@@ -158,7 +158,6 @@ void WebBrowser::onTitleChanged(const QString& new_title) {
 		//: Webbrowser tab title when no title is available.
 		emit titleChanged(m_index, tr("No title"));
 	}
-
 	else {
 		emit titleChanged(m_index, new_title);
 	}
@@ -223,7 +222,6 @@ void WebBrowser::onLoadingFinished(bool success) {
 			this->m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(), result));
 		});
 	}
-
 	else {
 		m_btnDiscoverFeeds->clearFeedAddresses();
 	}

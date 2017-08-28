@@ -82,7 +82,6 @@ void MessagesModel::loadMessages(RootItem* item) {
 	if (item == nullptr) {
 		setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
 	}
-
 	else {
 		if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
 			setFilter(QSL("true != true"));
@@ -138,7 +137,6 @@ void MessagesModel::updateDateFormat() {
 	if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()) {
 		m_customDateFormat = qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString();
 	}
-
 	else {
 		m_customDateFormat = QString();
 	}
@@ -202,21 +200,17 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 				if (m_customDateFormat.isEmpty()) {
 					return dt.toString(Qt::DefaultLocaleShortDate);
 				}
-
 				else {
 					return dt.toString(m_customDateFormat);
 				}
 			}
-
 			else if (index_column == MSG_DB_AUTHOR_INDEX) {
 				const QString author_name = QSqlQueryModel::data(idx, role).toString();
 				return author_name.isEmpty() ? QSL("-") : author_name;
 			}
-
 			else if (index_column != MSG_DB_IMPORTANT_INDEX && index_column != MSG_DB_READ_INDEX) {
 				return QSqlQueryModel::data(idx, role);
 			}
-
 			else {
 				return QVariant();
 			}
@@ -235,7 +229,6 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 				QModelIndex idx_del = index(idx.row(), MSG_DB_PDELETED_INDEX);
 				is_deleted = data(idx_del, Qt::EditRole).toBool();
 			}
-
 			else {
 				QModelIndex idx_del = index(idx.row(), MSG_DB_DELETED_INDEX);
 				is_deleted = data(idx_del, Qt::EditRole).toBool();
@@ -246,7 +239,6 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 			if (data_read.toBool()) {
 				return striked ? m_normalStrikedFont : m_normalFont;
 			}
-
 			else {
 				return striked ? m_boldStrikedFont : m_boldFont;
 			}
@@ -279,13 +271,11 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 				QVariant dta = m_cache->containsData(idx_read.row()) ? m_cache->data(idx_read) : QSqlQueryModel::data(idx_read);
 				return dta.toInt() == 1 ? m_readIcon : m_unreadIcon;
 			}
-
 			else if (index_column == MSG_DB_IMPORTANT_INDEX) {
 				QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
 				QVariant dta = m_cache->containsData(idx_important.row()) ? m_cache->data(idx_important) : QSqlQueryModel::data(idx_important);
 				return dta.toInt() == 1 ? m_favoriteIcon : QVariant();
 			}
-
 			else {
 				return QVariant();
 			}
@@ -322,7 +312,6 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 	if (DatabaseQueries::markMessagesReadUnread(m_db, QStringList() << QString::number(message.m_id), read)) {
 		return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<Message>() << message, read);
 	}
-
 	else {
 		return false;
 	}
@@ -374,7 +363,6 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 		return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem,
 		        QList<QPair<Message, RootItem::Importance>>() << pair);
 	}
-
 	else {
 		return false;
 	}
@@ -407,7 +395,6 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
 	if (DatabaseQueries::switchMessagesImportance(m_db, message_ids)) {
 		return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
 	}
-
 	else {
 		return false;
 	}
@@ -426,7 +413,6 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
 		if (qobject_cast<RecycleBin*>(m_selectedItem) != nullptr) {
 			setData(index(message.row(), MSG_DB_PDELETED_INDEX), 1);
 		}
-
 		else {
 			setData(index(message.row(), MSG_DB_DELETED_INDEX), 1);
 		}
@@ -443,7 +429,6 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
 	if (m_selectedItem->kind() != RootItemKind::Bin) {
 		deleted = DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, true);
 	}
-
 	else {
 		deleted = DatabaseQueries::permanentlyDeleteMessages(m_db, message_ids);
 	}
@@ -451,7 +436,6 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
 	if (deleted) {
 		return m_selectedItem->getParentServiceRoot()->onAfterMessagesDelete(m_selectedItem, msgs);
 	}
-
 	else {
 		return false;
 	}
@@ -478,7 +462,6 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
 	if (DatabaseQueries::markMessagesReadUnread(m_db, message_ids, read)) {
 		return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
 	}
-
 	else {
 		return false;
 	}
@@ -506,7 +489,6 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
 	if (DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, false)) {
 		return m_selectedItem->getParentServiceRoot()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
 	}
-
 	else {
 		return false;
 	}
@@ -523,7 +505,6 @@ QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int
 			if (section != MSG_DB_READ_INDEX && section != MSG_DB_IMPORTANT_INDEX) {
 				return m_headerData.at(section);
 			}
-
 			else {
 				return QVariant();
 			}

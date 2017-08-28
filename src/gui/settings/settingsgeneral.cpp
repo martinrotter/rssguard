@@ -71,7 +71,6 @@ void SettingsGeneral::saveSettings() {
 	if (m_ui->m_checkAutostart->isChecked()) {
 		qApp->system()->setAutoStartStatus(SystemFactory::AutoStartStatus::Enabled);
 	}
-
 	else {
 		qApp->system()->setAutoStartStatus(SystemFactory::AutoStartStatus::Disabled);
 	}

@@ -90,11 +90,9 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
 			new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
 			qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));
 		}
-
 		else if (attribute.isEmpty() || attribute == QSL("alternate")) {
 			last_link_alternate = link.attribute(QSL("href"));
 		}
-
 		else {
 			last_link_other = link.attribute(QSL("href"));
 		}
@@ -103,11 +101,9 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
 	if (!last_link_alternate.isEmpty()) {
 		new_message.m_url = last_link_alternate;
 	}
-
 	else if (!last_link_other.isEmpty()) {
 		new_message.m_url = last_link_other;
 	}
-
 	else if (!new_message.m_enclosures.isEmpty()) {
 		new_message.m_url = new_message.m_enclosures.first().m_url;
 	}

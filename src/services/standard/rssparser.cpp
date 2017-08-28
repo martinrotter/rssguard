@@ -38,7 +38,6 @@ QDomNodeList RssParser::messageElements() {
 	if (channel_elem.isNull()) {
 		return QDomNodeList();
 	}
-
 	else {
 		return channel_elem.toElement().elementsByTagName(QSL("item"));
 	}
@@ -62,14 +61,12 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
 			// BOTH title and description are empty, skip this message.
 			throw new ApplicationException(QSL("Not enough data for the message."));
 		}
-
 		else {
 			// Title is empty but description is not.
 			new_message.m_title = qApp->web()->stripTags(elem_description.simplified());
 			new_message.m_contents = elem_description;
 		}
 	}
-
 	else {
 		// Title is really not empty, description does not matter.
 		new_message.m_title = qApp->web()->stripTags(elem_title);

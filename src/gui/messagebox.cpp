@@ -100,7 +100,6 @@ QMessageBox::StandardButton MessageBox::show(QWidget* parent,
 	if (msg_box.exec() == -1) {
 		return QMessageBox::Cancel;
 	}
-
 	else {
 		return msg_box.standardButton(msg_box.clickedButton());
 	}

@@ -46,7 +46,6 @@ QList<Message> FeedParser::messages() {
 
 			messages.append(new_message);
 		}
-
 		catch (const ApplicationException& ex) {
 			qDebug(qPrintable(ex.message()));
 		}

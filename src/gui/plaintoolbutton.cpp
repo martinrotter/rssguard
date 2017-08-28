@@ -43,7 +43,6 @@ void PlainToolButton::paintEvent(QPaintEvent* e) {
 			p.setOpacity(0.7);
 		}
 	}
-
 	else {
 		p.setOpacity(0.3);
 	}

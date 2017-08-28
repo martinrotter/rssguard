@@ -33,7 +33,6 @@ RootItem* AccountCheckModel::itemForIndex(const QModelIndex& index) const {
 	if (index.isValid() && index.model() == this) {
 		return static_cast<RootItem*>(index.internalPointer());
 	}
-
 	else {
 		return m_rootItem;
 	}
@@ -82,7 +81,6 @@ QModelIndex AccountCheckModel::index(int row, int column, const QModelIndex& par
 	if (child_item) {
 		return createIndex(row, column, child_item);
 	}
-
 	else {
 		return QModelIndex();
 	}
@@ -112,7 +110,6 @@ QModelIndex AccountCheckModel::indexForItem(RootItem* item) const {
 				// We found our item.
 				return index(candidate_index, 0, active_index);
 			}
-
 			else {
 				// Item is not found, add all "categories" from active_item.
 				for (int i = 0; i < row_count; i++) {
@@ -140,7 +137,6 @@ QModelIndex AccountCheckModel::parent(const QModelIndex& child) const {
 	if (parent_item == m_rootItem) {
 		return QModelIndex();
 	}
-
 	else {
 		return createIndex(parent_item->row(), 0, parent_item);
 	}
@@ -150,14 +146,12 @@ int AccountCheckModel::rowCount(const QModelIndex& parent) const {
 	if (parent.column() > 0) {
 		return 0;
 	}
-
 	else {
 		RootItem* item = itemForIndex(parent);
 
 		if (item != nullptr) {
 			return item->childCount();
 		}
-
 		else {
 			return 0;
 		}
@@ -180,12 +174,10 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
 		if (m_checkStates.contains(item)) {
 			return m_checkStates.value(item);
 		}
-
 		else {
 			return static_cast<int>(Qt::Unchecked);
 		}
 	}
-
 	else if (role == Qt::DecorationRole) {
 		switch (item->kind()) {
 			case RootItemKind::Category:
@@ -197,7 +189,6 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
 				return QVariant();
 		}
 	}
-
 	else if (role == Qt::DisplayRole) {
 		switch (item->kind()) {
 			case RootItemKind::Category:
@@ -210,7 +201,6 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
 				return item->title();
 		}
 	}
-
 	else {
 		return QVariant();
 	}

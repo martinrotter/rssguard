@@ -100,7 +100,6 @@ void MessagesView::reloadSelections() {
 		if (m_proxyModel->rowCount() == 0) {
 			current_index = QModelIndex();
 		}
-
 		else {
 			for (int i = 0; i < m_proxyModel->rowCount(); i++) {
 				QModelIndex msg_idx = m_proxyModel->index(i, MSG_DB_TITLE_INDEX);
@@ -123,7 +122,6 @@ void MessagesView::reloadSelections() {
 		setCurrentIndex(current_index);
 		reselectIndexes(QModelIndexList() << current_index);
 	}
-
 	else {
 		// Messages were probably removed from the model, nothing can
 		// be selected and no message can be displayed.
@@ -169,7 +167,6 @@ void MessagesView::contextMenuEvent(QContextMenuEvent* event) {
 		TreeViewColumnsMenu menu(header());
 		menu.exec(event->globalPos());
 	}
-
 	else {
 		// Context menu is not initialized, initialize.
 		initializeContextMenu();
@@ -257,7 +254,6 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
 		message.m_isRead = true;
 		emit currentMessageChanged(message, m_sourceModel->loadedItem());
 	}
-
 	else {
 		emit currentMessageRemoved();
 	}
@@ -348,7 +344,6 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
 	if (current_index.isValid()) {
 		emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
 	}
-
 	else {
 		emit currentMessageRemoved();
 	}
@@ -370,7 +365,6 @@ void MessagesView::deleteSelectedMessages() {
 		setCurrentIndex(current_index);
 		emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
 	}
-
 	else {
 		emit currentMessageRemoved();
 	}
@@ -391,7 +385,6 @@ void MessagesView::restoreSelectedMessages() {
 	if (current_index.isValid()) {
 		emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
 	}
-
 	else {
 		emit currentMessageRemoved();
 	}
@@ -412,7 +405,6 @@ void MessagesView::switchSelectedMessagesImportance() {
 	if (current_index.isValid()) {
 		emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
 	}
-
 	else {
 		// Messages were probably removed from the model, nothing can
 		// be selected and no message can be displayed.
@@ -460,7 +452,6 @@ void MessagesView::selectNextUnreadItem() {
 		// Okay, something is selected, start from it.
 		active_row = selected_rows.at(0).row();
 	}
-
 	else {
 		active_row = 0;
 	}
@@ -481,7 +472,6 @@ void MessagesView::searchMessages(const QString& pattern) {
 	if (selectionModel()->selectedRows().size() == 0) {
 		emit currentMessageRemoved();
 	}
-
 	else {
 		// Scroll to selected message, it could become scrolled out due to filter change.
 		scrollTo(selectionModel()->selectedRows().at(0));

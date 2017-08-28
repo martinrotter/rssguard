@@ -43,7 +43,6 @@ void RssGuardSchemeHandler::requestStarted(QWebEngineUrlRequestJob* job) {
 	else {
 		QBuffer* buf = new QBuffer(job);
 		buf->setData(data);
-
 		job->reply(QByteArray("text/html"), buf);
 	}
 }
@@ -53,10 +52,8 @@ QByteArray RssGuardSchemeHandler::targetData(const QUrl& url) {
 
 	if (url_string.contains(QSL(ADBLOCK_ADBLOCKED_PAGE))) {
 		QUrlQuery query(url);
-
 		const QString& subscription = query.queryItemValue(QSL("subscription"));
 		const QString& rule = query.queryItemValue(QSL("rule"));
-
 		return qApp->skins()->adBlockedPage(subscription, rule).toUtf8();
 	}
 	else {

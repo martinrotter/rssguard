@@ -128,20 +128,17 @@ void FormEditTtRssAccount::performTest() {
 				                                 tr("API access on selected server is not enabled."),
 				                                 tr("API access on selected server is not enabled."));
 			}
-
 			else if (error == LOGIN_ERROR) {
 				m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
 				                                 tr("Entered credentials are incorrect."),
 				                                 tr("Entered credentials are incorrect."));
 			}
-
 			else {
 				m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
 				                                 tr("Other error occurred, contact developers."),
 				                                 tr("Other error occurred, contact developers."));
 			}
 		}
-
 		else if (result.apiLevel() < MINIMAL_API_LEVEL) {
 			m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
 			                                 tr("Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(QString::number(
@@ -149,7 +146,6 @@ void FormEditTtRssAccount::performTest() {
 			                                         QString::number(MINIMAL_API_LEVEL)),
 			                                 tr("Selected Tiny Tiny RSS server is running unsupported version of API."));
 		}
-
 		else {
 			m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Ok,
 			                                 tr("Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.").arg(QString::number(
@@ -158,13 +154,11 @@ void FormEditTtRssAccount::performTest() {
 			                                 tr("Tiny Tiny RSS server is okay."));
 		}
 	}
-
 	else if (factory.lastError()  != QNetworkReply::NoError) {
 		m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
 		                                 tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
 		                                 tr("Network error, have you entered correct Tiny Tiny RSS API endpoint and password?"));
 	}
-
 	else {
 		m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
 		                                 tr("Unspecified error, did you enter correct URL?"),
@@ -209,7 +203,6 @@ void FormEditTtRssAccount::onUsernameChanged() {
 	if (username.isEmpty()) {
 		m_ui->m_txtUsername->setStatus(WidgetWithStatus::Error, tr("Username cannot be empty."));
 	}
-
 	else {
 		m_ui->m_txtUsername->setStatus(WidgetWithStatus::Ok, tr("Username is okay."));
 	}
@@ -221,7 +214,6 @@ void FormEditTtRssAccount::onPasswordChanged() {
 	if (password.isEmpty()) {
 		m_ui->m_txtPassword->setStatus(WidgetWithStatus::Error, tr("Password cannot be empty."));
 	}
-
 	else {
 		m_ui->m_txtPassword->setStatus(WidgetWithStatus::Ok, tr("Password is okay."));
 	}
@@ -253,11 +245,9 @@ void FormEditTtRssAccount::onUrlChanged() {
 	if (url.isEmpty()) {
 		m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL cannot be empty."));
 	}
-
 	else if (url.endsWith(QL1S("/api/")) || url.endsWith(QL1S("/api"))) {
 		m_ui->m_txtUrl->setStatus(WidgetWithStatus::Warning, tr("URL should NOT end with \"/api/\"."));
 	}
-
 	else {
 		m_ui->m_txtUrl->setStatus(WidgetWithStatus::Ok, tr("URL is okay."));
 	}

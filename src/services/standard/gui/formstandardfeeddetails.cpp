@@ -51,7 +51,6 @@ void FormStandardFeedDetails::apply() {
 			m_serviceRoot->requestItemReassignment(new_feed, parent);
 			accept();
 		}
-
 		else {
 			delete new_feed;
 			qApp->showGuiMessage(tr("Cannot add feed"),
@@ -59,7 +58,6 @@ void FormStandardFeedDetails::apply() {
 			                     QSystemTrayIcon::Critical, this, true);
 		}
 	}
-
 	else {
 		new_feed->setParent(parent);
 		// Edit the feed.
@@ -69,7 +67,6 @@ void FormStandardFeedDetails::apply() {
 			m_serviceRoot->requestItemReassignment(m_editableFeed, new_feed->parent());
 			accept();
 		}
-
 		else {
 			qApp->showGuiMessage(tr("Cannot edit feed"),
 			                     tr("Feed was not edited due to error."),

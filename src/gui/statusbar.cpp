@@ -111,25 +111,21 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
 			action_to_add = m_barProgressDownloadAction;
 			widget_to_add->setVisible(false);
 		}
-
 		else if (matching_action == m_barProgressFeedsAction) {
 			widget_to_add = m_barProgressFeeds;
 			action_to_add = m_barProgressFeedsAction;
 			widget_to_add->setVisible(progress_visible);
 		}
-
 		else if (matching_action == m_lblProgressDownloadAction) {
 			widget_to_add = m_lblProgressDownload;
 			action_to_add = m_lblProgressDownloadAction;
 			widget_to_add->setVisible(false);
 		}
-
 		else if (matching_action == m_lblProgressFeedsAction) {
 			widget_to_add = m_lblProgressFeeds;
 			action_to_add = m_lblProgressFeedsAction;
 			widget_to_add->setVisible(progress_visible);
 		}
-
 		else {
 			if (action_name == SEPARATOR_ACTION_NAME) {
 				QLabel* lbl = new QLabel(QString::fromUtf8("•"));
@@ -138,7 +134,6 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
 				action_to_add->setSeparator(true);
 				action_to_add->setProperty("should_remove_action", true);
 			}
-
 			else if (action_name == SPACER_ACTION_NAME) {
 				QLabel* lbl = new QLabel(QSL("\t\t"));
 				widget_to_add = lbl;
@@ -148,7 +143,6 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
 				action_to_add->setProperty("type", SPACER_ACTION_NAME);
 				action_to_add->setProperty("name", tr("Toolbar spacer"));
 			}
-
 			else if (matching_action != nullptr) {
 				// Add originally toolbar action.
 				PlainToolButton* tool_button = new PlainToolButton(this);
@@ -158,7 +152,6 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
 				connect(tool_button, &PlainToolButton::clicked, matching_action, &QAction::trigger);
 				connect(matching_action, &QAction::changed, tool_button, &PlainToolButton::reactOnSenderActionChange);
 			}
-
 			else {
 				action_to_add = nullptr;
 				widget_to_add = nullptr;

@@ -47,7 +47,6 @@ void AutoSaver::changeOccurred() {
 	if (m_firstChange.elapsed() > MAXWAIT) {
 		saveIfNeccessary();
 	}
-
 	else {
 		m_timer.start(AUTOSAVE_IN, this);
 	}
@@ -57,7 +56,6 @@ void AutoSaver::timerEvent(QTimerEvent* event) {
 	if (event->timerId() == m_timer.timerId()) {
 		saveIfNeccessary();
 	}
-
 	else {
 		QObject::timerEvent(event);
 	}
