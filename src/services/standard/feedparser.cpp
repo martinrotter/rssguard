@@ -19,6 +19,8 @@
 
 #include "exceptions/applicationexception.h"
 
+#include <QDebug>
+
 
 FeedParser::FeedParser(const QString& data) : m_xmlData(data) {
 	m_xml.setContent(m_xmlData, true);
@@ -47,8 +49,8 @@ QList<Message> FeedParser::messages() {
 			messages.append(new_message);
 		}
 		catch (const ApplicationException& ex) {
-			qDebug(qPrintable(ex.message()));
-		}
+      qDebug() << ex.message();
+    }
 	}
 
 	return messages;

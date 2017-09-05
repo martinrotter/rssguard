@@ -71,7 +71,7 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 	// No correct path was found.
 	if (desktop_file_location.isEmpty()) {
 		qWarning("Searching for auto-start function status failed. HOME variable not found.");
-		return SystemFactory::Unavailable;
+    return AutoStartStatus::Unavailable;
 	}
 
 	// We found correct path, now check if file exists and return correct status.
@@ -79,15 +79,15 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 		// File exists, we must read it and check if "Hidden" attribute is defined and what is its value.
 		QSettings desktop_settings(desktop_file_location, QSettings::IniFormat);
 		bool hidden_value = desktop_settings.value(QSL("Desktop Entry/Hidden"), false).toBool();
-		return hidden_value ? SystemFactory::Disabled : SystemFactory::Enabled;
+    return hidden_value ? AutoStartStatus::Disabled : AutoStartStatus::Enabled;
 	}
 	else {
-		return SystemFactory::Disabled;
+    return AutoStartStatus::Disabled;
 	}
 
 #else
 	// Disable auto-start functionality on unsupported platforms.
-	return SystemFactory::Unavailable;
+  return AutoStartStatus::Unavailable;
 #endif
 }
 
