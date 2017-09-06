@@ -139,8 +139,8 @@ int main(int argc, char* argv[]) {
 		QObject::connect(qApp->system(), &SystemFactory::updatesChecked, [](QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates) {
 			QObject::disconnect(qApp->system(), &SystemFactory::updatesChecked, nullptr, nullptr);
 
-			if (!updates.first.isEmpty() && updates.second == QNetworkReply::NoError &&
-			        !SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, APP_VERSION)) {
+      if (!updates.first.isEmpty() && updates.second == QNetworkReply::NoError &&
+              SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, APP_VERSION)) {
 				qApp->showGuiMessage(QObject::tr("New version available"),
 				                     QObject::tr("Click the bubble for more information."),
 				                     QSystemTrayIcon::Information, qApp->mainForm(), false,
