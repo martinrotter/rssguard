@@ -299,8 +299,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
 	return (m_lastError = network_reply.first);
 }
 
-QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
-        const QStringList& custom_ids) {
+QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
 	QJsonObject json;
 	QJsonArray ids;
 	QByteArray raw_output;

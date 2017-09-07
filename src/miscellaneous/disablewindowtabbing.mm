@@ -5,7 +5,7 @@
 // See http://lists.qt-project.org/pipermail/interest/2016-September/024488.html
 void disableWindowTabbing()
 {
-    if ([NSWindow respondsToSelector:@selector(allowsAutomaticWindowTabbing)]) {
-        NSWindow.allowsAutomaticWindowTabbing = NO;
-    }
+    //if ([NSWindow respondsToSelector:@selector(allowsAutomaticWindowTabbing)]) {
+    //    NSWindow.allowsAutomaticWindowTabbing = NO;
+    //}
 }
