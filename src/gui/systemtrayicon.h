@@ -25,6 +25,8 @@
 #include <QPixmap>
 #include <QMenu>
 
+#include <functional>
+
 
 class FormMain;
 class QEvent;

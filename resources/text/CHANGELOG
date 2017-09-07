@@ -1,3 +1,9 @@
+3.4.3
+—————
+
+Fixed:
+▪ Fixed build on some Unit-like operating systems.
+
 3.4.2
 —————
 
@@ -8,7 +14,6 @@ Added:
 ▪ New Qt 5.9.1 release.
 ▪ New SSL libraries.
 ▪ Binaries are now compiled on x64-only mode for Windows!!!
-
 
 3.4.1
 —————
