@@ -25,7 +25,7 @@ echo "DMGNAME IS: $dmgname"
 echo "DMGNAME NO SPACE IS: $dmgnamenospace"
 
 curl --upload-file "./$dmgname" "https://transfer.sh/$dmgnamenospace" --silent >> ./build-wiki/Mac-OS-X-development-builds.md
-echo >> ./build-wiki/Mac-OS-X-development-builds.md
+echo "\n" >> ./build-wiki/Mac-OS-X-development-builds.md
 cat ./build-wiki/Mac-OS-X-development-builds.md
 
 cd ./build-wiki
