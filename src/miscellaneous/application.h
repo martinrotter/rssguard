@@ -33,6 +33,8 @@
 
 #include <QList>
 
+#include <functional>
+
 #if defined(qApp)
 #undef qApp
 #endif
