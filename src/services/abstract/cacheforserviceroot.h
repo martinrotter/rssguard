@@ -35,6 +35,11 @@ class CacheForServiceRoot {
 		void addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance);
 		void addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read);
 
+    // Persistently saves/loads cached changes to/from file.
+    // NOTE: The whole cache is cleared after save is done and before load is done.
+    void saveCacheToFile(int accId);
+    void loadCacheFromFile(int accId);
+
 	protected:
 		QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> takeMessageCache();
 

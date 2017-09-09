@@ -33,36 +33,69 @@ CacheForServiceRoot::~CacheForServiceRoot() {
 
 void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance) {
 	m_cacheSaveMutex->lock();
+
 	QList<Message>& list_act = m_cachedStatesImportant[importance];
 	QList<Message>& list_other = m_cachedStatesImportant[importance == RootItem::Important ? RootItem::NotImportant : RootItem::Important];
+
 	// Store changes, they will be sent to server later.
 	list_act.append(ids_of_messages);
 	QSet<Message> set_act = list_act.toSet();
 	QSet<Message> set_other = list_other.toSet();
+
 	// Now, we want to remove all IDS from list_other, which are contained in list.
 	set_other -= set_act;
 	list_act.clear();
 	list_act.append(set_act.toList());
 	list_other.clear();
 	list_other.append(set_other.toList());
+
 	m_cacheSaveMutex->unlock();
 }
 
 void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read) {
 	m_cacheSaveMutex->lock();
+
 	QStringList& list_act = m_cachedStatesRead[read];
 	QStringList& list_other = m_cachedStatesRead[read == RootItem::Read ? RootItem::Unread : RootItem::Read];
+
 	// Store changes, they will be sent to server later.
 	list_act.append(ids_of_messages);
 	QSet<QString> set_act = list_act.toSet();
 	QSet<QString> set_other = list_other.toSet();
+
 	// Now, we want to remove all IDS from list_other, which are contained in list.
 	set_other -= set_act;
 	list_act.clear();
 	list_act.append(set_act.toList());
 	list_other.clear();
 	list_other.append(set_other.toList());
-	m_cacheSaveMutex->unlock();
+
+  m_cacheSaveMutex->unlock();
+}
+
+void CacheForServiceRoot::saveCacheToFile(int accId) {
+  m_cacheSaveMutex->lock();
+
+  // Save to file.
+
+
+
+  clearCache();
+  m_cacheSaveMutex->unlock();
+}
+
+void CacheForServiceRoot::clearCache() {
+  m_cachedStatesRead.clear();
+  m_cachedStatesImportant.clear();
+}
+
+void CacheForServiceRoot::loadCacheFromFile(int accId) {
+  m_cacheSaveMutex->lock();
+  clearCache();
+
+  // Load from file.
+
+  m_cacheSaveMutex->unlock();
 }
 
 QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> CacheForServiceRoot::takeMessageCache() {
@@ -71,16 +104,19 @@ QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<
 	if (m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty()) {
 		// No cached changes.
 		m_cacheSaveMutex->unlock();
+
 		return QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>>();
 	}
 
 	// Make copy of changes.
 	QMap<RootItem::ReadStatus, QStringList> cached_data_read = m_cachedStatesRead;
 	cached_data_read.detach();
+
 	QMap<RootItem::Importance, QList<Message>> cached_data_imp = m_cachedStatesImportant;
 	cached_data_imp.detach();
-	m_cachedStatesRead.clear();
-	m_cachedStatesImportant.clear();
+
+  clearCache();
 	m_cacheSaveMutex->unlock();
+
 	return QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>>(cached_data_read, cached_data_imp);
 }
