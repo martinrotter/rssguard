@@ -28,7 +28,16 @@ if [ $# -eq 0 ]; then
 fi
 
 ASTYLE_CMD="astyle"
-ASTYLE_RC="$(dirname $0)/.astylerc"
+
+if [[ "$(uname -o)" == "Cygwin" ]]; then
+  ASTYLE_RC="$(cygpath -w $(realpath $(dirname $0)))/.astylerc"
+else
+  ASTYLE_RC="$(realpath $(dirname $0))/.astylerc"
+fi
+
+ASTYLE_RC="$(cygpath -w $(realpath $(dirname $0)))/.astylerc"
+
+echo "ASTYLE config file: $ASTYLE_RC"
 
 # Check all args.
 for dir in "$@"; do

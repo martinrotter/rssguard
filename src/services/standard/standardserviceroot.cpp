@@ -44,8 +44,8 @@
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent)
 	: ServiceRoot(parent), m_recycleBin(new RecycleBin(this)),
-  m_actionExportFeeds(nullptr), m_actionImportFeeds(nullptr), m_serviceMenu(QList<QAction*>()),
-  m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(nullptr) {
+	  m_actionExportFeeds(nullptr), m_actionImportFeeds(nullptr), m_serviceMenu(QList<QAction*>()),
+	  m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(nullptr) {
 	setTitle(qApp->system()->loggedInUser() + QL1S("@") + QL1S(APP_LOW_NAME));
 	setIcon(StandardServiceEntryPoint().icon());
 	setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
@@ -59,7 +59,7 @@ StandardServiceRoot::~StandardServiceRoot() {
 void StandardServiceRoot::start(bool freshly_activated) {
 	loadFromDatabase();
 
-  if (freshly_activated && getSubTree(RootItemKind::Feed).isEmpty()) {
+	if (freshly_activated && getSubTree(RootItemKind::Feed).isEmpty()) {
 		// In other words, if there are no feeds or categories added.
 		if (MessageBox::show(qApp->mainFormWidget(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
 		                     tr("This new account does not include any feeds. You can now add default set of feeds."),
@@ -143,17 +143,17 @@ void StandardServiceRoot::addNewFeed(const QString& url) {
 
 QVariant StandardServiceRoot::data(int column, int role) const {
 	switch (role) {
-  case Qt::ToolTipRole:
-    if (column == FDS_MODEL_TITLE_INDEX) {
-      return tr("This is service account for standard RSS/RDF/ATOM feeds.\n\nAccount ID: %1").arg(accountId());
-    }
-    else {
-			return ServiceRoot::data(column, role);
-    }
+		case Qt::ToolTipRole:
+			if (column == FDS_MODEL_TITLE_INDEX) {
+				return tr("This is service account for standard RSS/RDF/ATOM feeds.\n\nAccount ID: %1").arg(accountId());
+			}
+			else {
+				return ServiceRoot::data(column, role);
+			}
 
-  default:
-    return ServiceRoot::data(column, role);
-  }
+		default:
+			return ServiceRoot::data(column, role);
+	}
 }
 
 Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
@@ -178,7 +178,7 @@ void StandardServiceRoot::loadFromDatabase() {
 }
 
 void StandardServiceRoot::checkArgumentsForFeedAdding() {
-  foreach (const QString &arg, qApp->arguments().mid(1)) {
+	foreach (const QString& arg, qApp->arguments().mid(1)) {
 		checkArgumentForFeedAdding(arg);
 	}
 }

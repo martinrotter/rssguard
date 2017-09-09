@@ -64,7 +64,7 @@ class FeedsModel : public QAbstractItemModel {
 		// Returns all activated service roots.
 		// NOTE: Service root nodes are lying directly UNDER
 		// the model root item.
-		QList<ServiceRoot*> serviceRoots() const;
+		QList<ServiceRoot*>serviceRoots() const;
 
 		// Determines if there is any account activated from given entry point.
 		bool containsServiceRootFromEntryPoint(const ServiceEntryPoint* point) const;
@@ -79,15 +79,15 @@ class FeedsModel : public QAbstractItemModel {
 		// so feeds with "default" auto-update strategy should be updated.
 		//
 		// This method might change some properties of some feeds.
-		QList<Feed*> feedsForScheduledUpdate(bool auto_update_now);
+		QList<Feed*>feedsForScheduledUpdate(bool auto_update_now);
 
 		// Returns (undeleted) messages for given feeds.
 		// This is usually used for displaying whole feeds
 		// in "newspaper" mode.
-		QList<Message> messagesForItem(RootItem* item) const;
+		QList<Message>messagesForItem(RootItem* item) const;
 
 		// Returns ALL RECURSIVE CHILD feeds contained within single index.
-		QList<Feed*> feedsForIndex(const QModelIndex& index) const;
+		QList<Feed*>feedsForIndex(const QModelIndex& index) const;
 
 		// Returns feed/category which lies at the specified index or
 		// root item if index is invalid.
@@ -159,7 +159,7 @@ class FeedsModel : public QAbstractItemModel {
 		void messageCountsChanged(int unread_messages, bool any_feed_has_unread_messages);
 
 		// Emitted if any item requested that any view should expand it.
-		void itemExpandRequested(QList<RootItem*> items, bool expand);
+		void itemExpandRequested(QList<RootItem*>items, bool expand);
 
 		// Emitted if any item requested that its expand states should be explicitly saved.
 		// NOTE: Normally expand states are saved when application quits.
@@ -174,8 +174,8 @@ class FeedsModel : public QAbstractItemModel {
 
 	private:
 		RootItem* m_rootItem;
-		QList<QString> m_headerData;
-		QList<QString> m_tooltipData;
+		QList<QString>m_headerData;
+		QList<QString>m_tooltipData;
 		QIcon m_countsIcon;
 };
 

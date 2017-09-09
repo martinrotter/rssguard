@@ -339,7 +339,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(RootItem
         const QStringList& feed_ids,
         const QStringList& guid_hashes) {
 	QJsonObject json;
-	QJsonArray  ids;
+	QJsonArray ids;
 	QByteArray raw_output;
 	QString final_url;
 
@@ -482,7 +482,7 @@ OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() {
 
 RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons) const {
 	RootItem* parent = new RootItem();
-	QMap<int, RootItem*> cats;
+	QMap<int, RootItem*>cats;
 	cats.insert(0, parent);
 
 	// Process categories first, then process feeds.
@@ -535,8 +535,8 @@ OwnCloudGetMessagesResponse::OwnCloudGetMessagesResponse(const QString& raw_cont
 OwnCloudGetMessagesResponse::~OwnCloudGetMessagesResponse() {
 }
 
-QList<Message> OwnCloudGetMessagesResponse::messages() const {
-	QList<Message> msgs;
+QList<Message>OwnCloudGetMessagesResponse::messages() const {
+	QList<Message>msgs;
 
 	foreach (const QJsonValue& message, m_rawContent["items"].toArray()) {
 		QJsonObject message_map = message.toObject();

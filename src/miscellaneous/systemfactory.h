@@ -30,6 +30,7 @@
 
 class UpdateUrl {
 	public:
+
 		QString m_fileUrl;
 		QString m_name;
 		QString m_size;
@@ -37,10 +38,12 @@ class UpdateUrl {
 
 class UpdateInfo {
 	public:
+
 		QString m_availableVersion;
 		QString m_changes;
-		QList<UpdateUrl> m_urls;
 		QDateTime m_date;
+
+		QList<UpdateUrl> m_urls;
 };
 
 Q_DECLARE_METATYPE(UpdateInfo)

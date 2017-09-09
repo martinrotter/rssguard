@@ -42,10 +42,10 @@ Q_GLOBAL_STATIC(AdBlockManager, qz_adblock_manager)
 
 
 AdBlockManager::AdBlockManager(QObject* parent)
-  : QObject(parent), m_loaded(false), m_enabled(true), m_matcher(new AdBlockMatcher(this)), m_interceptor(new AdBlockUrlInterceptor(this)) {
-  load();
-  m_adblockIcon = new AdBlockIcon(this);
-  m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
+	: QObject(parent), m_loaded(false), m_enabled(true), m_matcher(new AdBlockMatcher(this)), m_interceptor(new AdBlockUrlInterceptor(this)) {
+	load();
+	m_adblockIcon = new AdBlockIcon(this);
+	m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
 }
 
 AdBlockManager::~AdBlockManager() {
