@@ -23,6 +23,7 @@
 #include <QDateTime>
 #include <QStringList>
 #include <QSqlRecord>
+#include <QDataStream>
 
 
 // Represents single enclosure.
@@ -78,6 +79,11 @@ class Message {
 			return !(lhs == rhs);
 		}
 };
+
+// Serialize message state.
+// NOTE: This is used for persistent caching of message state changes.
+QDataStream& operator<<(QDataStream& out, const Message& myObj);
+QDataStream& operator>>(QDataStream& in, Message& myObj);
 
 uint qHash(Message key, uint seed);
 uint qHash(const Message& key);

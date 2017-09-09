@@ -79,7 +79,7 @@ class FeedReader : public QObject {
 		// Is executed when next auto-update round could be done.
 		void executeNextAutoUpdate();
 		void checkServicesForAsyncOperations();
-		void checkServicesForAsyncOperations(bool wait_for_future);
+    void checkServicesForAsyncOperations(bool wait_for_future, bool do_on_this_thread = false);
 		void asyncCacheSaveFinished();
 
 	signals:

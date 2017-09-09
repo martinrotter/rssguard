@@ -83,14 +83,17 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
 	if (m_feedDownloader == nullptr) {
 		m_feedDownloader = new FeedDownloader();
 		m_feedDownloaderThread = new QThread();
+
 		// Downloader setup.
 		qRegisterMetaType<QList<Feed*>>("QList<Feed*>");
 		m_feedDownloader->moveToThread(m_feedDownloaderThread);
-		connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloaderThread, &QThread::deleteLater);
+
+    connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloaderThread, &QThread::deleteLater);
 		connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::feedUpdatesFinished);
 		connect(m_feedDownloader, &FeedDownloader::updateProgress, this, &FeedReader::feedUpdatesProgress);
 		connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
 		connect(m_feedDownloader, &FeedDownloader::updateFinished, qApp->feedUpdateLock(), &Mutex::unlock);
+
 		// Connections are made, start the feed downloader thread.
 		m_feedDownloaderThread->start();
 	}
@@ -149,10 +152,12 @@ DatabaseCleaner* FeedReader::databaseCleaner() {
 	if (m_dbCleaner == nullptr) {
 		m_dbCleaner = new DatabaseCleaner();
 		m_dbCleanerThread = new QThread();
+
 		// Downloader setup.
 		qRegisterMetaType<CleanerOrders>("CleanerOrders");
 		m_dbCleaner->moveToThread(m_dbCleanerThread);
 		connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
+
 		// Connections are made, start the feed downloader thread.
 		m_dbCleanerThread->start();
 	}
@@ -211,8 +216,8 @@ void FeedReader::checkServicesForAsyncOperations() {
 	checkServicesForAsyncOperations(false);
 }
 
-void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
-	if (m_cacheSaveFutureWatcher->future().isRunning()) {
+void FeedReader::checkServicesForAsyncOperations(bool wait_for_future, bool do_on_this_thread) {
+  if (!do_on_this_thread && m_cacheSaveFutureWatcher->future().isRunning()) {
 		qDebug("Previous future is still running.");
 
 		// If we want to wait for future synchronously, we want to make sure that
@@ -223,25 +228,34 @@ void FeedReader::checkServicesForAsyncOperations(bool wait_for_future) {
 		}
 		else {
 			qWarning("Some cached service data are being saved now, so aborting this saving cycle.");
-			// Some cache saving is now running.
+
+      // Some cache saving is now running.
 			return;
 		}
 	}
 
-	QFuture<void> future = QtConcurrent::run([&] {
-		foreach (ServiceRoot* service, m_feedsModel->serviceRoots()) {
-			// Store any cached data.
-			service->saveAllCachedData();
-		}
-	});
+  if (do_on_this_thread) {
+    foreach (ServiceRoot* service, m_feedsModel->serviceRoots()) {
+      // Store any cached data.
+      service->saveAllCachedData();
+    }
+  }
+  else {
+    QFuture<void> future = QtConcurrent::run([&] {
+      foreach (ServiceRoot* service, m_feedsModel->serviceRoots()) {
+        // Store any cached data.
+        service->saveAllCachedData();
+      }
+    });
 
-	if (wait_for_future) {
-		qDebug("Waiting for saving of cached service data to finish.");
-		future.waitForFinished();
-	}
-	else {
-		m_cacheSaveFutureWatcher->setFuture(future);
-	}
+    if (wait_for_future) {
+      qDebug("Waiting for saving of cached service data to finish.");
+      future.waitForFinished();
+    }
+    else {
+      m_cacheSaveFutureWatcher->setFuture(future);
+    }
+  }
 }
 
 void FeedReader::asyncCacheSaveFinished() {
@@ -257,9 +271,9 @@ void FeedReader::quit() {
 		m_autoUpdateTimer->stop();
 	}
 
-	checkServicesForAsyncOperations(true);
+  checkServicesForAsyncOperations(false, true);
 
-	// Close worker threads.
+  // Close worker threads.
 	if (m_feedDownloaderThread != nullptr && m_feedDownloaderThread->isRunning()) {
 		m_feedDownloader->stopRunningUpdate();
 

@@ -17,9 +17,11 @@
 
 #include "services/abstract/cacheforserviceroot.h"
 
+#include "miscellaneous/application.h"
 #include "miscellaneous/mutex.h"
 
 #include <QSet>
+#include <QDir>
 
 
 CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new Mutex(QMutex::NonRecursive, nullptr)),
@@ -77,10 +79,24 @@ void CacheForServiceRoot::saveCacheToFile(int accId) {
   m_cacheSaveMutex->lock();
 
   // Save to file.
+  const QString file_cache = qApp->userDataPath() + QDir::separator() + QString::number(accId) + "-cached-msgs.dat";
 
+  if (isEmpty()) {
+    QFile::remove(file_cache);
+  }
+  else {
+    QFile file(file_cache);
 
+    if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+      QDataStream stream(&file);
+      stream << m_cachedStatesImportant << m_cachedStatesRead;
+      file.flush();
+      file.close();
+    }
 
-  clearCache();
+    clearCache();
+  }
+
   m_cacheSaveMutex->unlock();
 }
 
@@ -94,6 +110,22 @@ void CacheForServiceRoot::loadCacheFromFile(int accId) {
   clearCache();
 
   // Load from file.
+  const QString file_cache = qApp->userDataPath() + QDir::separator() + QString::number(accId) + "-cached-msgs.dat";
+
+  QFile file(file_cache);
+
+  if (file.exists()) {
+    if (file.open(QIODevice::ReadOnly)) {
+      QDataStream stream(&file);
+      stream >> m_cachedStatesImportant >> m_cachedStatesRead;
+      file.flush();
+      file.close();
+    }
+
+    file.remove();
+  }
+
+  // TODO: TODO
 
   m_cacheSaveMutex->unlock();
 }
@@ -101,7 +133,7 @@ void CacheForServiceRoot::loadCacheFromFile(int accId) {
 QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> CacheForServiceRoot::takeMessageCache() {
 	m_cacheSaveMutex->lock();
 
-	if (m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty()) {
+  if (isEmpty()) {
 		// No cached changes.
 		m_cacheSaveMutex->unlock();
 
@@ -118,5 +150,9 @@ QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<
   clearCache();
 	m_cacheSaveMutex->unlock();
 
-	return QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>>(cached_data_read, cached_data_imp);
+  return QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>>(cached_data_read, cached_data_imp);
+}
+
+bool CacheForServiceRoot::isEmpty() const {
+  return m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty();
 }

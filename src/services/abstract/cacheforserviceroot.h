@@ -46,6 +46,10 @@ class CacheForServiceRoot {
 		Mutex* m_cacheSaveMutex;
 		QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
 		QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
+
+  private:
+    bool isEmpty() const;
+    void clearCache();
 };
 
 #endif // CACHEFORSERVICEROOT_H

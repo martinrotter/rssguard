@@ -473,3 +473,33 @@ bool RootItem::removeChild(int index) {
 		return false;
 	}
 }
+
+QDataStream& operator>>(QDataStream& in, RootItem::ReadStatus& myObj) {
+  int obj;
+  in >> obj;
+
+  myObj = (RootItem::ReadStatus)obj;
+
+  return in;
+}
+
+QDataStream& operator<<(QDataStream& out, const RootItem::ReadStatus& myObj) {
+  out << (int)myObj;
+
+  return out;
+}
+
+QDataStream& operator>>(QDataStream& in, RootItem::Importance& myObj) {
+  int obj;
+  in >> obj;
+
+  myObj = (RootItem::Importance)obj;
+
+  return in;
+}
+
+QDataStream& operator<<(QDataStream& out, const RootItem::Importance& myObj) {
+  out << (int)myObj;
+
+  return out;
+}

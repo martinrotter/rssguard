@@ -97,7 +97,41 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
 		*result = true;
 	}
 
-	return message;
+  return message;
+}
+
+QDataStream& operator<<(QDataStream& out, const Message& myObj) {
+  out << myObj.m_accountId
+      << myObj.m_customHash
+      << myObj.m_customId
+      << myObj.m_feedId
+      << myObj.m_id
+      << myObj.m_isImportant
+      << myObj.m_isRead;
+
+  return out;
+}
+
+QDataStream& operator>>(QDataStream& in, Message& myObj) {
+  int accountId;
+  QString customHash;
+  QString customId;
+  QString feedId;
+  int id;
+  bool isImportant;
+  bool isRead;
+
+  in >> accountId >> customHash >> customId >> feedId >> id >> isImportant >> isRead;
+
+  myObj.m_accountId = accountId;
+  myObj.m_customHash = customHash;
+  myObj.m_customId = customId;
+  myObj.m_feedId = feedId;
+  myObj.m_id = id;
+  myObj.m_isImportant = isImportant;
+  myObj.m_isRead = isRead;
+
+  return in;
 }
 
 uint qHash(Message key, uint seed) {

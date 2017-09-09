@@ -236,4 +236,12 @@ class RootItem : public QObject {
 		RootItem* m_parentItem;
 };
 
+QDataStream& operator<<(QDataStream& out, const RootItem::Importance& myObj);
+
+QDataStream& operator>>(QDataStream& in, RootItem::Importance& myObj);
+
+QDataStream& operator<<(QDataStream& out, const RootItem::ReadStatus& myObj);
+
+QDataStream& operator>>(QDataStream& in, RootItem::ReadStatus& myObj);
+
 #endif // ROOTITEM_H
