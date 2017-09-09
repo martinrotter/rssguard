@@ -40,7 +40,7 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent)
 	connect(m_ui.m_groupDatabase, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
 	connect(m_ui.m_groupSettings, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
 	connect(m_ui.m_buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(performRestoration()));
-	selectFolder(qApp->getDocumentsFolderPath());
+	selectFolder(qApp->documentsFolder());
 }
 
 FormRestoreDatabaseSettings::~FormRestoreDatabaseSettings() {

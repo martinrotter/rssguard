@@ -59,21 +59,23 @@ Application::Application(const QString& id, int& argc, char** argv)
 #endif
 
 	  m_feedReader(nullptr),
-	  m_updateFeedsLock(nullptr), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
-	  m_trayIcon(nullptr), m_settings(nullptr), m_webFactory(new WebFactory(this)), m_system(nullptr), m_skins(nullptr),
-	  m_localization(nullptr), m_icons(nullptr), m_database(nullptr), m_downloadManager(nullptr), m_shouldRestart(false) {
+    m_updateFeedsLock(new Mutex()), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
+    m_trayIcon(nullptr), m_settings(Settings::setupSettings(this)), m_webFactory(new WebFactory(this)),
+    m_system(new SystemFactory(this)), m_skins(new SkinFactory(this)),
+    m_localization(new Localization(this)), m_icons(new IconFactory(this)),
+    m_database(new DatabaseFactory(this)), m_downloadManager(nullptr), m_shouldRestart(false) {
 	connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
 	connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
 	connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
+
 #if defined(USE_WEBENGINE)
 	connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
+
 	QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
-	// TODO: Call load settings when saving app settings from dialog.
-	// Will need add that if I add more settings in the future.
 	m_urlInterceptor->loadSettings();
-	QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(
-	    QByteArray(APP_LOW_NAME),
-	    new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(
+      QByteArray(APP_LOW_NAME),
+      new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
 #endif
 }
 
@@ -88,6 +90,7 @@ FeedReader* Application::feedReader() {
 QList<QAction*> Application::userActions() {
 	if (m_mainForm != nullptr && m_userActions.isEmpty()) {
 		m_userActions = m_mainForm->allActions();
+
 #if defined(USE_WEBENGINE)
 		m_userActions.append(AdBlockManager::instance()->adBlockIcon());
 #endif
@@ -115,34 +118,18 @@ WebFactory* Application::web() {
 }
 
 SystemFactory* Application::system() {
-	if (m_system == nullptr) {
-		m_system = new SystemFactory(this);
-	}
-
 	return m_system;
 }
 
 SkinFactory* Application::skins() {
-	if (m_skins == nullptr) {
-		m_skins = new SkinFactory(this);
-	}
-
 	return m_skins;
 }
 
 Localization* Application::localization() {
-	if (m_localization == nullptr) {
-		m_localization = new Localization(this);
-	}
-
 	return m_localization;
 }
 
 DatabaseFactory* Application::database() {
-	if (m_database == nullptr) {
-		m_database = new DatabaseFactory(this);
-	}
-
 	return m_database;
 }
 
@@ -162,10 +149,6 @@ void Application::setFeedReader(FeedReader* feed_reader) {
 }
 
 IconFactory* Application::icons() {
-	if (m_icons == nullptr) {
-		m_icons = new IconFactory(this);
-	}
-
 	return m_icons;
 }
 
@@ -180,20 +163,10 @@ DownloadManager* Application::downloadManager() {
 }
 
 Settings* Application::settings() {
-	if (m_settings == nullptr) {
-		m_settings = Settings::setupSettings(this);
-	}
-
 	return m_settings;
 }
 
 Mutex* Application::feedUpdateLock() {
-	if (m_updateFeedsLock.isNull()) {
-		// NOTE: Cannot use parent hierarchy because this method can be usually called
-		// from any thread.
-		m_updateFeedsLock.reset(new Mutex());
-	}
-
 	return m_updateFeedsLock.data();
 }
 
@@ -209,46 +182,46 @@ void Application::setMainForm(FormMain* main_form) {
 	m_mainForm = main_form;
 }
 
-QString Application::getConfigHomePath() {
+QString Application::configFolder() {
 	return IOFactory::getSystemFolder(QStandardPaths::GenericConfigLocation);
 }
 
-QString Application::getUserDataAppPath() {
+QString Application::userDataAppFolder() {
 	// In "app" folder, we would like to separate all user data into own subfolder,
 	// therefore stick to "data" folder in this mode.
 	return applicationDirPath() + QDir::separator() + QSL("data");
 }
 
-QString Application::userDataPath() {
+QString Application::userDataFolder() {
 	if (settings()->type() == SettingsProperties::Portable) {
-		return getUserDataAppPath();
+    return userDataAppFolder();
 	}
 	else {
-		return getUserDataHomePath();
+    return userDataHomeFolder();
 	}
 }
 
-QString Application::getUserDataHomePath() {
+QString Application::userDataHomeFolder() {
 	// Fallback folder.
-	const QString home_folder = getHomeFolderPath() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
+  const QString home_folder = homeFolder() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
 
 	if (QDir().exists(home_folder)) {
 		return home_folder;
 	}
 	else {
-		return getConfigHomePath() + QDir::separator() + QSL(APP_NAME);
+    return configFolder() + QDir::separator() + QSL(APP_NAME);
 	}
 }
 
-QString Application::getTempFolderPath() {
+QString Application::tempFolder() {
 	return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
 }
 
-QString Application::getDocumentsFolderPath() {
+QString Application::documentsFolder() {
 	return IOFactory::getSystemFolder(QStandardPaths::DocumentsLocation);
 }
 
-QString Application::getHomeFolderPath() {
+QString Application::homeFolder() {
 	return IOFactory::getSystemFolder(QStandardPaths::HomeLocation);
 }
 

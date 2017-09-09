@@ -183,7 +183,7 @@ void FormFeedDetails::onNoIconSelected() {
 
 void FormFeedDetails::onLoadIconFromFile() {
 	QFileDialog dialog(this, tr("Select icon file for the feed"),
-	                   qApp->getHomeFolderPath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
+	                   qApp->homeFolder(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
 	dialog.setFileMode(QFileDialog::ExistingFile);
 	dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
 	dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);

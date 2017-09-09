@@ -39,7 +39,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent) : QDialo
 	connect(m_ui->m_txtBackupName->lineEdit(), &BaseLineEdit::textChanged, this, &FormBackupDatabaseSettings::checkBackupNames);
 	connect(m_ui->m_txtBackupName->lineEdit(), &BaseLineEdit::textChanged, this, &FormBackupDatabaseSettings::checkOkButton);
 	connect(m_ui->m_btnSelectFolder, &QPushButton::clicked, this, &FormBackupDatabaseSettings::selectFolderInitial);
-	selectFolder(qApp->getDocumentsFolderPath());
+	selectFolder(qApp->documentsFolder());
 	m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + QL1S("_") + QDateTime::currentDateTime().toString(QSL("yyyyMMddHHmm")));
 	m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 

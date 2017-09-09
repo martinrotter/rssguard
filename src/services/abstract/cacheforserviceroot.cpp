@@ -79,7 +79,7 @@ void CacheForServiceRoot::saveCacheToFile(int accId) {
   m_cacheSaveMutex->lock();
 
   // Save to file.
-  const QString file_cache = qApp->userDataPath() + QDir::separator() + QString::number(accId) + "-cached-msgs.dat";
+  const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(accId) + "-cached-msgs.dat";
 
   if (isEmpty()) {
     QFile::remove(file_cache);
@@ -110,7 +110,7 @@ void CacheForServiceRoot::loadCacheFromFile(int accId) {
   clearCache();
 
   // Load from file.
-  const QString file_cache = qApp->userDataPath() + QDir::separator() + QString::number(accId) + "-cached-msgs.dat";
+  const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(accId) + "-cached-msgs.dat";
 
   QFile file(file_cache);
 

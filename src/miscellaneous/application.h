@@ -92,18 +92,18 @@ class Application : public QtSingleApplication {
 		NetworkUrlInterceptor* urlIinterceptor();
 #endif
 
-		QString getTempFolderPath();
-		QString getDocumentsFolderPath();
-		QString getHomeFolderPath();
-		QString getConfigHomePath();
+    QString tempFolder();
+    QString documentsFolder();
+    QString homeFolder();
+    QString configFolder();
 
 		// These return user ready folders.
-		QString getUserDataAppPath();
-		QString getUserDataHomePath();
+    QString userDataAppFolder();
+    QString userDataHomeFolder();
 
 		// Returns the base folder to which store user data, the "data" folder.
 		// NOTE: Use this to get correct path under which store user data.
-		QString userDataPath();
+    QString userDataFolder();
 
 		void setMainForm(FormMain* main_form);
 

@@ -216,7 +216,7 @@ AdBlockCustomList* AdBlockManager::customList() const {
 }
 
 QString AdBlockManager::storedListsPath() {
-	return qApp->userDataPath() + QDir::separator() + ADBLOCK_LISTS_SUBDIRECTORY;
+	return qApp->userDataFolder() + QDir::separator() + ADBLOCK_LISTS_SUBDIRECTORY;
 }
 
 void AdBlockManager::load() {

@@ -354,8 +354,8 @@ Settings* Settings::setupSettings(QObject* parent) {
 SettingsProperties Settings::determineProperties() {
 	SettingsProperties properties;
 	properties.m_settingsSuffix = QDir::separator() + QSL(APP_CFG_PATH) + QDir::separator() + QSL(APP_CFG_FILE);
-	const QString app_path = qApp->getUserDataAppPath();
-	const QString home_path = qApp->getUserDataHomePath();
+	const QString app_path = qApp->userDataAppFolder();
+	const QString home_path = qApp->userDataHomeFolder();
 	// We will use PORTABLE settings only and only if it is available and NON-PORTABLE
 	// settings was not initialized before.
 #if defined (Q_OS_LINUX) || defined (Q_OS_MACOS)
