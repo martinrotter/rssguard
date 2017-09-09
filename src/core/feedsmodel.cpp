@@ -23,6 +23,7 @@
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceentrypoint.h"
+#include "services/standard/standardserviceentrypoint.h"
 #include "services/standard/standardserviceroot.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
@@ -34,6 +35,7 @@
 #include <QPair>
 #include <QStack>
 #include <QMimeData>
+#include <QTimer>
 
 #include <algorithm>
 
@@ -42,15 +44,15 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent) {
   setObjectName(QSL("FeedsModel"));
   // Create root item.
   m_rootItem = new RootItem();
-  //: Name of root item of feed list which can be seen in feed add/edit dialog.
+  // : Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));
   m_rootItem->setIcon(qApp->icons()->fromTheme(QSL("folder")));
   // Setup icons.
   m_countsIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
-  //: Title text in the feed list header.
+  // : Title text in the feed list header.
   m_headerData << tr("Title");
-  m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.") <<
-                /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
+  m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.")
+                << /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
 }
 
 FeedsModel::~FeedsModel() {
@@ -64,7 +66,7 @@ QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
   QByteArray encoded_data;
   QDataStream stream(&encoded_data, QIODevice::WriteOnly);
 
-  foreach (const QModelIndex& index, indexes) {
+  foreach (const QModelIndex &index, indexes) {
     if (index.column() != 0) {
       continue;
     }
@@ -72,7 +74,7 @@ QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
     RootItem* item_for_index = itemForIndex(index);
 
     if (item_for_index->kind() != RootItemKind::Root) {
-      stream << (quintptr) item_for_index;
+      stream << (quintptr)item_for_index;
     }
   }
 
@@ -107,7 +109,7 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
       quintptr pointer_to_item;
       stream >> pointer_to_item;
       // We have item we want to drag, we also determine the target item.
-      RootItem* dragged_item = (RootItem*) pointer_to_item;
+      RootItem* dragged_item = (RootItem*)pointer_to_item;
       RootItem* target_item = itemForIndex(parent);
       ServiceRoot* dragged_item_root = dragged_item->getParentServiceRoot();
       ServiceRoot* target_item_root = target_item->getParentServiceRoot();
@@ -158,27 +160,27 @@ QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int ro
   }
 
   switch (role) {
-    case Qt::DisplayRole:
-      if (section == FDS_MODEL_TITLE_INDEX) {
-        return m_headerData.at(FDS_MODEL_TITLE_INDEX);
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::ToolTipRole:
-      return m_tooltipData.at(section);
-
-    case Qt::DecorationRole:
-      if (section == FDS_MODEL_COUNTS_INDEX) {
-        return m_countsIcon;
-      }
-      else {
-        return QVariant();
-      }
-
-    default:
+  case Qt::DisplayRole:
+    if (section == FDS_MODEL_TITLE_INDEX) {
+      return m_headerData.at(FDS_MODEL_TITLE_INDEX);
+    }
+    else {
       return QVariant();
+    }
+
+  case Qt::ToolTipRole:
+    return m_tooltipData.at(section);
+
+  case Qt::DecorationRole:
+    if (section == FDS_MODEL_COUNTS_INDEX) {
+      return m_countsIcon;
+    }
+    else {
+      return QVariant();
+    }
+
+  default:
+    return QVariant();
   }
 }
 
@@ -325,34 +327,34 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 
   foreach (Feed* feed, m_rootItem->getSubTreeFeeds()) {
     switch (feed->autoUpdateType()) {
-      case Feed::DontAutoUpdate:
-        // Do not auto-update this feed ever.
-        continue;
+    case Feed::DontAutoUpdate:
+      // Do not auto-update this feed ever.
+      continue;
 
-      case Feed::DefaultAutoUpdate:
-        if (auto_update_now) {
-          feeds_for_update.append(feed);
-        }
+    case Feed::DefaultAutoUpdate:
+      if (auto_update_now) {
+        feeds_for_update.append(feed);
+      }
 
-        break;
+      break;
 
-      case Feed::SpecificAutoUpdate:
-      default:
-        int remaining_interval = feed->autoUpdateRemainingInterval();
+    case Feed::SpecificAutoUpdate:
+    default:
+      int remaining_interval = feed->autoUpdateRemainingInterval();
 
-        if (--remaining_interval <= 0) {
-          // Interval of this feed passed, include this feed in the output list
-          // and reset the interval.
-          feeds_for_update.append(feed);
-          feed->setAutoUpdateRemainingInterval(feed->autoUpdateInitialInterval());
-        }
-        else {
-          // Interval did not pass, set new decremented interval and do NOT
-          // include this feed in the output list.
-          feed->setAutoUpdateRemainingInterval(remaining_interval);
-        }
+      if (--remaining_interval <= 0) {
+        // Interval of this feed passed, include this feed in the output list
+        // and reset the interval.
+        feeds_for_update.append(feed);
+        feed->setAutoUpdateRemainingInterval(feed->autoUpdateInitialInterval());
+      }
+      else {
+        // Interval did not pass, set new decremented interval and do NOT
+        // include this feed in the output list.
+        feed->setAutoUpdateRemainingInterval(remaining_interval);
+      }
 
-        break;
+      break;
     }
   }
 
@@ -403,7 +405,7 @@ QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
 }
 
 bool FeedsModel::hasAnyFeedNewMessages() const {
-  foreach (const Feed* feed, m_rootItem->getSubTreeFeeds()) {
+  foreach (const Feed * feed, m_rootItem->getSubTreeFeeds()) {
     if (feed->status() == Feed::NewMessages) {
       return true;
     }
@@ -446,7 +448,7 @@ void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
   else {
     qDebug("There is request to reload feed model, reloading the %d items individually.", items.size());
 
-    foreach (RootItem* item, items) {
+    foreach (RootItem * item, items) {
       reloadChangedItem(item);
     }
   }
@@ -478,7 +480,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
 bool FeedsModel::restoreAllBins() {
   bool result = true;
 
-  foreach (ServiceRoot* root, serviceRoots()) {
+  foreach (ServiceRoot * root, serviceRoots()) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
@@ -492,7 +494,7 @@ bool FeedsModel::restoreAllBins() {
 bool FeedsModel::emptyAllBins() {
   bool result = true;
 
-  foreach (ServiceRoot* root, serviceRoots()) {
+  foreach (ServiceRoot * root, serviceRoots()) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
@@ -513,10 +515,16 @@ void FeedsModel::loadActivatedServiceAccounts() {
       addServiceAccount(root, false);
     }
   }
+
+  if (serviceRoots().isEmpty()) {
+    QTimer::singleShot(2000, [this]() {
+      addServiceAccount(StandardServiceEntryPoint().createNewRoot(), true);
+    });
+  }
 }
 
 void FeedsModel::stopServiceAccounts() {
-  foreach (ServiceRoot* account, serviceRoots()) {
+  foreach (ServiceRoot * account, serviceRoots()) {
     account->stop();
   }
 }

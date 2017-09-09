@@ -187,7 +187,8 @@ win32 {
 }
 
 DISTFILES += resources/scripts/astyle/.astylerc \
-             resources/scripts/uncrustify/uncrustify.cfg
+             resources/scripts/uncrustify/uncrustify.cfg \
+    resources/scripts/uncrustify/uncrustify.cfg
 
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc

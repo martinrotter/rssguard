@@ -1,6 +1,9 @@
 3.4.3
 —————
 
+Added:
+▪ Standard account is now automatically added if RSS Guard is started with empty database.
+
 Fixed:
 ▪ Fixed build on some Unit-like operating systems.
 
