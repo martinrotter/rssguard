@@ -35,7 +35,6 @@
 #include <QMetaObject>
 #include <QMimeData>
 #include <QMetaEnum>
-#include <QProcess>
 #include <QSettings>
 #include <QDebug>
 
@@ -47,7 +46,8 @@ DownloadItem::DownloadItem(QNetworkReply* reply, QWidget* parent) : QWidget(pare
 	m_ui->setupUi(this);
 	m_ui->m_btnTryAgain->hide();
 	m_requestFileName = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool();
-	connect(m_ui->m_btnStopDownload, &QToolButton::clicked, this, &DownloadItem::stop);
+
+  connect(m_ui->m_btnStopDownload, &QToolButton::clicked, this, &DownloadItem::stop);
 	connect(m_ui->m_btnOpenFile, &QToolButton::clicked, this, &DownloadItem::openFile);
 	connect(m_ui->m_btnTryAgain, &QToolButton::clicked, this, &DownloadItem::tryAgain);
 	connect(m_ui->m_btnOpenFolder, &QToolButton::clicked, this, &DownloadItem::openFolder);
@@ -69,16 +69,19 @@ void DownloadItem::init() {
 	m_ui->m_btnOpenFolder->setEnabled(false);
 	m_url = m_reply->url();
 	m_reply->setParent(this);
-	connect(m_reply, &QNetworkReply::readyRead, this, &DownloadItem::downloadReadyRead);
+
+  connect(m_reply, &QNetworkReply::readyRead, this, &DownloadItem::downloadReadyRead);
 	connect(m_reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &DownloadItem::error);
 	connect(m_reply, &QNetworkReply::downloadProgress, this, &DownloadItem::downloadProgress);
 	connect(m_reply, &QNetworkReply::metaDataChanged, this, &DownloadItem::metaDataChanged);
 	connect(m_reply, &QNetworkReply::finished, this, &DownloadItem::finished);
-	// Reset info.
+
+  // Reset info.
 	m_ui->m_lblInfoDownload->clear();
 	m_ui->m_progressDownload->setValue(0);
 	getFileName();
-	// Start timer for the download estimation.
+
+  // Start timer for the download estimation.
 	m_downloadTime.start();
 
 	if (m_reply->error() != QNetworkReply::NoError) {
@@ -119,7 +122,8 @@ void DownloadItem::getFileName() {
 	}
 
 	m_output.setFileName(chosen_filename);
-	// Check file path for saving.
+
+  // Check file path for saving.
 	const QDir save_dir = QFileInfo(m_output.fileName()).dir();
 
 	if (!save_dir.exists() && !save_dir.mkpath(save_dir.absolutePath())) {
@@ -275,7 +279,8 @@ void DownloadItem::downloadReadyRead() {
 
 void DownloadItem::error(QNetworkReply::NetworkError code) {
 	Q_UNUSED(code)
-	m_ui->m_lblInfoDownload->setText(tr("Error: %1").arg(m_reply->errorString()));
+
+  m_ui->m_lblInfoDownload->setText(tr("Error: %1").arg(m_reply->errorString()));
 	m_ui->m_btnTryAgain->setEnabled(true);
 	m_ui->m_btnTryAgain->setVisible(true);
 	emit downloadFinished();
@@ -511,7 +516,8 @@ void DownloadManager::addItem(DownloadItem* item) {
 	connect(item, &DownloadItem::statusChanged, this, static_cast<void (DownloadManager::*)()>(&DownloadManager::updateRow));
 	connect(item, &DownloadItem::progress, this, &DownloadManager::itemProgress);
 	connect(item, &DownloadItem::downloadFinished, this, &DownloadManager::itemFinished);
-	const int row = m_downloads.count();
+
+  const int row = m_downloads.count();
 	m_model->beginInsertRows(QModelIndex(), row, row);
 	m_downloads.append(item);
 	m_model->endInsertRows();
@@ -519,7 +525,8 @@ void DownloadManager::addItem(DownloadItem* item) {
 	QIcon icon = style()->standardIcon(QStyle::SP_FileIcon);
 	item->m_ui->m_lblFileIcon->setPixmap(icon.pixmap(DOWNLOADER_ICON_SIZE, DOWNLOADER_ICON_SIZE));
 	m_ui->m_viewDownloads->setRowHeight(row, item->sizeHint().height());
-	// Just in case of download finishes before it is actually added.
+
+  // Just in case of download finishes before it is actually added.
 	updateRow(item);
 }
 
@@ -572,7 +579,8 @@ void DownloadManager::updateRow(DownloadItem* item) {
 	item->m_ui->m_lblFileIcon->setPixmap(icon.pixmap(DOWNLOADER_ICON_SIZE, DOWNLOADER_ICON_SIZE));
 	int old_height = m_ui->m_viewDownloads->rowHeight(row);
 	m_ui->m_viewDownloads->setRowHeight(row, qMax(old_height, item->minimumSizeHint().height()));
-	// Remove the item if:
+
+  // Remove the item if:
 	// a) It is not downloading and private browsing is enabled.
 	// OR
 	// b) Item is already downloaded and it should be remove from downloader list.

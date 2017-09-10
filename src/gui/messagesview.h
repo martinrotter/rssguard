@@ -77,6 +77,8 @@ class MessagesView : public QTreeView {
 		void filterMessages(MessagesModel::MessageHighlighter filter);
 
 	private slots:
+    void openSelectedMessagesWithExternalTool();
+
 		// Marks given indexes as selected.
 		void reselectIndexes(const QModelIndexList& indexes);
 

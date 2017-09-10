@@ -32,6 +32,8 @@
 #include <QScrollBar>
 #include <QTimer>
 #include <QMenu>
+#include <QFileIconProvider>
+#include <QProcess>
 
 
 MessagesView::MessagesView(QWidget* parent)
@@ -180,6 +182,28 @@ void MessagesView::initializeContextMenu() {
 	}
 
 	m_contextMenu->clear();
+
+  QFileIconProvider icon_provider;
+  QMenu* menu = new QMenu(tr("Open with external tool"), m_contextMenu);
+  menu->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
+
+  foreach (const QString& tool, qApp->settings()->value(GROUP(Browser), SETTING(Browser::ExternalTools)).toStringList()) {
+    QAction* act_tool = new QAction(QFileInfo(tool).fileName(), menu);
+
+    act_tool->setIcon(icon_provider.icon(tool));
+    act_tool->setToolTip(tool);
+    menu->addAction(act_tool);
+
+    connect(act_tool, &QAction::triggered, this, &MessagesView::openSelectedMessagesWithExternalTool);
+  }
+
+  if (menu->actions().isEmpty()) {
+    QAction* act_not_tools = new QAction("No external tools activated");
+    act_not_tools->setEnabled(false);
+    menu->addAction(act_not_tools);
+  }
+
+  m_contextMenu->addMenu(menu);
 	m_contextMenu->addActions(QList<QAction*>() <<
 	                          qApp->mainForm()->m_ui->m_actionSendMessageViaEmail <<
 	                          qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
@@ -479,7 +503,26 @@ void MessagesView::searchMessages(const QString& pattern) {
 }
 
 void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
-	m_sourceModel->highlightMessages(filter);
+  m_sourceModel->highlightMessages(filter);
+}
+
+void MessagesView::openSelectedMessagesWithExternalTool() {
+  QAction* sndr = qobject_cast<QAction*>(sender());
+
+  if (sndr != nullptr) {
+    const QString& tool = sndr->toolTip();
+
+    foreach (const QModelIndex& index, selectionModel()->selectedRows()) {
+      const QString& link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
+
+      if (!link.isEmpty()) {
+        if (!QProcess::startDetached(tool, QStringList() << link)) {
+          qApp->showGuiMessage(tr("Cannot run external tool"), tr("External tool '%1' could not be started."),
+                               QSystemTrayIcon::Critical);
+        }
+      }
+    }
+  }
 }
 
 void MessagesView::adjustColumns() {

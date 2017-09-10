@@ -38,6 +38,8 @@ class SettingsBrowserMail : public SettingsPanel {
 		void saveSettings();
 
 	private slots:
+    void addExternalTool();
+    void deleteSelectedExternalTool();
 		void changeDefaultBrowserArguments(int index);
 		void selectBrowserExecutable();
 		void changeDefaultEmailArguments(int index);
@@ -46,6 +48,9 @@ class SettingsBrowserMail : public SettingsPanel {
 		void onProxyTypeChanged(int index);
 
 	private:
+    QStringList externalTools() const;
+    void setExternalTools(const QStringList& list);
+
 		Ui::SettingsBrowserMail* m_ui;
 };
 

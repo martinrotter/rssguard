@@ -27,7 +27,6 @@
 #include "gui/guiutilities.h"
 
 #include <QNetworkReply>
-#include <QProcess>
 
 #if defined(Q_OS_WIN)
 #include <windows.h>

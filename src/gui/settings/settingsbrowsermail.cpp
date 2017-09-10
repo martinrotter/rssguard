@@ -29,14 +29,18 @@
 SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 	: SettingsPanel(settings, parent), m_ui(new Ui::SettingsBrowserMail) {
 	m_ui->setupUi(this);
+
 	GuiUtilities::setLabelAsNotice(*m_ui->label, false);
 	GuiUtilities::setLabelAsNotice(*m_ui->m_lblExternalEmailInfo, false);
 	GuiUtilities::setLabelAsNotice(*m_ui->m_lblProxyInfo, false);
+  GuiUtilities::setLabelAsNotice(*m_ui->m_lblToolInfo, false);
+
 #if defined(USE_WEBENGINE)
 	m_ui->m_checkOpenLinksInExternal->setVisible(false);
 #else
 	connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
 #endif
+
 	connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
 	        &SettingsBrowserMail::dirtifySettings);
 	connect(m_ui->m_txtProxyHost, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
@@ -58,6 +62,13 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 	connect(m_ui->m_cmbExternalEmailPreset, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
 	        &SettingsBrowserMail::changeDefaultEmailArguments);
 	connect(m_ui->m_btnExternalEmailExecutable, &QPushButton::clicked, this, &SettingsBrowserMail::selectEmailExecutable);
+  connect(m_ui->m_btnAddTool, &QPushButton::clicked, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_btnDeleteTool, &QPushButton::clicked, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_btnAddTool, &QPushButton::clicked, this, &SettingsBrowserMail::addExternalTool);
+  connect(m_ui->m_btnDeleteTool, &QPushButton::clicked, this, &SettingsBrowserMail::deleteSelectedExternalTool);
+  connect(m_ui->m_listTools, &QListWidget::currentTextChanged, [this](const QString & current_text) {
+    m_ui->m_btnDeleteTool->setEnabled(!current_text.isEmpty());
+  });
 }
 
 SettingsBrowserMail::~SettingsBrowserMail() {
@@ -107,7 +118,23 @@ void SettingsBrowserMail::onProxyTypeChanged(int index) {
 	m_ui->m_lblProxyInfo->setEnabled(is_proxy_selected);
 	m_ui->m_lblProxyPassword->setEnabled(is_proxy_selected);
 	m_ui->m_lblProxyPort->setEnabled(is_proxy_selected);
-	m_ui->m_lblProxyUsername->setEnabled(is_proxy_selected);
+  m_ui->m_lblProxyUsername->setEnabled(is_proxy_selected);
+}
+
+QStringList SettingsBrowserMail::externalTools() const {
+  QStringList list;
+
+  for (int i = 0; i < m_ui->m_listTools->count(); i++) {
+    list.append(m_ui->m_listTools->item(i)->text());
+  }
+
+  return list;
+}
+
+void SettingsBrowserMail::setExternalTools(const QStringList& list) {
+  foreach (const QString& tool, list) {
+    m_ui->m_listTools->addItem(tool);
+  }
 }
 
 void SettingsBrowserMail::changeDefaultEmailArguments(int index) {
@@ -134,18 +161,21 @@ void SettingsBrowserMail::selectEmailExecutable() {
 
 void SettingsBrowserMail::loadSettings() {
 	onBeginLoadSettings();
+
 #if !defined(USE_WEBENGINE)
 	m_ui->m_checkOpenLinksInExternal->setChecked(settings()->value(GROUP(Browser),
 	                                             SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool());
 #endif
-	// Load settings of web browser GUI.
+
+  // Load settings of web browser GUI.
 	m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
 	m_ui->m_txtExternalBrowserExecutable->setText(settings()->value(GROUP(Browser),
 	                                              SETTING(Browser::CustomExternalBrowserExecutable)).toString());
 	m_ui->m_txtExternalBrowserArguments->setText(settings()->value(GROUP(Browser),
 	                                             SETTING(Browser::CustomExternalBrowserArguments)).toString());
 	m_ui->m_grpCustomExternalBrowser->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool());
-	// Load settings of e-mail.
+
+  // Load settings of e-mail.
 	m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), QSL("-compose \"subject='%1',body='%2'\""));
 	m_ui->m_txtExternalEmailExecutable->setText(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString());
 	m_ui->m_txtExternalEmailArguments->setText(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString());
@@ -154,7 +184,8 @@ void SettingsBrowserMail::loadSettings() {
 	m_ui->m_cmbProxyType->addItem(tr("System proxy"), QNetworkProxy::DefaultProxy);
 	m_ui->m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::Socks5Proxy);
 	m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
-	// Load the settings.
+
+  // Load the settings.
 	QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(settings()->value(GROUP(Proxy),
 	                                               SETTING(Proxy::Type)).toInt());
 	m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
@@ -162,19 +193,24 @@ void SettingsBrowserMail::loadSettings() {
 	m_ui->m_txtProxyUsername->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
 	m_ui->m_txtProxyPassword->setText(TextFactory::decrypt(settings()->value(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
 	m_ui->m_spinProxyPort->setValue(settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt());
+
+  setExternalTools(settings()->value(GROUP(Browser), SETTING(Browser::ExternalTools)).toStringList());
 	onEndLoadSettings();
 }
 
 void SettingsBrowserMail::saveSettings() {
 	onBeginSaveSettings();
+
 #if !defined(USE_WEBENGINE)
 	settings()->setValue(GROUP(Browser), Browser::OpenLinksInExternalBrowserRightAway, m_ui->m_checkOpenLinksInExternal->isChecked());
 #endif
-	// Save settings of GUI of web browser.
+
+  // Save settings of GUI of web browser.
 	settings()->setValue(GROUP(Browser), Browser::CustomExternalBrowserEnabled, m_ui->m_grpCustomExternalBrowser->isChecked());
 	settings()->setValue(GROUP(Browser), Browser::CustomExternalBrowserExecutable, m_ui->m_txtExternalBrowserExecutable->text());
 	settings()->setValue(GROUP(Browser), Browser::CustomExternalBrowserArguments, m_ui->m_txtExternalBrowserArguments->text());
-	// Save settings of e-mail.
+
+  // Save settings of e-mail.
 	settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailExecutable, m_ui->m_txtExternalEmailExecutable->text());
 	settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailArguments, m_ui->m_txtExternalEmailArguments->text());
 	settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailEnabled, m_ui->m_grpCustomExternalEmail->isChecked());
@@ -183,7 +219,32 @@ void SettingsBrowserMail::saveSettings() {
 	settings()->setValue(GROUP(Proxy), Proxy::Username,  m_ui->m_txtProxyUsername->text());
 	settings()->setValue(GROUP(Proxy), Proxy::Password, TextFactory::encrypt(m_ui->m_txtProxyPassword->text()));
 	settings()->setValue(GROUP(Proxy), Proxy::Port, m_ui->m_spinProxyPort->value());
-	// Reload settings for all network access managers.
+
+  settings()->setValue(GROUP(Browser), Browser::ExternalTools, externalTools());
+
+  // Reload settings for all network access managers.
 	SilentNetworkAccessManager::instance()->loadSettings();
-	onEndSaveSettings();
+  onEndSaveSettings();
+}
+
+void SettingsBrowserMail::addExternalTool() {
+  QString executable_file = QFileDialog::getOpenFileName(this,
+                                                         tr("Select external tool"),
+                                                         qApp->homeFolder(),
+                                                         //: File filter for external tool selection dialog.
+#if defined(Q_OS_LINUX)
+                                                         tr("Executables (*)"));
+#else
+                                                         tr("Executables (*.*)"));
+#endif
+
+  if (!executable_file.isEmpty()) {
+    m_ui->m_listTools->addItem(QDir::toNativeSeparators(executable_file));
+  }
+}
+
+void SettingsBrowserMail::deleteSelectedExternalTool() {
+  if (m_ui->m_listTools->currentRow() >= 0) {
+    m_ui->m_listTools->takeItem(m_ui->m_listTools->currentRow());
+  }
 }

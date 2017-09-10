@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ Added support for arbitrary external tools (settings category "Web browser & e-mail & proxy") which can open URLs of selected messages. (#136)
 ▪ Standard account is now automatically added if RSS Guard is started with empty database.
 ▪ Menu action "Select next unread message" in "Messages" menu now works across all feeds, so user can navigate through all unread messages with a sigle keyboard shortcut. (#132, #6)
 ▪ Added two bindable menu actions (in menu "Web browser & tabs") which allow to cycle among tabs. (#6)

@@ -286,6 +286,8 @@ DVALUE(QString) Browser::CustomExternalEmailExecutableDef   = QString();
 DKEY Browser::CustomExternalEmailArguments                = "external_email_arguments";
 DVALUE(char*) Browser::CustomExternalEmailArgumentsDef    = "";
 
+DKEY Browser::ExternalTools                   = "external_tools";
+DVALUE(QStringList) Browser::ExternalToolsDef = QStringList();
 
 // Categories.
 DKEY CategoriesExpandStates::ID                         = "categories_expand_states";

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>658</width>
-    <height>200</height>
+    <height>330</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -225,6 +225,53 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>External tools</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="m_lblToolInfo">
+         <property name="text">
+          <string>On this page, you can setup a list of external tools which can open URLs of selected messages.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QSplitter" name="splitter">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QPushButton" name="m_btnAddTool">
+          <property name="text">
+           <string>Add external tool</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="m_btnDeleteTool">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Delete selected external tool</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QListWidget" name="m_listTools">
+         <property name="showDropIndicator" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="uniformItemSizes">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
       </layout>

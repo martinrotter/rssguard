@@ -316,6 +316,9 @@ namespace Browser {
 	KEY CustomExternalEmailExecutable;
 	VALUE(QString) CustomExternalEmailExecutableDef;
 
+  KEY ExternalTools;
+  VALUE(QStringList) ExternalToolsDef;
+
 	KEY CustomExternalEmailArguments;
 	VALUE(char*) CustomExternalEmailArgumentsDef;
 }
