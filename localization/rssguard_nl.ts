@@ -14,7 +14,7 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Abonnement toevoegen</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
@@ -41,34 +41,34 @@
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste regels</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"/>
+        <translation>Adblock configuratie</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>ADblock ingeschakeld</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Opties</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Regel toevoegen</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder regel</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Abonnement toevoegen</translation>
     </message>
     <message>
         <source>Remove subscription</source>
@@ -80,7 +80,7 @@
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"/>
+        <translation>Leer over het schrijvan van regels...</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>Toon AdBlock &amp;instellingen</translation>
     </message>
     <message>
         <source>Disable on %1</source>
@@ -132,11 +132,11 @@
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Regel toevoegen</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder regel</translation>
     </message>
     <message>
         <source>Add custom rule</source>
@@ -152,7 +152,7 @@
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (fout: %2)</translation>
     </message>
 </context>
 <context>
@@ -489,7 +489,6 @@ Auto update status: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
@@ -498,7 +497,6 @@ Auto update status: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Root</translation>
     </message>
     <message>
@@ -638,7 +636,6 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Over %1</translation>
     </message>
     <message>
@@ -1977,6 +1974,14 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
+        <translation>&amp;Herstart</translation>
+    </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2051,7 +2056,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"/>
+        <translation>Herstart</translation>
     </message>
 </context>
 <context>
@@ -2092,7 +2097,7 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"/>
+        <translation>Wil je nu herstarten?</translation>
     </message>
 </context>
 <context>
@@ -2559,7 +2564,7 @@ Installeer het nu.</translation>
     <name>LabelsRootItem</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Labels</translation>
     </message>
 </context>
 <context>
@@ -3013,6 +3018,14 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3841,11 +3854,11 @@ Account ID: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Nieuwe versie beschikbaar</translation>
+        <translation type="vanished">Nieuwe versie beschikbaar</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Klik op luchtbel voor meer informatie.</translation>
+        <translation type="vanished">Klik op luchtbel voor meer informatie.</translation>
     </message>
     <message>
         <source>anonymous</source>
@@ -4139,7 +4152,7 @@ Laatste login: %5</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Fouten op pagina&apos;s aangezet</translation>
     </message>
     <message>
         <source>Plugins enabled</source>

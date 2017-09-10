@@ -490,7 +490,6 @@ Stan auto-aktualizacji: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Tytuł</translation>
     </message>
     <message>
@@ -499,7 +498,6 @@ Stan auto-aktualizacji: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Główny</translation>
     </message>
     <message>
@@ -639,7 +637,6 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>O %1</translation>
     </message>
     <message>
@@ -1980,6 +1977,14 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <source>&amp;Restart</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3017,6 +3022,14 @@ Minimalny wymagany poziom API to %1.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3842,11 +3855,11 @@ ID konta: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Dostępna jest nowa wersja</translation>
+        <translation type="vanished">Dostępna jest nowa wersja</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Kliknij na dymek, aby uzyskać więcej informacji.</translation>
+        <translation type="vanished">Kliknij na dymek, aby uzyskać więcej informacji.</translation>
     </message>
     <message>
         <source>anonymous</source>

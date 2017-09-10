@@ -488,7 +488,6 @@ Stato auto-aggiornamento: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Titolo</translation>
     </message>
     <message>
@@ -497,7 +496,6 @@ Stato auto-aggiornamento: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Radice</translation>
     </message>
     <message>
@@ -637,7 +635,6 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Info su %1</translation>
     </message>
     <message>
@@ -1978,6 +1975,14 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <source>&amp;Restart</source>
         <translation>&amp;Riavvia</translation>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3009,6 +3014,14 @@ Tiny Tiny RSS è un lettore e aggregatore di fonti di notizie (RSS/Atom) open so
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation>L&apos;app News è un aggregatore di fonti RSS/Atom. È parte della suite ownCloud. Questa estensione implementa la API %1.</translation>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3834,11 +3847,11 @@ ID Account: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Nuova versione disponibile</translation>
+        <translation type="vanished">Nuova versione disponibile</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Fai clic sul fumetto per maggiori informazioni.</translation>
+        <translation type="vanished">Fai clic sul fumetto per maggiori informazioni.</translation>
     </message>
     <message>
         <source>anonymous</source>

@@ -14,11 +14,11 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti prenumeratą</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti iš anksto apibrėžtą prenumeratą</translation>
     </message>
     <message>
         <source>Title</source>
@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"/>
+        <translation>Prenumeratos antraštė</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,125 +34,125 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>Absoliutusis URL į internetinį prenumeratos failą</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"/>
+        <translation>Tinkintos taisyklės</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"/>
+        <translation>Reklamos blokavimo konfigūracija</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Įjungti reklamos blokavimą</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Parametrai</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti taisyklę</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti taisyklę</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti prenumeratą</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti prenumeratą</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Atnaujinti prenumeratas</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"/>
+        <translation>Sužinoti apie taisyklių rašymą...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"/>
+        <translation>Reklamos blokavimas leidžia jums saityno puslapiuose blokuoti nepageidaujamą turinį</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"/>
+        <translation>Užblokuotas iškylantysis langas</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation>Reklamos blokavimas užblokavo nepageidaujamą iškylantyjį langą.</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>Rodyti reklamos blokavimo &amp;nustatymus</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"/>
+        <translation>Išjungti ties %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
+        <translation>Išjungti tik šiame puslapyje</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"/>
+        <translation>Ar norite pridėti &lt;b&gt;%1&lt;/b&gt; prenumeratą?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti reklamos blokavimo prenumeratą</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta įkelti prenumeratos!</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti taisyklę</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti taisyklę</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti tinkintą taisyklę</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"/>
+        <translation>Prašome čia įrašyti savo taisyklę:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (neseniai atnaujinta)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (klaida: %2)</translation>
     </message>
 </context>
 <context>
@@ -489,7 +489,6 @@ Automatinio atnaujinimo būsena: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Antraštė</translation>
     </message>
     <message>
@@ -498,7 +497,6 @@ Automatinio atnaujinimo būsena: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Šaknis</translation>
     </message>
     <message>
@@ -638,7 +636,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Apie %1</translation>
     </message>
     <message>
@@ -1979,6 +1976,14 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>&amp;Restart</source>
         <translation>&amp;Paleisti iš naujo</translation>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3017,6 +3022,14 @@ Reikalingas bent API lygis %1.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation>Naujienų programėlė yra RSS/Atom kanalų skaitytuvė. Ji yra Nextcloud rinkinio dalis suite. Šis įskiepis įgyvendina %1 API.</translation>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3697,11 +3710,11 @@ Vilkaduobės:
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Reklamos blokavimas užblokavo šį puslapį</translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Užblokuota rinkinio: &quot;%1&quot;&lt;br/&gt;Užblokuota filtro: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -3842,11 +3855,11 @@ Paskyros ID: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Yra prieinama nauja versija</translation>
+        <translation type="vanished">Yra prieinama nauja versija</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Išsamesnei informacijai spustelėkite šį pranešimą.</translation>
+        <translation type="vanished">Išsamesnei informacijai spustelėkite šį pranešimą.</translation>
     </message>
     <message>
         <source>anonymous</source>
@@ -4087,91 +4100,91 @@ Paskutinis prisijungimas: %5</translation>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation>Saityno modulio nustatymai</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation>Automatiškai įkelti paveikslus</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>JS įjungta</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"/>
+        <translation>JS gali atverti iškylančiuosius langus</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JS gali gauti prieigą prie iškarpinės</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Saitai gali gauti fokusą</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"/>
+        <translation>Vietinis kaupiklis įjungtas</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>Vietinis turinys gali gauti prieigą prie nuotolinių URL</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>XSS revizija įjungta</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation>Erdvinis naršymas įjungtas</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>Vietinis turinys gali gauti prieigą prie vietinių failų</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Saitų revizija įjungta</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"/>
+        <translation>Animuoti slinkimą</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Klaidos puslapiai įjungti</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>Įskiepiai įjungti</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>Visas ekranas įjungtas</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Ekrano kopija įjungta</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>WebGL įjungta</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation>Spartinti 2D drobės atvaizdavimą</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Spausdinti elementų foną</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"/>
+        <translation>Leisti vykdyti nesaugų turinį</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Leisti geografinės vietos nustatymą nesaugiuose šaltiniuose</translation>
     </message>
 </context>
 <context>

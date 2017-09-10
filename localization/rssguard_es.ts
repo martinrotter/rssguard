@@ -488,7 +488,6 @@ Estado de la actualización automática: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Título</translation>
     </message>
     <message>
@@ -497,7 +496,6 @@ Estado de la actualización automática: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Raíz</translation>
     </message>
     <message>
@@ -637,7 +635,6 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Aproximadamente %1</translation>
     </message>
     <message>
@@ -1978,6 +1975,14 @@ o debido a que esta función aún no está implementada.</translation>
         <source>&amp;Restart</source>
         <translation>&amp;Reiniciar</translation>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3013,6 +3018,14 @@ Se necesita como mínimo una API de nivel %1.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation>La aplicación News es un agregador de fuentes RSS/Atom. Hace parte del conjunto ownCloud. Este complemento ejecuta la API %1.</translation>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3838,11 +3851,11 @@ Identificador de cuenta: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Nueva versión disponible</translation>
+        <translation type="vanished">Nueva versión disponible</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Pulse en el globo para más información.</translation>
+        <translation type="vanished">Pulse en el globo para más información.</translation>
     </message>
     <message>
         <source>anonymous</source>

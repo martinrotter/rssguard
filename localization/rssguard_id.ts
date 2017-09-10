@@ -487,7 +487,6 @@ Status pembaruan otomatis: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Judul</translation>
     </message>
     <message>
@@ -496,7 +495,6 @@ Status pembaruan otomatis: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Root</translation>
     </message>
     <message>
@@ -636,7 +634,6 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Tentang %1</translation>
     </message>
     <message>
@@ -1977,6 +1974,14 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>&amp;Restart</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3007,6 +3012,14 @@ Setidaknya API level %1 dibutuhkan.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3830,11 +3843,11 @@ ID akun: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Versi baru tersedia</translation>
+        <translation type="vanished">Versi baru tersedia</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Klik gelembung untuk informasi lebih.</translation>
+        <translation type="vanished">Klik gelembung untuk informasi lebih.</translation>
     </message>
     <message>
         <source>anonymous</source>

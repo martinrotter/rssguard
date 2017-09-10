@@ -152,7 +152,7 @@
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (chyba: %2)</translation>
     </message>
 </context>
 <context>
@@ -489,7 +489,6 @@ Status auto-aktualizace: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
@@ -498,7 +497,6 @@ Status auto-aktualizace: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Kořen</translation>
     </message>
     <message>
@@ -637,7 +635,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>O aplikaci %1</translation>
     </message>
     <message>
@@ -1978,6 +1975,14 @@ or this functionality is not implemented yet.</source>
         <source>&amp;Restart</source>
         <translation>&amp;Restartovat</translation>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3014,6 +3019,14 @@ Je vyžadování verze API minimálně %1.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation>Aplikace &quot;News&quot; je RSS/Atom agregátor. Je součástí balíku Nextcloud. Plugin implementuje %1 rozhraní.</translation>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3839,11 +3852,11 @@ ID účtu: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Nová verze k dispozici</translation>
+        <translation type="vanished">Nová verze k dispozici</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Klikněte na bublinu pro více informací.</translation>
+        <translation type="vanished">Klikněte na bublinu pro více informací.</translation>
     </message>
     <message>
         <source>anonymous</source>

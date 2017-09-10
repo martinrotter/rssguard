@@ -14,11 +14,11 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till prenumeration</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"/>
+        <translation>Använd fördefinerad prenumeration</translation>
     </message>
     <message>
         <source>Title</source>
@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"/>
+        <translation>Prenumerationsnamn</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,125 +34,125 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>Absolut URL till prenumerationsfil online</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"/>
+        <translation>Anpassade regler</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock-inställningar</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Aktivera AdBlock</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Alternativ</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till regel</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort regel</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till prenumeration </translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort prenumeration</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Uppdatera prenumerationer</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"/>
+        <translation>Lär hur man skriver regler...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock låter dig blockera oönskat innehåll på webbsidor</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"/>
+        <translation>Blockerade popup-fönster</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation> AdBlock blockerade oönskat popup-fönster.</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>Visa AdBlock-&amp;inställningar</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"/>
+        <translation>Inaktivera på %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
+        <translation>Inaktivera endast på denna sida</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"/>
+        <translation>Vill du prenumerera på &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till AdBlock-prenumeration</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte läsa in prenumeration!</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till regel </translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort regel </translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till anpassad regel</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"/>
+        <translation>Skriv din regel här:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (nyligen uppdaterad)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (fel: %2)</translation>
     </message>
 </context>
 <context>
@@ -488,7 +488,6 @@ Autouppdateringsstatus: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Namn</translation>
     </message>
     <message>
@@ -497,7 +496,6 @@ Autouppdateringsstatus: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Root</translation>
     </message>
     <message>
@@ -637,7 +635,6 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Om %1</translation>
     </message>
     <message>
@@ -1978,6 +1975,14 @@ att funktionen inte är implementerad än.</translation>
         <source>&amp;Restart</source>
         <translation>&amp;Starta om</translation>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3011,6 +3016,14 @@ Minst API-nivå %1 krävs.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation>Nyhetsappen är en RSS/Atom flödesaggregator. Den är en del av Nextcloud-sviten. Denna tilläggsmodul implementerar %1 API.</translation>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3692,11 +3705,11 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Denna sida blockerades av AdBlock</translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Blockerad av uppsättning: &quot;%1&quot;&lt;br/&gt;Blockerad av filter: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -3837,11 +3850,11 @@ Konto-ID: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Ny tillgänglig version</translation>
+        <translation type="vanished">Ny tillgänglig version</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Klicka på detta meddelande för mer information.</translation>
+        <translation type="vanished">Klicka på detta meddelande för mer information.</translation>
     </message>
     <message>
         <source>anonymous</source>
@@ -4082,91 +4095,91 @@ Senast inloggad: %5</translation>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation>Webbmotorinställningar</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation>Läs in bilder automatiskt</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript aktiverat</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript kan öppna popup-fönster</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript har åtkomst till urklipp</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Länkar kan ta fokus</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"/>
+        <translation>Lokal lagring aktiverad</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>Lokalt innehåll har åtkomst till fjärr-URL:er</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>XSS-granskning aktiverad</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation>Spatial navigering aktiverad</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>Lokalt innehåll har åtkomst till lokala filer</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Hyperlänkgranskning aktiverad</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"/>
+        <translation>Animera skrollning</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Felsidor aktiverade</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>Insticksmoduler aktiverade</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>Helskärmsläge aktiverat</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Skärmklipp aktiverat</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>WebGL aktiverat</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation>Accelerera arbetsytor i 2D</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Rita upp elementbakgrunder</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"/>
+        <translation>Tillåt körning av osäkert innehåll</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Tillåt geolokalisering av osäkert ursprung</translation>
     </message>
 </context>
 <context>

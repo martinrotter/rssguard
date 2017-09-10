@@ -29,6 +29,7 @@ echo "\n" >> ./build-wiki/Mac-OS-X-development-builds.md
 cat ./build-wiki/Mac-OS-X-development-builds.md
 
 cd ./build-wiki
+git pull origin master
 git add *.*
 git commit -m "New files."
 git push origin master

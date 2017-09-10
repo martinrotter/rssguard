@@ -14,11 +14,11 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar inscrição</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"/>
+        <translation>Usar inscrição predefinida</translation>
     </message>
     <message>
         <source>Title</source>
@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"/>
+        <translation>Título da inscrição</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,125 +34,125 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>URL absoluta para o arquivo de inscrição online</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"/>
+        <translation>Regras personalizadas</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuração do AdBlock</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Habilitar o AdBlock</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Opções</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar regra</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Remover regra</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar inscrição</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"/>
+        <translation>Remover inscrição</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Atualizar inscrições</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"/>
+        <translation>Saiba como criar regras...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"/>
+        <translation>O AdBlock permite bloquear o conteúdo indesejado de páginas da web</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"/>
+        <translation>Janela de popup bloqueada</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation>O AdBlock bloqueou uma janela de popup indesejada.</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar configuraçõe&amp;s do AdBlock</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"/>
+        <translation>Desabilitar em %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
+        <translation>Desabilitar somente nesta página</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"/>
+        <translation>Deseja adicionar a inscrição &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar inscrição do AdBlock</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível carregar a inscrição!</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar regra</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Remover regra</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar regra personalizada</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"/>
+        <translation>Por favor, digite sua regra aqui:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (atualizado recentemente)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (erro: %2)</translation>
     </message>
 </context>
 <context>
@@ -488,7 +488,6 @@ Status da atualização automática: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Título</translation>
     </message>
     <message>
@@ -497,7 +496,6 @@ Status da atualização automática: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Raiz</translation>
     </message>
     <message>
@@ -637,7 +635,6 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Sobre o %1</translation>
     </message>
     <message>
@@ -1978,6 +1975,14 @@ ou esta função ainda não foi implementada.</translation>
         <source>&amp;Restart</source>
         <translation>&amp;Reiniciar</translation>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3014,6 +3019,14 @@ Pelo menos o API nível %1 é necessário.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation>O aplicativo de Notícias é um agregador de notícias RSS/Atom. Ele é parte da suíte Nextcloud. Este plugin implementa o API %1.</translation>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3694,11 +3707,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Esta página foi bloqueada pelo AdBlock</translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Bloqueado pelo conjunto: &quot;%1&quot;&lt;br/&gt;Bloqueado pelo filtro: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -3839,11 +3852,11 @@ ID da Conta: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Nova versão disponível</translation>
+        <translation type="vanished">Nova versão disponível</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Clique na bolha para mais informações.</translation>
+        <translation type="vanished">Clique na bolha para mais informações.</translation>
     </message>
     <message>
         <source>anonymous</source>
@@ -4084,91 +4097,91 @@ Servidor: %2
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation>Configurações do mecanismo web</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation>Carregar imagens automaticamente</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>JS habilitado</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"/>
+        <translation>O JS pode abrir janelas de popup</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"/>
+        <translation>O JS pode acessar a área de transferência</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Hyperlinks podem ter foco</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"/>
+        <translation>Armazenamento local habilitado</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>O conteúdo local pode acessar URLs remotas</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Auditoria XSS ativada</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation>Navegação espacial habilitada</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>O conteúdo local pode acessar arquivos locais</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Auditoria de hyperlinks habilitada</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"/>
+        <translation>Animar rolagem</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Páginas de erro habilitadas</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>Plugins habilitados</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>Tela cheia habilitada</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Captura de tela habilitada</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>WebGL habilitada</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation>Acelerar canvas 2D</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Imprimir elementos do fundo</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"/>
+        <translation>Permitir a execução de conteúdo inseguro</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Permitir geolocalização de origens inseguras</translation>
     </message>
 </context>
 <context>

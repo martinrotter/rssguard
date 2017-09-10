@@ -483,7 +483,6 @@ Auto-update status: %3</source>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>タイトル</translation>
     </message>
     <message>
@@ -492,7 +491,6 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -631,7 +629,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>%1について</translation>
     </message>
     <message>
@@ -1972,6 +1969,14 @@ or this functionality is not implemented yet.</source>
         <source>&amp;Restart</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2988,6 +2993,14 @@ At least API level %1 is required.</source>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3792,7 +3805,7 @@ Account ID: %1</source>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>新しいバージョンが利用可能です</translation>
+        <translation type="vanished">新しいバージョンが利用可能です</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>

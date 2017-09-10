@@ -484,7 +484,6 @@ Auto-update status: %3</source>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Titre</translation>
     </message>
     <message>
@@ -493,7 +492,6 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Racine</translation>
     </message>
     <message>
@@ -633,7 +631,6 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>A propos de %1</translation>
     </message>
     <message>
@@ -1974,6 +1971,14 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <source>&amp;Restart</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2991,6 +2996,14 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
         <translation type="unfinished"/>
     </message>
 </context>

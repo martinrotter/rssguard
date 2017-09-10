@@ -487,7 +487,6 @@ Status der automatische Aktualisierung: %3</translation>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Name</translation>
     </message>
     <message>
@@ -496,7 +495,6 @@ Status der automatische Aktualisierung: %3</translation>
     </message>
     <message>
         <source>Root</source>
-        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Wurzel</translation>
     </message>
     <message>
@@ -635,7 +633,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>About %1</source>
-        <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Über %1</translation>
     </message>
     <message>
@@ -1976,6 +1973,14 @@ or this functionality is not implemented yet.</source>
         <source>&amp;Restart</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Go to &amp;next tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to &amp;previous tab</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3008,6 +3013,14 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3833,11 +3846,11 @@ ID des Kontos: %1</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation>Eine neue Version ist verfügbar</translation>
+        <translation type="vanished">Eine neue Version ist verfügbar</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Für weitere Informationen auf die angezeigte Benachrichtigung klicken.</translation>
+        <translation type="vanished">Für weitere Informationen auf die angezeigte Benachrichtigung klicken.</translation>
     </message>
     <message>
         <source>anonymous</source>
