@@ -90,26 +90,20 @@ class FeedsView : public QTreeView {
 		void selectNextItem();
 		void selectPreviousItem();
 
+    void selectNextUnreadItem();
+
 		// Switches visibility of the widget.
 		void switchVisibility();
 
 	signals:
-		// Emitted if user selects new feeds.
 		void itemSelected(RootItem* item);
-
-		// Requests opening of given messages in newspaper mode.
+    void requestViewNextUnreadMessage();
 		void openMessagesInNewspaperView(RootItem* root, const QList<Message>& messages);
 
 	protected:
-		// Handle selections.
 		void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
-
-		// React on "Del" key.
 		void keyPressEvent(QKeyEvent* event);
-
-		// Show custom context menu.
 		void contextMenuEvent(QContextMenuEvent* event);
-
 		void mouseDoubleClickEvent(QMouseEvent* event);
 
 	private slots:
@@ -123,6 +117,9 @@ class FeedsView : public QTreeView {
 		void onItemExpandStateSaveRequested(RootItem* item);
 
 	private:
+    QModelIndex nextPreviousUnreadItem(QModelIndex default_row);
+    QModelIndex nextUnreadItem(QModelIndex default_row);
+
 		// Initializes context menus.
 		QMenu* initializeContextMenuCategories(RootItem* clicked_item);
 		QMenu* initializeContextMenuFeeds(RootItem* clicked_item);

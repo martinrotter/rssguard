@@ -165,8 +165,12 @@
      <string>Web browser &amp;&amp; tabs</string>
     </property>
     <addaction name="m_actionTabNewWebBrowser"/>
+    <addaction name="separator"/>
     <addaction name="m_actionTabsCloseAll"/>
     <addaction name="m_actionTabsCloseAllExceptCurrent"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionTabsNext"/>
+    <addaction name="m_actionTabsPrevious"/>
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
@@ -719,6 +723,16 @@
   <action name="m_actionTabsCloseAllExceptCurrent">
    <property name="text">
     <string>Close all tabs except current</string>
+   </property>
+  </action>
+  <action name="m_actionTabsNext">
+   <property name="text">
+    <string>Go to &amp;next tab</string>
+   </property>
+  </action>
+  <action name="m_actionTabsPrevious">
+   <property name="text">
+    <string>Go to &amp;previous tab</string>
    </property>
   </action>
  </widget>

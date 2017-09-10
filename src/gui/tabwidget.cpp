@@ -269,6 +269,24 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
 #endif
 }
 
+void TabWidget::gotoNextTab() {
+  if (currentIndex() == count() - 1) {
+    setCurrentIndex(0);
+  }
+  else {
+    setCurrentIndex(currentIndex() + 1);
+  }
+}
+
+void TabWidget::gotoPreviousTab() {
+  if (currentIndex() == 0) {
+    setCurrentIndex(count() - 1);
+  }
+  else {
+    setCurrentIndex(currentIndex() - 1);
+  }
+}
+
 void TabWidget::indentTabText(int index) {
 #if defined (Q_OS_MACOS)
 

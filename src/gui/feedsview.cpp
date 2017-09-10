@@ -49,16 +49,19 @@ FeedsView::FeedsView(QWidget* parent)
 	  m_contextMenuEmptySpace(nullptr),
 	  m_contextMenuOtherItems(nullptr) {
 	setObjectName(QSL("FeedsView"));
+
 	// Allocate models.
 	m_sourceModel = qApp->feedReader()->feedsModel();
 	m_proxyModel = qApp->feedReader()->feedsProxyModel();
-	// Connections.
+
+  // Connections.
 	connect(m_sourceModel, &FeedsModel::requireItemValidationAfterDragDrop, this, &FeedsView::validateItemAfterDragDrop);
 	connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);
 	connect(m_sourceModel, &FeedsModel::itemExpandStateSaveRequested, this, &FeedsView::onItemExpandStateSaveRequested);
 	connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
 	connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, this, &FeedsView::expandItemDelayed);
-	setModel(m_proxyModel);
+
+  setModel(m_proxyModel);
 	setupAppearance();
 }
 
@@ -346,7 +349,70 @@ void FeedsView::selectPreviousItem() {
 	if (index_previous.isValid()) {
 		setCurrentIndex(index_previous);
 		setFocus();
-	}
+  }
+}
+
+void FeedsView::selectNextUnreadItem() {
+  QModelIndex next_unread_row;
+
+  if (currentIndex().isValid()) {
+    next_unread_row = nextPreviousUnreadItem(currentIndex());
+  }
+  else {
+    next_unread_row = nextPreviousUnreadItem(m_proxyModel->index(0, MSG_DB_READ_INDEX));
+  }
+
+  if (next_unread_row.isValid()) {
+    setCurrentIndex(next_unread_row);
+    emit requestViewNextUnreadMessage();
+  }
+}
+
+QModelIndex FeedsView::nextPreviousUnreadItem(QModelIndex default_row) {
+  const bool started_from_zero = default_row.row() == 0 && !default_row.parent().isValid();
+  QModelIndex next_index = nextUnreadItem(default_row);
+
+  // There is no next message, check previous.
+  if (!next_index.isValid() && !started_from_zero) {
+    next_index = nextUnreadItem(m_proxyModel->index(0, 0));
+  }
+
+  return next_index;
+}
+
+QModelIndex FeedsView::nextUnreadItem(QModelIndex default_row) {
+  default_row = m_proxyModel->index(default_row.row(), 0, default_row.parent());
+  const QModelIndex starting_row = default_row;
+
+  while (true) {
+    bool has_unread = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(default_row))->countOfUnreadMessages() > 0;
+
+    if (has_unread) {
+      if (m_proxyModel->hasChildren(default_row)) {
+        // Current index has unread items, but is expandable, go to first child.
+        expand(default_row);
+        default_row = indexBelow(default_row);
+        continue;
+      }
+      else {
+        // We found unread feed, return it.
+        return default_row;
+      }
+    }
+    else {
+      QModelIndex next_row = indexBelow(default_row);
+
+      if (next_row == default_row || !next_row.isValid() || starting_row == next_row) {
+        // We came to last row probably.
+        break;
+      }
+      else {
+        default_row = next_row;
+      }
+    }
+  }
+
+  return QModelIndex();
 }
 
 void FeedsView::switchVisibility() {
@@ -354,8 +420,7 @@ void FeedsView::switchVisibility() {
 }
 
 void FeedsView::expandItemDelayed(const QModelIndex& idx) {
-	QTimer::singleShot(100, this, [ = ] {
-		// TODO: Z nastavení.
+  QTimer::singleShot(100, this, [ = ] {
 		setExpanded(m_proxyModel->mapFromSource(idx), true);
 	});
 }
@@ -445,6 +510,9 @@ void FeedsView::setupAppearance() {
 	// Setup column resize strategies.
 	header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::Stretch);
 	header()->setSectionResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeToContents);
+  header()->setStretchLastSection(false);
+  header()->setSortIndicatorShown(false);
+
 	setUniformRowHeights(true);
 	setAnimated(true);
 	setSortingEnabled(true);
@@ -460,8 +528,6 @@ void FeedsView::setupAppearance() {
 	setRootIsDecorated(false);
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setItemDelegate(new StyledItemDelegateWithoutFocus(this));
-	header()->setStretchLastSection(false);
-	header()->setSortIndicatorShown(false);
 }
 
 void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
@@ -541,7 +607,6 @@ void FeedsView::onItemExpandRequested(const QList<RootItem*>& items, bool exp) {
 	foreach (const RootItem* item, items) {
 		QModelIndex source_index = m_sourceModel->indexForItem(item);
 		QModelIndex proxy_index = m_proxyModel->mapFromSource(source_index);
-		//setExpanded(proxy_index, !exp);
 		setExpanded(proxy_index, exp);
 	}
 }

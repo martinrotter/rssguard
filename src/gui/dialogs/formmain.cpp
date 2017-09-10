@@ -65,25 +65,31 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 	: QMainWindow(parent, f), m_ui(new Ui::FormMain) {
 	m_ui->setupUi(this);
 	qApp->setMainForm(this);
+
 #if defined (USE_WEBENGINE)
 	m_ui->m_menuWebBrowserTabs->addAction(AdBlockManager::instance()->adBlockIcon());
 	m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
+
 	// Add these actions to the list of actions of the main window.
 	// This allows to use actions via shortcuts
 	// even if main menu is not visible.
 	addActions(qApp->userActions());
 	setStatusBar(m_statusBar = new StatusBar(this));
+
 	// Prepare main window and tabs.
 	prepareMenus();
+
 	// Prepare tabs.
 	tabWidget()->feedMessageViewer()->feedsToolBar()->loadSavedActions();
 	tabWidget()->feedMessageViewer()->messagesToolBar()->loadSavedActions();
-	// Establish connections.
+
+  // Establish connections.
 	createConnections();
 	updateMessageButtonsAvailability();
 	updateFeedButtonsAvailability();
-	// Setup some appearance of the window.
+
+  // Setup some appearance of the window.
 	setupIcons();
 	loadSize();
 	m_statusBar->loadSavedActions();
@@ -107,9 +113,11 @@ StatusBar* FormMain::statusBar() const {
 
 void FormMain::showDbCleanupAssistant() {
 	if (qApp->feedUpdateLock()->tryLock()) {
-		QScopedPointer<FormDatabaseCleanup> form_pointer(new FormDatabaseCleanup(this));
-		form_pointer.data()->setCleaner(qApp->feedReader()->databaseCleaner());
-		form_pointer.data()->exec();
+    FormDatabaseCleanup form(new FormDatabaseCleanup(this));
+    form.setCleaner(qApp->feedReader()->databaseCleaner());
+    form.exec();
+
+    // Reload needed stuff.
 		qApp->feedUpdateLock()->unlock();
 		tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
 		qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
@@ -130,21 +138,26 @@ QList<QAction*> FormMain::allActions() const {
 	actions << m_ui->m_actionBackupDatabaseSettings;
 	actions << m_ui->m_actionRestart;
 	actions << m_ui->m_actionQuit;
+
 #if !defined(Q_OS_MAC)
 	actions << m_ui->m_actionFullscreen;
 #endif
+
 	actions << m_ui->m_actionAboutGuard;
 	actions << m_ui->m_actionSwitchFeedsList;
 	actions << m_ui->m_actionSwitchMainWindow;
+
 #if !defined(Q_OS_MAC)
 	actions << m_ui->m_actionSwitchMainMenu;
 #endif
+
 	actions << m_ui->m_actionSwitchToolBars;
 	actions << m_ui->m_actionSwitchListHeaders;
 	actions << m_ui->m_actionSwitchStatusBar;
 	actions << m_ui->m_actionSwitchMessageListOrientation;
-	// Add feeds/messages actions.
-	actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
+  actions << m_ui->m_actionTabsNext;
+  actions << m_ui->m_actionTabsPrevious;
+  actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
 	actions << m_ui->m_actionOpenSelectedMessagesInternally;
 	actions << m_ui->m_actionMarkAllItemsRead;
 	actions << m_ui->m_actionMarkSelectedItemsAsRead;
@@ -174,9 +187,11 @@ QList<QAction*> FormMain::allActions() const {
 	actions << m_ui->m_actionSelectPreviousMessage;
 	actions << m_ui->m_actionSelectNextUnreadMessage;
 	actions << m_ui->m_actionExpandCollapseItem;
+
 #if defined(USE_WEBENGINE)
 	actions << m_ui->m_actionTabNewWebBrowser;
 #endif
+
 	actions << m_ui->m_actionTabsCloseAll;
 	actions << m_ui->m_actionTabsCloseAllExceptCurrent;
 	return actions;
@@ -434,6 +449,7 @@ void FormMain::display() {
 
 void FormMain::setupIcons() {
 	IconFactory* icon_theme_factory = qApp->icons();
+
 	// Setup icons of this main window.
 	m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme(QSL("emblem-downloads")));
 	m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-properties")));
@@ -447,6 +463,7 @@ void FormMain::setupIcons() {
 	m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
 	m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("applications-office")));
 	m_ui->m_actionDisplayWiki->setIcon(icon_theme_factory->fromTheme(QSL("applications-science")));
+
 	// View.
 	m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
 	m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme(QSL("view-fullscreen")));
@@ -457,6 +474,7 @@ void FormMain::setupIcons() {
 	m_ui->m_actionSwitchStatusBar->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
 	m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
 	m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
+
 	// Feeds/messages.
 	m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
 	m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("process-stop")));
@@ -492,11 +510,15 @@ void FormMain::setupIcons() {
 	m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
 	m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml")));
 	m_ui->m_actionAddCategoryIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder")));
+
 	// Tabs & web browser.
 	m_ui->m_actionTabNewWebBrowser->setIcon(icon_theme_factory->fromTheme(QSL("tab-new")));
 	m_ui->m_actionTabsCloseAll->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
 	m_ui->m_actionTabsCloseAllExceptCurrent->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
-	// Setup icons on TabWidget too.
+  m_ui->m_actionTabsNext->setIcon(icon_theme_factory->fromTheme(QSL("go-next")));
+  m_ui->m_actionTabsPrevious->setIcon(icon_theme_factory->fromTheme(QSL("go-previous")));
+
+  // Setup icons on TabWidget too.
 	m_ui->m_tabWidget->setupIcons();
 }
 
@@ -566,24 +588,28 @@ void FormMain::createConnections() {
 	connect(m_ui->m_menuAccounts, &QMenu::aboutToShow, this, &FormMain::updateAccountsMenu);
 	connect(m_ui->m_actionServiceDelete, &QAction::triggered, m_ui->m_actionDeleteSelectedItem, &QAction::triggered);
 	connect(m_ui->m_actionServiceEdit, &QAction::triggered, m_ui->m_actionEditSelectedItem, &QAction::triggered);
-	// Menu "File" connections.
+
+  // Menu "File" connections.
 	connect(m_ui->m_actionBackupDatabaseSettings, &QAction::triggered, this, &FormMain::backupDatabaseSettings);
 	connect(m_ui->m_actionRestoreDatabaseSettings, &QAction::triggered, this, &FormMain::restoreDatabaseSettings);
 	connect(m_ui->m_actionQuit, &QAction::triggered, qApp, &Application::quit);
 	connect(m_ui->m_actionServiceAdd, &QAction::triggered, this, &FormMain::showAddAccountDialog);
 	connect(m_ui->m_actionRestart, &QAction::triggered, qApp, &Application::restart);
-	// Menu "View" connections.
+
+  // Menu "View" connections.
 	connect(m_ui->m_actionFullscreen, &QAction::toggled, this, &FormMain::switchFullscreenMode);
 	connect(m_ui->m_actionSwitchMainMenu, &QAction::toggled, m_ui->m_menuBar, &QMenuBar::setVisible);
 	connect(m_ui->m_actionSwitchMainWindow, &QAction::triggered, this, &FormMain::switchVisibility);
 	connect(m_ui->m_actionSwitchStatusBar, &QAction::toggled, statusBar(), &StatusBar::setVisible);
-	// Menu "Tools" connections.
+
+  // Menu "Tools" connections.
 	connect(m_ui->m_actionSettings, &QAction::triggered, [this]() {
 		FormSettings(*this).exec();
 	});
 	connect(m_ui->m_actionDownloadManager, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::showDownloadManager);
 	connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, &FormMain::showDbCleanupAssistant);
-	// Menu "Help" connections.
+
+  // Menu "Help" connections.
 	connect(m_ui->m_actionAboutGuard, &QAction::triggered, [this]() {
 		FormAbout(this).exec();
 	});
@@ -593,7 +619,10 @@ void FormMain::createConnections() {
 	connect(m_ui->m_actionReportBug, &QAction::triggered, this, &FormMain::reportABug);
 	connect(m_ui->m_actionDonate, &QAction::triggered, this, &FormMain::donate);
 	connect(m_ui->m_actionDisplayWiki, &QAction::triggered, this, &FormMain::showWiki);
-	// Tab widget connections.
+
+  // Tab widget connections.
+  connect(m_ui->m_actionTabsNext, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::gotoNextTab);
+  connect(m_ui->m_actionTabsPrevious, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::gotoPreviousTab);
 	connect(m_ui->m_actionTabsCloseAllExceptCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabsExceptCurrent);
 	connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
 	connect(m_ui->m_actionTabNewWebBrowser, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::addEmptyBrowser);
@@ -607,7 +636,8 @@ void FormMain::createConnections() {
 	connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
 	connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);
 	connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
-	// Toolbar forwardings.
+
+  // Toolbar forwardings.
 	connect(m_ui->m_actionAddFeedIntoSelectedAccount, &QAction::triggered,
 	        tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::addFeedIntoSelectedAccount);
 	connect(m_ui->m_actionAddCategoryIntoSelectedAccount, &QAction::triggered,
@@ -653,7 +683,7 @@ void FormMain::createConnections() {
 	connect(m_ui->m_actionSwitchFeedsList, &QAction::triggered,
 	        tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchFeedComponentVisibility);
 	connect(m_ui->m_actionSelectNextItem,
-	        &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::selectNextItem);
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::selectNextItem);
 	connect(m_ui->m_actionSwitchToolBars, &QAction::toggled,
 	        tabWidget()->feedMessageViewer(), &FeedMessageViewer::setToolBarsEnabled);
 	connect(m_ui->m_actionSwitchListHeaders, &QAction::toggled,
@@ -663,7 +693,7 @@ void FormMain::createConnections() {
 	connect(m_ui->m_actionSelectNextMessage,
 	        &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::selectNextItem);
 	connect(m_ui->m_actionSelectNextUnreadMessage,
-	        &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::selectNextUnreadItem);
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::selectNextUnreadItem);
 	connect(m_ui->m_actionSelectPreviousMessage,
 	        &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::selectPreviousItem);
 	connect(m_ui->m_actionSwitchMessageListOrientation, &QAction::triggered,
