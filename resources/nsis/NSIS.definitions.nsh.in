@@ -25,5 +25,5 @@
 !define MUI_ICON "@PWD@\resources\graphics\@APP_LOW_NAME@.ico"
 !define MUI_UNICON "@PWD@\resources\graphics\@APP_LOW_NAME@.ico"
 !define PATCH  "0"
-!define OUTPUT_FILE "@OUT_PWD@\@APP_LOW_NAME@-@APP_VERSION@-@APP_REVISION@-win32.exe"
+!define OUTPUT_FILE "@OUT_PWD@\@APP_LOW_NAME@-@APP_VERSION@-@APP_REVISION@-@APP_WIN_ARCH@.exe"
 !define BINARY_TREE "@OUT_PWD@\app"

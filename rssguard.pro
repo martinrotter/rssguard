@@ -83,6 +83,7 @@ APP_URL_ISSUES_NEW            = "https://github.com/martinrotter/rssguard/issues
 APP_URL_WIKI                  = "https://github.com/martinrotter/rssguard/wiki"
 APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (github.com/martinrotter/rssguard)"
 APP_DONATE_URL                = "https://goo.gl/YFVJ0j"
+APP_WIN_ARCH                  = "win64"
 
 isEmpty(PREFIX) {
   message(rssguard: PREFIX variable is not set. This might indicate error.)
@@ -108,7 +109,7 @@ isEmpty(DESTDIR) {
 
 isEmpty(USE_WEBENGINE) {
   USE_WEBENGINE = false
-  message(rssguard: USE_WEBENGINE variable is not set.)
+  message("rssguard: USE_WEBENGINE variable is not set.")
 
   qtHaveModule(webenginewidgets) {
     USE_WEBENGINE = true
@@ -627,11 +628,11 @@ QMAKE_EXTRA_COMPILERS += lrelease
 win32 {
   seven_zip.target = 7zip
   seven_zip.depends = install
-  seven_zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -t7z $$TARGET-$$APP_VERSION-$$APP_REVISION-win32.7z $$shell_path($$PREFIX/*)
+  seven_zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -t7z $$TARGET-$$APP_VERSION-$$APP_REVISION-$$APP_WIN_ARCH.7z $$shell_path($$PREFIX/*)
 
   zip.target = zip
   zip.depends = install
-  zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-win32.zip $$shell_path($$PREFIX/*)
+  zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-$$APP_WIN_ARCH.zip $$shell_path($$PREFIX/*)
 
   QMAKE_EXTRA_TARGETS += seven_zip zip
 }
@@ -669,7 +670,7 @@ win32 {
   nsis.target = nsis
   nsis.depends = install
   nsis.commands = \
-    $$shell_path($$shell_quote($$PWD/resources/scripts/sed/sed.exe)) -e \"s|@APP_VERSION@|$$APP_VERSION|g; s|@APP_REVISION@|$$APP_REVISION|g; s|@APP_NAME@|$$APP_NAME|g; s|@APP_LOW_NAME@|$$APP_LOW_NAME|g; s|@EXE_NAME@|$${APP_LOW_NAME}.exe|g; s|@PWD@|$$replace(PWD, /, \\\\)|g; s|@OUT_PWD@|$$replace(OUT_PWD, /, \\\\)|g\" $$shell_path($$shell_quote($$PWD/resources/nsis/NSIS.definitions.nsh.in)) > $$shell_path($$shell_quote($$OUT_PWD/NSIS.definitions.nsh)) && \
+    $$shell_path($$shell_quote($$PWD/resources/scripts/sed/sed.exe)) -e \"s|@APP_VERSION@|$$APP_VERSION|g; s|@APP_WIN_ARCH@|$$APP_WIN_ARCH|g; s|@APP_REVISION@|$$APP_REVISION|g; s|@APP_NAME@|$$APP_NAME|g; s|@APP_LOW_NAME@|$$APP_LOW_NAME|g; s|@EXE_NAME@|$${APP_LOW_NAME}.exe|g; s|@PWD@|$$replace(PWD, /, \\\\)|g; s|@OUT_PWD@|$$replace(OUT_PWD, /, \\\\)|g\" $$shell_path($$shell_quote($$PWD/resources/nsis/NSIS.definitions.nsh.in)) > $$shell_path($$shell_quote($$OUT_PWD/NSIS.definitions.nsh)) && \
     xcopy /Y $$shell_path($$shell_quote($$PWD/resources/nsis/NSIS.template.in)) $$shell_path($$shell_quote($$OUT_PWD/)) && \
     $$shell_path($$shell_quote($$PWD/resources/scripts/nsis/makensis.exe)) $$shell_path($$shell_quote($$OUT_PWD/NSIS.template.in))
 
