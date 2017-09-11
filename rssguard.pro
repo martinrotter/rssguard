@@ -188,8 +188,7 @@ win32 {
 }
 
 DISTFILES += resources/scripts/astyle/.astylerc \
-             resources/scripts/uncrustify/uncrustify.cfg \
-    resources/scripts/uncrustify/uncrustify.cfg
+             resources/scripts/uncrustify/uncrustify.cfg
 
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
@@ -340,7 +339,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/core/messagesmodelsqllayer.h \
             src/gui/treeviewcolumnsmenu.h \
             src/services/abstract/labelsrootitem.h \
-            src/services/abstract/label.h
+            src/services/abstract/label.h \
+            src/miscellaneous/externaltool.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -466,7 +466,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/core/messagesmodelsqllayer.cpp \
             src/gui/treeviewcolumnsmenu.cpp \
             src/services/abstract/labelsrootitem.cpp \
-            src/services/abstract/label.cpp
+            src/services/abstract/label.cpp \
+            src/miscellaneous/externaltool.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 

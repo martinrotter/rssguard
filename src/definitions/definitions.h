@@ -84,6 +84,8 @@
 #define GOOGLE_SUGGEST_URL                    "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
 #define ENCRYPTION_FILE_NAME                  "key.private"
 #define RELOAD_MODEL_BORDER_NUM               10
+#define EXTERNAL_TOOL_SEPARATOR               "###"
+#define EXTERNAL_TOOL_PARAM_SEPARATOR         "|||"
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f

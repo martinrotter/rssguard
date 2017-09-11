@@ -26,6 +26,7 @@
 ToolBarEditor::ToolBarEditor(QWidget* parent)
 	: QWidget(parent), m_ui(new Ui::ToolBarEditor) {
 	m_ui->setupUi(this);
+
 	// Create connections.
 	connect(m_ui->m_btnInsertSeparator, &QToolButton::clicked, this, &ToolBarEditor::insertSeparator);
 	connect(m_ui->m_btnInsertSpacer, &QToolButton::clicked, this, &ToolBarEditor::insertSpacer);
@@ -56,6 +57,7 @@ ToolBarEditor::~ToolBarEditor() {
 
 void ToolBarEditor::loadFromToolBar(BaseBar* tool_bar) {
 	m_toolBar = tool_bar;
+
 	QList<QAction*> activated_actions = m_toolBar->changeableActions();
 	QList<QAction*> available_actions = m_toolBar->availableActions();
 	loadEditor(activated_actions, available_actions);

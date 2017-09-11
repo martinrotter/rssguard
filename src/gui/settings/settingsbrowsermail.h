@@ -20,6 +20,7 @@
 
 #include "gui/settings/settingspanel.h"
 
+#include "miscellaneous/externaltool.h"
 #include "ui_settingsbrowsermail.h"
 
 
@@ -34,7 +35,7 @@ class SettingsBrowserMail : public SettingsPanel {
 			return tr("Web browser & e-mail & proxy");
 		}
 
-		void loadSettings();
+    void loadSettings();
 		void saveSettings();
 
 	private slots:
@@ -48,8 +49,8 @@ class SettingsBrowserMail : public SettingsPanel {
 		void onProxyTypeChanged(int index);
 
 	private:
-    QStringList externalTools() const;
-    void setExternalTools(const QStringList& list);
+    QList<ExternalTool> externalTools() const;
+    void setExternalTools(const QList<ExternalTool>& list);
 
 		Ui::SettingsBrowserMail* m_ui;
 };

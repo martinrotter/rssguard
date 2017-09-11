@@ -21,13 +21,15 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "gui/guiutilities.h"
+#include "miscellaneous/externaltool.h"
 
 #include <QNetworkProxy>
 #include <QFileDialog>
+#include <QInputDialog>
 
 
 SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
-	: SettingsPanel(settings, parent), m_ui(new Ui::SettingsBrowserMail) {
+  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsBrowserMail) {
 	m_ui->setupUi(this);
 
 	GuiUtilities::setLabelAsNotice(*m_ui->label, false);
@@ -40,6 +42,9 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 #else
 	connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
 #endif
+
+  m_ui->m_listTools->setHeaderLabels(QStringList() << tr("Executable") << tr("Parameters"));
+  m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 
 	connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
 	        &SettingsBrowserMail::dirtifySettings);
@@ -66,8 +71,10 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   connect(m_ui->m_btnDeleteTool, &QPushButton::clicked, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_btnAddTool, &QPushButton::clicked, this, &SettingsBrowserMail::addExternalTool);
   connect(m_ui->m_btnDeleteTool, &QPushButton::clicked, this, &SettingsBrowserMail::deleteSelectedExternalTool);
-  connect(m_ui->m_listTools, &QListWidget::currentTextChanged, [this](const QString & current_text) {
-    m_ui->m_btnDeleteTool->setEnabled(!current_text.isEmpty());
+  connect(m_ui->m_listTools, &QTreeWidget::currentItemChanged, [this](QTreeWidgetItem * current, QTreeWidgetItem * previous) {
+    Q_UNUSED(previous)
+
+    m_ui->m_btnDeleteTool->setEnabled(current != nullptr);
   });
 }
 
@@ -121,19 +128,23 @@ void SettingsBrowserMail::onProxyTypeChanged(int index) {
   m_ui->m_lblProxyUsername->setEnabled(is_proxy_selected);
 }
 
-QStringList SettingsBrowserMail::externalTools() const {
-  QStringList list;
+QList<ExternalTool> SettingsBrowserMail::externalTools() const {
+  QList<ExternalTool> list;
 
-  for (int i = 0; i < m_ui->m_listTools->count(); i++) {
-    list.append(m_ui->m_listTools->item(i)->text());
+  for (int i = 0; i < m_ui->m_listTools->topLevelItemCount(); i++) {
+    list.append(m_ui->m_listTools->topLevelItem(i)->data(0, Qt::UserRole).value<ExternalTool>());
   }
 
   return list;
 }
 
-void SettingsBrowserMail::setExternalTools(const QStringList& list) {
-  foreach (const QString& tool, list) {
-    m_ui->m_listTools->addItem(tool);
+void SettingsBrowserMail::setExternalTools(const QList<ExternalTool>& list) {
+  foreach (const ExternalTool& tool, list) {
+    QTreeWidgetItem* item = new QTreeWidgetItem(m_ui->m_listTools,
+                                                QStringList() << tool.executable() << tool.parameters());
+    item->setData(0, Qt::UserRole, QVariant::fromValue(tool));
+
+    m_ui->m_listTools->addTopLevelItem(item);
   }
 }
 
@@ -194,7 +205,7 @@ void SettingsBrowserMail::loadSettings() {
 	m_ui->m_txtProxyPassword->setText(TextFactory::decrypt(settings()->value(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
 	m_ui->m_spinProxyPort->setValue(settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt());
 
-  setExternalTools(settings()->value(GROUP(Browser), SETTING(Browser::ExternalTools)).toStringList());
+  setExternalTools(ExternalTool::toolsFromSettings());
 	onEndLoadSettings();
 }
 
@@ -220,7 +231,9 @@ void SettingsBrowserMail::saveSettings() {
 	settings()->setValue(GROUP(Proxy), Proxy::Password, TextFactory::encrypt(m_ui->m_txtProxyPassword->text()));
 	settings()->setValue(GROUP(Proxy), Proxy::Port, m_ui->m_spinProxyPort->value());
 
-  settings()->setValue(GROUP(Browser), Browser::ExternalTools, externalTools());
+  auto tools = externalTools();
+
+  ExternalTool::setToolsToSettings(tools);
 
   // Reload settings for all network access managers.
 	SilentNetworkAccessManager::instance()->loadSettings();
@@ -239,12 +252,23 @@ void SettingsBrowserMail::addExternalTool() {
 #endif
 
   if (!executable_file.isEmpty()) {
-    m_ui->m_listTools->addItem(QDir::toNativeSeparators(executable_file));
+    executable_file = QDir::toNativeSeparators(executable_file);
+    bool ok;
+    QString parameters = QInputDialog::getText(this, tr("Enter parameters"),
+                                               tr("Enter (optional) parameters separated by single space to send to executable when opening URLs."),
+                                               QLineEdit::Normal, QString(), &ok);
+
+    if (ok) {
+      QTreeWidgetItem* item = new QTreeWidgetItem(m_ui->m_listTools,
+                                                  QStringList() << QDir::toNativeSeparators(executable_file) << parameters);
+      item->setData(0, Qt::UserRole, QVariant::fromValue(ExternalTool(executable_file, parameters.split(QSL(" ")))));
+      m_ui->m_listTools->addTopLevelItem(item);
+    }
   }
 }
 
 void SettingsBrowserMail::deleteSelectedExternalTool() {
-  if (m_ui->m_listTools->currentRow() >= 0) {
-    m_ui->m_listTools->takeItem(m_ui->m_listTools->currentRow());
+  if (!m_ui->m_listTools->selectedItems().isEmpty()) {
+    m_ui->m_listTools->takeTopLevelItem(m_ui->m_listTools->indexOfTopLevelItem(m_ui->m_listTools->selectedItems().first()));
   }
 }

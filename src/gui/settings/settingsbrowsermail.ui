@@ -262,16 +262,30 @@
         </widget>
        </item>
        <item row="1" column="0" colspan="2">
-        <widget class="QListWidget" name="m_listTools">
+        <widget class="QTreeWidget" name="m_listTools">
          <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
-         <property name="uniformItemSizes">
+         <property name="indentation">
+          <number>0</number>
+         </property>
+         <property name="uniformRowHeights">
           <bool>true</bool>
          </property>
+         <property name="itemsExpandable">
+          <bool>false</bool>
+         </property>
+         <property name="allColumnsShowFocus">
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -428,6 +442,29 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_txtProxyPassword</tabstop>
+  <tabstop>m_checkShowPassword</tabstop>
+  <tabstop>m_tabBrowserProxy</tabstop>
+  <tabstop>m_checkOpenLinksInExternal</tabstop>
+  <tabstop>m_grpCustomExternalBrowser</tabstop>
+  <tabstop>m_txtExternalBrowserExecutable</tabstop>
+  <tabstop>m_btnExternalBrowserExecutable</tabstop>
+  <tabstop>m_txtExternalBrowserArguments</tabstop>
+  <tabstop>m_cmbExternalBrowserPreset</tabstop>
+  <tabstop>m_grpCustomExternalEmail</tabstop>
+  <tabstop>m_txtExternalEmailExecutable</tabstop>
+  <tabstop>m_btnExternalEmailExecutable</tabstop>
+  <tabstop>m_txtExternalEmailArguments</tabstop>
+  <tabstop>m_cmbExternalEmailPreset</tabstop>
+  <tabstop>m_listTools</tabstop>
+  <tabstop>m_btnAddTool</tabstop>
+  <tabstop>m_btnDeleteTool</tabstop>
+  <tabstop>m_cmbProxyType</tabstop>
+  <tabstop>m_txtProxyHost</tabstop>
+  <tabstop>m_spinProxyPort</tabstop>
+  <tabstop>m_txtProxyUsername</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

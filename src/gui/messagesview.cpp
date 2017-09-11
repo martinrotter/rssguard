@@ -24,6 +24,7 @@
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "gui/dialogs/formmain.h"
+#include "miscellaneous/externaltool.h"
 #include "gui/messagebox.h"
 #include "gui/treeviewcolumnsmenu.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
@@ -187,11 +188,12 @@ void MessagesView::initializeContextMenu() {
   QMenu* menu = new QMenu(tr("Open with external tool"), m_contextMenu);
   menu->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
-  foreach (const QString& tool, qApp->settings()->value(GROUP(Browser), SETTING(Browser::ExternalTools)).toStringList()) {
-    QAction* act_tool = new QAction(QFileInfo(tool).fileName(), menu);
+  foreach (const ExternalTool& tool, ExternalTool::toolsFromSettings()) {
+    QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu);
 
-    act_tool->setIcon(icon_provider.icon(tool));
-    act_tool->setToolTip(tool);
+    act_tool->setIcon(icon_provider.icon(tool.executable()));
+    act_tool->setToolTip(tool.executable());
+    act_tool->setData(QVariant::fromValue(tool));
     menu->addAction(act_tool);
 
     connect(act_tool, &QAction::triggered, this, &MessagesView::openSelectedMessagesWithExternalTool);
@@ -510,13 +512,13 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
   QAction* sndr = qobject_cast<QAction*>(sender());
 
   if (sndr != nullptr) {
-    const QString& tool = sndr->toolTip();
+    auto tool = sndr->data().value<ExternalTool>();
 
     foreach (const QModelIndex& index, selectionModel()->selectedRows()) {
       const QString& link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
       if (!link.isEmpty()) {
-        if (!QProcess::startDetached(tool, QStringList() << link)) {
+        if (!QProcess::startDetached(tool.executable(), QStringList() << tool.parameters() << link)) {
           qApp->showGuiMessage(tr("Cannot run external tool"), tr("External tool '%1' could not be started."),
                                QSystemTrayIcon::Critical);
         }
