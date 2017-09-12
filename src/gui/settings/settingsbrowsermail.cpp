@@ -141,7 +141,7 @@ QList<ExternalTool> SettingsBrowserMail::externalTools() const {
 void SettingsBrowserMail::setExternalTools(const QList<ExternalTool>& list) {
   foreach (const ExternalTool& tool, list) {
     QTreeWidgetItem* item = new QTreeWidgetItem(m_ui->m_listTools,
-                                                QStringList() << tool.executable() << tool.parameters());
+                                                QStringList() << tool.executable() << tool.parameters().join(QL1C(' ')));
     item->setData(0, Qt::UserRole, QVariant::fromValue(tool));
 
     m_ui->m_listTools->addTopLevelItem(item);

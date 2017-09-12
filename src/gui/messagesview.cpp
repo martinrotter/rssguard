@@ -519,7 +519,7 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
 
       if (!link.isEmpty()) {
         if (!QProcess::startDetached(tool.executable(), QStringList() << tool.parameters() << link)) {
-          qApp->showGuiMessage(tr("Cannot run external tool"), tr("External tool '%1' could not be started."),
+          qApp->showGuiMessage(tr("Cannot run external tool"), tr("External tool '%1' could not be started.").arg(tool.executable()),
                                QSystemTrayIcon::Critical);
         }
       }
