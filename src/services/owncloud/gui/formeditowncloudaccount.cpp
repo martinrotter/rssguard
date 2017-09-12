@@ -22,15 +22,17 @@
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
+#include "gui/guiutilities.h"
 
 
 FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
 	: QDialog(parent), m_ui(new Ui::FormEditOwnCloudAccount), m_editableRoot(nullptr) {
 	m_ui->setupUi(this);
 	m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
-	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-	setWindowIcon(qApp->icons()->fromTheme(QSL("owncloud")));
-	m_ui->m_lblTestResult->label()->setWordWrap(true);
+
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("owncloud")));
+
+  m_ui->m_lblTestResult->label()->setWordWrap(true);
 	m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
 	                                                   "of feeds will be probably much slower and may time-out often."));
 	m_ui->m_lblDescription->setText(tr("Note that at least version %1 is required.").arg(MINIMAL_OC_VERSION));
@@ -40,13 +42,32 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
 	m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Information,
 	                                 tr("No test done yet."),
 	                                 tr("Here, results of connection test are shown."));
-	setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_checkServerSideUpdate);
-	setTabOrder(m_ui->m_checkServerSideUpdate, m_ui->m_txtUsername->lineEdit());
+  m_ui->m_lblLimitMessages->setText(
+      tr("Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains "
+         "bigger number of messages than specified limit, then some messages might not be downloaded during feed update."));
+
+  connect(m_ui->m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), [ = ](int value) {
+    if (value <= 0) {
+      m_ui->m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
+    }
+    else {
+      m_ui->m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
+    }
+  });
+
+  GuiUtilities::setLabelAsNotice(*m_ui->m_lblLimitMessages, false);
+  GuiUtilities::setLabelAsNotice(*m_ui->m_lblServerSideUpdateInformation, false);
+  GuiUtilities::setLabelAsNotice(*m_ui->m_lblDescription, false);
+
+  setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_checkServerSideUpdate);
+  setTabOrder(m_ui->m_checkServerSideUpdate, m_ui->m_spinLimitMessages);
+  setTabOrder(m_ui->m_spinLimitMessages, m_ui->m_txtUsername->lineEdit());
 	setTabOrder(m_ui->m_txtUsername->lineEdit(), m_ui->m_txtPassword->lineEdit());
 	setTabOrder(m_ui->m_txtPassword->lineEdit(), m_ui->m_checkShowPassword);
 	setTabOrder(m_ui->m_checkShowPassword, m_ui->m_btnTestSetup);
 	setTabOrder(m_ui->m_btnTestSetup, m_ui->m_buttonBox);
-	connect(m_ui->m_checkShowPassword, &QCheckBox::toggled, this, &FormEditOwnCloudAccount::displayPassword);
+
+  connect(m_ui->m_checkShowPassword, &QCheckBox::toggled, this, &FormEditOwnCloudAccount::displayPassword);
 	connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditOwnCloudAccount::onClickedOk);
 	connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditOwnCloudAccount::onClickedCancel);
 	connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::onPasswordChanged);
@@ -56,7 +77,8 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
 	connect(m_ui->m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::checkOkButton);
 	connect(m_ui->m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditOwnCloudAccount::checkOkButton);
 	connect(m_ui->m_btnTestSetup, &QPushButton::clicked, this, &FormEditOwnCloudAccount::performTest);
-	onPasswordChanged();
+
+  onPasswordChanged();
 	onUsernameChanged();
 	onUrlChanged();
 	checkOkButton();
@@ -88,10 +110,12 @@ void FormEditOwnCloudAccount::displayPassword(bool display) {
 
 void FormEditOwnCloudAccount::performTest() {
 	OwnCloudNetworkFactory factory;
+
 	factory.setAuthUsername(m_ui->m_txtUsername->lineEdit()->text());
 	factory.setAuthPassword(m_ui->m_txtPassword->lineEdit()->text());
 	factory.setUrl(m_ui->m_txtUrl->lineEdit()->text());
 	factory.setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
+
 	OwnCloudStatusResponse result = factory.status();
 
 	if (result.isLoaded()) {

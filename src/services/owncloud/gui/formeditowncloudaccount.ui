@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>541</width>
-    <height>334</height>
+    <width>602</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,7 +60,7 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="0" colspan="2">
+     <item row="6" column="0" colspan="2">
       <widget class="QGroupBox" name="m_gbAuthentication">
        <property name="toolTip">
         <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
@@ -111,14 +111,14 @@
        </layout>
       </widget>
      </item>
-     <item row="5" column="0">
+     <item row="7" column="0">
       <widget class="QPushButton" name="m_btnTestSetup">
        <property name="text">
         <string>&amp;Test setup</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="7" column="1">
       <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -128,6 +128,45 @@
        </property>
        <property name="layoutDirection">
         <enum>Qt::RightToLeft</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Limit number of downloaded messages per feed</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QSpinBox" name="m_spinLimitMessages">
+       <property name="maximumSize">
+        <size>
+         <width>140</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="suffix">
+        <string> = unlimited</string>
+       </property>
+       <property name="minimum">
+        <number>-1</number>
+       </property>
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="value">
+        <number>-1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0" colspan="2">
+      <widget class="QLabel" name="m_lblLimitMessages">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

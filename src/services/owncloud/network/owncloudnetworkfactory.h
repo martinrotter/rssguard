@@ -134,13 +134,18 @@ class OwnCloudNetworkFactory {
 		QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance, const QStringList& feed_ids,
 		                                                const QStringList& guid_hashes);
 
-	private:
-		QString m_url;
-		QString m_fixedUrl;
-		bool m_forceServerSideUpdate;
+    // Gets/sets the amount of messages to obtain during single feed update.
+    int batchSize() const;
+    void setBatchSize(int batch_size);
+
+  private:
+    QString m_url;
+    QString m_fixedUrl;
+    bool m_forceServerSideUpdate;
 		QString m_authUsername;
 		QString m_authPassword;
 		QNetworkReply::NetworkError m_lastError;
+    int m_batchSize;
 
 		// Endpoints.
 		QString m_urlUser;

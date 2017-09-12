@@ -23,15 +23,17 @@
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
+#include "gui/guiutilities.h"
 
 
 FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
 	: QDialog(parent), m_ui(new Ui::FormEditTtRssAccount), m_editableRoot(nullptr) {
 	m_ui->setupUi(this);
 	m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
-	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-	setWindowIcon(qApp->icons()->fromTheme(QSL("tinytinyrss")));
-	m_ui->m_lblTestResult->label()->setWordWrap(true);
+
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tinytinyrss")));
+
+  m_ui->m_lblTestResult->label()->setWordWrap(true);
 	m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
 	                                                   "of feeds will be probably much slower and may time-out often."));
 	m_ui->m_lblDescription->setText(tr("Note that at least API level %1 is required.").arg(MINIMAL_API_LEVEL));
@@ -43,7 +45,11 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
 	m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Information,
 	                                 tr("No test done yet."),
 	                                 tr("Here, results of connection test are shown."));
-	setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_checkServerSideUpdate);
+
+  GuiUtilities::setLabelAsNotice(*m_ui->m_lblDescription, false);
+  GuiUtilities::setLabelAsNotice(*m_ui->m_lblServerSideUpdateInformation, false);
+
+  setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_checkServerSideUpdate);
 	setTabOrder(m_ui->m_checkServerSideUpdate, m_ui->m_txtUsername->lineEdit());
 	setTabOrder(m_ui->m_txtUsername->lineEdit(), m_ui->m_txtPassword->lineEdit());
 	setTabOrder(m_ui->m_txtPassword->lineEdit(), m_ui->m_checkShowPassword);
@@ -53,7 +59,8 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
 	setTabOrder(m_ui->m_txtHttpPassword->lineEdit(), m_ui->m_checkShowHttpPassword);
 	setTabOrder(m_ui->m_checkShowHttpPassword, m_ui->m_btnTestSetup);
 	setTabOrder(m_ui->m_btnTestSetup, m_ui->m_buttonBox);
-	connect(m_ui->m_checkShowPassword, &QCheckBox::toggled, this, &FormEditTtRssAccount::displayPassword);
+
+  connect(m_ui->m_checkShowPassword, &QCheckBox::toggled, this, &FormEditTtRssAccount::displayPassword);
 	connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditTtRssAccount::onClickedOk);
 	connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditTtRssAccount::onClickedCancel);
 	connect(m_ui->m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditTtRssAccount::onPasswordChanged);
@@ -68,7 +75,8 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
 	connect(m_ui->m_gbHttpAuthentication, &QGroupBox::toggled, this, &FormEditTtRssAccount::onHttpPasswordChanged);
 	connect(m_ui->m_gbHttpAuthentication, &QGroupBox::toggled, this, &FormEditTtRssAccount::onHttpUsernameChanged);
 	connect(m_ui->m_checkShowHttpPassword, &QCheckBox::toggled, this, &FormEditTtRssAccount::displayHttpPassword);
-	onPasswordChanged();
+
+  onPasswordChanged();
 	onUsernameChanged();
 	onUrlChanged();
 	onHttpPasswordChanged();

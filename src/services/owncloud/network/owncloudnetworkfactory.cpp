@@ -34,7 +34,7 @@
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
 	: m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
-	  m_authUsername(QString()), m_authPassword(QString()), m_urlUser(QString()), m_urlStatus(QString()),
+    m_authUsername(QString()), m_authPassword(QString()), m_batchSize(-1), m_urlUser(QString()), m_urlStatus(QString()),
 	  m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
 	  m_urlDeleteFeed(QString()), m_urlRenameFeed(QString()), m_userId(QString()) {
 }
@@ -247,7 +247,7 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
 	}
 
 	QString final_url = m_urlMessages.arg(QString::number(feed_id),
-	                                      QString::number(-1),
+                                        QString::number(batchSize()),
 	                                      QString::number(0));
 	QByteArray result_raw;
 	NetworkResult network_reply = NetworkFactory::performNetworkOperation(final_url,
@@ -375,12 +375,20 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(RootItem
 	return (m_lastError = network_reply.first);
 }
 
+int OwnCloudNetworkFactory::batchSize() const {
+  return m_batchSize;
+}
+
+void OwnCloudNetworkFactory::setBatchSize(int batch_size) {
+  m_batchSize = batch_size;
+}
+
 QString OwnCloudNetworkFactory::userId() const {
-	return m_userId;
+  return m_userId;
 }
 
 void OwnCloudNetworkFactory::setUserId(const QString& userId) {
-	m_userId = userId;
+  m_userId = userId;
 }
 
 OwnCloudResponse::OwnCloudResponse(const QString& raw_content) {
