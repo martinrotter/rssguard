@@ -1147,6 +1147,26 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>ownCloud News server is okay.</source>
         <translation>Server ownCloud News ok.</translation>
     </message>
+    <message>
+        <source>Limit number of downloaded messages per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> = unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
@@ -2829,6 +2849,18 @@ You can install it now.</source>
         <source>External e-mail client could not be started.</source>
         <translation>Klien surel eksternal tidak dapat dimulai.</translation>
     </message>
+    <message>
+        <source>Open with external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot run external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>External tool &apos;%1&apos; could not be started.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -3014,10 +3046,14 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Versi baru tersedia</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
+        <translation>Klik gelembung untuk informasi lebih.</translation>
+    </message>
+    <message>
+        <source>Passed external tool representation is not valid.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3185,7 +3221,9 @@ Setidaknya API level %1 dibutuhkan.</translation>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
-File filter for external e-mail selection dialog.</extracomment>
+File filter for external e-mail selection dialog.
+----------
+File filter for external tool selection dialog.</extracomment>
         <translation>Yang dapat dijalankan (*)</translation>
     </message>
     <message>
@@ -3227,6 +3265,42 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
         <translation>Selalu buka tautan dari peramban teks internal sederhana di peramban web exkternal</translation>
+    </message>
+    <message>
+        <source>External tools</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Delete selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter parameters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
