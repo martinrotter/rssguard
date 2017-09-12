@@ -247,7 +247,7 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
 	}
 
 	QString final_url = m_urlMessages.arg(QString::number(feed_id),
-                                        QString::number(batchSize()),
+                                        QString::number(batchSize() <= 0 ? -1 : batchSize()),
 	                                      QString::number(0));
 	QByteArray result_raw;
 	NetworkResult network_reply = NetworkFactory::performNetworkOperation(final_url,
