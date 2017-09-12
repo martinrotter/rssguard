@@ -582,7 +582,8 @@ TRANSLATIONS += localization/qtbase_cs.ts \
                 localization/rssguard_nl.ts \
                 localization/rssguard_pl.ts \
                 localization/rssguard_pt.ts \
-                localization/rssguard_sv.ts
+                localization/rssguard_sv.ts \
+                localization/rssguard_zh.ts
 
 TRANSLATIONS_WO_QT += $$PWD/localization/rssguard_cs.ts \
                       $$PWD/localization/rssguard_da.ts \
@@ -599,7 +600,8 @@ TRANSLATIONS_WO_QT += $$PWD/localization/rssguard_cs.ts \
                       $$PWD/localization/rssguard_nl.ts \
                       $$PWD/localization/rssguard_pl.ts \
                       $$PWD/localization/rssguard_pt.ts \
-                      $$PWD/localization/rssguard_sv.ts
+                      $$PWD/localization/rssguard_sv.ts \
+                      $$PWD/localization/rssguard_zh.ts
 
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src \
