@@ -342,7 +342,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
 			const QString installed_db_schema = query_db.value(0).toString();
 			query_db.finish();
 
-			if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
+      if (installed_db_schema.toInt() < QString(APP_DB_SCHEMA_VERSION).toInt()) {
 				if (sqliteUpdateDatabaseSchema(database, installed_db_schema)) {
 					qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
 					       qPrintable(installed_db_schema),

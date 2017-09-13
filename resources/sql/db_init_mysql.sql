@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS OwnCloudAccounts (
   password        TEXT,
   url             TEXT        NOT NULL,
   force_update    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (force_update >= 0 AND force_update <= 1),
+  msg_limit       INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );
