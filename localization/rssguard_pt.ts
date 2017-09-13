@@ -1150,23 +1150,23 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Limitar número de mensagens baixadas por feed</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation> = ilimitado</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Limitar o número de mensagens baixadas por feed torna a atualização de feeds mais rápida, mas se o feed contém um número grande de mensagens que o limite especificado, então algumas mensagens podem não ser baixadas durante a atualização do feed.</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation> = ilimitado</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>mensagens</translation>
     </message>
 </context>
 <context>
@@ -2853,15 +2853,15 @@ Você pode instalá-lo agora.</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Abrir com ferramenta externa</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível executar a ferramenta externa</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>A ferramenta externa &apos;%1&apos; não pôde ser iniciada.</translation>
     </message>
 </context>
 <context>
@@ -3061,7 +3061,7 @@ Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>A representação da ferramenta externa passada não é válida.</translation>
     </message>
 </context>
 <context>
@@ -3277,39 +3277,39 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Ferramentas externas</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>Nesta página, você pode configurar uma lista de ferramentas externas que podem abrir URLs das mensagens selecionadas.</translation>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar ferramenta externa</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>Remover ferramenta externa selecionada</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation type="unfinished"/>
+        <translation>Executável</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parâmetros</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Selecionar ferramenta externa</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>Entre os parâmetros</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation>Entre os parâmetros (opcionais) separados por um simples espaço para enviar para o executável ao abrir URLs.</translation>
     </message>
 </context>
 <context>

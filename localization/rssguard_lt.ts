@@ -2854,11 +2854,11 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Atverti, naudojant išorinį įrankį</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta paleisti išorinio įrankio</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
@@ -3280,7 +3280,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Išoriniai įrankiai</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
@@ -3288,19 +3288,19 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti išorinį įrankį</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>Ištrinti pasirinktą išorinį įrankį</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation type="unfinished"/>
+        <translation>Vykdomasis</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parametrai</translation>
     </message>
     <message>
         <source>Select external tool</source>

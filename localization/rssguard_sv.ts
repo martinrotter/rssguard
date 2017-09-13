@@ -1150,23 +1150,23 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Begränsa antalet nerladdade meddelanden per flöde</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= obegränsat</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Begränsning av antalet nerladdade meddelanden per flöde gör flödesuppdateringen snabbare, men om ditt flöde innehåller ett större antal meddelanden än specificerad begränsning, kanske en del meddelanden inte laddas ner under flödesuppdateringen.</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= obegränsat</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>meddelanden</translation>
     </message>
 </context>
 <context>
@@ -2852,15 +2852,15 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Öppna med externt verktyg</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte köra externt verktyg</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Det externa verktyget &quot;%1&quot; kan inte startas.</translation>
     </message>
 </context>
 <context>
@@ -3058,7 +3058,7 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>Det begärda externa verktyget är inte giltigt.</translation>
     </message>
 </context>
 <context>
@@ -3274,39 +3274,39 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Externa verktyg</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>På den här sidan kan du skapa en lista över externa verktyg som kan öppna URL:er i valda meddelanden.</translation>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till externt verktyg</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort markerat externt verktyg</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation type="unfinished"/>
+        <translation>Körbar fil</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parametrar</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Välj externt verktyg</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>Ange parametrar</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation>Ange parametrar (valfritt), separerade med enkelt mellanslag, som skall skickas till den körbara filen vid öppning av URL:er.</translation>
     </message>
 </context>
 <context>
