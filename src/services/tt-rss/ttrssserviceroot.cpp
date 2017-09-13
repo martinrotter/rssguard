@@ -51,6 +51,7 @@ TtRssServiceRoot::~TtRssServiceRoot() {
 void TtRssServiceRoot::start(bool freshly_activated) {
 	Q_UNUSED(freshly_activated)
 	loadFromDatabase();
+  loadCacheFromFile(accountId());
 
 	if (qApp->isFirstRun(QSL("3.1.1")) || (childCount() == 1 && child(0)->kind() == RootItemKind::Bin)) {
 		syncIn();
@@ -58,6 +59,8 @@ void TtRssServiceRoot::start(bool freshly_activated) {
 }
 
 void TtRssServiceRoot::stop() {
+  saveCacheToFile(accountId());
+
 	m_network->logout();
 	qDebug("Stopping Tiny Tiny RSS account, logging out with result '%d'.", (int) m_network->lastError());
 }

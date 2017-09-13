@@ -92,7 +92,7 @@ RecycleBin* OwnCloudServiceRoot::recycleBin() const {
 void OwnCloudServiceRoot::start(bool freshly_activated) {
 	Q_UNUSED(freshly_activated)
 	loadFromDatabase();
-  //loadCacheFromFile(accountId());
+  loadCacheFromFile(accountId());
 
 	if (qApp->isFirstRun(QSL("3.1.1")) || (childCount() == 1 && child(0)->kind() == RootItemKind::Bin)) {
 		syncIn();
@@ -100,7 +100,7 @@ void OwnCloudServiceRoot::start(bool freshly_activated) {
 }
 
 void OwnCloudServiceRoot::stop() {
-  //saveCacheToFile(accountId());
+  saveCacheToFile(accountId());
 }
 
 QString OwnCloudServiceRoot::code() const {

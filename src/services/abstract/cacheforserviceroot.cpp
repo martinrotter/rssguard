@@ -125,8 +125,6 @@ void CacheForServiceRoot::loadCacheFromFile(int accId) {
     file.remove();
   }
 
-  // TODO: TODO
-
   m_cacheSaveMutex->unlock();
 }
 

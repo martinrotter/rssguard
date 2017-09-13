@@ -40,6 +40,7 @@ bool ServiceRoot::deleteViaGui() {
 	QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
 	if (DatabaseQueries::deleteAccount(database, accountId())) {
+    stop();
 		requestItemRemoval(this);
 		return true;
 	}

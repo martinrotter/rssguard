@@ -271,8 +271,6 @@ void FeedReader::quit() {
 		m_autoUpdateTimer->stop();
 	}
 
-  checkServicesForAsyncOperations(false, true);
-
   // Close worker threads.
 	if (m_feedDownloaderThread != nullptr && m_feedDownloaderThread->isRunning()) {
 		m_feedDownloader->stopRunningUpdate();
