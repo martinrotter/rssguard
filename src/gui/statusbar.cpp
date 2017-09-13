@@ -31,6 +31,7 @@
 StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent), m_mutex(new Mutex(QMutex::NonRecursive, this)) {
 	setSizeGripEnabled(false);
 	setContentsMargins(2, 0, 2, 2);
+
 	m_barProgressFeeds = new QProgressBar(this);
 	m_barProgressFeeds->setTextVisible(false);
 	m_barProgressFeeds->setFixedWidth(100);
