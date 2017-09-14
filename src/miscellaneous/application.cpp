@@ -357,58 +357,55 @@ void Application::onSaveState(QSessionManager& manager) {
 }
 
 void Application::onAboutToQuit() {
-  /*
-
   eliminateFirstRun();
-	eliminateFirstRun(APP_VERSION);
+  eliminateFirstRun(APP_VERSION);
 
-  #if defined(USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 	AdBlockManager::instance()->save();
-  #endif
+#endif
 
 	// Make sure that we obtain close lock BEFORE even trying to quit the application.
 	const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 	processEvents();
 	qDebug("Cleaning up resources and saving application state.");
 
-  #if defined(Q_OS_WIN)
+#if defined(Q_OS_WIN)
 	system()->removeTrolltechJunkRegistryKeys();
-  #endif
+#endif
 
 	qApp->feedReader()->quit();
 	database()->saveDatabase();
 
 	if (mainForm() != nullptr) {
-      mainForm()->saveSize();
+    mainForm()->saveSize();
 	}
 
 	if (locked_safely) {
-      // Application obtained permission to close in a safe way.
-      qDebug("Close lock was obtained safely.");
-      // We locked the lock to exit peacefully, unlock it to avoid warnings.
-      feedUpdateLock()->unlock();
+    // Application obtained permission to close in a safe way.
+    qDebug("Close lock was obtained safely.");
+    // We locked the lock to exit peacefully, unlock it to avoid warnings.
+    feedUpdateLock()->unlock();
 	}
 	else {
-      // Request for write lock timed-out. This means
-      // that some critical action can be processed right now.
-      qDebug("Close lock timed-out.");
+    // Request for write lock timed-out. This means
+    // that some critical action can be processed right now.
+    qDebug("Close lock timed-out.");
 	}
 
 	// Now, we can check if application should just quit or restart itself.
 	if (m_shouldRestart) {
-      finish();
-      qDebug("Killing local peer connection to allow another instance to start.");
+    finish();
+    qDebug("Killing local peer connection to allow another instance to start.");
 
-      // TODO: Start RSS Guard with sleep before it cross-platform way if possible.
-      // sleep 5 && "<rssguard-start>".
-      if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
-          qDebug("New application instance was started.");
-      }
-      else {
-          qWarning("New application instance was not started successfully.");
-      }
-	}
-  */
+    // TODO: Start RSS Guard with sleep before it cross-platform way if possible.
+    // sleep 5 && "<rssguard-start>".
+    if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
+      qDebug("New application instance was started.");
+    }
+    else {
+      qWarning("New application instance was not started successfully.");
+    }
+  }
 }
 
 void Application::restart() {

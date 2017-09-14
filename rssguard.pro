@@ -631,11 +631,11 @@ QMAKE_EXTRA_COMPILERS += lrelease
 win32 {
   seven_zip.target = 7zip
   seven_zip.depends = install
-  seven_zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -t7z $$TARGET-$$APP_VERSION-$$APP_REVISION-$$APP_WIN_ARCH.7z $$shell_path($$PREFIX/*)
+  seven_zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -t7z $$TARGET-$$APP_VERSION-$$APP_REVISION-$${APP_WIN_ARCH}.7z $$shell_path($$PREFIX/*)
 
   zip.target = zip
   zip.depends = install
-  zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-$$APP_WIN_ARCH.zip $$shell_path($$PREFIX/*)
+  zip.commands = $$shell_path($$shell_quote($$PWD/resources/scripts/7za/7za.exe)) a -tzip $$TARGET-$$APP_VERSION-$$APP_REVISION-$${APP_WIN_ARCH}.zip $$shell_path($$PREFIX/*)
 
   QMAKE_EXTRA_TARGETS += seven_zip zip
 }
