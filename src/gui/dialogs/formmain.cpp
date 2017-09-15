@@ -113,7 +113,7 @@ StatusBar* FormMain::statusBar() const {
 
 void FormMain::showDbCleanupAssistant() {
 	if (qApp->feedUpdateLock()->tryLock()) {
-    FormDatabaseCleanup form(new FormDatabaseCleanup(this));
+    FormDatabaseCleanup form(this);
     form.setCleaner(qApp->feedReader()->databaseCleaner());
     form.exec();
 

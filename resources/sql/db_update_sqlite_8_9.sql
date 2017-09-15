@@ -18,4 +18,8 @@ SELECT id, username, password, url, force_update  FROM backup_oa;
 -- !
 DROP TABLE backup_oa;
 -- !
+DROP TABLE IF EXISTS Labels;
+-- !
+DROP TABLE IF EXISTS LabelsInMessages;
+-- !
 UPDATE Information SET inf_value = '9' WHERE inf_key = 'schema_version';

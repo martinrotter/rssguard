@@ -101,29 +101,3 @@ CREATE TABLE IF NOT EXISTS Messages (
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
--- !
-DROP TABLE IF EXISTS Labels;
--- !
-CREATE TABLE IF NOT EXISTS Labels (
-  id              INTEGER     AUTO_INCREMENT PRIMARY KEY,
-  account_id      INTEGER     NOT NULL,
-  color_fg        TEXT        NOT NULL,
-  color_bg        TEXT        NOT NULL,
-  title           TEXT        NOT NULL,
-  description     TEXT,
-  custom_id       TEXT,
-  custom_hash     TEXT,
-  
-  FOREIGN KEY (account_id) REFERENCES Accounts (id)
-);
--- !
-DROP TABLE IF EXISTS LabelsInMessages;
--- !
-CREATE TABLE IF NOT EXISTS LabelsInMessages (
-  id                  INTEGER     AUTO_INCREMENT PRIMARY KEY,
-  message_custom_id   TEXT        NOT NULL,
-  label_custom_id     TEXT        NOT NULL,
-  account_id          INTEGER     NOT NULL,
-  
-  FOREIGN KEY (account_id) REFERENCES Accounts (id)
-);

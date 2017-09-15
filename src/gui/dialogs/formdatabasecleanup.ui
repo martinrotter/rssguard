@@ -198,6 +198,7 @@
  <tabstops>
   <tabstop>m_checkRemoveReadMessages</tabstop>
   <tabstop>m_checkRemoveRecycleBin</tabstop>
+  <tabstop>m_checkRemoveStarredMessages</tabstop>
   <tabstop>m_checkShrink</tabstop>
   <tabstop>m_checkRemoveOldMessages</tabstop>
   <tabstop>m_spinDays</tabstop>
