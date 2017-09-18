@@ -148,6 +148,28 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
 	return network_result;
 }
 
+Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
+                                                         const QString& input_content_type,
+                                                         QNetworkAccessManager::Operation operation,
+                                                         bool protected_contents, const QString& username,
+                                                         const QString& password, bool set_basic_header) {
+  Downloader* downloader = new Downloader();
+
+  if (!input_content_type.isEmpty()) {
+    downloader->appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
+  }
+
+  if (set_basic_header) {
+    QString basic_value = username + ":" + password;
+    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
+
+    downloader->appendRawHeader("Authorization", header_value.toLocal8Bit());
+  }
+
+  downloader->manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
+  return downloader;
+}
+
 NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
                                                       const QString& input_content_type, QByteArray& output,
                                                       QNetworkAccessManager::Operation operation, bool protected_contents,

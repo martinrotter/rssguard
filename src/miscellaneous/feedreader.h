@@ -31,7 +31,6 @@ class MessagesModel;
 class MessagesProxyModel;
 class FeedsProxyModel;
 class ServiceEntryPoint;
-class ServiceOperator;
 class DatabaseCleaner;
 class QTimer;
 
@@ -79,7 +78,6 @@ class FeedReader : public QObject {
 		// Is executed when next auto-update round could be done.
 		void executeNextAutoUpdate();
 		void checkServicesForAsyncOperations();
-    void checkServicesForAsyncOperations(bool wait_for_future, bool do_on_this_thread = false);
 		void asyncCacheSaveFinished();
 
 	signals:
@@ -95,15 +93,11 @@ class FeedReader : public QObject {
 		MessagesModel* m_messagesModel;
 		MessagesProxyModel* m_messagesProxyModel;
 
-		QFutureWatcher<void>* m_cacheSaveFutureWatcher;
-
 		// Auto-update stuff.
 		QTimer* m_autoUpdateTimer;
 		bool m_globalAutoUpdateEnabled;
 		int m_globalAutoUpdateInitialInterval;
 		int m_globalAutoUpdateRemainingInterval;
-
-		ServiceOperator* m_serviceOperator;
 
 		QThread* m_feedDownloaderThread;
 		FeedDownloader* m_feedDownloader;

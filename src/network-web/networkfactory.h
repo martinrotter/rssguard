@@ -25,6 +25,7 @@
 
 
 typedef QPair<QNetworkReply::NetworkError, QVariant> NetworkResult;
+class Downloader;
 
 class NetworkFactory {
 		Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
@@ -42,6 +43,12 @@ class NetworkFactory {
 		// Performs SYNCHRONOUS download if favicon for the site,
 		// given URL belongs to.
 		static QNetworkReply::NetworkError downloadIcon(const QList<QString>& urls, int timeout, QIcon& output);
+
+    static Downloader* performAsyncNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
+                                                    const QString& input_content_type,
+                                                    QNetworkAccessManager::Operation operation,
+                                                    bool protected_contents = false, const QString& username = QString(),
+                                                    const QString& password = QString(), bool set_basic_header = false);
 
 		static NetworkResult performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
 		                                             const QString& input_content_type, QByteArray& output,
