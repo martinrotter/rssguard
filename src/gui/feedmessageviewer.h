@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -41,79 +42,72 @@ class QSplitter;
 class QProgressBar;
 
 class FeedMessageViewer : public TabContent {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit FeedMessageViewer(QWidget* parent = 0);
-		virtual ~FeedMessageViewer();
+  public:
+    explicit FeedMessageViewer(QWidget* parent = 0);
+    virtual ~FeedMessageViewer();
 
 #if defined(USE_WEBENGINE)
-		WebBrowser* webBrowser() const;
+    WebBrowser* webBrowser() const;
 #endif
 
-		FeedsView* feedsView() const;
-		MessagesView* messagesView() const;
-		MessagesToolBar* messagesToolBar() const;
-		FeedsToolBar* feedsToolBar() const;
+    FeedsView* feedsView() const;
+    MessagesView* messagesView() const;
+    MessagesToolBar* messagesToolBar() const;
+    FeedsToolBar* feedsToolBar() const;
 
-		bool areToolBarsEnabled() const;
-		bool areListHeadersEnabled() const;
+    bool areToolBarsEnabled() const;
+    bool areListHeadersEnabled() const;
 
-	public slots:
-		// Loads/saves sizes and states of ALL
-		// underlying widgets, this contains primarily
-		// splitters, toolbar and views.
-		void saveSize();
-		void loadSize();
+  public slots:
+    void saveSize();
+    void loadSize();
 
-		void loadMessageViewerFonts();
+    void loadMessageViewerFonts();
 
-		// Switches orientation horizontal/vertical.
-		void switchMessageSplitterOrientation();
+    // Switches orientation horizontal/vertical.
+    void switchMessageSplitterOrientation();
 
-		// Enables/disables main toolbars or list headers.
-		void setToolBarsEnabled(bool enable);
-		void setListHeadersEnabled(bool enable);
+    // Enables/disables main toolbars or list headers.
+    void setToolBarsEnabled(bool enable);
+    void setListHeadersEnabled(bool enable);
 
-		// Reloads some changeable visual settings.
-		void refreshVisualProperties();
+    // Reloads some changeable visual settings.
+    void refreshVisualProperties();
 
-		// Switches visibility of feed list and related
-		// toolbar.
-		void switchFeedComponentVisibility();
+    // Switches visibility of feed list and related
+    // toolbar.
+    void switchFeedComponentVisibility();
 
-		// Toggles displayed feeds.
-		void toggleShowOnlyUnreadFeeds();
+    // Toggles displayed feeds.
+    void toggleShowOnlyUnreadFeeds();
 
-	protected:
-		// Initializes some properties of the widget.
-		void initialize();
+  protected:
+    void initialize();
 
-		// Initializes both messages/feeds views.
-		void initializeViews();
+    // Initializes both messages/feeds views.
+    void initializeViews();
 
-		// Sets up connections.
-		void createConnections();
+    // Sets up connections.
+    void createConnections();
 
-	private:
-		bool m_toolBarsEnabled;
-		bool m_listHeadersEnabled;
-		FeedsToolBar* m_toolBarFeeds;
-		MessagesToolBar* m_toolBarMessages;
-
-		QSplitter* m_feedSplitter;
-		QSplitter* m_messageSplitter;
-
-		MessagesView* m_messagesView;
-		FeedsView* m_feedsView;
-		QWidget* m_feedsWidget;
-		QWidget* m_messagesWidget;
+  private:
+    bool m_toolBarsEnabled;
+    bool m_listHeadersEnabled;
+    FeedsToolBar* m_toolBarFeeds;
+    MessagesToolBar* m_toolBarMessages;
+    QSplitter* m_feedSplitter;
+    QSplitter* m_messageSplitter;
+    MessagesView* m_messagesView;
+    FeedsView* m_feedsView;
+    QWidget* m_feedsWidget;
+    QWidget* m_messagesWidget;
 
 #if defined(USE_WEBENGINE)
-		WebBrowser* m_messagesBrowser;
+    WebBrowser* m_messagesBrowser;
 #else
-		MessagePreviewer* m_messagesBrowser;
+    MessagePreviewer* m_messagesBrowser;
 #endif
 };
 
