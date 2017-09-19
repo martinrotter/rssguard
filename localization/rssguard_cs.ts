@@ -1150,23 +1150,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Limitovat počet stahovaných zpráv na kanál</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= neomezeno</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Omezení počtu stahovaných zpráv na kanál udělá aktualizaci kanálů rychleší, ale pokud váš kanál obsahuje více zpráv než je limit, tak se může stát, že některé zprávy se z kanálu nebudou stahovat.</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= neomezeno</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>zpráv</translation>
     </message>
 </context>
 <context>
@@ -2851,15 +2851,15 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít s externím nástrojem</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Nelze spustit externí nástroj</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Externí nástroj &apos;%1&apos; nelze spustit.</translation>
     </message>
 </context>
 <context>
@@ -3061,7 +3061,7 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>Reprezentace externího nástroje není správná.</translation>
     </message>
 </context>
 <context>
@@ -3277,39 +3277,39 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Externá nástroje pro zprávy</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>Na této stránce si můžete nakonfigurovat seznam externích nástrojů pro otevírání URL ze zpráv.</translation>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>Přidat ext. nástroj</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>Smazat vybraný ext. nástroj</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation type="unfinished"/>
+        <translation>Spouštěč</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parametry</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat externí nástroj</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>Zadat parametry ext. nástroje</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation>Zadejte (volitelné) parametry oddělené jednou mezerou, které budou předány nástroji při otevírání URL adres.</translation>
     </message>
 </context>
 <context>

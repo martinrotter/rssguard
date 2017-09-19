@@ -23,14 +23,10 @@
 
 #include "ui_formabout.h"
 
-#include "definitions/definitions.h"
-
 class FormAbout : public QDialog {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit FormAbout(QWidget* parent);
     virtual ~FormAbout();
 

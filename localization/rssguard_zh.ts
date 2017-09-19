@@ -529,7 +529,7 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
+        <translation>空白处的上下文菜单</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
@@ -541,7 +541,7 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation>分类的上下文菜单</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
@@ -575,7 +575,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"/>
+        <translation>其它项目的上下文菜单</translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -843,46 +843,46 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>删除回收站的所有消息</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation type="unfinished"/>
+        <translation>删除所有的星号消息(包括来自回收站的消息)</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="unfinished"/>
+        <translation>未知</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation type="unfinished"/>
+        <translation>文件: %1, 数据: %2</translation>
     </message>
 </context>
 <context>
     <name>FormEditAccount</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">有些订阅需要身份验证，包括GMail订阅。BASIC,NTLM-2 和 DIGEST-MD5 认证方案都得到了支持。</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">身份验证</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">用户名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">密码</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">显示密码</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">请求 HTTP 身份验证</translation>
     </message>
     <message>
         <source>URL</source>
@@ -890,146 +890,146 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">&amp;测试设置</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">HTTP 身份验证用户名</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">HTTP 身份验证密码</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">您的 TT-RSS 帐号密码</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">您的 TT-RSS 帐号用户名</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">您的 TT-RSS 末尾带有 &quot;/api/&quot; 字符串的完整 URL 链接</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">还没有测试完成。</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">这里显示了连接测试的结果。</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">添加新的 Tiny Tiny RSS 帐号</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">编辑已有的 Tiny Tiny RSS 帐号</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">选择的服务器上的API访问是不启用的。</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">输入凭证不正确。</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">其他错误发生了，联系开发人员。</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">选择的 Tiny Tiny RSS服务器正在运行不支持的API版本(%1)。至少API级别的%2是必需的。</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">选择的Tiny Tiny RSS服务器正在运行不支持的API版本。</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">Tiny Tiny RSS 服务器正常, 正在运行 API 级别为 %1, 然而至少需要 API 级别为 %2 .</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">Tiny Tiny RSS 服务器正常。</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">网络错误: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">网络错误，您是否输入了正确的RSS API 端口和密码?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">用户名不能为空。</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">用户名可用。</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">密码不能为空。</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">密码可用。</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">用户名可用，但不是必须的。</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">用户名为空。</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">密码可用，但不是必须的。</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">密码为空。</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">URL 链接不能为空。</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">URL 链接可用。</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">请注意，至少需要 API 级别的 %1。</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">URL 链接必须以 &quot;/api/&quot; 结尾。</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">未知的错误，您输入正确的网址了吗?</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">当从 RSS Guard 更新订阅时，强制执行服务器端更新</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">选择这个选项将导致订阅更新变得更慢，而且可能会经常超时。</translation>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL 链接</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -1041,7 +1041,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>身份验证</translation>
     </message>
     <message>
         <source>Username</source>
@@ -1073,11 +1073,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>还没有测试完成。</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>这里显示了连接测试的结果。</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
@@ -1097,7 +1097,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>网络错误: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
@@ -1105,31 +1105,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>未知的错误，您输入正确的网址了吗?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>用户名不能为空。</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>用户名可用。</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>密码不能为空</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>密码可用。</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL 链接不能为空。</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL 链接可用。</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
@@ -1176,59 +1176,59 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>有些订阅需要身份验证，包括GMail订阅。BASIC,NTLM-2 和 DIGEST-MD5 认证方案都得到了支持。</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>身份验证</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>用户名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>密码</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>显示密码</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>请求 HTTP 身份验证</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;测试设置</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>当从 RSS Guard 更新订阅时，强制执行服务器端更新</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>选择这个选项将导致订阅更新变得更慢，而且可能会经常超时。</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>请注意，至少需要 API 级别的 %1。</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="unfinished"/>
+        <translation>HTTP 身份验证用户名</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="unfinished"/>
+        <translation>HTTP 身份验证密码</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>您的 TT-RSS 帐号密码</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>您的 TT-RSS 帐号用户名</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
@@ -1236,95 +1236,95 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>还没有测试完成。</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>这里显示了连接测试的结果。</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>添加新的 Tiny Tiny RSS 帐号</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>编辑已有的 Tiny Tiny RSS 帐号</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>选择的服务器上的API访问是不启用的。</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation>输入凭证不正确。</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation>其他错误发生了，联系开发人员。</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>选择的 Tiny Tiny RSS服务器正在运行不支持的API版本(%1)。至少API级别的%2是必需的。</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished"/>
+        <translation>选择的Tiny Tiny RSS服务器正在运行不支持的API版本。</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS 服务器正常, 正在运行 API 级别为 %1, 然而至少需要 API 级别为 %2 .</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS 服务器正常。</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>网络错误: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>网络错误，您是否输入了正确的RSS API 端口和密码?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>未知的错误，您输入正确的网址了吗?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>用户名不能为空。</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>用户名可用。</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>密码不能为空</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>密码可用。</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>用户名可用，但不是必须的。</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>用户名是空的。</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>密码可用，但不是必须的。</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>密码为空。</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL 链接不能为空。</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
@@ -1332,7 +1332,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL 链接可用。</translation>
     </message>
 </context>
 <context>
@@ -1395,19 +1395,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>有些订阅需要身份验证，包括GMail订阅。BASIC,NTLM-2 和 DIGEST-MD5 认证方案都得到了支持。</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>请求 HTTP 身份验证</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>用户名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>密码</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -1451,19 +1451,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>用户名可用，但不是必须的。</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>用户名是空的。</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>密码可用，但不是必须的。</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>密码为空。</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
@@ -2425,7 +2425,7 @@ You have to restart manually.</source>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation type="unfinished"/>
+        <translation>未知</translation>
     </message>
     <message>
         <source>List with updates was not
@@ -3175,7 +3175,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>用户名</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
@@ -3183,7 +3183,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>密码</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
@@ -3325,11 +3325,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>用户名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>密码</translation>
     </message>
     <message>
         <source>Test setup</source>
@@ -3357,7 +3357,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>用户名是空的。</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
@@ -3365,7 +3365,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>密码为空。</translation>
     </message>
     <message>
         <source>Password looks ok.</source>

@@ -18,6 +18,7 @@
 
 #include "gui/dialogs/formabout.h"
 
+#include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
@@ -47,7 +48,9 @@ void FormAbout::loadSettingsAndPaths() {
     m_ui.m_txtPathsSettingsType->setText(tr("NOT portable"));
   }
 
-  m_ui.m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->userDataFolder() + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
+  m_ui.m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->userDataFolder() +
+                                                                QDir::separator() +
+                                                                QString(APP_DB_SQLITE_PATH)));
   m_ui.m_txtPathsSettingsFile->setText(QDir::toNativeSeparators(qApp->settings()->fileName()));
   m_ui.m_txtPathsSkinsRoot->setText(QDir::toNativeSeparators(qApp->skins()->customSkinBaseFolder()));
 }
@@ -85,8 +88,8 @@ void FormAbout::loadLicenseAndInformation() {
   m_ui.m_lblDesc->setText(tr("<b>%8</b><br>" "<b>Version:</b> %1 (built on %2/%3)<br>" "<b>Revision:</b> %4<br>" "<b>Build date:</b> %5<br>"
                                                                                                                  "<b>Qt:</b> %6 (compiled against %7)<br>").arg(
                             qApp->applicationVersion(), APP_SYSTEM_NAME, APP_SYSTEM_VERSION, APP_REVISION,
-                            TextFactory
-                            ::parseDateTime(QString("%1 %2").arg(__DATE__, __TIME__)).toString(Qt::DefaultLocaleShortDate),
+                            TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__,
+                                                                            __TIME__)).toString(Qt::DefaultLocaleShortDate),
                             qVersion(), QT_VERSION_STR,
                             APP_NAME));
   m_ui.m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."
@@ -96,7 +99,8 @@ void FormAbout::loadLicenseAndInformation() {
                              "<li><a href=\"%2\">%2</a> ~website</li></ul>"
                              "You can obtain source code for %5 from its website."
                              "<br><br><br>Copyright (C) 2011-%3 %4</body>").arg(APP_EMAIL, APP_URL,
-                                                                                QString
-                                                                                ::number(QDateTime::currentDateTime().date().year()),
+                                                                                QString::number(QDateTime::currentDateTime()
+                                                                                                .date()
+                                                                                                .year()),
                                                                                 APP_AUTHOR, APP_NAME));
 }

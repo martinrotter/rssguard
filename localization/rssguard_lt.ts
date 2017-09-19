@@ -1151,23 +1151,23 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Apriboti vienam kanalui atsiunčiamų žinučių skaičių</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation> = neribotai</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Vienam kanalui atsiunčiamų žinučių apribojimas padaro kanalų atnaujinimą greitesnį, tačiau jeigu jūsų kanale yra daugiau žinučių negu nurodyta riba, tuomet kanalo atnaujinimo metu kai kurios žinutės gali būti neatsiųstos.</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= neribotai</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>žinutės(-ių)</translation>
     </message>
 </context>
 <context>
@@ -2862,7 +2862,7 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyko paleisti &quot;%1&quot; išorinio įrankio.</translation>
     </message>
 </context>
 <context>
@@ -3064,7 +3064,7 @@ Reikalingas bent API lygis %1.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>Perduoto išorinio įrankio atvaizdavimas yra neteisingas.</translation>
     </message>
 </context>
 <context>
@@ -3284,7 +3284,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>Šiame puslapyje galite nusistatyti išorinių įrankių, kurie gali atverti pažymėtų žinučių URL adresus, sąrašą.</translation>
     </message>
     <message>
         <source>Add external tool</source>
@@ -3304,15 +3304,15 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite išorinį įrankį</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite parametrus</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation>Įveskite (pasirinktinai) vienu tarpu atskirtus parametrus, kurie, atveriant URL adresus, bus persiunčiami vykdomiesiems.</translation>
     </message>
 </context>
 <context>
