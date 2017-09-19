@@ -86,6 +86,7 @@ int main(int argc, char* argv[]) {
   application.setFeedReader(new FeedReader(&application));
   QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
 #ifdef Q_OS_MAC
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
   disableWindowTabbing();
