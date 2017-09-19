@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,15 +21,14 @@
 
 #include "services/abstract/rootitem.h"
 
-
 class Category : public RootItem {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit Category(RootItem* parent = nullptr);
-		virtual ~Category();
+  public:
+    explicit Category(RootItem* parent = nullptr);
+    virtual ~Category();
 
-		void updateCounts(bool including_total_count);
+    void updateCounts(bool including_total_count);
 };
 
 #endif // CATEGORY_H

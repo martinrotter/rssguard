@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,16 +21,15 @@
 
 #include <QString>
 
-
 class ApplicationException {
-	public:
-		explicit ApplicationException(const QString& message = QString());
-		virtual ~ApplicationException();
+  public:
+    explicit ApplicationException(const QString& message = QString());
+    virtual ~ApplicationException();
 
-		QString message() const;
+    QString message() const;
 
-	private:
-		QString m_message;
+  private:
+    QString m_message;
 };
 
 #endif // APPLICATIONEXCEPTION_H

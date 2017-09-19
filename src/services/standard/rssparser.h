@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -24,15 +25,14 @@
 
 #include <QList>
 
-
 class RssParser : public FeedParser {
-	public:
-		explicit RssParser(const QString& data);
-		virtual ~RssParser();
+  public:
+    explicit RssParser(const QString& data);
+    virtual ~RssParser();
 
-	private:
-		QDomNodeList messageElements();
-		Message extractMessage(const QDomElement& msg_element, QDateTime current_time) const;
+  private:
+    QDomNodeList messageElements();
+    Message extractMessage(const QDomElement& msg_element, QDateTime current_time) const;
 };
 
 #endif // RSSPARSER_H

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -18,60 +19,57 @@
 
 #include "miscellaneous/simpleregexp.h"
 
-
 SimpleRegExp::SimpleRegExp()
-	: QRegularExpression(QString(), QRegularExpression::DotMatchesEverythingOption), m_matchedLength(-1) {
-}
+  : QRegularExpression(QString(), QRegularExpression::DotMatchesEverythingOption), m_matchedLength(-1) {}
 
 SimpleRegExp::SimpleRegExp(const QString& pattern, Qt::CaseSensitivity cs)
-	: QRegularExpression(pattern, QRegularExpression::DotMatchesEverythingOption), m_matchedLength(-1) {
-	if (cs == Qt::CaseInsensitive) {
-		setPatternOptions(patternOptions() | QRegularExpression::CaseInsensitiveOption);
-	}
+  : QRegularExpression(pattern, QRegularExpression::DotMatchesEverythingOption), m_matchedLength(-1) {
+  if (cs == Qt::CaseInsensitive) {
+    setPatternOptions(patternOptions() | QRegularExpression::CaseInsensitiveOption);
+  }
 }
 
 SimpleRegExp::SimpleRegExp(const SimpleRegExp& re)
-	: QRegularExpression(re), m_matchedLength(-1) {
-}
+  : QRegularExpression(re), m_matchedLength(-1) {}
 
 void SimpleRegExp::setMinimal(bool minimal) {
-	QRegularExpression::PatternOptions opt;
+  QRegularExpression::PatternOptions opt;
 
-	if (minimal) {
-		opt = patternOptions() | QRegularExpression::InvertedGreedinessOption;
-	}
-	else {
-		opt = patternOptions() & ~QRegularExpression::InvertedGreedinessOption;
-	}
+  if (minimal) {
+    opt = patternOptions() | QRegularExpression::InvertedGreedinessOption;
+  }
+  else {
+    opt = patternOptions() & ~QRegularExpression::InvertedGreedinessOption;
+  }
 
-	setPatternOptions(opt);
+  setPatternOptions(opt);
 }
 
 int SimpleRegExp::indexIn(const QString& str, int offset) const {
-	SimpleRegExp* that = const_cast<SimpleRegExp*>(this);
-	QRegularExpressionMatch m = match(str, offset);
+  SimpleRegExp* that = const_cast<SimpleRegExp*>(this);
+  QRegularExpressionMatch m = match(str, offset);
 
-	if (!m.hasMatch()) {
-		that->m_matchedLength = -1;
-		that->m_capturedTexts.clear();
-		return -1;
-	}
-	else {
-		that->m_matchedLength = m.capturedLength();
-		that->m_capturedTexts = m.capturedTexts();
-		return m.capturedStart();
-	}
+  if (!m.hasMatch()) {
+    that->m_matchedLength = -1;
+    that->m_capturedTexts.clear();
+    return -1;
+  }
+  else {
+    that->m_matchedLength = m.capturedLength();
+    that->m_capturedTexts = m.capturedTexts();
+    return m.capturedStart();
+  }
 }
 
 int SimpleRegExp::matchedLength() const {
-	return m_matchedLength;
+  return m_matchedLength;
 }
 
 QString SimpleRegExp::cap(int nth) const {
-	if (nth >= 0 && m_capturedTexts.size() > nth) {
-		return m_capturedTexts.at(nth);
-	}
-	else {
-		return QString();
-	}
+  if (nth >= 0 && m_capturedTexts.size() > nth) {
+    return m_capturedTexts.at(nth);
+  }
+  else {
+    return QString();
+  }
 }

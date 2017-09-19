@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -21,25 +22,24 @@
 
 #include <QWebEngineUrlRequestInterceptor>
 
-
 class UrlInterceptor;
 
 class NetworkUrlInterceptor : public QWebEngineUrlRequestInterceptor {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit NetworkUrlInterceptor(QObject* parent = nullptr);
+  public:
+    explicit NetworkUrlInterceptor(QObject* parent = nullptr);
 
-		void interceptRequest(QWebEngineUrlRequestInfo& info) Q_DECL_OVERRIDE;
+    void interceptRequest(QWebEngineUrlRequestInfo& info) Q_DECL_OVERRIDE;
 
-		void installUrlInterceptor(UrlInterceptor* interceptor);
-		void removeUrlInterceptor(UrlInterceptor* interceptor);
+    void installUrlInterceptor(UrlInterceptor* interceptor);
+    void removeUrlInterceptor(UrlInterceptor* interceptor);
 
-		void loadSettings();
+    void loadSettings();
 
-	private:
-		QList<UrlInterceptor*> m_interceptors;
-		bool m_sendDNT;
+  private:
+    QList<UrlInterceptor*> m_interceptors;
+    bool m_sendDNT;
 };
 
 #endif // NETWORKURLINTERCEPTOR_H

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -17,29 +18,28 @@
 
 #include "gui/settings/settingsshortcuts.h"
 
-#include "miscellaneous/application.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
-
+#include "miscellaneous/application.h"
 
 SettingsShortcuts::SettingsShortcuts(Settings* settings, QWidget* parent)
-	: SettingsPanel(settings, parent), m_ui(new Ui::SettingsShortcuts) {
-	m_ui->setupUi(this);
-	connect(m_ui->m_shortcuts, &DynamicShortcutsWidget::setupChanged, this, &SettingsShortcuts::dirtifySettings);
+  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsShortcuts) {
+  m_ui->setupUi(this);
+  connect(m_ui->m_shortcuts, &DynamicShortcutsWidget::setupChanged, this, &SettingsShortcuts::dirtifySettings);
 }
 
 SettingsShortcuts::~SettingsShortcuts() {
-	delete m_ui;
+  delete m_ui;
 }
 
 void SettingsShortcuts::loadSettings() {
-	onBeginLoadSettings();
-	m_ui->m_shortcuts->populate(qApp->userActions());
-	onEndLoadSettings();
+  onBeginLoadSettings();
+  m_ui->m_shortcuts->populate(qApp->userActions());
+  onEndLoadSettings();
 }
 
 void SettingsShortcuts::saveSettings() {
-	onBeginSaveSettings();
-	m_ui->m_shortcuts->updateShortcuts();
-	DynamicShortcuts::save(qApp->userActions());
-	onEndSaveSettings();
+  onBeginSaveSettings();
+  m_ui->m_shortcuts->updateShortcuts();
+  DynamicShortcuts::save(qApp->userActions());
+  onEndSaveSettings();
 }

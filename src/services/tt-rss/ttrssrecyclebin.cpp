@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -21,18 +22,15 @@
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
+TtRssRecycleBin::TtRssRecycleBin(RootItem* parent) : RecycleBin(parent) {}
 
-TtRssRecycleBin::TtRssRecycleBin(RootItem* parent) : RecycleBin(parent) {
-}
-
-TtRssRecycleBin::~TtRssRecycleBin() {
-}
+TtRssRecycleBin::~TtRssRecycleBin() {}
 
 TtRssServiceRoot* TtRssRecycleBin::serviceRoot() {
-	return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
+  return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }
 
 bool TtRssRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-	serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-	return RecycleBin::markAsReadUnread(status);
+  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
+  return RecycleBin::markAsReadUnread(status);
 }

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -24,20 +25,20 @@
 
 #include "definitions/definitions.h"
 
-
 class FormAbout : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit FormAbout(QWidget* parent);
-		virtual ~FormAbout();
+  public:
 
-	private:
-		void loadLicenseAndInformation();
-		void loadSettingsAndPaths();
+    // Constructors and destructors.
+    explicit FormAbout(QWidget* parent);
+    virtual ~FormAbout();
 
-		Ui::FormAbout m_ui;
+  private:
+    void loadLicenseAndInformation();
+    void loadSettingsAndPaths();
+
+    Ui::FormAbout m_ui;
 };
 
 #endif // FORMABOUT_H

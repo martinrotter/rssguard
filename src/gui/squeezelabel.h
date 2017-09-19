@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,18 +21,17 @@
 
 #include <QLabel>
 
-
 class SqueezeLabel : public QLabel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SqueezeLabel(QWidget* parent = 0);
+  public:
+    explicit SqueezeLabel(QWidget* parent = 0);
 
-	protected:
-		void paintEvent(QPaintEvent* event);
+  protected:
+    void paintEvent(QPaintEvent* event);
 
-	private:
-		QString m_squeezedTextCache;
+  private:
+    QString m_squeezedTextCache;
 };
 
 #endif // SQUEEZELABEL_H

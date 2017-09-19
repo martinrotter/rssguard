@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -26,7 +27,6 @@
 #include <QPushButton>
 #include <QStyle>
 #include <QtGlobal>
-
 
 MessageBox::MessageBox(QWidget* parent) : QMessageBox(parent) {}
 
@@ -72,9 +72,15 @@ QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
   }
 }
 
-QMessageBox::StandardButton MessageBox::show(QWidget* parent, QMessageBox::Icon icon, const QString& title, const QString& text,
-                                             const QString& informative_text, const QString& detailed_text, QMessageBox::StandardButtons buttons,
-                                             QMessageBox::StandardButton default_button, bool* dont_show_again) {
+QMessageBox::StandardButton MessageBox::show(QWidget* parent,
+                                             QMessageBox::Icon icon,
+                                             const QString& title,
+                                             const QString& text,
+                                             const QString& informative_text,
+                                             const QString& detailed_text,
+                                             QMessageBox::StandardButtons buttons,
+                                             QMessageBox::StandardButton default_button,
+                                             bool* dont_show_again) {
   // Create and find needed components.
   MessageBox msg_box(parent);
 

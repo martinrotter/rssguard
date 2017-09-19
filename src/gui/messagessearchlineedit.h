@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,16 +21,16 @@
 
 #include "gui/baselineedit.h"
 
-
 class PlainToolButton;
 
 class MessagesSearchLineEdit : public BaseLineEdit {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit MessagesSearchLineEdit(QWidget* parent = 0);
-		virtual ~MessagesSearchLineEdit();
+  public:
+
+    // Constructors and destructors.
+    explicit MessagesSearchLineEdit(QWidget* parent = 0);
+    virtual ~MessagesSearchLineEdit();
 };
 
 #endif // MESSAGESEARCHLINEEDIT_H

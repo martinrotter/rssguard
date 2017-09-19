@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -17,66 +18,67 @@
 
 #include "gui/dialogs/formaddaccount.h"
 
+#include "core/feedsmodel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "core/feedsmodel.h"
 #include "services/standard/standardserviceentrypoint.h"
 
-#include <QListWidget>
 #include <QDialogButtonBox>
-
+#include <QListWidget>
 
 FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, FeedsModel* model, QWidget* parent)
-	: QDialog(parent), m_ui(new Ui::FormAddAccount), m_model(model), m_entryPoints(entry_points) {
-	m_ui->setupUi(this);
-	// Set flags and attributes.
-	setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-	setWindowIcon(qApp->icons()->fromTheme(QSL("document-new")));
-	connect(m_ui->m_listEntryPoints, &QListWidget::itemDoubleClicked, this, &FormAddAccount::addSelectedAccount);
-	connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAddAccount::addSelectedAccount);
-	connect(m_ui->m_listEntryPoints, &QListWidget::itemSelectionChanged, this, &FormAddAccount::displayActiveEntryPointDetails);
-	loadEntryPoints();
+  : QDialog(parent), m_ui(new Ui::FormAddAccount), m_model(model), m_entryPoints(entry_points) {
+  m_ui->setupUi(this);
+
+  // Set flags and attributes.
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+  setWindowIcon(qApp->icons()->fromTheme(QSL("document-new")));
+  connect(m_ui->m_listEntryPoints, &QListWidget::itemDoubleClicked, this, &FormAddAccount::addSelectedAccount);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAddAccount::addSelectedAccount);
+  connect(m_ui->m_listEntryPoints, &QListWidget::itemSelectionChanged, this, &FormAddAccount::displayActiveEntryPointDetails);
+  loadEntryPoints();
 }
 
 FormAddAccount::~FormAddAccount() {
-	qDebug("Destroying FormAddAccount instance.");
+  qDebug("Destroying FormAddAccount instance.");
 }
 
 void FormAddAccount::addSelectedAccount() {
-	accept();
-	ServiceEntryPoint* point = selectedEntryPoint();
-	ServiceRoot* new_root = point->createNewRoot();
+  accept();
+  ServiceEntryPoint* point = selectedEntryPoint();
+  ServiceRoot* new_root = point->createNewRoot();
 
-	if (new_root != nullptr) {
-		m_model->addServiceAccount(new_root, true);
-	}
-	else {
-		qCritical("Cannot create new account.");
-	}
+  if (new_root != nullptr) {
+    m_model->addServiceAccount(new_root, true);
+  }
+  else {
+    qCritical("Cannot create new account.");
+  }
 }
 
 void FormAddAccount::displayActiveEntryPointDetails() {
-	const ServiceEntryPoint* point = selectedEntryPoint();
-	m_ui->m_txtAuthor->setText(point->author());
-	m_ui->m_txtDescription->setText(point->description());
-	m_ui->m_txtName->setText(point->name());
-	m_ui->m_txtVersion->setText(point->version());
+  const ServiceEntryPoint* point = selectedEntryPoint();
+
+  m_ui->m_txtAuthor->setText(point->author());
+  m_ui->m_txtDescription->setText(point->description());
+  m_ui->m_txtName->setText(point->name());
+  m_ui->m_txtVersion->setText(point->version());
 }
 
 ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
-	return m_entryPoints.at(m_ui->m_listEntryPoints->currentRow());
+  return m_entryPoints.at(m_ui->m_listEntryPoints->currentRow());
 }
 
 void FormAddAccount::loadEntryPoints() {
-	foreach (const ServiceEntryPoint* entry_point, m_entryPoints) {
-		QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
+  foreach (const ServiceEntryPoint* entry_point, m_entryPoints) {
+    QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
 
-		if (entry_point->isSingleInstanceService() && m_model->containsServiceRootFromEntryPoint(entry_point)) {
-			// Oops, this item cannot be added, it is single instance and is already added.
-			item->setFlags(Qt::NoItemFlags);
-			item->setToolTip(tr("This account can be added only once."));
-		}
-	}
+    if (entry_point->isSingleInstanceService() && m_model->containsServiceRootFromEntryPoint(entry_point)) {
+      // Oops, this item cannot be added, it is single instance and is already added.
+      item->setFlags(Qt::NoItemFlags);
+      item->setToolTip(tr("This account can be added only once."));
+    }
+  }
 
-	m_ui->m_listEntryPoints->setCurrentRow(m_entryPoints.size() - 1);
+  m_ui->m_listEntryPoints->setCurrentRow(m_entryPoints.size() - 1);
 }

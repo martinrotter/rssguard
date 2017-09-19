@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,25 +21,25 @@
 
 #include "gui/baselineedit.h"
 
-
 class WebBrowser;
 class GoogleSuggest;
 
 class LocationLineEdit : public BaseLineEdit {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit LocationLineEdit(QWidget* parent = 0);
-		virtual ~LocationLineEdit();
+  public:
 
-	protected:
-		void focusOutEvent(QFocusEvent* event);
-		void mousePressEvent(QMouseEvent* event);
+    // Constructors and destructors.
+    explicit LocationLineEdit(QWidget* parent = 0);
+    virtual ~LocationLineEdit();
 
-	private:
-		bool m_mouseSelectsAllText;
-		GoogleSuggest* m_googleSuggest;
+  protected:
+    void focusOutEvent(QFocusEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+
+  private:
+    bool m_mouseSelectsAllText;
+    GoogleSuggest* m_googleSuggest;
 };
 
 #endif // LOCATIONLINEEDIT_H

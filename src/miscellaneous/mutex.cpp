@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -17,58 +18,56 @@
 
 #include "miscellaneous/mutex.h"
 
-
-Mutex::Mutex(QMutex::RecursionMode mode, QObject* parent) : QObject(parent), m_mutex(new QMutex(mode)), m_isLocked(false) {
-}
+Mutex::Mutex(QMutex::RecursionMode mode, QObject* parent) : QObject(parent), m_mutex(new QMutex(mode)), m_isLocked(false) {}
 
 Mutex::~Mutex() {
-	qDebug("Destroying Mutex instance.");
+  qDebug("Destroying Mutex instance.");
 }
 
 void Mutex::lock() {
-	m_mutex->lock();
-	setLocked();
+  m_mutex->lock();
+  setLocked();
 }
 
 bool Mutex::tryLock() {
-	bool result;
+  bool result;
 
-	if ((result = m_mutex->tryLock())) {
-		setLocked();
-	}
+  if ((result = m_mutex->tryLock())) {
+    setLocked();
+  }
 
-	return result;
+  return result;
 }
 
 bool Mutex::tryLock(int timeout) {
-	bool result;
+  bool result;
 
-	if ((result = m_mutex->tryLock(timeout))) {
-		setLocked();
-	}
+  if ((result = m_mutex->tryLock(timeout))) {
+    setLocked();
+  }
 
-	return result;
+  return result;
 }
 
 void Mutex::unlock() {
-	m_mutex->unlock();
-	setUnlocked();
+  m_mutex->unlock();
+  setUnlocked();
 }
 
 void Mutex::setLocked() {
-	m_isLocked = true;
-	emit locked();
+  m_isLocked = true;
+  emit locked();
 }
 
 void Mutex::setUnlocked() {
-	m_isLocked = false;
-	emit unlocked();
+  m_isLocked = false;
+  emit unlocked();
 }
 
 bool Mutex::isLocked() const {
-	return m_isLocked;
+  return m_isLocked;
 }
 
 Mutex::operator QMutex* () const {
-	return m_mutex.data();
+  return m_mutex.data();
 }

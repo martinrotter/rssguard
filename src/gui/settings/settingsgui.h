@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,27 +23,28 @@
 
 #include "ui_settingsgui.h"
 
-
 class SettingsGui : public SettingsPanel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SettingsGui(Settings* settings, QWidget* parent = 0);
-		virtual ~SettingsGui();
+  public:
+    explicit SettingsGui(Settings* settings, QWidget* parent = 0);
+    virtual ~SettingsGui();
 
-		inline QString title() const {
-			return tr("User interface");
-		}
+    inline QString title() const {
+      return tr("User interface");
+    }
 
-		void loadSettings();
-		void saveSettings();
+    void loadSettings();
 
-	protected:
-		// Does check of controls before dialog can be submitted.
-		bool eventFilter(QObject* obj, QEvent* e);
+    void saveSettings();
 
-	private:
-		Ui::SettingsGui* m_ui;
+  protected:
+
+    // Does check of controls before dialog can be submitted.
+    bool eventFilter(QObject* obj, QEvent* e);
+
+  private:
+    Ui::SettingsGui* m_ui;
 };
 
 #endif // SETTINGSGUI_H

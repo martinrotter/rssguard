@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,37 +23,37 @@
 
 #include <QSqlDatabase>
 
-
 struct CleanerOrders {
-	bool m_removeReadMessages;
-	bool m_shrinkDatabase;
-	bool m_removeOldMessages;
-	bool m_removeRecycleBin;
-	bool m_removeStarredMessages;
-	int m_barrierForRemovingOldMessagesInDays;
+  bool m_removeReadMessages;
+  bool m_shrinkDatabase;
+  bool m_removeOldMessages;
+  bool m_removeRecycleBin;
+  bool m_removeStarredMessages;
+  int m_barrierForRemovingOldMessagesInDays;
 };
 
 class DatabaseCleaner : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors.
-		explicit DatabaseCleaner(QObject* parent = 0);
-		virtual ~DatabaseCleaner();
+  public:
 
-	signals:
-		void purgeStarted();
-		void purgeProgress(int progress, const QString& description);
-		void purgeFinished(bool result);
+    // Constructors.
+    explicit DatabaseCleaner(QObject* parent = 0);
+    virtual ~DatabaseCleaner();
 
-	public slots:
-		void purgeDatabaseData(const CleanerOrders& which_data);
+  signals:
+    void purgeStarted();
+    void purgeProgress(int progress, const QString& description);
+    void purgeFinished(bool result);
 
-	private:
-		bool purgeStarredMessages(const QSqlDatabase& database);
-		bool purgeReadMessages(const QSqlDatabase& database);
-		bool purgeOldMessages(const QSqlDatabase& database, int days);
-		bool purgeRecycleBin(const QSqlDatabase& database);
+  public slots:
+    void purgeDatabaseData(const CleanerOrders& which_data);
+
+  private:
+    bool purgeStarredMessages(const QSqlDatabase& database);
+    bool purgeReadMessages(const QSqlDatabase& database);
+    bool purgeOldMessages(const QSqlDatabase& database, int days);
+    bool purgeRecycleBin(const QSqlDatabase& database);
 };
 
 #endif // DATABASECLEANER_H

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -16,20 +17,19 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-
 #ifndef URLINTERCEPTOR_H
 #define URLINTERCEPTOR_H
 
 #include <QObject>
 #include <QWebEngineUrlRequestInfo>
 
-
 class UrlInterceptor : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit UrlInterceptor(QObject* parent = Q_NULLPTR) : QObject(parent) { }
-		virtual void interceptRequest(QWebEngineUrlRequestInfo& info) = 0;
+  public:
+    explicit UrlInterceptor(QObject* parent = Q_NULLPTR) : QObject(parent) { }
+
+    virtual void interceptRequest(QWebEngineUrlRequestInfo& info) = 0;
 };
 
 #endif // URLINTERCEPTOR_H

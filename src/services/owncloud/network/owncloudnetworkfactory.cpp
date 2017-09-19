@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -31,7 +32,6 @@
 #include <QJsonObject>
 #include <QPixmap>
 
-
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
   m_authUsername(QString()), m_authPassword(QString()), m_batchSize(-1), m_urlUser(QString()), m_urlStatus(QString()),
@@ -47,8 +47,7 @@ QString OwnCloudNetworkFactory::url() const {
 void OwnCloudNetworkFactory::setUrl(const QString& url) {
   m_url = url;
 
-  if (url.endsWith('/')
-      ) {
+  if (url.endsWith('/')) {
     m_fixedUrl = url;
   }
   else {
@@ -108,8 +107,7 @@ OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
                                                                         true);
   OwnCloudUserResponse user_response(QString::fromUtf8(result_raw));
 
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Obtaining user info failed with error %d.", network_reply.first);
   }
 
@@ -128,8 +126,7 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
                                                                         true);
   OwnCloudStatusResponse status_response(QString::fromUtf8(result_raw));
 
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Obtaining status info failed with error %d.", network_reply.first);
   }
 
@@ -147,15 +144,13 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
                                                                         true, m_authUsername, m_authPassword,
                                                                         true);
 
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Obtaining of categories failed with error %d.", network_reply.first);
     m_lastError = network_reply.first;
     return OwnCloudGetFeedsCategoriesResponse();
   }
 
   QString content_categories = QString::fromUtf8(result_raw);
-
 
   // Now, obtain feeds.
   network_reply = NetworkFactory::performNetworkOperation(m_urlFeeds,
@@ -166,15 +161,13 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
                                                           true, m_authUsername, m_authPassword,
                                                           true);
 
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Obtaining of feeds failed with error %d.", network_reply.first);
     m_lastError = network_reply.first;
     return OwnCloudGetFeedsCategoriesResponse();
   }
 
   QString content_feeds = QString::fromUtf8(result_raw);
-
 
   m_lastError = network_reply.first;
   return OwnCloudGetFeedsCategoriesResponse(content_categories, content_feeds);
@@ -192,8 +185,7 @@ bool OwnCloudNetworkFactory::deleteFeed(int feed_id) {
 
   m_lastError = network_reply.first;
 
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Obtaining of categories failed with error %d.", network_reply.first);
     return false;
   }
@@ -218,11 +210,9 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
                                                                         QNetworkAccessManager::PostOperation,
                                                                         true, m_authUsername, m_authPassword, true);
 
-
   m_lastError = network_reply.first;
 
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Creating of category failed with error %d.", network_reply.first);
     return false;
   }
@@ -248,11 +238,9 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, int feed_id) {
     true, m_authUsername, m_authPassword,
     true);
 
-
   m_lastError = network_reply.first;
 
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Renaming of feed failed with error %d.", network_reply.first);
     return false;
   }
@@ -262,8 +250,7 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, int feed_id) {
 }
 
 OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
-  if (forceServerSideUpdate()
-      ) {
+  if (forceServerSideUpdate()) {
     triggerFeedUpdate(feed_id);
   }
 
@@ -280,9 +267,7 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
                                                                         true);
   OwnCloudGetMessagesResponse msgs_response(QString::fromUtf8(result_raw));
 
-
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Obtaining messages failed with error %d.", network_reply.first);
   }
 
@@ -291,14 +276,11 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
 }
 
 QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_id) {
-  if (userId().isEmpty()
-      ) {
+  if (userId().isEmpty()) {
     // We need to get user ID first.
     OwnCloudUserResponse info = userInfo();
 
-
-    if (lastError() != QNetworkReply::NoError
-        ) {
+    if (lastError() != QNetworkReply::NoError) {
       return lastError();
     }
     else {
@@ -318,8 +300,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
                                                                         true, m_authUsername, m_authPassword,
                                                                         true);
 
-  if (network_reply.first != QNetworkReply::NoError
-      ) {
+  if (network_reply.first != QNetworkReply::NoError) {
     qWarning("ownCloud: Feeds update failed with error %d.", network_reply.first);
   }
 
@@ -331,8 +312,7 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
   QJsonArray ids;
   QString final_url;
 
-  if (status == RootItem::Read
-      ) {
+  if (status == RootItem::Read) {
     final_url = m_fixedUrl + API_PATH + "items/read/multiple";
   }
   else {
@@ -354,7 +334,6 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
                                                                         true, m_authUsername, m_authPassword,
                                                                         true);
 
-
   QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
 }
 
@@ -365,8 +344,7 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
   QJsonArray ids;
   QString final_url;
 
-  if (importance == RootItem::Important
-      ) {
+  if (importance == RootItem::Important) {
     final_url = m_fixedUrl + API_PATH + "items/star/multiple";
   }
   else {
@@ -375,7 +353,6 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
 
   for (int i = 0; i < feed_ids.size(); i++) {
     QJsonObject item;
-
 
     item["feedId"] = feed_ids.at(i);
     item["guidHash"] = guid_hashes.at(i);
@@ -392,7 +369,6 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
                                                                         QNetworkAccessManager::PutOperation,
                                                                         true, m_authUsername, m_authPassword,
                                                                         true);
-
 
   QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
 }
@@ -433,8 +409,7 @@ OwnCloudUserResponse::OwnCloudUserResponse(const QString& raw_content) : OwnClou
 OwnCloudUserResponse::~OwnCloudUserResponse() {}
 
 QString OwnCloudUserResponse::displayName() const {
-  if (isLoaded()
-      ) {
+  if (isLoaded()) {
     return m_rawContent["displayName"].toString();
   }
   else {
@@ -443,8 +418,7 @@ QString OwnCloudUserResponse::displayName() const {
 }
 
 QString OwnCloudUserResponse::userId() const {
-  if (isLoaded()
-      ) {
+  if (isLoaded()) {
     return m_rawContent["userId"].toString();
   }
   else {
@@ -453,8 +427,7 @@ QString OwnCloudUserResponse::userId() const {
 }
 
 QDateTime OwnCloudUserResponse::lastLoginTime() const {
-  if (isLoaded()
-      ) {
+  if (isLoaded()) {
     return QDateTime::fromMSecsSinceEpoch(m_rawContent["lastLoginTimestamp"].toDouble());
   }
   else {
@@ -463,15 +436,12 @@ QDateTime OwnCloudUserResponse::lastLoginTime() const {
 }
 
 QIcon OwnCloudUserResponse::avatar() const {
-  if (isLoaded()
-      ) {
+  if (isLoaded()) {
     QString image_data = m_rawContent["avatar"].toObject()["data"].toString();
     QByteArray decoded_data = QByteArray::fromBase64(image_data.toLocal8Bit());
     QPixmap image;
 
-
-    if (image.loadFromData(decoded_data)
-        ) {
+    if (image.loadFromData(decoded_data)) {
       return QIcon(image);
     }
   }
@@ -479,14 +449,12 @@ QIcon OwnCloudUserResponse::avatar() const {
   return QIcon();
 }
 
-
 OwnCloudStatusResponse::OwnCloudStatusResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
 
 OwnCloudStatusResponse::~OwnCloudStatusResponse() {}
 
 QString OwnCloudStatusResponse::version() const {
-  if (isLoaded()
-      ) {
+  if (isLoaded()) {
     return m_rawContent["version"].toString();
   }
   else {
@@ -495,15 +463,13 @@ QString OwnCloudStatusResponse::version() const {
 }
 
 bool OwnCloudStatusResponse::misconfiguredCron() const {
-  if (isLoaded()
-      ) {
+  if (isLoaded()) {
     return m_rawContent["warnings"].toObject()["improperlyConfiguredCron"].toBool();
   }
   else {
     return false;
   }
 }
-
 
 OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(const QString& raw_categories,
                                                                        const QString& raw_feeds)
@@ -522,10 +488,10 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     QJsonObject item = cat.toObject();
     OwnCloudCategory* category = new OwnCloudCategory();
 
-
     category->setTitle(item["name"].toString());
     category->setCustomId(item["id"].toInt());
     cats.insert(category->customId(), category);
+
     // All categories in ownCloud are top-level.
     parent->appendChild(category);
   }
@@ -535,24 +501,18 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     QJsonObject item = fed.toObject();
     OwnCloudFeed* feed = new OwnCloudFeed();
 
-
-    if (obtain_icons
-        ) {
+    if (obtain_icons) {
       QString icon_path = item["faviconLink"].toString();
 
-
-      if (!icon_path.isEmpty()
-          ) {
+      if (!icon_path.isEmpty()) {
         QByteArray icon_data;
-
 
         if (NetworkFactory::performNetworkOperation(icon_path, DOWNLOAD_TIMEOUT,
                                                     QByteArray(), QString(), icon_data,
-                                                    QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError
-            ) {
+                                                    QNetworkAccessManager::GetOperation).first ==
+            QNetworkReply::NoError) {
           // Icon downloaded, set it up.
           QPixmap icon_pixmap;
-
 
           icon_pixmap.loadFromData(icon_data);
           feed->setIcon(QIcon(icon_pixmap));
@@ -570,7 +530,6 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   return parent;
 }
 
-
 OwnCloudGetMessagesResponse::OwnCloudGetMessagesResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
 
 OwnCloudGetMessagesResponse::~OwnCloudGetMessagesResponse() {}
@@ -582,7 +541,6 @@ QList<Message>OwnCloudGetMessagesResponse::messages() const {
     QJsonObject message_map = message.toObject();
     Message msg;
 
-
     msg.m_author = message_map["author"].toString();
     msg.m_contents = message_map["body"].toString();
     msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].toDouble() * 1000);
@@ -592,11 +550,8 @@ QList<Message>OwnCloudGetMessagesResponse::messages() const {
 
     QString enclosure_link = message_map["enclosureLink"].toString();
 
-
-    if (!enclosure_link.isEmpty()
-        ) {
+    if (!enclosure_link.isEmpty()) {
       Enclosure enclosure;
-
 
       enclosure.m_mimeType = message_map["enclosureMime"].toString();
       enclosure.m_url = enclosure_link;

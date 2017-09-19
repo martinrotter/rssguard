@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,18 +21,17 @@
 
 #include <QDoubleSpinBox>
 
-
 class TimeSpinBox : public QDoubleSpinBox {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit TimeSpinBox(QWidget* parent = 0);
-		virtual ~TimeSpinBox();
+  public:
+    explicit TimeSpinBox(QWidget* parent = 0);
+    virtual ~TimeSpinBox();
 
-		double valueFromText(const QString& text) const;
-		QString textFromValue(double val) const;
-		void fixup(QString& input) const;
-		QValidator::State validate(QString& input, int& pos) const;
+    double valueFromText(const QString& text) const;
+    QString textFromValue(double val) const;
+    void fixup(QString& input) const;
+    QValidator::State validate(QString& input, int& pos) const;
 };
 
 #endif // TIMESPINBOX_H

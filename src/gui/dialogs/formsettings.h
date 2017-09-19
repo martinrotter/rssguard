@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,32 +23,33 @@
 
 #include "ui_formsettings.h"
 
-
 class Settings;
 class SettingsPanel;
 
 class FormSettings : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit FormSettings(QWidget& parent);
-		virtual ~FormSettings();
+  public:
 
-	private slots:
-		// Saves settings into global configuration.
-		void saveSettings();
-		void applySettings();
-		void cancelSettings();
+    // Constructors and destructors.
+    explicit FormSettings(QWidget& parent);
+    virtual ~FormSettings();
 
-	private:
-		void addSettingsPanel(SettingsPanel* panel);
+  private slots:
 
-		Ui::FormSettings m_ui;
-		QPushButton* m_btnApply;
+    // Saves settings into global configuration.
+    void saveSettings();
+    void applySettings();
+    void cancelSettings();
 
-		QList<SettingsPanel*> m_panels;
-		Settings& m_settings;
+  private:
+    void addSettingsPanel(SettingsPanel* panel);
+
+    Ui::FormSettings m_ui;
+    QPushButton* m_btnApply;
+
+    QList<SettingsPanel*> m_panels;
+    Settings& m_settings;
 };
 
 #endif // FORMSETTINGS_H

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,9 +23,8 @@
 
 #include "ui_formfeeddetails.h"
 
-
 namespace Ui {
-	class FormFeedDetails;
+  class FormFeedDetails;
 }
 
 class ServiceRoot;
@@ -33,65 +33,68 @@ class Category;
 class RootItem;
 
 class FormFeedDetails : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit FormFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
-		virtual ~FormFeedDetails();
+  public:
 
-	public slots:
-		// Executes add/edit standard feed dialog.
-		int addEditFeed(Feed* input_feed, RootItem* parent_to_select, const QString& url = QString());
+    // Constructors and destructors.
+    explicit FormFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
+    virtual ~FormFeedDetails();
 
-	protected slots:
-		// Applies changes.
-		// NOTE: This must be reimplemented in subclasses. Also this
-		// base implementation must be called first.
-		virtual void apply() = 0;
+  public slots:
 
-		void guessFeed();
-		void guessIconOnly();
+    // Executes add/edit standard feed dialog.
+    int addEditFeed(Feed* input_feed, RootItem* parent_to_select, const QString& url = QString());
 
-		// Trigerred when title/description/url/username/password changes.
-		void onTitleChanged(const QString& new_title);
-		void onDescriptionChanged(const QString& new_description);
-		void onUrlChanged(const QString& new_url);
-		void onUsernameChanged(const QString& new_username);
-		void onPasswordChanged(const QString& new_password);
-		void onAuthenticationSwitched();
-		void onAutoUpdateTypeChanged(int new_index);
+  protected slots:
 
-		// Icon selectors.
-		void onNoIconSelected();
-		void onLoadIconFromFile();
-		void onUseDefaultIcon();
+    // Applies changes.
+    // NOTE: This must be reimplemented in subclasses. Also this
+    // base implementation must be called first.
+    virtual void apply() = 0;
 
-	protected:
-		// Sets the feed which will be edited.
-		// NOTE: This must be reimplemented in subclasses. Also this
-		// base implementation must be called first.
-		void virtual setEditableFeed(Feed* editable_feed);
+    void guessFeed();
+    void guessIconOnly();
 
-		// Creates needed connections.
-		void createConnections();
+    // Trigerred when title/description/url/username/password changes.
+    void onTitleChanged(const QString& new_title);
+    void onDescriptionChanged(const QString& new_description);
+    void onUrlChanged(const QString& new_url);
+    void onUsernameChanged(const QString& new_username);
+    void onPasswordChanged(const QString& new_password);
+    void onAuthenticationSwitched();
+    void onAutoUpdateTypeChanged(int new_index);
 
-		// Initializes the dialog.
-		void initialize();
+    // Icon selectors.
+    void onNoIconSelected();
+    void onLoadIconFromFile();
+    void onUseDefaultIcon();
 
-		// Loads categories into the dialog from the model.
-		void loadCategories(const QList<Category*> categories, RootItem* root_item);
+  protected:
 
-	protected:
-		QScopedPointer<Ui::FormFeedDetails> m_ui;
-		Feed* m_editableFeed;
-		ServiceRoot* m_serviceRoot;
+    // Sets the feed which will be edited.
+    // NOTE: This must be reimplemented in subclasses. Also this
+    // base implementation must be called first.
+    void virtual setEditableFeed(Feed* editable_feed);
 
-		QMenu* m_iconMenu;
-		QAction* m_actionLoadIconFromFile;
-		QAction* m_actionUseDefaultIcon;
-		QAction* m_actionFetchIcon;
-		QAction* m_actionNoIcon;
+    // Creates needed connections.
+    void createConnections();
+
+    // Initializes the dialog.
+    void initialize();
+
+    // Loads categories into the dialog from the model.
+    void loadCategories(const QList<Category*> categories, RootItem* root_item);
+
+  protected:
+    QScopedPointer<Ui::FormFeedDetails> m_ui;
+    Feed* m_editableFeed;
+    ServiceRoot* m_serviceRoot;
+    QMenu* m_iconMenu;
+    QAction* m_actionLoadIconFromFile;
+    QAction* m_actionUseDefaultIcon;
+    QAction* m_actionFetchIcon;
+    QAction* m_actionNoIcon;
 };
 
 #endif // FORMFEEDDETAILS_H

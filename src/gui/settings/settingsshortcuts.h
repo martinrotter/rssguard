@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,23 +23,23 @@
 
 #include "ui_settingsshortcuts.h"
 
-
 class SettingsShortcuts : public SettingsPanel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SettingsShortcuts(Settings* settings, QWidget* parent = 0);
-		virtual ~SettingsShortcuts();
+  public:
+    explicit SettingsShortcuts(Settings* settings, QWidget* parent = 0);
+    virtual ~SettingsShortcuts();
 
-		inline QString title() const {
-			return tr("Keyboard shortcuts");
-		}
+    inline QString title() const {
+      return tr("Keyboard shortcuts");
+    }
 
-		void loadSettings();
-		void saveSettings();
+    void loadSettings();
 
-	private:
-		Ui::SettingsShortcuts* m_ui;
+    void saveSettings();
+
+  private:
+    Ui::SettingsShortcuts* m_ui;
 };
 
 #endif // SETTINGSSHORTCUTS_H

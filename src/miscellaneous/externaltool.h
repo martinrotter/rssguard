@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -18,9 +19,8 @@
 #ifndef EXTERNALTOOL_H
 #define EXTERNALTOOL_H
 
-#include <QStringList>
 #include <QMetaType>
-
+#include <QStringList>
 
 class ExternalTool {
   public:
@@ -39,6 +39,7 @@ class ExternalTool {
   private:
     QString m_executable;
     QStringList m_parameters;
+
     void sanitizeParameters();
 };
 

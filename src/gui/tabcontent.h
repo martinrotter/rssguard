@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -26,32 +27,34 @@ class WebBrowser;
 
 // Base class for all widgets which are placed inside tabs of TabWidget
 class TabContent : public QWidget {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Contructors.
-		explicit TabContent(QWidget* parent = 0);
-		virtual ~TabContent();
+  public:
 
-		// Gets/sets current index of this TabContent.
-		// NOTE: This is the index under which this object lies
-		// in parent tab widget.
-		inline virtual int index() const {
-			return m_index;
-		}
+    // Contructors.
+    explicit TabContent(QWidget* parent = 0);
+    virtual ~TabContent();
 
-		inline virtual void setIndex(int index) {
-			m_index = index;
-		}
+    // Gets/sets current index of this TabContent.
+    // NOTE: This is the index under which this object lies
+    // in parent tab widget.
+    inline virtual int index() const {
+      return m_index;
+    }
+
+    inline virtual void setIndex(int index) {
+      m_index = index;
+    }
 
 #if defined(USE_WEBENGINE)
-		// Obtains instance contained in this TabContent or nullptr.
-		// This can be used for obtaining the menu from the instance and so on.
-		virtual WebBrowser* webBrowser() const = 0;
+
+    // Obtains instance contained in this TabContent or nullptr.
+    // This can be used for obtaining the menu from the instance and so on.
+    virtual WebBrowser* webBrowser() const = 0;
 #endif
 
-	protected:
-		int m_index;
+  protected:
+    int m_index;
 };
 
 #endif // TABCONTENT_H

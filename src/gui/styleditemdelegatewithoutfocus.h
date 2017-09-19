@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -21,16 +22,16 @@
 #include <QStyledItemDelegate>
 #include <QStyleOptionViewItemV4>
 
-
 class StyledItemDelegateWithoutFocus : public QStyledItemDelegate {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors.
-		explicit StyledItemDelegateWithoutFocus(QObject* parent = 0);
-		virtual ~StyledItemDelegateWithoutFocus();
+  public:
 
-		void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    // Constructors.
+    explicit StyledItemDelegateWithoutFocus(QObject* parent = 0);
+    virtual ~StyledItemDelegateWithoutFocus();
+
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 };
 

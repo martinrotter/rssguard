@@ -211,7 +211,9 @@ void MessagesView::initializeContextMenu() {
   }
 
   m_contextMenu->addMenu(menu);
-  m_contextMenu->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread << qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages << qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
+  m_contextMenu->addActions(
+    QList<QAction*>() << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread << qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
+      qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
 
   if (m_sourceModel->loadedItem() != nullptr && m_sourceModel->loadedItem()->kind() == RootItemKind::Bin) {
     m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
@@ -267,7 +269,11 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   const QModelIndex current_index = currentIndex();
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
 
-  qDebug("Current row changed - row [%d,%d] source [%d, %d].",current_index.row(), current_index.column(),mapped_current_index.row(), mapped_current_index.column());
+  qDebug("Current row changed - row [%d,%d] source [%d, %d].",
+         current_index.row(),
+         current_index.column(),
+         mapped_current_index.row(),
+         mapped_current_index.column());
 
   if (mapped_current_index.isValid() && selected_rows.count() > 0) {
     Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
@@ -310,7 +316,9 @@ void MessagesView::openSelectedSourceMessagesExternally() {
     const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
     if (!qApp->web()->openUrlInExternalBrowser(link)) {
-      qApp->showGuiMessage(tr("Problem with starting external web browser"),tr("External web browser could not be started."),QSystemTrayIcon::Critical);
+      qApp->showGuiMessage(tr("Problem with starting external web browser"),
+                           tr("External web browser could not be started."),
+                           QSystemTrayIcon::Critical);
       return;
     }
   }
@@ -338,7 +346,8 @@ void MessagesView::sendSelectedMessageViaEmail() {
     const Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
 
     if (!qApp->web()->sendMessageViaEmail(message)) {
-      MessageBox::show(this,QMessageBox::Critical,tr("Problem with starting external e-mail client"),tr("External e-mail client could not be started."));
+      MessageBox::show(this, QMessageBox::Critical, tr("Problem with starting external e-mail client"),
+                       tr("External e-mail client could not be started."));
     }
   }
 }
@@ -520,7 +529,9 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
 
       if (!link.isEmpty()) {
         if (!QProcess::startDetached(tool.executable(), QStringList() << tool.parameters() << link)) {
-          qApp->showGuiMessage(tr("Cannot run external tool"), tr("External tool '%1' could not be started.").arg(tool.executable()),QSystemTrayIcon::Critical);
+          qApp->showGuiMessage(tr("Cannot run external tool"),
+                               tr("External tool '%1' could not be started.").arg(tool.executable()),
+                               QSystemTrayIcon::Critical);
         }
       }
     }

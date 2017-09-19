@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -17,23 +18,24 @@
 
 #include "gui/lineeditwithstatus.h"
 
-#include "gui/plaintoolbutton.h"
 #include "gui/baselineedit.h"
+#include "gui/plaintoolbutton.h"
 
 #include <QHBoxLayout>
 
-
 LineEditWithStatus::LineEditWithStatus(QWidget* parent)
-	: WidgetWithStatus(parent) {
-	m_wdgInput = new BaseLineEdit(this);
-	setFocusProxy(m_wdgInput);
-	// Set correct size for the tool button.
-	const int txt_input_height = m_wdgInput->sizeHint().height();
-	m_btnStatus->setFixedSize(txt_input_height, txt_input_height);
-	// Compose the layout.
-	m_layout->addWidget(m_wdgInput);
-	m_layout->addWidget(m_btnStatus);
+  : WidgetWithStatus(parent) {
+  m_wdgInput = new BaseLineEdit(this);
+  setFocusProxy(m_wdgInput);
+
+  // Set correct size for the tool button.
+  const int txt_input_height = m_wdgInput->sizeHint().height();
+
+  m_btnStatus->setFixedSize(txt_input_height, txt_input_height);
+
+  // Compose the layout.
+  m_layout->addWidget(m_wdgInput);
+  m_layout->addWidget(m_btnStatus);
 }
 
-LineEditWithStatus::~LineEditWithStatus() {
-}
+LineEditWithStatus::~LineEditWithStatus() {}

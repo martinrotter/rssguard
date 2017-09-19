@@ -64,35 +64,36 @@
 
 namespace QtLP_Private {
 
-	class QT_QTLOCKEDFILE_EXPORT QtLockedFile : public QFile {
-			Q_OBJECT
+  class QT_QTLOCKEDFILE_EXPORT QtLockedFile : public QFile {
+    Q_OBJECT
 
-		public:
-			enum LockMode { NoLock = 0, ReadLock, WriteLock };
+    public:
+      enum LockMode { NoLock = 0, ReadLock, WriteLock };
 
-			QtLockedFile();
-			QtLockedFile(const QString& name);
-			~QtLockedFile();
+      QtLockedFile();
+      QtLockedFile(const QString& name);
 
-			bool open(OpenMode mode);
+      ~QtLockedFile();
 
-			bool lock(LockMode mode, bool block = true);
-			bool unlock();
-			bool isLocked() const;
-			LockMode lockMode() const;
+      bool open(OpenMode mode);
 
-		private:
+      bool lock(LockMode mode, bool block = true);
+      bool unlock();
+      bool isLocked() const;
+      LockMode lockMode() const;
+
+    private:
 #ifdef Q_OS_WIN
-			Qt::HANDLE wmutex;
-			Qt::HANDLE rmutex;
-			QVector<Qt::HANDLE> rmutexes;
-			QString mutexname;
+      Qt::HANDLE wmutex;
+      Qt::HANDLE rmutex;
+      QVector<Qt::HANDLE> rmutexes;
+      QString mutexname;
 
-			Qt::HANDLE getMutexHandle(int idx, bool doCreate);
-			bool waitMutex(Qt::HANDLE mutex, bool doBlock);
-
+      Qt::HANDLE getMutexHandle(int idx, bool doCreate);
+      bool waitMutex(Qt::HANDLE mutex, bool doBlock);
 #endif
-			LockMode m_lock_mode;
-	};
+      LockMode m_lock_mode;
+  };
+
 }
 #endif

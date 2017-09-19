@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,23 +23,24 @@
 
 #include <QPointer>
 
-
 // Network manager used for more communication for feeds.
 // This network manager does not provide any GUI interaction options.
 class SilentNetworkAccessManager : public BaseNetworkAccessManager {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit SilentNetworkAccessManager(QObject* parent = 0);
-		virtual ~SilentNetworkAccessManager();
+  public:
 
-		// Returns pointer to global silent network manager
-		static SilentNetworkAccessManager* instance();
+    // Constructors and destructors.
+    explicit SilentNetworkAccessManager(QObject* parent = 0);
+    virtual ~SilentNetworkAccessManager();
 
-	public slots:
-		// This cannot do any GUI stuff.
-		void onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator);
+    // Returns pointer to global silent network manager
+    static SilentNetworkAccessManager* instance();
+
+  public slots:
+
+    // This cannot do any GUI stuff.
+    void onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator);
 };
 
 #endif // SILENTNETWORKACCESSMANAGER_H

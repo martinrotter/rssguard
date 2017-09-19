@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,24 +21,25 @@
 
 #include <QLineEdit>
 
-
 class BaseLineEdit : public QLineEdit {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit BaseLineEdit(QWidget* parent = 0);
-		virtual ~BaseLineEdit();
+  public:
 
-	public slots:
-		void submit(const QString& text);
+    // Constructors and destructors.
+    explicit BaseLineEdit(QWidget* parent = 0);
+    virtual ~BaseLineEdit();
 
-	protected:
-		void keyPressEvent(QKeyEvent* event);
+  public slots:
+    void submit(const QString& text);
 
-	signals:
-		// Emitted if user hits ENTER button.
-		void submitted(const QString& text);
+  protected:
+    void keyPressEvent(QKeyEvent* event);
+
+  signals:
+
+    // Emitted if user hits ENTER button.
+    void submitted(const QString& text);
 };
 
 #endif // BASELINEEDIT_H

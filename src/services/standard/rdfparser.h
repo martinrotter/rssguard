@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,13 +23,12 @@
 
 #include <QList>
 
-
 class RdfParser {
-	public:
-		explicit RdfParser();
-		virtual ~RdfParser();
+  public:
+    explicit RdfParser();
+    virtual ~RdfParser();
 
-		QList<Message> parseXmlData(const QString& data);
+    QList<Message> parseXmlData(const QString& data);
 };
 
 #endif // RDFPARSER_H

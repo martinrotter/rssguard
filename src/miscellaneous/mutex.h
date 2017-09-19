@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -21,40 +22,41 @@
 #include <QMutex>
 #include <QObject>
 
-
 class Mutex : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors.
-		explicit Mutex(QMutex::RecursionMode mode = QMutex::NonRecursive, QObject* parent = 0);
-		virtual ~Mutex();
+  public:
 
-		// Main methods.
-		bool tryLock();
-		bool tryLock(int timeout);
+    // Constructors.
+    explicit Mutex(QMutex::RecursionMode mode = QMutex::NonRecursive, QObject* parent = 0);
+    virtual ~Mutex();
 
-		// Identifies if mutes is locked or not.
-		bool isLocked() const;
+    // Main methods.
+    bool tryLock();
+    bool tryLock(int timeout);
 
-		operator QMutex* () const;
+    // Identifies if mutes is locked or not.
+    bool isLocked() const;
 
-	public slots:
-		void lock();
-		void unlock();
+    operator QMutex* () const;
 
-	protected:
-		// These methods set proper value for m_isLocked and emit signals.
-		void setLocked();
-		void setUnlocked();
+  public slots:
+    void lock();
+    void unlock();
 
-	signals:
-		void locked();
-		void unlocked();
+  protected:
 
-	private:
-		QScopedPointer<QMutex> m_mutex;
-		bool m_isLocked;
+    // These methods set proper value for m_isLocked and emit signals.
+    void setLocked();
+    void setUnlocked();
+
+  signals:
+    void locked();
+    void unlocked();
+
+  private:
+    QScopedPointer<QMutex> m_mutex;
+    bool m_isLocked;
 };
 
 #endif // MUTEX_H

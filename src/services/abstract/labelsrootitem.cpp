@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -19,9 +20,8 @@
 
 #include "miscellaneous/iconfactory.h"
 
-
 LabelsRootItem::LabelsRootItem(RootItem* parent_item) : RootItem(parent_item) {
-	setTitle(tr("Labels"));
-	setIcon(qApp->icons()->fromTheme(QSL("stock_bookmark")));
-	setKind(RootItemKind::LabelsRoot);
+  setTitle(tr("Labels"));
+  setIcon(qApp->icons()->fromTheme(QSL("stock_bookmark")));
+  setKind(RootItemKind::LabelsRoot);
 }

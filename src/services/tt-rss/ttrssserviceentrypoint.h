@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -15,28 +16,27 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-
 #ifndef TTRSSSERVICEENTRYPOINT_H
 #define TTRSSSERVICEENTRYPOINT_H
 
 #include "services/abstract/serviceentrypoint.h"
 
-
 class TtRssServiceEntryPoint : public ServiceEntryPoint {
-	public:
-		explicit TtRssServiceEntryPoint();
-		virtual ~TtRssServiceEntryPoint();
+  public:
+    explicit TtRssServiceEntryPoint();
+    virtual ~TtRssServiceEntryPoint();
 
-		bool isSingleInstanceService() const;
-		QString name() const;
-		QString description() const;
-		QString version() const;
-		QString author() const;
-		QIcon icon() const;
-		QString code() const;
+    bool isSingleInstanceService() const;
+    QString name() const;
+    QString description() const;
+    QString version() const;
+    QString author() const;
+    QIcon icon() const;
+    QString code() const;
 
-		ServiceRoot* createNewRoot() const;
-		QList<ServiceRoot*> initializeSubtree() const;
+    ServiceRoot* createNewRoot() const;
+
+    QList<ServiceRoot*> initializeSubtree() const;
 };
 
 #endif // TTRSSSERVICEENTRYPOINT_H

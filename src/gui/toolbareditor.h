@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,60 +23,60 @@
 
 #include "ui_toolbareditor.h"
 
-
 namespace Ui {
-	class ToolBarEditor;
+  class ToolBarEditor;
 }
 
 class BaseBar;
 
 class ToolBarEditor : public QWidget {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit ToolBarEditor(QWidget* parent = 0);
-		virtual ~ToolBarEditor();
+  public:
 
-		// Toolbar operations.
-		void loadFromToolBar(BaseBar* tool_bar);
-		void saveToolBar();
+    // Constructors and destructors.
+    explicit ToolBarEditor(QWidget* parent = 0);
+    virtual ~ToolBarEditor();
 
-		inline QListWidget* activeItemsWidget() const {
-			return m_ui->m_listActivatedActions;
-		}
+    // Toolbar operations.
+    void loadFromToolBar(BaseBar* tool_bar);
+    void saveToolBar();
 
-		inline QListWidget* availableItemsWidget() const {
-			return m_ui->m_listAvailableActions;
-		}
+    inline QListWidget* activeItemsWidget() const {
+      return m_ui->m_listActivatedActions;
+    }
 
-	protected:
-		bool eventFilter(QObject* object, QEvent* event);
+    inline QListWidget* availableItemsWidget() const {
+      return m_ui->m_listAvailableActions;
+    }
 
-	private slots:
-		void updateActionsAvailability();
+  protected:
+    bool eventFilter(QObject* object, QEvent* event);
 
-		// Insert common controls.
-		void insertSpacer();
-		void insertSeparator();
+  private slots:
+    void updateActionsAvailability();
 
-		void moveActionDown();
-		void moveActionUp();
+    // Insert common controls.
+    void insertSpacer();
+    void insertSeparator();
 
-		void addSelectedAction();
-		void deleteSelectedAction();
-		void deleteAllActions();
+    void moveActionDown();
+    void moveActionUp();
 
-		void resetToolBar();
+    void addSelectedAction();
+    void deleteSelectedAction();
+    void deleteAllActions();
 
-	signals:
-		void setupChanged();
+    void resetToolBar();
 
-	private:
-		void loadEditor(const QList<QAction*> activated_actions, const QList<QAction*> available_actions);
+  signals:
+    void setupChanged();
 
-		QScopedPointer<Ui::ToolBarEditor> m_ui;
-		BaseBar* m_toolBar;
+  private:
+    void loadEditor(const QList<QAction*> activated_actions, const QList<QAction*> available_actions);
+
+    QScopedPointer<Ui::ToolBarEditor> m_ui;
+    BaseBar* m_toolBar;
 };
 
 #endif // TOOLBAREDITOR_H

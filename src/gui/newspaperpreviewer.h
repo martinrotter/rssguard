@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -29,30 +30,29 @@
 
 #include <QPointer>
 
-
 namespace Ui {
-	class NewspaperPreviewer;
+  class NewspaperPreviewer;
 }
 
 class RootItem;
 
 class NewspaperPreviewer : public TabContent {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit NewspaperPreviewer(RootItem* root, QList<Message> messages, QWidget* parent = 0);
-		virtual ~NewspaperPreviewer();
+  public:
+    explicit NewspaperPreviewer(RootItem* root, QList<Message> messages, QWidget* parent = 0);
+    virtual ~NewspaperPreviewer();
 
-	private slots:
-		void showMoreMessages();
+  private slots:
+    void showMoreMessages();
 
-	signals:
-		void requestMessageListReload(bool mark_current_as_read);
+  signals:
+    void requestMessageListReload(bool mark_current_as_read);
 
-	private:
-		QScopedPointer<Ui::NewspaperPreviewer> m_ui;
-		QPointer<RootItem> m_root;
-		QList<Message> m_messages;
+  private:
+    QScopedPointer<Ui::NewspaperPreviewer> m_ui;
+    QPointer<RootItem> m_root;
+    QList<Message> m_messages;
 };
 
 #endif // NEWSPAPERPREVIEWER_H

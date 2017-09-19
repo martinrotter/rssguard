@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,28 +23,28 @@
 
 #include "ui_settingsfeedsmessages.h"
 
-
 class SettingsFeedsMessages : public SettingsPanel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SettingsFeedsMessages(Settings* settings, QWidget* parent = 0);
-		virtual ~SettingsFeedsMessages();
+  public:
+    explicit SettingsFeedsMessages(Settings* settings, QWidget* parent = 0);
+    virtual ~SettingsFeedsMessages();
 
-		inline QString title() const {
-			return tr("Feeds & messages");
-		}
+    inline QString title() const {
+      return tr("Feeds & messages");
+    }
 
-		void loadSettings();
-		void saveSettings();
+    void loadSettings();
 
-	private slots:
-		void changeMessagesFont();
+    void saveSettings();
 
-	private:
-		void initializeMessageDateFormats();
+  private slots:
+    void changeMessagesFont();
 
-		Ui::SettingsFeedsMessages* m_ui;
+  private:
+    void initializeMessageDateFormats();
+
+    Ui::SettingsFeedsMessages* m_ui;
 };
 
 #endif // SETTINGSFEEDSMESSAGES_H

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -23,25 +24,24 @@
 
 #include <QAction>
 
-
-DynamicShortcuts::DynamicShortcuts() {
-}
+DynamicShortcuts::DynamicShortcuts() {}
 
 void DynamicShortcuts::save(const QList<QAction*>& actions) {
-	Settings* settings = qApp->settings();
+  Settings* settings = qApp->settings();
 
-	foreach (const QAction* action, actions) {
-		settings->setValue(GROUP(Keyboard), action->objectName(), action->shortcut().toString(QKeySequence::PortableText));
-	}
+  foreach (const QAction* action, actions) {
+    settings->setValue(GROUP(Keyboard), action->objectName(), action->shortcut().toString(QKeySequence::PortableText));
+  }
 }
 
 void DynamicShortcuts::load(const QList<QAction*>& actions) {
-	Settings* settings = qApp->settings();
+  Settings* settings = qApp->settings();
 
-	foreach (QAction* action, actions) {
-		QString shortcut_for_action = settings->value(GROUP(Keyboard),
-		                                              action->objectName(),
-		                                              action->shortcut().toString(QKeySequence::PortableText)).toString();
-		action->setShortcut(QKeySequence::fromString(shortcut_for_action, QKeySequence::PortableText));
-	}
+  foreach (QAction* action, actions) {
+    QString shortcut_for_action = settings->value(GROUP(Keyboard),
+                                                  action->objectName(),
+                                                  action->shortcut().toString(QKeySequence::PortableText)).toString();
+
+    action->setShortcut(QKeySequence::fromString(shortcut_for_action, QKeySequence::PortableText));
+  }
 }

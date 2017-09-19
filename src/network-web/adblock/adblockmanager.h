@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -24,7 +25,6 @@
 #include <QPointer>
 #include <QStringList>
 
-
 class QUrl;
 class QWebEngineUrlRequestInfo;
 class AdBlockMatcher;
@@ -36,69 +36,67 @@ class AdBlockUrlInterceptor;
 class AdBlockIcon;
 
 class AdBlockManager : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit AdBlockManager(QObject* parent = 0);
-		virtual ~AdBlockManager();
+  public:
+    explicit AdBlockManager(QObject* parent = 0);
+    virtual ~AdBlockManager();
 
-		void load();
-		void save();
+    void load();
+    void save();
 
-		bool isEnabled() const;
-		bool canRunOnScheme(const QString& scheme) const;
+    bool isEnabled() const;
+    bool canRunOnScheme(const QString& scheme) const;
 
-		QString elementHidingRules(const QUrl& url) const;
-		QString elementHidingRulesForDomain(const QUrl& url) const;
+    QString elementHidingRules(const QUrl& url) const;
+    QString elementHidingRulesForDomain(const QUrl& url) const;
 
-		AdBlockSubscription* subscriptionByName(const QString& name) const;
-		QList<AdBlockSubscription*> subscriptions() const;
+    AdBlockSubscription* subscriptionByName(const QString& name) const;
 
-		bool block(QWebEngineUrlRequestInfo& request);
+    QList<AdBlockSubscription*> subscriptions() const;
 
-		QStringList disabledRules() const;
-		void addDisabledRule(const QString& filter);
-		void removeDisabledRule(const QString& filter);
+    bool block(QWebEngineUrlRequestInfo& request);
 
-		bool addSubscriptionFromUrl(const QUrl& url);
+    QStringList disabledRules() const;
+    void addDisabledRule(const QString& filter);
+    void removeDisabledRule(const QString& filter);
 
-		AdBlockSubscription* addSubscription(const QString& title, const QString& url);
-		bool removeSubscription(AdBlockSubscription* subscription);
+    bool addSubscriptionFromUrl(const QUrl& url);
 
-		AdBlockCustomList* customList() const;
+    AdBlockSubscription* addSubscription(const QString& title, const QString& url);
 
-		inline AdBlockIcon* adBlockIcon() const {
-			return m_adblockIcon;
-		}
+    bool removeSubscription(AdBlockSubscription* subscription);
 
-		static QString storedListsPath();
+    AdBlockCustomList* customList() const;
+    inline AdBlockIcon* adBlockIcon() const {
+      return m_adblockIcon;
+    }
 
-		static AdBlockManager* instance();
+    static QString storedListsPath();
+    static AdBlockManager* instance();
 
-	signals:
-		void enabledChanged(bool enabled);
+  signals:
+    void enabledChanged(bool enabled);
 
-	public slots:
-		void setEnabled(bool enabled);
-		void updateMatcher();
-		void updateAllSubscriptions();
-		void showDialog();
+  public slots:
+    void setEnabled(bool enabled);
+    void updateMatcher();
+    void updateAllSubscriptions();
+    void showDialog();
 
-	private:
-		inline bool canBeBlocked(const QUrl& url) const;
+  private:
+    inline bool canBeBlocked(const QUrl& url) const;
+    bool m_loaded;
+    bool m_enabled;
+    AdBlockIcon* m_adblockIcon;
 
-		bool m_loaded;
-		bool m_enabled;
+    QList<AdBlockSubscription*> m_subscriptions;
+    AdBlockMatcher* m_matcher;
+    QStringList m_disabledRules;
+    AdBlockUrlInterceptor* m_interceptor;
 
-		AdBlockIcon* m_adblockIcon;
-
-		QList<AdBlockSubscription*> m_subscriptions;
-		AdBlockMatcher* m_matcher;
-		QStringList m_disabledRules;
-
-		AdBlockUrlInterceptor* m_interceptor;
-		QPointer<AdBlockDialog> m_adBlockDialog;
-		QMutex m_mutex;
+    QPointer<AdBlockDialog> m_adBlockDialog;
+    QMutex m_mutex;
 };
 
 #endif // ADBLOCKMANAGER_H

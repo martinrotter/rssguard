@@ -38,11 +38,9 @@
 **
 ****************************************************************************/
 
-
-#include "qtsingleapplication.h"
 #include "qtlocalpeer.h"
+#include "qtsingleapplication.h"
 #include <QWidget>
-
 
 /*!
     \class QtSingleApplication qtsingleapplication.h
@@ -130,15 +128,13 @@
     library.
 
     \sa QtSingleCoreApplication
-*/
-
+ */
 
 void QtSingleApplication::sysInit(const QString& appId) {
-	actWin = 0;
-	peer = new QtLocalPeer(this, appId);
-	connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::messageReceived);
+  actWin = 0;
+  peer = new QtLocalPeer(this, appId);
+  connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::messageReceived);
 }
-
 
 /*!
     Creates a QtSingleApplication object. The application identifier
@@ -148,23 +144,22 @@ void QtSingleApplication::sysInit(const QString& appId) {
     If you are creating a console application (i.e. setting \a
     GUIenabled to false), you may consider using
     QtSingleCoreApplication instead.
-*/
+ */
 
 QtSingleApplication::QtSingleApplication(int& argc, char** argv, bool GUIenabled)
-	: QApplication(argc, argv, GUIenabled) {
-	sysInit();
+  : QApplication(argc, argv, GUIenabled) {
+  sysInit();
 }
-
 
 /*!
     Creates a QtSingleApplication object with the application
     identifier \a appId. \a argc and \a argv are passed on to the
     QAppliation constructor.
-*/
+ */
 
 QtSingleApplication::QtSingleApplication(const QString& appId, int& argc, char** argv)
-	: QApplication(argc, argv) {
-	sysInit(appId);
+  : QApplication(argc, argv) {
+  sysInit(appId);
 }
 
 #if QT_VERSION < 0x050000
@@ -173,51 +168,51 @@ QtSingleApplication::QtSingleApplication(const QString& appId, int& argc, char**
     Creates a QtSingleApplication object. The application identifier
     will be QCoreApplication::applicationFilePath(). \a argc, \a
     argv, and \a type are passed on to the QAppliation constructor.
-*/
+ */
 QtSingleApplication::QtSingleApplication(int& argc, char** argv, Type type)
-	: QApplication(argc, argv, type) {
-	sysInit();
+  : QApplication(argc, argv, type) {
+  sysInit();
 }
-
 
 #  if defined(Q_WS_X11)
+
 /*!
-  Special constructor for X11, ref. the documentation of
-  QApplication's corresponding constructor. The application identifier
-  will be QCoreApplication::applicationFilePath(). \a dpy, \a visual,
-  and \a cmap are passed on to the QApplication constructor.
-*/
+   Special constructor for X11, ref. the documentation of
+   QApplication's corresponding constructor. The application identifier
+   will be QCoreApplication::applicationFilePath(). \a dpy, \a visual,
+   and \a cmap are passed on to the QApplication constructor.
+ */
 QtSingleApplication::QtSingleApplication(Display* dpy, Qt::HANDLE visual, Qt::HANDLE cmap)
-	: QApplication(dpy, visual, cmap) {
-	sysInit();
+  : QApplication(dpy, visual, cmap) {
+  sysInit();
 }
 
 /*!
-  Special constructor for X11, ref. the documentation of
-  QApplication's corresponding constructor. The application identifier
-  will be QCoreApplication::applicationFilePath(). \a dpy, \a argc, \a
-  argv, \a visual, and \a cmap are passed on to the QApplication
-  constructor.
-*/
+   Special constructor for X11, ref. the documentation of
+   QApplication's corresponding constructor. The application identifier
+   will be QCoreApplication::applicationFilePath(). \a dpy, \a argc, \a
+   argv, \a visual, and \a cmap are passed on to the QApplication
+   constructor.
+ */
 QtSingleApplication::QtSingleApplication(Display* dpy, int& argc, char** argv, Qt::HANDLE visual, Qt::HANDLE cmap)
-	: QApplication(dpy, argc, argv, visual, cmap) {
-	sysInit();
+  : QApplication(dpy, argc, argv, visual, cmap) {
+  sysInit();
 }
 
 /*!
-  Special constructor for X11, ref. the documentation of
-  QApplication's corresponding constructor. The application identifier
-  will be \a appId. \a dpy, \a argc, \a
-  argv, \a visual, and \a cmap are passed on to the QApplication
-  constructor.
-*/
+   Special constructor for X11, ref. the documentation of
+   QApplication's corresponding constructor. The application identifier
+   will be \a appId. \a dpy, \a argc, \a
+   argv, \a visual, and \a cmap are passed on to the QApplication
+   constructor.
+ */
 QtSingleApplication::QtSingleApplication(Display* dpy, const QString& appId, int argc, char** argv, Qt::HANDLE visual, Qt::HANDLE cmap)
-	: QApplication(dpy, argc, argv, visual, cmap) {
-	sysInit(appId);
+  : QApplication(dpy, argc, argv, visual, cmap) {
+  sysInit(appId);
 }
+
 #  endif // Q_WS_X11
 #endif // QT_VERSION < 0x050000
-
 
 /*!
     Returns true if another instance of this application is running;
@@ -228,12 +223,11 @@ QtSingleApplication::QtSingleApplication(Display* dpy, const QString& appId, int
     another session).
 
     \sa sendMessage()
-*/
+ */
 
 bool QtSingleApplication::isRunning() {
-	return peer->isClient();
+  return peer->isClient();
 }
-
 
 /*!
     Tries to send the text \a message to the currently running
@@ -247,81 +241,77 @@ bool QtSingleApplication::isRunning() {
     message within \a timeout milliseconds, this function return false.
 
     \sa isRunning(), messageReceived()
-*/
+ */
 bool QtSingleApplication::sendMessage(const QString& message, int timeout) {
-	return peer->sendMessage(message, timeout);
+  return peer->sendMessage(message, timeout);
 }
-
 
 /*!
     Returns the application identifier. Two processes with the same
     identifier will be regarded as instances of the same application.
-*/
+ */
 QString QtSingleApplication::id() const {
-	return peer->applicationId();
+  return peer->applicationId();
 }
-
 
 /*!
-  Sets the activation window of this application to \a aw. The
-  activation window is the widget that will be activated by
-  activateWindow(). This is typically the application's main window.
+   Sets the activation window of this application to \a aw. The
+   activation window is the widget that will be activated by
+   activateWindow(). This is typically the application's main window.
 
-  If \a activateOnMessage is true (the default), the window will be
-  activated automatically every time a message is received, just prior
-  to the messageReceived() signal being emitted.
+   If \a activateOnMessage is true (the default), the window will be
+   activated automatically every time a message is received, just prior
+   to the messageReceived() signal being emitted.
 
-  \sa activateWindow(), messageReceived()
-*/
+   \sa activateWindow(), messageReceived()
+ */
 
 void QtSingleApplication::setActivationWindow(QWidget* aw, bool activateOnMessage) {
-	actWin = aw;
+  actWin = aw;
 
-	if (activateOnMessage) {
-		connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::activateWindow);
-	}
-	else {
-		disconnect(peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::activateWindow);
-	}
+  if (activateOnMessage) {
+    connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::activateWindow);
+  }
+  else {
+    disconnect(peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::activateWindow);
+  }
 }
-
 
 /*!
     Returns the applications activation window if one has been set by
     calling setActivationWindow(), otherwise returns 0.
 
     \sa setActivationWindow()
-*/
+ */
 QWidget* QtSingleApplication::activationWindow() const {
-	return actWin;
+  return actWin;
 }
 
-
 /*!
-  De-minimizes, raises, and activates this application's activation window.
-  This function does nothing if no activation window has been set.
+   De-minimizes, raises, and activates this application's activation window.
+   This function does nothing if no activation window has been set.
 
-  This is a convenience function to show the user that this
-  application instance has been activated when he has tried to start
-  another instance.
+   This is a convenience function to show the user that this
+   application instance has been activated when he has tried to start
+   another instance.
 
-  This function should typically be called in response to the
-  messageReceived() signal. By default, that will happen
-  automatically, if an activation window has been set.
+   This function should typically be called in response to the
+   messageReceived() signal. By default, that will happen
+   automatically, if an activation window has been set.
 
-  \sa setActivationWindow(), messageReceived(), initialize()
-*/
+   \sa setActivationWindow(), messageReceived(), initialize()
+ */
 void QtSingleApplication::activateWindow() {
-	if (actWin) {
-		actWin->setWindowState(actWin->windowState() & ~Qt::WindowMinimized);
-		actWin->raise();
-		actWin->activateWindow();
-	}
+  if (actWin) {
+    actWin->setWindowState(actWin->windowState() & ~Qt::WindowMinimized);
+    actWin->raise();
+    actWin->activateWindow();
+  }
 }
 
 void QtSingleApplication::finish() {
-	delete peer;
-	peer = 0;
+  delete peer;
+  peer = 0;
 }
 
 /*!
@@ -331,11 +321,10 @@ void QtSingleApplication::finish() {
     message from another instance of this application.
 
     \sa sendMessage(), setActivationWindow(), activateWindow()
-*/
-
+ */
 
 /*!
     \fn void QtSingleApplication::initialize(bool dummy = true)
 
     \obsolete
-*/
+ */

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -19,21 +20,18 @@
 
 #include "miscellaneous/textfactory.h"
 
+MessagesModelCache::MessagesModelCache(QObject* parent) : QObject(parent), m_msgCache(QHash<int, QSqlRecord>()) {}
 
-MessagesModelCache::MessagesModelCache(QObject* parent) : QObject(parent), m_msgCache(QHash<int, QSqlRecord>()) {
-}
-
-MessagesModelCache::~MessagesModelCache() {
-}
+MessagesModelCache::~MessagesModelCache() {}
 
 void MessagesModelCache::setData(const QModelIndex& index, const QVariant& value, const QSqlRecord& record) {
-	if (!m_msgCache.contains(index.row())) {
-		m_msgCache[index.row()] = record;
-	}
+  if (!m_msgCache.contains(index.row())) {
+    m_msgCache[index.row()] = record;
+  }
 
-	m_msgCache[index.row()].setValue(index.column(), value);
+  m_msgCache[index.row()].setValue(index.column(), value);
 }
 
 QVariant MessagesModelCache::data(const QModelIndex& idx) {
-	return m_msgCache[idx.row()].value(idx.column());
+  return m_msgCache[idx.row()].value(idx.column());
 }

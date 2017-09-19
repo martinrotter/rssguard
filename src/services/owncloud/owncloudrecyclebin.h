@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,18 +21,18 @@
 
 #include "services/abstract/recyclebin.h"
 
-
 class OwnCloudServiceRoot;
 
 class OwnCloudRecycleBin : public RecycleBin {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit OwnCloudRecycleBin(RootItem* parent = nullptr);
-		virtual ~OwnCloudRecycleBin();
+  public:
+    explicit OwnCloudRecycleBin(RootItem* parent = nullptr);
+    virtual ~OwnCloudRecycleBin();
 
-		OwnCloudServiceRoot* serviceRoot();
-		bool markAsReadUnread(ReadStatus status);
+    OwnCloudServiceRoot* serviceRoot();
+
+    bool markAsReadUnread(ReadStatus status);
 };
 
 #endif // OWNCLOUDRECYCLEBIN_H

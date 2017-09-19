@@ -27,15 +27,13 @@ if [ $# -eq 0 ]; then
   usage
 fi
 
-ASTYLE_CMD="astyle"
+ASTYLE_CMD="uncrustify"
 
 if [[ "$(uname -o)" == "Cygwin" ]]; then
-  ASTYLE_RC="$(cygpath -w $(realpath $(dirname $0)))/.astylerc"
+  ASTYLE_RC="$(cygpath -w $(realpath $(dirname $0)))/uncrustify.cfg"
 else
-  ASTYLE_RC="$(realpath $(dirname $0))/.astylerc"
+  ASTYLE_RC="$(realpath $(dirname $0))/uncrustify.cfg"
 fi
-
-ASTYLE_RC="$(cygpath -w $(realpath $(dirname $0)))/.astylerc"
 
 echo "ASTYLE config file: $ASTYLE_RC"
 
@@ -58,11 +56,11 @@ for dir in "$@"; do
                 -o -name '*.h' \
                 -o -name '*.hh' \
                 -o -name '*.hpp'); do
-    "${ASTYLE_CMD}" --options="$ASTYLE_RC" "${f}"
+    "${ASTYLE_CMD}" -c "$ASTYLE_RC" --replace "${f}"
   done
   
   # Remove backup files.
-  find . -name "*.orig" | xargs --no-run-if-empty rm -v
+  find . -name "*-backup*~*" | xargs --no-run-if-empty rm -v
   
   popd
 done

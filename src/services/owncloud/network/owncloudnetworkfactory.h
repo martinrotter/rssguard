@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -26,7 +27,6 @@
 #include <QJsonObject>
 #include <QNetworkReply>
 #include <QString>
-
 
 class OwnCloudResponse {
   public:
@@ -74,7 +74,7 @@ class RootItem;
 class OwnCloudGetFeedsCategoriesResponse {
   public:
     explicit OwnCloudGetFeedsCategoriesResponse(const QString& raw_categories = QString(),
-      const QString& raw_feeds = QString());
+                                                const QString& raw_feeds = QString());
     virtual ~OwnCloudGetFeedsCategoriesResponse();
 
     // Returns tree of feeds/categories.
@@ -143,6 +143,7 @@ class OwnCloudNetworkFactory {
     bool m_forceServerSideUpdate;
     QString m_authUsername;
     QString m_authPassword;
+
     QNetworkReply::NetworkError m_lastError;
     int m_batchSize;
 

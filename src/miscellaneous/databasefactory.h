@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -21,161 +22,162 @@
 #include <QObject>
 #include <QSqlDatabase>
 
-
 class DatabaseFactory : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Describes available typos of database backend.
-		enum UsedDriver {
-			SQLITE,
-			SQLITE_MEMORY,
-			MYSQL
-		};
+  public:
 
-		// Describes what type of database user wants.
-		enum DesiredType {
-			StrictlyFileBased,
-			StrictlyInMemory,
-			FromSettings
-		};
+    // Describes available typos of database backend.
+    enum UsedDriver {
+      SQLITE,
+      SQLITE_MEMORY,
+      MYSQL
+    };
 
-		// Describes possible MySQL-specific errors.
-		enum MySQLError {
-			MySQLOk               = 0,
-			MySQLUnknownError     = 1,
-			MySQLAccessDenied     = 1045,
-			MySQLUnknownDatabase  = 1049,
-			MySQLConnectionError  = 2002,
-			MySQLCantConnect      = 2003,
-			MySQLUnknownHost      = 2005
-		};
+    // Describes what type of database user wants.
+    enum DesiredType {
+      StrictlyFileBased,
+      StrictlyInMemory,
+      FromSettings
+    };
 
-		//
-		// GENERAL stuff.
-		//
+    // Describes possible MySQL-specific errors.
+    enum MySQLError {
+      MySQLOk = 0,
+      MySQLUnknownError = 1,
+      MySQLAccessDenied = 1045,
+      MySQLUnknownDatabase = 1049,
+      MySQLConnectionError = 2002,
+      MySQLCantConnect = 2003,
+      MySQLUnknownHost = 2005
+    };
 
-		// Constructor.
-		explicit DatabaseFactory(QObject* parent = 0);
+    //
+    // GENERAL stuff.
+    //
 
-		// Destructor.
-		virtual ~DatabaseFactory();
+    // Constructor.
+    explicit DatabaseFactory(QObject* parent = 0);
 
-		// Returns size of DB file.
-		qint64 getDatabaseFileSize() const;
+    // Destructor.
+    virtual ~DatabaseFactory();
 
-		// Returns size of data contained in the DB file.
-		qint64 getDatabaseDataSize() const;
+    // Returns size of DB file.
+    qint64 getDatabaseFileSize() const;
 
-		// If in-memory is true, then :memory: database is returned
-		// In-memory database is DEFAULT database.
-		// NOTE: This always returns OPENED database.
-		QSqlDatabase connection(const QString& connection_name, DesiredType desired_type = FromSettings);
+    // Returns size of data contained in the DB file.
+    qint64 getDatabaseDataSize() const;
 
-		QString humanDriverName(UsedDriver driver) const;
-		QString humanDriverName(const QString& driver_code) const;
+    // If in-memory is true, then :memory: database is returned
+    // In-memory database is DEFAULT database.
+    // NOTE: This always returns OPENED database.
+    QSqlDatabase connection(const QString& connection_name, DesiredType desired_type = FromSettings);
 
-		// Removes connection.
-		void removeConnection(const QString& connection_name = QString());
+    QString humanDriverName(UsedDriver driver) const;
+    QString humanDriverName(const QString& driver_code) const;
 
-		QString obtainBeginTransactionSql() const;
+    // Removes connection.
+    void removeConnection(const QString& connection_name = QString());
 
-		// Performs any needed database-related operation to be done
-		// to gracefully exit the application.
-		void saveDatabase();
+    QString obtainBeginTransactionSql() const;
 
-		// Performs cleanup of the database.
-		bool vacuumDatabase();
+    // Performs any needed database-related operation to be done
+    // to gracefully exit the application.
+    void saveDatabase();
 
-		// Returns identification of currently active database driver.
-		UsedDriver activeDatabaseDriver() const;
+    // Performs cleanup of the database.
+    bool vacuumDatabase();
 
-		// Copies selected backup database (file) to active database path.
-		bool initiateRestoration(const QString& database_backup_file_path);
+    // Returns identification of currently active database driver.
+    UsedDriver activeDatabaseDriver() const;
 
-		// Finishes restoration from backup file.
-		void finishRestoration();
+    // Copies selected backup database (file) to active database path.
+    bool initiateRestoration(const QString& database_backup_file_path);
 
-		//
-		// SQLITE stuff.
-		//
-		QString sqliteDatabaseFilePath() const;
+    // Finishes restoration from backup file.
+    void finishRestoration();
 
-		//
-		// MySQL stuff.
-		//
+    //
+    // SQLITE stuff.
+    //
+    QString sqliteDatabaseFilePath() const;
 
-		// Tests if database connection with given data
-		// can be established and returns 0 if it can.
-		// Otherwise returns MySQL-specific error code.
-		MySQLError mysqlTestConnection(const QString& hostname, int port, const QString& w_database,
-		                               const QString& username, const QString& password);
+    //
+    // MySQL stuff.
+    //
 
-		// Interprets MySQL error code.
-		QString mysqlInterpretErrorCode(MySQLError error_code) const;
+    // Tests if database connection with given data
+    // can be established and returns 0 if it can.
+    // Otherwise returns MySQL-specific error code.
+    MySQLError mysqlTestConnection(const QString& hostname, int port, const QString& w_database,
+                                   const QString& username, const QString& password);
 
-	private:
-		//
-		// GENERAL stuff.
-		//
+    // Interprets MySQL error code.
+    QString mysqlInterpretErrorCode(MySQLError error_code) const;
 
-		// Decides which database backend will be used in this
-		// application session.
-		void determineDriver();
+  private:
 
-		// Holds the type of currently activated database backend.
-		UsedDriver m_activeDatabaseDriver;
+    //
+    // GENERAL stuff.
+    //
 
-		//
-		// MYSQL stuff.
-		//
+    // Decides which database backend will be used in this
+    // application session.
+    void determineDriver();
 
-		// Returns (always OPENED) MySQL database connection.
-		QSqlDatabase mysqlConnection(const QString& connection_name);
+    // Holds the type of currently activated database backend.
+    UsedDriver m_activeDatabaseDriver;
 
-		// Initializes MySQL database.
-		QSqlDatabase mysqlInitializeDatabase(const QString& connection_name);
+    //
+    // MYSQL stuff.
+    //
 
-		// Updates database schema.
-		bool mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString& source_db_schema_version, const QString& db_name);
+    // Returns (always OPENED) MySQL database connection.
+    QSqlDatabase mysqlConnection(const QString& connection_name);
 
-		// Runs "VACUUM" on the database.
-		bool mysqlVacuumDatabase();
+    // Initializes MySQL database.
+    QSqlDatabase mysqlInitializeDatabase(const QString& connection_name);
 
-		// True if MySQL database is fully initialized for use,
-		// otherwise false.
-		bool m_mysqlDatabaseInitialized;
+    // Updates database schema.
+    bool mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString& source_db_schema_version, const QString& db_name);
 
-		//
-		// SQLITE stuff.
-		//
+    // Runs "VACUUM" on the database.
+    bool mysqlVacuumDatabase();
 
-		QSqlDatabase sqliteConnection(const QString& connection_name, DesiredType desired_type);
+    // True if MySQL database is fully initialized for use,
+    // otherwise false.
+    bool m_mysqlDatabaseInitialized;
 
-		// Runs "VACUUM" on the database.
-		bool sqliteVacuumDatabase();
+    //
+    // SQLITE stuff.
+    //
 
-		// Performs saving of items from in-memory database
-		// to file-based database.
-		void sqliteSaveMemoryDatabase();
+    QSqlDatabase sqliteConnection(const QString& connection_name, DesiredType desired_type);
 
-		// Assemblies database file path.
-		void sqliteAssemblyDatabaseFilePath();
+    // Runs "VACUUM" on the database.
+    bool sqliteVacuumDatabase();
 
-		// Updates database schema.
-		bool sqliteUpdateDatabaseSchema(QSqlDatabase database, const QString& source_db_schema_version);
+    // Performs saving of items from in-memory database
+    // to file-based database.
+    void sqliteSaveMemoryDatabase();
 
-		// Creates new connection, initializes database and
-		// returns opened connections.
-		QSqlDatabase sqliteInitializeInMemoryDatabase();
-		QSqlDatabase sqliteInitializeFileBasedDatabase(const QString& connection_name);
+    // Assemblies database file path.
+    void sqliteAssemblyDatabaseFilePath();
 
-		// Path to database file.
-		QString m_sqliteDatabaseFilePath;
+    // Updates database schema.
+    bool sqliteUpdateDatabaseSchema(QSqlDatabase database, const QString& source_db_schema_version);
 
-		// Is database file initialized?
-		bool m_sqliteFileBasedDatabaseinitialized;
-		bool m_sqliteInMemoryDatabaseInitialized;
+    // Creates new connection, initializes database and
+    // returns opened connections.
+    QSqlDatabase sqliteInitializeInMemoryDatabase();
+    QSqlDatabase sqliteInitializeFileBasedDatabase(const QString& connection_name);
+
+    // Path to database file.
+    QString m_sqliteDatabaseFilePath;
+
+    // Is database file initialized?
+    bool m_sqliteFileBasedDatabaseinitialized;
+    bool m_sqliteInMemoryDatabaseInitialized;
 };
 
 #endif // DATABASEFACTORY_H

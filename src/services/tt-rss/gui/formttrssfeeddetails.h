@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,19 +21,19 @@
 
 #include "services/abstract/gui/formfeeddetails.h"
 
-
 class FormTtRssFeedDetails : public FormFeedDetails {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit FormTtRssFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
+  public:
+    explicit FormTtRssFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
 
-		// FormFeedDetails interface
-	protected slots:
-		void apply();
+    // FormFeedDetails interface
 
-	protected:
-		void setEditableFeed(Feed* editable_feed);
+  protected slots:
+    void apply();
+
+  protected:
+    void setEditableFeed(Feed* editable_feed);
 };
 
 #endif // FORMTTRSSFEEDDETAILS_H

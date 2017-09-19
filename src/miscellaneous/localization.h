@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,52 +21,53 @@
 
 #include <QObject>
 
-#include <QString>
 #include <QLocale>
-
+#include <QString>
 
 struct Language {
-	QString m_name;
-	QString m_code;
-	QString m_author;
-	QString m_email;
+  QString m_name;
+  QString m_code;
+  QString m_author;
+  QString m_email;
 };
 
 class Localization : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructor.
-		explicit Localization(QObject* parent = 0);
+  public:
 
-		// Destructor.
-		virtual ~Localization();
+    // Constructor.
+    explicit Localization(QObject* parent = 0);
 
-		// Returns code of language that should
-		// be loaded according to settings.
-		QString desiredLanguage() const;
+    // Destructor.
+    virtual ~Localization();
 
-		// Loads currently active language.
-		void loadActiveLanguage();
+    // Returns code of language that should
+    // be loaded according to settings.
+    QString desiredLanguage() const;
 
-		// Returns list of installed application localizations.
-		// This list is used ie. in settings dialog.
-		QList<Language> installedLanguages() const;
+    // Loads currently active language.
+    void loadActiveLanguage();
 
-		// Returns empty string or loaded language
-		// name if it is really loaded.
-		inline QString loadedLanguage() const {
-			return m_loadedLanguage;
-		}
+    // Returns list of installed application localizations.
+    // This list is used ie. in settings dialog.
+    QList<Language> installedLanguages() const;
 
-		inline QLocale loadedLocale() const {
-			return m_loadedLocale;
-		}
+    // Returns empty string or loaded language
+    // name if it is really loaded.
+    inline QString loadedLanguage() const {
+      return m_loadedLanguage;
+    }
 
-	private:
-		// Code of loaded language.
-		QString m_loadedLanguage;
-		QLocale m_loadedLocale;
+    inline QLocale loadedLocale() const {
+      return m_loadedLocale;
+    }
+
+  private:
+
+    // Code of loaded language.
+    QString m_loadedLanguage;
+    QLocale m_loadedLocale;
 };
 
 #endif // LOCALIZATION_H

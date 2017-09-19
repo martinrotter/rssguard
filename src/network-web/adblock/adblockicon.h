@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -23,7 +24,6 @@
 
 #include "network-web/adblock/adblockrule.h"
 
-
 class QMenu;
 class QUrl;
 class QAction;
@@ -33,32 +33,32 @@ class AdBlockManager;
 class BrowserWindow;
 
 class AdBlockIcon : public QAction {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit AdBlockIcon(AdBlockManager* parent = 0);
-		virtual ~AdBlockIcon();
+  public:
+    explicit AdBlockIcon(AdBlockManager* parent = 0);
+    virtual ~AdBlockIcon();
 
-		void popupBlocked(const QString& ruleString, const QUrl& url);
+    void popupBlocked(const QString& ruleString, const QUrl& url);
 
-	public slots:
-		void setEnabled(bool enabled);
-		void createMenu(QMenu* menu = 0);
+  public slots:
+    void setEnabled(bool enabled);
+    void createMenu(QMenu* menu = 0);
 
-	private slots:
-		void showMenu(const QPoint& pos);
-		void toggleCustomFilter();
+  private slots:
+    void showMenu(const QPoint& pos);
+    void toggleCustomFilter();
 
-		void animateIcon();
-		void stopAnimation();
+    void animateIcon();
+    void stopAnimation();
 
-	private:
-		AdBlockManager* m_manager;
-		QVector<QPair<AdBlockRule*, QUrl>> m_blockedPopups;
-		QTimer* m_flashTimer;
+  private:
+    AdBlockManager* m_manager;
 
-		int m_timerTicks;
-		bool m_enabled;
+    QVector<QPair<AdBlockRule*, QUrl>> m_blockedPopups;
+    QTimer* m_flashTimer;
+    int m_timerTicks;
+    bool m_enabled;
 };
 
 #endif // ADBLOCKICON_H

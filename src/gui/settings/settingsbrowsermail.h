@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -23,36 +24,36 @@
 #include "miscellaneous/externaltool.h"
 #include "ui_settingsbrowsermail.h"
 
-
 class SettingsBrowserMail : public SettingsPanel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SettingsBrowserMail(Settings* settings, QWidget* parent = 0);
-		virtual ~SettingsBrowserMail();
+  public:
+    explicit SettingsBrowserMail(Settings* settings, QWidget* parent = 0);
+    virtual ~SettingsBrowserMail();
 
-		inline QString title() const {
-			return tr("Web browser & e-mail & proxy");
-		}
+    inline QString title() const {
+      return tr("Web browser & e-mail & proxy");
+    }
 
     void loadSettings();
-		void saveSettings();
 
-	private slots:
+    void saveSettings();
+
+  private slots:
     void addExternalTool();
     void deleteSelectedExternalTool();
-		void changeDefaultBrowserArguments(int index);
-		void selectBrowserExecutable();
-		void changeDefaultEmailArguments(int index);
-		void selectEmailExecutable();
-		void displayProxyPassword(int state);
-		void onProxyTypeChanged(int index);
+    void changeDefaultBrowserArguments(int index);
+    void selectBrowserExecutable();
+    void changeDefaultEmailArguments(int index);
+    void selectEmailExecutable();
+    void displayProxyPassword(int state);
+    void onProxyTypeChanged(int index);
 
-	private:
+  private:
     QList<ExternalTool> externalTools() const;
     void setExternalTools(const QList<ExternalTool>& list);
 
-		Ui::SettingsBrowserMail* m_ui;
+    Ui::SettingsBrowserMail* m_ui;
 };
 
 #endif // SETTINGSBROWSERMAIL_H

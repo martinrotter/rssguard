@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -21,19 +22,18 @@
 
 #include "network-web/urlinterceptor.h"
 
-
 class AdBlockManager;
 
 class AdBlockUrlInterceptor : public UrlInterceptor {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit AdBlockUrlInterceptor(AdBlockManager* manager);
+  public:
+    explicit AdBlockUrlInterceptor(AdBlockManager* manager);
 
-		void interceptRequest(QWebEngineUrlRequestInfo& info);
+    void interceptRequest(QWebEngineUrlRequestInfo& info);
 
-	private:
-		AdBlockManager* m_manager;
+  private:
+    AdBlockManager* m_manager;
 };
 
 #endif // ADBLOCKURLINTERCEPTOR_H

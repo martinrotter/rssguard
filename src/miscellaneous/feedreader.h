@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,11 +21,10 @@
 
 #include <QObject>
 
-#include "services/abstract/feed.h"
 #include "core/feeddownloader.h"
+#include "services/abstract/feed.h"
 
 #include <QFutureWatcher>
-
 
 class FeedsModel;
 class MessagesModel;
@@ -35,75 +35,74 @@ class DatabaseCleaner;
 class QTimer;
 
 class FeedReader : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit FeedReader(QObject* parent = 0);
-		virtual ~FeedReader();
+  public:
+    explicit FeedReader(QObject* parent = 0);
+    virtual ~FeedReader();
 
-		// List of all installed "feed service plugins", including obligatory
-		// "standard" service entry point.
-		QList<ServiceEntryPoint*> feedServices();
+    // List of all installed "feed service plugins", including obligatory
+    // "standard" service entry point.
+    QList<ServiceEntryPoint*> feedServices();
 
-		// Access to DB cleaner.
-		DatabaseCleaner* databaseCleaner();
+    // Access to DB cleaner.
+    DatabaseCleaner* databaseCleaner();
+    FeedDownloader* feedDownloader() const;
+    FeedsModel* feedsModel() const;
+    MessagesModel* messagesModel() const;
+    FeedsProxyModel* feedsProxyModel() const;
+    MessagesProxyModel* messagesProxyModel() const;
 
-		FeedDownloader* feedDownloader() const;
-		FeedsModel* feedsModel() const;
-		MessagesModel* messagesModel() const;
-		FeedsProxyModel* feedsProxyModel() const;
-		MessagesProxyModel* messagesProxyModel() const;
+    // Schedules given feeds for update.
+    void updateFeeds(const QList<Feed*>& feeds);
 
-		// Schedules given feeds for update.
-		void updateFeeds(const QList<Feed*>& feeds);
+    // True if feed update is running right now.
+    bool isFeedUpdateRunning() const;
 
-		// True if feed update is running right now.
-		bool isFeedUpdateRunning() const;
+    // Resets global auto-update intervals according to settings
+    // and starts/stop the timer as needed.
+    void updateAutoUpdateStatus();
 
-		// Resets global auto-update intervals according to settings
-		// and starts/stop the timer as needed.
-		void updateAutoUpdateStatus();
+    bool autoUpdateEnabled() const;
+    int autoUpdateRemainingInterval() const;
+    int autoUpdateInitialInterval() const;
 
-		bool autoUpdateEnabled() const;
-		int autoUpdateRemainingInterval() const;
-		int autoUpdateInitialInterval() const;
+  public slots:
 
-	public slots:
-		// Schedules all feeds from all accounts for update.
-		void updateAllFeeds();
-		void stopRunningFeedUpdate();
-		void quit();
+    // Schedules all feeds from all accounts for update.
+    void updateAllFeeds();
+    void stopRunningFeedUpdate();
+    void quit();
 
-	private slots:
-		// Is executed when next auto-update round could be done.
-		void executeNextAutoUpdate();
-		void checkServicesForAsyncOperations();
-		void asyncCacheSaveFinished();
+  private slots:
 
-	signals:
-		void feedUpdatesStarted();
-		void feedUpdatesFinished(FeedDownloadResults updated_feeds);
-		void feedUpdatesProgress(const Feed* feed, int current, int total);
+    // Is executed when next auto-update round could be done.
+    void executeNextAutoUpdate();
+    void checkServicesForAsyncOperations();
+    void asyncCacheSaveFinished();
 
-	private:
-		QList<ServiceEntryPoint*> m_feedServices;
+  signals:
+    void feedUpdatesStarted();
+    void feedUpdatesFinished(FeedDownloadResults updated_feeds);
+    void feedUpdatesProgress(const Feed* feed, int current, int total);
 
-		FeedsModel* m_feedsModel;
-		FeedsProxyModel* m_feedsProxyModel;
-		MessagesModel* m_messagesModel;
-		MessagesProxyModel* m_messagesProxyModel;
+  private:
+    QList<ServiceEntryPoint*> m_feedServices;
 
-		// Auto-update stuff.
-		QTimer* m_autoUpdateTimer;
-		bool m_globalAutoUpdateEnabled;
-		int m_globalAutoUpdateInitialInterval;
-		int m_globalAutoUpdateRemainingInterval;
+    FeedsModel* m_feedsModel;
+    FeedsProxyModel* m_feedsProxyModel;
+    MessagesModel* m_messagesModel;
+    MessagesProxyModel* m_messagesProxyModel;
 
-		QThread* m_feedDownloaderThread;
-		FeedDownloader* m_feedDownloader;
-
-		QThread* m_dbCleanerThread;
-		DatabaseCleaner* m_dbCleaner;
+    // Auto-update stuff.
+    QTimer* m_autoUpdateTimer;
+    bool m_globalAutoUpdateEnabled;
+    int m_globalAutoUpdateInitialInterval;
+    int m_globalAutoUpdateRemainingInterval;
+    QThread* m_feedDownloaderThread;
+    FeedDownloader* m_feedDownloader;
+    QThread* m_dbCleanerThread;
+    DatabaseCleaner* m_dbCleaner;
 };
 
 #endif // FEEDREADER_H

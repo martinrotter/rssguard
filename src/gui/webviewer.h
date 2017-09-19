@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -23,43 +24,44 @@
 #include "core/message.h"
 #include "network-web/webpage.h"
 
-
 class WebViewer : public QWebEngineView {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit WebViewer(QWidget* parent = 0);
+  public:
+    explicit WebViewer(QWidget* parent = 0);
 
-		bool canIncreaseZoom();
-		bool canDecreaseZoom();
+    bool canIncreaseZoom();
+    bool canDecreaseZoom();
 
-		inline QString messageContents() {
-			return m_messageContents;
-		}
+    inline QString messageContents() {
+      return m_messageContents;
+    }
 
-		WebPage* page() const;
+    WebPage* page() const;
 
-	public slots:
-		// Page zoom modifiers.
-		bool increaseWebPageZoom();
-		bool decreaseWebPageZoom();
-		bool resetWebPageZoom();
+  public slots:
 
-		void displayMessage();
-		void loadMessages(const QList<Message>& messages);
-		void loadMessage(const Message& message);
-		void clear();
+    // Page zoom modifiers.
+    bool increaseWebPageZoom();
+    bool decreaseWebPageZoom();
+    bool resetWebPageZoom();
 
-	protected:
-		void contextMenuEvent(QContextMenuEvent* event);
-		QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
-		void wheelEvent(QWheelEvent* event);
+    void displayMessage();
+    void loadMessages(const QList<Message>& messages);
+    void loadMessage(const Message& message);
+    void clear();
 
-	signals:
-		void messageStatusChangeRequested(int message_id, WebPage::MessageStatusChange change);
+  protected:
+    void contextMenuEvent(QContextMenuEvent* event);
+    QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
 
-	private:
-		QString m_messageContents;
+    void wheelEvent(QWheelEvent* event);
+
+  signals:
+    void messageStatusChangeRequested(int message_id, WebPage::MessageStatusChange change);
+
+  private:
+    QString m_messageContents;
 };
 
 #endif // WEBVIEWER_H

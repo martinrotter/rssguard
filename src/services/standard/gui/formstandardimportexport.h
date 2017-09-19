@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,53 +21,53 @@
 
 #include <QDialog>
 
-#include "ui_formstandardimportexport.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
+#include "ui_formstandardimportexport.h"
 
 namespace Ui {
-	class FormStandardImportExport;
+  class FormStandardImportExport;
 }
 
 class Category;
 class StandardServiceRoot;
 
 class FormStandardImportExport : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		enum ConversionType {
-			OPML20 = 0,
-			TXTUrlPerLine = 1
-		};
+  public:
+    enum ConversionType {
+      OPML20 = 0,
+      TXTUrlPerLine = 1
+    };
 
-		// Constructors.
-		explicit FormStandardImportExport(StandardServiceRoot* service_root, QWidget* parent = 0);
-		virtual ~FormStandardImportExport();
+    // Constructors.
+    explicit FormStandardImportExport(StandardServiceRoot* service_root, QWidget* parent = 0);
+    virtual ~FormStandardImportExport();
 
-		void setMode(const FeedsImportExportModel::Mode& mode);
+    void setMode(const FeedsImportExportModel::Mode& mode);
 
-	private slots:
-		void performAction();
-		void selectFile();
+  private slots:
+    void performAction();
+    void selectFile();
 
-		void onParsingStarted();
-		void onParsingFinished(int count_failed, int count_succeeded, bool parsing_error);
-		void onParsingProgress(int completed, int total);
+    void onParsingStarted();
+    void onParsingFinished(int count_failed, int count_succeeded, bool parsing_error);
+    void onParsingProgress(int completed, int total);
 
-	private:
-		void selectExportFile();
-		void selectImportFile();
-		void parseImportFile(const QString& file_name, bool fetch_metadata_online);
+  private:
+    void selectExportFile();
+    void selectImportFile();
+    void parseImportFile(const QString& file_name, bool fetch_metadata_online);
 
-		void exportFeeds();
-		void importFeeds();
+    void exportFeeds();
+    void importFeeds();
 
-		void loadCategories(const QList<Category*> categories, RootItem* root_item);
+    void loadCategories(const QList<Category*> categories, RootItem* root_item);
 
-		QScopedPointer<Ui::FormStandardImportExport> m_ui;
-		ConversionType m_conversionType;
-		FeedsImportExportModel* m_model;
-		StandardServiceRoot* m_serviceRoot;
+    QScopedPointer<Ui::FormStandardImportExport> m_ui;
+    ConversionType m_conversionType;
+    FeedsImportExportModel* m_model;
+    StandardServiceRoot* m_serviceRoot;
 };
 
 #endif // FORMEXPORT_H

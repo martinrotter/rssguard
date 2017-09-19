@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,32 +23,32 @@
 
 #include <QSqlRecord>
 
-
 class TtRssServiceRoot;
 
 class TtRssFeed : public Feed {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit TtRssFeed(RootItem* parent = nullptr);
-		explicit TtRssFeed(const QSqlRecord& record);
-		virtual ~TtRssFeed();
+  public:
+    explicit TtRssFeed(RootItem* parent = nullptr);
+    explicit TtRssFeed(const QSqlRecord& record);
+    virtual ~TtRssFeed();
 
-		TtRssServiceRoot* serviceRoot() const;
-		QVariant data(int column, int role) const;
-		bool canBeEdited() const;
-		bool editViaGui();
-		bool canBeDeleted() const;
-		bool deleteViaGui();
+    TtRssServiceRoot* serviceRoot() const;
 
-		bool markAsReadUnread(ReadStatus status);
-		bool cleanMessages(bool clear_only_read);
+    QVariant data(int column, int role) const;
+    bool canBeEdited() const;
+    bool editViaGui();
+    bool canBeDeleted() const;
+    bool deleteViaGui();
 
-		bool editItself(TtRssFeed* new_feed_data);
-		bool removeItself();
+    bool markAsReadUnread(ReadStatus status);
+    bool cleanMessages(bool clear_only_read);
 
-	private:
-		QList<Message> obtainNewMessages(bool* error_during_obtaining);
+    bool editItself(TtRssFeed* new_feed_data);
+    bool removeItself();
+
+  private:
+    QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 
 #endif // TTRSSFEED_H

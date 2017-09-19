@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,38 +23,38 @@
 
 #include "ui_formeditowncloudaccount.h"
 
-
 namespace Ui {
-	class FormEditAccount;
+  class FormEditAccount;
 }
 
 class OwnCloudServiceRoot;
 
 class FormEditOwnCloudAccount : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit FormEditOwnCloudAccount(QWidget* parent = 0);
-		virtual ~FormEditOwnCloudAccount();
+  public:
+    explicit FormEditOwnCloudAccount(QWidget* parent = 0);
+    virtual ~FormEditOwnCloudAccount();
 
-		OwnCloudServiceRoot* execForCreate();
-		void execForEdit(OwnCloudServiceRoot* existing_root);
+    OwnCloudServiceRoot* execForCreate();
 
-	private slots:
-		void displayPassword(bool display);
-		void performTest();
-		void onClickedOk();
-		void onClickedCancel();
+    void execForEdit(OwnCloudServiceRoot* existing_root);
 
-		void onUsernameChanged();
-		void onPasswordChanged();
-		void onUrlChanged();
-		void checkOkButton();
+  private slots:
+    void displayPassword(bool display);
+    void performTest();
+    void onClickedOk();
+    void onClickedCancel();
 
-	private:
-		QScopedPointer<Ui::FormEditOwnCloudAccount> m_ui;
-		OwnCloudServiceRoot* m_editableRoot;
-		QPushButton* m_btnOk;
+    void onUsernameChanged();
+    void onPasswordChanged();
+    void onUrlChanged();
+    void checkOkButton();
+
+  private:
+    QScopedPointer<Ui::FormEditOwnCloudAccount> m_ui;
+    OwnCloudServiceRoot* m_editableRoot;
+    QPushButton* m_btnOk;
 };
 
 #endif // FORMEDITOWNCLOUDACCOUNT_H

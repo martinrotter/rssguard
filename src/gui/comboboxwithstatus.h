@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,18 +23,19 @@
 
 #include <QComboBox>
 
-
 class ComboBoxWithStatus : public WidgetWithStatus {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit ComboBoxWithStatus(QWidget* parent = 0);
-		virtual ~ComboBoxWithStatus();
+  public:
 
-		inline QComboBox* comboBox() const {
-			return static_cast<QComboBox*>(m_wdgInput);
-		}
+    // Constructors and destructors.
+    explicit ComboBoxWithStatus(QWidget* parent = 0);
+    virtual ~ComboBoxWithStatus();
+
+    inline QComboBox* comboBox() const {
+      return static_cast<QComboBox*>(m_wdgInput);
+    }
+
 };
 
 #endif // COMBOBOXWITHSTATUS_H

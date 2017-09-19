@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -46,7 +47,8 @@
 #define DEFAULT_LOCALE                        "en"
 #define DEFAULT_FEED_ENCODING                 "UTF-8"
 #define DEFAULT_FEED_TYPE                     "RSS"
-#define URL_REGEXP                            "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
+#define URL_REGEXP \
+  "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
 #define USER_AGENT_HTTP_HEADER                "User-Agent"
 #define TEXT_TITLE_LIMIT                      30
 #define RESELECT_MESSAGE_THRESSHOLD           500
@@ -140,6 +142,7 @@
 #define APP_THEME_SUFFIX    ".png"
 
 #ifndef QSL
+
 // Thin macro wrapper for literal strings.
 // They are much more memory efficient and faster.
 // Use it for all literals except for two cases:
@@ -149,12 +152,14 @@
 #endif
 
 #ifndef QL1S
+
 // Macro for latin strings. Latin strings are
 // faster than QStrings created from literals.
 #define QL1S(x) QLatin1String(x)
 #endif
 
 #ifndef QL1C
+
 // Macro for latin chars.
 #define QL1C(x) QLatin1Char(x)
 #endif

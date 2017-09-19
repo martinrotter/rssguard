@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,50 +21,49 @@
 
 #include <QWidget>
 
-
 class Settings;
 
 class SettingsPanel : public QWidget {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SettingsPanel(Settings* settings, QWidget* parent = 0);
+  public:
+    explicit SettingsPanel(Settings* settings, QWidget* parent = 0);
 
-		virtual QString title() const = 0;
+    virtual QString title() const = 0;
+    virtual void loadSettings() = 0;
+    virtual void saveSettings() = 0;
 
-		virtual void loadSettings() = 0;
-		virtual void saveSettings() = 0;
+    bool requiresRestart() const;
+    bool isDirty() const;
 
-		bool requiresRestart() const;
-		bool isDirty() const;
+    void setIsDirty(bool is_dirty);
+    void setRequiresRestart(bool requiresRestart);
 
-		void setIsDirty(bool is_dirty);
-		void setRequiresRestart(bool requiresRestart);
+  protected:
+    void onBeginLoadSettings();
+    void onEndLoadSettings();
+    void onBeginSaveSettings();
+    void onEndSaveSettings();
 
-	protected:
-		void onBeginLoadSettings();
-		void onEndLoadSettings();
-		void onBeginSaveSettings();
-		void onEndSaveSettings();
+    // Settings to use to save/load.
+    Settings* settings() const;
 
-		// Settings to use to save/load.
-		Settings* settings() const;
+  protected slots:
 
-	protected slots:
-		// Sets this settings panel as dirty (some settings are changed) and emits the signal.
-		// NOTE: This will be probably called by subclasses when user changes some stuff.
-		void dirtifySettings();
+    // Sets this settings panel as dirty (some settings are changed) and emits the signal.
+    // NOTE: This will be probably called by subclasses when user changes some stuff.
+    void dirtifySettings();
 
-		void requireRestart();
+    void requireRestart();
 
-	signals:
-		void settingsChanged();
+  signals:
+    void settingsChanged();
 
-	private:
-		bool m_requiresRestart;
-		bool m_isDirty;
-		bool m_isLoading;
-		Settings* m_settings;
+  private:
+    bool m_requiresRestart;
+    bool m_isDirty;
+    bool m_isLoading;
+    Settings* m_settings;
 };
 
 #endif // SETTINGSPANEL_H

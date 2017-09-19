@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -15,42 +16,40 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-
 #ifndef MESSAGESMODELSQLLAYER_H
 #define MESSAGESMODELSQLLAYER_H
 
 #include <QSqlDatabase>
 
-#include <QMap>
 #include <QList>
-
+#include <QMap>
 
 class MessagesModelSqlLayer {
-	public:
-		explicit MessagesModelSqlLayer();
+  public:
+    explicit MessagesModelSqlLayer();
 
-		// Adds this new state to queue of sort states.
-		void addSortState(int column, Qt::SortOrder order);
+    // Adds this new state to queue of sort states.
+    void addSortState(int column, Qt::SortOrder order);
 
-		// Sets SQL WHERE clause, without "WHERE" keyword.
-		void setFilter(const QString& filter);
+    // Sets SQL WHERE clause, without "WHERE" keyword.
+    void setFilter(const QString& filter);
 
-	protected:
-		QString orderByClause() const;
-		QString selectStatement() const;
-		QString formatFields() const;
+  protected:
+    QString orderByClause() const;
+    QString selectStatement() const;
+    QString formatFields() const;
 
-		QSqlDatabase m_db;
+    QSqlDatabase m_db;
 
-	private:
-		QString m_filter;
+  private:
+    QString m_filter;
 
-		// NOTE: These two lists contain data for multicolumn sorting.
-		// They are always same length. Most important sort column/order
-		// are located at the start of lists;
-		QMap<int, QString> m_fieldNames;
-		QList<int> m_sortColumns;
-		QList<Qt::SortOrder> m_sortOrders;
+    // NOTE: These two lists contain data for multicolumn sorting.
+    // They are always same length. Most important sort column/order
+    // are located at the start of lists;
+    QMap<int, QString> m_fieldNames;
+    QList<int> m_sortColumns;
+    QList<Qt::SortOrder> m_sortOrders;
 };
 
 #endif // MESSAGESMODELSQLLAYER_H

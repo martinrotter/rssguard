@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -19,23 +20,22 @@
 
 #include "definitions/definitions.h"
 
-
 void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning) {
-	label.setMargin(6);
+  label.setMargin(6);
 
-	if (is_warning) {
-		label.setStyleSheet(QSL("font-weight: bold; font-style: italic; color: red"));
-	}
-	else {
-		label.setStyleSheet(QSL("font-style: italic;"));
-	}
+  if (is_warning) {
+    label.setStyleSheet(QSL("font-weight: bold; font-style: italic; color: red"));
+  }
+  else {
+    label.setStyleSheet(QSL("font-style: italic;"));
+  }
 }
 
 void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title) {
-	widget.setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-	widget.setWindowIcon(icon);
+  widget.setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+  widget.setWindowIcon(icon);
 
-	if (!title.isEmpty()) {
-		widget.setWindowTitle(title);
-	}
+  if (!title.isEmpty()) {
+    widget.setWindowTitle(title);
+  }
 }

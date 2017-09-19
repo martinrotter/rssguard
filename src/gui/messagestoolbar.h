@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,61 +23,62 @@
 
 #include "core/messagesmodel.h"
 
-
 class MessagesSearchLineEdit;
 class QWidgetAction;
 class QToolButton;
 class QMenu;
 
 class MessagesToolBar : public BaseToolBar {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit MessagesToolBar(const QString& title, QWidget* parent = 0);
-		virtual ~MessagesToolBar();
+  public:
 
-		// External access to search line edit.
-		inline MessagesSearchLineEdit* searchLineEdit() {
-			return m_txtSearchMessages;
-		}
+    // Constructors and destructors.
+    explicit MessagesToolBar(const QString& title, QWidget* parent = 0);
+    virtual ~MessagesToolBar();
 
-		// Implementation of BaseToolBar interface.
-		QList<QAction*> availableActions() const;
-		QList<QAction*> changeableActions() const;
-		void saveChangeableActions(const QStringList& actions);
+    // External access to search line edit.
+    inline MessagesSearchLineEdit* searchLineEdit() {
+      return m_txtSearchMessages;
+    }
 
-		// Loads actions as specified by external actions list.
-		// NOTE: This is used primarily for reloading actions
-		// when they are changed from settings.
-		void loadSpecificActions(const QList<QAction*>& actions);
+    // Implementation of BaseToolBar interface.
+    QList<QAction*> availableActions() const;
 
-		QList<QAction*> getSpecificActions(const QStringList& actions);
+    QList<QAction*> changeableActions() const;
+    void saveChangeableActions(const QStringList& actions);
 
-		QStringList defaultActions() const;
-		QStringList savedActions() const;
+    // Loads actions as specified by external actions list.
+    // NOTE: This is used primarily for reloading actions
+    // when they are changed from settings.
+    void loadSpecificActions(const QList<QAction*>& actions);
 
-	signals:
-		void messageSearchPatternChanged(const QString& pattern);
+    QList<QAction*> getSpecificActions(const QStringList& actions);
 
-		// Emitted if message filter is changed.
-		void messageFilterChanged(MessagesModel::MessageHighlighter filter);
+    QStringList defaultActions() const;
+    QStringList savedActions() const;
 
-	private slots:
-		// Called when highlighter gets changed.
-		void handleMessageHighlighterChange(QAction* action);
+  signals:
+    void messageSearchPatternChanged(const QString& pattern);
 
-	private:
-		void initializeSearchBox();
-		void initializeHighlighter();
+    // Emitted if message filter is changed.
+    void messageFilterChanged(MessagesModel::MessageHighlighter filter);
 
-	private:
-		QWidgetAction* m_actionMessageHighlighter;
-		QToolButton* m_btnMessageHighlighter;
-		QMenu* m_menuMessageHighlighter;
+  private slots:
 
-		QWidgetAction* m_actionSearchMessages;
-		MessagesSearchLineEdit* m_txtSearchMessages;
+    // Called when highlighter gets changed.
+    void handleMessageHighlighterChange(QAction* action);
+
+  private:
+    void initializeSearchBox();
+    void initializeHighlighter();
+
+  private:
+    QWidgetAction* m_actionMessageHighlighter;
+    QToolButton* m_btnMessageHighlighter;
+    QMenu* m_menuMessageHighlighter;
+    QWidgetAction* m_actionSearchMessages;
+    MessagesSearchLineEdit* m_txtSearchMessages;
 };
 
 #endif // NEWSTOOLBAR_H

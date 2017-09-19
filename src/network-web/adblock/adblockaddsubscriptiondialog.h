@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -24,41 +25,41 @@
 
 #include "ui_adblockaddsubscriptiondialog.h"
 
-
 namespace Ui {
-	class AdBlockAddSubscriptionDialog;
+  class AdBlockAddSubscriptionDialog;
 }
 
 class AdBlockAddSubscriptionDialog : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit AdBlockAddSubscriptionDialog(QWidget* parent = 0);
-		virtual ~AdBlockAddSubscriptionDialog();
+  public:
+    explicit AdBlockAddSubscriptionDialog(QWidget* parent = 0);
+    virtual ~AdBlockAddSubscriptionDialog();
 
-		QString title() const;
-		QString url() const;
+    QString title() const;
+    QString url() const;
 
-	private slots:
-		void indexChanged(int index);
-		void presetsEnabledChanged(bool enabled);
+  private slots:
+    void indexChanged(int index);
+    void presetsEnabledChanged(bool enabled);
 
-	private:
-		Ui::AdBlockAddSubscriptionDialog* m_ui;
+  private:
+    Ui::AdBlockAddSubscriptionDialog* m_ui;
 
-		struct Subscription {
-			QString m_title;
-			QString m_url;
+    struct Subscription {
+      QString m_title;
+      QString m_url;
 
-			Subscription() {}
+      Subscription() {}
 
-			Subscription(const QString& t, const QString& u) {
-				m_title = t;
-				m_url = u;
-			}
-		};
+      Subscription(const QString& t, const QString& u) {
+        m_title = t;
+        m_url = u;
+      }
 
-		QVector<Subscription> m_knownSubscriptions;
+    };
+
+    QVector<Subscription> m_knownSubscriptions;
 };
 
 #endif // ADBLOCKADDSUBSCRIPTIONDIALOG_H

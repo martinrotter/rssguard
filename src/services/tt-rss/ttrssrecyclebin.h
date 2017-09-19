@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,18 +21,18 @@
 
 #include "services/abstract/recyclebin.h"
 
-
 class TtRssServiceRoot;
 
 class TtRssRecycleBin : public RecycleBin {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit TtRssRecycleBin(RootItem* parent = nullptr);
-		virtual ~TtRssRecycleBin();
+  public:
+    explicit TtRssRecycleBin(RootItem* parent = nullptr);
+    virtual ~TtRssRecycleBin();
 
-		TtRssServiceRoot* serviceRoot();
-		bool markAsReadUnread(ReadStatus status);
+    TtRssServiceRoot* serviceRoot();
+
+    bool markAsReadUnread(ReadStatus status);
 };
 
 #endif // TTRSSRECYCLEBIN_H

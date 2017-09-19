@@ -38,9 +38,8 @@
 **
 ****************************************************************************/
 
-
-#include "qtsinglecoreapplication.h"
 #include "qtlocalpeer.h"
+#include "qtsinglecoreapplication.h"
 
 /*!
     \class QtSingleCoreApplication qtsinglecoreapplication.h
@@ -62,32 +61,30 @@
     command-line tool that sends commands to a GUI application.
 
     \sa QtSingleApplication
-*/
+ */
 
 /*!
     Creates a QtSingleCoreApplication object. The application identifier
     will be QCoreApplication::applicationFilePath(). \a argc and \a
     argv are passed on to the QCoreAppliation constructor.
-*/
+ */
 
 QtSingleCoreApplication::QtSingleCoreApplication(int& argc, char** argv)
-	: QCoreApplication(argc, argv) {
-	peer = new QtLocalPeer(this);
-	connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleCoreApplication::messageReceived);
+  : QCoreApplication(argc, argv) {
+  peer = new QtLocalPeer(this);
+  connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleCoreApplication::messageReceived);
 }
-
 
 /*!
     Creates a QtSingleCoreApplication object with the application
     identifier \a appId. \a argc and \a argv are passed on to the
     QCoreAppliation constructor.
-*/
+ */
 QtSingleCoreApplication::QtSingleCoreApplication(const QString& appId, int& argc, char** argv)
-	: QCoreApplication(argc, argv) {
-	peer = new QtLocalPeer(this, appId);
-	connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleCoreApplication::messageReceived);
+  : QCoreApplication(argc, argv) {
+  peer = new QtLocalPeer(this, appId);
+  connect(peer, &QtLocalPeer::messageReceived, this, &QtSingleCoreApplication::messageReceived);
 }
-
 
 /*!
     Returns true if another instance of this application is running;
@@ -98,12 +95,11 @@ QtSingleCoreApplication::QtSingleCoreApplication(const QString& appId, int& argc
     another session).
 
     \sa sendMessage()
-*/
+ */
 
 bool QtSingleCoreApplication::isRunning() {
-	return peer->isClient();
+  return peer->isClient();
 }
-
 
 /*!
     Tries to send the text \a message to the currently running
@@ -117,22 +113,20 @@ bool QtSingleCoreApplication::isRunning() {
     message within \a timeout milliseconds, this function return false.
 
     \sa isRunning(), messageReceived()
-*/
+ */
 
 bool QtSingleCoreApplication::sendMessage(const QString& message, int timeout) {
-	return peer->sendMessage(message, timeout);
+  return peer->sendMessage(message, timeout);
 }
-
 
 /*!
     Returns the application identifier. Two processes with the same
     identifier will be regarded as instances of the same application.
-*/
+ */
 
 QString QtSingleCoreApplication::id() const {
-	return peer->applicationId();
+  return peer->applicationId();
 }
-
 
 /*!
     \fn void QtSingleCoreApplication::messageReceived(const QString& message)
@@ -141,4 +135,4 @@ QString QtSingleCoreApplication::id() const {
     message from another instance of this application.
 
     \sa sendMessage()
-*/
+ */

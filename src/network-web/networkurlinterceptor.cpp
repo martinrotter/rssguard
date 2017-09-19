@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -18,37 +19,35 @@
 
 #include "network-web/networkurlinterceptor.h"
 
-#include "network-web/urlinterceptor.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
-
+#include "network-web/urlinterceptor.h"
 
 NetworkUrlInterceptor::NetworkUrlInterceptor(QObject* parent)
-	: QWebEngineUrlRequestInterceptor(parent), m_sendDNT(false) {
-}
+  : QWebEngineUrlRequestInterceptor(parent), m_sendDNT(false) {}
 
 void NetworkUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo& info) {
-	if (m_sendDNT) {
-		info.setHttpHeader(QByteArrayLiteral("DNT"), QByteArrayLiteral("1"));
-	}
+  if (m_sendDNT) {
+    info.setHttpHeader(QByteArrayLiteral("DNT"), QByteArrayLiteral("1"));
+  }
 
-	// NOTE: Here we can add custom headers for each webengine request, for example "User-Agent".
+  // NOTE: Here we can add custom headers for each webengine request, for example "User-Agent".
 
-	foreach (UrlInterceptor* interceptor, m_interceptors) {
-		interceptor->interceptRequest(info);
-	}
+  foreach (UrlInterceptor* interceptor, m_interceptors) {
+    interceptor->interceptRequest(info);
+  }
 }
 
 void NetworkUrlInterceptor::installUrlInterceptor(UrlInterceptor* interceptor) {
-	if (!m_interceptors.contains(interceptor)) {
-		m_interceptors.append(interceptor);
-	}
+  if (!m_interceptors.contains(interceptor)) {
+    m_interceptors.append(interceptor);
+  }
 }
 
 void NetworkUrlInterceptor::removeUrlInterceptor(UrlInterceptor* interceptor) {
-	m_interceptors.removeOne(interceptor);
+  m_interceptors.removeOne(interceptor);
 }
 
 void NetworkUrlInterceptor::loadSettings() {
-	m_sendDNT = qApp->settings()->value(GROUP(Browser), SETTING(Browser::SendDNT)).toBool();
+  m_sendDNT = qApp->settings()->value(GROUP(Browser), SETTING(Browser::SendDNT)).toBool();
 }

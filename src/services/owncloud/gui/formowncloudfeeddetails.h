@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,18 +21,17 @@
 
 #include "services/abstract/gui/formfeeddetails.h"
 
-
 class FormOwnCloudFeedDetails : public FormFeedDetails {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit FormOwnCloudFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
+  public:
+    explicit FormOwnCloudFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
 
-	protected slots:
-		void apply();
+  protected slots:
+    void apply();
 
-	protected:
-		void setEditableFeed(Feed* editable_feed);
+  protected:
+    void setEditableFeed(Feed* editable_feed);
 };
 
 #endif // FORMOWNCLOUDFEEDDETAILS_H

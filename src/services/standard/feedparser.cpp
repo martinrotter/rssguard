@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -21,80 +22,81 @@
 
 #include <QDebug>
 
-
 FeedParser::FeedParser(const QString& data) : m_xmlData(data) {
-	m_xml.setContent(m_xmlData, true);
+  m_xml.setContent(m_xmlData, true);
 }
 
-FeedParser::~FeedParser() {
-}
+FeedParser::~FeedParser() {}
 
 QList<Message> FeedParser::messages() {
-	QString feed_author = feedAuthor();
-	QList<Message> messages;
-	QDateTime current_time = QDateTime::currentDateTime();
-	// Pull out all messages.
-	QDomNodeList messages_in_xml = messageElements();
+  QString feed_author = feedAuthor();
 
-	for (int i = 0; i < messages_in_xml.size(); i++) {
-		QDomNode message_item = messages_in_xml.item(i);
+  QList<Message> messages;
+  QDateTime current_time = QDateTime::currentDateTime();
 
-		try {
-			Message new_message = extractMessage(message_item.toElement(), current_time);
+  // Pull out all messages.
+  QDomNodeList messages_in_xml = messageElements();
 
-			if (new_message.m_author.isEmpty()) {
-				new_message.m_author = feed_author;
-			}
+  for (int i = 0; i < messages_in_xml.size(); i++) {
+    QDomNode message_item = messages_in_xml.item(i);
 
-			messages.append(new_message);
-		}
-		catch (const ApplicationException& ex) {
-			qDebug() << ex.message();
-		}
-	}
+    try {
+      Message new_message = extractMessage(message_item.toElement(), current_time);
 
-	return messages;
+      if (new_message.m_author.isEmpty()) {
+        new_message.m_author = feed_author;
+      }
+
+      messages.append(new_message);
+    }
+    catch (const ApplicationException& ex) {
+      qDebug() << ex.message();
+    }
+  }
+
+  return messages;
 }
 
 QStringList FeedParser::textsFromPath(const QDomElement& element, const QString& namespace_uri,
                                       const QString& xml_path, bool only_first) const {
-	QStringList paths = xml_path.split('/');
-	QStringList result;
-	QList<QDomElement> current_elements;
-	current_elements.append(element);
+  QStringList paths = xml_path.split('/');
+  QStringList result;
 
-	while (!paths.isEmpty()) {
-		QList<QDomElement> next_elements;
-		QString next_local_name = paths.takeFirst();
+  QList<QDomElement> current_elements;
+  current_elements.append(element);
 
-		foreach (const QDomElement& elem, current_elements) {
-			QDomNodeList elements = elem.elementsByTagNameNS(namespace_uri, next_local_name);
+  while (!paths.isEmpty()) {
+    QList<QDomElement> next_elements;
+    QString next_local_name = paths.takeFirst();
 
-			for (int i = 0; i < elements.size(); i++) {
-				next_elements.append(elements.at(i).toElement());
+    foreach (const QDomElement& elem, current_elements) {
+      QDomNodeList elements = elem.elementsByTagNameNS(namespace_uri, next_local_name);
 
-				if (only_first) {
-					break;
-				}
-			}
+      for (int i = 0; i < elements.size(); i++) {
+        next_elements.append(elements.at(i).toElement());
 
-			if (next_elements.size() == 1 && only_first) {
-				break;
-			}
-		}
+        if (only_first) {
+          break;
+        }
+      }
 
-		current_elements = next_elements;
-	}
+      if (next_elements.size() == 1 && only_first) {
+        break;
+      }
+    }
 
-	if (!current_elements.isEmpty()) {
-		foreach (const QDomElement& elem, current_elements) {
-			result.append(elem.text());
-		}
-	}
+    current_elements = next_elements;
+  }
 
-	return result;
+  if (!current_elements.isEmpty()) {
+    foreach (const QDomElement& elem, current_elements) {
+      result.append(elem.text());
+    }
+  }
+
+  return result;
 }
 
 QString FeedParser::feedAuthor() const {
-	return "";
+  return "";
 }

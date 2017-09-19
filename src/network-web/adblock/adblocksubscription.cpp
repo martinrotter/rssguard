@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -46,359 +47,365 @@
 
 #include "network-web/adblock/adblocksubscription.h"
 
-#include "network-web/adblock/adblockmanager.h"
-#include "network-web/adblock/adblocksearchtree.h"
 #include "definitions/definitions.h"
-#include "network-web/silentnetworkaccessmanager.h"
-#include "miscellaneous/iofactory.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iofactory.h"
+#include "network-web/adblock/adblockmanager.h"
+#include "network-web/adblock/adblocksearchtree.h"
+#include "network-web/silentnetworkaccessmanager.h"
 
+#include <QDir>
 #include <QFile>
-#include <QTimer>
 #include <QNetworkReply>
 #include <QSaveFile>
-#include <QDir>
-
+#include <QTimer>
 
 AdBlockSubscription::AdBlockSubscription(const QString& title, QObject* parent)
-	: QObject(parent), m_reply(0), m_title(title), m_updated(false) {
-}
+  : QObject(parent), m_reply(0), m_title(title), m_updated(false) {}
 
 QString AdBlockSubscription::title() const {
-	return m_title;
+  return m_title;
 }
 
 QString AdBlockSubscription::filePath() const {
-	return m_filePath;
+  return m_filePath;
 }
 
 void AdBlockSubscription::setFilePath(const QString& path) {
-	m_filePath = path;
+  m_filePath = path;
 }
 
 QUrl AdBlockSubscription::url() const {
-	return m_url;
+  return m_url;
 }
 
 void AdBlockSubscription::setUrl(const QUrl& url) {
-	m_url = url;
+  m_url = url;
 }
 
 void AdBlockSubscription::loadSubscription(const QStringList& disabledRules) {
-	QFile file(m_filePath);
+  QFile file(m_filePath);
 
-	if (!file.exists()) {
-		QTimer::singleShot(0, this, SLOT(updateSubscription()));
-		return;
-	}
+  if (!file.exists()) {
+    QTimer::singleShot(0, this, SLOT(updateSubscription()));
+    return;
+  }
 
-	if (!file.open(QFile::ReadOnly)) {
-		qWarning("Unable to open adblock file '%s' for reading.", qPrintable(m_filePath));
-		QTimer::singleShot(0, this, SLOT(updateSubscription()));
-		return;
-	}
+  if (!file.open(QFile::ReadOnly)) {
+    qWarning("Unable to open adblock file '%s' for reading.", qPrintable(m_filePath));
+    QTimer::singleShot(0, this, SLOT(updateSubscription()));
+    return;
+  }
 
-	QTextStream textStream(&file);
-	textStream.setCodec("UTF-8");
-	// Header is on 3rd line.
-	textStream.readLine(1024);
-	textStream.readLine(1024);
-	QString header = textStream.readLine(1024);
+  QTextStream textStream(&file);
 
-	if (!header.startsWith(QL1S("[Adblock")) || m_title.isEmpty()) {
-		qWarning("Invalid format of AdBlock file '%s'.", qPrintable(m_filePath));
-		QTimer::singleShot(0, this, SLOT(updateSubscription()));
-		return;
-	}
+  textStream.setCodec("UTF-8");
 
-	m_rules.clear();
+  // Header is on 3rd line.
+  textStream.readLine(1024);
+  textStream.readLine(1024);
+  QString header = textStream.readLine(1024);
 
-	while (!textStream.atEnd()) {
-		AdBlockRule* rule = new AdBlockRule(textStream.readLine(), this);
+  if (!header.startsWith(QL1S("[Adblock")) || m_title.isEmpty()) {
+    qWarning("Invalid format of AdBlock file '%s'.", qPrintable(m_filePath));
+    QTimer::singleShot(0, this, SLOT(updateSubscription()));
+    return;
+  }
 
-		if (disabledRules.contains(rule->filter())) {
-			rule->setEnabled(false);
-		}
+  m_rules.clear();
 
-		m_rules.append(rule);
-	}
+  while (!textStream.atEnd()) {
+    AdBlockRule* rule = new AdBlockRule(textStream.readLine(), this);
 
-	// Initial update.
-	if (m_rules.isEmpty() && !m_updated) {
-		QTimer::singleShot(0, this, SLOT(updateSubscription()));
-	}
+    if (disabledRules.contains(rule->filter())) {
+      rule->setEnabled(false);
+    }
+
+    m_rules.append(rule);
+  }
+
+  // Initial update.
+  if (m_rules.isEmpty() && !m_updated) {
+    QTimer::singleShot(0, this, SLOT(updateSubscription()));
+  }
 }
 
-void AdBlockSubscription::saveSubscription() {
-}
+void AdBlockSubscription::saveSubscription() {}
 
 void AdBlockSubscription::updateSubscription() {
-	if (m_reply || !m_url.isValid()) {
-		return;
-	}
+  if (m_reply || !m_url.isValid()) {
+    return;
+  }
 
-	SilentNetworkAccessManager* mgs = new SilentNetworkAccessManager(this);
-	m_reply = mgs->get(QNetworkRequest(m_url));
-	connect(m_reply, &QNetworkReply::finished, this, &AdBlockSubscription::subscriptionDownloaded);
+  SilentNetworkAccessManager* mgs = new SilentNetworkAccessManager(this);
+
+  m_reply = mgs->get(QNetworkRequest(m_url));
+  connect(m_reply, &QNetworkReply::finished, this, &AdBlockSubscription::subscriptionDownloaded);
 }
 
 void AdBlockSubscription::subscriptionDownloaded() {
-	if (m_reply != qobject_cast<QNetworkReply*>(sender())) {
-		return;
-	}
+  if (m_reply != qobject_cast<QNetworkReply*>(sender())) {
+    return;
+  }
 
-	bool error = false;
-	const QByteArray response = QString::fromUtf8(m_reply->readAll()).toUtf8();
+  bool error = false;
+  const QByteArray response = QString::fromUtf8(m_reply->readAll()).toUtf8();
 
-	if (m_reply->error() != QNetworkReply::NoError || !response.startsWith(QByteArray("[Adblock")) || !saveDownloadedData(response)) {
-		error = true;
-	}
+  if (m_reply->error() != QNetworkReply::NoError || !response.startsWith(QByteArray("[Adblock")) || !saveDownloadedData(response)) {
+    error = true;
+  }
 
-	m_reply->manager()->deleteLater();
-	m_reply->deleteLater();
-	m_reply = 0;
+  m_reply->manager()->deleteLater();
+  m_reply->deleteLater();
+  m_reply = 0;
 
-	if (error) {
-		emit subscriptionError(tr("Cannot load subscription!"));
-		return;
-	}
+  if (error) {
+    emit subscriptionError(tr("Cannot load subscription!"));
 
-	loadSubscription(AdBlockManager::instance()->disabledRules());
-	emit subscriptionUpdated();
-	emit subscriptionChanged();
+    return;
+  }
+
+  loadSubscription(AdBlockManager::instance()->disabledRules());
+  emit subscriptionUpdated();
+  emit subscriptionChanged();
 }
 
 bool AdBlockSubscription::saveDownloadedData(const QByteArray& data) {
-	QSaveFile file(m_filePath);
+  QSaveFile file(m_filePath);
 
-	if (!file.open(QFile::WriteOnly)) {
-		qWarning("Unable to open AdBlock file '%s' for writing.", qPrintable(m_filePath));
-		return false;
-	}
-	else {
-		// Write subscription header
-		file.write(QString("Title: %1\nUrl: %2\n").arg(title(), url().toString()).toUtf8());
-		file.write(data);
-		file.commit();
-		return true;
-	}
+  if (!file.open(QFile::WriteOnly)) {
+    qWarning("Unable to open AdBlock file '%s' for writing.", qPrintable(m_filePath));
+    return false;
+  }
+  else {
+    // Write subscription header
+    file.write(QString("Title: %1\nUrl: %2\n").arg(title(), url().toString()).toUtf8());
+    file.write(data);
+    file.commit();
+    return true;
+  }
 }
 
 const AdBlockRule* AdBlockSubscription::rule(int offset) const {
-	if (IS_IN_ARRAY(offset, m_rules)) {
-		return m_rules[offset];
-	}
-	else {
-		return 0;
-	}
+  if (IS_IN_ARRAY(offset, m_rules)) {
+    return m_rules[offset];
+  }
+  else {
+    return 0;
+  }
 }
 
 QVector<AdBlockRule*> AdBlockSubscription::allRules() const {
-	return m_rules;
+  return m_rules;
 }
 
 const AdBlockRule* AdBlockSubscription::enableRule(int offset) {
-	if (IS_IN_ARRAY(offset, m_rules)) {
-		AdBlockRule* rule = m_rules[offset];
-		rule->setEnabled(true);
-		AdBlockManager::instance()->removeDisabledRule(rule->filter());
-		emit subscriptionChanged();
+  if (IS_IN_ARRAY(offset, m_rules)) {
+    AdBlockRule* rule = m_rules[offset];
 
-		if (rule->isCssRule()) {
-			// TODO: Reload user stylesheet.
-		}
+    rule->setEnabled(true);
+    AdBlockManager::instance()->removeDisabledRule(rule->filter());
+    emit subscriptionChanged();
 
-		return rule;
-	}
-	else {
-		return 0;
-	}
+    if (rule->isCssRule()) {
+      // TODO: Reload user stylesheet.
+    }
+
+    return rule;
+  }
+  else {
+    return 0;
+  }
 }
 
 const AdBlockRule* AdBlockSubscription::disableRule(int offset) {
-	if (!IS_IN_ARRAY(offset, m_rules)) {
-		return 0;
-	}
+  if (!IS_IN_ARRAY(offset, m_rules)) {
+    return 0;
+  }
 
-	AdBlockRule* rule = m_rules[offset];
-	rule->setEnabled(false);
-	AdBlockManager::instance()->addDisabledRule(rule->filter());
-	emit subscriptionChanged();
+  AdBlockRule* rule = m_rules[offset];
 
-	if (rule->isCssRule()) {
-		// TODO: Reload user stylesheet.
-	}
+  rule->setEnabled(false);
+  AdBlockManager::instance()->addDisabledRule(rule->filter());
+  emit subscriptionChanged();
 
-	return rule;
+  if (rule->isCssRule()) {
+    // TODO: Reload user stylesheet.
+  }
+
+  return rule;
 }
 
 bool AdBlockSubscription::canEditRules() const {
-	return false;
+  return false;
 }
 
 bool AdBlockSubscription::canBeRemoved() const {
-	return true;
+  return true;
 }
 
 int AdBlockSubscription::addRule(AdBlockRule* rule) {
-	Q_UNUSED(rule)
-	return -1;
+  Q_UNUSED(rule)
+  return -1;
 }
 
 bool AdBlockSubscription::removeRule(int offset) {
-	Q_UNUSED(offset)
-	return false;
+  Q_UNUSED(offset)
+  return false;
 }
 
 const AdBlockRule* AdBlockSubscription::replaceRule(AdBlockRule* rule, int offset) {
-	Q_UNUSED(rule)
-	Q_UNUSED(offset)
-	return 0;
+  Q_UNUSED(rule)
+  Q_UNUSED(offset)
+  return 0;
 }
 
 AdBlockSubscription::~AdBlockSubscription() {
-	qDeleteAll(m_rules);
+  qDeleteAll(m_rules);
 }
 
 // AdBlockCustomList
 
 AdBlockCustomList::AdBlockCustomList(QObject* parent)
-	: AdBlockSubscription(tr("Custom rules"), parent) {
-	setFilePath(AdBlockManager::storedListsPath() + QDir::separator() + ADBLOCK_CUSTOMLIST_NAME);
+  : AdBlockSubscription(tr("Custom rules"), parent) {
+  setFilePath(AdBlockManager::storedListsPath() + QDir::separator() + ADBLOCK_CUSTOMLIST_NAME);
 }
 
 void AdBlockCustomList::loadSubscription(const QStringList& disabledRules) {
-	// DuckDuckGo ad whitelist rules
-	// They cannot be removed, but can be disabled.
-	// Please consider not disabling them. Thanks!
-	const QString ddg1 = QSL("@@||duckduckgo.com^$document");
-	const QString ddg2 = QSL("duckduckgo.com#@#.has-ad");
-	QString rules;
+  // DuckDuckGo ad whitelist rules
+  // They cannot be removed, but can be disabled.
+  // Please consider not disabling them. Thanks!
+  const QString ddg1 = QSL("@@||duckduckgo.com^$document");
+  const QString ddg2 = QSL("duckduckgo.com#@#.has-ad");
+  QString rules;
 
-	try {
-		rules = QString::fromUtf8(IOFactory::readTextFile(filePath()));
-	}
-	catch (ApplicationException&) {
-	}
+  try {
+    rules = QString::fromUtf8(IOFactory::readTextFile(filePath()));
+  }
+  catch (ApplicationException&) {}
 
-	QFile file(filePath());
+  QFile file(filePath());
 
-	if (!file.exists()) {
-		saveSubscription();
-	}
+  if (!file.exists()) {
+    saveSubscription();
+  }
 
-	if (file.open(QFile::WriteOnly | QFile::Append)) {
-		QTextStream stream(&file);
-		stream.setCodec("UTF-8");
+  if (file.open(QFile::WriteOnly | QFile::Append)) {
+    QTextStream stream(&file);
 
-		if (!rules.contains(ddg1 + QL1S("\n"))) {
-			stream << ddg1 << endl;
-		}
+    stream.setCodec("UTF-8");
 
-		if (!rules.contains(QL1S("\n") + ddg2)) {
-			stream << ddg2 << endl;
-		}
-	}
+    if (!rules.contains(ddg1 + QL1S("\n"))) {
+      stream << ddg1 << endl;
+    }
 
-	file.close();
-	AdBlockSubscription::loadSubscription(disabledRules);
+    if (!rules.contains(QL1S("\n") + ddg2)) {
+      stream << ddg2 << endl;
+    }
+  }
+
+  file.close();
+  AdBlockSubscription::loadSubscription(disabledRules);
 }
 
 void AdBlockCustomList::saveSubscription() {
-	QFile file(filePath());
+  QFile file(filePath());
 
-	if (!file.open(QFile::ReadWrite | QFile::Truncate)) {
-		qWarning("Unable to open AdBlock file '%s' for writing.", qPrintable(filePath()));
-		return;
-	}
+  if (!file.open(QFile::ReadWrite | QFile::Truncate)) {
+    qWarning("Unable to open AdBlock file '%s' for writing.", qPrintable(filePath()));
+    return;
+  }
 
-	QTextStream textStream(&file);
-	textStream.setCodec("UTF-8");
-	textStream << "Title: " << title() << endl;
-	textStream << "Url: " << url().toString() << endl;
-	textStream << "[Adblock Plus 1.1.1]" << endl;
+  QTextStream textStream(&file);
 
-	foreach (const AdBlockRule* rule, m_rules) {
-		textStream << rule->filter() << endl;
-	}
+  textStream.setCodec("UTF-8");
+  textStream << "Title: " << title() << endl;
+  textStream << "Url: " << url().toString() << endl;
+  textStream << "[Adblock Plus 1.1.1]" << endl;
 
-	file.close();
+  foreach (const AdBlockRule* rule, m_rules) {
+    textStream << rule->filter() << endl;
+  }
+
+  file.close();
 }
 
 bool AdBlockCustomList::canEditRules() const {
-	return true;
+  return true;
 }
 
 bool AdBlockCustomList::canBeRemoved() const {
-	return false;
+  return false;
 }
 
 bool AdBlockCustomList::containsFilter(const QString& filter) const {
-	foreach (const AdBlockRule* rule, m_rules) {
-		if (rule->filter() == filter) {
-			return true;
-		}
-	}
+  foreach (const AdBlockRule* rule, m_rules) {
+    if (rule->filter() == filter) {
+      return true;
+    }
+  }
 
-	return false;
+  return false;
 }
 
 bool AdBlockCustomList::removeFilter(const QString& filter) {
-	for (int i = 0; i < m_rules.count(); ++i) {
-		const AdBlockRule* rule = m_rules.at(i);
+  for (int i = 0; i < m_rules.count(); ++i) {
+    const AdBlockRule* rule = m_rules.at(i);
 
-		if (rule->filter() == filter) {
-			return removeRule(i);
-		}
-	}
+    if (rule->filter() == filter) {
+      return removeRule(i);
+    }
+  }
 
-	return false;
+  return false;
 }
 
 int AdBlockCustomList::addRule(AdBlockRule* rule) {
-	m_rules.append(rule);
-	emit subscriptionChanged();
+  m_rules.append(rule);
+  emit subscriptionChanged();
 
-	if (rule->isCssRule()) {
-		// TODO: Reload user stylesheet.
-	}
+  if (rule->isCssRule()) {
+    // TODO: Reload user stylesheet.
+  }
 
-	return m_rules.count() - 1;
+  return m_rules.count() - 1;
 }
 
 bool AdBlockCustomList::removeRule(int offset) {
-	if (!IS_IN_ARRAY(offset, m_rules)) {
-		return false;
-	}
+  if (!IS_IN_ARRAY(offset, m_rules)) {
+    return false;
+  }
 
-	AdBlockRule* rule = m_rules.at(offset);
-	const QString filter = rule->filter();
-	m_rules.remove(offset);
-	emit subscriptionChanged();
+  AdBlockRule* rule = m_rules.at(offset);
+  const QString filter = rule->filter();
 
-	if (rule->isCssRule()) {
-		// TODO: Reload user stylesheet.
-	}
+  m_rules.remove(offset);
+  emit subscriptionChanged();
 
-	AdBlockManager::instance()->removeDisabledRule(filter);
-	delete rule;
-	return true;
+  if (rule->isCssRule()) {
+    // TODO: Reload user stylesheet.
+  }
+
+  AdBlockManager::instance()->removeDisabledRule(filter);
+  delete rule;
+  return true;
 }
 
 const AdBlockRule* AdBlockCustomList::replaceRule(AdBlockRule* rule, int offset) {
-	if (!IS_IN_ARRAY(offset, m_rules)) {
-		return 0;
-	}
+  if (!IS_IN_ARRAY(offset, m_rules)) {
+    return 0;
+  }
 
-	AdBlockRule* oldRule = m_rules.at(offset);
-	m_rules[offset] = rule;
-	emit subscriptionChanged();
+  AdBlockRule* oldRule = m_rules.at(offset);
 
-	if (rule->isCssRule() || oldRule->isCssRule()) {
-		// TODO: Reload user stylesheet.
-	}
+  m_rules[offset] = rule;
+  emit subscriptionChanged();
 
-	delete oldRule;
-	return m_rules[offset];
+  if (rule->isCssRule() || oldRule->isCssRule()) {
+    // TODO: Reload user stylesheet.
+  }
+
+  delete oldRule;
+  return m_rules[offset];
 }

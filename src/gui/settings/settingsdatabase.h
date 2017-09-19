@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,31 +23,31 @@
 
 #include "ui_settingsdatabase.h"
 
-
 class SettingsDatabase : public SettingsPanel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SettingsDatabase(Settings* settings, QWidget* parent = 0);
-		virtual ~SettingsDatabase();
+  public:
+    explicit SettingsDatabase(Settings* settings, QWidget* parent = 0);
+    virtual ~SettingsDatabase();
 
-		inline QString title() const {
-			return tr("Data storage");
-		}
+    inline QString title() const {
+      return tr("Data storage");
+    }
 
-		void loadSettings();
-		void saveSettings();
+    void loadSettings();
 
-	private:
-		void mysqlTestConnection();
-		void onMysqlHostnameChanged(const QString& new_hostname);
-		void onMysqlUsernameChanged(const QString& new_username);
-		void onMysqlPasswordChanged(const QString& new_password);
-		void onMysqlDatabaseChanged(const QString& new_database);
-		void selectSqlBackend(int index);
-		void switchMysqlPasswordVisiblity(bool visible);
+    void saveSettings();
 
-		Ui::SettingsDatabase* m_ui;
+  private:
+    void mysqlTestConnection();
+    void onMysqlHostnameChanged(const QString& new_hostname);
+    void onMysqlUsernameChanged(const QString& new_username);
+    void onMysqlPasswordChanged(const QString& new_password);
+    void onMysqlDatabaseChanged(const QString& new_database);
+    void selectSqlBackend(int index);
+    void switchMysqlPasswordVisiblity(bool visible);
+
+    Ui::SettingsDatabase* m_ui;
 };
 
 #endif // SETTINGSDATABASE_H

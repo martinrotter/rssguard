@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,60 +23,60 @@
 #include <QIcon>
 #include <QString>
 
-
 class ServiceRoot;
 class FeedsModel;
 
 // TOP LEVEL class which provides basic information about the "service"
 class ServiceEntryPoint {
-	public:
-		// Constructors.
-		virtual ~ServiceEntryPoint();
+  public:
 
-		/////////////////////////////////////////
-		// /* Members to override.
-		/////////////////////////////////////////
+    // Constructors.
+    virtual ~ServiceEntryPoint();
 
-		// Creates new service root item, which is ready to be added
-		// into the model. This method can for example display
-		// some kind of first-time configuration dialog inside itself
-		// before returning the root item.
-		// Returns NULL if initialization of new root cannot be done.
-		virtual ServiceRoot* createNewRoot() const = 0;
+    /////////////////////////////////////////
+    // /* Members to override.
+    /////////////////////////////////////////
 
-		// Performs initialization of all service accounts created using this entry
-		// point from persistent DB.
-		// Returns list of root nodes which will be afterwards added
-		// to the global feed model.
-		virtual QList<ServiceRoot*> initializeSubtree() const = 0;
+    // Creates new service root item, which is ready to be added
+    // into the model. This method can for example display
+    // some kind of first-time configuration dialog inside itself
+    // before returning the root item.
+    // Returns NULL if initialization of new root cannot be done.
+    virtual ServiceRoot* createNewRoot() const = 0;
 
-		// Can this service account be added just once?
-		// NOTE: This is true particularly for "standard" service
-		// which operates with normal RSS/ATOM feeds.
-		virtual bool isSingleInstanceService() const = 0;
+    // Performs initialization of all service accounts created using this entry
+    // point from persistent DB.
+    // Returns list of root nodes which will be afterwards added
+    // to the global feed model.
+    virtual QList<ServiceRoot*> initializeSubtree() const = 0;
 
-		// Human readable service name, for example "TT-RSS".
-		virtual QString name() const = 0;
+    // Can this service account be added just once?
+    // NOTE: This is true particularly for "standard" service
+    // which operates with normal RSS/ATOM feeds.
+    virtual bool isSingleInstanceService() const = 0;
 
-		// Some arbitrary string.
-		// NOTE: Keep in sync with ServiceRoot::code().
-		virtual QString code() const = 0;
+    // Human readable service name, for example "TT-RSS".
+    virtual QString name() const = 0;
 
-		// Human readable service description, for example "Services which offers TT-RSS integration.".
-		virtual QString description() const = 0;
+    // Some arbitrary string.
+    // NOTE: Keep in sync with ServiceRoot::code().
+    virtual QString code() const = 0;
 
-		// Version of the service, using of semantic versioning is recommended.
-		virtual QString version() const = 0;
+    // Human readable service description, for example "Services which offers TT-RSS integration.".
+    virtual QString description() const = 0;
 
-		// Author of the service.
-		virtual QString author() const = 0;
+    // Version of the service, using of semantic versioning is recommended.
+    virtual QString version() const = 0;
 
-		// Icon of the service.
-		virtual QIcon icon() const = 0;
+    // Author of the service.
+    virtual QString author() const = 0;
 
-		/////////////////////////////////////////
-		// Members to override. */
-		/////////////////////////////////////////
+    // Icon of the service.
+    virtual QIcon icon() const = 0;
+
+    /////////////////////////////////////////
+    // Members to override. */
+    /////////////////////////////////////////
 };
 
 #endif // SERVICE_H

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -19,23 +20,21 @@
 
 #include <QKeyEvent>
 
+BaseLineEdit::BaseLineEdit(QWidget* parent) : QLineEdit(parent) {}
 
-BaseLineEdit::BaseLineEdit(QWidget* parent) : QLineEdit(parent) {
-}
-
-BaseLineEdit::~BaseLineEdit() {
-}
+BaseLineEdit::~BaseLineEdit() {}
 
 void BaseLineEdit::submit(const QString& text) {
-	setText(text);
-	emit submitted(text);
+  setText(text);
+  emit submitted(text);
 }
 
 void BaseLineEdit::keyPressEvent(QKeyEvent* event) {
-	if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
-		emit submitted(text());
-		event->accept();
-	}
+  if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
+    emit submitted(text());
 
-	QLineEdit::keyPressEvent(event);
+    event->accept();
+  }
+
+  QLineEdit::keyPressEvent(event);
 }

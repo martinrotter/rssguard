@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -21,55 +22,56 @@
 
 #include <QTreeWidget>
 
-
 class TreeWidget : public QTreeWidget {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit TreeWidget(QWidget* parent = 0);
+  public:
+    explicit TreeWidget(QWidget* parent = 0);
 
-		enum ItemShowMode { ItemsCollapsed = 0, ItemsExpanded = 1 };
+    enum ItemShowMode { ItemsCollapsed = 0, ItemsExpanded = 1 };
 
-		ItemShowMode defaultItemShowMode() {
-			return m_showMode;
-		}
-		void setDefaultItemShowMode(ItemShowMode mode) {
-			m_showMode = mode;
-		}
+    ItemShowMode defaultItemShowMode() {
+      return m_showMode;
+    }
 
-		QList<QTreeWidgetItem*> allItems();
+    void setDefaultItemShowMode(ItemShowMode mode) {
+      m_showMode = mode;
+    }
 
-		bool appendToParentItem(const QString& parentText, QTreeWidgetItem* item);
-		bool appendToParentItem(QTreeWidgetItem* parent, QTreeWidgetItem* item);
-		bool prependToParentItem(const QString& parentText, QTreeWidgetItem* item);
-		bool prependToParentItem(QTreeWidgetItem* parent, QTreeWidgetItem* item);
+    QList<QTreeWidgetItem*> allItems();
 
-		void addTopLevelItem(QTreeWidgetItem* item);
-		void addTopLevelItems(const QList<QTreeWidgetItem*>& items);
-		void insertTopLevelItem(int index, QTreeWidgetItem* item);
-		void insertTopLevelItems(int index, const QList<QTreeWidgetItem*>& items);
+    bool appendToParentItem(const QString& parentText, QTreeWidgetItem* item);
+    bool appendToParentItem(QTreeWidgetItem* parent, QTreeWidgetItem* item);
+    bool prependToParentItem(const QString& parentText, QTreeWidgetItem* item);
+    bool prependToParentItem(QTreeWidgetItem* parent, QTreeWidgetItem* item);
 
-		void deleteItem(QTreeWidgetItem* item);
-		void deleteItems(const QList<QTreeWidgetItem*>& items);
+    void addTopLevelItem(QTreeWidgetItem* item);
+    void addTopLevelItems(const QList<QTreeWidgetItem*>& items);
+    void insertTopLevelItem(int index, QTreeWidgetItem* item);
+    void insertTopLevelItems(int index, const QList<QTreeWidgetItem*>& items);
 
-	signals:
-		void itemControlClicked(QTreeWidgetItem* item);
-		void itemMiddleButtonClicked(QTreeWidgetItem* item);
+    void deleteItem(QTreeWidgetItem* item);
+    void deleteItems(const QList<QTreeWidgetItem*>& items);
 
-	public slots:
-		void filterString(const QString& string);
-		void clear();
+  signals:
+    void itemControlClicked(QTreeWidgetItem* item);
+    void itemMiddleButtonClicked(QTreeWidgetItem* item);
 
-	private slots:
-		void sheduleRefresh();
+  public slots:
+    void filterString(const QString& string);
+    void clear();
 
-	private:
-		void mousePressEvent(QMouseEvent* event);
-		void iterateAllItems(QTreeWidgetItem* parent);
+  private slots:
+    void sheduleRefresh();
 
-		bool m_refreshAllItemsNeeded;
-		QList<QTreeWidgetItem*> m_allTreeItems;
-		ItemShowMode m_showMode;
+  private:
+    void mousePressEvent(QMouseEvent* event);
+    void iterateAllItems(QTreeWidgetItem* parent);
+
+    bool m_refreshAllItemsNeeded;
+
+    QList<QTreeWidgetItem*> m_allTreeItems;
+    ItemShowMode m_showMode;
 };
 
 #endif // BOOKMARKSTREEWIDGET_H

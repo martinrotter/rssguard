@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,9 +21,8 @@
 
 #include "services/abstract/category.h"
 
-#include <QSqlRecord>
 #include <QCoreApplication>
-
+#include <QSqlRecord>
 
 class FeedsModel;
 class StandardServiceRoot;
@@ -31,42 +31,43 @@ class StandardServiceRoot;
 // NOTE: This class should be derived to create PARTICULAR category types.
 // NOTE: This class should not be instantiated directly.
 class StandardCategory : public Category {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors
-		explicit StandardCategory(RootItem* parent_item = nullptr);
-		explicit StandardCategory(const StandardCategory& other);
-		explicit StandardCategory(const QSqlRecord& record);
-		virtual ~StandardCategory();
+  public:
 
-		StandardServiceRoot* serviceRoot() const;
+    // Constructors and destructors
+    explicit StandardCategory(RootItem* parent_item = nullptr);
+    explicit StandardCategory(const StandardCategory& other);
+    explicit StandardCategory(const QSqlRecord& record);
+    virtual ~StandardCategory();
 
-		// Returns the actual data representation of standard category.
-		QVariant data(int column, int role) const;
-		Qt::ItemFlags additionalFlags() const;
-		bool performDragDropChange(RootItem* target_item);
+    StandardServiceRoot* serviceRoot() const;
 
-		bool canBeEdited() const {
-			return true;
-		}
+    // Returns the actual data representation of standard category.
+    QVariant data(int column, int role) const;
+    Qt::ItemFlags additionalFlags() const;
+    bool performDragDropChange(RootItem* target_item);
 
-		bool canBeDeleted() const {
-			return true;
-		}
+    bool canBeEdited() const {
+      return true;
+    }
 
-		bool editViaGui();
-		bool deleteViaGui();
+    bool canBeDeleted() const {
+      return true;
+    }
 
-		bool markAsReadUnread(ReadStatus status);
-		bool cleanMessages(bool clean_read_only);
+    bool editViaGui();
+    bool deleteViaGui();
 
-		// Removes category and all its children from persistent
-		// database.
-		bool removeItself();
+    bool markAsReadUnread(ReadStatus status);
+    bool cleanMessages(bool clean_read_only);
 
-		bool addItself(RootItem* parent);
-		bool editItself(StandardCategory* new_category_data);
+    // Removes category and all its children from persistent
+    // database.
+    bool removeItself();
+
+    bool addItself(RootItem* parent);
+    bool editItself(StandardCategory* new_category_data);
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

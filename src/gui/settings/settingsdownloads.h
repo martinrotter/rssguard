@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,26 +23,26 @@
 
 #include "ui_settingsdownloads.h"
 
-
 class SettingsDownloads : public SettingsPanel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SettingsDownloads(Settings* settings, QWidget* parent = 0);
-		virtual ~SettingsDownloads();
+  public:
+    explicit SettingsDownloads(Settings* settings, QWidget* parent = 0);
+    virtual ~SettingsDownloads();
 
-		inline QString title() const {
-			return tr("Downloads");
-		}
+    inline QString title() const {
+      return tr("Downloads");
+    }
 
-		void loadSettings();
-		void saveSettings();
+    void loadSettings();
 
-	private slots:
-		void selectDownloadsDirectory();
+    void saveSettings();
 
-	private:
-		Ui::SettingsDownloads* m_ui;
+  private slots:
+    void selectDownloadsDirectory();
+
+  private:
+    Ui::SettingsDownloads* m_ui;
 };
 
 #endif // SETTINGSDOWNLOADS_H

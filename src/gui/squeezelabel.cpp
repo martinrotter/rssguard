@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -17,19 +18,17 @@
 
 #include "gui/squeezelabel.h"
 
-
-SqueezeLabel::SqueezeLabel(QWidget* parent) : QLabel(parent) {
-}
+SqueezeLabel::SqueezeLabel(QWidget* parent) : QLabel(parent) {}
 
 void SqueezeLabel::paintEvent(QPaintEvent* event) {
-	if (m_squeezedTextCache != text()) {
-		m_squeezedTextCache = text();
-		QFontMetrics fm = fontMetrics();
+  if (m_squeezedTextCache != text()) {
+    m_squeezedTextCache = text();
+    QFontMetrics fm = fontMetrics();
 
-		if (fm.width(m_squeezedTextCache) > contentsRect().width()) {
-			setText(fm.elidedText(text(), Qt::ElideMiddle, width()));
-		}
-	}
+    if (fm.width(m_squeezedTextCache) > contentsRect().width()) {
+      setText(fm.elidedText(text(), Qt::ElideMiddle, width()));
+    }
+  }
 
-	QLabel::paintEvent(event);
+  QLabel::paintEvent(event);
 }

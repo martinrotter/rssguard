@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -18,35 +19,34 @@
 #ifndef MESSAGEBOX_H
 #define MESSAGEBOX_H
 
-#include <QMessageBox>
 #include <QDialogButtonBox>
-
+#include <QMessageBox>
 
 class MessageBox : public QMessageBox {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit MessageBox(QWidget* parent = 0);
-		virtual ~MessageBox();
+  public:
 
-		// Custom icon setting.
-		void setIcon(Icon icon);
+    // Constructors and destructors.
+    explicit MessageBox(QWidget* parent = 0);
+    virtual ~MessageBox();
 
-		static void setCheckBox(QMessageBox* msg_box, const QString& text, bool* data);
+    // Custom icon setting.
+    void setIcon(Icon icon);
 
-		// Displays custom message box.
-		static QMessageBox::StandardButton show(QWidget* parent,
-		                                        QMessageBox::Icon icon,
-		                                        const QString& title,
-		                                        const QString& text,
-		                                        const QString& informative_text = QString(),
-		                                        const QString& detailed_text = QString(),
-		                                        QMessageBox::StandardButtons buttons = QMessageBox::Ok,
-		                                        QMessageBox::StandardButton default_button = QMessageBox::Ok,
-		                                        bool* dont_show_again = nullptr);
+    static void setCheckBox(QMessageBox* msg_box, const QString& text, bool* data);
 
-		static QIcon iconForStatus(QMessageBox::Icon status);
+    // Displays custom message box.
+    static QMessageBox::StandardButton show(QWidget* parent,
+                                            QMessageBox::Icon icon,
+                                            const QString& title,
+                                            const QString& text,
+                                            const QString& informative_text = QString(),
+                                            const QString& detailed_text = QString(),
+                                            QMessageBox::StandardButtons buttons = QMessageBox::Ok,
+                                            QMessageBox::StandardButton default_button = QMessageBox::Ok,
+                                            bool* dont_show_again = nullptr);
+    static QIcon iconForStatus(QMessageBox::Icon status);
 };
 
 #endif // MESSAGEBOX_H

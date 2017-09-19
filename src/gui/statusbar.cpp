@@ -37,20 +37,20 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent), m_mutex(new Mutex(QM
   m_barProgressFeeds->setFixedWidth(100);
   m_barProgressFeeds->setVisible(false);
   m_barProgressFeeds->setObjectName(QSL("m_barProgressFeeds"));
-  m_barProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")),tr("Feed update progress bar"),this);
+  m_barProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update progress bar"), this);
   m_barProgressFeedsAction->setObjectName(QSL("m_barProgressFeedsAction"));
   m_lblProgressFeeds = new QLabel(this);
   m_lblProgressFeeds->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
   m_lblProgressFeeds->setVisible(false);
   m_lblProgressFeeds->setObjectName(QSL("m_lblProgressFeeds"));
-  m_lblProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update label"),this);
+  m_lblProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update label"), this);
   m_lblProgressFeedsAction->setObjectName(QSL("m_lblProgressFeedsAction"));
   m_barProgressDownload = new QProgressBar(this);
   m_barProgressDownload->setTextVisible(true);
   m_barProgressDownload->setFixedWidth(100);
   m_barProgressDownload->setVisible(false);
   m_barProgressDownload->setObjectName(QSL("m_barProgressDownload"));
-  m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")),tr("File download progress bar"),this);
+  m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("File download progress bar"), this);
   m_barProgressDownloadAction->setObjectName(QSL("m_barProgressDownloadAction"));
   m_lblProgressDownload = new QLabel(this);
   m_lblProgressDownload->setText("Downloading files in background");
@@ -93,7 +93,7 @@ QStringList StatusBar::defaultActions() const {
 }
 
 QStringList StatusBar::savedActions() const {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::StatusbarActions)).toString().split(',',QString::SkipEmptyParts);
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::StatusbarActions)).toString().split(',', QString::SkipEmptyParts);
 }
 
 QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
@@ -157,7 +157,7 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
         widget_to_add = tool_button;
         action_to_add = matching_action;
         connect(tool_button, &PlainToolButton::clicked, matching_action, &QAction::trigger);
-        connect(matching_action, &QAction::changed, tool_button,&PlainToolButton::reactOnSenderActionChange);
+        connect(matching_action, &QAction::changed, tool_button, &PlainToolButton::reactOnSenderActionChange);
       }
       else {
         action_to_add = nullptr;

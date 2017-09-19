@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -17,13 +18,10 @@
 
 #include "exceptions/applicationexception.h"
 
+ApplicationException::ApplicationException(const QString& message) : m_message(message) {}
 
-ApplicationException::ApplicationException(const QString& message) : m_message(message) {
-}
-
-ApplicationException::~ApplicationException() {
-}
+ApplicationException::~ApplicationException() {}
 
 QString ApplicationException::message() const {
-	return m_message;
+  return m_message;
 }

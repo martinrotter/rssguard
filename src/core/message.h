@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,64 +21,62 @@
 
 #include "definitions/definitions.h"
 
-#include <QDateTime>
-#include <QStringList>
-#include <QSqlRecord>
 #include <QDataStream>
-
+#include <QDateTime>
+#include <QSqlRecord>
+#include <QStringList>
 
 // Represents single enclosure.
 struct Enclosure {
-	public:
-		explicit Enclosure(const QString& url = QString(), const QString& mime = QString());
+  public:
+    explicit Enclosure(const QString& url = QString(), const QString& mime = QString());
 
-		QString m_url;
-		QString m_mimeType;
+    QString m_url;
+    QString m_mimeType;
 };
 
 // Represents single enclosure.
 class Enclosures {
-	public:
-		static QList<Enclosure> decodeEnclosuresFromString(const QString& enclosures_data);
-		static QString encodeEnclosuresToString(const QList<Enclosure>& enclosures);
+  public:
+    static QList<Enclosure> decodeEnclosuresFromString(const QString& enclosures_data);
+    static QString encodeEnclosuresToString(const QList<Enclosure>& enclosures);
 };
 
 // Represents single message.
 class Message {
-	public:
-		explicit Message();
+  public:
+    explicit Message();
 
-		// Creates Message from given record, which contains
-		// row from query SELECT * FROM Messages WHERE ....;
-		static Message fromSqlRecord(const QSqlRecord& record, bool* result = nullptr);
+    // Creates Message from given record, which contains
+    // row from query SELECT * FROM Messages WHERE ....;
+    static Message fromSqlRecord(const QSqlRecord& record, bool* result = nullptr);
+    QString m_title;
+    QString m_url;
+    QString m_author;
+    QString m_contents;
+    QDateTime m_created;
+    QString m_feedId;
+    int m_accountId;
+    int m_id;
+    QString m_customId;
+    QString m_customHash;
+    bool m_isRead;
+    bool m_isImportant;
 
-		QString m_title;
-		QString m_url;
-		QString m_author;
-		QString m_contents;
-		QDateTime m_created;
-		QString m_feedId;
-		int m_accountId;
-		int m_id;
-		QString m_customId;
-		QString m_customHash;
+    QList<Enclosure> m_enclosures;
 
-		bool m_isRead;
-		bool m_isImportant;
+    // Is true if "created" date was obtained directly
+    // from the feed, otherwise is false
+    bool m_createdFromFeed;
 
-		QList<Enclosure> m_enclosures;
+    friend inline bool operator==(const Message& lhs, const Message& rhs) {
+      return lhs.m_accountId == rhs.m_accountId && lhs.m_id == rhs.m_id;
+    }
 
-		// Is true if "created" date was obtained directly
-		// from the feed, otherwise is false
-		bool m_createdFromFeed;
+    friend inline bool operator!=(const Message& lhs, const Message& rhs) {
+      return !(lhs == rhs);
+    }
 
-		friend inline bool operator==(const Message& lhs, const Message& rhs) {
-			return lhs.m_accountId == rhs.m_accountId && lhs.m_id == rhs.m_id;
-		}
-
-		friend inline bool operator!=(const Message& lhs, const Message& rhs) {
-			return !(lhs == rhs);
-		}
 };
 
 // Serialize message state.

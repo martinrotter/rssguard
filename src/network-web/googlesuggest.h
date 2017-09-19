@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -48,7 +49,6 @@
 
 #include <QObject>
 
-
 class LocationLineEdit;
 class QNetworkReply;
 class QTimer;
@@ -56,27 +56,29 @@ class QListWidget;
 class QNetworkAccessManager;
 
 class GoogleSuggest : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors.
-		explicit GoogleSuggest(LocationLineEdit* editor, QObject* parent = 0);
-		virtual ~GoogleSuggest();
+  public:
 
-		bool eventFilter(QObject* object, QEvent* event);
-		void showCompletion(const QStringList& choices);
+    // Constructors.
+    explicit GoogleSuggest(LocationLineEdit* editor, QObject* parent = 0);
+    virtual ~GoogleSuggest();
 
-	public slots:
-		void doneCompletion();
-		void preventSuggest();
-		void autoSuggest();
-		void handleNetworkData();
+    bool eventFilter(QObject* object, QEvent* event);
+    void showCompletion(const QStringList& choices);
 
-	private:
-		LocationLineEdit* editor;
-		QScopedPointer<QListWidget> popup;
-		QTimer* timer;
-		QString m_enteredText;
+  public slots:
+    void doneCompletion();
+    void preventSuggest();
+    void autoSuggest();
+    void handleNetworkData();
+
+  private:
+    LocationLineEdit* editor;
+
+    QScopedPointer<QListWidget> popup;
+    QTimer* timer;
+    QString m_enteredText;
 };
 
 #endif // GOOGLESUGGEST_H

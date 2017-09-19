@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,21 +21,20 @@
 
 #include <QTextBrowser>
 
-
 class MessageTextBrowser : public QTextBrowser {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit MessageTextBrowser(QWidget* parent = 0);
-		virtual ~MessageTextBrowser();
+  public:
+    explicit MessageTextBrowser(QWidget* parent = 0);
+    virtual ~MessageTextBrowser();
 
-		QVariant loadResource(int type, const QUrl& name);
+    QVariant loadResource(int type, const QUrl& name);
 
-	protected:
-		void wheelEvent(QWheelEvent* e);
+  protected:
+    void wheelEvent(QWheelEvent* e);
 
-	private:
-		QPixmap m_imagePlaceholder;
+  private:
+    QPixmap m_imagePlaceholder;
 };
 
 #endif // MESSAGETEXTBROWSER_H

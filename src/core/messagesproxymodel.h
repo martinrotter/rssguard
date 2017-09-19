@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,37 +21,37 @@
 
 #include <QSortFilterProxyModel>
 
-
 class MessagesModel;
 
 class MessagesProxyModel : public QSortFilterProxyModel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = 0);
-		virtual ~MessagesProxyModel();
+  public:
 
-		QModelIndex getNextPreviousUnreadItemIndex(int default_row);
+    // Constructors and destructors.
+    explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = 0);
+    virtual ~MessagesProxyModel();
 
-		// Maps list of indexes.
-		QModelIndexList mapListToSource(const QModelIndexList& indexes) const;
-		QModelIndexList mapListFromSource(const QModelIndexList& indexes, bool deep = false) const;
+    QModelIndex getNextPreviousUnreadItemIndex(int default_row);
 
-		// Fix for matching indexes with respect to specifics of the message model.
-		QModelIndexList match(const QModelIndex& start, int role, const QVariant& entered_value, int hits, Qt::MatchFlags flags) const;
+    // Maps list of indexes.
+    QModelIndexList mapListToSource(const QModelIndexList& indexes) const;
+    QModelIndexList mapListFromSource(const QModelIndexList& indexes, bool deep = false) const;
 
-		// Performs sort of items.
-		void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
+    // Fix for matching indexes with respect to specifics of the message model.
+    QModelIndexList match(const QModelIndex& start, int role, const QVariant& entered_value, int hits, Qt::MatchFlags flags) const;
 
-	private:
-		QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
+    // Performs sort of items.
+    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
-		// Compares two rows of data.
-		bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
+  private:
+    QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
 
-		// Source model pointer.
-		MessagesModel* m_sourceModel;
+    // Compares two rows of data.
+    bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
+
+    // Source model pointer.
+    MessagesModel* m_sourceModel;
 };
 
 #endif // MESSAGESPROXYMODEL_H

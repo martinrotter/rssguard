@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -18,62 +19,62 @@
 #ifndef OWNCLOUDSERVICEROOT_H
 #define OWNCLOUDSERVICEROOT_H
 
-#include "services/abstract/serviceroot.h"
 #include "services/abstract/cacheforserviceroot.h"
+#include "services/abstract/serviceroot.h"
 
 #include <QMap>
-
 
 class OwnCloudNetworkFactory;
 class OwnCloudRecycleBin;
 class Mutex;
 
 class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit OwnCloudServiceRoot(RootItem* parent = nullptr);
-		virtual ~OwnCloudServiceRoot();
+  public:
+    explicit OwnCloudServiceRoot(RootItem* parent = nullptr);
+    virtual ~OwnCloudServiceRoot();
 
-		bool canBeEdited() const;
-		bool canBeDeleted() const;
-		bool editViaGui();
-		bool deleteViaGui();
-		bool supportsFeedAdding() const;
-		bool supportsCategoryAdding() const;
-		QList<QAction*> serviceMenu();
-		RecycleBin* recycleBin() const;
-		void start(bool freshly_activated);
-		void stop();
-		QString code() const;
-		bool markAsReadUnread(ReadStatus status);
+    bool canBeEdited() const;
+    bool canBeDeleted() const;
+    bool editViaGui();
+    bool deleteViaGui();
+    bool supportsFeedAdding() const;
+    bool supportsCategoryAdding() const;
+    QList<QAction*> serviceMenu();
+    RecycleBin* recycleBin() const;
 
-		OwnCloudNetworkFactory* network() const;
+    void start(bool freshly_activated);
+    void stop();
+    QString code() const;
+    bool markAsReadUnread(ReadStatus status);
 
-		bool onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
-		bool onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
+    OwnCloudNetworkFactory* network() const;
 
-		void updateTitle();
-		void saveAccountDataToDatabase();
+    bool onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
+    bool onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
 
+    void updateTitle();
+    void saveAccountDataToDatabase();
 
-		void saveAllCachedData();
+    void saveAllCachedData();
 
-	public slots:
-		void addNewFeed(const QString& url);
-		void addNewCategory();
+  public slots:
+    void addNewFeed(const QString& url);
+    void addNewCategory();
 
-	private:
-		QMap<int, QVariant> storeCustomFeedsData();
-		void restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds);
-		RootItem* obtainNewTreeForSyncIn() const;
+  private:
+    QMap<int, QVariant> storeCustomFeedsData();
+    void restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds);
+    RootItem* obtainNewTreeForSyncIn() const;
 
-		void loadFromDatabase();
+    void loadFromDatabase();
 
-		OwnCloudRecycleBin* m_recycleBin;
-		QAction* m_actionSyncIn;
-		QList<QAction*> m_serviceMenu;
-		OwnCloudNetworkFactory* m_network;
+    OwnCloudRecycleBin* m_recycleBin;
+    QAction* m_actionSyncIn;
+
+    QList<QAction*> m_serviceMenu;
+    OwnCloudNetworkFactory* m_network;
 };
 
 #endif // OWNCLOUDSERVICEROOT_H

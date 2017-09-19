@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -17,20 +18,17 @@
 
 #include "gui/styleditemdelegatewithoutfocus.h"
 
+StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(QObject* parent) : QStyledItemDelegate(parent) {}
 
-StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(QObject* parent) : QStyledItemDelegate(parent) {
-}
-
-StyledItemDelegateWithoutFocus::~StyledItemDelegateWithoutFocus() {
-}
+StyledItemDelegateWithoutFocus::~StyledItemDelegateWithoutFocus() {}
 
 void StyledItemDelegateWithoutFocus::paint(QPainter* painter, const QStyleOptionViewItem& option,
                                            const QModelIndex& index) const {
-	QStyleOptionViewItem itemOption(option);
+  QStyleOptionViewItem itemOption(option);
 
-	if (itemOption.state & QStyle::State_HasFocus) {
-		itemOption.state = itemOption.state ^ QStyle::State_HasFocus;
-	}
+  if (itemOption.state & QStyle::State_HasFocus) {
+    itemOption.state = itemOption.state ^ QStyle::State_HasFocus;
+  }
 
-	QStyledItemDelegate::paint(painter, itemOption, index);
+  QStyledItemDelegate::paint(painter, itemOption, index);
 }

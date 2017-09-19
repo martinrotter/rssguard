@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,12 +21,11 @@
 
 #include <QTabWidget>
 
+#include "core/message.h"
 #include "gui/tabbar.h"
 #include "gui/tabcontent.h"
-#include "core/message.h"
 
 #include <QUrl>
-
 
 class QMenu;
 class PlainToolButton;
@@ -33,106 +33,110 @@ class RootItem;
 class FeedMessageViewer;
 
 class TabWidget : public QTabWidget {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit TabWidget(QWidget* parent = 0);
-		virtual ~TabWidget();
+  public:
 
-		// Manimulators for tabs.
-		int addTab(TabContent* widget, const QString&,
-		           const TabBar::TabType& type = TabBar::NonClosable);
-		int addTab(TabContent* widget, const QIcon& icon,
-		           const QString& label, const TabBar::TabType& type = TabBar::NonClosable);
-		int insertTab(int index, QWidget* widget, const QString& label,
-		              const TabBar::TabType& type = TabBar::Closable);
-		int insertTab(int index, QWidget* widget, const QIcon& icon,
-		              const QString& label, const TabBar::TabType& type = TabBar::NonClosable);
-		void removeTab(int index, bool clear_from_memory);
+    // Constructors and destructors.
+    explicit TabWidget(QWidget* parent = 0);
+    virtual ~TabWidget();
 
-		// Returns tab bar.
-		inline TabBar* tabBar() const {
-			return static_cast<TabBar*>(QTabWidget::tabBar());
-		}
+    // Manimulators for tabs.
+    int addTab(TabContent* widget, const QString&,
+               const TabBar::TabType& type = TabBar::NonClosable);
+    int addTab(TabContent* widget, const QIcon& icon,
+               const QString& label, const TabBar::TabType& type = TabBar::NonClosable);
+    int insertTab(int index, QWidget* widget, const QString& label,
+                  const TabBar::TabType& type = TabBar::Closable);
+    int insertTab(int index, QWidget* widget, const QIcon& icon,
+                  const QString& label, const TabBar::TabType& type = TabBar::NonClosable);
+    void removeTab(int index, bool clear_from_memory);
 
-		// Returns the central widget of this tab.
-		inline TabContent* widget(int index) const {
-			return static_cast<TabContent*>(QTabWidget::widget(index));
-		}
+    // Returns tab bar.
+    inline TabBar* tabBar() const {
+      return static_cast<TabBar*>(QTabWidget::tabBar());
+    }
 
-		inline TabContent* currentWidget() const {
-			return static_cast<TabContent*>(QTabWidget::currentWidget());
-		}
+    // Returns the central widget of this tab.
+    inline TabContent* widget(int index) const {
+      return static_cast<TabContent*>(QTabWidget::widget(index));
+    }
 
-		// Initializes TabWidget with tabs, this includes initialization
-		// of main "Feeds" widget.
-		void initializeTabs();
+    inline TabContent* currentWidget() const {
+      return static_cast<TabContent*>(QTabWidget::currentWidget());
+    }
 
-		// Sets up icons for this TabWidget.
-		void setupIcons();
+    // Initializes TabWidget with tabs, this includes initialization
+    // of main "Feeds" widget.
+    void initializeTabs();
 
-		// Accessor to feed/message viewer.
-		inline FeedMessageViewer* feedMessageViewer() const {
-			return m_feedMessageViewer;
-		}
+    // Sets up icons for this TabWidget.
+    void setupIcons();
 
-	protected:
-		// Creates necesary connections.
-		void createConnections();
+    // Accessor to feed/message viewer.
+    inline FeedMessageViewer* feedMessageViewer() const {
+      return m_feedMessageViewer;
+    }
 
-		// Sets up properties of custom corner button.
-		void setupMainMenuButton();
+  protected:
 
-		// Handlers of insertin/removing of tabs.
-		void tabInserted(int index);
-		void tabRemoved(int index);
+    // Creates necesary connections.
+    void createConnections();
 
-	public slots:
-		// Called when number of tab pages changes.
-		void checkTabBarVisibility();
+    // Sets up properties of custom corner button.
+    void setupMainMenuButton();
 
-		// Tab closing.
-		bool closeTab(int index);
-		void closeAllTabsExceptCurrent();
-		void closeAllTabs();
+    // Handlers of insertin/removing of tabs.
+    void tabInserted(int index);
+    void tabRemoved(int index);
 
-		// Displays download manager.
-		void showDownloadManager();
+  public slots:
 
-		int addNewspaperView(RootItem* root, const QList<Message>& messages);
+    // Called when number of tab pages changes.
+    void checkTabBarVisibility();
 
-		// Adds new WebBrowser tab to global TabWidget.
-		int addEmptyBrowser();
+    // Tab closing.
+    bool closeTab(int index);
+    void closeAllTabsExceptCurrent();
+    void closeAllTabs();
 
-		// Adds new WebBrowser with link. This is used when user
-		// selects to "Open link in new tab.".
-		int addLinkedBrowser(const QUrl& initial_url = QUrl());
-		int addLinkedBrowser(const QString& initial_url);
+    // Displays download manager.
+    void showDownloadManager();
 
-		// General method for adding WebBrowsers.
-		int addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url = QUrl());
+    int addNewspaperView(RootItem* root, const QList<Message>& messages);
+
+    // Adds new WebBrowser tab to global TabWidget.
+    int addEmptyBrowser();
+
+    // Adds new WebBrowser with link. This is used when user
+    // selects to "Open link in new tab.".
+    int addLinkedBrowser(const QUrl& initial_url = QUrl());
+    int addLinkedBrowser(const QString& initial_url);
+
+    // General method for adding WebBrowsers.
+    int addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url = QUrl());
 
     void gotoNextTab();
     void gotoPreviousTab();
 
-	private slots:
-		// Fixes tabs indexes.
-		void fixContentsAfterMove(int from, int to);
+  private slots:
 
-		// Changes icon/text of the tab.
-		void changeTitle(int index, const QString& new_title);
-		void changeIcon(int index, const QIcon& new_icon);
+    // Fixes tabs indexes.
+    void fixContentsAfterMove(int from, int to);
 
-		// Opens main menu.
-		void openMainMenu();
+    // Changes icon/text of the tab.
+    void changeTitle(int index, const QString& new_title);
+    void changeIcon(int index, const QIcon& new_icon);
 
-	private:
-		void indentTabText(int index);
+    // Opens main menu.
+    void openMainMenu();
 
-		PlainToolButton* m_btnMainMenu;
-		QMenu* m_menuMain;
-		FeedMessageViewer* m_feedMessageViewer;
+  private:
+    void indentTabText(int index);
+
+    PlainToolButton* m_btnMainMenu;
+    QMenu* m_menuMain;
+    FeedMessageViewer* m_feedMessageViewer;
 };
 
 #endif // TABWIDGET_H

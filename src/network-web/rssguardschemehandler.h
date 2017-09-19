@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -22,21 +23,20 @@
 #include <QIODevice>
 #include <QWebEngineUrlSchemeHandler>
 
-
 class QWebEngineUrlRequestJob;
 class QBuffer;
 
 class RssGuardSchemeHandler : public QWebEngineUrlSchemeHandler {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit RssGuardSchemeHandler(QObject* parent = nullptr);
-		virtual ~RssGuardSchemeHandler();
+  public:
+    explicit RssGuardSchemeHandler(QObject* parent = nullptr);
+    virtual ~RssGuardSchemeHandler();
 
-		void requestStarted(QWebEngineUrlRequestJob* job);
+    void requestStarted(QWebEngineUrlRequestJob* job);
 
-	private:
-		QByteArray targetData(const QUrl& url);
+  private:
+    QByteArray targetData(const QUrl& url);
 };
 
 #endif // RSSGUARDSCHEMEHANDLER_H

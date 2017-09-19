@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -23,54 +24,54 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 
-#include <QString>
-#include <QIcon>
-#include <QHash>
 #include <QDir>
-
+#include <QHash>
+#include <QIcon>
+#include <QString>
 
 class IconFactory : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructor.
-		explicit IconFactory(QObject* parent = 0);
+  public:
 
-		// Destructor.
-		virtual ~IconFactory();
+    // Constructor.
+    explicit IconFactory(QObject* parent = 0);
 
-		// Used to store/retrieve QIcons from/to Base64-encoded
-		// byte array.
-		static QIcon fromByteArray(QByteArray array);
-		static QByteArray toByteArray(const QIcon& icon);
+    // Destructor.
+    virtual ~IconFactory();
 
-		QPixmap pixmap(const QString& name);
+    // Used to store/retrieve QIcons from/to Base64-encoded
+    // byte array.
+    static QIcon fromByteArray(QByteArray array);
+    static QByteArray toByteArray(const QIcon& icon);
 
-		// Returns icon from active theme or invalid icon if
-		// "no icon theme" is set.
-		QIcon fromTheme(const QString& name);
+    QPixmap pixmap(const QString& name);
 
-		QPixmap miscPixmap(const QString& name);
-		QIcon miscIcon(const QString& name);
+    // Returns icon from active theme or invalid icon if
+    // "no icon theme" is set.
+    QIcon fromTheme(const QString& name);
 
-		// Adds custom application path to be search for icons.
-		void setupSearchPaths();
+    QPixmap miscPixmap(const QString& name);
+    QIcon miscIcon(const QString& name);
 
-		// Returns list of installed themes, including "default" theme.
-		QStringList installedIconThemes() const;
+    // Adds custom application path to be search for icons.
+    void setupSearchPaths();
 
-		// Loads name of selected icon theme (from settings) for the application and
-		// activates it. If that particular theme is not installed, then
-		// "default" theme is loaded.
-		void loadCurrentIconTheme();
+    // Returns list of installed themes, including "default" theme.
+    QStringList installedIconThemes() const;
 
-		// Returns name of currently activated theme for the application.
-		inline QString currentIconTheme() const {
-			return QIcon::themeName();
-		}
+    // Loads name of selected icon theme (from settings) for the application and
+    // activates it. If that particular theme is not installed, then
+    // "default" theme is loaded.
+    void loadCurrentIconTheme();
 
-		// Sets icon theme with given name as the active one and loads it.
-		void setCurrentIconTheme(const QString& theme_name);
+    // Returns name of currently activated theme for the application.
+    inline QString currentIconTheme() const {
+      return QIcon::themeName();
+    }
+
+    // Sets icon theme with given name as the active one and loads it.
+    void setCurrentIconTheme(const QString& theme_name);
 };
 
 #endif // ICONFACTORY_H

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,30 +23,29 @@
 
 #include "ui_formrestoredatabasesettings.h"
 
-
 class FormRestoreDatabaseSettings : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit FormRestoreDatabaseSettings(QWidget& parent);
-		virtual ~FormRestoreDatabaseSettings();
+  public:
 
-		bool shouldRestart() const {
-			return m_shouldRestart;
-		}
+    // Constructors and destructors.
+    explicit FormRestoreDatabaseSettings(QWidget& parent);
+    virtual ~FormRestoreDatabaseSettings();
 
-	private slots:
-		void performRestoration();
-		void checkOkButton();
-		void selectFolderWithGui();
-		void selectFolder(QString folder = QString());
+    bool shouldRestart() const {
+      return m_shouldRestart;
+    }
 
-	private:
-		Ui::FormRestoreDatabaseSettings m_ui;
-		QPushButton* m_btnRestart;
+  private slots:
+    void performRestoration();
+    void checkOkButton();
+    void selectFolderWithGui();
+    void selectFolder(QString folder = QString());
 
-		bool m_shouldRestart;
+  private:
+    Ui::FormRestoreDatabaseSettings m_ui;
+    QPushButton* m_btnRestart;
+    bool m_shouldRestart;
 };
 
 #endif // FORMRESTOREDATABASESETTINGS_H

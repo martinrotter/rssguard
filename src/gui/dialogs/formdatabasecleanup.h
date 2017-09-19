@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -24,37 +25,37 @@
 
 #include "miscellaneous/databasecleaner.h"
 
-
 class FormDatabaseCleanup : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors.
-		explicit FormDatabaseCleanup(QWidget* parent = 0);
-		virtual ~FormDatabaseCleanup();
+  public:
 
-		void setCleaner(DatabaseCleaner* cleaner);
+    // Constructors.
+    explicit FormDatabaseCleanup(QWidget* parent = 0);
+    virtual ~FormDatabaseCleanup();
 
-	protected:
-		void closeEvent(QCloseEvent* event);
-		void keyPressEvent(QKeyEvent* event);
+    void setCleaner(DatabaseCleaner* cleaner);
 
-	private slots:
-		void updateDaysSuffix(int number);
-		void startPurging();
-		void onPurgeStarted();
-		void onPurgeProgress(int progress, const QString& description);
-		void onPurgeFinished(bool finished);
+  protected:
+    void closeEvent(QCloseEvent* event);
+    void keyPressEvent(QKeyEvent* event);
 
-	signals:
-		void purgeRequested(const CleanerOrders& which_data);
+  private slots:
+    void updateDaysSuffix(int number);
+    void startPurging();
+    void onPurgeStarted();
+    void onPurgeProgress(int progress, const QString& description);
+    void onPurgeFinished(bool finished);
 
-	private:
-		void loadDatabaseInfo();
+  signals:
+    void purgeRequested(const CleanerOrders& which_data);
 
-	private:
-		QScopedPointer<Ui::FormDatabaseCleanup> m_ui;
-		DatabaseCleaner* m_cleaner;
+  private:
+    void loadDatabaseInfo();
+
+  private:
+    QScopedPointer<Ui::FormDatabaseCleanup> m_ui;
+    DatabaseCleaner* m_cleaner;
 };
 
 #endif // FORMDATABASECLEANUP_H

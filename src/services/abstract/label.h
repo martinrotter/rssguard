@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,10 +21,9 @@
 
 #include "services/abstract/rootitem.h"
 
-
 class Label : public RootItem {
-	public:
-		explicit Label(RootItem* parent_item = nullptr);
+  public:
+    explicit Label(RootItem* parent_item = nullptr);
 };
 
 #endif // LABEL_H

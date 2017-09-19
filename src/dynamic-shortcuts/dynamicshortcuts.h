@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,22 +21,23 @@
 
 #include <QList>
 
-
 class QAction;
 
 class DynamicShortcuts {
-	public:
-		// Checks the application settings and then initializes shortcut of
-		// each action from actions from the settings.
-		static void load(const QList<QAction*>& actions);
+  public:
 
-		// Stores shortcut of each action from actions into the application
-		// settings.
-		static void save(const QList<QAction*>& actions);
+    // Checks the application settings and then initializes shortcut of
+    // each action from actions from the settings.
+    static void load(const QList<QAction*>& actions);
 
-	private:
-		// Constructor.
-		explicit DynamicShortcuts();
+    // Stores shortcut of each action from actions into the application
+    // settings.
+    static void save(const QList<QAction*>& actions);
+
+  private:
+
+    // Constructor.
+    explicit DynamicShortcuts();
 };
 
 #endif // DYNAMICSHORTCUTS_H

@@ -41,38 +41,39 @@
 #ifndef QTLOCALPEER_H
 #define QTLOCALPEER_H
 
+#include <QDir>
 #include <QLocalServer>
 #include <QLocalSocket>
-#include <QDir>
 
 #include "qtlockedfile.h"
 
 class QtLocalPeer : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		QtLocalPeer(QObject* parent = 0, const QString& appId = QString());
-		~QtLocalPeer();
-		bool isClient();
-		bool sendMessage(const QString& message, int timeout);
-		QString applicationId() const {
-			return id;
-		}
+  public:
+    QtLocalPeer(QObject* parent = 0, const QString& appId = QString());
+    ~QtLocalPeer();
+    bool isClient();
+    bool sendMessage(const QString& message, int timeout);
+    QString applicationId() const {
+      return id;
+    }
 
-	Q_SIGNALS:
-		void messageReceived(const QString& message);
+Q_SIGNALS:
+    void messageReceived(const QString& message);
 
-	protected Q_SLOTS:
-		void receiveConnection();
+  protected Q_SLOTS:
+    void receiveConnection();
 
-	public:
-		QString id;
-		QString socketName;
-		QLocalServer* server;
-		QtLP_Private::QtLockedFile lockFile;
+  public:
+    QString id;
+    QString socketName;
+    QLocalServer* server;
 
-	private:
-		static const char* ack;
+    QtLP_Private::QtLockedFile lockFile;
+
+  private:
+    static const char* ack;
 };
 
 #endif // QTLOCALPEER_H

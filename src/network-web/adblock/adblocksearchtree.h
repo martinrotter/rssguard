@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 // Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
@@ -22,35 +23,35 @@
 #include <QChar>
 #include <QHash>
 
-
 class QWebEngineUrlRequestInfo;
 class AdBlockRule;
 
 class AdBlockSearchTree {
-	public:
-		explicit AdBlockSearchTree();
-		virtual ~AdBlockSearchTree();
+  public:
+    explicit AdBlockSearchTree();
+    virtual ~AdBlockSearchTree();
 
-		void clear();
+    void clear();
 
-		bool add(const AdBlockRule* rule);
-		const AdBlockRule* find(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString) const;
+    bool add(const AdBlockRule* rule);
+    const AdBlockRule* find(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString) const;
 
-	private:
-		struct Node {
-			QChar c;
-			const AdBlockRule* rule;
-			QHash<QChar, Node*> children;
+  private:
+    struct Node {
+      QChar c;
+      const AdBlockRule* rule;
 
-			Node() : c(0), rule(0) { }
-		};
+      QHash<QChar, Node*> children;
 
-		const AdBlockRule* prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain,
-		                                const QString& urlString, const QChar* string, int len) const;
+      Node() : c(0), rule(0) { }
 
-		void deleteNode(Node* node);
+    };
+    const AdBlockRule* prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain,
+                                    const QString& urlString, const QChar* string, int len) const;
 
-		Node* m_root;
+    void deleteNode(Node* node);
+
+    Node* m_root;
 };
 
 #endif // ADBLOCKSEARCHTREE_H

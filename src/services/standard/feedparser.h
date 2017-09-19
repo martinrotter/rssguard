@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -23,23 +24,22 @@
 
 #include "core/message.h"
 
-
 class FeedParser {
-	public:
-		explicit FeedParser(const QString& data);
-		virtual ~FeedParser();
+  public:
+    explicit FeedParser(const QString& data);
+    virtual ~FeedParser();
 
-		virtual QList<Message> messages();
+    virtual QList<Message> messages();
 
-	protected:
-		QStringList textsFromPath(const QDomElement& element, const QString& namespace_uri, const QString& xml_path, bool only_first) const;
-		virtual QDomNodeList messageElements() = 0;
-		virtual QString feedAuthor() const;
-		virtual Message extractMessage(const QDomElement& msg_element, QDateTime current_time) const = 0;
+  protected:
+    QStringList textsFromPath(const QDomElement& element, const QString& namespace_uri, const QString& xml_path, bool only_first) const;
+    virtual QDomNodeList messageElements() = 0;
+    virtual QString feedAuthor() const;
+    virtual Message extractMessage(const QDomElement& msg_element, QDateTime current_time) const = 0;
 
-	protected:
-		QString m_xmlData;
-		QDomDocument m_xml;
+  protected:
+    QString m_xmlData;
+    QDomDocument m_xml;
 };
 
 #endif // FEEDPARSER_H

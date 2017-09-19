@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -18,29 +19,28 @@
 #ifndef AUTOSAVER_H
 #define AUTOSAVER_H
 
-#include <QObject>
 #include <QBasicTimer>
+#include <QObject>
 #include <QTime>
 
-
 class AutoSaver : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit AutoSaver(QObject* parent);
-		virtual ~AutoSaver();
+  public:
+    explicit AutoSaver(QObject* parent);
+    virtual ~AutoSaver();
 
-		void saveIfNeccessary();
+    void saveIfNeccessary();
 
-	public slots:
-		void changeOccurred();
+  public slots:
+    void changeOccurred();
 
-	protected:
-		void timerEvent(QTimerEvent* event);
+  protected:
+    void timerEvent(QTimerEvent* event);
 
-	private:
-		QBasicTimer m_timer;
-		QTime m_firstChange;
+  private:
+    QBasicTimer m_timer;
+    QTime m_firstChange;
 };
 
 #endif // AUTOSAVER_H

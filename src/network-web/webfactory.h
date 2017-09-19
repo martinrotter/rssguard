@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -28,58 +29,61 @@
 #include <QWebEngineSettings>
 #endif
 
-
 #if defined (USE_WEBENGINE)
 class QMenu;
 #endif
 
 class WebFactory : public QObject {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructor.
-		explicit WebFactory(QObject* parent = nullptr);
+  public:
 
-		// Destructor.
-		virtual ~WebFactory();
+    // Constructor.
+    explicit WebFactory(QObject* parent = nullptr);
 
-		// Strips "<....>" (HTML, XML) tags from given text.
-		QString stripTags(QString text);
+    // Destructor.
+    virtual ~WebFactory();
 
-		// HTML entity escaping.
-		QString escapeHtml(const QString& html);
-		QString deEscapeHtml(const QString& text);
+    // Strips "<....>" (HTML, XML) tags from given text.
+    QString stripTags(QString text);
 
-		QString toSecondLevelDomain(const QUrl& url);
+    // HTML entity escaping.
+    QString escapeHtml(const QString& html);
+    QString deEscapeHtml(const QString& text);
+
+    QString toSecondLevelDomain(const QUrl& url);
 
 #if defined (USE_WEBENGINE)
-		QAction* engineSettingsAction();
+    QAction* engineSettingsAction();
 #endif
 
-	public slots:
-		// Opens given string URL in external browser.
-		bool openUrlInExternalBrowser(const QString& url);
-		bool sendMessageViaEmail(const Message& message);
+  public slots:
+
+    // Opens given string URL in external browser.
+    bool openUrlInExternalBrowser(const QString& url);
+    bool sendMessageViaEmail(const Message& message);
 
 #if defined (USE_WEBENGINE)
-	private slots:
-		void createMenu(QMenu* menu = nullptr);
-		void webEngineSettingChanged(bool enabled);
 
-	private:
-		QAction* createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute);
+  private slots:
+    void createMenu(QMenu* menu = nullptr);
+    void webEngineSettingChanged(bool enabled);
+
+  private:
+    QAction* createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute);
 #endif
 
-	private:
-		// Escape sequences generators.
-		void genereteEscapes();
-		void generateDeescapes();
+  private:
 
-		QMap<QString, QString> m_escapes;
-		QMap<QString, QString> m_deEscapes;
+    // Escape sequences generators.
+    void genereteEscapes();
+    void generateDeescapes();
+
+    QMap<QString, QString> m_escapes;
+    QMap<QString, QString> m_deEscapes;
 
 #if defined (USE_WEBENGINE)
-		QAction* m_engineSettings;
+    QAction* m_engineSettings;
 #endif
 };
 

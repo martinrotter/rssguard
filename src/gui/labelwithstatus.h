@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,21 +23,22 @@
 
 #include <QLabel>
 
-
 class LabelWithStatus : public WidgetWithStatus {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit LabelWithStatus(QWidget* parent = 0);
-		virtual ~LabelWithStatus();
+  public:
 
-		void setStatus(StatusType status, const QString& label_text, const QString& status_text);
+    // Constructors and destructors.
+    explicit LabelWithStatus(QWidget* parent = 0);
+    virtual ~LabelWithStatus();
 
-		// Access to label.
-		inline QLabel* label() const {
-			return static_cast<QLabel*>(m_wdgInput);
-		}
+    void setStatus(StatusType status, const QString& label_text, const QString& status_text);
+
+    // Access to label.
+    inline QLabel* label() const {
+      return static_cast<QLabel*>(m_wdgInput);
+    }
+
 };
 
 #endif // LABELWITHSTATUS_H

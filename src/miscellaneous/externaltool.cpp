@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -18,12 +19,11 @@
 #include "miscellaneous/externaltool.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/application.h"
 #include "exceptions/applicationexception.h"
+#include "miscellaneous/application.h"
 
-#include <QObject>
 #include <QDir>
-
+#include <QObject>
 
 void ExternalTool::sanitizeParameters() {
   m_executable = QDir::toNativeSeparators(m_executable);
@@ -31,11 +31,9 @@ void ExternalTool::sanitizeParameters() {
   m_parameters.removeAll(QString());
 }
 
-ExternalTool::ExternalTool() {
-}
+ExternalTool::ExternalTool() {}
 
-ExternalTool::ExternalTool(const ExternalTool& other) : ExternalTool(other.executable(), other.parameters()) {
-}
+ExternalTool::ExternalTool(const ExternalTool& other) : ExternalTool(other.executable(), other.parameters()) {}
 
 ExternalTool::ExternalTool(const QString& executable, const QStringList& parameters)
   : m_executable(executable), m_parameters(parameters) {
@@ -71,6 +69,7 @@ ExternalTool ExternalTool::fromString(const QString& str) {
 
 QList<ExternalTool> ExternalTool::toolsFromSettings() {
   QStringList tools_encoded = qApp->settings()->value(GROUP(Browser), SETTING(Browser::ExternalTools)).toStringList();
+
   QList<ExternalTool> tools;
 
   foreach (const QString& tool_encoded, tools_encoded) {

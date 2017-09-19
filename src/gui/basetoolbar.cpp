@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -23,28 +24,28 @@
 
 #include <QWidgetAction>
 
-
 BaseToolBar::BaseToolBar(const QString& title, QWidget* parent) : QToolBar(title, parent) {
-	// Update right margin of filter textbox.
-	QMargins margins = contentsMargins();
-	margins.setRight(margins.right() + FILTER_RIGHT_MARGIN);
-	setContentsMargins(margins);
+  // Update right margin of filter textbox.
+  QMargins margins = contentsMargins();
+
+  margins.setRight(margins.right() + FILTER_RIGHT_MARGIN);
+  setContentsMargins(margins);
 }
 
 BaseToolBar::~BaseToolBar() {
-	qDebug("Destroying BaseToolBar instance.");
+  qDebug("Destroying BaseToolBar instance.");
 }
 
 void BaseBar::loadSavedActions() {
-	loadSpecificActions(getSpecificActions(savedActions()));
+  loadSpecificActions(getSpecificActions(savedActions()));
 }
 
 QAction* BaseBar::findMatchingAction(const QString& action, const QList<QAction*>& actions) const {
-	foreach (QAction* act, actions) {
-		if (act->objectName() == action) {
-			return act;
-		}
-	}
+  foreach (QAction* act, actions) {
+    if (act->objectName() == action) {
+      return act;
+    }
+  }
 
-	return nullptr;
+  return nullptr;
 }

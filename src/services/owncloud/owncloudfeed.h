@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,32 +21,31 @@
 
 #include "services/abstract/feed.h"
 
-
 class OwnCloudServiceRoot;
 
 class OwnCloudFeed : public Feed {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit OwnCloudFeed(RootItem* parent = nullptr);
-		explicit OwnCloudFeed(const QSqlRecord& record);
-		virtual ~OwnCloudFeed();
+  public:
+    explicit OwnCloudFeed(RootItem* parent = nullptr);
+    explicit OwnCloudFeed(const QSqlRecord& record);
+    virtual ~OwnCloudFeed();
 
-		bool canBeEdited() const;
-		bool editViaGui();
-		bool canBeDeleted() const;
-		bool deleteViaGui();
+    bool canBeEdited() const;
+    bool editViaGui();
+    bool canBeDeleted() const;
+    bool deleteViaGui();
 
-		bool editItself(OwnCloudFeed* new_feed_data);
-		bool removeItself();
+    bool editItself(OwnCloudFeed* new_feed_data);
+    bool removeItself();
 
-		bool markAsReadUnread(ReadStatus status);
-		bool cleanMessages(bool clear_only_read);
+    bool markAsReadUnread(ReadStatus status);
+    bool cleanMessages(bool clear_only_read);
 
-		OwnCloudServiceRoot* serviceRoot() const;
+    OwnCloudServiceRoot* serviceRoot() const;
 
-	private:
-		QList<Message> obtainNewMessages(bool* error_during_obtaining);
+  private:
+    QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 
 #endif // OWNCLOUDFEED_H

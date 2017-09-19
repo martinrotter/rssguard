@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -27,7 +28,6 @@
 #include <QPointer>
 #include <QToolBar>
 
-
 class QToolButton;
 class QVBoxLayout;
 class QHBoxLayout;
@@ -40,83 +40,84 @@ class LocationLineEdit;
 class DiscoverFeedsButton;
 
 class WebBrowser : public TabContent {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit WebBrowser(QWidget* parent = 0);
-		virtual ~WebBrowser();
+  public:
+    explicit WebBrowser(QWidget* parent = 0);
+    virtual ~WebBrowser();
 
-		WebBrowser* webBrowser() const {
-			return const_cast<WebBrowser*>(this);
-		}
+    WebBrowser* webBrowser() const {
+      return const_cast<WebBrowser*>(this);
+    }
 
-		WebViewer* viewer() const {
-			return m_webView;
-		}
+    WebViewer* viewer() const {
+      return m_webView;
+    }
 
-		void reloadFontSettings();
+    void reloadFontSettings();
 
-	public slots:
-		void increaseZoom();
-		void decreaseZoom();
-		void resetZoom();
+  public slots:
+    void increaseZoom();
+    void decreaseZoom();
+    void resetZoom();
 
-		void clear();
-		void loadUrl(const QString& url);
-		void loadUrl(const QUrl& url);
-		void loadMessages(const QList<Message>& messages, RootItem* root);
-		void loadMessage(const Message& message, RootItem* root);
+    void clear();
+    void loadUrl(const QString& url);
+    void loadUrl(const QUrl& url);
+    void loadMessages(const QList<Message>& messages, RootItem* root);
+    void loadMessage(const Message& message, RootItem* root);
 
-		// Switches visibility of navigation bar.
-		inline void setNavigationBarVisible(bool visible) {
-			m_toolBar->setVisible(visible);
-		}
+    // Switches visibility of navigation bar.
+    inline void setNavigationBarVisible(bool visible) {
+      m_toolBar->setVisible(visible);
+    }
 
-	private slots:
-		void updateUrl(const QUrl& url);
+  private slots:
+    void updateUrl(const QUrl& url);
 
-		void onLoadingStarted();
-		void onLoadingProgress(int progress);
-		void onLoadingFinished(bool success);
+    void onLoadingStarted();
+    void onLoadingProgress(int progress);
+    void onLoadingFinished(bool success);
 
-		void receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change);
+    void receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change);
 
-		void onTitleChanged(const QString& new_title);
+    void onTitleChanged(const QString& new_title);
 
 #if QT_VERSION >= 0x050700
-		void onIconChanged(const QIcon& icon);
+    void onIconChanged(const QIcon& icon);
 #endif
 
-	signals:
-		// Title/icon is changed.
-		void iconChanged(int index, const QIcon& icon);
-		void titleChanged(int index, const QString& title);
+  signals:
 
-		void markMessageRead(int id, RootItem::ReadStatus read);
-		void markMessageImportant(int id, RootItem::Importance important);
-		void requestMessageListReload(bool mark_current_as_read);
+    // Title/icon is changed.
+    void iconChanged(int index, const QIcon& icon);
+    void titleChanged(int index, const QString& title);
 
-	private:
-		void initializeLayout();
-		Message* findMessage(int id);
-		void markMessageAsRead(int id, bool read);
-		void switchMessageImportance(int id, bool checked);
-		void createConnections();
+    void markMessageRead(int id, RootItem::ReadStatus read);
+    void markMessageImportant(int id, RootItem::Importance important);
+    void requestMessageListReload(bool mark_current_as_read);
 
-		QVBoxLayout* m_layout;
-		QToolBar* m_toolBar;
-		WebViewer* m_webView;
-		LocationLineEdit* m_txtLocation;
-		DiscoverFeedsButton* m_btnDiscoverFeeds;
-		QProgressBar* m_loadingProgress;
+  private:
+    void initializeLayout();
+    Message* findMessage(int id);
 
-		QAction* m_actionBack;
-		QAction* m_actionForward;
-		QAction* m_actionReload;
-		QAction* m_actionStop;
+    void markMessageAsRead(int id, bool read);
+    void switchMessageImportance(int id, bool checked);
+    void createConnections();
 
-		QList<Message> m_messages;
-		QPointer<RootItem> m_root;
+    QVBoxLayout* m_layout;
+    QToolBar* m_toolBar;
+    WebViewer* m_webView;
+    LocationLineEdit* m_txtLocation;
+    DiscoverFeedsButton* m_btnDiscoverFeeds;
+    QProgressBar* m_loadingProgress;
+    QAction* m_actionBack;
+    QAction* m_actionForward;
+    QAction* m_actionReload;
+    QAction* m_actionStop;
+
+    QList<Message> m_messages;
+    QPointer<RootItem> m_root;
 };
 
 #endif // WEBBROWSER_H

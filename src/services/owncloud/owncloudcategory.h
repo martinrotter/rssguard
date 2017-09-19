@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,21 +21,20 @@
 
 #include "services/abstract/category.h"
 
-
 class OwnCloudServiceRoot;
 
 class OwnCloudCategory : public Category {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit OwnCloudCategory(RootItem* parent = nullptr);
-		explicit OwnCloudCategory(const QSqlRecord& record);
-		virtual ~OwnCloudCategory();
+  public:
+    explicit OwnCloudCategory(RootItem* parent = nullptr);
+    explicit OwnCloudCategory(const QSqlRecord& record);
+    virtual ~OwnCloudCategory();
 
-		bool markAsReadUnread(ReadStatus status);
+    bool markAsReadUnread(ReadStatus status);
 
-	private:
-		OwnCloudServiceRoot* serviceRoot() const;
+  private:
+    OwnCloudServiceRoot* serviceRoot() const;
 };
 
 #endif // OWNCLOUDSERVICECATEGORY_H

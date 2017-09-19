@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -18,17 +19,16 @@
 #ifndef GUIUTILITIES_H
 #define GUIUTILITIES_H
 
-#include <QWidget>
 #include <QLabel>
-
+#include <QWidget>
 
 class GuiUtilities {
-	public:
-		static void setLabelAsNotice(QLabel& label, bool is_warning);
-		static void applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title = QString());
+  public:
+    static void setLabelAsNotice(QLabel& label, bool is_warning);
+    static void applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title = QString());
 
-	private:
-		explicit GuiUtilities();
+  private:
+    explicit GuiUtilities();
 };
 
 inline GuiUtilities::GuiUtilities() {}

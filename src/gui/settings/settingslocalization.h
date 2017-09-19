@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,23 +23,23 @@
 
 #include "ui_settingslocalization.h"
 
-
 class SettingsLocalization : public SettingsPanel {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit SettingsLocalization(Settings* settings, QWidget* parent = 0);
-		virtual ~SettingsLocalization();
+  public:
+    explicit SettingsLocalization(Settings* settings, QWidget* parent = 0);
+    virtual ~SettingsLocalization();
 
-		inline QString title() const {
-			return tr("Language");
-		}
+    inline QString title() const {
+      return tr("Language");
+    }
 
-		void loadSettings();
-		void saveSettings();
+    void loadSettings();
 
-	private:
-		Ui::SettingsLocalization* m_ui;
+    void saveSettings();
+
+  private:
+    Ui::SettingsLocalization* m_ui;
 };
 
 #endif // SETTINGSLOCALIZATION_H

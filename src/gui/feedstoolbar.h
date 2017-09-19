@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,24 +21,24 @@
 
 #include "gui/basetoolbar.h"
 
-
 class FeedsToolBar : public BaseToolBar {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit FeedsToolBar(const QString& title, QWidget* parent = 0);
-		virtual ~FeedsToolBar();
+  public:
 
-		QList<QAction*> availableActions() const;
-		QList<QAction*> changeableActions() const;
-		void saveChangeableActions(const QStringList& actions);
+    // Constructors and destructors.
+    explicit FeedsToolBar(const QString& title, QWidget* parent = 0);
+    virtual ~FeedsToolBar();
 
-		QList<QAction*> getSpecificActions(const QStringList& actions);
-		void loadSpecificActions(const QList<QAction*>& actions);
+    QList<QAction*> availableActions() const;
+    QList<QAction*> changeableActions() const;
+    void saveChangeableActions(const QStringList& actions);
 
-		QStringList defaultActions() const;
-		QStringList savedActions() const;
+    QList<QAction*> getSpecificActions(const QStringList& actions);
+    void loadSpecificActions(const QList<QAction*>& actions);
+
+    QStringList defaultActions() const;
+    QStringList savedActions() const;
 };
 
 #endif // FEEDSTOOLBAR_H

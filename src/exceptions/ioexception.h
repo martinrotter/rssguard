@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,11 +21,10 @@
 
 #include "exceptions/applicationexception.h"
 
-
 class IOException : public ApplicationException {
-	public:
-		explicit IOException(const QString& message = QString());
-		virtual ~IOException();
+  public:
+    explicit IOException(const QString& message = QString());
+    virtual ~IOException();
 };
 
 #endif // IOEXCEPTION_H

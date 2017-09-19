@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,32 +21,32 @@
 
 #include "services/abstract/serviceroot.h"
 
-#include <QStringList>
-#include <QPair>
 #include <QMap>
-
+#include <QPair>
+#include <QStringList>
 
 class Mutex;
 
 class CacheForServiceRoot {
-	public:
-		explicit CacheForServiceRoot();
-		virtual ~CacheForServiceRoot();
+  public:
+    explicit CacheForServiceRoot();
+    virtual ~CacheForServiceRoot();
 
-		void addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance);
-		void addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read);
+    void addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance);
+    void addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read);
 
     // Persistently saves/loads cached changes to/from file.
     // NOTE: The whole cache is cleared after save is done and before load is done.
     void saveCacheToFile(int accId);
     void loadCacheFromFile(int accId);
 
-	protected:
-		QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> takeMessageCache();
+  protected:
+    QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> takeMessageCache();
 
-		Mutex* m_cacheSaveMutex;
-		QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
-		QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
+    Mutex* m_cacheSaveMutex;
+
+    QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
+    QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
 
   private:
     bool isEmpty() const;

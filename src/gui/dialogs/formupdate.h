@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -25,42 +26,42 @@
 #include "miscellaneous/systemfactory.h"
 #include "network-web/downloader.h"
 
-#include <QPushButton>
 #include <QNetworkReply>
-
+#include <QPushButton>
 
 class FormUpdate : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit FormUpdate(QWidget* parent);
-		virtual ~FormUpdate();
+  public:
 
-		// Returns true if application can self-update
-		// on current platform.
-		bool isSelfUpdateSupported() const;
+    // Constructors and destructors.
+    explicit FormUpdate(QWidget* parent);
+    virtual ~FormUpdate();
 
-	private slots:
-		// Check for updates and interprets the results.
-		void checkForUpdates();
-		void startUpdate();
+    // Returns true if application can self-update
+    // on current platform.
+    bool isSelfUpdateSupported() const;
 
-		void updateProgress(qint64 bytes_received, qint64 bytes_total);
-		void updateCompleted(QNetworkReply::NetworkError status, QByteArray contents);
-		void saveUpdateFile(const QByteArray& file_contents);
+  private slots:
 
-	private:
-		void loadAvailableFiles();
+    // Check for updates and interprets the results.
+    void checkForUpdates();
+    void startUpdate();
 
-		Ui::FormUpdate m_ui;
-		QPushButton* m_btnUpdate;
+    void updateProgress(qint64 bytes_received, qint64 bytes_total);
+    void updateCompleted(QNetworkReply::NetworkError status, QByteArray contents);
+    void saveUpdateFile(const QByteArray& file_contents);
 
-		Downloader m_downloader;
-		QString m_updateFilePath;
-		UpdateInfo m_updateInfo;
-		bool m_readyToInstall = false;
-		qint64 m_lastDownloadedBytes = 0;
+  private:
+    void loadAvailableFiles();
+
+    Ui::FormUpdate m_ui;
+    QPushButton* m_btnUpdate;
+    Downloader m_downloader;
+    QString m_updateFilePath;
+    UpdateInfo m_updateInfo;
+    bool m_readyToInstall = false;
+    qint64 m_lastDownloadedBytes = 0;
 };
 
 #endif // FORMUPDATE_H

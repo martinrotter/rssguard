@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -22,28 +23,29 @@
 
 #include "ui_formaddaccount.h"
 
-
 class ServiceEntryPoint;
 class FeedsModel;
 
 class FormAddAccount : public QDialog {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		explicit FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, FeedsModel* model, QWidget* parent = 0);
-		virtual ~FormAddAccount();
+  public:
+    explicit FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, FeedsModel* model, QWidget* parent = 0);
+    virtual ~FormAddAccount();
 
-	private slots:
-		void addSelectedAccount();
-		void displayActiveEntryPointDetails();
+  private slots:
+    void addSelectedAccount();
+    void displayActiveEntryPointDetails();
 
-	private:
-		ServiceEntryPoint* selectedEntryPoint() const;
-		void loadEntryPoints();
+  private:
+    ServiceEntryPoint* selectedEntryPoint() const;
 
-		QScopedPointer<Ui::FormAddAccount> m_ui;
-		FeedsModel* m_model;
-		QList<ServiceEntryPoint*> m_entryPoints;
+    void loadEntryPoints();
+
+    QScopedPointer<Ui::FormAddAccount> m_ui;
+    FeedsModel* m_model;
+
+    QList<ServiceEntryPoint*> m_entryPoints;
 };
 
 #endif // FORMADDACCOUNT_H

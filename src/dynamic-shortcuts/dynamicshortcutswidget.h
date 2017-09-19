@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,45 +21,46 @@
 
 #include <QWidget>
 
-
 class QGridLayout;
 class ShortcutCatcher;
 
 typedef QPair<QAction*, ShortcutCatcher*> ActionBinding;
 
 class DynamicShortcutsWidget : public QWidget {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors and destructors.
-		explicit DynamicShortcutsWidget(QWidget* parent = 0);
-		virtual ~DynamicShortcutsWidget();
+  public:
 
-		// Updates shortcuts of all actions according to changes.
-		// NOTE: No access to settings is done here.
-		// Shortcuts are fetched from settings when applications starts
-		// and stored back to settings when application quits.
-		void updateShortcuts();
+    // Constructors and destructors.
+    explicit DynamicShortcutsWidget(QWidget* parent = 0);
+    virtual ~DynamicShortcutsWidget();
 
-		// Returns true if all shortcuts are unique,
-		// otherwise false.
-		bool areShortcutsUnique() const;
+    // Updates shortcuts of all actions according to changes.
+    // NOTE: No access to settings is done here.
+    // Shortcuts are fetched from settings when applications starts
+    // and stored back to settings when application quits.
+    void updateShortcuts();
 
-		// Populates this widget with shortcut widgets for given actions.
-		// NOTE: This gets initial shortcut for each action from its properties, NOT from
-		// the application settings, so shortcuts from settings need to be
-		// assigned to actions before calling this method.
-		void populate(QList<QAction*> actions);
+    // Returns true if all shortcuts are unique,
+    // otherwise false.
+    bool areShortcutsUnique() const;
 
-	signals:
-		void setupChanged();
+    // Populates this widget with shortcut widgets for given actions.
+    // NOTE: This gets initial shortcut for each action from its properties, NOT from
+    // the application settings, so shortcuts from settings need to be
+    // assigned to actions before calling this method.
+    void populate(QList<QAction*> actions);
 
-	private:
-		static bool lessThan(QAction* lhs, QAction* rhs);
+  signals:
+    void setupChanged();
 
-	private:
-		QGridLayout* m_layout;
-		QList<ActionBinding> m_actionBindings;
+  private:
+    static bool lessThan(QAction* lhs, QAction* rhs);
+
+  private:
+    QGridLayout* m_layout;
+
+    QList<ActionBinding> m_actionBindings;
 };
 
 #endif // DYNAMICSHORTCUTSOVERVIEW_H

@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -17,24 +18,21 @@
 
 #include "services/owncloud/owncloudrecyclebin.h"
 
-#include "services/owncloud/owncloudserviceroot.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/owncloudserviceroot.h"
 
 #include <QNetworkReply>
 
+OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem* parent) : RecycleBin(parent) {}
 
-OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem* parent) : RecycleBin(parent) {
-}
-
-OwnCloudRecycleBin::~OwnCloudRecycleBin() {
-}
+OwnCloudRecycleBin::~OwnCloudRecycleBin() {}
 
 OwnCloudServiceRoot* OwnCloudRecycleBin::serviceRoot() {
-	return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
+  return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
 }
 
 bool OwnCloudRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-	serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-	return RecycleBin::markAsReadUnread(status);
+  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
+  return RecycleBin::markAsReadUnread(status);
 }

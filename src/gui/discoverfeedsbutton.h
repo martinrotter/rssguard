@@ -1,4 +1,5 @@
 // This file is part of RSS Guard.
+
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -20,26 +21,27 @@
 
 #include <QToolButton>
 
-
 class DiscoverFeedsButton : public QToolButton {
-		Q_OBJECT
+  Q_OBJECT
 
-	public:
-		// Constructors.
-		explicit DiscoverFeedsButton(QWidget* parent = 0);
-		virtual ~DiscoverFeedsButton();
+  public:
 
-		// Feed addresses manipulators.
-		void clearFeedAddresses();
-		void setFeedAddresses(const QStringList& addresses);
+    // Constructors.
+    explicit DiscoverFeedsButton(QWidget* parent = 0);
+    virtual ~DiscoverFeedsButton();
 
-	private slots:
-		// User chose any of addresses.
-		void linkTriggered(QAction* action);
-		void fillMenu();
+    // Feed addresses manipulators.
+    void clearFeedAddresses();
+    void setFeedAddresses(const QStringList& addresses);
 
-	private:
-		QStringList m_addresses;
+  private slots:
+
+    // User chose any of addresses.
+    void linkTriggered(QAction* action);
+    void fillMenu();
+
+  private:
+    QStringList m_addresses;
 };
 
 #endif // DISCOVERFEEDSBUTTON_H
