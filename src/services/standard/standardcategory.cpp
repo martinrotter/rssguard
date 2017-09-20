@@ -112,10 +112,6 @@ bool StandardCategory::deleteViaGui() {
   }
 }
 
-bool StandardCategory::markAsReadUnread(ReadStatus status) {
-  return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
-}
-
 bool StandardCategory::removeItself() {
   bool children_removed = true;
 

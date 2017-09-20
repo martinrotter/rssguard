@@ -82,6 +82,7 @@ class Feed : public RootItem, public QRunnable {
     // Runs update in thread (thread pooled).
     void run();
 
+    bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clean_read_only);
 
   public slots:

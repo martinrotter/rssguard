@@ -45,8 +45,6 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void start(bool freshly_activated);
     void stop();
     QString code() const;
-    bool markAsReadUnread(ReadStatus status);
-
     OwnCloudNetworkFactory* network() const;
 
     bool onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);

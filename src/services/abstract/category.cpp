@@ -20,6 +20,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/serviceroot.h"
 
@@ -69,4 +70,15 @@ void Category::updateCounts(bool including_total_count) {
 
 bool Category::cleanMessages(bool clean_read_only) {
   return getParentServiceRoot()->cleanFeeds(getSubTreeFeeds(), clean_read_only);
+}
+
+bool Category::markAsReadUnread(RootItem::ReadStatus status) {
+  ServiceRoot* service = getParentServiceRoot();
+  CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(service);
+
+  if (cache != nullptr) {
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
+  }
+
+  return service->markFeedsReadUnread(getSubTreeFeeds(), status);
 }

@@ -106,10 +106,6 @@ bool StandardFeed::deleteViaGui() {
   }
 }
 
-bool StandardFeed::markAsReadUnread(ReadStatus status) {
-  return serviceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
-}
-
 QVariant StandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:

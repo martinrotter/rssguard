@@ -43,8 +43,3 @@ TtRssCategory::~TtRssCategory() {}
 TtRssServiceRoot* TtRssCategory::serviceRoot() const {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }
-
-bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(serviceRoot()->customIDSOfMessagesForItem(this), status);
-  return true;
-}

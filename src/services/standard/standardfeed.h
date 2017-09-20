@@ -69,8 +69,6 @@ class StandardFeed : public Feed {
     bool editViaGui();
     bool deleteViaGui();
 
-    bool markAsReadUnread(ReadStatus status);
-
     QVariant data(int column, int role) const;
 
     // Obtains data related to this feed.

@@ -86,11 +86,6 @@ bool OwnCloudFeed::removeItself() {
   return DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
 }
 
-bool OwnCloudFeed::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-  return getParentServiceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
-}
-
 OwnCloudServiceRoot* OwnCloudFeed::serviceRoot() const {
   return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
 }

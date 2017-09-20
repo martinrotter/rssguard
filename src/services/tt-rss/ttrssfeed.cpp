@@ -78,11 +78,6 @@ bool TtRssFeed::deleteViaGui() {
   }
 }
 
-bool TtRssFeed::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-  return getParentServiceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
-}
-
 bool TtRssFeed::editItself(TtRssFeed* new_feed_data) {
   QSqlDatabase database = qApp->database()->connection("aa", DatabaseFactory::FromSettings);
 

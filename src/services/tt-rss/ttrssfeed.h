@@ -40,8 +40,6 @@ class TtRssFeed : public Feed {
     bool canBeDeleted() const;
     bool deleteViaGui();
 
-    bool markAsReadUnread(ReadStatus status);
-
     bool editItself(TtRssFeed* new_feed_data);
     bool removeItself();
 

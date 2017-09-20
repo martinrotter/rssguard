@@ -42,7 +42,6 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     bool canBeDeleted() const;
     bool editViaGui();
     bool deleteViaGui();
-    bool markAsReadUnread(ReadStatus status);
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
     QVariant data(int column, int role) const;

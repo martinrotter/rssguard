@@ -38,9 +38,4 @@ OwnCloudServiceRoot* OwnCloudCategory::serviceRoot() const {
   return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
 }
 
-bool OwnCloudCategory::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-  return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
-}
-
 OwnCloudCategory::~OwnCloudCategory() {}

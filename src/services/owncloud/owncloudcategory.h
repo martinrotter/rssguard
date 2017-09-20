@@ -31,8 +31,6 @@ class OwnCloudCategory : public Category {
     explicit OwnCloudCategory(const QSqlRecord& record);
     virtual ~OwnCloudCategory();
 
-    bool markAsReadUnread(ReadStatus status);
-
   private:
     OwnCloudServiceRoot* serviceRoot() const;
 };

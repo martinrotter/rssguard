@@ -88,11 +88,6 @@ bool TtRssServiceRoot::deleteViaGui() {
   }
 }
 
-bool TtRssServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
-  addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
-  return ServiceRoot::markAsReadUnread(status);
-}
-
 bool TtRssServiceRoot::supportsFeedAdding() const {
   return true;
 }

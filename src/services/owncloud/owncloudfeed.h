@@ -39,8 +39,6 @@ class OwnCloudFeed : public Feed {
     bool editItself(OwnCloudFeed* new_feed_data);
     bool removeItself();
 
-    bool markAsReadUnread(ReadStatus status);
-
     OwnCloudServiceRoot* serviceRoot() const;
 
   private:

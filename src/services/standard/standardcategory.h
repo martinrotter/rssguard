@@ -59,8 +59,6 @@ class StandardCategory : public Category {
     bool editViaGui();
     bool deleteViaGui();
 
-    bool markAsReadUnread(ReadStatus status);
-
     // Removes category and all its children from persistent
     // database.
     bool removeItself();

@@ -30,6 +30,7 @@ class Category : public RootItem {
 
     void updateCounts(bool including_total_count);
     bool cleanMessages(bool clean_read_only);
+    bool markAsReadUnread(ReadStatus status);
 };
 
 #endif // CATEGORY_H

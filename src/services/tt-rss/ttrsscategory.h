@@ -34,8 +34,6 @@ class TtRssCategory : public Category {
     virtual ~TtRssCategory();
 
     TtRssServiceRoot* serviceRoot() const;
-
-    bool markAsReadUnread(ReadStatus status);
 };
 
 #endif // TTRSSCATEGORY_H

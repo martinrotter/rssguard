@@ -24,6 +24,7 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
@@ -49,6 +50,12 @@ bool ServiceRoot::deleteViaGui() {
 }
 
 bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
+  CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(this);
+
+  if (cache != nullptr) {
+    cache->addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
+  }
+
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {

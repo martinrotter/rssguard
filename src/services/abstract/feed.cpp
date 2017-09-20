@@ -23,6 +23,7 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
@@ -216,6 +217,17 @@ void Feed::run() {
 
 bool Feed::cleanMessages(bool clean_read_only) {
   return getParentServiceRoot()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
+}
+
+bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
+  ServiceRoot* service = getParentServiceRoot();
+  CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(service);
+
+  if (cache != nullptr) {
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
+  }
+
+  return service->markFeedsReadUnread(QList<Feed*>() << this, status);
 }
 
 int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtaining) {
