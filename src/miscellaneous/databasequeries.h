@@ -76,6 +76,7 @@ class DatabaseQueries {
     static bool storeAccountTree(QSqlDatabase db, RootItem* tree_root, int account_id);
     static bool editBaseFeed(QSqlDatabase db, int feed_id, Feed::AutoUpdateType auto_update_type,
                              int auto_update_interval);
+    static Assignment getCategories(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
     // ownCloud account.
     static QList<ServiceRoot*> getOwnCloudAccounts(QSqlDatabase db, bool* ok = nullptr);
@@ -85,7 +86,6 @@ class DatabaseQueries {
     static bool createOwnCloudAccount(QSqlDatabase db, int id_to_assign, const QString& username, const QString& password,
                                       const QString& url, bool force_server_side_feed_update);
     static int createAccount(QSqlDatabase db, const QString& code, bool* ok = nullptr);
-    static Assignment getOwnCloudCategories(QSqlDatabase db, int account_id, bool* ok = nullptr);
     static Assignment getOwnCloudFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
     // Standard account.
@@ -107,8 +107,8 @@ class DatabaseQueries {
                          const QString& username, const QString& password, Feed::AutoUpdateType auto_update_type,
                          int auto_update_interval, StandardFeed::Type feed_format);
     static QList<ServiceRoot*> getAccounts(QSqlDatabase db, bool* ok = nullptr);
-    static Assignment getCategories(QSqlDatabase db, int account_id, bool* ok = nullptr);
-    static Assignment getFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
+    static Assignment getStandardCategories(QSqlDatabase db, int account_id, bool* ok = nullptr);
+    static Assignment getStandardFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
     // TT-RSS acccount.
     static QList<ServiceRoot*> getTtRssAccounts(QSqlDatabase db, bool* ok = nullptr);
@@ -120,7 +120,6 @@ class DatabaseQueries {
                                    const QString& password, bool auth_protected, const QString& auth_username,
                                    const QString& auth_password, const QString& url,
                                    bool force_server_side_feed_update);
-    static Assignment getTtRssCategories(QSqlDatabase db, int account_id, bool* ok = nullptr);
     static Assignment getTtRssFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
   private:

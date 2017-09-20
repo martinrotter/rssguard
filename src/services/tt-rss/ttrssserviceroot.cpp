@@ -262,7 +262,7 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
 
 void TtRssServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  Assignment categories = DatabaseQueries::getTtRssCategories(database, accountId());
+  Assignment categories = DatabaseQueries::getCategories(database, accountId());
   Assignment feeds = DatabaseQueries::getTtRssFeeds(database, accountId());
 
   // All data are now obtained, lets create the hierarchy.

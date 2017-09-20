@@ -1037,39 +1037,6 @@ int DatabaseQueries::createAccount(QSqlDatabase db, const QString& code, bool* o
   }
 }
 
-Assignment DatabaseQueries::getOwnCloudCategories(QSqlDatabase db, int account_id, bool* ok) {
-  Assignment categories;
-
-  // Obtain data for categories from the database.
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    qFatal("ownCloud: Query for obtaining categories failed. Error message: '%s'.", qPrintable(q.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  while (q.next()) {
-    AssignmentItem pair;
-
-    pair.first = q.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new Category(q.record());
-    categories << pair;
-  }
-
-  if (ok != nullptr) {
-    *ok = true;
-  }
-
-  return categories;
-}
-
 Assignment DatabaseQueries::getOwnCloudFeeds(QSqlDatabase db, int account_id, bool* ok) {
   Assignment feeds;
   QSqlQuery q(db);
@@ -1328,7 +1295,7 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(QSqlDatabase db, bool* ok) {
   return roots;
 }
 
-Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getStandardCategories(QSqlDatabase db, int account_id, bool* ok) {
   Assignment categories;
 
   // Obtain data for categories from the database.
@@ -1363,7 +1330,7 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   return categories;
 }
 
-Assignment DatabaseQueries::getFeeds(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getStandardFeeds(QSqlDatabase db, int account_id, bool* ok) {
   Assignment feeds;
   QSqlQuery q(db);
 
@@ -1475,7 +1442,7 @@ bool DatabaseQueries::createTtRssAccount(QSqlDatabase db, int id_to_assign, cons
   }
 }
 
-Assignment DatabaseQueries::getTtRssCategories(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool* ok) {
   Assignment categories;
 
   // Obtain data for categories from the database.
