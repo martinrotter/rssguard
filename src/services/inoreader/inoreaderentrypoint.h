@@ -16,23 +16,26 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "services/owncloud/owncloudrecyclebin.h"
+#ifndef INOREADERENTRYPOINT_H
+#define INOREADERENTRYPOINT_H
 
-#include "services/abstract/cacheforserviceroot.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
-#include "services/owncloud/owncloudserviceroot.h"
+#include "services/abstract/serviceentrypoint.h"
 
-#include <QNetworkReply>
+class InoreaderEntryPoint : public ServiceEntryPoint {
+  public:
+    explicit InoreaderEntryPoint();
+    virtual ~InoreaderEntryPoint();
 
-OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem* parent) : RecycleBin(parent) {}
+    ServiceRoot* createNewRoot() const;
 
-OwnCloudRecycleBin::~OwnCloudRecycleBin() {}
+    QList<ServiceRoot*> initializeSubtree() const;
+    bool isSingleInstanceService() const;
+    QString name() const;
+    QString code() const;
+    QString description() const;
+    QString version() const;
+    QString author() const;
+    QIcon icon() const;
+};
 
-OwnCloudServiceRoot* OwnCloudRecycleBin::serviceRoot() {
-  return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
-}
-
-bool OwnCloudRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  serviceRoot()->addMessageStatesToCache(getParentServiceRoot()->customIDSOfMessagesForItem(this), status);
-  return RecycleBin::markAsReadUnread(status);
-}
+#endif // INOREADERENTRYPOINT_H

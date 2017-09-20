@@ -21,9 +21,10 @@
 
 #include <QtGlobal>
 
-#define SERVICE_CODE_STD_RSS  "std-rss"
-#define SERVICE_CODE_TT_RSS   "tt-rss"
-#define SERVICE_CODE_OWNCLOUD "owncloud"
+#define SERVICE_CODE_STD_RSS    "std-rss"
+#define SERVICE_CODE_TT_RSS     "tt-rss"
+#define SERVICE_CODE_OWNCLOUD   "owncloud"
+#define SERVICE_CODE_INOREADER  "inoreader"
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 

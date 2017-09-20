@@ -22,6 +22,7 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QThread>
@@ -97,6 +98,11 @@ QList<Message> RecycleBin::undeletedMessages() const {
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   ServiceRoot* parent_root = getParentServiceRoot();
+  CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(parent_root);
+
+  if (cache != nullptr) {
+    cache->addMessageStatesToCache(parent_root->customIDSOfMessagesForItem(this), status);
+  }
 
   if (DatabaseQueries::markBinReadUnread(database, parent_root->accountId(), status)) {
     updateCounts(false);

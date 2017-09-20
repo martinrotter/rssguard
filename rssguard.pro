@@ -298,7 +298,6 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/owncloud/network/owncloudnetworkfactory.h \
             src/services/owncloud/owncloudcategory.h \
             src/services/owncloud/owncloudfeed.h \
-            src/services/owncloud/owncloudrecyclebin.h \
             src/services/owncloud/owncloudserviceentrypoint.h \
             src/services/owncloud/owncloudserviceroot.h \
             src/services/standard/gui/formstandardcategorydetails.h \
@@ -314,7 +313,6 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/tt-rss/network/ttrssnetworkfactory.h \
             src/services/tt-rss/ttrsscategory.h \
             src/services/tt-rss/ttrssfeed.h \
-            src/services/tt-rss/ttrssrecyclebin.h \
             src/services/tt-rss/ttrssserviceentrypoint.h \
             src/services/tt-rss/ttrssserviceroot.h \
             src/gui/settings/settingspanel.h \
@@ -339,7 +337,9 @@ HEADERS +=  src/core/feeddownloader.h \
             src/gui/treeviewcolumnsmenu.h \
             src/services/abstract/labelsrootitem.h \
             src/services/abstract/label.h \
-            src/miscellaneous/externaltool.h
+            src/miscellaneous/externaltool.h \
+    src/services/inoreader/definitions.h \
+    src/services/inoreader/inoreaderentrypoint.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -425,7 +425,6 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/owncloud/network/owncloudnetworkfactory.cpp \
             src/services/owncloud/owncloudcategory.cpp \
             src/services/owncloud/owncloudfeed.cpp \
-            src/services/owncloud/owncloudrecyclebin.cpp \
             src/services/owncloud/owncloudserviceentrypoint.cpp \
             src/services/owncloud/owncloudserviceroot.cpp \
             src/services/standard/gui/formstandardcategorydetails.cpp \
@@ -440,7 +439,6 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/tt-rss/network/ttrssnetworkfactory.cpp \
             src/services/tt-rss/ttrsscategory.cpp \
             src/services/tt-rss/ttrssfeed.cpp \
-            src/services/tt-rss/ttrssrecyclebin.cpp \
             src/services/tt-rss/ttrssserviceentrypoint.cpp \
             src/services/tt-rss/ttrssserviceroot.cpp \
             src/gui/settings/settingspanel.cpp \
@@ -465,7 +463,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/treeviewcolumnsmenu.cpp \
             src/services/abstract/labelsrootitem.cpp \
             src/services/abstract/label.cpp \
-            src/miscellaneous/externaltool.cpp
+            src/miscellaneous/externaltool.cpp \
+    src/services/inoreader/inoreaderentrypoint.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 

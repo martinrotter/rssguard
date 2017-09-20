@@ -31,8 +31,9 @@ OwnCloudServiceEntryPoint::OwnCloudServiceEntryPoint() {}
 OwnCloudServiceEntryPoint::~OwnCloudServiceEntryPoint() {}
 
 ServiceRoot* OwnCloudServiceEntryPoint::createNewRoot() const {
-  QScopedPointer<FormEditOwnCloudAccount> form_acc(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
-  return form_acc->execForCreate();
+  FormEditOwnCloudAccount form_acc(qApp->mainFormWidget());
+
+  return form_acc.execForCreate();
 }
 
 QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {
@@ -54,8 +55,8 @@ QString OwnCloudServiceEntryPoint::code() const {
 }
 
 QString OwnCloudServiceEntryPoint::description() const {
-  return QObject::tr("The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.").arg(
-    API_VERSION);
+  return QObject::tr("The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.")
+         .arg(API_VERSION);
 }
 
 QString OwnCloudServiceEntryPoint::version() const {

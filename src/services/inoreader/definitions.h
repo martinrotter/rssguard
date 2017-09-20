@@ -16,23 +16,9 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef OWNCLOUDRECYCLEBIN_H
-#define OWNCLOUDRECYCLEBIN_H
+#ifndef INOREADER_DEFINITIONS_H
+#define INOREADER_DEFINITIONS_H
 
-#include "services/abstract/recyclebin.h"
+#define INOREADER_API_VERSION "0"
 
-class OwnCloudServiceRoot;
-
-class OwnCloudRecycleBin : public RecycleBin {
-  Q_OBJECT
-
-  public:
-    explicit OwnCloudRecycleBin(RootItem* parent = nullptr);
-    virtual ~OwnCloudRecycleBin();
-
-    OwnCloudServiceRoot* serviceRoot();
-
-    bool markAsReadUnread(ReadStatus status);
-};
-
-#endif // OWNCLOUDRECYCLEBIN_H
+#endif // INOREADER_DEFINITIONS_H

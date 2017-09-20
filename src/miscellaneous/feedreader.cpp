@@ -19,6 +19,7 @@
 #include "miscellaneous/feedreader.h"
 
 #include "services/abstract/serviceroot.h"
+#include "services/inoreader/inoreaderentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
@@ -45,6 +46,7 @@ FeedReader::FeedReader(QObject* parent)
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
   m_messagesModel = new MessagesModel(this);
   m_messagesProxyModel = new MessagesProxyModel(m_messagesModel, this);
+
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
   updateAutoUpdateStatus();
   asyncCacheSaveFinished();
@@ -63,9 +65,10 @@ FeedReader::~FeedReader() {
 QList<ServiceEntryPoint*> FeedReader::feedServices() {
   if (m_feedServices.isEmpty()) {
     // NOTE: All installed services create their entry points here.
+    m_feedServices.append(new InoreaderEntryPoint());
+    m_feedServices.append(new OwnCloudServiceEntryPoint());
     m_feedServices.append(new StandardServiceEntryPoint());
     m_feedServices.append(new TtRssServiceEntryPoint());
-    m_feedServices.append(new OwnCloudServiceEntryPoint());
   }
 
   return m_feedServices;

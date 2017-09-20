@@ -35,7 +35,6 @@ class TtRssFeed : public Feed {
 
     TtRssServiceRoot* serviceRoot() const;
 
-    QVariant data(int column, int role) const;
     bool canBeEdited() const;
     bool editViaGui();
     bool canBeDeleted() const;
