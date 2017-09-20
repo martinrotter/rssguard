@@ -60,7 +60,6 @@ class StandardCategory : public Category {
     bool deleteViaGui();
 
     bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clean_read_only);
 
     // Removes category and all its children from persistent
     // database.

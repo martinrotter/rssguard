@@ -70,7 +70,6 @@ class StandardFeed : public Feed {
     bool deleteViaGui();
 
     bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clean_read_only);
 
     QVariant data(int column, int role) const;
 

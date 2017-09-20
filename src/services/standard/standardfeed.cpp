@@ -110,10 +110,6 @@ bool StandardFeed::markAsReadUnread(ReadStatus status) {
   return serviceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
 }
 
-bool StandardFeed::cleanMessages(bool clean_read_only) {
-  return serviceRoot()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
-}
-
 QVariant StandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:

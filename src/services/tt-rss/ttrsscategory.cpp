@@ -45,20 +45,6 @@ TtRssServiceRoot* TtRssCategory::serviceRoot() const {
 }
 
 bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
-  const QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
-  TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
-                                                                                 status == RootItem::Unread ?
-                                                                                 UpdateArticle::SetToTrue :
-                                                                                 UpdateArticle::SetToFalse);
-
-  if (serviceRoot()->network()->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
-    return false;
-  }
-  else {
-    return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
-  }
-}
-
-bool TtRssCategory::cleanMessages(bool clear_only_read) {
-  return serviceRoot()->cleanFeeds(getSubTreeFeeds(), clear_only_read);
+  serviceRoot()->addMessageStatesToCache(serviceRoot()->customIDSOfMessagesForItem(this), status);
+  return true;
 }

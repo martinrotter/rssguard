@@ -82,6 +82,8 @@ class Feed : public RootItem, public QRunnable {
     // Runs update in thread (thread pooled).
     void run();
 
+    bool cleanMessages(bool clean_read_only);
+
   public slots:
     void updateCounts(bool including_total_count);
     int updateMessages(const QList<Message>& messages, bool error_during_obtaining);

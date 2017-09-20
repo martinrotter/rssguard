@@ -29,6 +29,7 @@ class Category : public RootItem {
     virtual ~Category();
 
     void updateCounts(bool including_total_count);
+    bool cleanMessages(bool clean_read_only);
 };
 
 #endif // CATEGORY_H

@@ -40,7 +40,6 @@ class OwnCloudFeed : public Feed {
     bool removeItself();
 
     bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clear_only_read);
 
     OwnCloudServiceRoot* serviceRoot() const;
 

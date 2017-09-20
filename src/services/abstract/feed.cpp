@@ -214,6 +214,10 @@ void Feed::run() {
   emit messagesObtained(msgs, error_during_obtaining);
 }
 
+bool Feed::cleanMessages(bool clean_read_only) {
+  return getParentServiceRoot()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
+}
+
 int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtaining) {
   QList<RootItem*> items_to_update;
   int updated_messages = 0;

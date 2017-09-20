@@ -116,10 +116,6 @@ bool StandardCategory::markAsReadUnread(ReadStatus status) {
   return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
 }
 
-bool StandardCategory::cleanMessages(bool clean_read_only) {
-  return serviceRoot()->cleanFeeds(getSubTreeFeeds(), clean_read_only);
-}
-
 bool StandardCategory::removeItself() {
   bool children_removed = true;
 

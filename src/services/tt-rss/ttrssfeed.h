@@ -41,7 +41,6 @@ class TtRssFeed : public Feed {
     bool deleteViaGui();
 
     bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clear_only_read);
 
     bool editItself(TtRssFeed* new_feed_data);
     bool removeItself();

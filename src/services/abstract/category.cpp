@@ -66,3 +66,7 @@ void Category::updateCounts(bool including_total_count) {
     }
   }
 }
+
+bool Category::cleanMessages(bool clean_read_only) {
+  return getParentServiceRoot()->cleanFeeds(getSubTreeFeeds(), clean_read_only);
+}
