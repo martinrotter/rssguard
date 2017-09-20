@@ -72,10 +72,10 @@ QVariant RecycleBin::data(int column, int role) const {
 
 QList<QAction*> RecycleBin::contextMenu() {
   if (m_contextMenu.isEmpty()) {
-    QAction* restore_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-restore-all")),
+    QAction* restore_action = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")),
                                           tr("Restore recycle bin"),
                                           this);
-    QAction* empty_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-empty")),
+    QAction* empty_action = new QAction(qApp->icons()->fromTheme(QSL("edit-clear")),
                                         tr("Empty recycle bin"),
                                         this);
 
