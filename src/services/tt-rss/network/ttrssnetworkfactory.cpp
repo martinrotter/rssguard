@@ -23,9 +23,9 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
+#include "services/abstract/category.h"
 #include "services/abstract/rootitem.h"
 #include "services/tt-rss/definitions.h"
-#include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/ttrssfeed.h"
 
 #include <QJsonArray>
@@ -502,7 +502,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             }
           }
           else {
-            TtRssCategory* category = new TtRssCategory();
+            Category* category = new Category();
 
             category->setTitle(item["name"].toString());
             category->setCustomId(item_id);

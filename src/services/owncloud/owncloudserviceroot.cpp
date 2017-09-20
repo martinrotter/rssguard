@@ -28,7 +28,6 @@
 #include "services/owncloud/gui/formeditowncloudaccount.h"
 #include "services/owncloud/gui/formowncloudfeeddetails.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
-#include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/owncloudfeed.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 

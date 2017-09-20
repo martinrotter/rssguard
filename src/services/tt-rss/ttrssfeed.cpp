@@ -26,7 +26,6 @@
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formttrssfeeddetails.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
-#include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
 #include <QPointer>
@@ -79,7 +78,7 @@ bool TtRssFeed::deleteViaGui() {
 }
 
 bool TtRssFeed::editItself(TtRssFeed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection("aa", DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
                                     new_feed_data->autoUpdateInitialInterval())) {

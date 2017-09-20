@@ -21,7 +21,6 @@
 #include "miscellaneous/application.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
-#include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
@@ -51,14 +50,12 @@ void FormTtRssFeedDetails::apply() {
     delete new_feed_data;
   }
   else {
-    RootItem* parent =
-      static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-    TtRssServiceRoot* root = parent->kind() == RootItemKind::Category ?
-                             qobject_cast<TtRssCategory*>(parent)->serviceRoot() :
-                             qobject_cast<TtRssServiceRoot*>(parent);
+    RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(
+                                                m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+    TtRssServiceRoot* root = qobject_cast<TtRssServiceRoot*>(parent->getParentServiceRoot());
     const int category_id = parent->kind() == RootItemKind::ServiceRoot ?
                             0 :
-                            qobject_cast<TtRssCategory*>(parent)->customId();
+                            parent->customId();
     const TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_ui->m_txtUrl->lineEdit()->text(),
                                                                                    category_id,
                                                                                    m_ui->m_gbAuthentication->isChecked(),

@@ -174,11 +174,4 @@ bool StandardCategory::editItself(StandardCategory* new_category_data) {
   }
 }
 
-StandardCategory::StandardCategory(const QSqlRecord& record) : Category(nullptr) {
-  setId(record.value(CAT_DB_ID_INDEX).toInt());
-  setCustomId(id());
-  setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
-  setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
-  setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
-}
+StandardCategory::StandardCategory(const QSqlRecord& record) : Category(record) {}

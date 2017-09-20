@@ -22,9 +22,9 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
+#include "services/abstract/category.h"
 #include "services/abstract/rootitem.h"
 #include "services/owncloud/definitions.h"
-#include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/owncloudfeed.h"
 
 #include <QJsonArray>
@@ -486,7 +486,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   // Process categories first, then process feeds.
   foreach (const QJsonValue& cat, QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray()) {
     QJsonObject item = cat.toObject();
-    OwnCloudCategory* category = new OwnCloudCategory();
+    Category* category = new Category();
 
     category->setTitle(item["name"].toString());
     category->setCustomId(item["id"].toInt());

@@ -20,12 +20,34 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
+#include "miscellaneous/iconfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/serviceroot.h"
 
 Category::Category(RootItem* parent) : RootItem(parent) {
   setKind(RootItemKind::Category);
+
+  if (icon().isNull()) {
+    setIcon(qApp->icons()->fromTheme(QSL("folder")));
+  }
+}
+
+Category::Category(const QSqlRecord& record) : Category(nullptr) {
+  setId(record.value(CAT_DB_ID_INDEX).toInt());
+  setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toInt());
+
+  if (customId() <= 0) {
+    setCustomId(id());
+  }
+
+  setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
+  setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
+
+  setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
+
+  setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
 }
 
 Category::~Category() {}

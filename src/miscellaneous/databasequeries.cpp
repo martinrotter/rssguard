@@ -23,14 +23,12 @@
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
-#include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/owncloudfeed.h"
 #include "services/owncloud/owncloudserviceroot.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardserviceroot.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
-#include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
@@ -1061,7 +1059,7 @@ Assignment DatabaseQueries::getOwnCloudCategories(QSqlDatabase db, int account_i
     AssignmentItem pair;
 
     pair.first = q.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new OwnCloudCategory(q.record());
+    pair.second = new Category(q.record());
     categories << pair;
   }
 
@@ -1504,7 +1502,7 @@ Assignment DatabaseQueries::getTtRssCategories(QSqlDatabase db, int account_id, 
     AssignmentItem pair;
 
     pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new TtRssCategory(query_categories.record());
+    pair.second = new Category(query_categories.record());
     categories << pair;
   }
 
