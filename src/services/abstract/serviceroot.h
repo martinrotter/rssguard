@@ -45,9 +45,12 @@ class ServiceRoot : public RootItem {
     explicit ServiceRoot(RootItem* parent = nullptr);
     virtual ~ServiceRoot();
 
+    void updateCounts(bool including_total_count);
     bool deleteViaGui();
     bool markAsReadUnread(ReadStatus status);
+    virtual RecycleBin* recycleBin() const;
 
+    QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const = 0;
     virtual bool supportsCategoryAdding() const = 0;
 
@@ -66,13 +69,6 @@ class ServiceRoot : public RootItem {
     // bar in sections "Services -> 'this service'".
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> serviceMenu();
-
-    // Access to recycle bin of this account if there is any.
-    virtual RecycleBin* recycleBin() const = 0;
-
-    void updateCounts(bool including_total_count);
-
-    QList<Message> undeletedMessages() const;
 
     // Start/stop services.
     // Start method is called when feed model gets initialized OR after user adds new service.
@@ -198,8 +194,6 @@ class ServiceRoot : public RootItem {
     void assembleFeeds(Assignment feeds);
 
   signals:
-
-    // Emitted if data in any item belonging to this root are changed.
     void dataChanged(QList<RootItem*> items);
     void reloadMessageListRequested(bool mark_selected_messages_read);
     void itemExpandRequested(QList<RootItem*> items, bool expand);
@@ -211,6 +205,9 @@ class ServiceRoot : public RootItem {
   private:
     virtual QMap<int, QVariant> storeCustomFeedsData() = 0;
     virtual void restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds) = 0;
+
+  private:
+    RecycleBin* m_recycleBin;
     int m_accountId;
 };
 

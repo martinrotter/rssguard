@@ -42,22 +42,8 @@ class RecycleBin : public RootItem {
     void updateCounts(bool update_total_count);
 
   public slots:
-
-    /////////////////////////////////////////
-    // /* Members to override.
-    /////////////////////////////////////////
-
-    // Empties the bin - removes all messages from it (does not remove
-    // them from DB, just permanently hide them, so that they are not
-    // re-downloaded).
     virtual bool empty();
-
-    // Performs complete restoration of all messages contained in the bin
     virtual bool restore();
-
-    /////////////////////////////////////////
-    // Members to override. */
-    /////////////////////////////////////////
 
   private:
     int m_totalCount;

@@ -24,7 +24,6 @@
 #include <QCoreApplication>
 #include <QPair>
 
-class RecycleBin;
 class StandardCategory;
 class StandardFeed;
 class FeedsImportExportModel;
@@ -52,9 +51,6 @@ class StandardServiceRoot : public ServiceRoot {
     QVariant data(int column, int role) const;
     Qt::ItemFlags additionalFlags() const;
 
-    // Access to recycle bin.
-    RecycleBin* recycleBin() const;
-
     // Returns menu to be shown in "Services -> service" menu.
     QList<QAction*> serviceMenu();
 
@@ -79,7 +75,6 @@ class StandardServiceRoot : public ServiceRoot {
     QString processFeedUrl(const QString& feed_url);
     void checkArgumentsForFeedAdding();
 
-    RecycleBin* m_recycleBin;
     QAction* m_actionExportFeeds;
     QAction* m_actionImportFeeds;
 

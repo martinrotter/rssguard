@@ -25,13 +25,13 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
+#include "services/abstract/recyclebin.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
 #include "services/tt-rss/gui/formttrssfeeddetails.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/ttrssfeed.h"
-#include "services/tt-rss/ttrssrecyclebin.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include <QClipboard>
@@ -39,7 +39,7 @@
 #include <QSqlTableModel>
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), CacheForServiceRoot(), m_recycleBin(new TtRssRecycleBin(this)),
+  : ServiceRoot(parent), CacheForServiceRoot(),
   m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory()) {
   setIcon(TtRssServiceEntryPoint().icon());
 }
@@ -151,10 +151,6 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
     default:
       return ServiceRoot::data(column, role);
   }
-}
-
-RecycleBin* TtRssServiceRoot::recycleBin() const {
-  return m_recycleBin;
 }
 
 void TtRssServiceRoot::saveAllCachedData() {
@@ -280,7 +276,7 @@ void TtRssServiceRoot::loadFromDatabase() {
   assembleFeeds(feeds);
 
   // As the last item, add recycle bin, which is needed.
-  appendChild(m_recycleBin);
+  appendChild(recycleBin());
   updateCounts(true);
 }
 

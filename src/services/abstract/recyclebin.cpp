@@ -27,8 +27,7 @@
 
 #include <QThread>
 
-RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCount(0),
-  m_unreadCount(0), m_contextMenu(QList<QAction*>()) {
+RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCount(0), m_unreadCount(0), m_contextMenu(QList<QAction*>()) {
   setKind(RootItemKind::Bin);
   setId(ID_RECYCLE_BIN);
   setIcon(qApp->icons()->fromTheme(QSL("user-trash")));

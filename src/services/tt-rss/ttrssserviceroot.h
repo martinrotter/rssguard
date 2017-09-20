@@ -27,7 +27,6 @@
 class TtRssCategory;
 class TtRssFeed;
 class TtRssNetworkFactory;
-class TtRssRecycleBin;
 
 class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   Q_OBJECT
@@ -48,7 +47,6 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     bool supportsCategoryAdding() const;
     QVariant data(int column, int role) const;
     QList<QAction*> serviceMenu();
-    RecycleBin* recycleBin() const;
 
     void saveAllCachedData();
 
@@ -73,7 +71,6 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     void loadFromDatabase();
 
-    TtRssRecycleBin* m_recycleBin;
     QAction* m_actionSyncIn;
 
     QList<QAction*> m_serviceMenu;

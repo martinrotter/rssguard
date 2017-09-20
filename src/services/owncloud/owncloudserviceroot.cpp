@@ -24,16 +24,16 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/recyclebin.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
 #include "services/owncloud/gui/formowncloudfeeddetails.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/owncloudfeed.h"
-#include "services/owncloud/owncloudrecyclebin.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), CacheForServiceRoot(), m_recycleBin(new OwnCloudRecycleBin(this)),
+  : ServiceRoot(parent), CacheForServiceRoot(),
   m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new OwnCloudNetworkFactory()) {
   setIcon(OwnCloudServiceEntryPoint().icon());
 }
@@ -83,10 +83,6 @@ QList<QAction*> OwnCloudServiceRoot::serviceMenu() {
   }
 
   return m_serviceMenu;
-}
-
-RecycleBin* OwnCloudServiceRoot::recycleBin() const {
-  return m_recycleBin;
 }
 
 void OwnCloudServiceRoot::start(bool freshly_activated) {
@@ -298,6 +294,6 @@ void OwnCloudServiceRoot::loadFromDatabase() {
   assembleFeeds(feeds);
 
   // As the last item, add recycle bin, which is needed.
-  appendChild(m_recycleBin);
+  appendChild(recycleBin());
   updateCounts(true);
 }

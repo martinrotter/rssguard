@@ -25,7 +25,6 @@
 #include <QMap>
 
 class OwnCloudNetworkFactory;
-class OwnCloudRecycleBin;
 class Mutex;
 
 class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
@@ -42,7 +41,6 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
     QList<QAction*> serviceMenu();
-    RecycleBin* recycleBin() const;
 
     void start(bool freshly_activated);
     void stop();
@@ -70,7 +68,6 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     void loadFromDatabase();
 
-    OwnCloudRecycleBin* m_recycleBin;
     QAction* m_actionSyncIn;
 
     QList<QAction*> m_serviceMenu;

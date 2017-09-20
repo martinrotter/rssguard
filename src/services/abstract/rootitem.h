@@ -137,8 +137,10 @@ class RootItem : public QObject {
     }
 
     inline void appendChild(RootItem* child) {
-      m_childItems.append(child);
-      child->setParent(this);
+      if (child != nullptr) {
+        m_childItems.append(child);
+        child->setParent(this);
+      }
     }
 
     // Access to children.

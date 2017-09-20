@@ -43,7 +43,7 @@
 #include <QStack>
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), m_recycleBin(new RecycleBin(this)),
+  : ServiceRoot(parent),
   m_actionExportFeeds(nullptr), m_actionImportFeeds(nullptr), m_serviceMenu(QList<QAction*>()),
   m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(nullptr) {
   setTitle(qApp->system()->loggedInUser() + QL1S("@") + QL1S(APP_LOW_NAME));
@@ -159,10 +159,6 @@ QVariant StandardServiceRoot::data(int column, int role) const {
 
 Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return Qt::ItemIsDropEnabled;
-}
-
-RecycleBin* StandardServiceRoot::recycleBin() const {
-  return m_recycleBin;
 }
 
 void StandardServiceRoot::loadFromDatabase() {

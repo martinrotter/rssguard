@@ -28,7 +28,7 @@
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
 
-ServiceRoot::ServiceRoot(RootItem* parent) : RootItem(parent), m_accountId(NO_PARENT_CATEGORY) {
+ServiceRoot::ServiceRoot(RootItem* parent) : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_accountId(NO_PARENT_CATEGORY) {
   setKind(RootItemKind::ServiceRoot);
   setCreationDate(QDateTime::currentDateTime());
 }
@@ -64,6 +64,10 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
 
 QList<QAction*> ServiceRoot::addItemMenu() {
   return QList<QAction*>();
+}
+
+RecycleBin* ServiceRoot::recycleBin() const {
+  return m_recycleBin;
 }
 
 QList<QAction*> ServiceRoot::contextMenu() {
