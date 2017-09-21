@@ -23,9 +23,6 @@
 
 class TtRssServiceEntryPoint : public ServiceEntryPoint {
   public:
-    explicit TtRssServiceEntryPoint();
-    virtual ~TtRssServiceEntryPoint();
-
     bool isSingleInstanceService() const;
     QString name() const;
     QString description() const;

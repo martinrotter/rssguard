@@ -23,14 +23,14 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/inoreader/definitions.h"
+#include "services/inoreader/gui/formeditinoreaderaccount.h"
+#include "services/inoreader/inoreaderserviceroot.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
-InoreaderEntryPoint::InoreaderEntryPoint() {}
-
-InoreaderEntryPoint::~InoreaderEntryPoint() {}
-
 ServiceRoot* InoreaderEntryPoint::createNewRoot() const {
-  return nullptr;
+  FormEditInoreaderAccount form_acc(qApp->mainFormWidget());
+
+  return form_acc.execForCreate();
 }
 
 QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {

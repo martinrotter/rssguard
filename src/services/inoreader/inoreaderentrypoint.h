@@ -23,9 +23,6 @@
 
 class InoreaderEntryPoint : public ServiceEntryPoint {
   public:
-    explicit InoreaderEntryPoint();
-    virtual ~InoreaderEntryPoint();
-
     ServiceRoot* createNewRoot() const;
 
     QList<ServiceRoot*> initializeSubtree() const;

@@ -26,10 +26,6 @@
 #include "services/owncloud/gui/formeditowncloudaccount.h"
 #include "services/owncloud/owncloudserviceroot.h"
 
-OwnCloudServiceEntryPoint::OwnCloudServiceEntryPoint() {}
-
-OwnCloudServiceEntryPoint::~OwnCloudServiceEntryPoint() {}
-
 ServiceRoot* OwnCloudServiceEntryPoint::createNewRoot() const {
   FormEditOwnCloudAccount form_acc(qApp->mainFormWidget());
 

@@ -25,12 +25,6 @@
 #include "services/tt-rss/gui/formeditttrssaccount.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
-#include <QPointer>
-
-TtRssServiceEntryPoint::TtRssServiceEntryPoint() {}
-
-TtRssServiceEntryPoint::~TtRssServiceEntryPoint() {}
-
 bool TtRssServiceEntryPoint::isSingleInstanceService() const {
   return false;
 }
@@ -59,8 +53,9 @@ QString TtRssServiceEntryPoint::code() const {
 }
 
 ServiceRoot* TtRssServiceEntryPoint::createNewRoot() const {
-  QScopedPointer<FormEditTtRssAccount> form_acc(new FormEditTtRssAccount(qApp->mainFormWidget()));
-  return form_acc->execForCreate();
+  FormEditTtRssAccount form_acc(qApp->mainFormWidget());
+
+  return form_acc.execForCreate();
 }
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() const {

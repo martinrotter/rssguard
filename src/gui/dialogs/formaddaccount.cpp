@@ -53,7 +53,7 @@ void FormAddAccount::addSelectedAccount() {
     m_model->addServiceAccount(new_root, true);
   }
   else {
-    qCritical("Cannot create new account.");
+    qWarning("Cannot create new account.");
   }
 }
 

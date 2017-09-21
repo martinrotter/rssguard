@@ -23,9 +23,6 @@
 
 class StandardServiceEntryPoint : public ServiceEntryPoint {
   public:
-    explicit StandardServiceEntryPoint();
-    virtual ~StandardServiceEntryPoint();
-
     bool isSingleInstanceService() const;
     QString name() const;
     QString description() const;

@@ -23,9 +23,6 @@
 
 class OwnCloudServiceEntryPoint : public ServiceEntryPoint {
   public:
-    explicit OwnCloudServiceEntryPoint();
-    virtual ~OwnCloudServiceEntryPoint();
-
     ServiceRoot* createNewRoot() const;
 
     QList<ServiceRoot*> initializeSubtree() const;

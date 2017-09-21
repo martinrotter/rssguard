@@ -76,12 +76,14 @@ void InoreaderNetworkFactory::initializeOauth() {
   });
   connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::granted, [=]() {
     qDebug("Inoreader: Oauth2 granted.");
+    emit accessGranted();
   });
-  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::error, [](const QString& error, const QString& error_description, const QUrl& uri) {
-    Q_UNUSED(error)
+  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::error, [=](QString err, QString error_description, QUrl uri) {
+    Q_UNUSED(err)
     Q_UNUSED(uri)
 
     qCritical("Inoreader: We have error: '%s'.", qPrintable(error_description));
+    emit error(error_description);
   });
   connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, [](const QUrl& url) {
     qApp->web()->openUrlInExternalBrowser(url.toString());

@@ -95,12 +95,14 @@ OwnCloudServiceRoot* FormEditOwnCloudAccount::execForCreate() {
 
 void FormEditOwnCloudAccount::execForEdit(OwnCloudServiceRoot* existing_root) {
   setWindowTitle(tr("Edit existing ownCloud News account"));
+
   m_editableRoot = existing_root;
   m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->authUsername());
   m_ui->m_txtPassword->lineEdit()->setText(existing_root->network()->authPassword());
   m_ui->m_txtUrl->lineEdit()->setText(existing_root->network()->url());
   m_ui->m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
   m_ui->m_spinLimitMessages->setValue(existing_root->network()->batchSize());
+
   exec();
 }
 

@@ -23,10 +23,6 @@
 #include "miscellaneous/databasequeries.h"
 #include "services/standard/standardserviceroot.h"
 
-StandardServiceEntryPoint::StandardServiceEntryPoint() {}
-
-StandardServiceEntryPoint::~StandardServiceEntryPoint() {}
-
 bool StandardServiceEntryPoint::isSingleInstanceService() const {
   return true;
 }

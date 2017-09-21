@@ -16,34 +16,37 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef INOREADERNETWORKFACTORY_H
-#define INOREADERNETWORKFACTORY_H
+#ifndef FORMEDITINOREADERACCOUNT_H
+#define FORMEDITINOREADERACCOUNT_H
 
-#include <QObject>
+#include <QDialog>
 
-#include <QOAuth2AuthorizationCodeFlow>
+#include "ui_formeditinoreaderaccount.h"
 
-class InoreaderNetworkFactory : public QObject {
+#include "services/inoreader/network/inoreadernetworkfactory.h"
+
+namespace Ui {
+  class FormEditInoreaderAccount;
+}
+
+class InoreaderServiceRoot;
+
+class FormEditInoreaderAccount : public QDialog {
   Q_OBJECT
 
   public:
-    explicit InoreaderNetworkFactory(QObject* parent = nullptr);
+    explicit FormEditInoreaderAccount(QWidget* parent = 0);
+    virtual ~FormEditInoreaderAccount();
 
-    bool isLoggedIn() const;
+    InoreaderServiceRoot* execForCreate();
 
-  public slots:
-    void logIn();
-    void logInIfNeeded();
-
-  signals:
-    void accessGranted();
-    void error(QString& description);
+  private slots:
+    void testSetup();
 
   private:
-    void initializeOauth();
-
-  private:
-    QOAuth2AuthorizationCodeFlow m_oauth2;
+    Ui::FormEditInoreaderAccount m_ui;
+    InoreaderNetworkFactory m_network;
+    InoreaderServiceRoot* m_editableRoot;
 };
 
-#endif // INOREADERNETWORKFACTORY_H
+#endif // FORMEDITINOREADERACCOUNT_H
