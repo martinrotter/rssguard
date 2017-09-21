@@ -18,7 +18,30 @@
 
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
-InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent) {}
+#include "network-web/silentnetworkaccessmanager.h"
+#include "services/inoreader/definitions.h"
+
+#include <QOAuthHttpServerReplyHandler>
+#include <QUrl>
+
+InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent) {
+  initializeOauth();
+}
+
+void InoreaderNetworkFactory::initializeOauth() {
+  auto oauth_reply_handler = new QOAuthHttpServerReplyHandler(INOREADER_OAUTH_PORT, this);
+
+  // Full redirect URL is thus "http://localhost.8080/".
+  oauth_reply_handler->setCallbackPath(QSL(""));
+
+  m_oauth2.setAccessTokenUrl(QUrl(INOREADER_OAUTH_TOKEN_URL));
+  m_oauth2.setAuthorizationUrl(QUrl(INOREADER_OAUTH_AUTH_URL));
+  m_oauth2.setClientIdentifier(INOREADER_OAUTH_CLI_ID);
+  m_oauth2.setClientIdentifierSharedKey(INOREADER_OAUTH_CLI_KEY);
+  m_oauth2.setContentType(QAbstractOAuth::ContentType::Json);
+  m_oauth2.setNetworkAccessManager(new SilentNetworkAccessManager(this));
+  m_oauth2.setReplyHandler(oauth_reply_handler);
+}
 
 /*
    QOAuth2AuthorizationCodeFlow* oauth2 = new QOAuth2AuthorizationCodeFlow("1000000604",

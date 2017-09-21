@@ -49,7 +49,7 @@ QString InoreaderEntryPoint::code() const {
 }
 
 QString InoreaderEntryPoint::description() const {
-  return QObject::tr("This is integration of Inoreader. This plugin implements API, version %1.").arg(INOREADER_API_VERSION);
+  return QObject::tr("This is integration of Inoreader.");
 }
 
 QString InoreaderEntryPoint::version() const {

@@ -21,15 +21,19 @@
 
 #include <QObject>
 
+#include <QOAuth2AuthorizationCodeFlow>
+
 class InoreaderNetworkFactory : public QObject {
   Q_OBJECT
 
   public:
     explicit InoreaderNetworkFactory(QObject* parent = nullptr);
 
-  signals:
+  private:
+    void initializeOauth();
 
-  public slots:
+  private:
+    QOAuth2AuthorizationCodeFlow m_oauth2;
 };
 
 #endif // INOREADERNETWORKFACTORY_H
