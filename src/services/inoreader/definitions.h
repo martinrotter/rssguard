@@ -19,7 +19,8 @@
 #ifndef INOREADER_DEFINITIONS_H
 #define INOREADER_DEFINITIONS_H
 
-#define INOREADER_OAUTH_PORT        "8080"
+#define INOREADER_OAUTH_PORT        8080
+#define INOREADER_OAUTH_SCOPE       "read write"
 #define INOREADER_OAUTH_TOKEN_URL   "https://www.inoreader.com/oauth2/token"
 #define INOREADER_OAUTH_AUTH_URL    "https://www.inoreader.com/oauth2/auth"
 #define INOREADER_OAUTH_CLI_ID      "1000000604"

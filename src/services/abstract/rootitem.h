@@ -53,9 +53,6 @@ class RootItem : public QObject {
   Q_OBJECT
 
   public:
-
-    // Holds statuses for feeds/messages
-    // to be marked read/unread.
     enum ReadStatus {
       Unread = 0,
       Read = 1

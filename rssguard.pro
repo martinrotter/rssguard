@@ -334,7 +334,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/miscellaneous/externaltool.h \
             src/services/inoreader/definitions.h \
             src/services/inoreader/inoreaderentrypoint.h \
-            src/services/inoreader/network/inoreadernetworkfactory.h
+            src/services/inoreader/network/inoreadernetworkfactory.h \
+    src/services/inoreader/inoreaderserviceroot.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -458,7 +459,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/abstract/label.cpp \
             src/miscellaneous/externaltool.cpp \
             src/services/inoreader/inoreaderentrypoint.cpp \
-            src/services/inoreader/network/inoreadernetworkfactory.cpp
+            src/services/inoreader/network/inoreadernetworkfactory.cpp \
+    src/services/inoreader/inoreaderserviceroot.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 

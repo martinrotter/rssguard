@@ -18,7 +18,12 @@
 
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
+#include "definitions/definitions.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/tabwidget.h"
+#include "miscellaneous/application.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/webfactory.h"
 #include "services/inoreader/definitions.h"
 
 #include <QOAuthHttpServerReplyHandler>
@@ -26,6 +31,14 @@
 
 InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent) {
   initializeOauth();
+}
+
+bool InoreaderNetworkFactory::isLoggedIn() const {
+  return m_oauth2.expirationAt() > QDateTime::currentDateTime() && m_oauth2.status() == QAbstractOAuth::Status::Granted;
+}
+
+void InoreaderNetworkFactory::logIn() {
+  m_oauth2.grant();
 }
 
 void InoreaderNetworkFactory::initializeOauth() {
@@ -41,6 +54,19 @@ void InoreaderNetworkFactory::initializeOauth() {
   m_oauth2.setContentType(QAbstractOAuth::ContentType::Json);
   m_oauth2.setNetworkAccessManager(new SilentNetworkAccessManager(this));
   m_oauth2.setReplyHandler(oauth_reply_handler);
+  m_oauth2.setUserAgent(APP_USERAGENT);
+  m_oauth2.setScope(INOREADER_OAUTH_SCOPE);
+
+  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::statusChanged, [=](QAbstractOAuth::Status status) {});
+  m_oauth2.setModifyParametersFunction([&](QAbstractOAuth::Stage stage, QVariantMap* parameters) {});
+  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::granted, [=]() {
+    int a = 5;
+
+  });
+  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::error, [](const QString& error, const QString& errorDescription, const QUrl& uri) {});
+  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, [](const QUrl& url) {
+    qApp->web()->openUrlInExternalBrowser(url.toString());
+  });
 }
 
 /*

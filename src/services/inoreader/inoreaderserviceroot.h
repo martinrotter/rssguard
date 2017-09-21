@@ -2,6 +2,7 @@
 
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,29 +17,22 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef INOREADERNETWORKFACTORY_H
-#define INOREADERNETWORKFACTORY_H
+#ifndef INOREADERSERVICEROOT_H
+#define INOREADERSERVICEROOT_H
 
-#include <QObject>
+#include "services/abstract/serviceroot.h"
 
-#include <QOAuth2AuthorizationCodeFlow>
+#include "services/inoreader/network/inoreadernetworkfactory.h"
 
-class InoreaderNetworkFactory : public QObject {
+class InoreaderServiceRoot : public ServiceRoot {
   Q_OBJECT
 
   public:
-    explicit InoreaderNetworkFactory(QObject* parent = nullptr);
-
-    bool isLoggedIn() const;
-
-  public slots:
-    void logIn();
+    explicit InoreaderServiceRoot(RootItem* parent = nullptr);
+    virtual ~InoreaderServiceRoot();
 
   private:
-    void initializeOauth();
-
-  private:
-    QOAuth2AuthorizationCodeFlow m_oauth2;
+    InoreaderNetworkFactory m_network;
 };
 
-#endif // INOREADERNETWORKFACTORY_H
+#endif // INOREADERSERVICEROOT_H
