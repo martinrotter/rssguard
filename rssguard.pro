@@ -61,12 +61,8 @@ DEFINES	    *= QT_USE_QSTRINGBUILDER
 
 message(rssguard: Welcome RSS Guard qmake script.)
 
-lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 6) {
-  warning(rssguard: At least Qt "5.6.0" is required. Expect errors!!!)
-}
-
-lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 7) {
-  warning(rssguard: You have Qt \"$$QT_VERSION\". Some features will be disabled.)
+lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 8) {
+  error(rssguard: At least Qt \"5.8.0\" is required!!!)
 }
 
 APP_NAME                      = "RSS Guard"
