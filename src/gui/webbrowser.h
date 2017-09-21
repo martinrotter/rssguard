@@ -82,10 +82,7 @@ class WebBrowser : public TabContent {
     void receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change);
 
     void onTitleChanged(const QString& new_title);
-
-#if QT_VERSION >= 0x050700
     void onIconChanged(const QIcon& icon);
-#endif
 
   signals:
 

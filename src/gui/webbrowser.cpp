@@ -47,9 +47,7 @@ void WebBrowser::createConnections() {
 
   // Forward title/icon changes.
   connect(m_webView, &WebViewer::titleChanged, this, &WebBrowser::onTitleChanged);
-#if QT_VERSION >= 0x050700
   connect(m_webView, &WebViewer::iconChanged, this, &WebBrowser::onIconChanged);
-#endif
 }
 
 void WebBrowser::updateUrl(const QUrl& url) {
@@ -168,12 +166,9 @@ void WebBrowser::onTitleChanged(const QString& new_title) {
   }
 }
 
-#if QT_VERSION >= 0x050700
 void WebBrowser::onIconChanged(const QIcon& icon) {
   emit iconChanged(m_index, icon);
 }
-
-#endif
 
 void WebBrowser::initializeLayout() {
   m_toolBar->setFloatable(false);
