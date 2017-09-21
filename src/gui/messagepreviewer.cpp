@@ -44,11 +44,13 @@ void MessagePreviewer::createConnections() {
         box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
         box.setInformativeText(tr("What action do you want to take?"));
         box.setDetailedText(url.toString());
+
         QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ActionRole);
         QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ActionRole);
         QAbstractButton* btn_cancel = box.addButton(QMessageBox::Cancel);
         bool always;
         MessageBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
+
         box.setDefaultButton(QMessageBox::Cancel);
         box.exec();
 
@@ -113,8 +115,7 @@ void MessagePreviewer::reloadFontSettings() {
   const Settings* settings = qApp->settings();
   QFont fon;
 
-  fon.fromString(settings->value(GROUP(Messages),
-                                 SETTING(Messages::PreviewerFontStandard)).toString());
+  fon.fromString(settings->value(GROUP(Messages), SETTING(Messages::PreviewerFontStandard)).toString());
   m_ui->m_txtMessage->setFont(fon);
 }
 
