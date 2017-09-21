@@ -40,6 +40,17 @@ RootItem::RootItem(RootItem* parent_item)
   setupFonts();
 }
 
+RootItem::RootItem(const RootItem& other) {
+  setTitle(other.title());
+  setId(other.id());
+  setCustomId(other.customId());
+  setIcon(other.icon());
+  setChildItems(other.childItems());
+  setParent(other.parent());
+  setCreationDate(other.creationDate());
+  setDescription(other.description());
+}
+
 RootItem::~RootItem() {
   qDeleteAll(m_childItems);
 }

@@ -37,6 +37,16 @@ Feed::Feed(RootItem* parent)
   setAutoDelete(false);
 }
 
+Feed::Feed(const Feed& other) : RootItem(other) {
+  setCountOfAllMessages(other.countOfAllMessages());
+  setCountOfUnreadMessages(other.countOfUnreadMessages());
+  setUrl(other.url());
+  setStatus(other.status());
+  setAutoUpdateType(other.autoUpdateType());
+  setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
+  setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
+}
+
 Feed::~Feed() {}
 
 QList<Message> Feed::undeletedMessages() const {

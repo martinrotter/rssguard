@@ -70,6 +70,7 @@ class RootItem : public QObject {
 
     // Constructors and destructors.
     explicit RootItem(RootItem* parent_item = nullptr);
+    explicit RootItem(const RootItem& other);
     virtual ~RootItem();
 
     virtual QString hashCode() const;

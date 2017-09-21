@@ -54,28 +54,13 @@ StandardFeed::StandardFeed(RootItem* parent_item)
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other)
-  : Feed(nullptr) {
+  : Feed(other) {
   m_passwordProtected = other.passwordProtected();
   m_username = other.username();
   m_password = other.password();
   m_networkError = other.networkError();
   m_type = other.type();
   m_encoding = other.encoding();
-  setCountOfAllMessages(other.countOfAllMessages());
-  setCountOfUnreadMessages(other.countOfUnreadMessages());
-  setUrl(other.url());
-  setStatus(other.status());
-  setAutoUpdateType(other.autoUpdateType());
-  setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
-  setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
-  setTitle(other.title());
-  setId(other.id());
-  setCustomId(other.customId());
-  setIcon(other.icon());
-  setChildItems(other.childItems());
-  setParent(other.parent());
-  setCreationDate(other.creationDate());
-  setDescription(other.description());
 }
 
 StandardFeed::~StandardFeed() {
