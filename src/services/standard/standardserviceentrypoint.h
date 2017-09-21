@@ -29,7 +29,6 @@ class StandardServiceEntryPoint : public ServiceEntryPoint {
     bool isSingleInstanceService() const;
     QString name() const;
     QString description() const;
-    QString version() const;
     QString author() const;
     QIcon icon() const;
     QString code() const;

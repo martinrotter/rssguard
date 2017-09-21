@@ -19,6 +19,7 @@
 #include "gui/dialogs/formaddaccount.h"
 
 #include "core/feedsmodel.h"
+#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/standard/standardserviceentrypoint.h"
@@ -31,11 +32,11 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, Fe
   m_ui->setupUi(this);
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("document-new")));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-new")));
+
   connect(m_ui->m_listEntryPoints, &QListWidget::itemDoubleClicked, this, &FormAddAccount::addSelectedAccount);
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAddAccount::addSelectedAccount);
-  connect(m_ui->m_listEntryPoints, &QListWidget::itemSelectionChanged, this, &FormAddAccount::displayActiveEntryPointDetails);
+
   loadEntryPoints();
 }
 
@@ -56,15 +57,6 @@ void FormAddAccount::addSelectedAccount() {
   }
 }
 
-void FormAddAccount::displayActiveEntryPointDetails() {
-  const ServiceEntryPoint* point = selectedEntryPoint();
-
-  m_ui->m_txtAuthor->setText(point->author());
-  m_ui->m_txtDescription->setText(point->description());
-  m_ui->m_txtName->setText(point->name());
-  m_ui->m_txtVersion->setText(point->version());
-}
-
 ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
   return m_entryPoints.at(m_ui->m_listEntryPoints->currentRow());
 }
@@ -77,6 +69,9 @@ void FormAddAccount::loadEntryPoints() {
       // Oops, this item cannot be added, it is single instance and is already added.
       item->setFlags(Qt::NoItemFlags);
       item->setToolTip(tr("This account can be added only once."));
+    }
+    else {
+      item->setToolTip(entry_point->description());
     }
   }
 

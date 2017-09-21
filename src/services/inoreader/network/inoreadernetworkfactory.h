@@ -33,6 +33,7 @@ class InoreaderNetworkFactory : public QObject {
 
   public slots:
     void logIn();
+    void logInIfNeeded();
 
   private:
     void initializeOauth();

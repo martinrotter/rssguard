@@ -38,7 +38,18 @@ bool InoreaderNetworkFactory::isLoggedIn() const {
 }
 
 void InoreaderNetworkFactory::logIn() {
-  m_oauth2.grant();
+  if (!m_oauth2.expirationAt().isNull() && m_oauth2.expirationAt() <= QDateTime::currentDateTime()) {
+    m_oauth2.refreshAccessToken();
+  }
+  else {
+    m_oauth2.grant();
+  }
+}
+
+void InoreaderNetworkFactory::logInIfNeeded() {
+  if (!isLoggedIn()) {
+    logIn();
+  }
 }
 
 void InoreaderNetworkFactory::initializeOauth() {
@@ -52,63 +63,27 @@ void InoreaderNetworkFactory::initializeOauth() {
   m_oauth2.setClientIdentifier(INOREADER_OAUTH_CLI_ID);
   m_oauth2.setClientIdentifierSharedKey(INOREADER_OAUTH_CLI_KEY);
   m_oauth2.setContentType(QAbstractOAuth::ContentType::Json);
-  m_oauth2.setNetworkAccessManager(new SilentNetworkAccessManager(this));
+  m_oauth2.setNetworkAccessManager(SilentNetworkAccessManager::instance());
   m_oauth2.setReplyHandler(oauth_reply_handler);
   m_oauth2.setUserAgent(APP_USERAGENT);
   m_oauth2.setScope(INOREADER_OAUTH_SCOPE);
 
-  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::statusChanged, [=](QAbstractOAuth::Status status) {});
-  m_oauth2.setModifyParametersFunction([&](QAbstractOAuth::Stage stage, QVariantMap* parameters) {});
-  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::granted, [=]() {
-    int a = 5;
-
+  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::statusChanged, [=](QAbstractOAuth::Status status) {
+    qDebug("Inoreader: Status changed to '%d'.", (int)status);
   });
-  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::error, [](const QString& error, const QString& errorDescription, const QUrl& uri) {});
+  m_oauth2.setModifyParametersFunction([&](QAbstractOAuth::Stage stage, QVariantMap* parameters) {
+    qDebug() << "Inoreader: Set modify parameters for stage" << (int)stage << "called: \n" << parameters;
+  });
+  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::granted, [=]() {
+    qDebug("Inoreader: Oauth2 granted.");
+  });
+  connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::error, [](const QString& error, const QString& error_description, const QUrl& uri) {
+    Q_UNUSED(error)
+    Q_UNUSED(uri)
+
+    qCritical("Inoreader: We have error: '%s'.", qPrintable(error_description));
+  });
   connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, [](const QUrl& url) {
     qApp->web()->openUrlInExternalBrowser(url.toString());
   });
 }
-
-/*
-   QOAuth2AuthorizationCodeFlow* oauth2 = new QOAuth2AuthorizationCodeFlow("1000000604",
-                                                                          QUrl("https://www.inoreader.com/oauth2/auth"),
-                                                                          QUrl("https://www.inoreader.com/oauth2/token"),
-                                                                          new SilentNetworkAccessManager(),
-                                                                          this);
-   auto replyHandler = new QOAuthHttpServerReplyHandler(8080, this);
-
-   replyHandler->setCallbackPath("");
-
-   oauth2->setReplyHandler(replyHandler);
-   oauth2->setClientIdentifierSharedKey("gsStoZ3aAoQJCgQxoFSuXkWI7Sly87yK");
-   oauth2->setContentType(QAbstractOAuth::ContentType::Json);
-   oauth2->setScope("read write");
-
-   connect(oauth2, &QOAuth2AuthorizationCodeFlow::statusChanged, [=](
-            QAbstractOAuth::Status status) {
-    if (status == QAbstractOAuth::Status::Granted) {
-      int a = 5;
-    }
-   });
-
-   oauth2->setModifyParametersFunction([&](QAbstractOAuth::Stage stage, QVariantMap* parameters) {
-    if (stage == QAbstractOAuth::Stage::RequestingAuthorization) {
-      int b = 6;
-    }
-   });
-   connect(oauth2, &QOAuth2AuthorizationCodeFlow::granted, [ = ] {
-    int c = 45;
-
-    auto* reply = oauth2->get(QUrl("https://www.inoreader.com/reader/api/0/subscription/list"));
-
-    connect(reply, &QNetworkReply::finished, [=]() {
-      const auto json = reply->readAll();
-      const auto document = QJsonDocument::fromJson(json);
-    });
-   });
-   connect(oauth2, &QOAuth2AuthorizationCodeFlow::error, [](const QString& error, const QString& errorDescription, const QUrl& uri) {
-    int d = 5;
-   });
-   connect(oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, &QDesktopServices::openUrl);
-   oauth2->grant();
- */

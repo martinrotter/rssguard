@@ -23,6 +23,7 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/inoreader/definitions.h"
+#include "services/inoreader/network/inoreadernetworkfactory.h"
 
 InoreaderEntryPoint::InoreaderEntryPoint() {}
 
@@ -37,7 +38,7 @@ QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {
 }
 
 bool InoreaderEntryPoint::isSingleInstanceService() const {
-  return false;
+  return true;
 }
 
 QString InoreaderEntryPoint::name() const {
@@ -50,10 +51,6 @@ QString InoreaderEntryPoint::code() const {
 
 QString InoreaderEntryPoint::description() const {
   return QObject::tr("This is integration of Inoreader.");
-}
-
-QString InoreaderEntryPoint::version() const {
-  return APP_VERSION;
 }
 
 QString InoreaderEntryPoint::author() const {

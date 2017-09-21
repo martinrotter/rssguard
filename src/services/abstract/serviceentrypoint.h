@@ -29,13 +29,7 @@ class FeedsModel;
 // TOP LEVEL class which provides basic information about the "service"
 class ServiceEntryPoint {
   public:
-
-    // Constructors.
     virtual ~ServiceEntryPoint();
-
-    /////////////////////////////////////////
-    // /* Members to override.
-    /////////////////////////////////////////
 
     // Creates new service root item, which is ready to be added
     // into the model. This method can for example display
@@ -65,18 +59,11 @@ class ServiceEntryPoint {
     // Human readable service description, for example "Services which offers TT-RSS integration.".
     virtual QString description() const = 0;
 
-    // Version of the service, using of semantic versioning is recommended.
-    virtual QString version() const = 0;
-
     // Author of the service.
     virtual QString author() const = 0;
 
     // Icon of the service.
     virtual QIcon icon() const = 0;
-
-    /////////////////////////////////////////
-    // Members to override. */
-    /////////////////////////////////////////
 };
 
 #endif // SERVICE_H

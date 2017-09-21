@@ -59,10 +59,6 @@ QString OwnCloudServiceEntryPoint::description() const {
          .arg(API_VERSION);
 }
 
-QString OwnCloudServiceEntryPoint::version() const {
-  return APP_VERSION;
-}
-
 QString OwnCloudServiceEntryPoint::author() const {
   return APP_AUTHOR;
 }

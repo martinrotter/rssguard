@@ -46,10 +46,6 @@ QString TtRssServiceEntryPoint::description() const {
                      "desktop application as possible.\n\nAt least API level %1 is required.").arg(MINIMAL_API_LEVEL);
 }
 
-QString TtRssServiceEntryPoint::version() const {
-  return APP_VERSION;
-}
-
 QString TtRssServiceEntryPoint::author() const {
   return APP_AUTHOR;
 }

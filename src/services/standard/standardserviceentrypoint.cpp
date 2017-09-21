@@ -39,10 +39,6 @@ QString StandardServiceEntryPoint::description() const {
   return QObject::tr("This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.");
 }
 
-QString StandardServiceEntryPoint::version() const {
-  return APP_VERSION;
-}
-
 QString StandardServiceEntryPoint::author() const {
   return APP_AUTHOR;
 }

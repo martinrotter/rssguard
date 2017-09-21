@@ -35,7 +35,6 @@ class FormAddAccount : public QDialog {
 
   private slots:
     void addSelectedAccount();
-    void displayActiveEntryPointDetails();
 
   private:
     ServiceEntryPoint* selectedEntryPoint() const;
