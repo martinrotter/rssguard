@@ -166,7 +166,7 @@ message(rssguard: Prefix directory: \"$$PREFIX\".)
 message(rssguard: Build revision: \"$$APP_REVISION\".)
 message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
 
-QT += core gui widgets sql network xml
+QT += core gui widgets sql network networkauth xml
 
 CONFIG *= c++11 debug_and_release warn_on
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
@@ -333,7 +333,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/abstract/label.h \
             src/miscellaneous/externaltool.h \
             src/services/inoreader/definitions.h \
-            src/services/inoreader/inoreaderentrypoint.h
+            src/services/inoreader/inoreaderentrypoint.h \
+            src/services/inoreader/network/inoreadernetworkfactory.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -456,7 +457,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/abstract/labelsrootitem.cpp \
             src/services/abstract/label.cpp \
             src/miscellaneous/externaltool.cpp \
-            src/services/inoreader/inoreaderentrypoint.cpp
+            src/services/inoreader/inoreaderentrypoint.cpp \
+            src/services/inoreader/network/inoreadernetworkfactory.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 

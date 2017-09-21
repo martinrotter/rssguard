@@ -37,11 +37,7 @@ class WebFactory : public QObject {
   Q_OBJECT
 
   public:
-
-    // Constructor.
     explicit WebFactory(QObject* parent = nullptr);
-
-    // Destructor.
     virtual ~WebFactory();
 
     // Strips "<....>" (HTML, XML) tags from given text.
@@ -58,8 +54,6 @@ class WebFactory : public QObject {
 #endif
 
   public slots:
-
-    // Opens given string URL in external browser.
     bool openUrlInExternalBrowser(const QString& url);
     bool sendMessageViaEmail(const Message& message);
 
@@ -74,8 +68,6 @@ class WebFactory : public QObject {
 #endif
 
   private:
-
-    // Escape sequences generators.
     void genereteEscapes();
     void generateDeescapes();
 

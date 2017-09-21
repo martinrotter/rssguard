@@ -48,6 +48,8 @@ void WebBrowser::createConnections() {
   // Forward title/icon changes.
   connect(m_webView, &WebViewer::titleChanged, this, &WebBrowser::onTitleChanged);
   connect(m_webView, &WebViewer::iconChanged, this, &WebBrowser::onIconChanged);
+
+  connect(m_webView->page(), &WebPage::windowCloseRequested, this, &WebBrowser::closeRequested);
 }
 
 void WebBrowser::updateUrl(const QUrl& url) {

@@ -85,8 +85,7 @@ class WebBrowser : public TabContent {
     void onIconChanged(const QIcon& icon);
 
   signals:
-
-    // Title/icon is changed.
+    void closeRequested();
     void iconChanged(int index, const QIcon& icon);
     void titleChanged(int index, const QString& title);
 
