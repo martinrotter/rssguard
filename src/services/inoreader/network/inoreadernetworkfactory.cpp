@@ -57,6 +57,8 @@ void InoreaderNetworkFactory::initializeOauth() {
 
   // Full redirect URL is thus "http://localhost.8080/".
   oauth_reply_handler->setCallbackPath(QSL(""));
+  oauth_reply_handler->setCallbackText(tr("Access to your Inoreader session was granted, you "
+                                          "can now <b>close this window and go back to RSS Guard</b>."));
 
   m_oauth2.setAccessTokenUrl(QUrl(INOREADER_OAUTH_TOKEN_URL));
   m_oauth2.setAuthorizationUrl(QUrl(INOREADER_OAUTH_AUTH_URL));
