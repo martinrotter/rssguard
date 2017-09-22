@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>377</width>
-    <height>211</height>
+    <width>452</width>
+    <height>231</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -108,15 +108,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LabelWithStatus</class>
-   <extends>QWidget</extends>
-   <header>labelwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
