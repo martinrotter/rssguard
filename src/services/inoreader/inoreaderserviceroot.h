@@ -28,7 +28,7 @@ class InoreaderServiceRoot : public ServiceRoot {
   Q_OBJECT
 
   public:
-    explicit InoreaderServiceRoot(RootItem* parent = nullptr);
+    explicit InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent = nullptr);
     virtual ~InoreaderServiceRoot();
 
     void saveAccountDataToDatabase();

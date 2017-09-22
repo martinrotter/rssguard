@@ -122,6 +122,14 @@ void InoreaderNetworkFactory::initializeOauth() {
   });
 }
 
+void InoreaderNetworkFactory::setRefreshToken(const QString& refreshToken) {
+  m_refreshToken = refreshToken;
+}
+
+void InoreaderNetworkFactory::setAccessToken(const QString& accessToken) {
+  m_accessToken = accessToken;
+}
+
 QString InoreaderNetworkFactory::refreshToken() const {
   return m_refreshToken;
 }

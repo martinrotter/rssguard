@@ -19,15 +19,15 @@
 #ifndef INOREADER_DEFINITIONS_H
 #define INOREADER_DEFINITIONS_H
 
-#define INOREADER_OAUTH_PORT          12885
-#define INOREADER_OAUTH_SCOPE         "read write"
-#define INOREADER_OAUTH_TOKEN_URL     "https://www.inoreader.com/oauth2/token"
-#define INOREADER_OAUTH_AUTH_URL      "https://www.inoreader.com/oauth2/auth"
-#define INOREADER_OAUTH_CLI_ID        "1000000604"
-#define INOREADER_OAUTH_CLI_KEY       "gsStoZ3aAoQJCgQxoFSuXkWI7Sly87yK"
-#define INOREADER_REFRESH_TOKEN_KEY   "refresh_token"
-#define INOREADER_ACCESS_TOKEN_KEY    "access_token"
-#define INOREADER_DEFAULT_BATCH_SIZE  900
-#define INOREADER_MAX_BATCH_SIZE      999
+#define INOREADER_OAUTH_PORT            12885
+#define INOREADER_OAUTH_SCOPE           "read write"
+#define INOREADER_OAUTH_TOKEN_URL       "https://www.inoreader.com/oauth2/token"
+#define INOREADER_OAUTH_AUTH_URL        "https://www.inoreader.com/oauth2/auth"
+#define INOREADER_OAUTH_CLI_ID          "1000000604"
+#define INOREADER_OAUTH_CLI_KEY         "gsStoZ3aAoQJCgQxoFSuXkWI7Sly87yK"
+#define INOREADER_REFRESH_TOKEN_KEY     "refresh_token"
+#define INOREADER_ACCESS_TOKEN_KEY      "access_token"
+#define INOREADER_DEFAULT_BATCH_SIZE    -1
+#define INOREADER_UNLIMITED_BATCH_SIZE  -1
 
 #endif // INOREADER_DEFINITIONS_H

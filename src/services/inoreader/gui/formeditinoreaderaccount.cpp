@@ -32,9 +32,18 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
                                   tr("Not tested yet."),
                                   tr("Not tested yet."));
   m_ui.m_lblTestResult->label()->setWordWrap(true);
+
+  connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), [=](int value) {
+    if (value <= 0) {
+      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
+    }
+    else {
+      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
+    }
+  });
+
   m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMinimum(1);
-  m_ui.m_spinLimitMessages->setMaximum(INOREADER_MAX_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setMinimum(INOREADER_UNLIMITED_BATCH_SIZE);
 
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditInoreaderAccount::onClickedOk);
@@ -78,7 +87,7 @@ void FormEditInoreaderAccount::onClickedOk() {
   if (m_editableRoot == nullptr) {
     // We want to confirm newly created account.
     // So save new account into DB, setup its properties.
-    m_editableRoot = new InoreaderServiceRoot();
+    m_editableRoot = new InoreaderServiceRoot(m_network);
     editing_account = false;
   }
 

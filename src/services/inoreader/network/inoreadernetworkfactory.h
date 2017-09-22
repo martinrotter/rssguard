@@ -39,6 +39,8 @@ class InoreaderNetworkFactory : public QObject {
 
     QString accessToken() const;
     QString refreshToken() const;
+    void setAccessToken(const QString& accessToken);
+    void setRefreshToken(const QString& refreshToken);
 
   public slots:
     void logIn();

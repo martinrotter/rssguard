@@ -24,7 +24,15 @@
 #include "services/inoreader/inoreaderentrypoint.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
-InoreaderServiceRoot::InoreaderServiceRoot(RootItem* parent) : ServiceRoot(parent) {}
+InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent) : ServiceRoot(parent),
+  m_network(network) {
+  if (m_network == nullptr) {
+    m_network = new InoreaderNetworkFactory(this);
+  }
+  else {
+    m_network->setParent(this);
+  }
+}
 
 InoreaderServiceRoot::~InoreaderServiceRoot() {}
 
