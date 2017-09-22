@@ -335,8 +335,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/inoreader/definitions.h \
             src/services/inoreader/inoreaderentrypoint.h \
             src/services/inoreader/network/inoreadernetworkfactory.h \
-    src/services/inoreader/inoreaderserviceroot.h \
-    src/services/inoreader/gui/formeditinoreaderaccount.h
+            src/services/inoreader/inoreaderserviceroot.h \
+            src/services/inoreader/gui/formeditinoreaderaccount.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -461,8 +461,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/miscellaneous/externaltool.cpp \
             src/services/inoreader/inoreaderentrypoint.cpp \
             src/services/inoreader/network/inoreadernetworkfactory.cpp \
-    src/services/inoreader/inoreaderserviceroot.cpp \
-    src/services/inoreader/gui/formeditinoreaderaccount.cpp
+            src/services/inoreader/inoreaderserviceroot.cpp \
+            src/services/inoreader/gui/formeditinoreaderaccount.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 
@@ -490,7 +490,7 @@ FORMS +=    src/gui/toolbareditor.ui \
             src/gui/settings/settingsfeedsmessages.ui \
             src/gui/settings/settingsdownloads.ui \
             src/services/tt-rss/gui/formeditttrssaccount.ui \
-    src/services/inoreader/gui/formeditinoreaderaccount.ui
+            src/services/inoreader/gui/formeditinoreaderaccount.ui
 
 equals(USE_WEBENGINE, true) {
   HEADERS +=    src/gui/locationlineedit.h \

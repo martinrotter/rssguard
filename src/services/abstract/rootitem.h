@@ -211,6 +211,7 @@ class RootItem : public QObject {
 
     // NOTE: For standard feed/category, this WILL equal to id().
     QString customId() const;
+    int customNumericId() const;
     void setCustomId(const QString& custom_id);
 
     // Converters

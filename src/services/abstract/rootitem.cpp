@@ -452,6 +452,10 @@ QString RootItem::customId() const {
   return m_customId;
 }
 
+int RootItem::customNumericId() const {
+  return customId().toInt();
+}
+
 void RootItem::setCustomId(const QString& custom_id) {
   m_customId = custom_id;
 }
