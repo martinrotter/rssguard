@@ -25,7 +25,7 @@
 #include "services/inoreader/inoreaderserviceroot.h"
 
 FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(parent),
-  m_network(new InoreaderNetworkFactory(this)), m_editableRoot(nullptr) {
+  m_network(nullptr), m_editableRoot(nullptr) {
   m_ui.setupUi(this);
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("inoreader")));
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
@@ -57,21 +57,6 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditInoreaderAccount::onClickedOk);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditInoreaderAccount::onClickedCancel);
-  connect(m_network, &InoreaderNetworkFactory::accessGranted, [this]() {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("Tested successfully. You may be prompted to login once more."),
-                                    tr("Your access was approved."));
-  });
-  connect(m_network, &InoreaderNetworkFactory::tokensRefreshed, [this]() {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("Access tokens refreshed, it seems okay."),
-                                    tr("Your access was approved."));
-  });
-  connect(m_network, &InoreaderNetworkFactory::error, [this](const QString& err) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("There is error. %1").arg(err),
-                                    tr("There was error during testing."));
-  });
 
   m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
   m_ui.m_spinLimitMessages->setMinimum(INOREADER_UNLIMITED_BATCH_SIZE);
@@ -118,9 +103,31 @@ void FormEditInoreaderAccount::onClickedCancel() {
   reject();
 }
 
+void FormEditInoreaderAccount::hookNetwork() {
+  connect(m_network, &InoreaderNetworkFactory::accessGranted, [this]() {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("Tested successfully. You may be prompted to login once more."),
+                                    tr("Your access was approved."));
+  });
+  connect(m_network, &InoreaderNetworkFactory::tokensRefreshed, [this]() {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("Access tokens refreshed, it seems okay."),
+                                    tr("Your access was approved."));
+  });
+  connect(m_network, &InoreaderNetworkFactory::error, [this](const QString& err) {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                    tr("There is error. %1").arg(err),
+                                    tr("There was error during testing."));
+  });
+}
+
 InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
   setWindowTitle(tr("Add new Inoreader account"));
   exec();
+
+  m_network = new InoreaderNetworkFactory(this);
+  hookNetwork();
+
   return m_editableRoot;
 }
 
@@ -129,5 +136,8 @@ void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) 
   m_editableRoot = existing_root;
   m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->userName());
   m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
+
+  m_network = existing_root->network();
+  hookNetwork();
   exec();
 }

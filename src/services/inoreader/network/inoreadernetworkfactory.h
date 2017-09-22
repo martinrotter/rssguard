@@ -61,7 +61,6 @@ class InoreaderNetworkFactory : public QObject {
   private:
     int m_batchSize;
     QString m_username;
-    QString m_accessToken;
     QString m_refreshToken;
     QOAuth2AuthorizationCodeFlow* m_oauth2;
 };

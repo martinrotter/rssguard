@@ -48,6 +48,8 @@ class FormEditInoreaderAccount : public QDialog {
     void onClickedCancel();
 
   private:
+    void hookNetwork();
+
     Ui::FormEditInoreaderAccount m_ui;
     InoreaderNetworkFactory* m_network;
     InoreaderServiceRoot* m_editableRoot;

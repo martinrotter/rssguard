@@ -69,10 +69,6 @@ void InoreaderNetworkFactory::logInIfNeeded() {
 void InoreaderNetworkFactory::tokensReceived(QVariantMap tokens) {
   qDebug() << "Inoreader: Tokens received:" << tokens;
 
-  if (tokens.contains(INOREADER_ACCESS_TOKEN_KEY)) {
-    m_accessToken = tokens.value(INOREADER_ACCESS_TOKEN_KEY).toString();
-  }
-
   if (tokens.contains(INOREADER_REFRESH_TOKEN_KEY)) {
     m_refreshToken = tokens.value(INOREADER_REFRESH_TOKEN_KEY).toString();
   }
@@ -114,7 +110,8 @@ void InoreaderNetworkFactory::initializeOauth() {
     Q_UNUSED(uri)
 
     qCritical("Inoreader: We have error: '%s'.", qPrintable(error_description));
-    m_accessToken = m_refreshToken = QString();
+    setRefreshToken(QString());
+    setAccessToken(QString());
     emit error(error_description);
   });
   connect(m_oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, [](const QUrl& url) {
@@ -131,7 +128,7 @@ void InoreaderNetworkFactory::setRefreshToken(const QString& refreshToken) {
 }
 
 void InoreaderNetworkFactory::setAccessToken(const QString& accessToken) {
-  m_accessToken = accessToken;
+  m_oauth2->setToken(accessToken);
 }
 
 QString InoreaderNetworkFactory::refreshToken() const {
@@ -139,5 +136,5 @@ QString InoreaderNetworkFactory::refreshToken() const {
 }
 
 QString InoreaderNetworkFactory::accessToken() const {
-  return m_accessToken;
+  return m_oauth2->token();
 }
