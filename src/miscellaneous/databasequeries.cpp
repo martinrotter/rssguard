@@ -1480,6 +1480,49 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   return categories;
 }
 
+bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& username, const QString& access_token,
+                                                const QString& refresh_token, int batch_size, int account_id) {
+  QSqlQuery query(db);
+
+  query.prepare("UPDATE InoreaderAccounts "
+                "SET username = :username, access_token = :access_token, refresh_token = :refresh_token , msg_limit = :msg_limit "
+                "WHERE id = :id;");
+  query.bindValue(QSL(":username"), username);
+  query.bindValue(QSL(":access_token"), access_token);
+  query.bindValue(QSL(":refresh_token"), refresh_token);
+  query.bindValue(QSL(":id"), account_id);
+  query.bindValue(QSL(":msg_limit"), batch_size);
+
+  if (query.exec()) {
+    return true;
+  }
+  else {
+    qWarning("Inoreader: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    return false;
+  }
+}
+
+bool DatabaseQueries::createInoreaderAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+                                             const QString& access_token, const QString& refresh_token, int batch_size) {
+  QSqlQuery q(db);
+
+  q.prepare("INSERT INTO InoreaderAccounts (id, username, access_token, refresh_token, msg_limit) "
+            "VALUES (:id, :username, :access_token, :refresh_token, :msg_limit);");
+  q.bindValue(QSL(":id"), id_to_assign);
+  q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":access_token"), access_token);
+  q.bindValue(QSL(":refresh_token"), refresh_token);
+  q.bindValue(QSL(":msg_limit"), batch_size);
+
+  if (q.exec()) {
+    return true;
+  }
+  else {
+    qWarning("Inoreader: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    return false;
+  }
+}
+
 Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool* ok) {
   Assignment feeds;
 

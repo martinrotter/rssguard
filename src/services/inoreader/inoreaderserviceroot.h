@@ -22,7 +22,7 @@
 
 #include "services/abstract/serviceroot.h"
 
-#include "services/inoreader/network/inoreadernetworkfactory.h"
+class InoreaderNetworkFactory;
 
 class InoreaderServiceRoot : public ServiceRoot {
   Q_OBJECT
@@ -31,8 +31,34 @@ class InoreaderServiceRoot : public ServiceRoot {
     explicit InoreaderServiceRoot(RootItem* parent = nullptr);
     virtual ~InoreaderServiceRoot();
 
+    void saveAccountDataToDatabase();
+
+    void setNetwork(InoreaderNetworkFactory* network);
+    InoreaderNetworkFactory* network() const;
+
+    bool supportsFeedAdding() const;
+    bool supportsCategoryAdding() const;
+    void start(bool freshly_activated);
+    void stop();
+    QString code() const;
+
+  public slots:
+    void addNewFeed(const QString& url);
+    void addNewCategory();
+
+  private slots:
+    void updateTitle();
+
   private:
-    InoreaderNetworkFactory m_network;
+    InoreaderNetworkFactory* m_network;
 };
+
+inline void InoreaderServiceRoot::setNetwork(InoreaderNetworkFactory* network) {
+  m_network = network;
+}
+
+inline InoreaderNetworkFactory* InoreaderServiceRoot::network() const {
+  return m_network;
+}
 
 #endif // INOREADERSERVICEROOT_H

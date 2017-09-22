@@ -183,15 +183,6 @@ void StandardServiceRoot::checkArgumentsForFeedAdding() {
   }
 }
 
-QMap<int, QVariant> StandardServiceRoot::storeCustomFeedsData() {
-  return QMap<int, QVariant>();
-}
-
-void StandardServiceRoot::restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds) {
-  Q_UNUSED(feeds)
-  Q_UNUSED(data)
-}
-
 QString StandardServiceRoot::processFeedUrl(const QString& feed_url) {
   if (feed_url.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
     QString without_feed_prefix = feed_url.mid(5);

@@ -29,9 +29,6 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="suffix">
-      <string> = unlimited</string>
-     </property>
      <property name="minimum">
       <number>-1</number>
      </property>

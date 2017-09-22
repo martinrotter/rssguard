@@ -31,6 +31,15 @@ class InoreaderNetworkFactory : public QObject {
 
     bool isLoggedIn() const;
 
+    QString username() const;
+
+    // Gets/sets the amount of messages to obtain during single feed update.
+    int batchSize() const;
+    void setBatchSize(int batch_size);
+
+    QString accessToken() const;
+    QString refreshToken() const;
+
   public slots:
     void logIn();
     void logInIfNeeded();
@@ -40,13 +49,18 @@ class InoreaderNetworkFactory : public QObject {
     void tokensRefreshed();
     void error(QString& description);
 
+  private slots:
+    void tokensReceived(QVariantMap tokens);
+
   private:
     void initializeOauth();
 
   private:
-    QOAuth2AuthorizationCodeFlow m_oauth2;
+    int m_batchSize;
+    QString m_username;
     QString m_accessToken;
     QString m_refreshToken;
+    QOAuth2AuthorizationCodeFlow* m_oauth2;
 };
 
 #endif // INOREADERNETWORKFACTORY_H

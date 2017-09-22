@@ -42,10 +42,12 @@ class FormEditInoreaderAccount : public QDialog {
 
   private slots:
     void testSetup();
+    void onClickedOk();
+    void onClickedCancel();
 
   private:
     Ui::FormEditInoreaderAccount m_ui;
-    InoreaderNetworkFactory m_network;
+    InoreaderNetworkFactory* m_network;
     InoreaderServiceRoot* m_editableRoot;
 };
 

@@ -203,8 +203,8 @@ class ServiceRoot : public RootItem {
     void itemRemovalRequested(RootItem* item);
 
   private:
-    virtual QMap<int, QVariant> storeCustomFeedsData() = 0;
-    virtual void restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds) = 0;
+    virtual QMap<int, QVariant> storeCustomFeedsData();
+    virtual void restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds);
 
   private:
     RecycleBin* m_recycleBin;

@@ -238,37 +238,6 @@ void OwnCloudServiceRoot::addNewFeed(const QString& url) {
 
 void OwnCloudServiceRoot::addNewCategory() {}
 
-QMap<int, QVariant> OwnCloudServiceRoot::storeCustomFeedsData() {
-  QMap<int, QVariant> custom_data;
-
-  foreach (const Feed* feed, getSubTreeFeeds()) {
-    QVariantMap feed_custom_data;
-
-    feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInitialInterval());
-    feed_custom_data.insert(QSL("auto_update_type"), feed->autoUpdateType());
-    custom_data.insert(feed->customId(), feed_custom_data);
-  }
-
-  return custom_data;
-}
-
-void OwnCloudServiceRoot::restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds) {
-  QMapIterator<int, QVariant> i(data);
-
-  while (i.hasNext()) {
-    i.next();
-    const int custom_id = i.key();
-
-    if (feeds.contains(custom_id)) {
-      Feed* feed = feeds.value(custom_id);
-      QVariantMap feed_custom_data = i.value().toMap();
-
-      feed->setAutoUpdateInitialInterval(feed_custom_data.value(QSL("auto_update_interval")).toInt());
-      feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(feed_custom_data.value(QSL("auto_update_type")).toInt()));
-    }
-  }
-}
-
 RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
   OwnCloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories();
 
