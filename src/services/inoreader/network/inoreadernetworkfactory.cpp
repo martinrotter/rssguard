@@ -38,7 +38,8 @@ bool InoreaderNetworkFactory::isLoggedIn() const {
 }
 
 void InoreaderNetworkFactory::logIn() {
-  if (!m_oauth2.expirationAt().isNull() && m_oauth2.expirationAt() <= QDateTime::currentDateTime()) {
+  if (!m_oauth2.expirationAt().isNull() && m_oauth2.expirationAt() <= QDateTime::currentDateTime() && !m_refreshToken.isEmpty()) {
+    // We have some refresh token which expired.
     m_oauth2.refreshAccessToken();
   }
   else {
@@ -73,6 +74,19 @@ void InoreaderNetworkFactory::initializeOauth() {
   connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::statusChanged, [=](QAbstractOAuth::Status status) {
     qDebug("Inoreader: Status changed to '%d'.", (int)status);
   });
+  connect(oauth_reply_handler, &QOAuthHttpServerReplyHandler::tokensReceived, [this](QVariantMap tokens) {
+    qDebug() << "Inoreader: Tokens received:" << tokens;
+
+    if (tokens.contains(QSL(INOREADER_REFRESH_TOKEN_KEY))) {
+      m_refreshToken = tokens.value(QSL(INOREADER_REFRESH_TOKEN_KEY)).toString();
+    }
+
+    if (tokens.contains(QSL(INOREADER_ACCESS_TOKEN_KEY))) {
+      m_accessToken = tokens.value(QSL(INOREADER_ACCESS_TOKEN_KEY)).toString();
+    }
+
+    emit tokensRefreshed();
+  });
   m_oauth2.setModifyParametersFunction([&](QAbstractOAuth::Stage stage, QVariantMap* parameters) {
     qDebug() << "Inoreader: Set modify parameters for stage" << (int)stage << "called: \n" << parameters;
   });
@@ -85,6 +99,7 @@ void InoreaderNetworkFactory::initializeOauth() {
     Q_UNUSED(uri)
 
     qCritical("Inoreader: We have error: '%s'.", qPrintable(error_description));
+    m_accessToken = m_refreshToken = QString();
     emit error(error_description);
   });
   connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, [](const QUrl& url) {

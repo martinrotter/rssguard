@@ -37,6 +37,7 @@ class InoreaderNetworkFactory : public QObject {
 
   signals:
     void accessGranted();
+    void tokensRefreshed();
     void error(QString& description);
 
   private:
@@ -44,6 +45,8 @@ class InoreaderNetworkFactory : public QObject {
 
   private:
     QOAuth2AuthorizationCodeFlow m_oauth2;
+    QString m_accessToken;
+    QString m_refreshToken;
 };
 
 #endif // INOREADERNETWORKFACTORY_H

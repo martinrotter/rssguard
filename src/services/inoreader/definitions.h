@@ -25,5 +25,7 @@
 #define INOREADER_OAUTH_AUTH_URL    "https://www.inoreader.com/oauth2/auth"
 #define INOREADER_OAUTH_CLI_ID      "1000000604"
 #define INOREADER_OAUTH_CLI_KEY     "gsStoZ3aAoQJCgQxoFSuXkWI7Sly87yK"
+#define INOREADER_REFRESH_TOKEN_KEY "refresh_token"
+#define INOREADER_ACCESS_TOKEN_KEY  "access_token"
 
 #endif // INOREADER_DEFINITIONS_H
