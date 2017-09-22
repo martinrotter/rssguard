@@ -38,7 +38,7 @@ bool InoreaderNetworkFactory::isLoggedIn() const {
   return m_oauth2->expirationAt() > QDateTime::currentDateTime() && m_oauth2->status() == QAbstractOAuth::Status::Granted;
 }
 
-QString InoreaderNetworkFactory::username() const {
+QString InoreaderNetworkFactory::userName() const {
   return m_username;
 }
 
@@ -120,6 +120,10 @@ void InoreaderNetworkFactory::initializeOauth() {
   connect(m_oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, [](const QUrl& url) {
     qApp->web()->openUrlInExternalBrowser(url.toString());
   });
+}
+
+void InoreaderNetworkFactory::setUsername(const QString& username) {
+  m_username = username;
 }
 
 void InoreaderNetworkFactory::setRefreshToken(const QString& refreshToken) {

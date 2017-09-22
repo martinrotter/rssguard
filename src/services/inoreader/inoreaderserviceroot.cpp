@@ -32,19 +32,21 @@ InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, Roo
   else {
     m_network->setParent(this);
   }
+
+  setIcon(InoreaderEntryPoint().icon());
 }
 
 InoreaderServiceRoot::~InoreaderServiceRoot() {}
 
 void InoreaderServiceRoot::updateTitle() {
-  setTitle(m_network->username() + QSL(" (Inoreader)"));
+  setTitle(m_network->userName() + QSL(" (Inoreader)"));
 }
 
 void InoreaderServiceRoot::saveAccountDataToDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (accountId() != NO_PARENT_CATEGORY) {
-    if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->username(), m_network->accessToken(),
+    if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(), m_network->accessToken(),
                                                    m_network->refreshToken(), m_network->batchSize(),
                                                    accountId())) {
       updateTitle();
@@ -57,7 +59,7 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
 
     if (saved) {
       if (DatabaseQueries::createInoreaderAccount(database, id_to_assign,
-                                                  m_network->username(), m_network->accessToken(),
+                                                  m_network->userName(), m_network->accessToken(),
                                                   m_network->refreshToken(), m_network->batchSize())) {
         setId(id_to_assign);
         setAccountId(id_to_assign);

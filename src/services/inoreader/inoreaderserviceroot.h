@@ -45,8 +45,6 @@ class InoreaderServiceRoot : public ServiceRoot {
   public slots:
     void addNewFeed(const QString& url);
     void addNewCategory();
-
-  private slots:
     void updateTitle();
 
   private:

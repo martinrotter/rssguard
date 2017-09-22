@@ -31,7 +31,8 @@ class InoreaderNetworkFactory : public QObject {
 
     bool isLoggedIn() const;
 
-    QString username() const;
+    QString userName() const;
+    void setUsername(const QString& username);
 
     // Gets/sets the amount of messages to obtain during single feed update.
     int batchSize() const;

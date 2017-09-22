@@ -34,7 +34,9 @@ ServiceRoot* InoreaderEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {
-  return QList<ServiceRoot*>();
+  QSqlDatabase database = qApp->database()->connection(QSL("InoreaderEntryPoint"), DatabaseFactory::FromSettings);
+
+  return DatabaseQueries::getInoreaderAccounts(database);
 }
 
 bool InoreaderEntryPoint::isSingleInstanceService() const {

@@ -22,6 +22,8 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
+#include "services/inoreader/inoreaderserviceroot.h"
+#include "services/inoreader/network/inoreadernetworkfactory.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
@@ -1478,6 +1480,40 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   }
 
   return categories;
+}
+
+QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool* ok) {
+  QSqlQuery query(db);
+
+  QList<ServiceRoot*> roots;
+
+  if (query.exec("SELECT * FROM InoreaderAccounts;")) {
+    while (query.next()) {
+      InoreaderServiceRoot* root = new InoreaderServiceRoot(nullptr);
+
+      root->setId(query.value(0).toInt());
+      root->setAccountId(query.value(0).toInt());
+      root->network()->setUsername(query.value(1).toString());
+      root->network()->setAccessToken(query.value(2).toString());
+      root->network()->setRefreshToken(query.value(3).toString());
+      root->network()->setBatchSize(query.value(4).toInt());
+      root->updateTitle();
+      roots.append(root);
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    qWarning("Inoreader: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return roots;
 }
 
 bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& username, const QString& access_token,

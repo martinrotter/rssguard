@@ -91,6 +91,10 @@ void FormEditInoreaderAccount::onClickedOk() {
     editing_account = false;
   }
 
+  if (m_editableRoot->network()->userName().isEmpty()) {
+    m_editableRoot->network()->setUsername(tr("uknown"));
+  }
+
   m_editableRoot->network()->setBatchSize(m_ui.m_spinLimitMessages->value());
   m_editableRoot->saveAccountDataToDatabase();
   accept();
