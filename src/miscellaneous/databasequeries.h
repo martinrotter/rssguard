@@ -49,26 +49,26 @@ class DatabaseQueries {
     static bool purgeLeftoverMessages(QSqlDatabase db, int account_id);
 
     // Obtain counts of unread/all messages.
-    static QMap<int, QPair<int, int>> getMessageCountsForCategory(QSqlDatabase db, int custom_id, int account_id,
-                                                                  bool including_total_counts, bool* ok = nullptr);
-    static QMap<int, QPair<int, int>> getMessageCountsForAccount(QSqlDatabase db, int account_id,
-                                                                 bool including_total_counts, bool* ok = nullptr);
-    static int getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id, int account_id,
+    static QMap<QString, QPair<int, int>> getMessageCountsForCategory(QSqlDatabase db, const QString& custom_id, int account_id,
+                                                                      bool including_total_counts, bool* ok = nullptr);
+    static QMap<QString, QPair<int, int>> getMessageCountsForAccount(QSqlDatabase db, int account_id,
+                                                                     bool including_total_counts, bool* ok = nullptr);
+    static int getMessageCountsForFeed(QSqlDatabase db, const QString& feed_custom_id, int account_id,
                                        bool including_total_counts, bool* ok = nullptr);
     static int getMessageCountsForBin(QSqlDatabase db, int account_id, bool including_total_counts, bool* ok = nullptr);
 
     // Get messages (for newspaper view for example).
-    static QList<Message> getUndeletedMessagesForFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool* ok = nullptr);
+    static QList<Message> getUndeletedMessagesForFeed(QSqlDatabase db, const QString& feed_custom_id, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForBin(QSqlDatabase db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForAccount(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
     // Custom ID accumulators.
     static QStringList customIdsOfMessagesFromAccount(QSqlDatabase db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool* ok = nullptr);
-    static QStringList customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool* ok = nullptr);
+    static QStringList customIdsOfMessagesFromFeed(QSqlDatabase db, const QString& feed_custom_id, int account_id, bool* ok = nullptr);
 
     // Common accounts methods.
-    static int updateMessages(QSqlDatabase db, const QList<Message>& messages, int feed_custom_id,
+    static int updateMessages(QSqlDatabase db, const QList<Message>& messages, const QString& feed_custom_id,
                               int account_id, const QString& url, bool* any_message_changed, bool* ok = nullptr);
     static bool deleteAccount(QSqlDatabase db, int account_id);
     static bool deleteAccountData(QSqlDatabase db, int account_id, bool delete_messages_too);

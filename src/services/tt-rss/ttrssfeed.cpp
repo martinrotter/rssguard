@@ -39,7 +39,7 @@ TtRssFeed::TtRssFeed(const QSqlRecord& record) : Feed(nullptr) {
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
   setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-  setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toInt());
+  setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toString());
   qDebug("Custom ID of TT-RSS feed when loading from DB is '%s'.", qPrintable(record.value(FDS_DB_CUSTOM_ID_INDEX).toString()));
 }
 
@@ -65,7 +65,7 @@ bool TtRssFeed::canBeDeleted() const {
 }
 
 bool TtRssFeed::deleteViaGui() {
-  TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customId());
+  TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customId().toInt());
 
   if (response.code() == UFF_OK && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
@@ -98,7 +98,7 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
   int skip = 0;
 
   do {
-    TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId(), limit, skip,
+    TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId().toInt(), limit, skip,
                                                                                  true, true, false);
 
     if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
@@ -123,5 +123,5 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
 bool TtRssFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  return DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
+  return DatabaseQueries::deleteFeed(database, customId().toInt(), serviceRoot()->accountId());
 }

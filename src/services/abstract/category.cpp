@@ -36,10 +36,10 @@ Category::Category(RootItem* parent) : RootItem(parent) {
 
 Category::Category(const QSqlRecord& record) : Category(nullptr) {
   setId(record.value(CAT_DB_ID_INDEX).toInt());
-  setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toInt());
+  setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toString());
 
-  if (customId() <= 0) {
-    setCustomId(id());
+  if (customId().isEmpty()) {
+    setCustomId(QString::number(id()));
   }
 
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
@@ -71,11 +71,11 @@ void Category::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   bool ok;
 
-  QMap<int, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForCategory(database,
-                                                                                   customId(),
-                                                                                   getParentServiceRoot()->accountId(),
-                                                                                   including_total_count,
-                                                                                   &ok);
+  QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForCategory(database,
+                                                                                       customId(),
+                                                                                       getParentServiceRoot()->accountId(),
+                                                                                       including_total_count,
+                                                                                       &ok);
 
   if (ok) {
     foreach (Feed* feed, feeds) {

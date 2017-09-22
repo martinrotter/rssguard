@@ -173,8 +173,8 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
   return OwnCloudGetFeedsCategoriesResponse(content_categories, content_feeds);
 }
 
-bool OwnCloudNetworkFactory::deleteFeed(int feed_id) {
-  QString final_url = m_urlDeleteFeed.arg(QString::number(feed_id));
+bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
+  QString final_url = m_urlDeleteFeed.arg(feed_id);
   QByteArray raw_output;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(final_url,
                                                                         qApp->settings()->value(GROUP(Feeds),
@@ -221,8 +221,8 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
   }
 }
 
-bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, int feed_id) {
-  QString final_url = m_urlRenameFeed.arg(QString::number(feed_id));
+bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, const QString& custom_feed_id) {
+  QString final_url = m_urlRenameFeed.arg(custom_feed_id);
   QByteArray result_raw;
   QJsonObject json;
 
@@ -230,8 +230,7 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, int feed_id) {
 
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(
     final_url,
-    qApp->settings()->value(GROUP(Feeds),
-                            SETTING(Feeds::UpdateTimeout)).toInt(),
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt(),
     QJsonDocument(json).toJson(QJsonDocument::Compact),
     QSL("application/json"), result_raw,
     QNetworkAccessManager::PutOperation,
@@ -480,8 +479,8 @@ OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() {}
 RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons) const {
   RootItem* parent = new RootItem();
 
-  QMap<int, RootItem*>cats;
-  cats.insert(0, parent);
+  QMap<QString, RootItem*>cats;
+  cats.insert(NO_PARENT_CATEGORY_STR, parent);
 
   // Process categories first, then process feeds.
   foreach (const QJsonValue& cat, QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray()) {
@@ -489,7 +488,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     Category* category = new Category();
 
     category->setTitle(item["name"].toString());
-    category->setCustomId(item["id"].toInt());
+    category->setCustomId(item["id"].toString());
     cats.insert(category->customId(), category);
 
     // All categories in ownCloud are top-level.
@@ -522,9 +521,9 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
 
     feed->setUrl(item["link"].toString());
     feed->setTitle(item["title"].toString());
-    feed->setCustomId(item["id"].toInt());
+    feed->setCustomId(item["id"].toString());
     qDebug("Custom ID of next fetched Nextcloud feed is '%d'.", item["id"].toInt());
-    cats.value(item["folderId"].toInt())->appendChild(feed);
+    cats.value(item["folderId"].toString())->appendChild(feed);
   }
 
   return parent;

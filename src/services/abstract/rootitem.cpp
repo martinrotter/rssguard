@@ -30,7 +30,7 @@ RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr),
   m_kind(RootItemKind::Root),
   m_id(NO_PARENT_CATEGORY),
-  m_customId(NO_PARENT_CATEGORY),
+  m_customId(QSL(NO_PARENT_CATEGORY_STR)),
   m_title(QString()),
   m_description(QString()),
   m_icon(QIcon()),
@@ -317,8 +317,8 @@ QHash<int, Category*> RootItem::getHashedSubTreeCategories() const {
   while (!traversable_items.isEmpty()) {
     RootItem* active_item = traversable_items.takeFirst();
 
-    if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->customId())) {
-      children.insert(active_item->customId(), active_item->toCategory());
+    if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->id())) {
+      children.insert(active_item->id(), active_item->toCategory());
     }
 
     traversable_items.append(active_item->childItems());
@@ -327,8 +327,8 @@ QHash<int, Category*> RootItem::getHashedSubTreeCategories() const {
   return children;
 }
 
-QHash<int, Feed*> RootItem::getHashedSubTreeFeeds() const {
-  QHash<int, Feed*> children;
+QHash<QString, Feed*> RootItem::getHashedSubTreeFeeds() const {
+  QHash<QString, Feed*> children;
   QList<RootItem*> traversable_items;
   traversable_items.append(const_cast<RootItem* const>(this));
 
@@ -448,11 +448,11 @@ bool RootItem::removeChild(RootItem* child) {
   return m_childItems.removeOne(child);
 }
 
-int RootItem::customId() const {
+QString RootItem::customId() const {
   return m_customId;
 }
 
-void RootItem::setCustomId(int custom_id) {
+void RootItem::setCustomId(const QString& custom_id) {
   m_customId = custom_id;
 }
 

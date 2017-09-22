@@ -34,7 +34,7 @@ OwnCloudFeed::OwnCloudFeed(const QSqlRecord& record) : Feed(nullptr) {
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
   setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-  setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toInt());
+  setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toString());
   qDebug("Custom ID of Nextcloud feed when loading from DB is '%s'.", qPrintable(record.value(FDS_DB_CUSTOM_ID_INDEX).toString()));
 }
 
@@ -83,7 +83,7 @@ bool OwnCloudFeed::editItself(OwnCloudFeed* new_feed_data) {
 bool OwnCloudFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  return DatabaseQueries::deleteFeed(database, customId(), serviceRoot()->accountId());
+  return DatabaseQueries::deleteFeed(database, customId().toInt(), serviceRoot()->accountId());
 }
 
 OwnCloudServiceRoot* OwnCloudFeed::serviceRoot() const {
@@ -91,7 +91,7 @@ OwnCloudServiceRoot* OwnCloudFeed::serviceRoot() const {
 }
 
 QList<Message> OwnCloudFeed::obtainNewMessages(bool* error_during_obtaining) {
-  OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customId());
+  OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customId().toInt());
 
   if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
     setStatus(Feed::NetworkError);

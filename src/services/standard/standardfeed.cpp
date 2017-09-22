@@ -323,7 +323,7 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  return DatabaseQueries::deleteFeed(database, customId(), getParentServiceRoot()->accountId());
+  return DatabaseQueries::deleteFeed(database, customId().toInt(), getParentServiceRoot()->accountId());
 }
 
 bool StandardFeed::addItself(RootItem* parent) {
@@ -341,7 +341,7 @@ bool StandardFeed::addItself(RootItem* parent) {
   else {
     // New feed was added, fetch is primary id from the database.
     setId(new_id);
-    setCustomId(new_id);
+    setCustomId(QString::number(new_id));
     return true;
   }
 }
@@ -441,7 +441,7 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(nullptr) {
   setTitle(QString::fromUtf8(record.value(FDS_DB_TITLE_INDEX).toByteArray()));
   setId(record.value(FDS_DB_ID_INDEX).toInt());
-  setCustomId(id());
+  setCustomId(QString::number(id()));
   setDescription(QString::fromUtf8(record.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
   setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));

@@ -44,12 +44,18 @@ class InoreaderServiceRoot : public ServiceRoot {
     void stop();
     QString code() const;
 
+    RootItem* obtainNewTreeForSyncIn() const;
+
   public slots:
     void addNewFeed(const QString& url);
     void addNewCategory();
     void updateTitle();
 
+  protected:
+    QList<QAction*> serviceMenu();
+
   private:
+    QList<QAction*> m_serviceMenu;
     InoreaderNetworkFactory* m_network;
 };
 

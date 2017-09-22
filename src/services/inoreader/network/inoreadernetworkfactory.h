@@ -21,7 +21,10 @@
 
 #include <QObject>
 
-#include <QOAuth2AuthorizationCodeFlow>
+#include <QNetworkReply>
+
+class RootItem;
+class QOAuth2AuthorizationCodeFlow;
 
 class InoreaderNetworkFactory : public QObject {
   Q_OBJECT
@@ -43,6 +46,11 @@ class InoreaderNetworkFactory : public QObject {
     void setAccessToken(const QString& accessToken);
     void setRefreshToken(const QString& refreshToken);
 
+    // Returns tree of feeds/categories.
+    // Top-level root of the tree is not needed here.
+    // Returned items do not have primary IDs assigned.
+    RootItem* feedsCategories(bool obtain_icons);
+
   public slots:
     void logIn();
     void logInIfNeeded();
@@ -59,9 +67,9 @@ class InoreaderNetworkFactory : public QObject {
     void initializeOauth();
 
   private:
-    int m_batchSize;
     QString m_username;
     QString m_refreshToken;
+    int m_batchSize;
     QOAuth2AuthorizationCodeFlow* m_oauth2;
 };
 

@@ -21,13 +21,14 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
+#include "miscellaneous/iconfactory.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
 InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent) : ServiceRoot(parent),
-  m_network(network) {
-  if (m_network == nullptr) {
+  m_serviceMenu(QList<QAction*>()), m_network(network) {
+  if (network == nullptr) {
     m_network = new InoreaderNetworkFactory(this);
   }
   else {
@@ -89,12 +90,34 @@ bool InoreaderServiceRoot::supportsCategoryAdding() const {
   return false;
 }
 
-void InoreaderServiceRoot::start(bool freshly_activated) {}
+void InoreaderServiceRoot::start(bool freshly_activated) {
+  Q_UNUSED(freshly_activated)
+
+  //loadFromDatabase();
+  //loadCacheFromFile(accountId());
+
+  m_network->logInIfNeeded();
+}
 
 void InoreaderServiceRoot::stop() {}
 
+QList<QAction*> InoreaderServiceRoot::serviceMenu() {
+  if (m_serviceMenu.isEmpty()) {
+    QAction* act_sync_in = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
+
+    connect(act_sync_in, &QAction::triggered, this, &InoreaderServiceRoot::syncIn);
+    m_serviceMenu.append(act_sync_in);
+  }
+
+  return m_serviceMenu;
+}
+
 QString InoreaderServiceRoot::code() const {
   return InoreaderEntryPoint().code();
+}
+
+RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
+  return m_network->feedsCategories(true);
 }
 
 void InoreaderServiceRoot::addNewFeed(const QString& url) {}

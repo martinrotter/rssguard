@@ -505,7 +505,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             Category* category = new Category();
 
             category->setTitle(item["name"].toString());
-            category->setCustomId(item_id);
+            category->setCustomId(QString::number(item_id));
             act_parent->appendChild(category);
 
             if (item.contains("items")) {
@@ -540,7 +540,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           }
 
           feed->setTitle(item["name"].toString());
-          feed->setCustomId(item_id);
+          feed->setCustomId(QString::number(item_id));
           act_parent->appendChild(feed);
         }
       }

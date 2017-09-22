@@ -177,9 +177,9 @@ bool DatabaseQueries::purgeRecycleBin(QSqlDatabase db) {
   return q.exec();
 }
 
-QMap<int, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(QSqlDatabase db, int custom_id, int account_id,
-                                                                        bool including_total_counts, bool* ok) {
-  QMap<int, QPair<int, int>> counts;
+QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(QSqlDatabase db, const QString& custom_id, int account_id,
+                                                                            bool including_total_counts, bool* ok) {
+  QMap<QString, QPair<int, int>> counts;
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -200,16 +200,16 @@ QMap<int, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(QSqlData
 
   if (q.exec()) {
     while (q.next()) {
-      int feed_id = q.value(0).toInt();
+      QString feed_custom_id = q.value(0).toString();
       int unread_count = q.value(1).toInt();
 
       if (including_total_counts) {
         int total_count = q.value(2).toInt();
 
-        counts.insert(feed_id, QPair<int, int>(unread_count, total_count));
+        counts.insert(feed_custom_id, QPair<int, int>(unread_count, total_count));
       }
       else {
-        counts.insert(feed_id, QPair<int, int>(unread_count, 0));
+        counts.insert(feed_custom_id, QPair<int, int>(unread_count, 0));
       }
     }
 
@@ -226,9 +226,9 @@ QMap<int, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(QSqlData
   return counts;
 }
 
-QMap<int, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(QSqlDatabase db, int account_id,
-                                                                       bool including_total_counts, bool* ok) {
-  QMap<int, QPair<int, int>> counts;
+QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(QSqlDatabase db, int account_id,
+                                                                           bool including_total_counts, bool* ok) {
+  QMap<QString, QPair<int, int>> counts;
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -248,7 +248,7 @@ QMap<int, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(QSqlDatab
 
   if (q.exec()) {
     while (q.next()) {
-      int feed_id = q.value(0).toInt();
+      QString feed_id = q.value(0).toString();
       int unread_count = q.value(1).toInt();
 
       if (including_total_counts) {
@@ -274,7 +274,7 @@ QMap<int, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(QSqlDatab
   return counts;
 }
 
-int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, int feed_custom_id,
+int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, const QString& feed_custom_id,
                                              int account_id, bool including_total_counts, bool* ok) {
   QSqlQuery q(db);
 
@@ -340,7 +340,7 @@ int DatabaseQueries::getMessageCountsForBin(QSqlDatabase db, int account_id, boo
   }
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool* ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, const QString& feed_custom_id, int account_id, bool* ok) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -442,7 +442,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(QSqlDatabase db, 
 
 int DatabaseQueries::updateMessages(QSqlDatabase db,
                                     const QList<Message>& messages,
-                                    int feed_custom_id,
+                                    const QString& feed_custom_id,
                                     int account_id,
                                     const QString& url,
                                     bool* any_message_changed,
@@ -779,7 +779,7 @@ bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem* tree_root, int
       query_category.bindValue(QSL(":parent_id"), child->parent()->id());
       query_category.bindValue(QSL(":title"), child->title());
       query_category.bindValue(QSL(":account_id"), account_id);
-      query_category.bindValue(QSL(":custom_id"), QString::number(child->toCategory()->customId()));
+      query_category.bindValue(QSL(":custom_id"), child->toCategory()->customId());
 
       if (query_category.exec()) {
         child->setId(query_category.lastInsertId().toInt());
@@ -856,7 +856,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromBin(QSqlDatabase db, int acc
   return ids;
 }
 
-QStringList DatabaseQueries::customIdsOfMessagesFromFeed(QSqlDatabase db, int feed_custom_id, int account_id, bool* ok) {
+QStringList DatabaseQueries::customIdsOfMessagesFromFeed(QSqlDatabase db, const QString& feed_custom_id, int account_id, bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 

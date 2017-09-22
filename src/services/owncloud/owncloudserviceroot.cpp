@@ -89,7 +89,7 @@ void OwnCloudServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  if (qApp->isFirstRun(QSL("3.1.1")) || (childCount() == 1 && child(0)->kind() == RootItemKind::Bin)) {
+  if (childCount() <= 1) {
     syncIn();
   }
 }
@@ -180,12 +180,6 @@ bool OwnCloudServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_ite
 }
 
 void OwnCloudServiceRoot::updateTitle() {
-  QString host = QUrl(m_network->url()).host();
-
-  if (host.isEmpty()) {
-    host = m_network->url();
-  }
-
   setTitle(m_network->authUsername() + QSL(" (Nextcloud News)"));
 }
 

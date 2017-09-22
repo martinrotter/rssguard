@@ -120,9 +120,9 @@ class OwnCloudNetworkFactory {
     OwnCloudGetFeedsCategoriesResponse feedsCategories();
 
     // Feed operations.
-    bool deleteFeed(int feed_id);
+    bool deleteFeed(const QString& feed_id);
     bool createFeed(const QString& url, int parent_id);
-    bool renameFeed(const QString& new_name, int feed_id);
+    bool renameFeed(const QString& new_name, const QString& custom_feed_id);
 
     // Get messages for given feed.
     OwnCloudGetMessagesResponse getMessages(int feed_id);

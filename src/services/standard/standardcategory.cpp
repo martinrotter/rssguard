@@ -148,7 +148,7 @@ bool StandardCategory::addItself(RootItem* parent) {
   }
   else {
     setId(new_id);
-    setCustomId(new_id);
+    setCustomId(QString::number(new_id));
     return true;
   }
 }

@@ -55,7 +55,7 @@ void FormTtRssFeedDetails::apply() {
     TtRssServiceRoot* root = qobject_cast<TtRssServiceRoot*>(parent->getParentServiceRoot());
     const int category_id = parent->kind() == RootItemKind::ServiceRoot ?
                             0 :
-                            parent->customId();
+                            parent->customId().toInt();
     const TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_ui->m_txtUrl->lineEdit()->text(),
                                                                                    category_id,
                                                                                    m_ui->m_gbAuthentication->isChecked(),

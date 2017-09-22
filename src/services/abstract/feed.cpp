@@ -252,7 +252,7 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
     bool ok = true;
 
     if (!messages.isEmpty()) {
-      int custom_id = customId();
+      QString custom_id = customId();
       int account_id = getParentServiceRoot()->accountId();
       QSqlDatabase database = is_main_thread ?
                               qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :

@@ -24,13 +24,19 @@
 #include "miscellaneous/application.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
+#include "services/abstract/category.h"
 #include "services/inoreader/definitions.h"
 
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QOAuth2AuthorizationCodeFlow>
 #include <QOAuthHttpServerReplyHandler>
 #include <QUrl>
 
 InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent),
-  m_batchSize(INOREADER_DEFAULT_BATCH_SIZE), m_oauth2(new QOAuth2AuthorizationCodeFlow(this)) {
+  m_username(QString()), m_refreshToken(QString()), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
+  m_oauth2(new QOAuth2AuthorizationCodeFlow(this)) {
   initializeOauth();
 }
 
@@ -125,6 +131,93 @@ void InoreaderNetworkFactory::setUsername(const QString& username) {
 
 void InoreaderNetworkFactory::setRefreshToken(const QString& refreshToken) {
   m_refreshToken = refreshToken;
+}
+
+RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
+  RootItem* parent = new RootItem();
+
+  QMap<QString, RootItem*> cats;
+  cats.insert(NO_PARENT_CATEGORY_STR, parent);
+
+  QNetworkReply* reply = m_oauth2->get(QUrl(INOREADER_API_LIST_LABELS));
+  QEventLoop loop;
+  RootItem* result = nullptr;
+
+  connect(reply, &QNetworkReply::finished, [&, this]() {
+    if (reply->error() == QNetworkReply::NoError) {
+      QByteArray repl_data = reply->readAll();
+      QJsonArray json = QJsonDocument::fromJson(repl_data).object()["tags"].toArray();
+
+      foreach (const QJsonValue& obj, json) {
+        auto label = obj.toObject();
+        QString label_id = label["id"].toString();
+
+        if (label_id.contains(QSL("/label/"))) {
+          // We have label (not "state").
+          Category* category = new Category();
+
+          category->setTitle(label_id.mid(label_id.lastIndexOf(QL1C('/')) + 1));
+          category->setCustomId(label_id);
+          cats.insert(category->customId(), category);
+
+          // All categories in ownCloud are top-level.
+          parent->appendChild(category);
+        }
+      }
+    }
+
+    loop.exit();
+  });
+
+  loop.exec();
+
+  return result;
+
+/*
+   // Process categories first, then process feeds.
+   foreach (const QJsonValue& cat, QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray()) {
+    QJsonObject item = cat.toObject();
+    Category* category = new Category();
+
+    category->setTitle(item["name"].toString());
+    category->setCustomId(item["id"].toInt());
+    cats.insert(category->customId(), category);
+
+    // All categories in ownCloud are top-level.
+    parent->appendChild(category);
+   }*/
+
+/*
+   // We have categories added, now add all feeds.
+   foreach (const QJsonValue& fed, QJsonDocument::fromJson(m_contentFeeds.toUtf8()).object()["feeds"].toArray()) {
+    QJsonObject item = fed.toObject();
+    OwnCloudFeed* feed = new OwnCloudFeed();
+
+    if (obtain_icons) {
+      QString icon_path = item["faviconLink"].toString();
+
+      if (!icon_path.isEmpty()) {
+        QByteArray icon_data;
+
+        if (NetworkFactory::performNetworkOperation(icon_path, DOWNLOAD_TIMEOUT,
+                                                    QByteArray(), QString(), icon_data,
+                                                    QNetworkAccessManager::GetOperation).first ==
+            QNetworkReply::NoError) {
+          // Icon downloaded, set it up.
+          QPixmap icon_pixmap;
+
+          icon_pixmap.loadFromData(icon_data);
+          feed->setIcon(QIcon(icon_pixmap));
+        }
+      }
+    }
+
+    feed->setUrl(item["link"].toString());
+    feed->setTitle(item["title"].toString());
+    feed->setCustomId(item["id"].toInt());
+    qDebug("Custom ID of next fetched Nextcloud feed is '%d'.", item["id"].toInt());
+    cats.value(item["folderId"].toInt())->appendChild(feed);
+   }*/
 }
 
 void InoreaderNetworkFactory::setAccessToken(const QString& accessToken) {

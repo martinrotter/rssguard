@@ -104,7 +104,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   bool ok;
 
-  QMap<int, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
+  QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
 
   if (ok) {
     foreach (Feed* feed, feeds) {
@@ -229,8 +229,8 @@ void ServiceRoot::requestItemRemoval(RootItem* item) {
   emit itemRemovalRequested(item);
 }
 
-QMap<int, QVariant> ServiceRoot::storeCustomFeedsData() {
-  QMap<int, QVariant> custom_data;
+QMap<QString, QVariant> ServiceRoot::storeCustomFeedsData() {
+  QMap<QString, QVariant> custom_data;
 
   foreach (const Feed* feed, getSubTreeFeeds()) {
     QVariantMap feed_custom_data;
@@ -243,12 +243,12 @@ QMap<int, QVariant> ServiceRoot::storeCustomFeedsData() {
   return custom_data;
 }
 
-void ServiceRoot::restoreCustomFeedsData(const QMap<int, QVariant>& data, const QHash<int, Feed*>& feeds) {
-  QMapIterator<int, QVariant> i(data);
+void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariant>& data, const QHash<QString, Feed*>& feeds) {
+  QMapIterator<QString, QVariant> i(data);
 
   while (i.hasNext()) {
     i.next();
-    const int custom_id = i.key();
+    const QString custom_id = i.key();
 
     if (feeds.contains(custom_id)) {
       Feed* feed = feeds.value(custom_id);
@@ -270,7 +270,7 @@ void ServiceRoot::syncIn() {
   if (new_tree != nullptr) {
     // Purge old data from SQL and clean all model items.
     requestItemExpandStateSave(this);
-    QMap<int, QVariant> feed_custom_data = storeCustomFeedsData();
+    QMap<QString, QVariant> feed_custom_data = storeCustomFeedsData();
     removeOldFeedTree(false);
     cleanAllItems();
     restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
@@ -392,7 +392,7 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
   stringy_ids.reserve(feeds.size());
 
   foreach (const Feed* feed, feeds) {
-    stringy_ids.append(QString("'%1'").arg(QString::number(feed->customId())));
+    stringy_ids.append(QString("'%1'").arg(feed->customId()));
   }
 
   return stringy_ids;

@@ -30,4 +30,7 @@
 #define INOREADER_DEFAULT_BATCH_SIZE    -1
 #define INOREADER_UNLIMITED_BATCH_SIZE  -1
 
+#define INOREADER_API_LIST_LABELS       "https://www.inoreader.com/reader/api/0/tag/list"
+#define INOREADER_API_LIST_FEEDS        "https://www.inoreader.com/reader/api/0/subscription/list"
+
 #endif // INOREADER_DEFINITIONS_H

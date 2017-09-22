@@ -175,7 +175,7 @@ class RootItem : public QObject {
     QList<RootItem*> getSubTree(RootItemKind::Kind kind_of_item) const;
     QList<Category*> getSubTreeCategories() const;
     QHash<int, Category*> getHashedSubTreeCategories() const;
-    QHash<int, Feed*> getHashedSubTreeFeeds() const;
+    QHash<QString, Feed*> getHashedSubTreeFeeds() const;
     QList<Feed*> getSubTreeFeeds() const;
 
     // Returns the service root node which is direct or indirect parent of current item.
@@ -210,8 +210,8 @@ class RootItem : public QObject {
     void setBoldFont(const QFont& bold_font);
 
     // NOTE: For standard feed/category, this WILL equal to id().
-    int customId() const;
-    void setCustomId(int custom_id);
+    QString customId() const;
+    void setCustomId(const QString& custom_id);
 
     // Converters
     Category* toCategory() const;
@@ -223,7 +223,7 @@ class RootItem : public QObject {
 
     RootItemKind::Kind m_kind;
     int m_id;
-    int m_customId;
+    QString m_customId;
     QString m_title;
     QString m_description;
     QIcon m_icon;
