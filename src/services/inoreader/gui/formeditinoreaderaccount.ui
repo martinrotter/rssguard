@@ -29,7 +29,7 @@
      <item row="0" column="0">
       <widget class="QPushButton" name="m_btnTestSetup">
        <property name="text">
-        <string>&amp;Test login</string>
+        <string>&amp;Login</string>
        </property>
       </widget>
      </item>
