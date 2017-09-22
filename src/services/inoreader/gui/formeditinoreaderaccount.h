@@ -40,6 +40,8 @@ class FormEditInoreaderAccount : public QDialog {
 
     InoreaderServiceRoot* execForCreate();
 
+    void execForEdit(InoreaderServiceRoot* existing_root);
+
   private slots:
     void testSetup();
     void onClickedOk();

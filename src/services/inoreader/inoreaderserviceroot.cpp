@@ -21,6 +21,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
+#include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
@@ -67,6 +68,17 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
       }
     }
   }
+}
+
+bool InoreaderServiceRoot::canBeEdited() const {
+  return true;
+}
+
+bool InoreaderServiceRoot::editViaGui() {
+  FormEditInoreaderAccount form_pointer(qApp->mainFormWidget());
+
+  form_pointer.execForEdit(this);
+  return true;
 }
 
 bool InoreaderServiceRoot::supportsFeedAdding() const {

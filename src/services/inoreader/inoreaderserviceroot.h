@@ -36,6 +36,8 @@ class InoreaderServiceRoot : public ServiceRoot {
     void setNetwork(InoreaderNetworkFactory* network);
     InoreaderNetworkFactory* network() const;
 
+    bool canBeEdited() const;
+    bool editViaGui();
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
     void start(bool freshly_activated);

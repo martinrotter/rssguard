@@ -32,6 +32,11 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
                                   tr("Not tested yet."),
                                   tr("Not tested yet."));
   m_ui.m_lblTestResult->label()->setWordWrap(true);
+  m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("User-visible username"));
+
+  setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_btnTestSetup);
+  setTabOrder(m_ui.m_btnTestSetup, m_ui.m_buttonBox);
 
   connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), [=](int value) {
     if (value <= 0) {
@@ -41,10 +46,14 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
       m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
     }
   });
-
-  m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMinimum(INOREADER_UNLIMITED_BATCH_SIZE);
-
+  connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, [this](QString text) {
+    if (text.isEmpty()) {
+      m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("No username entered."));
+    }
+    else {
+      m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some username entered."));
+    }
+  });
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditInoreaderAccount::onClickedOk);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditInoreaderAccount::onClickedCancel);
@@ -63,6 +72,9 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
                                     tr("There is error. %1").arg(err),
                                     tr("There was error during testing."));
   });
+
+  m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setMinimum(INOREADER_UNLIMITED_BATCH_SIZE);
 }
 
 FormEditInoreaderAccount::~FormEditInoreaderAccount() {}
@@ -91,10 +103,7 @@ void FormEditInoreaderAccount::onClickedOk() {
     editing_account = false;
   }
 
-  if (m_editableRoot->network()->userName().isEmpty()) {
-    m_editableRoot->network()->setUsername(tr("uknown"));
-  }
-
+  m_editableRoot->network()->setUsername(m_ui.m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setBatchSize(m_ui.m_spinLimitMessages->value());
   m_editableRoot->saveAccountDataToDatabase();
   accept();
@@ -113,4 +122,12 @@ InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
   setWindowTitle(tr("Add new Inoreader account"));
   exec();
   return m_editableRoot;
+}
+
+void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) {
+  setWindowTitle(tr("Edit existing Inoreader account"));
+  m_editableRoot = existing_root;
+  m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->userName());
+  m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
+  exec();
 }
