@@ -74,9 +74,8 @@ Application::Application(const QString& id, int& argc, char** argv)
 
   QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
   m_urlInterceptor->loadSettings();
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(
-    QByteArray(APP_LOW_NAME),
-    new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(QByteArray(APP_LOW_NAME),
+                                                               new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
 #endif
 }
 

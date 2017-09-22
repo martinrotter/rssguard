@@ -143,7 +143,7 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   QEventLoop loop;
   RootItem* result = nullptr;
 
-  connect(reply, &QNetworkReply::finished, [&, this]() {
+  connect(reply, &QNetworkReply::finished, [&]() {
     if (reply->error() == QNetworkReply::NoError) {
       QByteArray repl_data = reply->readAll();
       QJsonArray json = QJsonDocument::fromJson(repl_data).object()["tags"].toArray();
