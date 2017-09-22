@@ -22,6 +22,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
+#include "services/owncloud/definitions.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
 #include "services/owncloud/owncloudserviceroot.h"
@@ -891,6 +892,7 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(QSqlDatabase db, bool* 
       root->network()->setAuthPassword(TextFactory::decrypt(query.value(2).toString()));
       root->network()->setUrl(query.value(3).toString());
       root->network()->setForceServerSideUpdate(query.value(4).toBool());
+      root->network()->setBatchSize(query.value(5).toInt());
       root->updateTitle();
       roots.append(root);
     }
@@ -957,17 +959,18 @@ bool DatabaseQueries::deleteOwnCloudAccount(QSqlDatabase db, int account_id) {
 }
 
 bool DatabaseQueries::overwriteOwnCloudAccount(QSqlDatabase db, const QString& username, const QString& password,
-                                               const QString& url, bool force_server_side_feed_update, int account_id) {
+                                               const QString& url, bool force_server_side_feed_update, int batch_size, int account_id) {
   QSqlQuery query(db);
 
   query.prepare("UPDATE OwnCloudAccounts "
-                "SET username = :username, password = :password, url = :url, force_update = :force_update "
+                "SET username = :username, password = :password, url = :url, force_update = :force_update, msg_limit = :msg_limit "
                 "WHERE id = :id;");
   query.bindValue(QSL(":username"), username);
   query.bindValue(QSL(":password"), TextFactory::encrypt(password));
   query.bindValue(QSL(":url"), url);
   query.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
   query.bindValue(QSL(":id"), account_id);
+  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? UNLIMITED_BATCH_SIZE : batch_size);
 
   if (query.exec()) {
     return true;
@@ -980,16 +983,17 @@ bool DatabaseQueries::overwriteOwnCloudAccount(QSqlDatabase db, const QString& u
 
 bool DatabaseQueries::createOwnCloudAccount(QSqlDatabase db, int id_to_assign, const QString& username,
                                             const QString& password, const QString& url,
-                                            bool force_server_side_feed_update) {
+                                            bool force_server_side_feed_update, int batch_size) {
   QSqlQuery q(db);
 
-  q.prepare("INSERT INTO OwnCloudAccounts (id, username, password, url, force_update) "
-            "VALUES (:id, :username, :password, :url, :force_update);");
+  q.prepare("INSERT INTO OwnCloudAccounts (id, username, password, url, force_update, msg_limit) "
+            "VALUES (:id, :username, :password, :url, :force_update, :msg_limit);");
   q.bindValue(QSL(":id"), id_to_assign);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":password"), TextFactory::encrypt(password));
   q.bindValue(QSL(":url"), url);
   q.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
+  q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? UNLIMITED_BATCH_SIZE : batch_size);
 
   if (q.exec()) {
     return true;

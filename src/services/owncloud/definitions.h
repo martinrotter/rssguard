@@ -23,5 +23,6 @@
 #define API_VERSION           "1.2"
 #define API_PATH              "index.php/apps/news/api/v1-2/"
 #define MINIMAL_OC_VERSION    "6.0.5"
+#define UNLIMITED_BATCH_SIZE  -1
 
 #endif // OWNCLOUD_DEFINITIONS_H

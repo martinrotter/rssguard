@@ -195,7 +195,8 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
   if (accountId() != NO_PARENT_CATEGORY) {
     if (DatabaseQueries::overwriteOwnCloudAccount(database, m_network->authUsername(),
                                                   m_network->authPassword(), m_network->url(),
-                                                  m_network->forceServerSideUpdate(), accountId())) {
+                                                  m_network->forceServerSideUpdate(), m_network->batchSize(),
+                                                  accountId())) {
       updateTitle();
       itemChanged(QList<RootItem*>() << this);
     }
@@ -207,7 +208,8 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
     if (saved) {
       if (DatabaseQueries::createOwnCloudAccount(database, id_to_assign, m_network->authUsername(),
                                                  m_network->authPassword(), m_network->url(),
-                                                 m_network->forceServerSideUpdate())) {
+                                                 m_network->forceServerSideUpdate(),
+                                                 m_network->batchSize())) {
         setId(id_to_assign);
         setAccountId(id_to_assign);
         updateTitle();

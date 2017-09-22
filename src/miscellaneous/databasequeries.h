@@ -82,9 +82,9 @@ class DatabaseQueries {
     static QList<ServiceRoot*> getOwnCloudAccounts(QSqlDatabase db, bool* ok = nullptr);
     static bool deleteOwnCloudAccount(QSqlDatabase db, int account_id);
     static bool overwriteOwnCloudAccount(QSqlDatabase db, const QString& username, const QString& password,
-                                         const QString& url, bool force_server_side_feed_update, int account_id);
+                                         const QString& url, bool force_server_side_feed_update, int batch_size, int account_id);
     static bool createOwnCloudAccount(QSqlDatabase db, int id_to_assign, const QString& username, const QString& password,
-                                      const QString& url, bool force_server_side_feed_update);
+                                      const QString& url, bool force_server_side_feed_update, int batch_size);
     static int createAccount(QSqlDatabase db, const QString& code, bool* ok = nullptr);
     static Assignment getOwnCloudFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
 

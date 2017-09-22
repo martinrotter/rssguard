@@ -34,7 +34,7 @@
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
-  m_authUsername(QString()), m_authPassword(QString()), m_batchSize(-1), m_urlUser(QString()), m_urlStatus(QString()),
+  m_authUsername(QString()), m_authPassword(QString()), m_batchSize(UNLIMITED_BATCH_SIZE), m_urlUser(QString()), m_urlStatus(QString()),
   m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
   m_urlDeleteFeed(QString()), m_urlRenameFeed(QString()), m_userId(QString()) {}
 
