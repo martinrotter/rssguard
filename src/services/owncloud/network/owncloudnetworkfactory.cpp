@@ -479,8 +479,8 @@ OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() {}
 RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons) const {
   RootItem* parent = new RootItem();
 
-  QMap<QString, RootItem*>cats;
-  cats.insert(NO_PARENT_CATEGORY_STR, parent);
+  QMap<QString, RootItem*> cats;
+  cats.insert(QSL("0"), parent);
 
   // Process categories first, then process feeds.
   foreach (const QJsonValue& cat, QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray()) {
@@ -488,7 +488,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     Category* category = new Category();
 
     category->setTitle(item["name"].toString());
-    category->setCustomId(item["id"].toString());
+    category->setCustomId(QString::number(item["id"].toInt()));
     cats.insert(category->customId(), category);
 
     // All categories in ownCloud are top-level.
@@ -521,9 +521,9 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
 
     feed->setUrl(item["link"].toString());
     feed->setTitle(item["title"].toString());
-    feed->setCustomId(item["id"].toString());
-    qDebug("Custom ID of next fetched Nextcloud feed is '%d'.", item["id"].toInt());
-    cats.value(item["folderId"].toString())->appendChild(feed);
+    feed->setCustomId(QString::number(item["id"].toInt()));
+    qDebug("Custom ID of next fetched Nextcloud feed is '%s'.", qPrintable(feed->customId()));
+    cats.value(QString::number(item["folderId"].toInt()))->appendChild(feed);
   }
 
   return parent;
