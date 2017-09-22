@@ -11,7 +11,7 @@ if test "$TRAVIS_OS_NAME" = "osx"; then
   brew link --force curl
 else
   # Linux.
-  sudo add-apt-repository ppa:beineri/opt-qt58-trusty -y
+  sudo add-apt-repository ppa:beineri/opt-qt59-trusty -y
   sudo apt-get update
-  sudo apt-get -y install qt58tools qt58base qt58webengine
+  sudo apt-get -y install qt58tools qt58base qt58webengine qt59networkauth-no-lgpl
 fi
