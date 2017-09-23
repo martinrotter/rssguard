@@ -137,7 +137,7 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   RootItem* parent = new RootItem();
 
   QMap<QString, RootItem*> cats;
-  cats.insert(NO_PARENT_CATEGORY_STR, parent);
+  cats.insert(QSL(""), parent);
 
   QNetworkReply* reply = m_oauth2->get(QUrl(INOREADER_API_LIST_LABELS));
   QEventLoop loop;

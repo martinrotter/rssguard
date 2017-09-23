@@ -30,7 +30,7 @@ RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr),
   m_kind(RootItemKind::Root),
   m_id(NO_PARENT_CATEGORY),
-  m_customId(QSL(NO_PARENT_CATEGORY_STR)),
+  m_customId(QSL("")),
   m_title(QString()),
   m_description(QString()),
   m_icon(QIcon()),

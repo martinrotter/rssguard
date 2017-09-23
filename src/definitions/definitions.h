@@ -55,7 +55,6 @@
 #define RESELECT_MESSAGE_THRESSHOLD           500
 #define ICON_SIZE_SETTINGS                    16
 #define NO_PARENT_CATEGORY                    -1
-#define NO_PARENT_CATEGORY_STR                ""
 #define ID_RECYCLE_BIN                        -2
 #define TRAY_ICON_BUBBLE_TIMEOUT              20000
 #define CLOSE_LOCK_TIMEOUT                    500
