@@ -123,11 +123,9 @@ void FormEditInoreaderAccount::hookNetwork() {
 
 InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
   setWindowTitle(tr("Add new Inoreader account"));
-  exec();
-
   m_network = new InoreaderNetworkFactory(this);
   hookNetwork();
-
+  exec();
   return m_editableRoot;
 }
 

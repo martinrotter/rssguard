@@ -35,8 +35,8 @@
 #include <QTimer>
 
 AdBlockDialog::AdBlockDialog(QWidget* parent)
-  : QDialog(parent), m_ui(new Ui::AdBlockDialog), m_manager(AdBlockManager::instance()), m_currentTreeWidget(0), m_currentSubscription(0),
-  m_loaded(false) {
+  : QDialog(parent), m_manager(AdBlockManager::instance()), m_currentTreeWidget(0), m_currentSubscription(0),
+  m_loaded(false), m_ui(new Ui::AdBlockDialog) {
   m_ui->setupUi(this);
   m_ui->m_cbEnable->setChecked(m_manager->isEnabled());
   setAttribute(Qt::WA_DeleteOnClose);
