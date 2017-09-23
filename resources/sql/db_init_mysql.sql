@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS Categories;
 -- !
 CREATE TABLE IF NOT EXISTS Categories (
   id              INTEGER       AUTO_INCREMENT PRIMARY KEY,
-  parent_id       INTEGER       NOT NULL,
+  parent_id       TEXT          NOT NULL,
   title           VARCHAR(100)  NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    BIGINT,

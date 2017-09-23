@@ -779,7 +779,7 @@ bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem* tree_root, int
       query_category.bindValue(QSL(":parent_id"), child->parent()->id());
       query_category.bindValue(QSL(":title"), child->title());
       query_category.bindValue(QSL(":account_id"), account_id);
-      query_category.bindValue(QSL(":custom_id"), child->toCategory()->customId());
+      query_category.bindValue(QSL(":custom_id"), child->customId());
 
       if (query_category.exec()) {
         child->setId(query_category.lastInsertId().toInt());
@@ -793,7 +793,7 @@ bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem* tree_root, int
 
       query_feed.bindValue(QSL(":title"), feed->title());
       query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
-      query_feed.bindValue(QSL(":category"), feed->parent()->customId());
+      query_feed.bindValue(QSL(":category"), feed->parent()->id());
       query_feed.bindValue(QSL(":protected"), 0);
       query_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
       query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());

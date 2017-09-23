@@ -480,6 +480,8 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   RootItem* parent = new RootItem();
 
   QMap<QString, RootItem*> cats;
+
+  // Top-level feed have "folderId" set to "0".
   cats.insert(QSL("0"), parent);
 
   // Process categories first, then process feeds.
