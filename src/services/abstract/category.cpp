@@ -47,7 +47,11 @@ Category::Category(const QSqlRecord& record) : Category(nullptr) {
 
   setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
 
-  setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
+  QIcon loaded_icon = qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray());
+
+  if (!loaded_icon.isNull()) {
+    setIcon(loaded_icon);
+  }
 }
 
 Category::~Category() {}
