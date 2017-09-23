@@ -174,7 +174,11 @@ class RootItem : public QObject {
     QList<RootItem*> getSubTree() const;
     QList<RootItem*> getSubTree(RootItemKind::Kind kind_of_item) const;
     QList<Category*> getSubTreeCategories() const;
+
+    // Returns list of categories complemented by their own integer primary ID.
     QHash<int, Category*> getHashedSubTreeCategories() const;
+
+    // Returns list of feeds complemented by their own string CUSTOM ID.
     QHash<QString, Feed*> getHashedSubTreeFeeds() const;
     QList<Feed*> getSubTreeFeeds() const;
 
