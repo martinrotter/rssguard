@@ -30,7 +30,7 @@ class RecycleBin;
 class QAction;
 class MessagesModel;
 
-// Car here represents ID of the item.
+// Car here represents ID (int, primary key) of the item.
 typedef QList<QPair<int, RootItem*>> Assignment;
 typedef QPair<int, RootItem*> AssignmentItem;
 typedef QPair<Message, RootItem::Importance> ImportanceChange;
