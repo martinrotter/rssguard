@@ -133,6 +133,8 @@ void InoreaderNetworkFactory::setRefreshToken(const QString& refreshToken) {
   m_refreshToken = refreshToken;
 }
 
+// NOTE: oauth: https://developers.google.com/oauthplayground/#step3&scopes=read%20write&auth_code=497815bc3362aba9ad60c5ae3e01811fe2da4bb5&refresh_token=bacb9c36f82ba92667282d6175bb857a091e7f0c&access_token_field=094f92bc7aedbd27fbebc3efc9172b258be8944a&url=https%3A%2F%2Fwww.inoreader.com%2Freader%2Fapi%2F0%2Fsubscription%2Flist&content_type=application%2Fjson&http_method=GET&useDefaultOauthCred=unchecked&oauthEndpointSelect=Custom&oauthAuthEndpointValue=https%3A%2F%2Fwww.inoreader.com%2Foauth2%2Fauth%3Fstate%3Dtest&oauthTokenEndpointValue=https%3A%2F%2Fwww.inoreader.com%2Foauth2%2Ftoken&oauthClientId=1000000595&expires_in=3599&oauthClientSecret=_6pYUZgtNLWwSaB9pC1YOz6p4zwu3haL&access_token_issue_date=1506198338&for_access_token=094f92bc7aedbd27fbebc3efc9172b258be8944a&includeCredentials=checked&accessTokenType=bearer&autoRefreshToken=unchecked&accessType=offline&prompt=consent&response_type=code
+
 RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   RootItem* parent = new RootItem();
 
@@ -156,9 +158,19 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
           // We have label (not "state").
           Category* category = new Category();
 
+          category->setDescription(label["htmlUrl"].toString());
           category->setTitle(label_id.mid(label_id.lastIndexOf(QL1C('/')) + 1));
           category->setCustomId(label_id);
           cats.insert(category->customId(), category);
+
+          if (obtain_icons) {
+            QString category_url = label["iconUrl"].toString();
+
+            if (!category_url.isEmpty()) {
+              // Download the icon.
+
+            }
+          }
 
           // All categories in ownCloud are top-level.
           parent->appendChild(category);
