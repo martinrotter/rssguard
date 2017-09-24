@@ -844,3 +844,10 @@ mac {
               misc_icon misc_plain_icon misc_texts translations
 
 }
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-qtnetworkauth-Desktop-Debug/lib/release/ -lQt5NetworkAuth
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-qtnetworkauth-Desktop-Debug/lib/debug/ -lQt5NetworkAuth
+else:unix: LIBS += -L$$PWD/../build-qtnetworkauth-Desktop-Debug/lib/ -lQt5NetworkAuth
+
+INCLUDEPATH += $$PWD/../build-qtnetworkauth-Desktop-Debug/include
+DEPENDPATH += $$PWD/../build-qtnetworkauth-Desktop-Debug/include

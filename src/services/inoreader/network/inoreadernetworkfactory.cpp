@@ -57,7 +57,9 @@ void InoreaderNetworkFactory::setBatchSize(int batch_size) {
 }
 
 void InoreaderNetworkFactory::logIn() {
-  if (!m_oauth2->expirationAt().isNull() && m_oauth2->expirationAt() <= QDateTime::currentDateTime() && !m_refreshToken.isEmpty()) {
+  if (!m_oauth2->expirationAt().isNull() &&
+      m_oauth2->expirationAt() <= QDateTime::currentDateTime() &&
+      !m_refreshToken.isEmpty()) {
     // We have some refresh token which expired.
     m_oauth2->refreshAccessToken();
   }
@@ -106,6 +108,12 @@ void InoreaderNetworkFactory::initializeOauth() {
   connect(oauth_reply_handler, &QOAuthHttpServerReplyHandler::tokensReceived, this, &InoreaderNetworkFactory::tokensReceived);
   m_oauth2->setModifyParametersFunction([&](QAbstractOAuth::Stage stage, QVariantMap* parameters) {
     qDebug() << "Inoreader: Set modify parameters for stage" << (int)stage << "called: \n" << parameters;
+
+    if (stage == QAbstractOAuth::Stage::RefreshingAccessToken) {
+      parameters->insert(QSL("client_id"), INOREADER_OAUTH_CLI_ID);
+      parameters->insert(QSL("client_secret"), INOREADER_OAUTH_CLI_KEY);
+      parameters->remove(QSL("redirect_uri"));
+    }
   });
   connect(m_oauth2, &QOAuth2AuthorizationCodeFlow::granted, [=]() {
     qDebug("Inoreader: Oauth2 granted.");
