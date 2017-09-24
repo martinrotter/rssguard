@@ -22,6 +22,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
+#include "network-web/networkfactory.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
@@ -85,7 +86,7 @@ void InoreaderNetworkFactory::tokensReceived(QVariantMap tokens) {
 }
 
 void InoreaderNetworkFactory::initializeOauth() {
-  auto oauth_reply_handler = new QOAuthHttpServerReplyHandler(INOREADER_OAUTH_PORT, this);
+  QOAuthHttpServerReplyHandler* oauth_reply_handler = new QOAuthHttpServerReplyHandler(INOREADER_OAUTH_PORT, this);
 
   // Full redirect URL is thus "http://localhost:INOREADER_OAUTH_PORT/".
   oauth_reply_handler->setCallbackPath(QSL(""));
@@ -151,7 +152,6 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
 
   QNetworkReply* reply = m_oauth2->get(QUrl(INOREADER_API_LIST_LABELS));
   QEventLoop loop;
-  RootItem* result = nullptr;
 
   connect(reply, &QNetworkReply::finished, [&]() {
     if (reply->error() == QNetworkReply::NoError) {
@@ -172,11 +172,21 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
           cats.insert(category->customId(), category);
 
           if (obtain_icons) {
-            QString category_url = label["iconUrl"].toString();
+            QString icon_url = label["iconUrl"].toString();
 
-            if (!category_url.isEmpty()) {
-              // Download the icon.
+            if (!icon_url.isEmpty()) {
+              QByteArray icon_data;
 
+              if (NetworkFactory::performNetworkOperation(icon_url, DOWNLOAD_TIMEOUT,
+                                                          QByteArray(), QString(), icon_data,
+                                                          QNetworkAccessManager::GetOperation).first ==
+                  QNetworkReply::NoError) {
+                // Icon downloaded, set it up.
+                QPixmap icon_pixmap;
+
+                icon_pixmap.loadFromData(icon_data);
+                category->setIcon(QIcon(icon_pixmap));
+              }
             }
           }
 
@@ -191,7 +201,7 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
 
   loop.exec();
 
-  return result;
+  return parent;
 
 /*
    // Process categories first, then process feeds.
