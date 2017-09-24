@@ -22,6 +22,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/abstract/recyclebin.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
