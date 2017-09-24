@@ -51,7 +51,8 @@ class InoreaderServiceRoot : public ServiceRoot {
     void addNewCategory();
     void updateTitle();
 
-  protected:
+  private:
+    void loadFromDatabase();
     QList<QAction*> serviceMenu();
 
   private:

@@ -179,8 +179,7 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
 
               if (NetworkFactory::performNetworkOperation(icon_url, DOWNLOAD_TIMEOUT,
                                                           QByteArray(), QString(), icon_data,
-                                                          QNetworkAccessManager::GetOperation).first ==
-                  QNetworkReply::NoError) {
+                                                          QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError) {
                 // Icon downloaded, set it up.
                 QPixmap icon_pixmap;
 

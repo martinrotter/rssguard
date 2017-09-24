@@ -22,6 +22,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
+#include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/inoreaderserviceroot.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 #include "services/owncloud/definitions.h"
@@ -1480,6 +1481,37 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   }
 
   return categories;
+}
+
+Assignment DatabaseQueries::getInoreaderFeeds(QSqlDatabase db, int account_id, bool* ok) {
+  Assignment feeds;
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qFatal("Inoreader: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  while (q.next()) {
+    AssignmentItem pair;
+
+    pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.second = new InoreaderFeed(q.record());
+    feeds << pair;
+  }
+
+  if (ok != nullptr) {
+    *ok = true;
+  }
+
+  return feeds;
 }
 
 QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool* ok) {

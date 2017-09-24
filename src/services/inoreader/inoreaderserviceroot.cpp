@@ -44,6 +44,20 @@ void InoreaderServiceRoot::updateTitle() {
   setTitle(m_network->userName() + QSL(" (Inoreader)"));
 }
 
+void InoreaderServiceRoot::loadFromDatabase() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  Assignment categories = DatabaseQueries::getCategories(database, accountId());
+  Assignment feeds = DatabaseQueries::getInoreaderFeeds(database, accountId());
+
+  // All data are now obtained, lets create the hierarchy.
+  assembleCategories(categories);
+  assembleFeeds(feeds);
+
+  // As the last item, add recycle bin, which is needed.
+  appendChild(recycleBin());
+  updateCounts(true);
+}
+
 void InoreaderServiceRoot::saveAccountDataToDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
@@ -93,7 +107,8 @@ bool InoreaderServiceRoot::supportsCategoryAdding() const {
 void InoreaderServiceRoot::start(bool freshly_activated) {
   Q_UNUSED(freshly_activated)
 
-  //loadFromDatabase();
+  loadFromDatabase();
+
   //loadCacheFromFile(accountId());
 
   m_network->logInIfNeeded();
