@@ -71,6 +71,14 @@ QList<QAction*> StandardFeed::contextMenu() {
   return serviceRoot()->getContextMenuForFeed(this);
 }
 
+bool StandardFeed::canBeEdited() const {
+  return true;
+}
+
+bool StandardFeed::canBeDeleted() const {
+  return true;
+}
+
 StandardServiceRoot* StandardFeed::serviceRoot() const {
   return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
@@ -108,7 +116,7 @@ QVariant StandardFeed::data(int column, int role) const {
                                                 NetworkFactory::networkErrorText(m_networkError));
       }
       else {
-        return QVariant();
+        return Feed::data(column, role);
       }
 
     default:
@@ -377,6 +385,46 @@ bool StandardFeed::editItself(StandardFeed* new_feed_data) {
 
   // Editing is done.
   return true;
+}
+
+StandardFeed::Type StandardFeed::type() const {
+  return m_type;
+}
+
+void StandardFeed::setType(StandardFeed::Type type) {
+  m_type = type;
+}
+
+bool StandardFeed::passwordProtected() const {
+  return m_passwordProtected;
+}
+
+void StandardFeed::setPasswordProtected(bool passwordProtected) {
+  m_passwordProtected = passwordProtected;
+}
+
+QString StandardFeed::username() const {
+  return m_username;
+}
+
+void StandardFeed::setUsername(const QString& username) {
+  m_username = username;
+}
+
+QString StandardFeed::password() const {
+  return m_password;
+}
+
+void StandardFeed::setPassword(const QString& password) {
+  m_password = password;
+}
+
+QString StandardFeed::encoding() const {
+  return m_encoding;
+}
+
+void StandardFeed::setEncoding(const QString& encoding) {
+  m_encoding = encoding;
 }
 
 QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {

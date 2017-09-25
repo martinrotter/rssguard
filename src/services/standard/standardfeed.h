@@ -28,8 +28,6 @@
 #include <QPair>
 #include <QSqlRecord>
 
-class Message;
-class FeedsModel;
 class StandardServiceRoot;
 
 // Represents BASE class for feeds contained in FeedsModel.
@@ -38,9 +36,6 @@ class StandardFeed : public Feed {
   Q_OBJECT
 
   public:
-
-    // Describes possible types of feeds.
-    // NOTE: This is equivalent to attribute Feeds(type).
     enum Type {
       Rss0X = 0,
       Rss2X = 1,
@@ -58,13 +53,8 @@ class StandardFeed : public Feed {
 
     QList<QAction*> contextMenu();
 
-    bool canBeEdited() const {
-      return true;
-    }
-
-    bool canBeDeleted() const {
-      return true;
-    }
+    bool canBeEdited() const;
+    bool canBeDeleted() const;
 
     bool editViaGui();
     bool deleteViaGui();
@@ -82,45 +72,16 @@ class StandardFeed : public Feed {
     bool editItself(StandardFeed* new_feed_data);
 
     // Other getters/setters.
-    inline Type type() const {
-      return m_type;
-    }
-
-    inline void setType(Type type) {
-      m_type = type;
-    }
-
-    inline bool passwordProtected() const {
-      return m_passwordProtected;
-    }
-
-    inline void setPasswordProtected(bool passwordProtected) {
-      m_passwordProtected = passwordProtected;
-    }
-
-    inline QString username() const {
-      return m_username;
-    }
-
-    inline void setUsername(const QString& username) {
-      m_username = username;
-    }
-
-    inline QString password() const {
-      return m_password;
-    }
-
-    inline void setPassword(const QString& password) {
-      m_password = password;
-    }
-
-    inline QString encoding() const {
-      return m_encoding;
-    }
-
-    inline void setEncoding(const QString& encoding) {
-      m_encoding = encoding;
-    }
+    inline Type type() const;
+    inline void setType(Type type);
+    inline bool passwordProtected() const;
+    inline void setPasswordProtected(bool passwordProtected);
+    inline QString username() const;
+    inline void setUsername(const QString& username);
+    inline QString password() const;
+    inline void setPassword(const QString& password);
+    inline QString encoding() const;
+    inline void setEncoding(const QString& encoding);
 
     QNetworkReply::NetworkError networkError() const;
 
@@ -137,8 +98,6 @@ class StandardFeed : public Feed {
     static QString typeToString(Type type);
 
   public slots:
-
-    // Fetches metadata for the feed.
     void fetchMetadataForItself();
 
   private:
