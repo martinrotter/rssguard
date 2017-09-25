@@ -38,6 +38,9 @@ Feed::Feed(RootItem* parent)
 }
 
 Feed::Feed(const Feed& other) : RootItem(other) {
+  setKind(RootItemKind::Feed);
+  setAutoDelete(false);
+
   setCountOfAllMessages(other.countOfAllMessages());
   setCountOfUnreadMessages(other.countOfUnreadMessages());
   setUrl(other.url());
