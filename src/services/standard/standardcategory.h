@@ -34,8 +34,6 @@ class StandardCategory : public Category {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors
     explicit StandardCategory(RootItem* parent_item = nullptr);
     explicit StandardCategory(const StandardCategory& other);
     explicit StandardCategory(const QSqlRecord& record);
@@ -44,27 +42,18 @@ class StandardCategory : public Category {
     StandardServiceRoot* serviceRoot() const;
 
     // Returns the actual data representation of standard category.
-    QVariant data(int column, int role) const;
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem* target_item);
 
-    bool canBeEdited() const {
-      return true;
-    }
-
-    bool canBeDeleted() const {
-      return true;
-    }
+    bool canBeEdited() const;
+    bool canBeDeleted() const;
 
     bool editViaGui();
     bool deleteViaGui();
 
-    // Removes category and all its children from persistent
-    // database.
-    bool removeItself();
-
     bool addItself(RootItem* parent);
     bool editItself(StandardCategory* new_category_data);
+    bool removeItself();
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

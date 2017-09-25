@@ -35,16 +35,7 @@
 StandardCategory::StandardCategory(RootItem* parent_item) : Category(parent_item) {}
 
 StandardCategory::StandardCategory(const StandardCategory& other)
-  : StandardCategory(nullptr) {
-  setId(other.id());
-  setCustomId(other.customId());
-  setTitle(other.title());
-  setDescription(other.description());
-  setIcon(other.icon());
-  setCreationDate(other.creationDate());
-  setChildItems(other.childItems());
-  setParent(other.parent());
-}
+  : Category(other) {}
 
 StandardCategory::~StandardCategory() {
   qDebug("Destroying Category instance.");
@@ -52,27 +43,6 @@ StandardCategory::~StandardCategory() {
 
 StandardServiceRoot* StandardCategory::serviceRoot() const {
   return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
-}
-
-QVariant StandardCategory::data(int column, int role) const {
-  switch (role) {
-    case Qt::ToolTipRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        //: Tooltip for standard feed.
-        return tr("%1 (category)"
-                  "%2%3").arg(title(),
-                              description().isEmpty() ? QString() : QSL("\n") + description(),
-                              childCount() == 0 ?
-                              tr("\nThis category does not contain any nested items.") :
-                              QString());
-      }
-      else {
-        return Category::data(column, role);
-      }
-
-    default:
-      return Category::data(column, role);
-  }
 }
 
 Qt::ItemFlags StandardCategory::additionalFlags() const {
@@ -94,6 +64,14 @@ bool StandardCategory::performDragDropChange(RootItem* target_item) {
     delete category_new;
     return false;
   }
+}
+
+bool StandardCategory::canBeEdited() const {
+  return true;
+}
+
+bool StandardCategory::canBeDeleted() const {
+  return true;
 }
 
 bool StandardCategory::editViaGui() {

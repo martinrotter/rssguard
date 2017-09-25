@@ -26,6 +26,7 @@ class Category : public RootItem {
 
   public:
     explicit Category(RootItem* parent = nullptr);
+    explicit Category(const Category& other);
     explicit Category(const QSqlRecord& record);
     virtual ~Category();
 

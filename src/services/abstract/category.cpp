@@ -34,6 +34,8 @@ Category::Category(RootItem* parent) : RootItem(parent) {
   }
 }
 
+Category::Category(const Category& other) : RootItem(other) {}
+
 Category::Category(const QSqlRecord& record) : Category(nullptr) {
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toString());
