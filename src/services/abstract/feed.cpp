@@ -35,6 +35,7 @@ Feed::Feed(RootItem* parent)
   m_totalCount(0), m_unreadCount(0) {
   setKind(RootItemKind::Feed);
   setAutoDelete(false);
+
 }
 
 Feed::Feed(const Feed& other) : RootItem(other) {

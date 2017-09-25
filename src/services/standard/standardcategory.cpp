@@ -35,7 +35,7 @@
 StandardCategory::StandardCategory(RootItem* parent_item) : Category(parent_item) {}
 
 StandardCategory::StandardCategory(const StandardCategory& other)
-  : Category(nullptr) {
+  : StandardCategory(nullptr) {
   setId(other.id());
   setCustomId(other.customId());
   setTitle(other.title());
