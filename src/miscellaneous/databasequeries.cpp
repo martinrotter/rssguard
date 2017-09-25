@@ -34,6 +34,7 @@
 #include "services/tt-rss/ttrssserviceroot.h"
 
 #if defined(USE_WEBENGINE)
+#include "network-web/oauth2service.h"
 #include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/inoreaderserviceroot.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
@@ -1530,8 +1531,8 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool*
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
       root->network()->setUsername(query.value(1).toString());
-      root->network()->setAccessToken(query.value(2).toString());
-      root->network()->setRefreshToken(query.value(3).toString());
+      root->network()->oauth()->setAccessToken(query.value(2).toString());
+      root->network()->oauth()->setRefreshToken(query.value(3).toString());
       root->network()->setBatchSize(query.value(4).toInt());
       root->updateTitle();
       roots.append(root);

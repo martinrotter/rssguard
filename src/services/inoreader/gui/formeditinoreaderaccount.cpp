@@ -109,11 +109,6 @@ void FormEditInoreaderAccount::hookNetwork() {
                                     tr("Tested successfully. You may be prompted to login once more."),
                                     tr("Your access was approved."));
   });
-  connect(m_network, &InoreaderNetworkFactory::tokensRefreshed, [this]() {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("Access tokens refreshed, it seems okay."),
-                                    tr("Your access was approved."));
-  });
   connect(m_network, &InoreaderNetworkFactory::error, [this](const QString& err) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                     tr("There is error. %1").arg(err),

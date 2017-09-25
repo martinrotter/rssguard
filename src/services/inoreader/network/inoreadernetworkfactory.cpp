@@ -23,6 +23,7 @@
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
+#include "network-web/oauth2service.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
@@ -31,21 +32,21 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QOAuth2AuthorizationCodeFlow>
-#include <QOAuthHttpServerReplyHandler>
 #include <QUrl>
 
-#include "network-web/oauth2service.h"
-
 InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent),
-  m_username(QString()), m_refreshToken(QString()), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
+  m_username(QString()), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
   m_oauth2(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
-                             INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY, "read")) {
+                             INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY, INOREADER_OAUTH_SCOPE)) {
   initializeOauth();
 }
 
+OAuth2Service* InoreaderNetworkFactory::oauth() const {
+  return m_oauth2;
+}
+
 bool InoreaderNetworkFactory::isLoggedIn() const {
-  return false;
+  return !m_oauth2->refreshToken().isEmpty();
 }
 
 QString InoreaderNetworkFactory::userName() const {
@@ -70,16 +71,6 @@ void InoreaderNetworkFactory::logInIfNeeded() {
   }
 }
 
-void InoreaderNetworkFactory::tokensReceived(QVariantMap tokens) {
-  qDebug() << "Inoreader: Tokens received:" << tokens;
-
-  if (tokens.contains(INOREADER_REFRESH_TOKEN_KEY)) {
-    m_refreshToken = tokens.value(INOREADER_REFRESH_TOKEN_KEY).toString();
-  }
-
-  emit tokensRefreshed();
-}
-
 void InoreaderNetworkFactory::initializeOauth() {
   connect(m_oauth2, &OAuth2Service::tokenRetrieveError, [](QString error, QString error_description) {
     qApp->showGuiMessage("Authentication error - Inoreader", error_description, QSystemTrayIcon::Critical);
@@ -88,10 +79,6 @@ void InoreaderNetworkFactory::initializeOauth() {
 
 void InoreaderNetworkFactory::setUsername(const QString& username) {
   m_username = username;
-}
-
-void InoreaderNetworkFactory::setRefreshToken(const QString& refreshToken) {
-  m_refreshToken = refreshToken;
 }
 
 // NOTE: oauth: https://developers.google.com/oauthplayground/#step3&scopes=read%20write&auth_code=497815bc3362aba9ad60c5ae3e01811fe2da4bb5&refresh_token=bacb9c36f82ba92667282d6175bb857a091e7f0c&access_token_field=094f92bc7aedbd27fbebc3efc9172b258be8944a&url=https%3A%2F%2Fwww.inoreader.com%2Freader%2Fapi%2F0%2Fsubscription%2Flist&content_type=application%2Fjson&http_method=GET&useDefaultOauthCred=unchecked&oauthEndpointSelect=Custom&oauthAuthEndpointValue=https%3A%2F%2Fwww.inoreader.com%2Foauth2%2Fauth%3Fstate%3Dtest&oauthTokenEndpointValue=https%3A%2F%2Fwww.inoreader.com%2Foauth2%2Ftoken&oauthClientId=1000000595&expires_in=3599&oauthClientSecret=_6pYUZgtNLWwSaB9pC1YOz6p4zwu3haL&access_token_issue_date=1506198338&for_access_token=094f92bc7aedbd27fbebc3efc9172b258be8944a&includeCredentials=checked&accessTokenType=bearer&autoRefreshToken=unchecked&accessType=offline&prompt=consent&response_type=code
@@ -157,62 +144,4 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   loop.exec();
 
   return parent;
-
-/*
-   // Process categories first, then process feeds.
-   foreach (const QJsonValue& cat, QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray()) {
-    QJsonObject item = cat.toObject();
-    Category* category = new Category();
-
-    category->setTitle(item["name"].toString());
-    category->setCustomId(item["id"].toInt());
-    cats.insert(category->customId(), category);
-
-    // All categories in ownCloud are top-level.
-    parent->appendChild(category);
-   }*/
-
-/*
-   // We have categories added, now add all feeds.
-   foreach (const QJsonValue& fed, QJsonDocument::fromJson(m_contentFeeds.toUtf8()).object()["feeds"].toArray()) {
-    QJsonObject item = fed.toObject();
-    OwnCloudFeed* feed = new OwnCloudFeed();
-
-    if (obtain_icons) {
-      QString icon_path = item["faviconLink"].toString();
-
-      if (!icon_path.isEmpty()) {
-        QByteArray icon_data;
-
-        if (NetworkFactory::performNetworkOperation(icon_path, DOWNLOAD_TIMEOUT,
-                                                    QByteArray(), QString(), icon_data,
-                                                    QNetworkAccessManager::GetOperation).first ==
-            QNetworkReply::NoError) {
-          // Icon downloaded, set it up.
-          QPixmap icon_pixmap;
-
-          icon_pixmap.loadFromData(icon_data);
-          feed->setIcon(QIcon(icon_pixmap));
-        }
-      }
-    }
-
-    feed->setUrl(item["link"].toString());
-    feed->setTitle(item["title"].toString());
-    feed->setCustomId(item["id"].toInt());
-    qDebug("Custom ID of next fetched Nextcloud feed is '%d'.", item["id"].toInt());
-    cats.value(item["folderId"].toInt())->appendChild(feed);
-   }*/
-}
-
-void InoreaderNetworkFactory::setAccessToken(const QString& accessToken) {
-  //m_oauth2->setToken(accessToken);
-}
-
-QString InoreaderNetworkFactory::refreshToken() const {
-  return m_refreshToken;
-}
-
-QString InoreaderNetworkFactory::accessToken() const {
-  return "a";// m_oauth2->token();
 }

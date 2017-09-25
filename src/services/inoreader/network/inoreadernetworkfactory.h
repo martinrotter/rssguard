@@ -32,6 +32,8 @@ class InoreaderNetworkFactory : public QObject {
   public:
     explicit InoreaderNetworkFactory(QObject* parent = nullptr);
 
+    OAuth2Service* oauth() const;
+
     bool isLoggedIn() const;
 
     QString userName() const;
@@ -40,11 +42,6 @@ class InoreaderNetworkFactory : public QObject {
     // Gets/sets the amount of messages to obtain during single feed update.
     int batchSize() const;
     void setBatchSize(int batch_size);
-
-    QString accessToken() const;
-    QString refreshToken() const;
-    void setAccessToken(const QString& accessToken);
-    void setRefreshToken(const QString& refreshToken);
 
     // Returns tree of feeds/categories.
     // Top-level root of the tree is not needed here.
@@ -57,18 +54,13 @@ class InoreaderNetworkFactory : public QObject {
 
   signals:
     void accessGranted();
-    void tokensRefreshed();
     void error(QString& description);
-
-  private slots:
-    void tokensReceived(QVariantMap tokens);
 
   private:
     void initializeOauth();
 
   private:
     QString m_username;
-    QString m_refreshToken;
     int m_batchSize;
     OAuth2Service* m_oauth2;
 };
