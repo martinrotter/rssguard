@@ -110,11 +110,13 @@ void InoreaderNetworkFactory::initializeOauth() {
   m_oauth2->setModifyParametersFunction([&](QAbstractOAuth::Stage stage, QVariantMap* parameters) {
     qDebug() << "Inoreader: Set modify parameters for stage" << (int)stage << "called: \n" << parameters;
 
+#if defined(Q_OS_LINUX)
     if (stage == QAbstractOAuth::Stage::RefreshingAccessToken) {
       parameters->insert(QSL("client_id"), INOREADER_OAUTH_CLI_ID);
       parameters->insert(QSL("client_secret"), INOREADER_OAUTH_CLI_KEY);
       parameters->remove(QSL("redirect_uri"));
     }
+#endif
   });
   connect(m_oauth2, &QOAuth2AuthorizationCodeFlow::granted, [=]() {
     qDebug("Inoreader: Oauth2 granted.");
