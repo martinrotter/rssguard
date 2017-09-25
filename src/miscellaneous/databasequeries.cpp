@@ -22,9 +22,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
-#include "services/inoreader/inoreaderfeed.h"
-#include "services/inoreader/inoreaderserviceroot.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
@@ -35,6 +32,12 @@
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssserviceroot.h"
+
+#if defined(USE_WEBENGINE)
+#include "services/inoreader/inoreaderfeed.h"
+#include "services/inoreader/inoreaderserviceroot.h"
+#include "services/inoreader/network/inoreadernetworkfactory.h"
+#endif
 
 #include <QSqlError>
 #include <QUrl>
@@ -1483,6 +1486,7 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   return categories;
 }
 
+#if defined(USE_WEBENGINE)
 Assignment DatabaseQueries::getInoreaderFeeds(QSqlDatabase db, int account_id, bool* ok) {
   Assignment feeds;
   QSqlQuery q(db);
@@ -1590,6 +1594,8 @@ bool DatabaseQueries::createInoreaderAccount(QSqlDatabase db, int id_to_assign, 
     return false;
   }
 }
+
+#endif
 
 Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool* ok) {
   Assignment feeds;

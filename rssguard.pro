@@ -331,15 +331,7 @@ HEADERS +=  src/core/feeddownloader.h \
             src/gui/treeviewcolumnsmenu.h \
             src/services/abstract/labelsrootitem.h \
             src/services/abstract/label.h \
-            src/miscellaneous/externaltool.h \
-            src/services/inoreader/definitions.h \
-            src/services/inoreader/inoreaderentrypoint.h \
-            src/services/inoreader/network/inoreadernetworkfactory.h \
-            src/services/inoreader/inoreaderserviceroot.h \
-            src/services/inoreader/gui/formeditinoreaderaccount.h \
-            src/services/inoreader/inoreaderfeed.h \
-    src/network-web/oauth2service.h \
-    src/gui/dialogs/oauthlogin.h
+            src/miscellaneous/externaltool.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -461,14 +453,7 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/treeviewcolumnsmenu.cpp \
             src/services/abstract/labelsrootitem.cpp \
             src/services/abstract/label.cpp \
-            src/miscellaneous/externaltool.cpp \
-            src/services/inoreader/inoreaderentrypoint.cpp \
-            src/services/inoreader/network/inoreadernetworkfactory.cpp \
-            src/services/inoreader/inoreaderserviceroot.cpp \
-            src/services/inoreader/gui/formeditinoreaderaccount.cpp \
-            src/services/inoreader/inoreaderfeed.cpp \
-            src/network-web/oauth2service.cpp \
-            src/gui/dialogs/oauthlogin.cpp
+            src/miscellaneous/externaltool.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 
@@ -495,9 +480,7 @@ FORMS +=    src/gui/toolbareditor.ui \
             src/gui/settings/settingsbrowsermail.ui \
             src/gui/settings/settingsfeedsmessages.ui \
             src/gui/settings/settingsdownloads.ui \
-            src/services/tt-rss/gui/formeditttrssaccount.ui \
-            src/services/inoreader/gui/formeditinoreaderaccount.ui \
-            src/gui/dialogs/oauthlogin.ui
+            src/services/tt-rss/gui/formeditttrssaccount.ui
 
 equals(USE_WEBENGINE, true) {
   HEADERS +=    src/gui/locationlineedit.h \
@@ -506,7 +489,15 @@ equals(USE_WEBENGINE, true) {
                 src/gui/discoverfeedsbutton.h \
                 src/network-web/googlesuggest.h \
                 src/network-web/webpage.h \
-                src/network-web/rssguardschemehandler.h
+                src/network-web/rssguardschemehandler.h \
+                src/services/inoreader/definitions.h \
+                src/services/inoreader/inoreaderentrypoint.h \
+                src/services/inoreader/network/inoreadernetworkfactory.h \
+                src/services/inoreader/inoreaderserviceroot.h \
+                src/services/inoreader/gui/formeditinoreaderaccount.h \
+                src/services/inoreader/inoreaderfeed.h \
+                src/network-web/oauth2service.h \
+                src/gui/dialogs/oauthlogin.h
 
   SOURCES +=    src/gui/locationlineedit.cpp \
                 src/gui/webviewer.cpp \
@@ -514,7 +505,14 @@ equals(USE_WEBENGINE, true) {
                 src/gui/discoverfeedsbutton.cpp \
                 src/network-web/googlesuggest.cpp \
                 src/network-web/webpage.cpp \
-                src/network-web/rssguardschemehandler.cpp
+                src/network-web/rssguardschemehandler.cpp \
+                src/services/inoreader/inoreaderentrypoint.cpp \
+                src/services/inoreader/network/inoreadernetworkfactory.cpp \
+                src/services/inoreader/inoreaderserviceroot.cpp \
+                src/services/inoreader/gui/formeditinoreaderaccount.cpp \
+                src/services/inoreader/inoreaderfeed.cpp \
+                src/network-web/oauth2service.cpp \
+                src/gui/dialogs/oauthlogin.cpp
 
   # Add AdBlock sources.
   HEADERS +=    src/network-web/adblock/adblockaddsubscriptiondialog.h \
@@ -547,7 +545,9 @@ equals(USE_WEBENGINE, true) {
                 src/gui/treewidget.cpp
 
   FORMS +=      src/network-web/adblock/adblockaddsubscriptiondialog.ui \
-                src/network-web/adblock/adblockdialog.ui
+                src/network-web/adblock/adblockdialog.ui \
+                src/services/inoreader/gui/formeditinoreaderaccount.ui \
+                src/gui/dialogs/oauthlogin.ui
 }
 else {
   HEADERS +=    src/gui/messagepreviewer.h \
