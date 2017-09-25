@@ -49,8 +49,7 @@ class InoreaderNetworkFactory : public QObject {
     RootItem* feedsCategories(bool obtain_icons);
 
   public slots:
-    void logIn();
-    void logInIfNeeded();
+    void login();
 
   signals:
     void accessGranted();

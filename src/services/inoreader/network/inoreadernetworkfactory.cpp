@@ -61,14 +61,8 @@ void InoreaderNetworkFactory::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
 }
 
-void InoreaderNetworkFactory::logIn() {
-  m_oauth2->retrieveAuthCode();
-}
-
-void InoreaderNetworkFactory::logInIfNeeded() {
-  if (!isLoggedIn()) {
-    logIn();
-  }
+void InoreaderNetworkFactory::login() {
+  m_oauth2->login();
 }
 
 void InoreaderNetworkFactory::initializeOauth() {
@@ -91,7 +85,7 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
 
   QNetworkRequest req(QUrl(INOREADER_API_LIST_LABELS));
 
-  m_oauth2->setBearerHeader(req);
+  m_oauth2->attachBearerHeader(req);
 
   QNetworkReply* reply = SilentNetworkAccessManager::instance()->get(req);
   QEventLoop loop;

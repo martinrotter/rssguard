@@ -66,7 +66,7 @@ OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId
   connect(this, &OAuth2Service::authCodeObtained, this, &OAuth2Service::retrieveAccessToken);
 }
 
-void OAuth2Service::setBearerHeader(QNetworkRequest& req) {
+void OAuth2Service::attachBearerHeader(QNetworkRequest& req) {
   req.setRawHeader(QString("Authorization").toLocal8Bit(), QString("Bearer %1").arg(m_accessToken).toLocal8Bit());
 }
 
@@ -74,7 +74,7 @@ void OAuth2Service::setOAuthTokenGrantType(QString oAuthTokenGrantType) {
   m_tokenGrantType = oAuthTokenGrantType;
 }
 
-QString OAuth2Service::oAuthTokenGrantType() {
+QString OAuth2Service::grant_type() {
   return m_tokenGrantType;
 }
 
@@ -120,6 +120,10 @@ void OAuth2Service::refreshAccessToken(QString refresh_token) {
   m_networkManager.post(networkRequest, content.toUtf8());
 }
 
+void OAuth2Service::cleanTokens() {
+  m_refreshToken = m_accessToken = QString();
+}
+
 void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
   QJsonDocument jsonDocument = QJsonDocument::fromJson(networkReply->readAll());
   QJsonObject rootObject = jsonDocument.object();
@@ -127,9 +131,12 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
   qDebug() << "Token response:";
   qDebug() << jsonDocument.toJson();
 
-  if(rootObject.keys().contains("error")) {
+  if (rootObject.keys().contains("error")) {
     QString error = rootObject.value("error").toString();
     QString error_description = rootObject.value("error_description").toString();
+
+    cleanTokens();
+
     emit tokenRetrieveError(error, error_description);
   }
   else {
@@ -138,7 +145,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
 
     // TODO: Start timer to refresh tokens.
 
-    emit accessTokenReceived(m_accessToken, m_refreshToken, rootObject.value("expires_in").toInt());
+    emit tokensReceived(m_accessToken, m_refreshToken, rootObject.value("expires_in").toInt());
   }
 
   networkReply->deleteLater();
@@ -152,6 +159,14 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
   m_refreshToken = refresh_token;
 }
 
+void OAuth2Service::login() {
+  // TODO: ted se rovnou vola autorizace (prihlasovaci dialog)
+  // ale vylepsit a v pripade ze je zadan refresh token,,
+  // tak nejdříve zkusit obnovit? a začátek procesu
+  // volat jen když je to fakt potřeba.
+  retrieveAuthCode();
+}
+
 void OAuth2Service::retrieveAuthCode() {
   QString auth_url = m_authUrl + QString("?client_id=%1&scope=%2&"
                                          "redirect_uri=%3&response_type=code&state=abcdef").arg(m_clientId,
@@ -160,7 +175,10 @@ void OAuth2Service::retrieveAuthCode() {
   OAuthLogin login_page(qApp->mainFormWidget());
 
   connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::authCodeObtained);
-  connect(&login_page, &OAuthLogin::authRejected, this, &OAuth2Service::authFailed);
+  connect(&login_page, &OAuthLogin::authRejected, [this]() {
+    cleanTokens();
+    emit authFailed();
+  });
   login_page.login(auth_url, m_redirectUri);
 }
 

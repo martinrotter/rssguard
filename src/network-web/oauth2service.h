@@ -52,10 +52,10 @@ class OAuth2Service : public QObject {
     explicit OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
                            QString clientSecret, QString scope, QObject* parent = 0);
 
-    void setBearerHeader(QNetworkRequest& req);
+    void attachBearerHeader(QNetworkRequest& req);
 
-    void setOAuthTokenGrantType(QString oAuthTokenGrantType);
-    QString oAuthTokenGrantType();
+    void setOAuthTokenGrantType(QString grant_type);
+    QString grant_type();
 
     QString accessToken() const;
     void setAccessToken(const QString& access_token);
@@ -64,7 +64,7 @@ class OAuth2Service : public QObject {
     void setRefreshToken(const QString& refresh_token);
 
   signals:
-    void accessTokenReceived(QString access_token, QString refresh_token, int expires_in);
+    void tokensReceived(QString access_token, QString refresh_token, int expires_in);
     void tokenRetrieveError(QString error, QString error_description);
 
     // User failed to authenticate or rejected it.
@@ -74,11 +74,13 @@ class OAuth2Service : public QObject {
     void authCodeObtained(QString auth_code);
 
   public slots:
+    void login();
     void retrieveAuthCode();
     void retrieveAccessToken(QString auth_code);
     void refreshAccessToken(QString refresh_token = QString());
 
   private slots:
+    void cleanTokens();
     void tokenRequestFinished(QNetworkReply* networkReply);
 
   private:

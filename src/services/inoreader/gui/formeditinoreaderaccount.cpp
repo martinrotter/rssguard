@@ -71,7 +71,7 @@ void FormEditInoreaderAccount::testSetup() {
                                     tr("Access granted successfully."));
   }
   else {
-    m_network->logIn();
+    m_network->login();
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Progress,
                                     tr("Requested access approval. Respond to it, please."),
                                     tr("Access approval was requested via OAuth 2.0 protocol."));
