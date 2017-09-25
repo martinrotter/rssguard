@@ -166,7 +166,7 @@ message(rssguard: Prefix directory: \"$$PREFIX\".)
 message(rssguard: Build revision: \"$$APP_REVISION\".)
 message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
 
-QT += core gui widgets sql network networkauth xml
+QT += core gui widgets sql network xml
 
 CONFIG *= c++11 debug_and_release warn_on
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
@@ -337,7 +337,9 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/inoreader/network/inoreadernetworkfactory.h \
             src/services/inoreader/inoreaderserviceroot.h \
             src/services/inoreader/gui/formeditinoreaderaccount.h \
-            src/services/inoreader/inoreaderfeed.h
+            src/services/inoreader/inoreaderfeed.h \
+    src/network-web/oauth2service.h \
+    src/gui/dialogs/oauthlogin.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -464,7 +466,9 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/inoreader/network/inoreadernetworkfactory.cpp \
             src/services/inoreader/inoreaderserviceroot.cpp \
             src/services/inoreader/gui/formeditinoreaderaccount.cpp \
-            src/services/inoreader/inoreaderfeed.cpp
+            src/services/inoreader/inoreaderfeed.cpp \
+            src/network-web/oauth2service.cpp \
+            src/gui/dialogs/oauthlogin.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 
@@ -492,7 +496,8 @@ FORMS +=    src/gui/toolbareditor.ui \
             src/gui/settings/settingsfeedsmessages.ui \
             src/gui/settings/settingsdownloads.ui \
             src/services/tt-rss/gui/formeditttrssaccount.ui \
-            src/services/inoreader/gui/formeditinoreaderaccount.ui
+            src/services/inoreader/gui/formeditinoreaderaccount.ui \
+            src/gui/dialogs/oauthlogin.ui
 
 equals(USE_WEBENGINE, true) {
   HEADERS +=    src/gui/locationlineedit.h \
@@ -846,10 +851,3 @@ mac {
               misc_icon misc_plain_icon misc_texts translations
 
 }
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-qtnetworkauth-Desktop-Debug/lib/release/ -lQt5NetworkAuth
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-qtnetworkauth-Desktop-Debug/lib/debug/ -lQt5NetworkAuth
-else:unix: LIBS += -L$$PWD/../build-qtnetworkauth-Desktop-Debug/lib/ -lQt5NetworkAuth
-
-INCLUDEPATH += $$PWD/../build-qtnetworkauth-Desktop-Debug/include
-DEPENDPATH += $$PWD/../build-qtnetworkauth-Desktop-Debug/include

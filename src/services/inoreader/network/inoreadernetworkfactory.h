@@ -24,7 +24,7 @@
 #include <QNetworkReply>
 
 class RootItem;
-class QOAuth2AuthorizationCodeFlow;
+class OAuth2Service;
 
 class InoreaderNetworkFactory : public QObject {
   Q_OBJECT
@@ -70,7 +70,7 @@ class InoreaderNetworkFactory : public QObject {
     QString m_username;
     QString m_refreshToken;
     int m_batchSize;
-    QOAuth2AuthorizationCodeFlow* m_oauth2;
+    OAuth2Service* m_oauth2;
 };
 
 #endif // INOREADERNETWORKFACTORY_H

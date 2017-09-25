@@ -35,14 +35,17 @@
 #include <QOAuthHttpServerReplyHandler>
 #include <QUrl>
 
+#include "network-web/oauth2service.h"
+
 InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent),
   m_username(QString()), m_refreshToken(QString()), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
-  m_oauth2(new QOAuth2AuthorizationCodeFlow(this)) {
+  m_oauth2(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
+                             INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY, "read")) {
   initializeOauth();
 }
 
 bool InoreaderNetworkFactory::isLoggedIn() const {
-  return m_oauth2->expirationAt() > QDateTime::currentDateTime() && m_oauth2->status() == QAbstractOAuth::Status::Granted;
+  return false;
 }
 
 QString InoreaderNetworkFactory::userName() const {
@@ -58,15 +61,7 @@ void InoreaderNetworkFactory::setBatchSize(int batch_size) {
 }
 
 void InoreaderNetworkFactory::logIn() {
-  if (!m_oauth2->expirationAt().isNull() &&
-      m_oauth2->expirationAt() <= QDateTime::currentDateTime() &&
-      !m_refreshToken.isEmpty()) {
-    // We have some refresh token which expired.
-    m_oauth2->refreshAccessToken();
-  }
-  else {
-    m_oauth2->grant();
-  }
+  m_oauth2->retrieveAuthCode();
 }
 
 void InoreaderNetworkFactory::logInIfNeeded() {
@@ -86,53 +81,8 @@ void InoreaderNetworkFactory::tokensReceived(QVariantMap tokens) {
 }
 
 void InoreaderNetworkFactory::initializeOauth() {
-  QOAuthHttpServerReplyHandler* oauth_reply_handler = new QOAuthHttpServerReplyHandler(INOREADER_OAUTH_PORT, this);
-
-  // Full redirect URL is thus "http://localhost:INOREADER_OAUTH_PORT/".
-  oauth_reply_handler->setCallbackPath(QSL(""));
-  oauth_reply_handler->setCallbackText(tr("Access to your Inoreader session was granted, you "
-                                          "can now <b>close this window and go back to RSS Guard</b>."));
-
-  m_oauth2->setAccessTokenUrl(QUrl(INOREADER_OAUTH_TOKEN_URL));
-  m_oauth2->setAuthorizationUrl(QUrl(INOREADER_OAUTH_AUTH_URL));
-  m_oauth2->setClientIdentifier(INOREADER_OAUTH_CLI_ID);
-  m_oauth2->setClientIdentifierSharedKey(INOREADER_OAUTH_CLI_KEY);
-  m_oauth2->setContentType(QAbstractOAuth::ContentType::Json);
-  m_oauth2->setNetworkAccessManager(SilentNetworkAccessManager::instance());
-  m_oauth2->setReplyHandler(oauth_reply_handler);
-  m_oauth2->setUserAgent(APP_USERAGENT);
-  m_oauth2->setScope(INOREADER_OAUTH_SCOPE);
-
-  connect(m_oauth2, &QOAuth2AuthorizationCodeFlow::statusChanged, [=](QAbstractOAuth::Status status) {
-    qDebug("Inoreader: Status changed to '%d'.", (int)status);
-  });
-  connect(oauth_reply_handler, &QOAuthHttpServerReplyHandler::tokensReceived, this, &InoreaderNetworkFactory::tokensReceived);
-  m_oauth2->setModifyParametersFunction([&](QAbstractOAuth::Stage stage, QVariantMap* parameters) {
-    qDebug() << "Inoreader: Set modify parameters for stage" << (int)stage << "called: \n" << parameters;
-
-#if defined(Q_OS_LINUX)
-    if (stage == QAbstractOAuth::Stage::RefreshingAccessToken) {
-      parameters->insert(QSL("client_id"), INOREADER_OAUTH_CLI_ID);
-      parameters->insert(QSL("client_secret"), INOREADER_OAUTH_CLI_KEY);
-      parameters->remove(QSL("redirect_uri"));
-    }
-#endif
-  });
-  connect(m_oauth2, &QOAuth2AuthorizationCodeFlow::granted, [=]() {
-    qDebug("Inoreader: Oauth2 granted.");
-    emit accessGranted();
-  });
-  connect(m_oauth2, &QOAuth2AuthorizationCodeFlow::error, [=](QString err, QString error_description, QUrl uri) {
-    Q_UNUSED(err)
-    Q_UNUSED(uri)
-
-    qCritical("Inoreader: We have error: '%s'.", qPrintable(error_description));
-    setRefreshToken(QString());
-    setAccessToken(QString());
-    emit error(error_description);
-  });
-  connect(m_oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, [](const QUrl& url) {
-    qApp->web()->openUrlInExternalBrowser(url.toString());
+  connect(m_oauth2, &OAuth2Service::tokenRetrieveError, [](QString error, QString error_description) {
+    qApp->showGuiMessage("Authentication error - Inoreader", error_description, QSystemTrayIcon::Critical);
   });
 }
 
@@ -152,7 +102,11 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   QMap<QString, RootItem*> cats;
   cats.insert(QSL(""), parent);
 
-  QNetworkReply* reply = m_oauth2->get(QUrl(INOREADER_API_LIST_LABELS));
+  QNetworkRequest req(QUrl(INOREADER_API_LIST_LABELS));
+
+  m_oauth2->setBearerHeader(req);
+
+  QNetworkReply* reply = SilentNetworkAccessManager::instance()->get(req);
   QEventLoop loop;
 
   connect(reply, &QNetworkReply::finished, [&]() {
@@ -252,7 +206,7 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
 }
 
 void InoreaderNetworkFactory::setAccessToken(const QString& accessToken) {
-  m_oauth2->setToken(accessToken);
+  //m_oauth2->setToken(accessToken);
 }
 
 QString InoreaderNetworkFactory::refreshToken() const {
@@ -260,5 +214,5 @@ QString InoreaderNetworkFactory::refreshToken() const {
 }
 
 QString InoreaderNetworkFactory::accessToken() const {
-  return m_oauth2->token();
+  return "a";// m_oauth2->token();
 }
