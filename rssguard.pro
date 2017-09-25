@@ -337,7 +337,7 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/inoreader/network/inoreadernetworkfactory.h \
             src/services/inoreader/inoreaderserviceroot.h \
             src/services/inoreader/gui/formeditinoreaderaccount.h \
-    src/services/inoreader/inoreaderfeed.h
+            src/services/inoreader/inoreaderfeed.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -464,7 +464,7 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/inoreader/network/inoreadernetworkfactory.cpp \
             src/services/inoreader/inoreaderserviceroot.cpp \
             src/services/inoreader/gui/formeditinoreaderaccount.cpp \
-    src/services/inoreader/inoreaderfeed.cpp
+            src/services/inoreader/inoreaderfeed.cpp
 
 OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 
