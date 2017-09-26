@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ "Add account" dialog is displayed when app is launched and no accounts exist so far.
 ▪ New plugin for Inoreader. This is supported only in full RSS Guard "web-engine" version, because of web OAuth 2.0.
 ▪ NextCloud plugin now allows to persistently set max number of messages to get downloaded per feed.
 ▪ Added support for arbitrary external tools (settings category "Web browser & e-mail & proxy") which can open URLs of selected messages. (#136)
