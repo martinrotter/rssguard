@@ -21,6 +21,7 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/oauth2service.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/inoreaderserviceroot.h"
 
@@ -60,17 +61,10 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
 FormEditInoreaderAccount::~FormEditInoreaderAccount() {}
 
 void FormEditInoreaderAccount::testSetup() {
-  if (m_network->isLoggedIn()) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
-                                    tr("Access granted successfully."),
-                                    tr("Access granted successfully."));
-  }
-  else {
-    m_network->login();
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Progress,
-                                    tr("Requested access approval. Respond to it, please."),
-                                    tr("Access approval was requested via OAuth 2.0 protocol."));
-  }
+  m_network->login();
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Progress,
+                                  tr("Requested access approval. Respond to it, please."),
+                                  tr("Access approval was requested via OAuth 2.0 protocol."));
 }
 
 void FormEditInoreaderAccount::onClickedOk() {
@@ -108,14 +102,21 @@ void FormEditInoreaderAccount::checkUsername(const QString& username) {
 }
 
 void FormEditInoreaderAccount::hookNetwork() {
-  connect(m_network, &InoreaderNetworkFactory::accessGranted, [this]() {
+  connect(m_network->oauth(), &OAuth2Service::tokensReceived, [this]() {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("Tested successfully. You may be prompted to login once more."),
                                     tr("Your access was approved."));
   });
-  connect(m_network, &InoreaderNetworkFactory::error, [this](const QString& err) {
+  connect(m_network->oauth(), &OAuth2Service::tokensRetrieveError, [this](QString error, QString error_description) {
+    Q_UNUSED(error)
+
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("There is error. %1").arg(err),
+                                    tr("There is error. %1").arg(error_description),
+                                    tr("There was error during testing."));
+  });
+  connect(m_network->oauth(), &OAuth2Service::authFailed, [this]() {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                    tr("You did not grant access."),
                                     tr("There was error during testing."));
   });
 }

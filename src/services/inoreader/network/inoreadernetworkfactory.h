@@ -51,10 +51,6 @@ class InoreaderNetworkFactory : public QObject {
   public slots:
     void login();
 
-  signals:
-    void accessGranted();
-    void error(QString& description);
-
   private:
     void initializeOauth();
 
