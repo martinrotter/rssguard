@@ -27,20 +27,13 @@
 #include <QVariant>
 
 RootItem::RootItem(RootItem* parent_item)
-  : QObject(nullptr),
-  m_kind(RootItemKind::Root),
-  m_id(NO_PARENT_CATEGORY),
-  m_customId(QSL("")),
-  m_title(QString()),
-  m_description(QString()),
-  m_icon(QIcon()),
-  m_creationDate(QDateTime()),
-  m_childItems(QList<RootItem*>()),
-  m_parentItem(parent_item) {
+  : QObject(nullptr), m_kind(RootItemKind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QSL("")),
+  m_title(QString()), m_description(QString()), m_icon(QIcon()), m_creationDate(QDateTime()),
+  m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {
   setupFonts();
 }
 
-RootItem::RootItem(const RootItem& other) {
+RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
   setId(other.id());
   setCustomId(other.customId());
@@ -174,6 +167,10 @@ QVariant RootItem::data(int column, int role) const {
       }
 
     case Qt::FontRole:
+      if (countOfUnreadMessages() > 0) {
+        int a = 4;
+      }
+
       return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
     case Qt::DisplayRole:

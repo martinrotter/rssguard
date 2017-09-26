@@ -34,7 +34,13 @@ Category::Category(RootItem* parent) : RootItem(parent) {
   }
 }
 
-Category::Category(const Category& other) : RootItem(other) {}
+Category::Category(const Category& other) : RootItem(other) {
+  setKind(RootItemKind::Category);
+
+  if (icon().isNull()) {
+    setIcon(qApp->icons()->fromTheme(QSL("folder")));
+  }
+}
 
 Category::Category(const QSqlRecord& record) : Category(nullptr) {
   setId(record.value(CAT_DB_ID_INDEX).toInt());

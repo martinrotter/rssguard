@@ -22,6 +22,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/feedreader.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/recyclebin.h"
@@ -35,7 +36,17 @@ Feed::Feed(RootItem* parent)
   m_totalCount(0), m_unreadCount(0) {
   setKind(RootItemKind::Feed);
   setAutoDelete(false);
+}
 
+Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
+  setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
+  setId(record.value(FDS_DB_ID_INDEX).toInt());
+  setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toString());
+  setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
+  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+  setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
+
+  qDebug("Custom ID of feed when loading from DB is '%s'.", qPrintable(customId()));
 }
 
 Feed::Feed(const Feed& other) : RootItem(other) {

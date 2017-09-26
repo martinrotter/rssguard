@@ -52,6 +52,7 @@ class Feed : public RootItem, public QRunnable {
 
     // Constructors.
     explicit Feed(RootItem* parent = nullptr);
+    explicit Feed(const QSqlRecord& record);
     explicit Feed(const Feed& other);
     virtual ~Feed();
 

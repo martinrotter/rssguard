@@ -65,11 +65,9 @@ class StandardFeed : public Feed {
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem* target_item);
 
-    // Removes this standard feed from persistent
-    // storage.
-    bool removeItself();
     bool addItself(RootItem* parent);
     bool editItself(StandardFeed* new_feed_data);
+    bool removeItself();
 
     // Other getters/setters.
     Type type() const;
