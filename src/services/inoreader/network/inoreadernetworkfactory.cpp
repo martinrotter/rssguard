@@ -101,6 +101,8 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   return decodeFeedCategoriesData(category_data, feed_data, obtain_icons);
 }
 
+QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool* is_error) {}
+
 RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons) {
   RootItem* parent = new RootItem();
   QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();

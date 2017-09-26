@@ -21,6 +21,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/inoreader/inoreaderserviceroot.h"
+#include "services/inoreader/network/inoreadernetworkfactory.h"
 
 InoreaderFeed::InoreaderFeed(RootItem* parent) : Feed(parent) {}
 
@@ -31,5 +32,7 @@ InoreaderServiceRoot* InoreaderFeed::serviceRoot() const {
 }
 
 QList<Message> InoreaderFeed::obtainNewMessages(bool* error_during_obtaining) {
-  return QList<Message>();
+  QList<Message> messages = serviceRoot()->network()->messages(customId(), error_during_obtaining);
+
+  return messages;
 }

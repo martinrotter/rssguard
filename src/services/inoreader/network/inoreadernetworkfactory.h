@@ -21,6 +21,8 @@
 
 #include <QObject>
 
+#include "core/message.h"
+
 #include <QNetworkReply>
 
 class RootItem;
@@ -45,6 +47,8 @@ class InoreaderNetworkFactory : public QObject {
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
     RootItem* feedsCategories(bool obtain_icons);
+
+    QList<Message> messages(const QString& stream_id, bool* is_error);
 
   private:
     RootItem* decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons);
