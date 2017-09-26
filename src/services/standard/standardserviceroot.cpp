@@ -27,7 +27,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
-#include "services/abstract/labelsrootitem.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
@@ -172,8 +171,6 @@ void StandardServiceRoot::loadFromDatabase() {
 
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
-
-  //appendChild(new LabelsRootItem(this));
   updateCounts(true);
 }
 
