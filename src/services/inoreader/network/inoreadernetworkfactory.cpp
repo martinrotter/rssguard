@@ -28,6 +28,7 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
 #include "services/inoreader/definitions.h"
+#include "services/inoreader/inoreaderfeed.h"
 
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -140,6 +141,38 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
 
       // All categories in ownCloud are top-level.
       parent->appendChild(category);
+    }
+  }
+
+  json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
+
+  foreach (const QJsonValue& obj, json) {
+    auto subscription = obj.toObject();
+    QString id = subscription["id"].toString();
+    QString title = subscription["title"].toString();
+    QString url = subscription["htmlUrl"].toString();
+    QString parent_label;
+    QJsonArray categories = subscription["categories"].toArray();
+
+    foreach (const QJsonValue& cat, categories) {
+      QString potential_id = cat.toObject()["id"].toString();
+
+      if (potential_id.contains(QSL("/label/"))) {
+        parent_label = potential_id;
+        break;
+      }
+    }
+
+    // We have label (not "state").
+    InoreaderFeed* feed = new InoreaderFeed();
+
+    feed->setDescription(url);
+    feed->setUrl(url);
+    feed->setTitle(title);
+    feed->setCustomId(id);
+
+    if (cats.contains(parent_label)) {
+      cats[parent_label]->appendChild(feed);
     }
   }
 
