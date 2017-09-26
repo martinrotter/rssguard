@@ -26,9 +26,10 @@
 #define INOREADER_OAUTH_CLI_KEY         "gsStoZ3aAoQJCgQxoFSuXkWI7Sly87yK"
 #define INOREADER_REFRESH_TOKEN_KEY     "refresh_token"
 #define INOREADER_ACCESS_TOKEN_KEY      "access_token"
-#define INOREADER_DEFAULT_BATCH_SIZE    -1
+#define INOREADER_DEFAULT_BATCH_SIZE    100
 #define INOREADER_UNLIMITED_BATCH_SIZE  -1
 
+#define INOREADER_API_FEED_CONTENTS     "https://www.inoreader.com/reader/api/0/stream/contents"
 #define INOREADER_API_LIST_LABELS       "https://www.inoreader.com/reader/api/0/tag/list"
 #define INOREADER_API_LIST_FEEDS        "https://www.inoreader.com/reader/api/0/subscription/list"
 
