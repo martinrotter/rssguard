@@ -46,6 +46,7 @@ class FormEditInoreaderAccount : public QDialog {
     void testSetup();
     void onClickedOk();
     void onClickedCancel();
+    void checkUsername(const QString& username);
 
   private:
     void hookNetwork();

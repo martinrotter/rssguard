@@ -46,20 +46,15 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
       m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
     }
   });
-  connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, [this](QString text) {
-    if (text.isEmpty()) {
-      m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("No username entered."));
-    }
-    else {
-      m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some username entered."));
-    }
-  });
+  connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkUsername);
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditInoreaderAccount::onClickedOk);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditInoreaderAccount::onClickedCancel);
 
   m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
   m_ui.m_spinLimitMessages->setMinimum(INOREADER_UNLIMITED_BATCH_SIZE);
+
+  checkUsername(m_ui.m_txtUsername->lineEdit()->text());
 }
 
 FormEditInoreaderAccount::~FormEditInoreaderAccount() {}
@@ -101,6 +96,15 @@ void FormEditInoreaderAccount::onClickedOk() {
 
 void FormEditInoreaderAccount::onClickedCancel() {
   reject();
+}
+
+void FormEditInoreaderAccount::checkUsername(const QString& username) {
+  if (username.isEmpty()) {
+    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("No username entered."));
+  }
+  else {
+    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some username entered."));
+  }
 }
 
 void FormEditInoreaderAccount::hookNetwork() {

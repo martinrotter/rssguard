@@ -66,7 +66,7 @@ void InoreaderNetworkFactory::login() {
 }
 
 void InoreaderNetworkFactory::initializeOauth() {
-  connect(m_oauth2, &OAuth2Service::tokenRetrieveError, [](QString error, QString error_description) {
+  connect(m_oauth2, &OAuth2Service::tokensRetrieveError, [](QString error, QString error_description) {
     qApp->showGuiMessage("Authentication error - Inoreader", error_description, QSystemTrayIcon::Critical);
   });
 }

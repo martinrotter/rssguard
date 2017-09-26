@@ -136,15 +136,20 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
     QString error_description = rootObject.value("error_description").toString();
 
     cleanTokens();
+    login();
 
-    emit tokenRetrieveError(error, error_description);
+    emit tokensRetrieveError(error, error_description);
   }
   else {
-    m_accessToken = rootObject.value("access_token").toString();
-    m_refreshToken = rootObject.value("refresh_token").toString();
+    m_accessToken = rootObject.value(QL1S("access_token")).toString();
+    m_refreshToken = rootObject.value(QL1S("refresh_token")).toString();
+
+    int expires = rootObject.value(QL1S("expires_in")).toInt();
+    QDateTime expire_date = QDateTime::currentDateTime().addSecs(expires);
+
+    qDebug() << "Obtained refresh token" << m_refreshToken << "- expires on date/time" << expire_date;
 
     // TODO: Start timer to refresh tokens.
-
     emit tokensReceived(m_accessToken, m_refreshToken, rootObject.value("expires_in").toInt());
   }
 
@@ -160,11 +165,12 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
 }
 
 void OAuth2Service::login() {
-  // TODO: ted se rovnou vola autorizace (prihlasovaci dialog)
-  // ale vylepsit a v pripade ze je zadan refresh token,,
-  // tak nejdříve zkusit obnovit? a začátek procesu
-  // volat jen když je to fakt potřeba.
-  retrieveAuthCode();
+  if (!m_refreshToken.isEmpty()) {
+    refreshAccessToken();
+  }
+  else {
+    retrieveAuthCode();
+  }
 }
 
 void OAuth2Service::retrieveAuthCode() {

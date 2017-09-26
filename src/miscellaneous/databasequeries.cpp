@@ -1521,6 +1521,25 @@ Assignment DatabaseQueries::getInoreaderFeeds(QSqlDatabase db, int account_id, b
   return feeds;
 }
 
+bool DatabaseQueries::storeNewInoreaderTokens(QSqlDatabase db, const QString& access_token, const QString& refresh_token, int account_id) {
+  QSqlQuery query(db);
+
+  query.prepare("UPDATE InoreaderAccounts "
+                "SET access_token = :access_token, refresh_token = :refresh_token "
+                "WHERE id = :id;");
+  query.bindValue(QSL(":access_token"), access_token);
+  query.bindValue(QSL(":refresh_token"), refresh_token);
+  query.bindValue(QSL(":id"), account_id);
+
+  if (query.exec()) {
+    return true;
+  }
+  else {
+    qWarning("Inoreader: Updating tokens in DB failed: '%s'.", qPrintable(query.lastError().text()));
+    return false;
+  }
+}
+
 QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool* ok) {
   QSqlQuery query(db);
 

@@ -65,7 +65,7 @@ class OAuth2Service : public QObject {
 
   signals:
     void tokensReceived(QString access_token, QString refresh_token, int expires_in);
-    void tokenRetrieveError(QString error, QString error_description);
+    void tokensRetrieveError(QString error, QString error_description);
 
     // User failed to authenticate or rejected it.
     void authFailed();
@@ -74,10 +74,14 @@ class OAuth2Service : public QObject {
     void authCodeObtained(QString auth_code);
 
   public slots:
-    void login();
     void retrieveAuthCode();
     void retrieveAccessToken(QString auth_code);
     void refreshAccessToken(QString refresh_token = QString());
+
+    // Performs login if needed. If some refresh token is set, then
+    // the initial "auth" step is skipped and attempt to refresh
+    // access token is made.
+    void login();
 
   private slots:
     void cleanTokens();

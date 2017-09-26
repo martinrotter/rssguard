@@ -81,6 +81,7 @@ class DatabaseQueries {
     // Inoreader account.
 #if defined(USE_WEBENGINE)
     static Assignment getInoreaderFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
+    static bool storeNewInoreaderTokens(QSqlDatabase db, const QString& access_token, const QString& refresh_token, int account_id);
     static QList<ServiceRoot*> getInoreaderAccounts(QSqlDatabase db, bool* ok = nullptr);
     static bool overwriteInoreaderAccount(QSqlDatabase db, const QString& username, const QString& access_token,
                                           const QString& refresh_token, int batch_size, int account_id);
