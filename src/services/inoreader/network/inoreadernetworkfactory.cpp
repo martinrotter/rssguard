@@ -119,25 +119,8 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
       category->setDescription(label["htmlUrl"].toString());
       category->setTitle(label_id.mid(label_id.lastIndexOf(QL1C('/')) + 1));
       category->setCustomId(label_id);
+
       cats.insert(category->customId(), category);
-
-      if (obtain_icons) {
-        QString icon_url = label["iconUrl"].toString();
-
-        if (!icon_url.isEmpty()) {
-          QByteArray icon_data;
-
-          if (NetworkFactory::performNetworkOperation(icon_url, DOWNLOAD_TIMEOUT,
-                                                      QByteArray(), QString(), icon_data,
-                                                      QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError) {
-            // Icon downloaded, set it up.
-            QPixmap icon_pixmap;
-
-            icon_pixmap.loadFromData(icon_data);
-            category->setIcon(QIcon(icon_pixmap));
-          }
-        }
-      }
 
       // All categories in ownCloud are top-level.
       parent->appendChild(category);
@@ -170,6 +153,24 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
     feed->setUrl(url);
     feed->setTitle(title);
     feed->setCustomId(id);
+
+    if (obtain_icons) {
+      QString icon_url = subscription["iconUrl"].toString();
+
+      if (!icon_url.isEmpty()) {
+        QByteArray icon_data;
+
+        if (NetworkFactory::performNetworkOperation(icon_url, DOWNLOAD_TIMEOUT,
+                                                    QByteArray(), QString(), icon_data,
+                                                    QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError) {
+          // Icon downloaded, set it up.
+          QPixmap icon_pixmap;
+
+          icon_pixmap.loadFromData(icon_data);
+          feed->setIcon(QIcon(icon_pixmap));
+        }
+      }
+    }
 
     if (cats.contains(parent_label)) {
       cats[parent_label]->appendChild(feed);
