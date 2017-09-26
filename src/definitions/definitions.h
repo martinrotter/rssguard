@@ -82,7 +82,6 @@
 #define ACCEPT_HEADER_FOR_FEED_DOWNLOADER     "application/atom+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7"
 #define MIME_TYPE_ITEM_POINTER                "rssguard/itempointer"
 #define DOWNLOADER_ICON_SIZE                  48
-#define NOTIFICATION_ICON_SIZE                32
 #define GOOGLE_SEARCH_URL                     "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL                    "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
 #define ENCRYPTION_FILE_NAME                  "key.private"

@@ -716,9 +716,11 @@ bool DatabaseQueries::deleteAccountData(QSqlDatabase db, int account_id, bool de
   q.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
   result &= q.exec();
+
   q.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
   result &= q.exec();
+
   return result;
 }
 
