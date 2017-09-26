@@ -24,7 +24,7 @@
 
 InoreaderFeed::InoreaderFeed(RootItem* parent) : Feed(parent) {}
 
-InoreaderFeed::InoreaderFeed(const QSqlRecord& record) : InoreaderFeed(record) {}
+InoreaderFeed::InoreaderFeed(const QSqlRecord& record) : Feed(record) {}
 
 InoreaderServiceRoot* InoreaderFeed::serviceRoot() const {
   return qobject_cast<InoreaderServiceRoot*>(getParentServiceRoot());
