@@ -164,16 +164,24 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
   m_refreshToken = refresh_token;
 }
 
-void OAuth2Service::login() {
+bool OAuth2Service::login() {
+  bool did_token_expire = m_tokensExpireIn.isNull() || m_tokensExpireIn < QDateTime::currentDateTime();
+  bool does_token_exist = !m_refreshToken.isEmpty();
+
   // We refresh current tokens only if:
   //   1. We have some existing refresh token.
   //   AND
   //   2. We do not know its expiration date or it passed.
-  if (!m_refreshToken.isEmpty() && (m_tokensExpireIn.isNull() || m_tokensExpireIn < QDateTime::currentDateTime())) {
+  if (does_token_exist && did_token_expire) {
     refreshAccessToken();
+    return false;
+  }
+  else if (!does_token_exist) {
+    retrieveAuthCode();
+    return false;
   }
   else {
-    retrieveAuthCode();
+    return true;
   }
 }
 

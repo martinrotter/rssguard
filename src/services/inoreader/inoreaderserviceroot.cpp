@@ -114,7 +114,7 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
 
   //loadCacheFromFile(accountId());
 
-  m_network->login();
+  m_network->oauth()->login();
 }
 
 void InoreaderServiceRoot::stop() {}

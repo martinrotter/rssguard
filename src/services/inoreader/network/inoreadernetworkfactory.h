@@ -34,8 +34,6 @@ class InoreaderNetworkFactory : public QObject {
 
     OAuth2Service* oauth() const;
 
-    bool isLoggedIn() const;
-
     QString userName() const;
     void setUsername(const QString& username);
 
@@ -47,9 +45,6 @@ class InoreaderNetworkFactory : public QObject {
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
     RootItem* feedsCategories(bool obtain_icons);
-
-  public slots:
-    void login();
 
   private:
     void initializeOauth();

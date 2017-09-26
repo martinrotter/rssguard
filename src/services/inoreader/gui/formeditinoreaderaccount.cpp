@@ -61,10 +61,16 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
 FormEditInoreaderAccount::~FormEditInoreaderAccount() {}
 
 void FormEditInoreaderAccount::testSetup() {
-  m_network->login();
-  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Progress,
-                                  tr("Requested access approval. Respond to it, please."),
-                                  tr("Access approval was requested via OAuth 2.0 protocol."));
+  if (m_network->oauth()->login()) {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("You are already logged in."),
+                                    tr("Access granted."));
+  }
+  else {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Progress,
+                                    tr("Requested access approval. Respond to it, please."),
+                                    tr("Access approval was requested via OAuth 2.0 protocol."));
+  }
 }
 
 void FormEditInoreaderAccount::onClickedOk() {

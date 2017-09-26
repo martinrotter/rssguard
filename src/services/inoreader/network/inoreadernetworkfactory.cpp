@@ -45,10 +45,6 @@ OAuth2Service* InoreaderNetworkFactory::oauth() const {
   return m_oauth2;
 }
 
-bool InoreaderNetworkFactory::isLoggedIn() const {
-  return !m_oauth2->refreshToken().isEmpty();
-}
-
 QString InoreaderNetworkFactory::userName() const {
   return m_username;
 }
@@ -59,10 +55,6 @@ int InoreaderNetworkFactory::batchSize() const {
 
 void InoreaderNetworkFactory::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
-}
-
-void InoreaderNetworkFactory::login() {
-  m_oauth2->login();
 }
 
 void InoreaderNetworkFactory::initializeOauth() {

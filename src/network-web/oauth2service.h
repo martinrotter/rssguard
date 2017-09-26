@@ -81,7 +81,9 @@ class OAuth2Service : public QObject {
     // Performs login if needed. If some refresh token is set, then
     // the initial "auth" step is skipped and attempt to refresh
     // access token is made.
-    void login();
+    // Returns true, if user is already logged in (final state).
+    // Returns false, if user is NOT logged in (asynchronous flow).
+    bool login();
 
   private slots:
     void cleanTokens();
