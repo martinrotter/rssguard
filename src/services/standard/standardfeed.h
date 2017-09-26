@@ -72,16 +72,16 @@ class StandardFeed : public Feed {
     bool editItself(StandardFeed* new_feed_data);
 
     // Other getters/setters.
-    inline Type type() const;
-    inline void setType(Type type);
-    inline bool passwordProtected() const;
-    inline void setPasswordProtected(bool passwordProtected);
-    inline QString username() const;
-    inline void setUsername(const QString& username);
-    inline QString password() const;
-    inline void setPassword(const QString& password);
-    inline QString encoding() const;
-    inline void setEncoding(const QString& encoding);
+    Type type() const;
+    void setType(Type type);
+    bool passwordProtected() const;
+    void setPasswordProtected(bool passwordProtected);
+    QString username() const;
+    void setUsername(const QString& username);
+    QString password() const;
+    void setPassword(const QString& password);
+    QString encoding() const;
+    void setEncoding(const QString& encoding);
 
     QNetworkReply::NetworkError networkError() const;
 
