@@ -52,7 +52,7 @@
 
 OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
                              QString clientSecret, QString scope, QObject* parent)
-  : QObject(parent) {
+  : QObject(parent), m_tokensExpireIn(QDateTime()) {
   m_redirectUri = QSL("http://localhost");
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(tokenUrl);
@@ -141,15 +141,15 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
     emit tokensRetrieveError(error, error_description);
   }
   else {
+    int expires = rootObject.value(QL1S("expires_in")).toInt();
+
     m_accessToken = rootObject.value(QL1S("access_token")).toString();
     m_refreshToken = rootObject.value(QL1S("refresh_token")).toString();
+    m_tokensExpireIn = QDateTime::currentDateTime().addSecs(expires);
 
-    int expires = rootObject.value(QL1S("expires_in")).toInt();
-    QDateTime expire_date = QDateTime::currentDateTime().addSecs(expires);
+    qDebug() << "Obtained refresh token" << m_refreshToken << "- expires on date/time" << m_tokensExpireIn;
 
-    qDebug() << "Obtained refresh token" << m_refreshToken << "- expires on date/time" << expire_date;
-
-    // TODO: Start timer to refresh tokens.
+    // TODO: Start timer to refresh tokens?
     emit tokensReceived(m_accessToken, m_refreshToken, rootObject.value("expires_in").toInt());
   }
 
@@ -165,7 +165,11 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
 }
 
 void OAuth2Service::login() {
-  if (!m_refreshToken.isEmpty()) {
+  // We refresh current tokens only if:
+  //   1. We have some existing refresh token.
+  //   AND
+  //   2. We do not know its expiration date or it passed.
+  if (!m_refreshToken.isEmpty() && (m_tokensExpireIn.isNull() || m_tokensExpireIn < QDateTime::currentDateTime())) {
     refreshAccessToken();
   }
   else {

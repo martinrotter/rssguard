@@ -101,24 +101,36 @@ void FormEditInoreaderAccount::checkUsername(const QString& username) {
   }
 }
 
-void FormEditInoreaderAccount::hookNetwork() {
-  connect(m_network->oauth(), &OAuth2Service::tokensReceived, [this]() {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("Tested successfully. You may be prompted to login once more."),
-                                    tr("Your access was approved."));
-  });
-  connect(m_network->oauth(), &OAuth2Service::tokensRetrieveError, [this](QString error, QString error_description) {
-    Q_UNUSED(error)
+void FormEditInoreaderAccount::onAuthFailed() {
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                  tr("You did not grant access."),
+                                  tr("There was error during testing."));
+}
 
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("There is error. %1").arg(error_description),
-                                    tr("There was error during testing."));
-  });
-  connect(m_network->oauth(), &OAuth2Service::authFailed, [this]() {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("You did not grant access."),
-                                    tr("There was error during testing."));
-  });
+void FormEditInoreaderAccount::onAuthError(const QString& error, const QString& detailed_description) {
+  Q_UNUSED(error)
+
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                  tr("There is error. %1").arg(detailed_description),
+                                  tr("There was error during testing."));
+}
+
+void FormEditInoreaderAccount::onAuthGranted() {
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                  tr("Tested successfully. You may be prompted to login once more."),
+                                  tr("Your access was approved."));
+}
+
+void FormEditInoreaderAccount::hookNetwork() {
+  connect(m_network->oauth(), &OAuth2Service::tokensReceived, this, &FormEditInoreaderAccount::onAuthGranted);
+  connect(m_network->oauth(), &OAuth2Service::tokensRetrieveError, this, &FormEditInoreaderAccount::onAuthError);
+  connect(m_network->oauth(), &OAuth2Service::authFailed, this, &FormEditInoreaderAccount::onAuthFailed);
+}
+
+void FormEditInoreaderAccount::unhookNetwork() {
+  disconnect(m_network->oauth(), &OAuth2Service::tokensReceived, this, &FormEditInoreaderAccount::onAuthGranted);
+  disconnect(m_network->oauth(), &OAuth2Service::tokensRetrieveError, this, &FormEditInoreaderAccount::onAuthError);
+  disconnect(m_network->oauth(), &OAuth2Service::authFailed, this, &FormEditInoreaderAccount::onAuthFailed);
 }
 
 InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
@@ -126,6 +138,7 @@ InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
   m_network = new InoreaderNetworkFactory(this);
   hookNetwork();
   exec();
+  unhookNetwork();
   return m_editableRoot;
 }
 
@@ -138,4 +151,5 @@ void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) 
   m_network = existing_root->network();
   hookNetwork();
   exec();
+  unhookNetwork();
 }

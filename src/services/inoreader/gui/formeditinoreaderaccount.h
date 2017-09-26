@@ -47,9 +47,13 @@ class FormEditInoreaderAccount : public QDialog {
     void onClickedOk();
     void onClickedCancel();
     void checkUsername(const QString& username);
+    void onAuthFailed();
+    void onAuthError(const QString& error, const QString& detailed_description);
+    void onAuthGranted();
 
   private:
     void hookNetwork();
+    void unhookNetwork();
 
     Ui::FormEditInoreaderAccount m_ui;
     InoreaderNetworkFactory* m_network;

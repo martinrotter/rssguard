@@ -88,6 +88,7 @@ class OAuth2Service : public QObject {
     void tokenRequestFinished(QNetworkReply* networkReply);
 
   private:
+    QDateTime m_tokensExpireIn;
     QString m_accessToken;
     QString m_refreshToken;
     QString m_redirectUri;
