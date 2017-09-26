@@ -72,64 +72,76 @@ void InoreaderNetworkFactory::setUsername(const QString& username) {
 // NOTE: oauth: https://developers.google.com/oauthplayground/#step3&scopes=read%20write&auth_code=497815bc3362aba9ad60c5ae3e01811fe2da4bb5&refresh_token=bacb9c36f82ba92667282d6175bb857a091e7f0c&access_token_field=094f92bc7aedbd27fbebc3efc9172b258be8944a&url=https%3A%2F%2Fwww.inoreader.com%2Freader%2Fapi%2F0%2Fsubscription%2Flist&content_type=application%2Fjson&http_method=GET&useDefaultOauthCred=unchecked&oauthEndpointSelect=Custom&oauthAuthEndpointValue=https%3A%2F%2Fwww.inoreader.com%2Foauth2%2Fauth%3Fstate%3Dtest&oauthTokenEndpointValue=https%3A%2F%2Fwww.inoreader.com%2Foauth2%2Ftoken&oauthClientId=1000000595&expires_in=3599&oauthClientSecret=_6pYUZgtNLWwSaB9pC1YOz6p4zwu3haL&access_token_issue_date=1506198338&for_access_token=094f92bc7aedbd27fbebc3efc9172b258be8944a&includeCredentials=checked&accessTokenType=bearer&autoRefreshToken=unchecked&accessType=offline&prompt=consent&response_type=code
 
 RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
-  RootItem* parent = new RootItem();
-
-  QMap<QString, RootItem*> cats;
-  cats.insert(QSL(""), parent);
-
-  QNetworkRequest req(QUrl(INOREADER_API_LIST_LABELS));
-
-  m_oauth2->attachBearerHeader(req);
-
-  QNetworkReply* reply = SilentNetworkAccessManager::instance()->get(req);
+  Downloader downloader;
   QEventLoop loop;
 
-  connect(reply, &QNetworkReply::finished, [&]() {
-    if (reply->error() == QNetworkReply::NoError) {
-      QByteArray repl_data = reply->readAll();
-      QJsonArray json = QJsonDocument::fromJson(repl_data).object()["tags"].toArray();
+  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), m_oauth2->bearer().toLocal8Bit());
 
-      foreach (const QJsonValue& obj, json) {
-        auto label = obj.toObject();
-        QString label_id = label["id"].toString();
+  // We need to quit event loop when the download finishes.
+  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
+  downloader.manipulateData(INOREADER_API_LIST_LABELS, QNetworkAccessManager::Operation::GetOperation);
+  loop.exec();
 
-        if (label_id.contains(QSL("/label/"))) {
-          // We have label (not "state").
-          Category* category = new Category();
+  if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
+    return nullptr;
+  }
 
-          category->setDescription(label["htmlUrl"].toString());
-          category->setTitle(label_id.mid(label_id.lastIndexOf(QL1C('/')) + 1));
-          category->setCustomId(label_id);
-          cats.insert(category->customId(), category);
+  QString category_data = downloader.lastOutputData();
 
-          if (obtain_icons) {
-            QString icon_url = label["iconUrl"].toString();
+  downloader.manipulateData(INOREADER_API_LIST_FEEDS, QNetworkAccessManager::Operation::GetOperation);
+  loop.exec();
 
-            if (!icon_url.isEmpty()) {
-              QByteArray icon_data;
+  if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
+    return nullptr;
+  }
 
-              if (NetworkFactory::performNetworkOperation(icon_url, DOWNLOAD_TIMEOUT,
-                                                          QByteArray(), QString(), icon_data,
-                                                          QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError) {
-                // Icon downloaded, set it up.
-                QPixmap icon_pixmap;
+  QString feed_data = downloader.lastOutputData();
 
-                icon_pixmap.loadFromData(icon_data);
-                category->setIcon(QIcon(icon_pixmap));
-              }
-            }
+  return decodeFeedCategoriesData(category_data, feed_data, obtain_icons);
+}
+
+RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons) {
+  RootItem* parent = new RootItem();
+  QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
+
+  QMap<QString, RootItem*> cats;
+  cats.insert(QString(), parent);
+
+  foreach (const QJsonValue& obj, json) {
+    auto label = obj.toObject();
+    QString label_id = label["id"].toString();
+
+    if (label_id.contains(QSL("/label/"))) {
+      // We have label (not "state").
+      Category* category = new Category();
+
+      category->setDescription(label["htmlUrl"].toString());
+      category->setTitle(label_id.mid(label_id.lastIndexOf(QL1C('/')) + 1));
+      category->setCustomId(label_id);
+      cats.insert(category->customId(), category);
+
+      if (obtain_icons) {
+        QString icon_url = label["iconUrl"].toString();
+
+        if (!icon_url.isEmpty()) {
+          QByteArray icon_data;
+
+          if (NetworkFactory::performNetworkOperation(icon_url, DOWNLOAD_TIMEOUT,
+                                                      QByteArray(), QString(), icon_data,
+                                                      QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError) {
+            // Icon downloaded, set it up.
+            QPixmap icon_pixmap;
+
+            icon_pixmap.loadFromData(icon_data);
+            category->setIcon(QIcon(icon_pixmap));
           }
-
-          // All categories in ownCloud are top-level.
-          parent->appendChild(category);
         }
       }
+
+      // All categories in ownCloud are top-level.
+      parent->appendChild(category);
     }
-
-    loop.exit();
-  });
-
-  loop.exec();
+  }
 
   return parent;
 }

@@ -66,8 +66,12 @@ OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId
   connect(this, &OAuth2Service::authCodeObtained, this, &OAuth2Service::retrieveAccessToken);
 }
 
+QString OAuth2Service::bearer() const {
+  return QString("Bearer %1").arg(m_accessToken);
+}
+
 void OAuth2Service::attachBearerHeader(QNetworkRequest& req) {
-  req.setRawHeader(QString("Authorization").toLocal8Bit(), QString("Bearer %1").arg(m_accessToken).toLocal8Bit());
+  req.setRawHeader(QString("Authorization").toLocal8Bit(), bearer().toLocal8Bit());
 }
 
 void OAuth2Service::setOAuthTokenGrantType(QString oAuthTokenGrantType) {

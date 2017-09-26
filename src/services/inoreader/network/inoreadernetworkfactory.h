@@ -47,6 +47,8 @@ class InoreaderNetworkFactory : public QObject {
     RootItem* feedsCategories(bool obtain_icons);
 
   private:
+    RootItem* decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons);
+
     void initializeOauth();
 
   private:
