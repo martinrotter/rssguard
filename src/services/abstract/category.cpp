@@ -52,7 +52,6 @@ Category::Category(const QSqlRecord& record) : Category(nullptr) {
 
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
-
   setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
 
   QIcon loaded_icon = qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray());

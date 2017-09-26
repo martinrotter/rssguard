@@ -34,12 +34,9 @@
 
 StandardCategory::StandardCategory(RootItem* parent_item) : Category(parent_item) {}
 
-StandardCategory::StandardCategory(const StandardCategory& other)
-  : Category(other) {}
+StandardCategory::StandardCategory(const StandardCategory& other) : Category(other) {}
 
-StandardCategory::~StandardCategory() {
-  qDebug("Destroying Category instance.");
-}
+StandardCategory::~StandardCategory() {}
 
 StandardServiceRoot* StandardCategory::serviceRoot() const {
   return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());

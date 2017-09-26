@@ -486,15 +486,8 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
   return m_networkError;
 }
 
-StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(nullptr) {
-  setTitle(QString::fromUtf8(record.value(FDS_DB_TITLE_INDEX).toByteArray()));
-  setId(record.value(FDS_DB_ID_INDEX).toInt());
-  setCustomId(QString::number(id()));
-  setDescription(QString::fromUtf8(record.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
-  setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
+StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
   setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
-  setUrl(record.value(FDS_DB_URL_INDEX).toString());
   setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
   setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
 

@@ -24,6 +24,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
@@ -41,7 +42,15 @@ Feed::Feed(RootItem* parent)
 Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
+  setUrl(record.value(FDS_DB_URL_INDEX).toString());
   setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toString());
+
+  if (customId().isEmpty()) {
+    setCustomId(QString::number(id()));
+  }
+
+  setDescription(QString::fromUtf8(record.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
+  setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
   setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
