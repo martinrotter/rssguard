@@ -33,15 +33,7 @@
 TtRssFeed::TtRssFeed(RootItem* parent)
   : Feed(parent) {}
 
-TtRssFeed::TtRssFeed(const QSqlRecord& record) : Feed(nullptr) {
-  setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
-  setId(record.value(FDS_DB_ID_INDEX).toInt());
-  setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
-  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
-  setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-  setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toString());
-  qDebug("Custom ID of TT-RSS feed when loading from DB is '%s'.", qPrintable(record.value(FDS_DB_CUSTOM_ID_INDEX).toString()));
-}
+TtRssFeed::TtRssFeed(const QSqlRecord& record) : Feed(record) {}
 
 TtRssFeed::~TtRssFeed() {}
 

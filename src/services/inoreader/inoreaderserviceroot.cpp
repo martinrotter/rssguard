@@ -111,9 +111,6 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
   Q_UNUSED(freshly_activated)
 
   loadFromDatabase();
-
-  //loadCacheFromFile(accountId());
-
   m_network->oauth()->login();
 }
 
@@ -138,6 +135,8 @@ RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
   return m_network->feedsCategories(true);
 }
 
-void InoreaderServiceRoot::addNewFeed(const QString& url) {}
+void InoreaderServiceRoot::addNewFeed(const QString& url) {
+  Q_UNUSED(url)
+}
 
 void InoreaderServiceRoot::addNewCategory() {}
