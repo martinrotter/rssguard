@@ -167,10 +167,6 @@ QVariant RootItem::data(int column, int role) const {
       }
 
     case Qt::FontRole:
-      if (countOfUnreadMessages() > 0) {
-        int a = 4;
-      }
-
       return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
     case Qt::DisplayRole:
