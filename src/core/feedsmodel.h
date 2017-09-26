@@ -64,7 +64,7 @@ class FeedsModel : public QAbstractItemModel {
     // Returns all activated service roots.
     // NOTE: Service root nodes are lying directly UNDER
     // the model root item.
-    QList<ServiceRoot*>serviceRoots() const;
+    QList<ServiceRoot*> serviceRoots() const;
 
     // Determines if there is any account activated from given entry point.
     bool containsServiceRootFromEntryPoint(const ServiceEntryPoint* point) const;
@@ -79,15 +79,15 @@ class FeedsModel : public QAbstractItemModel {
     // so feeds with "default" auto-update strategy should be updated.
     //
     // This method might change some properties of some feeds.
-    QList<Feed*>feedsForScheduledUpdate(bool auto_update_now);
+    QList<Feed*> feedsForScheduledUpdate(bool auto_update_now);
 
     // Returns (undeleted) messages for given feeds.
     // This is usually used for displaying whole feeds
     // in "newspaper" mode.
-    QList<Message>messagesForItem(RootItem* item) const;
+    QList<Message> messagesForItem(RootItem* item) const;
 
     // Returns ALL RECURSIVE CHILD feeds contained within single index.
-    QList<Feed*>feedsForIndex(const QModelIndex& index) const;
+    QList<Feed*> feedsForIndex(const QModelIndex& index) const;
 
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.

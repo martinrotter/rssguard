@@ -67,6 +67,8 @@ class FormMain : public QMainWindow {
     // Turns on/off fullscreen mode
     void switchFullscreenMode();
 
+    void showAddAccountDialog();
+
   private slots:
     void updateAddItemMenu();
     void updateRecycleBinMenu();
@@ -83,7 +85,6 @@ class FormMain : public QMainWindow {
     void backupDatabaseSettings();
     void restoreDatabaseSettings();
     void showWiki();
-    void showAddAccountDialog();
     void showDbCleanupAssistant();
     void reportABug();
     void donate();

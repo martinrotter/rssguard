@@ -19,6 +19,7 @@
 #include "core/feedsmodel.h"
 
 #include "definitions/definitions.h"
+#include "gui/dialogs/formmain.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -94,7 +95,7 @@ QStringList FeedsModel::mimeTypes() const {
 }
 
 bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column,
-                              const QModelIndex& parent)                                                                    {
+                              const QModelIndex& parent) {
   Q_UNUSED(row)
   Q_UNUSED(column)
 
@@ -539,8 +540,8 @@ void FeedsModel::loadActivatedServiceAccounts() {
   }
 
   if (serviceRoots().isEmpty()) {
-    QTimer::singleShot(2000, [this]() {
-      addServiceAccount(StandardServiceEntryPoint().createNewRoot(), true);
+    QTimer::singleShot(3000, [this]() {
+      qApp->mainForm()->showAddAccountDialog();
     });
   }
 }
