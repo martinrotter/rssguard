@@ -22,6 +22,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
+#include "services/inoreader/definitions.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
@@ -1585,7 +1586,7 @@ bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& 
   query.bindValue(QSL(":access_token"), access_token);
   query.bindValue(QSL(":refresh_token"), refresh_token);
   query.bindValue(QSL(":id"), account_id);
-  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? UNLIMITED_BATCH_SIZE : batch_size);
+  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? INOREADER_DEFAULT_BATCH_SIZE : batch_size);
 
   if (query.exec()) {
     return true;
@@ -1606,7 +1607,7 @@ bool DatabaseQueries::createInoreaderAccount(QSqlDatabase db, int id_to_assign, 
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":access_token"), access_token);
   q.bindValue(QSL(":refresh_token"), refresh_token);
-  q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? UNLIMITED_BATCH_SIZE : batch_size);
+  q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? INOREADER_DEFAULT_BATCH_SIZE : batch_size);
 
   if (q.exec()) {
     return true;

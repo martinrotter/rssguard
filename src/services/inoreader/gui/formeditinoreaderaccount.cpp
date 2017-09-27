@@ -39,21 +39,14 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_btnTestSetup);
   setTabOrder(m_ui.m_btnTestSetup, m_ui.m_buttonBox);
 
-  connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), [=](int value) {
-    if (value <= 0) {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
-    }
-    else {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
-    }
-  });
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkUsername);
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditInoreaderAccount::onClickedOk);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditInoreaderAccount::onClickedCancel);
 
   m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMinimum(INOREADER_UNLIMITED_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setMinimum(INOREADER_MIN_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setMaximum(INOREADER_MAX_BATCH_SIZE);
 
   checkUsername(m_ui.m_txtUsername->lineEdit()->text());
 }

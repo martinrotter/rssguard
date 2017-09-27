@@ -101,7 +101,23 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   return decodeFeedCategoriesData(category_data, feed_data, obtain_icons);
 }
 
-QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool* is_error) {}
+QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool* is_error) {
+  QList<Message> messages;
+  Downloader downloader;
+  QEventLoop loop;
+  QString target_url = INOREADER_API_FEED_CONTENTS;
+
+  target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("/?n=").arg(batchSize());
+
+  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), m_oauth2->bearer().toLocal8Bit());
+
+  // We need to quit event loop when the download finishes.
+  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
+  downloader.manipulateData(INOREADER_API_FEED_CONTENTS, QNetworkAccessManager::Operation::GetOperation);
+  loop.exec();
+
+  return messages;
+}
 
 RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons) {
   RootItem* parent = new RootItem();

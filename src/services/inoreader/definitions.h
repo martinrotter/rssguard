@@ -27,7 +27,8 @@
 #define INOREADER_REFRESH_TOKEN_KEY     "refresh_token"
 #define INOREADER_ACCESS_TOKEN_KEY      "access_token"
 #define INOREADER_DEFAULT_BATCH_SIZE    100
-#define INOREADER_UNLIMITED_BATCH_SIZE  -1
+#define INOREADER_MAX_BATCH_SIZE        999
+#define INOREADER_MIN_BATCH_SIZE        20
 
 #define INOREADER_API_FEED_CONTENTS     "https://www.inoreader.com/reader/api/0/stream/contents"
 #define INOREADER_API_LIST_LABELS       "https://www.inoreader.com/reader/api/0/tag/list"
