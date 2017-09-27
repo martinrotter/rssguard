@@ -2,14 +2,6 @@
 <ui version="4.0">
  <class>FormEditInoreaderAccount</class>
  <widget class="QDialog" name="FormEditInoreaderAccount">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>452</width>
-    <height>231</height>
-   </rect>
-  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
