@@ -22,6 +22,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/databasequeries.h"
 #include "network-web/networkfactory.h"
 #include "network-web/oauth2service.h"
 #include "network-web/silentnetworkaccessmanager.h"
@@ -29,6 +30,7 @@
 #include "services/abstract/category.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/inoreaderfeed.h"
+#include "services/inoreader/inoreaderserviceroot.h"
 
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -36,10 +38,14 @@
 #include <QUrl>
 
 InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent),
-  m_username(QString()), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
+  m_service(nullptr), m_username(QString()), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
   m_oauth2(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
                              INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY, INOREADER_OAUTH_SCOPE)) {
   initializeOauth();
+}
+
+void InoreaderNetworkFactory::setService(InoreaderServiceRoot* service) {
+  m_service = service;
 }
 
 OAuth2Service* InoreaderNetworkFactory::oauth() const {
@@ -63,6 +69,14 @@ void InoreaderNetworkFactory::initializeOauth() {
     Q_UNUSED(error)
 
     qApp->showGuiMessage("Authentication error - Inoreader", error_description, QSystemTrayIcon::Critical);
+  });
+  connect(m_oauth2, &OAuth2Service::tokensReceived, [this](QString access_token, QString refresh_token, int expires_in) {
+    Q_UNUSED(expires_in)
+
+    if (m_service != nullptr && !access_token.isEmpty() && !refresh_token.isEmpty()) {
+      QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+      DatabaseQueries::storeNewInoreaderTokens(database, access_token, refresh_token, m_service->accountId());
+    }
   });
 }
 

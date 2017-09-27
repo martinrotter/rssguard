@@ -38,6 +38,7 @@ InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, Roo
     m_network->setParent(this);
   }
 
+  m_network->setService(this);
   setIcon(InoreaderEntryPoint().icon());
 }
 

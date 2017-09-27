@@ -1522,7 +1522,8 @@ Assignment DatabaseQueries::getInoreaderFeeds(QSqlDatabase db, int account_id, b
   return feeds;
 }
 
-bool DatabaseQueries::storeNewInoreaderTokens(QSqlDatabase db, const QString& access_token, const QString& refresh_token, int account_id) {
+bool DatabaseQueries::storeNewInoreaderTokens(QSqlDatabase db, const QString& access_token,
+                                              const QString& refresh_token, int account_id) {
   QSqlQuery query(db);
 
   query.prepare("UPDATE InoreaderAccounts "

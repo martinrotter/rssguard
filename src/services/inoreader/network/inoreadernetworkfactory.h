@@ -26,6 +26,7 @@
 #include <QNetworkReply>
 
 class RootItem;
+class InoreaderServiceRoot;
 class OAuth2Service;
 
 class InoreaderNetworkFactory : public QObject {
@@ -33,6 +34,8 @@ class InoreaderNetworkFactory : public QObject {
 
   public:
     explicit InoreaderNetworkFactory(QObject* parent = nullptr);
+
+    void setService(InoreaderServiceRoot* service);
 
     OAuth2Service* oauth() const;
 
@@ -57,6 +60,7 @@ class InoreaderNetworkFactory : public QObject {
     void initializeOauth();
 
   private:
+    InoreaderServiceRoot* m_service;
     QString m_username;
     int m_batchSize;
     OAuth2Service* m_oauth2;
