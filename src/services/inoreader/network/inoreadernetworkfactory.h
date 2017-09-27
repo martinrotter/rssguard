@@ -51,6 +51,7 @@ class InoreaderNetworkFactory : public QObject {
     QList<Message> messages(const QString& stream_id, bool* is_error);
 
   private:
+    QList<Message> decodeMessages(const QString& messages_json_data, const QString& stream_id);
     RootItem* decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons);
 
     void initializeOauth();

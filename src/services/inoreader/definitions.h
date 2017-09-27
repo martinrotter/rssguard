@@ -24,11 +24,17 @@
 #define INOREADER_OAUTH_AUTH_URL        "https://www.inoreader.com/oauth2/auth"
 #define INOREADER_OAUTH_CLI_ID          "1000000604"
 #define INOREADER_OAUTH_CLI_KEY         "gsStoZ3aAoQJCgQxoFSuXkWI7Sly87yK"
+
 #define INOREADER_REFRESH_TOKEN_KEY     "refresh_token"
 #define INOREADER_ACCESS_TOKEN_KEY      "access_token"
+
 #define INOREADER_DEFAULT_BATCH_SIZE    100
 #define INOREADER_MAX_BATCH_SIZE        999
 #define INOREADER_MIN_BATCH_SIZE        20
+
+#define INOREADER_STATE_READING_LIST    "state/com.google/reading-list"
+#define INOREADER_STATE_READ            "state/com.google/read"
+#define INOREADER_STATE_IMPORTANT       "state/com.google/starred"
 
 #define INOREADER_API_FEED_CONTENTS     "https://www.inoreader.com/reader/api/0/stream/contents"
 #define INOREADER_API_LIST_LABELS       "https://www.inoreader.com/reader/api/0/tag/list"
