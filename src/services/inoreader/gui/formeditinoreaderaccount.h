@@ -35,7 +35,7 @@ class FormEditInoreaderAccount : public QDialog {
   Q_OBJECT
 
   public:
-    explicit FormEditInoreaderAccount(QWidget* parent = 0);
+    explicit FormEditInoreaderAccount(QWidget* parent = nullptr);
     virtual ~FormEditInoreaderAccount();
 
     InoreaderServiceRoot* execForCreate();
@@ -46,6 +46,7 @@ class FormEditInoreaderAccount : public QDialog {
     void testSetup();
     void onClickedOk();
     void onClickedCancel();
+    void checkOAuthValue(const QString& value);
     void checkUsername(const QString& username);
     void onAuthFailed();
     void onAuthError(const QString& error, const QString& detailed_description);

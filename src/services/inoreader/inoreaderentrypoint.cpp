@@ -40,7 +40,7 @@ QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {
 }
 
 bool InoreaderEntryPoint::isSingleInstanceService() const {
-  return true;
+  return false;
 }
 
 QString InoreaderEntryPoint::name() const {

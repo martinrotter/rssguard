@@ -43,6 +43,7 @@
 #include "definitions/definitions.h"
 #include "gui/dialogs/oauthlogin.h"
 #include "miscellaneous/application.h"
+#include "services/inoreader/definitions.h"
 
 #include <QDebug>
 #include <QJsonDocument>
@@ -53,7 +54,7 @@
 OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
                              QString clientSecret, QString scope, QObject* parent)
   : QObject(parent), m_tokensExpireIn(QDateTime()) {
-  m_redirectUri = QSL("http://localhost");
+  m_redirectUri = QSL(INOREADER_OAUTH_CLI_REDIRECT);
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(tokenUrl);
   m_authUrl = authUrl;

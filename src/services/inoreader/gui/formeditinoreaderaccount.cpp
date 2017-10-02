@@ -28,17 +28,26 @@
 FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(parent),
   m_network(nullptr), m_editableRoot(nullptr) {
   m_ui.setupUi(this);
+
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblAuthInfo, true);
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("inoreader")));
+
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
                                   tr("Not tested yet."));
   m_ui.m_lblTestResult->label()->setWordWrap(true);
   m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("User-visible username"));
 
-  setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtAppId);
+  setTabOrder(m_ui.m_txtAppId, m_ui.m_txtAppKey);
+  setTabOrder(m_ui.m_txtAppKey, m_ui.m_txtRedirectUrl);
+  setTabOrder(m_ui.m_txtRedirectUrl, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_btnTestSetup);
   setTabOrder(m_ui.m_btnTestSetup, m_ui.m_buttonBox);
 
+  connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkOAuthValue);
+  connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkOAuthValue);
+  connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkOAuthValue);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkUsername);
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditInoreaderAccount::onClickedOk);
@@ -130,9 +139,15 @@ void FormEditInoreaderAccount::unhookNetwork() {
 InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
   setWindowTitle(tr("Add new Inoreader account"));
   m_network = new InoreaderNetworkFactory(this);
+
+  m_ui.m_txtAppId->lineEdit()->setText(INOREADER_OAUTH_CLI_ID);
+  m_ui.m_txtAppKey->lineEdit()->setText(INOREADER_OAUTH_CLI_KEY);
+  m_ui.m_txtRedirectUrl->lineEdit()->setText(INOREADER_OAUTH_CLI_REDIRECT);
+
   hookNetwork();
   exec();
   unhookNetwork();
+
   return m_editableRoot;
 }
 
@@ -146,4 +161,17 @@ void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) 
   hookNetwork();
   exec();
   unhookNetwork();
+}
+
+void FormEditInoreaderAccount::checkOAuthValue(const QString& value) {
+  LineEditWithStatus* line_edit = qobject_cast<LineEditWithStatus*>(sender()->parent());
+
+  if (line_edit != nullptr) {
+    if (value.isEmpty()) {
+      line_edit->setStatus(WidgetWithStatus::Error, tr("Empty value is entered."));
+    }
+    else {
+      line_edit->setStatus(WidgetWithStatus::Ok, tr("Some value is entered."));
+    }
+  }
 }
