@@ -87,6 +87,7 @@ class DatabaseQueries {
                                           const QString& app_key, const QString& redirect_url, const QString& refresh_token,
                                           int batch_size, int account_id);
     static bool createInoreaderAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+                                       const QString& app_id, const QString& app_key, const QString& redirect_url,
                                        const QString& refresh_token, int batch_size);
 #endif
 

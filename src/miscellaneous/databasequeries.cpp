@@ -1600,13 +1600,17 @@ bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& 
 }
 
 bool DatabaseQueries::createInoreaderAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+                                             const QString& app_id, const QString& app_key, const QString& redirect_url,
                                              const QString& refresh_token, int batch_size) {
   QSqlQuery q(db);
 
-  q.prepare("INSERT INTO InoreaderAccounts (id, username, refresh_token, msg_limit) "
-            "VALUES (:id, :username, :refresh_token, :msg_limit);");
+  q.prepare("INSERT INTO InoreaderAccounts (id, username, app_id, app_key, redirect_url, refresh_token, msg_limit) "
+            "VALUES (:id, :username, :app_id, :app_key, :redirect_url, :refresh_token, :msg_limit);");
   q.bindValue(QSL(":id"), id_to_assign);
   q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":app_id"), app_id);
+  q.bindValue(QSL(":app_key"), app_key);
+  q.bindValue(QSL(":redirect_url"), redirect_url);
   q.bindValue(QSL(":refresh_token"), refresh_token);
   q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? INOREADER_DEFAULT_BATCH_SIZE : batch_size);
 

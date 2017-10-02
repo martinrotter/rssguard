@@ -84,6 +84,9 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
     if (saved) {
       if (DatabaseQueries::createInoreaderAccount(database, id_to_assign,
                                                   m_network->userName(),
+                                                  m_network->oauth()->clientId(),
+                                                  m_network->oauth()->clientSecret(),
+                                                  m_network->oauth()->redirectUri(),
                                                   m_network->oauth()->refreshToken(),
                                                   m_network->batchSize())) {
         setId(id_to_assign);
