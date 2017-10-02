@@ -54,6 +54,7 @@
 OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
                              QString clientSecret, QString scope, QObject* parent)
   : QObject(parent), m_tokensExpireIn(QDateTime()) {
+
   m_redirectUri = QSL(INOREADER_OAUTH_CLI_REDIRECT);
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(tokenUrl);
@@ -75,11 +76,11 @@ void OAuth2Service::attachBearerHeader(QNetworkRequest& req) {
   req.setRawHeader(QString("Authorization").toLocal8Bit(), bearer().toLocal8Bit());
 }
 
-void OAuth2Service::setOAuthTokenGrantType(QString oAuthTokenGrantType) {
-  m_tokenGrantType = oAuthTokenGrantType;
+void OAuth2Service::setOAuthTokenGrantType(QString grant_type) {
+  m_tokenGrantType = grant_type;
 }
 
-QString OAuth2Service::grant_type() {
+QString OAuth2Service::oAuthTokenGrantType() {
   return m_tokenGrantType;
 }
 
@@ -161,6 +162,30 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
   networkReply->deleteLater();
 }
 
+QString OAuth2Service::clientSecret() const {
+  return m_clientSecret;
+}
+
+void OAuth2Service::setClientSecret(const QString& client_secret) {
+  m_clientSecret = client_secret;
+}
+
+QString OAuth2Service::clientId() const {
+  return m_clientId;
+}
+
+void OAuth2Service::setClientId(const QString& client_id) {
+  m_clientId = client_id;
+}
+
+QString OAuth2Service::redirectUri() const {
+  return m_redirectUri;
+}
+
+void OAuth2Service::setRedirectUri(const QString& redirect_uri) {
+  m_redirectUri = redirect_uri;
+}
+
 QString OAuth2Service::refreshToken() const {
   return m_refreshToken;
 }
@@ -188,6 +213,13 @@ bool OAuth2Service::login() {
   else {
     return true;
   }
+}
+
+void OAuth2Service::logout() {
+  m_refreshToken = m_accessToken = QString();
+  m_tokensExpireIn = QDateTime();
+
+  // TODO: zastavit timer na obnovení refresh tokenu?
 }
 
 void OAuth2Service::retrieveAuthCode() {

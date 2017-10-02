@@ -19,6 +19,8 @@
 #include "gui/dialogs/oauthlogin.h"
 
 #include <QUrlQuery>
+#include <QWebEngineCookieStore>
+#include <QWebEngineProfile>
 
 OAuthLogin::OAuthLogin(QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
@@ -28,6 +30,9 @@ OAuthLogin::OAuthLogin(QWidget* parent) : QDialog(parent) {
 }
 
 void OAuthLogin::login(const QString& consentPageUrl, const QString& redirect_uri) {
+  m_ui.m_loginPage->page()->profile()->clearHttpCache();
+  m_ui.m_loginPage->page()->profile()->cookieStore()->deleteAllCookies();
+
   m_redirectUri = redirect_uri;
   m_ui.m_loginPage->setUrl(QUrl(consentPageUrl));
   exec();

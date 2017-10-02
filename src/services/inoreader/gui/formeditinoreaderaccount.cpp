@@ -80,6 +80,9 @@ void FormEditInoreaderAccount::onClickedOk() {
     editing_account = false;
   }
 
+  m_editableRoot->network()->oauth()->setClientId(m_ui.m_txtAppId->lineEdit()->text());
+  m_editableRoot->network()->oauth()->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
+  m_editableRoot->network()->oauth()->setRedirectUri(m_ui.m_txtRedirectUrl->lineEdit()->text());
   m_editableRoot->network()->setUsername(m_ui.m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setBatchSize(m_ui.m_spinLimitMessages->value());
   m_editableRoot->saveAccountDataToDatabase();
@@ -154,6 +157,10 @@ InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
 void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) {
   setWindowTitle(tr("Edit existing Inoreader account"));
   m_editableRoot = existing_root;
+
+  m_ui.m_txtAppId->lineEdit()->setText(existing_root->network()->oauth()->clientId());
+  m_ui.m_txtAppKey->lineEdit()->setText(existing_root->network()->oauth()->clientSecret());
+  m_ui.m_txtRedirectUrl->lineEdit()->setText(existing_root->network()->oauth()->redirectUri());
   m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->userName());
   m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
 

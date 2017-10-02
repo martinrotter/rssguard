@@ -57,10 +57,19 @@ class OAuth2Service : public QObject {
     void attachBearerHeader(QNetworkRequest& req);
 
     void setOAuthTokenGrantType(QString grant_type);
-    QString grant_type();
+    QString oAuthTokenGrantType();
 
     QString refreshToken() const;
     void setRefreshToken(const QString& refresh_token);
+
+    QString redirectUri() const;
+    void setRedirectUri(const QString& redirect_uri);
+
+    QString clientId() const;
+    void setClientId(const QString& client_id);
+
+    QString clientSecret() const;
+    void setClientSecret(const QString& client_secret);
 
   signals:
     void tokensReceived(QString access_token, QString refresh_token, int expires_in);
@@ -83,6 +92,7 @@ class OAuth2Service : public QObject {
     // Returns true, if user is already logged in (final state).
     // Returns false, if user is NOT logged in (asynchronous flow).
     bool login();
+    void logout();
 
   private slots:
     void cleanTokens();
@@ -92,8 +102,8 @@ class OAuth2Service : public QObject {
     QDateTime m_tokensExpireIn;
     QString m_accessToken;
     QString m_refreshToken;
-    QString m_redirectUri;
     QString m_tokenGrantType;
+    QString m_redirectUri;
     QString m_clientId;
     QString m_clientSecret;
     QUrl m_tokenUrl;
