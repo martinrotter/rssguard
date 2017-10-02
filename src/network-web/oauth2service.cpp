@@ -203,11 +203,3 @@ void OAuth2Service::retrieveAuthCode() {
   });
   login_page.login(auth_url, m_redirectUri);
 }
-
-QString OAuth2Service::accessToken() const {
-  return m_accessToken;
-}
-
-void OAuth2Service::setAccessToken(const QString& access_token) {
-  m_accessToken = access_token;
-}

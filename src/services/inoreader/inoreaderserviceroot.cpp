@@ -66,8 +66,9 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (accountId() != NO_PARENT_CATEGORY) {
-    if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(), m_network->oauth()->accessToken(),
-                                                   m_network->oauth()->refreshToken(), m_network->batchSize(),
+    if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(),
+                                                   m_network->oauth()->refreshToken(),
+                                                   m_network->batchSize(),
                                                    accountId())) {
       updateTitle();
       itemChanged(QList<RootItem*>() << this);
@@ -79,8 +80,9 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
 
     if (saved) {
       if (DatabaseQueries::createInoreaderAccount(database, id_to_assign,
-                                                  m_network->userName(), m_network->oauth()->accessToken(),
-                                                  m_network->oauth()->refreshToken(), m_network->batchSize())) {
+                                                  m_network->userName(),
+                                                  m_network->oauth()->refreshToken(),
+                                                  m_network->batchSize())) {
         setId(id_to_assign);
         setAccountId(id_to_assign);
         updateTitle();

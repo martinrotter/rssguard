@@ -1522,14 +1522,12 @@ Assignment DatabaseQueries::getInoreaderFeeds(QSqlDatabase db, int account_id, b
   return feeds;
 }
 
-bool DatabaseQueries::storeNewInoreaderTokens(QSqlDatabase db, const QString& access_token,
-                                              const QString& refresh_token, int account_id) {
+bool DatabaseQueries::storeNewInoreaderTokens(QSqlDatabase db, const QString& refresh_token, int account_id) {
   QSqlQuery query(db);
 
   query.prepare("UPDATE InoreaderAccounts "
-                "SET access_token = :access_token, refresh_token = :refresh_token "
+                "SET refresh_token = :refresh_token "
                 "WHERE id = :id;");
-  query.bindValue(QSL(":access_token"), access_token);
   query.bindValue(QSL(":refresh_token"), refresh_token);
   query.bindValue(QSL(":id"), account_id);
 
@@ -1554,9 +1552,8 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool*
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
       root->network()->setUsername(query.value(1).toString());
-      root->network()->oauth()->setAccessToken(query.value(2).toString());
-      root->network()->oauth()->setRefreshToken(query.value(3).toString());
-      root->network()->setBatchSize(query.value(4).toInt());
+      root->network()->oauth()->setRefreshToken(query.value(5).toString());
+      root->network()->setBatchSize(query.value(6).toInt());
       root->updateTitle();
       roots.append(root);
     }
@@ -1576,15 +1573,14 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool*
   return roots;
 }
 
-bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& username, const QString& access_token,
+bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& username,
                                                 const QString& refresh_token, int batch_size, int account_id) {
   QSqlQuery query(db);
 
   query.prepare("UPDATE InoreaderAccounts "
-                "SET username = :username, access_token = :access_token, refresh_token = :refresh_token , msg_limit = :msg_limit "
+                "SET username = :username, refresh_token = :refresh_token , msg_limit = :msg_limit "
                 "WHERE id = :id;");
   query.bindValue(QSL(":username"), username);
-  query.bindValue(QSL(":access_token"), access_token);
   query.bindValue(QSL(":refresh_token"), refresh_token);
   query.bindValue(QSL(":id"), account_id);
   query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? INOREADER_DEFAULT_BATCH_SIZE : batch_size);
@@ -1599,14 +1595,13 @@ bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& 
 }
 
 bool DatabaseQueries::createInoreaderAccount(QSqlDatabase db, int id_to_assign, const QString& username,
-                                             const QString& access_token, const QString& refresh_token, int batch_size) {
+                                             const QString& refresh_token, int batch_size) {
   QSqlQuery q(db);
 
-  q.prepare("INSERT INTO InoreaderAccounts (id, username, access_token, refresh_token, msg_limit) "
-            "VALUES (:id, :username, :access_token, :refresh_token, :msg_limit);");
+  q.prepare("INSERT INTO InoreaderAccounts (id, username, refresh_token, msg_limit) "
+            "VALUES (:id, :username, :refresh_token, :msg_limit);");
   q.bindValue(QSL(":id"), id_to_assign);
   q.bindValue(QSL(":username"), username);
-  q.bindValue(QSL(":access_token"), access_token);
   q.bindValue(QSL(":refresh_token"), refresh_token);
   q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? INOREADER_DEFAULT_BATCH_SIZE : batch_size);
 

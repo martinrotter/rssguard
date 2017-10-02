@@ -40,7 +40,9 @@ CREATE TABLE IF NOT EXISTS OwnCloudAccounts (
 CREATE TABLE IF NOT EXISTS InoreaderAccounts (
   id              INTEGER,
   username        TEXT        NOT NULL,
-  access_token    TEXT,
+  app_id          TEXT,
+  app_key         TEXT,
+  redirect_url    TEXT,
   refresh_token   TEXT,
   msg_limit       INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
   

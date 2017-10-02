@@ -59,9 +59,6 @@ class OAuth2Service : public QObject {
     void setOAuthTokenGrantType(QString grant_type);
     QString grant_type();
 
-    QString accessToken() const;
-    void setAccessToken(const QString& access_token);
-
     QString refreshToken() const;
     void setRefreshToken(const QString& refresh_token);
 

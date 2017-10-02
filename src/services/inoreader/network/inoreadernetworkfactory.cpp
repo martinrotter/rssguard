@@ -75,7 +75,7 @@ void InoreaderNetworkFactory::initializeOauth() {
 
     if (m_service != nullptr && !access_token.isEmpty() && !refresh_token.isEmpty()) {
       QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-      DatabaseQueries::storeNewInoreaderTokens(database, access_token, refresh_token, m_service->accountId());
+      DatabaseQueries::storeNewInoreaderTokens(database, refresh_token, m_service->accountId());
     }
   });
 }
