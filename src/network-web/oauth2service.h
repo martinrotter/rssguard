@@ -71,6 +71,12 @@ class OAuth2Service : public QObject {
     QString clientSecret() const;
     void setClientSecret(const QString& client_secret);
 
+    QDateTime tokensExpireIn() const;
+    void setTokensExpireIn(const QDateTime& tokens_expire_in);
+
+    QString accessToken() const;
+    void setAccessToken(const QString& access_token);
+
   signals:
     void tokensReceived(QString access_token, QString refresh_token, int expires_in);
     void tokensRetrieveError(QString error, QString error_description);

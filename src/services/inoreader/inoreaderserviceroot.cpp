@@ -67,6 +67,9 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
 
   if (accountId() != NO_PARENT_CATEGORY) {
     if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(),
+                                                   m_network->oauth()->clientId(),
+                                                   m_network->oauth()->clientSecret(),
+                                                   m_network->oauth()->redirectUri(),
                                                    m_network->oauth()->refreshToken(),
                                                    m_network->batchSize(),
                                                    accountId())) {

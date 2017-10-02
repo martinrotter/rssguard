@@ -162,6 +162,22 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
   networkReply->deleteLater();
 }
 
+QString OAuth2Service::accessToken() const {
+  return m_accessToken;
+}
+
+void OAuth2Service::setAccessToken(const QString& access_token) {
+  m_accessToken = access_token;
+}
+
+QDateTime OAuth2Service::tokensExpireIn() const {
+  return m_tokensExpireIn;
+}
+
+void OAuth2Service::setTokensExpireIn(const QDateTime& tokens_expire_in) {
+  m_tokensExpireIn = tokens_expire_in;
+}
+
 QString OAuth2Service::clientSecret() const {
   return m_clientSecret;
 }

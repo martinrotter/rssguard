@@ -26,7 +26,8 @@
 #include "services/inoreader/inoreaderserviceroot.h"
 
 FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(parent),
-  m_network(nullptr), m_editableRoot(nullptr) {
+  m_oauth(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
+                            INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY, INOREADER_OAUTH_SCOPE)), m_editableRoot(nullptr) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblAuthInfo, true);
@@ -58,12 +59,17 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
   m_ui.m_spinLimitMessages->setMaximum(INOREADER_MAX_BATCH_SIZE);
 
   checkUsername(m_ui.m_txtUsername->lineEdit()->text());
+  hookNetwork();
 }
 
 FormEditInoreaderAccount::~FormEditInoreaderAccount() {}
 
 void FormEditInoreaderAccount::testSetup() {
-  if (m_network->oauth()->login()) {
+  m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
+  m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
+  m_oauth->setRedirectUri(m_ui.m_txtRedirectUrl->lineEdit()->text());
+
+  if (m_oauth->login()) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("You are already logged in."),
                                     tr("Access granted."));
@@ -76,13 +82,19 @@ void FormEditInoreaderAccount::onClickedOk() {
   if (m_editableRoot == nullptr) {
     // We want to confirm newly created account.
     // So save new account into DB, setup its properties.
-    m_editableRoot = new InoreaderServiceRoot(m_network);
+    m_editableRoot = new InoreaderServiceRoot(nullptr);
     editing_account = false;
   }
+
+  // We copy credentials from testing OAuth to live OAuth.
+  m_editableRoot->network()->oauth()->setAccessToken(m_oauth->accessToken());
+  m_editableRoot->network()->oauth()->setRefreshToken(m_oauth->refreshToken());
+  m_editableRoot->network()->oauth()->setTokensExpireIn(m_oauth->tokensExpireIn());
 
   m_editableRoot->network()->oauth()->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_editableRoot->network()->oauth()->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
   m_editableRoot->network()->oauth()->setRedirectUri(m_ui.m_txtRedirectUrl->lineEdit()->text());
+
   m_editableRoot->network()->setUsername(m_ui.m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setBatchSize(m_ui.m_spinLimitMessages->value());
   m_editableRoot->saveAccountDataToDatabase();
@@ -128,28 +140,19 @@ void FormEditInoreaderAccount::onAuthGranted() {
 }
 
 void FormEditInoreaderAccount::hookNetwork() {
-  connect(m_network->oauth(), &OAuth2Service::tokensReceived, this, &FormEditInoreaderAccount::onAuthGranted);
-  connect(m_network->oauth(), &OAuth2Service::tokensRetrieveError, this, &FormEditInoreaderAccount::onAuthError);
-  connect(m_network->oauth(), &OAuth2Service::authFailed, this, &FormEditInoreaderAccount::onAuthFailed);
-}
-
-void FormEditInoreaderAccount::unhookNetwork() {
-  disconnect(m_network->oauth(), &OAuth2Service::tokensReceived, this, &FormEditInoreaderAccount::onAuthGranted);
-  disconnect(m_network->oauth(), &OAuth2Service::tokensRetrieveError, this, &FormEditInoreaderAccount::onAuthError);
-  disconnect(m_network->oauth(), &OAuth2Service::authFailed, this, &FormEditInoreaderAccount::onAuthFailed);
+  connect(m_oauth, &OAuth2Service::tokensReceived, this, &FormEditInoreaderAccount::onAuthGranted);
+  connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FormEditInoreaderAccount::onAuthError);
+  connect(m_oauth, &OAuth2Service::authFailed, this, &FormEditInoreaderAccount::onAuthFailed);
 }
 
 InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
   setWindowTitle(tr("Add new Inoreader account"));
-  m_network = new InoreaderNetworkFactory(this);
 
   m_ui.m_txtAppId->lineEdit()->setText(INOREADER_OAUTH_CLI_ID);
   m_ui.m_txtAppKey->lineEdit()->setText(INOREADER_OAUTH_CLI_KEY);
   m_ui.m_txtRedirectUrl->lineEdit()->setText(INOREADER_OAUTH_CLI_REDIRECT);
 
-  hookNetwork();
   exec();
-  unhookNetwork();
 
   return m_editableRoot;
 }
@@ -158,16 +161,22 @@ void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) 
   setWindowTitle(tr("Edit existing Inoreader account"));
   m_editableRoot = existing_root;
 
+  // We copy settings from existing OAuth to our testing OAuth.
+  m_oauth->setClientId(existing_root->network()->oauth()->clientId());
+  m_oauth->setClientSecret(existing_root->network()->oauth()->clientSecret());
+  m_oauth->setRedirectUri(existing_root->network()->oauth()->redirectUri());
+  m_oauth->setRefreshToken(existing_root->network()->oauth()->refreshToken());
+  m_oauth->setAccessToken(existing_root->network()->oauth()->accessToken());
+  m_oauth->setTokensExpireIn(existing_root->network()->oauth()->tokensExpireIn());
+
   m_ui.m_txtAppId->lineEdit()->setText(existing_root->network()->oauth()->clientId());
   m_ui.m_txtAppKey->lineEdit()->setText(existing_root->network()->oauth()->clientSecret());
   m_ui.m_txtRedirectUrl->lineEdit()->setText(existing_root->network()->oauth()->redirectUri());
+
   m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->userName());
   m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
 
-  m_network = existing_root->network();
-  hookNetwork();
   exec();
-  unhookNetwork();
 }
 
 void FormEditInoreaderAccount::checkOAuthValue(const QString& value) {

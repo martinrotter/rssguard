@@ -1573,14 +1573,19 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool*
   return roots;
 }
 
-bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& username,
+bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& username, const QString& app_id,
+                                                const QString& app_key, const QString& redirect_url,
                                                 const QString& refresh_token, int batch_size, int account_id) {
   QSqlQuery query(db);
 
   query.prepare("UPDATE InoreaderAccounts "
-                "SET username = :username, refresh_token = :refresh_token , msg_limit = :msg_limit "
+                "SET username = :username, app_id = :app_id, app_key = :app_key, "
+                "redirect_url = :redirect_url, refresh_token = :refresh_token , msg_limit = :msg_limit "
                 "WHERE id = :id;");
   query.bindValue(QSL(":username"), username);
+  query.bindValue(QSL(":app_id"), app_id);
+  query.bindValue(QSL(":app_key"), app_key);
+  query.bindValue(QSL(":redirect_url"), redirect_url);
   query.bindValue(QSL(":refresh_token"), refresh_token);
   query.bindValue(QSL(":id"), account_id);
   query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? INOREADER_DEFAULT_BATCH_SIZE : batch_size);

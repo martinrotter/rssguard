@@ -54,10 +54,9 @@ class FormEditInoreaderAccount : public QDialog {
 
   private:
     void hookNetwork();
-    void unhookNetwork();
 
     Ui::FormEditInoreaderAccount m_ui;
-    InoreaderNetworkFactory* m_network;
+    OAuth2Service* m_oauth;
     InoreaderServiceRoot* m_editableRoot;
 };
 
