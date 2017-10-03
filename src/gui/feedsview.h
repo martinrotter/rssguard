@@ -122,6 +122,8 @@ class FeedsView : public QTreeView {
     QModelIndex nextUnreadItem(QModelIndex default_row);
 
     // Initializes context menus.
+    QMenu* initializeContextMenuBin(RootItem* clicked_item);
+    QMenu* initializeContextMenuService(RootItem* clicked_item);
     QMenu* initializeContextMenuCategories(RootItem* clicked_item);
     QMenu* initializeContextMenuFeeds(RootItem* clicked_item);
     QMenu* initializeContextMenuEmptySpace();
@@ -132,6 +134,8 @@ class FeedsView : public QTreeView {
 
     void saveExpandStates(RootItem* item);
 
+    QMenu* m_contextMenuService;
+    QMenu* m_contextMenuBin;
     QMenu* m_contextMenuCategories;
     QMenu* m_contextMenuFeeds;
     QMenu* m_contextMenuEmptySpace;

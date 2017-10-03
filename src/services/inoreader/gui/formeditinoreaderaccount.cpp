@@ -65,9 +65,16 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
 FormEditInoreaderAccount::~FormEditInoreaderAccount() {}
 
 void FormEditInoreaderAccount::testSetup() {
+  if (m_oauth->clientId() != m_ui.m_txtAppId->lineEdit()->text() ||
+      m_oauth->clientSecret() != m_ui.m_txtAppKey->lineEdit()->text() ||
+      m_oauth->redirectUrl() != m_ui.m_txtRedirectUrl->lineEdit()->text()) {
+    // User changed some important settings. Log out.
+    m_oauth->logout();
+  }
+
   m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
-  m_oauth->setRedirectUri(m_ui.m_txtRedirectUrl->lineEdit()->text());
+  m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
 
   if (m_oauth->login()) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
@@ -93,7 +100,7 @@ void FormEditInoreaderAccount::onClickedOk() {
 
   m_editableRoot->network()->oauth()->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_editableRoot->network()->oauth()->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
-  m_editableRoot->network()->oauth()->setRedirectUri(m_ui.m_txtRedirectUrl->lineEdit()->text());
+  m_editableRoot->network()->oauth()->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
 
   m_editableRoot->network()->setUsername(m_ui.m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setBatchSize(m_ui.m_spinLimitMessages->value());
@@ -164,14 +171,15 @@ void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) 
   // We copy settings from existing OAuth to our testing OAuth.
   m_oauth->setClientId(existing_root->network()->oauth()->clientId());
   m_oauth->setClientSecret(existing_root->network()->oauth()->clientSecret());
-  m_oauth->setRedirectUri(existing_root->network()->oauth()->redirectUri());
+  m_oauth->setRedirectUrl(existing_root->network()->oauth()->redirectUrl());
   m_oauth->setRefreshToken(existing_root->network()->oauth()->refreshToken());
   m_oauth->setAccessToken(existing_root->network()->oauth()->accessToken());
   m_oauth->setTokensExpireIn(existing_root->network()->oauth()->tokensExpireIn());
 
+  // Setup the GUI.
   m_ui.m_txtAppId->lineEdit()->setText(existing_root->network()->oauth()->clientId());
   m_ui.m_txtAppKey->lineEdit()->setText(existing_root->network()->oauth()->clientSecret());
-  m_ui.m_txtRedirectUrl->lineEdit()->setText(existing_root->network()->oauth()->redirectUri());
+  m_ui.m_txtRedirectUrl->lineEdit()->setText(existing_root->network()->oauth()->redirectUrl());
 
   m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->userName());
   m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());

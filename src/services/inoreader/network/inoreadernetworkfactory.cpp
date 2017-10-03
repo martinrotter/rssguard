@@ -145,8 +145,6 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
   QList<Message> messages;
   QJsonArray json = QJsonDocument::fromJson(messages_json_data.toUtf8()).object()["items"].toArray();
 
-  IOFactory::writeTextFile("aa.aa", messages_json_data.toUtf8());
-
   messages.reserve(json.count());
 
   foreach (const QJsonValue& obj, json) {
@@ -155,7 +153,7 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
 
     message.m_title = message_obj["title"].toString();
     message.m_author = message_obj["author"].toString();
-    message.m_created = QDateTime::fromMSecsSinceEpoch(message_obj["published"].toInt());
+    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj["published"].toInt());
     message.m_createdFromFeed = true;
     message.m_customId = message_obj["id"].toString();
 

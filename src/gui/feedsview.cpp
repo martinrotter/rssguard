@@ -43,11 +43,8 @@
 #include <QTimer>
 
 FeedsView::FeedsView(QWidget* parent)
-  : QTreeView(parent),
-  m_contextMenuCategories(nullptr),
-  m_contextMenuFeeds(nullptr),
-  m_contextMenuEmptySpace(nullptr),
-  m_contextMenuOtherItems(nullptr) {
+  : QTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
+  m_contextMenuFeeds(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -422,6 +419,53 @@ QModelIndex FeedsView::nextUnreadItem(QModelIndex default_row) {
   return QModelIndex();
 }
 
+QMenu* FeedsView::initializeContextMenuBin(RootItem* clicked_item) {
+  if (m_contextMenuBin == nullptr) {
+    m_contextMenuBin = new QMenu(tr("Context menu for recycle bins"), this);
+  }
+  else {
+    m_contextMenuBin->clear();
+  }
+
+  QList<QAction*> specific_actions = clicked_item->contextMenu();
+  m_contextMenuBin->addActions(QList<QAction*>() <<
+                               qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
+                               qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
+                               qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
+
+  if (!specific_actions.isEmpty()) {
+    m_contextMenuBin->addSeparator();
+    m_contextMenuBin->addActions(specific_actions);
+  }
+
+  return m_contextMenuBin;
+}
+
+QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
+  if (m_contextMenuService == nullptr) {
+    m_contextMenuService = new QMenu(tr("Context menu for accounts"), this);
+  }
+  else {
+    m_contextMenuService->clear();
+  }
+
+  QList<QAction*> specific_actions = clicked_item->contextMenu();
+  m_contextMenuService->addActions(QList<QAction*>() <<
+                                   qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
+                                   qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
+                                   qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
+                                   qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
+                                   qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
+                                   qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+
+  if (!specific_actions.isEmpty()) {
+    m_contextMenuService->addSeparator();
+    m_contextMenuService->addActions(specific_actions);
+  }
+
+  return m_contextMenuService;
+}
+
 void FeedsView::switchVisibility() {
   setVisible(!isVisible());
 }
@@ -569,6 +613,12 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     else if (clicked_item->kind() == RootItemKind::Feed) {
       // Display context menu for feeds.
       initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
+    }
+    else if (clicked_item->kind() == RootItemKind::Bin) {
+      initializeContextMenuBin(clicked_item)->exec(event->globalPos());
+    }
+    else if (clicked_item->kind() == RootItemKind::ServiceRoot) {
+      initializeContextMenuService(clicked_item)->exec(event->globalPos());
     }
     else {
       initializeContextMenuOtherItem(clicked_item)->exec(event->globalPos());

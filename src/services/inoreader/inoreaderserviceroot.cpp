@@ -69,7 +69,7 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
     if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(),
                                                    m_network->oauth()->clientId(),
                                                    m_network->oauth()->clientSecret(),
-                                                   m_network->oauth()->redirectUri(),
+                                                   m_network->oauth()->redirectUrl(),
                                                    m_network->oauth()->refreshToken(),
                                                    m_network->batchSize(),
                                                    accountId())) {
@@ -86,7 +86,7 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
                                                   m_network->userName(),
                                                   m_network->oauth()->clientId(),
                                                   m_network->oauth()->clientSecret(),
-                                                  m_network->oauth()->redirectUri(),
+                                                  m_network->oauth()->redirectUrl(),
                                                   m_network->oauth()->refreshToken(),
                                                   m_network->batchSize())) {
         setId(id_to_assign);

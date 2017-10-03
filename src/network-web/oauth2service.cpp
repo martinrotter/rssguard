@@ -55,7 +55,7 @@ OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId
                              QString clientSecret, QString scope, QObject* parent)
   : QObject(parent), m_tokensExpireIn(QDateTime()) {
 
-  m_redirectUri = QSL(INOREADER_OAUTH_CLI_REDIRECT);
+  m_redirectUrl = QSL(INOREADER_OAUTH_CLI_REDIRECT);
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(tokenUrl);
   m_authUrl = authUrl;
@@ -99,7 +99,7 @@ void OAuth2Service::retrieveAccessToken(QString auth_code) {
                     .arg(m_clientSecret)
                     .arg(auth_code)
                     .arg(m_tokenGrantType)
-                    .arg(m_redirectUri);
+                    .arg(m_redirectUrl);
 
   m_networkManager.post(networkRequest, content.toUtf8());
 }
@@ -194,12 +194,12 @@ void OAuth2Service::setClientId(const QString& client_id) {
   m_clientId = client_id;
 }
 
-QString OAuth2Service::redirectUri() const {
-  return m_redirectUri;
+QString OAuth2Service::redirectUrl() const {
+  return m_redirectUrl;
 }
 
-void OAuth2Service::setRedirectUri(const QString& redirect_uri) {
-  m_redirectUri = redirect_uri;
+void OAuth2Service::setRedirectUrl(const QString& redirect_url) {
+  m_redirectUrl = redirect_url;
 }
 
 QString OAuth2Service::refreshToken() const {
@@ -242,7 +242,7 @@ void OAuth2Service::retrieveAuthCode() {
   QString auth_url = m_authUrl + QString("?client_id=%1&scope=%2&"
                                          "redirect_uri=%3&response_type=code&state=abcdef").arg(m_clientId,
                                                                                                 m_scope,
-                                                                                                m_redirectUri);
+                                                                                                m_redirectUrl);
   OAuthLogin login_page(qApp->mainFormWidget());
 
   connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::authCodeObtained);
@@ -250,5 +250,5 @@ void OAuth2Service::retrieveAuthCode() {
     cleanTokens();
     emit authFailed();
   });
-  login_page.login(auth_url, m_redirectUri);
+  login_page.login(auth_url, m_redirectUrl);
 }
