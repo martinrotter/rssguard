@@ -30,7 +30,7 @@
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
 InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent) : ServiceRoot(parent),
-  m_serviceMenu(QList<QAction*>()), m_network(network) {
+  CacheForServiceRoot(), m_serviceMenu(QList<QAction*>()), m_network(network) {
   if (network == nullptr) {
     m_network = new InoreaderNetworkFactory(this);
   }
@@ -121,6 +121,11 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
 
   loadFromDatabase();
   m_network->oauth()->login();
+  loadCacheFromFile(accountId());
+
+  if (childCount() <= 1) {
+    syncIn();
+  }
 }
 
 void InoreaderServiceRoot::stop() {}
@@ -149,3 +154,39 @@ void InoreaderServiceRoot::addNewFeed(const QString& url) {
 }
 
 void InoreaderServiceRoot::addNewCategory() {}
+
+void InoreaderServiceRoot::saveAllCachedData() {
+  QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
+  QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
+
+  // Save the actual data read/unread.
+  while (i.hasNext()) {
+    i.next();
+    auto key = i.key();
+    QStringList ids = i.value();
+
+    if (!ids.isEmpty()) {
+      network()->markMessagesRead(key, ids);
+    }
+  }
+
+  QMapIterator<RootItem::Importance, QList<Message>> j(msgCache.second);
+
+  // Save the actual data important/not important.
+  while (j.hasNext()) {
+    j.next();
+    auto key = j.key();
+
+    QList<Message> messages = j.value();
+
+    if (!messages.isEmpty()) {
+      QStringList custom_ids;
+
+      foreach (const Message& msg, messages) {
+        custom_ids.append(msg.m_customId);
+      }
+
+      network()->markMessagesStarred(key, custom_ids);
+    }
+  }
+}

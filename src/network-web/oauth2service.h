@@ -52,9 +52,7 @@ class OAuth2Service : public QObject {
     explicit OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
                            QString clientSecret, QString scope, QObject* parent = 0);
 
-    QString bearer() const;
-
-    void attachBearerHeader(QNetworkRequest& req);
+    QString bearer();
 
     void setOAuthTokenGrantType(QString grant_type);
     QString oAuthTokenGrantType();

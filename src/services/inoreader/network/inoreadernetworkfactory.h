@@ -23,6 +23,8 @@
 
 #include "core/message.h"
 
+#include "services/abstract/rootitem.h"
+
 #include <QNetworkReply>
 
 class RootItem;
@@ -52,6 +54,8 @@ class InoreaderNetworkFactory : public QObject {
     RootItem* feedsCategories(bool obtain_icons);
 
     QList<Message> messages(const QString& stream_id, bool* is_error);
+    void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
+    void markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids);
 
   private:
     QList<Message> decodeMessages(const QString& messages_json_data, const QString& stream_id);

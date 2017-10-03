@@ -89,8 +89,13 @@ void InoreaderNetworkFactory::setUsername(const QString& username) {
 RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   Downloader downloader;
   QEventLoop loop;
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
 
-  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), m_oauth2->bearer().toLocal8Bit());
+  if (bearer.isEmpty()) {
+    return nullptr;
+  }
+
+  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
 
   // We need to quit event loop when the download finishes.
   connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
@@ -119,9 +124,14 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool*
   Downloader downloader;
   QEventLoop loop;
   QString target_url = INOREADER_API_FEED_CONTENTS;
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    return QList<Message>();
+  }
 
   target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("?n=%1").arg(batchSize());
-  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), m_oauth2->bearer().toLocal8Bit());
+  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
 
   IOFactory::writeTextFile("aa.bb", target_url.toUtf8());
 
@@ -140,6 +150,10 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool*
     return decodeMessages(messages_data, stream_id);
   }
 }
+
+void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {}
+
+void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids) {}
 
 QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_json_data, const QString& stream_id) {
   QList<Message> messages;

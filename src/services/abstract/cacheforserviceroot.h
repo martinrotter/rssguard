@@ -37,8 +37,10 @@ class CacheForServiceRoot {
 
     // Persistently saves/loads cached changes to/from file.
     // NOTE: The whole cache is cleared after save is done and before load is done.
-    void saveCacheToFile(int accId);
-    void loadCacheFromFile(int accId);
+    void saveCacheToFile(int acc_id);
+    void loadCacheFromFile(int acc_id);
+
+    virtual void saveAllCachedData() = 0;
 
   protected:
     QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> takeMessageCache();

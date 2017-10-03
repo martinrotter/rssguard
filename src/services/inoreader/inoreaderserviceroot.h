@@ -20,11 +20,12 @@
 #ifndef INOREADERSERVICEROOT_H
 #define INOREADERSERVICEROOT_H
 
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
 class InoreaderNetworkFactory;
 
-class InoreaderServiceRoot : public ServiceRoot {
+class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   Q_OBJECT
 
   public:
@@ -45,6 +46,8 @@ class InoreaderServiceRoot : public ServiceRoot {
     QString code() const;
 
     RootItem* obtainNewTreeForSyncIn() const;
+
+    void saveAllCachedData();
 
   public slots:
     void addNewFeed(const QString& url);
