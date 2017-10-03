@@ -151,7 +151,25 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool*
   }
 }
 
-void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {}
+void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
+  QString target_url = INOREADER_API_EDIT_TAG;
+
+  if (status == RootItem::ReadStatus::Read) {
+    target_url += QString("?a=user/-/") + INOREADER_STATE_READ + "&";
+  }
+  else {
+    target_url += QString("?r=user/-/") + INOREADER_STATE_READ + "&";
+  }
+
+  QStringList trimmed_ids;
+
+  foreach (const QString& id, custom_ids) {
+    trimmed_ids.append(QString("i=") + id);
+  }
+
+  QString full_url = target_url + trimmed_ids.join(QL1C('&'));
+
+}
 
 void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids) {}
 

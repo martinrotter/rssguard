@@ -203,8 +203,6 @@ QList<Message> ServiceRoot::undeletedMessages() const {
   return DatabaseQueries::getUndeletedMessagesForAccount(database, accountId());
 }
 
-void ServiceRoot::saveAllCachedData() {}
-
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {
   emit dataChanged(items);
 }
@@ -447,9 +445,14 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
 }
 
 bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, RootItem::ReadStatus read) {
-  Q_UNUSED(messages)
-  Q_UNUSED(read)
   Q_UNUSED(selected_item)
+
+  auto cache = dynamic_cast<CacheForServiceRoot*>(this);
+
+  if (cache != nullptr) {
+    cache->addMessageStatesToCache(customIDsOfMessages(messages), read);
+  }
+
   return true;
 }
 
@@ -463,7 +466,32 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item, const QList<Me
 
 bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes) {
   Q_UNUSED(selected_item)
-  Q_UNUSED(changes)
+
+  auto cache = dynamic_cast<CacheForServiceRoot*>(this);
+
+  if (cache != nullptr) {
+    // Now, we need to separate the changes because of ownCloud API limitations.
+    QList<Message> mark_starred_msgs;
+    QList<Message> mark_unstarred_msgs;
+
+    foreach (const ImportanceChange& pair, changes) {
+      if (pair.second == RootItem::Important) {
+        mark_starred_msgs.append(pair.first);
+      }
+      else {
+        mark_unstarred_msgs.append(pair.first);
+      }
+    }
+
+    if (!mark_starred_msgs.isEmpty()) {
+      cache->addMessageStatesToCache(mark_starred_msgs, RootItem::Important);
+    }
+
+    if (!mark_unstarred_msgs.isEmpty()) {
+      cache->addMessageStatesToCache(mark_unstarred_msgs, RootItem::NotImportant);
+    }
+  }
+
   return true;
 }
 

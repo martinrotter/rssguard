@@ -79,7 +79,6 @@ class ServiceRoot : public RootItem {
     // user explicitly deletes existing service instance.
     virtual void start(bool freshly_activated) = 0;
     virtual void stop() = 0;
-    virtual void saveAllCachedData();
 
     // Account ID corresponds with DB attribute Accounts (id).
     int accountId() const;

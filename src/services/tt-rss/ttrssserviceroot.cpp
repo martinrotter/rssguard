@@ -193,39 +193,6 @@ QList<QAction*> TtRssServiceRoot::serviceMenu() {
   return m_serviceMenu;
 }
 
-bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, RootItem::ReadStatus read) {
-  Q_UNUSED(selected_item)
-  addMessageStatesToCache(customIDsOfMessages(messages), read);
-  return true;
-}
-
-bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes) {
-  Q_UNUSED(selected_item)
-
-  // Now, we need to separate the changes because of ownCloud API limitations.
-  QList<Message> mark_starred_msgs;
-  QList<Message> mark_unstarred_msgs;
-
-  foreach (const ImportanceChange& pair, changes) {
-    if (pair.second == RootItem::Important) {
-      mark_starred_msgs.append(pair.first);
-    }
-    else {
-      mark_unstarred_msgs.append(pair.first);
-    }
-  }
-
-  if (!mark_starred_msgs.isEmpty()) {
-    addMessageStatesToCache(mark_starred_msgs, RootItem::Important);
-  }
-
-  if (!mark_unstarred_msgs.isEmpty()) {
-    addMessageStatesToCache(mark_unstarred_msgs, RootItem::NotImportant);
-  }
-
-  return true;
-}
-
 TtRssNetworkFactory* TtRssServiceRoot::network() const {
   return m_network;
 }

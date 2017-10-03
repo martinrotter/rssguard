@@ -24,10 +24,6 @@
 #include "services/inoreader/inoreaderentrypoint.h"
 #endif
 
-#include "services/owncloud/owncloudserviceentrypoint.h"
-#include "services/standard/standardserviceentrypoint.h"
-#include "services/tt-rss/ttrssserviceentrypoint.h"
-
 #include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
@@ -36,6 +32,10 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasecleaner.h"
 #include "miscellaneous/mutex.h"
+#include "services/abstract/cacheforserviceroot.h"
+#include "services/owncloud/owncloudserviceentrypoint.h"
+#include "services/standard/standardserviceentrypoint.h"
+#include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include <QtConcurrent/QtConcurrentRun>
 #include <QThread>
@@ -224,8 +224,11 @@ void FeedReader::executeNextAutoUpdate() {
 
 void FeedReader::checkServicesForAsyncOperations() {
   foreach (ServiceRoot* service, m_feedsModel->serviceRoots()) {
-    // Store any cached data.
-    service->saveAllCachedData();
+    auto cache = dynamic_cast<CacheForServiceRoot*>(service);
+
+    if (cache != nullptr) {
+      cache->saveAllCachedData();
+    }
   }
 
   asyncCacheSaveFinished();

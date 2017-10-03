@@ -49,9 +49,6 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     void saveAllCachedData();
 
-    bool onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
-    bool onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
-
     // Access to network.
     TtRssNetworkFactory* network() const;
 

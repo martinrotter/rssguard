@@ -47,9 +47,6 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     QString code() const;
     OwnCloudNetworkFactory* network() const;
 
-    bool onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
-    bool onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
-
     void updateTitle();
     void saveAccountDataToDatabase();
 
