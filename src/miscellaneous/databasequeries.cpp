@@ -351,7 +351,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, con
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare("SELECT * "
+  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed "
             "FROM Messages "
             "WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;");
   q.bindValue(QSL(":feed"), feed_custom_id);
@@ -385,7 +385,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(QSqlDatabase db, int 
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare("SELECT * "
+  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed "
             "FROM Messages "
             "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
   q.bindValue(QSL(":account_id"), account_id);
@@ -418,7 +418,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(QSqlDatabase db, 
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare("SELECT * "
+  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed "
             "FROM Messages "
             "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
   q.bindValue(QSL(":account_id"), account_id);

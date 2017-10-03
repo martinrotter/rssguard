@@ -151,7 +151,9 @@ Message MessagesModel::messageAt(int row_index) const {
 }
 
 void MessagesModel::setupHeaderData() {
-  m_headerData << /*: Tooltip for ID of message.*/ tr("Id") <<
+  m_headerData <<
+
+    /*: Tooltip for ID of message.*/ tr("Id") <<
 
     /*: Tooltip for "read" column in msg list.*/ tr("Read") <<
 
@@ -181,8 +183,10 @@ void MessagesModel::setupHeaderData() {
 
     /*: Tooltip for custom hash string of message.*/ tr("Custom hash") <<
 
-    /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID");;
-  m_tooltipData << tr("Id of the message.") << tr("Is message read?") <<
+    /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID");
+
+  m_tooltipData <<
+    tr("Id of the message.") << tr("Is message read?") <<
     tr("Is message deleted?") << tr("Is message important?") <<
     tr("Id of feed which this message belongs to.") <<
     tr("Title of the message.") << tr("Url of the message.") <<

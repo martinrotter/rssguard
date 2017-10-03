@@ -71,11 +71,12 @@ Message::Message() {
 }
 
 Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
-  if (record.count() != MSG_DB_CUSTOM_HASH_INDEX + 1) {
+  if (record.count() != MSG_DB_FEED_CUSTOM_ID_INDEX + 1) {
     if (result != nullptr) {
       *result = false;
-      return Message();
     }
+
+    return Message();
   }
 
   Message message;
