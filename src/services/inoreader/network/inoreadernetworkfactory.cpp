@@ -35,6 +35,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QRegularExpression>
 #include <QUrl>
 
 InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent),
@@ -133,8 +134,6 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool*
   target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("?n=%1").arg(batchSize());
   downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
 
-  IOFactory::writeTextFile("aa.bb", target_url.toUtf8());
-
   // We need to quit event loop when the download finishes.
   connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
   downloader.manipulateData(target_url, QNetworkAccessManager::Operation::GetOperation);
@@ -161,14 +160,46 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
     target_url += QString("?r=user/-/") + INOREADER_STATE_READ + "&";
   }
 
-  QStringList trimmed_ids;
+  Downloader downloader;
+  QEventLoop loop;
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
 
-  foreach (const QString& id, custom_ids) {
-    trimmed_ids.append(QString("i=") + id);
+  if (bearer.isEmpty()) {
+    return;
   }
 
-  QString full_url = target_url + trimmed_ids.join(QL1C('&'));
+  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
+  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
+  QStringList trimmed_ids;
+  QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
+
+  foreach (const QString& id, custom_ids) {
+    QString simplified_id = regex_short_id.match(id).captured();
+
+    trimmed_ids.append(QString("i=") + simplified_id);
+  }
+
+  QStringList working_subset;
+
+  working_subset.reserve(trimmed_ids.size() > 200 ? 200 : trimmed_ids.size());
+
+  // Now, we perform messages update in batches (max 200 messages per batch).
+  while (!trimmed_ids.isEmpty()) {
+    // We take 200 IDs.
+    for (int i = 0; i < 200 && !trimmed_ids.isEmpty(); i++) {
+      working_subset.append(trimmed_ids.takeFirst());
+    }
+
+    QString batch_final_url = target_url + working_subset.join(QL1C('&'));
+
+    // We send this batch.
+    downloader.manipulateData(target_url, QNetworkAccessManager::Operation::GetOperation);
+    loop.exec();
+
+    // Cleanup for next batch.
+    working_subset.clear();
+  }
 }
 
 void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids) {}
