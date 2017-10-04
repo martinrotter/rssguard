@@ -89,6 +89,9 @@
 #define EXTERNAL_TOOL_SEPARATOR               "###"
 #define EXTERNAL_TOOL_PARAM_SEPARATOR         "|||"
 
+#define HTTP_HEADERS_ACCEPT         "Accept"
+#define HTTP_HEADERS_AUTHORIZATION  "Authorization"
+
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f
 #define DEFAULT_ZOOM_FACTOR 1.0f

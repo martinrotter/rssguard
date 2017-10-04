@@ -55,9 +55,6 @@ class NetworkFactory {
                                                  QNetworkAccessManager::Operation operation,
                                                  bool protected_contents = false, const QString& username = QString(),
                                                  const QString& password = QString(), bool set_basic_header = false);
-    static NetworkResult downloadFeedFile(const QString& url, int timeout, QByteArray& output,
-                                          bool protected_contents = false, const QString& username = QString(),
-                                          const QString& password = QString());
 };
 
 #endif // NETWORKFACTORY_H

@@ -170,6 +170,8 @@ Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int
                                                          const QString& password, bool set_basic_header) {
   Downloader* downloader = new Downloader();
 
+  QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
+
   if (!input_content_type.isEmpty()) {
     downloader->appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
   }
@@ -207,27 +209,6 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int ti
   // We need to quit event loop when the download finishes.
   QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
   downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
-  loop.exec();
-  output = downloader.lastOutputData();
-  result.first = downloader.lastOutputError();
-  result.second = downloader.lastContentType();
-  return result;
-}
-
-NetworkResult NetworkFactory::downloadFeedFile(const QString& url, int timeout,
-                                               QByteArray& output, bool protected_contents,
-                                               const QString& username, const QString& password) {
-  // Here, we want to achieve "synchronous" approach because we want synchronout download API for
-  // some use-cases too.
-  Downloader downloader;
-  QEventLoop loop;
-  NetworkResult result;
-
-  downloader.appendRawHeader("Accept", ACCEPT_HEADER_FOR_FEED_DOWNLOADER);
-
-  // We need to quit event loop when the download finishes.
-  QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
-  downloader.downloadFile(url, timeout, protected_contents, username, password);
   loop.exec();
   output = downloader.lastOutputData();
   result.first = downloader.lastOutputError();

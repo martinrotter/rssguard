@@ -332,8 +332,6 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
                                                                         QNetworkAccessManager::PutOperation,
                                                                         true, m_authUsername, m_authPassword,
                                                                         true);
-
-  QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
 }
 
 void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,
@@ -360,16 +358,14 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
 
   json["items"] = ids;
 
-  Downloader* downloader = NetworkFactory::performAsyncNetworkOperation(final_url,
-                                                                        qApp->settings()->value(GROUP(Feeds),
-                                                                                                SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                        CONTENT_TYPE,
-                                                                        QNetworkAccessManager::PutOperation,
-                                                                        true, m_authUsername, m_authPassword,
-                                                                        true);
-
-  QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
+  NetworkFactory::performAsyncNetworkOperation(final_url,
+                                               qApp->settings()->value(GROUP(Feeds),
+                                                                       SETTING(Feeds::UpdateTimeout)).toInt(),
+                                               QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                               CONTENT_TYPE,
+                                               QNetworkAccessManager::PutOperation,
+                                               true, m_authUsername, m_authPassword,
+                                               true);
 }
 
 int OwnCloudNetworkFactory::batchSize() const {
