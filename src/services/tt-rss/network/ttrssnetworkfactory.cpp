@@ -95,13 +95,14 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   json["op"] = QSL("login");
   json["user"] = m_username;
   json["password"] = m_password;
+
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(
                                                                                                   Feeds::UpdateTimeout)).toInt(),
                                                                         QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                        CONTENT_TYPE,
+                                                                        TTRSS_CONTENT_TYPE_JSON,
                                                                         result_raw,
                                                                         QNetworkAccessManager::PostOperation,
                                                                         m_authIsUsed,
@@ -133,7 +134,7 @@ TtRssResponse TtRssNetworkFactory::logout() {
                                                                                                   SETTING(
                                                                                                     Feeds::UpdateTimeout)).toInt(),
                                                                           QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                          CONTENT_TYPE,
+                                                                          TTRSS_CONTENT_TYPE_JSON,
                                                                           result_raw,
                                                                           QNetworkAccessManager::PostOperation,
                                                                           m_authIsUsed,
@@ -168,7 +169,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout,
                                                                         QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                        CONTENT_TYPE, result_raw,
+                                                                        TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                                         QNetworkAccessManager::PostOperation,
                                                                         m_authIsUsed, m_authUsername, m_authPassword);
   TtRssGetFeedsCategoriesResponse result(QString::fromUtf8(result_raw));
@@ -178,7 +179,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
     login();
     json["sid"] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                            CONTENT_TYPE, result_raw,
+                                                            TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                             QNetworkAccessManager::PostOperation,
                                                             m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
@@ -210,7 +211,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout,
                                                                         QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                        CONTENT_TYPE, result_raw,
+                                                                        TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                                         QNetworkAccessManager::PostOperation,
                                                                         m_authIsUsed, m_authUsername, m_authPassword);
   TtRssGetHeadlinesResponse result(QString::fromUtf8(result_raw));
@@ -220,7 +221,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     login();
     json["sid"] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                            CONTENT_TYPE, result_raw,
+                                                            TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                             QNetworkAccessManager::PostOperation,
                                                             m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
@@ -250,7 +251,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout,
                                                                         QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                        CONTENT_TYPE, result_raw,
+                                                                        TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                                         QNetworkAccessManager::PostOperation,
                                                                         m_authIsUsed, m_authUsername, m_authPassword);
   TtRssUpdateArticleResponse result(QString::fromUtf8(result_raw));
@@ -260,7 +261,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
     login();
     json["sid"] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                            CONTENT_TYPE, result_raw,
+                                                            TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                             QNetworkAccessManager::PostOperation,
                                                             m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssUpdateArticleResponse(QString::fromUtf8(result_raw));
@@ -293,7 +294,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout,
                                                                         QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                        CONTENT_TYPE, result_raw,
+                                                                        TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                                         QNetworkAccessManager::PostOperation,
                                                                         m_authIsUsed, m_authUsername, m_authPassword);
   TtRssSubscribeToFeedResponse result(QString::fromUtf8(result_raw));
@@ -303,7 +304,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
     login();
     json["sid"] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                            CONTENT_TYPE, result_raw,
+                                                            TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                             QNetworkAccessManager::PostOperation,
                                                             m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssSubscribeToFeedResponse(QString::fromUtf8(result_raw));
@@ -328,7 +329,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                                         timeout,
                                                                         QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                        CONTENT_TYPE,
+                                                                        TTRSS_CONTENT_TYPE_JSON,
                                                                         result_raw,
                                                                         QNetworkAccessManager::PostOperation,
                                                                         m_authIsUsed,
@@ -341,7 +342,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
     login();
     json["sid"] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                            CONTENT_TYPE, result_raw,
+                                                            TTRSS_CONTENT_TYPE_JSON, result_raw,
                                                             QNetworkAccessManager::PostOperation,
                                                             m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssUnsubscribeFeedResponse(QString::fromUtf8(result_raw));
@@ -399,7 +400,7 @@ bool TtRssResponse::isLoaded() const {
 
 int TtRssResponse::seq() const {
   if (!isLoaded()) {
-    return CONTENT_NOT_LOADED;
+    return TTRSS_CONTENT_NOT_LOADED;
   }
   else {
     return m_rawContent["seq"].toInt();
@@ -408,7 +409,7 @@ int TtRssResponse::seq() const {
 
 int TtRssResponse::status() const {
   if (!isLoaded()) {
-    return CONTENT_NOT_LOADED;
+    return TTRSS_CONTENT_NOT_LOADED;
   }
   else {
     return m_rawContent["status"].toInt();
@@ -416,7 +417,7 @@ int TtRssResponse::status() const {
 }
 
 bool TtRssResponse::isNotLoggedIn() const {
-  return status() == API_STATUS_ERR && hasError() && error() == NOT_LOGGED_IN;
+  return status() == TTRSS_API_STATUS_ERR && hasError() && error() == TTRSS_NOT_LOGGED_IN;
 }
 
 QString TtRssResponse::toString() const {
@@ -429,7 +430,7 @@ TtRssLoginResponse::~TtRssLoginResponse() {}
 
 int TtRssLoginResponse::apiLevel() const {
   if (!isLoaded()) {
-    return CONTENT_NOT_LOADED;
+    return TTRSS_CONTENT_NOT_LOADED;
   }
   else {
     return m_rawContent["content"].toObject()["api_level"].toInt();
@@ -474,7 +475,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
   base_address.chop(4);
   qDebug("TT-RSS: Chopped base address to '%s' to get feed icons.", qPrintable(base_address));
 
-  if (status() == API_STATUS_OK) {
+  if (status() == TTRSS_API_STATUS_OK) {
     // We have data, construct object tree according to data.
     QJsonArray items_to_process = m_rawContent["content"].toObject()["categories"].toObject()["items"].toArray();
 
@@ -489,7 +490,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
       RootItem* act_parent = pair.first;
       QJsonObject item = pair.second.toObject();
       int item_id = item["bare_id"].toInt();
-      bool is_category = item.contains("type") && item["type"].toString() == GFT_TYPE_CATEGORY;
+      bool is_category = item.contains("type") && item["type"].toString() == TTRSS_GFT_TYPE_CATEGORY;
 
       if (item_id >= 0) {
         if (is_category) {

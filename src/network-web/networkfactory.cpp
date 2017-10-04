@@ -155,7 +155,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
     const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(QUrl(url).host());
     QByteArray icon_data;
 
-    network_result = performNetworkOperation(google_s2_with_url, timeout, QByteArray(), QString(), icon_data,
+    network_result = performNetworkOperation(google_s2_with_url, timeout, QByteArray(), icon_data,
                                              QNetworkAccessManager::GetOperation).first;
 
     if (network_result == QNetworkReply::NoError) {
@@ -188,28 +188,24 @@ Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int
 }
 
 NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
-                                                      const QString& input_content_type, QByteArray& output,
-                                                      QNetworkAccessManager::Operation operation, bool protected_contents,
-                                                      const QString& username, const QString& password, bool set_basic_header) {
+                                                      QByteArray& output, QNetworkAccessManager::Operation operation,
+                                                      QList<QPair<QByteArray, QByteArray>> additional_headers,
+                                                      bool protected_contents,
+                                                      const QString& username, const QString& password) {
   Downloader downloader;
   QEventLoop loop;
   NetworkResult result;
 
-  if (!input_content_type.isEmpty()) {
-    downloader.appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
-  }
-
-  if (set_basic_header) {
-    QString basic_value = username + ":" + password;
-    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
-
-    downloader.appendRawHeader("Authorization", header_value.toLocal8Bit());
-  }
-
   // We need to quit event loop when the download finishes.
   QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
+
+  foreach (const auto& header, additional_headers) {
+    downloader.appendRawHeader(header.first, header.second);
+  }
+
   downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
   loop.exec();
+
   output = downloader.lastOutputData();
   result.first = downloader.lastOutputError();
   result.second = downloader.lastContentType();

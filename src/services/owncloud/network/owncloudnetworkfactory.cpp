@@ -99,13 +99,17 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::lastError() const {
 
 OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
   QByteArray result_raw;
+
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
+  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_urlUser,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QByteArray(), QString(), result_raw,
+                                                                        QByteArray(), result_raw,
                                                                         QNetworkAccessManager::GetOperation,
-                                                                        true, m_authUsername, m_authPassword,
-                                                                        true);
+                                                                        headers);
   OwnCloudUserResponse user_response(QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {
@@ -118,13 +122,17 @@ OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
 
 OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
   QByteArray result_raw;
+
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
+  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_urlStatus,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QByteArray(), QString(), result_raw,
+                                                                        QByteArray(), result_raw,
                                                                         QNetworkAccessManager::GetOperation,
-                                                                        true, m_authUsername, m_authPassword,
-                                                                        true);
+                                                                        headers);
   OwnCloudStatusResponse status_response(QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {

@@ -86,7 +86,7 @@ bool TtRssFeed::editItself(TtRssFeed* new_feed_data) {
 QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
   QList<Message> messages;
   int newly_added_messages = 0;
-  int limit = MAX_MESSAGES;
+  int limit = TTRSS_MAX_MESSAGES;
   int skip = 0;
 
   do {

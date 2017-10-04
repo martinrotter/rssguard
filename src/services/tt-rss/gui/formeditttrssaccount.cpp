@@ -35,7 +35,7 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
   m_ui->m_lblTestResult->label()->setWordWrap(true);
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                      "of feeds will be probably much slower and may time-out often."));
-  m_ui->m_lblDescription->setText(tr("Note that at least API level %1 is required.").arg(MINIMAL_API_LEVEL));
+  m_ui->m_lblDescription->setText(tr("Note that at least API level %1 is required.").arg(TTRSS_MINIMAL_API_LEVEL));
   m_ui->m_txtHttpUsername->lineEdit()->setPlaceholderText(tr("HTTP authentication username"));
   m_ui->m_txtHttpPassword->lineEdit()->setPlaceholderText(tr("HTTP authentication password"));
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
@@ -130,12 +130,12 @@ void FormEditTtRssAccount::performTest() {
     if (result.hasError()) {
       QString error = result.error();
 
-      if (error == API_DISABLED) {
+      if (error == TTRSS_API_DISABLED) {
         m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                          tr("API access on selected server is not enabled."),
                                          tr("API access on selected server is not enabled."));
       }
-      else if (error == LOGIN_ERROR) {
+      else if (error == TTRSS_LOGIN_ERROR) {
         m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                          tr("Entered credentials are incorrect."),
                                          tr("Entered credentials are incorrect."));
@@ -146,7 +146,7 @@ void FormEditTtRssAccount::performTest() {
                                          tr("Other error occurred, contact developers."));
       }
     }
-    else if (result.apiLevel() < MINIMAL_API_LEVEL) {
+    else if (result.apiLevel() < TTRSS_MINIMAL_API_LEVEL) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                        tr(
                                          "Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(
@@ -156,7 +156,7 @@ void FormEditTtRssAccount::performTest() {
                                            apiLevel()),
                                          QString
                                          ::
-                                         number(MINIMAL_API_LEVEL)),
+                                         number(TTRSS_MINIMAL_API_LEVEL)),
                                        tr("Selected Tiny Tiny RSS server is running unsupported version of API."));
     }
     else {
@@ -169,7 +169,7 @@ void FormEditTtRssAccount::performTest() {
                                            apiLevel()),
                                          QString
                                          ::
-                                         number(MINIMAL_API_LEVEL)),
+                                         number(TTRSS_MINIMAL_API_LEVEL)),
                                        tr("Tiny Tiny RSS server is okay."));
     }
   }

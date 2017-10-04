@@ -56,10 +56,13 @@ class NetworkFactory {
                                                     const QString& username = QString(),
                                                     const QString& password = QString());
     static NetworkResult performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
-                                                 const QString& input_content_type, QByteArray& output,
+                                                 QByteArray& output,
                                                  QNetworkAccessManager::Operation operation,
-                                                 bool protected_contents = false, const QString& username = QString(),
-                                                 const QString& password = QString(), bool set_basic_header = false);
+                                                 QList<QPair<QByteArray,
+                                                             QByteArray>> additional_headers = QList<QPair<QByteArray, QByteArray>>(),
+                                                 bool protected_contents = false,
+                                                 const QString& username = QString(),
+                                                 const QString& password = QString());
 };
 
 #endif // NETWORKFACTORY_H

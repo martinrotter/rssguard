@@ -19,35 +19,30 @@
 #ifndef TTRSS_DEFINITIONS_H
 #define TTRSS_DEFINITIONS_H
 
-#define MINIMAL_API_LEVEL 9
-#define CONTENT_TYPE      "application/json; charset=utf-8"
+#define TTRSS_MINIMAL_API_LEVEL 9
+#define TTRSS_CONTENT_TYPE_JSON      "application/json; charset=utf-8"
 
 ///
 /// Errors.
 ///
-#define NOT_LOGGED_IN     "NOT_LOGGED_IN"   // Error when user needs to login before making an operation.
-#define UNKNOWN_METHOD    "UNKNOWN_METHOD"  // Given "op" is not recognized.
-#define INCORRECT_USAGE   "INCORRECT_USAGE" // Given "op" was used with bad parameters.
+#define TTRSS_NOT_LOGGED_IN     "NOT_LOGGED_IN"   // Error when user needs to login before making an operation.
+#define TTRSS_UNKNOWN_METHOD    "UNKNOWN_METHOD"  // Given "op" is not recognized.
+#define TTRSS_INCORRECT_USAGE   "INCORRECT_USAGE" // Given "op" was used with bad parameters.
 
 // Limitations
-#define MAX_MESSAGES      200
+#define TTRSS_MAX_MESSAGES      200
 
 // General return status codes.
-#define API_STATUS_OK     0
-#define API_STATUS_ERR    1
-#define STATUS_OK         "OK"
-
-#define CONTENT_NOT_LOADED  -1
+#define TTRSS_API_STATUS_OK     0
+#define TTRSS_API_STATUS_ERR    1
+#define TTRSS_CONTENT_NOT_LOADED  -1
 
 // Login.
-#define API_DISABLED      "API_DISABLED"    // API is not enabled.
-#define LOGIN_ERROR       "LOGIN_ERROR"     // Incorrect password/username.
-
-// Logout.
-#define LOGOUT_OK         "OK"
+#define TTRSS_API_DISABLED      "API_DISABLED"    // API is not enabled.
+#define TTRSS_LOGIN_ERROR       "LOGIN_ERROR"     // Incorrect password/username.
 
 // Get feed tree.
-#define GFT_TYPE_CATEGORY "category"
+#define TTRSS_GFT_TYPE_CATEGORY "category"
 
 // Subscribe to feed.
 #define STF_UNKNOWN          -1
