@@ -173,17 +173,17 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
   QPair<StandardFeed*, QNetworkReply::NetworkError> result;
   result.first = nullptr;
   QByteArray feed_contents;
+
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers << NetworkFactory::generateBasicAuthHeader(username, password);
+
   NetworkResult network_result = NetworkFactory::performNetworkOperation(url,
                                                                          qApp->settings()->value(GROUP(Feeds),
                                                                                                  SETTING(Feeds::UpdateTimeout)).toInt(),
                                                                          QByteArray(),
-                                                                         QString(),
                                                                          feed_contents,
                                                                          QNetworkAccessManager::GetOperation,
-                                                                         !username.isEmpty(),
-                                                                         username,
-                                                                         password,
-                                                                         true);
+                                                                         headers);
 
   result.second = network_result.first;
 
@@ -435,16 +435,15 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers << NetworkFactory::generateBasicAuthHeader(username(), password());
+
   m_networkError = NetworkFactory::performNetworkOperation(url(),
                                                            download_timeout,
                                                            QByteArray(),
-                                                           QString(),
                                                            feed_contents,
                                                            QNetworkAccessManager::GetOperation,
-                                                           !username().isEmpty(),
-                                                           username(),
-                                                           password(),
-                                                           true).first;
+                                                           headers).first;
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());

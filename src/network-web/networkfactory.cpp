@@ -58,10 +58,15 @@ QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const 
 }
 
 QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(const QString& username, const QString& password) {
-  QString basic_value = username + ":" + password;
-  QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
+  if (username.isEmpty()) {
+    return QPair<QByteArray, QByteArray>(QByteArray(), QByteArray());
+  }
+  else {
+    QString basic_value = username + ":" + password;
+    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
 
-  return QPair<QByteArray, QByteArray>(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
+    return QPair<QByteArray, QByteArray>(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
+  }
 }
 
 QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code) {
@@ -180,7 +185,9 @@ Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int
   QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
 
   foreach (const auto& header, additional_headers) {
-    downloader->appendRawHeader(header.first, header.second);
+    if (!header.first.isEmpty()) {
+      downloader->appendRawHeader(header.first, header.second);
+    }
   }
 
   downloader->manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
@@ -200,7 +207,9 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int ti
   QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
   foreach (const auto& header, additional_headers) {
-    downloader.appendRawHeader(header.first, header.second);
+    if (!header.first.isEmpty()) {
+      downloader.appendRawHeader(header.first, header.second);
+    }
   }
 
   downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
