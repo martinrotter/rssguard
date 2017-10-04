@@ -34,7 +34,8 @@
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
-  m_authUsername(QString()), m_authPassword(QString()), m_batchSize(UNLIMITED_BATCH_SIZE), m_urlUser(QString()), m_urlStatus(QString()),
+  m_authUsername(QString()), m_authPassword(QString()), m_batchSize(OWNCLOUD_UNLIMITED_BATCH_SIZE), m_urlUser(QString()), m_urlStatus(
+    QString()),
   m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
   m_urlDeleteFeed(QString()), m_urlRenameFeed(QString()), m_userId(QString()) {}
 
@@ -55,14 +56,14 @@ void OwnCloudNetworkFactory::setUrl(const QString& url) {
   }
 
   // Store endpoints.
-  m_urlUser = m_fixedUrl + API_PATH + "user";
-  m_urlStatus = m_fixedUrl + API_PATH + "status";
-  m_urlFolders = m_fixedUrl + API_PATH + "folders";
-  m_urlFeeds = m_fixedUrl + API_PATH + "feeds";
-  m_urlMessages = m_fixedUrl + API_PATH + "items?id=%1&batchSize=%2&type=%3";
-  m_urlFeedsUpdate = m_fixedUrl + API_PATH + "feeds/update?userId=%1&feedId=%2";
-  m_urlDeleteFeed = m_fixedUrl + API_PATH + "feeds/%1";
-  m_urlRenameFeed = m_fixedUrl + API_PATH + "feeds/%1/rename";
+  m_urlUser = m_fixedUrl + OWNCLOUD_API_PATH + "user";
+  m_urlStatus = m_fixedUrl + OWNCLOUD_API_PATH + "status";
+  m_urlFolders = m_fixedUrl + OWNCLOUD_API_PATH + "folders";
+  m_urlFeeds = m_fixedUrl + OWNCLOUD_API_PATH + "feeds";
+  m_urlMessages = m_fixedUrl + OWNCLOUD_API_PATH + "items?id=%1&batchSize=%2&type=%3";
+  m_urlFeedsUpdate = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/update?userId=%1&feedId=%2";
+  m_urlDeleteFeed = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/%1";
+  m_urlRenameFeed = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/%1/rename";
   setUserId(QString());
 }
 
@@ -312,10 +313,10 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
   QString final_url;
 
   if (status == RootItem::Read) {
-    final_url = m_fixedUrl + API_PATH + "items/read/multiple";
+    final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/read/multiple";
   }
   else {
-    final_url = m_fixedUrl + API_PATH + "items/unread/multiple";
+    final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/unread/multiple";
   }
 
   foreach (const QString& id, custom_ids) {
@@ -324,14 +325,16 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
 
   json["items"] = ids;
 
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
+  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+
   NetworkFactory::performAsyncNetworkOperation(final_url,
                                                qApp->settings()->value(GROUP(Feeds),
                                                                        SETTING(Feeds::UpdateTimeout)).toInt(),
                                                QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                               CONTENT_TYPE,
                                                QNetworkAccessManager::PutOperation,
-                                               true, m_authUsername, m_authPassword,
-                                               true);
+                                               headers);
 }
 
 void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,
@@ -342,10 +345,10 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
   QString final_url;
 
   if (importance == RootItem::Important) {
-    final_url = m_fixedUrl + API_PATH + "items/star/multiple";
+    final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/star/multiple";
   }
   else {
-    final_url = m_fixedUrl + API_PATH + "items/unstar/multiple";
+    final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/unstar/multiple";
   }
 
   for (int i = 0; i < feed_ids.size(); i++) {
@@ -358,14 +361,16 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
 
   json["items"] = ids;
 
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
+  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+
   NetworkFactory::performAsyncNetworkOperation(final_url,
                                                qApp->settings()->value(GROUP(Feeds),
                                                                        SETTING(Feeds::UpdateTimeout)).toInt(),
                                                QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                               CONTENT_TYPE,
                                                QNetworkAccessManager::PutOperation,
-                                               true, m_authUsername, m_authPassword,
-                                               true);
+                                               headers);
 }
 
 int OwnCloudNetworkFactory::batchSize() const {

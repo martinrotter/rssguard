@@ -35,7 +35,7 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
   m_ui->m_lblTestResult->label()->setWordWrap(true);
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                      "of feeds will be probably much slower and may time-out often."));
-  m_ui->m_lblDescription->setText(tr("Note that at least version %1 is required.").arg(MINIMAL_OC_VERSION));
+  m_ui->m_lblDescription->setText(tr("Note that at least version %1 is required.").arg(OWNCLOUD_MIN_VERSION));
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your ownCloud account"));
   m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your ownCloud account"));
   m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your ownCloud server, without any API path"));
@@ -121,12 +121,12 @@ void FormEditOwnCloudAccount::performTest() {
   OwnCloudStatusResponse result = factory.status();
 
   if (result.isLoaded()) {
-    if (!SystemFactory::isVersionEqualOrNewer(result.version(), MINIMAL_OC_VERSION)) {
+    if (!SystemFactory::isVersionEqualOrNewer(result.version(), OWNCLOUD_MIN_VERSION)) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                        tr(
                                          "Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.").arg(
                                          result.version(),
-                                         MINIMAL_OC_VERSION),
+                                         OWNCLOUD_MIN_VERSION),
                                        tr("Selected ownCloud News server is running unsupported version."));
     }
     else {
@@ -134,7 +134,7 @@ void FormEditOwnCloudAccount::performTest() {
                                        tr(
                                          "ownCloud News server is okay, running with version %1, while at least version %2 is required.").arg(
                                          result.version(),
-                                         MINIMAL_OC_VERSION),
+                                         OWNCLOUD_MIN_VERSION),
                                        tr("ownCloud News server is okay."));
     }
   }

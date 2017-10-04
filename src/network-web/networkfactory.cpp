@@ -57,6 +57,13 @@ QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const 
   return feeds;
 }
 
+QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(const QString& username, const QString& password) {
+  QString basic_value = username + ":" + password;
+  QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
+
+  return QPair<QByteArray, QByteArray>(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
+}
+
 QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code) {
   switch (error_code) {
     case QNetworkReply::ProtocolUnknownError:
@@ -164,23 +171,16 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
 }
 
 Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
-                                                         const QString& input_content_type,
                                                          QNetworkAccessManager::Operation operation,
+                                                         QList<QPair<QByteArray, QByteArray>> additional_headers,
                                                          bool protected_contents, const QString& username,
-                                                         const QString& password, bool set_basic_header) {
+                                                         const QString& password) {
   Downloader* downloader = new Downloader();
 
   QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
 
-  if (!input_content_type.isEmpty()) {
-    downloader->appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
-  }
-
-  if (set_basic_header) {
-    QString basic_value = username + ":" + password;
-    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
-
-    downloader->appendRawHeader(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
+  foreach (const auto& header, additional_headers) {
+    downloader->appendRawHeader(header.first, header.second);
   }
 
   downloader->manipulateData(url, operation, input_data, timeout, protected_contents, username, password);

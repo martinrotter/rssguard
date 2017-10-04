@@ -182,7 +182,8 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
                                                                          QNetworkAccessManager::GetOperation,
                                                                          !username.isEmpty(),
                                                                          username,
-                                                                         password);
+                                                                         password,
+                                                                         true);
 
   result.second = network_result.first;
 
@@ -442,7 +443,8 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
                                                            QNetworkAccessManager::GetOperation,
                                                            !username().isEmpty(),
                                                            username(),
-                                                           password()).first;
+                                                           password(),
+                                                           true).first;
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());

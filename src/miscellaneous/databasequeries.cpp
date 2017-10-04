@@ -980,7 +980,7 @@ bool DatabaseQueries::overwriteOwnCloudAccount(QSqlDatabase db, const QString& u
   query.bindValue(QSL(":url"), url);
   query.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
   query.bindValue(QSL(":id"), account_id);
-  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? UNLIMITED_BATCH_SIZE : batch_size);
+  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? OWNCLOUD_UNLIMITED_BATCH_SIZE : batch_size);
 
   if (query.exec()) {
     return true;
@@ -1003,7 +1003,7 @@ bool DatabaseQueries::createOwnCloudAccount(QSqlDatabase db, int id_to_assign, c
   q.bindValue(QSL(":password"), TextFactory::encrypt(password));
   q.bindValue(QSL(":url"), url);
   q.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
-  q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? UNLIMITED_BATCH_SIZE : batch_size);
+  q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? OWNCLOUD_UNLIMITED_BATCH_SIZE : batch_size);
 
   if (q.exec()) {
     return true;
