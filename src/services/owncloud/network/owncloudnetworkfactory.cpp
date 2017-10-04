@@ -324,14 +324,14 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
 
   json["items"] = ids;
 
-  Downloader* downloader = NetworkFactory::performAsyncNetworkOperation(final_url,
-                                                                        qApp->settings()->value(GROUP(Feeds),
-                                                                                                SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                                        CONTENT_TYPE,
-                                                                        QNetworkAccessManager::PutOperation,
-                                                                        true, m_authUsername, m_authPassword,
-                                                                        true);
+  NetworkFactory::performAsyncNetworkOperation(final_url,
+                                               qApp->settings()->value(GROUP(Feeds),
+                                                                       SETTING(Feeds::UpdateTimeout)).toInt(),
+                                               QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                               CONTENT_TYPE,
+                                               QNetworkAccessManager::PutOperation,
+                                               true, m_authUsername, m_authPassword,
+                                               true);
 }
 
 void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,

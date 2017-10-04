@@ -90,6 +90,7 @@
 #define EXTERNAL_TOOL_PARAM_SEPARATOR         "|||"
 
 #define HTTP_HEADERS_ACCEPT         "Accept"
+#define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"
 #define HTTP_HEADERS_AUTHORIZATION  "Authorization"
 
 #define MAX_ZOOM_FACTOR     5.0f

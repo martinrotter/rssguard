@@ -24,7 +24,16 @@
 
 #include "exceptions/applicationexception.h"
 
-AtomParser::AtomParser(const QString& data) : FeedParser(data), m_atomNamespace(QSL("http://www.w3.org/2005/Atom")) {}
+AtomParser::AtomParser(const QString& data) : FeedParser(data) {
+  QString version = m_xml.documentElement().attribute(QSL("version"));
+
+  if (version == QSL("0.3")) {
+    m_atomNamespace = QSL("http://purl.org/atom/ns#");
+  }
+  else {
+    m_atomNamespace = QSL("http://www.w3.org/2005/Atom");
+  }
+}
 
 AtomParser::~AtomParser() {}
 
@@ -67,6 +76,10 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
   new_message.m_contents = summary;
   new_message.m_author = qApp->web()->escapeHtml(messageAuthor(msg_element));
   QString updated = textsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
+
+  if (updated.isEmpty()) {
+    updated = textsFromPath(msg_element, m_atomNamespace, QSL("modified"), true).join(QSL(", "));
+  }
 
   // Deal with creation date.
   new_message.m_created = TextFactory::parseDateTime(updated);

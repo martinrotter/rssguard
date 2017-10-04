@@ -180,7 +180,7 @@ Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int
     QString basic_value = username + ":" + password;
     QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
 
-    downloader->appendRawHeader("Authorization", header_value.toLocal8Bit());
+    downloader->appendRawHeader(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
   }
 
   downloader->manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
