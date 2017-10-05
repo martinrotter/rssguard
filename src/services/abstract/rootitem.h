@@ -71,6 +71,7 @@ class RootItem : public QObject {
     virtual ~RootItem();
 
     virtual QString hashCode() const;
+    virtual QString additionalTooltip() const;
 
     // Returns list of specific actions which can be done with the item.
     // Do not include general actions here like actions: Mark as read, Update, ...

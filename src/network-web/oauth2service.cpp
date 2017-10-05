@@ -69,12 +69,26 @@ OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId
 }
 
 QString OAuth2Service::bearer() {
-  if (login()) {
-    return QString("Bearer %1").arg(m_accessToken);
-  }
-  else {
+  if (!isFullyLoggedIn()) {
+    qApp->showGuiMessage(tr("Inoreader: you have to login first"),
+                         tr("Click here to login."),
+                         QSystemTrayIcon::Critical,
+                         nullptr, false,
+                         [this]() {
+      login();
+    });
     return QString();
   }
+  else {
+    return QString("Bearer %1").arg(m_accessToken);
+  }
+}
+
+bool OAuth2Service::isFullyLoggedIn() const {
+  bool is_expiration_valid = m_tokensExpireIn > QDateTime::currentDateTime();
+  bool do_tokens_exist = !m_refreshToken.isEmpty() && !m_accessToken.isEmpty();
+
+  return is_expiration_valid && do_tokens_exist;
 }
 
 void OAuth2Service::setOAuthTokenGrantType(QString grant_type) {
@@ -124,15 +138,15 @@ void OAuth2Service::refreshAccessToken(QString refresh_token) {
                     .arg(refresh_token)
                     .arg("refresh_token");
 
+  qApp->showGuiMessage(tr("Logging in via OAuth 2.0..."),
+                       tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
+                       QSystemTrayIcon::MessageIcon::Information);
+
   m_networkManager.post(networkRequest, content.toUtf8());
 }
 
-void OAuth2Service::cleanTokens() {
-  m_refreshToken = m_accessToken = QString();
-}
-
-void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
-  QJsonDocument jsonDocument = QJsonDocument::fromJson(networkReply->readAll());
+void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
+  QJsonDocument jsonDocument = QJsonDocument::fromJson(network_reply->readAll());
   QJsonObject rootObject = jsonDocument.object();
 
   qDebug() << "Token response:";
@@ -142,8 +156,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
     QString error = rootObject.value("error").toString();
     QString error_description = rootObject.value("error_description").toString();
 
-    cleanTokens();
-    login();
+    logout();
 
     emit tokensRetrieveError(error, error_description);
   }
@@ -160,7 +173,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* networkReply) {
     emit tokensReceived(m_accessToken, m_refreshToken, rootObject.value("expires_in").toInt());
   }
 
-  networkReply->deleteLater();
+  network_reply->deleteLater();
 }
 
 QString OAuth2Service::accessToken() const {
@@ -248,8 +261,13 @@ void OAuth2Service::retrieveAuthCode() {
 
   connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::authCodeObtained);
   connect(&login_page, &OAuthLogin::authRejected, [this]() {
-    cleanTokens();
+    logout();
     emit authFailed();
   });
+
+  qApp->showGuiMessage(tr("Logging in via OAuth 2.0..."),
+                       tr("Requesting access authorization for '%1'...").arg(m_authUrl),
+                       QSystemTrayIcon::MessageIcon::Information);
+
   login_page.login(auth_url, m_redirectUrl);
 }

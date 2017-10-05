@@ -32,7 +32,14 @@ InoreaderServiceRoot* InoreaderFeed::serviceRoot() const {
 }
 
 QList<Message> InoreaderFeed::obtainNewMessages(bool* error_during_obtaining) {
-  QList<Message> messages = serviceRoot()->network()->messages(customId(), error_during_obtaining);
+  Feed::Status error;
+  QList<Message> messages = serviceRoot()->network()->messages(customId(), error);
+
+  setStatus(error);
+
+  if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
+    *error_during_obtaining = true;
+  }
 
   return messages;
 }

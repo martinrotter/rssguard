@@ -52,7 +52,13 @@ class OAuth2Service : public QObject {
     explicit OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
                            QString clientSecret, QString scope, QObject* parent = 0);
 
+    // Returns bearer HTTP header value.
+    // NOTE: Only call this if isFullyLoggedIn()
+    // returns true. If isFullyLoggedIn() returns
+    // false, then you must call login() on
+    // main GUI thread.
     QString bearer();
+    bool isFullyLoggedIn() const;
 
     void setOAuthTokenGrantType(QString grant_type);
     QString oAuthTokenGrantType();
@@ -95,12 +101,14 @@ class OAuth2Service : public QObject {
     // access token is made.
     // Returns true, if user is already logged in (final state).
     // Returns false, if user is NOT logged in (asynchronous flow).
+    //
+    // NOTE: This can be called ONLY on main GUI thread,
+    // because widgets may be displayed.
     bool login();
     void logout();
 
   private slots:
-    void cleanTokens();
-    void tokenRequestFinished(QNetworkReply* networkReply);
+    void tokenRequestFinished(QNetworkReply* network_reply);
 
   private:
     QDateTime m_tokensExpireIn;

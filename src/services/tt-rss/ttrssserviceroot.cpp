@@ -125,28 +125,6 @@ bool TtRssServiceRoot::canBeDeleted() const {
   return true;
 }
 
-QVariant TtRssServiceRoot::data(int column, int role) const {
-  switch (role) {
-    case Qt::ToolTipRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return tr("Tiny Tiny RSS\n\nAccount ID: %3\nUsername: %1\nServer: %2\n"
-                  "Last error: %4\nLast login on: %5").arg(m_network->username(),
-                                                           m_network->url(),
-                                                           QString::number(accountId()),
-                                                           NetworkFactory::networkErrorText(m_network->lastError()),
-                                                           m_network->lastLoginTime().isValid() ?
-                                                           m_network->lastLoginTime().toString(Qt::DefaultLocaleShortDate) :
-                                                           QSL("-"));
-      }
-      else {
-        return ServiceRoot::data(column, role);
-      }
-
-    default:
-      return ServiceRoot::data(column, role);
-  }
-}
-
 void TtRssServiceRoot::saveAllCachedData() {
   QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
@@ -191,6 +169,16 @@ QList<QAction*> TtRssServiceRoot::serviceMenu() {
   }
 
   return m_serviceMenu;
+}
+
+QString TtRssServiceRoot::additionalTooltip() const {
+  return tr("Username: %1\nServer: %2\n"
+            "Last error: %3\nLast login on: %4").arg(m_network->username(),
+                                                     m_network->url(),
+                                                     NetworkFactory::networkErrorText(m_network->lastError()),
+                                                     m_network->lastLoginTime().isValid() ?
+                                                     m_network->lastLoginTime().toString(Qt::DefaultLocaleShortDate) :
+                                                     QSL("-"));
 }
 
 TtRssNetworkFactory* TtRssServiceRoot::network() const {

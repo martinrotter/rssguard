@@ -81,19 +81,6 @@ QList<Message> Feed::undeletedMessages() const {
 
 QVariant Feed::data(int column, int role) const {
   switch (role) {
-    case Qt::ToolTipRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        //: Tooltip for feed.
-        return tr("%1"
-                  "%2\n\n"
-                  "Auto-update status: %3").arg(title(),
-                                                description().isEmpty() ? QString() : QString('\n') + description(),
-                                                getAutoUpdateStatusDescription());
-      }
-      else {
-        return RootItem::data(column, role);
-      }
-
     case Qt::ForegroundRole:
       switch (status()) {
         case NewMessages:
@@ -307,4 +294,28 @@ QString Feed::getAutoUpdateStatusDescription() const {
   }
 
   return auto_update_string;
+}
+
+QString Feed::getStatusDescription() const {
+  switch (m_status) {
+    case Status::Normal:
+      return tr("no errors");
+
+    case Status::NewMessages:
+      return tr("has new messages");
+
+    case Status::AuthError:
+      return tr("authentication error");
+
+    case Status::NetworkError:
+      return tr("network error");
+
+    default:
+      return tr("unspecified error");
+  }
+}
+
+QString Feed::additionalTooltip() const {
+  return tr("Auto-update status: %1\n"
+            "Status: %2").arg(getAutoUpdateStatusDescription(), getStatusDescription());
 }

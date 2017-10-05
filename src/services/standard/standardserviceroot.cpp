@@ -141,21 +141,6 @@ void StandardServiceRoot::addNewFeed(const QString& url) {
   qApp->feedUpdateLock()->unlock();
 }
 
-QVariant StandardServiceRoot::data(int column, int role) const {
-  switch (role) {
-    case Qt::ToolTipRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return tr("This is service account for standard RSS/RDF/ATOM feeds.\n\nAccount ID: %1").arg(accountId());
-      }
-      else {
-        return ServiceRoot::data(column, role);
-      }
-
-    default:
-      return ServiceRoot::data(column, role);
-  }
-}
-
 Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return Qt::ItemIsDropEnabled;
 }

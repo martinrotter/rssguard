@@ -39,6 +39,10 @@ RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCo
 
 RecycleBin::~RecycleBin() {}
 
+QString RecycleBin::additionalTooltip() const {
+  return tr("%n deleted message(s).", 0, countOfAllMessages());
+}
+
 int RecycleBin::countOfUnreadMessages() const {
   return m_unreadCount;
 }
@@ -57,16 +61,6 @@ void RecycleBin::updateCounts(bool update_total_count) {
 
   if (update_total_count) {
     m_totalCount = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId(), true);
-  }
-}
-
-QVariant RecycleBin::data(int column, int role) const {
-  switch (role) {
-    case Qt::ToolTipRole:
-      return tr("Recycle bin\n\n%1").arg(tr("%n deleted message(s).", 0, countOfAllMessages()));
-
-    default:
-      return RootItem::data(column, role);
   }
 }
 

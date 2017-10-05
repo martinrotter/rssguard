@@ -108,9 +108,6 @@ int main(int argc, char* argv[]) {
   Application::setOrganizationDomain(APP_URL);
   Application::setWindowIcon(QIcon(APP_ICON_PATH));
 
-  // Load activated accounts.
-  qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
-
   // Setup single-instance behavior.
   QObject::connect(&application, &Application::messageReceived, &application, &Application::processExecutionMessage);
   qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
@@ -138,6 +135,9 @@ int main(int argc, char* argv[]) {
   if (SystemTrayIcon::isSystemTrayActivated()) {
     qApp->showTrayIcon();
   }
+
+  // Load activated accounts.
+  qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
 
   if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
     qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"

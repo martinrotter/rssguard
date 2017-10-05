@@ -58,6 +58,10 @@ QString RootItem::hashCode() const {
     QString::number(id());
 }
 
+QString RootItem::additionalTooltip() const {
+  return QString();
+}
+
 QList<QAction*> RootItem::contextMenu() {
   return QList<QAction*>();
 }
@@ -142,7 +146,13 @@ QVariant RootItem::data(int column, int role) const {
         QString tool_tip = m_title;
 
         if (!m_description.isEmpty()) {
-          tool_tip += QL1S("\n\n") + m_description;
+          tool_tip += QL1S("\n") + m_description;
+        }
+
+        QString extra_tooltip = additionalTooltip();
+
+        if (!extra_tooltip.isEmpty()) {
+          tool_tip += QL1S("\n\n") + extra_tooltip;
         }
 
         return tool_tip;

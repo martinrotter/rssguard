@@ -23,6 +23,7 @@
 
 #include "core/message.h"
 
+#include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
 
 #include <QNetworkReply>
@@ -53,9 +54,13 @@ class InoreaderNetworkFactory : public QObject {
     // Returned items do not have primary IDs assigned.
     RootItem* feedsCategories(bool obtain_icons);
 
-    QList<Message> messages(const QString& stream_id, bool* is_error);
+    QList<Message> messages(const QString& stream_id, Feed::Status& error);
     void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
     void markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids);
+
+  private slots:
+    void onTokensError(const QString& error, const QString& error_description);
+    void onAuthFailed();
 
   private:
     QList<Message> decodeMessages(const QString& messages_json_data, const QString& stream_id);

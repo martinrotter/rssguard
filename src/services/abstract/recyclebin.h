@@ -28,7 +28,7 @@ class RecycleBin : public RootItem {
     explicit RecycleBin(RootItem* parent_item = nullptr);
     virtual ~RecycleBin();
 
-    QVariant data(int column, int role) const;
+    QString additionalTooltip() const;
 
     QList<QAction*> contextMenu();
     QList<Message> undeletedMessages() const;

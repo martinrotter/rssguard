@@ -53,13 +53,13 @@ class StandardFeed : public Feed {
 
     QList<QAction*> contextMenu();
 
+    QString additionalTooltip() const;
+
     bool canBeEdited() const;
     bool canBeDeleted() const;
 
     bool editViaGui();
     bool deleteViaGui();
-
-    QVariant data(int column, int role) const;
 
     // Obtains data related to this feed.
     Qt::ItemFlags additionalFlags() const;

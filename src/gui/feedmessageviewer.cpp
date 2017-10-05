@@ -57,7 +57,6 @@
 #include <QProgressBar>
 #include <QSplitter>
 #include <QStatusBar>
-#include <QThread>
 #include <QToolBar>
 #include <QToolButton>
 #include <QVBoxLayout>

@@ -71,6 +71,14 @@ QList<QAction*> StandardFeed::contextMenu() {
   return serviceRoot()->getContextMenuForFeed(this);
 }
 
+QString StandardFeed::additionalTooltip() const {
+  return Feed::additionalTooltip() + tr("\nNetwork status: %1\n"
+                                        "Encoding: %2\n"
+                                        "Type: %3").arg(NetworkFactory::networkErrorText(m_networkError),
+                                                        encoding(),
+                                                        StandardFeed::typeToString(type()));
+}
+
 bool StandardFeed::canBeEdited() const {
   return true;
 }
@@ -96,31 +104,6 @@ bool StandardFeed::deleteViaGui() {
   }
   else {
     return false;
-  }
-}
-
-QVariant StandardFeed::data(int column, int role) const {
-  switch (role) {
-    case Qt::ToolTipRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        //: Tooltip for feed.
-        return tr("%1 (%2)"
-                  "%3\n\n"
-                  "Network status: %6\n"
-                  "Encoding: %4\n"
-                  "Auto-update status: %5").arg(title(),
-                                                StandardFeed::typeToString(type()),
-                                                description().isEmpty() ? QString() : QString('\n') + description(),
-                                                encoding(),
-                                                getAutoUpdateStatusDescription(),
-                                                NetworkFactory::networkErrorText(m_networkError));
-      }
-      else {
-        return Feed::data(column, role);
-      }
-
-    default:
-      return Feed::data(column, role);
   }
 }
 
@@ -452,7 +435,6 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
     return QList<Message>();
   }
   else if (status() != NewMessages) {
-    setStatus(Normal);
     *error_during_obtaining = false;
   }
 

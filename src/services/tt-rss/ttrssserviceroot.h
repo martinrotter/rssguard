@@ -44,8 +44,9 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     bool deleteViaGui();
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
-    QVariant data(int column, int role) const;
     QList<QAction*> serviceMenu();
+
+    QString additionalTooltip() const;
 
     void saveAllCachedData();
 

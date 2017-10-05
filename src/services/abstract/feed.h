@@ -46,8 +46,9 @@ class Feed : public RootItem, public QRunnable {
       Normal = 0,
       NewMessages = 1,
       NetworkError = 2,
-      ParsingError = 3,
-      OtherError = 4
+      AuthError = 3,
+      ParsingError = 4,
+      OtherError = 5
     };
 
     // Constructors.
@@ -57,6 +58,8 @@ class Feed : public RootItem, public QRunnable {
     virtual ~Feed();
 
     QList<Message> undeletedMessages() const;
+
+    QString additionalTooltip() const;
 
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
@@ -93,6 +96,7 @@ class Feed : public RootItem, public QRunnable {
 
   protected:
     QString getAutoUpdateStatusDescription() const;
+    QString getStatusDescription() const;
 
   signals:
     void messagesObtained(QList<Message> messages, bool error_during_obtaining);

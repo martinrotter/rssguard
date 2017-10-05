@@ -120,8 +120,9 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
   Q_UNUSED(freshly_activated)
 
   loadFromDatabase();
-  m_network->oauth()->login();
   loadCacheFromFile(accountId());
+
+  m_network->oauth()->login();
 
   if (childCount() <= 1) {
     syncIn();

@@ -48,7 +48,6 @@ class StandardServiceRoot : public ServiceRoot {
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
 
-    QVariant data(int column, int role) const;
     Qt::ItemFlags additionalFlags() const;
 
     // Returns menu to be shown in "Services -> service" menu.

@@ -66,17 +66,18 @@ void InoreaderNetworkFactory::setBatchSize(int batch_size) {
 }
 
 void InoreaderNetworkFactory::initializeOauth() {
-  connect(m_oauth2, &OAuth2Service::tokensRetrieveError, [](QString error, QString error_description) {
-    Q_UNUSED(error)
-
-    qApp->showGuiMessage("Authentication error - Inoreader", error_description, QSystemTrayIcon::Critical);
-  });
+  connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &InoreaderNetworkFactory::onTokensError);
+  connect(m_oauth2, &OAuth2Service::authFailed, this, &InoreaderNetworkFactory::onAuthFailed);
   connect(m_oauth2, &OAuth2Service::tokensReceived, [this](QString access_token, QString refresh_token, int expires_in) {
     Q_UNUSED(expires_in)
 
     if (m_service != nullptr && !access_token.isEmpty() && !refresh_token.isEmpty()) {
       QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
       DatabaseQueries::storeNewInoreaderTokens(database, refresh_token, m_service->accountId());
+
+      qApp->showGuiMessage(tr("Logged in successfully"),
+                           tr("Your login to Inoreader was authorized."),
+                           QSystemTrayIcon::MessageIcon::Information);
     }
   });
 }
@@ -121,13 +122,14 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   return decodeFeedCategoriesData(category_data, feed_data, obtain_icons);
 }
 
-QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool* is_error) {
+QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed::Status& error) {
   Downloader downloader;
   QEventLoop loop;
   QString target_url = INOREADER_API_FEED_CONTENTS;
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
+    error == Feed::Status::AuthError;
     return QList<Message>();
   }
 
@@ -140,12 +142,13 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, bool*
   loop.exec();
 
   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
-    *is_error = true;
+    error == Feed::Status::NetworkError;
     return QList<Message>();
   }
   else {
     QString messages_data = downloader.lastOutputData();
 
+    error == Feed::Status::Normal;
     return decodeMessages(messages_data, stream_id);
   }
 }
@@ -203,6 +206,28 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
 }
 
 void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids) {}
+
+void InoreaderNetworkFactory::onTokensError(const QString& error, const QString& error_description) {
+  Q_UNUSED(error)
+
+  qApp->showGuiMessage(tr("Inoreader: authentication error"),
+                       tr("Click this to login again. Error is: '%1'").arg(error_description),
+                       QSystemTrayIcon::Critical,
+                       nullptr, false,
+                       [this]() {
+    m_oauth2->login();
+  });
+}
+
+void InoreaderNetworkFactory::onAuthFailed() {
+  qApp->showGuiMessage(tr("Inoreader: authorization denied"),
+                       tr("Click this to login again."),
+                       QSystemTrayIcon::Critical,
+                       nullptr, false,
+                       [this]() {
+    m_oauth2->login();
+  });
+}
 
 QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_json_data, const QString& stream_id) {
   QList<Message> messages;
