@@ -146,6 +146,13 @@ QString InoreaderServiceRoot::code() const {
   return InoreaderEntryPoint().code();
 }
 
+QString InoreaderServiceRoot::additionalTooltip() const {
+  return tr("Authentication status: %1\n"
+            "Login tokens expiration: %2").arg(network()->oauth()->isFullyLoggedIn() ? tr("logged-in") : tr("NOT logged-in"),
+                                               network()->oauth()->tokensExpireIn().isValid() ?
+                                               network()->oauth()->tokensExpireIn().toString() : QSL("-"));
+}
+
 RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
   return m_network->feedsCategories(true);
 }

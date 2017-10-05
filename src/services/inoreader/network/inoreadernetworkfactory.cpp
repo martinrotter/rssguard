@@ -129,7 +129,7 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed:
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
-    error == Feed::Status::AuthError;
+    error = Feed::Status::AuthError;
     return QList<Message>();
   }
 
@@ -142,13 +142,13 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed:
   loop.exec();
 
   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
-    error == Feed::Status::NetworkError;
+    error = Feed::Status::NetworkError;
     return QList<Message>();
   }
   else {
     QString messages_data = downloader.lastOutputData();
 
-    error == Feed::Status::Normal;
+    error = Feed::Status::Normal;
     return decodeMessages(messages_data, stream_id);
   }
 }
@@ -171,8 +171,9 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
     return;
   }
 
-  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
-  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                               m_oauth2->bearer().toLocal8Bit()));
 
   QStringList trimmed_ids;
   QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
@@ -184,6 +185,7 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
   }
 
   QStringList working_subset;
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   working_subset.reserve(trimmed_ids.size() > 200 ? 200 : trimmed_ids.size());
 
@@ -197,8 +199,11 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
     QString batch_final_url = target_url + working_subset.join(QL1C('&'));
 
     // We send this batch.
-    downloader.manipulateData(target_url, QNetworkAccessManager::Operation::GetOperation);
-    loop.exec();
+    NetworkFactory::performAsyncNetworkOperation(batch_final_url,
+                                                 timeout,
+                                                 QByteArray(),
+                                                 QNetworkAccessManager::Operation::GetOperation,
+                                                 headers);
 
     // Cleanup for next batch.
     working_subset.clear();

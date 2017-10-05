@@ -45,6 +45,8 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void stop();
     QString code() const;
 
+    QString additionalTooltip() const;
+
     RootItem* obtainNewTreeForSyncIn() const;
 
     void saveAllCachedData();
