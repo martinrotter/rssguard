@@ -129,7 +129,9 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
   }
 }
 
-void InoreaderServiceRoot::stop() {}
+void InoreaderServiceRoot::stop() {
+  saveCacheToFile(accountId());
+}
 
 QList<QAction*> InoreaderServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
