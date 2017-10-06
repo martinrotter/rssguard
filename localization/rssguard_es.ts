@@ -427,9 +427,7 @@ Pulse aquí para abrir la carpeta principal</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1%2
-
-Estado de la actualización automática: %3</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>does not use auto-update</source>
@@ -445,6 +443,31 @@ Estado de la actualización automática: %3</translation>
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation><numerusform>utilice configuración específica (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
+    </message>
+    <message>
+        <source>no errors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>has new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>network error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>unspecified error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update status: %1
+Status: %2</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -590,6 +613,14 @@ o debido a que esta función aún no está implementada.</translation>
         <source>Selected account does not support adding of new categories.</source>
         <translation>La cuenta seleccionada no admite añadir nuevas categorías.</translation>
     </message>
+    <message>
+        <source>Context menu for recycle bins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu for accounts</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -686,23 +717,23 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation>Detalles</translation>
+        <translation type="vanished">Detalles</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nombre</translation>
+        <translation type="vanished">Nombre</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Versión</translation>
+        <translation type="vanished">Versión</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Autor</translation>
+        <translation type="vanished">Autor</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Descripción</translation>
+        <translation type="vanished">Descripción</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
@@ -1024,6 +1055,109 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation type="vanished">Al dejar activada esta opción hace que las actualizaciones de las fuentes sean probablemente mucho más lentas y que puedan interrumpirse frecuentemente.</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditInoreaderAccount</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Application key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Inoreader account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Inoreader account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2579,10 +2713,50 @@ Puede instalarlo ahora.</translation>
     </message>
 </context>
 <context>
-    <name>LabelsRootItem</name>
+    <name>InoreaderNetworkFactory</name>
     <message>
-        <source>Labels</source>
-        <translation>Etiquetas</translation>
+        <source>Logged in successfully</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your login to Inoreader was authorized.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>InoreaderServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2964,6 +3138,36 @@ Puede instalarlo ahora.</translation>
     </message>
 </context>
 <context>
+    <name>OAuth2Service</name>
+    <message>
+        <source>Inoreader: you have to login first</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click here to login.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Logging in via OAuth 2.0...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Refreshing login tokens for &apos;%1&apos;...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Requesting access authorization for &apos;%1&apos;...</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OAuthLogin</name>
+    <message>
+        <source>Access authorization to service is requested</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
@@ -3062,6 +3266,10 @@ Se necesita como mínimo una API de nivel %1.</translation>
         <source>Passed external tool representation is not valid.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>This is integration of Inoreader.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3081,7 +3289,7 @@ Se necesita como mínimo una API de nivel %1.</translation>
         <source>Recycle bin
 
 %1</source>
-        <translation>Papelera de reciclaje
+        <translation type="vanished">Papelera de reciclaje
 
 %1</translation>
     </message>
@@ -3792,12 +4000,12 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (categoría)%2%3</translation>
+        <translation type="vanished">%1 (categoría)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation>
+        <translation type="vanished">
 Esta categoría no contiene ningún elemento anidado.</translation>
     </message>
 </context>
@@ -3828,11 +4036,18 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)%3
+        <translation type="vanished">%1 (%2)%3
 
 Estado de la red: %6
 Codificación: %4
 Estado de la actualización automática: %5</translation>
+    </message>
+    <message>
+        <source>
+Network status: %1
+Encoding: %2
+Type: %3</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3865,7 +4080,7 @@ Estado de la actualización automática: %5</translation>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation>Esta es la cuenta de servicio para fuentes estándar RSS/RDF/ATOM 
+        <translation type="vanished">Esta es la cuenta de servicio para fuentes estándar RSS/RDF/ATOM 
 
 Identificador de cuenta: %1</translation>
     </message>
@@ -4069,24 +4284,19 @@ Noticias no leídas: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>no realizar actualizaciones automáticas</translation>
+        <translation type="vanished">no realizar actualizaciones automáticas</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>utiliza la configuración general</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>utiliza la configuración específica (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
+        <translation type="vanished">utiliza la configuración general</translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1%2
+        <translation type="vanished">%1%2
 
 Estado de la actualización automática: %3</translation>
     </message>
@@ -4101,7 +4311,7 @@ Username: %1
 Server: %2
 Last error: %4
 Last login on: %5</source>
-        <translation>Tiny Tiny RSS
+        <translation type="vanished">Tiny Tiny RSS
 
 Identificador de cuenta: %3
 Nombre de usuario: %1
@@ -4120,6 +4330,13 @@ Servidor: %2
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>No es posible añadir la fuente debido a que otra operación crítica está en ejecución.</translation>
+    </message>
+    <message>
+        <source>Username: %1
+Server: %2
+Last error: %3
+Last login on: %4</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

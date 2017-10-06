@@ -427,9 +427,7 @@ Klicka här för att öppna målmappen.</translation>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1%2
-
-Autouppdateringsstatus: %3</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>does not use auto-update</source>
@@ -445,6 +443,31 @@ Autouppdateringsstatus: %3</translation>
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation><numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+    </message>
+    <message>
+        <source>no errors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>has new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>network error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>unspecified error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update status: %1
+Status: %2</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -590,6 +613,14 @@ att funktionen inte är implementerad än.</translation>
         <source>Selected account does not support adding of new categories.</source>
         <translation>Det valda kontot stöder inte tillägg av nya kategorier.</translation>
     </message>
+    <message>
+        <source>Context menu for recycle bins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu for accounts</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -686,23 +717,23 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation>Detaljerat</translation>
+        <translation type="vanished">Detaljerat</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Namn</translation>
+        <translation type="vanished">Namn</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Version</translation>
+        <translation type="vanished">Version</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Författare</translation>
+        <translation type="vanished">Författare</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivning</translation>
+        <translation type="vanished">Beskrivning</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
@@ -1024,6 +1055,109 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation type="vanished">Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditInoreaderAccount</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Application key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Inoreader account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Inoreader account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2579,10 +2713,50 @@ Du kan installera det nu.</translation>
     </message>
 </context>
 <context>
-    <name>LabelsRootItem</name>
+    <name>InoreaderNetworkFactory</name>
     <message>
-        <source>Labels</source>
-        <translation>Etiketter</translation>
+        <source>Logged in successfully</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your login to Inoreader was authorized.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>InoreaderServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2964,6 +3138,36 @@ Du kan installera det nu.</translation>
     </message>
 </context>
 <context>
+    <name>OAuth2Service</name>
+    <message>
+        <source>Inoreader: you have to login first</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click here to login.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Logging in via OAuth 2.0...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Refreshing login tokens for &apos;%1&apos;...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Requesting access authorization for &apos;%1&apos;...</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OAuthLogin</name>
+    <message>
+        <source>Access authorization to service is requested</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
@@ -3060,6 +3264,10 @@ Minst API-nivå %1 krävs.</translation>
         <source>Passed external tool representation is not valid.</source>
         <translation>Det begärda externa verktyget är inte giltigt.</translation>
     </message>
+    <message>
+        <source>This is integration of Inoreader.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3079,7 +3287,7 @@ Minst API-nivå %1 krävs.</translation>
         <source>Recycle bin
 
 %1</source>
-        <translation>Papperskorg
+        <translation type="vanished">Papperskorg
 
 %1</translation>
     </message>
@@ -3791,12 +3999,12 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (kategori)%2%3</translation>
+        <translation type="vanished">%1 (kategori)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation>
+        <translation type="vanished">
 Denna kategori innehåller inga objekt.</translation>
     </message>
 </context>
@@ -3827,11 +4035,18 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)%3
+        <translation type="vanished">%1 (%2)%3
 
 Nätverksstatus: %6
 Kodning: %4
 Uppdateringsstatus: %5</translation>
+    </message>
+    <message>
+        <source>
+Network status: %1
+Encoding: %2
+Type: %3</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3864,7 +4079,7 @@ Uppdateringsstatus: %5</translation>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation>Detta är ett tjänstkonto för standard RSS/RDF/ATOM-flöden.
+        <translation type="vanished">Detta är ett tjänstkonto för standard RSS/RDF/ATOM-flöden.
 
 Konto-ID: %1</translation>
     </message>
@@ -4068,24 +4283,19 @@ Olästa nyheter: %2</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>uppdateras inte automatiskt</translation>
+        <translation type="vanished">uppdateras inte automatiskt</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>använder globala inställningar</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation type="vanished">använder globala inställningar</translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1%2
+        <translation type="vanished">%1%2
 
 Autouppdateringsstatus: %3</translation>
     </message>
@@ -4100,7 +4310,7 @@ Username: %1
 Server: %2
 Last error: %4
 Last login on: %5</source>
-        <translation>Tiny Tiny RSS
+        <translation type="vanished">Tiny Tiny RSS
 
 Konto-ID: %3
 Användarnamn: %1
@@ -4119,6 +4329,13 @@ Senast inloggad: %5</translation>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
+    </message>
+    <message>
+        <source>Username: %1
+Server: %2
+Last error: %3
+Last login on: %4</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

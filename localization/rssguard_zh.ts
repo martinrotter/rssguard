@@ -426,9 +426,7 @@ Click here to open parent directory.</source>
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1%2
-
-自动更细状态: %3</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>does not use auto-update</source>
@@ -444,6 +442,31 @@ Auto-update status: %3</source>
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation><numerusform>使用特定设置 (%n 分钟(秒) 后自动更新)</numerusform></translation>
+    </message>
+    <message>
+        <source>no errors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>has new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>network error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>unspecified error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update status: %1
+Status: %2</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -589,6 +612,14 @@ or this functionality is not implemented yet.</source>
         <source>Selected account does not support adding of new categories.</source>
         <translation>选择的帐户不支持添加新的类别。</translation>
     </message>
+    <message>
+        <source>Context menu for recycle bins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu for accounts</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -685,23 +716,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Details</source>
-        <translation>细节</translation>
+        <translation type="vanished">细节</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>名字</translation>
+        <translation type="vanished">名字</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>版本</translation>
+        <translation type="vanished">版本</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>作者</translation>
+        <translation type="vanished">作者</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>描述</translation>
+        <translation type="vanished">描述</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
@@ -1023,6 +1054,109 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation type="vanished">选择这个选项将导致订阅更新变得更慢，而且可能会经常超时。</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditInoreaderAccount</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Application key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Inoreader account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Inoreader account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2570,9 +2704,49 @@ You can install it now.</source>
     </message>
 </context>
 <context>
-    <name>LabelsRootItem</name>
+    <name>InoreaderNetworkFactory</name>
     <message>
-        <source>Labels</source>
+        <source>Logged in successfully</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your login to Inoreader was authorized.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>InoreaderServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2955,6 +3129,36 @@ You can install it now.</source>
     </message>
 </context>
 <context>
+    <name>OAuth2Service</name>
+    <message>
+        <source>Inoreader: you have to login first</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click here to login.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Logging in via OAuth 2.0...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Refreshing login tokens for &apos;%1&apos;...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Requesting access authorization for &apos;%1&apos;...</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OAuthLogin</name>
+    <message>
+        <source>Access authorization to service is requested</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
@@ -3040,6 +3244,10 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This is integration of Inoreader.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3795,6 +4003,13 @@ Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>
+Network status: %1
+Encoding: %2
+Type: %3</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4034,17 +4249,12 @@ Unread news: %2</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"/>
     </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform></translation>
-    </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1%2
+        <translation type="vanished">%1%2
 
 Auto-update status: %3</translation>
     </message>
@@ -4071,6 +4281,13 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username: %1
+Server: %2
+Last error: %3
+Last login on: %4</source>
         <translation type="unfinished"/>
     </message>
 </context>
