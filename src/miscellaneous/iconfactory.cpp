@@ -120,7 +120,7 @@ void IconFactory::loadCurrentIconTheme() {
 QStringList IconFactory::installedIconThemes() const {
   QStringList icon_theme_names;
 
-  icon_theme_names << APP_NO_THEME;
+  icon_theme_names << APP_NO_THEME; //<< QSL("Faenza");
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();

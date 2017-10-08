@@ -77,6 +77,6 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute, true);
 
   // Setup custom user-agent.
-  new_request.setRawHeader(USER_AGENT_HTTP_HEADER, QString(APP_USERAGENT).toLocal8Bit());
+  new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QString(APP_USERAGENT).toLocal8Bit());
   return QNetworkAccessManager::createRequest(op, new_request, outgoingData);
 }

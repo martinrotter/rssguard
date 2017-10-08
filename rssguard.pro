@@ -207,6 +207,8 @@ win32 {
   QMAKE_TARGET_PRODUCT = $$APP_NAME
 }
 
+RESOURCES += resources/rssguard.qrc
+
 HEADERS +=  src/core/feeddownloader.h \
             src/core/feedsmodel.h \
             src/core/feedsproxymodel.h \
@@ -612,10 +614,10 @@ TEXTS = resources/text/CHANGELOG \
         resources/text/COPYING_GNU_GPL \
         resources/text/COPYING_GNU_GPL_HTML
 
-# Make sure QM translations are generated.
+# Make sure QM translations are gnerated.
 lrelease.input = TRANSLATIONS
-lrelease.output = $$OUT_PWD/translations/${QMAKE_FILE_BASE}.qm
-lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$OUT_PWD/translations/${QMAKE_FILE_BASE}.qm
+lrelease.output = $$PWD/resources/localizations/${QMAKE_FILE_BASE}.qm
+lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$PWD/resources/localizations/${QMAKE_FILE_BASE}.qm
 lrelease.CONFIG += no_link target_predeps
 
 # Create new "make lupdate" target.
@@ -743,45 +745,14 @@ win32 {
 }
 
 # Install all files on Linux.
-unix:!mac {
+unix:!mac:!android {
   target.path = $$PREFIX/bin
 
-  # Install SQL initializers.
-  misc_sql.files = resources/sql/*.sql
-  misc_sql.path = $$quote($$PREFIX/share/$$TARGET/sql/)
-
-  # Misc icons.
-  misc_icons.files = resources/graphics/misc
-  misc_icons.path = $$quote($$PREFIX/share/$$TARGET/icons/)
-
   # Initial feeds.
-  misc_feeds.files = resources/initial_feeds
-  misc_feeds.path = $$quote($$PREFIX/share/$$TARGET/)
-
-  misc_icon.files = resources/graphics/$${TARGET}.png
-  misc_icon.path = $$quote($$PREFIX/share/pixmaps/)
-
-  skins.files = resources/skins
-  skins.path = $$quote($$PREFIX/share/$$TARGET/)
-
-  misc_plain_icon.files = resources/graphics/$${TARGET}_plain.png
-  misc_plain_icon.path = $$quote($$PREFIX/share/$$TARGET/icons/)
-
-  misc_texts.files = $$TEXTS
-  misc_texts.path = $$quote($$PREFIX/share/$$TARGET/information/)
-
   desktop_file.files = resources/desktop/$${TARGET}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
-  desktop_file_autostart.files = resources/desktop/$${TARGET}.desktop.autostart
-  desktop_file_autostart.path = $$quote($$PREFIX/share/$${TARGET}/autostart/)
-
-  translations.files = $$OUT_PWD/translations
-  translations.path = $$quote($$PREFIX/share/$$TARGET/)
-
-  INSTALLS += target misc_sql misc_icons misc_feeds \
-              misc_icon misc_plain_icon skins misc_texts \
-              desktop_file desktop_file_autostart translations
+  INSTALLS += target desktop_file
 }
 
 mac {
@@ -811,38 +782,5 @@ mac {
   pkginfo.extra = @printf "APPL????" > $$shell_quote($$PREFIX/Contents/PkgInfo)
   pkginfo.path = $$quote($$PREFIX/Contents/)
 
-  # Install SQL initializers.
-  misc_sql.files = resources/sql
-  misc_sql.path = $$quote($$PREFIX/Contents/Resources/)
-
-  # Misc icons.
-  misc_icons.files = resources/graphics/misc
-  misc_icons.path = $$quote($$PREFIX/Contents/Resources/icons/)
-
-  faenza.files = resources/graphics/Faenza
-  faenza.path = $$quote($$PREFIX/Contents/Resources/icons/)
-
-  # Initial feeds.
-  misc_feeds.files = resources/initial_feeds
-  misc_feeds.path = $$quote($$PREFIX/Contents/Resources/)
-
-  skins.files = resources/skins
-  skins.path = $$quote($$PREFIX/Contents/Resources)
-
-  misc_icon.files = resources/graphics/$${TARGET}.png
-  misc_icon.path = $$quote($$PREFIX/Contents/Resources/icons)
-
-  misc_plain_icon.files = resources/graphics/$${TARGET}_plain.png
-  misc_plain_icon.path = $$quote($$PREFIX/Contents/Resources/icons/)
-
-  misc_texts.files = $$TEXTS
-  misc_texts.path = $$quote($$PREFIX/Contents/Resources/information/)
-
-  translations.files = $$OUT_PWD/translations
-  translations.path =  $$quote($$PREFIX/Contents/Resources/)
-
-  INSTALLS += target icns_icon info_plist info_plist2 pkginfo \
-              misc_sql misc_icons faenza misc_feeds skins \
-              misc_icon misc_plain_icon misc_texts translations
-
+  INSTALLS += target icns_icon info_plist info_plist2 pkginfo
 }
