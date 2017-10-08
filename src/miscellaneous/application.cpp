@@ -209,7 +209,11 @@ QString Application::userDataHomeFolder() {
     return home_folder;
   }
   else {
+#if defined (Q_OS_ANDROID)
+    return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME);
+#else
     return configFolder() + QDir::separator() + QSL(APP_NAME);
+#endif
   }
 }
 
@@ -222,7 +226,11 @@ QString Application::documentsFolder() {
 }
 
 QString Application::homeFolder() {
+#if defined (Q_OS_ANDROID)
+  return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation);
+#else
   return IOFactory::getSystemFolder(QStandardPaths::HomeLocation);
+#endif
 }
 
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
