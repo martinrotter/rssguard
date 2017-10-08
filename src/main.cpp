@@ -42,7 +42,10 @@
 #include <QTimer>
 #include <QTranslator>
 
+#if defined (Q_OS_MAC)
 extern void disableWindowTabbing();
+
+#endif
 
 int main(int argc, char* argv[]) {
   for (int i = 0; i < argc; i++) {
@@ -87,7 +90,7 @@ int main(int argc, char* argv[]) {
   QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-#ifdef Q_OS_MAC
+#if defined (Q_OS_MAC)
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
   disableWindowTabbing();
 #endif
