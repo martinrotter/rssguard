@@ -181,7 +181,14 @@ win32 {
   }
 }
 
-DISTFILES += resources/scripts/uncrustify/uncrustify.cfg
+DISTFILES += resources/scripts/uncrustify/uncrustify.cfg \
+    resources/android/AndroidManifest.xml \
+    resources/android/gradle/wrapper/gradle-wrapper.jar \
+    resources/android/gradlew \
+    resources/android/res/values/libs.xml \
+    resources/android/build.gradle \
+    resources/android/gradle/wrapper/gradle-wrapper.properties \
+    resources/android/gradlew.bat
 
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
@@ -751,3 +758,5 @@ mac {
 
   INSTALLS += target icns_icon info_plist info_plist2 pkginfounix
 }
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/resources/android
