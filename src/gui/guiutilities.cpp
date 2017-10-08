@@ -46,7 +46,7 @@ void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, con
 
 void GuiUtilities::applyResponsiveDialogResize(QWidget& widget, double factor) {
   auto desktop_geom = QApplication::desktop()->screenGeometry();
-  auto ratio = double(size().height()) / size().width();
+  auto ratio = double(widget.size().height()) / widget.size().width();
   int widt = desktop_geom.width() * factor;
   int heig = widt * ratio;
 
