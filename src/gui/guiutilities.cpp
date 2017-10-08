@@ -20,6 +20,10 @@
 
 #include "definitions/definitions.h"
 
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QSize>
+
 void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning) {
   label.setMargin(6);
 
@@ -38,4 +42,13 @@ void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, con
   if (!title.isEmpty()) {
     widget.setWindowTitle(title);
   }
+}
+
+void GuiUtilities::applyResponsiveDialogResize(QWidget& widget, double factor) {
+  auto desktop_geom = QApplication::desktop()->screenGeometry();
+  auto ratio = double(size().height()) / size().width();
+  int widt = desktop_geom.width() * factor;
+  int heig = widt * ratio;
+
+  widget.resize(widt, heig);
 }
