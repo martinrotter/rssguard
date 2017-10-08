@@ -190,6 +190,8 @@ DISTFILES += resources/scripts/uncrustify/uncrustify.cfg \
     resources/android/gradle/wrapper/gradle-wrapper.properties \
     resources/android/gradlew.bat
 
+#ANDROID_PACKAGE_SOURCE_DIR = $$PWD/resources/android
+
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
 UI_DIR = $$OUT_PWD/ui
@@ -758,5 +760,3 @@ mac {
 
   INSTALLS += target icns_icon info_plist info_plist2 pkginfounix
 }
-
-ANDROID_PACKAGE_SOURCE_DIR = $$PWD/resources/android
