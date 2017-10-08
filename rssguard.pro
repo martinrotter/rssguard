@@ -88,18 +88,16 @@ isEmpty(PREFIX) {
     PREFIX = $$OUT_PWD/app
   }
 
+  android {
+    PREFIX = $$OUT_PWD/app
+  }
+
   mac {
     PREFIX = $$quote($$OUT_PWD/$${APP_NAME}.app)
   }
 
-  unix:!mac {
+  unix:!mac:!android {
     PREFIX = $$OUT_PWD/usr
-  }
-}
-
-isEmpty(DESTDIR) {
-  unix:!mac {
-    DESTDIR = $$OUT_PWD/bin
   }
 }
 
@@ -191,8 +189,8 @@ UI_DIR = $$OUT_PWD/ui
 
 equals(USE_WEBENGINE, true) {
   message(rssguard: Application will be compiled WITH QtWebEngine module.)
-  QT += webenginewidgets
-  DEFINES += USE_WEBENGINE
+  QT *= webenginewidgets
+  DEFINES *= USE_WEBENGINE
 }
 else {
   message(rssguard: Application will be compiled without QtWebEngine module. Some features will be disabled.)
@@ -609,11 +607,6 @@ INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src/gui/dialogs \
                 $$PWD/src/dynamic-shortcuts
 
-TEXTS = resources/text/CHANGELOG \
-        resources/text/COPYING_BSD \
-        resources/text/COPYING_GNU_GPL \
-        resources/text/COPYING_GNU_GPL_HTML
-
 # Make sure QM translations are gnerated.
 lrelease.input = TRANSLATIONS
 lrelease.output = $$PWD/resources/localizations/${QMAKE_FILE_BASE}.qm
@@ -698,39 +691,7 @@ win32 {
   qt_dlls_plugins.files = resources/binaries/windows/qt5-msvc2015/*
   qt_dlls_plugins.path = $$quote($$PREFIX/)
 
-  misc_sql.files = resources/sql/*.sql
-  misc_sql.path = $$quote($$PREFIX/sql/)
-
-  misc_icons.files = resources/graphics/misc
-  misc_icons.path = $$quote($$PREFIX/icons/)
-
-  faenza.files = resources/graphics/Faenza
-  faenza.path = $$quote($$PREFIX/icons/)
-
-  skins.files = resources/skins
-  skins.path = $$quote($$PREFIX/)
-
-  feeds.files = resources/initial_feeds
-  feeds.path = $$quote($$PREFIX/)
-
-  texts.files = $$TEXTS
-  texts.path = $$quote($$PREFIX/)
-
-  ico.files = resources/graphics/$${TARGET}.ico
-  ico.path = $$quote($$PREFIX/)
-
-  app_icon.files = resources/graphics/$${TARGET}.png
-  app_icon.path = $$quote($$PREFIX/)
-
-  app_plain_icon.files = resources/graphics/$${TARGET}_plain.png
-  app_plain_icon.path = $$quote($$PREFIX/)
-
-  translations.files = $$OUT_PWD/translations
-  translations.path = $$quote($$PREFIX/)
-
-  INSTALLS += target misc_sql qt_dlls_root qt_dlls_plugins \
-              misc_icons faenza skins \
-              feeds texts ico app_icon app_plain_icon translations
+  INSTALLS += target qt_dlls_root qt_dlls_plugins
 
   equals(USE_WEBENGINE, true) {
     # Copy extra resource files for QtWebEngine.
@@ -753,6 +714,12 @@ unix:!mac:!android {
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
   INSTALLS += target desktop_file
+}
+
+android {
+  target.path = $$PREFIX
+
+  INSTALLS += target
 }
 
 mac {
@@ -782,5 +749,5 @@ mac {
   pkginfo.extra = @printf "APPL????" > $$shell_quote($$PREFIX/Contents/PkgInfo)
   pkginfo.path = $$quote($$PREFIX/Contents/)
 
-  INSTALLS += target icns_icon info_plist info_plist2 pkginfo
+  INSTALLS += target icns_icon info_plist info_plist2 pkginfounix
 }
