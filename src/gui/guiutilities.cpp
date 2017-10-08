@@ -20,9 +20,11 @@
 
 #include "definitions/definitions.h"
 
+#if defined (Q_OS_ANDROID)
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QSize>
+#endif
 
 void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning) {
   label.setMargin(6);
@@ -45,10 +47,12 @@ void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, con
 }
 
 void GuiUtilities::applyResponsiveDialogResize(QWidget& widget, double factor) {
+#if defined (Q_OS_ANDROID)
   auto desktop_geom = QApplication::desktop()->screenGeometry();
   auto ratio = double(widget.size().height()) / widget.size().width();
   int widt = desktop_geom.width() * factor;
   int heig = widt * ratio;
 
   widget.resize(widt, heig);
+#endif
 }

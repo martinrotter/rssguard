@@ -33,9 +33,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, Fe
   : QDialog(parent), m_ui(new Ui::FormAddAccount), m_model(model), m_entryPoints(entry_points) {
   m_ui->setupUi(this);
 
-#if defined (Q_OS_ANDROID)
   GuiUtilities::applyResponsiveDialogResize(*this);
-#endif
 
   // Set flags and attributes.
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-new")));
