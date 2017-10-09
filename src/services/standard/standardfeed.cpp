@@ -72,7 +72,7 @@ QList<QAction*> StandardFeed::contextMenu() {
 }
 
 QString StandardFeed::additionalTooltip() const {
-  return Feed::additionalTooltip() + tr("\nNetwork status: %1\n"
+  return Feed::additionalTooltip() + tr("Network status: %1\n"
                                         "Encoding: %2\n"
                                         "Type: %3").arg(NetworkFactory::networkErrorText(m_networkError),
                                                         encoding(),
