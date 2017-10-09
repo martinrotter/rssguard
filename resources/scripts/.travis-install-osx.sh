@@ -9,8 +9,8 @@ rm -rfv "RSS Guard.app/Contents/Frameworks"
 
 ls "RSS Guard.app/Contents"
 
-make dmg
 make zip
+make dmg
 
 ls -lha
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"

@@ -656,15 +656,12 @@ unix:!mac {
 
 mac {
   seven_zip.target = 7zip
-  seven_zip.depends = install
   seven_zip.commands = 7za a -t7z "$$TARGET-$$APP_VERSION-$$APP_REVISION-mac.7z" $$shell_quote($$shell_path($$PREFIX))
 
   zip.target = zip
-  zip.depends = install
   zip.commands = 7za a -tzip "$$TARGET-$$APP_VERSION-$$APP_REVISION-mac.zip" $$shell_quote($$shell_path($$PREFIX))
 
   dmg.target = dmg
-  dmg.depends = install
   dmg.commands = macdeployqt $$shell_quote($$shell_path($$PREFIX)) -executable=$$shell_quote($$shell_path($$PREFIX/Contents/MacOS/$$TARGET)) -dmg
 
   QMAKE_EXTRA_TARGETS += seven_zip zip dmg
