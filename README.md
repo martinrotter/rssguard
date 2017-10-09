@@ -8,6 +8,7 @@ RSS Guard
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![AUR](https://img.shields.io/aur/votes/rssguard.svg?maxAge=3600)](https://aur.archlinux.org/packages/rssguard/)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d9ba5ecfcd1a412a89d1dfffd0ae2ef6)](https://www.codacy.com/app/martinrotter/rssguard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=martinrotter/rssguard&amp;utm_campaign=Badge_Grade)
 
 Welcome to RSS Guard website. You can find here basic information.
 
