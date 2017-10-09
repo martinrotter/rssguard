@@ -53,7 +53,7 @@
 
 OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
                              QString clientSecret, QString scope, QObject* parent)
-  : QObject(parent), m_tokensExpireIn(QDateTime()) {
+  : QObject(parent), m_timerId(-1), m_tokensExpireIn(QDateTime()) {
 
   m_redirectUrl = QSL(INOREADER_OAUTH_CLI_REDIRECT);
   m_tokenGrantType = QSL("authorization_code");
@@ -80,13 +80,13 @@ QString OAuth2Service::bearer() {
     return QString();
   }
   else {
-    return QString("Bearer %1").arg(m_accessToken);
+    return QString("Bearer %1").arg(accessToken());
   }
 }
 
 bool OAuth2Service::isFullyLoggedIn() const {
-  bool is_expiration_valid = m_tokensExpireIn > QDateTime::currentDateTime();
-  bool do_tokens_exist = !m_refreshToken.isEmpty() && !m_accessToken.isEmpty();
+  bool is_expiration_valid = tokensExpireIn() > QDateTime::currentDateTime();
+  bool do_tokens_exist = !refreshToken().isEmpty() && !accessToken().isEmpty();
 
   return is_expiration_valid && do_tokens_exist;
 }
@@ -97,6 +97,23 @@ void OAuth2Service::setOAuthTokenGrantType(QString grant_type) {
 
 QString OAuth2Service::oAuthTokenGrantType() {
   return m_tokenGrantType;
+}
+
+void OAuth2Service::timerEvent(QTimerEvent* event) {
+  if (m_timerId >= 0 && event->timerId() == m_timerId) {
+    event->accept();
+
+    if (tokensExpireIn() < QDateTime::currentDateTime()) {
+      // We try to refresh access token, because it probably expires soon.
+      qDebug("Refreshing automatically access token.");
+      refreshAccessToken();
+    }
+    else {
+      qDebug("Access token is not expired yet.");
+    }
+  }
+
+  QObject::timerEvent(event);
 }
 
 void OAuth2Service::retrieveAccessToken(QString auth_code) {
@@ -121,7 +138,7 @@ void OAuth2Service::retrieveAccessToken(QString auth_code) {
 
 void OAuth2Service::refreshAccessToken(QString refresh_token) {
   if (refresh_token.isEmpty()) {
-    refresh_token = m_refreshToken;
+    refresh_token = refreshToken();
   }
 
   QNetworkRequest networkRequest;
@@ -163,14 +180,13 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   else {
     int expires = rootObject.value(QL1S("expires_in")).toInt();
 
-    m_accessToken = rootObject.value(QL1S("access_token")).toString();
-    m_refreshToken = rootObject.value(QL1S("refresh_token")).toString();
-    m_tokensExpireIn = QDateTime::currentDateTime().addSecs(expires);
+    setTokensExpireIn(QDateTime::currentDateTime().addSecs(expires));
+    setAccessToken(rootObject.value(QL1S("access_token")).toString());
+    setRefreshToken(rootObject.value(QL1S("refresh_token")).toString());
 
-    qDebug() << "Obtained refresh token" << m_refreshToken << "- expires on date/time" << m_tokensExpireIn;
+    qDebug() << "Obtained refresh token" << refreshToken() << "- expires on date/time" << tokensExpireIn();
 
-    // TODO: Start timer to refresh tokens?
-    emit tokensReceived(m_accessToken, m_refreshToken, rootObject.value("expires_in").toInt());
+    emit tokensReceived(accessToken(), refreshToken(), rootObject.value("expires_in").toInt());
   }
 
   network_reply->deleteLater();
@@ -221,12 +237,14 @@ QString OAuth2Service::refreshToken() const {
 }
 
 void OAuth2Service::setRefreshToken(const QString& refresh_token) {
+  killRefreshTimer();
   m_refreshToken = refresh_token;
+  startRefreshTimer();
 }
 
 bool OAuth2Service::login() {
-  bool did_token_expire = m_tokensExpireIn.isNull() || m_tokensExpireIn < QDateTime::currentDateTime();
-  bool does_token_exist = !m_refreshToken.isEmpty();
+  bool did_token_expire = tokensExpireIn().isNull() || tokensExpireIn() < QDateTime::currentDateTime();
+  bool does_token_exist = !refreshToken().isEmpty();
 
   // We refresh current tokens only if:
   //   1. We have some existing refresh token.
@@ -246,10 +264,19 @@ bool OAuth2Service::login() {
 }
 
 void OAuth2Service::logout() {
-  m_refreshToken = m_accessToken = QString();
-  m_tokensExpireIn = QDateTime();
+  setTokensExpireIn(QDateTime());
+  setAccessToken(QString());
+  setRefreshToken(QString());
+}
 
-  // TODO: zastavit timer na obnovení refresh tokenu?
+void OAuth2Service::startRefreshTimer() {
+  if (!refreshToken().isEmpty()) {
+    m_timerId = startTimer(15, Qt::VeryCoarseTimer);
+  }
+}
+
+void OAuth2Service::killRefreshTimer() {
+  killTimer(m_timerId);
 }
 
 void OAuth2Service::retrieveAuthCode() {

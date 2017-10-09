@@ -108,9 +108,15 @@ class OAuth2Service : public QObject {
     void logout();
 
   private slots:
+    void startRefreshTimer();
+    void killRefreshTimer();
     void tokenRequestFinished(QNetworkReply* network_reply);
 
   private:
+    void timerEvent(QTimerEvent* event);
+
+  private:
+    int m_timerId;
     QDateTime m_tokensExpireIn;
     QString m_accessToken;
     QString m_refreshToken;
