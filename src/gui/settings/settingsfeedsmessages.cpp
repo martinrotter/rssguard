@@ -29,12 +29,16 @@
 #include "miscellaneous/feedreader.h"
 
 #include <QFontDialog>
+#include <QLocale>
+#include <QStringList>
 
 SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsFeedsMessages) {
   m_ui->setupUi(this);
+
   initializeMessageDateFormats();
   GuiUtilities::setLabelAsNotice(*m_ui->label_9, false);
+
   connect(m_ui->m_checkAutoUpdateNotification, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -66,12 +70,18 @@ SettingsFeedsMessages::~SettingsFeedsMessages() {
 
 void SettingsFeedsMessages::initializeMessageDateFormats() {
   QStringList best_formats;
-
-  best_formats << QSL("d/M/yyyy hh:mm:ss") << QSL("ddd, d. M. yy hh:mm:ss") <<
-    QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-ddThh:mm:ss") <<
-    QSL("MMM d yyyy hh:mm:ss");;
-  const QLocale current_locale = qApp->localization()->loadedLocale();
   const QDateTime current_dt = QDateTime::currentDateTime();
+  const QLocale current_locale = qApp->localization()->loadedLocale();
+
+  foreach (const Language& lang, qApp->localization()->installedLanguages()) {
+    QLocale locale(lang.m_code);
+
+    best_formats << locale.dateTimeFormat(QLocale::LongFormat)
+                 << locale.dateTimeFormat(QLocale::ShortFormat)
+                 << locale.dateTimeFormat(QLocale::NarrowFormat);
+  }
+
+  best_formats.removeDuplicates();
 
   foreach (const QString& format, best_formats) {
     m_ui->m_cmbMessagesDateTimeFormat->addItem(current_locale.toString(current_dt, format), format);
@@ -92,6 +102,7 @@ void SettingsFeedsMessages::changeMessagesFont() {
 
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
+
   m_ui->m_checkAutoUpdateNotification->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool());
   m_ui->m_checkKeppMessagesInTheMiddle->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool());
   m_ui->m_checkRemoveReadMessagesOnExit->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool());
@@ -102,7 +113,7 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
   m_ui->m_cmbCountsFeedList->setEditText(settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString());
   m_ui->m_spinHeightImageAttachments->setValue(settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt());
-  initializeMessageDateFormats();
+
   m_ui->m_checkMessagesDateTimeFormat->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool());
   const int index_format = m_ui->m_cmbMessagesDateTimeFormat->findData(settings()->value(GROUP(Messages),
                                                                                          SETTING(Messages::CustomDateFormat)).toString());
