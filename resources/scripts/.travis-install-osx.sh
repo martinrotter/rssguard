@@ -10,7 +10,10 @@ rm -rfv "RSS Guard.app/Contents/Frameworks"
 ls "RSS Guard.app/Contents"
 
 make zip
-make dmg
+
+hdiutil create -fs HFS+ -srcfolder "./RSS Guard.app/" -volname "RSS Guard" rssguard.dmg
+
+#make dmg
 
 ls -lha
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
