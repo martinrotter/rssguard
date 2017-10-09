@@ -88,6 +88,7 @@ QVariant Feed::data(int column, int role) const {
 
         case NetworkError:
         case ParsingError:
+        case AuthError:
         case OtherError:
           return QColor(Qt::red);
 

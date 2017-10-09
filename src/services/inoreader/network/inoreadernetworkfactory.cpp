@@ -163,8 +163,6 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
     target_url += QString("?r=user/-/") + INOREADER_STATE_READ + "&";
   }
 
-  Downloader downloader;
-  QEventLoop loop;
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
