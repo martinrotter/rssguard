@@ -665,7 +665,7 @@ mac {
 
   dmg.target = dmg
   dmg.depends = install
-  dmg.commands = macdeployqt $$shell_quote($$shell_path($$PREFIX)) -dmg
+  dmg.commands = macdeployqt $$shell_quote($$shell_path($$PREFIX)) -executable=$$shell_quote($$shell_path($$PREFIX/Contents/MacOS/$$TARGET)) -dmg
 
   QMAKE_EXTRA_TARGETS += seven_zip zip dmg
 }
