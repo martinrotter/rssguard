@@ -4,6 +4,9 @@ mkdir rssguard-build && cd rssguard-build
 qmake ..
 make
 make install
+
+rm -rf "RSS Guard.app/Contents/Frameworks"
+
 make dmg
 make zip
 

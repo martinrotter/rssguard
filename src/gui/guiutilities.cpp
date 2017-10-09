@@ -38,7 +38,7 @@ void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning) {
 }
 
 void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title) {
-  widget.setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+  widget.setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   widget.setWindowIcon(icon);
 
   if (!title.isEmpty()) {
