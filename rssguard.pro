@@ -662,7 +662,7 @@ mac {
   zip.commands = 7za a -tzip "$$TARGET-$$APP_VERSION-$$APP_REVISION-mac.zip" $$shell_quote($$shell_path($$PREFIX))
 
   dmg.target = dmg
-  dmg.commands = macdeployqt $$shell_quote($$shell_path($$PREFIX)) -executable=$$shell_quote($$shell_path($$PREFIX/Contents/MacOS/$$TARGET)) -dmg
+  dmg.commands = hdiutil create -fs HFS+ -srcfolder $$shell_quote($$shell_path($$PREFIX)) -volname "$$APP_NAME" $$TARGET.dmg
 
   QMAKE_EXTRA_TARGETS += seven_zip zip dmg
 }
