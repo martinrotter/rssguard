@@ -444,7 +444,7 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>no errors</source>
-        <translation type="unfinished"/>
+        <translation>Pas d&apos;erreurs</translation>
     </message>
     <message>
         <source>has new messages</source>
@@ -1058,12 +1058,8 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nom d&apos;utilisateur</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -4016,8 +4012,7 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>

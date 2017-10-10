@@ -446,28 +446,29 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>no errors</source>
-        <translation type="unfinished"/>
+        <translation>Inga fel</translation>
     </message>
     <message>
         <source>has new messages</source>
-        <translation type="unfinished"/>
+        <translation>har nya meddelanden</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation type="unfinished"/>
+        <translation>autentiseringsfel</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation type="unfinished"/>
+        <translation>nätverksfel</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation type="unfinished"/>
+        <translation>ospecificerat fel</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status för automatisk uppdatering: %1
+Status: %2</translation>
     </message>
 </context>
 <context>
@@ -615,11 +616,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmeny för papperskorgar</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmeny för konton</translation>
     </message>
 </context>
 <context>
@@ -1060,104 +1061,100 @@ att funktionen inte är implementerad än.</translation>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 inställningar</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Applikation-ID</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Applikationsnyckel</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Omdirigera URL</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>Dessa inställningar behöver INTE ändras från standardvärdena. Ändra dessa värden endast om du är avancerad användare och vet vad du gör.</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>meddelande(n)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Logga in</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Inte testat ännu.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Användarsynligt användarnamn</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Du är redan inloggad.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Åtkomst beviljad.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Inget användarnamn angivet.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn angivet.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Du beviljade inte åtkomst.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Fel uppstod vid testning.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Fel. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Åtkomst beviljades.</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt Inoreader-konto</translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Redigera befintligt Inoreader-konto</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Ett tomt värde angavs.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Ett värde angavs.</translation>
     </message>
 </context>
 <context>
@@ -2716,47 +2713,48 @@ Du kan installera det nu.</translation>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Inloggad</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Din inloggning till Inoreader godkändes.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Autentiseringsfel </translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Autentisering nekades</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klicka här för att logga in igen.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synka i</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Autentiseringsstatus: %1
+Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>inloggad</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>INTE inloggad</translation>
     </message>
 </context>
 <context>
@@ -3141,30 +3139,30 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Inoreader: you have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Du måste logga in först</translation>
     </message>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Klicka här för att logga in.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Loggar in via OAuth 2.0...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Uppdaterar inloggningstoken för &quot;%1&quot;...</translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Begär åtkomstauktorisering för &quot;%1&quot;...</translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation>Åtkomstautentisering begärs för tjänsten</translation>
     </message>
 </context>
 <context>
@@ -3266,7 +3264,7 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation>Detta är integrering av Inoreader</translation>
     </message>
 </context>
 <context>
@@ -4042,8 +4040,7 @@ Kodning: %4
 Uppdateringsstatus: %5</translation>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>
@@ -4335,7 +4332,10 @@ Senast inloggad: %5</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn: %1
+Server: %2
+Senast fel: %3
+Senaste inloggning: %4</translation>
     </message>
 </context>
 <context>

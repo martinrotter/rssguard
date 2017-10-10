@@ -446,7 +446,7 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>no errors</source>
-        <translation type="unfinished"/>
+        <translation>sin errores</translation>
     </message>
     <message>
         <source>has new messages</source>
@@ -1060,12 +1060,8 @@ o debido a que esta función aún no está implementada.</translation>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2743,7 +2739,7 @@ Puede instalarlo ahora.</translation>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sincronizar</translation>
     </message>
     <message>
         <source>Authentication status: %1
@@ -4043,8 +4039,7 @@ Codificación: %4
 Estado de la actualización automática: %5</translation>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>

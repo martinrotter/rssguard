@@ -447,28 +447,29 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>no errors</source>
-        <translation type="unfinished"/>
+        <translation>žádné chyby</translation>
     </message>
     <message>
         <source>has new messages</source>
-        <translation type="unfinished"/>
+        <translation>má nové zprávy</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation type="unfinished"/>
+        <translation>chyba autentifikace</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation type="unfinished"/>
+        <translation>chyba sítě</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation type="unfinished"/>
+        <translation>nespecifikovaná chyba</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status auto-aktualizací: %1
+Status: %2</translation>
     </message>
 </context>
 <context>
@@ -615,11 +616,12 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Kontextové menu pro odp. koše
+</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation type="unfinished"/>
+        <translation>Kontextové menu pro účty</translation>
     </message>
 </context>
 <context>
@@ -1060,104 +1062,100 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastaveni OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>ID aplikace</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Klíč aplikace</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Přesměrovací URL</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>Tato nestavení NEMUSÍ být měněna z jejich výchozích hodnot. Měňte tyto hodnoty pouze, pokud jste pokročilý uživatel.</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze X nejnovějších zpráv z kanálu</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>zpráv</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Přihlásit se</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Neotestováno.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Již jste přihlášen.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup povolen.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nezadáno uživ. jméno.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nějaké uživ. jméno zadáno.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup NEpovolen.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Byla chyba během testování.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Máme chybu: %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Otestováno úspěšně.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup byl povolen.</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový účet Inoreader</translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Upravit existující účet Inoreader</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Zadána prázdná hodnota.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Zadána nějaká hodnota.</translation>
     </message>
 </context>
 <context>
@@ -2715,47 +2713,48 @@ Nyní ho můžete nainstalovat.</translation>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Přihlášeno úspěšně.</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Přihlášení bylo potvrzeno.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inroeader: chyba autentizace</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Pro opětovné přihlášení klikněte zde.</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: přistup nepovolen</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klikně sem pro opětovné přihlášení.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synchronizovat</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status autentizace: %1
+Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>přihlášen</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NEpřihlášen</translation>
     </message>
 </context>
 <context>
@@ -3140,30 +3139,30 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Inoreader: you have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Je třeba se přihlásit</translation>
     </message>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Pro přihlášení klikněte zde.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Přihlašuji se přes OAuth 2.0...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Obnovuji přihlašovací tokeny pro &apos;%1&apos;...</translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Požadují povolení přístupu pro &apos;%1&apos;...</translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation>Povolení přístupu vyžadováno</translation>
     </message>
 </context>
 <context>
@@ -3269,7 +3268,7 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation>Integrace Inoreaderu.</translation>
     </message>
 </context>
 <context>
@@ -4044,8 +4043,7 @@ Kódování: %4
 Automatický update: %5</translation>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>
@@ -4337,7 +4335,10 @@ Poslední přihlášení: %5</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation>Uživ. jméno: %1
+Server: %2
+Poslední chyba: %3
+Poslední čas přihlášení: %4</translation>
     </message>
 </context>
 <context>

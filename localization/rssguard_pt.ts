@@ -446,28 +446,29 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>no errors</source>
-        <translation type="unfinished"/>
+        <translation>nenhum erro</translation>
     </message>
     <message>
         <source>has new messages</source>
-        <translation type="unfinished"/>
+        <translation>possui novas mensagens</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation type="unfinished"/>
+        <translation>erro de autenticação</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation type="unfinished"/>
+        <translation>erro de rede</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation type="unfinished"/>
+        <translation>erro não especificado</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status da atualização automática: %1
+Status: %2</translation>
     </message>
 </context>
 <context>
@@ -615,11 +616,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Menu de contexto para lixeiras</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation type="unfinished"/>
+        <translation>Menu de contexto para contas</translation>
     </message>
 </context>
 <context>
@@ -1060,104 +1061,100 @@ ou esta função ainda não foi implementada.</translation>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Usuário</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Configurações OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>ID do Aplicativo</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Chave do aplicativo</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL de Redirecionamento</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>Estas configurações NÃO precisam ser alteradas dos seus valores padrão. Mude estes valores apenas de você for um usuário avançado e sabe o que está fazendo!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar as X mensagens mais novas por feed</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>mensagem(ns)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Login</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ainda não testado.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Nome de usuário visível ao usuário</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Você já está logado.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Acesso garantido.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nenhum nome de usuário inserido.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Algum nome de usuário inserido.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>O acesso não foi garantido.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ocorreu um erro durante o teste.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Há um erro. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Testado com sucesso. Você será solicitado para fazer login mais uma vez.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Seu acesso foi aprovado.</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar nova conta Inoreader</translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Editar conta Inoreader existente</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Valor em branco inserido.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Algum valor foi inserido.</translation>
     </message>
 </context>
 <context>
@@ -2717,47 +2714,48 @@ Você pode instalá-lo agora.</translation>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Logado com sucesso</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Seu login no Inoreader foi autorizado.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: erro de autenticação</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Clique aqui para fazer login novamente. O erro é: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: autorização negada</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Clique aqui para fazer login novamente.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sincronizar em</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status da autenticação: %1
+Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>logado</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NÃO logado</translation>
     </message>
 </context>
 <context>
@@ -3142,30 +3140,30 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Inoreader: you have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: você precisa fazer login primeiro</translation>
     </message>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Clique aqui para fazer login.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Fazendo login via OAuth 2.0...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Atualizando tokens de login para &apos;%1&apos;...</translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Solicitando autorização de acesso para &apos;%1&apos;...</translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation>Autorização de acesso ao serviço foi solicitado</translation>
     </message>
 </context>
 <context>
@@ -3269,7 +3267,7 @@ Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation>Isto é a integração do Inoreader.</translation>
     </message>
 </context>
 <context>
@@ -4044,8 +4042,7 @@ Codificação: %4
 Status da atualização automática: %5</translation>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>
@@ -4337,7 +4334,10 @@ Servidor: %2
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation>Usuário: %1
+Servidor: %2
+Último erro: %3
+Último login em: %4</translation>
     </message>
 </context>
 <context>

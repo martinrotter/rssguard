@@ -1056,10 +1056,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
         <translation type="unfinished"/>
     </message>
@@ -4001,8 +3997,7 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>

@@ -14,11 +14,11 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Abo hinzufügen</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"/>
+        <translation>Vordefinierte Abos benutzen</translation>
     </message>
     <message>
         <source>Title</source>
@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"/>
+        <translation>Abotitel</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,125 +34,125 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>URL zu der online Abodatei</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"/>
+        <translation>Benutzerdefinierte Regeln</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock Konfiguration</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock aktivieren</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Optionen</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Regel hinzufügen</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Regel entfernen</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Abo hinzufügen</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"/>
+        <translation>Abo entfernen</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Abos aktualisieren</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"/>
+        <translation>Lernen Sie wie man Regeln erstellt...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock lässt sie unerwünschten Inhalt auf Webseiten blockieren</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"/>
+        <translation>Popup Fenster blockiert</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock hat ein unerwünschtes Popup Fenster blockiert</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock &amp;settings anzeigen</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"/>
+        <translation>Deaktivieren %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
+        <translation>Nur auf dieser Seite ausschalten</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"/>
+        <translation>Wollen Sie &lt;b&gt;%1&lt;/b&gt; Abos hinzufügen?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock Abo hinzufügen</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"/>
+        <translation>Abo kann nicht geladen werden!</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Regel hinzufügen</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Regel entfernen</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"/>
+        <translation>Benutzerdefinierte Regel hinzufügen</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"/>
+        <translation>Verfassen Sie hier ihre Regel:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (kürzlich aktualisiert)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (Fehler: %2)</translation>
     </message>
 </context>
 <context>
@@ -445,28 +445,29 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>no errors</source>
-        <translation type="unfinished"/>
+        <translation>Keine Fehler</translation>
     </message>
     <message>
         <source>has new messages</source>
-        <translation type="unfinished"/>
+        <translation>neue Nachrichten vorhanden</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Fehler bei der Authentifizierung</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerkfehler</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation type="unfinished"/>
+        <translation>nicht spezifizierter Fehler</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation>Automatisches Update status: %1
+Status: %2</translation>
     </message>
 </context>
 <context>
@@ -613,11 +614,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmenü für den Papierkorb</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmenü für Benutzerkonten</translation>
     </message>
 </context>
 <context>
@@ -704,7 +705,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation type="unfinished"/>
+        <translation>NICHT portierbar</translation>
     </message>
 </context>
 <context>
@@ -1058,104 +1059,100 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 Einstellungen</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Applikations ID</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Applikations Schlüssel</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL umleiten</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>Diese Einstellungen müssen von ihren Standardwerten nicht geändert werden. Ändern Sie die Einstellungen nur, wenn sie ein fortgeschrittener Benutzer sind und Sie sich sicher sind, bei dem was Sie tun! </translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>Nachricht(en)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Login</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Noch nicht getestet.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Nutzer sichtbarer Benutzername</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Sie sind bereits angemeldet.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Zugang gewährt.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Keinen Benutzernamen eingegeben.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Benutzername wurde eingegeben.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Sie haben keinen Zugang gewährt.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist während des Tests aufgetreten.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist aufgetreten. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Test erfolgreich. Sie könnten zu einem erneuten Einloggen aufgefordert werden.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Ihr Zugang wurde genehmigt.</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Neues Inoreader Konto hinzufügen </translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Bestehendes Inoreader Konto bearbeiten</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Leerer Wert wurde eingegeben.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Wert wurde eingegeben.</translation>
     </message>
 </context>
 <context>
@@ -1282,23 +1279,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Zahl der heruntergeladenen Nachrichten pro Feed begrenzen</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= unbegrenzt</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Das Begrenzen der Menge an heruntergeladenen Nachrichten pro Feed, erhöht die Geschwindigkeit des Feeds updaten, allerdings könnte es passieren das Nachrichten außerhalb des Limits nicht heruntergeladen werden.</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= unbegrenzt</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>Nachrichten</translation>
     </message>
 </context>
 <context>
@@ -2121,19 +2118,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Markiere alle Einträge als gelesen</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Neustart</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nächsten Tab auswählen</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vorherigen Tab auswählen</translation>
     </message>
 </context>
 <context>
@@ -2207,7 +2204,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"/>
+        <translation>Neustart</translation>
     </message>
 </context>
 <context>
@@ -2672,28 +2669,29 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="unfinished"/>
+        <translation>Verfügbare Dateien</translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewähltes Update herunterladen</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation>Besuchen Sie die Anwendungswebseite und laden Sie die Aktualisierung manuell runter.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="unfinished"/>
+        <translation>(Größe</translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation>Verfügbare Update Dateien</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation>Paket wurde erfolgreich heruntergeladen.
+Sie können es jetzt installieren.</translation>
     </message>
 </context>
 <context>
@@ -2711,47 +2709,48 @@ You can install it now.</source>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Erfolgreich eingeloggt</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Ihre Anmeldung bei Inoreader wurde authorisiert.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Fehler bei der Authentifizierung</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klicken Sie hier um sich wieder anzumelden. Der Fehler ist: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Authorisierung abgelehnt</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Drücken Sie hier um sich neu anzumelden.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synchronisieren</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Authentifikationsstatus: %1
+Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>angemeldet</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NICHT angemeldet</translation>
     </message>
 </context>
 <context>
@@ -2765,7 +2764,7 @@ Login tokens expiration: %2</source>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"/>
+        <translation>Diesen Dialog nicht mehr anzeigen.</translation>
     </message>
 </context>
 <context>
@@ -2816,7 +2815,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Links immer im externem Browser öffnen.</translation>
     </message>
 </context>
 <context>
@@ -2951,11 +2950,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"/>
+        <translation>Feed ID</translation>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzerdefinierte ID vom Feed von der Nachricht.</translation>
     </message>
 </context>
 <context>
@@ -3021,15 +3020,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Mit externem Programm öffnen</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Kann externes Programm nicht öffnen</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Externes Programm &apos;%1&apos; konnte nicht gestartet werden.</translation>
     </message>
 </context>
 <context>
@@ -3136,30 +3135,30 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Inoreader: you have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Sie müssen sich zuerst anmelden.</translation>
     </message>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Drücken Sie hier um sich anzumelden.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Anmeldung erfolgt via OAuth 2.0...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Login token für &apos;%1&apos; werden erneuert...</translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Zugangsauthorisierung für &apos;%1&apos; wurde angefordert...</translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation>Zugangsauthorisierung für den Dienst wurde angefordert</translation>
     </message>
 </context>
 <context>
@@ -3247,7 +3246,7 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>Die News app ist ein RSS/Atom feed Aggregator. Es ist Teil der Nextcloud suite. Dieses Plugin implementiert %1 API.</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -3263,7 +3262,7 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation>Das ist die Integration von Inoreader.</translation>
     </message>
 </context>
 <context>
@@ -3475,43 +3474,43 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Links vom einfachen internen Textbrowser immer im externen Browser öffnen</translation>
     </message>
     <message>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Externe Programme</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>Auf dieser Seite können Sie einstellen mit welchen externen Programmen URLs von ausgewählten Nachrichten geöffnet werden können.</translation>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>Externes Programm hinzufügen</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewähltes externes Programm entfernen</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation type="unfinished"/>
+        <translation>Ausführbar</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parameter</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Externes Programm auswählen</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parameter eingeben</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation>Geben Sie (optionale) Parameter mit einer Leerzeile ein um Sie an das ausgeführte Programm zu übergeben, sobald eine URL geöffnet wird.</translation>
     </message>
 </context>
 <context>
@@ -3765,7 +3764,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation>&quot;Automatisches Update gestartet&quot; Benachrichtigung aktivieren</translation>
     </message>
 </context>
 <context>
@@ -3984,7 +3983,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Diese Seite wurde durch AdBlock blockiert</translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
@@ -4038,8 +4037,7 @@ Zeichenkodierung: %4
 Status der automatischer Aktualisierung: %5</translation>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>
@@ -4147,7 +4145,7 @@ ID des Kontos: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"/>
+        <translation>Bytes</translation>
     </message>
 </context>
 <context>
@@ -4264,7 +4262,7 @@ Ungelesene Nachrichten: %2</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation type="unfinished"/>
+        <translation>Werkzeugleiste zurücksetzen</translation>
     </message>
 </context>
 <context>
@@ -4331,7 +4329,10 @@ Letzte Anmeldung: %5</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername: %1
+Server: %2
+Letzter Fehler: %3
+Letzte Anmeldung am: %4</translation>
     </message>
 </context>
 <context>
@@ -4386,35 +4387,35 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation>Bilder automatisch herunterladen</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>JS aktiviert</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"/>
+        <translation>JS darf Popup Fenster öffnen</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JS darf auf die Zwischenablage zugreifen</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Links dürfen den Fokus übernehmen</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"/>
+        <translation>Lokale Speicherung aktiviert</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>Lokaler Inhalt darf auf externe URLs zugreifen</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>XSS auditierung aktiviert</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
@@ -4422,35 +4423,35 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>Lokaler Inhalt darf auf lokale Dateien zugreifen</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Link auditierung aktiviert</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"/>
+        <translation>Scrollen animieren</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Fehlerseiten aktiviert</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>Plugins aktiviert</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>Vollbild aktiviert</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Bildschirmaufnahme aktiviert</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>WebGL aktiviert</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
@@ -4458,11 +4459,11 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Hintergrundelemente drucken</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"/>
+        <translation>Ausführen von unsicherem Inhalt erlauben</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>

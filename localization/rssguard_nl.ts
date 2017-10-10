@@ -447,7 +447,7 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>no errors</source>
-        <translation type="unfinished"/>
+        <translation>geen fouten</translation>
     </message>
     <message>
         <source>has new messages</source>
@@ -1061,12 +1061,8 @@ of deze functie bestaat nog niet.</translation>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2745,7 +2741,7 @@ Installeer het nu.</translation>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sync in</translation>
     </message>
     <message>
         <source>Authentication status: %1
@@ -4046,8 +4042,7 @@ Coderen: %4
 Auto-update status: %5 </translation>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>

@@ -447,28 +447,29 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>no errors</source>
-        <translation type="unfinished"/>
+        <translation>klaidų nėra</translation>
     </message>
     <message>
         <source>has new messages</source>
-        <translation type="unfinished"/>
+        <translation>turi naujas žinutes</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation type="unfinished"/>
+        <translation>atpažinimo klaida</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation type="unfinished"/>
+        <translation>tinklo klaida</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation type="unfinished"/>
+        <translation>nenurodyta klaida</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation>Automatinio atnaujinimo būsena: %1
+Būsena: %2</translation>
     </message>
 </context>
 <context>
@@ -616,11 +617,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Kontekstinis meniu šiukšlinėms</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation type="unfinished"/>
+        <translation>Kontekstinis meniu paskyroms</translation>
     </message>
 </context>
 <context>
@@ -959,7 +960,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="vanished">Redaguoti esamą Tiny Tiny RSS paskyrą</translation>
+        <translation type="vanished">Taisyti esamą Tiny Tiny RSS paskyrą</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
@@ -1061,104 +1062,100 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 nustatymai</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Programos ID</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Programos raktas</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Peradresavimo URL</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>Šiuos nustatymus NEREIKIA keisti iš numatytųjų reikšmių. Keiskite šias reikšmes tik tuo atveju, jeigu esate patyręs naudotojas ir žinote ką darote!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti kiekvienam kanalui tik X naujausių žinučių</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>žinutės(-ių)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Prisijungti</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas neišbandyta.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojui matomas naudotojo vardas</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs jau esate prisijungę.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Prieiga suteikta.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Neįvestas naudotojo vardas.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Įvestas kažkoks naudotojo vardas.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs nesuteikėte prieigos.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Išbandymo metu buvo klaida.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Yra klaida. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Išbandyta sėkmingai. Jūsų gali būti paprašyta prisijungti dar kartą.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų prieiga buvo patvirtinta.</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Pridėti naują Inoreader paskyrą</translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Taisyti esamą Inoreader paskyrą</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Įvesta tuščia reikšmė.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Įvesta kažkokia reikšmė.</translation>
     </message>
 </context>
 <context>
@@ -1221,7 +1218,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>Redaguoti esamą ownCloud naujienų paskyrą</translation>
+        <translation>Taisyti esamą ownCloud naujienų paskyrą</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
@@ -1384,7 +1381,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Redaguoti esamą Tiny Tiny RSS paskyrą</translation>
+        <translation>Taisyti esamą Tiny Tiny RSS paskyrą</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
@@ -2718,47 +2715,48 @@ Jūs dabar galite jį įdiegti.</translation>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Sėkmingai prisijungta</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Jums buvo suteikta prieigos teisė prie Inoreader.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: atpažinimo klaida</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite tai, norėdami prisijungti dar kartą. Klaida yra: &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: prieigos teisių suteikimas atmestas</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite tai, norėdami prisijungti dar kartą.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sinchronizuoti</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Atpažinimo būsena: %1
+Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>prisijungta</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NEPRISIJUNGTA</translation>
     </message>
 </context>
 <context>
@@ -3143,30 +3141,30 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Inoreader: you have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: iš pradžių, turite prisijungti</translation>
     </message>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite čia, norėdami prisijungti.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Prisijungiama per OAuth 2.0...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Iš naujo įkeliami prisijungimo prieigos raktai, skirti &quot;%1&quot;...</translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Užklausiamas prieigos teisių suteikimas, skirtas &quot;%1&quot;...</translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation>Reikalingas prieigos teisių suteikimas prie paslaugos</translation>
     </message>
 </context>
 <context>
@@ -3272,7 +3270,7 @@ Reikalingas bent API lygis %1.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation>Tai yra Inoreader integravimas.</translation>
     </message>
 </context>
 <context>
@@ -4047,8 +4045,7 @@ Koduotė: %4
 Automatinio atnaujinimo būsena: %5</translation>
     </message>
     <message>
-        <source>
-Network status: %1
+        <source>Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>
@@ -4340,7 +4337,10 @@ Paskutinis prisijungimas: %5</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas: %1
+Serveris: %2
+Paskiausia klaida: %3
+Paskiausias prisijungimas: %4</translation>
     </message>
 </context>
 <context>
