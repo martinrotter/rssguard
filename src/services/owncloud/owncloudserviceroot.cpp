@@ -107,10 +107,6 @@ OwnCloudNetworkFactory* OwnCloudServiceRoot::network() const {
 }
 
 void OwnCloudServiceRoot::saveAllCachedData(bool async) {
-  Q_UNUSED(async)
-
-  // TODO: implementovat toto, aby bylo možno ukládat data i synchronně
-
   QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
 

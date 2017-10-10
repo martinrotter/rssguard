@@ -53,7 +53,7 @@ void FeedDownloader::updateAvailableFeeds() {
   foreach (const Feed* feed, m_feeds) {
     CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
-    if (cache != nullptr && caches.contains(cache)) {
+    if (cache != nullptr && !caches.contains(cache)) {
       caches.append(cache);
     }
   }
