@@ -5,9 +5,8 @@ qmake ..
 make
 make install
 
-rm -rfv "RSS Guard.app/Contents/Frameworks"
-
-ls "RSS Guard.app/Contents"
+#rm -rfv "RSS Guard.app/Contents/Frameworks"
+#ls "RSS Guard.app/Contents"
 
 make zip
 make dmg

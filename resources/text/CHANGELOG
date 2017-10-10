@@ -4,7 +4,7 @@
 Added:
 ▪ All application resources (skins, icons, ...) are now compiled into the executable file. This allows for easier deployment.
 ▪ "Add account" dialog is displayed when app is launched and no accounts exist so far.
-▪ New plugin for Inoreader. This is supported only in full RSS Guard "web-engine" version, because of web OAuth 2.0.
+▪ New plugin for Inoreader. This is supported only in full RSS Guard "web-engine" version, because of web OAuth 2.0. The new plugins is in EXPERIMENTAL phase, expect errors and report them.
 ▪ NextCloud plugin now allows to persistently set max number of messages to get downloaded per feed.
 ▪ Added support for arbitrary external tools (settings category "Web browser & e-mail & proxy") which can open URLs of selected messages. (#136)
 ▪ Standard account is now automatically added if RSS Guard is started with empty database.
