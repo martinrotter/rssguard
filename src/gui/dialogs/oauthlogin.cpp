@@ -41,6 +41,7 @@ void OAuthLogin::login(const QString& consentPageUrl, const QString& redirect_ur
 
   m_redirectUri = redirect_uri;
   m_ui.m_loginPage->setUrl(QUrl(consentPageUrl));
+  m_ui.m_buttonBox->setFocus();
   exec();
 }
 
