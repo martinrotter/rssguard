@@ -103,7 +103,9 @@ void OAuth2Service::timerEvent(QTimerEvent* event) {
   if (m_timerId >= 0 && event->timerId() == m_timerId) {
     event->accept();
 
-    if (tokensExpireIn() < QDateTime::currentDateTime()) {
+    QDateTime window_about_expire = tokensExpireIn().addSecs(-60 * 15);
+
+    if (window_about_expire < QDateTime::currentDateTime()) {
       // We try to refresh access token, because it probably expires soon.
       qDebug("Refreshing automatically access token.");
       refreshAccessToken();
@@ -163,30 +165,29 @@ void OAuth2Service::refreshAccessToken(QString refresh_token) {
 }
 
 void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
-  QJsonDocument jsonDocument = QJsonDocument::fromJson(network_reply->readAll());
-  QJsonObject rootObject = jsonDocument.object();
+  QJsonDocument json_document = QJsonDocument::fromJson(network_reply->readAll());
+  QJsonObject root_obj = json_document.object();
 
-  qDebug() << "Token response:";
-  qDebug() << jsonDocument.toJson();
+  qDebug() << "Token response:" << json_document.toJson();
 
-  if (rootObject.keys().contains("error")) {
-    QString error = rootObject.value("error").toString();
-    QString error_description = rootObject.value("error_description").toString();
+  if (root_obj.keys().contains("error")) {
+    QString error = root_obj.value("error").toString();
+    QString error_description = root_obj.value("error_description").toString();
 
     logout();
 
     emit tokensRetrieveError(error, error_description);
   }
   else {
-    int expires = rootObject.value(QL1S("expires_in")).toInt();
+    int expires = root_obj.value(QL1S("expires_in")).toInt();
 
     setTokensExpireIn(QDateTime::currentDateTime().addSecs(expires));
-    setAccessToken(rootObject.value(QL1S("access_token")).toString());
-    setRefreshToken(rootObject.value(QL1S("refresh_token")).toString());
+    setAccessToken(root_obj.value(QL1S("access_token")).toString());
+    setRefreshToken(root_obj.value(QL1S("refresh_token")).toString());
 
     qDebug() << "Obtained refresh token" << refreshToken() << "- expires on date/time" << tokensExpireIn();
 
-    emit tokensReceived(accessToken(), refreshToken(), rootObject.value("expires_in").toInt());
+    emit tokensReceived(accessToken(), refreshToken(), expires);
   }
 
   network_reply->deleteLater();
@@ -271,7 +272,7 @@ void OAuth2Service::logout() {
 
 void OAuth2Service::startRefreshTimer() {
   if (!refreshToken().isEmpty()) {
-    m_timerId = startTimer(15, Qt::VeryCoarseTimer);
+    m_timerId = startTimer(1000 * 60 * 15, Qt::VeryCoarseTimer);
   }
 }
 
