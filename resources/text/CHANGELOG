@@ -1,6 +1,8 @@
 3.5.0
 —————
 
+POLLS: https://goo.gl/forms/7bJNr33Ii22Q1c3k2
+
 Added:
 ▪ All application resources (skins, icons, ...) are now compiled into the executable file. This allows for easier deployment.
 ▪ "Add account" dialog is displayed when app is launched and no accounts exist so far.
