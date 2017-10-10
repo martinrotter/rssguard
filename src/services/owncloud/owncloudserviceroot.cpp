@@ -106,7 +106,11 @@ OwnCloudNetworkFactory* OwnCloudServiceRoot::network() const {
   return m_network;
 }
 
-void OwnCloudServiceRoot::saveAllCachedData() {
+void OwnCloudServiceRoot::saveAllCachedData(bool async) {
+  Q_UNUSED(async)
+
+  // TODO: implementovat toto, aby bylo možno ukládat data i synchronně
+
   QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
 
@@ -117,7 +121,7 @@ void OwnCloudServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids);
+      network()->markMessagesRead(key, ids, async);
     }
   }
 
@@ -138,7 +142,7 @@ void OwnCloudServiceRoot::saveAllCachedData() {
         guid_hashes.append(msg.m_customHash);
       }
 
-      network()->markMessagesStarred(key, feed_ids, guid_hashes);
+      network()->markMessagesStarred(key, feed_ids, guid_hashes, async);
     }
   }
 }

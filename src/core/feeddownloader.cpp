@@ -19,6 +19,7 @@
 #include "core/feeddownloader.h"
 
 #include "definitions/definitions.h"
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 
 #include <QDebug>
@@ -47,6 +48,21 @@ bool FeedDownloader::isUpdateRunning() const {
 }
 
 void FeedDownloader::updateAvailableFeeds() {
+  QList<CacheForServiceRoot*> caches;
+
+  foreach (const Feed* feed, m_feeds) {
+    CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
+
+    if (cache != nullptr && caches.contains(cache)) {
+      caches.append(cache);
+    }
+  }
+
+  // Now, we synchronously save cached data.
+  foreach (CacheForServiceRoot* cache, caches) {
+    cache->saveAllCachedData(false);
+  }
+
   while (!m_feeds.isEmpty()) {
     connect(m_feeds.first(), &Feed::messagesObtained, this, &FeedDownloader::oneFeedUpdateFinished,
             (Qt::ConnectionType)(Qt::UniqueConnection | Qt::AutoConnection));

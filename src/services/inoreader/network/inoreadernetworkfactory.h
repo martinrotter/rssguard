@@ -55,8 +55,8 @@ class InoreaderNetworkFactory : public QObject {
     RootItem* feedsCategories(bool obtain_icons);
 
     QList<Message> messages(const QString& stream_id, Feed::Status& error);
-    void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
-    void markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids);
+    void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async = true);
+    void markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids, bool async = true);
 
   private slots:
     void onTokensError(const QString& error, const QString& error_description);

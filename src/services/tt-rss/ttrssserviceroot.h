@@ -48,7 +48,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     QString additionalTooltip() const;
 
-    void saveAllCachedData();
+    void saveAllCachedData(bool async = true);
 
     // Access to network.
     TtRssNetworkFactory* network() const;

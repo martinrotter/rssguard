@@ -49,7 +49,7 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     RootItem* obtainNewTreeForSyncIn() const;
 
-    void saveAllCachedData();
+    void saveAllCachedData(bool async = true);
 
   public slots:
     void addNewFeed(const QString& url);

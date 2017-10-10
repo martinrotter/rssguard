@@ -129,8 +129,9 @@ class OwnCloudNetworkFactory {
 
     // Misc methods.
     QNetworkReply::NetworkError triggerFeedUpdate(int feed_id);
-    void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
-    void markMessagesStarred(RootItem::Importance importance, const QStringList& feed_ids, const QStringList& guid_hashes);
+    void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async = true);
+    void markMessagesStarred(RootItem::Importance importance, const QStringList& feed_ids,
+                             const QStringList& guid_hashes, bool async = true);
 
     // Gets/sets the amount of messages to obtain during single feed update.
     int batchSize() const;

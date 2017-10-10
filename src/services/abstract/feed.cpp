@@ -183,13 +183,6 @@ void Feed::run() {
                      << customId() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  // Save all cached data first.
-  auto cache = dynamic_cast<CacheForServiceRoot*>(getParentServiceRoot());
-
-  if (cache != nullptr) {
-    cache->saveAllCachedData();
-  }
-
   bool error_during_obtaining;
 
   QList<Message> msgs = obtainNewMessages(&error_during_obtaining);

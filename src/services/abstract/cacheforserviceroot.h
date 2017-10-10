@@ -40,7 +40,7 @@ class CacheForServiceRoot {
     void saveCacheToFile(int acc_id);
     void loadCacheFromFile(int acc_id);
 
-    virtual void saveAllCachedData() = 0;
+    virtual void saveAllCachedData(bool async = true) = 0;
 
   protected:
     QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> takeMessageCache();

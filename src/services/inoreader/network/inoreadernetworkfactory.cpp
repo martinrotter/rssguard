@@ -153,7 +153,7 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed:
   }
 }
 
-void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
+void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async) {
   QString target_url = INOREADER_API_EDIT_TAG;
 
   if (status == RootItem::ReadStatus::Read) {
@@ -197,18 +197,97 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
     QString batch_final_url = target_url + working_subset.join(QL1C('&'));
 
     // We send this batch.
-    NetworkFactory::performAsyncNetworkOperation(batch_final_url,
-                                                 timeout,
-                                                 QByteArray(),
-                                                 QNetworkAccessManager::Operation::GetOperation,
-                                                 headers);
+    if (async) {
+
+      NetworkFactory::performAsyncNetworkOperation(batch_final_url,
+                                                   timeout,
+                                                   QByteArray(),
+                                                   QNetworkAccessManager::Operation::GetOperation,
+                                                   headers);
+    }
+    else {
+      QByteArray output;
+
+      NetworkFactory::performNetworkOperation(batch_final_url,
+                                              timeout,
+                                              QByteArray(),
+                                              output,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              headers);
+    }
 
     // Cleanup for next batch.
     working_subset.clear();
   }
 }
 
-void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids) {}
+void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids, bool async) {
+  QString target_url = INOREADER_API_EDIT_TAG;
+
+  if (importance == RootItem::Importance::Important) {
+    target_url += QString("?a=user/-/") + INOREADER_STATE_IMPORTANT + "&";
+  }
+  else {
+    target_url += QString("?r=user/-/") + INOREADER_STATE_IMPORTANT + "&";
+  }
+
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    return;
+  }
+
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                               m_oauth2->bearer().toLocal8Bit()));
+
+  QStringList trimmed_ids;
+  QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
+
+  foreach (const QString& id, custom_ids) {
+    QString simplified_id = regex_short_id.match(id).captured();
+
+    trimmed_ids.append(QString("i=") + simplified_id);
+  }
+
+  QStringList working_subset;
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  working_subset.reserve(trimmed_ids.size() > 200 ? 200 : trimmed_ids.size());
+
+  // Now, we perform messages update in batches (max 200 messages per batch).
+  while (!trimmed_ids.isEmpty()) {
+    // We take 200 IDs.
+    for (int i = 0; i < 200 && !trimmed_ids.isEmpty(); i++) {
+      working_subset.append(trimmed_ids.takeFirst());
+    }
+
+    QString batch_final_url = target_url + working_subset.join(QL1C('&'));
+
+    // We send this batch.
+    if (async) {
+
+      NetworkFactory::performAsyncNetworkOperation(batch_final_url,
+                                                   timeout,
+                                                   QByteArray(),
+                                                   QNetworkAccessManager::Operation::GetOperation,
+                                                   headers);
+    }
+    else {
+      QByteArray output;
+
+      NetworkFactory::performNetworkOperation(batch_final_url,
+                                              timeout,
+                                              QByteArray(),
+                                              output,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              headers);
+    }
+
+    // Cleanup for next batch.
+    working_subset.clear();
+  }
+}
 
 void InoreaderNetworkFactory::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)

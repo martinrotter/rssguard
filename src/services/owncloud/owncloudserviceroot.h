@@ -50,7 +50,7 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void updateTitle();
     void saveAccountDataToDatabase();
 
-    void saveAllCachedData();
+    void saveAllCachedData(bool async = true);
 
   public slots:
     void addNewFeed(const QString& url);

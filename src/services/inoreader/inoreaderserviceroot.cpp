@@ -165,7 +165,11 @@ void InoreaderServiceRoot::addNewFeed(const QString& url) {
 
 void InoreaderServiceRoot::addNewCategory() {}
 
-void InoreaderServiceRoot::saveAllCachedData() {
+void InoreaderServiceRoot::saveAllCachedData(bool async) {
+  Q_UNUSED(async)
+
+  // TODO: implementovat toto, aby bylo možno ukládat data i synchronně
+
   QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
 
@@ -176,7 +180,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids);
+      network()->markMessagesRead(key, ids, async);
     }
   }
 
@@ -196,7 +200,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
         custom_ids.append(msg.m_customId);
       }
 
-      network()->markMessagesStarred(key, custom_ids);
+      network()->markMessagesStarred(key, custom_ids, async);
     }
   }
 }

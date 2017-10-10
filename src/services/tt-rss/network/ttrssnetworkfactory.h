@@ -160,7 +160,7 @@ class TtRssNetworkFactory {
                                            bool sanitize);
 
     TtRssUpdateArticleResponse updateArticles(const QStringList& ids, UpdateArticle::OperatingField field,
-                                              UpdateArticle::Mode mode);
+                                              UpdateArticle::Mode mode, bool async = true);
 
     TtRssSubscribeToFeedResponse subscribeToFeed(const QString& url, int category_id, bool protectd = false,
                                                  const QString& username = QString(), const QString& password = QString());

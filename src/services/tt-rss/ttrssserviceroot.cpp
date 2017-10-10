@@ -125,7 +125,11 @@ bool TtRssServiceRoot::canBeDeleted() const {
   return true;
 }
 
-void TtRssServiceRoot::saveAllCachedData() {
+void TtRssServiceRoot::saveAllCachedData(bool async) {
+  Q_UNUSED(async)
+
+  // TODO: implementovat toto, aby bylo možno ukládat data i synchronně
+
   QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
 
@@ -138,7 +142,8 @@ void TtRssServiceRoot::saveAllCachedData() {
     if (!ids.isEmpty()) {
       network()->updateArticles(ids,
                                 UpdateArticle::Unread,
-                                key == RootItem::Unread ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse);
+                                key == RootItem::Unread ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse,
+                                async);
     }
   }
 
@@ -156,7 +161,8 @@ void TtRssServiceRoot::saveAllCachedData() {
 
       network()->updateArticles(ids,
                                 UpdateArticle::Starred,
-                                key == RootItem::Important ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse);
+                                key == RootItem::Important ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse,
+                                async);
     }
   }
 }

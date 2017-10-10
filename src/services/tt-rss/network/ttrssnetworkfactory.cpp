@@ -253,7 +253,9 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
 
 TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList& ids,
                                                                UpdateArticle::OperatingField field,
-                                                               UpdateArticle::Mode mode) {
+                                                               UpdateArticle::Mode mode, bool async) {
+  Q_UNUSED(async)
+
   QJsonObject json;
 
   json["op"] = QSL("updateArticle");
