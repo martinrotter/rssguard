@@ -64,6 +64,8 @@ class Application : public QtSingleApplication {
     explicit Application(const QString& id, int& argc, char** argv);
     virtual ~Application();
 
+    void showPolls() const;
+
     FeedReader* feedReader();
 
     void setFeedReader(FeedReader* feed_reader);
@@ -72,19 +74,19 @@ class Application : public QtSingleApplication {
     QList<QAction*> userActions();
 
     // Check whether this application starts for the first time (ever).
-    bool isFirstRun();
+    bool isFirstRun() const;
 
     // Check whether GIVEN VERSION of the application starts for the first time.
-    bool isFirstRun(const QString& version);
+    bool isFirstRun(const QString& version) const;
 
-    WebFactory* web();
+    WebFactory* web() const;
     SystemFactory* system();
     SkinFactory* skins();
     Localization* localization();
     DatabaseFactory* database();
     IconFactory* icons();
     DownloadManager* downloadManager();
-    Settings* settings();
+    Settings* settings() const;
     Mutex* feedUpdateLock();
     FormMain* mainForm();
     QWidget* mainFormWidget();

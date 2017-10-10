@@ -54,7 +54,7 @@ class WebFactory : public QObject {
 #endif
 
   public slots:
-    bool openUrlInExternalBrowser(const QString& url);
+    bool openUrlInExternalBrowser(const QString& url) const;
     bool sendMessageViaEmail(const Message& message);
 
 #if defined (USE_WEBENGINE)
@@ -68,7 +68,7 @@ class WebFactory : public QObject {
 #endif
 
   private:
-    void genereteEscapes();
+    void generateEscapes();
     void generateDeescapes();
 
     QMap<QString, QString> m_escapes;

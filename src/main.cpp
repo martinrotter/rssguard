@@ -170,6 +170,7 @@ int main(int argc, char* argv[]) {
     qApp->system()->checkForUpdates();
   }
 
+  qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
 
   // Enter global event loop.

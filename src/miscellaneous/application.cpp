@@ -83,6 +83,12 @@ Application::~Application() {
   qDebug("Destroying Application instance.");
 }
 
+void Application::showPolls() const {
+  if (isFirstRun(APP_VERSION)) {
+    web()->openUrlInExternalBrowser(QSL("https://goo.gl/forms/7bJNr33Ii22Q1c3k2"));
+  }
+}
+
 FeedReader* Application::feedReader() {
   return m_feedReader;
 }
@@ -99,11 +105,11 @@ QList<QAction*> Application::userActions() {
   return m_userActions;
 }
 
-bool Application::isFirstRun() {
+bool Application::isFirstRun() const {
   return settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool();
 }
 
-bool Application::isFirstRun(const QString& version) {
+bool Application::isFirstRun(const QString& version) const {
   if (version == APP_VERSION) {
     // Check this only if checked version is equal to actual version.
     return settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, true).toBool();
@@ -113,7 +119,7 @@ bool Application::isFirstRun(const QString& version) {
   }
 }
 
-WebFactory* Application::web() {
+WebFactory* Application::web() const {
   return m_webFactory;
 }
 
@@ -162,7 +168,7 @@ DownloadManager* Application::downloadManager() {
   return m_downloadManager;
 }
 
-Settings* Application::settings() {
+Settings* Application::settings() const {
   return m_settings;
 }
 

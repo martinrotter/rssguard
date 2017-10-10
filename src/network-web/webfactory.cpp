@@ -62,7 +62,7 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
   }
 }
 
-bool WebFactory::openUrlInExternalBrowser(const QString& url) {
+bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
     const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
@@ -88,7 +88,7 @@ QString WebFactory::stripTags(QString text) {
 
 QString WebFactory::escapeHtml(const QString& html) {
   if (m_escapes.isEmpty()) {
-    genereteEscapes();
+    generateEscapes();
   }
 
   QString output = html;
@@ -211,7 +211,7 @@ QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngine
 
 #endif
 
-void WebFactory::genereteEscapes() {
+void WebFactory::generateEscapes() {
   m_escapes[QSL("&lt;")] = QL1C('<');
   m_escapes[QSL("&gt;")] = QL1C('>');
   m_escapes[QSL("&amp;")] = QL1C('&');
