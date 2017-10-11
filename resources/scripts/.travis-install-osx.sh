@@ -8,8 +8,8 @@ make install
 #rm -rfv "RSS Guard.app/Contents/Frameworks"
 #ls "RSS Guard.app/Contents"
 
-make zip
 make dmg
+make zip
 
 #hdiutil create -fs HFS+ -srcfolder "./RSS Guard.app/" -volname "RSS Guard" rssguard.dmg
 #make dmg
