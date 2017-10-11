@@ -85,10 +85,6 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     // Loads messages of given feeds.
     void loadMessages(RootItem* item);
 
-    int itemHeight() const;
-    void setItemHeight(int item_height);
-    void updateItemHeight();
-
   public slots:
 
     // NOTE: These methods DO NOT actually change data in the DB, just in the model.
@@ -97,6 +93,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     bool setMessageReadById(int id, RootItem::ReadStatus read);
 
   private:
+    void updateItemHeight();
     void setupHeaderData();
     void setupFonts();
     void setupIcons();

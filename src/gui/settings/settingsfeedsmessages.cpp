@@ -39,6 +39,11 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   initializeMessageDateFormats();
   GuiUtilities::setLabelAsNotice(*m_ui->label_9, false);
 
+  connect(m_ui->m_spinHeightRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::requireRestart);
+  connect(m_ui->m_spinHeightRowsFeeds, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::requireRestart);
+
   connect(m_ui->m_checkAutoUpdateNotification, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -162,11 +167,9 @@ void SettingsFeedsMessages::saveSettings() {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
   qApp->feedReader()->updateAutoUpdateStatus();
 
-  qApp->feedReader()->feedsModel()->updateItemHeight();
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
 
   qApp->feedReader()->messagesModel()->updateDateFormat();
-  qApp->feedReader()->messagesModel()->updateItemHeight();
   qApp->feedReader()->messagesModel()->reloadWholeLayout();
   onEndSaveSettings();
 }

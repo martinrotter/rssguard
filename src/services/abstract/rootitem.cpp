@@ -29,9 +29,7 @@
 RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr), m_kind(RootItemKind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QSL("")),
   m_title(QString()), m_description(QString()), m_icon(QIcon()), m_creationDate(QDateTime()),
-  m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {
-  setupFonts();
-}
+  m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
@@ -120,12 +118,6 @@ void RootItem::updateCounts(bool including_total_count) {
   }
 }
 
-void RootItem::setupFonts() {
-  m_normalFont = Application::font("FeedsView");
-  m_boldFont = m_normalFont;
-  m_boldFont.setBold(true);
-}
-
 int RootItem::row() const {
   if (m_parentItem) {
     return m_parentItem->m_childItems.indexOf(const_cast<RootItem*>(this));
@@ -175,9 +167,6 @@ QVariant RootItem::data(int column, int role) const {
       else {
         return QVariant();
       }
-
-    case Qt::FontRole:
-      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
@@ -435,22 +424,6 @@ QString RootItem::description() const {
 
 void RootItem::setDescription(const QString& description) {
   m_description = description;
-}
-
-QFont RootItem::normalFont() const {
-  return m_normalFont;
-}
-
-void RootItem::setNormalFont(const QFont& normal_font) {
-  m_normalFont = normal_font;
-}
-
-QFont RootItem::boldFont() const {
-  return m_boldFont;
-}
-
-void RootItem::setBoldFont(const QFont& bold_font) {
-  m_boldFont = bold_font;
 }
 
 bool RootItem::removeChild(RootItem* child) {

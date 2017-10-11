@@ -208,12 +208,6 @@ class RootItem : public QObject {
     QString description() const;
     void setDescription(const QString& description);
 
-    QFont normalFont() const;
-    void setNormalFont(const QFont& normal_font);
-
-    QFont boldFont() const;
-    void setBoldFont(const QFont& bold_font);
-
     // NOTE: For standard feed/category, this WILL equal to id().
     QString customId() const;
     int customNumericId() const;
@@ -225,8 +219,6 @@ class RootItem : public QObject {
     ServiceRoot* toServiceRoot() const;
 
   private:
-    void setupFonts();
-
     RootItemKind::Kind m_kind;
     int m_id;
     QString m_customId;
@@ -234,8 +226,6 @@ class RootItem : public QObject {
     QString m_description;
     QIcon m_icon;
     QDateTime m_creationDate;
-    QFont m_normalFont;
-    QFont m_boldFont;
 
     QList<RootItem*> m_childItems;
     RootItem* m_parentItem;

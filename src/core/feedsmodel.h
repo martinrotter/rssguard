@@ -102,10 +102,6 @@ class FeedsModel : public QAbstractItemModel {
     // Access to root item.
     RootItem* rootItem() const;
 
-    int itemHeight() const;
-    void setItemHeight(int item_height);
-    void updateItemHeight();
-
   public slots:
     void loadActivatedServiceAccounts();
 
@@ -172,24 +168,24 @@ class FeedsModel : public QAbstractItemModel {
     void requireItemValidationAfterDragDrop(const QModelIndex& source_index);
 
   private:
+    void updateItemHeight();
+    void setupFonts();
+
+  private:
     RootItem* m_rootItem;
     int m_itemHeight;
 
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;
+    QFont m_normalFont;
+    QFont m_boldFont;
 };
 
 inline QVariant FeedsModel::data(const QModelIndex& index, int role) const {
   switch (role) {
-    case Qt::SizeHintRole: {
-      if (m_itemHeight > 0) {
-        return QSize(-1, m_itemHeight);
-      }
-      else {
-        return QVariant();
-      }
-    }
+    case Qt::FontRole:
+      return itemForIndex(index)->countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
     default:
       return itemForIndex(index)->data(index.column(), role);;

@@ -51,16 +51,15 @@ void MessagesModel::setupIcons() {
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
 }
 
-int MessagesModel::itemHeight() const {
-  return m_itemHeight;
-}
-
-void MessagesModel::setItemHeight(int item_height) {
-  m_itemHeight = item_height;
-}
-
 void MessagesModel::updateItemHeight() {
   m_itemHeight = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt();
+
+  if (m_itemHeight > 0) {
+    m_boldFont.setPixelSize(int(m_itemHeight * 0.6));
+    m_normalFont.setPixelSize(int(m_itemHeight * 0.6));
+    m_boldStrikedFont.setPixelSize(int(m_itemHeight * 0.6));
+    m_normalStrikedFont.setPixelSize(int(m_itemHeight * 0.6));
+  }
 }
 
 void MessagesModel::repopulate() {
@@ -298,18 +297,6 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         default:
           return QVariant();
       }
-
-    case Qt::SizeHintRole: {
-      if (m_itemHeight > 0) {
-        QSize siz = QSqlQueryModel::data(idx, Qt::SizeHintRole).toSize();
-
-        siz.setHeight(m_itemHeight);
-        return siz;
-      }
-      else {
-        return QVariant();
-      }
-    }
 
     case Qt::DecorationRole: {
       const int index_column = idx.column();
