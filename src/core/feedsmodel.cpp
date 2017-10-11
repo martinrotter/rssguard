@@ -41,7 +41,7 @@
 
 #include <algorithm>
 
-FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent) {
+FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_itemHeight(-1) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -56,9 +56,11 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent) {
 
   // : Title text in the feed list header.
   m_headerData << tr("Title");
-  m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.") <<
+  m_tooltipData
+    << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.")
+    << /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
 
-    /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
+  updateItemHeight();
 }
 
 FeedsModel::~FeedsModel() {
@@ -474,6 +476,18 @@ void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
   }
 
   notifyWithCounts();
+}
+
+int FeedsModel::itemHeight() const {
+  return m_itemHeight;
+}
+
+void FeedsModel::setItemHeight(int item_height) {
+  m_itemHeight = item_height;
+}
+
+void FeedsModel::updateItemHeight() {
+  m_itemHeight = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt();
 }
 
 void FeedsModel::reloadWholeLayout() {

@@ -200,3 +200,18 @@ void InoreaderServiceRoot::saveAllCachedData(bool async) {
     }
   }
 }
+
+bool InoreaderServiceRoot::canBeDeleted() const {
+  return true;
+}
+
+bool InoreaderServiceRoot::deleteViaGui() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  if (DatabaseQueries::deleteInoreaderAccount(database, accountId())) {
+    return ServiceRoot::deleteViaGui();
+  }
+  else {
+    return false;
+  }
+}

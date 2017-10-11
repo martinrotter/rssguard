@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ Font size of message/feed list can now be changed. (#145)
 ▪ Inoreader plugin can mark messages starred.
 ▪ All cached online service data are synchronously saved when any feed is updated.
 

@@ -217,6 +217,14 @@ namespace GUI {
 
   VALUE(int) DefaultSortColumnFeedsDef;
 
+  KEY HeightRowMessages;
+
+  VALUE(int) HeightRowMessagesDef;
+
+  KEY HeightRowFeeds;
+
+  VALUE(int) HeightRowFeedsDef;
+
   KEY DefaultSortOrderFeeds;
 
   VALUE(Qt::SortOrder) DefaultSortOrderFeedsDef;

@@ -115,6 +115,14 @@ DKEY GUI::ToolbarStyle = "toolbar_style";
 
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef = Qt::ToolButtonIconOnly;
 
+DKEY GUI::HeightRowMessages = "height_row_messages";
+
+DVALUE(int) GUI::HeightRowMessagesDef = -1;
+
+DKEY GUI::HeightRowFeeds = "height_row_feeds";
+
+DVALUE(int) GUI::HeightRowFeedsDef = -1;
+
 DKEY GUI::FeedsToolbarActions = "feeds_toolbar";
 
 DVALUE(char*) GUI::FeedsToolbarActionsDef = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead";

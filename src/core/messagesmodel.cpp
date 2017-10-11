@@ -32,11 +32,12 @@
 
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), MessagesModelSqlLayer(),
-  m_cache(new MessagesModelCache(this)), m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()) {
+  m_cache(new MessagesModelCache(this)), m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()), m_itemHeight(-1) {
   setupFonts();
   setupIcons();
   setupHeaderData();
   updateDateFormat();
+  updateItemHeight();
   loadMessages(nullptr);
 }
 
@@ -48,6 +49,18 @@ void MessagesModel::setupIcons() {
   m_favoriteIcon = qApp->icons()->fromTheme(QSL("mail-mark-important"));
   m_readIcon = qApp->icons()->fromTheme(QSL("mail-mark-read"));
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
+}
+
+int MessagesModel::itemHeight() const {
+  return m_itemHeight;
+}
+
+void MessagesModel::setItemHeight(int item_height) {
+  m_itemHeight = item_height;
+}
+
+void MessagesModel::updateItemHeight() {
+  m_itemHeight = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt();
 }
 
 void MessagesModel::repopulate() {
@@ -285,6 +298,18 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         default:
           return QVariant();
       }
+
+    case Qt::SizeHintRole: {
+      if (m_itemHeight > 0) {
+        QSize siz = QSqlQueryModel::data(idx, Qt::SizeHintRole).toSize();
+
+        siz.setHeight(m_itemHeight);
+        return siz;
+      }
+      else {
+        return QVariant();
+      }
+    }
 
     case Qt::DecorationRole: {
       const int index_column = idx.column();

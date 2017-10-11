@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>201</height>
+    <width>550</width>
+    <height>270</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -32,81 +32,127 @@
       <attribute name="title">
        <string>Feeds &amp;&amp; categories</string>
       </attribute>
-      <layout class="QFormLayout" name="formLayout_10">
-       <property name="fieldGrowthPolicy">
-        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-       </property>
-       <item row="0" column="0" colspan="2">
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
         <widget class="QCheckBox" name="m_checkUpdateAllFeedsOnStartup">
          <property name="text">
           <string>Update all feed on application startup</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="m_checkAutoUpdate">
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_checkAutoUpdateNotification">
          <property name="text">
-          <string>Auto-update all feeds every</string>
+          <string>Enable &quot;auto-update started&quot; notification</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-        </widget>
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QCheckBox" name="m_checkAutoUpdate">
+           <property name="text">
+            <string>Auto-update all feeds every</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="accelerated">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item row="3" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Feed connection timeout</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QSpinBox" name="m_spinFeedUpdateTimeout">
-         <property name="toolTip">
-          <string>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</string>
-         </property>
-         <property name="suffix">
-          <string> ms</string>
-         </property>
-         <property name="minimum">
-          <number>100</number>
-         </property>
-         <property name="maximum">
-          <number>120000</number>
-         </property>
-         <property name="singleStep">
-          <number>100</number>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Feed connection timeout</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_spinFeedUpdateTimeout</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_spinFeedUpdateTimeout">
+           <property name="toolTip">
+            <string>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</string>
+           </property>
+           <property name="suffix">
+            <string> ms</string>
+           </property>
+           <property name="minimum">
+            <number>100</number>
+           </property>
+           <property name="maximum">
+            <number>120000</number>
+           </property>
+           <property name="singleStep">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item row="4" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Message count format in feed list</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Height or rows in feed list (-1 = default height)</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_spinHeightRowsFeeds</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_spinHeightRowsFeeds">
+           <property name="minimum">
+            <number>-1</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="m_cmbCountsFeedList">
-         <property name="toolTip">
-          <string notr="true"/>
-         </property>
-         <property name="editable">
-          <bool>true</bool>
-         </property>
-        </widget>
+       <item row="5" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Message count format in feed list</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_cmbCountsFeedList</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="m_cmbCountsFeedList">
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
+           <property name="editable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="5" column="0" colspan="2">
+       <item row="6" column="0" colspan="2">
         <widget class="QLabel" name="label_9">
          <property name="font">
           <font>
@@ -121,13 +167,6 @@
          </property>
          <property name="wordWrap">
           <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkAutoUpdateNotification">
-         <property name="text">
-          <string>Enable &quot;auto-update started&quot; notification</string>
          </property>
         </widget>
        </item>
@@ -152,12 +191,15 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLabel" name="label">
            <property name="text">
             <string>Height of image attachments</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_spinHeightImageAttachments</cstring>
            </property>
           </widget>
          </item>
@@ -173,7 +215,7 @@
          </item>
         </layout>
        </item>
-       <item row="3" column="0">
+       <item row="4" column="0">
         <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
          <property name="text">
           <string>Use custom date/time format (overrides format loaded from active localization)</string>
@@ -186,10 +228,10 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="4" column="1">
         <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat"/>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="5" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox_4">
          <property name="title">
           <string>Internal message browser fonts</string>
@@ -225,6 +267,30 @@
          </layout>
         </widget>
        </item>
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Height or rows in message list (-1 = default height)</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_spinHeightRowsMessages</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_spinHeightRowsMessages">
+           <property name="minimum">
+            <number>-1</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -238,6 +304,25 @@
    <header>timespinbox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_tabFeedsMessages</tabstop>
+  <tabstop>m_checkUpdateAllFeedsOnStartup</tabstop>
+  <tabstop>m_checkAutoUpdateNotification</tabstop>
+  <tabstop>m_checkAutoUpdate</tabstop>
+  <tabstop>m_spinAutoUpdateInterval</tabstop>
+  <tabstop>m_spinFeedUpdateTimeout</tabstop>
+  <tabstop>m_spinHeightRowsFeeds</tabstop>
+  <tabstop>m_cmbCountsFeedList</tabstop>
+  <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
+  <tabstop>m_checkKeppMessagesInTheMiddle</tabstop>
+  <tabstop>m_spinHeightRowsMessages</tabstop>
+  <tabstop>m_spinHeightImageAttachments</tabstop>
+  <tabstop>m_checkMessagesDateTimeFormat</tabstop>
+  <tabstop>m_cmbMessagesDateTimeFormat</tabstop>
+  <tabstop>m_btnChangeMessagesFont</tabstop>
+  <tabstop>m_spinHeightRowsMessages_3</tabstop>
+  <tabstop>m_spinHeightRowsMessages_2</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

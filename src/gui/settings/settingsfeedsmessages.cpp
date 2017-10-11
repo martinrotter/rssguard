@@ -49,6 +49,10 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightImageAttachments, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinHeightRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinHeightRowsFeeds, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, m_ui->m_spinAutoUpdateInterval, &TimeSpinBox::setEnabled);
   connect(m_ui->m_spinFeedUpdateTimeout, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
           &SettingsFeedsMessages::dirtifySettings);
@@ -103,6 +107,9 @@ void SettingsFeedsMessages::changeMessagesFont() {
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_spinHeightRowsMessages->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt());
+  m_ui->m_spinHeightRowsFeeds->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt());
+
   m_ui->m_checkAutoUpdateNotification->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool());
   m_ui->m_checkKeppMessagesInTheMiddle->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool());
   m_ui->m_checkRemoveReadMessagesOnExit->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool());
@@ -133,6 +140,10 @@ void SettingsFeedsMessages::loadSettings() {
 
 void SettingsFeedsMessages::saveSettings() {
   onBeginSaveSettings();
+
+  settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
+  settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());
+
   settings()->setValue(GROUP(Feeds), Feeds::EnableAutoUpdateNotification, m_ui->m_checkAutoUpdateNotification->isChecked());
   settings()->setValue(GROUP(Messages), Messages::KeepCursorInCenter, m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
   settings()->setValue(GROUP(Messages), Messages::ClearReadOnExit, m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
@@ -150,8 +161,12 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
   qApp->feedReader()->updateAutoUpdateStatus();
+
+  qApp->feedReader()->feedsModel()->updateItemHeight();
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
+
   qApp->feedReader()->messagesModel()->updateDateFormat();
+  qApp->feedReader()->messagesModel()->updateItemHeight();
   qApp->feedReader()->messagesModel()->reloadWholeLayout();
   onEndSaveSettings();
 }

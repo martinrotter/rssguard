@@ -37,10 +37,7 @@ class FeedsModel : public QAbstractItemModel {
     virtual ~FeedsModel();
 
     // Model implementation.
-    inline QVariant data(const QModelIndex& index, int role) const {
-      // Return data according to item.
-      return itemForIndex(index)->data(index.column(), role);
-    }
+    QVariant data(const QModelIndex& index, int role) const;
 
     // Drag & drop.
     QMimeData* mimeData(const QModelIndexList& indexes) const;
@@ -104,6 +101,10 @@ class FeedsModel : public QAbstractItemModel {
 
     // Access to root item.
     RootItem* rootItem() const;
+
+    int itemHeight() const;
+    void setItemHeight(int item_height);
+    void updateItemHeight();
 
   public slots:
     void loadActivatedServiceAccounts();
@@ -172,10 +173,27 @@ class FeedsModel : public QAbstractItemModel {
 
   private:
     RootItem* m_rootItem;
+    int m_itemHeight;
 
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;
 };
+
+inline QVariant FeedsModel::data(const QModelIndex& index, int role) const {
+  switch (role) {
+    case Qt::SizeHintRole: {
+      if (m_itemHeight > 0) {
+        return QSize(-1, m_itemHeight);
+      }
+      else {
+        return QVariant();
+      }
+    }
+
+    default:
+      return itemForIndex(index)->data(index.column(), role);;
+  }
+}
 
 #endif // FEEDSMODEL_H

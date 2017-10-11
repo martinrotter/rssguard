@@ -39,6 +39,8 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     bool canBeEdited() const;
     bool editViaGui();
+    bool canBeDeleted() const;
+    bool deleteViaGui();
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
     void start(bool freshly_activated);

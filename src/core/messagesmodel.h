@@ -85,6 +85,10 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     // Loads messages of given feeds.
     void loadMessages(RootItem* item);
 
+    int itemHeight() const;
+    void setItemHeight(int item_height);
+    void updateItemHeight();
+
   public slots:
 
     // NOTE: These methods DO NOT actually change data in the DB, just in the model.
@@ -112,6 +116,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     QIcon m_favoriteIcon;
     QIcon m_readIcon;
     QIcon m_unreadIcon;
+    int m_itemHeight;
 };
 
 Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)
