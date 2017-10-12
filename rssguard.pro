@@ -758,5 +758,5 @@ mac {
   pkginfo.extra = @printf "APPL????" > $$shell_quote($$PREFIX/Contents/PkgInfo)
   pkginfo.path = $$quote($$PREFIX/Contents/)
 
-  INSTALLS += target icns_icon info_plist info_plist2 pkginfounix
+  INSTALLS += target icns_icon info_plist info_plist2 pkginfo
 }
