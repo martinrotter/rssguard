@@ -1490,6 +1490,7 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   return categories;
 }
 
+#if defined(USE_WEBENGINE)
 bool DatabaseQueries::deleteInoreaderAccount(QSqlDatabase db, int account_id) {
   QSqlQuery q(db);
 
@@ -1499,7 +1500,6 @@ bool DatabaseQueries::deleteInoreaderAccount(QSqlDatabase db, int account_id) {
   return q.exec();
 }
 
-#if defined(USE_WEBENGINE)
 Assignment DatabaseQueries::getInoreaderFeeds(QSqlDatabase db, int account_id, bool* ok) {
   Assignment feeds;
   QSqlQuery q(db);

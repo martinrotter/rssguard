@@ -42,6 +42,8 @@
 #include <QTimer>
 #include <QTranslator>
 
+#include <network-web/oauth2service.h>
+
 #if defined (Q_OS_MAC)
 extern void disableWindowTabbing();
 
@@ -172,6 +174,29 @@ int main(int argc, char* argv[]) {
 
   qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
+
+  /*
+     OAuth2Service* srv = new OAuth2Service(
+     "https://accounts.google.com/o/oauth2/auth",
+     "https://accounts.google.com/o/oauth2/token",
+     "369069180494-j66bgeciouinec1eem7fhvj6qm0as7q3.apps.googleusercontent.com",
+     "vppQtxrEeBkImiXcjGYl9NxZ",
+     "https://mail.google.com/");
+
+     QObject::connect(srv, &OAuth2Service::authCodeObtained, [](QString auth_code) {
+     int a = 5;
+     });
+     QObject::connect(srv, &OAuth2Service::authFailed, []() {
+     int a = 5;
+     });
+     QObject::connect(srv, &OAuth2Service::tokensReceived, [](QString acc, QString ref, int exp) {
+     int a = 5;
+     });
+     QObject::connect(srv, &OAuth2Service::tokensRetrieveError, [](QString err, QString desc) {
+     int a = 5;
+     });
+     srv->login();
+   */
 
   // Enter global event loop.
   return Application::exec();
