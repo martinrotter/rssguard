@@ -8,8 +8,9 @@ make
 make install
 
 ls "./usr/bin"
-curl -o "linuxdeployqt" 'https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage'
-chmod a+x "linuxdeployqt"
+wget -c https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
+
 unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-./linuxdeployqt "./usr/bin/rssguard" -appimage
+./linuxdeployqt-continuous-x86_64.AppImage "./usr/bin/rssguard" -appimage
 ls
