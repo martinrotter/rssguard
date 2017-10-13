@@ -5,6 +5,9 @@ dist: trusty
 os:
 - linux
 - osx
+env:
+- qmake_args='USE_WEBENGINE=false'
+- qmake_args='USE_WEBENGINE=true'
 compiler:
 - gcc
 branches:

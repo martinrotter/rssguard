@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mkdir rssguard-build && cd rssguard-build
-qmake ..
+qmake .. "$qmake_args"
 make
 make install
 
