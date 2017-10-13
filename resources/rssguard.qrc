@@ -40,6 +40,7 @@
         <file>graphics/misc/flags/de.png</file>
         <file>graphics/misc/flags/en.png</file>
         <file>graphics/misc/flags/en_GB.png</file>
+        <file>graphics/misc/flags/es.png</file>
         <file>graphics/misc/flags/fr.png</file>
         <file>graphics/misc/flags/he.png</file>
         <file>graphics/misc/flags/id.png</file>
@@ -1555,5 +1556,25 @@
         <file>localizations/rssguard_zh.qm</file>
         <file>desktop/rssguard.desktop</file>
         <file>desktop/rssguard.desktop.autostart</file>
+        <file>localizations/qt_bg.qm</file>
+        <file>localizations/qt_ca.qm</file>
+        <file>localizations/qt_cs.qm</file>
+        <file>localizations/qt_da.qm</file>
+        <file>localizations/qt_de.qm</file>
+        <file>localizations/qt_en.qm</file>
+        <file>localizations/qt_es.qm</file>
+        <file>localizations/qt_fi.qm</file>
+        <file>localizations/qt_fr.qm</file>
+        <file>localizations/qt_gd.qm</file>
+        <file>localizations/qt_he.qm</file>
+        <file>localizations/qt_hu.qm</file>
+        <file>localizations/qt_it.qm</file>
+        <file>localizations/qt_ja.qm</file>
+        <file>localizations/qt_ko.qm</file>
+        <file>localizations/qt_lv.qm</file>
+        <file>localizations/qt_pl.qm</file>
+        <file>localizations/qt_ru.qm</file>
+        <file>localizations/qt_sk.qm</file>
+        <file>localizations/qt_uk.qm</file>
     </qresource>
 </RCC>

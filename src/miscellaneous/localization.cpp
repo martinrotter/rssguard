@@ -35,6 +35,7 @@ QString Localization::desiredLanguage() const {
 }
 
 void Localization::loadActiveLanguage() {
+  QTranslator* qt_translator = new QTranslator(qApp);
   QTranslator* app_translator = new QTranslator(qApp);
   QString desired_localization = desiredLanguage();
 
@@ -54,6 +55,14 @@ void Localization::loadActiveLanguage() {
              qPrintable(desired_localization),
              DEFAULT_LOCALE);
     desired_localization = DEFAULT_LOCALE;
+  }
+
+  if (qt_translator->load(QLocale(desired_localization), "qt", QSL("_"), APP_LANG_PATH)) {
+    Application::installTranslator(qt_translator);
+    qDebug("Qt localization '%s' loaded successfully.", qPrintable(desired_localization));
+  }
+  else {
+    qWarning("Qt localization '%s' was not loaded.", qPrintable(desired_localization));
   }
 
   m_loadedLanguage = desired_localization;
