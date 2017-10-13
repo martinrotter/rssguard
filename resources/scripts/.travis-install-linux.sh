@@ -11,5 +11,5 @@ ls "./usr/bin"
 curl -o "linuxdeployqt" 'https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage'
 chmod a+x "linuxdeployqt"
 unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-linuxdeployqt "./usr/bin/rssguard" -appimage
+./linuxdeployqt "./usr/bin/rssguard" -appimage
 ls
