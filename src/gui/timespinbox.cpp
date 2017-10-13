@@ -21,7 +21,7 @@
 #include <QStringList>
 
 TimeSpinBox::TimeSpinBox(QWidget* parent) : QDoubleSpinBox(parent) {
-  setMinimum(5.0);
+  setMinimum(3.0);
   setAccelerated(true);
   setDecimals(0);
   setMaximum(10000000.0);

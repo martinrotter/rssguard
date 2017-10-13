@@ -23,6 +23,8 @@
 #include "services/abstract/feed.h"
 
 #include <QDebug>
+#include <QMessageBox>
+#include <QMessageLogger>
 #include <QMutexLocker>
 #include <QString>
 #include <QThread>
@@ -118,15 +120,11 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message>& messages, bool 
 
   // Now make sure, that messages are actually stored to SQL in a locked state.
   qDebug().nospace() << "Saving messages of feed "
-                     << feed->id() << " in thread: \'"
+                     << feed->customId() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
   int updated_messages = feed->updateMessages(messages, error_during_obtaining);
 
-  /*
-     QMetaObject::invokeMethod(feed, "updateMessages", Qt::BlockingQueuedConnection,
-                            Q_RETURN_ARG(int, updated_messages),
-                            Q_ARG(QList<Message>, messages));
-   */
+  qDebug("%d messages for feed %d stored in DB.", updated_messages, feed->customId());
 
   if (updated_messages > 0) {
     m_results.appendUpdatedFeed(QPair<QString, int>(feed->title(), updated_messages));

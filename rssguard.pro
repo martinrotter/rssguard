@@ -196,6 +196,10 @@ MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
 UI_DIR = $$OUT_PWD/ui
 
+mac {
+  QT *= macextras
+}
+
 equals(USE_WEBENGINE, true) {
   message(rssguard: Application will be compiled WITH QtWebEngine module.)
   QT *= webenginewidgets

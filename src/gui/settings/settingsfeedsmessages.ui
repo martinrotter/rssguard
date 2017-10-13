@@ -61,6 +61,12 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="readOnly">
             <bool>false</bool>
            </property>
@@ -320,8 +326,6 @@
   <tabstop>m_checkMessagesDateTimeFormat</tabstop>
   <tabstop>m_cmbMessagesDateTimeFormat</tabstop>
   <tabstop>m_btnChangeMessagesFont</tabstop>
-  <tabstop>m_spinHeightRowsMessages_3</tabstop>
-  <tabstop>m_spinHeightRowsMessages_2</tabstop>
  </tabstops>
  <resources/>
  <connections/>
