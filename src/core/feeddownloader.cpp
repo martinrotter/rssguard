@@ -124,7 +124,7 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message>& messages, bool 
                      << QThread::currentThreadId() << "\'.";
   int updated_messages = feed->updateMessages(messages, error_during_obtaining);
 
-  qDebug("%d messages for feed %d stored in DB.", updated_messages, feed->customId());
+  qDebug("%d messages for feed %s stored in DB.", updated_messages, qPrintable(feed->customId()));
 
   if (updated_messages > 0) {
     m_results.appendUpdatedFeed(QPair<QString, int>(feed->title(), updated_messages));
