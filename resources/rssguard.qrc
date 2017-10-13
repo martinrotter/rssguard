@@ -1553,14 +1553,6 @@
         <file>localizations/rssguard_pt.qm</file>
         <file>localizations/rssguard_sv.qm</file>
         <file>localizations/rssguard_zh.qm</file>
-        <file>localizations/qtbase_cs.qm</file>
-        <file>localizations/qtbase_da.qm</file>
-        <file>localizations/qtbase_de.qm</file>
-        <file>localizations/qtbase_fr.qm</file>
-        <file>localizations/qtbase_he.qm</file>
-        <file>localizations/qtbase_it.qm</file>
-        <file>localizations/qtbase_ja.qm</file>
-        <file>localizations/qtbase_sv.qm</file>
         <file>desktop/rssguard.desktop</file>
         <file>desktop/rssguard.desktop.autostart</file>
     </qresource>

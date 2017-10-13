@@ -54,5 +54,8 @@ void GuiUtilities::applyResponsiveDialogResize(QWidget& widget, double factor) {
   int heig = widt * ratio;
 
   widget.resize(widt, heig);
+#else
+  Q_UNUSED(factor)
+  Q_UNUSED(widget)
 #endif
 }

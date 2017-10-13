@@ -570,49 +570,23 @@ else {
                 src/gui/newspaperpreviewer.ui
 }
 
-TRANSLATIONS += localization/qtbase_cs.ts \
-                localization/qtbase_da.ts \
-                localization/qtbase_de.ts \
-                localization/qtbase_fr.ts \
-                localization/qtbase_he.ts \
-                localization/qtbase_it.ts \
-                localization/qtbase_ja.ts \
-                localization/qtbase_sv.ts \
-                localization/rssguard_cs.ts \
-                localization/rssguard_da.ts \
-                localization/rssguard_de.ts \
-                localization/rssguard_en_GB.ts \
-                localization/rssguard_en.ts \
-                localization/rssguard_es.ts \
-                localization/rssguard_fr.ts \
-                localization/rssguard_he.ts \
-                localization/rssguard_id.ts \
-                localization/rssguard_it.ts \
-                localization/rssguard_ja.ts \
-                localization/rssguard_lt.ts \
-                localization/rssguard_nl.ts \
-                localization/rssguard_pl.ts \
-                localization/rssguard_pt.ts \
-                localization/rssguard_sv.ts \
-                localization/rssguard_zh.ts
-
-TRANSLATIONS_WO_QT += $$PWD/localization/rssguard_cs.ts \
-                      $$PWD/localization/rssguard_da.ts \
-                      $$PWD/localization/rssguard_de.ts \
-                      $$PWD/localization/rssguard_en_GB.ts \
-                      $$PWD/localization/rssguard_en.ts \
-                      $$PWD/localization/rssguard_es.ts \
-                      $$PWD/localization/rssguard_fr.ts \
-                      $$PWD/localization/rssguard_he.ts \
-                      $$PWD/localization/rssguard_id.ts \
-                      $$PWD/localization/rssguard_it.ts \
-                      $$PWD/localization/rssguard_ja.ts \
-                      $$PWD/localization/rssguard_lt.ts \
-                      $$PWD/localization/rssguard_nl.ts \
-                      $$PWD/localization/rssguard_pl.ts \
-                      $$PWD/localization/rssguard_pt.ts \
-                      $$PWD/localization/rssguard_sv.ts \
-                      $$PWD/localization/rssguard_zh.ts
+TRANSLATIONS += $$PWD/localization/rssguard_cs.ts \
+                $$PWD/localization/rssguard_da.ts \
+                $$PWD/localization/rssguard_de.ts \
+                $$PWD/localization/rssguard_en_GB.ts \
+                $$PWD/localization/rssguard_en.ts \
+                $$PWD/localization/rssguard_es.ts \
+                $$PWD/localization/rssguard_fr.ts \
+                $$PWD/localization/rssguard_he.ts \
+                $$PWD/localization/rssguard_id.ts \
+                $$PWD/localization/rssguard_it.ts \
+                $$PWD/localization/rssguard_ja.ts \
+                $$PWD/localization/rssguard_lt.ts \
+                $$PWD/localization/rssguard_nl.ts \
+                $$PWD/localization/rssguard_pl.ts \
+                $$PWD/localization/rssguard_pt.ts \
+                $$PWD/localization/rssguard_sv.ts \
+                $$PWD/localization/rssguard_zh.ts
 
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src \
@@ -628,7 +602,7 @@ lrelease.CONFIG += no_link target_predeps
 
 # Create new "make lupdate" target.
 lupdate.target = lupdate
-lupdate.commands = lupdate $$shell_path($$PWD/rssguard.pro) -ts $$shell_path($$TRANSLATIONS_WO_QT)
+lupdate.commands = lupdate $$shell_path($$PWD/rssguard.pro) -ts $$shell_path($$TRANSLATIONS)
 
 QMAKE_EXTRA_TARGETS += lupdate
 QMAKE_EXTRA_COMPILERS += lrelease
