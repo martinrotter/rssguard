@@ -3768,6 +3768,14 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>Enable &quot;auto-update started&quot; notification</source>
         <translation>Aktivera avisering för &quot;Automatisk uppdatering startad&quot;</translation>
     </message>
+    <message>
+        <source>Height or rows in feed list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in message list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>

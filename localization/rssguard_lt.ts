@@ -3773,6 +3773,14 @@ Vilkaduobės:
         <source>Enable &quot;auto-update started&quot; notification</source>
         <translation>Įjungti &quot;automatinis atnaujinimas pradėtas&quot; pranešimą</translation>
     </message>
+    <message>
+        <source>Height or rows in feed list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in message list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>

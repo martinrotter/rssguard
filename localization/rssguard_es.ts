@@ -3183,16 +3183,16 @@ Login tokens expiration: %2</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>en</translation>
+        <translation>es</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
@@ -3766,6 +3766,14 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
         <translation>Habilitar notificación “actualización automática iniciada“</translation>
+    </message>
+    <message>
+        <source>Height or rows in feed list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in message list (-1 = default height)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

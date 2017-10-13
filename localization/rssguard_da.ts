@@ -3736,6 +3736,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Enable &quot;auto-update started&quot; notification</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Height or rows in feed list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in message list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>

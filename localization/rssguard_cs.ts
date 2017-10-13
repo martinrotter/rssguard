@@ -3771,6 +3771,14 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <source>Enable &quot;auto-update started&quot; notification</source>
         <translation>Povolit notifikace o startu automatického stažení nových zpráv</translation>
     </message>
+    <message>
+        <source>Height or rows in feed list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in message list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>

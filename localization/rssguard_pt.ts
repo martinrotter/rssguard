@@ -3770,6 +3770,14 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>Enable &quot;auto-update started&quot; notification</source>
         <translation>Habilitar notificação &quot;atualização automática iniciada&quot;</translation>
     </message>
+    <message>
+        <source>Height or rows in feed list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in message list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
