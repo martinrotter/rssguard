@@ -97,7 +97,7 @@ isEmpty(PREFIX) {
   }
 
   unix:!mac:!android {
-    PREFIX = $$OUT_PWD/usr
+    PREFIX = $$OUT_PWD/AppDir/usr
   }
 }
 
@@ -620,32 +620,12 @@ win32 {
   QMAKE_EXTRA_TARGETS += seven_zip zip
 }
 
-unix:!mac {
-  seven_zip.target = 7zip
-  seven_zip.depends = install
-  seven_zip.commands = 7za a -t7z "$$TARGET-$$APP_VERSION-$$APP_REVISION-linux.7z" $$shell_quote($$shell_path($$PREFIX/*))
-
-  zip.target = zip
-  zip.depends = install
-  zip.commands = 7za a -tzip "$$TARGET-$$APP_VERSION-$$APP_REVISION-linux.zip" $$shell_quote($$shell_path($$PREFIX/*))
-
-  QMAKE_EXTRA_TARGETS += seven_zip zip
-}
-
 mac {
-  seven_zip.target = 7zip
-  seven_zip.depends = install
-  seven_zip.commands = 7za a -t7z "$$TARGET-$$APP_VERSION-$$APP_REVISION-mac.7z" $$shell_quote($$shell_path($$PREFIX))
-
-  zip.target = zip
-  zip.depends = install
-  zip.commands = 7za a -tzip "$$TARGET-$$APP_VERSION-$$APP_REVISION-mac.zip" $$shell_quote($$shell_path($$PREFIX))
-
   dmg.target = dmg
   dmg.depends = install
   dmg.commands = macdeployqt $$shell_quote($$shell_path($$PREFIX)) -dmg
 
-  QMAKE_EXTRA_TARGETS += seven_zip zip dmg
+  QMAKE_EXTRA_TARGETS += dmg
 }
 
 # Create NSIS installer target on Windows.
@@ -696,11 +676,13 @@ win32 {
 unix:!mac:!android {
   target.path = $$PREFIX/bin
 
-  # Initial feeds.
   desktop_file.files = resources/desktop/$${TARGET}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
-  INSTALLS += target desktop_file
+  desktop_icon.files = resources/graphics/$${TARGET}.png
+  desktop_icon.path = $$quote($$PREFIX/share/pixmaps/)
+
+  INSTALLS += target desktop_file desktop_icon
 }
 
 android {
