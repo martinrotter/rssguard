@@ -79,7 +79,7 @@ void SystemTrayIcon::onActivated(const QSystemTrayIcon::ActivationReason& reason
 }
 
 bool SystemTrayIcon::isSystemTrayAvailable() {
-  return QSystemTrayIcon::isSystemTrayAvailable() && QSystemTrayIcon::supportsMessages();
+  return QSystemTrayIcon::isSystemTrayAvailable();
 }
 
 bool SystemTrayIcon::isSystemTrayActivated() {
