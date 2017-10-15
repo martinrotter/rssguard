@@ -5,10 +5,9 @@ source /opt/qt59/bin/qt59-env.sh
 mkdir rssguard-build && cd rssguard-build
 
 # Build application.
-qmake .. "$qmake_args"
-make lrelease
-qmake .. "$qmake_args"
+qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make
+qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make install
 
 # Obtain linuxdeployqt.
@@ -27,12 +26,18 @@ git clone https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki
 
 set -- R*.AppImage
 imagename="$1"
-imagenamenospace="${imagename// /-}-$(git rev-parse --short HEAD)"
+
+if [ "$USE_WEBENGINE" = true ]; then
+imagenamenospace="rssguard-$(git rev-parse --short HEAD)-linux.AppImage"
+else
+imagenamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-linux.AppImage"
+fi
+
 echo "File to upload: $imagename"
 echo "URL ending: $imagenamenospace"
 
 curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" --silent >> ./build-wiki/Linux-development-builds.md
-echo "\n" >> ./build-wiki/Linux-development-builds.md
+echo "" >> ./build-wiki/Linux-development-builds.md
 
 cd ./build-wiki
 git commit -a -m "New files."

@@ -6,8 +6,8 @@ os:
 - linux
 - osx
 env:
-- qmake_args='USE_WEBENGINE=false'
-- qmake_args='USE_WEBENGINE=true'
+- USE_WEBENGINE=false
+- USE_WEBENGINE=true
 compiler:
 - gcc
 branches:

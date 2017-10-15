@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mkdir rssguard-build && cd rssguard-build
-qmake .. "$qmake_args"
+qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make lrelease
 make
 make install
