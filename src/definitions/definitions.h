@@ -25,6 +25,7 @@
 #define SERVICE_CODE_TT_RSS     "tt-rss"
 #define SERVICE_CODE_OWNCLOUD   "owncloud"
 #define SERVICE_CODE_INOREADER  "inoreader"
+#define SERVICE_CODE_GMAIL      "gmail"
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 

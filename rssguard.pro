@@ -497,7 +497,9 @@ equals(USE_WEBENGINE, true) {
                 src/services/inoreader/gui/formeditinoreaderaccount.h \
                 src/services/inoreader/inoreaderfeed.h \
                 src/network-web/oauth2service.h \
-                src/gui/dialogs/oauthlogin.h
+                src/gui/dialogs/oauthlogin.h \
+                src/services/gmail/definitions.h \
+                src/services/gmail/gmailentrypoint.h
 
   SOURCES +=    src/gui/locationlineedit.cpp \
                 src/gui/webviewer.cpp \
@@ -512,7 +514,8 @@ equals(USE_WEBENGINE, true) {
                 src/services/inoreader/gui/formeditinoreaderaccount.cpp \
                 src/services/inoreader/inoreaderfeed.cpp \
                 src/network-web/oauth2service.cpp \
-                src/gui/dialogs/oauthlogin.cpp
+                src/gui/dialogs/oauthlogin.cpp \
+                src/services/gmail/gmailentrypoint.cpp
 
   # Add AdBlock sources.
   HEADERS +=    src/network-web/adblock/adblockaddsubscriptiondialog.h \

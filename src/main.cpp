@@ -175,58 +175,58 @@ int main(int argc, char* argv[]) {
   qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
 
-  /*
-     OAuth2Service * srv = new OAuth2Service(
-     "https://accounts.google.com/o/oauth2/auth",
-     "https://accounts.google.com/o/oauth2/token",
-     "369069180494-j66bgeciouinec1eem7fhvj6qm0as7q3.apps.googleusercontent.com",
-     "vppQtxrEeBkImiXcjGYl9NxZ",
-     "https://mail.google.com/");
+/*
+   OAuth2Service* srv = new OAuth2Service(
+    "https://accounts.google.com/o/oauth2/auth",
+    "https://accounts.google.com/o/oauth2/token",
+    "369069180494-j66bgeciouinec1eem7fhvj6qm0as7q3.apps.googleusercontent.com",
+    "vppQtxrEeBkImiXcjGYl9NxZ",
+    "https://mail.google.com/");
 
-     srv->setRefreshToken("1/RKE3oohSoTHE54L0IPflvndK-DcI7l0of3lVdLa1Q9Q");
-     QObject::connect(srv, &OAuth2Service::authCodeObtained, [](QString auth_code) {
-     int a = 5;
-     });
-     QObject::connect(srv, &OAuth2Service::authFailed, []() {
-     int a = 5;
-     });
-     QObject::connect(srv, &OAuth2Service::tokensReceived, [srv](QString acc, QString ref, int exp) {
+   srv->setRefreshToken("1/RKE3oohSoTHE54L0IPflvndK-DcI7l0of3lVdLa1Q9Q");
+   QObject::connect(srv, &OAuth2Service::authCodeObtained, [](QString auth_code) {
+    int a = 5;
+   });
+   QObject::connect(srv, &OAuth2Service::authFailed, []() {
+    int a = 5;
+   });
+   QObject::connect(srv, &OAuth2Service::tokensReceived, [srv](QString acc, QString ref, int exp) {
 
-     QHttpMultiPart* multi = new QHttpMultiPart(srv);
-     QHttpPart p1;
-     QHttpPart p2;
+    QHttpMultiPart* multi = new QHttpMultiPart(srv);
+    QHttpPart p1;
+    QHttpPart p2;
 
-     multi->setContentType(QHttpMultiPart::ContentType::MixedType);
-     p1.setRawHeader("Content-Type", "application/http");
-     p2.setRawHeader("Content-Type", "application/http");
-     p1.setBody("GET /gmail/v1/users/me/messages\r\n");
-     p2.setBody("GET /gmail/v1/users/me/labels\r\n");
-     multi->append(p1);
-     multi->append(p2);
-     QNetworkRequest req;
+    multi->setContentType(QHttpMultiPart::ContentType::MixedType);
+    p1.setRawHeader("Content-Type", "application/http");
+    p2.setRawHeader("Content-Type", "application/http");
+    p1.setBody("GET /gmail/v1/users/me/messages\r\n");
+    p2.setBody("GET /gmail/v1/users/me/labels\r\n");
+    multi->append(p1);
+    multi->append(p2);
+    QNetworkRequest req;
 
-     auto bearer = srv->bearer();
-     req.setRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
+    auto bearer = srv->bearer();
+    req.setRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
 
-     req.setUrl(QUrl::fromUserInput("https://www.googleapis.com/batch"));
-     auto* repl = SilentNetworkAccessManager::instance()->post(req, multi);
+    req.setUrl(QUrl::fromUserInput("https://www.googleapis.com/batch"));
+    auto* repl = SilentNetworkAccessManager::instance()->post(req, multi);
 
-     //req.setUrl(QUrl::fromUserInput("https://www.googleapis.com/gmail/v1/users/me/labels"));
-     //auto* repl = SilentNetworkAccessManager::instance()->get(req);
+    //req.setUrl(QUrl::fromUserInput("https://www.googleapis.com/gmail/v1/users/me/labels"));
+    //auto* repl = SilentNetworkAccessManager::instance()->get(req);
 
-     QObject::connect(repl, &QNetworkReply::finished, [repl]() {
+    QObject::connect(repl, &QNetworkReply::finished, [repl]() {
       auto resp = repl->readAll();
       auto a = 8;
 
       IOFactory::writeTextFile("b.html", resp);
-     });
+    });
 
-     int a = 5;
-     });
-     QObject::connect(srv, &OAuth2Service::tokensRetrieveError, [](QString err, QString desc) {
-     int a = 5;
-     });
-     srv->login(); */
+    int a = 5;
+   });
+   QObject::connect(srv, &OAuth2Service::tokensRetrieveError, [](QString err, QString desc) {
+    int a = 5;
+   });
+   srv->login();*/
 
   // Enter global event loop.
   return Application::exec();

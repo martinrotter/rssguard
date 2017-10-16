@@ -289,9 +289,10 @@ void OAuth2Service::killRefreshTimer() {
 
 void OAuth2Service::retrieveAuthCode() {
   QString auth_url = m_authUrl + QString("?client_id=%1&scope=%2&"
-                                         "redirect_uri=%3&response_type=code&state=abcdef").arg(m_clientId,
-                                                                                                m_scope,
-                                                                                                m_redirectUrl);
+                                         "redirect_uri=%3&response_type=code&state=abcdef&"
+                                         "prompt=consent&access_type=offline").arg(m_clientId,
+                                                                                   m_scope,
+                                                                                   m_redirectUrl);
   OAuthLogin login_page(qApp->mainFormWidget());
 
   connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::authCodeObtained);
