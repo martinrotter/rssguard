@@ -15,9 +15,9 @@ set -- *.dmg
 dmgname="$1"
 
 if [ "$USE_WEBENGINE" = true ]; then
-  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-mac.AppImage"
+  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-mac.dmg"
 else
-  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-mac.AppImage"
+  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-mac.dmg"
 fi
 
 echo "File to upload: $dmgname"
