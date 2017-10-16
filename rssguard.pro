@@ -181,16 +181,7 @@ win32 {
   }
 }
 
-DISTFILES += resources/scripts/uncrustify/uncrustify.cfg \
-    resources/android/AndroidManifest.xml \
-    resources/android/gradle/wrapper/gradle-wrapper.jar \
-    resources/android/gradlew \
-    resources/android/res/values/libs.xml \
-    resources/android/build.gradle \
-    resources/android/gradle/wrapper/gradle-wrapper.properties \
-    resources/android/gradlew.bat
-
-#ANDROID_PACKAGE_SOURCE_DIR = $$PWD/resources/android
+DISTFILES +=    resources/scripts/uncrustify/uncrustify.cfg
 
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
@@ -463,7 +454,9 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/treeviewcolumnsmenu.cpp \
             src/miscellaneous/externaltool.cpp
 
-OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
+mac {
+  OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
+}
 
 FORMS +=    src/gui/toolbareditor.ui \
             src/network-web/downloaditem.ui \

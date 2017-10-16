@@ -3775,11 +3775,11 @@ Vilkaduobės:
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Eilučių aukštis kanalų sąraše (-1 = numatytasis aukštis)</translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Eilučių aukštis žinučių sąraše (-1 = numatytasis aukštis)</translation>
     </message>
 </context>
 <context>

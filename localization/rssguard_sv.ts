@@ -3770,11 +3770,11 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Höjd eller rader i flödeslistan (-1 = standardhöjd)</translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Höjd eller rader i meddelandelistan (-1 = standardhöjd)</translation>
     </message>
 </context>
 <context>

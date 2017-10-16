@@ -3772,11 +3772,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Altura ou linhas na lista de feeds (-1: altura padrão)</translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Altura ou linhas na lista de mensagens (-1: altura padrão)</translation>
     </message>
 </context>
 <context>

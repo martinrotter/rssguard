@@ -731,7 +731,7 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
                qPrintable(database.lastError().text()));
       }
       else {
-        qDebug("In-memory SQLite database connection seems to be established.");
+        qDebug("In-memory SQLite database connection '%s' seems to be established.", qPrintable(connection_name));
       }
 
       return database;
