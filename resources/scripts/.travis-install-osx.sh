@@ -1,51 +1,34 @@
 #!/bin/sh
 
+# Build application.
 mkdir rssguard-build && cd rssguard-build
 qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
-make lrelease
 make
+qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make install
 
-#rm -rfv "RSS Guard.app/Contents/Frameworks"
-#ls "RSS Guard.app/Contents"
-
+# Make DMG image.
 make dmg
-make zip
-
-#hdiutil create -fs HFS+ -srcfolder "./RSS Guard.app/" -volname "RSS Guard" rssguard.dmg
-#make dmg
-
-ls -lha
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
 
-cd "RSS Guard.app"
-ls -lha
+set -- *.dmg
+dmgname="$1"
 
-cd ..
+if [ "$USE_WEBENGINE" = true ]; then
+  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-mac.AppImage"
+else
+  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-mac.AppImage"
+fi
+
+echo "File to upload: $dmgname"
+echo "URL ending: $dmgnamenospace"
 
 git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
 git clone -q --depth=1 https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki.git ./build-wiki
 
-set -- *.dmg
-dmgname="$1"
-dmgnamenospace="${dmgname// /-}"
-echo "DMGNAME IS: $dmgname"
-echo "DMGNAME NO SPACE IS: $dmgnamenospace"
-
 curl --upload-file "./$dmgname" "https://transfer.sh/$dmgnamenospace" --silent >> ./build-wiki/Mac-OS-X-development-builds.md
 echo "\n" >> ./build-wiki/Mac-OS-X-development-builds.md
-
-set -- *.zip
-zipname="$1"
-zipnamenospace="${zipname// /-}"
-echo "ZIPNAME IS: $zipname"
-echo "ZIPNAME NO SPACE IS: $zipnamenospace"
-
-curl --upload-file "./$zipname" "https://transfer.sh/$zipnamenospace" --silent >> ./build-wiki/Mac-OS-X-development-builds.md
-echo "\n" >> ./build-wiki/Mac-OS-X-development-builds.md
-
-cat ./build-wiki/Mac-OS-X-development-builds.md
 
 cd ./build-wiki
 git add *.*

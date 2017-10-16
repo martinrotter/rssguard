@@ -28,16 +28,16 @@ set -- R*.AppImage
 imagename="$1"
 
 if [ "$USE_WEBENGINE" = true ]; then
-imagenamenospace="rssguard-$(git rev-parse --short HEAD)-linux.AppImage"
+  imagenamenospace="rssguard-$(git rev-parse --short HEAD)-linux.AppImage"
 else
-imagenamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-linux.AppImage"
+  imagenamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-linux.AppImage"
 fi
 
 echo "File to upload: $imagename"
 echo "URL ending: $imagenamenospace"
 
 curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" --silent >> ./build-wiki/Linux-development-builds.md
-echo "" >> ./build-wiki/Linux-development-builds.md
+echo "\n" >> ./build-wiki/Linux-development-builds.md
 
 cd ./build-wiki
 git commit -a -m "New files."

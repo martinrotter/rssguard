@@ -44,9 +44,8 @@
 #
 #
 # Other information:
-#   - supports Windows, Linux, Mac OS X,
-#   - Qt 5.6.0 and higher is required,
-#   - Qt 5.9.0 and hiher is recommended,
+#   - supports Windows, Linux, Mac OS X, Android,
+#   - Qt 5.8.0 or higher is required,
 #   - C++ 11 is required.
 #
 # Authors and contributors:
@@ -70,7 +69,7 @@ APP_LOW_NAME                  = "rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2017 $$APP_AUTHOR"
-APP_VERSION                   = "3.5.1"
+APP_VERSION                   = "3.5.2"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
 APP_URL                       = "https://github.com/martinrotter/rssguard"
