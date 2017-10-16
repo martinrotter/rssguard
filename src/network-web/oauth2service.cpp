@@ -170,6 +170,8 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
 
   qDebug() << "Token response:" << json_document.toJson();
 
+  IOFactory::writeTextFile("c.json", json_document.toJson());
+
   if (root_obj.keys().contains("error")) {
     QString error = root_obj.value("error").toString();
     QString error_description = root_obj.value("error_description").toString();
@@ -183,7 +185,12 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
 
     setTokensExpireIn(QDateTime::currentDateTime().addSecs(expires));
     setAccessToken(root_obj.value(QL1S("access_token")).toString());
-    setRefreshToken(root_obj.value(QL1S("refresh_token")).toString());
+
+    const QString refresh_token = root_obj.value(QL1S("refresh_token")).toString();
+
+    if (!refresh_token.isEmpty()) {
+      setRefreshToken(refresh_token);
+    }
 
     qDebug() << "Obtained refresh token" << refreshToken() << "- expires on date/time" << tokensExpireIn();
 
