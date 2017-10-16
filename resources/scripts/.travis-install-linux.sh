@@ -37,7 +37,7 @@ echo "File to upload: $imagename"
 echo "URL ending: $imagenamenospace"
 
 curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" --silent >> ./build-wiki/Linux-development-builds.md
-echo "\n" >> ./build-wiki/Linux-development-builds.md
+echo "" >> ./build-wiki/Linux-development-builds.md
 
 cd ./build-wiki
 git commit -a -m "New files."
