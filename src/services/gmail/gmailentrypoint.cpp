@@ -23,15 +23,17 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/definitions.h"
+#include "services/gmail/gmailserviceroot.h"
+#include "services/gmail/gui/formeditgmailaccount.h"
 
 ServiceRoot* GmailEntryPoint::createNewRoot() const {
-  return nullptr;
+  FormEditGmailAccount form_acc(qApp->mainFormWidget());
+
+  return form_acc.execForCreate();
 }
 
 QList<ServiceRoot*> GmailEntryPoint::initializeSubtree() const {
   QSqlDatabase database = qApp->database()->connection(QSL("GmailEntryPoint"), DatabaseFactory::FromSettings);
-
-  return QList<ServiceRoot*>();
 
   return DatabaseQueries::getGmailAccounts(database);
 }
