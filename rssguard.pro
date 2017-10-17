@@ -501,7 +501,10 @@ equals(USE_WEBENGINE, true) {
                 src/network-web/oauth2service.h \
                 src/gui/dialogs/oauthlogin.h \
                 src/services/gmail/definitions.h \
-                src/services/gmail/gmailentrypoint.h
+                src/services/gmail/gmailentrypoint.h \
+                src/services/gmail/gmailserviceroot.h \
+                src/services/gmail/gmailfeed.h \
+                src/services/gmail/network/gmailnetworkfactory.h
 
   SOURCES +=    src/gui/locationlineedit.cpp \
                 src/gui/webviewer.cpp \
@@ -517,7 +520,10 @@ equals(USE_WEBENGINE, true) {
                 src/services/inoreader/inoreaderfeed.cpp \
                 src/network-web/oauth2service.cpp \
                 src/gui/dialogs/oauthlogin.cpp \
-                src/services/gmail/gmailentrypoint.cpp
+                src/services/gmail/gmailentrypoint.cpp \
+                src/services/gmail/gmailserviceroot.cpp \
+                src/services/gmail/gmailfeed.cpp \
+                src/services/gmail/network/gmailnetworkfactory.cpp
 
   # Add AdBlock sources.
   HEADERS +=    src/network-web/adblock/adblockaddsubscriptiondialog.h \

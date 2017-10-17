@@ -16,12 +16,22 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef GMAIL_DEFINITIONS_H
-#define GMAIL_DEFINITIONS_H
+#ifndef GMAILFEED_H
+#define GMAILFEED_H
 
-#define GMAIL_OAUTH_AUTH_URL      "https://accounts.google.com/o/oauth2/auth"
-#define GMAIL_OAUTH_TOKEN_URL     "https://accounts.google.com/o/oauth2/token"
-#define GMAIL_OAUTH_SCOPE         "https://mail.google.com/"
-#define GMAIL_DEFAULT_BATCH_SIZE  100
+#include "services/abstract/feed.h"
 
-#endif // GMAIL_DEFINITIONS_H
+class GmailServiceRoot;
+
+class GmailFeed : public Feed {
+  public:
+    explicit GmailFeed(RootItem* parent = nullptr);
+    explicit GmailFeed(const QSqlRecord& record);
+
+    GmailServiceRoot* serviceRoot() const;
+
+  private:
+    QList<Message> obtainNewMessages(bool* error_during_obtaining);
+};
+
+#endif // GMAILFEED_H
