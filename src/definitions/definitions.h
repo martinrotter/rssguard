@@ -29,6 +29,7 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
+#define LOCALHOST_ADDRESS                     "http://localhost"
 #define ADBLOCK_ADBLOCKED_PAGE                "adblockedpage"
 #define ADBLOCK_HOWTO_FILTERS                 "http://adblockplus.org/en/filters"
 #define ADBLOCK_UPDATE_DAYS_INTERVAL          5

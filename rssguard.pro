@@ -504,7 +504,8 @@ equals(USE_WEBENGINE, true) {
                 src/services/gmail/gmailentrypoint.h \
                 src/services/gmail/gmailserviceroot.h \
                 src/services/gmail/gmailfeed.h \
-                src/services/gmail/network/gmailnetworkfactory.h
+                src/services/gmail/network/gmailnetworkfactory.h \
+                src/services/gmail/gui/formeditgmailaccount.h
 
   SOURCES +=    src/gui/locationlineedit.cpp \
                 src/gui/webviewer.cpp \
@@ -523,7 +524,8 @@ equals(USE_WEBENGINE, true) {
                 src/services/gmail/gmailentrypoint.cpp \
                 src/services/gmail/gmailserviceroot.cpp \
                 src/services/gmail/gmailfeed.cpp \
-                src/services/gmail/network/gmailnetworkfactory.cpp
+                src/services/gmail/network/gmailnetworkfactory.cpp \
+                src/services/gmail/gui/formeditgmailaccount.cpp
 
   # Add AdBlock sources.
   HEADERS +=    src/network-web/adblock/adblockaddsubscriptiondialog.h \
@@ -558,7 +560,8 @@ equals(USE_WEBENGINE, true) {
   FORMS +=      src/network-web/adblock/adblockaddsubscriptiondialog.ui \
                 src/network-web/adblock/adblockdialog.ui \
                 src/services/inoreader/gui/formeditinoreaderaccount.ui \
-                src/gui/dialogs/oauthlogin.ui
+                src/gui/dialogs/oauthlogin.ui \
+                src/services/gmail/gui/formeditgmailaccount.ui
 }
 else {
   HEADERS +=    src/gui/messagepreviewer.h \

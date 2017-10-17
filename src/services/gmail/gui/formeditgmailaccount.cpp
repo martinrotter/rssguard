@@ -16,22 +16,22 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "services/inoreader/gui/formeditinoreaderaccount.h"
+#include "services/gmail/gui/formeditgmailaccount.h"
 
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
-#include "services/inoreader/definitions.h"
-#include "services/inoreader/inoreaderserviceroot.h"
+#include "services/gmail/definitions.h"
+#include "services/gmail/gmailserviceroot.h"
 
-FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(parent),
-  m_oauth(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
-                            INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY, INOREADER_OAUTH_SCOPE)), m_editableRoot(nullptr) {
+FormEditGmailAccount::FormEditGmailAccount(QWidget* parent) : QDialog(parent),
+  m_oauth(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
+                            QString(), QString(), GMAIL_OAUTH_SCOPE)), m_editableRoot(nullptr) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblAuthInfo, true);
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("inoreader")));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("gmail")));
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
@@ -46,25 +46,25 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_btnTestSetup);
   setTabOrder(m_ui.m_btnTestSetup, m_ui.m_buttonBox);
 
-  connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkOAuthValue);
-  connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkOAuthValue);
-  connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkOAuthValue);
-  connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditInoreaderAccount::checkUsername);
-  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
-  connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditInoreaderAccount::onClickedOk);
-  connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditInoreaderAccount::onClickedCancel);
+  connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditGmailAccount::checkOAuthValue);
+  connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditGmailAccount::checkOAuthValue);
+  connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditGmailAccount::checkOAuthValue);
+  connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FormEditGmailAccount::checkUsername);
+  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditGmailAccount::testSetup);
+  connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditGmailAccount::onClickedOk);
+  connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditGmailAccount::onClickedCancel);
 
-  m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMinimum(INOREADER_MIN_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMaximum(INOREADER_MAX_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setValue(GMAIL_DEFAULT_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setMinimum(GMAIL_MIN_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setMaximum(GMAIL_MAX_BATCH_SIZE);
 
   checkUsername(m_ui.m_txtUsername->lineEdit()->text());
   hookNetwork();
 }
 
-FormEditInoreaderAccount::~FormEditInoreaderAccount() {}
+FormEditGmailAccount::~FormEditGmailAccount() {}
 
-void FormEditInoreaderAccount::testSetup() {
+void FormEditGmailAccount::testSetup() {
   if (m_oauth->clientId() != m_ui.m_txtAppId->lineEdit()->text() ||
       m_oauth->clientSecret() != m_ui.m_txtAppKey->lineEdit()->text() ||
       m_oauth->redirectUrl() != m_ui.m_txtRedirectUrl->lineEdit()->text()) {
@@ -79,17 +79,18 @@ void FormEditInoreaderAccount::testSetup() {
   if (m_oauth->login()) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("You are already logged in."),
-                                    tr("Access granted."));
+                                    tr("Access granted. \
+  "));
   }
 }
 
-void FormEditInoreaderAccount::onClickedOk() {
+void FormEditGmailAccount::onClickedOk() {
   bool editing_account = true;
 
   if (m_editableRoot == nullptr) {
     // We want to confirm newly created account.
     // So save new account into DB, setup its properties.
-    m_editableRoot = new InoreaderServiceRoot(nullptr);
+    m_editableRoot = new GmailServiceRoot(nullptr);
     editing_account = false;
   }
 
@@ -113,50 +114,52 @@ void FormEditInoreaderAccount::onClickedOk() {
   }
 }
 
-void FormEditInoreaderAccount::onClickedCancel() {
+void FormEditGmailAccount::onClickedCancel() {
   reject();
 }
 
-void FormEditInoreaderAccount::checkUsername(const QString& username) {
+void FormEditGmailAccount::checkUsername(const QString& username) {
   if (username.isEmpty()) {
-    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("No username entered."));
+    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("No username entered. \
+  "));
   }
   else {
-    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some username entered."));
+    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some username entered. \
+  "));
   }
 }
 
-void FormEditInoreaderAccount::onAuthFailed() {
+void FormEditGmailAccount::onAuthFailed() {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                   tr("You did not grant access."),
                                   tr("There was error during testing."));
 }
 
-void FormEditInoreaderAccount::onAuthError(const QString& error, const QString& detailed_description) {
+void FormEditGmailAccount::onAuthError(const QString& error, const QString& detailed_description) {
   Q_UNUSED(error)
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                  tr("There is error. %1").arg(detailed_description),
+                                  tr("There is error. %1 ").arg(detailed_description),
                                   tr("There was error during testing."));
 }
 
-void FormEditInoreaderAccount::onAuthGranted() {
+void FormEditGmailAccount::onAuthGranted() {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                  tr("Tested successfully. You may be prompted to login once more."),
+                                  tr("Tested successfully.You may be prompted to login once more."),
                                   tr("Your access was approved."));
 }
 
-void FormEditInoreaderAccount::hookNetwork() {
-  connect(m_oauth, &OAuth2Service::tokensReceived, this, &FormEditInoreaderAccount::onAuthGranted);
-  connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FormEditInoreaderAccount::onAuthError);
-  connect(m_oauth, &OAuth2Service::authFailed, this, &FormEditInoreaderAccount::onAuthFailed);
+void FormEditGmailAccount::hookNetwork() {
+  connect(m_oauth, &OAuth2Service::tokensReceived, this, &FormEditGmailAccount::onAuthGranted);
+  connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FormEditGmailAccount::onAuthError);
+  connect(m_oauth, &OAuth2Service::authFailed, this, &FormEditGmailAccount::onAuthFailed);
 }
 
-InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
-  setWindowTitle(tr("Add new Inoreader account"));
+GmailServiceRoot* FormEditGmailAccount::execForCreate() {
+  setWindowTitle(tr("Add new Gmail account"));
 
-  m_ui.m_txtAppId->lineEdit()->setText(INOREADER_OAUTH_CLI_ID);
-  m_ui.m_txtAppKey->lineEdit()->setText(INOREADER_OAUTH_CLI_KEY);
+  m_ui.m_txtAppId->lineEdit()->clear();
+  m_ui.m_txtAppKey->lineEdit()->clear();
   m_ui.m_txtRedirectUrl->lineEdit()->setText(LOCALHOST_ADDRESS);
 
   exec();
@@ -164,8 +167,8 @@ InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
   return m_editableRoot;
 }
 
-void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) {
-  setWindowTitle(tr("Edit existing Inoreader account"));
+void FormEditGmailAccount::execForEdit(GmailServiceRoot* existing_root) {
+  setWindowTitle(tr("Edit existing Gmail account"));
   m_editableRoot = existing_root;
 
   // We copy settings from existing OAuth to our testing OAuth.
@@ -187,7 +190,7 @@ void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) 
   exec();
 }
 
-void FormEditInoreaderAccount::checkOAuthValue(const QString& value) {
+void FormEditGmailAccount::checkOAuthValue(const QString& value) {
   LineEditWithStatus* line_edit = qobject_cast<LineEditWithStatus*>(sender()->parent());
 
   if (line_edit != nullptr) {

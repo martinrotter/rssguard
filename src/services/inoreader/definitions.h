@@ -23,7 +23,6 @@
 #define INOREADER_OAUTH_TOKEN_URL       "https://www.inoreader.com/oauth2/token"
 #define INOREADER_OAUTH_AUTH_URL        "https://www.inoreader.com/oauth2/auth"
 
-#define INOREADER_OAUTH_CLI_REDIRECT    "http://localhost"
 #define INOREADER_OAUTH_CLI_ID          "1000000604"
 #define INOREADER_OAUTH_CLI_KEY         "gsStoZ3aAoQJCgQxoFSuXkWI7Sly87yK"
 

@@ -55,7 +55,7 @@ OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId
                              QString clientSecret, QString scope, QObject* parent)
   : QObject(parent), m_timerId(-1), m_tokensExpireIn(QDateTime()) {
 
-  m_redirectUrl = QSL(INOREADER_OAUTH_CLI_REDIRECT);
+  m_redirectUrl = QSL(LOCALHOST_ADDRESS);
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(tokenUrl);
   m_authUrl = authUrl;
