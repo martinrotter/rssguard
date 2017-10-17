@@ -55,6 +55,18 @@ CREATE TABLE IF NOT EXISTS InoreaderAccounts (
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );
 -- !
+CREATE TABLE IF NOT EXISTS GmailAccounts (
+  id              INTEGER,
+  username        TEXT        NOT NULL,
+  app_id          TEXT,
+  app_key         TEXT,
+  redirect_url    TEXT,
+  refresh_token   TEXT,
+  msg_limit       INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
+  
+  FOREIGN KEY (id) REFERENCES Accounts (id)
+);
+-- !
 DROP TABLE IF EXISTS Categories;
 -- !
 CREATE TABLE IF NOT EXISTS Categories (

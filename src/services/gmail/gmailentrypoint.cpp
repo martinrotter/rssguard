@@ -33,7 +33,7 @@ QList<ServiceRoot*> GmailEntryPoint::initializeSubtree() const {
 
   return QList<ServiceRoot*>();
 
-  //return DatabaseQueries::getInoreaderAccounts(database);
+  return DatabaseQueries::getGmailAccounts(database);
 }
 
 bool GmailEntryPoint::isSingleInstanceService() const {

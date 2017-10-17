@@ -78,8 +78,12 @@ class DatabaseQueries {
                              int auto_update_interval);
     static Assignment getCategories(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
-    // Inoreader account.
 #if defined(USE_WEBENGINE)
+
+    // Gmail account.
+    static QList<ServiceRoot*> getGmailAccounts(QSqlDatabase db, bool* ok = nullptr);
+
+    // Inoreader account.
     static bool deleteInoreaderAccount(QSqlDatabase db, int account_id);
     static Assignment getInoreaderFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
     static bool storeNewInoreaderTokens(QSqlDatabase db, const QString& refresh_token, int account_id);

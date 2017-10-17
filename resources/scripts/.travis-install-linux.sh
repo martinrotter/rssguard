@@ -28,9 +28,9 @@ set -- R*.AppImage
 imagename="$1"
 
 if [ "$USE_WEBENGINE" = true ]; then
-  imagenamenospace="rssguard-$(git rev-parse --short HEAD)-linux.AppImage"
+  imagenamenospace="rssguard-$(git rev-parse --short HEAD)-linux64.AppImage"
 else
-  imagenamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-linux.AppImage"
+  imagenamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-linux64.AppImage"
 fi
 
 echo "File to upload: $imagename"

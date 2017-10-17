@@ -476,7 +476,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   // The two message are the "same" if:
   //   1) they belong to the same feed AND,
   //   2) they have same URL AND,
-  //   3) they have same AUTHOR.
+  //   3) they have same AUTHOR AND,
+  //   4) they have same title.
   query_select_with_url.setForwardOnly(true);
   query_select_with_url.prepare("SELECT id, date_created, is_read, is_important, contents FROM Messages "
                                 "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
@@ -527,7 +528,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     QString contents_existing_message;
 
     if (message.m_customId.isEmpty()) {
-      // We need to recognize existing messages according URL & AUTHOR.
+      // We need to recognize existing messages according URL & AUTHOR & TITLE.
       // NOTE: This particularly concerns messages from standard account.
       query_select_with_url.bindValue(QSL(":feed"), feed_custom_id);
       query_select_with_url.bindValue(QSL(":title"), message.m_title);
@@ -1491,6 +1492,42 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
 }
 
 #if defined(USE_WEBENGINE)
+QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(QSqlDatabase db, bool* ok) {
+  QSqlQuery query(db);
+
+  QList<ServiceRoot*> roots;
+
+  if (query.exec("SELECT * FROM GmailAccounts;")) {
+    while (query.next()) {
+      /*GmailServiceRoot* root = new GmailServiceRoot(nullptr);
+
+         root->setId(query.value(0).toInt());
+         root->setAccountId(query.value(0).toInt());
+         root->network()->setUsername(query.value(1).toString());
+         root->network()->oauth()->setClientId(query.value(2).toString());
+         root->network()->oauth()->setClientSecret(query.value(3).toString());
+         root->network()->oauth()->setRedirectUrl(query.value(4).toString());
+         root->network()->oauth()->setRefreshToken(query.value(5).toString());
+         root->network()->setBatchSize(query.value(6).toInt());
+         root->updateTitle();
+         roots.append(root);*/
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    qWarning("Gmail: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return roots;
+}
+
 bool DatabaseQueries::deleteInoreaderAccount(QSqlDatabase db, int account_id) {
   QSqlQuery q(db);
 

@@ -175,22 +175,21 @@ int main(int argc, char* argv[]) {
   qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
 
-/*
-   OAuth2Service* srv = new OAuth2Service(
+  OAuth2Service* srv = new OAuth2Service(
     "https://accounts.google.com/o/oauth2/auth",
     "https://accounts.google.com/o/oauth2/token",
     "369069180494-j66bgeciouinec1eem7fhvj6qm0as7q3.apps.googleusercontent.com",
     "vppQtxrEeBkImiXcjGYl9NxZ",
     "https://mail.google.com/");
 
-   srv->setRefreshToken("1/RKE3oohSoTHE54L0IPflvndK-DcI7l0of3lVdLa1Q9Q");
-   QObject::connect(srv, &OAuth2Service::authCodeObtained, [](QString auth_code) {
+  srv->setRefreshToken("1/RKE3oohSoTHE54L0IPflvndK-DcI7l0of3lVdLa1Q9Q");
+  QObject::connect(srv, &OAuth2Service::authCodeObtained, [](QString auth_code) {
     int a = 5;
-   });
-   QObject::connect(srv, &OAuth2Service::authFailed, []() {
+  });
+  QObject::connect(srv, &OAuth2Service::authFailed, []() {
     int a = 5;
-   });
-   QObject::connect(srv, &OAuth2Service::tokensReceived, [srv](QString acc, QString ref, int exp) {
+  });
+  QObject::connect(srv, &OAuth2Service::tokensReceived, [srv](QString acc, QString ref, int exp) {
 
     QHttpMultiPart* multi = new QHttpMultiPart(srv);
     QHttpPart p1;
@@ -222,11 +221,11 @@ int main(int argc, char* argv[]) {
     });
 
     int a = 5;
-   });
-   QObject::connect(srv, &OAuth2Service::tokensRetrieveError, [](QString err, QString desc) {
+  });
+  QObject::connect(srv, &OAuth2Service::tokensRetrieveError, [](QString err, QString desc) {
     int a = 5;
-   });
-   srv->login();*/
+  });
+  srv->login();
 
   // Enter global event loop.
   return Application::exec();

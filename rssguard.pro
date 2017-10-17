@@ -208,7 +208,9 @@ win32 {
   QMAKE_TARGET_PRODUCT = $$APP_NAME
 }
 
-RESOURCES += resources/rssguard.qrc
+CONFIG *= resources_big
+RESOURCES +=    resources/sql.qrc \
+                resources/rssguard.qrc
 
 HEADERS +=  src/core/feeddownloader.h \
             src/core/feedsmodel.h \
