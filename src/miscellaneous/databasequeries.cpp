@@ -22,7 +22,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
-#include "services/inoreader/definitions.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
@@ -36,6 +35,9 @@
 
 #if defined(USE_WEBENGINE)
 #include "network-web/oauth2service.h"
+#include "services/gmail/gmailserviceroot.h"
+#include "services/gmail/network/gmailnetworkfactory.h"
+#include "services/inoreader/definitions.h"
 #include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/inoreaderserviceroot.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
@@ -1499,18 +1501,18 @@ QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(QSqlDatabase db, bool* ok)
 
   if (query.exec("SELECT * FROM GmailAccounts;")) {
     while (query.next()) {
-      /*GmailServiceRoot* root = new GmailServiceRoot(nullptr);
+      GmailServiceRoot* root = new GmailServiceRoot(nullptr);
 
-         root->setId(query.value(0).toInt());
-         root->setAccountId(query.value(0).toInt());
-         root->network()->setUsername(query.value(1).toString());
-         root->network()->oauth()->setClientId(query.value(2).toString());
-         root->network()->oauth()->setClientSecret(query.value(3).toString());
-         root->network()->oauth()->setRedirectUrl(query.value(4).toString());
-         root->network()->oauth()->setRefreshToken(query.value(5).toString());
-         root->network()->setBatchSize(query.value(6).toInt());
-         root->updateTitle();
-         roots.append(root);*/
+      root->setId(query.value(0).toInt());
+      root->setAccountId(query.value(0).toInt());
+      root->network()->setUsername(query.value(1).toString());
+      root->network()->oauth()->setClientId(query.value(2).toString());
+      root->network()->oauth()->setClientSecret(query.value(3).toString());
+      root->network()->oauth()->setRedirectUrl(query.value(4).toString());
+      root->network()->oauth()->setRefreshToken(query.value(5).toString());
+      root->network()->setBatchSize(query.value(6).toInt());
+      root->updateTitle();
+      roots.append(root);
     }
 
     if (ok != nullptr) {

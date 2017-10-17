@@ -17,8 +17,8 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef INOREADERSERVICEROOT_H
-#define INOREADERSERVICEROOT_H
+#ifndef GMAILSERVICEROOT_H
+#define GMAILSERVICEROOT_H
 
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
@@ -75,4 +75,4 @@ inline GmailNetworkFactory* GmailServiceRoot::network() const {
   return m_network;
 }
 
-#endif // INOREADERSERVICEROOT_H
+#endif // GMAILSERVICEROOT_H

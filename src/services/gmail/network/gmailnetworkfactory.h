@@ -16,8 +16,8 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef INOREADERNETWORKFACTORY_H
-#define INOREADERNETWORKFACTORY_H
+#ifndef GMAILNETWORKFACTORY_H
+#define GMAILNETWORKFACTORY_H
 
 #include <QObject>
 
@@ -75,4 +75,4 @@ class GmailNetworkFactory : public QObject {
     OAuth2Service* m_oauth2;
 };
 
-#endif // INOREADERNETWORKFACTORY_H
+#endif // GMAILNETWORKFACTORY_H
