@@ -15,23 +15,15 @@
 ​  <screenshots>
 ​    <screenshot type="default">
 ​      <caption>Linux version</caption>
-​      <image>http://www.hughsie.com/en_US/main.png</image>
+​      <image>https://github.com/martinrotter/rssguard/blob/gmail-plugin/resources/screenshots/screenshot-linux.png?raw=true</image>
 ​    </screenshot>
     <screenshot>
 ​      <caption>Windows version</caption>
-​      <image>http://www.hughsie.com/en_US/main.png</image>
+​      <image>https://github.com/martinrotter/rssguard/blob/gmail-plugin/resources/screenshots/screenshot-windows.png?raw=true</image>
 ​    </screenshot>
 ​  </screenshots>
-​  <url type="homepage">http://www.gnome.org/projects/en_US/gnome-power-manager</url>
-​  <project_group>GNOME</project_group>
+​  <url type="homepage">https://github.com/martinrotter/rssguard</url>
 ​  <provides>
-​    <binary>gnome-power-statistics</binary>
+​    <binary>rssguard</binary>
 ​  </provides>
-​  <releases>
-​    <release version="3.12.2" date="2013-04-12">
-​      <description>
-​        <p>Fixes issues X, Y and Z</p>
-​      </description>
-​    </release>
-​  </releases>
 ​</component>
