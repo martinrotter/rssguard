@@ -10,9 +10,6 @@ env:
 - USE_WEBENGINE=true
 compiler:
 - gcc
-branches:
-  only:
-  - master
 git:
   submodules: false
   depth: 40
