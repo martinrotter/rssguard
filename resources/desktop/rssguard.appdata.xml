@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+​<!-- Copyright 2017 Martin Rotter <rotter.martinos@gmail.com> -->
+​<component type="desktop-application">
+​  <id>com.github.rssguard</id>
+​  <metadata_license>GPL-3.0</metadata_license>
+​  <project_license>GPL-3.0</project_license>
+​  <name>RSS Guard </name>
+​  <summary>Simple (yet powerful) feed reader</summary>
+​  <description>
+​    <p>
+​      RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the Qt library
+​    </p>
+​  </description>
+​  <launchable type="desktop-id">rssguard.desktop</launchable>
+​  <screenshots>
+​    <screenshot type="default">
+​      <caption>Linux version</caption>
+​      <image>https://github.com/martinrotter/rssguard/blob/gmail-plugin/resources/screenshots/screenshot-linux.png?raw=true</image>
+​    </screenshot>
+    <screenshot>
+​      <caption>Windows version</caption>
+​      <image>https://github.com/martinrotter/rssguard/blob/gmail-plugin/resources/screenshots/screenshot-windows.png?raw=true</image>
+​    </screenshot>
+​  </screenshots>
+​  <url type="homepage">https://github.com/martinrotter/rssguard</url>
+​  <provides>
+​    <binary>rssguard</binary>
+​  </provides>
+​</component>
