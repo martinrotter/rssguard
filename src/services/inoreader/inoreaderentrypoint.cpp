@@ -27,10 +27,19 @@
 #include "services/inoreader/inoreaderserviceroot.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
+#include <QMessageBox>
+
 ServiceRoot* InoreaderEntryPoint::createNewRoot() const {
+#if defined(USE_WEBENGINE)
   FormEditInoreaderAccount form_acc(qApp->mainFormWidget());
 
   return form_acc.execForCreate();
+#else
+  QMessageBox::warning(qApp->mainFormWidget(),
+                       QObject::tr("Not supported"),
+                       QObject::tr("This plugin is not supported in NonWebEngine variant of this program."));
+  return nullptr;
+#endif
 }
 
 QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {

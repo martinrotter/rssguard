@@ -26,10 +26,19 @@
 #include "services/gmail/gmailserviceroot.h"
 #include "services/gmail/gui/formeditgmailaccount.h"
 
+#include <QMessageBox>
+
 ServiceRoot* GmailEntryPoint::createNewRoot() const {
+#if defined(USE_WEBENGINE)
   FormEditGmailAccount form_acc(qApp->mainFormWidget());
 
   return form_acc.execForCreate();
+#else
+  QMessageBox::warning(qApp->mainFormWidget(),
+                       QObject::tr("Not supported"),
+                       QObject::tr("This plugin is not supported in NonWebEngine variant of this program."));
+  return nullptr;
+#endif
 }
 
 QList<ServiceRoot*> GmailEntryPoint::initializeSubtree() const {
@@ -43,7 +52,7 @@ bool GmailEntryPoint::isSingleInstanceService() const {
 }
 
 QString GmailEntryPoint::name() const {
-  return QSL("Gmail (not yet implemented)");
+  return QSL("Gmail");
 }
 
 QString GmailEntryPoint::code() const {

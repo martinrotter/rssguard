@@ -76,7 +76,7 @@ void GmailNetworkFactory::initializeOauth() {
       DatabaseQueries::storeNewInoreaderTokens(database, refresh_token, m_service->accountId());
 
       qApp->showGuiMessage(tr("Logged in successfully"),
-                           tr("Your login to Inoreader was authorized."),
+                           tr("Your login to Gmail was authorized."),
                            QSystemTrayIcon::MessageIcon::Information);
     }
   });
@@ -86,7 +86,7 @@ void GmailNetworkFactory::setUsername(const QString& username) {
   m_username = username;
 }
 
-RootItem* GmailNetworkFactory::feedsCategories(bool obtain_icons) {
+RootItem* GmailNetworkFactory::feedsCategories() {
   Downloader downloader;
   QEventLoop loop;
   QString bearer = m_oauth2->bearer().toLocal8Bit();
@@ -95,13 +95,13 @@ RootItem* GmailNetworkFactory::feedsCategories(bool obtain_icons) {
     return nullptr;
   }
 
-  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
+  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
 
   // We need to quit event loop when the download finishes.
   connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
   // TODO: dodělat
-  //downloader.manipulateData(INOREADER_API_LIST_LABELS, QNetworkAccessManager::Operation::GetOperation);
+  downloader.manipulateData(GMAIL_API_LABELS_LIST, QNetworkAccessManager::Operation::GetOperation);
   loop.exec();
 
   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
@@ -110,17 +110,7 @@ RootItem* GmailNetworkFactory::feedsCategories(bool obtain_icons) {
 
   QString category_data = downloader.lastOutputData();
 
-  // TODO: dodělat
-  //downloader.manipulateData(INOREADER_API_LIST_FEEDS, QNetworkAccessManager::Operation::GetOperation);
-  loop.exec();
-
-  if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
-    return nullptr;
-  }
-
-  QString feed_data = downloader.lastOutputData();
-
-  return decodeFeedCategoriesData(category_data, feed_data, obtain_icons);
+  return decodeFeedCategoriesData(category_data);
 }
 
 QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Status& error) {
@@ -382,9 +372,9 @@ QList<Message> GmailNetworkFactory::decodeMessages(const QString& messages_json_
   return messages;
 }
 
-RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons) {
+RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categories) {
   RootItem* parent = new RootItem();
-  QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
+  QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["labels"].toArray();
 
   QMap<QString, RootItem*> cats;
   cats.insert(QString(), parent);
@@ -392,7 +382,22 @@ RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categorie
   foreach (const QJsonValue& obj, json) {
     auto label = obj.toObject();
     QString label_id = label["id"].toString();
+    QString label_name = label["name"].toString();
+    QString label_type = label["type"].toString();
 
+    if (label_name.contains(QL1C('/'))) {
+      // We have nested labels.
+    }
+    else {
+      GmailFeed* feed = new GmailFeed();
+
+      feed->setTitle(label_name);
+      feed->setCustomId(label_id);
+
+      parent->appendChild(feed);
+    }
+
+/*
     if (label_id.contains(QSL("/label/"))) {
       // We have label (not "state").
       Category* category = new Category();
@@ -405,12 +410,13 @@ RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categorie
 
       // All categories in ownCloud are top-level.
       parent->appendChild(category);
-    }
+    }*/
   }
 
-  json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
+/*
+   json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
-  foreach (const QJsonValue& obj, json) {
+   foreach (const QJsonValue& obj, json) {
     auto subscription = obj.toObject();
     QString id = subscription["id"].toString();
     QString title = subscription["title"].toString();
@@ -435,28 +441,10 @@ RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categorie
     feed->setTitle(title);
     feed->setCustomId(id);
 
-    if (obtain_icons) {
-      QString icon_url = subscription["iconUrl"].toString();
-
-      if (!icon_url.isEmpty()) {
-        QByteArray icon_data;
-
-        if (NetworkFactory::performNetworkOperation(icon_url, DOWNLOAD_TIMEOUT,
-                                                    QByteArray(), icon_data,
-                                                    QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError) {
-          // Icon downloaded, set it up.
-          QPixmap icon_pixmap;
-
-          icon_pixmap.loadFromData(icon_data);
-          feed->setIcon(QIcon(icon_pixmap));
-        }
-      }
-    }
-
     if (cats.contains(parent_label)) {
       cats[parent_label]->appendChild(feed);
     }
-  }
+   }*/
 
   return parent;
 }

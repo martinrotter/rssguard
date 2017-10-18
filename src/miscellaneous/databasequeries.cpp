@@ -21,7 +21,15 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "network-web/oauth2service.h"
 #include "services/abstract/category.h"
+#include "services/gmail/definitions.h"
+#include "services/gmail/gmailserviceroot.h"
+#include "services/gmail/network/gmailnetworkfactory.h"
+#include "services/inoreader/definitions.h"
+#include "services/inoreader/inoreaderfeed.h"
+#include "services/inoreader/inoreaderserviceroot.h"
+#include "services/inoreader/network/inoreadernetworkfactory.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
@@ -32,16 +40,6 @@
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssserviceroot.h"
-
-#if defined(USE_WEBENGINE)
-#include "network-web/oauth2service.h"
-#include "services/gmail/gmailserviceroot.h"
-#include "services/gmail/network/gmailnetworkfactory.h"
-#include "services/inoreader/definitions.h"
-#include "services/inoreader/inoreaderfeed.h"
-#include "services/inoreader/inoreaderserviceroot.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
-#endif
 
 #include <QSqlError>
 #include <QUrl>
@@ -1493,7 +1491,6 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   return categories;
 }
 
-#if defined(USE_WEBENGINE)
 QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(QSqlDatabase db, bool* ok) {
   QSqlQuery query(db);
 
@@ -1528,6 +1525,15 @@ QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(QSqlDatabase db, bool* ok)
   }
 
   return roots;
+}
+
+bool DatabaseQueries::deleteGmailAccount(QSqlDatabase db, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM GmailAccounts WHERE id = :id;"));
+  q.bindValue(QSL(":id"), account_id);
+  return q.exec();
 }
 
 bool DatabaseQueries::deleteInoreaderAccount(QSqlDatabase db, int account_id) {
@@ -1624,6 +1630,56 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool*
   return roots;
 }
 
+bool DatabaseQueries::overwriteGmailAccount(QSqlDatabase db, const QString& username, const QString& app_id,
+                                            const QString& app_key, const QString& redirect_url,
+                                            const QString& refresh_token, int batch_size, int account_id) {
+  QSqlQuery query(db);
+
+  query.prepare("UPDATE GmailAccounts "
+                "SET username = :username, app_id = :app_id, app_key = :app_key, "
+                "redirect_url = :redirect_url, refresh_token = :refresh_token , msg_limit = :msg_limit "
+                "WHERE id = :id;");
+  query.bindValue(QSL(":username"), username);
+  query.bindValue(QSL(":app_id"), app_id);
+  query.bindValue(QSL(":app_key"), app_key);
+  query.bindValue(QSL(":redirect_url"), redirect_url);
+  query.bindValue(QSL(":refresh_token"), refresh_token);
+  query.bindValue(QSL(":id"), account_id);
+  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? GMAIL_DEFAULT_BATCH_SIZE : batch_size);
+
+  if (query.exec()) {
+    return true;
+  }
+  else {
+    qWarning("Gmail: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    return false;
+  }
+}
+
+bool DatabaseQueries::createGmailAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+                                         const QString& app_id, const QString& app_key, const QString& redirect_url,
+                                         const QString& refresh_token, int batch_size) {
+  QSqlQuery q(db);
+
+  q.prepare("INSERT INTO GmailAccounts (id, username, app_id, app_key, redirect_url, refresh_token, msg_limit) "
+            "VALUES (:id, :username, :app_id, :app_key, :redirect_url, :refresh_token, :msg_limit);");
+  q.bindValue(QSL(":id"), id_to_assign);
+  q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":app_id"), app_id);
+  q.bindValue(QSL(":app_key"), app_key);
+  q.bindValue(QSL(":redirect_url"), redirect_url);
+  q.bindValue(QSL(":refresh_token"), refresh_token);
+  q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? GMAIL_DEFAULT_BATCH_SIZE : batch_size);
+
+  if (q.exec()) {
+    return true;
+  }
+  else {
+    qWarning("Gmail: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    return false;
+  }
+}
+
 bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& username, const QString& app_id,
                                                 const QString& app_key, const QString& redirect_url,
                                                 const QString& refresh_token, int batch_size, int account_id) {
@@ -1673,8 +1729,6 @@ bool DatabaseQueries::createInoreaderAccount(QSqlDatabase db, int id_to_assign, 
     return false;
   }
 }
-
-#endif
 
 Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool* ok) {
   Assignment feeds;

@@ -79,8 +79,7 @@ void FormEditGmailAccount::testSetup() {
   if (m_oauth->login()) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("You are already logged in."),
-                                    tr("Access granted. \
-  "));
+                                    tr("Access granted."));
   }
 }
 

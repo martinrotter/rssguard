@@ -52,7 +52,7 @@ class GmailNetworkFactory : public QObject {
     // Returns tree of feeds/categories.
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
-    RootItem* feedsCategories(bool obtain_icons);
+    RootItem* feedsCategories();
 
     QList<Message> messages(const QString& stream_id, Feed::Status& error);
     void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async = true);
@@ -64,7 +64,7 @@ class GmailNetworkFactory : public QObject {
 
   private:
     QList<Message> decodeMessages(const QString& messages_json_data, const QString& stream_id);
-    RootItem* decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons);
+    RootItem* decodeFeedCategoriesData(const QString& categories);
 
     void initializeOauth();
 

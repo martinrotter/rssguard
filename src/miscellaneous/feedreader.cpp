@@ -18,13 +18,6 @@
 
 #include "miscellaneous/feedreader.h"
 
-#include "services/abstract/serviceroot.h"
-
-#if defined(USE_WEBENGINE)
-#include "services/gmail/gmailentrypoint.h"
-#include "services/inoreader/inoreaderentrypoint.h"
-#endif
-
 #include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
@@ -34,6 +27,9 @@
 #include "miscellaneous/databasecleaner.h"
 #include "miscellaneous/mutex.h"
 #include "services/abstract/cacheforserviceroot.h"
+#include "services/abstract/serviceroot.h"
+#include "services/gmail/gmailentrypoint.h"
+#include "services/inoreader/inoreaderentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
@@ -70,10 +66,8 @@ FeedReader::~FeedReader() {
 QList<ServiceEntryPoint*> FeedReader::feedServices() {
   if (m_feedServices.isEmpty()) {
     // NOTE: All installed services create their entry points here.
-#if defined(USE_WEBENGINE)
     m_feedServices.append(new GmailEntryPoint());
     m_feedServices.append(new InoreaderEntryPoint());
-#endif
     m_feedServices.append(new OwnCloudServiceEntryPoint());
     m_feedServices.append(new StandardServiceEntryPoint());
     m_feedServices.append(new TtRssServiceEntryPoint());

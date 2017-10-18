@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+​<!-- Copyright 2017 Martin Rotter <rotter.martinos@gmail.com> -->
+​<component type="desktop-application">
+​  <id>com.github.rssguard</id>
+​  <metadata_license>GPL-3.0</metadata_license>
+​  <project_license>GPL-3.0</project_license>
+​  <name>RSS Guard </name>
+​  <summary>Simple (yet powerful) feed reader</summary>
+​  <description>
+​    <p>
+​      RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the Qt library
+​    </p>
+​  </description>
+​  <launchable type="desktop-id">rssguard.desktop</launchable>
+​  <screenshots>
+​    <screenshot type="default">
+​      <caption>Linux version</caption>
+​      <image>http://www.hughsie.com/en_US/main.png</image>
+​    </screenshot>
+    <screenshot>
+​      <caption>Windows version</caption>
+​      <image>http://www.hughsie.com/en_US/main.png</image>
+​    </screenshot>
+​  </screenshots>
+​  <url type="homepage">http://www.gnome.org/projects/en_US/gnome-power-manager</url>
+​  <project_group>GNOME</project_group>
+​  <provides>
+​    <binary>gnome-power-statistics</binary>
+​  </provides>
+​  <releases>
+​    <release version="3.12.2" date="2013-04-12">
+​      <description>
+​        <p>Fixes issues X, Y and Z</p>
+​      </description>
+​    </release>
+​  </releases>
+​</component>

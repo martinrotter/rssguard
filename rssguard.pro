@@ -209,14 +209,16 @@ win32 {
 }
 
 CONFIG *= resources_big
-RESOURCES +=    resources/sql.qrc \
-                resources/rssguard.qrc
+RESOURCES += resources/sql.qrc \
+             resources/rssguard.qrc
 
 HEADERS +=  src/core/feeddownloader.h \
             src/core/feedsmodel.h \
             src/core/feedsproxymodel.h \
             src/core/message.h \
             src/core/messagesmodel.h \
+            src/core/messagesmodelcache.h \
+            src/core/messagesmodelsqllayer.h \
             src/core/messagesproxymodel.h \
             src/definitions/definitions.h \
             src/dynamic-shortcuts/dynamicshortcuts.h \
@@ -241,6 +243,7 @@ HEADERS +=  src/core/feeddownloader.h \
             src/gui/feedmessageviewer.h \
             src/gui/feedstoolbar.h \
             src/gui/feedsview.h \
+            src/gui/guiutilities.h \
             src/gui/labelwithstatus.h \
             src/gui/lineeditwithstatus.h \
             src/gui/messagebox.h \
@@ -248,6 +251,15 @@ HEADERS +=  src/core/feeddownloader.h \
             src/gui/messagestoolbar.h \
             src/gui/messagesview.h \
             src/gui/plaintoolbutton.h \
+            src/gui/settings/settingsbrowsermail.h \
+            src/gui/settings/settingsdatabase.h \
+            src/gui/settings/settingsdownloads.h \
+            src/gui/settings/settingsfeedsmessages.h \
+            src/gui/settings/settingsgeneral.h \
+            src/gui/settings/settingsgui.h \
+            src/gui/settings/settingslocalization.h \
+            src/gui/settings/settingspanel.h \
+            src/gui/settings/settingsshortcuts.h \
             src/gui/squeezelabel.h \
             src/gui/statusbar.h \
             src/gui/styleditemdelegatewithoutfocus.h \
@@ -257,6 +269,7 @@ HEADERS +=  src/core/feeddownloader.h \
             src/gui/tabwidget.h \
             src/gui/timespinbox.h \
             src/gui/toolbareditor.h \
+            src/gui/treeviewcolumnsmenu.h \
             src/gui/widgetwithstatus.h \
             src/miscellaneous/application.h \
             src/miscellaneous/autosaver.h \
@@ -264,6 +277,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/miscellaneous/databasefactory.h \
             src/miscellaneous/databasequeries.h \
             src/miscellaneous/debugging.h \
+            src/miscellaneous/externaltool.h \
+            src/miscellaneous/feedreader.h \
             src/miscellaneous/iconfactory.h \
             src/miscellaneous/iofactory.h \
             src/miscellaneous/localization.h \
@@ -278,6 +293,7 @@ HEADERS +=  src/core/feeddownloader.h \
             src/network-web/downloader.h \
             src/network-web/downloadmanager.h \
             src/network-web/networkfactory.h \
+            src/network-web/oauth2service.h \
             src/network-web/silentnetworkaccessmanager.h \
             src/network-web/webfactory.h \
             src/qtsingleapplication/qtlocalpeer.h \
@@ -285,6 +301,7 @@ HEADERS +=  src/core/feeddownloader.h \
             src/qtsingleapplication/qtsingleapplication.h \
             src/qtsingleapplication/qtsinglecoreapplication.h \
             src/services/abstract/accountcheckmodel.h \
+            src/services/abstract/cacheforserviceroot.h \
             src/services/abstract/category.h \
             src/services/abstract/feed.h \
             src/services/abstract/gui/formfeeddetails.h \
@@ -292,6 +309,18 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/abstract/rootitem.h \
             src/services/abstract/serviceentrypoint.h \
             src/services/abstract/serviceroot.h \
+            src/services/gmail/definitions.h \
+            src/services/gmail/gmailentrypoint.h \
+            src/services/gmail/gmailfeed.h \
+            src/services/gmail/gmailserviceroot.h \
+            src/services/gmail/gui/formeditgmailaccount.h \
+            src/services/gmail/network/gmailnetworkfactory.h \
+            src/services/inoreader/definitions.h \
+            src/services/inoreader/gui/formeditinoreaderaccount.h \
+            src/services/inoreader/inoreaderentrypoint.h \
+            src/services/inoreader/inoreaderfeed.h \
+            src/services/inoreader/inoreaderserviceroot.h \
+            src/services/inoreader/network/inoreadernetworkfactory.h \
             src/services/owncloud/definitions.h \
             src/services/owncloud/gui/formeditowncloudaccount.h \
             src/services/owncloud/gui/formowncloudfeeddetails.h \
@@ -299,47 +328,33 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/owncloud/owncloudfeed.h \
             src/services/owncloud/owncloudserviceentrypoint.h \
             src/services/owncloud/owncloudserviceroot.h \
+            src/services/standard/atomparser.h \
+            src/services/standard/feedparser.h \
             src/services/standard/gui/formstandardcategorydetails.h \
             src/services/standard/gui/formstandardfeeddetails.h \
             src/services/standard/gui/formstandardimportexport.h \
+            src/services/standard/rdfparser.h \
+            src/services/standard/rssparser.h \
             src/services/standard/standardcategory.h \
             src/services/standard/standardfeed.h \
             src/services/standard/standardfeedsimportexportmodel.h \
             src/services/standard/standardserviceentrypoint.h \
             src/services/standard/standardserviceroot.h \
             src/services/tt-rss/definitions.h \
+            src/services/tt-rss/gui/formeditttrssaccount.h \
             src/services/tt-rss/gui/formttrssfeeddetails.h \
             src/services/tt-rss/network/ttrssnetworkfactory.h \
             src/services/tt-rss/ttrssfeed.h \
             src/services/tt-rss/ttrssserviceentrypoint.h \
-            src/services/tt-rss/ttrssserviceroot.h \
-            src/gui/settings/settingspanel.h \
-            src/gui/settings/settingsgeneral.h \
-            src/gui/settings/settingsdatabase.h \
-            src/gui/settings/settingsshortcuts.h \
-            src/gui/settings/settingsgui.h \
-            src/gui/settings/settingslocalization.h \
-            src/gui/settings/settingsbrowsermail.h \
-            src/gui/settings/settingsfeedsmessages.h \
-            src/gui/settings/settingsdownloads.h \
-            src/miscellaneous/feedreader.h \
-            src/services/standard/atomparser.h \
-            src/services/standard/feedparser.h \
-            src/services/standard/rdfparser.h \
-            src/services/standard/rssparser.h \
-            src/services/abstract/cacheforserviceroot.h \
-            src/services/tt-rss/gui/formeditttrssaccount.h \
-            src/gui/guiutilities.h \
-            src/core/messagesmodelcache.h \
-            src/core/messagesmodelsqllayer.h \
-            src/gui/treeviewcolumnsmenu.h \
-            src/miscellaneous/externaltool.h
+            src/services/tt-rss/ttrssserviceroot.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
             src/core/feedsproxymodel.cpp \
             src/core/message.cpp \
             src/core/messagesmodel.cpp \
+            src/core/messagesmodelcache.cpp \
+            src/core/messagesmodelsqllayer.cpp \
             src/core/messagesproxymodel.cpp \
             src/dynamic-shortcuts/dynamicshortcuts.cpp \
             src/dynamic-shortcuts/dynamicshortcutswidget.cpp \
@@ -363,6 +378,7 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/feedmessageviewer.cpp \
             src/gui/feedstoolbar.cpp \
             src/gui/feedsview.cpp \
+            src/gui/guiutilities.cpp \
             src/gui/labelwithstatus.cpp \
             src/gui/lineeditwithstatus.cpp \
             src/gui/messagebox.cpp \
@@ -370,6 +386,15 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/messagestoolbar.cpp \
             src/gui/messagesview.cpp \
             src/gui/plaintoolbutton.cpp \
+            src/gui/settings/settingsbrowsermail.cpp \
+            src/gui/settings/settingsdatabase.cpp \
+            src/gui/settings/settingsdownloads.cpp \
+            src/gui/settings/settingsfeedsmessages.cpp \
+            src/gui/settings/settingsgeneral.cpp \
+            src/gui/settings/settingsgui.cpp \
+            src/gui/settings/settingslocalization.cpp \
+            src/gui/settings/settingspanel.cpp \
+            src/gui/settings/settingsshortcuts.cpp \
             src/gui/squeezelabel.cpp \
             src/gui/statusbar.cpp \
             src/gui/styleditemdelegatewithoutfocus.cpp \
@@ -379,6 +404,7 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/gui/tabwidget.cpp \
             src/gui/timespinbox.cpp \
             src/gui/toolbareditor.cpp \
+            src/gui/treeviewcolumnsmenu.cpp \
             src/gui/widgetwithstatus.cpp \
             src/main.cpp \
             src/miscellaneous/application.cpp \
@@ -387,6 +413,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/miscellaneous/databasefactory.cpp \
             src/miscellaneous/databasequeries.cpp \
             src/miscellaneous/debugging.cpp \
+            src/miscellaneous/externaltool.cpp \
+            src/miscellaneous/feedreader.cpp \
             src/miscellaneous/iconfactory.cpp \
             src/miscellaneous/iofactory.cpp \
             src/miscellaneous/localization.cpp \
@@ -400,6 +428,7 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/network-web/downloader.cpp \
             src/network-web/downloadmanager.cpp \
             src/network-web/networkfactory.cpp \
+            src/network-web/oauth2service.cpp \
             src/network-web/silentnetworkaccessmanager.cpp \
             src/network-web/webfactory.cpp \
             src/qtsingleapplication/qtlocalpeer.cpp \
@@ -407,6 +436,7 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/qtsingleapplication/qtsingleapplication.cpp \
             src/qtsingleapplication/qtsinglecoreapplication.cpp \
             src/services/abstract/accountcheckmodel.cpp \
+            src/services/abstract/cacheforserviceroot.cpp \
             src/services/abstract/category.cpp \
             src/services/abstract/feed.cpp \
             src/services/abstract/gui/formfeeddetails.cpp \
@@ -414,55 +444,46 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/abstract/rootitem.cpp \
             src/services/abstract/serviceentrypoint.cpp \
             src/services/abstract/serviceroot.cpp \
+            src/services/gmail/gmailentrypoint.cpp \
+            src/services/gmail/gmailfeed.cpp \
+            src/services/gmail/gmailserviceroot.cpp \
+            src/services/gmail/gui/formeditgmailaccount.cpp \
+            src/services/gmail/network/gmailnetworkfactory.cpp \
+            src/services/inoreader/gui/formeditinoreaderaccount.cpp \
+            src/services/inoreader/inoreaderentrypoint.cpp \
+            src/services/inoreader/inoreaderfeed.cpp \
+            src/services/inoreader/inoreaderserviceroot.cpp \
+            src/services/inoreader/network/inoreadernetworkfactory.cpp \
             src/services/owncloud/gui/formeditowncloudaccount.cpp \
             src/services/owncloud/gui/formowncloudfeeddetails.cpp \
             src/services/owncloud/network/owncloudnetworkfactory.cpp \
             src/services/owncloud/owncloudfeed.cpp \
             src/services/owncloud/owncloudserviceentrypoint.cpp \
             src/services/owncloud/owncloudserviceroot.cpp \
+            src/services/standard/atomparser.cpp \
+            src/services/standard/feedparser.cpp \
             src/services/standard/gui/formstandardcategorydetails.cpp \
             src/services/standard/gui/formstandardfeeddetails.cpp \
             src/services/standard/gui/formstandardimportexport.cpp \
+            src/services/standard/rdfparser.cpp \
+            src/services/standard/rssparser.cpp \
             src/services/standard/standardcategory.cpp \
             src/services/standard/standardfeed.cpp \
             src/services/standard/standardfeedsimportexportmodel.cpp \
             src/services/standard/standardserviceentrypoint.cpp \
             src/services/standard/standardserviceroot.cpp \
+            src/services/tt-rss/gui/formeditttrssaccount.cpp \
             src/services/tt-rss/gui/formttrssfeeddetails.cpp \
             src/services/tt-rss/network/ttrssnetworkfactory.cpp \
             src/services/tt-rss/ttrssfeed.cpp \
             src/services/tt-rss/ttrssserviceentrypoint.cpp \
-            src/services/tt-rss/ttrssserviceroot.cpp \
-            src/gui/settings/settingspanel.cpp \
-            src/gui/settings/settingsgeneral.cpp \
-            src/gui/settings/settingsdatabase.cpp \
-            src/gui/settings/settingsshortcuts.cpp \
-            src/gui/settings/settingsgui.cpp \
-            src/gui/settings/settingslocalization.cpp \
-            src/gui/settings/settingsbrowsermail.cpp \
-            src/gui/settings/settingsfeedsmessages.cpp \
-            src/gui/settings/settingsdownloads.cpp \
-            src/miscellaneous/feedreader.cpp \
-            src/services/standard/atomparser.cpp \
-            src/services/standard/feedparser.cpp \
-            src/services/standard/rdfparser.cpp \
-            src/services/standard/rssparser.cpp \
-            src/services/abstract/cacheforserviceroot.cpp \
-            src/services/tt-rss/gui/formeditttrssaccount.cpp \
-            src/gui/guiutilities.cpp \
-            src/core/messagesmodelcache.cpp \
-            src/core/messagesmodelsqllayer.cpp \
-            src/gui/treeviewcolumnsmenu.cpp \
-            src/miscellaneous/externaltool.cpp
+            src/services/tt-rss/ttrssserviceroot.cpp
 
 mac {
   OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
 }
 
-FORMS +=    src/gui/toolbareditor.ui \
-            src/network-web/downloaditem.ui \
-            src/network-web/downloadmanager.ui \
-            src/gui/dialogs/formabout.ui \
+FORMS +=    src/gui/dialogs/formabout.ui \
             src/gui/dialogs/formaddaccount.ui \
             src/gui/dialogs/formbackupdatabasesettings.ui \
             src/gui/dialogs/formdatabasecleanup.ui \
@@ -470,18 +491,23 @@ FORMS +=    src/gui/toolbareditor.ui \
             src/gui/dialogs/formrestoredatabasesettings.ui \
             src/gui/dialogs/formsettings.ui \
             src/gui/dialogs/formupdate.ui \
+            src/gui/settings/settingsbrowsermail.ui \
+            src/gui/settings/settingsdatabase.ui \
+            src/gui/settings/settingsdownloads.ui \
+            src/gui/settings/settingsfeedsmessages.ui \
+            src/gui/settings/settingsgeneral.ui \
+            src/gui/settings/settingsgui.ui \
+            src/gui/settings/settingslocalization.ui \
+            src/gui/settings/settingsshortcuts.ui \
+            src/gui/toolbareditor.ui \
+            src/network-web/downloaditem.ui \
+            src/network-web/downloadmanager.ui \
             src/services/abstract/gui/formfeeddetails.ui \
+            src/services/gmail/gui/formeditgmailaccount.ui \
+            src/services/inoreader/gui/formeditinoreaderaccount.ui \
             src/services/owncloud/gui/formeditowncloudaccount.ui \
             src/services/standard/gui/formstandardcategorydetails.ui \
             src/services/standard/gui/formstandardimportexport.ui \
-            src/gui/settings/settingsgeneral.ui \
-            src/gui/settings/settingsdatabase.ui \
-            src/gui/settings/settingsshortcuts.ui \
-            src/gui/settings/settingsgui.ui \
-            src/gui/settings/settingslocalization.ui \
-            src/gui/settings/settingsbrowsermail.ui \
-            src/gui/settings/settingsfeedsmessages.ui \
-            src/gui/settings/settingsdownloads.ui \
             src/services/tt-rss/gui/formeditttrssaccount.ui
 
 equals(USE_WEBENGINE, true) {
@@ -492,20 +518,7 @@ equals(USE_WEBENGINE, true) {
                 src/network-web/googlesuggest.h \
                 src/network-web/webpage.h \
                 src/network-web/rssguardschemehandler.h \
-                src/services/inoreader/definitions.h \
-                src/services/inoreader/inoreaderentrypoint.h \
-                src/services/inoreader/network/inoreadernetworkfactory.h \
-                src/services/inoreader/inoreaderserviceroot.h \
-                src/services/inoreader/gui/formeditinoreaderaccount.h \
-                src/services/inoreader/inoreaderfeed.h \
-                src/network-web/oauth2service.h \
-                src/gui/dialogs/oauthlogin.h \
-                src/services/gmail/definitions.h \
-                src/services/gmail/gmailentrypoint.h \
-                src/services/gmail/gmailserviceroot.h \
-                src/services/gmail/gmailfeed.h \
-                src/services/gmail/network/gmailnetworkfactory.h \
-                src/services/gmail/gui/formeditgmailaccount.h
+                src/gui/dialogs/oauthlogin.h
 
   SOURCES +=    src/gui/locationlineedit.cpp \
                 src/gui/webviewer.cpp \
@@ -514,18 +527,7 @@ equals(USE_WEBENGINE, true) {
                 src/network-web/googlesuggest.cpp \
                 src/network-web/webpage.cpp \
                 src/network-web/rssguardschemehandler.cpp \
-                src/services/inoreader/inoreaderentrypoint.cpp \
-                src/services/inoreader/network/inoreadernetworkfactory.cpp \
-                src/services/inoreader/inoreaderserviceroot.cpp \
-                src/services/inoreader/gui/formeditinoreaderaccount.cpp \
-                src/services/inoreader/inoreaderfeed.cpp \
-                src/network-web/oauth2service.cpp \
-                src/gui/dialogs/oauthlogin.cpp \
-                src/services/gmail/gmailentrypoint.cpp \
-                src/services/gmail/gmailserviceroot.cpp \
-                src/services/gmail/gmailfeed.cpp \
-                src/services/gmail/network/gmailnetworkfactory.cpp \
-                src/services/gmail/gui/formeditgmailaccount.cpp
+                src/gui/dialogs/oauthlogin.cpp
 
   # Add AdBlock sources.
   HEADERS +=    src/network-web/adblock/adblockaddsubscriptiondialog.h \
@@ -559,9 +561,7 @@ equals(USE_WEBENGINE, true) {
 
   FORMS +=      src/network-web/adblock/adblockaddsubscriptiondialog.ui \
                 src/network-web/adblock/adblockdialog.ui \
-                src/services/inoreader/gui/formeditinoreaderaccount.ui \
-                src/gui/dialogs/oauthlogin.ui \
-                src/services/gmail/gui/formeditgmailaccount.ui
+                src/gui/dialogs/oauthlogin.ui
 }
 else {
   HEADERS +=    src/gui/messagepreviewer.h \

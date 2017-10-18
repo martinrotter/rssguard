@@ -64,37 +64,33 @@ void GmailServiceRoot::saveAccountDataToDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (accountId() != NO_PARENT_CATEGORY) {
-    // TODO: dodělat
-
-    /*if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(),
-                                                   m_network->oauth()->clientId(),
-                                                   m_network->oauth()->clientSecret(),
-                                                   m_network->oauth()->redirectUrl(),
-                                                   m_network->oauth()->refreshToken(),
-                                                   m_network->batchSize(),
-                                                   accountId())) {
-       updateTitle();
-       itemChanged(QList<RootItem*>() << this);
-       }*/
+    if (DatabaseQueries::overwriteGmailAccount(database, m_network->userName(),
+                                               m_network->oauth()->clientId(),
+                                               m_network->oauth()->clientSecret(),
+                                               m_network->oauth()->redirectUrl(),
+                                               m_network->oauth()->refreshToken(),
+                                               m_network->batchSize(),
+                                               accountId())) {
+      updateTitle();
+      itemChanged(QList<RootItem*>() << this);
+    }
   }
   else {
     bool saved;
     int id_to_assign = DatabaseQueries::createAccount(database, code(), &saved);
 
     if (saved) {
-      // TODO: dodělat
-
-      /*if (DatabaseQueries::createInoreaderAccount(database, id_to_assign,
-                                                  m_network->userName(),
-                                                  m_network->oauth()->clientId(),
-                                                  m_network->oauth()->clientSecret(),
-                                                  m_network->oauth()->redirectUrl(),
-                                                  m_network->oauth()->refreshToken(),
-                                                  m_network->batchSize())) {
-         setId(id_to_assign);
-         setAccountId(id_to_assign);
-         updateTitle();
-         }*/
+      if (DatabaseQueries::createGmailAccount(database, id_to_assign,
+                                              m_network->userName(),
+                                              m_network->oauth()->clientId(),
+                                              m_network->oauth()->clientSecret(),
+                                              m_network->oauth()->redirectUrl(),
+                                              m_network->oauth()->refreshToken(),
+                                              m_network->batchSize())) {
+        setId(id_to_assign);
+        setAccountId(id_to_assign);
+        updateTitle();
+      }
     }
   }
 }
@@ -158,10 +154,7 @@ QString GmailServiceRoot::additionalTooltip() const {
 }
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
-  // TODO: dodělat
-  return nullptr;
-
-  //return m_network->feedsCategories(true);
+  return m_network->feedsCategories();
 }
 
 void GmailServiceRoot::addNewFeed(const QString& url) {
@@ -215,7 +208,7 @@ bool GmailServiceRoot::canBeDeleted() const {
 bool GmailServiceRoot::deleteViaGui() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
-  if (DatabaseQueries::deleteInoreaderAccount(database, accountId())) {
+  if (DatabaseQueries::deleteGmailAccount(database, accountId())) {
     return ServiceRoot::deleteViaGui();
   }
   else {

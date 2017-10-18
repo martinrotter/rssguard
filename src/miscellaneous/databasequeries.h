@@ -78,10 +78,15 @@ class DatabaseQueries {
                              int auto_update_interval);
     static Assignment getCategories(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
-#if defined(USE_WEBENGINE)
-
     // Gmail account.
+    static bool deleteGmailAccount(QSqlDatabase db, int account_id);
     static QList<ServiceRoot*> getGmailAccounts(QSqlDatabase db, bool* ok = nullptr);
+    static bool overwriteGmailAccount(QSqlDatabase db, const QString& username, const QString& app_id,
+                                      const QString& app_key, const QString& redirect_url, const QString& refresh_token,
+                                      int batch_size, int account_id);
+    static bool createGmailAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+                                   const QString& app_id, const QString& app_key, const QString& redirect_url,
+                                   const QString& refresh_token, int batch_size);
 
     // Inoreader account.
     static bool deleteInoreaderAccount(QSqlDatabase db, int account_id);
@@ -94,7 +99,6 @@ class DatabaseQueries {
     static bool createInoreaderAccount(QSqlDatabase db, int id_to_assign, const QString& username,
                                        const QString& app_id, const QString& app_key, const QString& redirect_url,
                                        const QString& refresh_token, int batch_size);
-#endif
 
     // ownCloud account.
     static QList<ServiceRoot*> getOwnCloudAccounts(QSqlDatabase db, bool* ok = nullptr);

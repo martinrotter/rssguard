@@ -41,9 +41,12 @@
 #include "network-web/oauth2service.h"
 
 #include "definitions/definitions.h"
-#include "gui/dialogs/oauthlogin.h"
 #include "miscellaneous/application.h"
 #include "services/inoreader/definitions.h"
+
+#if defined(USE_WEBENGINE)
+#include "gui/dialogs/oauthlogin.h"
+#endif
 
 #include <QDebug>
 #include <QJsonDocument>
@@ -70,7 +73,7 @@ OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId
 
 QString OAuth2Service::bearer() {
   if (!isFullyLoggedIn()) {
-    qApp->showGuiMessage(tr("Inoreader: you have to login first"),
+    qApp->showGuiMessage(tr("You have to login first"),
                          tr("Click here to login."),
                          QSystemTrayIcon::Critical,
                          nullptr, false,
@@ -165,12 +168,12 @@ void OAuth2Service::refreshAccessToken(QString refresh_token) {
 }
 
 void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
-  QJsonDocument json_document = QJsonDocument::fromJson(network_reply->readAll());
+  QByteArray repl = network_reply->readAll();
+  QJsonDocument json_document = QJsonDocument::fromJson(repl);
   QJsonObject root_obj = json_document.object();
+  auto cod = network_reply->error();
 
   qDebug() << "Token response:" << json_document.toJson();
-
-  IOFactory::writeTextFile("c.json", json_document.toJson());
 
   if (root_obj.keys().contains("error")) {
     QString error = root_obj.value("error").toString();
@@ -293,6 +296,8 @@ void OAuth2Service::retrieveAuthCode() {
                                          "prompt=consent&access_type=offline").arg(m_clientId,
                                                                                    m_scope,
                                                                                    m_redirectUrl);
+
+#if defined(USE_WEBENGINE)
   OAuthLogin login_page(qApp->mainFormWidget());
 
   connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::authCodeObtained);
@@ -306,4 +311,7 @@ void OAuth2Service::retrieveAuthCode() {
                        QSystemTrayIcon::MessageIcon::Information);
 
   login_page.login(auth_url, m_redirectUrl);
+#endif
+
+  // TODO: For non-webengine version, user http-server and login via external browser.
 }
