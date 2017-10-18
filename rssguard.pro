@@ -685,10 +685,16 @@ unix:!mac:!android {
   desktop_file.files = resources/desktop/$${TARGET}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
+  desktop_file.files = resources/desktop/$${TARGET}.desktop
+  desktop_file.path = $$quote($$PREFIX/share/applications/)
+
+  appdata.files = resources/desktop/$${TARGET}.appdata.xml
+  appdata.path = $$quote($$PREFIX/share/metainfo/)
+
   desktop_icon.files = resources/graphics/$${TARGET}.png
   desktop_icon.path = $$quote($$PREFIX/share/pixmaps/)
 
-  INSTALLS += target desktop_file desktop_icon
+  INSTALLS += target desktop_file desktop_icon appdata
 }
 
 android {
