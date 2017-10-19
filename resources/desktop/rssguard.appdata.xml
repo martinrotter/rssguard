@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+    <id>org.rssguard.RSSGuard.desktop</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0</project_license>
+    <name>RSS Guard</name>
+    <summary>Feed reader</summary>
+    <description>
+       <p>Tiny yet feature rich Qt feed reader.</p>
+    </description>
+    <categories>
+        <category>Network</category>
+        <category>News</category>
+    </categories>
+    <url type="homepage">https://github.com/martinrotter/rssguard/</url>
+    <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
+    <provides>
+        <binary>rssguard</binary>
+    </provides>
+</component>
