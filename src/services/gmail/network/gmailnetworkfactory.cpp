@@ -16,6 +16,7 @@
 #include "services/gmail/gmailfeed.h"
 #include "services/gmail/gmailserviceroot.h"
 
+#include <QHttpMultiPart>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -329,6 +330,38 @@ void GmailNetworkFactory::onAuthFailed() {
 }
 
 bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite_messages) {
+  QHttpMultiPart* multi = new QHttpMultiPart();
+
+  multi->setContentType(QHttpMultiPart::ContentType::MixedType);
+
+  foreach (const Message& msg, lite_messages) {
+    QHttpPart part;
+
+    part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
+    QString full_msg_endpoint = QString("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg.m_customId);
+
+    part.setBody(full_msg_endpoint.toUtf8());
+    multi->append(part);
+  }
+
+  QEventLoop loop;
+  QNetworkRequest req;
+  auto bearer = m_oauth2->bearer();
+
+  req.setRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
+  req.setUrl(QUrl::fromUserInput("https://www.googleapis.com/batch"));
+  auto* repl = SilentNetworkAccessManager::instance()->post(req, multi);
+
+  connect(repl, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+  loop.exec();
+
+  auto resp = repl->readAll();
+  auto aa = repl->error();
+
+  multi->deleteLater();
+  repl->deleteLater();
+  IOFactory::writeTextFile("b.html", resp);
+
   return false;
 }
 

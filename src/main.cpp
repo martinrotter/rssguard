@@ -183,8 +183,8 @@ int main(int argc, char* argv[]) {
     multi->setContentType(QHttpMultiPart::ContentType::MixedType);
     p1.setRawHeader("Content-Type", "application/http");
     p2.setRawHeader("Content-Type", "application/http");
-    p1.setBody("GET /gmail/v1/users/me/messages\r\n");
-    p2.setBody("GET /gmail/v1/users/me/labels\r\n");
+    p1.setBody("GET /gmail/v1/users/me/messages/15f3427a9f6d2728\r\n");
+    p2.setBody("GET /gmail/v1/users/me/messages/15f259a2c353589b\r\n");
     multi->append(p1);
     multi->append(p2);
     QNetworkRequest req;
@@ -210,7 +210,8 @@ int main(int argc, char* argv[]) {
    QObject::connect(srv, &OAuth2Service::tokensRetrieveError, [](QString err, QString desc) {
     int a = 5;
    });
-   srv->login();*/
+   srv->login();
+ */
 
   // Enter global event loop.
   return Application::exec();

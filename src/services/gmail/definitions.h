@@ -10,8 +10,10 @@
 #define GMAIL_API_LABELS_LIST     "https://www.googleapis.com/gmail/v1/users/me/labels"
 #define GMAIL_API_MSGS_LIST       "https://www.googleapis.com/gmail/v1/users/me/messages"
 
-#define GMAIL_DEFAULT_BATCH_SIZE  100
+#define GMAIL_DEFAULT_BATCH_SIZE  50
 #define GMAIL_MAX_BATCH_SIZE      999
 #define GMAIL_MIN_BATCH_SIZE      20
+
+#define GMAIL_CONTENT_TYPE_HTTP   "application/http"
 
 #endif // GMAIL_DEFINITIONS_H
