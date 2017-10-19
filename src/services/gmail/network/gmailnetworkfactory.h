@@ -48,7 +48,7 @@ class GmailNetworkFactory : public QObject {
 
   private:
     bool obtainAndDecodeFullMessages(const QList<Message>& lite_messages);
-    QList<Message> decodeLiteMessages(const QString& messages_json_data, const QString& stream_id);
+    QList<Message> decodeLiteMessages(const QString& messages_json_data, const QString& stream_id, QString& next_page_token);
 
     //RootItem* decodeFeedCategoriesData(const QString& categories);
 

@@ -136,13 +136,22 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
       // We parse this chunk.
       QString messages_data = downloader.lastOutputData();
 
-      QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id);
+      QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id, next_page_token);
 
       // Now, we via batch HTTP request obtain full data for each message.
       bool obtained = obtainAndDecodeFullMessages(more_messages);
 
       if (obtained) {
         messages.append(more_messages);
+
+        // New batch of messages was obtained, check if we have enough.
+        if (batchSize() > 0 && batchSize() <= messages.size()) {
+          // We have enough messages.
+          break;
+        }
+      }
+      else {
+
         error = Feed::Status::NetworkError;
         return messages;
       }
@@ -323,63 +332,20 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
   return false;
 }
 
-QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, const QString& stream_id) {
+QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, const QString& stream_id,
+                                                       QString& next_page_token) {
   QList<Message> messages;
-  QJsonArray json = QJsonDocument::fromJson(messages_json_data.toUtf8()).object()["items"].toArray();
+  QJsonObject top_object = QJsonDocument::fromJson(messages_json_data.toUtf8()).object();
+  QJsonArray json_msgs = top_object["messages"].toArray();
 
-  messages.reserve(json.count());
+  next_page_token = top_object["nextPageToken"].toString();
+  messages.reserve(json_msgs.count());
 
-  foreach (const QJsonValue& obj, json) {
+  foreach (const QJsonValue& obj, json_msgs) {
     auto message_obj = obj.toObject();
     Message message;
 
-    message.m_title = message_obj["title"].toString();
-    message.m_author = message_obj["author"].toString();
-    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj["published"].toInt());
-    message.m_createdFromFeed = true;
     message.m_customId = message_obj["id"].toString();
-
-    auto alternates = message_obj["alternate"].toArray();
-    auto enclosures = message_obj["enclosure"].toArray();
-    auto categories = message_obj["categories"].toArray();
-
-    foreach (const QJsonValue& alt, alternates) {
-      auto alt_obj = alt.toObject();
-      QString mime = alt_obj["type"].toString();
-      QString href = alt_obj["href"].toString();
-
-      if (mime == QL1S("text/html")) {
-        message.m_url = href;
-      }
-      else {
-        message.m_enclosures.append(Enclosure(href, mime));
-      }
-    }
-
-    foreach (const QJsonValue& enc, enclosures) {
-      auto enc_obj = enc.toObject();
-      QString mime = enc_obj["type"].toString();
-      QString href = enc_obj["href"].toString();
-
-      message.m_enclosures.append(Enclosure(href, mime));
-    }
-
-    foreach (const QJsonValue& cat, categories) {
-      QString category = cat.toString();
-
-      // TODO: dodělat
-      //
-
-      /*
-         if (category.contains(INOREADER_STATE_READ)) {
-         message.m_isRead = !category.contains(INOREADER_STATE_READING_LIST);
-         }
-         else if (category.contains(INOREADER_STATE_IMPORTANT)) {
-         message.m_isImportant = category.contains(INOREADER_STATE_IMPORTANT);
-         }*/
-    }
-
-    message.m_contents = message_obj["summary"].toObject()["content"].toString();
     message.m_feedId = stream_id;
 
     messages.append(message);
