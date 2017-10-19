@@ -54,6 +54,7 @@ class RootItem : public QObject {
     explicit RootItem(const RootItem& other);
     virtual ~RootItem();
 
+    // Determines if this item should be kept always in the beginning of feeds list.
     virtual QString hashCode() const;
     virtual QString additionalTooltip() const;
 
@@ -202,6 +203,9 @@ class RootItem : public QObject {
     Feed* toFeed() const;
     ServiceRoot* toServiceRoot() const;
 
+    bool keepOnTop() const;
+    void setKeepOnTop(bool keep_on_top);
+
   private:
     RootItemKind::Kind m_kind;
     int m_id;
@@ -210,6 +214,7 @@ class RootItem : public QObject {
     QString m_description;
     QIcon m_icon;
     QDateTime m_creationDate;
+    bool m_keepOnTop;
 
     QList<RootItem*> m_childItems;
     RootItem* m_parentItem;

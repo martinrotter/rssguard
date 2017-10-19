@@ -136,7 +136,13 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
     // Moreover, sort everything alphabetically or
     // by item counts, depending on the sort column.
 
-    if (left_item->kind() == right_item->kind()) {
+    if (left_item->keepOnTop()) {
+      return sortOrder() == Qt::AscendingOrder;
+    }
+    else if (right_item->keepOnTop()) {
+      return sortOrder() == Qt::DescendingOrder;
+    }
+    else if (left_item->kind() == right_item->kind()) {
       // Both items are feeds or both items are categories.
       if (left.column() == FDS_MODEL_COUNTS_INDEX) {
         // User wants to sort according to counts.

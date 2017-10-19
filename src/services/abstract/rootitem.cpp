@@ -13,7 +13,7 @@
 RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr), m_kind(RootItemKind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QSL("")),
   m_title(QString()), m_description(QString()), m_icon(QIcon()), m_creationDate(QDateTime()),
-  m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
+  m_keepOnTop(false), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
@@ -436,6 +436,14 @@ Feed* RootItem::toFeed() const {
 
 ServiceRoot* RootItem::toServiceRoot() const {
   return static_cast<ServiceRoot*>(const_cast<RootItem*>(this));
+}
+
+bool RootItem::keepOnTop() const {
+  return m_keepOnTop;
+}
+
+void RootItem::setKeepOnTop(bool keep_on_top) {
+  m_keepOnTop = keep_on_top;
 }
 
 int RootItem::countOfUnreadMessages() const {

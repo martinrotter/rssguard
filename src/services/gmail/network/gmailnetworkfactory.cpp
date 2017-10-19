@@ -101,33 +101,60 @@ void GmailNetworkFactory::setUsername(const QString& username) {
 QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Status& error) {
   Downloader downloader;
   QEventLoop loop;
-  QString target_url;// TODO: dodělat
-  // = INOREADER_API_FEED_CONTENTS;
   QString bearer = m_oauth2->bearer().toLocal8Bit();
+  QString next_page_token;
+
+  QList<Message> messages;
 
   if (bearer.isEmpty()) {
     error = Feed::Status::AuthError;
     return QList<Message>();
   }
 
-  target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("?n=%1").arg(batchSize());
-  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
+  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
 
   // We need to quit event loop when the download finishes.
   connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
-  downloader.manipulateData(target_url, QNetworkAccessManager::Operation::GetOperation);
-  loop.exec();
+  QString target_url;
 
-  if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
-    error = Feed::Status::NetworkError;
-    return QList<Message>();
-  }
-  else {
-    QString messages_data = downloader.lastOutputData();
+  do {
+    target_url = GMAIL_API_MSGS_LIST;
+    target_url += QString("?labelIds=%1").arg(stream_id);
 
-    error = Feed::Status::Normal;
-    return decodeMessages(messages_data, stream_id);
-  }
+    if (batchSize() > 0) {
+      target_url += QString("&maxResults=%1").arg(batchSize());
+    }
+
+    if (!next_page_token.isEmpty()) {
+      target_url += QString("&pageToken=%1").arg(next_page_token);
+    }
+
+    downloader.manipulateData(target_url, QNetworkAccessManager::Operation::GetOperation);
+    loop.exec();
+
+    if (downloader.lastOutputError() == QNetworkReply::NetworkError::NoError) {
+      // We parse this chunk.
+      QString messages_data = downloader.lastOutputData();
+
+      QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id);
+
+      // Now, we via batch HTTP request obtain full data for each message.
+      bool obtained = obtainAndDecodeFullMessages(more_messages);
+
+      if (obtained) {
+        messages.append(more_messages);
+        error = Feed::Status::NetworkError;
+        return messages;
+      }
+    }
+    else {
+      error = Feed::Status::NetworkError;
+      return messages;
+    }
+  } while (!next_page_token.isEmpty());
+
+  error = Feed::Status::Normal;
+  return messages;
 }
 
 void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async) {
@@ -292,7 +319,11 @@ void GmailNetworkFactory::onAuthFailed() {
   });
 }
 
-QList<Message> GmailNetworkFactory::decodeMessages(const QString& messages_json_data, const QString& stream_id) {
+bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite_messages) {
+  return false;
+}
+
+QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, const QString& stream_id) {
   QList<Message> messages;
   QJsonArray json = QJsonDocument::fromJson(messages_json_data.toUtf8()).object()["items"].toArray();
 

@@ -48,7 +48,11 @@ void GmailServiceRoot::updateTitle() {
 }
 
 void GmailServiceRoot::loadFromDatabase() {
-  appendChild(new GmailFeed(tr("Inbox"), QSL("INBOX"), qApp->icons()->fromTheme(QSL("mail-inbox")), this));
+  GmailFeed* inbox = new GmailFeed(tr("Inbox"), QSL("INBOX"), qApp->icons()->fromTheme(QSL("mail-inbox")), this);
+
+  inbox->setKeepOnTop(true);
+
+  appendChild(inbox);
   appendChild(new GmailFeed(tr("Sent"), QSL("SENT"), qApp->icons()->fromTheme(QSL("mail-sent")), this));
   appendChild(new GmailFeed(tr("Drafts"), QSL("DRAFT"), qApp->icons()->fromTheme(QSL("gtk-edit")), this));
   appendChild(new GmailFeed(tr("Spam"), QSL("SPAM"), qApp->icons()->fromTheme(QSL("mail-mark-junk")), this));
