@@ -346,10 +346,10 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
 
   QEventLoop loop;
   QNetworkRequest req;
-  auto bearer = m_oauth2->bearer();
+  QString bearer = m_oauth2->bearer();
 
-  req.setRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
-  req.setUrl(QUrl::fromUserInput("https://www.googleapis.com/batch"));
+  req.setRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
+  req.setUrl(QUrl(GMAIL_API_BATCH));
   auto* repl = SilentNetworkAccessManager::instance()->post(req, multi);
 
   connect(repl, &QNetworkReply::finished, &loop, &QEventLoop::quit);
