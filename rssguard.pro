@@ -671,13 +671,16 @@ win32 {
 unix:!mac:!android {
   target.path = $$PREFIX/bin
 
+  appdata_file.files = resources/desktop/$${TARGET}.appdata.xml
+  appdata_file.path = $$quote($$PREFIX/share/appdata/)
+
   desktop_file.files = resources/desktop/$${TARGET}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
   desktop_icon.files = resources/graphics/$${TARGET}.png
   desktop_icon.path = $$quote($$PREFIX/share/pixmaps/)
 
-  INSTALLS += target desktop_file desktop_icon
+  INSTALLS += target appdata_file desktop_file desktop_icon
 }
 
 android {
