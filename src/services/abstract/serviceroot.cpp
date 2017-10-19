@@ -69,6 +69,12 @@ QList<QAction*> ServiceRoot::serviceMenu() {
   return QList<QAction*>();
 }
 
+void ServiceRoot::start(bool freshly_activated) {
+  Q_UNUSED(freshly_activated)
+}
+
+void ServiceRoot::stop() {}
+
 void ServiceRoot::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
 
@@ -187,6 +193,14 @@ QList<Message> ServiceRoot::undeletedMessages() const {
   return DatabaseQueries::getUndeletedMessagesForAccount(database, accountId());
 }
 
+bool ServiceRoot::supportsFeedAdding() const {
+  return false;
+}
+
+bool ServiceRoot::supportsCategoryAdding() const {
+  return false;
+}
+
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {
   emit dataChanged(items);
 }
@@ -210,6 +224,12 @@ void ServiceRoot::requestItemReassignment(RootItem* item, RootItem* new_parent) 
 void ServiceRoot::requestItemRemoval(RootItem* item) {
   emit itemRemovalRequested(item);
 }
+
+void ServiceRoot::addNewFeed(const QString& url) {
+  Q_UNUSED(url)
+}
+
+void ServiceRoot::addNewCategory() {}
 
 QMap<QString, QVariant> ServiceRoot::storeCustomFeedsData() {
   QMap<QString, QVariant> custom_data;

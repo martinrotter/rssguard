@@ -70,32 +70,33 @@ void GmailNetworkFactory::setUsername(const QString& username) {
   m_username = username;
 }
 
-RootItem* GmailNetworkFactory::feedsCategories() {
-  Downloader downloader;
-  QEventLoop loop;
-  QString bearer = m_oauth2->bearer().toLocal8Bit();
+/*
+   RootItem* GmailNetworkFactory::feedsCategories() {
+   Downloader downloader;
+   QEventLoop loop;
+   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
-  if (bearer.isEmpty()) {
+   if (bearer.isEmpty()) {
     return nullptr;
-  }
+   }
 
-  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
+   downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
 
-  // We need to quit event loop when the download finishes.
-  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
+   // We need to quit event loop when the download finishes.
+   connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
-  // TODO: dodělat
-  downloader.manipulateData(GMAIL_API_LABELS_LIST, QNetworkAccessManager::Operation::GetOperation);
-  loop.exec();
+   // TODO: dodělat
+   downloader.manipulateData(GMAIL_API_LABELS_LIST, QNetworkAccessManager::Operation::GetOperation);
+   loop.exec();
 
-  if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
+   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
     return nullptr;
-  }
+   }
 
-  QString category_data = downloader.lastOutputData();
+   QString category_data = downloader.lastOutputData();
 
-  return decodeFeedCategoriesData(category_data);
-}
+   return decodeFeedCategoriesData(category_data);
+   }*/
 
 QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Status& error) {
   Downloader downloader;
@@ -356,14 +357,15 @@ QList<Message> GmailNetworkFactory::decodeMessages(const QString& messages_json_
   return messages;
 }
 
-RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categories) {
-  RootItem* parent = new RootItem();
-  QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["labels"].toArray();
+/*
+   RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categories) {
+   RootItem* parent = new RootItem();
+   QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["labels"].toArray();
 
-  QMap<QString, RootItem*> cats;
-  cats.insert(QString(), parent);
+   QMap<QString, RootItem*> cats;
+   cats.insert(QString(), parent);
 
-  foreach (const QJsonValue& obj, json) {
+   foreach (const QJsonValue& obj, json) {
     auto label = obj.toObject();
     QString label_id = label["id"].toString();
     QString label_name = label["name"].toString();
@@ -381,7 +383,7 @@ RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categorie
       parent->appendChild(feed);
     }
 
-/*
+
     if (label_id.contains(QSL("/label/"))) {
       // We have label (not "state").
       Category* category = new Category();
@@ -394,10 +396,9 @@ RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categorie
 
       // All categories in ownCloud are top-level.
       parent->appendChild(category);
-    }*/
-  }
+    }
+   }
 
-/*
    json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
    foreach (const QJsonValue& obj, json) {
@@ -428,7 +429,8 @@ RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categorie
     if (cats.contains(parent_label)) {
       cats[parent_label]->appendChild(feed);
     }
-   }*/
+   }
 
-  return parent;
-}
+   return parent;
+   }
+ */

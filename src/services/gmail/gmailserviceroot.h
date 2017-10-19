@@ -49,18 +49,13 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     QString additionalTooltip() const;
 
-    RootItem* obtainNewTreeForSyncIn() const;
-
     void saveAllCachedData(bool async = true);
 
   public slots:
-    void addNewFeed(const QString& url);
-    void addNewCategory();
     void updateTitle();
 
   private:
     void loadFromDatabase();
-    QList<QAction*> serviceMenu();
 
   private:
     QList<QAction*> m_serviceMenu;

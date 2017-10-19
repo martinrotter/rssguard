@@ -9,6 +9,12 @@
 
 GmailFeed::GmailFeed(RootItem* parent) : Feed(parent) {}
 
+GmailFeed::GmailFeed(const QString& title, const QString& custom_id, const QIcon& icon, RootItem* parent) : GmailFeed(parent) {
+  setTitle(title);
+  setCustomId(custom_id);
+  setIcon(icon);
+}
+
 GmailFeed::GmailFeed(const QSqlRecord& record) : Feed(record) {}
 
 GmailServiceRoot* GmailFeed::serviceRoot() const {

@@ -25,6 +25,7 @@
 #include "network-web/oauth2service.h"
 #include "services/abstract/recyclebin.h"
 #include "services/gmail/gmailentrypoint.h"
+#include "services/gmail/gmailfeed.h"
 #include "services/gmail/network/gmailnetworkfactory.h"
 
 GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent) : ServiceRoot(parent),
@@ -47,13 +48,10 @@ void GmailServiceRoot::updateTitle() {
 }
 
 void GmailServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  Assignment categories = DatabaseQueries::getCategories(database, accountId());
-  Assignment feeds = DatabaseQueries::getInoreaderFeeds(database, accountId());
-
-  // All data are now obtained, lets create the hierarchy.
-  assembleCategories(categories);
-  assembleFeeds(feeds);
+  appendChild(new GmailFeed(tr("Inbox"), QSL("INBOX"), qApp->icons()->fromTheme(QSL("mail-inbox")), this));
+  appendChild(new GmailFeed(tr("Sent"), QSL("SENT"), qApp->icons()->fromTheme(QSL("mail-sent")), this));
+  appendChild(new GmailFeed(tr("Drafts"), QSL("DRAFT"), qApp->icons()->fromTheme(QSL("gtk-edit")), this));
+  appendChild(new GmailFeed(tr("Spam"), QSL("SPAM"), qApp->icons()->fromTheme(QSL("mail-mark-junk")), this));
 
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
@@ -121,25 +119,10 @@ void GmailServiceRoot::start(bool freshly_activated) {
   loadCacheFromFile(accountId());
 
   m_network->oauth()->login();
-
-  if (childCount() <= 1) {
-    syncIn();
-  }
 }
 
 void GmailServiceRoot::stop() {
   saveCacheToFile(accountId());
-}
-
-QList<QAction*> GmailServiceRoot::serviceMenu() {
-  if (m_serviceMenu.isEmpty()) {
-    QAction* act_sync_in = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
-
-    connect(act_sync_in, &QAction::triggered, this, &GmailServiceRoot::syncIn);
-    m_serviceMenu.append(act_sync_in);
-  }
-
-  return m_serviceMenu;
 }
 
 QString GmailServiceRoot::code() const {
@@ -152,16 +135,6 @@ QString GmailServiceRoot::additionalTooltip() const {
                                                network()->oauth()->tokensExpireIn().isValid() ?
                                                network()->oauth()->tokensExpireIn().toString() : QSL("-"));
 }
-
-RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
-  return m_network->feedsCategories();
-}
-
-void GmailServiceRoot::addNewFeed(const QString& url) {
-  Q_UNUSED(url)
-}
-
-void GmailServiceRoot::addNewCategory() {}
 
 void GmailServiceRoot::saveAllCachedData(bool async) {
   QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();

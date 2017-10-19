@@ -35,8 +35,8 @@ class ServiceRoot : public RootItem {
     virtual RecycleBin* recycleBin() const;
 
     QList<Message> undeletedMessages() const;
-    virtual bool supportsFeedAdding() const = 0;
-    virtual bool supportsCategoryAdding() const = 0;
+    virtual bool supportsFeedAdding() const;
+    virtual bool supportsCategoryAdding() const;
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
@@ -61,8 +61,8 @@ class ServiceRoot : public RootItem {
     //
     // Stop method is called just before application exits OR when
     // user explicitly deletes existing service instance.
-    virtual void start(bool freshly_activated) = 0;
-    virtual void stop() = 0;
+    virtual void start(bool freshly_activated);
+    virtual void stop();
 
     // Account ID corresponds with DB attribute Accounts (id).
     int accountId() const;
@@ -145,8 +145,8 @@ class ServiceRoot : public RootItem {
     void requestItemRemoval(RootItem* item);
 
   public slots:
-    virtual void addNewFeed(const QString& url = QString()) = 0;
-    virtual void addNewCategory() = 0;
+    virtual void addNewFeed(const QString& url = QString());
+    virtual void addNewCategory();
     virtual void syncIn();
 
   protected:
