@@ -2,13 +2,14 @@
 <!-- Copyright 2017 Martin Rotter <rotter.martinos@gmail.com> -->
 <component type="desktop-application">
   <id>com.github.rssguard</id>
-  <metadata_license>GPL-3.0</metadata_license>
+  <metadata_license>MIT</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>RSS Guard </name>
+  <update_contact>rotter.martinos_AT_gmail.com</update_contact>
   <summary>Simple (yet powerful) feed reader</summary>
   <description>
     <p>
-      RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the Qt library
+      RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the Qt library.
     </p>
   </description>
   <launchable type="desktop-id">rssguard.desktop</launchable>
