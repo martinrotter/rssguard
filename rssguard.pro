@@ -685,9 +685,6 @@ unix:!mac:!android {
   desktop_file.files = resources/desktop/$${TARGET}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
-  desktop_file.files = resources/desktop/$${TARGET}.desktop
-  desktop_file.path = $$quote($$PREFIX/share/applications/)
-
   appdata.files = resources/desktop/$${TARGET}.appdata.xml
   appdata.path = $$quote($$PREFIX/share/metainfo/)
 
