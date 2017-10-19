@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-​<!-- Copyright 2017 Martin Rotter <rotter.martinos@gmail.com> -->
 ​<component type="desktop-application">
 ​  <id>com.github.rssguard</id>
 ​  <metadata_license>GPL-3.0</metadata_license>
