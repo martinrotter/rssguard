@@ -66,6 +66,7 @@ lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 8) {
 
 APP_NAME                      = "RSS Guard"
 APP_LOW_NAME                  = "rssguard"
+APP_REVERSE_NAME              = "com.github.rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2017 $$APP_AUTHOR"
@@ -682,10 +683,10 @@ win32 {
 unix:!mac:!android {
   target.path = $$PREFIX/bin
 
-  desktop_file.files = resources/desktop/$${TARGET}.desktop
+  desktop_file.files = resources/desktop/$${APP_REVERSE_NAME}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
-  appdata.files = resources/desktop/$${TARGET}.appdata.xml
+  appdata.files = resources/desktop/$${APP_REVERSE_NAME}.appdata.xml
   appdata.path = $$quote($$PREFIX/share/metainfo/)
 
   desktop_icon.files = resources/graphics/$${TARGET}.png

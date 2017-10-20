@@ -204,3 +204,34 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int ti
   result.second = downloader.lastContentType();
   return result;
 }
+
+NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
+                                                      int timeout,
+                                                      QHttpMultiPart* input_data,
+                                                      QList<QHttpPart*>& output,
+                                                      QNetworkAccessManager::Operation operation,
+                                                      QList<QPair<QByteArray, QByteArray>> additional_headers,
+                                                      bool protected_contents,
+                                                      const QString& username,
+                                                      const QString& password) {
+  Downloader downloader;
+  QEventLoop loop;
+  NetworkResult result;
+
+  // We need to quit event loop when the download finishes.
+  QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
+
+  foreach (const auto& header, additional_headers) {
+    if (!header.first.isEmpty()) {
+      downloader.appendRawHeader(header.first, header.second);
+    }
+  }
+
+  downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
+  loop.exec();
+
+  output = downloader.lastOutputMultipartData();
+  result.first = downloader.lastOutputError();
+  result.second = downloader.lastContentType();
+  return result;
+}

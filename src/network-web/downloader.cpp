@@ -5,13 +5,15 @@
 #include "network-web/silentnetworkaccessmanager.h"
 
 #include <QHttpMultiPart>
+#include <QRegularExpression>
 #include <QTimer>
 
 Downloader::Downloader(QObject* parent)
   : QObject(parent), m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)),
   m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_inputData(QByteArray()),
   m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
-  m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
+  m_lastOutputData(QByteArray()), m_lastOutputMultipartData(QList<QHttpPart*>()), m_lastOutputError(QNetworkReply::NoError),
+  m_lastContentType(QVariant()) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
   connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
@@ -124,7 +126,12 @@ void Downloader::finished() {
       runGetRequest(request);
     }
     else if (reply_operation == QNetworkAccessManager::PostOperation) {
-      runPostRequest(request, m_inputData);
+      if (m_inputMultipartData == nullptr) {
+        runPostRequest(request, m_inputData);
+      }
+      else {
+        runPostRequest(request, m_inputMultipartData);
+      }
     }
     else if (reply_operation == QNetworkAccessManager::PutOperation) {
       runPutRequest(request, m_inputData);
@@ -136,8 +143,15 @@ void Downloader::finished() {
   else {
     // No redirection is indicated. Final file is obtained in our "reply" object.
     // Read the data into output buffer.
-    m_lastOutputData = reply->readAll();
+    if (m_inputMultipartData == nullptr) {
+      m_lastOutputData = reply->readAll();
+    }
+    else {
+      m_lastOutputMultipartData = decodeMultipartAnswer(reply);
+    }
+
     m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
+
     m_lastOutputError = reply->error();
     m_activeReply->deleteLater();
     m_activeReply = nullptr;
@@ -156,6 +170,25 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
   }
 
   emit progress(bytes_received, bytes_total);
+}
+
+QList<QHttpPart*> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
+  QByteArray data = reply->readAll();
+
+  if (data.isEmpty()) {
+    return QList<QHttpPart*>();
+  }
+
+  QString content_type = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader).toString();
+  QString boundary = content_type.mid(content_type.indexOf(QL1S("boundary=")) + 9);
+  QRegularExpression regex(QL1S("--") + boundary + QL1S("(--)?(\\r\\n)?"));
+  QStringList list = QString::fromUtf8(data).split(regex, QString::SplitBehavior::SkipEmptyParts);
+
+  QList<QHttpPart*> parts;
+
+  parts.reserve(list.size());
+
+  return parts;
 }
 
 void Downloader::runDeleteRequest(const QNetworkRequest& request) {
@@ -227,6 +260,10 @@ void Downloader::appendRawHeader(const QByteArray& name, const QByteArray& value
 
 QNetworkReply::NetworkError Downloader::lastOutputError() const {
   return m_lastOutputError;
+}
+
+QList<QHttpPart*> Downloader::lastOutputMultipartData() const {
+  return m_lastOutputMultipartData;
 }
 
 QByteArray Downloader::lastOutputData() const {

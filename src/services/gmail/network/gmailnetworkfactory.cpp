@@ -334,6 +334,8 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
 
   multi->setContentType(QHttpMultiPart::ContentType::MixedType);
 
+  QHash<QString, Message> msgs;
+
   foreach (const Message& msg, lite_messages) {
     QHttpPart part;
 
@@ -342,27 +344,34 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
 
     part.setBody(full_msg_endpoint.toUtf8());
     multi->append(part);
+    msgs.insert(msg.m_customId, msg);
   }
 
-  QEventLoop loop;
-  QNetworkRequest req;
   QString bearer = m_oauth2->bearer();
 
-  req.setRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
-  req.setUrl(QUrl(GMAIL_API_BATCH));
-  auto* repl = SilentNetworkAccessManager::instance()->post(req, multi);
+  if (bearer.isEmpty()) {
+    return false;
+  }
 
-  connect(repl, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-  loop.exec();
+  QList<QPair<QByteArray, QByteArray>> headers;
+  QList<QHttpPart*> output;
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  auto resp = repl->readAll();
-  auto aa = repl->error();
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                               bearer.toLocal8Bit()));
 
-  multi->deleteLater();
-  repl->deleteLater();
-  IOFactory::writeTextFile("b.html", resp);
+  if (NetworkFactory::performNetworkOperation(GMAIL_API_BATCH,
+                                              timeout,
+                                              multi,
+                                              output,
+                                              QNetworkAccessManager::Operation::PostOperation,
+                                              headers).first == QNetworkReply::NetworkError::NoError) {
+    // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
 
-  return false;
+  }
+  else {
+    return false;
+  }
 }
 
 QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, const QString& stream_id,

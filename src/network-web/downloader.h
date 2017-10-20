@@ -12,6 +12,7 @@
 
 class SilentNetworkAccessManager;
 class QTimer;
+class QHttpPart;
 
 class Downloader : public QObject {
   Q_OBJECT
@@ -25,6 +26,7 @@ class Downloader : public QObject {
     // Access to last received full output data/error/content-type.
     QByteArray lastOutputData() const;
     QNetworkReply::NetworkError lastOutputError() const;
+    QList<QHttpPart*> lastOutputMultipartData() const;
     QVariant lastContentType() const;
 
   public slots:
@@ -65,6 +67,7 @@ class Downloader : public QObject {
     void progressInternal(qint64 bytes_received, qint64 bytes_total);
 
   private:
+    QList<QHttpPart*> decodeMultipartAnswer(QNetworkReply* reply);
     void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
                         const QByteArray& data, QHttpMultiPart* multipart_data,
                         int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
@@ -90,6 +93,8 @@ class Downloader : public QObject {
 
     // Response data.
     QByteArray m_lastOutputData;
+
+    QList<QHttpPart*> m_lastOutputMultipartData;
 
     QNetworkReply::NetworkError m_lastOutputError;
     QVariant m_lastContentType;

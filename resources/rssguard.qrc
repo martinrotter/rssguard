@@ -1534,7 +1534,7 @@
         <file>localizations/rssguard_pt.qm</file>
         <file>localizations/rssguard_sv.qm</file>
         <file>localizations/rssguard_zh.qm</file>
-        <file>desktop/rssguard.desktop</file>
+        <file>desktop/com.github.rssguard.desktop</file>
         <file>desktop/rssguard.desktop.autostart</file>
         <file>localizations/qt_bg.qm</file>
         <file>localizations/qt_ca.qm</file>

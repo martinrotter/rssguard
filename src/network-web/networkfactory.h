@@ -4,6 +4,7 @@
 #define NETWORKFACTORY_H
 
 #include <QCoreApplication>
+#include <QHttpPart>
 #include <QNetworkReply>
 #include <QPair>
 #include <QVariant>
@@ -39,8 +40,18 @@ class NetworkFactory {
                                                     bool protected_contents = false,
                                                     const QString& username = QString(),
                                                     const QString& password = QString());
-    static NetworkResult performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
+    static NetworkResult performNetworkOperation(const QString& url, int timeout,
+                                                 const QByteArray& input_data,
                                                  QByteArray& output,
+                                                 QNetworkAccessManager::Operation operation,
+                                                 QList<QPair<QByteArray,
+                                                             QByteArray>> additional_headers = QList<QPair<QByteArray, QByteArray>>(),
+                                                 bool protected_contents = false,
+                                                 const QString& username = QString(),
+                                                 const QString& password = QString());
+    static NetworkResult performNetworkOperation(const QString& url, int timeout,
+                                                 QHttpMultiPart* input_data,
+                                                 QList<QHttpPart*>& output,
                                                  QNetworkAccessManager::Operation operation,
                                                  QList<QPair<QByteArray,
                                                              QByteArray>> additional_headers = QList<QPair<QByteArray, QByteArray>>(),
