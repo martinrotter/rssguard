@@ -4,12 +4,13 @@
 
 #include "network-web/silentnetworkaccessmanager.h"
 
+#include <QHttpMultiPart>
 #include <QTimer>
 
 Downloader::Downloader(QObject* parent)
   : QObject(parent), m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)),
   m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_inputData(QByteArray()),
-  m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
+  m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
   m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
@@ -29,8 +30,25 @@ void Downloader::uploadFile(const QString& url, const QByteArray& data, int time
   manipulateData(url, QNetworkAccessManager::PostOperation, data, timeout, protected_contents, username, password);
 }
 
+void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
+                                QHttpMultiPart* multipart_data, int timeout,
+                                bool protected_contents, const QString& username, const QString& password) {
+  manipulateData(url, operation, QByteArray(), multipart_data, timeout, protected_contents, username, password);
+}
+
 void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Operation operation, const QByteArray& data,
                                 int timeout, bool protected_contents, const QString& username, const QString& password) {
+  manipulateData(url, operation, data, nullptr, timeout, protected_contents, username, password);
+}
+
+void Downloader::manipulateData(const QString& url,
+                                QNetworkAccessManager::Operation operation,
+                                const QByteArray& data,
+                                QHttpMultiPart* multipart_data,
+                                int timeout,
+                                bool protected_contents,
+                                const QString& username,
+                                const QString& password) {
   QNetworkRequest request;
   QString non_const_url = url;
 
@@ -42,6 +60,7 @@ void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Opera
   }
 
   m_inputData = data;
+  m_inputMultipartData = multipart_data;
 
   // Set url for this request and fire it up.
   m_timer->setInterval(timeout);
@@ -59,7 +78,12 @@ void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Opera
   m_targetPassword = password;
 
   if (operation == QNetworkAccessManager::PostOperation) {
-    runPostRequest(request, m_inputData);
+    if (m_inputMultipartData == nullptr) {
+      runPostRequest(request, m_inputData);
+    }
+    else {
+      runPostRequest(request, m_inputMultipartData);
+    }
   }
   else if (operation == QNetworkAccessManager::GetOperation) {
     runGetRequest(request);
@@ -117,6 +141,11 @@ void Downloader::finished() {
     m_lastOutputError = reply->error();
     m_activeReply->deleteLater();
     m_activeReply = nullptr;
+
+    if (m_inputMultipartData != nullptr) {
+      m_inputMultipartData->deleteLater();
+    }
+
     emit completed(m_lastOutputError, m_lastOutputData);
   }
 }
@@ -142,6 +171,16 @@ void Downloader::runDeleteRequest(const QNetworkRequest& request) {
 void Downloader::runPutRequest(const QNetworkRequest& request, const QByteArray& data) {
   m_timer->start();
   m_activeReply = m_downloadManager->put(request, data);
+  m_activeReply->setProperty("protected", m_targetProtected);
+  m_activeReply->setProperty("username", m_targetUsername);
+  m_activeReply->setProperty("password", m_targetPassword);
+  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
+}
+
+void Downloader::runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data) {
+  m_timer->start();
+  m_activeReply = m_downloadManager->post(request, multipart_data);
   m_activeReply->setProperty("protected", m_targetProtected);
   m_activeReply->setProperty("username", m_targetUsername);
   m_activeReply->setProperty("password", m_targetPassword);

@@ -41,6 +41,11 @@ class Downloader : public QObject {
                     const QString& password = QString());
 
     void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
+                        QHttpMultiPart* multipart_data,
+                        int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
+                        const QString& username = QString(), const QString& password = QString());
+
+    void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
                         const QByteArray& data = QByteArray(),
                         int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
                         const QString& username = QString(), const QString& password = QString());
@@ -60,8 +65,13 @@ class Downloader : public QObject {
     void progressInternal(qint64 bytes_received, qint64 bytes_total);
 
   private:
+    void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
+                        const QByteArray& data, QHttpMultiPart* multipart_data,
+                        int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
+                        const QString& username = QString(), const QString& password = QString());
     void runDeleteRequest(const QNetworkRequest& request);
     void runPutRequest(const QNetworkRequest& request, const QByteArray& data);
+    void runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data);
     void runPostRequest(const QNetworkRequest& request, const QByteArray& data);
     void runGetRequest(const QNetworkRequest& request);
 
@@ -73,6 +83,7 @@ class Downloader : public QObject {
 
     QHash<QByteArray, QByteArray> m_customHeaders;
     QByteArray m_inputData;
+    QHttpMultiPart* m_inputMultipartData;
     bool m_targetProtected;
     QString m_targetUsername;
     QString m_targetPassword;
