@@ -70,6 +70,12 @@ void GmailServiceRoot::loadFromDatabase() {
   assembleCategories(categories);
   assembleFeeds(feeds);
 
+  foreach (RootItem* feed, childItems()) {
+    if (feed->customId() == QL1S("INBOX")) {
+      feed->setKeepOnTop(true);
+    }
+  }
+
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
   updateCounts(true);
