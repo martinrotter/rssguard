@@ -527,7 +527,9 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
     auto tool = sndr->data().value<ExternalTool>();
 
     foreach (const QModelIndex& index, selectionModel()->selectedRows()) {
-      const QString& link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
+      const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
+                           .m_url
+                           .replace(QRegularExpression("[\\t\\n]"), QString());
 
       if (!link.isEmpty()) {
         if (!QProcess::startDetached(tool.executable(), QStringList() << tool.parameters() << link)) {
