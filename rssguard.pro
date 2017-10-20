@@ -347,7 +347,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/tt-rss/network/ttrssnetworkfactory.h \
             src/services/tt-rss/ttrssfeed.h \
             src/services/tt-rss/ttrssserviceentrypoint.h \
-            src/services/tt-rss/ttrssserviceroot.h
+            src/services/tt-rss/ttrssserviceroot.h \
+            src/network-web/httpresponse.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -478,7 +479,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/tt-rss/network/ttrssnetworkfactory.cpp \
             src/services/tt-rss/ttrssfeed.cpp \
             src/services/tt-rss/ttrssserviceentrypoint.cpp \
-            src/services/tt-rss/ttrssserviceroot.cpp
+            src/services/tt-rss/ttrssserviceroot.cpp \
+            src/network-web/httpresponse.cpp
 
 mac {
   OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm

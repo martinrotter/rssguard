@@ -2,6 +2,7 @@
 
 #include "network-web/downloader.h"
 
+#include "miscellaneous/iofactory.h"
 #include "network-web/silentnetworkaccessmanager.h"
 
 #include <QHttpMultiPart>
@@ -12,7 +13,7 @@ Downloader::Downloader(QObject* parent)
   : QObject(parent), m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)),
   m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_inputData(QByteArray()),
   m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
-  m_lastOutputData(QByteArray()), m_lastOutputMultipartData(QList<QHttpPart*>()), m_lastOutputError(QNetworkReply::NoError),
+  m_lastOutputData(QByteArray()), m_lastOutputMultipartData(QList<HttpResponse>()), m_lastOutputError(QNetworkReply::NoError),
   m_lastContentType(QVariant()) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
@@ -172,11 +173,11 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
   emit progress(bytes_received, bytes_total);
 }
 
-QList<QHttpPart*> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
+QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
   QByteArray data = reply->readAll();
 
   if (data.isEmpty()) {
-    return QList<QHttpPart*>();
+    return QList<HttpResponse>();
   }
 
   QString content_type = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader).toString();
@@ -184,9 +185,33 @@ QList<QHttpPart*> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
   QRegularExpression regex(QL1S("--") + boundary + QL1S("(--)?(\\r\\n)?"));
   QStringList list = QString::fromUtf8(data).split(regex, QString::SplitBehavior::SkipEmptyParts);
 
-  QList<QHttpPart*> parts;
+  QList<HttpResponse> parts;
 
   parts.reserve(list.size());
+
+  foreach (const QString& http_response_str, list) {
+    // We separate headers and body.
+    HttpResponse new_part;
+    int start_of_http = http_response_str.indexOf(QL1S("HTTP/1.1"));
+    int start_of_headers = http_response_str.indexOf(QRegularExpression(QSL("\\r\\r?\\n")), start_of_http);
+    int start_of_body = http_response_str.indexOf(QRegularExpression(QSL("(\\r\\r?\\n){2,}")), start_of_headers + 2);
+    QString body = http_response_str.mid(start_of_body);
+    QString headers = http_response_str.mid(start_of_headers,
+                                            start_of_body - start_of_headers).replace(QRegularExpression(QSL("[\\n\\r]+")),
+                                                                                      QSL("\n"));
+
+    foreach (const QString& header_line, headers.split(QL1C('\n'), QString::SplitBehavior::SkipEmptyParts)) {
+      int index_colon = header_line.indexOf(QL1C(':'));
+
+      if (index_colon > 0) {
+        new_part.appendHeader(header_line.mid(0, index_colon),
+                              header_line.mid(index_colon + 2));
+      }
+    }
+
+    new_part.setBody(body);
+    parts.append(new_part);
+  }
 
   return parts;
 }
@@ -262,7 +287,7 @@ QNetworkReply::NetworkError Downloader::lastOutputError() const {
   return m_lastOutputError;
 }
 
-QList<QHttpPart*> Downloader::lastOutputMultipartData() const {
+QList<HttpResponse> Downloader::lastOutputMultipartData() const {
   return m_lastOutputMultipartData;
 }
 

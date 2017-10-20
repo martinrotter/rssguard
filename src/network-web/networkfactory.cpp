@@ -208,7 +208,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int ti
 NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       int timeout,
                                                       QHttpMultiPart* input_data,
-                                                      QList<QHttpPart*>& output,
+                                                      QList<HttpResponse>& output,
                                                       QNetworkAccessManager::Operation operation,
                                                       QList<QPair<QByteArray, QByteArray>> additional_headers,
                                                       bool protected_contents,

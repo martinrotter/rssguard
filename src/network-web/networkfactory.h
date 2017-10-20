@@ -3,6 +3,8 @@
 #ifndef NETWORKFACTORY_H
 #define NETWORKFACTORY_H
 
+#include "network-web/httpresponse.h"
+
 #include <QCoreApplication>
 #include <QHttpPart>
 #include <QNetworkReply>
@@ -51,7 +53,7 @@ class NetworkFactory {
                                                  const QString& password = QString());
     static NetworkResult performNetworkOperation(const QString& url, int timeout,
                                                  QHttpMultiPart* input_data,
-                                                 QList<QHttpPart*>& output,
+                                                 QList<HttpResponse>& output,
                                                  QNetworkAccessManager::Operation operation,
                                                  QList<QPair<QByteArray,
                                                              QByteArray>> additional_headers = QList<QPair<QByteArray, QByteArray>>(),

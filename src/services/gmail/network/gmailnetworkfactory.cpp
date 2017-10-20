@@ -329,7 +329,7 @@ void GmailNetworkFactory::onAuthFailed() {
   });
 }
 
-bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite_messages) {
+bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& lite_messages) {
   QHttpMultiPart* multi = new QHttpMultiPart();
 
   multi->setContentType(QHttpMultiPart::ContentType::MixedType);
@@ -354,7 +354,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
   }
 
   QList<QPair<QByteArray, QByteArray>> headers;
-  QList<QHttpPart*> output;
+  QList<HttpResponse> output;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
@@ -367,7 +367,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
                                               QNetworkAccessManager::Operation::PostOperation,
                                               headers).first == QNetworkReply::NetworkError::NoError) {
     // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
-
+    foreach (const HttpResponse& part, output) {}
   }
   else {
     return false;
