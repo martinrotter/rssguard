@@ -313,7 +313,9 @@ void MessagesView::loadItem(RootItem* item) {
 
 void MessagesView::openSelectedSourceMessagesExternally() {
   foreach (const QModelIndex& index, selectionModel()->selectedRows()) {
-    const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
+    QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
+                   .m_url
+                   .replace(QRegularExpression("[\\t\\n]"), QString());
 
     if (!qApp->web()->openUrlInExternalBrowser(link)) {
       qApp->showGuiMessage(tr("Problem with starting external web browser"),
