@@ -47,7 +47,8 @@ class GmailNetworkFactory : public QObject {
     void onAuthFailed();
 
   private:
-    bool obtainAndDecodeFullMessages(QList<Message>& lite_messages);
+    void fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id);
+    bool obtainAndDecodeFullMessages(QList<Message>& lite_messages, const QString& feed_id);
     QList<Message> decodeLiteMessages(const QString& messages_json_data, const QString& stream_id, QString& next_page_token);
 
     //RootItem* decodeFeedCategoriesData(const QString& categories);

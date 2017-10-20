@@ -152,7 +152,6 @@ void Downloader::finished() {
     }
 
     m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
-
     m_lastOutputError = reply->error();
     m_activeReply->deleteLater();
     m_activeReply = nullptr;

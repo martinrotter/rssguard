@@ -5,6 +5,7 @@
 #include "exceptions/applicationexception.h"
 
 #include <QDebug>
+#include <QRegularExpression>
 
 FeedParser::FeedParser(const QString& data) : m_xmlData(data) {
   m_xml.setContent(m_xmlData, true);
@@ -30,6 +31,8 @@ QList<Message> FeedParser::messages() {
       if (new_message.m_author.isEmpty()) {
         new_message.m_author = feed_author;
       }
+
+      new_message.m_url = new_message.m_url.replace(QRegularExpression("[\\t\\n]"), QString());
 
       messages.append(new_message);
     }
