@@ -63,6 +63,7 @@ class DatabaseQueries {
     static Assignment getCategories(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
     // Gmail account.
+    static Assignment getGmailFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
     static bool deleteGmailAccount(QSqlDatabase db, int account_id);
     static QList<ServiceRoot*> getGmailAccounts(QSqlDatabase db, bool* ok = nullptr);
     static bool overwriteGmailAccount(QSqlDatabase db, const QString& username, const QString& app_id,

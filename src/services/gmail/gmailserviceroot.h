@@ -54,12 +54,16 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   public slots:
     void updateTitle();
 
+  protected:
+    RootItem* obtainNewTreeForSyncIn() const;
+
   private:
     void loadFromDatabase();
 
   private:
     QList<QAction*> m_serviceMenu;
     GmailNetworkFactory* m_network;
+
 };
 
 inline void GmailServiceRoot::setNetwork(GmailNetworkFactory* network) {

@@ -47,15 +47,28 @@ void GmailServiceRoot::updateTitle() {
   setTitle(m_network->userName() + QSL(" (Gmail)"));
 }
 
-void GmailServiceRoot::loadFromDatabase() {
-  GmailFeed* inbox = new GmailFeed(tr("Inbox"), QSL("INBOX"), qApp->icons()->fromTheme(QSL("mail-inbox")), this);
+RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
+  RootItem* root = new RootItem();
+  GmailFeed* inbox = new GmailFeed(tr("Inbox"), QSL("INBOX"), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
 
   inbox->setKeepOnTop(true);
 
-  appendChild(inbox);
-  appendChild(new GmailFeed(tr("Sent"), QSL("SENT"), qApp->icons()->fromTheme(QSL("mail-sent")), this));
-  appendChild(new GmailFeed(tr("Drafts"), QSL("DRAFT"), qApp->icons()->fromTheme(QSL("gtk-edit")), this));
-  appendChild(new GmailFeed(tr("Spam"), QSL("SPAM"), qApp->icons()->fromTheme(QSL("mail-mark-junk")), this));
+  root->appendChild(inbox);
+  root->appendChild(new GmailFeed(tr("Sent"), QSL("SENT"), qApp->icons()->fromTheme(QSL("mail-sent")), root));
+  root->appendChild(new GmailFeed(tr("Drafts"), QSL("DRAFT"), qApp->icons()->fromTheme(QSL("gtk-edit")), root));
+  root->appendChild(new GmailFeed(tr("Spam"), QSL("SPAM"), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
+
+  return root;
+}
+
+void GmailServiceRoot::loadFromDatabase() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  Assignment categories = DatabaseQueries::getCategories(database, accountId());
+  Assignment feeds = DatabaseQueries::getGmailFeeds(database, accountId());
+
+  // All data are now obtained, lets create the hierarchy.
+  assembleCategories(categories);
+  assembleFeeds(feeds);
 
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
@@ -123,6 +136,10 @@ void GmailServiceRoot::start(bool freshly_activated) {
   loadCacheFromFile(accountId());
 
   m_network->oauth()->login();
+
+  if (childCount() <= 1) {
+    syncIn();
+  }
 }
 
 void GmailServiceRoot::stop() {

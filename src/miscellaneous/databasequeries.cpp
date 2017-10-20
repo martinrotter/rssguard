@@ -8,6 +8,7 @@
 #include "network-web/oauth2service.h"
 #include "services/abstract/category.h"
 #include "services/gmail/definitions.h"
+#include "services/gmail/gmailfeed.h"
 #include "services/gmail/gmailserviceroot.h"
 #include "services/gmail/network/gmailnetworkfactory.h"
 #include "services/inoreader/definitions.h"
@@ -1473,6 +1474,37 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   }
 
   return categories;
+}
+
+Assignment DatabaseQueries::getGmailFeeds(QSqlDatabase db, int account_id, bool* ok) {
+  Assignment feeds;
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qFatal("Gmail: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  while (q.next()) {
+    AssignmentItem pair;
+
+    pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.second = new GmailFeed(q.record());
+    feeds << pair;
+  }
+
+  if (ok != nullptr) {
+    *ok = true;
+  }
+
+  return feeds;
 }
 
 QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(QSqlDatabase db, bool* ok) {

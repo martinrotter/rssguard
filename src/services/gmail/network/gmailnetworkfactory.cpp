@@ -139,12 +139,13 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
       QString messages_data = downloader.lastOutputData();
 
       QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id, next_page_token);
+      QList<Message> full_messages;
 
       // Now, we via batch HTTP request obtain full data for each message.
-      bool obtained = obtainAndDecodeFullMessages(more_messages, stream_id);
+      bool obtained = obtainAndDecodeFullMessages(more_messages, stream_id, full_messages);
 
       if (obtained) {
-        messages.append(more_messages);
+        messages.append(full_messages);
 
         // New batch of messages was obtained, check if we have enough.
         if (batchSize() > 0 && batchSize() <= messages.size()) {
@@ -343,9 +344,17 @@ void GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_created = TextFactory::parseDateTime(headers["Date"]);
 
   // TODO: Pokračovat.
+  foreach (const QJsonValue& body_part, json["payload"].toObject()["parts"].toArray()) {
+    QJsonObject body_obj = body_part.toObject();
+
+    msg.m_contents = QByteArray::fromBase64(body_obj["body"].toObject()["data"].toString().toLocal8Bit(),
+                                            QByteArray::Base64Option::Base64UrlEncoding);
+  }
 }
 
-bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& lite_messages, const QString& feed_id) {
+bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite_messages,
+                                                      const QString& feed_id,
+                                                      QList<Message>& full_messages) {
   QHttpMultiPart* multi = new QHttpMultiPart();
 
   multi->setContentType(QHttpMultiPart::ContentType::MixedType);
@@ -393,6 +402,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& lite_messa
         Message& msg = msgs[msg_id];
 
         fillFullMessage(msg, msg_doc, feed_id);
+        full_messages.append(msg);
       }
     }
 
