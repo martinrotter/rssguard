@@ -50,7 +50,7 @@ FeedReader::~FeedReader() {
 QList<ServiceEntryPoint*> FeedReader::feedServices() {
   if (m_feedServices.isEmpty()) {
     // NOTE: All installed services create their entry points here.
-    //m_feedServices.append(new GmailEntryPoint());
+    m_feedServices.append(new GmailEntryPoint());
     m_feedServices.append(new InoreaderEntryPoint());
     m_feedServices.append(new OwnCloudServiceEntryPoint());
     m_feedServices.append(new StandardServiceEntryPoint());
