@@ -367,7 +367,15 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& lite_messa
                                               QNetworkAccessManager::Operation::PostOperation,
                                               headers).first == QNetworkReply::NetworkError::NoError) {
     // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
-    foreach (const HttpResponse& part, output) {}
+    foreach (const HttpResponse& part, output) {
+      QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
+      QString msg_id = msg_doc["id"].toString();
+
+      if (msgs.contains(msg_id)) {
+        Message& msg = msgs[msg_id];
+
+      }
+    }
   }
   else {
     return false;
