@@ -402,6 +402,8 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     }
     else {
       // We have attachment.
+      // TODO: pokračovat tady, přidat způsob jak dát userovi možnost
+      // stahnout prilohy
       msg.m_enclosures.append(Enclosure(QL1S("##") + body["attachmentId"].toString(),
                                         filename + QString(" (%1 KB)").arg(QString::number(body["size"].toInt() / 1000.0))));
     }
