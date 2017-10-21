@@ -464,13 +464,13 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   //   3) they have same AUTHOR AND,
   //   4) they have same title.
   query_select_with_url.setForwardOnly(true);
-  query_select_with_url.prepare("SELECT id, date_created, is_read, is_important, contents FROM Messages "
+  query_select_with_url.prepare("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
                                 "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
 
   // When we have custom ID of the message, we can check directly for existence
   // of that particular message.
   query_select_with_id.setForwardOnly(true);
-  query_select_with_id.prepare("SELECT id, date_created, is_read, is_important, contents FROM Messages "
+  query_select_with_id.prepare("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
                                "WHERE custom_id = :custom_id AND account_id = :account_id;");
 
   // Used to insert new messages.
@@ -482,7 +482,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   // Used to update existing messages.
   query_update.setForwardOnly(true);
   query_update.prepare("UPDATE Messages "
-                       "SET title = :title, is_read = :is_read, is_important = :is_important, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures "
+                       "SET title = :title, is_read = :is_read, is_important = :is_important, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures, feed = :feed "
                        "WHERE id = :id;");
 
   if (use_transactions && !query_begin_transaction.exec(qApp->database()->obtainBeginTransactionSql())) {
@@ -511,6 +511,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     bool is_read_existing_message;
     bool is_important_existing_message;
     QString contents_existing_message;
+    QString feed_id_existing_message;
 
     if (message.m_customId.isEmpty()) {
       // We need to recognize existing messages according URL & AUTHOR & TITLE.
@@ -527,6 +528,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         is_read_existing_message = query_select_with_url.value(2).toBool();
         is_important_existing_message = query_select_with_url.value(3).toBool();
         contents_existing_message = query_select_with_url.value(4).toString();
+        feed_id_existing_message = query_select_with_url.value(5).toString();
       }
       else if (query_select_with_url.lastError().isValid()) {
         qWarning("Failed to check for existing message in DB via URL: '%s'.", qPrintable(query_select_with_url.lastError().text()));
@@ -546,6 +548,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         is_read_existing_message = query_select_with_id.value(2).toBool();
         is_important_existing_message = query_select_with_id.value(3).toBool();
         contents_existing_message = query_select_with_id.value(4).toString();
+        feed_id_existing_message = query_select_with_id.value(5).toString();
       }
       else if (query_select_with_id.lastError().isValid()) {
         qDebug("Failed to check for existing message in DB via ID: '%s'.", qPrintable(query_select_with_id.lastError().text()));
@@ -561,9 +564,10 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       // Now, we update it if at least one of next conditions is true:
       //   1) Message has custom ID AND (its date OR read status OR starred status are changed).
       //   2) Message has its date fetched from feed AND its date is different from date in DB and contents is changed.
-      if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message
-                                                     || message.m_isRead != is_read_existing_message
-                                                     || message.m_isImportant != is_important_existing_message)) ||
+      if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
+                                                     message.m_isRead != is_read_existing_message ||
+                                                     message.m_isImportant != is_important_existing_message ||
+                                                     message.m_feedId != feed_id_existing_message)) ||
 
                   /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message
                            && message.m_contents != contents_existing_message)) {
@@ -576,6 +580,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
         query_update.bindValue(QSL(":contents"), message.m_contents);
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
+        query_update.bindValue(QSL(":feed"), message.m_feedId);
         query_update.bindValue(QSL(":id"), id_existing_message);
         *any_message_changed = true;
 

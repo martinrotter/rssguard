@@ -359,6 +359,12 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
       // we want to leave this message in INBOX and not duplicate it to other feed/label.
       return false;
     }
+
+    if (lbl == QL1S(GMAIL_SYSTEM_LABEL_TRASH) && feed_id != QL1S(GMAIL_SYSTEM_LABEL_TRASH)) {
+      // This message is in trash, but this updated feed is not recycle bin, we do not want
+      // this message to appear anywhere.
+      return false;
+    }
   }
 
   msg.m_author = headers["From"];
