@@ -331,7 +331,7 @@ void GmailNetworkFactory::onAuthFailed() {
   });
 }
 
-void GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) {
+bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) {
   QHash<QString, QString> headers;
 
   foreach (const QJsonValue& header, json["payload"].toObject()["headers"].toArray()) {
@@ -354,7 +354,11 @@ void GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     // RSS Guard does not support multi-labeling of messages, thus each message can have MAX single label.
     // Every message which is in INBOX, must be in INBOX, even if Gmail API returns more labels for the message.
     // I have to always decide which single label is most important one.
-
+    if (lbl == QL1S(GMAIL_SYSTEM_LABEL_INBOX) && feed_id != QL1S(GMAIL_SYSTEM_LABEL_INBOX)) {
+      // This message is in INBOX label too, but this updated feed is not INBOX,
+      // we want to leave this message in INBOX and not duplicate it to other feed/label.
+      return false;
+    }
   }
 
   msg.m_author = headers["From"];
@@ -367,8 +371,13 @@ void GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   }
 
   QString backup_contents;
+  QJsonArray parts = json["payload"].toObject()["parts"].toArray();
 
-  foreach (const QJsonValue& part, json["payload"].toObject()["parts"].toArray()) {
+  if (parts.isEmpty()) {
+    parts.append(json["payload"].toObject());
+  }
+
+  foreach (const QJsonValue& part, parts) {
     QJsonObject part_obj = part.toObject();
     QJsonObject body = part_obj["body"].toObject();
     QString filename = part_obj["filename"].toString();
@@ -395,6 +404,8 @@ void GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   if (msg.m_contents.isEmpty() && !backup_contents.isEmpty()) {
     msg.m_contents = backup_contents;
   }
+
+  return true;
 }
 
 bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite_messages,
@@ -446,8 +457,9 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
       if (msgs.contains(msg_id)) {
         Message& msg = msgs[msg_id];
 
-        fillFullMessage(msg, msg_doc, feed_id);
-        full_messages.append(msg);
+        if (fillFullMessage(msg, msg_doc, feed_id)) {
+          full_messages.append(msg);
+        }
       }
     }
 
