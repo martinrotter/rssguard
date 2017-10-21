@@ -346,9 +346,12 @@ void GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   // TODO: Pokračovat.
   foreach (const QJsonValue& body_part, json["payload"].toObject()["parts"].toArray()) {
     QJsonObject body_obj = body_part.toObject();
+    QByteArray body_data = body_obj["body"].toObject()["data"].toString().toLocal8Bit();
 
-    msg.m_contents = QByteArray::fromBase64(body_obj["body"].toObject()["data"].toString().toLocal8Bit(),
-                                            QByteArray::Base64Option::Base64UrlEncoding);
+    if (!body_data.isEmpty()) {
+      msg.m_contents = QByteArray::fromBase64(body_data, QByteArray::Base64Option::Base64UrlEncoding);
+      break;
+    }
   }
 }
 
