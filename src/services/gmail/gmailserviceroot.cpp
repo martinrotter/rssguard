@@ -7,6 +7,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/recyclebin.h"
+#include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
 #include "services/gmail/gmailfeed.h"
 #include "services/gmail/network/gmailnetworkfactory.h"
@@ -32,14 +33,14 @@ void GmailServiceRoot::updateTitle() {
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
   RootItem* root = new RootItem();
-  GmailFeed* inbox = new GmailFeed(tr("Inbox"), QSL("INBOX"), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
+  GmailFeed* inbox = new GmailFeed(tr("Inbox"), QSL(GMAIL_SYSTEM_LABEL_INBOX), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
 
   inbox->setKeepOnTop(true);
 
   root->appendChild(inbox);
-  root->appendChild(new GmailFeed(tr("Sent"), QSL("SENT"), qApp->icons()->fromTheme(QSL("mail-sent")), root));
-  root->appendChild(new GmailFeed(tr("Drafts"), QSL("DRAFT"), qApp->icons()->fromTheme(QSL("gtk-edit")), root));
-  root->appendChild(new GmailFeed(tr("Spam"), QSL("SPAM"), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
+  root->appendChild(new GmailFeed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
+  root->appendChild(new GmailFeed(tr("Drafts"), QSL(GMAIL_SYSTEM_LABEL_DRAFT), qApp->icons()->fromTheme(QSL("gtk-edit")), root));
+  root->appendChild(new GmailFeed(tr("Spam"), QSL(GMAIL_SYSTEM_LABEL_SPAM), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
 
   return root;
 }

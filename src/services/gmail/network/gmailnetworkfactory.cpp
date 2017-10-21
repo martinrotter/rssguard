@@ -338,20 +338,62 @@ void GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     headers.insert(header.toObject()["name"].toString(), header.toObject()["value"].toString());
   }
 
+  msg.m_isRead = true;
+
+  // Assign correct main labels/states.
+  foreach (const QVariant& label, json["labelIds"].toArray().toVariantList()) {
+    QString lbl = label.toString();
+
+    if (lbl == QL1S(GMAIL_SYSTEM_LABEL_UNREAD)) {
+      msg.m_isRead = false;
+    }
+    else if (lbl == QL1S(GMAIL_SYSTEM_LABEL_STARRED)) {
+      msg.m_isImportant = true;
+    }
+
+    // RSS Guard does not support multi-labeling of messages, thus each message can have MAX single label.
+    // Every message which is in INBOX, must be in INBOX, even if Gmail API returns more labels for the message.
+    // I have to always decide which single label is most important one.
+
+  }
+
   msg.m_author = headers["From"];
   msg.m_title = headers["Subject"];
   msg.m_createdFromFeed = true;
   msg.m_created = TextFactory::parseDateTime(headers["Date"]);
 
-  // TODO: Pokračovat.
-  foreach (const QJsonValue& body_part, json["payload"].toObject()["parts"].toArray()) {
-    QJsonObject body_obj = body_part.toObject();
-    QByteArray body_data = body_obj["body"].toObject()["data"].toString().toLocal8Bit();
+  if (msg.m_title.isEmpty()) {
+    msg.m_title = tr("No subject");
+  }
 
-    if (!body_data.isEmpty()) {
-      msg.m_contents = QByteArray::fromBase64(body_data, QByteArray::Base64Option::Base64UrlEncoding);
-      break;
+  QString backup_contents;
+
+  foreach (const QJsonValue& part, json["payload"].toObject()["parts"].toArray()) {
+    QJsonObject part_obj = part.toObject();
+    QJsonObject body = part_obj["body"].toObject();
+    QString filename = part_obj["filename"].toString();
+
+    if (filename.isEmpty() && body.contains(QL1S("data"))) {
+      // We have textual data of e-mail.
+      // We check if it is HTML.
+      if (msg.m_contents.isEmpty()) {
+        if (part_obj["mimeType"].toString().contains(QL1S("text/html"))) {
+          msg.m_contents = QByteArray::fromBase64(body["data"].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
+        }
+        else {
+          backup_contents = QByteArray::fromBase64(body["data"].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
+        }
+      }
     }
+    else {
+      // We have attachment.
+      msg.m_enclosures.append(Enclosure(QL1S("##") + body["attachmentId"].toString(),
+                                        filename + QString(" (%1 KB)").arg(QString::number(body["size"].toInt() / 1000.0))));
+    }
+  }
+
+  if (msg.m_contents.isEmpty() && !backup_contents.isEmpty()) {
+    msg.m_contents = backup_contents;
   }
 }
 
