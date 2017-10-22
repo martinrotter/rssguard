@@ -16,17 +16,17 @@ environment:
 
 artifacts:
   - path: 'rssguard-build\*win64.exe'
-    name: rssguard-exe
+    name: rssguardexe
 
   - path: 'rssguard-build\*win64.7z'
-    name: rssguard-7z
+    name: rssguard7z
 
 deploy:
   description: 'release by appveyor'
   provider: GitHub
   auth_token:
     secure: XCWdr9wPgK4gm6289WXCg2vtMA02eBSnj6eKHC+ps6Z5lgw0jsK09UQ5y9E9ZFwS # your encrypted token from GitHub
-  artifact: /rssguard-build\\.*win64\.(exe|7z)/            # upload all NuGet packages to release assets
+  artifact: rssguardexe, rssguard7z # upload all NuGet packages to release assets
   draft: false
   prerelease: false
   on:
