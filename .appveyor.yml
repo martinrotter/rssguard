@@ -15,10 +15,10 @@ environment:
     - qmake_args: 'USE_WEBENGINE=true'
 
 artifacts:
-  - path: '..\**\*win64.exe'
+  - path: 'rssguard-build\*win64.exe'
     name: rssguard-exe
 
-  - path: '..\**\*win64.7z'
+  - path: 'rssguard-build\*win64.7z'
     name: rssguard-7z
 
 deploy:
@@ -38,7 +38,6 @@ build_script:
   - set "PATH=%QTDIR%\bin;%PATH%"
   - '%COMPILERBAT%'
   - dir
-  - cd ..
   - mkdir rssguard-build
   - cd rssguard-build
   - qmake.exe C:\rssguard "%qmake_args%"
@@ -52,7 +51,7 @@ on_success:
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "rotter.martinos@gmail.com"
   - git config --global user.name "martinrotter"
-  - cd ..\rssguard-build
+  - cd rssguard-build
   - for /f "tokens=*" %%F in ('dir /b *.7z') do curl --upload-file %%F https://transfer.sh/%%F --silent >> ..\rssguard-wiki\Windows-development-builds.md
   - echo.>> ..\rssguard-wiki\Windows-development-builds.md
   - for /f "tokens=*" %%F in ('dir /b *.exe') do curl --upload-file %%F https://transfer.sh/%%F --silent >> ..\rssguard-wiki\Windows-development-builds.md
