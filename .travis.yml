@@ -10,6 +10,16 @@ env:
 - USE_WEBENGINE=true
 compiler:
 - gcc
+deploy:
+  provider: releases
+  api_key:
+    secure: "$GH_TOKEN"
+  file_glob: true
+  file: *.dmg
+  file: *.AppImage
+  skip_cleanup: true
+  on:
+    tags: true
 git:
   submodules: false
   depth: 40

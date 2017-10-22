@@ -1060,6 +1060,105 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormEditGmailAccount</name>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Application key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.   </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some username entered.   </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error. %1 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully.You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Gmail account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Gmail account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Username</source>
@@ -2699,6 +2798,69 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
 </context>
 <context>
+    <name>GmailNetworkFactory</name>
+    <message>
+        <source>Logged in successfully</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your login to Gmail was authorized.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No subject</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>GmailServiceRoot</name>
+    <message>
+        <source>Inbox</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Drafts</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Spam</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
@@ -3138,10 +3300,6 @@ Tokeny vyprší: %2</translation>
 <context>
     <name>OAuth2Service</name>
     <message>
-        <source>Inoreader: you have to login first</source>
-        <translation>Inoreader: Je třeba se přihlásit</translation>
-    </message>
-    <message>
         <source>Click here to login.</source>
         <translation>Pro přihlášení klikněte zde.</translation>
     </message>
@@ -3156,6 +3314,10 @@ Tokeny vyprší: %2</translation>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
         <translation>Požadují povolení přístupu pro &apos;%1&apos;...</translation>
+    </message>
+    <message>
+        <source>You have to login first</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3269,6 +3431,18 @@ Je vyžadování verze API minimálně %1.</translation>
     <message>
         <source>This is integration of Inoreader.</source>
         <translation>Integrace Inoreaderu.</translation>
+    </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This plugin is not supported in NonWebEngine variant of this program.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
