@@ -15,8 +15,8 @@ deploy:
   api_key:
     secure: "$GH_TOKEN"
   file_glob: true
-  file: *.dmg
-  file: *.AppImage
+  file: "*.dmg"
+  file: "*.AppImage"
   skip_cleanup: true
   on:
     tags: true
