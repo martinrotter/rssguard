@@ -51,7 +51,6 @@ on_success:
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "rotter.martinos@gmail.com"
   - git config --global user.name "martinrotter"
-  - cd rssguard-build
   - for /f "tokens=*" %%F in ('dir /b *.7z') do curl --upload-file %%F https://transfer.sh/%%F --silent >> ..\rssguard-wiki\Windows-development-builds.md
   - echo.>> ..\rssguard-wiki\Windows-development-builds.md
   - for /f "tokens=*" %%F in ('dir /b *.exe') do curl --upload-file %%F https://transfer.sh/%%F --silent >> ..\rssguard-wiki\Windows-development-builds.md
