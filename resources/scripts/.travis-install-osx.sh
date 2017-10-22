@@ -20,6 +20,9 @@ else
   dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-mac.dmg"
 fi
 
+mv "$dmgname" "$dmgnamenospace"
+dmgname="$dmgnamenospace"
+
 echo "File to upload: $dmgname"
 echo "URL ending: $dmgnamenospace"
 
