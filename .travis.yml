@@ -12,14 +12,17 @@ compiler:
 - gcc
 deploy:
   provider: releases
-  api_key:
-    secure: "$GH_TOKEN"
   file_glob: true
-  file: "*.dmg"
-  file: "*.AppImage"
+  file:
+  - ./*.dmg
+  - ./*.AppImage
   skip_cleanup: true
   on:
     tags: true
+  password:
+    secure: hX2XMrEoBAj3b0eWapu8nFqM+UR8HwcNxR0cwdFpXYWU05TB8aUaevDIoYFfll8VwQdz3Qj2pR97MvAWMfu6o7rYT9s88HEhanYUTtLLA7DfsnLfkLih3fyJK5fRAqgJM6YgZXM1jKrIKsJXJPV0RP1oouYhATpUQi+kd501fI8uFx+nyl+TqtkeGHjxrdvNG1beq8gsONdPeL8DBoytkJGtg/jkmAS8xVR98CtdpRTSYjGfRuxAnfhS5J1wbmZ8/rBCWT8ydX96DLSKmcRWhLZ/7cH5GnboTA7XDZH2AdWATgELb4OJvfWNBHfOrhfKvf8USpRvQgb2SjT7EEz7hKr0tghMMRG4u2kjrunwA7QfbZR92bA1sWWNrCON1RBVd8QRi6jgPUrxIol7PSpbdLNvqJOyradh8pVr46WoGjBO9B+csAEoqKhmnQ/IYfzsYiQKbcW+PN0nZtp1BU7P9CrOxWYniA7MqxMW1di093VD3T6I4bfukN+voBpy10dP2fk6FAgp8DvJYNDaVjot6DHZzcQhk0N77i/d3ExTUKSEY7aNieSVi++AR+yjODl8Ab0jqAHH89lmSO2qxkJrFQ8hS475cbNajF3UwsMkYv0Q4WnZNEc5vnh1XJD5QH9+aAXl8EXvnrzwl3J3X+xNplu5CrbAZQDJfCSu33NVk2M=
+  user:
+    secure: lTwMc6kiyV3mmAfG6VcFQ1xu2h2EECkv2iq6aK19cdSzclszQly0p0rRG3Y0z7wdsZt9LPc4RBg90IICnt5GREfvVI7VXeudz10a6C7FdNCKDPAOtL47Zqyfxjwnc5DhJVMZ0jgjJ2gBF7xB5DcWJ5GxZpU66NLnF8OqTRi2hA9UIKqUz0QDMRr1cjH2J9bdgI7KkwSlwO/w9/nuC+mSk1KfQRLLThobYQl8bkt1/c7kFINbjRqOwPkBb7qOXoD/WouOb95XWjfnGs/Nrm5mcxOFh7ERxNfRtBIcvhlOrQ3Pv1LS5m7EgBPkuAuFcng/1FFgj98SV1ora9Bbpa4+Iek3kiKgPoCBeO8MTOIOAbykI6gdbKRyuTcUMOg5n0y+PN0v7odnItmH63fV2gZukBDeecyDgsMgihnuXbg26RyZm255ZFR9MfG2DAhxz5jI7U3/w6DrwgBXZZBtq5yBDEBf5ciq7mQaeFuDlo21kNcncByTqaXGw0FVfTQ6Uzu2Tx9lDFeqwYbf17/O08JJklIwevppzq8bIEQ6i66RjLHoAAP7ONi42nRrfGrfv8d4q6u4wmMAGyHXz+scsjHYYuDAvEMUZNnYWmwtBhP2tZgbUQiwMztKKDZRliClEusG0jUtmNKxCjvMFPmEIWyjbYKOpl+WmbMK0lEChAv/05g=
 git:
   submodules: false
   depth: 40
