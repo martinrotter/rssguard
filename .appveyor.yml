@@ -15,10 +15,10 @@ environment:
     - qmake_args: 'USE_WEBENGINE=true'
 
 artifacts:
-  - path: '**\rssguard*win64.exe'
+  - path: 'rssguard-build\rssguard*win64.exe'
     name: rssguard-exe
 
-  - path: '**\rssguard*win64.7z'
+  - path: 'rssguard-build\rssguard*win64.7z'
     name: rssguard-7z
 
 deploy:
