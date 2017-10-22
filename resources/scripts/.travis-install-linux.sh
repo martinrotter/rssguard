@@ -33,6 +33,9 @@ else
   imagenamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-linux64.AppImage"
 fi
 
+mv "$imagename" "$imagenamenospace"
+imagename="$imagenamenospace"
+
 echo "File to upload: $imagename"
 echo "URL ending: $imagenamenospace"
 
