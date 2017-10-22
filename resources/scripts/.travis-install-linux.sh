@@ -16,8 +16,8 @@ chmod a+x linuxdeployqt-continuous-x86_64.AppImage
 
 # Create AppImage.
 unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/rssguard.desktop" -bundle-non-qt-libs -no-translations
-./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/rssguard.desktop" -appimage -no-translations
+./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations
+./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -appimage -no-translations
 
 # Upload image.
 git config --global user.email "rotter.martinos@gmail.com"
