@@ -454,6 +454,14 @@ void FeedsView::switchVisibility() {
   setVisible(!isVisible());
 }
 
+void FeedsView::focusInEvent(QFocusEvent* event) {
+  QTreeView::focusInEvent(event);
+
+  if (currentIndex().isValid()) {
+    selectionModel()->select(currentIndex(), QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
+  }
+}
+
 void FeedsView::expandItemDelayed(const QModelIndex& idx) {
   QTimer::singleShot(100, this, [ = ] {
     setExpanded(m_proxyModel->mapFromSource(idx), true);

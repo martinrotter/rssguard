@@ -86,6 +86,7 @@ class FeedsView : public QTreeView {
     void openMessagesInNewspaperView(RootItem* root, const QList<Message>& messages);
 
   protected:
+    void focusInEvent(QFocusEvent* event);
     void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     void keyPressEvent(QKeyEvent* event);
     void contextMenuEvent(QContextMenuEvent* event);

@@ -138,6 +138,7 @@ void MessagesView::reloadSelections() {
 }
 
 void MessagesView::setupAppearance() {
+  setFocusPolicy(Qt::FocusPolicy::StrongFocus);
   setUniformRowHeights(true);
   setAcceptDrops(false);
   setDragEnabled(false);
@@ -149,12 +150,21 @@ void MessagesView::setupAppearance() {
   setSortingEnabled(true);
   setAllColumnsShowFocus(false);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
+
   setItemDelegate(new StyledItemDelegateWithoutFocus(this));
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
   header()->setCascadingSectionResizes(false);
   header()->setStretchLastSection(true);
   header()->setSortIndicatorShown(true);
+}
+
+void MessagesView::focusInEvent(QFocusEvent* event) {
+  QTreeView::focusInEvent(event);
+
+  if (currentIndex().isValid()) {
+    selectionModel()->select(currentIndex(), QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
+  }
 }
 
 void MessagesView::keyPressEvent(QKeyEvent* event) {

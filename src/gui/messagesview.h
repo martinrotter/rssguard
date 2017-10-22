@@ -93,6 +93,7 @@ class MessagesView : public QTreeView {
     void setupAppearance();
 
     // Event reimplementations.
+    void focusInEvent(QFocusEvent* event);
     void contextMenuEvent(QContextMenuEvent* event);
     void mousePressEvent(QMouseEvent* event);
     void keyPressEvent(QKeyEvent* event);
