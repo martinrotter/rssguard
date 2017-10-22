@@ -15,9 +15,9 @@ set -- *.dmg
 dmgname="$1"
 
 if [ "$USE_WEBENGINE" = true ]; then
-  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-mac.dmg"
+  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-mac64.dmg"
 else
-  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-mac.dmg"
+  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-mac64.dmg"
 fi
 
 mv "$dmgname" "$dmgnamenospace"
