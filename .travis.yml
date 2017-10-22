@@ -17,8 +17,8 @@ deploy:
   api_key:
     secure: LSADKP8d6KftWZfe+Ll5NeSRLAt/jYPsbOUJu3L9g5a1NxUjuejpAg6WmTOvs991+waKmm8Oma+eTQK98hGueaq2CnTDcKCaR0g9le1V8wT5IH4gjxBK1NOtzeDZyD+HGVblpjDwt/kfRmdDCa+F5HFRcX9l3ZZp0fDPQGO25Mh+BZrqzek48nZk1a/9xW6eAo0jImv4sSJTztknUhBKX9cvxKzTD51t5bwR1mcNCjKL5rr8af2dwBhkc/s0BO/SFHfSN/HiRzDOoyQfiW1w5AJ2kWNQzBMD1m5N5CKi0+4tFLIonZ+4AHchXkAuWr6nNgHdAg7OM44wuc9TFQmOR2em+cK+Ou2t+9fXRrDbD5sFF6AAdK3J4V+u64yOFGzBZDN4OxVHVaoZUSaaZjbUB3CCJ/7MXB5c4ofZQ+KTdOD1yQwK0x4d6mTPbR/jLNXySjL/2ea+IhukJxyS4vFaSwBaoEesiHhgnzYkosdEXZaGEOvTGYKPDlM3rOWiRNe4MGnP9vz9k6MeKZCNYFPzhPsML3o3VcgGpoUl8BFyQaMbvAKpcPl6dmYOEoJElBJL7KDcwsuVQUrtGKgEwl72Os6tv6qzPARmXUpwLsk3aInFAfOD9P7xwXdNiDa0dc3tGNPP1eEZpBaf8I/YwSzWfp9hdnzVZmAba5Fo+KvNvRY=
   file:
-  - rssguard-build/*.AppImage
-  - rssguard-build/*.dmg
+  - rssguard-build/R*.AppImage
+  - rssguard-build/R*.dmg
   on:
     tags: true
 git:
