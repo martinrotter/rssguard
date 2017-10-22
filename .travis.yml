@@ -14,8 +14,8 @@ deploy:
   provider: releases
   file_glob: true
   file:
-  - ./*.dmg
-  - ./*.AppImage
+  - rssguard-build/*.dmg
+  - rssguard-build/*.AppImage
   skip_cleanup: true
   on:
     tags: true
