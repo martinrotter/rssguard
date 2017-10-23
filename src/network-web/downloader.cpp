@@ -261,6 +261,7 @@ void Downloader::runGetRequest(const QNetworkRequest& request) {
   m_activeReply->setProperty("protected", m_targetProtected);
   m_activeReply->setProperty("username", m_targetUsername);
   m_activeReply->setProperty("password", m_targetPassword);
+
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
