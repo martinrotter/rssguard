@@ -41,28 +41,28 @@ void FormAbout::loadSettingsAndPaths() {
 
 void FormAbout::loadLicenseAndInformation() {
   try {
-    m_ui.m_txtLicenseGnu->setText(IOFactory::readTextFile(APP_INFO_PATH + QL1S("/COPYING_GNU_GPL_HTML")));
+    m_ui.m_txtLicenseGnu->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_GNU_GPL_HTML")));
   }
   catch (...) {
     m_ui.m_txtLicenseGnu->setText(tr("License not found."));
   }
 
   try {
-    m_ui.m_txtLicenseGnu->setText(IOFactory::readTextFile(APP_INFO_PATH + QL1S("/COPYING_GNU_GPL_HTML")));
+    m_ui.m_txtLicenseGnu->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_GNU_GPL_HTML")));
   }
   catch (...) {
     m_ui.m_txtLicenseGnu->setText(tr("License not found."));
   }
 
   try {
-    m_ui.m_txtChangelog->setText(IOFactory::readTextFile(APP_INFO_PATH + QL1S("/CHANGELOG")));
+    m_ui.m_txtChangelog->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/CHANGELOG")));
   }
   catch (...) {
     m_ui.m_txtChangelog->setText(tr("Changelog not found."));
   }
 
   try {
-    m_ui.m_txtLicenseBsd->setText(IOFactory::readTextFile(APP_INFO_PATH + QL1S("/COPYING_BSD")));
+    m_ui.m_txtLicenseBsd->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_BSD")));
   }
   catch (...) {
     m_ui.m_txtLicenseBsd->setText(tr("License not found."));

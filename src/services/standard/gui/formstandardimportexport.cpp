@@ -257,7 +257,7 @@ void FormStandardImportExport::exportFeeds() {
 
   if (result_export) {
     try {
-      IOFactory::writeTextFile(m_ui->m_lblSelectFile->label()->text(), result_data);
+      IOFactory::writeFile(m_ui->m_lblSelectFile->label()->text(), result_data);
       m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were exported successfully."), tr("Feeds were exported successfully."));
     }
     catch (IOException& ex) {

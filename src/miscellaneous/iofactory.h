@@ -30,8 +30,8 @@ class IOFactory {
 
     // Returns contents of a file.
     // Throws exception when no such file exists.
-    static QByteArray readTextFile(const QString& file_path);
-    static void writeTextFile(const QString& file_path, const QByteArray& data, const QString& encoding = QSL("UTF-8"));
+    static QByteArray readFile(const QString& file_path);
+    static void writeFile(const QString& file_path, const QByteArray& data);
 
     // Copies file, overwrites destination.
     static bool copyFile(const QString& source, const QString& destination);

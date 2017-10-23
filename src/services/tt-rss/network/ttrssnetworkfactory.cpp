@@ -225,7 +225,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
 
-  IOFactory::writeTextFile("aaa", result_raw);
+  IOFactory::writeFile("aaa", result_raw);
 
   if (network_reply.first != QNetworkReply::NoError) {
     qWarning("TT-RSS: getHeadlines failed with error %d.", network_reply.first);

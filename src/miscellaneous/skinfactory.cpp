@@ -122,17 +122,17 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       // So if one uses "##/images/border.png" in QSS then it is
       // replaced by fully absolute path and target file can
       // be safely loaded.
-      skin.m_layoutMarkupWrapper = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_wrapper.html")));
+      skin.m_layoutMarkupWrapper = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_wrapper.html")));
       skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-      skin.m_enclosureImageMarkup = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_enclosure_image.html")));
+      skin.m_enclosureImageMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_enclosure_image.html")));
       skin.m_enclosureImageMarkup = skin.m_enclosureImageMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-      skin.m_layoutMarkup = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_single_message.html")));
+      skin.m_layoutMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_single_message.html")));
       skin.m_layoutMarkup = skin.m_layoutMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-      skin.m_enclosureMarkup = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_enclosure_every.html")));
+      skin.m_enclosureMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_enclosure_every.html")));
       skin.m_enclosureMarkup = skin.m_enclosureMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-      skin.m_rawData = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("theme.css")));
+      skin.m_rawData = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("theme.css")));
       skin.m_rawData = skin.m_rawData.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
-      skin.m_adblocked = QString::fromUtf8(IOFactory::readTextFile(skin_folder + QL1S("html_adblocked.html")));
+      skin.m_adblocked = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_adblocked.html")));
 
       if (ok != nullptr) {
         *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&

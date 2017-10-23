@@ -33,6 +33,7 @@ class ServiceRoot : public RootItem {
     bool deleteViaGui();
     bool markAsReadUnread(ReadStatus status);
     virtual RecycleBin* recycleBin() const;
+    virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
 
     QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const;

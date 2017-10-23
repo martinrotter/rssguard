@@ -281,7 +281,7 @@ void AdBlockCustomList::loadSubscription(const QStringList& disabledRules) {
   QString rules;
 
   try {
-    rules = QString::fromUtf8(IOFactory::readTextFile(filePath()));
+    rules = QString::fromUtf8(IOFactory::readFile(filePath()));
   }
   catch (ApplicationException&) {}
 

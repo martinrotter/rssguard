@@ -15,6 +15,7 @@
 class RootItem;
 class GmailServiceRoot;
 class OAuth2Service;
+class Downloader;
 
 class GmailNetworkFactory : public QObject {
   Q_OBJECT
@@ -37,6 +38,8 @@ class GmailNetworkFactory : public QObject {
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
     //RootItem* feedsCategories();
+
+    Downloader* downloadAttachment(const QString& attachment_id);
 
     QList<Message> messages(const QString& stream_id, Feed::Status& error);
     void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async = true);

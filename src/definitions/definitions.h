@@ -88,6 +88,7 @@
 #define INTERNAL_URL_BLANK                    "http://rssguard.blank"
 #define INTERNAL_URL_MESSAGE_HOST             "rssguard.message"
 #define INTERNAL_URL_BLANK_HOST               "rssguard.blank"
+#define INTERNAL_URL_PASSATTACHMENT           "http://rssguard.passattachment"
 
 #define FEED_INITIAL_OPML_PATTERN             "feeds-%1.opml"
 

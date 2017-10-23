@@ -15,7 +15,7 @@
 
 #include <QWheelEvent>
 
-WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent) {
+WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) {
   WebPage* page = new WebPage(this);
 
   connect(page, &WebPage::messageStatusChangeRequested, this, &WebViewer::messageStatusChangeRequested);
@@ -70,7 +70,7 @@ bool WebViewer::resetWebPageZoom() {
   }
 }
 
-void WebViewer::loadMessages(const QList<Message>& messages) {
+void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   Skin skin = qApp->skins()->currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
@@ -80,7 +80,17 @@ void WebViewer::loadMessages(const QList<Message>& messages) {
     QString enclosure_images;
 
     foreach (const Enclosure& enclosure, message.m_enclosures) {
-      enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url, tr("Attachment"), enclosure.m_mimeType);
+      QString enc_url;
+
+      if (!enclosure.m_url.contains(QRegularExpression(QSL("^(http|ftp|\\/)")))) {
+        enc_url = QString(INTERNAL_URL_PASSATTACHMENT) + QL1S("/?") + enclosure.m_url;
+      }
+      else {
+        enc_url = enclosure.m_url;
+      }
+
+      enclosures += skin.m_enclosureMarkup.arg(enc_url,
+                                               tr("Attachment"), enclosure.m_mimeType);
 
       if (enclosure.m_mimeType.startsWith(QSL("image/"))) {
         // Add thumbnail image.
@@ -106,6 +116,7 @@ void WebViewer::loadMessages(const QList<Message>& messages) {
                            .arg(enclosure_images));
   }
 
+  m_root = root;
   m_messageContents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
                                                      messages_layout);
   bool previously_enabled = isEnabled();
@@ -113,10 +124,6 @@ void WebViewer::loadMessages(const QList<Message>& messages) {
   setEnabled(false);
   displayMessage();
   setEnabled(previously_enabled);
-}
-
-void WebViewer::loadMessage(const Message& message) {
-  loadMessages(QList<Message>() << message);
 }
 
 void WebViewer::clear() {
@@ -162,4 +169,8 @@ void WebViewer::wheelEvent(QWheelEvent* event) {
       decreaseWebPageZoom();
     }
   }
+}
+
+RootItem* WebViewer::root() const {
+  return m_root;
 }

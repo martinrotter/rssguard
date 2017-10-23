@@ -8,6 +8,8 @@
 #include "core/message.h"
 #include "network-web/webpage.h"
 
+class RootItem;
+
 class WebViewer : public QWebEngineView {
   Q_OBJECT
 
@@ -22,6 +24,7 @@ class WebViewer : public QWebEngineView {
     }
 
     WebPage* page() const;
+    RootItem* root() const;
 
   public slots:
 
@@ -31,8 +34,7 @@ class WebViewer : public QWebEngineView {
     bool resetWebPageZoom();
 
     void displayMessage();
-    void loadMessages(const QList<Message>& messages);
-    void loadMessage(const Message& message);
+    void loadMessages(const QList<Message>& messages, RootItem* root);
     void clear();
 
   protected:
@@ -45,6 +47,7 @@ class WebViewer : public QWebEngineView {
     void messageStatusChangeRequested(int message_id, WebPage::MessageStatusChange change);
 
   private:
+    RootItem* m_root;
     QString m_messageContents;
 };
 

@@ -100,6 +100,22 @@ void GmailNetworkFactory::setUsername(const QString& username) {
    return decodeFeedCategoriesData(category_data);
    }*/
 
+Downloader* GmailNetworkFactory::downloadAttachment(const QString& attachment_id) {
+  Downloader* downloader = new Downloader();
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    return nullptr;
+  }
+
+  QString target_url = QString(GMAIL_API_GET_ATTACHMENT) + attachment_id;
+
+  downloader->appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
+  downloader->downloadFile(target_url);
+
+  return downloader;
+}
+
 QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Status& error) {
   Downloader downloader;
   QEventLoop loop;
@@ -402,9 +418,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     }
     else {
       // We have attachment.
-      // TODO: pokračovat tady, přidat způsob jak dát userovi možnost
-      // stahnout prilohy
-      msg.m_enclosures.append(Enclosure(QL1S("##") + body["attachmentId"].toString(),
+      msg.m_enclosures.append(Enclosure(filename + QL1S(GMAIL_ATTACHMENT_SEP) + body["attachmentId"].toString(),
                                         filename + QString(" (%1 KB)").arg(QString::number(body["size"].toInt() / 1000.0))));
     }
   }

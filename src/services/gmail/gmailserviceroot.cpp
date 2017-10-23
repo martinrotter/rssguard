@@ -10,7 +10,11 @@
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
 #include "services/gmail/gmailfeed.h"
+#include "services/gmail/gui/formeditgmailaccount.h"
 #include "services/gmail/network/gmailnetworkfactory.h"
+
+#include <QJsonDocument>
+#include <QJsonObject>
 
 GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent) : ServiceRoot(parent),
   CacheForServiceRoot(), m_serviceMenu(QList<QAction*>()), m_network(network) {
@@ -100,14 +104,36 @@ void GmailServiceRoot::saveAccountDataToDatabase() {
   }
 }
 
+bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
+  QString str_url = url.toString();
+  QString attachment_id = str_url.mid(str_url.indexOf(QL1C('?')) + 1);
+  QStringList parts = attachment_id.split(QL1S(GMAIL_ATTACHMENT_SEP));
+  Downloader* down = network()->downloadAttachment(parts.at(1));
+
+  connect(down, &Downloader::completed, [parts, down](QNetworkReply::NetworkError status, QByteArray contents) {
+    if (status == QNetworkReply::NetworkError::NoError) {
+      QString data = QJsonDocument::fromJson(contents).object()["data"].toString();
+
+      if (!data.isEmpty()) {
+        IOFactory::writeFile(parts.at(0), QByteArray::fromBase64(data.toLocal8Bit(),
+                                                                 QByteArray::Base64Option::Base64UrlEncoding));
+      }
+    }
+
+    down->deleteLater();
+  });
+
+  return true;
+}
+
 bool GmailServiceRoot::canBeEdited() const {
   return true;
 }
 
 bool GmailServiceRoot::editViaGui() {
-  //FormEditInoreaderAccount form_pointer(qApp->mainFormWidget());
-  // TODO: dodělat
-  //form_pointer.execForEdit(this);
+  FormEditGmailAccount form_pointer(qApp->mainFormWidget());
+
+  form_pointer.execForEdit(this);
   return true;
 }
 

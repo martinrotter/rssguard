@@ -17,6 +17,8 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     void saveAccountDataToDatabase();
 
+    bool downloadAttachmentOnMyOwn(const QUrl& url) const;
+
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
 

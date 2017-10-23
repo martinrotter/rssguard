@@ -5,12 +5,12 @@
 #include "definitions/definitions.h"
 #include "exceptions/ioexception.h"
 
+#include <QDataStream>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QObject>
 #include <QTemporaryFile>
-#include <QTextStream>
 
 IOFactory::IOFactory() {}
 
@@ -68,7 +68,7 @@ QString IOFactory::filterBadCharsFromFilename(const QString& name) {
   return value;
 }
 
-QByteArray IOFactory::readTextFile(const QString& file_path) {
+QByteArray IOFactory::readFile(const QString& file_path) {
   QFile input_file(file_path);
   QByteArray input_data;
 
@@ -82,15 +82,11 @@ QByteArray IOFactory::readTextFile(const QString& file_path) {
   }
 }
 
-void IOFactory::writeTextFile(const QString& file_path, const QByteArray& data, const QString& encoding) {
-  Q_UNUSED(encoding)
+void IOFactory::writeFile(const QString& file_path, const QByteArray& data) {
   QFile input_file(file_path);
-  QTextStream stream(&input_file);
 
-  if (input_file.open(QIODevice::Text | QIODevice::WriteOnly)) {
-    stream << data;
-    stream.flush();
-    input_file.flush();
+  if (input_file.open(QIODevice::WriteOnly)) {
+    input_file.write(data);
     input_file.close();
   }
   else {

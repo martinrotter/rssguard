@@ -124,12 +124,12 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
     QString encryption_file_path = qApp->settings()->pathName() + QDir::separator() + ENCRYPTION_FILE_NAME;
 
     try {
-      s_encryptionKey = (quint64) QString(IOFactory::readTextFile(encryption_file_path)).toLongLong();
+      s_encryptionKey = (quint64) QString(IOFactory::readFile(encryption_file_path)).toLongLong();
     }
     catch (ApplicationException) {
       // Well, key does not exist or is invalid, generate and save one.
       s_encryptionKey = generateSecretEncryptionKey();
-      IOFactory::writeTextFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
+      IOFactory::writeFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
     }
   }
 
