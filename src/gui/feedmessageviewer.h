@@ -67,6 +67,9 @@ class FeedMessageViewer : public TabContent {
     // Toggles displayed feeds.
     void toggleShowOnlyUnreadFeeds();
 
+  private slots:
+    void displayMessage(const Message& message, RootItem* root);
+
   protected:
     void initialize();
 

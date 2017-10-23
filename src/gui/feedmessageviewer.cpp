@@ -171,6 +171,10 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
   }
 }
 
+void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
+  m_messagesBrowser->loadMessage(message, root);
+}
+
 void FeedMessageViewer::createConnections() {
   // Filtering & searching.
   connect(m_toolBarMessages, &MessagesToolBar::messageSearchPatternChanged, m_messagesView, &MessagesView::searchMessages);
@@ -188,6 +192,8 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesBrowser, &MessagePreviewer::markMessageImportant, m_messagesView->sourceModel(),
           &MessagesModel::setMessageImportantById);
 #endif
+
+  connect(m_messagesView, &MessagesView::currentMessageChanged, this, &FeedMessageViewer::displayMessage);
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, &FeedsView::itemSelected, m_messagesView, &MessagesView::loadItem);
