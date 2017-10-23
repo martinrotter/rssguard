@@ -172,7 +172,12 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
 }
 
 void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
-  m_messagesBrowser->loadMessage(message, root);
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool()) {
+    m_messagesBrowser->loadMessage(message, root);
+  }
+  else {
+    m_messagesBrowser->hide();
+  }
 }
 
 void FeedMessageViewer::createConnections() {
@@ -182,12 +187,10 @@ void FeedMessageViewer::createConnections() {
 
 #if defined(USE_WEBENGINE)
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &WebBrowser::clear);
-  connect(m_messagesView, &MessagesView::currentMessageChanged, m_messagesBrowser, &WebBrowser::loadMessage);
   connect(m_messagesBrowser, &WebBrowser::markMessageRead, m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
   connect(m_messagesBrowser, &WebBrowser::markMessageImportant, m_messagesView->sourceModel(), &MessagesModel::setMessageImportantById);
 #else
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
-  connect(m_messagesView, &MessagesView::currentMessageChanged, m_messagesBrowser, &MessagePreviewer::loadMessage);
   connect(m_messagesBrowser, &MessagePreviewer::markMessageRead, m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
   connect(m_messagesBrowser, &MessagePreviewer::markMessageImportant, m_messagesView->sourceModel(),
           &MessagesModel::setMessageImportantById);

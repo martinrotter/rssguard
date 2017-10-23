@@ -83,6 +83,10 @@ namespace Messages {
 
   VALUE(int) MessageHeadImageHeightDef;
 
+  KEY EnableMessagePreview;
+
+  VALUE(bool) EnableMessagePreviewDef;
+
   KEY UseCustomDate;
 
   VALUE(bool) UseCustomDateDef;

@@ -61,6 +61,10 @@ DKEY Messages::MessageHeadImageHeight = "message_head_image_height";
 
 DVALUE(int) Messages::MessageHeadImageHeightDef = 36;
 
+DKEY Messages::EnableMessagePreview = "enable_message_preview";
+
+DVALUE(bool) Messages::EnableMessagePreviewDef = true;
+
 DKEY Messages::UseCustomDate = "use_custom_date";
 
 DVALUE(bool) Messages::UseCustomDateDef = false;

@@ -1,6 +1,9 @@
 3.5.5
 —————
 
+Added:
+▪ New bindable menu action Messages -> Enable message preview, which can disable opening message preview in internal web viewer. (#141)
+
 Fixed:
 ▪ Displaying correct update files. (#155)
 

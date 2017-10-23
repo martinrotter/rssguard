@@ -145,6 +145,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionTabsPrevious;
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
+  actions << m_ui->m_actionMessagePreviewEnabled;
   actions << m_ui->m_actionMarkAllItemsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsUnread;
@@ -539,6 +540,8 @@ void FormMain::loadSize() {
     qApp->processEvents();
   }
 
+  m_ui->m_actionMessagePreviewEnabled->setChecked(settings->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool());
+
   // If user exited the application while in fullsreen mode,
   // then re-enable it now.
   if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsFullscreen)).toBool()) {
@@ -628,6 +631,10 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionReportBug, &QAction::triggered, this, &FormMain::reportABug);
   connect(m_ui->m_actionDonate, &QAction::triggered, this, &FormMain::donate);
   connect(m_ui->m_actionDisplayWiki, &QAction::triggered, this, &FormMain::showWiki);
+
+  connect(m_ui->m_actionMessagePreviewEnabled, &QAction::toggled, [](bool enabled) {
+    qApp->settings()->setValue(GROUP(Messages), Messages::EnableMessagePreview, enabled);
+  });
 
   // Tab widget connections.
   connect(m_ui->m_actionTabsNext, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::gotoNextTab);
