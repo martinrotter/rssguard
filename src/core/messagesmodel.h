@@ -97,6 +97,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     QIcon m_favoriteIcon;
     QIcon m_readIcon;
     QIcon m_unreadIcon;
+    QIcon m_enclosuresIcon;
     int m_itemHeight;
 };
 

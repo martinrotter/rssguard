@@ -25,6 +25,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_fieldNames[MSG_DB_CUSTOM_ID_INDEX] = "Messages.custom_id";
   m_fieldNames[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
   m_fieldNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
+  m_fieldNames[MSG_DB_HAS_ENCLOSURES] = "CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures";
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order) {

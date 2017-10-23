@@ -560,6 +560,7 @@ void MessagesView::adjustColumns() {
     header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
     header()->setSectionResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_HAS_ENCLOSURES, QHeaderView::ResizeToContents);
     header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
     header()->setSectionResizeMode(MSG_DB_FEED_TITLE_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Interactive);
@@ -569,8 +570,6 @@ void MessagesView::adjustColumns() {
     header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
 
-    //header()->resizeSection(MSG_DB_READ_INDEX, MESSAGES_VIEW_MINIMUM_COL);
-    //header()->resizeSection(MSG_DB_IMPORTANT_INDEX, MESSAGES_VIEW_MINIMUM_COL);
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);
     hideColumn(MSG_DB_DELETED_INDEX);

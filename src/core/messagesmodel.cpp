@@ -33,6 +33,7 @@ void MessagesModel::setupIcons() {
   m_favoriteIcon = qApp->icons()->fromTheme(QSL("mail-mark-important"));
   m_readIcon = qApp->icons()->fromTheme(QSL("mail-mark-read"));
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
+  m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
 }
 
 void MessagesModel::updateItemHeight() {
@@ -179,7 +180,9 @@ void MessagesModel::setupHeaderData() {
 
     /*: Tooltip for custom hash string of message.*/ tr("Custom hash") <<
 
-    /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID");
+    /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID") <<
+
+    /*: Tooltip for indication of presence of enclosures.*/ tr("Has enclosures");
 
   m_tooltipData <<
     tr("Id of the message.") << tr("Is message read?") <<
@@ -189,7 +192,8 @@ void MessagesModel::setupHeaderData() {
     tr("Author of the message.") << tr("Creation date of the message.") <<
     tr("Contents of the message.") << tr("Is message permanently deleted from recycle bin?") <<
     tr("List of attachments.") << tr("Account ID of the message.") << tr("Custom ID of the message") <<
-    tr("Custom hash of the message.") << tr("Custom ID of feed of the message.");
+    tr("Custom hash of the message.") << tr("Custom ID of feed of the message.") <<
+    tr("Indication of enclosures presence within the message.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
@@ -223,7 +227,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 
         return author_name.isEmpty() ? QSL("-") : author_name;
       }
-      else if (index_column != MSG_DB_IMPORTANT_INDEX && index_column != MSG_DB_READ_INDEX) {
+      else if (index_column != MSG_DB_IMPORTANT_INDEX && index_column != MSG_DB_READ_INDEX && index_column != MSG_DB_HAS_ENCLOSURES) {
         return QSqlQueryModel::data(idx, role);
       }
       else {
@@ -296,6 +300,12 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QVariant dta = m_cache->containsData(idx_important.row()) ? m_cache->data(idx_important) : QSqlQueryModel::data(idx_important);
 
         return dta.toInt() == 1 ? m_favoriteIcon : QVariant();
+      }
+      else if (index_column == MSG_DB_HAS_ENCLOSURES) {
+        QModelIndex idx_important = index(idx.row(), MSG_DB_HAS_ENCLOSURES);
+        QVariant dta = QSqlQueryModel::data(idx_important);
+
+        return dta.toBool() ? m_enclosuresIcon : QVariant();
       }
       else {
         return QVariant();
@@ -532,8 +542,8 @@ QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int
     case Qt::DisplayRole:
 
       // Display textual headers for all columns except "read" and
-      // "important" columns.
-      if (section != MSG_DB_READ_INDEX && section != MSG_DB_IMPORTANT_INDEX) {
+      // "important" and "has enclosures" columns.
+      if (section != MSG_DB_READ_INDEX && section != MSG_DB_IMPORTANT_INDEX && section != MSG_DB_HAS_ENCLOSURES) {
         return m_headerData.at(section);
       }
       else {
@@ -549,6 +559,9 @@ QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int
     // Display icons for "read" and "important" columns.
     case Qt::DecorationRole: {
       switch (section) {
+        case MSG_DB_HAS_ENCLOSURES:
+          return m_enclosuresIcon;
+
         case MSG_DB_READ_INDEX:
           return m_readIcon;
 
