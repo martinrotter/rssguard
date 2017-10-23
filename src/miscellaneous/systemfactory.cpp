@@ -28,6 +28,18 @@ SystemFactory::SystemFactory(QObject* parent) : QObject(parent) {}
 
 SystemFactory::~SystemFactory() {}
 
+QRegularExpression SystemFactory::supportedUpdateFiles() {
+#if defined(Q_OS_WIN)
+  return QRegularExpression(QSL(".+win.+\\.(exe|7z)"));
+#elif defined(Q_OS_MAC)
+  return QRegularExpression(QSL(".dmg"));
+#elif defined(Q_OS_LINUX)
+  return QRegularExpression(QSL(".AppImage"));
+#else
+  return QRegularExpression(QSL(".*"));
+#endif
+}
+
 SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
   // User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)

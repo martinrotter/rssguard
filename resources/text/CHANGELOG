@@ -1,13 +1,14 @@
+3.5.5
+—————
+
+Fixed:
+▪ Displaying correct update files. (#155)
+
 3.5.4
 —————
 
 Fixed:
 ▪ First item in itemviews is now selected when focus is gained. (#142)
-
-3.5.3
-—————
-
-Fixed:
 ▪ Some feed files do not have URLs of messages properly sanitized. Strip "\n" and "\t" from URls. (bug #154)
 
 3.5.1

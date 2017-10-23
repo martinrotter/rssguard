@@ -145,11 +145,13 @@ void FormUpdate::loadAvailableFiles() {
   m_ui.m_listFiles->clear();
 
   foreach (const UpdateUrl& url, m_updateInfo.m_urls) {
-    QListWidgetItem* item = new QListWidgetItem(url.m_name + tr(" (size ") + url.m_size + QSL(")"));
+    if (SystemFactory::supportedUpdateFiles().match(url.m_name).hasMatch()) {
+      QListWidgetItem* item = new QListWidgetItem(url.m_name + tr(" (size ") + url.m_size + QSL(")"));
 
-    item->setData(Qt::UserRole, url.m_fileUrl);
-    item->setToolTip(url.m_fileUrl);
-    m_ui.m_listFiles->addItem(item);
+      item->setData(Qt::UserRole, url.m_fileUrl);
+      item->setToolTip(url.m_fileUrl);
+      m_ui.m_listFiles->addItem(item);
+    }
   }
 
   if (m_ui.m_listFiles->count() > 0) {

@@ -72,6 +72,8 @@ class SystemFactory : public QObject {
     // Tries to download list with new updates.
     void checkForUpdates() const;
 
+    static QRegularExpression supportedUpdateFiles();
+
     // Checks if update is newer than current application version.
     static bool isVersionNewer(const QString& new_version, const QString& base_version);
     static bool isVersionEqualOrNewer(const QString& new_version, const QString& base_version);
