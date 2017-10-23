@@ -9,7 +9,7 @@ environment:
   QMAKESPEC: win32-msvc
   COMPILERBAT: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"'
   access_token:
-    secure: XCWdr9wPgK4gm6289WXCg2vtMA02eBSnj6eKHC+ps6Z5lgw0jsK09UQ5y9E9ZFwS
+    secure: bM8uJbH7GK+2EW6aL8D0/qwwdM/lzW6y2odXWs/VcMq+nUBZa68x+k3EpZEAo6iT
   matrix:
     - qmake_args: 'USE_WEBENGINE=false'
     - qmake_args: 'USE_WEBENGINE=true'
@@ -59,4 +59,4 @@ on_success:
   - git add *.*
   - git commit -m "New files."
   - git pull origin master
-  - git push origin master
+  - git push origin master -v
