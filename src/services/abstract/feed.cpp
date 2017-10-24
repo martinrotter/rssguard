@@ -220,6 +220,8 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
     bool ok = true;
 
     if (!messages.isEmpty()) {
+      qDebug("There are some messages to be updated in DB.");
+
       QString custom_id = customId();
       int account_id = getParentServiceRoot()->accountId();
       QSqlDatabase database = is_main_thread ?
@@ -238,6 +240,9 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
         items_to_update.append(getParentServiceRoot()->recycleBin());
       }
     }
+  }
+  else {
+    qCritical("I skip saving of messages into DB, as we have error during their downloading indicated.");
   }
 
   items_to_update.append(this);
