@@ -10,6 +10,7 @@ Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-
 git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
 
+
 $file = (Get-ChildItem '*.7z').Name
 echo "File to upload: $file"
 $url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
@@ -17,9 +18,22 @@ echo "Obtained URL: $url"
 
 $git_revision = git rev-parse --short HEAD
 $date = (Get-Date).ToUniversalTime().ToString("MM-dd-yyyy HH:mm:ss UTC")
-$webengine_type = if ($file -like '*nowebengine*') { echo "true" } else { echo "false" }
+$webengine_type = if ($file -like '*nowebengine*') { echo "false" } else { echo "true" }
 
-echo "| $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) | $webengine_type |  " | ac -Encoding "utf8" C:\rssguard-wiki\Windows-development-builds.md
+echo "| $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh (7z)]($url) | $webengine_type |  " | ac -Encoding "utf8" C:\rssguard-wiki\Windows-development-builds.md
+
+
+$file = (Get-ChildItem '*.exe').Name
+echo "File to upload: $file"
+$url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
+echo "Obtained URL: $url"
+
+$git_revision = git rev-parse --short HEAD
+$date = (Get-Date).ToUniversalTime().ToString("MM-dd-yyyy HH:mm:ss UTC")
+$webengine_type = if ($file -like '*nowebengine*') { echo "false" } else { echo "true" }
+
+echo "| $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh (exe)]($url) | $webengine_type |  " | ac -Encoding "utf8" C:\rssguard-wiki\Windows-development-builds.md
+
 
 cd C:\rssguard-wiki
 git add *.*
