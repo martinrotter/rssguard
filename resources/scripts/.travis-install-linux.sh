@@ -26,11 +26,12 @@ git clone https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki
 
 set -- R*.AppImage
 imagename="$1"
+git_revision=$(git rev-parse --short HEAD)
 
 if [ "$USE_WEBENGINE" = true ]; then
-  imagenamenospace="rssguard-$(git rev-parse --short HEAD)-linux64.AppImage"
+  imagenamenospace="rssguard-${git_revision}-linux64.AppImage"
 else
-  imagenamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-linux64.AppImage"
+  imagenamenospace="rssguard-${git_revision}-nowebengine-linux64.AppImage"
 fi
 
 mv "$imagename" "$imagenamenospace"
@@ -39,8 +40,8 @@ imagename="$imagenamenospace"
 echo "File to upload: $imagename"
 echo "URL ending: $imagenamenospace"
 
-curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" --silent >> ./build-wiki/Linux-development-builds.md
-echo "" >> ./build-wiki/Linux-development-builds.md
+url=$(curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" --silent)
+echo "| $(date +'%m-%d-%Y %T') | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) |"$'\r' >> ./build-wiki/Linux-development-builds.md
 
 cd ./build-wiki
 git commit -a -m "New files."
