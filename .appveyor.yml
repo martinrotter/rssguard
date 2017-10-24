@@ -45,18 +45,19 @@ build_script:
   - nmake windows_all
 
 on_success:
-  - dir
-  - git clone -q --depth=1 https://github.com/martinrotter/rssguard.wiki.git C:\rssguard-wiki
-  - git config --global credential.helper store
+  - ps: ls
+  - ps: git clone -q --depth=1 https://github.com/martinrotter/rssguard.wiki.git C:\rssguard-wiki
+  - ps: git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-  - git config --global user.email "rotter.martinos@gmail.com"
-  - git config --global user.name "martinrotter"
-  - for /f "tokens=*" %%F in ('dir /b *.7z') do curl --upload-file %%F https://transfer.sh/%%F --silent >> C:\rssguard-wiki\Windows-development-builds.md
-  - echo.>> C:\rssguard-wiki\Windows-development-builds.md
-  - for /f "tokens=*" %%F in ('dir /b *.exe') do curl --upload-file %%F https://transfer.sh/%%F --silent >> C:\rssguard-wiki\Windows-development-builds.md
-  - echo.>> C:\rssguard-wiki\Windows-development-builds.md
-  - cd C:\rssguard-wiki
-  - git add *.*
-  - git commit -m "New files."
-  - git pull origin master
-  - git push origin master -v
+  - ps: git config --global user.email "rotter.martinos@gmail.com"
+  - ps: git config --global user.name "martinrotter"
+  - ps: $file = (Get-ChildItem '*.7z').Name
+  - ps: echo "File to upload: $file"
+  - ps: $url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
+  - ps: echo "Obtained URL: $url"
+  - ps: echo " from powershell $url " >> C:\rssguard-wiki\Windows-development-builds.md
+  - ps: cd C:\rssguard-wiki
+  - ps: git add *.*
+  - ps: git commit -m "New files."
+  - ps: git pull origin master
+  - ps: git push origin master -v
