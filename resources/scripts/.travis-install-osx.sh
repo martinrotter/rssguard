@@ -13,11 +13,12 @@ otool -L "RSS Guard.app/Contents/MacOS/rssguard"
 
 set -- *.dmg
 dmgname="$1"
+git_revision=$(git rev-parse --short HEAD)
 
 if [ "$USE_WEBENGINE" = true ]; then
-  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-mac64.dmg"
+  dmgnamenospace="rssguard-${git_revision}-mac64.dmg"
 else
-  dmgnamenospace="rssguard-$(git rev-parse --short HEAD)-nowebengine-mac64.dmg"
+  dmgnamenospace="rssguard-${git_revision}-nowebengine-mac64.dmg"
 fi
 
 mv "$dmgname" "$dmgnamenospace"
@@ -30,8 +31,9 @@ git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
 git clone -q --depth=1 https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki.git ./build-wiki
 
-curl --upload-file "./$dmgname" "https://transfer.sh/$dmgnamenospace" --silent >> ./build-wiki/Mac-OS-X-development-builds.md
-echo "\n" >> ./build-wiki/Mac-OS-X-development-builds.md
+url=$(curl --upload-file "./$dmgname" "https://transfer.sh/$dmgnamenospace" --silent)
+
+echo "| $(date +'%m-%d-%Y %T') | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) | $(echo "$USE_WEBENGINE") |  "$'\r' >> ./build-wiki/Mac-OS-X-development-builds.md
 
 cd ./build-wiki
 git add *.*
