@@ -16,9 +16,10 @@ $url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
 echo "Obtained URL: $url"
 
 $git_revision = git rev-parse --short HEAD
-$date = Get-Date -format "MM-dd-yyyy HH:mm:ss"
+$date = (Get-Date).ToUniversalTime().ToString("MM-dd-yyyy HH:mm:ss UTC")
+$webengine_type = if ($file -like '*nowebengine*') { echo "true" } else { echo "false" }
 
-echo "| $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) |  " | ac -Encoding "utf8" C:\rssguard-wiki\Windows-development-builds.md
+echo "| $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) | $webengine_type |  " | ac -Encoding "utf8" C:\rssguard-wiki\Windows-development-builds.md
 
 cd C:\rssguard-wiki
 git add *.*
