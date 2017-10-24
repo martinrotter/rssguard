@@ -45,19 +45,4 @@ build_script:
   - nmake windows_all
 
 on_success:
-  - ps: ls
-  - ps: git clone -q --depth=1 https://github.com/martinrotter/rssguard.wiki.git C:\rssguard-wiki
-  - ps: git config --global credential.helper store
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-  - ps: git config --global user.email "rotter.martinos@gmail.com"
-  - ps: git config --global user.name "martinrotter"
-  - ps: $file = (Get-ChildItem '*.7z').Name
-  - ps: echo "File to upload: $file"
-  - ps: $url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
-  - ps: echo "Obtained URL: $url"
-  - ps: echo " from powershell $url " >> C:\rssguard-wiki\Windows-development-builds.md
-  - ps: cd C:\rssguard-wiki
-  - ps: git add *.*
-  - ps: git commit -m "New files."
-  - ps: git pull origin master
-  - ps: git push origin master -v
+  - ps: .\..\resources\scripts\.appveyor-install-win.ps1
