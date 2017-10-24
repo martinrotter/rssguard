@@ -81,11 +81,11 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
     return nullptr;
   }
 
-  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
+  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
 
   // We need to quit event loop when the download finishes.
   connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
-  downloader.manipulateData(INOREADER_API_LIST_LABELS, QNetworkAccessManager::Operation::GetOperation);
+  downloader.downloadFile(INOREADER_API_LIST_LABELS, qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
   loop.exec();
 
   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
@@ -118,11 +118,11 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed:
   }
 
   target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("?n=%1").arg(batchSize());
-  downloader.appendRawHeader(QString("Authorization").toLocal8Bit(), bearer.toLocal8Bit());
+  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
 
   // We need to quit event loop when the download finishes.
   connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
-  downloader.manipulateData(target_url, QNetworkAccessManager::Operation::GetOperation);
+  downloader.downloadFile(target_url, qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
   loop.exec();
 
   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
