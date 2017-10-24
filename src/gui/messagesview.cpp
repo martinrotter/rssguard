@@ -557,18 +557,9 @@ void MessagesView::adjustColumns() {
     m_columnsAdjusted = true;
 
     // Setup column resize strategies.
-    header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_HAS_ENCLOSURES, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_FEED_TITLE_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
+    for (int i = 0; i < header()->count(); i++) {
+      header()->setSectionResizeMode(i, QHeaderView::Interactive);
+    }
 
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);
