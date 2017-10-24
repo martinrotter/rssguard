@@ -41,7 +41,7 @@ echo "File to upload: $imagename"
 echo "URL ending: $imagenamenospace"
 
 url=$(curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" --silent)
-echo "| $(date +'%m-%d-%Y %T') | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) |"$'\r' >> ./build-wiki/Linux-development-builds.md
+echo "| $(date +'%m-%d-%Y %T') | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) | $(echo "$USE_WEBENGINE") |  "$'\r' >> ./build-wiki/Linux-development-builds.md
 
 cd ./build-wiki
 git commit -a -m "New files."
