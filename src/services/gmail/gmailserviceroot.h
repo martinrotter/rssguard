@@ -22,6 +22,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
 
+    QList<QAction*> serviceMenu();
     bool canBeEdited() const;
     bool editViaGui();
     bool canBeDeleted() const;
@@ -43,6 +44,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     RootItem* obtainNewTreeForSyncIn() const;
 
   private:
+    void writeNewEmail();
     void loadFromDatabase();
 
   private:

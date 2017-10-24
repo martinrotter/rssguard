@@ -10,6 +10,7 @@
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
 #include "services/gmail/gmailfeed.h"
+#include "services/gmail/gui/formaddeditemail.h"
 #include "services/gmail/gui/formdownloadattachment.h"
 #include "services/gmail/gui/formeditgmailaccount.h"
 #include "services/gmail/network/gmailnetworkfactory.h"
@@ -47,6 +48,10 @@ RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
   root->appendChild(new GmailFeed(tr("Spam"), QSL(GMAIL_SYSTEM_LABEL_SPAM), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
 
   return root;
+}
+
+void GmailServiceRoot::writeNewEmail() {
+  FormAddEditEmail(this, qApp->mainFormWidget()).execForAdd();
 }
 
 void GmailServiceRoot::loadFromDatabase() {
@@ -119,6 +124,17 @@ bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   }
 
   return true;
+}
+
+QList<QAction*> GmailServiceRoot::serviceMenu() {
+  if (m_serviceMenu.isEmpty()) {
+    QAction* act_new_email = new QAction(qApp->icons()->fromTheme(QSL("mail-message-new")), tr("Write new e-mail message"), this);
+
+    connect(act_new_email, &QAction::triggered, this, &GmailServiceRoot::writeNewEmail);
+    m_serviceMenu.append(act_new_email);
+  }
+
+  return m_serviceMenu;
 }
 
 bool GmailServiceRoot::canBeEdited() const {

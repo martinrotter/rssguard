@@ -334,7 +334,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/tt-rss/ttrssserviceentrypoint.h \
             src/services/tt-rss/ttrssserviceroot.h \
             src/network-web/httpresponse.h \
-            src/services/gmail/gui/formdownloadattachment.h
+            src/services/gmail/gui/formdownloadattachment.h \
+            src/services/gmail/gui/formaddeditemail.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -467,7 +468,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/tt-rss/ttrssserviceentrypoint.cpp \
             src/services/tt-rss/ttrssserviceroot.cpp \
             src/network-web/httpresponse.cpp \
-            src/services/gmail/gui/formdownloadattachment.cpp
+            src/services/gmail/gui/formdownloadattachment.cpp \
+            src/services/gmail/gui/formaddeditemail.cpp
 
 mac {
   OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
@@ -499,7 +501,8 @@ FORMS +=    src/gui/dialogs/formabout.ui \
             src/services/standard/gui/formstandardcategorydetails.ui \
             src/services/standard/gui/formstandardimportexport.ui \
             src/services/tt-rss/gui/formeditttrssaccount.ui \
-            src/services/gmail/gui/formdownloadattachment.ui
+            src/services/gmail/gui/formdownloadattachment.ui \
+            src/services/gmail/gui/formaddeditemail.ui
 
 equals(USE_WEBENGINE, true) {
   HEADERS +=    src/gui/locationlineedit.h \
