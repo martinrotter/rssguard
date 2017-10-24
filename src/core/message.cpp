@@ -55,7 +55,7 @@ Message::Message() {
 }
 
 Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
-  if (record.count() != MSG_DB_FEED_CUSTOM_ID_INDEX + 1) {
+  if (record.count() != MSG_DB_HAS_ENCLOSURES + 1) {
     if (result != nullptr) {
       *result = false;
     }

@@ -558,10 +558,10 @@ void MessagesView::adjustColumns() {
 
     // Setup column resize strategies.
     header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_HAS_ENCLOSURES, QHeaderView::ResizeToContents);
-    header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_HAS_ENCLOSURES, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_FEED_TITLE_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
@@ -581,7 +581,6 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_CUSTOM_ID_INDEX);
     hideColumn(MSG_DB_CUSTOM_HASH_INDEX);
     hideColumn(MSG_DB_FEED_CUSTOM_ID_INDEX);
-    qDebug("Adjusting column resize modes for MessagesView.");
   }
 }
 
