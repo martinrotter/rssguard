@@ -1060,23 +1060,23 @@ or this functionality is not implemented yet.</source>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 Einstellungen</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Applikations ID</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Applikations Schlüssel</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL umleiten</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
@@ -1084,31 +1084,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>Nachricht(en)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Login</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Noch nicht getestet.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Nutzer sichtbarer Benutzername</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Sie sind bereits angemeldet.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Zugang gewährt.</translation>
     </message>
     <message>
         <source>No username entered.   </source>
@@ -1120,11 +1120,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Sie haben keinen Zugang gewährt.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist während des Tests aufgetreten.</translation>
     </message>
     <message>
         <source>There is error. %1 </source>
@@ -1136,7 +1136,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Ihr Zugang wurde genehmigt.</translation>
     </message>
     <message>
         <source>Add new Gmail account</source>
@@ -1148,11 +1148,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Leerer Wert wurde eingegeben.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Wert wurde eingegeben.</translation>
     </message>
 </context>
 <context>
@@ -2797,7 +2797,7 @@ Sie können es jetzt installieren.</translation>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Erfolgreich eingeloggt</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
@@ -2805,19 +2805,19 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Fehler bei der Authentifizierung</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klicken Sie hier um sich wieder anzumelden. Der Fehler ist: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Authorisierung abgelehnt</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Drücken Sie hier um sich neu anzumelden.</translation>
     </message>
     <message>
         <source>No subject</source>
@@ -2845,15 +2845,16 @@ Sie können es jetzt installieren.</translation>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Authentifikationsstatus: %1
+Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>angemeldet</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NICHT angemeldet</translation>
     </message>
 </context>
 <context>
@@ -3428,7 +3429,7 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nicht unterstützt</translation>
     </message>
     <message>
         <source>This plugin is not supported in NonWebEngine variant of this program.</source>

@@ -1062,7 +1062,7 @@ of deze functie bestaat nog niet.</translation>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -3432,7 +3432,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Niet ondersteund</translation>
     </message>
     <message>
         <source>This plugin is not supported in NonWebEngine variant of this program.</source>

@@ -1060,19 +1060,19 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Pengaturan OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>ID aplikasi</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Kunci aplikasi</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -1088,7 +1088,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>pesan</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -1096,7 +1096,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Belum teruji</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -3424,7 +3424,7 @@ Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Tidak didukung</translation>
     </message>
     <message>
         <source>This plugin is not supported in NonWebEngine variant of this program.</source>

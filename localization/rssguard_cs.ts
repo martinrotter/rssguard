@@ -1063,23 +1063,23 @@ or this functionality is not implemented yet.</source>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastaveni OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>ID aplikace</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Klíč aplikace</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Přesměrovací URL</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
@@ -1087,31 +1087,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze X nejnovějších zpráv z kanálu</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation> zpráv</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Přihlásit se</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Neotestováno.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Již jste přihlášen.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup povolen.</translation>
     </message>
     <message>
         <source>No username entered.   </source>
@@ -1123,11 +1123,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup NEpovolen.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Byla chyba během testování.</translation>
     </message>
     <message>
         <source>There is error. %1 </source>
@@ -1139,7 +1139,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup byl povolen.</translation>
     </message>
     <message>
         <source>Add new Gmail account</source>
@@ -1151,11 +1151,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Zadána prázdná hodnota.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Zadána nějaká hodnota.</translation>
     </message>
 </context>
 <context>
@@ -1190,7 +1190,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source> message(s)</source>
-        <translation>zpráv</translation>
+        <translation> zpráv</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -2801,7 +2801,7 @@ Nyní ho můžete nainstalovat.</translation>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Přihlášeno úspěšně.</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
@@ -2809,19 +2809,19 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inroeader: chyba autentizace</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Pro opětovné přihlášení klikněte zde.</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: přistup nepovolen</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klikně sem pro opětovné přihlášení.</translation>
     </message>
     <message>
         <source>No subject</source>
@@ -2849,15 +2849,16 @@ Nyní ho můžete nainstalovat.</translation>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status autentizace: %1
+Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>přihlášen</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NEpřihlášen</translation>
     </message>
 </context>
 <context>
@@ -3434,7 +3435,7 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nepodporováno</translation>
     </message>
     <message>
         <source>This plugin is not supported in NonWebEngine variant of this program.</source>

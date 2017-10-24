@@ -1063,7 +1063,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nazwa użytkownika</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -3434,7 +3434,7 @@ Minimalny wymagany poziom API to %1.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Niewspierane</translation>
     </message>
     <message>
         <source>This plugin is not supported in NonWebEngine variant of this program.</source>
