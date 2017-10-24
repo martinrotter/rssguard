@@ -8,7 +8,11 @@ $file = (Get-ChildItem '*.7z').Name
 echo "File to upload: $file"
 $url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
 echo "Obtained URL: $url"
-echo " from powershell $url " >> C:\rssguard-wiki\Windows-development-builds.md
+
+$git_revision = git rev-parse --short HEAD
+$date = Get-Date -format "MM-dd-yyyy HH:mm:ss"
+
+echo "| $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) |  " >> C:\rssguard-wiki\Windows-development-builds.md
 cd C:\rssguard-wiki
 git add *.*
 git commit -m "New files."
