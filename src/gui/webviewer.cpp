@@ -13,6 +13,7 @@
 #include "network-web/webfactory.h"
 #include "network-web/webpage.h"
 
+#include <QWebEngineContextMenuData>
 #include <QWheelEvent>
 
 WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) {
@@ -137,9 +138,18 @@ void WebViewer::clear() {
 void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
   QMenu* menu = page()->createStandardContextMenu();
+  QWebEngineContextMenuData menu_data = page()->contextMenuData();
+
+  if (menu_data.linkUrl().isValid()) {
+    // Add option to open link in external viewe
+    menu->addAction(qApp->icons()->fromTheme(QSL("")), tr("Open link in external browser"), [menu_data]() {
+      qApp->web()->openUrlInExternalBrowser(menu_data.linkUrl().toString());
+    });
+  }
 
   menu->addAction(AdBlockManager::instance()->adBlockIcon());
   menu->addAction(qApp->web()->engineSettingsAction());
+
   const QPoint pos = event->globalPos();
   QPoint p(pos.x(), pos.y() + 1);
 

@@ -2,6 +2,7 @@
 —————
 
 Added:
+▪ New context menu internal web viewer action to open links in ext. browser (#80)
 ▪ New bindable menu action Messages -> Enable message preview, which can disable opening message preview in internal web viewer. (#141)
 
 Fixed:
