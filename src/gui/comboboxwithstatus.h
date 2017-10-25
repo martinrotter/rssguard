@@ -1,4 +1,4 @@
-// For license of this file, see <object-root-folder>/LICENSE.md.
+// For license of this file, see <project-root-folder>/LICENSE.md.
 
 #ifndef COMBOBOXWITHSTATUS_H
 #define COMBOBOXWITHSTATUS_H

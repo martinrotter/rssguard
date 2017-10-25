@@ -1,4 +1,4 @@
-// For license of this file, see <object-root-folder>/LICENSE.md.
+// For license of this file, see <project-root-folder>/LICENSE.md.
 
 #ifndef SYSTEMTRAYICON_H
 #define SYSTEMTRAYICON_H

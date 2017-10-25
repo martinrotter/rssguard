@@ -1,4 +1,4 @@
-// For license of this file, see <object-root-folder>/LICENSE.md.
+// For license of this file, see <project-root-folder>/LICENSE.md.
 
 // You may use this file under the terms of the BSD license as follows:
 //

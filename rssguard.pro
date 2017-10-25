@@ -1,6 +1,6 @@
 #################################################################
 #
-# For license of this file, see <object-root-folder>/LICENSE.md.
+# For license of this file, see <project-root-folder>/LICENSE.md.
 #
 #
 # This is RSS Guard compilation script for qmake.
@@ -335,7 +335,8 @@ HEADERS +=  src/core/feeddownloader.h \
             src/services/tt-rss/ttrssserviceroot.h \
             src/network-web/httpresponse.h \
             src/services/gmail/gui/formdownloadattachment.h \
-            src/services/gmail/gui/formaddeditemail.h
+            src/services/gmail/gui/formaddeditemail.h \
+            src/gui/searchtextwidget.h
 
 SOURCES +=  src/core/feeddownloader.cpp \
             src/core/feedsmodel.cpp \
@@ -469,7 +470,8 @@ SOURCES +=  src/core/feeddownloader.cpp \
             src/services/tt-rss/ttrssserviceroot.cpp \
             src/network-web/httpresponse.cpp \
             src/services/gmail/gui/formdownloadattachment.cpp \
-            src/services/gmail/gui/formaddeditemail.cpp
+            src/services/gmail/gui/formaddeditemail.cpp \
+            src/gui/searchtextwidget.cpp
 
 mac {
   OBJECTIVE_SOURCES += src/miscellaneous/disablewindowtabbing.mm
@@ -502,7 +504,8 @@ FORMS +=    src/gui/dialogs/formabout.ui \
             src/services/standard/gui/formstandardimportexport.ui \
             src/services/tt-rss/gui/formeditttrssaccount.ui \
             src/services/gmail/gui/formdownloadattachment.ui \
-            src/services/gmail/gui/formaddeditemail.ui
+            src/services/gmail/gui/formaddeditemail.ui \
+            src/gui/searchtextwidget.ui
 
 equals(USE_WEBENGINE, true) {
   HEADERS +=    src/gui/locationlineedit.h \
