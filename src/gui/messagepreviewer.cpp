@@ -15,6 +15,12 @@
 
 void MessagePreviewer::createConnections() {
   connect(m_ui->m_txtMessage, &QTextBrowser::anchorClicked, [=](const QUrl& url) {
+    if (url.toString().startsWith(INTERNAL_URL_PASSATTACHMENT) &&
+        m_root != nullptr &&
+        m_root->getParentServiceRoot()->downloadAttachmentOnMyOwn(url)) {
+      return;
+    }
+
     if (!url.isEmpty()) {
       bool open_externally_now = qApp->settings()->value(GROUP(Browser),
                                                          SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
@@ -188,7 +194,16 @@ QString MessagePreviewer::prepareHtmlForMessage(const Message& message) {
   html += QString("[url] <a href=\"%1\">%1</a><br/>").arg(message.m_url);
 
   foreach (const Enclosure& enc, message.m_enclosures) {
-    html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc.m_url, enc.m_mimeType);
+    QString enc_url;
+
+    if (!enc.m_url.contains(QRegularExpression(QSL("^(http|ftp|\\/)")))) {
+      enc_url = QString(INTERNAL_URL_PASSATTACHMENT) + QL1S("/?") + enc.m_url;
+    }
+    else {
+      enc_url = enc.m_url;
+    }
+
+    html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc_url, enc.m_mimeType);
   }
 
   int offset = 0;
