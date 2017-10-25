@@ -109,7 +109,7 @@ bool InoreaderServiceRoot::editViaGui() {
 }
 
 bool InoreaderServiceRoot::supportsFeedAdding() const {
-  return true;
+  return false;
 }
 
 bool InoreaderServiceRoot::supportsCategoryAdding() const {

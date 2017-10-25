@@ -6,32 +6,58 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>370</width>
-    <height>27</height>
+    <width>461</width>
+    <height>25</height>
    </rect>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QHBoxLayout">
+   <property name="spacing">
+    <number>3</number>
+   </property>
    <property name="leftMargin">
-    <number>0</number>
+    <number>3</number>
    </property>
    <property name="topMargin">
-    <number>0</number>
+    <number>3</number>
    </property>
    <property name="rightMargin">
-    <number>0</number>
+    <number>3</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>3</number>
    </property>
    <item>
-    <widget class="QLineEdit" name="m_txtSearch">
+    <widget class="QToolButton" name="m_btnClear">
+     <property name="toolTip">
+      <string>Clear searched phrase</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="BaseLineEdit" name="m_txtSearch">
      <property name="placeholderText">
       <string>Seach text</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QToolButton" name="m_btnClear">
+    <widget class="QToolButton" name="m_btnSearchBackward">
+     <property name="toolTip">
+      <string>Find previous occurence</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="m_btnSearchForward">
+     <property name="toolTip">
+      <string>Find next occurence</string>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -52,9 +78,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BaseLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>baselineedit.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
-  <tabstop>m_txtSearch</tabstop>
   <tabstop>m_btnClear</tabstop>
+  <tabstop>m_txtSearch</tabstop>
+  <tabstop>m_btnSearchBackward</tabstop>
+  <tabstop>m_btnSearchForward</tabstop>
  </tabstops>
  <resources/>
  <connections/>

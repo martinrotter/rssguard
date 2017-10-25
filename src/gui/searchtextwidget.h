@@ -17,6 +17,20 @@ class SearchTextWidget : public QWidget {
   public:
     explicit SearchTextWidget(QWidget* parent = nullptr);
 
+  public slots:
+    void clear();
+
+  private slots:
+    void onTextChanged(const QString& text);
+
+  protected:
+    void keyPressEvent(QKeyEvent* event);
+    void focusInEvent(QFocusEvent* event);
+
+  signals:
+    void searchForText(QString text, bool search_backwards);
+    void cancelSearch();
+
   private:
     Ui::SearchTextWidget m_ui;
 };

@@ -22,12 +22,13 @@ class TabWidget;
 class WebViewer;
 class LocationLineEdit;
 class DiscoverFeedsButton;
+class SearchTextWidget;
 
 class WebBrowser : public TabContent {
   Q_OBJECT
 
   public:
-    explicit WebBrowser(QWidget* parent = 0);
+    explicit WebBrowser(QWidget* parent = nullptr);
     virtual ~WebBrowser();
 
     WebBrowser* webBrowser() const {
@@ -55,6 +56,9 @@ class WebBrowser : public TabContent {
     inline void setNavigationBarVisible(bool visible) {
       m_toolBar->setVisible(visible);
     }
+
+  protected:
+    bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
     void updateUrl(const QUrl& url);
@@ -88,6 +92,7 @@ class WebBrowser : public TabContent {
     QVBoxLayout* m_layout;
     QToolBar* m_toolBar;
     WebViewer* m_webView;
+    SearchTextWidget* m_searchWidget;
     LocationLineEdit* m_txtLocation;
     DiscoverFeedsButton* m_btnDiscoverFeeds;
     QProgressBar* m_loadingProgress;

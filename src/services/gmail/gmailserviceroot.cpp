@@ -149,7 +149,7 @@ bool GmailServiceRoot::editViaGui() {
 }
 
 bool GmailServiceRoot::supportsFeedAdding() const {
-  return true;
+  return false;
 }
 
 bool GmailServiceRoot::supportsCategoryAdding() const {

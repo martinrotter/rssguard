@@ -5,6 +5,7 @@
 #include "gui/discoverfeedsbutton.h"
 #include "gui/locationlineedit.h"
 #include "gui/messagebox.h"
+#include "gui/searchtextwidget.h"
 #include "gui/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
@@ -18,7 +19,43 @@
 #include <QWebEngineSettings>
 #include <QWidgetAction>
 
+WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
+  m_layout(new QVBoxLayout(this)),
+  m_toolBar(new QToolBar(tr("Navigation panel"), this)),
+  m_webView(new WebViewer(this)),
+  m_searchWidget(new SearchTextWidget(this)),
+  m_txtLocation(new LocationLineEdit(this)),
+  m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
+  m_actionBack(m_webView->pageAction(QWebEnginePage::Back)),
+  m_actionForward(m_webView->pageAction(QWebEnginePage::Forward)),
+  m_actionReload(m_webView->pageAction(QWebEnginePage::Reload)),
+  m_actionStop(m_webView->pageAction(QWebEnginePage::Stop)) {
+  // Initialize the components and layout.
+  initializeLayout();
+  setFocusProxy(m_txtLocation);
+  setTabOrder(m_txtLocation, m_toolBar);
+  setTabOrder(m_toolBar, m_webView);
+  createConnections();
+  reloadFontSettings();
+}
+
 void WebBrowser::createConnections() {
+  installEventFilter(this);
+
+  connect(m_searchWidget, &SearchTextWidget::cancelSearch, this, [this]() {
+    m_webView->findText(QString());
+  });
+  connect(m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {
+    if (backwards) {
+      m_webView->findText(text, QWebEnginePage::FindBackward);
+    }
+    else {
+      m_webView->findText(text);
+    }
+
+    m_searchWidget->setFocus();
+  });
+
   connect(m_webView, &WebViewer::messageStatusChangeRequested, this, &WebBrowser::receiveMessageStatusChangeRequest);
   connect(m_txtLocation, &LocationLineEdit::submitted,
           this, static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
@@ -37,9 +74,7 @@ void WebBrowser::createConnections() {
 }
 
 void WebBrowser::updateUrl(const QUrl& url) {
-  QString url_string = url.toString();
-
-  m_txtLocation->setText(url_string);
+  m_txtLocation->setText(url.toString());
 
   //setNavigationBarVisible(url_string != INTERNAL_URL_EMPTY && url_string != INTERNAL_URL_NEWSPAPER);
 }
@@ -48,25 +83,6 @@ void WebBrowser::loadUrl(const QUrl& url) {
   if (url.isValid()) {
     m_webView->load(url);
   }
-}
-
-WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
-  m_layout(new QVBoxLayout(this)),
-  m_toolBar(new QToolBar(tr("Navigation panel"), this)),
-  m_webView(new WebViewer(this)),
-  m_txtLocation(new LocationLineEdit(this)),
-  m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
-  m_actionBack(m_webView->pageAction(QWebEnginePage::Back)),
-  m_actionForward(m_webView->pageAction(QWebEnginePage::Forward)),
-  m_actionReload(m_webView->pageAction(QWebEnginePage::Reload)),
-  m_actionStop(m_webView->pageAction(QWebEnginePage::Stop)) {
-  // Initialize the components and layout.
-  initializeLayout();
-  setFocusProxy(m_txtLocation);
-  setTabOrder(m_txtLocation, m_toolBar);
-  setTabOrder(m_toolBar, m_webView);
-  createConnections();
-  reloadFontSettings();
 }
 
 WebBrowser::~WebBrowser() {
@@ -117,6 +133,21 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
 
 void WebBrowser::loadMessage(const Message& message, RootItem* root) {
   loadMessages(QList<Message>() << message, root);
+}
+
+bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
+  if (event->type() == QEvent::KeyPress) {
+    QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
+
+    if (key_event->matches(QKeySequence::StandardKey::Find)) {
+      m_searchWidget->clear();
+      m_searchWidget->show();
+      m_searchWidget->setFocus();
+      return true;
+    }
+  }
+
+  return false;
 }
 
 void WebBrowser::receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change) {
@@ -192,8 +223,11 @@ void WebBrowser::initializeLayout() {
   m_layout->addWidget(m_toolBar);
   m_layout->addWidget(m_webView);
   m_layout->addWidget(m_loadingProgress);
+  m_layout->addWidget(m_searchWidget);
   m_layout->setMargin(0);
   m_layout->setSpacing(0);
+
+  m_searchWidget->hide();
 }
 
 void WebBrowser::onLoadingStarted() {
