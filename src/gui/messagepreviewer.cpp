@@ -139,6 +139,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
   m_root = root;
 
   if (!m_root.isNull()) {
+    m_ui.m_searchWidget->hide();
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
     m_ui.m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
     updateButtons();
