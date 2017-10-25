@@ -14,7 +14,22 @@
 #include <QToolTip>
 
 void MessagePreviewer::createConnections() {
-  connect(m_ui->m_txtMessage, &QTextBrowser::anchorClicked, [=](const QUrl& url) {
+  installEventFilter(this);
+
+  connect(m_ui.m_searchWidget, &SearchTextWidget::cancelSearch, this, [this]() {
+    m_ui.m_txtMessage->textCursor().clearSelection();
+    m_ui.m_txtMessage->moveCursor(QTextCursor::MoveOperation::Left);
+  });
+  connect(m_ui.m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {
+    if (backwards) {
+      m_ui.m_txtMessage->find(text, QTextDocument::FindFlag::FindBackward);
+    }
+    else {
+      m_ui.m_txtMessage->find(text);
+    }
+  });
+
+  connect(m_ui.m_txtMessage, &QTextBrowser::anchorClicked, [=](const QUrl& url) {
     if (url.toString().startsWith(INTERNAL_URL_PASSATTACHMENT) &&
         m_root != nullptr &&
         m_root->getParentServiceRoot()->downloadAttachmentOnMyOwn(url)) {
@@ -78,7 +93,7 @@ void MessagePreviewer::createConnections() {
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
-  connect(m_ui->m_txtMessage,
+  connect(m_ui.m_txtMessage,
           static_cast<void (QTextBrowser::*)(const QString&)>(&QTextBrowser::highlighted),
           [=](const QString& text) {
     Q_UNUSED(text)
@@ -86,31 +101,31 @@ void MessagePreviewer::createConnections() {
   });
 }
 
-MessagePreviewer::MessagePreviewer(QWidget* parent) : QWidget(parent),
-  m_ui(new Ui::MessagePreviewer), m_pictures(QStringList()) {
-  m_ui->setupUi(this);
-  m_ui->m_txtMessage->viewport()->setAutoFillBackground(true);
+MessagePreviewer::MessagePreviewer(QWidget* parent) : QWidget(parent), m_pictures(QStringList()) {
+  m_ui.setupUi(this);
+  m_ui.m_txtMessage->viewport()->setAutoFillBackground(true);
   m_toolBar = new QToolBar(this);
   m_toolBar->setOrientation(Qt::Vertical);
-  m_ui->m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
+  m_ui.m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
   createConnections();
+
   m_actionSwitchImportance->setCheckable(true);
+  m_ui.m_searchWidget->hide();
+
   reloadFontSettings();
   clear();
 }
-
-MessagePreviewer::~MessagePreviewer() {}
 
 void MessagePreviewer::reloadFontSettings() {
   const Settings* settings = qApp->settings();
   QFont fon;
 
   fon.fromString(settings->value(GROUP(Messages), SETTING(Messages::PreviewerFontStandard)).toString());
-  m_ui->m_txtMessage->setFont(fon);
+  m_ui.m_txtMessage->setFont(fon);
 }
 
 void MessagePreviewer::clear() {
-  m_ui->m_txtMessage->clear();
+  m_ui.m_txtMessage->clear();
   m_pictures.clear();
   hide();
 }
@@ -125,10 +140,10 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
 
   if (!m_root.isNull()) {
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
-    m_ui->m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
+    m_ui.m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
     updateButtons();
     show();
-    m_ui->m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
+    m_ui.m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
   }
 }
 
@@ -181,6 +196,23 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
       m_message.m_isImportant = checked;
     }
   }
+}
+
+bool MessagePreviewer::eventFilter(QObject* watched, QEvent* event) {
+  Q_UNUSED(watched)
+
+  if (event->type() == QEvent::KeyPress) {
+    QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
+
+    if (key_event->matches(QKeySequence::StandardKey::Find)) {
+      m_ui.m_searchWidget->clear();
+      m_ui.m_searchWidget->show();
+      m_ui.m_searchWidget->setFocus();
+      return true;
+    }
+  }
+
+  return false;
 }
 
 void MessagePreviewer::updateButtons() {

@@ -22,8 +22,7 @@ class MessagePreviewer : public QWidget {
   Q_OBJECT
 
   public:
-    explicit MessagePreviewer(QWidget* parent = 0);
-    virtual ~MessagePreviewer();
+    explicit MessagePreviewer(QWidget* parent = nullptr);
 
     void reloadFontSettings();
 
@@ -38,6 +37,9 @@ class MessagePreviewer : public QWidget {
     void markMessageAsReadUnread(RootItem::ReadStatus read);
     void switchMessageImportance(bool checked);
 
+  protected:
+    bool eventFilter(QObject* watched, QEvent* event);
+
   signals:
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
@@ -50,7 +52,7 @@ class MessagePreviewer : public QWidget {
 
     QToolBar* m_toolBar;
 
-    QScopedPointer<Ui::MessagePreviewer> m_ui;
+    Ui::MessagePreviewer m_ui;
     Message m_message;
     QStringList m_pictures;
 

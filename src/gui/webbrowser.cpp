@@ -136,6 +136,8 @@ void WebBrowser::loadMessage(const Message& message, RootItem* root) {
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
+  Q_UNUSED(watched)
+
   if (event->type() == QEvent::KeyPress) {
     QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
 

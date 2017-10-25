@@ -33,6 +33,10 @@ QTreeView[hideTree="true"]::branch:!has-chlidren:hasSiblings {
   image: none;
 }
 
+QTextEdit {
+  selection-background-color: #3297FD;
+}
+
 QStatusBar::item {
   border: none;
 }

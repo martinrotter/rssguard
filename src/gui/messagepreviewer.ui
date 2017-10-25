@@ -42,6 +42,9 @@
      </property>
     </widget>
    </item>
+   <item row="1" column="1">
+    <widget class="SearchTextWidget" name="m_searchWidget" native="true"/>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -49,6 +52,12 @@
    <class>MessageTextBrowser</class>
    <extends>QTextBrowser</extends>
    <header>messagetextbrowser.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SearchTextWidget</class>
+   <extends>QWidget</extends>
+   <header>searchtextwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

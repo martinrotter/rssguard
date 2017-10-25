@@ -2,6 +2,11 @@
 —————
 
 Added:
+▪ Internal message web viewer (and also lighter message text viewer) now support (#63) text searching. How to use:
+   1. Select some messages, it now gets displayed in internal viewer.
+   2. Give focus to internal viewer (click somehwere in it).
+   3. Press standard "find" keyboard shortcut (CTRL+F on Windows).
+   4. Search box appears on the bottom if internal message previewer.
 ▪ New context menu internal web viewer action to open links in ext. browser (#80)
 ▪ New bindable menu action Messages -> Enable message preview, which can disable opening message preview in internal web viewer. (#141)
 
