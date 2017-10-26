@@ -22,13 +22,12 @@ GmailServiceRoot* GmailFeed::serviceRoot() const {
 }
 
 QList<Message> GmailFeed::obtainNewMessages(bool* error_during_obtaining) {
-  Feed::Status error;
+  Feed::Status error = Feed::Status::Normal;
   QList<Message> messages = serviceRoot()->network()->messages(customId(), error);
 
   setStatus(error);
 
-  if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError ||
-      error == Feed::Status::ParsingError) {
+  if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError || error == Feed::Status::ParsingError) {
     *error_during_obtaining = true;
   }
 

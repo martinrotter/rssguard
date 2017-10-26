@@ -127,7 +127,7 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed:
   loop.exec();
 
   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
-    qCritical("Cannot download messages for '%s', network error.", qPrintable(stream_id));
+    qCritical("Cannot download messages for '%s', network error: %d.", qPrintable(stream_id), int(downloader.lastOutputError()));
     error = Feed::Status::NetworkError;
     return QList<Message>();
   }
