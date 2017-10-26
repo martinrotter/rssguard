@@ -10,7 +10,7 @@
 #include "services/gmail/gmailserviceroot.h"
 
 FormEditGmailAccount::FormEditGmailAccount(QWidget* parent) : QDialog(parent),
-  m_oauth(new OAuth2Service(QString(), GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
+  m_oauth(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
                             QString(), QString(), GMAIL_OAUTH_SCOPE)), m_editableRoot(nullptr) {
   m_ui.setupUi(this);
 

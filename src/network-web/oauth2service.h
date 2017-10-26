@@ -37,8 +37,9 @@ class OAuth2Service : public QObject {
   Q_OBJECT
 
   public:
-    explicit OAuth2Service(const QString& id_string, const QString& auth_url, const QString& token_url,
-                           const QString& client_id, const QString& client_secret, const QString& scope, QObject* parent = 0);
+    explicit OAuth2Service(const QString& auth_url, const QString& token_url,
+                           const QString& client_id, const QString& client_secret,
+                           const QString& scope, QObject* parent = 0);
 
     // Returns bearer HTTP header value.
     // NOTE: Only call this if isFullyLoggedIn()

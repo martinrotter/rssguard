@@ -43,17 +43,9 @@ Q_GLOBAL_STATIC(OAuthHttpHandler, qz_silent_acmanager)
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-OAuth2Service::OAuth2Service(const QString& id_string, const QString& auth_url, const QString& token_url, const QString& client_id,
+OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, const QString& client_id,
                              const QString& client_secret, const QString& scope, QObject* parent)
-  : QObject(parent), m_timerId(-1), m_tokensExpireIn(QDateTime()) {
-
-  if (id_string.isEmpty()) {
-    m_id = QString::number(std::rand());
-  }
-  else {
-    m_id = id_string;
-  }
-
+  : QObject(parent), m_id(QString::number(std::rand())), m_timerId(-1), m_tokensExpireIn(QDateTime()) {
   m_redirectUrl = QSL(LOCALHOST_ADDRESS);
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
