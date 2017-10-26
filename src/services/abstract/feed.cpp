@@ -215,30 +215,28 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
 
   qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true" : "false"));
 
+  bool anything_updated = false;
+  bool ok = true;
+
   if (!messages.isEmpty()) {
-    bool anything_updated = false;
-    bool ok = true;
+    qDebug("There are some messages to be updated/added to DB.");
 
-    if (!messages.isEmpty()) {
-      qDebug("There are some messages to be updated in DB.");
+    QString custom_id = customId();
+    int account_id = getParentServiceRoot()->accountId();
+    QSqlDatabase database = is_main_thread ?
+                            qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
+                            qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
 
-      QString custom_id = customId();
-      int account_id = getParentServiceRoot()->accountId();
-      QSqlDatabase database = is_main_thread ?
-                              qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
-                              qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
+    updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
+  }
 
-      updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
-    }
+  if (ok) {
+    setStatus(updated_messages > 0 ? NewMessages : Normal);
+    updateCounts(true);
 
-    if (ok) {
-      setStatus(updated_messages > 0 ? NewMessages : Normal);
-      updateCounts(true);
-
-      if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
-        getParentServiceRoot()->recycleBin()->updateCounts(true);
-        items_to_update.append(getParentServiceRoot()->recycleBin());
-      }
+    if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
+      getParentServiceRoot()->recycleBin()->updateCounts(true);
+      items_to_update.append(getParentServiceRoot()->recycleBin());
     }
   }
 
