@@ -15,6 +15,20 @@ class StyledItemDelegateWithoutFocus : public QStyledItemDelegate {
     explicit StyledItemDelegateWithoutFocus(QObject* parent = 0);
     virtual ~StyledItemDelegateWithoutFocus();
 
+    QSize sizeHint ( const QStyleOptionViewItem& option, const QModelIndex& index ) const
+    {
+      QSize siz = QStyledItemDelegate::sizeHint(option, index);
+
+      /*   QStyleOptionViewItem opt = option;
+
+         initStyleOption(&opt, index);
+         QStyle* style = widget ? widget->style() : QApplication::style();
+
+         return style->sizeFromContents(QStyle::CT_ItemViewItem, &opt, QSize(), widget);*/
+
+      return siz;
+    }
+
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 };

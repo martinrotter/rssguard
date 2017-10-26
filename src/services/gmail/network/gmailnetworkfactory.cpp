@@ -26,7 +26,7 @@
 
 GmailNetworkFactory::GmailNetworkFactory(QObject* parent) : QObject(parent),
   m_service(nullptr), m_username(QString()), m_batchSize(GMAIL_DEFAULT_BATCH_SIZE),
-  m_oauth2(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
+  m_oauth2(new OAuth2Service(QString(), GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
                              QString(), QString(), GMAIL_OAUTH_SCOPE)) {
   initializeOauth();
 }
@@ -328,7 +328,7 @@ void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, c
 void GmailNetworkFactory::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
 
-  qApp->showGuiMessage(tr("Inoreader: authentication error"),
+  qApp->showGuiMessage(tr("Gmail: authentication error"),
                        tr("Click this to login again. Error is: '%1'").arg(error_description),
                        QSystemTrayIcon::Critical,
                        nullptr, false,
@@ -338,7 +338,7 @@ void GmailNetworkFactory::onTokensError(const QString& error, const QString& err
 }
 
 void GmailNetworkFactory::onAuthFailed() {
-  qApp->showGuiMessage(tr("Inoreader: authorization denied"),
+  qApp->showGuiMessage(tr("Gmail: authorization denied"),
                        tr("Click this to login again."),
                        QSystemTrayIcon::Critical,
                        nullptr, false,

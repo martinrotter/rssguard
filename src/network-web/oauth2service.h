@@ -29,12 +29,16 @@
 
 #include "network-web/silentnetworkaccessmanager.h"
 
+#if !defined(USE_WEBENGINE)
+#include "network-web/oauthhttphandler.h"
+#endif
+
 class OAuth2Service : public QObject {
   Q_OBJECT
 
   public:
-    explicit OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
-                           QString clientSecret, QString scope, QObject* parent = 0);
+    explicit OAuth2Service(const QString& id_string, const QString& auth_url, const QString& token_url,
+                           const QString& client_id, const QString& client_secret, const QString& scope, QObject* parent = 0);
 
     // Returns bearer HTTP header value.
     // NOTE: Only call this if isFullyLoggedIn()
@@ -65,15 +69,15 @@ class OAuth2Service : public QObject {
     QString accessToken() const;
     void setAccessToken(const QString& access_token);
 
+    QString id() const;
+    void setId(const QString& id);
+
   signals:
     void tokensReceived(QString access_token, QString refresh_token, int expires_in);
     void tokensRetrieveError(QString error, QString error_description);
 
     // User failed to authenticate or rejected it.
     void authFailed();
-
-    // User enabled access.
-    void authCodeObtained(QString auth_code);
 
   public slots:
     void retrieveAuthCode();
@@ -100,6 +104,7 @@ class OAuth2Service : public QObject {
     void timerEvent(QTimerEvent* event);
 
   private:
+    QString m_id;
     int m_timerId;
     QDateTime m_tokensExpireIn;
     QString m_accessToken;
@@ -112,6 +117,12 @@ class OAuth2Service : public QObject {
     QString m_authUrl;
     QString m_scope;
     SilentNetworkAccessManager m_networkManager;
+
+#if !defined(USE_WEBENGINE)
+
+    // Returns pointer to global silent network manager
+    static OAuthHttpHandler* handler();
+#endif
 };
 
 #endif // OAUTH2SERVICE_H

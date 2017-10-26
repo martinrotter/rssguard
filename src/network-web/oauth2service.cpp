@@ -26,10 +26,15 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "network-web/webfactory.h"
 #include "services/inoreader/definitions.h"
 
 #if defined(USE_WEBENGINE)
 #include "gui/dialogs/oauthlogin.h"
+#else
+#include "network-web/oauthhttphandler.h"
+
+Q_GLOBAL_STATIC(OAuthHttpHandler, qz_silent_acmanager)
 #endif
 
 #include <QDebug>
@@ -38,21 +43,34 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-OAuth2Service::OAuth2Service(QString authUrl, QString tokenUrl, QString clientId,
-                             QString clientSecret, QString scope, QObject* parent)
+OAuth2Service::OAuth2Service(const QString& id_string, const QString& auth_url, const QString& token_url, const QString& client_id,
+                             const QString& client_secret, const QString& scope, QObject* parent)
   : QObject(parent), m_timerId(-1), m_tokensExpireIn(QDateTime()) {
+
+  if (id_string.isEmpty()) {
+    m_id = "somerandomstring";
+  }
+  else {
+    m_id = id_string;
+  }
 
   m_redirectUrl = QSL(LOCALHOST_ADDRESS);
   m_tokenGrantType = QSL("authorization_code");
-  m_tokenUrl = QUrl(tokenUrl);
-  m_authUrl = authUrl;
+  m_tokenUrl = QUrl(token_url);
+  m_authUrl = auth_url;
 
-  m_clientId = clientId;
-  m_clientSecret = clientSecret;
+  m_clientId = client_id;
+  m_clientSecret = client_secret;
   m_scope = scope;
 
   connect(&m_networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(tokenRequestFinished(QNetworkReply*)));
-  connect(this, &OAuth2Service::authCodeObtained, this, &OAuth2Service::retrieveAccessToken);
+
+#if !defined(USE_WEBENGINE)
+  connect(handler(), &OAuthHttpHandler::authGranted, this, &OAuth2Service::retrieveAccessToken);
+  connect(handler(), &OAuthHttpHandler::authRejected, [this](const QString& error_description) {
+    emit authFailed();
+  });
+#endif
 }
 
 QString OAuth2Service::bearer() {
@@ -105,6 +123,21 @@ void OAuth2Service::timerEvent(QTimerEvent* event) {
   QObject::timerEvent(event);
 }
 
+QString OAuth2Service::id() const {
+  return m_id;
+}
+
+void OAuth2Service::setId(const QString& id) {
+  m_id = id;
+}
+
+#if !defined(USE_WEBENGINE)
+OAuthHttpHandler* OAuth2Service::handler() {
+  return qz_silent_acmanager();
+}
+
+#endif
+
 void OAuth2Service::retrieveAccessToken(QString auth_code) {
   QNetworkRequest networkRequest;
 
@@ -155,7 +188,6 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   QByteArray repl = network_reply->readAll();
   QJsonDocument json_document = QJsonDocument::fromJson(repl);
   QJsonObject root_obj = json_document.object();
-  auto cod = network_reply->error();
 
   qDebug() << "Token response:" << json_document.toJson();
 
@@ -276,15 +308,16 @@ void OAuth2Service::killRefreshTimer() {
 
 void OAuth2Service::retrieveAuthCode() {
   QString auth_url = m_authUrl + QString("?client_id=%1&scope=%2&"
-                                         "redirect_uri=%3&response_type=code&state=abcdef&"
+                                         "redirect_uri=%3&response_type=code&state=%4&"
                                          "prompt=consent&access_type=offline").arg(m_clientId,
                                                                                    m_scope,
-                                                                                   m_redirectUrl);
+                                                                                   m_redirectUrl,
+                                                                                   m_id);
 
 #if defined(USE_WEBENGINE)
   OAuthLogin login_page(qApp->mainFormWidget());
 
-  connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::authCodeObtained);
+  connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::retrieveAccessToken);
   connect(&login_page, &OAuthLogin::authRejected, [this]() {
     logout();
     emit authFailed();
@@ -295,7 +328,9 @@ void OAuth2Service::retrieveAuthCode() {
                        QSystemTrayIcon::MessageIcon::Information);
 
   login_page.login(auth_url, m_redirectUrl);
-#endif
+#else
 
-  // TODO: For non-webengine version, user http-server and login via external browser.
+  // We run login URL in external browser, response is caught by light HTTP server.
+  qApp->web()->openUrlInExternalBrowser(auth_url);
+#endif
 }

@@ -10,7 +10,7 @@
 #include "services/inoreader/inoreaderserviceroot.h"
 
 FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(parent),
-  m_oauth(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
+  m_oauth(new OAuth2Service(QString(), INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
                             INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY, INOREADER_OAUTH_SCOPE)), m_editableRoot(nullptr) {
   m_ui.setupUi(this);
 

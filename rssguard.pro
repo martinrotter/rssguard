@@ -563,11 +563,13 @@ equals(USE_WEBENGINE, true) {
 else {
   HEADERS +=    src/gui/messagepreviewer.h \
                 src/gui/messagetextbrowser.h \
-                src/gui/newspaperpreviewer.h
+                src/gui/newspaperpreviewer.h \
+                src/network-web/oauthhttphandler.h
 
   SOURCES +=    src/gui/messagepreviewer.cpp \
                 src/gui/messagetextbrowser.cpp \
-                src/gui/newspaperpreviewer.cpp
+                src/gui/newspaperpreviewer.cpp \
+                src/network-web/oauthhttphandler.cpp
 
   FORMS +=      src/gui/messagepreviewer.ui \
                 src/gui/newspaperpreviewer.ui
