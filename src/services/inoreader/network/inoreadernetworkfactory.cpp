@@ -113,6 +113,7 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed:
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
+    qCritical("Cannot download messages for '%s', bearer is empty.", qPrintable(stream_id));
     error = Feed::Status::AuthError;
     return QList<Message>();
   }
@@ -126,6 +127,7 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed:
   loop.exec();
 
   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
+    qCritical("Cannot download messages for '%s', network error.", qPrintable(stream_id));
     error = Feed::Status::NetworkError;
     return QList<Message>();
   }

@@ -167,7 +167,7 @@ void Feed::run() {
                      << customId() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  bool error_during_obtaining;
+  bool error_during_obtaining = false;
 
   QList<Message> msgs = obtainNewMessages(&error_during_obtaining);
   qDebug().nospace() << "Downloaded " << msgs.size() << " messages for feed "
@@ -215,7 +215,7 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
 
   qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true" : "false"));
 
-  if (!error_during_obtaining) {
+  if (!messages.isEmpty()) {
     bool anything_updated = false;
     bool ok = true;
 
@@ -241,8 +241,9 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
       }
     }
   }
-  else {
-    qCritical("I skip saving of messages into DB, as we have error during their downloading indicated.");
+
+  if (error_during_obtaining) {
+    qCritical("There is indication that there was error during messages obtaining.");
   }
 
   items_to_update.append(this);
