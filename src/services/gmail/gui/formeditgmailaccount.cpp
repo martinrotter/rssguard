@@ -15,6 +15,13 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent) : QDialog(parent),
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblAuthInfo, true);
+
+#if !defined(USE_WEBENGINE)
+  m_ui.m_lblAuthInfo->setText(tr("You must use \"%1\" as base redirect URL. You can use custom port to make sure "
+                                 "that no local service occupies it. Make sure that this redirect URL matches redirect "
+                                 "URL of used \"application\".").arg(LOCALHOST_ADDRESS));
+#endif
+
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("gmail")));
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,

@@ -48,7 +48,7 @@ OAuth2Service::OAuth2Service(const QString& id_string, const QString& auth_url, 
   : QObject(parent), m_timerId(-1), m_tokensExpireIn(QDateTime()) {
 
   if (id_string.isEmpty()) {
-    m_id = "somerandomstring";
+    m_id = QString::number(std::rand());
   }
   else {
     m_id = id_string;
@@ -66,9 +66,19 @@ OAuth2Service::OAuth2Service(const QString& id_string, const QString& auth_url, 
   connect(&m_networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(tokenRequestFinished(QNetworkReply*)));
 
 #if !defined(USE_WEBENGINE)
-  connect(handler(), &OAuthHttpHandler::authGranted, this, &OAuth2Service::retrieveAccessToken);
-  connect(handler(), &OAuthHttpHandler::authRejected, [this](const QString& error_description) {
-    emit authFailed();
+  connect(handler(), &OAuthHttpHandler::authGranted, [this](const QString& auth_code, const QString& id) {
+    if (id.isEmpty() || id == m_id) {
+      // We process this further only if handler (static singleton) responded to our original request.
+      retrieveAccessToken(auth_code);
+    }
+  });
+  connect(handler(), &OAuthHttpHandler::authRejected, [this](const QString& error_description, const QString& id) {
+    Q_UNUSED(error_description)
+
+    if (id.isEmpty() || id == m_id) {
+      // We process this further only if handler (static singleton) responded to our original request.
+      emit authFailed();
+    }
   });
 #endif
 }

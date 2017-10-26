@@ -15,7 +15,7 @@ OAuthHttpHandler::OAuthHttpHandler(QObject* parent) : QObject(parent) {
 
   connect(&m_httpServer, &QTcpServer::newConnection, this, &OAuthHttpHandler::clientConnected);
 
-  if (!m_httpServer.listen(m_listenAddress, 80)) {
+  if (!m_httpServer.listen(m_listenAddress, 13377)) {
     qCritical("OAuth HTTP handler: Failed to start listening.");
   }
 }
@@ -49,18 +49,18 @@ void OAuthHttpHandler::handleRedirection(const QVariantMap& data) {
     const QString description = data.value(QSL("error_description")).toString();
 
     qWarning("OAuth HTTP handler: AuthenticationError: %s(%s): %s", qPrintable(error), qPrintable(uri), qPrintable(description));
-    emit authRejected(description);
+    emit authRejected(description, received_state);
   }
   else if (code.isEmpty()) {
     qWarning("OAuth HTTP handler: AuthenticationError: Code not received");
-    emit authRejected(QSL("AuthenticationError: Code not received"));
+    emit authRejected(QSL("AuthenticationError: Code not received"), received_state);
   }
   else if (received_state.isEmpty()) {
     qWarning("OAuth HTTP handler: State not received");
-    emit authRejected(QSL("State not received"));
+    emit authRejected(QSL("State not received"), received_state);
   }
   else {
-    emit authGranted(code);
+    emit authGranted(code, received_state);
   }
 }
 

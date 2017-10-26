@@ -16,8 +16,8 @@ class OAuthHttpHandler : public QObject {
     virtual ~OAuthHttpHandler();
 
   signals:
-    void authRejected(const QString& error_description);
-    void authGranted(const QString& auth_code);
+    void authRejected(const QString& error_description, const QString& state = QString());
+    void authGranted(const QString& auth_code, const QString& state);
 
   private slots:
     void clientConnected();
