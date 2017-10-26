@@ -305,7 +305,9 @@ void OAuth2Service::startRefreshTimer() {
 }
 
 void OAuth2Service::killRefreshTimer() {
-  killTimer(m_timerId);
+  if (m_timerId > 0) {
+    killTimer(m_timerId);
+  }
 }
 
 void OAuth2Service::retrieveAuthCode() {
