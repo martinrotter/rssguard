@@ -765,6 +765,13 @@ or this functionality is not implemented yet.</translation>
     </message>
 </context>
 <context>
+    <name>FormAddEditEmail</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
@@ -915,6 +922,21 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>file: %1, data: %2</source>
         <translation>file: %1, data: %2</translation>
+    </message>
+</context>
+<context>
+    <name>FormDownloadAttachment</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading attachment...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloaded: %1 kB</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1182,6 +1204,10 @@ or this functionality is not implemented yet.</translation>
         <source>Some value is entered.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
@@ -1279,6 +1305,10 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2259,6 +2289,10 @@ or this functionality is not implemented yet.</translation>
         <source>Go to &amp;previous tab</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Enable message preview</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2831,15 +2865,7 @@ You can install it now.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Inoreader: authentication error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2848,6 +2874,14 @@ You can install it now.</source>
     </message>
     <message>
         <source>No subject</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gmail: authentication error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gmail: authorization denied</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2880,6 +2914,14 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>NOT logged-in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select attachment destination file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write new e-mail message</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3144,6 +3186,14 @@ Login tokens expiration: %2</source>
         <source>Custom ID of feed of the message.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Has enclosures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Indication of enclosures presence within the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3346,6 +3396,13 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>OAuthHttpHandler</name>
+    <message>
+        <source>You can close this window now. Go back to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
@@ -3455,14 +3512,6 @@ At least API level %1 is required.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>This plugin is not supported in NonWebEngine variant of this program.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3510,6 +3559,25 @@ At least API level %1 is required.</translation>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>SearchTextWidget</name>
+    <message>
+        <source>Clear searched phrase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seach text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Find previous occurence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Find next occurence</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4705,6 +4773,10 @@ Last login on: %4</source>
     </message>
     <message>
         <source>unknown author</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open link in external browser</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

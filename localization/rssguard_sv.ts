@@ -742,6 +742,13 @@ att funktionen inte är implementerad än.</translation>
     </message>
 </context>
 <context>
+    <name>FormAddEditEmail</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
@@ -889,6 +896,21 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>file: %1, data: %2</source>
         <translation>fil: %1, data: %2</translation>
+    </message>
+</context>
+<context>
+    <name>FormDownloadAttachment</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Downloading attachment...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Downloaded: %1 kB</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1156,6 +1178,10 @@ att funktionen inte är implementerad än.</translation>
         <source>Some value is entered.</source>
         <translation>Ett värde angavs.</translation>
     </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
@@ -1254,6 +1280,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Some value is entered.</source>
         <translation>Ett värde angavs.</translation>
+    </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2233,6 +2263,10 @@ att funktionen inte är implementerad än.</translation>
         <source>Go to &amp;previous tab</source>
         <translation>Gå till &amp;föregående flik</translation>
     </message>
+    <message>
+        <source>&amp;Enable message preview</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2808,16 +2842,8 @@ Du kan installera det nu.</translation>
         <translation>Din inloggning till Gmail godkändes.</translation>
     </message>
     <message>
-        <source>Inoreader: authentication error</source>
-        <translation>Inoreader: Autentiseringsfel </translation>
-    </message>
-    <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: Autentisering nekades</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -2826,6 +2852,14 @@ Du kan installera det nu.</translation>
     <message>
         <source>No subject</source>
         <translation>Inget ämne</translation>
+    </message>
+    <message>
+        <source>Gmail: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Gmail: authorization denied</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2859,6 +2893,14 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>NOT logged-in</source>
         <translation>INTE inloggad</translation>
+    </message>
+    <message>
+        <source>Select attachment destination file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Write new e-mail message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3123,6 +3165,14 @@ Inloggningstoken upphör: %2</translation>
         <source>Custom ID of feed of the message.</source>
         <translation>Anpassat ID för meddelandeflödet.</translation>
     </message>
+    <message>
+        <source>Has enclosures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Indication of enclosures presence within the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3322,6 +3372,13 @@ Inloggningstoken upphör: %2</translation>
     </message>
 </context>
 <context>
+    <name>OAuthHttpHandler</name>
+    <message>
+        <source>You can close this window now. Go back to %1</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
@@ -3430,14 +3487,6 @@ Minst API-nivå %1 krävs.</translation>
         <translation>Detta är integrering av Inoreader</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Stöds ej</translation>
-    </message>
-    <message>
-        <source>This plugin is not supported in NonWebEngine variant of this program.</source>
-        <translation>Insticksmodulen stöds inte i NonWebEngine-varianten av detta program.</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Enkel Gmail-integrering via JSON API. Låter dig skicka e-post också.</translation>
     </message>
@@ -3479,6 +3528,25 @@ Minst API-nivå %1 krävs.</translation>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>SearchTextWidget</name>
+    <message>
+        <source>Clear searched phrase</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Seach text</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Find previous occurence</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Find next occurence</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4675,6 +4743,10 @@ Senaste inloggning: %4</translation>
     <message>
         <source>unknown author</source>
         <translation>okänd författare</translation>
+    </message>
+    <message>
+        <source>Open link in external browser</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

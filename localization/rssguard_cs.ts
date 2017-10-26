@@ -743,6 +743,13 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormAddEditEmail</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
@@ -890,6 +897,21 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>file: %1, data: %2</source>
         <translation>soubor: %1, data: %2</translation>
+    </message>
+</context>
+<context>
+    <name>FormDownloadAttachment</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Downloading attachment...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Downloaded: %1 kB</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1157,6 +1179,10 @@ or this functionality is not implemented yet.</source>
         <source>Some value is entered.</source>
         <translation>Zadána nějaká hodnota.</translation>
     </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
@@ -1255,6 +1281,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Some value is entered.</source>
         <translation>Zadána nějaká hodnota.</translation>
+    </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2234,6 +2264,10 @@ or this functionality is not implemented yet.</source>
         <source>Go to &amp;previous tab</source>
         <translation>Přejít na &amp;předchozí tab</translation>
     </message>
+    <message>
+        <source>&amp;Enable message preview</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2808,16 +2842,8 @@ Nyní ho můžete nainstalovat.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Inoreader: authentication error</source>
-        <translation>Inroeader: chyba autentizace</translation>
-    </message>
-    <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Pro opětovné přihlášení klikněte zde.</translation>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: přistup nepovolen</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -2825,6 +2851,14 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>No subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Gmail: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Gmail: authorization denied</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2859,6 +2893,14 @@ Tokeny vyprší: %2</translation>
     <message>
         <source>NOT logged-in</source>
         <translation>NEpřihlášen</translation>
+    </message>
+    <message>
+        <source>Select attachment destination file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Write new e-mail message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3123,6 +3165,14 @@ Tokeny vyprší: %2</translation>
         <source>Custom ID of feed of the message.</source>
         <translation>Zvláštní ID kanálu zprávy.</translation>
     </message>
+    <message>
+        <source>Has enclosures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Indication of enclosures presence within the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3322,6 +3372,13 @@ Tokeny vyprší: %2</translation>
     </message>
 </context>
 <context>
+    <name>OAuthHttpHandler</name>
+    <message>
+        <source>You can close this window now. Go back to %1</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
@@ -3434,14 +3491,6 @@ Je vyžadování verze API minimálně %1.</translation>
         <translation>Integrace Inoreaderu.</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Nepodporováno</translation>
-    </message>
-    <message>
-        <source>This plugin is not supported in NonWebEngine variant of this program.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation type="unfinished"/>
     </message>
@@ -3483,6 +3532,25 @@ Je vyžadování verze API minimálně %1.</translation>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>SearchTextWidget</name>
+    <message>
+        <source>Clear searched phrase</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Seach text</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Find previous occurence</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Find next occurence</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4678,6 +4746,10 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <source>unknown author</source>
         <translation>neznámý autor</translation>
+    </message>
+    <message>
+        <source>Open link in external browser</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

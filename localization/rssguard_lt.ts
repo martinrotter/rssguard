@@ -743,6 +743,13 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
 </context>
 <context>
+    <name>FormAddEditEmail</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
@@ -890,6 +897,21 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>file: %1, data: %2</source>
         <translation>failas: %1, duomenys: %2</translation>
+    </message>
+</context>
+<context>
+    <name>FormDownloadAttachment</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Downloading attachment...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Downloaded: %1 kB</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1157,6 +1179,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Some value is entered.</source>
         <translation>Įvesta kažkokia reikšmė.</translation>
     </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
@@ -1255,6 +1281,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Some value is entered.</source>
         <translation>Įvesta kažkokia reikšmė.</translation>
+    </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2234,6 +2264,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Go to &amp;previous tab</source>
         <translation>Pereiti į &amp;ankstesnę kortelę</translation>
     </message>
+    <message>
+        <source>&amp;Enable message preview</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2810,16 +2844,8 @@ Jūs dabar galite jį įdiegti.</translation>
         <translation>Jums buvo suteikta prieigos teisė prie Gmail.</translation>
     </message>
     <message>
-        <source>Inoreader: authentication error</source>
-        <translation>Inoreader: atpažinimo klaida</translation>
-    </message>
-    <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą. Klaida yra: &quot;%1&quot;</translation>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: prieigos teisių suteikimas atmestas</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -2828,6 +2854,14 @@ Jūs dabar galite jį įdiegti.</translation>
     <message>
         <source>No subject</source>
         <translation>Nėra temos</translation>
+    </message>
+    <message>
+        <source>Gmail: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Gmail: authorization denied</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2861,6 +2895,14 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>NOT logged-in</source>
         <translation>NEPRISIJUNGTA</translation>
+    </message>
+    <message>
+        <source>Select attachment destination file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Write new e-mail message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3125,6 +3167,14 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <source>Custom ID of feed of the message.</source>
         <translation>Tinkintas kanalo žinutės ID</translation>
     </message>
+    <message>
+        <source>Has enclosures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Indication of enclosures presence within the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3324,6 +3374,13 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
 </context>
 <context>
+    <name>OAuthHttpHandler</name>
+    <message>
+        <source>You can close this window now. Go back to %1</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
@@ -3436,14 +3493,6 @@ Reikalingas bent API lygis %1.</translation>
         <translation>Tai yra Inoreader integravimas.</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Nepalaikoma</translation>
-    </message>
-    <message>
-        <source>This plugin is not supported in NonWebEngine variant of this program.</source>
-        <translation>Šis įskiepis nėra palaikomas šios programos NonWebEngine variante.</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Paprasta Gmail integracija per JSON API. Taip pat leidžia siųsti el. laiškus.</translation>
     </message>
@@ -3485,6 +3534,25 @@ Reikalingas bent API lygis %1.</translation>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n neskaityta žinutė.</numerusform><numerusform>%n neskaitytos žinutės.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>SearchTextWidget</name>
+    <message>
+        <source>Clear searched phrase</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Seach text</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Find previous occurence</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Find next occurence</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4680,6 +4748,10 @@ Paskiausias prisijungimas: %4</translation>
     <message>
         <source>unknown author</source>
         <translation>nežinomas autorius</translation>
+    </message>
+    <message>
+        <source>Open link in external browser</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

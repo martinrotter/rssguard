@@ -740,6 +740,13 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormAddEditEmail</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
@@ -887,6 +894,21 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>file: %1, data: %2</source>
         <translation>Datei: %1, Daten: %2</translation>
+    </message>
+</context>
+<context>
+    <name>FormDownloadAttachment</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Downloading attachment...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Downloaded: %1 kB</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1154,6 +1176,10 @@ or this functionality is not implemented yet.</source>
         <source>Some value is entered.</source>
         <translation>Ein Wert wurde eingegeben.</translation>
     </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
@@ -1252,6 +1278,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Some value is entered.</source>
         <translation>Ein Wert wurde eingegeben.</translation>
+    </message>
+    <message>
+        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2231,6 +2261,10 @@ or this functionality is not implemented yet.</source>
         <source>Go to &amp;previous tab</source>
         <translation>&amp;Vorherigen Tab auswählen</translation>
     </message>
+    <message>
+        <source>&amp;Enable message preview</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2804,16 +2838,8 @@ Sie können es jetzt installieren.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Inoreader: authentication error</source>
-        <translation>Inoreader: Fehler bei der Authentifizierung</translation>
-    </message>
-    <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Klicken Sie hier um sich wieder anzumelden. Der Fehler ist: &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: Authorisierung abgelehnt</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -2821,6 +2847,14 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>No subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Gmail: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Gmail: authorization denied</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2855,6 +2889,14 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <source>NOT logged-in</source>
         <translation>NICHT angemeldet</translation>
+    </message>
+    <message>
+        <source>Select attachment destination file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Write new e-mail message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3119,6 +3161,14 @@ Ablauf des Login tokens: %2</translation>
         <source>Custom ID of feed of the message.</source>
         <translation>Benutzerdefinierte ID vom Feed von der Nachricht.</translation>
     </message>
+    <message>
+        <source>Has enclosures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Indication of enclosures presence within the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3318,6 +3368,13 @@ Ablauf des Login tokens: %2</translation>
     </message>
 </context>
 <context>
+    <name>OAuthHttpHandler</name>
+    <message>
+        <source>You can close this window now. Go back to %1</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
@@ -3428,14 +3485,6 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
         <translation>Das ist die Integration von Inoreader.</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Nicht unterstützt</translation>
-    </message>
-    <message>
-        <source>This plugin is not supported in NonWebEngine variant of this program.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation type="unfinished"/>
     </message>
@@ -3477,6 +3526,25 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n ungelesene Nachricht.</numerusform><numerusform>%n ungelesene Nachrichten.</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>SearchTextWidget</name>
+    <message>
+        <source>Clear searched phrase</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Seach text</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Find previous occurence</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Find next occurence</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4670,6 +4738,10 @@ Letzte Anmeldung am: %4</translation>
     <message>
         <source>unknown author</source>
         <translation>unbekannter Autor</translation>
+    </message>
+    <message>
+        <source>Open link in external browser</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
