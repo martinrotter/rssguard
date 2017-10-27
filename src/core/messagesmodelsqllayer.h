@@ -32,6 +32,7 @@ class MessagesModelSqlLayer {
     // They are always same length. Most important sort column/order
     // are located at the start of lists;
     QMap<int, QString> m_fieldNames;
+    QMap<int, QString> m_orderByNames;
     QList<int> m_sortColumns;
     QList<Qt::SortOrder> m_sortOrders;
 };

@@ -612,7 +612,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         updated_messages++;
-        qDebug("Added new message '%s' to DB.", qPrintable(message.m_title));
+
+        //qDebug("Added new message '%s' to DB.", qPrintable(message.m_title));
       }
       else if (query_insert.lastError().isValid()) {
         qWarning("Failed to insert message to DB: '%s' - message title is '%s'.",

@@ -32,7 +32,11 @@ class ServiceRoot : public RootItem {
     void updateCounts(bool including_total_count);
     bool deleteViaGui();
     bool markAsReadUnread(ReadStatus status);
+
     virtual RecycleBin* recycleBin() const;
+
+    void setRecycleBin(RecycleBin* recycle_bin);
+
     virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
 
     QList<Message> undeletedMessages() const;

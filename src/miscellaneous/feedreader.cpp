@@ -128,7 +128,9 @@ void FeedReader::updateAllFeeds() {
 
 void FeedReader::stopRunningFeedUpdate() {
   if (m_feedDownloader != nullptr) {
-    QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate");
+    m_feedDownloader->stopRunningUpdate();
+
+    //QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate");
   }
 }
 

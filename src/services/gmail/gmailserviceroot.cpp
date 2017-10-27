@@ -28,6 +28,9 @@ GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* paren
 
   m_network->setService(this);
   setIcon(GmailEntryPoint().icon());
+
+  recycleBin()->deleteLater();
+  setRecycleBin(nullptr);
 }
 
 GmailServiceRoot::~GmailServiceRoot() {}
@@ -70,7 +73,6 @@ void GmailServiceRoot::loadFromDatabase() {
   }
 
   // As the last item, add recycle bin, which is needed.
-  appendChild(recycleBin());
   updateCounts(true);
 }
 

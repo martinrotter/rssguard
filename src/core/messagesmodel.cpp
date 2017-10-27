@@ -12,6 +12,7 @@
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QSqlError>
 #include <QSqlField>
 
 MessagesModel::MessagesModel(QObject* parent)
@@ -50,6 +51,10 @@ void MessagesModel::updateItemHeight() {
 void MessagesModel::repopulate() {
   m_cache->clear();
   setQuery(selectStatement(), m_db);
+
+  if (lastError().isValid()) {
+    qCritical() << "Error when setting new msg view query:" << lastError().text();
+  }
 
   while (canFetchMore()) {
     fetchMore();

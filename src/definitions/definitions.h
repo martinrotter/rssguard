@@ -46,7 +46,7 @@
 #define MESSAGES_VIEW_DEFAULT_COL             170
 #define MESSAGES_VIEW_MINIMUM_COL             16
 #define FEEDS_VIEW_COLUMN_COUNT               2
-#define FEED_DOWNLOADER_MAX_THREADS           6
+#define FEED_DOWNLOADER_MAX_THREADS           3
 #define DEFAULT_DAYS_TO_DELETE_MSG            14
 #define ELLIPSIS_LENGTH                       3
 #define MIN_CATEGORY_NAME_LENGTH              1
