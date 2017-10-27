@@ -150,12 +150,7 @@ void OAuth2Service::retrieveAccessToken(QString auth_code) {
                             "client_secret=%2&"
                             "code=%3&"
                             "redirect_uri=%5&"
-                            "grant_type=%4")
-                    .arg(m_clientId)
-                    .arg(m_clientSecret)
-                    .arg(auth_code)
-                    .arg(m_tokenGrantType)
-                    .arg(m_redirectUrl);
+                            "grant_type=%4").arg(m_clientId, m_clientSecret, auth_code, m_tokenGrantType, m_redirectUrl);
 
   m_networkManager.post(networkRequest, content.toUtf8());
 }
@@ -173,11 +168,7 @@ void OAuth2Service::refreshAccessToken(QString refresh_token) {
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"
                             "refresh_token=%3&"
-                            "grant_type=%4")
-                    .arg(m_clientId)
-                    .arg(m_clientSecret)
-                    .arg(refresh_token)
-                    .arg("refresh_token");
+                            "grant_type=%4").arg(m_clientId, m_clientSecret, refresh_token, QSL("refresh_token"));
 
   qApp->showGuiMessage(tr("Logging in via OAuth 2.0..."),
                        tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
@@ -322,7 +313,7 @@ void OAuth2Service::retrieveAuthCode() {
   OAuthLogin login_page(qApp->mainFormWidget());
 
   connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::retrieveAccessToken);
-  connect(&login_page, &OAuthLogin::authRejected, [this]() {
+  connect(&login_page, &OAuthLogin::authRejected, this, [this]() {
     logout();
     emit authFailed();
   });

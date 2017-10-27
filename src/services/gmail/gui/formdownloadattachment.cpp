@@ -18,7 +18,10 @@ FormDownloadAttachment::FormDownloadAttachment(const QString& target_file, Downl
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("mail-attachment")), tr("Downloading attachment..."));
 
   connect(m_ui.m_btnBox->button(QDialogButtonBox::StandardButton::Abort), &QPushButton::clicked, downloader, &Downloader::cancel);
-  connect(downloader, &Downloader::completed, [this, downloader, target_file](QNetworkReply::NetworkError status, QByteArray contents) {
+  connect(downloader,
+          &Downloader::completed,
+          this,
+          [this, downloader, target_file](QNetworkReply::NetworkError status, QByteArray contents) {
     if (status == QNetworkReply::NetworkError::NoError) {
       QString data = QJsonDocument::fromJson(contents).object()["data"].toString();
 
@@ -31,7 +34,7 @@ FormDownloadAttachment::FormDownloadAttachment(const QString& target_file, Downl
     downloader->deleteLater();
     close();
   });
-  connect(downloader, &Downloader::progress, [this](qint64 bytes_received, qint64 bytes_total) {
+  connect(downloader, &Downloader::progress, this, [this](qint64 bytes_received, qint64 bytes_total) {
     m_ui.m_lblInfo->setText(tr("Downloaded: %1 kB").arg(bytes_received / 1000.0));
 
     if (m_ui.m_progressBar->maximum() == 0) {

@@ -45,7 +45,7 @@ MessagesView::MessagesView(QWidget* parent) : QTreeView(parent), m_contextMenu(n
   setModel(m_proxyModel);
   setupAppearance();
   header()->setContextMenuPolicy(Qt::CustomContextMenu);
-  connect(header(), &QHeaderView::customContextMenuRequested, [=](const QPoint& point) {
+  connect(header(), &QHeaderView::customContextMenuRequested, this, [=](const QPoint& point) {
     TreeViewColumnsMenu mm(header());
     mm.exec(header()->mapToGlobal(point));
   });

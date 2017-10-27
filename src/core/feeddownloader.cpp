@@ -19,7 +19,7 @@ FeedDownloader::FeedDownloader(QObject* parent)
   m_results(FeedDownloadResults()), m_feedsUpdated(0),
   m_feedsUpdating(0), m_feedsOriginalCount(0) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
-  m_threadPool->setMaxThreadCount(FEED_DOWNLOADER_MAX_THREADS);
+  m_threadPool->setMaxThreadCount(2);
 }
 
 FeedDownloader::~FeedDownloader() {

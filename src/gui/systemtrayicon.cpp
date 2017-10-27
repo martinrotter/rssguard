@@ -49,7 +49,7 @@ SystemTrayIcon::~SystemTrayIcon() {
   hide();
 }
 
-void SystemTrayIcon::onActivated(const QSystemTrayIcon::ActivationReason& reason) {
+void SystemTrayIcon::onActivated(QSystemTrayIcon::ActivationReason reason) {
   switch (reason) {
     case SystemTrayIcon::Trigger:
     case SystemTrayIcon::DoubleClick:

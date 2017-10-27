@@ -7,10 +7,11 @@
 #define GMAIL_OAUTH_TOKEN_URL     "https://accounts.google.com/o/oauth2/token"
 #define GMAIL_OAUTH_SCOPE         "https://mail.google.com/"
 
-#define GMAIL_API_GET_ATTACHMENT  "https://www.googleapis.com/gmail/v1/users/me/messages/%20/attachments/"
-#define GMAIL_API_LABELS_LIST     "https://www.googleapis.com/gmail/v1/users/me/labels"
-#define GMAIL_API_MSGS_LIST       "https://www.googleapis.com/gmail/v1/users/me/messages"
-#define GMAIL_API_BATCH           "https://www.googleapis.com/batch"
+#define GMAIL_API_BATCH_UPD_LABELS  "https://www.googleapis.com/gmail/v1/users/me/messages/batchModify"
+#define GMAIL_API_GET_ATTACHMENT    "https://www.googleapis.com/gmail/v1/users/me/messages/%20/attachments/"
+#define GMAIL_API_LABELS_LIST       "https://www.googleapis.com/gmail/v1/users/me/labels"
+#define GMAIL_API_MSGS_LIST         "https://www.googleapis.com/gmail/v1/users/me/messages"
+#define GMAIL_API_BATCH             "https://www.googleapis.com/batch"
 
 #define GMAIL_ATTACHMENT_SEP      "####"
 
@@ -27,5 +28,6 @@
 #define GMAIL_SYSTEM_LABEL_TRASH    "TRASH"
 
 #define GMAIL_CONTENT_TYPE_HTTP   "application/http"
+#define GMAIL_CONTENT_TYPE_JSON   "application/json"
 
 #endif // GMAIL_DEFINITIONS_H

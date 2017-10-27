@@ -82,7 +82,7 @@ class WebBrowser;
 
 class DownloadManager : public TabContent {
   Q_OBJECT
-  Q_PROPERTY(RemovePolicy removePolicy READ removePolicy WRITE setRemovePolicy)
+  Q_PROPERTY(RemovePolicy removePolicy READ removePolicy WRITE setRemovePolicy NOTIFY removePolicyChanged)
 
   friend class DownloadModel;
 
@@ -135,6 +135,7 @@ class DownloadManager : public TabContent {
     void itemFinished();
 
   signals:
+    void removePolicyChanged();
     void downloadProgressed(int progress, const QString& description);
     void downloadFinished();
 

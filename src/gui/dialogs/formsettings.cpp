@@ -121,7 +121,7 @@ void FormSettings::addSettingsPanel(SettingsPanel* panel) {
   m_panels.append(panel);
   m_ui.m_stackedSettings->addWidget(panel);
   panel->loadSettings();
-  connect(panel, &SettingsPanel::settingsChanged, [this]() {
+  connect(panel, &SettingsPanel::settingsChanged, this, [this]() {
     m_btnApply->setEnabled(true);
   });
 }

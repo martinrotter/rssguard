@@ -204,7 +204,7 @@ QString SystemFactory::loggedInUser() const {
 void SystemFactory::checkForUpdates() const {
   Downloader* downloader = new Downloader();
 
-  connect(downloader, &Downloader::completed, [this, downloader]() {
+  connect(downloader, &Downloader::completed, this, [this, downloader]() {
     QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> result;
     result.second = downloader->lastOutputError();
 

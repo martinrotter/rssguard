@@ -38,9 +38,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
   public:
 
     // Constructors and destructors.
-    explicit SystemTrayIcon(const QString& normal_icon,
-                            const QString& plain_icon,
-                            FormMain* parent = 0);
+    explicit SystemTrayIcon(const QString& normal_icon, const QString& plain_icon, FormMain* parent = nullptr);
     virtual ~SystemTrayIcon();
 
     // Sets the number to be visible in the tray icon, number <= 0 removes it.
@@ -64,7 +62,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
 
   private slots:
     void showPrivate();
-    void onActivated(const QSystemTrayIcon::ActivationReason& reason);
+    void onActivated(QSystemTrayIcon::ActivationReason reason);
 
   signals:
     void shown();

@@ -54,7 +54,7 @@ bool FormUpdate::isSelfUpdateSupported() const {
 }
 
 void FormUpdate::checkForUpdates() {
-  connect(qApp->system(), &SystemFactory::updatesChecked, [this](QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> update) {
+  connect(qApp->system(), &SystemFactory::updatesChecked, this, [this](QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> update) {
     m_ui.m_buttonBox->setEnabled(true);
     disconnect(qApp->system(), &SystemFactory::updatesChecked, nullptr, nullptr);
 

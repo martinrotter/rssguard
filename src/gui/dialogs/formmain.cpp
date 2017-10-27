@@ -615,24 +615,24 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionSwitchStatusBar, &QAction::toggled, statusBar(), &StatusBar::setVisible);
 
   // Menu "Tools" connections.
-  connect(m_ui->m_actionSettings, &QAction::triggered, [this]() {
+  connect(m_ui->m_actionSettings, &QAction::triggered, this, [this]() {
     FormSettings(*this).exec();
   });
   connect(m_ui->m_actionDownloadManager, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::showDownloadManager);
   connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, &FormMain::showDbCleanupAssistant);
 
   // Menu "Help" connections.
-  connect(m_ui->m_actionAboutGuard, &QAction::triggered, [this]() {
+  connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, [this]() {
     FormAbout(this).exec();
   });
-  connect(m_ui->m_actionCheckForUpdates, &QAction::triggered, [this]() {
+  connect(m_ui->m_actionCheckForUpdates, &QAction::triggered, this, [this]() {
     FormUpdate(this).exec();
   });
   connect(m_ui->m_actionReportBug, &QAction::triggered, this, &FormMain::reportABug);
   connect(m_ui->m_actionDonate, &QAction::triggered, this, &FormMain::donate);
   connect(m_ui->m_actionDisplayWiki, &QAction::triggered, this, &FormMain::showWiki);
 
-  connect(m_ui->m_actionMessagePreviewEnabled, &QAction::toggled, [](bool enabled) {
+  connect(m_ui->m_actionMessagePreviewEnabled, &QAction::toggled, this, [](bool enabled) {
     qApp->settings()->setValue(GROUP(Messages), Messages::EnableMessagePreview, enabled);
   });
 

@@ -30,7 +30,7 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
     tr("Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains "
        "bigger number of messages than specified limit, then some messages might not be downloaded during feed update."));
 
-  connect(m_ui->m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), [=](int value) {
+  connect(m_ui->m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
       m_ui->m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
     }

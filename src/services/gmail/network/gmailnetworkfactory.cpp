@@ -54,7 +54,7 @@ void GmailNetworkFactory::setBatchSize(int batch_size) {
 void GmailNetworkFactory::initializeOauth() {
   connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &GmailNetworkFactory::onTokensError);
   connect(m_oauth2, &OAuth2Service::authFailed, this, &GmailNetworkFactory::onAuthFailed);
-  connect(m_oauth2, &OAuth2Service::tokensReceived, [this](QString access_token, QString refresh_token, int expires_in) {
+  connect(m_oauth2, &OAuth2Service::tokensReceived, this, [this](QString access_token, QString refresh_token, int expires_in) {
     Q_UNUSED(expires_in)
 
     if (m_service != nullptr && !access_token.isEmpty() && !refresh_token.isEmpty()) {
@@ -186,18 +186,6 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
 }
 
 void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async) {
-  QString target_url;// TODO: dodělat
-  // = INOREADER_API_EDIT_TAG;
-  // TODO: dodělat
-  //
-
-  /*
-     if (status == RootItem::ReadStatus::Read) {
-     target_url += QString("?a=user/-/") + INOREADER_STATE_READ + "&";
-     }
-     else {
-     target_url += QString("?r=user/-/") + INOREADER_STATE_READ + "&";
-     }*/
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
@@ -207,66 +195,49 @@ void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QS
   QList<QPair<QByteArray, QByteArray>> headers;
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                               QString(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
 
-  QStringList trimmed_ids;
-  QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QJsonObject param_obj;
+  QJsonArray param_add, param_remove;
 
-  foreach (const QString& id, custom_ids) {
-    QString simplified_id = regex_short_id.match(id).captured();
-
-    trimmed_ids.append(QString("i=") + simplified_id);
+  if (status == RootItem::ReadStatus::Read) {
+    // We remove label UNREAD.
+    param_remove.append(GMAIL_SYSTEM_LABEL_UNREAD);
+  }
+  else {
+    // We add label UNREAD.
+    param_add.append(GMAIL_SYSTEM_LABEL_UNREAD);
   }
 
-  QStringList working_subset;
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  param_obj["addLabelIds"] = param_add;
+  param_obj["removeLabelIds"] = param_remove;
+  param_obj["ids"] = QJsonArray::fromStringList(custom_ids);
 
-  working_subset.reserve(trimmed_ids.size() > 200 ? 200 : trimmed_ids.size());
+  QJsonDocument param_doc(param_obj);
 
-  // Now, we perform messages update in batches (max 200 messages per batch).
-  while (!trimmed_ids.isEmpty()) {
-    // We take 200 IDs.
-    for (int i = 0; i < 200 && !trimmed_ids.isEmpty(); i++) {
-      working_subset.append(trimmed_ids.takeFirst());
-    }
+  // We send this batch.
+  if (async) {
+    NetworkFactory::performAsyncNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                                 timeout,
+                                                 param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                                 QNetworkAccessManager::Operation::PostOperation,
+                                                 headers);
+  }
+  else {
+    QByteArray output;
 
-    QString batch_final_url = target_url + working_subset.join(QL1C('&'));
-
-    // We send this batch.
-    if (async) {
-
-      NetworkFactory::performAsyncNetworkOperation(batch_final_url,
-                                                   timeout,
-                                                   QByteArray(),
-                                                   QNetworkAccessManager::Operation::GetOperation,
-                                                   headers);
-    }
-    else {
-      QByteArray output;
-
-      NetworkFactory::performNetworkOperation(batch_final_url,
-                                              timeout,
-                                              QByteArray(),
-                                              output,
-                                              QNetworkAccessManager::Operation::GetOperation,
-                                              headers);
-    }
-
-    // Cleanup for next batch.
-    working_subset.clear();
+    NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                            timeout,
+                                            param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                            output,
+                                            QNetworkAccessManager::Operation::PostOperation,
+                                            headers);
   }
 }
 
 void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids, bool async) {
-  QString target_url; // TODO: dodělat
-  //= INOREADER_API_EDIT_TAG;
-
-/*
-   if (importance == RootItem::Importance::Important) {
-    target_url += QString("?a=user/-/") + INOREADER_STATE_IMPORTANT + "&";
-   }
-   else {
-    target_url += QString("?r=user/-/") + INOREADER_STATE_IMPORTANT + "&";
-   }*/
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
@@ -276,52 +247,45 @@ void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, c
   QList<QPair<QByteArray, QByteArray>> headers;
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                               QString(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
 
-  QStringList trimmed_ids;
-  QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QJsonObject param_obj;
+  QJsonArray param_add, param_remove;
 
-  foreach (const QString& id, custom_ids) {
-    QString simplified_id = regex_short_id.match(id).captured();
-
-    trimmed_ids.append(QString("i=") + simplified_id);
+  if (importance == RootItem::Importance::Important) {
+    // We add label UNREAD.
+    param_add.append(GMAIL_SYSTEM_LABEL_STARRED);
+  }
+  else {
+    // We remove label UNREAD.
+    param_remove.append(GMAIL_SYSTEM_LABEL_STARRED);
   }
 
-  QStringList working_subset;
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  param_obj["addLabelIds"] = param_add;
+  param_obj["removeLabelIds"] = param_remove;
+  param_obj["ids"] = QJsonArray::fromStringList(custom_ids);
 
-  working_subset.reserve(trimmed_ids.size() > 200 ? 200 : trimmed_ids.size());
+  QJsonDocument param_doc(param_obj);
 
-  // Now, we perform messages update in batches (max 200 messages per batch).
-  while (!trimmed_ids.isEmpty()) {
-    // We take 200 IDs.
-    for (int i = 0; i < 200 && !trimmed_ids.isEmpty(); i++) {
-      working_subset.append(trimmed_ids.takeFirst());
-    }
+  // We send this batch.
+  if (async) {
+    NetworkFactory::performAsyncNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                                 timeout,
+                                                 param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                                 QNetworkAccessManager::Operation::PostOperation,
+                                                 headers);
+  }
+  else {
+    QByteArray output;
 
-    QString batch_final_url = target_url + working_subset.join(QL1C('&'));
-
-    // We send this batch.
-    if (async) {
-
-      NetworkFactory::performAsyncNetworkOperation(batch_final_url,
-                                                   timeout,
-                                                   QByteArray(),
-                                                   QNetworkAccessManager::Operation::GetOperation,
-                                                   headers);
-    }
-    else {
-      QByteArray output;
-
-      NetworkFactory::performNetworkOperation(batch_final_url,
-                                              timeout,
-                                              QByteArray(),
-                                              output,
-                                              QNetworkAccessManager::Operation::GetOperation,
-                                              headers);
-    }
-
-    // Cleanup for next batch.
-    working_subset.clear();
+    NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                            timeout,
+                                            param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                            output,
+                                            QNetworkAccessManager::Operation::PostOperation,
+                                            headers);
   }
 }
 

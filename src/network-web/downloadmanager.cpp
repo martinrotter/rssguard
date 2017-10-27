@@ -596,6 +596,8 @@ void DownloadManager::setRemovePolicy(RemovePolicy policy) {
   if (policy != m_removePolicy) {
     m_removePolicy = policy;
     m_autoSaver->changeOccurred();
+
+    emit removePolicyChanged();
   }
 }
 

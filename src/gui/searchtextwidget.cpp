@@ -15,13 +15,13 @@ SearchTextWidget::SearchTextWidget(QWidget* parent) : QWidget(parent) {
 
   connect(m_ui.m_btnClear, &QToolButton::clicked, m_ui.m_txtSearch, &QLineEdit::clear);
   connect(m_ui.m_txtSearch, &BaseLineEdit::textChanged, this, &SearchTextWidget::onTextChanged);
-  connect(m_ui.m_txtSearch, &BaseLineEdit::submitted, [this]() {
+  connect(m_ui.m_txtSearch, &BaseLineEdit::submitted, this, [this]() {
     emit searchForText(m_ui.m_txtSearch->text(), false);
   });
-  connect(m_ui.m_btnSearchForward, &QToolButton::clicked, [this]() {
+  connect(m_ui.m_btnSearchForward, &QToolButton::clicked, this, [this]() {
     emit searchForText(m_ui.m_txtSearch->text(), false);
   });
-  connect(m_ui.m_btnSearchBackward, &QToolButton::clicked, [this]() {
+  connect(m_ui.m_btnSearchBackward, &QToolButton::clicked, this, [this]() {
     emit searchForText(m_ui.m_txtSearch->text(), true);
   });
 }
