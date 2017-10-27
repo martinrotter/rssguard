@@ -81,6 +81,7 @@ void MessagesView::createConnections() {
 }
 
 void MessagesView::keyboardSearch(const QString& search) {
+
   // WARNING: This is quite hacky way how to force selection of next item even
   // with extended selection enabled.
   setSelectionMode(QAbstractItemView::SingleSelection);
@@ -316,8 +317,6 @@ void MessagesView::loadItem(RootItem* item) {
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
-  // BUG: Qt 5 is probably bugged here. Selections
-  // should be cleared automatically when SQL model is reset.
   emit currentMessageRemoved();
 }
 

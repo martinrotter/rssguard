@@ -208,10 +208,6 @@ const AdBlockRule* AdBlockSubscription::enableRule(int offset) {
     AdBlockManager::instance()->removeDisabledRule(rule->filter());
     emit subscriptionChanged();
 
-    if (rule->isCssRule()) {
-      // TODO: Reload user stylesheet.
-    }
-
     return rule;
   }
   else {
@@ -229,10 +225,6 @@ const AdBlockRule* AdBlockSubscription::disableRule(int offset) {
   rule->setEnabled(false);
   AdBlockManager::instance()->addDisabledRule(rule->filter());
   emit subscriptionChanged();
-
-  if (rule->isCssRule()) {
-    // TODO: Reload user stylesheet.
-  }
 
   return rule;
 }
@@ -365,10 +357,6 @@ int AdBlockCustomList::addRule(AdBlockRule* rule) {
   m_rules.append(rule);
   emit subscriptionChanged();
 
-  if (rule->isCssRule()) {
-    // TODO: Reload user stylesheet.
-  }
-
   return m_rules.count() - 1;
 }
 
@@ -382,10 +370,6 @@ bool AdBlockCustomList::removeRule(int offset) {
 
   m_rules.remove(offset);
   emit subscriptionChanged();
-
-  if (rule->isCssRule()) {
-    // TODO: Reload user stylesheet.
-  }
 
   AdBlockManager::instance()->removeDisabledRule(filter);
   delete rule;
@@ -401,10 +385,6 @@ const AdBlockRule* AdBlockCustomList::replaceRule(AdBlockRule* rule, int offset)
 
   m_rules[offset] = rule;
   emit subscriptionChanged();
-
-  if (rule->isCssRule() || oldRule->isCssRule()) {
-    // TODO: Reload user stylesheet.
-  }
 
   delete oldRule;
   return m_rules[offset];

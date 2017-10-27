@@ -72,34 +72,6 @@ void GmailNetworkFactory::setUsername(const QString& username) {
   m_username = username;
 }
 
-/*
-   RootItem* GmailNetworkFactory::feedsCategories() {
-   Downloader downloader;
-   QEventLoop loop;
-   QString bearer = m_oauth2->bearer().toLocal8Bit();
-
-   if (bearer.isEmpty()) {
-    return nullptr;
-   }
-
-   downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
-
-   // We need to quit event loop when the download finishes.
-   connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
-
-   // TODO: dodělat
-   downloader.manipulateData(GMAIL_API_LABELS_LIST, QNetworkAccessManager::Operation::GetOperation);
-   loop.exec();
-
-   if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
-    return nullptr;
-   }
-
-   QString category_data = downloader.lastOutputData();
-
-   return decodeFeedCategoriesData(category_data);
-   }*/
-
 Downloader* GmailNetworkFactory::downloadAttachment(const QString& attachment_id) {
   Downloader* downloader = new Downloader();
   QString bearer = m_oauth2->bearer().toLocal8Bit();

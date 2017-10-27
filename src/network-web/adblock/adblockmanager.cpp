@@ -67,8 +67,6 @@ void AdBlockManager::setEnabled(bool enabled) {
   qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, m_enabled);
   load();
 
-  // TODO: Reload user stylesheet.
-  // mApp->reloadUserStyleSheet();
   QMutexLocker locker(&m_mutex);
 
   if (m_enabled) {
@@ -189,9 +187,7 @@ AdBlockSubscription* AdBlockManager::addSubscription(const QString& title, const
   subscription->loadSubscription(m_disabledRules);
   m_subscriptions.insert(m_subscriptions.count() - 1, subscription);
 
-  // TODO: Reload user stylesheet.
-  // connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
-  connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
+  connect(subscription, &AdBlockSubscription::subscriptionChanged, this, &AdBlockManager::updateMatcher);
   return subscription;
 }
 
@@ -285,9 +281,6 @@ void AdBlockManager::load() {
   // Load all subscriptions.
   foreach (AdBlockSubscription* subscription, m_subscriptions) {
     subscription->loadSubscription(m_disabledRules);
-
-    // TODO: Reload user stylesheet.
-    // connect(subscription, SIGNAL(subscriptionUpdated()), mApp, SLOT(reloadUserStyleSheet()));
     connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
   }
 
