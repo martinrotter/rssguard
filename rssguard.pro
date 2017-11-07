@@ -599,18 +599,11 @@ INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src/gui/dialogs \
                 $$PWD/src/dynamic-shortcuts
 
-# Make sure QM translations are gnerated.
-lrelease.input = TRANSLATIONS
-lrelease.output = $$PWD/resources/localizations/${QMAKE_FILE_BASE}.qm
-lrelease.commands = $$LRELEASE_EXECUTABLE -compress ${QMAKE_FILE_IN} -qm $$PWD/resources/localizations/${QMAKE_FILE_BASE}.qm
-lrelease.CONFIG += no_link target_predeps
-
 # Create new "make lupdate" target.
 lupdate.target = lupdate
 lupdate.commands = lupdate $$shell_path($$PWD/rssguard.pro)
 
 QMAKE_EXTRA_TARGETS += lupdate
-QMAKE_EXTRA_COMPILERS += lrelease
 
 # Create new "make 7zip" target and "make zip" target.
 win32 {

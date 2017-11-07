@@ -1516,44 +1516,44 @@
         <file>skins/vergilius/metadata.xml</file>
         <file>skins/vergilius/theme.css</file>
         <file>initial_feeds/feeds-en.opml</file>
-        <file>localizations/rssguard_cs.qm</file>
-        <file>localizations/rssguard_da.qm</file>
-        <file>localizations/rssguard_de.qm</file>
-        <file>localizations/rssguard_en.qm</file>
-        <file>localizations/rssguard_en_GB.qm</file>
-        <file>localizations/rssguard_es.qm</file>
-        <file>localizations/rssguard_fr.qm</file>
-        <file>localizations/rssguard_he.qm</file>
-        <file>localizations/rssguard_id.qm</file>
-        <file>localizations/rssguard_it.qm</file>
-        <file>localizations/rssguard_ja.qm</file>
-        <file>localizations/rssguard_lt.qm</file>
-        <file>localizations/rssguard_nl.qm</file>
-        <file>localizations/rssguard_pl.qm</file>
-        <file>localizations/rssguard_pt.qm</file>
-        <file>localizations/rssguard_sv.qm</file>
-        <file>localizations/rssguard_zh.qm</file>
+        <file>../localization/rssguard_cs.qm</file>
+        <file>../localization/rssguard_da.qm</file>
+        <file>../localization/rssguard_de.qm</file>
+        <file>../localization/rssguard_en.qm</file>
+        <file>../localization/rssguard_en_GB.qm</file>
+        <file>../localization/rssguard_es.qm</file>
+        <file>../localization/rssguard_fr.qm</file>
+        <file>../localization/rssguard_he.qm</file>
+        <file>../localization/rssguard_id.qm</file>
+        <file>../localization/rssguard_it.qm</file>
+        <file>../localization/rssguard_ja.qm</file>
+        <file>../localization/rssguard_lt.qm</file>
+        <file>../localization/rssguard_nl.qm</file>
+        <file>../localization/rssguard_pl.qm</file>
+        <file>../localization/rssguard_pt.qm</file>
+        <file>../localization/rssguard_sv.qm</file>
+        <file>../localization/rssguard_zh.qm</file>
         <file>desktop/com.github.rssguard.desktop</file>
         <file>desktop/com.github.rssguard.desktop.autostart</file>
-        <file>localizations/qt_bg.qm</file>
-        <file>localizations/qt_ca.qm</file>
-        <file>localizations/qt_cs.qm</file>
-        <file>localizations/qt_da.qm</file>
-        <file>localizations/qt_de.qm</file>
-        <file>localizations/qt_en.qm</file>
-        <file>localizations/qt_es.qm</file>
-        <file>localizations/qt_fi.qm</file>
-        <file>localizations/qt_fr.qm</file>
-        <file>localizations/qt_gd.qm</file>
-        <file>localizations/qt_he.qm</file>
-        <file>localizations/qt_hu.qm</file>
-        <file>localizations/qt_it.qm</file>
-        <file>localizations/qt_ja.qm</file>
-        <file>localizations/qt_ko.qm</file>
-        <file>localizations/qt_lv.qm</file>
-        <file>localizations/qt_pl.qm</file>
-        <file>localizations/qt_ru.qm</file>
-        <file>localizations/qt_sk.qm</file>
-        <file>localizations/qt_uk.qm</file>
+        <file>../localization/qt_bg.qm</file>
+        <file>../localization/qt_ca.qm</file>
+        <file>../localization/qt_cs.qm</file>
+        <file>../localization/qt_da.qm</file>
+        <file>../localization/qt_de.qm</file>
+        <file>../localization/qt_en.qm</file>
+        <file>../localization/qt_es.qm</file>
+        <file>../localization/qt_fi.qm</file>
+        <file>../localization/qt_fr.qm</file>
+        <file>../localization/qt_gd.qm</file>
+        <file>../localization/qt_he.qm</file>
+        <file>../localization/qt_hu.qm</file>
+        <file>../localization/qt_it.qm</file>
+        <file>../localization/qt_ja.qm</file>
+        <file>../localization/qt_ko.qm</file>
+        <file>../localization/qt_lv.qm</file>
+        <file>../localization/qt_pl.qm</file>
+        <file>../localization/qt_ru.qm</file>
+        <file>../localization/qt_sk.qm</file>
+        <file>../localization/qt_uk.qm</file>
     </qresource>
 </RCC>

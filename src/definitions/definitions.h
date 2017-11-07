@@ -225,7 +225,7 @@
 #define APP_ICON_PLAIN_PATH QSL(":/graphics/rssguard_plain.png")
 #define APP_SKIN_PATH QSL(":/skins")
 #define APP_INITIAL_FEEDS_PATH QSL(":/initial_feeds")
-#define APP_LANG_PATH QSL(":/localizations")
+#define APP_LANG_PATH QSL(":/localization")
 
 #if defined(Q_OS_LINUX)
 #define APP_DESKTOP_SOURCE_ENTRY_FILE "com.github.rssguard.desktop.autostart"
