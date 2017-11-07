@@ -8,12 +8,14 @@
 # Usage:
 #   a) DEBUG build for testing. (out of source build type)
 #     cd ../build-dir
+#     lrelease ../rssguard-dir/rssguard.pro
 #     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=debug PREFIX=./usr
 #     make
 #     make install
 #
 #   b) RELEASE build for production use. (out of source build type)
 #     cd ../build-dir
+#     lrelease ../rssguard-dir/rssguard.pro
 #     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=release PREFIX=./usr
 #     make
 #     make install
