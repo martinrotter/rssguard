@@ -2,9 +2,9 @@
 
 # Build application.
 mkdir rssguard-build && cd rssguard-build
+lrelease -compress ../rssguard.pro
 qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make
-qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make install
 
 # Make DMG image.

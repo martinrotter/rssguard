@@ -5,9 +5,9 @@ source /opt/qt59/bin/qt59-env.sh
 mkdir rssguard-build && cd rssguard-build
 
 # Build application.
+lrelease -compress ../rssguard.pro
 qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make
-qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make install
 
 # Obtain linuxdeployqt.

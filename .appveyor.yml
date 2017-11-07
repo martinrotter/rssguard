@@ -40,6 +40,7 @@ build_script:
   - dir
   - mkdir rssguard-build
   - cd rssguard-build
+  - lrelease.exe -compress C:\rssguard\rssguard.pro
   - qmake.exe C:\rssguard "%qmake_args%"
   - nmake
   - nmake windows_all
