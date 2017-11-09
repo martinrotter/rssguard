@@ -62,6 +62,11 @@ int main(int argc, char* argv[]) {
   // Instantiate base application object.
   Application application(APP_LOW_NAME, argc, argv);
 
+  if (application.arguments().contains(QL1S("-log"))) {
+    Debugging::instance()->setTargetFile(IOFactory::getSystemFolder(QStandardPaths::TempLocation) +
+                                         QDir::separator() + QL1S("rssguard.log"));
+  }
+
   qDebug("Instantiated Application class.");
 
   // Check if another instance is running.
