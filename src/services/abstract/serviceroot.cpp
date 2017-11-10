@@ -397,6 +397,18 @@ bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus r
   }
 }
 
+QStringList ServiceRoot::textualFeedUrls(const QList<Feed*>& feeds) const {
+  QStringList stringy_urls;
+
+  stringy_urls.reserve(feeds.size());
+
+  foreach (const Feed* feed, feeds) {
+    stringy_urls.append(!feed->url().isEmpty() ? feed->url() : QL1S("no-url"));
+  }
+
+  return stringy_urls;
+}
+
 QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
   QStringList stringy_ids;
 
@@ -439,19 +451,20 @@ void ServiceRoot::setAccountId(int account_id) {
 
 bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   if (item->kind() == RootItemKind::Bin) {
-    model->setFilter(QString("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(QString::number(
-                                                                                                                        accountId())));
+    model->setFilter(QString("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+                     .arg(QString::number(accountId())));
   }
   else {
     QList<Feed*> children = item->getSubTreeFeeds();
     QString filter_clause = textualFeedIds(children).join(QSL(", "));
+    QString urls = textualFeedUrls(children).join(QSL(", "));
 
     model->setFilter(
       QString("Feeds.custom_id IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %2").arg(
         filter_clause,
         QString::
         number(accountId())));
-    qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
+    qDebug("Displaying messages from feeds IDs: %s and URLs: %s.", qPrintable(filter_clause), qPrintable(urls));
   }
 
   return true;

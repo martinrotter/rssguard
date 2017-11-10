@@ -34,19 +34,13 @@ bool FeedDownloader::isUpdateRunning() const {
 }
 
 void FeedDownloader::updateAvailableFeeds() {
-  QList<CacheForServiceRoot*> caches;
-
   foreach (const Feed* feed, m_feeds) {
     CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
-    if (cache != nullptr && !caches.contains(cache)) {
-      caches.append(cache);
+    if (cache != nullptr) {
+      qDebug("Saving cache for feed with DB ID %d and title '%s'.", feed->id(), qPrintable(feed->title()));
+      cache->saveAllCachedData(false);
     }
-  }
-
-  // Now, we synchronously save cached data.
-  foreach (CacheForServiceRoot* cache, caches) {
-    cache->saveAllCachedData(false);
   }
 
   while (!m_feeds.isEmpty()) {
@@ -58,6 +52,8 @@ void FeedDownloader::updateAvailableFeeds() {
       m_feedsUpdating++;
     }
     else {
+      qCritical("User wanted to update some feeds but all working threads are occupied.");
+
       // We want to start update of some feeds but all working threads are occupied.
       break;
     }
@@ -103,9 +99,10 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message>& messages, bool 
   updateAvailableFeeds();
 
   // Now make sure, that messages are actually stored to SQL in a locked state.
-  qDebug().nospace() << "Saving messages of feed "
-                     << feed->customId() << " in thread: \'"
+  qDebug().nospace() << "Saving messages of feed ID "
+                     << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
+
   int updated_messages = feed->updateMessages(messages, error_during_obtaining);
 
   qDebug("%d messages for feed %s stored in DB.", updated_messages, qPrintable(feed->customId()));

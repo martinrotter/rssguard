@@ -418,7 +418,7 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
     *error_during_obtaining = true;
     return QList<Message>();
   }
-  else if (status() != NewMessages) {
+  else {
     *error_during_obtaining = false;
   }
 

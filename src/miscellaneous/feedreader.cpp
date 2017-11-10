@@ -69,6 +69,8 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   }
 
   if (m_feedDownloader == nullptr) {
+    qDebug("Creating FeedDownloader singleton.");
+
     m_feedDownloader = new FeedDownloader();
     m_feedDownloaderThread = new QThread();
 

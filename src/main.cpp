@@ -67,6 +67,7 @@ int main(int argc, char* argv[]) {
                                          QDir::separator() + QL1S("rssguard.log"));
   }
 
+  qDebug("Starting %s.", qPrintable(QSL(APP_LONG_NAME)));
   qDebug("Instantiated Application class.");
 
   // Check if another instance is running.

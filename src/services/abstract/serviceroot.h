@@ -173,6 +173,7 @@ class ServiceRoot : public RootItem {
     // from another machine and then performs sync-in on this machine.
     void removeLeftOverMessages();
 
+    QStringList textualFeedUrls(const QList<Feed*>& feeds) const;
     QStringList textualFeedIds(const QList<Feed*>& feeds) const;
     QStringList customIDsOfMessages(const QList<ImportanceChange>& changes);
     QStringList customIDsOfMessages(const QList<Message>& messages);

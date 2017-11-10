@@ -163,15 +163,16 @@ void Feed::updateCounts(bool including_total_count) {
 }
 
 void Feed::run() {
-  qDebug().nospace() << "Downloading new messages for feed "
-                     << customId() << " in thread: \'"
+  qDebug().nospace() << "Downloading new messages for feed ID "
+                     << customId() << " URL: " << url() << " title: " << title() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
   bool error_during_obtaining = false;
 
   QList<Message> msgs = obtainNewMessages(&error_during_obtaining);
-  qDebug().nospace() << "Downloaded " << msgs.size() << " messages for feed "
-                     << customId() << " in thread: \'"
+
+  qDebug().nospace() << "Downloaded " << msgs.size() << " messages for feed ID "
+                     << customId() << " URL: " << url() << " title: " << title() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
   // Now, do some general operations on messages (tweak encoding etc.).
@@ -229,6 +230,9 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
 
     updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
   }
+  else {
+    qWarning("There are no messages for update.");
+  }
 
   if (ok) {
     setStatus(updated_messages > 0 ? NewMessages : Normal);
@@ -244,8 +248,12 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
     qCritical("There is indication that there was error during messages obtaining.");
   }
 
-  items_to_update.append(this);
-  getParentServiceRoot()->itemChanged(items_to_update);
+  if (ok && !messages.isEmpty()) {
+    // Some messages were really added to DB, reload feed in model.
+    items_to_update.append(this);
+    getParentServiceRoot()->itemChanged(items_to_update);
+  }
+
   return updated_messages;
 }
 

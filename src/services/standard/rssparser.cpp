@@ -58,7 +58,7 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
 
   if (!elem_enclosure.isEmpty()) {
     new_message.m_enclosures.append(Enclosure(elem_enclosure, elem_enclosure_type));
-    qDebug("Adding enclosure '%s' for the message.", qPrintable(elem_enclosure));
+    qDebug("Found enclosure '%s' for the message.", qPrintable(elem_enclosure));
   }
 
   // Deal with link and author.
