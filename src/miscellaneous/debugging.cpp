@@ -62,6 +62,8 @@ void Debugging::performLog(const char* message, QtMsgType type, const char* file
                                             .arg(APP_LOW_NAME, message, mbstr, type_string,
                                                  file, QString::number(line), function).toUtf8());
     }
+
+    instance()->targetFileHandle()->flush();
   }
 
   if (type == QtFatalMsg) {
