@@ -533,8 +533,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         contents_existing_message = query_select_with_url.value(4).toString();
         feed_id_existing_message = query_select_with_url.value(5).toString();
 
-        qDebug("Message with these attributes is already present in DB and has DB ID %d.",
-               qPrintable(message.m_customId), id_existing_message);
+        qDebug("Message with these attributes is already present in DB and has DB ID %d.", id_existing_message);
       }
       else if (query_select_with_url.lastError().isValid()) {
         qWarning("Failed to check for existing message in DB via URL: '%s'.", qPrintable(query_select_with_url.lastError().text()));

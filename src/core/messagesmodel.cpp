@@ -229,7 +229,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
       else if (index_column == MSG_DB_CONTENTS_INDEX) {
         // Do not display full contents here.
-        return data(idx, Qt::EditRole).toString().mid(0, 64).simplified() + QL1S("...");
+        QString contents = data(idx, Qt::EditRole).toString().mid(0, 64).simplified() + QL1S("...");
+
+        return contents;
       }
       else if (index_column == MSG_DB_AUTHOR_INDEX) {
         const QString author_name = QSqlQueryModel::data(idx, role).toString();
