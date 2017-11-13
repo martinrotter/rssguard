@@ -25,6 +25,9 @@ git config --global user.name "martinrotter"
 git clone https://martinrotter:${GH_TOKEN}@github.com/martinrotter/rssguard.wiki.git ./build-wiki
 
 set -- R*.AppImage
+
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
 imagename="$1"
 git_revision=$(git rev-parse --short HEAD)
 
@@ -41,6 +44,9 @@ echo "File to upload: $imagename"
 echo "URL ending: $imagenamenospace"
 
 url=$(curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" --silent)
+
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
 echo "| $(date +'%m-%d-%Y %T') | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) | $(echo "$USE_WEBENGINE") |  "$'\r' >> ./build-wiki/Linux-development-builds.md
 
 cd ./build-wiki
