@@ -42,7 +42,7 @@ echo "Line to add: $wikiline"
 cat "$wikifile" | /usr/local/bin/sed -e "s@| Mac OS | .\+$USE_WEBENGINE |  @$wikiline@g" > "$wikifilenew"
 
 cat "$wikifilenew"
-#mv "$wikifilenew" "$wikifile"
+mv "$wikifilenew" "$wikifile"
 
 cd ./build-wiki
 git add *.*
