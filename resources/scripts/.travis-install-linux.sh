@@ -51,7 +51,7 @@ wikiline="| Linux | $(date +'%m-%d-%Y %T') | [$git_revision](https\://github.com
 wikifile="./build-wiki/Development-builds.md"
 
 echo "Line to add: $wikiline"
-cat "$wikifile" | sed -e "s@| Linux | .\+$USE_WEBENGINE |  @$wikiline@g"
+cat "$wikifile" | sed -e "s@| Linux | .\+$USE_WEBENGINE |  @$wikiline@g" > "$wikifile"
 
 cd ./build-wiki
 git commit -a -m "New files."
