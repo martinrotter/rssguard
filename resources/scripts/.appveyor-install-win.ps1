@@ -24,7 +24,7 @@ $webengine_type = if ($file -like '*nowebengine*') { echo "false" } else { echo 
 $regex = "\| Windows \|.+transfer\.sh \(7z\).+ $webengine_type \|  "
 $wikiline = "| Windows | $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh (7z)]($url) | $webengine_type |  "
 
-(Get-Content $wikifile) -replace $regex, $wikiline | ac -Encoding "utf8" $wikifile
+(Get-Content $wikifile) -replace $regex, $wikiline | Set-Content -Encoding "utf8" $wikifile
 
 
 $file = (Get-ChildItem '*.exe').Name
@@ -36,7 +36,7 @@ $webengine_type = if ($file -like '*nowebengine*') { echo "false" } else { echo 
 $regex = "\| Windows \|.+transfer\.sh \(exe\).+ $webengine_type \|  "
 $wikiline = "| Windows | $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh (exe)]($url) | $webengine_type |  "
 
-(Get-Content $wikifile) -replace $regex, $wikiline | ac -Encoding "utf8" $wikifile
+(Get-Content $wikifile) -replace $regex, $wikiline | Set-Content -Encoding "utf8" $wikifile
 
 
 cd C:\rssguard-wiki
