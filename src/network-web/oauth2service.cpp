@@ -37,6 +37,8 @@
 Q_GLOBAL_STATIC(OAuthHttpHandler, qz_silent_acmanager)
 #endif
 
+#include <cstdlib>
+
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
