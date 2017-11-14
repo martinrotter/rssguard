@@ -47,7 +47,7 @@ url=$(curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" 
 
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
-wikiline="| Linux | $(date +'%m-%d-%Y %T') | [$git_revision](https\://github.com/martinrotter/rssguard/commit/$git_revision) |
+wikiline="| Linux | $(date +'%m-%d-%Y %T') | [$git_revision](https\://github.com/martinrotter/rssguard/commit/$git_revision) |"
 wikifile="./build-wiki/Development-builds.md"
 
 echo "Line to add: $wikiline"
