@@ -49,7 +49,7 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 wikiline="| Linux | $(date +'%m-%d-%Y %T') | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) | $(echo "$USE_WEBENGINE") |  "
 wikifile="./build-wiki/Development-builds.md"
-cat "$wikifile" | sed -e "s@| Linux | .\+$USE_WEBENGINE.\+@$wikiline@g"
+cat "$wikifile" | sed -e "s@| Linux | .\+$USE_WEBENGINE |  @$wikiline@g"
 
 cd ./build-wiki
 git commit -a -m "New files."
