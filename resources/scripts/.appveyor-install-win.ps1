@@ -10,17 +10,21 @@ Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-
 git config --global user.email "rotter.martinos@gmail.com"
 git config --global user.name "martinrotter"
 
+$git_revision = git rev-parse --short HEAD
+$date = (Get-Date).ToUniversalTime().ToString("MM-dd-yyyy HH:mm:ss UTC")
+$wikifile = 'C:\rssguard-wiki\Development-builds.md'
+
 
 $file = (Get-ChildItem '*.7z').Name
 echo "File to upload: $file"
 $url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
 echo "Obtained URL: $url"
 
-$git_revision = git rev-parse --short HEAD
-$date = (Get-Date).ToUniversalTime().ToString("MM-dd-yyyy HH:mm:ss UTC")
 $webengine_type = if ($file -like '*nowebengine*') { echo "false" } else { echo "true" }
+$regex = "\| Windows \|.+transfer\.sh \(7z\).+ $webengine_type \|  "
+$wikiline = "| Windows | $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh (7z)]($url) | $webengine_type |  "
 
-echo "| $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh (7z)]($url) | $webengine_type |  " | ac -Encoding "utf8" C:\rssguard-wiki\Windows-development-builds.md
+(Get-Content $wikifile) -replace $regex, $wikiline | ac -Encoding "utf8" $wikifile
 
 
 $file = (Get-ChildItem '*.exe').Name
@@ -28,11 +32,11 @@ echo "File to upload: $file"
 $url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
 echo "Obtained URL: $url"
 
-$git_revision = git rev-parse --short HEAD
-$date = (Get-Date).ToUniversalTime().ToString("MM-dd-yyyy HH:mm:ss UTC")
 $webengine_type = if ($file -like '*nowebengine*') { echo "false" } else { echo "true" }
+$regex = "\| Windows \|.+transfer\.sh \(exe\).+ $webengine_type \|  "
+$wikiline = "| Windows | $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh (exe)]($url) | $webengine_type |  "
 
-echo "| $date | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh (exe)]($url) | $webengine_type |  " | ac -Encoding "utf8" C:\rssguard-wiki\Windows-development-builds.md
+(Get-Content $wikifile) -replace $regex, $wikiline | ac -Encoding "utf8" $wikifile
 
 
 cd C:\rssguard-wiki
