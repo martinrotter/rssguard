@@ -39,7 +39,7 @@ wikifile="./build-wiki/Development-builds.md"
 wikifilenew="./build-wiki/Development-builds.md.new"
 
 echo "Line to add: $wikiline"
-cat "$wikifile" | sed -e "s@| Mac OS | .\+$USE_WEBENGINE |  @$wikiline@g" > "$wikifilenew"
+cat "$wikifile" | gsed -e "s@| Mac OS | .\+$USE_WEBENGINE |  @$wikiline@g" > "$wikifilenew"
 
 cat "$wikifilenew"
 #mv "$wikifilenew" "$wikifile"
