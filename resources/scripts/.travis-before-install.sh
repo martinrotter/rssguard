@@ -9,6 +9,9 @@ if test "$TRAVIS_OS_NAME" = "osx"; then
   brew link --force qt5
   brew install curl
   brew link --force curl
+  brew uninstall gnu-sed
+  brew install gnu-sed --with-default-names
+  brew link --force gnu-sed
 else
   # Linux.
   sudo add-apt-repository ppa:beineri/opt-qt591-trusty -y
