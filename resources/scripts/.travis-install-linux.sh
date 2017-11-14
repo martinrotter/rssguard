@@ -47,7 +47,9 @@ url=$(curl --upload-file "./$imagename" "https://transfer.sh/$imagenamenospace" 
 
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
-echo "| $(date +'%m-%d-%Y %T') | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) | $(echo "$USE_WEBENGINE") |  "$'\r' >> ./build-wiki/Linux-development-builds.md
+wikiline="| Linux | $(date +'%m-%d-%Y %T') | [$git_revision](https://github.com/martinrotter/rssguard/commit/$git_revision) | [transfer.sh]($url) | $(echo "$USE_WEBENGINE") |  "
+wikifile="./build-wiki/Development-builds.md"
+cat "$wikifile" | sed -e "s@| Linux | .\+$USE_WEBENGINE.\+@$wikiline@g"
 
 cd ./build-wiki
 git commit -a -m "New files."
