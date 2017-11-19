@@ -125,7 +125,7 @@
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"/>
+        <translation>Kan abonnement niet laden!</translation>
     </message>
 </context>
 <context>
@@ -451,19 +451,19 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>has new messages</source>
-        <translation type="unfinished"/>
+        <translation>heeft nieuwe berichten</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation type="unfinished"/>
+        <translation>verificatie fout</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation type="unfinished"/>
+        <translation>netwerk fout</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation type="unfinished"/>
+        <translation>onverwachte fout</translation>
     </message>
     <message>
         <source>Auto-update status: %1
@@ -745,7 +745,7 @@ of deze functie bestaat nog niet.</translation>
     <name>FormAddEditEmail</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialoog</translation>
     </message>
 </context>
 <context>
@@ -902,15 +902,15 @@ of deze functie bestaat nog niet.</translation>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Download aanhangsel</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Download: %1 kB</translation>
     </message>
 </context>
 <context>
@@ -1092,15 +1092,15 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Rssguard ID</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Rssguard sleutel</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL doorsturen</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
@@ -1112,15 +1112,15 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>bericht(en)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Inloggen</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Nog niet getest.</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -1128,7 +1128,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Je bent al ingelogd.</translation>
     </message>
     <message>
         <source>Access granted.</source>
@@ -1164,11 +1164,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Add new Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Voeg nieuw Gmail account toe</translation>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Bewerk bestaande Gmail account</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
@@ -1195,15 +1195,15 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Rssguard ID</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Rssguard sleutel</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL doorsturen</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
@@ -1215,15 +1215,15 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>bericht(en)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Inloggen</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Nog niet getest.</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -1231,7 +1231,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Je bent al ingelogd.</translation>
     </message>
     <message>
         <source>Access granted.</source>
@@ -1239,7 +1239,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Geen gebruikersnaam ingevoerd.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
@@ -1255,7 +1255,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Er is een fout. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>

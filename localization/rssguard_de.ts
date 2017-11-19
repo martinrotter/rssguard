@@ -743,7 +743,7 @@ or this functionality is not implemented yet.</source>
     <name>FormAddEditEmail</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
 </context>
 <context>
@@ -900,7 +900,7 @@ or this functionality is not implemented yet.</source>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>

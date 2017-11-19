@@ -745,7 +745,7 @@ att funktionen inte är implementerad än.</translation>
     <name>FormAddEditEmail</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
 </context>
 <context>
@@ -902,15 +902,15 @@ att funktionen inte är implementerad än.</translation>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Laddar ner bilaga...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Nerladdat: %1 kB</translation>
     </message>
 </context>
 <context>
@@ -1180,7 +1180,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Du måste använda &quot;%1&quot; som omdirigerings-URL. Du kan dock använda valfri port, för att säkerställa att den inte är upptagen av någon lokal tjänst. Tillse att denna omdirigerings-URL stämmer med omdirigerings-URL för den &quot;applikation&quot; som används.</translation>
     </message>
 </context>
 <context>
@@ -1283,7 +1283,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Du måste använda &quot;%1&quot; som omdirigerings-URL. Du kan dock använda valfri port, för att säkerställa att den inte är upptagen av någon lokal tjänst. Tillse att denna omdirigerings-URL stämmer med omdirigerings-URL för den &quot;applikation&quot; som används.</translation>
     </message>
 </context>
 <context>
@@ -2265,7 +2265,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Aktivera förhandsvisning av meddelande</translation>
     </message>
 </context>
 <context>
@@ -2855,11 +2855,11 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: Autentiseringsfel</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: Autentisering nekades</translation>
     </message>
 </context>
 <context>
@@ -2896,11 +2896,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"/>
+        <translation>Välj bilagefil</translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Skriv nytt e-postmeddelande</translation>
     </message>
 </context>
 <context>
@@ -3167,11 +3167,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
+        <translation>Har infogade bilagor</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the message.</source>
-        <translation type="unfinished"/>
+        <translation>Det finns indikationer om infogade bilagor i meddelandet.</translation>
     </message>
 </context>
 <context>
@@ -3375,7 +3375,7 @@ Inloggningstoken upphör: %2</translation>
     <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Du kan stänga det här fönstret nu. Gå tillbaka till %1</translation>
     </message>
 </context>
 <context>
@@ -3534,19 +3534,19 @@ Minst API-nivå %1 krävs.</translation>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Rensa söksträngen</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Söktext</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Sök föregående förekomst</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Sök nästa förekomst</translation>
     </message>
 </context>
 <context>
@@ -4746,7 +4746,7 @@ Senaste inloggning: %4</translation>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna länk i extern webbläsare</translation>
     </message>
 </context>
 </TS>

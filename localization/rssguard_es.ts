@@ -3,22 +3,22 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation>(categoría)</translation>
+        <translation> (categoría)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation>(fuente)</translation>
+        <translation> (fuente)</translation>
     </message>
 </context>
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Añadir suscripción</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"/>
+        <translation>Utilizar suscripción predefinida</translation>
     </message>
     <message>
         <source>Title</source>
@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"/>
+        <translation>Título de la suscripción</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,80 +34,80 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL absoluta a la suscripción en línea</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"/>
+        <translation>Reglas personalizadas</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuración de AdBlock</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Habilitar AdBlock</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Opciones</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Añadir regla</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Eliminar regla</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Añadir suscripción</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"/>
+        <translation>Eliminar suscripción</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Actualizar suscripción</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"/>
+        <translation>Aprender a escribir reglas...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock te permite bloquear contenido no deseado de páginas web</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"/>
+        <translation>Bloqueada ventana emergente</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock bloqueó la ventana emergente no deseada</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar los ajustes de AdBlock</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"/>
+        <translation>Inhabilitar en %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
+        <translation>Inhabilitar en esta página</translation>
     </message>
 </context>
 <context>
@@ -118,48 +118,48 @@
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"/>
+        <translation>Añadir suscripción de AdBlock</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"/>
+        <translation>¡No puedo cargar la suscripción</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Añadir regla</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Eliminar regla</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"/>
+        <translation>Añadir regla personalizada</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"/>
+        <translation>Por favor escribe tu regla aquí:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (recientemente actualizado)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (error: %2)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>La aplicación está en ejecución.</translation>
+        <translation>La aplicación ya está en ejecución.</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
@@ -187,7 +187,7 @@
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>No puede añadirse la fuente debido a que la cuenta estándar RSS/ATOM no está activada. </translation>
+        <translation>No puede añadirse la fuente debido a que la cuenta estándar RSS/ATOM no está activada.</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
@@ -274,14 +274,14 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation>Este portal no contiene fuentes.</translation>
+        <translation>Este sitio web no contiene ninguna fuente.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Pulse aquí para añadir la fuente de este portal.
-Este portal contiene %n fuente().</numerusform><numerusform>Pulse aquí para añadir las fuentes de este portal.
-Este portal contiene %n fuente(s).</numerusform></translation>
+        <translation><numerusform>Pulse aquí para añadir la fuente de este sitio web.
+Este sitio web contiene %n fuente().</numerusform><numerusform>Pulse aquí para añadir las fuentes de este sitio web.
+Este sitio web contiene %n fuente(s).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -432,7 +432,7 @@ Auto-update status: %3</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>no utilizar la actualización automática</translation>
+        <translation>no utiliza la actualización automática</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
@@ -450,24 +450,24 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>has new messages</source>
-        <translation type="unfinished"/>
+        <translation>tiene nuevos mensajes</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation type="unfinished"/>
+        <translation>error de autentificación</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation type="unfinished"/>
+        <translation>error de la red</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation type="unfinished"/>
+        <translation>error no especificado</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation>Estado de auto actualización: %1</translation>
     </message>
 </context>
 <context>
@@ -615,11 +615,11 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Menú contextual para las papeleras de reciclage</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation type="unfinished"/>
+        <translation>Menú contextual para las cuentas</translation>
     </message>
 </context>
 <context>
@@ -638,7 +638,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>Licencia Pública General de GNU</translation>
+        <translation>Licencia Pública General (GPL) de GNU</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
@@ -744,7 +744,7 @@ o debido a que esta función aún no está implementada.</translation>
     <name>FormAddEditEmail</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Diálogo</translation>
     </message>
 </context>
 <context>
@@ -850,7 +850,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation>Tipo de base de datos:</translation>
+        <translation>Tipo de base de datos</translation>
     </message>
     <message>
         <source>Progress</source>
@@ -901,15 +901,15 @@ o debido a que esta función aún no está implementada.</translation>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Descargando adjunto...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Descargado: %1 kB</translation>
     </message>
 </context>
 <context>
@@ -1087,15 +1087,15 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Ajustes de OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>ID de la aplicación</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Llave de la aplicación</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -1103,15 +1103,15 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>¡Los ajustes predefinidos NO se deben cambiar de sus valores predeterminados. Cambie esos valores sólo si es un usuario avanzado y sabe qué está haciendo!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Sólo descargar X mensajes más nuevos por fuente</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation> mensaje(s)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -1119,7 +1119,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Todavía no comprobado</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -1127,55 +1127,55 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Ya está registrado.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Acceso concedido.</translation>
     </message>
     <message>
         <source>No username entered.   </source>
-        <translation type="unfinished"/>
+        <translation>No ha introducido un nombre de usuario.   </translation>
     </message>
     <message>
         <source>Some username entered.   </source>
-        <translation type="unfinished"/>
+        <translation>Algún nombre de usuario introducido.   </translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>No concedió el acceso.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Hubo un error durante la prueba.</translation>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation type="unfinished"/>
+        <translation>Hay un error. %1 </translation>
     </message>
     <message>
         <source>Tested successfully.You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Probado con éxito. Puede que se le pida que se registre una vez más.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Su acceso fue aprobado.</translation>
     </message>
     <message>
         <source>Add new Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva cuenta de Gmail</translation>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Editar una cuenta de Gmail existente</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Se ha introducido un valor vacío.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Algún valor ha sido introducido.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
@@ -1190,15 +1190,15 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Ajustes de OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation type="unfinished"/>
+        <translation>ID de la aplicación</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation type="unfinished"/>
+        <translation>Llave de la aplicación</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -1206,15 +1206,15 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>¡Estos ajustes predefinidos NO se deben cambiar de sus valores predeterminados. Cambie esos valores sólo si es un usuario avanzado y sabe qué está haciendo!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Sólo descargar X mensajes más nuevos por fuente</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation> mensaje(s)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -1222,7 +1222,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Todavía no comprobado</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -1230,55 +1230,55 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Ya está registrado.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Acceso concedido.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>No ha introducido un nombre de usuario.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Algún nombre de usuario introducido.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>No concedió el acceso.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Hubo un error durante la prueba.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Hay un error. %1 </translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Probado con éxito. Puede que se le pida que se registre una vez más.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Su acceso fue aprobado.</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva cuenta de Inoreader</translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Editar una cuenta de Inoreader existente</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Se ha introducido un valor vacío.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Algún valor ha sido introducido.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
@@ -1409,23 +1409,23 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Limitar el número de mensajes descargados por fuente&gt;</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation> = sin limite</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Limitar el número de mensajes descargados por fuente hace que la actualización de fuentes sea más rápida pero su su fuente contiene un número de mensajes mayor que el límite especificado, entonces algunos mensajes podrían no ser descargados durante la actualización de fuentes.</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= sin límite</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>mensajes</translation>
     </message>
 </context>
 <context>
@@ -2240,7 +2240,7 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Fuente &apos;%1&apos; actualizada</translation>
+        <translation>Mostrar el texto en la barra de estado cuando una fuente en particular es actualizada.</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -2256,15 +2256,15 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>Ir a la pestaña &amp;siguiente</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation>Ir a la pestaña &amp;anterior</translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Habilitar la previsualización del mensaje</translation>
     </message>
 </context>
 <context>
@@ -2498,7 +2498,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Cargando icono del archivo...</translation>
+        <translation>Cargando icono desde el archivo...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
@@ -2636,7 +2636,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation>Archivos TXT [una dirección URL por guión] (*.txt)</translation>
+        <translation>Archivos TXT [una dirección URL por línea] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
@@ -2749,7 +2749,7 @@ Navegue al portal de la aplicación para obtenerlo de forma manual.</translation
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>No es posible navegar hasta el archivo de instalación. Busque de forma manual nuevos archivos de instalación en el portal del proyecto.</translation>
+        <translation>No es posible navegar hasta el archivo de instalación. Busque de forma manual nuevos archivos de instalación en el sitio web del proyecto.</translation>
     </message>
     <message>
         <source>Download update</source>
@@ -2777,7 +2777,7 @@ Navegue al portal de la aplicación para obtenerlo de forma manual.</translation
     </message>
     <message>
         <source>Go to application website</source>
-        <translation>Ir al portal de la aplicación</translation>
+        <translation>Ir al sitio web de la aplicación</translation>
     </message>
     <message>
         <source>This is new version which can be
@@ -2963,7 +2963,7 @@ Login tokens expiration: %2</source>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation>La dirección del portal va aquí</translation>
+        <translation>La dirección del sitio web va aquí</translation>
     </message>
 </context>
 <context>
@@ -3164,11 +3164,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
+        <translation>Tiene adjuntos</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the message.</source>
-        <translation type="unfinished"/>
+        <translation>Indicación de presencia de adjuntos dentro del mensaje.</translation>
     </message>
 </context>
 <context>
@@ -3234,15 +3234,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Abrir con una herramienta externa</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>No se puede ejecutar la herramienta externa</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>La herramienta externa &apos;%1&apos; no puede ser iniciada</translation>
     </message>
 </context>
 <context>
@@ -3349,37 +3349,37 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Hacer clic aquí para ingresar.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Ingresar mediante OAuth 2.0...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Actualizando los identificadores de ingreso para &apos;%1&apos;...</translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Pidiendo la autorización de acceso para &apos;%1&apos;...</translation>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Debe registrarse primero</translation>
     </message>
 </context>
 <context>
     <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Puede cerrar esta ventana ahora. Vaya atrás a %1</translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation>Se necesita autorización de acceso al servicio</translation>
     </message>
 </context>
 <context>
@@ -3533,19 +3533,19 @@ Se necesita como mínimo una API de nivel %1.</translation>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Borrar la frase buscada</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Buscar texto</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Encontrar la coincidencia anterior</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Encontrar la coincidencia siguiente</translation>
     </message>
 </context>
 <context>
@@ -3596,23 +3596,23 @@ Se necesita como mínimo una API de nivel %1.</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation>Gestor de correo externo</translation>
+        <translation>Gestor de correo electrónico externo</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation>Utilizar gestor de correo externo personalizado</translation>
+        <translation>Utilizar gestor de correo electrónico externo personalizado</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation>Ejecutable del gestor de correo</translation>
+        <translation>Ejecutable del gestor de correo electrónico</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation>Archivo ejecutable del gestor de correo</translation>
+        <translation>Archivo ejecutable del gestor de correoelectrónico</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation>Seleccionar gestor de correo</translation>
+        <translation>Seleccionar gestor de correo electrónico</translation>
     </message>
     <message>
         <source>Placeholders:
@@ -3722,39 +3722,39 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Herramientas externas</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>En esta página, puede configurar una lista de herramientas externas que pueden abrir direcciones URL de los mensajes seleccionados.</translation>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>Añadir herramienta externa</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>Eliminar la herramienta externa seleccionada</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation type="unfinished"/>
+        <translation>Ejecutable</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parámetros</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar herramienta externa</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>Introducir parámetros</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation>Introducir parámetros (opcionales) separados por un espacio simple para enviar al ejecutable cuando abra direcciones URL.</translation>
     </message>
 </context>
 <context>
@@ -3889,7 +3889,7 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation>Tenga en cuenta que al ACTIVAR esta opción permitirá que los nuevos mensajes se guarden MÁS RÁPIDO, mas ocasionalmente puede tener algunos problemas al guardarlos.</translation>
+        <translation>Tenga en cuenta que al ACTIVAR esta opción permitirá que los nuevos mensajes se guarden MÁS RÁPIDO, pero ocasionalmente puede tener algunos problemas al guardarlos.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
@@ -4011,11 +4011,11 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Altura o filas en la lista de fuentes (-1 = altura predeterminada)</translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Altura o filas en la lista de fuentes (-1 = altura predeterminada)</translation>
     </message>
 </context>
 <context>
@@ -4632,39 +4632,39 @@ Last login on: %4</source>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation>Ajustes del motor web</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation>Cargar automáticamente las imágenes</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>JS habilitado</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"/>
+        <translation>JS puede abrir ventanas emergentes</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JS puede abrir el portapapeles</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Los hipervínculos pueden tomar el foco</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"/>
+        <translation>Almacenamiento local habilitado</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>El contenido local puede acceder a direcciones URL remotas</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Auditoría XSS habilitada</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
@@ -4672,35 +4672,35 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>El contenido local puede acceder a archivos locales</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Auditoría de hipervínculos habilitada</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"/>
+        <translation>Desplazamiento animado</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Páginas de error habilitadas</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>Complementos habilitados</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>Pantalla completa habilitada</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Captura de pantalla habilitada</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>WebGL habilitado</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
@@ -4708,15 +4708,15 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar elementos de fondo</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"/>
+        <translation>Permitir ejecutar contenido inseguro</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Permitir la geolocalización en orígenes inseguros</translation>
     </message>
 </context>
 <context>

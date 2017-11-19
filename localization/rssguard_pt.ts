@@ -745,7 +745,7 @@ ou esta função ainda não foi implementada.</translation>
     <name>FormAddEditEmail</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Diálogo</translation>
     </message>
 </context>
 <context>
@@ -902,15 +902,15 @@ ou esta função ainda não foi implementada.</translation>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Baixando anexo...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Baixado: %1 KB</translation>
     </message>
 </context>
 <context>
@@ -1180,7 +1180,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Você deve usar &quot;%1&quot; como URL de redirecionamento base. Você pode usar a porta personalizada para garantir que nenhum serviço local a ocupe. Certifique-se de que esta URL de redirecionamento coincida com a URL de redirecionamento do &quot;aplicativo&quot; usado.</translation>
     </message>
 </context>
 <context>
@@ -1283,7 +1283,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Você deve usar &quot;%1&quot; como URL de redirecionamento base. Você pode usar a porta personalizada para garantir que nenhum serviço local a ocupe. Certifique-se de que esta URL de redirecionamento coincida com a URL de redirecionamento do &quot;aplicativo&quot; usado.</translation>
     </message>
 </context>
 <context>
@@ -2265,7 +2265,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Habilitar pré-visualização da mensagem</translation>
     </message>
 </context>
 <context>
@@ -2856,11 +2856,11 @@ Você pode instalá-lo agora.</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: erro de autenticação</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: autorização negada</translation>
     </message>
 </context>
 <context>
@@ -2897,11 +2897,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"/>
+        <translation>Selecione o destino dos anexos</translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Escrever nova mensagem de e-mail</translation>
     </message>
 </context>
 <context>
@@ -3168,11 +3168,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
+        <translation>Possui anexos</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the message.</source>
-        <translation type="unfinished"/>
+        <translation>Indicação de presença de anexos na mensagem.</translation>
     </message>
 </context>
 <context>
@@ -3376,7 +3376,7 @@ Expiração dos tokens de login: %2</translation>
     <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Você pode fechar esta janela agora. Voltar para %1</translation>
     </message>
 </context>
 <context>
@@ -3537,19 +3537,19 @@ Pelo menos o API nível %1 é necessário.</translation>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Limpar frase pesquisada</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Pesquisar texto</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Localizar ocorrência anterior</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Localizar próxima ocorrência</translation>
     </message>
 </context>
 <context>
@@ -4748,7 +4748,7 @@ Servidor: %2
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Abrir link no navegado externo</translation>
     </message>
 </context>
 </TS>

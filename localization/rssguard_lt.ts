@@ -746,7 +746,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <name>FormAddEditEmail</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialogas</translation>
     </message>
 </context>
 <context>
@@ -903,15 +903,15 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialogas</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Atsiunčiamas priedas...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Atsiųsta: %1 kB</translation>
     </message>
 </context>
 <context>
@@ -1181,7 +1181,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Privalote naudoti &quot;%1&quot; kaip bazinį nukreipimo URL. Norėdami užtikrinti, kad jokia vietinė tarnyba neužima prievado, galite naudoti pasirinktinį prievadą. Užtikrinkite, kad šis nukreipimo URL atitiktų naudojamos &quot;programos&quot; nukreipimo URL.</translation>
     </message>
 </context>
 <context>
@@ -1284,7 +1284,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Privalote naudoti &quot;%1&quot; kaip bazinį nukreipimo URL. Norėdami užtikrinti, kad jokia vietinė tarnyba neužima prievado, galite naudoti pasirinktinį prievadą. Užtikrinkite, kad šis nukreipimo URL atitiktų naudojamos &quot;programos&quot; nukreipimo URL.</translation>
     </message>
 </context>
 <context>
@@ -3540,19 +3540,19 @@ Reikalingas bent API lygis %1.</translation>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Išvalyti ieškotą frazę</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Ieškoti tekstą</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Rasti ankstesnį atitikmenį</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Rasti kitą atitikmenį</translation>
     </message>
 </context>
 <context>
@@ -4751,7 +4751,7 @@ Paskiausias prisijungimas: %4</translation>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Atverti nuorodą išorinėje naršyklėje</translation>
     </message>
 </context>
 </TS>
