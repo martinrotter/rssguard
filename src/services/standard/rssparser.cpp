@@ -42,7 +42,7 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   if (elem_title.isEmpty()) {
     if (elem_description.isEmpty()) {
       // BOTH title and description are empty, skip this message.
-      throw new ApplicationException(QSL("Not enough data for the message."));
+      throw ApplicationException(QSL("Not enough data for the message."));
     }
     else {
       // Title is empty but description is not.

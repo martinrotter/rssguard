@@ -52,7 +52,7 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
   // Now we obtained maximum of information for title & description.
   if (title.isEmpty() && summary.isEmpty()) {
     // BOTH title and description are empty, skip this message.
-    throw new ApplicationException(QSL("Not enough data for the message."));
+    throw ApplicationException(QSL("Not enough data for the message."));
   }
 
   // Title is not empty, description does not matter.
