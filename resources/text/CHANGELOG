@@ -1,3 +1,9 @@
+3.5.6
+—————
+
+Fixed:
+▪ Missing obligatory attribute in OPML 2.0 files. (bug #166)
+
 3.5.5
 —————
 

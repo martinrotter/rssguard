@@ -85,6 +85,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
           StandardFeed* child_feed = static_cast<StandardFeed*>(child_item);
           QDomElement outline_feed = opml_document.createElement("outline");
 
+          outline_feed.setAttribute(QSL("type"), QSL("rss"));
           outline_feed.setAttribute(QSL("text"), child_feed->title());
           outline_feed.setAttribute(QSL("xmlUrl"), child_feed->url());
           outline_feed.setAttribute(QSL("description"), child_feed->description());
