@@ -525,7 +525,7 @@
   </action>
   <action name="m_actionDonate">
    <property name="text">
-    <string>&amp;Donate via PayPal</string>
+    <string>&amp;Donate...</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
