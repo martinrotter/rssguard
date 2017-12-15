@@ -2,6 +2,8 @@
 —————
 
 Fixed:
+▪ Bad handling of null/empty strings when inserting messages into DB. (bug #169)
+▪ Bad conversion of "created on" date/time in TT-RSS plugin. (bug #172)
 ▪ Missing obligatory attribute in OPML 2.0 files. (bug #166)
 
 3.5.5
