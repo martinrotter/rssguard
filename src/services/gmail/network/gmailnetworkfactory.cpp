@@ -269,6 +269,8 @@ void GmailNetworkFactory::onTokensError(const QString& error, const QString& err
                        QSystemTrayIcon::Critical,
                        nullptr, false,
                        [this]() {
+    m_oauth2->setAccessToken(QString());
+    m_oauth2->setRefreshToken(QString());
     m_oauth2->login();
   });
 }

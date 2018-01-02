@@ -283,6 +283,8 @@ void InoreaderNetworkFactory::onTokensError(const QString& error, const QString&
                        QSystemTrayIcon::Critical,
                        nullptr, false,
                        [this]() {
+    m_oauth2->setAccessToken(QString());
+    m_oauth2->setRefreshToken(QString());
     m_oauth2->login();
   });
 }

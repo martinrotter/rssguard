@@ -63,7 +63,7 @@ APP_URL_ISSUES                = "https://github.com/martinrotter/rssguard/issues
 APP_URL_ISSUES_NEW            = "https://github.com/martinrotter/rssguard/issues/new"
 APP_URL_WIKI                  = "https://github.com/martinrotter/rssguard/wiki"
 APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (github.com/martinrotter/rssguard)"
-APP_DONATE_URL                = "https://goo.gl/YFVJ0j"
+APP_DONATE_URL                = "https://liberapay.com/martinrotter"
 APP_WIN_ARCH                  = "win64"
 
 isEmpty(PREFIX) {

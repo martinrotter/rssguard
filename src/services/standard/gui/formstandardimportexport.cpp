@@ -49,6 +49,7 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode)
       m_ui->m_lblRootNode->setVisible(false);
       m_ui->m_groupFile->setTitle(tr("Destination file"));
       m_ui->m_groupFeeds->setTitle(tr("Source feeds && categories"));
+      m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Export to file"));
       setWindowTitle(tr("Export feeds"));
       setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
       break;
@@ -58,6 +59,7 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode)
       m_ui->m_groupFile->setTitle(tr("Source file"));
       m_ui->m_groupFeeds->setTitle(tr("Target feeds && categories"));
       m_ui->m_groupFeeds->setDisabled(true);
+      m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Import from file"));
 
       // Load categories.
       loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);

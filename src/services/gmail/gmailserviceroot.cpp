@@ -164,11 +164,11 @@ void GmailServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  m_network->oauth()->login();
-
   if (childCount() <= 1) {
     syncIn();
   }
+
+  m_network->oauth()->login();
 }
 
 void GmailServiceRoot::stop() {

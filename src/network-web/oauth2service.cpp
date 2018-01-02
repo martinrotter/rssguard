@@ -26,6 +26,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "services/inoreader/definitions.h"
 
@@ -186,7 +187,10 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
 
   qDebug() << "Token response:" << json_document.toJson();
 
-  if (root_obj.keys().contains("error")) {
+  if (network_reply->error() != QNetworkReply::NetworkError::NoError) {
+    emit tokensRetrieveError(QString(), NetworkFactory::networkErrorText(network_reply->error()));
+  }
+  else if (root_obj.keys().contains("error")) {
     QString error = root_obj.value("error").toString();
     QString error_description = root_obj.value("error_description").toString();
 
