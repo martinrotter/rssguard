@@ -8,14 +8,12 @@
 # Usage:
 #   a) DEBUG build for testing. (out of source build type)
 #     cd ../build-dir
-#     lrelease ../rssguard-dir/rssguard.pro
 #     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=debug PREFIX=./usr
 #     make
 #     make install
 #
 #   b) RELEASE build for production use. (out of source build type)
 #     cd ../build-dir
-#     lrelease ../rssguard-dir/rssguard.pro
 #     qmake ../rssguard-dir/rssguard.pro -r CONFIG+=release PREFIX=./usr
 #     make
 #     make install
@@ -606,6 +604,11 @@ lupdate.target = lupdate
 lupdate.commands = lupdate $$shell_path($$PWD/rssguard.pro)
 
 QMAKE_EXTRA_TARGETS += lupdate
+
+# Make sure QM translations are nerated.
+qtPrepareTool(LRELEASE, lrelease) {
+  system($$LRELEASE_EXECUTABLE -compress $$shell_quote($$shell_path($$PWD/rssguard.pro)))
+}
 
 # Create new "make 7zip" target and "make zip" target.
 win32 {
