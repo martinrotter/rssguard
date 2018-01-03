@@ -30,7 +30,7 @@
 #include <QUrl>
 #include <QVariant>
 
-#define EMPT_STR_NULL(x) ( x ## .isNull() ? "" : x)
+#define EMPT_STR_NULL(x) x##.isNull() ? "" : x
 
 bool DatabaseQueries::markMessagesReadUnread(QSqlDatabase db, const QStringList& ids, RootItem::ReadStatus read) {
   QSqlQuery q(db);
