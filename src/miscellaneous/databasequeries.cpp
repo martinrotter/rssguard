@@ -30,8 +30,6 @@
 #include <QUrl>
 #include <QVariant>
 
-#define EMPT_STR_NULL(x) x##.isNull() ? "" : x
-
 bool DatabaseQueries::markMessagesReadUnread(QSqlDatabase db, const QStringList& ids, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
@@ -518,10 +516,10 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     if (message.m_customId.isEmpty()) {
       // We need to recognize existing messages according URL & AUTHOR & TITLE.
       // NOTE: This particularly concerns messages from standard account.
-      query_select_with_url.bindValue(QSL(":feed"), EMPT_STR_NULL(feed_custom_id));
-      query_select_with_url.bindValue(QSL(":title"), EMPT_STR_NULL(message.m_title));
-      query_select_with_url.bindValue(QSL(":url"), EMPT_STR_NULL(message.m_url));
-      query_select_with_url.bindValue(QSL(":author"), EMPT_STR_NULL(message.m_author));
+      query_select_with_url.bindValue(QSL(":feed"), unnulifyString(feed_custom_id));
+      query_select_with_url.bindValue(QSL(":title"), unnulifyString(message.m_title));
+      query_select_with_url.bindValue(QSL(":url"), unnulifyString(message.m_url));
+      query_select_with_url.bindValue(QSL(":author"), unnulifyString(message.m_author));
       query_select_with_url.bindValue(QSL(":account_id"), account_id);
 
       qDebug("Checking if message with title '%s', url '%s' and author '%s' is present in DB.",
@@ -547,7 +545,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       // We can recognize existing messages via their custom ID.
       // NOTE: This concerns messages from custom accounts, like TT-RSS or ownCloud News.
       query_select_with_id.bindValue(QSL(":account_id"), account_id);
-      query_select_with_id.bindValue(QSL(":custom_id"), EMPT_STR_NULL(message.m_customId));
+      query_select_with_id.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
       qDebug("Checking if message with custom ID %s is present in DB.", qPrintable(message.m_customId));
 
@@ -584,15 +582,15 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                   /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message
                            && message.m_contents != contents_existing_message)) {
         // Message exists, it is changed, update it.
-        query_update.bindValue(QSL(":title"), EMPT_STR_NULL(message.m_title));
+        query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
         query_update.bindValue(QSL(":is_important"), (int) message.m_isImportant);
-        query_update.bindValue(QSL(":url"), EMPT_STR_NULL(message.m_url));
-        query_update.bindValue(QSL(":author"), EMPT_STR_NULL(message.m_author));
+        query_update.bindValue(QSL(":url"), unnulifyString(message.m_url));
+        query_update.bindValue(QSL(":author"), unnulifyString(message.m_author));
         query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-        query_update.bindValue(QSL(":contents"), EMPT_STR_NULL(message.m_contents));
+        query_update.bindValue(QSL(":contents"), unnulifyString(message.m_contents));
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-        query_update.bindValue(QSL(":feed"), EMPT_STR_NULL(feed_id_existing_message));
+        query_update.bindValue(QSL(":feed"), unnulifyString(feed_id_existing_message));
         query_update.bindValue(QSL(":id"), id_existing_message);
         *any_message_changed = true;
 
@@ -612,17 +610,17 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     }
     else {
       // Message with this URL is not fetched in this feed yet.
-      query_insert.bindValue(QSL(":feed"), EMPT_STR_NULL(feed_custom_id));
-      query_insert.bindValue(QSL(":title"), EMPT_STR_NULL(message.m_title));
+      query_insert.bindValue(QSL(":feed"), unnulifyString(feed_custom_id));
+      query_insert.bindValue(QSL(":title"), unnulifyString(message.m_title));
       query_insert.bindValue(QSL(":is_read"), (int) message.m_isRead);
       query_insert.bindValue(QSL(":is_important"), (int) message.m_isImportant);
-      query_insert.bindValue(QSL(":url"), EMPT_STR_NULL( message.m_url));
-      query_insert.bindValue(QSL(":author"), EMPT_STR_NULL(message.m_author));
+      query_insert.bindValue(QSL(":url"), unnulifyString( message.m_url));
+      query_insert.bindValue(QSL(":author"), unnulifyString(message.m_author));
       query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-      query_insert.bindValue(QSL(":contents"), EMPT_STR_NULL(message.m_contents));
+      query_insert.bindValue(QSL(":contents"), unnulifyString(message.m_contents));
       query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-      query_insert.bindValue(QSL(":custom_id"), EMPT_STR_NULL(message.m_customId));
-      query_insert.bindValue(QSL(":custom_hash"), EMPT_STR_NULL(message.m_customHash));
+      query_insert.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
+      query_insert.bindValue(QSL(":custom_hash"), unnulifyString(message.m_customHash));
       query_insert.bindValue(QSL(":account_id"), account_id);
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
@@ -1799,6 +1797,10 @@ Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool*
   }
 
   return feeds;
+}
+
+QString DatabaseQueries::unnulifyString(const QString &str) {
+  return str.isNull() ? "" : str;
 }
 
 DatabaseQueries::DatabaseQueries() {}

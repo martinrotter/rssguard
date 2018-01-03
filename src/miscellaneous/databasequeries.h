@@ -130,6 +130,8 @@ class DatabaseQueries {
     static Assignment getTtRssFeeds(QSqlDatabase db, int account_id, bool* ok = nullptr);
 
   private:
+    static QString unnulifyString(const QString& str);
+
     explicit DatabaseQueries();
 };
 
