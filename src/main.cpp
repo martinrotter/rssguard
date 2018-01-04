@@ -141,9 +141,6 @@ int main(int argc, char* argv[]) {
       FormAbout(qApp->mainForm()).exec();
     });
   }
-  else {
-    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_NAME), QSystemTrayIcon::NoIcon);
-  }
 
   if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
     QObject::connect(qApp->system(), &SystemFactory::updatesChecked, [](QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates) {
