@@ -4,6 +4,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+
 #include <QKeyEvent>
 
 SearchTextWidget::SearchTextWidget(QWidget* parent) : QWidget(parent) {
