@@ -26,6 +26,7 @@
 #define OAUTH2SERVICE_H
 
 #include <QObject>
+#include <QUrl>
 
 #include "network-web/silentnetworkaccessmanager.h"
 

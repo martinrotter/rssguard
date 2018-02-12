@@ -18,6 +18,7 @@
 #include <QToolTip>
 #include <QWebEngineSettings>
 #include <QWidgetAction>
+#include <QKeyEvent>
 
 WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_layout(new QVBoxLayout(this)),

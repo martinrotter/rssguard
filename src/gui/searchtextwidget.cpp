@@ -5,6 +5,8 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
+#include <QKeyEvent>
+
 SearchTextWidget::SearchTextWidget(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
   setFocusProxy(m_ui.m_txtSearch);
