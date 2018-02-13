@@ -30,7 +30,7 @@
 #
 # Other information:
 #   - supports Windows, Linux, Mac OS X, Android,
-#   - Qt 5.7.1 or higher is required,
+#   - Qt 5.7.0 or higher is required,
 #   - C++ 11 is required.
 #
 # Authors and contributors:
@@ -45,8 +45,8 @@ DEFINES	    *= QT_USE_QSTRINGBUILDER
 
 message(rssguard: Welcome RSS Guard qmake script.)
 
-lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 7)|lessThan(QT_PATCH_VERSION, 1) {
-  error(rssguard: At least Qt \"5.7.1\" is required!!!)
+lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 7) {
+  warning(rssguard: At least Qt \"5.7.0\" is required!!!)
 }
 
 APP_NAME                      = "RSS Guard"
