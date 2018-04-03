@@ -1,7 +1,14 @@
 3.5.6
 —————
 
+Changed:
+▪ Enhanced behavior of "Select next/previous item" in feed's list.
+
+3.5.6
+—————
+
 Fixed:
+▪ Some minor stuff fixes.
 ▪ Unnecessary "Welcome" notifications. (bug #176)
 ▪ Bad handling of null/empty strings when inserting messages into DB. (bug #169)
 ▪ Bad conversion of "created on" date/time in TT-RSS plugin. (bug #172)

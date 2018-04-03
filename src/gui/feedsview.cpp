@@ -311,33 +311,33 @@ void FeedsView::openSelectedItemsInNewspaperMode() {
 }
 
 void FeedsView::selectNextItem() {
-  const QModelIndex& curr_idx = currentIndex();
+  QModelIndex index_previous = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
-  if (m_proxyModel->hasChildren(curr_idx) && !isExpanded(curr_idx)) {
-    expand(curr_idx);
+  while (m_proxyModel->hasChildren(index_previous) && !isExpanded(index_previous)) {
+    expand(index_previous);
+    index_previous = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
   }
-
-  const QModelIndex& index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
-
-  if (index_next.isValid()) {
-    setCurrentIndex(index_next);
-    setFocus();
-  }
-}
-
-void FeedsView::selectPreviousItem() {
-  const QModelIndex& curr_idx = currentIndex();
-
-  if (m_proxyModel->hasChildren(curr_idx) && !isExpanded(curr_idx)) {
-    expand(curr_idx);
-  }
-
-  const QModelIndex& index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
-    setFocus();
   }
+
+  setFocus();
+}
+
+void FeedsView::selectPreviousItem() {
+  QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+
+  while (m_proxyModel->hasChildren(index_previous) && !isExpanded(index_previous)) {
+    expand(index_previous);
+    index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+  }
+
+  if (index_previous.isValid()) {
+    setCurrentIndex(index_previous);
+  }
+
+  setFocus();
 }
 
 void FeedsView::selectNextUnreadItem() {
