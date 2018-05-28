@@ -83,7 +83,6 @@ class FeedReader : public QObject {
     bool m_globalAutoUpdateEnabled;
     int m_globalAutoUpdateInitialInterval;
     int m_globalAutoUpdateRemainingInterval;
-    QThread* m_feedDownloaderThread;
     FeedDownloader* m_feedDownloader;
     QThread* m_dbCleanerThread;
     DatabaseCleaner* m_dbCleaner;

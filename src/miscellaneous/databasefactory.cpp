@@ -710,6 +710,8 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
 
       database.setDatabaseName(QSL(":memory:"));
 
+      auto aaa = database.driverName();
+
       if (!database.isOpen() && !database.open()) {
         qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'.",
                qPrintable(database.lastError().text()));

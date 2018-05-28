@@ -24,8 +24,7 @@
 
 FeedReader::FeedReader(QObject* parent)
   : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()),
-  m_autoUpdateTimer(new QTimer(this)),
-  m_feedDownloaderThread(nullptr), m_feedDownloader(nullptr),
+  m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr),
   m_dbCleanerThread(nullptr), m_dbCleaner(nullptr) {
   m_feedsModel = new FeedsModel(this);
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
@@ -72,20 +71,14 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
     qDebug("Creating FeedDownloader singleton.");
 
     m_feedDownloader = new FeedDownloader();
-    m_feedDownloaderThread = new QThread();
 
     // Downloader setup.
     qRegisterMetaType<QList<Feed*>>("QList<Feed*>");
-    m_feedDownloader->moveToThread(m_feedDownloaderThread);
 
-    connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloaderThread, &QThread::deleteLater);
     connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::feedUpdatesFinished);
     connect(m_feedDownloader, &FeedDownloader::updateProgress, this, &FeedReader::feedUpdatesProgress);
     connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
     connect(m_feedDownloader, &FeedDownloader::updateFinished, qApp->feedUpdateLock(), &Mutex::unlock);
-
-    // Connections are made, start the feed downloader thread.
-    m_feedDownloaderThread->start();
   }
 
   QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds", Q_ARG(QList<Feed*>, feeds));
@@ -231,24 +224,14 @@ void FeedReader::quit() {
     m_autoUpdateTimer->stop();
   }
 
-  // Close worker threads.
-  if (m_feedDownloaderThread != nullptr && m_feedDownloaderThread->isRunning()) {
-    m_feedDownloader->stopRunningUpdate();
+  // Stop running updates.
+  m_feedDownloader->stopRunningUpdate();
 
-    if (m_feedDownloader->isUpdateRunning()) {
-      QEventLoop loop(this);
+  if (m_feedDownloader->isUpdateRunning()) {
+    QEventLoop loop(this);
 
-      connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
-      loop.exec();
-    }
-
-    qDebug("Quitting feed downloader thread.");
-    m_feedDownloaderThread->quit();
-
-    if (!m_feedDownloaderThread->wait(CLOSE_LOCK_TIMEOUT)) {
-      qCritical("Feed downloader thread is running despite it was told to quit. Terminating it.");
-      m_feedDownloaderThread->terminate();
-    }
+    connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
+    loop.exec();
   }
 
   if (m_dbCleanerThread != nullptr && m_dbCleanerThread->isRunning()) {
