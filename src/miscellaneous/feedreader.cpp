@@ -225,13 +225,15 @@ void FeedReader::quit() {
   }
 
   // Stop running updates.
-  m_feedDownloader->stopRunningUpdate();
+  if (m_feedDownloader != nullptr) {
+    m_feedDownloader->stopRunningUpdate();
 
-  if (m_feedDownloader->isUpdateRunning()) {
-    QEventLoop loop(this);
+    if (m_feedDownloader->isUpdateRunning()) {
+      QEventLoop loop(this);
 
-    connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
-    loop.exec();
+      connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
+      loop.exec();
+    }
   }
 
   if (m_dbCleanerThread != nullptr && m_dbCleanerThread->isRunning()) {
