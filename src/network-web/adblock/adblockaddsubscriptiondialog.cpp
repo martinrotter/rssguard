@@ -31,6 +31,7 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
   m_ui->setupUi(this);
   m_knownSubscriptions << Subscription(QSL("EasyList (English)"), ADBLOCK_EASYLIST_URL)
                        << Subscription(QSL("BSI Lista Polska (Polish)"), QSL("http://www.bsi.info.pl/filtrABP.txt"))
+                       << Subscription(QSL("EasyList Germany (German"), QSL("https://easylist.to/easylistgermany/easylistgermany.txt"))
                        << Subscription(QSL("EasyList Czech and Slovak (Czech)"),
                   QSL("https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt"))
                        << Subscription(QSL("dutchblock (Dutch)"), QSL("http://groenewoudt.net/dutchblock/list.txt"))
