@@ -234,31 +234,32 @@
        <string>External tools</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="m_btnAddTool">
+           <property name="text">
+            <string>Add external tool</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="m_btnDeleteTool">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Delete selected external tool</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="0" colspan="2">
         <widget class="QLabel" name="m_lblToolInfo">
          <property name="text">
           <string>On this page, you can setup a list of external tools which can open URLs of selected messages.</string>
          </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QSplitter" name="splitter">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <widget class="QPushButton" name="m_btnAddTool">
-          <property name="text">
-           <string>Add external tool</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="m_btnDeleteTool">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>Delete selected external tool</string>
-          </property>
-         </widget>
         </widget>
        </item>
        <item row="1" column="0" colspan="2">
