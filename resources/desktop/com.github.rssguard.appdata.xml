@@ -25,6 +25,26 @@
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/martinrotter/rssguard</url>
+  <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
+  <url type="translate">https://www.transifex.com/martinrotter/rssguard/</url>
+  <url type="donation">https://martinrotter.github.io/donate/</url>
+  <content_rating type="oars-1.1" />
+  <releases>
+    <release version="3.5.6" date="2018-02-26">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Some minor stuff fixes.</li>
+          <li>Unnecessary "Welcome" notifications. (bug #176)</li>
+          <li>Bad handling of null/empty strings when inserting messages into DB. (bug #169)</li>
+          <li>Bad conversion of "created on" date/time in TT-RSS plugin. (bug #172)</li>
+          <li>Missing obligatory attribute in OPML 2.0 files. (bug #166)</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.5.5" date="2017-11-19"/>
+    <release version="3.5.4" date="2017-10-23"/>
+  </releases>
   <provides>
     <binary>rssguard</binary>
   </provides>
