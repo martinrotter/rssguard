@@ -27,7 +27,7 @@ $wikiline = "| Windows | $date | [$git_revision](https://github.com/martinrotter
 (Get-Content $wikifile) -replace $regex, $wikiline | Set-Content -Encoding "utf8" $wikifile
 
 
-$file = (Get-ChildItem '*.exe').Name
+$file = (Get-ChildItem '*-win64.exe').Name
 echo "File to upload: $file"
 $url = curl.exe --upload-file "$file" "https://transfer.sh/$file" --silent
 echo "Obtained URL: $url"

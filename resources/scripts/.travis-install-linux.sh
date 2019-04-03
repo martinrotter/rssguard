@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup Qt build environment.
-source /opt/qt59/bin/qt59-env.sh
+source /opt/qt512/bin/qt512-env.sh
 mkdir rssguard-build && cd rssguard-build
 
 # Build application.
