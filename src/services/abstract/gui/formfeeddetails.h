@@ -22,7 +22,7 @@ class FormFeedDetails : public QDialog {
   public:
 
     // Constructors and destructors.
-    explicit FormFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
+    explicit FormFeedDetails(ServiceRoot* service_root, QWidget* parent = nullptr);
     virtual ~FormFeedDetails();
 
   public slots:
@@ -50,7 +50,6 @@ class FormFeedDetails : public QDialog {
     void onAutoUpdateTypeChanged(int new_index);
 
     // Icon selectors.
-    void onNoIconSelected();
     void onLoadIconFromFile();
     void onUseDefaultIcon();
 
@@ -78,7 +77,6 @@ class FormFeedDetails : public QDialog {
     QAction* m_actionLoadIconFromFile;
     QAction* m_actionUseDefaultIcon;
     QAction* m_actionFetchIcon;
-    QAction* m_actionNoIcon;
 };
 
 #endif // FORMFEEDDETAILS_H

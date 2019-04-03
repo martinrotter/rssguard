@@ -28,7 +28,7 @@ void FormStandardFeedDetails::apply() {
   new_feed->setPassword(m_ui->m_txtPassword->lineEdit()->text());
   new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
                                                                   m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
-  new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
+  new_feed->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
 
   if (m_editableFeed == nullptr) {
     // Add the feed.
@@ -67,7 +67,7 @@ void FormStandardFeedDetails::setEditableFeed(Feed* editable_feed) {
   FormFeedDetails::setEditableFeed(editable_feed);
   StandardFeed* feed = qobject_cast<StandardFeed*>(editable_feed);
 
-  m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((int) feed->type())));
+  m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue(int(feed->type()))));
   m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(feed->encoding(), Qt::DisplayRole, Qt::MatchFixedString));
   m_ui->m_gbAuthentication->setChecked(feed->passwordProtected());
   m_ui->m_txtUsername->lineEdit()->setText(feed->username());

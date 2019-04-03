@@ -43,7 +43,6 @@ class FormStandardCategoryDetails : public QDialog {
     void onDescriptionChanged(const QString& new_description);
 
     // Icon selectors.
-    void onNoIconSelected();
     void onLoadIconFromFile();
     void onUseDefaultIcon();
 
@@ -70,7 +69,6 @@ class FormStandardCategoryDetails : public QDialog {
     QMenu* m_iconMenu;
     QAction* m_actionLoadIconFromFile;
     QAction* m_actionUseDefaultIcon;
-    QAction* m_actionNoIcon;
 };
 
 #endif // FORMCATEGORYDETAILS_H

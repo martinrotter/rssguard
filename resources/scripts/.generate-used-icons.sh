@@ -28,7 +28,7 @@ discover_used_icons() {
   #echo "Root src folder: \"$ROOT_SRC_FOLDER\"."
   
   # Now we discover all usages of icons.
-  local ICON_NAMES=$(grep -Prioh '(?<=fromTheme\(QSL\(\")[-a-z]+' "$ROOT_SRC_FOLDER" | sort -u)
+  local ICON_NAMES=$(grep -Prioh '(?<=fromTheme\(QSL\(\")[-\+a-z]+' "$ROOT_SRC_FOLDER" | sort -u)
  
   cd "$RESOURCES_FOLDER"
   

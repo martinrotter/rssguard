@@ -45,7 +45,6 @@ void FormStandardCategoryDetails::createConnections() {
 
   // Icon connections.
   connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));
-  connect(m_actionNoIcon, SIGNAL(triggered()), this, SLOT(onNoIconSelected()));
   connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
 }
 
@@ -154,10 +153,6 @@ void FormStandardCategoryDetails::onDescriptionChanged(const QString& new_descri
   }
 }
 
-void FormStandardCategoryDetails::onNoIconSelected() {
-  m_ui->m_btnIcon->setIcon(QIcon());
-}
-
 void FormStandardCategoryDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the category"),
                      qApp->homeFolder(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
@@ -180,7 +175,7 @@ void FormStandardCategoryDetails::onLoadIconFromFile() {
 }
 
 void FormStandardCategoryDetails::onUseDefaultIcon() {
-  m_ui->m_btnIcon->setIcon(qApp->icons()->fromTheme(QSL("folder")));
+  m_ui->m_btnIcon->setIcon(QIcon());
 }
 
 void FormStandardCategoryDetails::initialize() {
@@ -205,15 +200,11 @@ void FormStandardCategoryDetails::initialize() {
   m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")),
                                          tr("Load icon from file..."),
                                          this);
-  m_actionNoIcon = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                               tr("Do not use icon"),
-                               this);
   m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme(QSL("folder")),
-                                       tr("Use default icon"),
+                                       tr("Use default icon from icon theme"),
                                        this);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
-  m_iconMenu->addAction(m_actionNoIcon);
   m_ui->m_btnIcon->setMenu(m_iconMenu);
 
   // Setup tab order.

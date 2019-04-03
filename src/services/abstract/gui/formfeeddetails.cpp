@@ -46,7 +46,7 @@ int FormFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_select, c
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
   if (input_feed == nullptr) {
-    // User is adding new category.
+    // User is adding new feed.
     setWindowTitle(tr("Add new feed"));
 
     // Make sure that "default" icon is used as the default option for new
@@ -164,10 +164,6 @@ void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
   }
 }
 
-void FormFeedDetails::onNoIconSelected() {
-  m_ui->m_btnIcon->setIcon(QIcon());
-}
-
 void FormFeedDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the feed"),
                      qApp->homeFolder(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
@@ -190,7 +186,7 @@ void FormFeedDetails::onLoadIconFromFile() {
 }
 
 void FormFeedDetails::onUseDefaultIcon() {
-  m_ui->m_btnIcon->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
+  m_ui->m_btnIcon->setIcon(QIcon());
 }
 
 void FormFeedDetails::apply() {}
@@ -285,7 +281,6 @@ void FormFeedDetails::createConnections() {
   // Icon connections.
   connect(m_actionFetchIcon, &QAction::triggered, this, &FormFeedDetails::guessIconOnly);
   connect(m_actionLoadIconFromFile, &QAction::triggered, this, &FormFeedDetails::onLoadIconFromFile);
-  connect(m_actionNoIcon, &QAction::triggered, this, &FormFeedDetails::onNoIconSelected);
   connect(m_actionUseDefaultIcon, &QAction::triggered, this, &FormFeedDetails::onUseDefaultIcon);
 }
 
@@ -343,11 +338,8 @@ void FormFeedDetails::initialize() {
   m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")),
                                          tr("Load icon from file..."),
                                          this);
-  m_actionNoIcon = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                               tr("Do not use icon"),
-                               this);
   m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")),
-                                       tr("Use default icon"),
+                                       tr("Use default icon from icon theme"),
                                        this);
   m_actionFetchIcon = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")),
                                   tr("Fetch icon from feed"),
@@ -355,7 +347,6 @@ void FormFeedDetails::initialize() {
   m_iconMenu->addAction(m_actionFetchIcon);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
-  m_iconMenu->addAction(m_actionNoIcon);
   m_ui->m_btnIcon->setMenu(m_iconMenu);
 
   // Set feed metadata fetch label.

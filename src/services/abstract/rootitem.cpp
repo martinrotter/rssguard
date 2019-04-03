@@ -3,6 +3,7 @@
 #include "services/abstract/rootitem.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
@@ -170,7 +171,18 @@ QVariant RootItem::data(int column, int role) const {
 
     case Qt::DecorationRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return icon();
+        QIcon ico = icon();
+
+        if (ico.isNull()) {
+          if (kind() == RootItemKind::Feed) {
+            return qApp->icons()->fromTheme(QSL("application-rss+xml"));
+          }
+          else if (kind() == RootItemKind::Category) {
+            return qApp->icons()->fromTheme(QSL("folder"));
+          }
+        }
+
+        return ico;
       }
       else {
         return QVariant();

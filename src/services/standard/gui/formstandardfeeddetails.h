@@ -9,7 +9,7 @@ class FormStandardFeedDetails : public FormFeedDetails {
   Q_OBJECT
 
   public:
-    explicit FormStandardFeedDetails(ServiceRoot* service_root, QWidget* parent = 0);
+    explicit FormStandardFeedDetails(ServiceRoot* service_root, QWidget* parent = nullptr);
 
   protected slots:
     void apply();
