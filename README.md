@@ -1,4 +1,4 @@
-# RSS Guard is back and right now, I will work on stabilizing its functionality and removing bugs, some sort of maintenance mode.
+# RSS Guard is back and right now, I will work on stabilizing its functionality, removing bugs, making code simpler to understand, some sort of maintenance mode. I will also add new features.
 
 
 RSS Guard
