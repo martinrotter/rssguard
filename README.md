@@ -10,12 +10,9 @@ RSS Guard
 [![Version](https://img.shields.io/github/release/martinrotter/rssguard.svg?maxAge=360)](https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/text/CHANGELOG)
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d9ba5ecfcd1a412a89d1dfffd0ae2ef6)](https://www.codacy.com/app/martinrotter/rssguard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=martinrotter/rssguard&amp;utm_campaign=Badge_Grade)
 
 Welcome to RSS Guard website. You can find here basic information.
 
 RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.
-
-#### You can support this project via [donations](https://martinrotter.github.io/donate).
 
 #### See [Wiki](https://github.com/martinrotter/rssguard/wiki) for more information about features, download links and other stuff.
