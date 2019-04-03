@@ -336,7 +336,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, con
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed "
+  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
             "FROM Messages "
             "WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;");
   q.bindValue(QSL(":feed"), feed_custom_id);
@@ -1799,7 +1799,7 @@ Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool*
   return feeds;
 }
 
-QString DatabaseQueries::unnulifyString(const QString &str) {
+QString DatabaseQueries::unnulifyString(const QString& str) {
   return str.isNull() ? "" : str;
 }
 

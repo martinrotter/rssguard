@@ -10,7 +10,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_sortColumns(QList<int>()), m_sortOrders(QList<Qt::SortOrder>()) {
   m_db = qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings);
 
-  // Used is <x>: SELECT <x1>, <x2> FROM ....;
+  // Used in <x>: SELECT <x1>, <x2> FROM ....;
   m_fieldNames[MSG_DB_ID_INDEX] = "Messages.id";
   m_fieldNames[MSG_DB_READ_INDEX] = "Messages.is_read";
   m_fieldNames[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";
@@ -29,7 +29,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_fieldNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
   m_fieldNames[MSG_DB_HAS_ENCLOSURES] = "CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures";
 
-  // Used is <x>: SELECT ... FROM ... ORDER BY <x1> DESC, <x2> ASC;
+  // Used in <x>: SELECT ... FROM ... ORDER BY <x1> DESC, <x2> ASC;
   m_orderByNames[MSG_DB_ID_INDEX] = "Messages.id";
   m_orderByNames[MSG_DB_READ_INDEX] = "Messages.is_read";
   m_orderByNames[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";

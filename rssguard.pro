@@ -743,7 +743,6 @@ mac {
   IDENTIFIER = org.$${TARGET}.RSSGuard
   CONFIG -= app_bundle
   ICON = resources/macosx/$${TARGET}.icns
-  QMAKE_MAC_SDK = macosx10.12
   QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
   LIBS += -framework AppKit
 
