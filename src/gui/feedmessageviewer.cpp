@@ -279,6 +279,10 @@ void FeedMessageViewer::initializeViews() {
   setTabOrder(m_messagesView, m_toolBarFeeds);
   setTabOrder(m_toolBarFeeds, m_toolBarMessages);
   setTabOrder(m_toolBarMessages, m_messagesBrowser);
+
+  // Set initial ratio of sizes.
+  m_feedSplitter->setStretchFactor(0, 1);
+  m_feedSplitter->setStretchFactor(1, 3);
 }
 
 void FeedMessageViewer::refreshVisualProperties() {

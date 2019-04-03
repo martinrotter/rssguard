@@ -554,7 +554,6 @@ void FeedsView::setupAppearance() {
   header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::Stretch);
   header()->setSectionResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeToContents);
   header()->setStretchLastSection(false);
-  header()->setSortIndicatorShown(false);
 
   setUniformRowHeights(true);
   setAnimated(true);

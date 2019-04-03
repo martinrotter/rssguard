@@ -29,7 +29,7 @@ class FeedMessageViewer : public TabContent {
   Q_OBJECT
 
   public:
-    explicit FeedMessageViewer(QWidget* parent = 0);
+    explicit FeedMessageViewer(QWidget* parent = nullptr);
     virtual ~FeedMessageViewer();
 
 #if defined(USE_WEBENGINE)
