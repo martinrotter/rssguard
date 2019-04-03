@@ -728,7 +728,7 @@ unix:!mac:!android {
   appdata.path = $$quote($$PREFIX/share/metainfo/)
 
   desktop_icon.files = resources/graphics/$${TARGET}.png
-  desktop_icon.path = $$quote($$PREFIX/share/pixmaps/)
+  desktop_icon.path = $$quote($$PREFIX/share/icons/hicolor/512x512/apps/)
 
   INSTALLS += target desktop_file desktop_icon appdata
 }
