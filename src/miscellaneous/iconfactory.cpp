@@ -39,15 +39,6 @@ QByteArray IconFactory::toByteArray(const QIcon& icon) {
   return array.toBase64();
 }
 
-QPixmap IconFactory::pixmap(const QString& name) {
-  if (QIcon::themeName() == APP_NO_THEME) {
-    return QPixmap();
-  }
-  else {
-    return QIcon::fromTheme(name).pixmap(64, 64);
-  }
-}
-
 QIcon IconFactory::fromTheme(const QString& name) {
   return QIcon::fromTheme(name);
 }

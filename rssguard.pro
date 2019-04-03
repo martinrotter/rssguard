@@ -2,7 +2,6 @@
 #
 # For license of this file, see <project-root-folder>/LICENSE.md.
 #
-#
 # This is RSS Guard compilation script for qmake.
 #
 # Usage:
@@ -25,8 +24,6 @@
 #                   value of this variable is tweaked automatically.
 #   PREFIX - specifies base folder to which files are copied during "make install"
 #            step, defaults to "$$OUT_PWD/usr" on Linux and to "$$OUT_PWD/app" on Windows.
-#   LRELEASE_EXECUTABLE - specifies the name/path of "lrelease" executable, defaults to "lrelease".
-#
 #
 # Other information:
 #   - supports Windows, Linux, Mac OS X, Android,
@@ -39,9 +36,8 @@
 #
 #################################################################
 
-TEMPLATE    = app
-TARGET      = rssguard
-DEFINES	    *= QT_USE_QSTRINGBUILDER
+TEMPLATE = app
+TARGET = rssguard
 
 message(rssguard: Welcome RSS Guard qmake script.)
 
@@ -54,7 +50,7 @@ APP_LOW_NAME                  = "rssguard"
 APP_REVERSE_NAME              = "com.github.rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
-APP_COPYRIGHT                 = "(C) 2011-2017 $$APP_AUTHOR"
+APP_COPYRIGHT                 = "(C) 2011-2019 $$APP_AUTHOR"
 APP_VERSION                   = "3.5.7"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
@@ -63,7 +59,7 @@ APP_URL_ISSUES                = "https://github.com/martinrotter/rssguard/issues
 APP_URL_ISSUES_NEW            = "https://github.com/martinrotter/rssguard/issues/new"
 APP_URL_WIKI                  = "https://github.com/martinrotter/rssguard/wiki"
 APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (github.com/martinrotter/rssguard)"
-APP_DONATE_URL                = "https://martinrotter.github.io/donate/"
+APP_DONATE_URL                = "https://martinrotter.github.io/donate"
 APP_WIN_ARCH                  = "win64"
 
 isEmpty(PREFIX) {
@@ -102,27 +98,22 @@ isEmpty(USE_WEBENGINE) {
 
 message(rssguard: Shadow copy build directory \"$$OUT_PWD\".)
 
-isEmpty(LRELEASE_EXECUTABLE) {
-  LRELEASE_EXECUTABLE = lrelease
-  message(rssguard: LRELEASE_EXECUTABLE variable is not set.)
-}
-
 # Custom definitions.
-DEFINES += APP_VERSION='"\\\"$$APP_VERSION\\\""'
-DEFINES += APP_NAME='"\\\"$$APP_NAME\\\""'
-DEFINES += APP_LOW_NAME='"\\\"$$APP_LOW_NAME\\\""'
-DEFINES += APP_LOW_H_NAME='"\\\"$$APP_LOW_H_NAME\\\""'
-DEFINES += APP_LONG_NAME='"\\\"$$APP_LONG_NAME\\\""'
-DEFINES += APP_AUTHOR='"\\\"$$APP_AUTHOR\\\""'
-DEFINES += APP_EMAIL='"\\\"$$APP_EMAIL\\\""'
-DEFINES += APP_URL='"\\\"$$APP_URL\\\""'
-DEFINES += APP_URL_ISSUES='"\\\"$$APP_URL_ISSUES\\\""'
-DEFINES += APP_URL_ISSUES_NEW='"\\\"$$APP_URL_ISSUES_NEW\\\""'
-DEFINES += APP_URL_WIKI='"\\\"$$APP_URL_WIKI\\\""'
-DEFINES += APP_USERAGENT='"\\\"$$APP_USERAGENT\\\""'
-DEFINES += APP_DONATE_URL='"\\\"$$APP_DONATE_URL\\\""'
-DEFINES += APP_SYSTEM_NAME='"\\\"$$QMAKE_HOST.os\\\""'
-DEFINES += APP_SYSTEM_VERSION='"\\\"$$QMAKE_HOST.arch\\\""'
+DEFINES *= APP_VERSION='"\\\"$$APP_VERSION\\\""'
+DEFINES *= APP_NAME='"\\\"$$APP_NAME\\\""'
+DEFINES *= APP_LOW_NAME='"\\\"$$APP_LOW_NAME\\\""'
+DEFINES *= APP_LOW_H_NAME='"\\\"$$APP_LOW_H_NAME\\\""'
+DEFINES *= APP_LONG_NAME='"\\\"$$APP_LONG_NAME\\\""'
+DEFINES *= APP_AUTHOR='"\\\"$$APP_AUTHOR\\\""'
+DEFINES *= APP_EMAIL='"\\\"$$APP_EMAIL\\\""'
+DEFINES *= APP_URL='"\\\"$$APP_URL\\\""'
+DEFINES *= APP_URL_ISSUES='"\\\"$$APP_URL_ISSUES\\\""'
+DEFINES *= APP_URL_ISSUES_NEW='"\\\"$$APP_URL_ISSUES_NEW\\\""'
+DEFINES *= APP_URL_WIKI='"\\\"$$APP_URL_WIKI\\\""'
+DEFINES *= APP_USERAGENT='"\\\"$$APP_USERAGENT\\\""'
+DEFINES *= APP_DONATE_URL='"\\\"$$APP_DONATE_URL\\\""'
+DEFINES *= APP_SYSTEM_NAME='"\\\"$$QMAKE_HOST.os\\\""'
+DEFINES *= APP_SYSTEM_VERSION='"\\\"$$QMAKE_HOST.arch\\\""'
 
 CODECFORTR  = UTF-8
 CODECFORSRC = UTF-8
@@ -140,18 +131,19 @@ equals(USE_WEBENGINE, false) {
   APP_REVISION = $$sprintf('%1-%2', $$APP_REVISION, nowebengine)
 }
 
-DEFINES += APP_REVISION='"\\\"$$APP_REVISION\\\""'
+DEFINES *= APP_REVISION='"\\\"$$APP_REVISION\\\""'
 
 message(rssguard: RSS Guard version is: \"$$APP_VERSION\".)
 message(rssguard: Detected Qt version: \"$$QT_VERSION\".)
 message(rssguard: Build destination directory: \"$$DESTDIR\".)
 message(rssguard: Prefix directory: \"$$PREFIX\".)
 message(rssguard: Build revision: \"$$APP_REVISION\".)
-message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
+message(rssguard: lrelease executable name: \"$$LRELEASE\".)
 
 QT *= core gui widgets sql network xml
 
-CONFIG *= c++11 warn_on
+CONFIG *= c++1z warn_on
+CONFIG -=  debug_and_release
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION
 
@@ -164,9 +156,41 @@ win32 {
     message(rssguard: Compilling x86_64 variant.)
     QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.02
   }
+
+  # Additionally link against Shell32.
+  LIBS *= Shell32.lib
 }
 
-DISTFILES +=    resources/scripts/uncrustify/uncrustify.cfg
+gcc|g++|clang* {
+  QMAKE_CXXFLAGS *= -std=c++17
+}
+
+msvc {
+  QMAKE_CXXFLAGS *= /std:c++17
+}
+
+clang* {
+  DEFINES *= CLANG=1
+}
+
+# Setup specific compiler options.
+CONFIG(release, debug|release) {
+  message(rssguard: Building in "release" mode.)
+
+  gcc:QMAKE_CXXFLAGS_RELEASE -= -O2
+  clang:QMAKE_CXXFLAGS_RELEASE -= -O2
+  gcc:QMAKE_CXXFLAGS_RELEASE *= -O3
+  clang:QMAKE_CXXFLAGS_RELEASE *= -O3
+}
+else {
+  message(rssguard: Building in "debug" mode.)
+
+  DEFINES *= DEBUG=1
+  gcc:QMAKE_CXXFLAGS_DEBUG *= -Wall
+  clang:QMAKE_CXXFLAGS_DEBUG *= -Wall
+}
+
+DISTFILES += resources/scripts/uncrustify/uncrustify.cfg
 
 MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
@@ -196,7 +220,8 @@ win32 {
 
 CONFIG *= resources_big
 RESOURCES += resources/sql.qrc \
-             resources/rssguard.qrc
+             resources/rssguard.qrc \
+             resources/icons.qrc
 
 HEADERS +=  src/core/feeddownloader.h \
             src/core/feedsmodel.h \
@@ -575,39 +600,56 @@ else {
                 src/gui/newspaperpreviewer.ui
 }
 
-TRANSLATIONS += $$PWD/localization/rssguard_cs.ts \
-                $$PWD/localization/rssguard_da.ts \
-                $$PWD/localization/rssguard_de.ts \
-                $$PWD/localization/rssguard_en_GB.ts \
-                $$PWD/localization/rssguard_en.ts \
-                $$PWD/localization/rssguard_es.ts \
-                $$PWD/localization/rssguard_fr.ts \
-                $$PWD/localization/rssguard_he.ts \
-                $$PWD/localization/rssguard_id.ts \
-                $$PWD/localization/rssguard_it.ts \
-                $$PWD/localization/rssguard_ja.ts \
-                $$PWD/localization/rssguard_lt.ts \
-                $$PWD/localization/rssguard_nl.ts \
-                $$PWD/localization/rssguard_pl.ts \
-                $$PWD/localization/rssguard_pt.ts \
-                $$PWD/localization/rssguard_sv.ts \
-                $$PWD/localization/rssguard_zh.ts
-
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/src \
                 $$PWD/src/gui \
                 $$PWD/src/gui/dialogs \
                 $$PWD/src/dynamic-shortcuts
 
+TRANSLATIONS_WO_QT += $$PWD/localization/rssguard_cs.ts \
+                      $$PWD/localization/rssguard_da.ts \
+                      $$PWD/localization/rssguard_de.ts \
+                      $$PWD/localization/rssguard_en.ts \
+                      $$PWD/localization/rssguard_es.ts \
+                      $$PWD/localization/rssguard_fr.ts \
+                      $$PWD/localization/rssguard_he.ts \
+                      $$PWD/localization/rssguard_id.ts \
+                      $$PWD/localization/rssguard_it.ts \
+                      $$PWD/localization/rssguard_ja.ts \
+                      $$PWD/localization/rssguard_lt.ts \
+                      $$PWD/localization/rssguard_nl.ts \
+                      $$PWD/localization/rssguard_pl.ts \
+                      $$PWD/localization/rssguard_pt.ts \
+                      $$PWD/localization/rssguard_sv.ts \
+                      $$PWD/localization/rssguard_zh.ts
+
+TRANSLATIONS += $$TRANSLATIONS_WO_QT \
+                $$PWD/localization/qtbase_cs.ts \
+                $$PWD/localization/qtbase_da.ts \
+                $$PWD/localization/qtbase_de.ts \
+                $$PWD/localization/qtbase_es.ts \
+                $$PWD/localization/qtbase_fr.ts \
+                $$PWD/localization/qtbase_he.ts \
+                $$PWD/localization/qtbase_it.ts \
+                $$PWD/localization/qtbase_ja.ts \
+                $$PWD/localization/qtbase_lt.ts \
+                $$PWD/localization/qtbase_pl.ts \
+                $$PWD/localization/qtbase_pt.ts \
+                $$PWD/localization/qtbase_sv.ts \
+                $$PWD/localization/qtbase_zh.ts
+
+load(uic)
+uic.commands -= -no-stringliteral
+
 # Create new "make lupdate" target.
 lupdate.target = lupdate
-lupdate.commands = lupdate $$shell_path($$PWD/rssguard.pro)
+lupdate.commands = lupdate -no-obsolete -pro $$shell_quote($$shell_path($$PWD/rssguard.pro)) -ts $$TRANSLATIONS_WO_QT
 
 QMAKE_EXTRA_TARGETS += lupdate
 
 # Make sure QM translations are nerated.
 qtPrepareTool(LRELEASE, lrelease) {
-  system($$LRELEASE_EXECUTABLE -compress $$shell_quote($$shell_path($$PWD/rssguard.pro)))
+  system($$LRELEASE -compress $$shell_quote($$shell_path($$PWD/rssguard.pro)))
 }
 
 # Create new "make 7zip" target and "make zip" target.
@@ -655,20 +697,20 @@ win32 {
 win32 {
   target.path = $$PREFIX
 
-  qt_dlls_root.files = resources/binaries/windows/qt5-msvc2015/*.*
+  qt_dlls_root.files = resources/binaries/windows/qt5-msvc2017/*.*
   qt_dlls_root.path = $$quote($$PREFIX/)
 
-  qt_dlls_plugins.files = resources/binaries/windows/qt5-msvc2015/*
+  qt_dlls_plugins.files = resources/binaries/windows/qt5-msvc2017/*
   qt_dlls_plugins.path = $$quote($$PREFIX/)
 
   INSTALLS += target qt_dlls_root qt_dlls_plugins
 
   equals(USE_WEBENGINE, true) {
     # Copy extra resource files for QtWebEngine.
-    qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2015-webengine/*
+    qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2017-webengine/*
     qtwebengine_dlls.path = $$quote($$PREFIX/)
 
-    qtwebengine.files = resources/binaries/windows/qt5-msvc2015-webengine/*.*
+    qtwebengine.files = resources/binaries/windows/qt5-msvc2017-webengine/*.*
     qtwebengine.path = $$quote($$PREFIX/)
 
     INSTALLS += qtwebengine_dlls qtwebengine
@@ -702,7 +744,7 @@ mac {
   CONFIG -= app_bundle
   ICON = resources/macosx/$${TARGET}.icns
   QMAKE_MAC_SDK = macosx10.12
-  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
+  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
   LIBS += -framework AppKit
 
   target.path = $$quote($$PREFIX/Contents/MacOS/)

@@ -41,7 +41,7 @@ void Localization::loadActiveLanguage() {
     desired_localization = DEFAULT_LOCALE;
   }
 
-  if (qt_translator->load(QLocale(desired_localization), "qt", QSL("_"), APP_LANG_PATH)) {
+  if (qt_translator->load(QLocale(desired_localization), "qtbase", QSL("_"), APP_LANG_PATH)) {
     Application::installTranslator(qt_translator);
     qDebug("Qt localization '%s' loaded successfully.", qPrintable(desired_localization));
   }
