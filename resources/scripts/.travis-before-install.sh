@@ -10,7 +10,7 @@ if test "$TRAVIS_OS_NAME" = "osx"; then
   brew install curl
   brew link --force curl
   brew uninstall gnu-sed
-  brew install gnu-sed --with-default-names
+  brew install gnu-sed
   brew link --force gnu-sed
 else
   # Linux.
