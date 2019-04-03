@@ -14,11 +14,11 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un abonnement</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser les abonnements prédéfinis</translation>
     </message>
     <message>
         <source>Title</source>
@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"/>
+        <translation>Titre de l&apos;abonnement</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,49 +34,49 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>URL absolue vers le fichier de syndication</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"/>
+        <translation>Règles personnalisées</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation type="unfinished"/>
+        <translation>Configuration d&apos;AdBlock</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Activer AdBlock</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Options</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter une règle</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Enlever une règle</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un abonnement</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"/>
+        <translation>Supprimer un abonnement</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Mettre à jour les abonnements</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
@@ -87,19 +87,19 @@
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock vous permet de bloquer les contenus indésirables des pages web </translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"/>
+        <translation>Fenêtre popup bloquée</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock a bloqué une popup indésirable</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>Afficher les paramètres &amp;AdBlock</translation>
     </message>
     <message>
         <source>Disable on %1</source>
@@ -107,7 +107,7 @@
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
+        <translation>Désactiver uniquement sur cette page</translation>
     </message>
 </context>
 <context>
@@ -118,33 +118,33 @@
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un abonnement AdBlock</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de charger l&apos;abonnement !</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter une règle</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"/>
+        <translation>Enlever une règle</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter une règle personnalisée</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"/>
+        <translation>Veuillez écrire votre règle ici :</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
@@ -267,7 +267,7 @@
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>%1 ne peut pas utiliser MySQL. %1 utilise maintenant une base de données SQLite. Démarrez votre serveur MySQL et faites les réglages nécessaires dans les paramètres de l&apos;application.</translation>
     </message>
 </context>
 <context>
@@ -279,7 +279,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Cliquez pour ajouter des flux de ce site.
+Ce site propose un flux.</numerusform><numerusform>Cliquez pour ajouter des flux de ce site.
+Ce site propose %n flux.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -613,7 +615,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Menu contextuel des corbeilles</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
@@ -711,7 +713,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Ajout d&apos;un nouveau compte</translation>
+        <translation>Ajouter un nouveau compte</translation>
     </message>
     <message>
         <source>Details</source>
@@ -1100,7 +1102,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1925,7 +1927,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation>Vérifier si une nouvelle mise à pour l&apos;application est disponible pour le téléchargement.</translation>
+        <translation>Vérifier si une nouvelle mise à jour pour l&apos;application est disponible pour téléchargement.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
@@ -1969,7 +1971,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>Vérifier pour &amp;mise à jour</translation>
+        <translation>Vérifier les &amp;mises à jour</translation>
     </message>
     <message>
         <source>Show/hide</source>
@@ -2009,59 +2011,59 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Donner via PayPal</translation>
+        <translation>&amp;Faire un don par PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation type="unfinished"/>
+        <translation>Afficher le &amp;wiki</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Restaurer les données/paramètres</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Sauvegarder les données/paramètres</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="unfinished"/>
+        <translation>Changer l&apos;emplacement de la liste des messages</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Téléchargements</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Envoyer les messages sélectionnés par mail</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nettoyer la base de donnée</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un nouvel &amp;élément</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="unfinished"/>
+        <translation>Mettre à jour &amp;tous les éléments</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"/>
+        <translation>Mettre à jour les éléments &amp;sélectionnés</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Éditer l&apos;élément sélectionné</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Supprimer l&apos;élément sélectionné</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Marquer les éléments sélectionnés comme lus</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
@@ -2069,7 +2071,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Marquer les éléments sélectionnés comme non lus</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
@@ -2077,7 +2079,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nettoyer les éléments sélectionnés</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
@@ -2089,11 +2091,11 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"/>
+        <translation>Marquer tous les messages de tous les éléments comme lus. Cela ne prend pas les filtres de message en compte.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Afficher les éléments sélectionnés en mode &amp;journal</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
@@ -2101,7 +2103,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nettoyer tous les éléments</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
@@ -2125,7 +2127,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Restaurer les messages sélectionnés</translation>
     </message>
     <message>
         <source>No possible actions</source>
@@ -2137,15 +2139,15 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Restaurer toutes les corbeilles</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vider toutes les corbeilles</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner le message non lu suivant</translation>
     </message>
     <message>
         <source>No recycle bin</source>
@@ -2157,11 +2159,11 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Comptes</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ajouter un nouveau compte</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -2169,11 +2171,11 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Éditer le compte sélectionné</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Supprimer le compte sélectionné</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
@@ -2193,7 +2195,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation type="unfinished"/>
+        <translation>Arrêter la mise à jour</translation>
     </message>
     <message>
         <source>No actions possible</source>
@@ -2201,27 +2203,27 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Navigateur &amp;&amp; onglets</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Signaler un &amp;bogue</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Nouvel onglet</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>Fermer tous les onglets</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Fermer tous les onglets sauf le courant</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Afficher en &amp;plein écran</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -2238,7 +2240,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Flux &apos;%1&apos; mis à jour</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -2250,19 +2252,19 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Redémarrer</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>Aller à l&apos;onglet &amp;suivant</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation>Aller à l&apos;onglet &amp;précédent</translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Activer la prévisualisation des messages</translation>
     </message>
 </context>
 <context>
@@ -2715,7 +2717,7 @@ celle actuellement installée.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Vérifier pour mise à jour</translation>
+        <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -3168,7 +3170,7 @@ Login tokens expiration: %2</source>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation type="unfinished"/>
+        <translation>Chercher des messages</translation>
     </message>
     <message>
         <source>Message search box</source>
@@ -3917,15 +3919,15 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation>Mettre à jour tout les flux au démarrage de l&apos;application</translation>
+        <translation>Mettre à jour tous les flux au démarrage de l&apos;application</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation>Mettre les flux à jour automatiquement tout les</translation>
+        <translation>Mettre les flux à jour automatiquement toutes les</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation>Délai expiré pour les flux</translation>
+        <translation>Expiration de la connexion au flux</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
@@ -3941,7 +3943,7 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Entrer un format pour le compteur des messages affiché à côté de chaque flux/catégorie dans la liste des flux. Utiliser &quot;%all&quot; et &quot;%unread&quot; qui sont des places réservées pour l&apos;actuel compteur de tout (ou les non-lus) messages.</translation>
+        <translation>Entrer un format pour le compteur des messages affichés à côté de chaque flux/catégorie dans la liste des flux. Utiliser &quot;%all&quot; et &quot;%unread&quot; qui sont des remplaçants pour le compteur actuel de tous les messages (ou ceux non-lus).</translation>
     </message>
     <message>
         <source>Messages</source>
@@ -4000,11 +4002,11 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     <name>SettingsGeneral</name>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation>Lancer &amp;1 au démarrage du système</translation>
+        <translation>Lancer %1 au démarrage du système</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"/>
+        <translation>Vérifier les mises à jour au démarrage de l&apos;application</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
@@ -4402,7 +4404,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation type="unfinished"/>
+        <translation>Afficher le menu principal</translation>
     </message>
     <message>
         <source>Main menu</source>
@@ -4579,7 +4581,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Recharger la page web actuelle.</translation>
     </message>
     <message>
         <source>Stop</source>

@@ -282,6 +282,7 @@ This website contains %n feed(s).</source>
         <translation><numerusform>Pro přidání kanálů z této stránky na mě klikni.
 Tato stránka obsahuje %n kanál.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
 Tato stránka obsahuje %n kanály.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanálů.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
 Tato stránka obsahuje %n kanálů.</numerusform></translation>
     </message>
     <message>
@@ -394,11 +395,11 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minuta do konce</numerusform><numerusform>%n minuty do konce</numerusform><numerusform>%n minut do konce</numerusform></translation>
+        <translation><numerusform>%n minuta do konce</numerusform><numerusform>%n minuty do konce</numerusform><numerusform>%n minut do konce</numerusform><numerusform>%n minut do konce</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n vteřina do konce</numerusform><numerusform>%n vteřiny do konce</numerusform><numerusform>%n vteřin do konce</numerusform></translation>
+        <translation><numerusform>%n vteřina do konce</numerusform><numerusform>%n vteřiny do konce</numerusform><numerusform>%n vteřin do konce</numerusform><numerusform>%n vteřin do konce</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -418,7 +419,7 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Stahuji %n soubor...</numerusform><numerusform>Stahuji %n soubory...</numerusform><numerusform>Stahuji %n souborů...</numerusform></translation>
+        <translation><numerusform>Stahuji %n soubor...</numerusform><numerusform>Stahuji %n soubory...</numerusform><numerusform>Stahuji %n souborů...</numerusform><numerusform>Stahuji %n souborů...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -438,12 +439,12 @@ Auto-update status: %3</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá globální nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation><numerusform>používá globální nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
@@ -499,7 +500,7 @@ Status: %2</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
+        <translation><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -836,7 +837,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> den</numerusform><numerusform> dny</numerusform><numerusform> dnů</numerusform></translation>
+        <translation><numerusform> den</numerusform><numerusform> dny</numerusform><numerusform> dnů</numerusform><numerusform> dnů</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1104,7 +1105,7 @@ or this functionality is not implemented yet.</source>
         <translation>Přesměrovací URL</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3337,7 +3338,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform></translation>
+        <translation><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3426,6 +3427,8 @@ Tokeny vyprší: %2</translation>
 
 + %n další kanály.</numerusform><numerusform>
 
++ %n dalších kanálů.</numerusform><numerusform>
+
 + %n dalších kanálů.</numerusform></translation>
     </message>
     <message>
@@ -3507,7 +3510,7 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n smazaná zpráva.</numerusform><numerusform>%n smazané zprávy.</numerusform><numerusform>%n smazaných zpráv.</numerusform></translation>
+        <translation><numerusform>%n smazaná zpráva.</numerusform><numerusform>%n smazané zprávy.</numerusform><numerusform>%n smazaných zpráv.</numerusform><numerusform>%n smazaných zpráv.</numerusform></translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3531,7 +3534,7 @@ Je vyžadování verze API minimálně %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
+        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -4462,11 +4465,11 @@ Nepřečtené zprávy: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n hodina</numerusform><numerusform>%n hodiny</numerusform><numerusform>%n hodin</numerusform></translation>
+        <translation><numerusform>%n hodina</numerusform><numerusform>%n hodiny</numerusform><numerusform>%n hodin</numerusform><numerusform>%n hodin</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform></translation>
+        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform><numerusform>%n minut</numerusform></translation>
     </message>
     <message>
         <source> and </source>

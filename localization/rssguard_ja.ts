@@ -330,15 +330,15 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation type="unfinished"/>
+        <translation>ファイル保存エラー: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation type="unfinished"/>
+        <translation>%1 / %2 (%3 / 秒) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation type="unfinished"/>
+        <translation>%1 / %2 - ダウンロード完了</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
@@ -429,17 +429,17 @@ Auto-update status: %3</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>自動更新しない</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>グローバル設定 (%n 分で次の自動更新)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>固有の設定 (%n 分で次の自動更新)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
@@ -451,11 +451,11 @@ Auto-update status: %3</source>
     </message>
     <message>
         <source>authentication error</source>
-        <translation type="unfinished"/>
+        <translation>認証エラー</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation type="unfinished"/>
+        <translation>ネットワーク エラー</translation>
     </message>
     <message>
         <source>unspecified error</source>
@@ -528,7 +528,7 @@ Status: %2</source>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>未読/すべてのメッセージ数</translation>
     </message>
 </context>
 <context>
@@ -725,7 +725,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">投稿者</translation>
     </message>
     <message>
         <source>Description</source>
@@ -1083,7 +1083,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 設定</translation>
     </message>
     <message>
         <source>Application ID</source>
@@ -1098,7 +1098,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1111,11 +1111,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>ログイン(&amp;L)</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>まだテストしていません。</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -1159,11 +1159,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>新しい Gmail アカウントの追加</translation>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>既存の Gmail アカウントの編集</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
@@ -1186,7 +1186,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 設定</translation>
     </message>
     <message>
         <source>Application ID</source>
@@ -1214,11 +1214,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>ログイン(&amp;L)</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>まだテストしていません。</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -1301,19 +1301,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>ユーザー名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>パスワード</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>パスワードを表示</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>テストセットアップ(&amp;T)</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -1840,7 +1840,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>フィードからアイコンを取得</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
@@ -1848,15 +1848,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>グローバル設定の間隔で自動更新</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>指定の間隔で自動更新</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>自動更新しない</translation>
     </message>
 </context>
 <context>
@@ -1891,7 +1891,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation type="unfinished"/>
+        <translation>選択したメッセージの重要度を切り替え</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1919,7 +1919,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="unfinished"/>
+        <translation>フィード一覧の表示を切り替えます。</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
@@ -1935,35 +1935,35 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"/>
+        <translation>選択したメッセージを削除(&amp;D)</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation type="unfinished"/>
+        <translation>メインメニューの表示を切り替えます。</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>選択したメッセージを既読にする(&amp;S)</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>選択したメッセージを未読にする(&amp;S)</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>選択した記事を外部ブラウザで開く(&amp;E)</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>選択したメッセージを内部ブラウザで開く(&amp;I)</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>次のメッセージを選択(&amp;n)</translation>
+        <translation>次のメッセージを選択(&amp;N)</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation>次のメッセージを選択(&amp;p)</translation>
+        <translation>前のメッセージを選択(&amp;P)</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
@@ -2023,7 +2023,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="unfinished"/>
+        <translation>メッセージ一覧のレイアウト方向を切り替え</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
@@ -2031,7 +2031,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>選択したメッセージを電子メールで送信</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
@@ -2051,15 +2051,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"/>
+        <translation>選択したアイテムを編集(&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"/>
+        <translation>選択したアイテムを削除(&amp;D)</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="unfinished"/>
+        <translation>選択したアイテムを既読にする(&amp;M)</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
@@ -2067,7 +2067,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="unfinished"/>
+        <translation>選択したアイテムを未読にする(&amp;M)</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
@@ -2107,23 +2107,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation type="unfinished"/>
+        <translation>次のアイテムを選択(&amp;N)</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation type="unfinished"/>
+        <translation>前のアイテムを選択(&amp;P)</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation type="unfinished"/>
+        <translation>未読アイテムのみ表示</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"/>
+        <translation>選択したアイテムを展開/折りたたむ(&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="unfinished"/>
+        <translation>選択したメッセージを復元(&amp;R)</translation>
     </message>
     <message>
         <source>No possible actions</source>
@@ -2143,7 +2143,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation type="unfinished"/>
+        <translation>次の未読メッセージを選択(&amp;U)</translation>
     </message>
     <message>
         <source>No recycle bin</source>
@@ -2199,31 +2199,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>ウェブブラウザとタブ</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>バグを報告...(&amp;B)</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>新しいウェブブラウザ タブ</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>すべてのタブを閉じる</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>他のタブをすべて閉じる</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>全画面モードで表示(&amp;F)</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>データベースをクリーンアップできません</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
@@ -2231,7 +2231,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>フィードの更新を開始</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
@@ -2244,23 +2244,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"/>
+        <translation>すべてのアイテムを既読にする(&amp;M)</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"/>
+        <translation>再起動(&amp;R)</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>次のタブに移動(&amp;N)</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation>前のタブに移動(&amp;P)</translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>メッセージをプレビューで表示(&amp;E)</translation>
     </message>
 </context>
 <context>
@@ -2334,7 +2334,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"/>
+        <translation>再起動</translation>
     </message>
 </context>
 <context>
@@ -2372,7 +2372,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"/>
+        <translation>今すぐ再起動しますか？</translation>
     </message>
 </context>
 <context>
@@ -2431,7 +2431,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>カテゴリ名が短すぎます。</translation>
     </message>
     <message>
         <source>Description is empty.</source>
@@ -2715,11 +2715,11 @@ currently installed one.</source>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation type="unfinished"/>
+        <translation>新しいインストール ファイルをダウンロードします。</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">更新確認に失敗しました。</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
@@ -2752,19 +2752,19 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"/>
+        <translation>更新をダウンロードしています...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation type="unfinished"/>
+        <translation>ダウンロードに成功しました</translation>
     </message>
     <message>
         <source>Error occured</source>
-        <translation type="unfinished"/>
+        <translation>エラーが発生しました</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation type="unfinished"/>
+        <translation>パッケージのダウンロード中にエラーが発生しました。</translation>
     </message>
     <message>
         <source>Go to application website</source>
@@ -2782,7 +2782,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>インストール</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
@@ -2973,7 +2973,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>外部ブラウザで開く</translation>
     </message>
     <message>
         <source>Download</source>
@@ -2989,19 +2989,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>メッセージを既読にする</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>メッセージを未読にする</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>メッセージの重要度を切り替え</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>このリンクをクリックしてダウンロードまたは外部ブラウザで開きます。</translation>
     </message>
     <message>
         <source>image</source>
@@ -3009,7 +3009,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"/>
+        <translation>常にリンクを外部ブラウザで開きます。</translation>
     </message>
 </context>
 <context>
@@ -3044,23 +3044,23 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>投稿者</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>作成日時</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"/>
+        <translation>内容</translation>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="unfinished"/>
+        <translation>メッセージ ID</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation type="unfinished"/>
+        <translation>既読/未読の状態</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
@@ -3068,7 +3068,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"/>
+        <translation>重要度の状態</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
@@ -3076,7 +3076,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation type="unfinished"/>
+        <translation>メッセージのタイトル</translation>
     </message>
     <message>
         <source>Url of the message.</source>
@@ -3084,15 +3084,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation type="unfinished"/>
+        <translation>メッセージの投稿者</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="unfinished"/>
+        <translation>メッセージの作成日時</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation type="unfinished"/>
+        <translation>メッセージの内容</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
@@ -3108,7 +3108,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"/>
+        <translation>添付ファイル一覧</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
@@ -3144,7 +3144,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"/>
+        <translation>フィードID</translation>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
@@ -3171,19 +3171,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation type="unfinished"/>
+        <translation>メッセージの強調表示メニュー</translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation type="unfinished"/>
+        <translation>強調表示なし</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"/>
+        <translation>未読メッセージを強調表示</translation>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation type="unfinished"/>
+        <translation>重要なメッセージを強調表示</translation>
     </message>
     <message>
         <source>Display all messages</source>
@@ -3191,7 +3191,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation type="unfinished"/>
+        <translation>メッセージの強調表示</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3485,7 +3485,9 @@ At least API level %1 is required.</source>
         <source>Recycle bin
 
 %1</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">ゴミ箱
+
+%1</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3512,22 +3514,22 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>検索文字列</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>前を検索</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>次を検索</translation>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
         <source>External web browser</source>
-        <translation>外部ウェブブラウザー</translation>
+        <translation>外部ウェブブラウザ</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -3535,7 +3537,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"/>
+        <translation>独自の外部ウェブブラウザを使用</translation>
     </message>
     <message>
         <source>Web browser executable</source>
@@ -3575,7 +3577,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>独自の外部電子メールクライアントを使用</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
@@ -3687,7 +3689,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"/>
+        <translation>ウェブブラウザと電子メールとプロキシ</translation>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
@@ -3695,35 +3697,35 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>外部ツール</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>このページでは選択したメッセージのURLを開く外部ツールの一覧を構成できます。</translation>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>外部ツールを追加</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>選択した外部ツールを削除</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation type="unfinished"/>
+        <translation>実行可能ファイル</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>パラメータ</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>外部ツールの選択</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>パラメータを入力</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
@@ -3946,7 +3948,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"/>
+        <translation>内部メッセージ ブラウザのフォント</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
@@ -4088,15 +4090,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <translation>ステータスバー</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"/>
+        <translation>ボタンの表示スタイル</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"/>
+        <translation>編集するツールバー</translation>
     </message>
     <message>
         <source>Name</source>
@@ -4108,7 +4110,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>投稿者</translation>
     </message>
     <message>
         <source>E-mail</source>
@@ -4168,7 +4170,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>投稿者</translation>
     </message>
 </context>
 <context>
@@ -4230,7 +4232,7 @@ This category does not contain any nested items.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="vanished">自動更新しない</translation>
     </message>
     <message>
         <source>uses global settings</source>
@@ -4403,7 +4405,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Web browser</source>
-        <translation>ウェブブラウザー</translation>
+        <translation>ウェブブラウザ</translation>
     </message>
 </context>
 <context>
@@ -4449,27 +4451,27 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Move action up</source>
-        <translation type="unfinished"/>
+        <translation>アクションを上に移動</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation type="unfinished"/>
+        <translation>アクションを下に移動</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation type="unfinished"/>
+        <translation>選択したアクションを追加</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation type="unfinished"/>
+        <translation>選択したアクションを削除</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation type="unfinished"/>
+        <translation>すべてのアクションを削除</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation type="unfinished"/>
+        <translation>ツールバーをリセットする</translation>
     </message>
 </context>
 <context>
@@ -4484,19 +4486,21 @@ Unread news: %2</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="vanished">自動更新しない</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="vanished">グローバル設定使用</translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="vanished">%1%2
+
+自動更新の状態: %3</translation>
     </message>
 </context>
 <context>
@@ -4686,7 +4690,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>リンクを外部ブラウザで開く</translation>
     </message>
 </context>
 </TS>

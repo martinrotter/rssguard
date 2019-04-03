@@ -1103,7 +1103,7 @@ ou esta função ainda não foi implementada.</translation>
         <translation>URL de Redirecionamento</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
         <translation>Configurações predefinidas NÃO precisam ser alteradas dos seus valores padrão. Mude estes valores apenas de você for um usuário avançado e sabe o que está fazendo!</translation>
     </message>
     <message>

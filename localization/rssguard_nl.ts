@@ -18,7 +18,7 @@
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"/>
+        <translation>Gebruik voorgeschreven inschrijving</translation>
     </message>
     <message>
         <source>Title</source>
@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation>Adblock blokkeerde een ongewenste popup</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
@@ -118,7 +118,7 @@
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock inschrijving toevoegen</translation>
     </message>
 </context>
 <context>
@@ -148,7 +148,7 @@
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (onlangs geupdated)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
@@ -1088,7 +1088,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>QAuth 2.0 instellingen</translation>
     </message>
     <message>
         <source>Application ID</source>
@@ -1103,12 +1103,12 @@ of deze functie bestaat nog niet.</translation>
         <translation>URL doorsturen</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Download alleen de nieuwste X berichten  van een feed</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -1140,7 +1140,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Some username entered.   </source>
-        <translation type="unfinished"/>
+        <translation>Een gebruikersnaam invoeren.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -1148,11 +1148,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Er was een fout tijdens het testen. </translation>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation type="unfinished"/>
+        <translation>Er is een fout. %1</translation>
     </message>
     <message>
         <source>Tested successfully.You may be prompted to login once more.</source>
@@ -1172,11 +1172,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Een lege waarde is ingevoerd.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Een waarde is ingevoerd.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
@@ -1191,7 +1191,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>QAuth 2.0 instellingen</translation>
     </message>
     <message>
         <source>Application ID</source>
@@ -1211,7 +1211,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Download alleen de nieuwste X berichten  van een feed</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -1243,7 +1243,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Een gebruikersnaam invoeren.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -1251,7 +1251,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Er was een fout tijdens het testen. </translation>
     </message>
     <message>
         <source>There is error. %1</source>
@@ -1275,11 +1275,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Een lege waarde is ingevoerd.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Een waarde is ingevoerd.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
@@ -1426,7 +1426,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>Berichten</translation>
     </message>
 </context>
 <context>
@@ -2257,7 +2257,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>Ga naar &amp;volgende tabblad</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
@@ -2848,7 +2848,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik hier om opnieuw in te loggen</translation>
     </message>
     <message>
         <source>No subject</source>
@@ -2856,22 +2856,22 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: verificatie fout</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: verificatie geweigerd</translation>
     </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation type="unfinished"/>
+        <translation>Inbox</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation type="unfinished"/>
+        <translation>Verstuur</translation>
     </message>
     <message>
         <source>Drafts</source>
@@ -2879,7 +2879,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"/>
+        <translation>Spam</translation>
     </message>
     <message>
         <source>Authentication status: %1
@@ -2900,7 +2900,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Schrijf een nieuw e-mail bericht</translation>
     </message>
 </context>
 <context>
@@ -2926,7 +2926,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: verificatie fout</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -2938,7 +2938,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik hier om opnieuw in te loggen</translation>
     </message>
 </context>
 <context>
@@ -3158,7 +3158,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"/>
+        <translation>Feed ID</translation>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
@@ -3240,7 +3240,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Kan externe gereedschap niet starten</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
@@ -3539,7 +3539,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Zoek tekst</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
@@ -3724,7 +3724,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Extern gereedschap</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
@@ -3732,11 +3732,11 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>Voeg externe gereedschap toe</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder geselecteerde externe gereedschap</translation>
     </message>
     <message>
         <source>Executable</source>
@@ -3744,15 +3744,15 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Parameters</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Selecteer extern gereedschap</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>Vul parameters in</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
@@ -4644,7 +4644,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>JS aan</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
@@ -4660,7 +4660,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"/>
+        <translation>Lokale opslag aan</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
@@ -4692,19 +4692,19 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>Plugins aan</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>Beeldvullend aan</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Zet schermafbeelding aan</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>WebGL aan</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
@@ -4712,7 +4712,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Print element op achtergrond </translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
@@ -4743,7 +4743,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Open link in externe browser.</translation>
     </message>
 </context>
 </TS>

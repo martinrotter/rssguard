@@ -1086,7 +1086,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 设置</translation>
     </message>
     <message>
         <source>Application ID</source>
@@ -1101,7 +1101,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1189,7 +1189,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 设置</translation>
     </message>
     <message>
         <source>Application ID</source>
@@ -1304,15 +1304,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>用户名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>密码</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>显示密码</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -1606,7 +1606,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>类型</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
@@ -1622,7 +1622,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"/>
+        <translation>自动更新</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
@@ -1690,7 +1690,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>描述为空</translation>
     </message>
     <message>
         <source>The description is ok.</source>
@@ -1730,7 +1730,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>图像文件 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
@@ -1738,7 +1738,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Look in:</source>
@@ -1974,7 +1974,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation type="unfinished"/>
+        <translation>显示/隐藏</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
@@ -2186,7 +2186,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>添加新类别</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -2214,7 +2214,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>关闭所有标签页</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
@@ -2243,7 +2243,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>标签页</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
@@ -2270,7 +2270,7 @@ or this functionality is not implemented yet.</source>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Feed 已添加</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -2337,7 +2337,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"/>
+        <translation>重启</translation>
     </message>
 </context>
 <context>
@@ -2406,7 +2406,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>添加新类别</translation>
     </message>
     <message>
         <source>Edit existing category</source>
@@ -2414,7 +2414,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"/>
+        <translation>无法添加类别</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
@@ -2438,7 +2438,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>描述为空</translation>
     </message>
     <message>
         <source>The description is ok.</source>
@@ -2450,7 +2450,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>图像文件 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
@@ -2458,7 +2458,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Look in:</source>
@@ -2518,7 +2518,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"/>
+        <translation>无法编辑 Feed</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
@@ -2561,11 +2561,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"/>
+        <translation>导出 Feed</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation type="unfinished"/>
+        <translation>源文件</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
@@ -2573,11 +2573,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"/>
+        <translation>导入 Feed</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation type="unfinished"/>
+        <translation>OPML 2.0 文件(*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
@@ -2637,7 +2637,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>获取在线元数据</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
@@ -2652,7 +2652,7 @@ You have to restart manually.</source>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Feed 已添加</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -2714,7 +2714,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation type="unfinished"/>
+        <translation>检查更新</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2722,7 +2722,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">检查更新失败</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
@@ -2735,11 +2735,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">无可用更新</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation type="unfinished"/>
+        <translation>无法更新应用</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
@@ -2755,11 +2755,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"/>
+        <translation>下载更新中……</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation type="unfinished"/>
+        <translation>下载成功</translation>
     </message>
     <message>
         <source>Error occured</source>
@@ -2785,7 +2785,7 @@ You must install it manually.</source>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>安装</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
@@ -2825,7 +2825,7 @@ You can install it now.</source>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>登陆成功</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
@@ -2841,30 +2841,30 @@ You can install it now.</source>
     </message>
     <message>
         <source>No subject</source>
-        <translation type="unfinished"/>
+        <translation>无主题</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Gmail：身份验证错误</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Gmail：身份验证被拒绝</translation>
     </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation type="unfinished"/>
+        <translation>Inbox</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation type="unfinished"/>
+        <translation>已发送</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation type="unfinished"/>
+        <translation>草稿</translation>
     </message>
     <message>
         <source>Spam</source>
@@ -2907,7 +2907,7 @@ Login tokens expiration: %2</source>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>登陆成功</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
@@ -2976,11 +2976,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>在外部浏览器中打开</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>下载</translation>
     </message>
     <message>
         <source>Incorrect link</source>
@@ -3251,17 +3251,17 @@ Login tokens expiration: %2</source>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>连接被拒绝</translation>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>连接超时</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>SSL 握手失败</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
@@ -3276,7 +3276,7 @@ Login tokens expiration: %2</source>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>身份验证失败</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
@@ -3286,7 +3286,7 @@ Login tokens expiration: %2</source>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>未发现代理服务器</translation>
     </message>
     <message>
         <source>content not found</source>
@@ -3340,11 +3340,11 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>点击此处登陆</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>通过 OAuth 2.0 登陆</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
@@ -3451,7 +3451,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>发现新的版本</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
@@ -3474,7 +3474,7 @@ At least API level %1 is required.</source>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>回收站</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
@@ -3519,7 +3519,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>查找下一个</translation>
     </message>
     <message>
         <source>Find next occurence</source>
@@ -3530,7 +3530,7 @@ At least API level %1 is required.</source>
     <name>SettingsBrowserMail</name>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"/>
+        <translation>外部浏览器</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -3566,7 +3566,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"/>
+        <translation>选择浏览器</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
@@ -3600,12 +3600,12 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>代理</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation type="unfinished"/>
+        <translation>类型</translation>
     </message>
     <message>
         <source>Host</source>
@@ -3617,7 +3617,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation>端口</translation>
     </message>
     <message>
         <source>Username</source>
@@ -3637,7 +3637,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="unfinished"/>
+        <translation>显示密码</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
@@ -3670,23 +3670,23 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"/>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"/>
+        <translation>无代理</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"/>
+        <translation>系统代理</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"/>
+        <translation>SOCKS5</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"/>
+        <translation>HTTP</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
@@ -3767,7 +3767,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation>端口</translation>
     </message>
     <message>
         <source>Username</source>
@@ -3839,11 +3839,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="unfinished"/>
+        <translation>用户名</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="unfinished"/>
+        <translation>密码</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
@@ -3851,7 +3851,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"/>
+        <translation>数据存储</translation>
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
@@ -3894,7 +3894,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished"/>
+        <translation>下载</translation>
     </message>
 </context>
 <context>
@@ -3921,7 +3921,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"/>
+        <translation>ms</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
@@ -3961,7 +3961,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"/>
+        <translation>字体预览</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
@@ -3988,7 +3988,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SettingsGeneral</name>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"/>
+        <translation>在系统启动时启动 %1</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
@@ -4055,7 +4055,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>标签页</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
@@ -4071,15 +4071,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>鼠标右键双击</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"/>
+        <translation>鼠标中键单击</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation type="unfinished"/>
+        <translation>工具栏</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
@@ -4091,7 +4091,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation type="unfinished"/>
+        <translation>状态栏</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
@@ -4115,7 +4115,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"/>
+        <translation>邮件地址</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
@@ -4132,7 +4132,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Text only</source>
-        <translation type="unfinished"/>
+        <translation>仅文本</translation>
     </message>
     <message>
         <source>Text beside icon</source>
@@ -4144,11 +4144,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation type="unfinished"/>
+        <translation>使用系统风格</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation type="unfinished"/>
+        <translation>用户界面</translation>
     </message>
     <message>
         <source>Style</source>
@@ -4163,7 +4163,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SettingsLocalization</name>
     <message>
         <source>Language</source>
-        <translation type="unfinished"/>
+        <translation>语言</translation>
     </message>
     <message>
         <source>Code</source>
@@ -4224,7 +4224,7 @@ This category does not contain any nested items.</source>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>无法获取元数据</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
@@ -4238,7 +4238,7 @@ This category does not contain any nested items.</source>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="vanished">使用全局设置</translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -4276,11 +4276,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"/>
+        <translation>导出 Feed</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"/>
+        <translation>导入 Feed</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
@@ -4302,7 +4302,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"/>
+        <translation>无法添加类别</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
@@ -4344,7 +4344,7 @@ Account ID: %1</source>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation type="vanished">发现新的版本</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
@@ -4352,7 +4352,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>anonymous</source>
-        <translation type="unfinished"/>
+        <translation>匿名</translation>
     </message>
     <message>
         <source> bytes</source>
@@ -4371,11 +4371,11 @@ Unread news: %2</source>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation type="unfinished"/>
+        <translation>关闭此标签页。</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation type="unfinished"/>
+        <translation>关闭标签页</translation>
     </message>
 </context>
 <context>
@@ -4390,15 +4390,15 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation type="unfinished"/>
+        <translation>显示主菜单。</translation>
     </message>
     <message>
         <source>Main menu</source>
-        <translation type="unfinished"/>
+        <translation>主菜单</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished"/>
+        <translation>下载</translation>
     </message>
     <message>
         <source>Newspaper view</source>
@@ -4406,7 +4406,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Web browser</source>
-        <translation type="unfinished"/>
+        <translation>网页浏览器</translation>
     </message>
 </context>
 <context>
@@ -4492,7 +4492,7 @@ Unread news: %2</source>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="vanished">使用全局设置</translation>
     </message>
     <message>
         <source>%1%2
@@ -4501,7 +4501,7 @@ Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation type="vanished">%1%2
 
-Auto-update status: %3</translation>
+自动更新状态: %3</translation>
     </message>
 </context>
 <context>
@@ -4545,7 +4545,7 @@ Last login on: %4</source>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation type="unfinished"/>
+        <translation>无标题</translation>
     </message>
     <message>
         <source>Back</source>
@@ -4565,11 +4565,11 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"/>
+        <translation>刷新</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"/>
+        <translation>刷新当前网页</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -4588,11 +4588,11 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation>自动加载图片</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>启用 JavaScript</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
@@ -4608,7 +4608,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"/>
+        <translation>启用本地存储</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
@@ -4640,11 +4640,11 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>启用插件</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>启用全屏</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
@@ -4652,7 +4652,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>启用 WebGL</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
@@ -4691,7 +4691,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>在外部浏览器中打开链接</translation>
     </message>
 </context>
 </TS>

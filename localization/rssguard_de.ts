@@ -436,12 +436,12 @@ Auto-update status: %3</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>verwendet globale Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform><numerusform>verwendet globale Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
@@ -904,11 +904,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Lade Anhang herunter...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Heruntergeladen: %1 kB</translation>
     </message>
 </context>
 <context>
@@ -1101,7 +1101,7 @@ or this functionality is not implemented yet.</source>
         <translation>URL umleiten</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1134,11 +1134,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No username entered.   </source>
-        <translation type="unfinished"/>
+        <translation>Kein Benutzername angegeben.</translation>
     </message>
     <message>
         <source>Some username entered.   </source>
-        <translation type="unfinished"/>
+        <translation>Ein Benutzername wurde angegeben.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -1150,11 +1150,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist aufgetreten. %1</translation>
     </message>
     <message>
         <source>Tested successfully.You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Test erfolgreich. Sie könnten zu einem erneuten Einloggen aufgefordert werden.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
@@ -1162,11 +1162,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Neues Gmail Konto hinzufügen</translation>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Bestehendes Gmail Konto bearbeiten</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
@@ -1178,7 +1178,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Sie müssen &quot;%1&quot; als Basis-Redirect-URL verwenden. Sie können einen benutzerdefinierten Port verwenden, um sicherzustellen, dass kein lokaler Dienst diesen belegt. Stellen Sie sicher, dass diese Redirect-URL mit der Redirect-URL der verwendeten &quot;Anwendung&quot; übereinstimmt.</translation>
     </message>
 </context>
 <context>
@@ -1281,7 +1281,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Sie müssen &quot;%1&quot; als Basis-Redirect-URL verwenden. Sie können einen benutzerdefinierten Port verwenden, um sicherzustellen, dass kein lokaler Dienst diesen belegt. Stellen Sie sicher, dass diese Redirect-URL mit der Redirect-URL der verwendeten &quot;Anwendung&quot; übereinstimmt.</translation>
     </message>
 </context>
 <context>
@@ -2263,7 +2263,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>Nachrichtenvorschau &amp;aktivieren</translation>
     </message>
 </context>
 <context>
@@ -2835,7 +2835,7 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Ihre Anmeldung bei Gmail wurde autorisiert.</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -2847,34 +2847,34 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>No subject</source>
-        <translation type="unfinished"/>
+        <translation>Kein Betreff</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: Fehler bei der Authentifizierung</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: Autorisierung abgelehnt</translation>
     </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation type="unfinished"/>
+        <translation>Posteingang</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation type="unfinished"/>
+        <translation>Gesendet</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation type="unfinished"/>
+        <translation>Entwürfe</translation>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"/>
+        <translation>Spam</translation>
     </message>
     <message>
         <source>Authentication status: %1
@@ -2892,11 +2892,11 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"/>
+        <translation>Zieldatei für Anhang wählen</translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Eine neue E-Mail schreiben</translation>
     </message>
 </context>
 <context>
@@ -2918,7 +2918,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation>Ihre Anmeldung bei Inoreader wurde authorisiert.</translation>
+        <translation>Ihre Anmeldung bei Inoreader wurde autorisiert.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
@@ -2930,7 +2930,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: Authorisierung abgelehnt</translation>
+        <translation>Inoreader: Autorisierung abgelehnt</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -3163,11 +3163,11 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
+        <translation>Hat Anhänge</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the message.</source>
-        <translation type="unfinished"/>
+        <translation>Anzeige von vorhandenen Anhängen innerhalb der Nachricht.</translation>
     </message>
 </context>
 <context>
@@ -3360,25 +3360,25 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation>Zugangsauthorisierung für &apos;%1&apos; wurde angefordert...</translation>
+        <translation>Zugangsautorisierung für &apos;%1&apos; wurde angefordert...</translation>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Sie müssen sich zuerst anmelden.</translation>
     </message>
 </context>
 <context>
     <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Sie können dieses Fenster jetzt schließen. Gehen Sie zurück zu %1</translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation>Zugangsauthorisierung für den Dienst wurde angefordert</translation>
+        <translation>Zugangsautorisierung für den Dienst wurde angefordert</translation>
     </message>
 </context>
 <context>
@@ -3478,7 +3478,7 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>Die übergebene externe Werkzeugdarstellung ist nicht gültig.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
@@ -3486,7 +3486,7 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-        <translation type="unfinished"/>
+        <translation>Einfach Gmail-Integration via JSON API. Erlaubt auch das Senden von E-Mails.</translation>
     </message>
 </context>
 <context>
@@ -3532,19 +3532,19 @@ Das API muss mindestens in Version %1 verfügbar sein.</translation>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Suchbegriff leeren</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Text durchsuchen</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Vorherigen Treffer finden</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Nächsten Treffer finden</translation>
     </message>
 </context>
 <context>
@@ -4011,11 +4011,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Höhe oder Zeilen der Feedliste (-1 = Standardhöhe)</translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Höhe oder Zeilen der Nachrichtenliste (-1 = Standardhöhe)</translation>
     </message>
 </context>
 <context>
@@ -4238,7 +4238,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Blockiert vom Set: &quot;%1&quot;&lt;br/&gt;Blockiert vom Filter: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -4291,7 +4291,9 @@ Status der automatischer Aktualisierung: %5</translation>
         <source>Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerkstatus: %1
+Zeichenkodierung: %2
+Typ: %3</translation>
     </message>
 </context>
 <context>
@@ -4634,7 +4636,7 @@ Letzte Anmeldung am: %4</translation>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation>Einstellungen für die Webengine</translation>
     </message>
     <message>
         <source>Auto-load images</source>
@@ -4670,7 +4672,7 @@ Letzte Anmeldung am: %4</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation>Ortsbezogene Navigation aktiviert</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
@@ -4706,7 +4708,7 @@ Letzte Anmeldung am: %4</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation>2D-Canvas beschleunigen</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
@@ -4718,7 +4720,7 @@ Letzte Anmeldung am: %4</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Standortbestimmung für unsichere Quellen erlauben</translation>
     </message>
 </context>
 <context>
@@ -4741,7 +4743,7 @@ Letzte Anmeldung am: %4</translation>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>In externem Browser öffnen</translation>
     </message>
 </context>
 </TS>

@@ -1102,8 +1102,8 @@ o debido a que esta función aún no está implementada.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>¡Los ajustes predefinidos NO se deben cambiar de sus valores predeterminados. Cambie esos valores sólo si es un usuario avanzado y sabe qué está haciendo!</translation>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
