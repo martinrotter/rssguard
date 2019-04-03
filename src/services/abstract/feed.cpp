@@ -212,47 +212,47 @@ bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
 int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtaining) {
   QList<RootItem*> items_to_update;
   int updated_messages = 0;
-  bool is_main_thread = QThread::currentThread() == qApp->thread();
 
-  qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true" : "false"));
+  if (!error_during_obtaining) {
+    bool is_main_thread = QThread::currentThread() == qApp->thread();
 
-  bool anything_updated = false;
-  bool ok = true;
+    qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true" : "false"));
 
-  if (!messages.isEmpty()) {
-    qDebug("There are some messages to be updated/added to DB.");
+    bool anything_updated = false;
+    bool ok = true;
 
-    QString custom_id = customId();
-    int account_id = getParentServiceRoot()->accountId();
-    QSqlDatabase database = is_main_thread ?
-                            qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
-                            qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
+    if (!messages.isEmpty()) {
+      qDebug("There are some messages to be updated/added to DB.");
 
-    updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
-  }
-  else {
-    qWarning("There are no messages for update.");
-  }
+      QString custom_id = customId();
+      int account_id = getParentServiceRoot()->accountId();
+      QSqlDatabase database = is_main_thread ?
+                              qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
+                              qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
 
-  if (ok) {
-    setStatus(updated_messages > 0 ? NewMessages : Normal);
-    updateCounts(true);
+      updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
+    }
+    else {
+      qWarning("There are no messages for update.");
+    }
 
-    if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
-      getParentServiceRoot()->recycleBin()->updateCounts(true);
-      items_to_update.append(getParentServiceRoot()->recycleBin());
+    if (ok) {
+      setStatus(updated_messages > 0 ? NewMessages : Normal);
+      updateCounts(true);
+
+      if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
+        getParentServiceRoot()->recycleBin()->updateCounts(true);
+        items_to_update.append(getParentServiceRoot()->recycleBin());
+      }
     }
   }
-
-  if (error_during_obtaining) {
+  else {
     qCritical("There is indication that there was error during messages obtaining.");
   }
 
-  if (ok && !messages.isEmpty()) {
-    // Some messages were really added to DB, reload feed in model.
-    items_to_update.append(this);
-    getParentServiceRoot()->itemChanged(items_to_update);
-  }
+  // Some messages were really added to DB, reload feed in model.
+  items_to_update.append(this);
+  getParentServiceRoot()->itemChanged(items_to_update);
 
   return updated_messages;
 }
