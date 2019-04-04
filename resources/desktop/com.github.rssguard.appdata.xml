@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2017 Martin Rotter <rotter.martinos@gmail.com> -->
+<!-- Copyright 2017-2019 Martin Rotter <rotter.martinos@gmail.com> -->
 <component type="desktop-application">
   <id>com.github.rssguard.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -30,20 +30,30 @@
   <url type="donation">https://martinrotter.github.io/donate/</url>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="3.5.7" date="2019-04-04">
-      <description>
-        <p>Fixed:</p>
-        <ul>
-          <li>Some minor stuff fixes.</li>
-          <li>Unnecessary "Welcome" notifications. (bug #176)</li>
-          <li>Bad handling of null/empty strings when inserting messages into DB. (bug #169)</li>
-          <li>Bad conversion of "created on" date/time in TT-RSS plugin. (bug #172)</li>
-          <li>Missing obligatory attribute in OPML 2.0 files. (bug #166)</li>
-        </ul>
-      </description>
-    </release>
     <release version="3.5.7" date="2019-04-04"/>
   </releases>
+  <content_rating type="oars-1.0">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
   <provides>
     <binary>rssguard</binary>
   </provides>
