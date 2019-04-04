@@ -5,7 +5,7 @@ source /opt/qt512/bin/qt512-env.sh
 mkdir rssguard-build && cd rssguard-build
 
 # Build application.
-lrelease -compress ../rssguard.pro
+#lrelease -compress ../rssguard.pro
 qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make
 make install
@@ -61,3 +61,16 @@ cd ./build-wiki
 git commit -a -m "New files."
 git pull origin master
 git push origin master
+
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
+echo "Current git commit hash is $(git rev-parse HEAD)."
+echo "Travis branch $TRAVIS_BRANCH and Travis tag $TRAVIS_TAG."
+
+#if [[ $TRAVIS_BRANCH == $TRAVIS_TAG ]]; then
+if [[ true ]]; then
+  # We will trigger stuff for Flathub.
+  cd ../../..
+  chmod +x ../resources/scripts/.flathub-release.sh
+  ../resources/scripts/.flathub-release.sh $TRAVIS_TAG $(git rev-parse HEAD)
+fi
