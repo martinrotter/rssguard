@@ -1,10 +1,23 @@
 3.5.7
 —————
 
+Added:
+▪ "Default" icons of feeds/categories are now NOT directly stored in RSS Guard DB and they are dynamically loaded from active icon theme instead. (#200)
+
 Fixed:
+▪ Feeds that fail to update are now correctly shown in red.
+▪ Newspaper mode is now correctly opened when clicked on "Open feed in newspaper mode" context menu item.
+▪ Built-in skins now properly embed HTML of displayed messages and no HTML "underflowing" is visible.
+▪ Icons are now installed to proper folders under Linux.
+▪ Correct "desktop" file filename.
+▪ Qt translations are now correctly loaded.
 ▪ Crash related to feed update to be finished in worker thread.
 
 Changed:
+▪ Default size of main window and sizes of its widgets are now edited and when app is launched for the first time it just looks better.
+▪ Default width of columns in message view is now unified with feeds view.
+▪ Qt translations are now dynamically compiled and not hard-coded.
+▪ Synced translations.
 ▪ Enhanced behavior of "Select next/previous item" in feed's list.
 
 3.5.6
