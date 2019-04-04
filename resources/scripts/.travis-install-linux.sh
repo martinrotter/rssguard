@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ls
+
 # Setup Qt build environment.
 source /opt/qt512/bin/qt512-env.sh
 mkdir rssguard-build && cd rssguard-build
@@ -57,6 +59,7 @@ cat "$wikifile" | sed -e "s@| Linux | .\+$USE_WEBENGINE |  @$wikiline@g" > "$wik
 cat "$wikifilenew"
 mv "$wikifilenew" "$wikifile"
 
+ls
 cd ./build-wiki
 git commit -a -m "New files."
 git pull origin master
@@ -70,7 +73,7 @@ echo "Travis branch $TRAVIS_BRANCH and Travis tag $TRAVIS_TAG."
 #if [[ $TRAVIS_BRANCH == $TRAVIS_TAG ]]; then
 if [[ true ]]; then
   # We will trigger stuff for Flathub.
-  cd ../../..
-  chmod +x ../resources/scripts/.flathub-release.sh
-  ../resources/scripts/.flathub-release.sh $TRAVIS_TAG $(git rev-parse HEAD)
+  cd ../..
+  chmod +x resources/scripts/.flathub-release.sh
+  resources/scripts/.flathub-release.sh $TRAVIS_TAG $(git rev-parse HEAD)
 fi
