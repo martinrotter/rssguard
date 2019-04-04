@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -- resources/desktop/*.appdata.xml
+appdata_file="$1"
+appdata_file_n="${1}.n"
+changelog_file="resources/text/CHANGELOG"
+
+# Set version and date.
+datestring="$(date +%F)"
+versionstring="$(head -n 1 "$changelog_file")"
+
+cat "$appdata_file" | sed -e "s@release version\=\"[A-Za-z0-9.]*\"@release version\=\"$versionstring\"@g" | sed -e "s@ date\=\"[0-9\-]*\"@ date\=\"$datestring\"@g" > "$appdata_file_n"
+mv "$appdata_file_n" "$appdata_file"
+
+git add "$appdata_file"
+exit 0
