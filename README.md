@@ -11,8 +11,6 @@ RSS Guard
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
 
-Welcome to RSS Guard website. You can find here basic information.
-
 RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.
 
 #### See [Wiki](https://github.com/martinrotter/rssguard/wiki) for more information about features, download links and other stuff.
