@@ -120,6 +120,7 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   m_root = root;
   m_messageContents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
                                                      messages_layout);
+
   bool previously_enabled = isEnabled();
 
   setEnabled(false);
