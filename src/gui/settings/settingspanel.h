@@ -11,7 +11,7 @@ class SettingsPanel : public QWidget {
   Q_OBJECT
 
   public:
-    explicit SettingsPanel(Settings* settings, QWidget* parent = 0);
+    explicit SettingsPanel(Settings* settings, QWidget* parent = nullptr);
 
     virtual QString title() const = 0;
     virtual void loadSettings() = 0;
