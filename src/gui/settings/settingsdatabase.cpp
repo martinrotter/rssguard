@@ -6,7 +6,6 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasefactory.h"
-#include "miscellaneous/textfactory.h"
 
 SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsDatabase) {
@@ -146,8 +145,8 @@ void SettingsDatabase::loadSettings() {
     m_ui->m_txtMysqlDatabase->lineEdit()->setPlaceholderText(tr("Working database which you have full access to."));
     m_ui->m_txtMysqlHostname->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
     m_ui->m_txtMysqlUsername->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
-    m_ui->m_txtMysqlPassword->lineEdit()->setText(TextFactory::decrypt(settings()->value(GROUP(Database),
-                                                                                         SETTING(Database::MySQLPassword)).toString()));
+    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings()->password(GROUP(Database),
+                                                                       SETTING(Database::MySQLPassword)).toString());
     m_ui->m_txtMysqlDatabase->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
     m_ui->m_spinMysqlPort->setValue(settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
     m_ui->m_checkMysqlShowPassword->setChecked(false);
@@ -183,7 +182,7 @@ void SettingsDatabase::saveSettings() {
     // Save MySQL.
     settings()->setValue(GROUP(Database), Database::MySQLHostname, m_ui->m_txtMysqlHostname->lineEdit()->text());
     settings()->setValue(GROUP(Database), Database::MySQLUsername, m_ui->m_txtMysqlUsername->lineEdit()->text());
-    settings()->setValue(GROUP(Database), Database::MySQLPassword, TextFactory::encrypt(m_ui->m_txtMysqlPassword->lineEdit()->text()));
+    settings()->setPassword(GROUP(Database), Database::MySQLPassword, m_ui->m_txtMysqlPassword->lineEdit()->text());
     settings()->setValue(GROUP(Database), Database::MySQLDatabase, m_ui->m_txtMysqlDatabase->lineEdit()->text());
     settings()->setValue(GROUP(Database), Database::MySQLPort, m_ui->m_spinMysqlPort->value());
   }

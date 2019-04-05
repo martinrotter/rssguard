@@ -5,7 +5,6 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
-#include "miscellaneous/textfactory.h"
 #include "network-web/silentnetworkaccessmanager.h"
 
 #include <QFileDialog>
@@ -192,7 +191,7 @@ void SettingsBrowserMail::loadSettings() {
   m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
   m_ui->m_txtProxyHost->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Host)).toString());
   m_ui->m_txtProxyUsername->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
-  m_ui->m_txtProxyPassword->setText(TextFactory::decrypt(settings()->value(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
+  m_ui->m_txtProxyPassword->setText(settings()->password(GROUP(Proxy), SETTING(Proxy::Password)).toString());
   m_ui->m_spinProxyPort->setValue(settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt());
 
   setExternalTools(ExternalTool::toolsFromSettings());
@@ -218,7 +217,7 @@ void SettingsBrowserMail::saveSettings() {
   settings()->setValue(GROUP(Proxy), Proxy::Type, m_ui->m_cmbProxyType->itemData(m_ui->m_cmbProxyType->currentIndex()));
   settings()->setValue(GROUP(Proxy), Proxy::Host, m_ui->m_txtProxyHost->text());
   settings()->setValue(GROUP(Proxy), Proxy::Username, m_ui->m_txtProxyUsername->text());
-  settings()->setValue(GROUP(Proxy), Proxy::Password, TextFactory::encrypt(m_ui->m_txtProxyPassword->text()));
+  settings()->setPassword(GROUP(Proxy), Proxy::Password, m_ui->m_txtProxyPassword->text());
   settings()->setValue(GROUP(Proxy), Proxy::Port, m_ui->m_spinProxyPort->value());
 
   auto tools = externalTools();

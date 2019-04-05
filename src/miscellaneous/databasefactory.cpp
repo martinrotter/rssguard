@@ -587,7 +587,7 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString& connection_name) {
       database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
       database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
       database.setUserName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
-      database.setPassword(TextFactory::decrypt(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString()));
+      database.setPassword(qApp->settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
       database.setDatabaseName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
     }
 
@@ -613,7 +613,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
   database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
   database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
   database.setUserName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
-  database.setPassword(TextFactory::decrypt(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString()));
+  database.setPassword(qApp->settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
 
   if (!database.open()) {
     qCritical("MySQL database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));

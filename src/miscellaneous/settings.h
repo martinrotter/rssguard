@@ -8,6 +8,7 @@
 #include "definitions/definitions.h"
 
 #include "miscellaneous/settingsproperties.h"
+#include "miscellaneous/textfactory.h"
 
 #include <QByteArray>
 #include <QColor>
@@ -397,30 +398,18 @@ class Settings : public QSettings {
     virtual ~Settings();
 
     // Type of used settings.
-    inline SettingsProperties::SettingsType type() const {
-      return m_initializationStatus;
-    }
+    SettingsProperties::SettingsType type() const;
 
     // Getters/setters for settings values.
-    inline QVariant value(const QString& section, const QString& key, const QVariant& default_value = QVariant()) const {
-      return QSettings::value(QString(QSL("%1/%2")).arg(section, key), default_value);
-    }
+    QVariant password(const QString& section, const QString& key, const QVariant& default_value = QVariant()) const;
+    void setPassword(const QString& section, const QString& key, const QVariant& value);
 
-    inline void setValue(const QString& section, const QString& key, const QVariant& value) {
-      QSettings::setValue(QString(QSL("%1/%2")).arg(section, key), value);
-    }
+    QVariant value(const QString& section, const QString& key, const QVariant& default_value = QVariant()) const;
+    void setValue(const QString& section, const QString& key, const QVariant& value);
+    void setValue(const QString& key, const QVariant& value);
 
-    inline void setValue(const QString& key, const QVariant& value) {
-      QSettings::setValue(key, value);
-    }
-
-    inline bool contains(const QString& section, const QString& key) const {
-      return QSettings::contains(QString(QSL("%1/%2")).arg(section, key));
-    }
-
-    inline void remove(const QString& section, const QString& key) {
-      QSettings::remove(QString(QSL("%1/%2")).arg(section, key));
-    }
+    bool contains(const QString& section, const QString& key) const;
+    void remove(const QString& section, const QString& key);
 
     // Returns the path which contains the settings.
     QString pathName() const;
@@ -440,9 +429,42 @@ class Settings : public QSettings {
   private:
 
     // Constructor.
-    explicit Settings(const QString& file_name, Format format, const SettingsProperties::SettingsType& type, QObject* parent = 0);
+    explicit Settings(const QString& file_name, Format format, const SettingsProperties::SettingsType& type, QObject* parent = nullptr);
 
     SettingsProperties::SettingsType m_initializationStatus;
 };
+
+inline SettingsProperties::SettingsType Settings::type() const {
+  return m_initializationStatus;
+}
+
+// Getters/setters for settings values.
+inline QVariant Settings::password(const QString& section, const QString& key, const QVariant& default_value) const {
+  return TextFactory::decrypt(value(section, key, default_value).toString());
+}
+
+inline void Settings::setPassword(const QString& section, const QString& key, const QVariant& value) {
+  setValue(section, key, TextFactory::encrypt(value.toString()));
+}
+
+inline QVariant Settings::value(const QString& section, const QString& key, const QVariant& default_value) const {
+  return QSettings::value(QString(QSL("%1/%2")).arg(section, key), default_value);
+}
+
+inline void Settings::setValue(const QString& section, const QString& key, const QVariant& value) {
+  QSettings::setValue(QString(QSL("%1/%2")).arg(section, key), value);
+}
+
+inline void Settings::setValue(const QString& key, const QVariant& value) {
+  QSettings::setValue(key, value);
+}
+
+inline bool Settings::contains(const QString& section, const QString& key) const {
+  return QSettings::contains(QString(QSL("%1/%2")).arg(section, key));
+}
+
+inline void Settings::remove(const QString& section, const QString& key) {
+  QSettings::remove(QString(QSL("%1/%2")).arg(section, key));
+}
 
 #endif // SETTINGS_H

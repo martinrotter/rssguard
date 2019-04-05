@@ -1207,9 +1207,9 @@ int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, con
     q.bindValue(QSL(":password"), TextFactory::encrypt(password));
   }
 
-  q.bindValue(QSL(":update_type"), (int) auto_update_type);
+  q.bindValue(QSL(":update_type"), int(auto_update_type));
   q.bindValue(QSL(":update_interval"), auto_update_interval);
-  q.bindValue(QSL(":type"), (int) feed_format);
+  q.bindValue(QSL(":type"), int(feed_format));
 
   if (q.exec()) {
     int new_id = q.lastInsertId().toInt();
@@ -1264,7 +1264,7 @@ bool DatabaseQueries::editFeed(QSqlDatabase db, int parent_id, int feed_id, cons
     q.bindValue(QSL(":password"), TextFactory::encrypt(password));
   }
 
-  q.bindValue(QSL(":update_type"), (int) auto_update_type);
+  q.bindValue(QSL(":update_type"), int(auto_update_type));
   q.bindValue(QSL(":update_interval"), auto_update_interval);
   q.bindValue(QSL(":type"), feed_format);
   q.bindValue(QSL(":id"), feed_id);
