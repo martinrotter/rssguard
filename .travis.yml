@@ -16,8 +16,7 @@ deploy:
   provider: releases
   file_glob: true
   skip_cleanup: true
-  api_key:
-    secure: T5n9/rnMtOe8ncIbBERAgBAO8YEn6yKgsjL0Ong9seTXklVJsFDuNYFjOlZ/P2PZO73QoxUZ4FjdjQPzCVZAgGVgygCvWUrtJyORQ4HoG/CmorYmRIlTcvZYd4533g/8uM20Ir0FKEZCQMUyfXILSV0gTxUyoVjYRkcer3VIlatE7FtWLDAS1YU9UIVxokzzFa/zzgmwV960C0DLdjjyuEsE2Nccgvg3QDJBm0u/RGbB+dOob82eplp9y4yQMZ+e84XmcqtsK71knPgnCw1GKICI9VB8JFtTG5iJohkyTfmJVagB9asZCzpPBD04ap+0tIqPTEnySK5SogQ3R/55xDLHUNZPYtnieGzFJbl2X1mUkD9qDNCzoaY6olNV4W8euCnYf1FDHIT6isvWM1hsufVZtO1d3GyiyOeNEs7XOlghDIDJMHH8Vh3d9aWdcrW2P2DwXjV0+obpZSXlaghKkryYUMq6A4blC1NlP3TPAWLSNekiUMOSotbbJBwoRZjFiYfvqxkgTf8qaHUkdHuwm2cL4NfAcf35yU49Efmqisk+Ep22gktswwRFR54xRjii1dhBUPOZEHcy35RwJa+q+1QVL6Rm+I5XaBG3AKBCaX3nFaXpn3YMFCmFnk4y2aWXfnjuBFjKeqQbtO5E7XpMgsKF+pLLEvsKahDTkr5bmvM=
+  api_key: $GH_TOKEN
   file:
   - rssguard-build/rss*.AppImage
   - rssguard-build/rss*.dmg
