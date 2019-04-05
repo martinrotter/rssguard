@@ -10,6 +10,7 @@
 
 #include <QDir>
 #include <QLocale>
+#include <QRandomGenerator>
 #include <QString>
 #include <QStringList>
 
@@ -124,12 +125,19 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
     QString encryption_file_path = qApp->settings()->pathName() + QDir::separator() + ENCRYPTION_FILE_NAME;
 
     try {
-      s_encryptionKey = (quint64) QString(IOFactory::readFile(encryption_file_path)).toLongLong();
+      s_encryptionKey = quint64(QString(IOFactory::readFile(encryption_file_path)).toLongLong());
     }
     catch (ApplicationException) {
       // Well, key does not exist or is invalid, generate and save one.
       s_encryptionKey = generateSecretEncryptionKey();
-      IOFactory::writeFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
+
+      try {
+        IOFactory::writeFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
+      }
+      catch (ApplicationException& ex) {
+        qCritical("Failed to write newly generated encryption key to file, error '%s'. Now, your passwords won't be "
+                  "readable after you start this application again.", qPrintable(ex.message()));
+      }
     }
   }
 
@@ -137,5 +145,5 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
 }
 
 quint64 TextFactory::generateSecretEncryptionKey() {
-  return RAND_MAX * qrand() + qrand();
+  return QRandomGenerator().generate64();
 }

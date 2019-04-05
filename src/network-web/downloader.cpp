@@ -175,8 +175,6 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
 QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
   QByteArray data = reply->readAll();
 
-  IOFactory::writeFile("b.json", data);
-
   if (data.isEmpty()) {
     return QList<HttpResponse>();
   }
