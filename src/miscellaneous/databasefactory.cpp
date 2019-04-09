@@ -693,7 +693,7 @@ bool DatabaseFactory::mysqlVacuumDatabase() {
   QSqlDatabase database = mysqlConnection(objectName());
   QSqlQuery query_vacuum(database);
 
-  return query_vacuum.exec(QSL("OPTIMIZE TABLE rssguard.feeds;")) && query_vacuum.exec(QSL("OPTIMIZE TABLE rssguard.messages;"));
+  return query_vacuum.exec(QSL("OPTIMIZE TABLE Feeds;")) && query_vacuum.exec(QSL("OPTIMIZE TABLE Messages;"));
 }
 
 QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, DatabaseFactory::DesiredType desired_type) {
