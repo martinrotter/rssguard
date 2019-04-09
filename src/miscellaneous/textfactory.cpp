@@ -57,17 +57,6 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
   timezone_offset_patterns << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm")
                            << QSL("-hhmm") << QSL("+hh") << QSL("-hh");
 
-  if (input_date.size() >= TIMEZONE_OFFSET_LIMIT) {
-    foreach (const QString& pattern, timezone_offset_patterns) {
-      time_zone_offset = QTime::fromString(input_date.right(pattern.size()), pattern);
-
-      if (time_zone_offset.isValid()) {
-        positive_time_zone_offset = pattern.at(0) == QL1C('+');
-        break;
-      }
-    }
-  }
-
   // Iterate over patterns and check if input date/time matches the pattern.
   foreach (const QString& pattern, date_patterns) {
     dt = locale.toDateTime(input_date.left(pattern.size()), pattern);
@@ -75,6 +64,20 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
     if (dt.isValid()) {
       // Make sure that this date/time is considered UTC.
       dt.setTimeSpec(Qt::UTC);
+
+      // We find offset from UTC.
+      if (input_date.size() >= TIMEZONE_OFFSET_LIMIT) {
+        QString offset_sanitized = input_date.mid(pattern.size()).replace(QL1S(" "), QString());
+
+        foreach (const QString& pattern_t, timezone_offset_patterns) {
+          time_zone_offset = QTime::fromString(offset_sanitized.left(pattern_t.size()), pattern_t);
+
+          if (time_zone_offset.isValid()) {
+            positive_time_zone_offset = pattern_t.at(0) == QL1C('+');
+            break;
+          }
+        }
+      }
 
       if (time_zone_offset.isValid()) {
         // Time zone offset was detected.
