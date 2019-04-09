@@ -72,20 +72,21 @@ void GmailNetworkFactory::setUsername(const QString& username) {
   m_username = username;
 }
 
-Downloader* GmailNetworkFactory::downloadAttachment(const QString& attachment_id) {
+Downloader* GmailNetworkFactory::downloadAttachment(const QString& msg_id, const QString& attachment_id) {
   Downloader* downloader = new Downloader();
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
     return nullptr;
   }
+  else {
+    QString target_url = QString(GMAIL_API_GET_ATTACHMENT).arg(msg_id, attachment_id);
 
-  QString target_url = QString(GMAIL_API_GET_ATTACHMENT) + attachment_id;
+    downloader->appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
+    downloader->downloadFile(target_url);
 
-  downloader->appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
-  downloader->downloadFile(target_url);
-
-  return downloader;
+    return downloader;
+  }
 }
 
 QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Status& error) {
@@ -356,7 +357,9 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     }
     else if (!filename.isEmpty()) {
       // We have attachment.
-      msg.m_enclosures.append(Enclosure(filename + QL1S(GMAIL_ATTACHMENT_SEP) + body["attachmentId"].toString(),
+      msg.m_enclosures.append(Enclosure(filename +
+                                        QL1S(GMAIL_ATTACHMENT_SEP) + msg.m_customId +
+                                        QL1S(GMAIL_ATTACHMENT_SEP) + body["attachmentId"].toString(),
                                         filename + QString(" (%1 KB)").arg(QString::number(body["size"].toInt() / 1000.0))));
     }
   }

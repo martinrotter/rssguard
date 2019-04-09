@@ -39,7 +39,7 @@ class GmailNetworkFactory : public QObject {
     // Returned items do not have primary IDs assigned.
     //RootItem* feedsCategories();
 
-    Downloader* downloadAttachment(const QString& attachment_id);
+    Downloader* downloadAttachment(const QString& msg_id, const QString& attachment_id);
 
     QList<Message> messages(const QString& stream_id, Feed::Status& error);
     void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async = true);

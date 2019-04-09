@@ -8,7 +8,7 @@
 #define GMAIL_OAUTH_SCOPE         "https://mail.google.com/"
 
 #define GMAIL_API_BATCH_UPD_LABELS  "https://www.googleapis.com/gmail/v1/users/me/messages/batchModify"
-#define GMAIL_API_GET_ATTACHMENT    "https://www.googleapis.com/gmail/v1/users/me/messages/%20/attachments/"
+#define GMAIL_API_GET_ATTACHMENT    "https://www.googleapis.com/gmail/v1/users/me/messages/%1/attachments/%2"
 #define GMAIL_API_LABELS_LIST       "https://www.googleapis.com/gmail/v1/users/me/labels"
 #define GMAIL_API_MSGS_LIST         "https://www.googleapis.com/gmail/v1/users/me/messages"
 #define GMAIL_API_BATCH             "https://www.googleapis.com/batch"

@@ -8,8 +8,6 @@
 
 MessageTextBrowser::MessageTextBrowser(QWidget* parent) : QTextBrowser(parent) {}
 
-MessageTextBrowser::~MessageTextBrowser() {}
-
 QVariant MessageTextBrowser::loadResource(int type, const QUrl& name) {
   Q_UNUSED(name)
 

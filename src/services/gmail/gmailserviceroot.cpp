@@ -118,14 +118,16 @@ bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   QString file = QFileDialog::getSaveFileName(qApp->mainFormWidget(), tr("Select attachment destination file"),
                                               qApp->homeFolder() + QDir::separator() + parts.at(0));
 
-  if (!file.isEmpty()) {
-    Downloader* down = network()->downloadAttachment(parts.at(1));
+  if (!file.isEmpty() && parts.size() == 3) {
+    Downloader* down = network()->downloadAttachment(parts.at(1), parts.at(2));
     FormDownloadAttachment form(file, down, qApp->mainFormWidget());
 
     form.exec();
+    return true;
   }
-
-  return true;
+  else {
+    return false;
+  }
 }
 
 QList<QAction*> GmailServiceRoot::serviceMenu() {

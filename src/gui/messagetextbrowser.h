@@ -9,8 +9,8 @@ class MessageTextBrowser : public QTextBrowser {
   Q_OBJECT
 
   public:
-    explicit MessageTextBrowser(QWidget* parent = 0);
-    virtual ~MessageTextBrowser();
+    explicit MessageTextBrowser(QWidget* parent = nullptr);
+    virtual ~MessageTextBrowser() = default;
 
     QVariant loadResource(int type, const QUrl& name);
 
