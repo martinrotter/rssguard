@@ -8,7 +8,6 @@
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasecleaner.h"
 #include "miscellaneous/mutex.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
@@ -24,8 +23,7 @@
 
 FeedReader::FeedReader(QObject* parent)
   : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()),
-  m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr),
-  m_dbCleanerThread(nullptr), m_dbCleaner(nullptr) {
+  m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr) {
   m_feedsModel = new FeedsModel(this);
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
   m_messagesModel = new MessagesModel(this);
@@ -133,23 +131,6 @@ bool FeedReader::isFeedUpdateRunning() const {
   return m_feedDownloader != nullptr && m_feedDownloader->isUpdateRunning();
 }
 
-DatabaseCleaner* FeedReader::databaseCleaner() {
-  if (m_dbCleaner == nullptr) {
-    m_dbCleaner = new DatabaseCleaner();
-    m_dbCleanerThread = new QThread();
-
-    // Downloader setup.
-    qRegisterMetaType<CleanerOrders>("CleanerOrders");
-    m_dbCleaner->moveToThread(m_dbCleanerThread);
-    connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
-
-    // Connections are made, start the feed downloader thread.
-    m_dbCleanerThread->start();
-  }
-
-  return m_dbCleaner;
-}
-
 FeedDownloader* FeedReader::feedDownloader() const {
   return m_feedDownloader;
 }
@@ -236,25 +217,10 @@ void FeedReader::quit() {
     }
   }
 
-  if (m_dbCleanerThread != nullptr && m_dbCleanerThread->isRunning()) {
-    qDebug("Quitting database cleaner thread.");
-    m_dbCleanerThread->quit();
-
-    if (!m_dbCleanerThread->wait(CLOSE_LOCK_TIMEOUT)) {
-      qCritical("Database cleaner thread is running despite it was told to quit. Terminating it.");
-      m_dbCleanerThread->terminate();
-    }
-  }
-
   // Close workers.
   if (m_feedDownloader != nullptr) {
     qDebug("Feed downloader exists. Deleting it from memory.");
     m_feedDownloader->deleteLater();
-  }
-
-  if (m_dbCleaner != nullptr) {
-    qDebug("Database cleaner exists. Deleting it from memory.");
-    m_dbCleaner->deleteLater();
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {

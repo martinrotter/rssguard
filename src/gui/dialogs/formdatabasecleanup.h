@@ -13,12 +13,8 @@ class FormDatabaseCleanup : public QDialog {
   Q_OBJECT
 
   public:
-
-    // Constructors.
-    explicit FormDatabaseCleanup(QWidget* parent = 0);
-    virtual ~FormDatabaseCleanup();
-
-    void setCleaner(DatabaseCleaner* cleaner);
+    explicit FormDatabaseCleanup(QWidget* parent = nullptr);
+    virtual ~FormDatabaseCleanup() = default;
 
   protected:
     void closeEvent(QCloseEvent* event);
@@ -39,7 +35,7 @@ class FormDatabaseCleanup : public QDialog {
 
   private:
     QScopedPointer<Ui::FormDatabaseCleanup> m_ui;
-    DatabaseCleaner* m_cleaner;
+    DatabaseCleaner m_cleaner;
 };
 
 #endif // FORMDATABASECLEANUP_H

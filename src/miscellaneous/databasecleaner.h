@@ -22,7 +22,7 @@ class DatabaseCleaner : public QObject {
   public:
 
     // Constructors.
-    explicit DatabaseCleaner(QObject* parent = 0);
+    explicit DatabaseCleaner(QObject* parent = nullptr);
     virtual ~DatabaseCleaner();
 
   signals:

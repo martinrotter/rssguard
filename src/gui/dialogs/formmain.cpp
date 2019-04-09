@@ -99,7 +99,6 @@ void FormMain::showDbCleanupAssistant() {
   if (qApp->feedUpdateLock()->tryLock()) {
     FormDatabaseCleanup form(this);
 
-    form.setCleaner(qApp->feedReader()->databaseCleaner());
     form.exec();
 
     // Reload needed stuff.

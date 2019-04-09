@@ -16,28 +16,18 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent) : QDialog(parent), m_u
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
+
   connect(m_ui->m_spinDays, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &FormDatabaseCleanup::updateDaysSuffix);
+  connect(m_ui->m_btnBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormDatabaseCleanup::startPurging);
+  connect(this, &FormDatabaseCleanup::purgeRequested, &m_cleaner, &DatabaseCleaner::purgeDatabaseData);
+  connect(&m_cleaner, &DatabaseCleaner::purgeStarted, this, &FormDatabaseCleanup::onPurgeStarted);
+  connect(&m_cleaner, &DatabaseCleaner::purgeProgress, this, &FormDatabaseCleanup::onPurgeProgress);
+  connect(&m_cleaner, &DatabaseCleaner::purgeFinished, this, &FormDatabaseCleanup::onPurgeFinished);
+
   m_ui->m_spinDays->setValue(DEFAULT_DAYS_TO_DELETE_MSG);
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Information, tr("I am ready."), tr("I am ready."));
+
   loadDatabaseInfo();
-}
-
-FormDatabaseCleanup::~FormDatabaseCleanup() {
-  qDebug("Destroying FormDatabaseCleanup instance.");
-}
-
-void FormDatabaseCleanup::setCleaner(DatabaseCleaner* cleaner) {
-  if (m_cleaner != nullptr) {
-    disconnect(this, 0, m_cleaner, 0);
-    disconnect(m_cleaner, 0, this, 0);
-  }
-
-  m_cleaner = cleaner;
-  connect(m_ui->m_btnBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormDatabaseCleanup::startPurging);
-  connect(this, &FormDatabaseCleanup::purgeRequested, m_cleaner, &DatabaseCleaner::purgeDatabaseData);
-  connect(m_cleaner, &DatabaseCleaner::purgeStarted, this, &FormDatabaseCleanup::onPurgeStarted);
-  connect(m_cleaner, &DatabaseCleaner::purgeProgress, this, &FormDatabaseCleanup::onPurgeProgress);
-  connect(m_cleaner, &DatabaseCleaner::purgeFinished, this, &FormDatabaseCleanup::onPurgeFinished);
 }
 
 void FormDatabaseCleanup::closeEvent(QCloseEvent* event) {
