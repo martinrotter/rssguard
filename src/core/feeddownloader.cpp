@@ -15,9 +15,8 @@
 #include <QThreadPool>
 
 FeedDownloader::FeedDownloader(QObject* parent)
-  : QObject(parent), m_feeds(QList<Feed*>()), m_mutex(new QMutex()), m_threadPool(new QThreadPool(this)),
-  m_results(FeedDownloadResults()), m_feedsUpdated(0),
-  m_feedsUpdating(0), m_feedsOriginalCount(0) {
+  : QObject(parent), m_mutex(new QMutex()), m_threadPool(new QThreadPool(this)),
+  m_feedsUpdated(0), m_feedsUpdating(0), m_feedsOriginalCount(0) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
   m_threadPool->setMaxThreadCount(2);
 }
@@ -35,7 +34,7 @@ bool FeedDownloader::isUpdateRunning() const {
 
 void FeedDownloader::updateAvailableFeeds() {
   foreach (const Feed* feed, m_feeds) {
-    CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
+    auto* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
     if (cache != nullptr) {
       qDebug("Saving cache for feed with DB ID %d and title '%s'.", feed->id(), qPrintable(feed->title()));
@@ -130,8 +129,6 @@ void FeedDownloader::finalizeUpdate() {
   emit updateFinished(m_results);
 }
 
-FeedDownloadResults::FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString, int>>()) {}
-
 QString FeedDownloadResults::overview(int how_many_feeds) const {
   QStringList result;
 
@@ -142,7 +139,7 @@ QString FeedDownloadResults::overview(int how_many_feeds) const {
   QString res_str = result.join(QSL("\n"));
 
   if (m_updatedFeeds.size() > how_many_feeds) {
-    res_str += QObject::tr("\n\n+ %n other feeds.", 0, m_updatedFeeds.size() - how_many_feeds);
+    res_str += QObject::tr("\n\n+ %n other feeds.", nullptr, m_updatedFeeds.size() - how_many_feeds);
   }
 
   return res_str;

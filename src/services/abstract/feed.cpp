@@ -185,10 +185,10 @@ void Feed::run() {
     msgs[i].m_title = QUrl::fromPercentEncoding(msgs[i].m_title.toUtf8())
 
                       // Replace all continuous white space.
-                      .replace(QRegExp(QSL("[\\s]{2,}")), QSL(" "))
+                      .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
 
                       // Remove all newlines and leading white space.
-                      .remove(QRegExp(QSL("([\\n\\r])|(^\\s)")));
+                      .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
   }
 
   emit messagesObtained(msgs, error_during_obtaining);

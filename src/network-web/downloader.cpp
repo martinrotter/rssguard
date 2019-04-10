@@ -70,7 +70,7 @@ void Downloader::manipulateData(const QString& url,
 
   if (non_const_url.startsWith(URI_SCHEME_FEED)) {
     qDebug("Replacing URI schemes for '%s'.", qPrintable(non_const_url));
-    request.setUrl(non_const_url.replace(QRegExp(QString('^') + URI_SCHEME_FEED), QString(URI_SCHEME_HTTP)));
+    request.setUrl(non_const_url.replace(QRegularExpression(QString('^') + URI_SCHEME_FEED), QString(URI_SCHEME_HTTP)));
   }
   else {
     request.setUrl(non_const_url);

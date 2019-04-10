@@ -55,8 +55,8 @@ void IconFactory::setupSearchPaths() {
   QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
          qPrintable(QIcon::themeSearchPaths()
-                    .replaceInStrings(QRegExp(QSL("^|$")), QSL("\'"))
-                    .replaceInStrings(QRegExp(QSL("/")), QDir::separator()).join(QSL(", "))));
+                    .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
+                    .replaceInStrings(QRegularExpression(QSL("/")), QDir::separator()).join(QSL(", "))));
 }
 
 void IconFactory::setCurrentIconTheme(const QString& theme_name) {
@@ -75,8 +75,8 @@ void IconFactory::loadCurrentIconTheme() {
   // Display list of installed themes.
   qDebug("Installed icon themes are: %s.",
          qPrintable(QStringList(installed_themes)
-                    .replaceInStrings(QRegExp(QSL("^|$")), QSL("\'"))
-                    .replaceInStrings(QRegExp(QSL("^\\'$")), QSL("\'\'")).join(QSL(", "))));
+                    .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
+                    .replaceInStrings(QRegularExpression(QSL("^\\'$")), QSL("\'\'")).join(QSL(", "))));
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.

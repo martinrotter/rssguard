@@ -78,7 +78,7 @@ QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& ind
 QModelIndexList MessagesProxyModel::match(const QModelIndex& start, int role,
                                           const QVariant& entered_value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
-  const uint match_type = flags & 0x0F;
+  const int match_type = flags & 0x0F;
   const Qt::CaseSensitivity case_sensitivity = Qt::CaseInsensitive;
   const bool wrap = flags & Qt::MatchWrap;
   const bool all_hits = (hits == -1);
@@ -113,14 +113,18 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start, int role,
 
         switch (match_type) {
           case Qt::MatchRegExp:
-            if (QRegExp(entered_text, case_sensitivity).exactMatch(item_text)) {
+            if (QRegularExpression(entered_text,
+                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                   QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
               result.append(idx);
             }
 
             break;
 
           case Qt::MatchWildcard:
-            if (QRegExp(entered_text, case_sensitivity, QRegExp::Wildcard).exactMatch(item_text)) {
+            if (QRegularExpression(QRegularExpression::wildcardToRegularExpression(entered_text),
+                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                   QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
               result.append(idx);
             }
 

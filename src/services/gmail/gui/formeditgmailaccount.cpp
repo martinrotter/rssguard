@@ -135,7 +135,7 @@ void FormEditGmailAccount::onAuthError(const QString& error, const QString& deta
 
 void FormEditGmailAccount::onAuthGranted() {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                  tr("Tested successfully.You may be prompted to login once more."),
+                                  tr("Tested successfully. You may be prompted to login once more."),
                                   tr("Your access was approved."));
 }
 

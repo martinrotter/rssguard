@@ -6,7 +6,7 @@
 
 #include <QVariant>
 
-Enclosure::Enclosure(const QString& url, const QString& mime) : m_url(url), m_mimeType(mime) {}
+Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeType(std::move(mime)) {}
 
 QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
   QList<Enclosure> enclosures;

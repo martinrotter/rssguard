@@ -107,7 +107,7 @@ void FormFeedDetails::onDescriptionChanged(const QString& new_description) {
 }
 
 void FormFeedDetails::onUrlChanged(const QString& new_url) {
-  if (QRegExp(URL_REGEXP).exactMatch(new_url)) {
+  if (QRegularExpression(URL_REGEXP).match(new_url).hasMatch()) {
     // New url is well-formed.
     m_ui->m_txtUrl->setStatus(LineEditWithStatus::Ok, tr("The URL is ok."));
   }

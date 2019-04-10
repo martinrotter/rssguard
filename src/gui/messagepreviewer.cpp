@@ -241,15 +241,16 @@ QString MessagePreviewer::prepareHtmlForMessage(const Message& message) {
     html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc_url, enc.m_mimeType);
   }
 
-  int offset = 0;
-  QRegExp imgTagRegex("\\<img[^\\>]*src\\s*=\\s*\"([^\"]*)\"[^\\>]*\\>", Qt::CaseInsensitive);
+  QRegularExpression imgTagRegex("\\<img[^\\>]*src\\s*=\\s*\"([^\"]*)\"[^\\>]*\\>",
+                                 QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                 QRegularExpression::PatternOption::InvertedGreedinessOption);
+  QRegularExpressionMatchIterator i = imgTagRegex.globalMatch(message.m_contents);
 
-  imgTagRegex.setMinimal(true);
+  while (i.hasNext()) {
+    QRegularExpressionMatch match = i.next();
 
-  while ((offset = imgTagRegex.indexIn(message.m_contents, offset)) != -1) {
-    m_pictures.append(imgTagRegex.cap(1));
-    offset += imgTagRegex.matchedLength();
-    html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(imgTagRegex.cap(1), tr("image"));
+    m_pictures.append(match.captured(1));
+    html += QString("[%1] <a href=\"%2\">%2</a><br/>").arg(tr("image"), match.captured(1));
   }
 
   html += "<br/>";

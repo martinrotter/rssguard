@@ -21,13 +21,14 @@ double TimeSpinBox::valueFromText(const QString& text) const {
     return value;
   }
   else {
-    QRegExp rx("\\b[0-9]{1,}\\b");
+    QRegularExpression rx("\\b[0-9]{1,}\\b");
     QStringList numbers;
     int pos = 0;
     int count = 0;
+    QRegularExpressionMatchIterator i = rx.globalMatch(text);
 
-    while ((pos = rx.indexIn(text, pos)) != -1) {
-      numbers.append(rx.cap(0));
+    while (i.hasNext()) {
+      numbers.append(i.next().captured());
 
       if (pos >= 0) {
         ++pos;
@@ -45,7 +46,7 @@ double TimeSpinBox::valueFromText(const QString& text) const {
 }
 
 QString TimeSpinBox::textFromValue(double val) const {
-  int minutes_total = (int)val;
+  int minutes_total = int(val);
   int minutes_val = minutes_total % 60;
   int hours_val = (minutes_total - minutes_val) / 60;
   QString hours = tr("%n hour(s)", "", hours_val);

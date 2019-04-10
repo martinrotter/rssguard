@@ -7,7 +7,6 @@
 
 #include <QDesktopServices>
 #include <QProcess>
-#include <QRegExp>
 #include <QUrl>
 
 #if defined (USE_WEBENGINE)
@@ -67,7 +66,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
 }
 
 QString WebFactory::stripTags(QString text) {
-  return text.remove(QRegExp(QSL("<[^>]*>")));
+  return text.remove(QRegularExpression(QSL("<[^>]*>")));
 }
 
 QString WebFactory::escapeHtml(const QString& html) {

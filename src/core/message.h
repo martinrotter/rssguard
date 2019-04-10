@@ -13,7 +13,7 @@
 // Represents single enclosure.
 struct Enclosure {
   public:
-    explicit Enclosure(const QString& url = QString(), const QString& mime = QString());
+    explicit Enclosure(QString url = QString(), QString mime = QString());
 
     QString m_url;
     QString m_mimeType;
@@ -51,7 +51,7 @@ class Message {
 
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false
-    bool m_createdFromFeed;
+    bool m_createdFromFeed = false;
 
     friend inline bool operator==(const Message& lhs, const Message& rhs) {
       return lhs.m_accountId == rhs.m_accountId && lhs.m_id == rhs.m_id;

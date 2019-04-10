@@ -41,6 +41,7 @@
 #include "qtlocalpeer.h"
 #include <QCoreApplication>
 #include <QDataStream>
+#include <QRegularExpression>
 #include <QTime>
 
 #if defined(Q_OS_WIN)
@@ -81,7 +82,7 @@ QtLocalPeer::QtLocalPeer(QObject* parent, const QString& appId)
     prefix = id.section(QLatin1Char('/'), -1);
   }
 
-  prefix.remove(QRegExp("[^a-zA-Z]"));
+  prefix.remove(QRegularExpression("[^a-zA-Z]"));
   prefix.truncate(6);
   QByteArray idc = id.toUtf8();
   quint16 idNum = qChecksum(idc.constData(), idc.size());

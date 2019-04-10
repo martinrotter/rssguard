@@ -68,7 +68,8 @@ void FormSettings::applySettings() {
   }
 
   if (!panels_for_restart.isEmpty()) {
-    const QStringList changed_settings_description = panels_for_restart.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
+    const QStringList changed_settings_description = panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")),
+                                                                                         QString::fromUtf8(" • "));
     const QMessageBox::StandardButton clicked_button = MessageBox::show(this,
                                                                         QMessageBox::Question,
                                                                         tr("Critical settings were changed"),
@@ -101,7 +102,8 @@ void FormSettings::cancelSettings() {
     reject();
   }
   else {
-    const QStringList changed_settings_description = changed_panels.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
+    const QStringList changed_settings_description = changed_panels.replaceInStrings(QRegularExpression(QSL("^")),
+                                                                                     QString::fromUtf8(" • "));
 
     if (MessageBox::show(this,
                          QMessageBox::Critical,

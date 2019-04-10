@@ -56,7 +56,7 @@ FeedsModel::~FeedsModel() {
 }
 
 QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
-  QMimeData* mime_data = new QMimeData();
+  auto* mime_data = new QMimeData();
   QByteArray encoded_data;
   QDataStream stream(&encoded_data, QIODevice::WriteOnly);
 
@@ -68,7 +68,7 @@ QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
     RootItem* item_for_index = itemForIndex(index);
 
     if (item_for_index->kind() != RootItemKind::Root) {
-      stream << (quintptr) item_for_index;
+      stream << quintptr(item_for_index);
     }
   }
 
@@ -81,6 +81,7 @@ QStringList FeedsModel::mimeTypes() const {
   return QStringList() << QSL(MIME_TYPE_ITEM_POINTER);
 }
 
+typedef RootItem* RootItemPtr;
 bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column,
                               const QModelIndex& parent) {
   Q_UNUSED(row)
@@ -105,7 +106,7 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
       quintptr pointer_to_item; stream >> pointer_to_item;
 
       // We have item we want to drag, we also determine the target item.
-      RootItem* dragged_item = (RootItem*) pointer_to_item;
+      auto* dragged_item = RootItemPtr(pointer_to_item);
       RootItem* target_item = itemForIndex(parent);
       ServiceRoot* dragged_item_root = dragged_item->getParentServiceRoot();
       ServiceRoot* target_item_root = target_item->getParentServiceRoot();
@@ -190,7 +191,7 @@ QModelIndex FeedsModel::index(int row, int column, const QModelIndex& parent) co
   RootItem* parent_item = itemForIndex(parent);
   RootItem* child_item = parent_item->child(row);
 
-  if (child_item) {
+  if (child_item != nullptr) {
     return createIndex(row, column, child_item);
   }
   else {

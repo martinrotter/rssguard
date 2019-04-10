@@ -10,8 +10,7 @@
 #include <QTimer>
 
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr),
-  m_showUnreadOnly(false), m_hiddenIndices(QList<QPair<int, QModelIndex>>()) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr), m_showUnreadOnly(false) {
   setObjectName(QSL("FeedsProxyModel"));
   setSortRole(Qt::EditRole);
   setSortCaseSensitivity(Qt::CaseInsensitive);
@@ -28,10 +27,10 @@ FeedsProxyModel::~FeedsProxyModel() {
 
 QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
-  const uint match_type = flags & 0x0F;
+  const int match_type = flags & 0x0F;
   const Qt::CaseSensitivity cs = Qt::CaseInsensitive;
-  const bool recurse = flags & Qt::MatchRecursive;
-  const bool wrap = flags & Qt::MatchWrap;
+  const bool recurse = (flags& Qt::MatchRecursive) > 0;
+  const bool wrap = (flags& Qt::MatchWrap) > 0;
   const bool all_hits = (hits == -1);
   QString entered_text;
   const QModelIndex p = parent(start);
@@ -66,14 +65,18 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
 
         switch (match_type) {
           case Qt::MatchRegExp:
-            if (QRegExp(entered_text, cs).exactMatch(item_text)) {
+            if (QRegularExpression(entered_text,
+                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                   QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
               result.append(idx);
             }
 
             break;
 
           case Qt::MatchWildcard:
-            if (QRegExp(entered_text, cs, QRegExp::Wildcard).exactMatch(item_text)) {
+            if (QRegularExpression(QRegularExpression::wildcardToRegularExpression(entered_text),
+                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                   QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
               result.append(idx);
             }
 
@@ -112,8 +115,8 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
 
       if (recurse && hasChildren(idx)) {
         result +=
-          match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text), (all_hits ? -1 : hits - result.count()),
-                flags);
+          match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text),
+                (all_hits ? -1 : hits - result.count()), flags);
       }
     }
 
