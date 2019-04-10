@@ -1102,10 +1102,6 @@ o debido a que esta función aún no está implementada.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Sólo descargar X mensajes más nuevos por fuente</translation>
     </message>
@@ -1180,6 +1176,10 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <translation>¡Los ajustes predefinidos NO se deben cambiar de sus valores predeterminados. Cambie esos valores sólo si es un usuario avanzado y sabe qué está haciendo!</translation>
     </message>
 </context>
 <context>
@@ -1836,11 +1836,11 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>No utilizar el icono</translation>
+        <translation type="vanished">No utilizar el icono</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Utilizar icono predeterminado</translation>
+        <translation type="vanished">Utilizar icono predeterminado</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1861,6 +1861,10 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <source>Do not auto-update at all</source>
         <translation>No realizar ninguna actualización automática</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2011,7 +2015,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Donar mediante PayPal</translation>
+        <translation type="vanished">&amp;Donar mediante PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -2266,6 +2270,10 @@ o debido a que esta función aún no está implementada.</translation>
         <source>&amp;Enable message preview</source>
         <translation>&amp;Habilitar la previsualización del mensaje</translation>
     </message>
+    <message>
+        <source>&amp;Donate...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2502,11 +2510,15 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>No utilizar el icono</translation>
+        <translation type="vanished">No utilizar el icono</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Utilizar icono predeterminado</translation>
+        <translation type="vanished">Utilizar icono predeterminado</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2649,6 +2661,14 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
         <translation>¿Quiere recuperar los metadatos de la fuente en línea?</translation>
+    </message>
+    <message>
+        <source>&amp;Export to file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Import from file</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3435,7 +3455,7 @@ versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Bienvenido a %1.</translation>
+        <translation type="vanished">Bienvenido a %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -4289,7 +4309,8 @@ Codificación: %4
 Estado de la actualización automática: %5</translation>
     </message>
     <message>
-        <source>Network status: %1
+        <source>
+Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>

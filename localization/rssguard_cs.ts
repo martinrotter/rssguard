@@ -1105,10 +1105,6 @@ or this functionality is not implemented yet.</source>
         <translation>Přesměrovací URL</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Stahovat pouze X nejnovějších zpráv z kanálu</translation>
     </message>
@@ -1182,6 +1178,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1839,11 +1839,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Nepoužít ikonu</translation>
+        <translation type="vanished">Nepoužít ikonu</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Použít výchozí ikonu</translation>
+        <translation type="vanished">Použít výchozí ikonu</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1864,6 +1864,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Zakázat auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2014,7 +2018,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Podpořit vývojáře přes PayPal</translation>
+        <translation type="vanished">&amp;Podpořit vývojáře přes PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -2269,6 +2273,10 @@ or this functionality is not implemented yet.</source>
         <source>&amp;Enable message preview</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>&amp;Donate...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2506,11 +2514,15 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Nepoužít ikonu</translation>
+        <translation type="vanished">Nepoužít ikonu</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Použít výchozí ikonu</translation>
+        <translation type="vanished">Použít výchozí ikonu</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2653,6 +2665,14 @@ Musíte restartovat manuálně.</translation>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
         <translation>Chcete načíst metadata online?</translation>
+    </message>
+    <message>
+        <source>&amp;Export to file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Import from file</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3443,7 +3463,7 @@ na tuto bublinu.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Vítá Vás %1.</translation>
+        <translation type="vanished">Vítá Vás %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -4297,12 +4317,11 @@ Kódování: %4
 Automatický update: %5</translation>
     </message>
     <message>
-        <source>Network status: %1
+        <source>
+Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation>Síťový status: %1
-Kódování: %2
-Typ: %3</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

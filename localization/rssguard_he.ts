@@ -1098,10 +1098,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation type="unfinished"/>
     </message>
@@ -1175,6 +1171,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1858,6 +1858,10 @@ or this functionality is not implemented yet.</source>
         <source>Do not auto-update at all</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -2007,7 +2011,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;תרמו דרך PayPal</translation>
+        <translation type="vanished">&amp;תרמו דרך PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -2262,6 +2266,10 @@ or this functionality is not implemented yet.</source>
         <source>&amp;Enable message preview</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>&amp;Donate...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2502,6 +2510,10 @@ You have to restart manually.</source>
         <source>Use default icon</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
@@ -2642,6 +2654,14 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Export to file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Import from file</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4247,7 +4267,8 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Network status: %1
+        <source>
+Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>

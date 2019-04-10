@@ -1101,10 +1101,6 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation type="unfinished"/>
     </message>
@@ -1178,6 +1174,10 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1835,11 +1835,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Tidak menggunakan ikon</translation>
+        <translation type="vanished">Tidak menggunakan ikon</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Menggunakan ikon bawaan</translation>
+        <translation type="vanished">Menggunakan ikon bawaan</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1860,6 +1860,10 @@ atau fungsi ini belum diimplementasikan.</translation>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Tanpa pembaruan otomatis sama sekali</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2010,7 +2014,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Donasi via PayPal</translation>
+        <translation type="vanished">&amp;Donasi via PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -2265,6 +2269,10 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>&amp;Enable message preview</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>&amp;Donate...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2502,11 +2510,15 @@ Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Tidak menggunakan ikon</translation>
+        <translation type="vanished">Tidak menggunakan ikon</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Menggunakan ikon bawaan</translation>
+        <translation type="vanished">Menggunakan ikon bawaan</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2649,6 +2661,14 @@ Anda harus me-restart secara manual.</translation>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
         <translation>Apakah anda ingin mengambil metadata feed secara online?</translation>
+    </message>
+    <message>
+        <source>&amp;Export to file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Import from file</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3430,7 +3450,7 @@ di versi ini dengan meng-klik popup notifikasi ini.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Selamat datang di %1.</translation>
+        <translation type="vanished">Selamat datang di %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -4281,7 +4301,8 @@ Encoding: %4
 Status pembaruan otomatis: %5</translation>
     </message>
     <message>
-        <source>Network status: %1
+        <source>
+Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>

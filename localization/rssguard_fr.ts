@@ -1102,10 +1102,6 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation type="unfinished"/>
     </message>
@@ -1179,6 +1175,10 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1836,11 +1836,11 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Ne pas utiliser les icônes</translation>
+        <translation type="vanished">Ne pas utiliser les icônes</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Utiliser les icônes par défaut</translation>
+        <translation type="vanished">Utiliser les icônes par défaut</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1861,6 +1861,10 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Ne pas mettre tout à jour automatiquement</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2011,7 +2015,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Faire un don par PayPal</translation>
+        <translation type="vanished">&amp;Faire un don par PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -2266,6 +2270,10 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <source>&amp;Enable message preview</source>
         <translation>&amp;Activer la prévisualisation des messages</translation>
     </message>
+    <message>
+        <source>&amp;Donate...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2500,11 +2508,15 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Ne pas utiliser les icônes</translation>
+        <translation type="vanished">Ne pas utiliser les icônes</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Utiliser les icônes par défaut</translation>
+        <translation type="vanished">Utiliser les icônes par défaut</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2646,6 +2658,14 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Export to file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Import from file</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4264,7 +4284,8 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Network status: %1
+        <source>
+Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>

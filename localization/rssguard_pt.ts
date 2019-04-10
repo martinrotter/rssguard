@@ -1103,10 +1103,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>URL de Redirecionamento</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
-        <translation>Configurações predefinidas NÃO precisam ser alteradas dos seus valores padrão. Mude estes valores apenas de você for um usuário avançado e sabe o que está fazendo!</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Somente baixar as X mensagens mais novas por feed</translation>
     </message>
@@ -1181,6 +1177,10 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
         <translation>Você deve usar &quot;%1&quot; como URL de redirecionamento base. Você pode usar a porta personalizada para garantir que nenhum serviço local a ocupe. Certifique-se de que esta URL de redirecionamento coincida com a URL de redirecionamento do &quot;aplicativo&quot; usado.</translation>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <translation>Configurações predefinidas NÃO precisam ser alteradas dos seus valores padrão. Mude estes valores apenas de você for um usuário avançado e sabe o que está fazendo!</translation>
     </message>
 </context>
 <context>
@@ -1837,11 +1837,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Não usar ícone</translation>
+        <translation type="vanished">Não usar ícone</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Usar ícone padrão</translation>
+        <translation type="vanished">Usar ícone padrão</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1862,6 +1862,10 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Não atualizar automaticamnete</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2012,7 +2016,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Doar pelo PayPal</translation>
+        <translation type="vanished">&amp;Doar pelo PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -2267,6 +2271,10 @@ ou esta função ainda não foi implementada.</translation>
         <source>&amp;Enable message preview</source>
         <translation>&amp;Habilitar pré-visualização da mensagem</translation>
     </message>
+    <message>
+        <source>&amp;Donate...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2504,11 +2512,15 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Não usar ícone</translation>
+        <translation type="vanished">Não usar ícone</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Usar ícone padrão</translation>
+        <translation type="vanished">Usar ícone padrão</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2651,6 +2663,14 @@ Você precisa reiniciar manualmente.</translation>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
         <translation>Você deseja buscar metadados dos feeds on-line?</translation>
+    </message>
+    <message>
+        <source>&amp;Export to file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Import from file</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3439,7 +3459,7 @@ versão, clicando nesta notificação popup.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Bem-vindo ao %1.</translation>
+        <translation type="vanished">Bem-vindo ao %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -4293,10 +4313,12 @@ Codificação: %4
 Status da atualização automática: %5</translation>
     </message>
     <message>
-        <source>Network status: %1
+        <source>
+Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation>Status da rede: %1
+        <translation>
+Status da rede: %1
 Codificação: %2
 Tipo: %3</translation>
     </message>

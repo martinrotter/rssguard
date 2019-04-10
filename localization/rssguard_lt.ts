@@ -1105,10 +1105,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Peradresavimo URL</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
-        <translation>Iš anksto apibrėžtų nustatymų NEREIKIA keisti iš numatytųjų reikšmių. Keiskite šias reikšmes tik tuo atveju, jeigu esate patyręs naudotojas ir žinote ką darote!</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Atsisiųsti kiekvienam kanalui tik X naujausių žinučių</translation>
     </message>
@@ -1183,6 +1179,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
         <translation>Privalote naudoti &quot;%1&quot; kaip bazinį nukreipimo URL. Norėdami užtikrinti, kad jokia vietinė tarnyba neužima prievado, galite naudoti pasirinktinį prievadą. Užtikrinkite, kad šis nukreipimo URL atitiktų naudojamos &quot;programos&quot; nukreipimo URL.</translation>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <translation>Iš anksto apibrėžtų nustatymų NEREIKIA keisti iš numatytųjų reikšmių. Keiskite šias reikšmes tik tuo atveju, jeigu esate patyręs naudotojas ir žinote ką darote!</translation>
     </message>
 </context>
 <context>
@@ -1839,11 +1839,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Nenaudoti piktogramos</translation>
+        <translation type="vanished">Nenaudoti piktogramos</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Naudoti numatytąją piktogramą</translation>
+        <translation type="vanished">Naudoti numatytąją piktogramą</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1864,6 +1864,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Neatnaujinti automatiškai</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2014,7 +2018,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Paaukoti per PayPal</translation>
+        <translation type="vanished">&amp;Paaukoti per PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -2269,6 +2273,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>&amp;Enable message preview</source>
         <translation>Į&amp;jungti žinučių peržiūrą</translation>
     </message>
+    <message>
+        <source>&amp;Donate...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2506,11 +2514,15 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Nenaudoti piktogramos</translation>
+        <translation type="vanished">Nenaudoti piktogramos</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Naudoti numatytąją piktogramą</translation>
+        <translation type="vanished">Naudoti numatytąją piktogramą</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2653,6 +2665,14 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
         <translation>Ar norite gauti kanalų metaduomenis internete?</translation>
+    </message>
+    <message>
+        <source>&amp;Export to file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Import from file</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3445,7 +3465,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Sveiki atvykę į %1.</translation>
+        <translation type="vanished">Sveiki atvykę į %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -4299,10 +4319,12 @@ Koduotė: %4
 Automatinio atnaujinimo būsena: %5</translation>
     </message>
     <message>
-        <source>Network status: %1
+        <source>
+Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation>Tinklo būsena: %1
+        <translation>
+Tinklo būsena: %1
 Koduotė: %2
 Tipas: %3</translation>
     </message>

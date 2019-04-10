@@ -1103,10 +1103,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>URL doorsturen</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only if you are an advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Download alleen de nieuwste X berichten  van een feed</translation>
     </message>
@@ -1180,6 +1176,10 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1837,11 +1837,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
+        <translation type="vanished">Gebruik geen pictogram</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
+        <translation type="vanished">Gebruik standaard pictogram</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1862,6 +1862,10 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Niet automatisch bijwerken </translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2012,7 +2016,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation>&amp;Doneer met PayPal</translation>
+        <translation type="vanished">&amp;Doneer met PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -2267,6 +2271,10 @@ of deze functie bestaat nog niet.</translation>
         <source>&amp;Enable message preview</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>&amp;Donate...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2504,11 +2512,15 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
+        <translation type="vanished">Gebruik geen pictogram</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
+        <translation type="vanished">Gebruik standaard pictogram</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2651,6 +2663,14 @@ Je moet handmatig herstarten.</translation>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
         <translation>Wilt u de feed metadata online ophalen?</translation>
+    </message>
+    <message>
+        <source>&amp;Export to file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Import from file</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3437,7 +3457,7 @@ door te clicken op deze popup melding.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>Welkom bij %1.</translation>
+        <translation type="vanished">Welkom bij %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -4292,7 +4312,8 @@ Coderen: %4
 Auto-update status: %5 </translation>
     </message>
     <message>
-        <source>Network status: %1
+        <source>
+Network status: %1
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>
