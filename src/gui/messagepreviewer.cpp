@@ -224,7 +224,9 @@ void MessagePreviewer::updateButtons() {
 QString MessagePreviewer::prepareHtmlForMessage(const Message& message) {
   QString html = QString("<h2 align=\"center\">%1</h2>").arg(message.m_title);
 
-  html += QString("[url] <a href=\"%1\">%1</a><br/>").arg(message.m_url);
+  if (!message.m_url.isEmpty()) {
+    html += QString("[url] <a href=\"%1\">%1</a><br/>").arg(message.m_url);
+  }
 
   foreach (const Enclosure& enc, message.m_enclosures) {
     QString enc_url;
