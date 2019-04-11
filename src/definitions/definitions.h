@@ -91,8 +91,8 @@
 
 #define FEED_INITIAL_OPML_PATTERN             "feeds-%1.opml"
 
-#define FEED_REGEX_MATCHER                    "<link[^>]+type=\\\"application/(atom|rss)\\+xml\\\"[^>]*>"
-#define FEED_HREF_REGEX_MATCHER               "href\\=\\\"[^\\\"]+\\\""
+#define FEED_REGEX_MATCHER                    "<link[^>]+type=\"application\\/(?:atom|rss)\\+xml\"[^>]*>"
+#define FEED_HREF_REGEX_MATCHER               "href=\"([^\"]+)\""
 
 #define PLACEHOLDER_UNREAD_COUNTS   "%unread"
 #define PLACEHOLDER_ALL_COUNTS      "%all"

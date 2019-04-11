@@ -155,23 +155,21 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
   result.second = network_result.first;
 
   if (result.second == QNetworkReply::NoError || !feed_contents.isEmpty()) {
+    if (result.first == nullptr) {
+      result.first = new StandardFeed();
+    }
+
     // Feed XML was obtained, now we need to try to guess
     // its encoding before we can read further data.
     QString xml_schema_encoding;
     QString xml_contents_encoded;
-    QRegExp encoding_rexp(QSL("encoding=\"[^\"]\\S+\""));
+    QString enc = QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""),
+                                     QRegularExpression::PatternOption::CaseInsensitiveOption).match(feed_contents).captured(1);
 
-    if (encoding_rexp.indexIn(feed_contents) != -1 &&
-        !(xml_schema_encoding = encoding_rexp.cap(0)).isEmpty()) {
+    if (!enc.isEmpty()) {
       // Some "encoding" attribute was found get the encoding
       // out of it.
-      encoding_rexp.setPattern(QSL("[^\"]\\S+[^\"]"));
-      encoding_rexp.indexIn(xml_schema_encoding, 9);
-      xml_schema_encoding = encoding_rexp.cap(0);
-    }
-
-    if (result.first == nullptr) {
-      result.first = new StandardFeed();
+      xml_schema_encoding = enc;
     }
 
     QTextCodec* custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());

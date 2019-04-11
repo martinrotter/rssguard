@@ -538,12 +538,13 @@ bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Mes
 
   // User deleted some messages he selected in message list.
   selected_item->updateCounts(true);
-  RecycleBin* bin = recycleBin();
 
   if (selected_item->kind() == RootItemKind::Bin) {
-    itemChanged(QList<RootItem*>() << bin);
+    itemChanged(QList<RootItem*>() << selected_item);
   }
   else {
+    RecycleBin* bin = recycleBin();
+
     if (bin != nullptr) {
       bin->updateCounts(true);
       itemChanged(QList<RootItem*>() << selected_item << bin);

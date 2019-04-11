@@ -85,7 +85,7 @@ void MessagesModel::loadMessages(RootItem* item) {
   }
   else {
     if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
-      setFilter(QSL("true != true"));
+      setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
       qWarning("Loading of messages from item '%s' failed.", qPrintable(item->title()));
       qApp->showGuiMessage(tr("Loading of messages from item '%1' failed.").arg(item->title()),
                            tr("Loading of messages failed, maybe messages could not be downloaded."),
@@ -500,7 +500,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
 
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
-    setData(index(message.row(), MSG_DB_READ_INDEX), (int) read);
+    setData(index(message.row(), MSG_DB_READ_INDEX), int(read));
   }
 
   reloadWholeLayout();

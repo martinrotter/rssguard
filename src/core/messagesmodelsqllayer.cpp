@@ -87,8 +87,9 @@ QString MessagesModelSqlLayer::formatFields() const {
 }
 
 QString MessagesModelSqlLayer::selectStatement() const {
-  return QL1S("SELECT ") + formatFields() +
-         QSL(" FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND Messages.account_id = Feeds.account_id WHERE ") +
+  return QL1S("SELECT ") + formatFields() + QL1C(' ') +
+         QL1S("FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND Messages.account_id = Feeds.account_id "
+              "WHERE ") +
          m_filter + orderByClause() + QL1C(';');
 }
 

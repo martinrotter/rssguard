@@ -10,6 +10,7 @@
 #include <QEventLoop>
 #include <QIcon>
 #include <QPixmap>
+#include <QRegularExpression>
 #include <QTextDocument>
 #include <QTimer>
 
@@ -17,25 +18,26 @@ NetworkFactory::NetworkFactory() {}
 
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html) {
   QStringList feeds;
-  const QRegExp rx(FEED_REGEX_MATCHER, Qt::CaseInsensitive);
-  const QRegExp rx_href(FEED_HREF_REGEX_MATCHER, Qt::CaseInsensitive);
+  QRegularExpression rx(FEED_REGEX_MATCHER, QRegularExpression::PatternOption::CaseInsensitiveOption);
+  QRegularExpression rx_href(FEED_HREF_REGEX_MATCHER, QRegularExpression::PatternOption::CaseInsensitiveOption);
 
-  for (int pos = 0; (pos = rx.indexIn(html, pos)) != -1; pos += rx.matchedLength()) {
-    QString link_element = html.mid(pos, rx.matchedLength());
+  rx_href.optimize();
 
-    if (rx_href.indexIn(link_element) != -1) {
-      QString href_attribute = rx_href.capturedTexts().at(0);
-      QString feed_link = href_attribute.mid(6, href_attribute.size() - 7);
+  QRegularExpressionMatchIterator it_rx = rx.globalMatch(html);
 
-      if (feed_link.startsWith(QL1S("//"))) {
-        feed_link = QString(URI_SCHEME_HTTP) + feed_link.mid(2);
-      }
-      else if (feed_link.startsWith(QL1C('/'))) {
-        feed_link = url.toString(QUrl::RemovePath | QUrl::RemoveQuery | QUrl::StripTrailingSlash) + feed_link;
-      }
+  while (it_rx.hasNext()) {
+    QRegularExpressionMatch mat_tx = it_rx.next();
+    QString link_tag = mat_tx.captured();
+    QString feed_link = rx_href.match(link_tag).captured(1);
 
-      feeds.append(feed_link);
+    if (feed_link.startsWith(QL1S("//"))) {
+      feed_link = QString(URI_SCHEME_HTTP) + feed_link.mid(2);
     }
+    else if (feed_link.startsWith(QL1C('/'))) {
+      feed_link = url.toString(QUrl::RemovePath | QUrl::RemoveQuery | QUrl::StripTrailingSlash) + feed_link;
+    }
+
+    feeds.append(feed_link);
   }
 
   return feeds;
