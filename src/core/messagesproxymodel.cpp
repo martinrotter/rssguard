@@ -80,7 +80,7 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start, int role,
   QModelIndexList result;
   const int match_type = flags & 0x0F;
   const Qt::CaseSensitivity case_sensitivity = Qt::CaseInsensitive;
-  const bool wrap = flags & Qt::MatchWrap;
+  const bool wrap = (flags& Qt::MatchWrap) > 0;
   const bool all_hits = (hits == -1);
   QString entered_text;
   int from = start.row();

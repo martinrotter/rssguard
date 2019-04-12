@@ -21,7 +21,7 @@ class DynamicShortcuts {
   private:
 
     // Constructor.
-    explicit DynamicShortcuts();
+    explicit DynamicShortcuts() = default;
 };
 
 #endif // DYNAMICSHORTCUTS_H

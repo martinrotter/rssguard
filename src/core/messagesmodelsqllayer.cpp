@@ -5,10 +5,8 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 
-MessagesModelSqlLayer::MessagesModelSqlLayer()
-  : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)), m_fieldNames(QMap<int, QString>()),
-  m_sortColumns(QList<int>()), m_sortOrders(QList<Qt::SortOrder>()) {
-  m_db = qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings);
+MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)) {
+  m_db = qApp->database()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
   m_fieldNames[MSG_DB_ID_INDEX] = "Messages.id";

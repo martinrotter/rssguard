@@ -40,7 +40,7 @@ bool OwnCloudServiceRoot::editViaGui() {
 }
 
 bool OwnCloudServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteOwnCloudAccount(database, accountId())) {
     return ServiceRoot::deleteViaGui();
@@ -132,7 +132,7 @@ void OwnCloudServiceRoot::updateTitle() {
 }
 
 void OwnCloudServiceRoot::saveAccountDataToDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (accountId() != NO_PARENT_CATEGORY) {
     if (DatabaseQueries::overwriteOwnCloudAccount(database, m_network->authUsername(),
@@ -192,7 +192,7 @@ RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
 }
 
 void OwnCloudServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories(database, accountId());
   Assignment feeds = DatabaseQueries::getOwnCloudFeeds(database, accountId());
 

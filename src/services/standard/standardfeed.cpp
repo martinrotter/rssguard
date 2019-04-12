@@ -298,14 +298,14 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 }
 
 bool StandardFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, customId().toInt(), getParentServiceRoot()->accountId());
 }
 
 bool StandardFeed::addItself(RootItem* parent) {
   // Now, add feed to persistent storage.
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   bool ok;
   int new_id = DatabaseQueries::addFeed(database, parent->id(), parent->getParentServiceRoot()->accountId(), title(),
                                         description(), creationDate(), icon(), encoding(), url(), passwordProtected(),
@@ -324,7 +324,7 @@ bool StandardFeed::addItself(RootItem* parent) {
 }
 
 bool StandardFeed::editItself(StandardFeed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   StandardFeed* original_feed = this;
   RootItem* new_parent = new_feed_data->parent();
 

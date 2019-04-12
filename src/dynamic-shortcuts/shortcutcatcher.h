@@ -45,7 +45,7 @@ class ShortcutCatcher : public QWidget {
   public:
 
     // Constructors and destructors.
-    explicit ShortcutCatcher(QWidget* parent = 0);
+    explicit ShortcutCatcher(QWidget* parent = nullptr);
     virtual ~ShortcutCatcher();
 
     void controlModifierlessTimout();
@@ -75,7 +75,7 @@ class ShortcutCatcher : public QWidget {
     QKeySequence m_defaultSequence;
     bool m_isRecording;
     int m_numKey;
-    uint m_modifierKeys;
+    int m_modifierKeys;
 };
 
 #endif // KEYSEQUENCECATCHER_H

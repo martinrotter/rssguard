@@ -6,8 +6,8 @@
 #include <QDir>
 #include <QMetaObject>
 
-#define AUTOSAVE_IN  1000 * 3  // seconds
-#define MAXWAIT      1000 * 15 // seconds
+#define AUTOSAVE_IN  (1000 * 3)  // seconds
+#define MAXWAIT      (1000 * 15) // seconds
 
 AutoSaver::AutoSaver(QObject* parent) : QObject(parent) {
   Q_ASSERT(parent);
@@ -17,7 +17,7 @@ AutoSaver::~AutoSaver() {
   if (m_timer.isActive()) {
     qWarning("AutoSaver: still active when destroyed, changes not saved.");
 
-    if (parent() && parent()->metaObject()) {
+    if (parent() != nullptr && parent()->metaObject() != nullptr) {
       qWarning("Should call saveIfNeccessary.");
     }
   }

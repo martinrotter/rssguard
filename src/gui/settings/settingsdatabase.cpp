@@ -52,8 +52,8 @@ void SettingsDatabase::mysqlTestConnection() {
   const QString interpretation = qApp->database()->mysqlInterpretErrorCode(error_code);
 
   switch (error_code) {
-    case DatabaseFactory::MySQLOk:
-    case DatabaseFactory::MySQLUnknownDatabase:
+    case DatabaseFactory::MySQLError::MySQLOk:
+    case DatabaseFactory::MySQLError::MySQLUnknownDatabase:
       m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Ok, interpretation, interpretation);
       break;
 
@@ -124,7 +124,7 @@ void SettingsDatabase::loadSettings() {
                                         tr("You did not executed any connection test yet."));
 
   // Load SQLite.
-  m_ui->m_cmbDatabaseDriver->addItem(qApp->database()->humanDriverName(DatabaseFactory::SQLITE), APP_DB_SQLITE_DRIVER);
+  m_ui->m_cmbDatabaseDriver->addItem(qApp->database()->humanDriverName(DatabaseFactory::UsedDriver::SQLITE), APP_DB_SQLITE_DRIVER);
 
   // Load in-memory database status.
   m_ui->m_checkSqliteUseInMemoryDatabase->setChecked(settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool());
@@ -136,7 +136,7 @@ void SettingsDatabase::loadSettings() {
     onMysqlDatabaseChanged(QString());
 
     // Load MySQL.
-    m_ui->m_cmbDatabaseDriver->addItem(qApp->database()->humanDriverName(DatabaseFactory::MYSQL), APP_DB_MYSQL_DRIVER);
+    m_ui->m_cmbDatabaseDriver->addItem(qApp->database()->humanDriverName(DatabaseFactory::UsedDriver::MYSQL), APP_DB_MYSQL_DRIVER);
 
     // Setup placeholders.
     m_ui->m_txtMysqlHostname->lineEdit()->setPlaceholderText(tr("Hostname of your MySQL server"));

@@ -15,7 +15,7 @@ class MessagesModelCache : public QObject {
 
   public:
     explicit MessagesModelCache(QObject* parent = nullptr);
-    virtual ~MessagesModelCache();
+    virtual ~MessagesModelCache() = default;
 
     inline bool containsData(int row_idx) const {
       return m_msgCache.contains(row_idx);

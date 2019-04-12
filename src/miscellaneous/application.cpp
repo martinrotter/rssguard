@@ -44,7 +44,7 @@ Application::Application(const QString& id, int& argc, char** argv)
 #endif
 
   m_feedReader(nullptr),
-  m_updateFeedsLock(new Mutex()), m_userActions(QList<QAction*>()), m_mainForm(nullptr),
+  m_updateFeedsLock(new Mutex()), m_mainForm(nullptr),
   m_trayIcon(nullptr), m_settings(Settings::setupSettings(this)), m_webFactory(new WebFactory(this)),
   m_system(new SystemFactory(this)), m_skins(new SkinFactory(this)),
   m_localization(new Localization(this)), m_icons(new IconFactory(this)),
@@ -238,8 +238,8 @@ void Application::backupDatabaseSettings(bool backup_database, bool backup_setti
   }
 
   if (backup_database &&
-      (database()->activeDatabaseDriver() == DatabaseFactory::SQLITE ||
-       database()->activeDatabaseDriver() == DatabaseFactory::SQLITE_MEMORY)) {
+      (database()->activeDatabaseDriver() == DatabaseFactory::UsedDriver::SQLITE ||
+       database()->activeDatabaseDriver() == DatabaseFactory::UsedDriver::SQLITE_MEMORY)) {
     // We need to save the database first.
     database()->saveDatabase();
 
@@ -334,11 +334,11 @@ void Application::showGuiMessage(const QString& title, const QString& message,
                                  QSystemTrayIcon::MessageIcon message_type, QWidget* parent,
                                  bool show_at_least_msgbox, std::function<void()> functor) {
   if (SystemTrayIcon::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
-    trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, functor);
+    trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(functor));
   }
   else if (show_at_least_msgbox) {
     // Tray icon or OSD is not available, display simple text box.
-    MessageBox::show(parent, (QMessageBox::Icon) message_type, title, message);
+    MessageBox::show(parent, QMessageBox::Icon(message_type), title, message);
   }
   else {
     qDebug("Silencing GUI message: '%s'.", qPrintable(message));
@@ -433,9 +433,9 @@ void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total
   Q_UNUSED(total)
 }
 
-void Application::onFeedUpdatesFinished(FeedDownloadResults results) {
+void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon, 0, false);
+    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon, nullptr, false);
   }
 }

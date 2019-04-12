@@ -12,21 +12,21 @@ class DatabaseFactory : public QObject {
   public:
 
     // Describes available typos of database backend.
-    enum UsedDriver {
+    enum class UsedDriver {
       SQLITE,
       SQLITE_MEMORY,
       MYSQL
     };
 
     // Describes what type of database user wants.
-    enum DesiredType {
+    enum class DesiredType {
       StrictlyFileBased,
       StrictlyInMemory,
       FromSettings
     };
 
     // Describes possible MySQL-specific errors.
-    enum MySQLError {
+    enum class MySQLError {
       MySQLOk = 0,
       MySQLUnknownError = 1,
       MySQLAccessDenied = 1045,
@@ -41,10 +41,10 @@ class DatabaseFactory : public QObject {
     //
 
     // Constructor.
-    explicit DatabaseFactory(QObject* parent = 0);
+    explicit DatabaseFactory(QObject* parent = nullptr);
 
     // Destructor.
-    virtual ~DatabaseFactory();
+    virtual ~DatabaseFactory() = default;
 
     // Returns size of DB file.
     qint64 getDatabaseFileSize() const;
@@ -55,7 +55,7 @@ class DatabaseFactory : public QObject {
     // If in-memory is true, then :memory: database is returned
     // In-memory database is DEFAULT database.
     // NOTE: This always returns OPENED database.
-    QSqlDatabase connection(const QString& connection_name, DesiredType desired_type = FromSettings);
+    QSqlDatabase connection(const QString& connection_name, DesiredType desired_type = DesiredType::FromSettings);
 
     QString humanDriverName(UsedDriver driver) const;
     QString humanDriverName(const QString& driver_code) const;

@@ -13,12 +13,12 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QKeyEvent>
 #include <QScrollBar>
 #include <QToolBar>
 #include <QToolTip>
 #include <QWebEngineSettings>
 #include <QWidgetAction>
-#include <QKeyEvent>
 
 WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_layout(new QVBoxLayout(this)),
@@ -266,7 +266,7 @@ void WebBrowser::markMessageAsRead(int id, bool read) {
     if (msg != nullptr && m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                                   QList<Message>() << *msg,
                                                                                   read ? RootItem::Read : RootItem::Unread)) {
-      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName()),
                                               QStringList() << QString::number(msg->m_id),
                                               read ? RootItem::Read : RootItem::Unread);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
@@ -292,7 +292,7 @@ void WebBrowser::switchMessageImportance(int id, bool checked) {
                                                                                                            ::NotImportant :
                                                                                                            RootItem
                                                                                                            ::Important))) {
-      DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+      DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName()),
                                                 QStringList() << QString::number(msg->m_id));
       m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
                                                                      QList<ImportanceChange>() << ImportanceChange(*msg,

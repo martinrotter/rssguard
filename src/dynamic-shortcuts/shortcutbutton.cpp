@@ -39,8 +39,6 @@ ShortcutButton::ShortcutButton(ShortcutCatcher* catcher, QWidget* parent)
   setMinimumWidth(100);
 }
 
-ShortcutButton::~ShortcutButton() {}
-
 void ShortcutButton::keyPressEvent(QKeyEvent* event) {
   int pressed_key = event->key();
 
@@ -48,7 +46,7 @@ void ShortcutButton::keyPressEvent(QKeyEvent* event) {
     m_catcher->doneRecording();
   }
 
-  const Qt::KeyboardModifiers new_modifiers = event->modifiers() & (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
+  const int new_modifiers = event->modifiers() & (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
   if (!m_catcher->m_isRecording && (pressed_key == Qt::Key_Return || pressed_key == Qt::Key_Space)) {
     return;
@@ -78,8 +76,8 @@ void ShortcutButton::keyPressEvent(QKeyEvent* event) {
     default:
 
       // We now have a valid key press.
-      if (pressed_key) {
-        if ((pressed_key == Qt::Key_Backtab) && (m_catcher->m_modifierKeys & Qt::SHIFT)) {
+      if (pressed_key != 0) {
+        if ((pressed_key == Qt::Key_Backtab) && (m_catcher->m_modifierKeys & Qt::SHIFT) > 0) {
           pressed_key = Qt::Key_Tab | m_catcher->m_modifierKeys;
         }
         else {
@@ -114,10 +112,9 @@ void ShortcutButton::keyReleaseEvent(QKeyEvent* event) {
   }
 
   event->accept();
-  const Qt::KeyboardModifiers new_modifiers = event->modifiers() &
-                                              (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
+  const int new_modifiers = event->modifiers() & (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
-  if (((uint) new_modifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
+  if ((new_modifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
     m_catcher->m_modifierKeys = new_modifiers;
     m_catcher->controlModifierlessTimout();
     m_catcher->updateDisplayShortcut();

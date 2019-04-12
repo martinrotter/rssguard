@@ -16,8 +16,8 @@
 #include <QSqlField>
 
 MessagesModel::MessagesModel(QObject* parent)
-  : QSqlQueryModel(parent), MessagesModelSqlLayer(),
-  m_cache(new MessagesModelCache(this)), m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()), m_itemHeight(-1) {
+  : QSqlQueryModel(parent), m_cache(new MessagesModelCache(this)), m_messageHighlighter(NoHighlighting),
+  m_customDateFormat(QString()), m_selectedItem(nullptr), m_itemHeight(-1) {
   setupFonts();
   setupIcons();
   setupHeaderData();

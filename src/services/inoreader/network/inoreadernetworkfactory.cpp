@@ -56,7 +56,7 @@ void InoreaderNetworkFactory::initializeOauth() {
     Q_UNUSED(expires_in)
 
     if (m_service != nullptr && !access_token.isEmpty() && !refresh_token.isEmpty()) {
-      QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+      QSqlDatabase database = qApp->database()->connection(metaObject()->className());
       DatabaseQueries::storeNewInoreaderTokens(database, refresh_token, m_service->accountId());
 
       qApp->showGuiMessage(tr("Logged in successfully"),

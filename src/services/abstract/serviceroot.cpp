@@ -21,7 +21,7 @@ ServiceRoot::ServiceRoot(RootItem* parent) : RootItem(parent), m_recycleBin(new 
 ServiceRoot::~ServiceRoot() {}
 
 bool ServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteAccount(database, accountId())) {
     stop();
@@ -40,7 +40,7 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
     updateCounts(false);
@@ -96,7 +96,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   bool ok;
 
   QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
@@ -131,7 +131,7 @@ void ServiceRoot::completelyRemoveAllData() {
 }
 
 void ServiceRoot::removeOldFeedTree(bool including_messages) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   DatabaseQueries::deleteAccountData(database, accountId(), including_messages);
 }
@@ -145,7 +145,7 @@ void ServiceRoot::cleanAllItems() {
 }
 
 bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
     // Messages are cleared, now inform model about need to reload data.
@@ -173,7 +173,7 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 }
 
 void ServiceRoot::storeNewFeedTree(RootItem* root) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::storeAccountTree(database, root, accountId())) {
     RecycleBin* bin = recycleBin();
@@ -187,13 +187,13 @@ void ServiceRoot::storeNewFeedTree(RootItem* root) {
 }
 
 void ServiceRoot::removeLeftOverMessages() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   DatabaseQueries::purgeLeftoverMessages(database, accountId());
 }
 
 QList<Message> ServiceRoot::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForAccount(database, accountId());
 }
@@ -348,21 +348,21 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
       }
 
       case RootItemKind::ServiceRoot: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromAccount(database, accountId());
         break;
       }
 
       case RootItemKind::Bin: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromBin(database, accountId());
         break;
       }
 
       case RootItemKind::Feed: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->customId(), accountId());
         break;
@@ -378,7 +378,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
 }
 
 bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     QList<RootItem*> itemss;

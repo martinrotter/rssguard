@@ -28,8 +28,8 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent) : QDialo
                                              QDateTime::currentDateTime().toString(QSL("yyyyMMddHHmm")));
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
-  if (qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE &&
-      qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE_MEMORY) {
+  if (qApp->database()->activeDatabaseDriver() != DatabaseFactory::UsedDriver::SQLITE &&
+      qApp->database()->activeDatabaseDriver() != DatabaseFactory::UsedDriver::SQLITE_MEMORY) {
     m_ui->m_checkBackupDatabase->setDisabled(true);
   }
 }

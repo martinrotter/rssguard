@@ -37,7 +37,7 @@
 #include <QHBoxLayout>
 
 ShortcutCatcher::ShortcutCatcher(QWidget* parent)
-  : QWidget(parent) {
+  : QWidget(parent), m_isRecording(false), m_numKey(0), m_modifierKeys(0U) {
   // Setup layout of the control
   m_layout = new QHBoxLayout(this);
   m_layout->setMargin(0);
@@ -100,7 +100,7 @@ void ShortcutCatcher::doneRecording() {
 }
 
 void ShortcutCatcher::controlModifierlessTimout() {
-  if (m_numKey && !m_modifierKeys) {
+  if (m_numKey != 0 && m_modifierKeys == 0) {
     doneRecording();
   }
 }
@@ -111,24 +111,24 @@ void ShortcutCatcher::updateDisplayShortcut() {
   str.replace(QL1S("&"), QL1S("&&"));
 
   if (m_isRecording) {
-    if (m_modifierKeys) {
+    if (m_modifierKeys != 0) {
       if (!str.isEmpty()) {
         str.append(QSL(","));
       }
 
-      if (m_modifierKeys & Qt::META) {
+      if ((m_modifierKeys& Qt::META) > 0) {
         str += QL1S("Meta + ");
       }
 
-      if (m_modifierKeys & Qt::CTRL) {
+      if ((m_modifierKeys& Qt::CTRL) > 0) {
         str += QL1S("Ctrl + ");
       }
 
-      if (m_modifierKeys & Qt::ALT) {
+      if ((m_modifierKeys& Qt::ALT) > 0) {
         str += QL1S("Alt + ");
       }
 
-      if (m_modifierKeys & Qt::SHIFT) {
+      if ((m_modifierKeys& Qt::SHIFT) > 0) {
         str += QL1S("Shift + ");
       }
     }

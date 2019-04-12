@@ -58,7 +58,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
 Feed::~Feed() {}
 
 QList<Message> Feed::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForFeed(database, customId(), getParentServiceRoot()->accountId());
 }
@@ -151,8 +151,8 @@ void Feed::setUrl(const QString& url) {
 void Feed::updateCounts(bool including_total_count) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
   QSqlDatabase database = is_main_thread ?
-                          qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
-                          qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
+                          qApp->database()->connection(metaObject()->className()) :
+                          qApp->database()->connection(QSL("feed_upd"));
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {
@@ -227,8 +227,8 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
       QString custom_id = customId();
       int account_id = getParentServiceRoot()->accountId();
       QSqlDatabase database = is_main_thread ?
-                              qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings) :
-                              qApp->database()->connection(QSL("feed_upd"), DatabaseFactory::FromSettings);
+                              qApp->database()->connection(metaObject()->className()) :
+                              qApp->database()->connection(QSL("feed_upd"));
 
       updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
     }

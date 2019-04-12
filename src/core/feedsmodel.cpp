@@ -25,6 +25,8 @@
 
 #include <algorithm>
 
+using RootItemPtr = RootItem *;
+
 FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_itemHeight(-1) {
   setObjectName(QSL("FeedsModel"));
 
@@ -81,7 +83,6 @@ QStringList FeedsModel::mimeTypes() const {
   return QStringList() << QSL(MIME_TYPE_ITEM_POINTER);
 }
 
-typedef RootItem* RootItemPtr;
 bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column,
                               const QModelIndex& parent) {
   Q_UNUSED(row)

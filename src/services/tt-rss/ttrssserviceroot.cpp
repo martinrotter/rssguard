@@ -59,7 +59,7 @@ bool TtRssServiceRoot::editViaGui() {
 }
 
 bool TtRssServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   // Remove extra entry in "Tiny Tiny RSS accounts list" and then delete
   // all the categories/feeds and messages.
@@ -172,7 +172,7 @@ TtRssNetworkFactory* TtRssServiceRoot::network() const {
 }
 
 void TtRssServiceRoot::saveAccountDataToDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (accountId() != NO_PARENT_CATEGORY) {
     // We are overwritting previously saved data.
@@ -202,7 +202,7 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
 }
 
 void TtRssServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories(database, accountId());
   Assignment feeds = DatabaseQueries::getTtRssFeeds(database, accountId());
 

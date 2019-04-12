@@ -8,8 +8,6 @@
 
 #include <QAction>
 
-DynamicShortcuts::DynamicShortcuts() {}
-
 void DynamicShortcuts::save(const QList<QAction*>& actions) {
   Settings* settings = qApp->settings();
 

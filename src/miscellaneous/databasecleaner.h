@@ -23,7 +23,7 @@ class DatabaseCleaner : public QObject {
 
     // Constructors.
     explicit DatabaseCleaner(QObject* parent = nullptr);
-    virtual ~DatabaseCleaner();
+    virtual ~DatabaseCleaner() = default;
 
   signals:
     void purgeStarted();

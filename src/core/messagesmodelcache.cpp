@@ -4,9 +4,7 @@
 
 #include "miscellaneous/textfactory.h"
 
-MessagesModelCache::MessagesModelCache(QObject* parent) : QObject(parent), m_msgCache(QHash<int, QSqlRecord>()) {}
-
-MessagesModelCache::~MessagesModelCache() {}
+MessagesModelCache::MessagesModelCache(QObject* parent) : QObject(parent) {}
 
 void MessagesModelCache::setData(const QModelIndex& index, const QVariant& value, const QSqlRecord& record) {
   if (!m_msgCache.contains(index.row())) {

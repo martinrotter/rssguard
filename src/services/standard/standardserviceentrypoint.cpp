@@ -33,7 +33,7 @@ QString StandardServiceEntryPoint::code() const {
 
 ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
   // Switch DB.
-  QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"));
   bool ok;
   int new_id = DatabaseQueries::createAccount(database, code(), &ok);
 
@@ -50,7 +50,7 @@ ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
 
 QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
-  QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"));
 
   return DatabaseQueries::getAccounts(database);
 }

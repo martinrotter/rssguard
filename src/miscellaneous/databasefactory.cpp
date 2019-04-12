@@ -14,6 +14,7 @@
 
 DatabaseFactory::DatabaseFactory(QObject* parent)
   : QObject(parent),
+  m_activeDatabaseDriver(UsedDriver::SQLITE),
   m_mysqlDatabaseInitialized(false),
   m_sqliteFileBasedDatabaseinitialized(false),
   m_sqliteInMemoryDatabaseInitialized(false) {
@@ -21,10 +22,8 @@ DatabaseFactory::DatabaseFactory(QObject* parent)
   determineDriver();
 }
 
-DatabaseFactory::~DatabaseFactory() {}
-
 qint64 DatabaseFactory::getDatabaseFileSize() const {
-  if (m_activeDatabaseDriver == SQLITE || m_activeDatabaseDriver == SQLITE_MEMORY) {
+  if (m_activeDatabaseDriver == UsedDriver::SQLITE || m_activeDatabaseDriver == UsedDriver::SQLITE_MEMORY) {
     return QFileInfo(sqliteDatabaseFilePath()).size();
   }
   else {
@@ -33,8 +32,8 @@ qint64 DatabaseFactory::getDatabaseFileSize() const {
 }
 
 qint64 DatabaseFactory::getDatabaseDataSize() const {
-  if (m_activeDatabaseDriver == SQLITE || m_activeDatabaseDriver == SQLITE_MEMORY) {
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  if (m_activeDatabaseDriver == UsedDriver::SQLITE || m_activeDatabaseDriver == UsedDriver::SQLITE_MEMORY) {
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DesiredType::FromSettings);
     qint64 result = 1;
     QSqlQuery query(database);
 
@@ -56,8 +55,8 @@ qint64 DatabaseFactory::getDatabaseDataSize() const {
 
     return result;
   }
-  else if (m_activeDatabaseDriver == MYSQL) {
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  else if (m_activeDatabaseDriver == UsedDriver::MYSQL) {
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DesiredType::FromSettings);
     qint64 result = 1;
     QSqlQuery query(database);
 
@@ -97,11 +96,11 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString& 
 
       // Connection succeeded, clean up the mess and return OK status.
       database.close();
-      return MySQLOk;
+      return MySQLError::MySQLOk;
     }
     else {
       database.close();
-      return MySQLUnknownError;
+      return MySQLError::MySQLUnknownError;
     }
   }
   else if (database.lastError().isValid()) {
@@ -109,24 +108,24 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString& 
     return static_cast<MySQLError>(database.lastError().number());
   }
   else {
-    return MySQLUnknownError;
+    return MySQLError::MySQLUnknownError;
   }
 }
 
 QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) const {
   switch (error_code) {
-    case MySQLOk:
+    case MySQLError::MySQLOk:
       return tr("MySQL server works as expected.");
 
-    case MySQLUnknownDatabase:
+    case MySQLError::MySQLUnknownDatabase:
       return tr("Selected database does not exist (yet). It will be created. It's okay.");
 
-    case MySQLCantConnect:
-    case MySQLConnectionError:
-    case MySQLUnknownHost:
+    case MySQLError::MySQLCantConnect:
+    case MySQLError::MySQLConnectionError:
+    case MySQLError::MySQLUnknownHost:
       return tr("No MySQL server is running in the target destination.");
 
-    case MySQLAccessDenied:
+    case MySQLError::MySQLAccessDenied:
 
       //: Access to MySQL server was denied.
       return tr("Access denied. Invalid username or password used.");
@@ -140,8 +139,8 @@ QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) const {
 
 bool DatabaseFactory::initiateRestoration(const QString& database_backup_file_path) {
   switch (m_activeDatabaseDriver) {
-    case SQLITE:
-    case SQLITE_MEMORY:
+    case UsedDriver::SQLITE:
+    case UsedDriver::SQLITE_MEMORY:
       return IOFactory::copyFile(database_backup_file_path,
                                  m_sqliteDatabaseFilePath + QDir::separator() +
                                  BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE);
@@ -152,7 +151,7 @@ bool DatabaseFactory::initiateRestoration(const QString& database_backup_file_pa
 }
 
 void DatabaseFactory::finishRestoration() {
-  if (m_activeDatabaseDriver != SQLITE && m_activeDatabaseDriver != SQLITE_MEMORY) {
+  if (m_activeDatabaseDriver != UsedDriver::SQLITE && m_activeDatabaseDriver != UsedDriver::SQLITE_MEMORY) {
     return;
   }
 
@@ -231,7 +230,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     }
 
     // Loading messages from file-based database.
-    QSqlDatabase file_database = sqliteConnection(objectName(), StrictlyFileBased);
+    QSqlDatabase file_database = sqliteConnection(objectName(), DesiredType::StrictlyFileBased);
     QSqlQuery copy_contents(database);
 
     // Attach database.
@@ -456,11 +455,11 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QSt
 
 QSqlDatabase DatabaseFactory::connection(const QString& connection_name, DesiredType desired_type) {
   switch (m_activeDatabaseDriver) {
-    case MYSQL:
+    case UsedDriver::MYSQL:
       return mysqlConnection(connection_name);
 
-    case SQLITE:
-    case SQLITE_MEMORY:
+    case UsedDriver::SQLITE:
+    case UsedDriver::SQLITE_MEMORY:
     default:
       return sqliteConnection(connection_name, desired_type);
   }
@@ -468,11 +467,11 @@ QSqlDatabase DatabaseFactory::connection(const QString& connection_name, Desired
 
 QString DatabaseFactory::humanDriverName(DatabaseFactory::UsedDriver driver) const {
   switch (driver) {
-    case MYSQL:
+    case UsedDriver::MYSQL:
       return tr("MySQL/MariaDB (dedicated database)");
 
-    case SQLITE:
-    case SQLITE_MEMORY:
+    case UsedDriver::SQLITE:
+    case UsedDriver::SQLITE_MEMORY:
     default:
       return tr("SQLite (embedded database)");
   }
@@ -480,13 +479,13 @@ QString DatabaseFactory::humanDriverName(DatabaseFactory::UsedDriver driver) con
 
 QString DatabaseFactory::humanDriverName(const QString& driver_code) const {
   if (driver_code == APP_DB_SQLITE_DRIVER) {
-    return humanDriverName(SQLITE);
+    return humanDriverName(UsedDriver::SQLITE);
   }
   else if (driver_code == APP_DB_MYSQL_DRIVER) {
-    return humanDriverName(MYSQL);
+    return humanDriverName(UsedDriver::MYSQL);
   }
   else {
-    return humanDriverName(SQLITE);
+    return humanDriverName(UsedDriver::SQLITE);
   }
 }
 
@@ -496,7 +495,7 @@ void DatabaseFactory::removeConnection(const QString& connection_name) {
 }
 
 QString DatabaseFactory::obtainBeginTransactionSql() const {
-  if (m_activeDatabaseDriver == DatabaseFactory::SQLITE || m_activeDatabaseDriver == DatabaseFactory::SQLITE_MEMORY) {
+  if (m_activeDatabaseDriver == UsedDriver::SQLITE || m_activeDatabaseDriver == UsedDriver::SQLITE_MEMORY) {
     return QSL("BEGIN IMMEDIATE TRANSACTION;");
   }
   else {
@@ -506,8 +505,8 @@ QString DatabaseFactory::obtainBeginTransactionSql() const {
 
 void DatabaseFactory::sqliteSaveMemoryDatabase() {
   qDebug("Saving in-memory working database back to persistent file-based storage.");
-  QSqlDatabase database = sqliteConnection(objectName(), StrictlyInMemory);
-  QSqlDatabase file_database = sqliteConnection(objectName(), StrictlyFileBased);
+  QSqlDatabase database = sqliteConnection(objectName(), DesiredType::StrictlyInMemory);
+  QSqlDatabase file_database = sqliteConnection(objectName(), DesiredType::StrictlyFileBased);
   QSqlQuery copy_contents(database);
 
   // Attach database.
@@ -540,7 +539,7 @@ void DatabaseFactory::determineDriver() {
 
   if (db_driver == APP_DB_MYSQL_DRIVER && QSqlDatabase::isDriverAvailable(APP_DB_SQLITE_DRIVER)) {
     // User wants to use MySQL and MySQL is actually available. Use it.
-    m_activeDatabaseDriver = MYSQL;
+    m_activeDatabaseDriver = UsedDriver::MYSQL;
     qDebug("Working database source was as MySQL database.");
   }
   else {
@@ -548,12 +547,12 @@ void DatabaseFactory::determineDriver() {
     // or in-memory database will be used.
     if (qApp->settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool()) {
       // Use in-memory SQLite database.
-      m_activeDatabaseDriver = SQLITE_MEMORY;
+      m_activeDatabaseDriver = UsedDriver::SQLITE_MEMORY;
       qDebug("Working database source was determined as SQLite in-memory database.");
     }
     else {
       // Use strictly file-base SQLite database.
-      m_activeDatabaseDriver = SQLITE;
+      m_activeDatabaseDriver = UsedDriver::SQLITE;
       qDebug("Working database source was determined as SQLite file-based database.");
     }
 
@@ -625,7 +624,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
     MessageBox::show(nullptr, QMessageBox::Critical, tr("MySQL database not available"),
                      tr("%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server "
                         "and make adjustments in application settings.").arg(APP_NAME));
-    return connection(objectName(), FromSettings);
+    return connection(objectName(), DesiredType::FromSettings);
   }
   else {
     QSqlQuery query_db(database);
@@ -697,8 +696,8 @@ bool DatabaseFactory::mysqlVacuumDatabase() {
 }
 
 QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, DatabaseFactory::DesiredType desired_type) {
-  if (desired_type == DatabaseFactory::StrictlyInMemory ||
-      (desired_type == DatabaseFactory::FromSettings && m_activeDatabaseDriver == SQLITE_MEMORY)) {
+  if (desired_type == DesiredType::StrictlyInMemory ||
+      (desired_type == DesiredType::FromSettings && m_activeDatabaseDriver == UsedDriver::SQLITE_MEMORY)) {
     // We request in-memory database (either user explicitly
     // needs in-memory database or it was enabled in the settings).
     if (!m_sqliteInMemoryDatabaseInitialized) {
@@ -768,12 +767,12 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
 bool DatabaseFactory::sqliteVacuumDatabase() {
   QSqlDatabase database;
 
-  if (m_activeDatabaseDriver == SQLITE) {
-    database = sqliteConnection(objectName(), StrictlyFileBased);
+  if (m_activeDatabaseDriver == UsedDriver::SQLITE) {
+    database = sqliteConnection(objectName(), DesiredType::StrictlyFileBased);
   }
-  else if (m_activeDatabaseDriver == SQLITE_MEMORY) {
+  else if (m_activeDatabaseDriver == UsedDriver::SQLITE_MEMORY) {
     sqliteSaveMemoryDatabase();
-    database = sqliteConnection(objectName(), StrictlyFileBased);
+    database = sqliteConnection(objectName(), DesiredType::StrictlyFileBased);
   }
   else {
     return false;
@@ -786,7 +785,7 @@ bool DatabaseFactory::sqliteVacuumDatabase() {
 
 void DatabaseFactory::saveDatabase() {
   switch (m_activeDatabaseDriver) {
-    case SQLITE_MEMORY:
+    case UsedDriver::SQLITE_MEMORY:
       sqliteSaveMemoryDatabase();
       break;
 
@@ -797,11 +796,11 @@ void DatabaseFactory::saveDatabase() {
 
 bool DatabaseFactory::vacuumDatabase() {
   switch (m_activeDatabaseDriver) {
-    case SQLITE_MEMORY:
-    case SQLITE:
+    case UsedDriver::SQLITE_MEMORY:
+    case UsedDriver::SQLITE:
       return sqliteVacuumDatabase();
 
-    case MYSQL:
+    case UsedDriver::MYSQL:
       return mysqlVacuumDatabase();
 
     default:

@@ -42,7 +42,7 @@ bool OwnCloudFeed::deleteViaGui() {
 }
 
 bool OwnCloudFeed::editItself(OwnCloudFeed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (!DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
                                      new_feed_data->autoUpdateInitialInterval())) {
@@ -57,7 +57,7 @@ bool OwnCloudFeed::editItself(OwnCloudFeed* new_feed_data) {
 }
 
 bool OwnCloudFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, customId().toInt(), serviceRoot()->accountId());
 }

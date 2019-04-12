@@ -130,7 +130,7 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
 }
 
 void StandardServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getStandardCategories(database, accountId());
   Assignment feeds = DatabaseQueries::getStandardFeeds(database, accountId());
 
@@ -179,7 +179,7 @@ QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {
   }
 
   // Make connections.
-  disconnect(m_actionFeedFetchMetadata, &QAction::triggered, 0, 0);
+  disconnect(m_actionFeedFetchMetadata, &QAction::triggered, nullptr, nullptr);
   connect(m_actionFeedFetchMetadata, &QAction::triggered, feed, &StandardFeed::fetchMetadataForItself);
   return m_feedContextMenu;
 }

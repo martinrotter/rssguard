@@ -136,7 +136,7 @@ class Application : public QtSingleApplication {
 
     void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(const Feed* feed, int current, int total);
-    void onFeedUpdatesFinished(FeedDownloadResults results);
+    void onFeedUpdatesFinished(const FeedDownloadResults& results);
 
   private:
     void eliminateFirstRun();

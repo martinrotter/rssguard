@@ -58,7 +58,7 @@ void GmailServiceRoot::writeNewEmail() {
 }
 
 void GmailServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories(database, accountId());
   Assignment feeds = DatabaseQueries::getGmailFeeds(database, accountId());
 
@@ -77,7 +77,7 @@ void GmailServiceRoot::loadFromDatabase() {
 }
 
 void GmailServiceRoot::saveAccountDataToDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (accountId() != NO_PARENT_CATEGORY) {
     if (DatabaseQueries::overwriteGmailAccount(database, m_network->userName(),
@@ -229,7 +229,7 @@ bool GmailServiceRoot::canBeDeleted() const {
 }
 
 bool GmailServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteGmailAccount(database, accountId())) {
     return ServiceRoot::deleteViaGui();

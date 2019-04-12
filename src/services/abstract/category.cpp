@@ -50,7 +50,7 @@ void Category::updateCounts(bool including_total_count) {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   bool ok;
 
   QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForCategory(database,

@@ -49,7 +49,7 @@ void InoreaderServiceRoot::updateTitle() {
 }
 
 void InoreaderServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories(database, accountId());
   Assignment feeds = DatabaseQueries::getInoreaderFeeds(database, accountId());
 
@@ -63,7 +63,7 @@ void InoreaderServiceRoot::loadFromDatabase() {
 }
 
 void InoreaderServiceRoot::saveAccountDataToDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (accountId() != NO_PARENT_CATEGORY) {
     if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(),
@@ -207,7 +207,7 @@ bool InoreaderServiceRoot::canBeDeleted() const {
 }
 
 bool InoreaderServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteInoreaderAccount(database, accountId())) {
     return ServiceRoot::deleteViaGui();

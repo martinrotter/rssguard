@@ -54,7 +54,7 @@ bool TtRssFeed::deleteViaGui() {
 }
 
 bool TtRssFeed::editItself(TtRssFeed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
                                     new_feed_data->autoUpdateInitialInterval())) {
@@ -97,7 +97,7 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
 }
 
 bool TtRssFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, customId().toInt(), serviceRoot()->accountId());
 }

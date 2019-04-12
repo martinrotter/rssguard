@@ -10,8 +10,6 @@
 
 DatabaseCleaner::DatabaseCleaner(QObject* parent) : QObject(parent) {}
 
-DatabaseCleaner::~DatabaseCleaner() {}
-
 void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
   qDebug().nospace() << "Performing database cleanup in thread: \'" << QThread::currentThreadId() << "\'.";
 
@@ -20,7 +18,7 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
   bool result = true;
   const int difference = 99 / 8;
   int progress = 0;
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (which_data.m_removeReadMessages) {
     progress += difference;

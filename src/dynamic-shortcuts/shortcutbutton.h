@@ -41,8 +41,8 @@ class ShortcutButton : public QPushButton {
   public:
 
     // Constructors and destructors.
-    explicit ShortcutButton(ShortcutCatcher* catcher, QWidget* parent = 0);
-    virtual ~ShortcutButton();
+    explicit ShortcutButton(ShortcutCatcher* catcher, QWidget* parent = nullptr);
+    virtual ~ShortcutButton() = default;
 
   protected:
     void keyPressEvent(QKeyEvent* event);
