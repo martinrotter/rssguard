@@ -78,9 +78,9 @@ class FeedReader : public QObject {
 
     // Auto-update stuff.
     QTimer* m_autoUpdateTimer;
-    bool m_globalAutoUpdateEnabled;
-    int m_globalAutoUpdateInitialInterval;
-    int m_globalAutoUpdateRemainingInterval;
+    bool m_globalAutoUpdateEnabled{};
+    int m_globalAutoUpdateInitialInterval{};
+    int m_globalAutoUpdateRemainingInterval{};
     FeedDownloader* m_feedDownloader;
 };
 

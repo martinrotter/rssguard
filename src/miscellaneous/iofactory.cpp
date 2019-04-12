@@ -12,7 +12,7 @@
 #include <QObject>
 #include <QTemporaryFile>
 
-IOFactory::IOFactory() {}
+IOFactory::IOFactory() = default;
 
 bool IOFactory::isFolderWritable(const QString& folder) {
   QString real_file = folder;

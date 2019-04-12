@@ -12,15 +12,15 @@
 Localization::Localization(QObject* parent)
   : QObject(parent) {}
 
-Localization::~Localization() {}
+Localization::~Localization() = default;
 
 QString Localization::desiredLanguage() const {
   return qApp->settings()->value(GROUP(General), SETTING(General::Language)).toString();
 }
 
 void Localization::loadActiveLanguage() {
-  QTranslator* qt_translator = new QTranslator(qApp);
-  QTranslator* app_translator = new QTranslator(qApp);
+  auto* qt_translator = new QTranslator(qApp);
+  auto* app_translator = new QTranslator(qApp);
   QString desired_localization = desiredLanguage();
 
   qDebug("Starting to load active localization. Desired localization is '%s'.", qPrintable(desired_localization));

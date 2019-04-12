@@ -369,7 +369,7 @@ QString DatabaseFactory::sqliteDatabaseFilePath() const {
   return m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
 }
 
-bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QString& source_db_schema_version) {
+bool DatabaseFactory::sqliteUpdateDatabaseSchema(const QSqlDatabase& database, const QString& source_db_schema_version) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
   const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
@@ -415,7 +415,7 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QS
   return true;
 }
 
-bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString& source_db_schema_version, const QString& db_name) {
+bool DatabaseFactory::mysqlUpdateDatabaseSchema(const QSqlDatabase& database, const QString& source_db_schema_version, const QString& db_name) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
   const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 

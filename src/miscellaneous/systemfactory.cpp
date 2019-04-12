@@ -22,11 +22,11 @@
 #include <QProcess>
 #include <QString>
 
-typedef QPair<UpdateInfo, QNetworkReply::NetworkError> UpdateCheck;
+using UpdateCheck = QPair<UpdateInfo, QNetworkReply::NetworkError>;
 
 SystemFactory::SystemFactory(QObject* parent) : QObject(parent) {}
 
-SystemFactory::~SystemFactory() {}
+SystemFactory::~SystemFactory() = default;
 
 QRegularExpression SystemFactory::supportedUpdateFiles() {
 #if defined(Q_OS_WIN)
@@ -202,7 +202,7 @@ QString SystemFactory::loggedInUser() const {
 }
 
 void SystemFactory::checkForUpdates() const {
-  Downloader* downloader = new Downloader();
+  auto* downloader = new Downloader();
 
   connect(downloader, &Downloader::completed, this, [this, downloader]() {
     QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> result;
@@ -269,8 +269,8 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray& updates_file
   QList<UpdateInfo> updates;
   QJsonArray document = QJsonDocument::fromJson(updates_file).array();
 
-  for (int i = 0; i < document.size(); i++) {
-    QJsonObject release = document.at(i).toObject();
+  for (QJsonValueRef i : document) {
+    QJsonObject release = i.toObject();
     UpdateInfo update;
 
     update.m_date = QDateTime::fromString(release["published_at"].toString(), QSL("yyyy-MM-ddTHH:mm:ssZ"));
@@ -278,8 +278,8 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray& updates_file
     update.m_changes = release["body"].toString();
     QJsonArray assets = release["assets"].toArray();
 
-    for (int j = 0; j < assets.size(); j++) {
-      QJsonObject asset = assets.at(j).toObject();
+    for (QJsonValueRef j : assets) {
+      QJsonObject asset = j.toObject();
       UpdateUrl url;
 
       url.m_fileUrl = asset["browser_download_url"].toString();
@@ -291,7 +291,7 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray& updates_file
     updates.append(update);
   }
 
-  qSort(updates.begin(), updates.end(), [](const UpdateInfo& a, const UpdateInfo& b) -> bool {
+  std::sort(updates.begin(), updates.end(), [](const UpdateInfo& a, const UpdateInfo& b) -> bool {
     return a.m_date > b.m_date;
   });
   return updates;

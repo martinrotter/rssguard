@@ -45,7 +45,7 @@ void Debugging::performLog(const char* message, QtMsgType type, const char* file
   if (instance()->targetFile().isEmpty()) {
 
     // Write to console.
-    if (file == 0 || function == 0 || line < 0) {
+    if (file == nullptr || function == nullptr || line < 0) {
       fprintf(stderr, "[%s] %s: %s (%s)\n", APP_LOW_NAME, type_string, message, mbstr);
     }
     else {
@@ -88,8 +88,7 @@ const char* Debugging::typeToString(QtMsgType type) {
   }
 }
 
-Debugging::Debugging() {}
-
+Debugging::Debugging() = default;
 void Debugging::debugHandler(QtMsgType type, const QMessageLogContext& placement, const QString& message) {
 #ifndef QT_NO_DEBUG_OUTPUT
   performLog(qPrintable(message), type, placement.file, placement.function, placement.line);

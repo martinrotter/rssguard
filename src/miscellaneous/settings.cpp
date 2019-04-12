@@ -354,7 +354,7 @@ DKEY CategoriesExpandStates::ID = "categories_expand_states";
 Settings::Settings(const QString& file_name, Format format, const SettingsProperties::SettingsType& status, QObject* parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {}
 
-Settings::~Settings() {}
+Settings::~Settings() = default;
 
 QString Settings::pathName() const {
   return QFileInfo(fileName()).absolutePath();

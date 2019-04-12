@@ -46,7 +46,7 @@ void SimpleRegExp::setMinimal(bool minimal) {
 }
 
 int SimpleRegExp::indexIn(const QString& str, int offset) const {
-  SimpleRegExp* that = const_cast<SimpleRegExp*>(this);
+  auto* that = const_cast<SimpleRegExp*>(this);
   QRegularExpressionMatch m = match(str, offset);
 
   if (!m.hasMatch()) {

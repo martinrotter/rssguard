@@ -11,7 +11,7 @@
 
 SkinFactory::SkinFactory(QObject* parent) : QObject(parent) {}
 
-SkinFactory::~SkinFactory() {}
+SkinFactory::~SkinFactory() = default;
 
 void SkinFactory::loadCurrentSkin() {
   QList<QString> skin_names_to_try;
@@ -63,7 +63,7 @@ QString SkinFactory::selectedSkinName() const {
 
 QString SkinFactory::adBlockedPage(const QString& subscription, const QString& rule) {
   const QString& adblocked = currentSkin().m_adblocked.arg(tr("This page was blocked by AdBlock"),
-                                                           tr("Blocked by set: \"%1\"<br/>Blocked by filter: \"%2\"")
+                                                           tr(R"(Blocked by set: "%1"<br/>Blocked by filter: "%2")")
                                                            .arg(subscription,
                                                                 rule));
 

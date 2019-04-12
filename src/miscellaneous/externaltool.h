@@ -10,7 +10,7 @@ class ExternalTool {
   public:
     explicit ExternalTool();
     ExternalTool(const ExternalTool& other);
-    explicit ExternalTool(const QString& executable, const QStringList& parameters);
+    explicit ExternalTool(QString  executable, QStringList  parameters);
 
     QString toString();
     QString executable() const;

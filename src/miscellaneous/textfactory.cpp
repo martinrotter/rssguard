@@ -16,7 +16,7 @@
 
 quint64 TextFactory::s_encryptionKey = 0x0;
 
-TextFactory::TextFactory() {}
+TextFactory::TextFactory() = default;
 
 int TextFactory::stringHeight(const QString& string, const QFontMetrics& metrics) {
   const int count_lines = string.split(QL1C('\n')).size();
@@ -130,7 +130,7 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
     try {
       s_encryptionKey = quint64(QString(IOFactory::readFile(encryption_file_path)).toLongLong());
     }
-    catch (ApplicationException) {
+    catch (ApplicationException&) {
       // Well, key does not exist or is invalid, generate and save one.
       s_encryptionKey = generateSecretEncryptionKey();
 

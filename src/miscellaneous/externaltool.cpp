@@ -8,6 +8,7 @@
 
 #include <QDir>
 #include <QObject>
+#include <utility>
 
 void ExternalTool::sanitizeParameters() {
   m_executable = QDir::toNativeSeparators(m_executable);
@@ -15,12 +16,12 @@ void ExternalTool::sanitizeParameters() {
   m_parameters.removeAll(QString());
 }
 
-ExternalTool::ExternalTool() {}
+ExternalTool::ExternalTool() = default;
 
 ExternalTool::ExternalTool(const ExternalTool& other) : ExternalTool(other.executable(), other.parameters()) {}
 
-ExternalTool::ExternalTool(const QString& executable, const QStringList& parameters)
-  : m_executable(executable), m_parameters(parameters) {
+ExternalTool::ExternalTool(QString  executable, QStringList  parameters)
+  : m_executable(std::move(executable)), m_parameters(std::move(parameters)) {
   sanitizeParameters();
 }
 
@@ -44,7 +45,7 @@ ExternalTool ExternalTool::fromString(const QString& str) {
     throw ApplicationException(QObject::tr("Passed external tool representation is not valid."));
   }
   else {
-    const QString executable = outer.at(0);
+    const QString& executable = outer.at(0);
     const QStringList parameters = outer.at(1).split(EXTERNAL_TOOL_PARAM_SEPARATOR);
 
     return ExternalTool(executable, parameters);

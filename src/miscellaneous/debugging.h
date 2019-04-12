@@ -15,7 +15,7 @@ class Debugging {
     // Specifies format of output console messages.
     // NOTE: QT_NO_DEBUG_OUTPUT - disables debug outputs completely!!!
     static void debugHandler(QtMsgType type, const QMessageLogContext& placement, const QString& message);
-    static void performLog(const char* message, QtMsgType type, const char* file = 0, const char* function = 0, int line = -1);
+    static void performLog(const char* message, QtMsgType type, const char* file = nullptr, const char* function = nullptr, int line = -1);
     static const char* typeToString(QtMsgType type);
 
     // Returns pointer to global silent network manager
@@ -28,7 +28,7 @@ class Debugging {
 
   private:
     QString m_targetFile;
-    QFile* m_targetFileHandle;
+    QFile* m_targetFileHandle{};
 };
 
 #endif // DEBUGGING_H

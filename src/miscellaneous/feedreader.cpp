@@ -22,7 +22,7 @@
 #include <QTimer>
 
 FeedReader::FeedReader(QObject* parent)
-  : QObject(parent), m_feedServices(QList<ServiceEntryPoint*>()),
+  : QObject(parent),
   m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr) {
   m_feedsModel = new FeedsModel(this);
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
@@ -174,7 +174,7 @@ void FeedReader::executeNextAutoUpdate() {
     // of scheduled update can be shown now.
     if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool()) {
       qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
-                           tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
+                           tr("I will auto-update %n feed(s).", nullptr, feeds_for_update.size()),
                            QSystemTrayIcon::Information);
     }
   }

@@ -30,7 +30,7 @@
 #include <QUrl>
 #include <QVariant>
 
-bool DatabaseQueries::markMessagesReadUnread(QSqlDatabase db, const QStringList& ids, RootItem::ReadStatus read) {
+bool DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -38,7 +38,7 @@ bool DatabaseQueries::markMessagesReadUnread(QSqlDatabase db, const QStringList&
                 .arg(ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")));
 }
 
-bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Importance importance) {
+bool DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -55,7 +55,7 @@ bool DatabaseQueries::markMessageImportant(QSqlDatabase db, int id, RootItem::Im
   return q.exec();
 }
 
-bool DatabaseQueries::markFeedsReadUnread(QSqlDatabase db, const QStringList& ids, int account_id, RootItem::ReadStatus read) {
+bool DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db, const QStringList& ids, int account_id, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -66,7 +66,7 @@ bool DatabaseQueries::markFeedsReadUnread(QSqlDatabase db, const QStringList& id
   return q.exec();
 }
 
-bool DatabaseQueries::markBinReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read) {
+bool DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -77,7 +77,7 @@ bool DatabaseQueries::markBinReadUnread(QSqlDatabase db, int account_id, RootIte
   return q.exec();
 }
 
-bool DatabaseQueries::markAccountReadUnread(QSqlDatabase db, int account_id, RootItem::ReadStatus read) {
+bool DatabaseQueries::markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -87,21 +87,21 @@ bool DatabaseQueries::markAccountReadUnread(QSqlDatabase db, int account_id, Roo
   return q.exec();
 }
 
-bool DatabaseQueries::switchMessagesImportance(QSqlDatabase db, const QStringList& ids) {
+bool DatabaseQueries::switchMessagesImportance(const QSqlDatabase& db, const QStringList& ids) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
   return q.exec(QString(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);")).arg(ids.join(QSL(", "))));
 }
 
-bool DatabaseQueries::permanentlyDeleteMessages(QSqlDatabase db, const QStringList& ids) {
+bool DatabaseQueries::permanentlyDeleteMessages(const QSqlDatabase& db, const QStringList& ids) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
   return q.exec(QString(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);")).arg(ids.join(QSL(", "))));
 }
 
-bool DatabaseQueries::deleteOrRestoreMessagesToFromBin(QSqlDatabase db, const QStringList& ids, bool deleted) {
+bool DatabaseQueries::deleteOrRestoreMessagesToFromBin(const QSqlDatabase& db, const QStringList& ids, bool deleted) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -110,7 +110,7 @@ bool DatabaseQueries::deleteOrRestoreMessagesToFromBin(QSqlDatabase db, const QS
                                                                                                             QString::number(0)));
 }
 
-bool DatabaseQueries::restoreBin(QSqlDatabase db, int account_id) {
+bool DatabaseQueries::restoreBin(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -120,7 +120,7 @@ bool DatabaseQueries::restoreBin(QSqlDatabase db, int account_id) {
   return q.exec();
 }
 
-bool DatabaseQueries::purgeImportantMessages(QSqlDatabase db) {
+bool DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -128,7 +128,7 @@ bool DatabaseQueries::purgeImportantMessages(QSqlDatabase db) {
   return q.exec();
 }
 
-bool DatabaseQueries::purgeReadMessages(QSqlDatabase db) {
+bool DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -143,7 +143,7 @@ bool DatabaseQueries::purgeReadMessages(QSqlDatabase db) {
   return q.exec();
 }
 
-bool DatabaseQueries::purgeOldMessages(QSqlDatabase db, int older_than_days) {
+bool DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_days) {
   QSqlQuery q(db);
   const qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-older_than_days).toMSecsSinceEpoch();
 
@@ -156,7 +156,7 @@ bool DatabaseQueries::purgeOldMessages(QSqlDatabase db, int older_than_days) {
   return q.exec();
 }
 
-bool DatabaseQueries::purgeRecycleBin(QSqlDatabase db) {
+bool DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -168,7 +168,7 @@ bool DatabaseQueries::purgeRecycleBin(QSqlDatabase db) {
   return q.exec();
 }
 
-QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(QSqlDatabase db, const QString& custom_id, int account_id,
+QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db, const QString& custom_id, int account_id,
                                                                             bool including_total_counts, bool* ok) {
   QMap<QString, QPair<int, int>> counts;
   QSqlQuery q(db);
@@ -217,7 +217,7 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(QSql
   return counts;
 }
 
-QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(QSqlDatabase db, int account_id,
+QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(const QSqlDatabase& db, int account_id,
                                                                            bool including_total_counts, bool* ok) {
   QMap<QString, QPair<int, int>> counts;
   QSqlQuery q(db);
@@ -265,7 +265,7 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(QSqlD
   return counts;
 }
 
-int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, const QString& feed_custom_id,
+int DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, const QString& feed_custom_id,
                                              int account_id, bool including_total_counts, bool* ok) {
   QSqlQuery q(db);
 
@@ -299,7 +299,7 @@ int DatabaseQueries::getMessageCountsForFeed(QSqlDatabase db, const QString& fee
   }
 }
 
-int DatabaseQueries::getMessageCountsForBin(QSqlDatabase db, int account_id, bool including_total_counts, bool* ok) {
+int DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool including_total_counts, bool* ok) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -331,7 +331,7 @@ int DatabaseQueries::getMessageCountsForBin(QSqlDatabase db, int account_id, boo
   }
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, const QString& feed_custom_id, int account_id, bool* ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id, bool* ok) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -365,7 +365,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(QSqlDatabase db, con
   return messages;
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForBin(QSqlDatabase db, int account_id, bool* ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -398,7 +398,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(QSqlDatabase db, int 
   return messages;
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(QSqlDatabase db, int account_id, bool* ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -664,7 +664,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   return updated_messages;
 }
 
-bool DatabaseQueries::purgeMessagesFromBin(QSqlDatabase db, bool clear_only_read, int account_id) {
+bool DatabaseQueries::purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -680,7 +680,7 @@ bool DatabaseQueries::purgeMessagesFromBin(QSqlDatabase db, bool clear_only_read
   return q.exec();
 }
 
-bool DatabaseQueries::deleteAccount(QSqlDatabase db, int account_id) {
+bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery query(db);
 
   query.setForwardOnly(true);
@@ -707,7 +707,7 @@ bool DatabaseQueries::deleteAccount(QSqlDatabase db, int account_id) {
   return true;
 }
 
-bool DatabaseQueries::deleteAccountData(QSqlDatabase db, int account_id, bool delete_messages_too) {
+bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too) {
   bool result = true;
   QSqlQuery q(db);
 
@@ -730,7 +730,7 @@ bool DatabaseQueries::deleteAccountData(QSqlDatabase db, int account_id, bool de
   return result;
 }
 
-bool DatabaseQueries::cleanFeeds(QSqlDatabase db, const QStringList& ids, bool clean_read_only, int account_id) {
+bool DatabaseQueries::cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -758,7 +758,7 @@ bool DatabaseQueries::cleanFeeds(QSqlDatabase db, const QStringList& ids, bool c
   }
 }
 
-bool DatabaseQueries::purgeLeftoverMessages(QSqlDatabase db, int account_id) {
+bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -775,7 +775,7 @@ bool DatabaseQueries::purgeLeftoverMessages(QSqlDatabase db, int account_id) {
   }
 }
 
-bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem* tree_root, int account_id) {
+bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id) {
   QSqlQuery query_category(db);
   QSqlQuery query_feed(db);
 
@@ -825,7 +825,7 @@ bool DatabaseQueries::storeAccountTree(QSqlDatabase db, RootItem* tree_root, int
   return true;
 }
 
-QStringList DatabaseQueries::customIdsOfMessagesFromAccount(QSqlDatabase db, int account_id, bool* ok) {
+QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db, int account_id, bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 
@@ -847,7 +847,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(QSqlDatabase db, int
   return ids;
 }
 
-QStringList DatabaseQueries::customIdsOfMessagesFromBin(QSqlDatabase db, int account_id, bool* ok) {
+QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db, int account_id, bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 
@@ -869,7 +869,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromBin(QSqlDatabase db, int acc
   return ids;
 }
 
-QStringList DatabaseQueries::customIdsOfMessagesFromFeed(QSqlDatabase db, const QString& feed_custom_id, int account_id, bool* ok) {
+QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id, bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 
@@ -892,14 +892,14 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(QSqlDatabase db, const 
   return ids;
 }
 
-QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(QSqlDatabase db, bool* ok) {
+QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
 
   QList<ServiceRoot*> roots;
 
   if (query.exec("SELECT * FROM OwnCloudAccounts;")) {
     while (query.next()) {
-      OwnCloudServiceRoot* root = new OwnCloudServiceRoot();
+      auto* root = new OwnCloudServiceRoot();
 
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
@@ -927,14 +927,14 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(QSqlDatabase db, bool* 
   return roots;
 }
 
-QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(QSqlDatabase db, bool* ok) {
+QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
 
   QList<ServiceRoot*> roots;
 
   if (query.exec("SELECT * FROM TtRssAccounts;")) {
     while (query.next()) {
-      TtRssServiceRoot* root = new TtRssServiceRoot();
+      auto* root = new TtRssServiceRoot();
 
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
@@ -964,7 +964,7 @@ QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(QSqlDatabase db, bool* ok)
   return roots;
 }
 
-bool DatabaseQueries::deleteOwnCloudAccount(QSqlDatabase db, int account_id) {
+bool DatabaseQueries::deleteOwnCloudAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -973,7 +973,7 @@ bool DatabaseQueries::deleteOwnCloudAccount(QSqlDatabase db, int account_id) {
   return q.exec();
 }
 
-bool DatabaseQueries::overwriteOwnCloudAccount(QSqlDatabase db, const QString& username, const QString& password,
+bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QString& username, const QString& password,
                                                const QString& url, bool force_server_side_feed_update, int batch_size, int account_id) {
   QSqlQuery query(db);
 
@@ -996,7 +996,7 @@ bool DatabaseQueries::overwriteOwnCloudAccount(QSqlDatabase db, const QString& u
   }
 }
 
-bool DatabaseQueries::createOwnCloudAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+bool DatabaseQueries::createOwnCloudAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
                                             const QString& password, const QString& url,
                                             bool force_server_side_feed_update, int batch_size) {
   QSqlQuery q(db);
@@ -1019,7 +1019,7 @@ bool DatabaseQueries::createOwnCloudAccount(QSqlDatabase db, int id_to_assign, c
   }
 }
 
-int DatabaseQueries::createAccount(QSqlDatabase db, const QString& code, bool* ok) {
+int DatabaseQueries::createAccount(const QSqlDatabase& db, const QString& code, bool* ok) {
   QSqlQuery q(db);
 
   // First obtain the ID, which can be assigned to this new account.
@@ -1056,7 +1056,7 @@ int DatabaseQueries::createAccount(QSqlDatabase db, const QString& code, bool* o
   }
 }
 
-Assignment DatabaseQueries::getOwnCloudFeeds(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getOwnCloudFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment feeds;
   QSqlQuery q(db);
 
@@ -1087,7 +1087,7 @@ Assignment DatabaseQueries::getOwnCloudFeeds(QSqlDatabase db, int account_id, bo
   return feeds;
 }
 
-bool DatabaseQueries::deleteFeed(QSqlDatabase db, int feed_custom_id, int account_id) {
+bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1108,7 +1108,7 @@ bool DatabaseQueries::deleteFeed(QSqlDatabase db, int feed_custom_id, int accoun
   return q.exec();
 }
 
-bool DatabaseQueries::deleteCategory(QSqlDatabase db, int id) {
+bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
   QSqlQuery q(db);
 
   // Remove this category from database.
@@ -1118,8 +1118,8 @@ bool DatabaseQueries::deleteCategory(QSqlDatabase db, int id) {
   return q.exec();
 }
 
-int DatabaseQueries::addCategory(QSqlDatabase db, int parent_id, int account_id, const QString& title,
-                                 const QString& description, QDateTime creation_date, const QIcon& icon,
+int DatabaseQueries::addCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
+                                 const QString& description, const QDateTime& creation_date, const QIcon& icon,
                                  bool* ok) {
   QSqlQuery q(db);
 
@@ -1160,7 +1160,7 @@ int DatabaseQueries::addCategory(QSqlDatabase db, int parent_id, int account_id,
   }
 }
 
-bool DatabaseQueries::editCategory(QSqlDatabase db, int parent_id, int category_id,
+bool DatabaseQueries::editCategory(const QSqlDatabase& db, int parent_id, int category_id,
                                    const QString& title, const QString& description, const QIcon& icon) {
   QSqlQuery q(db);
 
@@ -1176,8 +1176,8 @@ bool DatabaseQueries::editCategory(QSqlDatabase db, int parent_id, int category_
   return q.exec();
 }
 
-int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, const QString& title,
-                             const QString& description, QDateTime creation_date, const QIcon& icon,
+int DatabaseQueries::addFeed(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
+                             const QString& description, const QDateTime& creation_date, const QIcon& icon,
                              const QString& encoding, const QString& url, bool is_protected,
                              const QString& username, const QString& password,
                              Feed::AutoUpdateType auto_update_type,
@@ -1236,7 +1236,7 @@ int DatabaseQueries::addFeed(QSqlDatabase db, int parent_id, int account_id, con
   }
 }
 
-bool DatabaseQueries::editFeed(QSqlDatabase db, int parent_id, int feed_id, const QString& title,
+bool DatabaseQueries::editFeed(const QSqlDatabase& db, int parent_id, int feed_id, const QString& title,
                                const QString& description, const QIcon& icon,
                                const QString& encoding, const QString& url, bool is_protected,
                                const QString& username, const QString& password,
@@ -1271,7 +1271,7 @@ bool DatabaseQueries::editFeed(QSqlDatabase db, int parent_id, int feed_id, cons
   return q.exec();
 }
 
-bool DatabaseQueries::editBaseFeed(QSqlDatabase db, int feed_id, Feed::AutoUpdateType auto_update_type,
+bool DatabaseQueries::editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
                                    int auto_update_interval) {
   QSqlQuery q(db);
 
@@ -1285,7 +1285,7 @@ bool DatabaseQueries::editBaseFeed(QSqlDatabase db, int feed_id, Feed::AutoUpdat
   return q.exec();
 }
 
-QList<ServiceRoot*> DatabaseQueries::getAccounts(QSqlDatabase db, bool* ok) {
+QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery q(db);
 
   QList<ServiceRoot*> roots;
@@ -1295,7 +1295,7 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(QSqlDatabase db, bool* ok) {
 
   if (q.exec()) {
     while (q.next()) {
-      StandardServiceRoot* root = new StandardServiceRoot();
+      auto* root = new StandardServiceRoot();
 
       root->setAccountId(q.value(0).toInt());
       roots.append(root);
@@ -1314,7 +1314,7 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(QSqlDatabase db, bool* ok) {
   return roots;
 }
 
-Assignment DatabaseQueries::getStandardCategories(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getStandardCategories(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment categories;
 
   // Obtain data for categories from the database.
@@ -1349,7 +1349,7 @@ Assignment DatabaseQueries::getStandardCategories(QSqlDatabase db, int account_i
   return categories;
 }
 
-Assignment DatabaseQueries::getStandardFeeds(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getStandardFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment feeds;
   QSqlQuery q(db);
 
@@ -1396,7 +1396,7 @@ Assignment DatabaseQueries::getStandardFeeds(QSqlDatabase db, int account_id, bo
   return feeds;
 }
 
-bool DatabaseQueries::deleteTtRssAccount(QSqlDatabase db, int account_id) {
+bool DatabaseQueries::deleteTtRssAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1408,7 +1408,7 @@ bool DatabaseQueries::deleteTtRssAccount(QSqlDatabase db, int account_id) {
   return q.exec();
 }
 
-bool DatabaseQueries::overwriteTtRssAccount(QSqlDatabase db, const QString& username, const QString& password,
+bool DatabaseQueries::overwriteTtRssAccount(const QSqlDatabase& db, const QString& username, const QString& password,
                                             bool auth_protected, const QString& auth_username, const QString& auth_password,
                                             const QString& url, bool force_server_side_feed_update, int account_id) {
   QSqlQuery q(db);
@@ -1435,7 +1435,7 @@ bool DatabaseQueries::overwriteTtRssAccount(QSqlDatabase db, const QString& user
   }
 }
 
-bool DatabaseQueries::createTtRssAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+bool DatabaseQueries::createTtRssAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
                                          const QString& password, bool auth_protected, const QString& auth_username,
                                          const QString& auth_password, const QString& url,
                                          bool force_server_side_feed_update) {
@@ -1461,7 +1461,7 @@ bool DatabaseQueries::createTtRssAccount(QSqlDatabase db, int id_to_assign, cons
   }
 }
 
-Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment categories;
 
   // Obtain data for categories from the database.
@@ -1495,7 +1495,7 @@ Assignment DatabaseQueries::getCategories(QSqlDatabase db, int account_id, bool*
   return categories;
 }
 
-Assignment DatabaseQueries::getGmailFeeds(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getGmailFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment feeds;
   QSqlQuery q(db);
 
@@ -1526,14 +1526,14 @@ Assignment DatabaseQueries::getGmailFeeds(QSqlDatabase db, int account_id, bool*
   return feeds;
 }
 
-QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(QSqlDatabase db, bool* ok) {
+QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
 
   QList<ServiceRoot*> roots;
 
   if (query.exec("SELECT * FROM GmailAccounts;")) {
     while (query.next()) {
-      GmailServiceRoot* root = new GmailServiceRoot(nullptr);
+      auto* root = new GmailServiceRoot(nullptr);
 
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
@@ -1562,7 +1562,7 @@ QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(QSqlDatabase db, bool* ok)
   return roots;
 }
 
-bool DatabaseQueries::deleteGmailAccount(QSqlDatabase db, int account_id) {
+bool DatabaseQueries::deleteGmailAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1571,7 +1571,7 @@ bool DatabaseQueries::deleteGmailAccount(QSqlDatabase db, int account_id) {
   return q.exec();
 }
 
-bool DatabaseQueries::deleteInoreaderAccount(QSqlDatabase db, int account_id) {
+bool DatabaseQueries::deleteInoreaderAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1580,7 +1580,7 @@ bool DatabaseQueries::deleteInoreaderAccount(QSqlDatabase db, int account_id) {
   return q.exec();
 }
 
-Assignment DatabaseQueries::getInoreaderFeeds(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getInoreaderFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment feeds;
   QSqlQuery q(db);
 
@@ -1611,7 +1611,7 @@ Assignment DatabaseQueries::getInoreaderFeeds(QSqlDatabase db, int account_id, b
   return feeds;
 }
 
-bool DatabaseQueries::storeNewInoreaderTokens(QSqlDatabase db, const QString& refresh_token, int account_id) {
+bool DatabaseQueries::storeNewInoreaderTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
   QSqlQuery query(db);
 
   query.prepare("UPDATE InoreaderAccounts "
@@ -1629,14 +1629,14 @@ bool DatabaseQueries::storeNewInoreaderTokens(QSqlDatabase db, const QString& re
   }
 }
 
-QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool* ok) {
+QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
 
   QList<ServiceRoot*> roots;
 
   if (query.exec("SELECT * FROM InoreaderAccounts;")) {
     while (query.next()) {
-      InoreaderServiceRoot* root = new InoreaderServiceRoot(nullptr);
+      auto* root = new InoreaderServiceRoot(nullptr);
 
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
@@ -1665,7 +1665,7 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(QSqlDatabase db, bool*
   return roots;
 }
 
-bool DatabaseQueries::overwriteGmailAccount(QSqlDatabase db, const QString& username, const QString& app_id,
+bool DatabaseQueries::overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
                                             const QString& app_key, const QString& redirect_url,
                                             const QString& refresh_token, int batch_size, int account_id) {
   QSqlQuery query(db);
@@ -1691,7 +1691,7 @@ bool DatabaseQueries::overwriteGmailAccount(QSqlDatabase db, const QString& user
   }
 }
 
-bool DatabaseQueries::createGmailAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+bool DatabaseQueries::createGmailAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
                                          const QString& app_id, const QString& app_key, const QString& redirect_url,
                                          const QString& refresh_token, int batch_size) {
   QSqlQuery q(db);
@@ -1715,7 +1715,7 @@ bool DatabaseQueries::createGmailAccount(QSqlDatabase db, int id_to_assign, cons
   }
 }
 
-bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& username, const QString& app_id,
+bool DatabaseQueries::overwriteInoreaderAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
                                                 const QString& app_key, const QString& redirect_url,
                                                 const QString& refresh_token, int batch_size, int account_id) {
   QSqlQuery query(db);
@@ -1741,7 +1741,7 @@ bool DatabaseQueries::overwriteInoreaderAccount(QSqlDatabase db, const QString& 
   }
 }
 
-bool DatabaseQueries::createInoreaderAccount(QSqlDatabase db, int id_to_assign, const QString& username,
+bool DatabaseQueries::createInoreaderAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
                                              const QString& app_id, const QString& app_key, const QString& redirect_url,
                                              const QString& refresh_token, int batch_size) {
   QSqlQuery q(db);
@@ -1765,7 +1765,7 @@ bool DatabaseQueries::createInoreaderAccount(QSqlDatabase db, int id_to_assign, 
   }
 }
 
-Assignment DatabaseQueries::getTtRssFeeds(QSqlDatabase db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getTtRssFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment feeds;
 
   // All categories are now loaded.
@@ -1803,4 +1803,4 @@ QString DatabaseQueries::unnulifyString(const QString& str) {
   return str.isNull() ? "" : str;
 }
 
-DatabaseQueries::DatabaseQueries() {}
+DatabaseQueries::DatabaseQueries() = default;
