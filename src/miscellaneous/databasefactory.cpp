@@ -415,7 +415,9 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(const QSqlDatabase& database, c
   return true;
 }
 
-bool DatabaseFactory::mysqlUpdateDatabaseSchema(const QSqlDatabase& database, const QString& source_db_schema_version, const QString& db_name) {
+bool DatabaseFactory::mysqlUpdateDatabaseSchema(const QSqlDatabase& database,
+                                                const QString& source_db_schema_version,
+                                                const QString& db_name) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
   const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
@@ -708,8 +710,6 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
       QSqlDatabase database = QSqlDatabase::database();
 
       database.setDatabaseName(QSL(":memory:"));
-
-      auto aaa = database.driverName();
 
       if (!database.isOpen() && !database.open()) {
         qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'.",

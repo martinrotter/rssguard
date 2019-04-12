@@ -49,9 +49,9 @@
 #include "network-web/adblock/adblockrule.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/simpleregexp.h"
 #include "network-web/adblock/adblocksubscription.h"
 
+#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
 #include <QUrl>
@@ -81,12 +81,8 @@ static QString toSecondLevelDomain(const QUrl& url) {
 
 AdBlockRule::AdBlockRule(const QString& filter, AdBlockSubscription* subscription)
   : m_subscription(subscription), m_type(StringContainsMatchRule), m_caseSensitivity(Qt::CaseInsensitive),
-  m_isEnabled(true), m_isException(false), m_isInternalDisabled(false), m_regExp(0) {
+  m_isEnabled(true), m_isException(false), m_isInternalDisabled(false), matchers(QList<QStringMatcher>()) {
   setFilter(filter);
-}
-
-AdBlockRule::~AdBlockRule() {
-  delete m_regExp;
 }
 
 AdBlockRule* AdBlockRule::copy() const {
@@ -104,12 +100,7 @@ AdBlockRule* AdBlockRule::copy() const {
   rule->m_isInternalDisabled = m_isInternalDisabled;
   rule->m_allowedDomains = m_allowedDomains;
   rule->m_blockedDomains = m_blockedDomains;
-
-  if (m_regExp) {
-    rule->m_regExp = new RegExp;
-    rule->m_regExp->regExp = m_regExp->regExp;
-    rule->m_regExp->matchers = m_regExp->matchers;
-  }
+  rule->matchers = matchers;
 
   return rule;
 }
@@ -168,7 +159,7 @@ void AdBlockRule::setEnabled(bool enabled) {
 }
 
 bool AdBlockRule::isSlow() const {
-  return m_regExp != 0;
+  return !m_regexPattern.isEmpty();
 }
 
 bool AdBlockRule::isInternalDisabled() const {
@@ -460,9 +451,8 @@ void AdBlockRule::parseFilter() {
     parsedLine = parsedLine.mid(1);
     parsedLine = parsedLine.left(parsedLine.size() - 1);
     m_type = RegExpMatchRule;
-    m_regExp = new RegExp;
-    m_regExp->regExp = SimpleRegExp(parsedLine, m_caseSensitivity);
-    m_regExp->matchers = createStringMatchers(parseRegExpFilter(parsedLine));
+    m_regexPattern = parsedLine;
+    matchers = createStringMatchers(parseRegExpFilter(parsedLine));
     return;
   }
 
@@ -496,9 +486,8 @@ void AdBlockRule::parseFilter() {
   // we must modify parsedLine to comply with SimpleRegExp.
   if (parsedLine.contains(QL1C('*')) || parsedLine.contains(QL1C('^')) || parsedLine.contains(QL1C('|'))) {
     m_type = RegExpMatchRule;
-    m_regExp = new RegExp;
-    m_regExp->regExp = SimpleRegExp(createRegExpFromFilter(parsedLine), m_caseSensitivity);
-    m_regExp->matchers = createStringMatchers(parseRegExpFilter(parsedLine));
+    m_regexPattern = createRegExpFromFilter(parsedLine);
+    matchers = createStringMatchers(parseRegExpFilter(parsedLine));
     return;
   }
 
@@ -611,7 +600,7 @@ QString AdBlockRule::createRegExpFromFilter(const QString& filter) const {
           break;
         }
 
-      // fallthrough
+        [[fallthrough]];
 
       default:
         if (!wordCharacter(c)) {
@@ -639,6 +628,23 @@ QList<QStringMatcher> AdBlockRule::createStringMatchers(const QStringList& filte
   return matchers;
 }
 
+int AdBlockRule::regexMatched(const QString& str, int offset) const {
+  QRegularExpression exp(m_regexPattern);
+
+  if (m_caseSensitivity == Qt::CaseSensitivity::CaseInsensitive) {
+    exp.setPatternOptions(exp.patternOptions() | QRegularExpression::PatternOption::CaseInsensitiveOption);
+  }
+
+  QRegularExpressionMatch m = exp.match(str, offset);
+
+  if (!m.hasMatch()) {
+    return -1;
+  }
+  else {
+    return m.capturedStart();
+  }
+}
+
 bool AdBlockRule::stringMatch(const QString& domain, const QString& encodedUrl) const {
   if (m_type == StringContainsMatchRule) {
     return encodedUrl.contains(m_matchString, m_caseSensitivity);
@@ -654,7 +660,7 @@ bool AdBlockRule::stringMatch(const QString& domain, const QString& encodedUrl) 
       return false;
     }
     else {
-      return (m_regExp->regExp.indexIn(encodedUrl) != -1);
+      return (regexMatched(encodedUrl) != -1);
     }
   }
 
@@ -680,9 +686,7 @@ bool AdBlockRule::isMatchingDomain(const QString& domain, const QString& filter)
 }
 
 bool AdBlockRule::isMatchingRegExpStrings(const QString& url) const {
-  Q_ASSERT(m_regExp);
-
-  foreach (const QStringMatcher& matcher, m_regExp->matchers) {
+  for (const QStringMatcher& matcher : matchers) {
     if (matcher.indexIn(url) == -1) {
       return false;
     }

@@ -36,30 +36,27 @@ QFile* Debugging::targetFileHandle() {
 
 void Debugging::performLog(const char* message, QtMsgType type, const char* file, const char* function, int line) {
   const char* type_string = typeToString(type);
-
-  std::time_t t = std::time(nullptr);
-  char mbstr[32];
-
-  std::strftime(mbstr, sizeof(mbstr), "%y/%d/%m %H:%M:%S", std::localtime(&t));
+  QString date_str = QDateTime::currentDateTimeUtc().toString(QSL("yyyy-MM-dd HH:mm:ss.zzz UTC"));
 
   if (instance()->targetFile().isEmpty()) {
 
     // Write to console.
     if (file == nullptr || function == nullptr || line < 0) {
-      fprintf(stderr, "[%s] %s: %s (%s)\n", APP_LOW_NAME, type_string, message, mbstr);
+      fprintf(stderr, "[%s] %s: %s (%s)\n", APP_LOW_NAME, type_string, message, qPrintable(date_str));
     }
     else {
       fprintf(stderr, "[%s] %s (%s)\n  Type: %s\n  File: %s (line %d)\n  Function: %s\n\n",
-              APP_LOW_NAME, message, mbstr, type_string, file, line, function);
+              APP_LOW_NAME, message, qPrintable(date_str), type_string, file, line, function);
     }
   }
   else {
-    if (file == 0 || function == 0 || line < 0) {
-      instance()->targetFileHandle()->write(QString("[%1] %2: %3 (%4)\n").arg(APP_LOW_NAME, type_string, message, mbstr).toUtf8());
+    if (file == nullptr || function == nullptr || line < 0) {
+      instance()->targetFileHandle()->write(QString("[%1] %2: %3 (%4)\n").arg(APP_LOW_NAME, type_string,
+                                                                              message, qPrintable(date_str)).toUtf8());
     }
     else {
       instance()->targetFileHandle()->write(QString("[%1] %2 (%3)\n  Type: %4\n  File: %5 (line %6)\n  Function: %7\n\n")
-                                            .arg(APP_LOW_NAME, message, mbstr, type_string,
+                                            .arg(APP_LOW_NAME, message, qPrintable(date_str), type_string,
                                                  file, QString::number(line), function).toUtf8());
     }
 

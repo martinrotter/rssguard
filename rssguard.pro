@@ -564,7 +564,6 @@ equals(USE_WEBENGINE, true) {
                 src/network-web/adblock/adblockurlinterceptor.h \
                 src/network-web/urlinterceptor.h \
                 src/network-web/networkurlinterceptor.h \
-                src/miscellaneous/simpleregexp.h \
                 src/gui/treewidget.h
 
   SOURCES +=    src/network-web/adblock/adblockaddsubscriptiondialog.cpp \
@@ -578,7 +577,6 @@ equals(USE_WEBENGINE, true) {
                 src/network-web/adblock/adblocktreewidget.cpp \
                 src/network-web/adblock/adblockurlinterceptor.cpp \
                 src/network-web/networkurlinterceptor.cpp \
-                src/miscellaneous/simpleregexp.cpp \
                 src/gui/treewidget.cpp
 
   FORMS +=      src/network-web/adblock/adblockaddsubscriptiondialog.ui \

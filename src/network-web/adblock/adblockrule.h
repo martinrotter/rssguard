@@ -52,8 +52,6 @@
 #include <QStringList>
 #include <QStringMatcher>
 
-#include "miscellaneous/simpleregexp.h"
-
 class QUrl;
 class QWebEngineUrlRequestInfo;
 class AdBlockSubscription;
@@ -62,8 +60,8 @@ class AdBlockRule {
   Q_DISABLE_COPY(AdBlockRule)
 
   public:
-    explicit AdBlockRule(const QString& filter = QString(), AdBlockSubscription* subscription = 0);
-    virtual ~AdBlockRule();
+    explicit AdBlockRule(const QString& filter = QString(), AdBlockSubscription* subscription = nullptr);
+    virtual ~AdBlockRule() = default;
 
     AdBlockRule* copy() const;
     AdBlockSubscription* subscription() const;
@@ -145,6 +143,7 @@ class AdBlockRule {
     void parseDomains(const QString& domains, const QChar& separator);
     bool filterIsOnlyDomain(const QString& filter) const;
     bool filterIsOnlyEndsMatch(const QString& filter) const;
+    int regexMatched(const QString& str, int offset = 0) const;
     QString createRegExpFromFilter(const QString& filter) const;
     QList<QStringMatcher> createStringMatchers(const QStringList& filters) const;
 
@@ -167,14 +166,9 @@ class AdBlockRule {
     bool m_isInternalDisabled;
     QStringList m_allowedDomains;
     QStringList m_blockedDomains;
-    struct RegExp {
-      SimpleRegExp regExp;
+    QString m_regexPattern;
 
-      QList<QStringMatcher> matchers;
-    };
-
-    // Use dynamic allocation to save memory
-    RegExp* m_regExp;
+    QList<QStringMatcher> matchers;
 
     friend class AdBlockMatcher;
     friend class AdBlockSearchTree;
