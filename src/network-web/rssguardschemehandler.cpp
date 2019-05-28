@@ -29,7 +29,7 @@
 
 RssGuardSchemeHandler::RssGuardSchemeHandler(QObject* parent) : QWebEngineUrlSchemeHandler(parent) {}
 
-RssGuardSchemeHandler::~RssGuardSchemeHandler() {}
+RssGuardSchemeHandler::~RssGuardSchemeHandler() = default;
 
 void RssGuardSchemeHandler::requestStarted(QWebEngineUrlRequestJob* job) {
   // Decide which data we want.
@@ -39,7 +39,7 @@ void RssGuardSchemeHandler::requestStarted(QWebEngineUrlRequestJob* job) {
     job->fail(QWebEngineUrlRequestJob::UrlNotFound);
   }
   else {
-    QBuffer* buf = new QBuffer(job);
+    auto* buf = new QBuffer(job);
 
     buf->setData(data);
     job->reply(QByteArray("text/html"), buf);

@@ -60,15 +60,15 @@ class FormStandardCategoryDetails : public QDialog {
     // Loads categories into the dialog + give root "category"
     // and make sure that no childs of input category (including)
     // input category are loaded.
-    void loadCategories(const QList<Category*> categories, RootItem* root_item, StandardCategory* input_category);
+    void loadCategories(const QList<Category*>& categories, RootItem* root_item, StandardCategory* input_category);
 
   private:
     QScopedPointer<Ui::FormStandardCategoryDetails> m_ui;
     StandardCategory* m_editableCategory;
     StandardServiceRoot* m_serviceRoot;
-    QMenu* m_iconMenu;
-    QAction* m_actionLoadIconFromFile;
-    QAction* m_actionUseDefaultIcon;
+    QMenu* m_iconMenu{};
+    QAction* m_actionLoadIconFromFile{};
+    QAction* m_actionUseDefaultIcon{};
 };
 
 #endif // FORMCATEGORYDETAILS_H

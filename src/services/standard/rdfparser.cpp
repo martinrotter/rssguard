@@ -8,9 +8,9 @@
 
 #include <QDomDocument>
 
-RdfParser::RdfParser() {}
+RdfParser::RdfParser() = default;
 
-RdfParser::~RdfParser() {}
+RdfParser::~RdfParser() = default;
 
 QList<Message> RdfParser::parseXmlData(const QString& data) {
   QList<Message> messages;

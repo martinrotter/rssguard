@@ -28,7 +28,7 @@
 #include <QMenu>
 
 AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget* parent)
-  : TreeWidget(parent), m_subscription(subscription), m_topItem(0), m_itemChangingBlock(false) {
+  : TreeWidget(parent), m_subscription(subscription), m_topItem(nullptr), m_itemChangingBlock(false) {
   setContextMenuPolicy(Qt::CustomContextMenu);
   setDefaultItemShowMode(TreeWidget::ItemsExpanded);
   setHeaderHidden(true);
@@ -46,7 +46,7 @@ AdBlockSubscription* AdBlockTreeWidget::subscription() const {
 }
 
 void AdBlockTreeWidget::showRule(const AdBlockRule* rule) {
-  if (!m_topItem && rule) {
+  if ((m_topItem == nullptr) && (rule != nullptr)) {
     m_ruleToBeSelected = rule->filter();
   }
   else if (!m_ruleToBeSelected.isEmpty()) {
@@ -70,7 +70,7 @@ void AdBlockTreeWidget::contextMenuRequested(const QPoint& pos) {
 
   QTreeWidgetItem* item = itemAt(pos);
 
-  if (!item) {
+  if (item == nullptr) {
     return;
   }
 
@@ -80,7 +80,7 @@ void AdBlockTreeWidget::contextMenuRequested(const QPoint& pos) {
   menu.addSeparator();
   QAction* deleteAction = menu.addAction(tr("Remove rule"), this, SLOT(removeRule()));
 
-  if (!item->parent()) {
+  if (item->parent() == nullptr) {
     deleteAction->setDisabled(true);
   }
 
@@ -88,7 +88,7 @@ void AdBlockTreeWidget::contextMenuRequested(const QPoint& pos) {
 }
 
 void AdBlockTreeWidget::itemChanged(QTreeWidgetItem* item) {
-  if (!item || m_itemChangingBlock) {
+  if ((item == nullptr) || m_itemChangingBlock) {
     return;
   }
 
@@ -122,7 +122,7 @@ void AdBlockTreeWidget::itemChanged(QTreeWidgetItem* item) {
 void AdBlockTreeWidget::copyFilter() {
   QTreeWidgetItem* item = currentItem();
 
-  if (!item) {
+  if (item == nullptr) {
     return;
   }
 
@@ -140,9 +140,9 @@ void AdBlockTreeWidget::addRule() {
     return;
   }
 
-  AdBlockRule* rule = new AdBlockRule(newRule, m_subscription);
+  auto* rule = new AdBlockRule(newRule, m_subscription);
   int offset = m_subscription->addRule(rule);
-  QTreeWidgetItem* item = new QTreeWidgetItem();
+  auto* item = new QTreeWidgetItem();
 
   item->setText(0, newRule);
   item->setData(0, Qt::UserRole + 10, offset);
@@ -156,7 +156,7 @@ void AdBlockTreeWidget::addRule() {
 void AdBlockTreeWidget::removeRule() {
   QTreeWidgetItem* item = currentItem();
 
-  if (!item || !m_subscription->canEditRules() || item == m_topItem) {
+  if ((item == nullptr) || !m_subscription->canEditRules() || item == m_topItem) {
     return;
   }
 
@@ -210,7 +210,7 @@ void AdBlockTreeWidget::adjustItemFeatures(QTreeWidgetItem* item, const AdBlockR
 }
 
 void AdBlockTreeWidget::keyPressEvent(QKeyEvent* event) {
-  if (event->key() == Qt::Key_C && event->modifiers() & Qt::ControlModifier) {
+  if (event->key() == Qt::Key_C && (event->modifiers() & Qt::ControlModifier) != 0) {
     copyFilter();
   }
 
@@ -236,7 +236,7 @@ void AdBlockTreeWidget::refresh() {
   int index = 0;
 
   foreach (const AdBlockRule* rule, allRules) {
-    QTreeWidgetItem* item = new QTreeWidgetItem(m_topItem);
+    auto* item = new QTreeWidgetItem(m_topItem);
 
     item->setText(0, rule->filter());
     item->setData(0, Qt::UserRole + 10, index);
@@ -249,6 +249,6 @@ void AdBlockTreeWidget::refresh() {
     ++index;
   }
 
-  showRule(0);
+  showRule(nullptr);
   m_itemChangingBlock = false;
 }

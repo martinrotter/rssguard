@@ -99,7 +99,7 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
   bool res = false;
   const AdBlockRule* blockedRule = m_matcher->match(request, urlDomain, urlString);
 
-  if (blockedRule) {
+  if (blockedRule != nullptr) {
     if (request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
       QUrlQuery query;
       QUrl url(QSL("rssguard:adblockedpage"));
@@ -165,7 +165,7 @@ bool AdBlockManager::addSubscriptionFromUrl(const QUrl& url) {
 
 AdBlockSubscription* AdBlockManager::addSubscription(const QString& title, const QString& url) {
   if (title.isEmpty() || url.isEmpty()) {
-    return 0;
+    return nullptr;
   }
 
   QString fileName = title + QSL(".txt");
@@ -175,12 +175,12 @@ AdBlockSubscription* AdBlockManager::addSubscription(const QString& title, const
 
   if (!file.open(QFile::WriteOnly)) {
     qWarning("Cannot save AdBlock subscription to file '%s'.", qPrintable(filePath));
-    return 0;
+    return nullptr;
   }
 
   file.write(data);
   file.commit();
-  AdBlockSubscription* subscription = new AdBlockSubscription(title, this);
+  auto* subscription = new AdBlockSubscription(title, this);
 
   subscription->setUrl(QUrl(url));
   subscription->setFilePath(filePath);
@@ -207,14 +207,14 @@ bool AdBlockManager::removeSubscription(AdBlockSubscription* subscription) {
 
 AdBlockCustomList* AdBlockManager::customList() const {
   foreach (AdBlockSubscription* subscription, m_subscriptions) {
-    AdBlockCustomList* list = qobject_cast<AdBlockCustomList*>(subscription);
+    auto* list = qobject_cast<AdBlockCustomList*>(subscription);
 
-    if (list) {
+    if (list != nullptr) {
       return list;
     }
   }
 
-  return 0;
+  return nullptr;
 }
 
 QString AdBlockManager::storedListsPath() {
@@ -266,7 +266,7 @@ void AdBlockManager::load() {
       continue;
     }
 
-    AdBlockSubscription* subscription = new AdBlockSubscription(title, this);
+    auto* subscription = new AdBlockSubscription(title, this);
 
     subscription->setUrl(url);
     subscription->setFilePath(absolutePath);
@@ -274,7 +274,7 @@ void AdBlockManager::load() {
   }
 
   // Append CustomList.
-  AdBlockCustomList* customList = new AdBlockCustomList(this);
+  auto* customList = new AdBlockCustomList(this);
 
   m_subscriptions.append(customList);
 
@@ -357,11 +357,11 @@ AdBlockSubscription* AdBlockManager::subscriptionByName(const QString& name) con
     }
   }
 
-  return 0;
+  return nullptr;
 }
 
 void AdBlockManager::showDialog() {
-  if (!m_adBlockDialog) {
+  if (m_adBlockDialog == nullptr) {
     m_adBlockDialog = new AdBlockDialog();
   }
 

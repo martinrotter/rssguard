@@ -94,10 +94,10 @@ class Feed : public RootItem, public QRunnable {
     QString m_url;
     Status m_status;
     AutoUpdateType m_autoUpdateType;
-    int m_autoUpdateInitialInterval;
-    int m_autoUpdateRemainingInterval;
-    int m_totalCount;
-    int m_unreadCount;
+    int m_autoUpdateInitialInterval{};
+    int m_autoUpdateRemainingInterval{};
+    int m_totalCount{};
+    int m_unreadCount{};
 };
 
 Q_DECLARE_METATYPE(Feed::AutoUpdateType)

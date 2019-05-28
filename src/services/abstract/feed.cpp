@@ -17,8 +17,7 @@
 
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_url(QString()), m_status(Normal), m_autoUpdateType(DefaultAutoUpdate),
-  m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-  m_totalCount(0), m_unreadCount(0) {
+  m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL) {
   setKind(RootItemKind::Feed);
   setAutoDelete(false);
 }
@@ -55,7 +54,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
 }
 
-Feed::~Feed() {}
+Feed::~Feed() = default;
 
 QList<Message> Feed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
@@ -176,19 +175,19 @@ void Feed::run() {
                      << QThread::currentThreadId() << "\'.";
 
   // Now, do some general operations on messages (tweak encoding etc.).
-  for (int i = 0; i < msgs.size(); i++) {
+  for (auto& msg : msgs) {
     // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
-    msgs[i].m_contents = QUrl::fromPercentEncoding(msgs[i].m_contents.toUtf8());
-    msgs[i].m_author = msgs[i].m_author.toUtf8();
+    msg.m_contents = QUrl::fromPercentEncoding(msg.m_contents.toUtf8());
+    msg.m_author = msg.m_author.toUtf8();
 
     // Sanitize title. Remove newlines etc.
-    msgs[i].m_title = QUrl::fromPercentEncoding(msgs[i].m_title.toUtf8())
+    msg.m_title = QUrl::fromPercentEncoding(msg.m_title.toUtf8())
 
-                      // Replace all continuous white space.
-                      .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
+                  // Replace all continuous white space.
+                  .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
 
-                      // Remove all newlines and leading white space.
-                      .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
+                  // Remove all newlines and leading white space.
+                  .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
   }
 
   emit messagesObtained(msgs, error_during_obtaining);
@@ -200,7 +199,7 @@ bool Feed::cleanMessages(bool clean_read_only) {
 
 bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = getParentServiceRoot();
-  CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(service);
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
@@ -271,7 +270,7 @@ QString Feed::getAutoUpdateStatusDescription() const {
 
       //: Describes feed auto-update status.
       auto_update_string = tr("uses global settings (%n minute(s) to next auto-update)",
-                              0,
+                              nullptr,
                               qApp->feedReader()->autoUpdateRemainingInterval());
       break;
 
@@ -279,7 +278,7 @@ QString Feed::getAutoUpdateStatusDescription() const {
     default:
 
       //: Describes feed auto-update status.
-      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-update)", 0, autoUpdateRemainingInterval());
+      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-update)", nullptr, autoUpdateRemainingInterval());
       break;
   }
 

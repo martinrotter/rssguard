@@ -13,7 +13,7 @@ void FormStandardFeedDetails::apply() {
   RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
 
   StandardFeed::Type type = static_cast<StandardFeed::Type>(m_ui->m_cmbType->itemData(m_ui->m_cmbType->currentIndex()).value<int>());
-  StandardFeed* new_feed = new StandardFeed();
+  auto* new_feed = new StandardFeed();
 
   // Setup data for new_feed.
   new_feed->setTitle(m_ui->m_txtTitle->lineEdit()->text());
@@ -65,7 +65,7 @@ void FormStandardFeedDetails::apply() {
 
 void FormStandardFeedDetails::setEditableFeed(Feed* editable_feed) {
   FormFeedDetails::setEditableFeed(editable_feed);
-  StandardFeed* feed = qobject_cast<StandardFeed*>(editable_feed);
+  auto* feed = qobject_cast<StandardFeed*>(editable_feed);
 
   m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue(int(feed->type()))));
   m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(feed->encoding(), Qt::DisplayRole, Qt::MatchFixedString));

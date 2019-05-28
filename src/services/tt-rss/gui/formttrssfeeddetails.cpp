@@ -25,7 +25,7 @@ FormTtRssFeedDetails::FormTtRssFeedDetails(ServiceRoot* service_root, QWidget* p
 void FormTtRssFeedDetails::apply() {
   if (m_editableFeed != nullptr) {
     // User edited auto-update status. Save it.
-    TtRssFeed* new_feed_data = new TtRssFeed();
+    auto* new_feed_data = new TtRssFeed();
 
     new_feed_data->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
                                                                          m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
@@ -36,7 +36,7 @@ void FormTtRssFeedDetails::apply() {
   else {
     RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(
                                                 m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-    TtRssServiceRoot* root = qobject_cast<TtRssServiceRoot*>(parent->getParentServiceRoot());
+    auto* root = qobject_cast<TtRssServiceRoot*>(parent->getParentServiceRoot());
     const int category_id = parent->kind() == RootItemKind::ServiceRoot ?
                             0 :
                             parent->customId().toInt();

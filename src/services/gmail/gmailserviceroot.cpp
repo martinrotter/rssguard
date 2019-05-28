@@ -17,8 +17,7 @@
 
 #include <QFileDialog>
 
-GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent) : ServiceRoot(parent),
-  CacheForServiceRoot(), m_serviceMenu(QList<QAction*>()), m_network(network) {
+GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent) : ServiceRoot(parent), m_network(network) {
   if (network == nullptr) {
     m_network = new GmailNetworkFactory(this);
   }
@@ -33,14 +32,14 @@ GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* paren
   setRecycleBin(nullptr);
 }
 
-GmailServiceRoot::~GmailServiceRoot() {}
+GmailServiceRoot::~GmailServiceRoot() = default;
 
 void GmailServiceRoot::updateTitle() {
   setTitle(m_network->userName() + QSL(" (Gmail)"));
 }
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
-  RootItem* root = new RootItem();
+  auto* root = new RootItem();
   GmailFeed* inbox = new GmailFeed(tr("Inbox"), QSL(GMAIL_SYSTEM_LABEL_INBOX), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
 
   inbox->setKeepOnTop(true);

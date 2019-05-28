@@ -11,16 +11,15 @@
 
 Downloader::Downloader(QObject* parent)
   : QObject(parent), m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)),
-  m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_inputData(QByteArray()),
+  m_timer(new QTimer(this)), m_inputData(QByteArray()),
   m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
-  m_lastOutputData(QByteArray()), m_lastOutputMultipartData(QList<HttpResponse>()), m_lastOutputError(QNetworkReply::NoError),
-  m_lastContentType(QVariant()) {
+  m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
   connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
 }
 
-Downloader::~Downloader() {}
+Downloader::~Downloader() = default;
 
 void Downloader::downloadFile(const QString& url, int timeout, bool protected_contents, const QString& username,
                               const QString& password) {
@@ -100,7 +99,7 @@ void Downloader::manipulateData(const QString& url,
 }
 
 void Downloader::finished() {
-  QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+  auto* reply = qobject_cast<QNetworkReply*>(sender());
 
   QNetworkAccessManager::Operation reply_operation = reply->operation();
   m_timer->stop();

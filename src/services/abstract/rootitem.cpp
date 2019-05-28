@@ -13,8 +13,7 @@
 
 RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr), m_kind(RootItemKind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QSL("")),
-  m_title(QString()), m_description(QString()), m_icon(QIcon()), m_creationDate(QDateTime()),
-  m_keepOnTop(false), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
+  m_title(QString()), m_description(QString()), m_keepOnTop(false), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
@@ -104,7 +103,7 @@ void RootItem::updateCounts(bool including_total_count) {
 }
 
 int RootItem::row() const {
-  if (m_parentItem) {
+  if (m_parentItem != nullptr) {
     return m_parentItem->m_childItems.indexOf(const_cast<RootItem*>(this));
   }
   else {
@@ -136,7 +135,7 @@ QVariant RootItem::data(int column, int role) const {
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.
-        return tr("%n unread message(s).", 0, countOfUnreadMessages());
+        return tr("%n unread message(s).", nullptr, countOfUnreadMessages());
       }
       else {
         return QVariant();
@@ -439,15 +438,15 @@ void RootItem::setCustomId(const QString& custom_id) {
 }
 
 Category* RootItem::toCategory() const {
-  return static_cast<Category*>(const_cast<RootItem*>(this));
+  return dynamic_cast<Category*>(const_cast<RootItem*>(this));
 }
 
 Feed* RootItem::toFeed() const {
-  return static_cast<Feed*>(const_cast<RootItem*>(this));
+  return dynamic_cast<Feed*>(const_cast<RootItem*>(this));
 }
 
 ServiceRoot* RootItem::toServiceRoot() const {
-  return static_cast<ServiceRoot*>(const_cast<RootItem*>(this));
+  return dynamic_cast<ServiceRoot*>(const_cast<RootItem*>(this));
 }
 
 bool RootItem::keepOnTop() const {

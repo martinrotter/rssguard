@@ -83,7 +83,7 @@ class OAuth2Service : public QObject {
 
   public slots:
     void retrieveAuthCode();
-    void retrieveAccessToken(QString auth_code);
+    void retrieveAccessToken(const QString& auth_code);
     void refreshAccessToken(QString refresh_token = QString());
 
     // Performs login if needed. If some refresh token is set, then

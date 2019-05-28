@@ -46,7 +46,7 @@ class FormStandardImportExport : public QDialog {
     void exportFeeds();
     void importFeeds();
 
-    void loadCategories(const QList<Category*> categories, RootItem* root_item);
+    void loadCategories(const QList<Category*>& categories, RootItem* root_item);
 
     QScopedPointer<Ui::FormStandardImportExport> m_ui;
     ConversionType m_conversionType;

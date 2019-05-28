@@ -61,7 +61,7 @@ GoogleSuggest::GoogleSuggest(LocationLineEdit* editor, QObject* parent)
   connect(editor, &LocationLineEdit::textEdited, timer, static_cast<void (QTimer::*)()>(&QTimer::start));
 }
 
-GoogleSuggest::~GoogleSuggest() {}
+GoogleSuggest::~GoogleSuggest() = default;
 
 bool GoogleSuggest::eventFilter(QObject* object, QEvent* event) {
   if (object != popup.data()) {
@@ -83,11 +83,13 @@ bool GoogleSuggest::eventFilter(QObject* object, QEvent* event) {
       case Qt::Key_Return:
         doneCompletion();
         consumed = true;
+        break;
 
       case Qt::Key_Escape:
         editor->setFocus();
         popup->hide();
         consumed = true;
+        break;
 
       case Qt::Key_Up:
       case Qt::Key_Down:
@@ -157,7 +159,7 @@ void GoogleSuggest::autoSuggest() {
 void GoogleSuggest::handleNetworkData() {
   QScopedPointer<QNetworkReply> reply(static_cast<QNetworkReply*>(sender()));
 
-  if (!reply->error()) {
+  if (reply->error() == 0) {
     QStringList choices;
     QDomDocument xml;
     QByteArray response = reply->readAll();

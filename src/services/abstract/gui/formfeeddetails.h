@@ -67,16 +67,16 @@ class FormFeedDetails : public QDialog {
     void initialize();
 
     // Loads categories into the dialog from the model.
-    void loadCategories(const QList<Category*> categories, RootItem* root_item);
+    void loadCategories(const QList<Category*>& categories, RootItem* root_item);
 
   protected:
     QScopedPointer<Ui::FormFeedDetails> m_ui;
     Feed* m_editableFeed;
     ServiceRoot* m_serviceRoot;
-    QMenu* m_iconMenu;
-    QAction* m_actionLoadIconFromFile;
-    QAction* m_actionUseDefaultIcon;
-    QAction* m_actionFetchIcon;
+    QMenu* m_iconMenu{};
+    QAction* m_actionLoadIconFromFile{};
+    QAction* m_actionUseDefaultIcon{};
+    QAction* m_actionFetchIcon{};
 };
 
 #endif // FORMFEEDDETAILS_H

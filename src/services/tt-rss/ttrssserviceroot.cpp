@@ -22,8 +22,7 @@
 #include <QSqlTableModel>
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), CacheForServiceRoot(),
-  m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory()) {
+  : ServiceRoot(parent), m_actionSyncIn(nullptr), m_network(new TtRssNetworkFactory()) {
   setIcon(TtRssServiceEntryPoint().icon());
 }
 

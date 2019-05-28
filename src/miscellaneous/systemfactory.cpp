@@ -176,7 +176,7 @@ bool SystemFactory::removeTrolltechJunkRegistryKeys() {
   if (qApp->settings()->value(GROUP(General), SETTING(General::RemoveTrolltechJunk)).toBool()) {
     QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\TrollTech"), QSettings::NativeFormat);
 
-    registry_key.remove(QSL(""));
+    registry_key.remove(QString());
     registry_key.sync();
     return registry_key.status() == QSettings::NoError;
   }

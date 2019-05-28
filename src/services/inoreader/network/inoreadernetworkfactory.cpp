@@ -361,7 +361,7 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
 }
 
 RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons) {
-  RootItem* parent = new RootItem();
+  auto* parent = new RootItem();
   QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
 
   QMap<QString, RootItem*> cats;
@@ -373,7 +373,7 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
 
     if (label_id.contains(QSL("/label/"))) {
       // We have label (not "state").
-      Category* category = new Category();
+      auto* category = new Category();
 
       category->setDescription(label["htmlUrl"].toString());
       category->setTitle(label_id.mid(label_id.lastIndexOf(QL1C('/')) + 1));
@@ -406,7 +406,7 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
     }
 
     // We have label (not "state").
-    InoreaderFeed* feed = new InoreaderFeed();
+    auto* feed = new InoreaderFeed();
 
     feed->setDescription(url);
     feed->setUrl(url);

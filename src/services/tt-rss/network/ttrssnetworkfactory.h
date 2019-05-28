@@ -100,7 +100,7 @@ namespace UpdateArticle {
 class TtRssNetworkFactory {
   public:
     explicit TtRssNetworkFactory();
-    virtual ~TtRssNetworkFactory();
+    virtual ~TtRssNetworkFactory() = default;
 
     QString url() const;
     void setUrl(const QString& url);

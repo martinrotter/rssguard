@@ -19,9 +19,9 @@ class StandardCategory : public Category {
 
   public:
     explicit StandardCategory(RootItem* parent_item = nullptr);
-    explicit StandardCategory(const StandardCategory& other);
+    explicit StandardCategory(const StandardCategory& other) = default;
     explicit StandardCategory(const QSqlRecord& record);
-    virtual ~StandardCategory();
+    virtual ~StandardCategory() = default;
 
     StandardServiceRoot* serviceRoot() const;
 

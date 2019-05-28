@@ -69,7 +69,7 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
   displayHttpPassword(false);
 }
 
-FormEditTtRssAccount::~FormEditTtRssAccount() {}
+FormEditTtRssAccount::~FormEditTtRssAccount() = default;
 
 TtRssServiceRoot* FormEditTtRssAccount::execForCreate() {
   setWindowTitle(tr("Add new Tiny Tiny RSS account"));

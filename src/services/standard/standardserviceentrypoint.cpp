@@ -38,7 +38,7 @@ ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
   int new_id = DatabaseQueries::createAccount(database, code(), &ok);
 
   if (ok) {
-    StandardServiceRoot* root = new StandardServiceRoot();
+    auto* root = new StandardServiceRoot();
 
     root->setAccountId(new_id);
     return root;

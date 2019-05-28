@@ -6,12 +6,13 @@
 
 #include <QDebug>
 #include <QRegularExpression>
+#include <utility>
 
-FeedParser::FeedParser(const QString& data) : m_xmlData(data) {
+FeedParser::FeedParser(QString  data) : m_xmlData(std::move(data)) {
   m_xml.setContent(m_xmlData, true);
 }
 
-FeedParser::~FeedParser() {}
+FeedParser::~FeedParser() = default;
 
 QList<Message> FeedParser::messages() {
   QString feed_author = feedAuthor();

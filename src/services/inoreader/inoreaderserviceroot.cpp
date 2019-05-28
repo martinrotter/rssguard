@@ -29,8 +29,7 @@
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
-InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent) : ServiceRoot(parent),
-  CacheForServiceRoot(), m_serviceMenu(QList<QAction*>()), m_network(network) {
+InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent) : ServiceRoot(parent), m_network(network) {
   if (network == nullptr) {
     m_network = new InoreaderNetworkFactory(this);
   }
@@ -42,7 +41,7 @@ InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, Roo
   setIcon(InoreaderEntryPoint().icon());
 }
 
-InoreaderServiceRoot::~InoreaderServiceRoot() {}
+InoreaderServiceRoot::~InoreaderServiceRoot() = default;
 
 void InoreaderServiceRoot::updateTitle() {
   setTitle(m_network->userName() + QSL(" (Inoreader)"));

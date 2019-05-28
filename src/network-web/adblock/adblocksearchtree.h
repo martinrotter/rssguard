@@ -47,7 +47,7 @@ class AdBlockSearchTree {
 
     };
     const AdBlockRule* prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain,
-                                    const QString& urlString, const QChar* string, int len) const;
+                                    const QString& urlString, const QString& choppedUrlString, int len) const;
 
     void deleteNode(Node* node);
 

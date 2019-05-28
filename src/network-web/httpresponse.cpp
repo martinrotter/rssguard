@@ -2,7 +2,7 @@
 
 #include "network-web/httpresponse.h"
 
-HttpResponse::HttpResponse() : m_headers(QList<HttpHeader>()), m_body(QString()) {}
+HttpResponse::HttpResponse() : m_body(QString()) {}
 
 QString HttpResponse::body() const {
   return m_body;

@@ -24,7 +24,7 @@ void WebPage::javaScriptAlert(const QUrl& securityOrigin, const QString& msg) {
 
   if (parts.size() == 2) {
     int message_id = parts.at(0).toInt();
-    QString action = parts.at(1);
+    const QString& action = parts.at(1);
 
     if (action == QSL("read")) {
       emit messageStatusChangeRequested(message_id, MarkRead);

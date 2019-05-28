@@ -86,7 +86,7 @@ class StandardFeed : public Feed {
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
 
   private:
-    bool m_passwordProtected;
+    bool m_passwordProtected{};
     QString m_username;
     QString m_password;
     Type m_type;

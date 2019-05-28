@@ -32,7 +32,7 @@ Category::Category(const QSqlRecord& record) : Category(nullptr) {
   setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
 }
 
-Category::~Category() {}
+Category::~Category() = default;
 
 void Category::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
@@ -78,7 +78,7 @@ bool Category::cleanMessages(bool clean_read_only) {
 
 bool Category::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = getParentServiceRoot();
-  CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(service);
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);

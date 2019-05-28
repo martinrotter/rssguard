@@ -7,9 +7,9 @@
 #include "miscellaneous/iconfactory.h"
 
 AccountCheckModel::AccountCheckModel(QObject* parent)
-  : QAbstractItemModel(parent), m_rootItem(nullptr), m_checkStates(QHash<RootItem*, Qt::CheckState>()), m_recursiveChange(false) {}
+  : QAbstractItemModel(parent), m_rootItem(nullptr), m_recursiveChange(false) {}
 
-AccountCheckModel::~AccountCheckModel() {}
+AccountCheckModel::~AccountCheckModel() = default;
 
 RootItem* AccountCheckModel::itemForIndex(const QModelIndex& index) const {
   if (index.isValid() && index.model() == this) {
@@ -25,9 +25,8 @@ RootItem* AccountCheckModel::rootItem() const {
 }
 
 void AccountCheckModel::setRootItem(RootItem* root_item) {
-  if (m_rootItem != nullptr) {
-    delete m_rootItem;
-  }
+
+  delete m_rootItem;
 
   m_rootItem = root_item;
 }
@@ -60,7 +59,7 @@ QModelIndex AccountCheckModel::index(int row, int column, const QModelIndex& par
   RootItem* parent_item = itemForIndex(parent);
   RootItem* child_item = parent_item->child(row);
 
-  if (child_item) {
+  if (child_item != nullptr) {
     return createIndex(row, column, child_item);
   }
   else {
@@ -258,7 +257,7 @@ Qt::ItemFlags AccountCheckModel::flags(const QModelIndex& index) const {
 }
 
 bool AccountCheckModel::isItemChecked(RootItem* item) {
-  return m_checkStates.contains(item) && m_checkStates.value(item, Qt::Unchecked);
+  return m_checkStates.value(item, Qt::CheckState::Unchecked) == Qt::CheckState::Checked;
 }
 
 bool AccountCheckModel::setItemChecked(RootItem* item, Qt::CheckState check) {

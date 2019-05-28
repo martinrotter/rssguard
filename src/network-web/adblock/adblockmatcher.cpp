@@ -34,8 +34,8 @@ AdBlockMatcher::~AdBlockMatcher() {
 const AdBlockRule* AdBlockMatcher::match(const QWebEngineUrlRequestInfo& request, const QString& urlDomain,
                                          const QString& urlString) const {
   // Exception rules.
-  if (m_networkExceptionTree.find(request, urlDomain, urlString)) {
-    return 0;
+  if (m_networkExceptionTree.find(request, urlDomain, urlString) != nullptr) {
+    return nullptr;
   }
 
   int count = m_networkExceptionRules.count();
@@ -44,7 +44,7 @@ const AdBlockRule* AdBlockMatcher::match(const QWebEngineUrlRequestInfo& request
     const AdBlockRule* rule = m_networkExceptionRules.at(i);
 
     if (rule->networkMatch(request, urlDomain, urlString)) {
-      return 0;
+      return nullptr;
     }
   }
 
@@ -63,7 +63,7 @@ const AdBlockRule* AdBlockMatcher::match(const QWebEngineUrlRequestInfo& request
     }
   }
 
-  return 0;
+  return nullptr;
 }
 
 bool AdBlockMatcher::adBlockDisabledForUrl(const QUrl& url) const {
@@ -178,7 +178,7 @@ void AdBlockMatcher::update() {
     const AdBlockRule* originalRule = cssRulesHash.value(rule->cssSelector());
 
     // If we don't have this selector, the exception does nothing.
-    if (!originalRule) {
+    if (originalRule == nullptr) {
       continue;
     }
 

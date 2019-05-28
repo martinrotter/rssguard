@@ -27,8 +27,7 @@
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent)
   : ServiceRoot(parent),
-  m_actionExportFeeds(nullptr), m_actionImportFeeds(nullptr), m_serviceMenu(QList<QAction*>()),
-  m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(nullptr) {
+  m_actionExportFeeds(nullptr), m_actionImportFeeds(nullptr), m_actionFeedFetchMetadata(nullptr) {
   setTitle(qApp->system()->loggedInUser() + QSL(" (RSS/RDF/ATOM)"));
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
@@ -204,8 +203,8 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
       }
 
       if (source_item->kind() == RootItemKind::Category) {
-        StandardCategory* source_category = static_cast<StandardCategory*>(source_item);
-        StandardCategory* new_category = new StandardCategory(*source_category);
+        auto* source_category = dynamic_cast<StandardCategory*>(source_item);
+        auto* new_category = new StandardCategory(*source_category);
         QString new_category_title = new_category->title();
 
         // Add category to model.
@@ -242,8 +241,8 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
         }
       }
       else if (source_item->kind() == RootItemKind::Feed) {
-        StandardFeed* source_feed = static_cast<StandardFeed*>(source_item);
-        StandardFeed* new_feed = new StandardFeed(*source_feed);
+        auto* source_feed = dynamic_cast<StandardFeed*>(source_item);
+        auto* new_feed = new StandardFeed(*source_feed);
 
         // Append this feed and end this iteration.
         if (new_feed->addItself(target_parent)) {

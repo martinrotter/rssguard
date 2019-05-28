@@ -161,7 +161,7 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 read)) {
-      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::DesiredType::FromSettings),
                                               QStringList() << QString::number(m_message.m_id),
                                               read);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
@@ -185,7 +185,7 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
                                                                                                                                     :
                                                                                                                       RootItem::Important)))
     {
-      DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::FromSettings),
+      DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::DesiredType::FromSettings),
                                                 QStringList() << QString::number(m_message.m_id));
       m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
                                                                      QList<ImportanceChange>() << ImportanceChange(m_message,

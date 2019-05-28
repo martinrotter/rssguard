@@ -14,7 +14,7 @@
 #endif
 
 WebFactory::WebFactory(QObject* parent)
-  : QObject(parent), m_escapes(QMap<QString, QString>()), m_deEscapes(QMap<QString, QString>()) {
+  : QObject(parent) {
 #if defined (USE_WEBENGINE)
   m_engineSettings = nullptr;
 #endif
@@ -182,7 +182,7 @@ void WebFactory::webEngineSettingChanged(bool enabled) {
 }
 
 QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute) {
-  QAction* act = new QAction(title, m_engineSettings->menu());
+  auto* act = new QAction(title, m_engineSettings->menu());
 
   act->setData(attribute);
   act->setCheckable(true);

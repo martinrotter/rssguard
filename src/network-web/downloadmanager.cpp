@@ -10,7 +10,7 @@
 #include "miscellaneous/settings.h"
 #include "network-web/silentnetworkaccessmanager.h"
 
-#include <math.h>
+#include <cmath>
 
 #include <QDebug>
 #include <QDesktopServices>
@@ -216,7 +216,7 @@ void DownloadItem::tryAgain() {
   m_ui->m_progressDownload->setVisible(true);
   QNetworkReply* new_download = qApp->downloadManager()->networkManager()->get(QNetworkRequest(m_url));
 
-  if (m_reply) {
+  if (m_reply != nullptr) {
     m_reply->deleteLater();
   }
 
@@ -406,7 +406,7 @@ void DownloadItem::finished() {
                          tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(
                                                                                                     m_output.fileName())),
                          QSystemTrayIcon::Information,
-                         0,
+                         nullptr,
                          false,
                          [this] {
       openFolder();
@@ -467,7 +467,7 @@ int DownloadManager::downloadProgress() const {
     return -1;
   }
   else {
-    return (bytes_received * 100.0) / bytes_total;
+    return int((bytes_received * 100.0) / bytes_total);
   }
 }
 
@@ -494,7 +494,7 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply* reply) {
     return;
   }
 
-  DownloadItem* item = new DownloadItem(reply, this);
+  auto* item = new DownloadItem(reply, this);
 
   addItem(item);
 
@@ -537,7 +537,7 @@ void DownloadManager::itemFinished() {
 }
 
 void DownloadManager::updateRow() {
-  if (DownloadItem* item = qobject_cast<DownloadItem*>(sender())) {
+  if (auto* item = qobject_cast<DownloadItem*>(sender())) {
     updateRow(item);
   }
 }
@@ -644,7 +644,7 @@ void DownloadManager::load() {
     bool done = settings->value(GROUP(Downloads), QString(Downloads::ItemDone).arg(i), true).toBool();
 
     if (!url.isEmpty() && !file_name.isEmpty()) {
-      DownloadItem* item = new DownloadItem(0, this);
+      auto* item = new DownloadItem(nullptr, this);
 
       item->m_output.setFileName(file_name);
       item->m_url = url;
@@ -773,7 +773,7 @@ Qt::ItemFlags DownloadModel::flags(const QModelIndex& index) const {
     return Qt::NoItemFlags;
   }
 
-  Qt::ItemFlags default_flags = QAbstractItemModel::flags(index);
+  Qt::ItemFlags default_flags = QAbstractListModel::flags(index);
   DownloadItem* item = m_downloadManager->m_downloads.at(index.row());
 
   if (item->downloadedSuccessfully()) {
@@ -784,7 +784,7 @@ Qt::ItemFlags DownloadModel::flags(const QModelIndex& index) const {
 }
 
 QMimeData* DownloadModel::mimeData(const QModelIndexList& indexes) const {
-  QMimeData* mimeData = new QMimeData();
+  auto* mimeData = new QMimeData();
 
   QList<QUrl> urls;
 

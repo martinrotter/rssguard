@@ -81,7 +81,7 @@ static QString toSecondLevelDomain(const QUrl& url) {
 
 AdBlockRule::AdBlockRule(const QString& filter, AdBlockSubscription* subscription)
   : m_subscription(subscription), m_type(StringContainsMatchRule), m_caseSensitivity(Qt::CaseInsensitive),
-  m_isEnabled(true), m_isException(false), m_isInternalDisabled(false), matchers(QList<QStringMatcher>()) {
+  m_isEnabled(true), m_isException(false), m_isInternalDisabled(false) {
   setFilter(filter);
 }
 
@@ -522,8 +522,8 @@ bool AdBlockRule::filterIsOnlyDomain(const QString& filter) const {
     return false;
   }
 
-  for (int i = 0; i < filter.size(); ++i) {
-    switch (filter.at(i).toLatin1()) {
+  for (auto i : filter) {
+    switch (i.toLatin1()) {
       case '/':
       case ':':
       case '?':
@@ -727,11 +727,11 @@ QStringList AdBlockRule::parseRegExpFilter(const QString& filter) const {
 }
 
 bool AdBlockRule::hasOption(const AdBlockRule::RuleOption& opt) const {
-  return (m_options & opt);
+  return (m_options & opt) != 0;
 }
 
 bool AdBlockRule::hasException(const AdBlockRule::RuleOption& opt) const {
-  return (m_exceptions & opt);
+  return (m_exceptions & opt) != 0;
 }
 
 void AdBlockRule::setOption(const AdBlockRule::RuleOption& opt) {

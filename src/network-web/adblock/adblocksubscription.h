@@ -61,7 +61,7 @@ class AdBlockSubscription : public QObject {
   Q_OBJECT
 
   public:
-    explicit AdBlockSubscription(const QString& title, QObject* parent = 0);
+    explicit AdBlockSubscription(QString  title, QObject* parent = 0);
     virtual ~AdBlockSubscription();
 
     QString title() const;

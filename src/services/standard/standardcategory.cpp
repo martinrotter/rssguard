@@ -18,10 +18,6 @@
 
 StandardCategory::StandardCategory(RootItem* parent_item) : Category(parent_item) {}
 
-StandardCategory::StandardCategory(const StandardCategory& other) : Category(other) {}
-
-StandardCategory::~StandardCategory() {}
-
 StandardServiceRoot* StandardCategory::serviceRoot() const {
   return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
@@ -31,7 +27,7 @@ Qt::ItemFlags StandardCategory::additionalFlags() const {
 }
 
 bool StandardCategory::performDragDropChange(RootItem* target_item) {
-  StandardCategory* category_new = new StandardCategory(*this);
+  auto* category_new = new StandardCategory(*this);
 
   category_new->clearChildren();
   category_new->setParent(target_item);
@@ -78,10 +74,10 @@ bool StandardCategory::removeItself() {
   // from the database.
   foreach (RootItem* child, childItems()) {
     if (child->kind() == RootItemKind::Category) {
-      children_removed &= static_cast<StandardCategory*>(child)->removeItself();
+      children_removed &= dynamic_cast<StandardCategory*>(child)->removeItself();
     }
     else if (child->kind() == RootItemKind::Feed) {
-      children_removed &= static_cast<StandardFeed*>(child)->removeItself();
+      children_removed &= dynamic_cast<StandardFeed*>(child)->removeItself();
     }
   }
 

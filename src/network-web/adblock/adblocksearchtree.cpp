@@ -52,7 +52,7 @@ bool AdBlockSearchTree::add(const AdBlockRule* rule) {
     const QChar c = filter.at(i);
     Node* next = node->children.value(c);
 
-    if (!next) {
+    if (next == nullptr) {
       next = new Node;
       next->c = c;
       node->children[c] = next;
@@ -69,50 +69,48 @@ const AdBlockRule* AdBlockSearchTree::find(const QWebEngineUrlRequestInfo& reque
   int len = urlString.size();
 
   if (len <= 0) {
-    return 0;
+    return nullptr;
   }
 
-  const QChar* string = urlString.constData();
-
   for (int i = 0; i < len; ++i) {
-    const AdBlockRule* rule = prefixSearch(request, domain, urlString, string++, len - i);
+    const AdBlockRule* rule = prefixSearch(request, domain, urlString, urlString.mid(i), len - i);
 
-    if (rule) {
+    if (rule != nullptr) {
       return rule;
     }
   }
 
-  return 0;
+  return nullptr;
 }
 
-const AdBlockRule* AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString,
-                                                   const QChar* string, int len) const {
+const AdBlockRule* AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain,
+                                                   const QString& urlString, const QString& choppedUrlString, int len) const {
   if (len <= 0) {
-    return 0;
+    return nullptr;
   }
 
-  QChar c = string[0];
+  QChar c = choppedUrlString.at(0);
   Node* node = m_root->children.value(c);
 
-  if (!node) {
+  if (node == nullptr) {
     return nullptr;
   }
 
   for (int i = 1; i < len; ++i) {
-    const QChar c = (++string)[0];
+    const QChar c = choppedUrlString.at(i);
 
-    if (node->rule && node->rule->networkMatch(request, domain, urlString)) {
+    if ((node->rule != nullptr) && node->rule->networkMatch(request, domain, urlString)) {
       return node->rule;
     }
 
     node = node->children.value(c);
 
-    if (!node) {
+    if (node == nullptr) {
       return nullptr;
     }
   }
 
-  if (node->rule && node->rule->networkMatch(request, domain, urlString)) {
+  if ((node->rule != nullptr) && node->rule->networkMatch(request, domain, urlString)) {
     return node->rule;
   }
 
@@ -120,7 +118,7 @@ const AdBlockRule* AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInf
 }
 
 void AdBlockSearchTree::deleteNode(AdBlockSearchTree::Node* node) {
-  if (!node) {
+  if (node == nullptr) {
     return;
   }
 

@@ -39,7 +39,7 @@ FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
   onPasswordChanged(QString());
 }
 
-FormFeedDetails::~FormFeedDetails() {}
+FormFeedDetails::~FormFeedDetails() = default;
 
 int FormFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_select, const QString& url) {
   // Load categories.
@@ -114,7 +114,7 @@ void FormFeedDetails::onUrlChanged(const QString& new_url) {
   else if (!new_url.simplified().isEmpty()) {
     // New url is not well-formed but is not empty on the other hand.
     m_ui->m_txtUrl->setStatus(LineEditWithStatus::Warning,
-                              tr("The URL does not meet standard pattern. Does your URL start with \"http://\" or \"https://\" prefix."));
+                              tr(R"(The URL does not meet standard pattern. Does your URL start with "http://" or "https://" prefix.)"));
   }
   else {
     // New url is empty.
@@ -376,7 +376,7 @@ void FormFeedDetails::initialize() {
   m_ui->m_txtUrl->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
-void FormFeedDetails::loadCategories(const QList<Category*> categories, RootItem* root_item) {
+void FormFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));

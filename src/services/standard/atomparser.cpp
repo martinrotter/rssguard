@@ -19,7 +19,7 @@ AtomParser::AtomParser(const QString& data) : FeedParser(data) {
   }
 }
 
-AtomParser::~AtomParser() {}
+AtomParser::~AtomParser() = default;
 
 QString AtomParser::feedAuthor() const {
   QDomNodeList authors = m_xml.documentElement().elementsByTagNameNS(m_atomNamespace, QSL("author"));

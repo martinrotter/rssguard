@@ -86,7 +86,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       QDomDocument dokument;
 
       if (!skin_file.open(QIODevice::Text | QIODevice::ReadOnly) || !dokument.setContent(&skin_file, true)) {
-        if (ok) {
+        if (ok != nullptr) {
           *ok = false;
         }
 

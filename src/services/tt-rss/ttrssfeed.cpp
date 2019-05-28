@@ -19,7 +19,7 @@ TtRssFeed::TtRssFeed(RootItem* parent)
 
 TtRssFeed::TtRssFeed(const QSqlRecord& record) : Feed(record) {}
 
-TtRssFeed::~TtRssFeed() {}
+TtRssFeed::~TtRssFeed() = default;
 
 TtRssServiceRoot* TtRssFeed::serviceRoot() const {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());

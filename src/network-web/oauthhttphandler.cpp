@@ -44,7 +44,7 @@ void OAuthHttpHandler::handleRedirection(const QVariantMap& data) {
   const QString code = data.value(QSL("code")).toString();
   const QString received_state = data.value(QSL("state")).toString();
 
-  if (error.size()) {
+  if (error.size() != 0) {
     const QString uri = data.value(QSL("error_uri")).toString();
     const QString description = data.value(QSL("error_description")).toString();
 
@@ -73,8 +73,8 @@ void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QUrl& url) {
     const QUrlQuery query(url.query());
     const auto items = query.queryItems();
 
-    for (auto it = items.begin(), end = items.end(); it != end; ++it) {
-      received_data.insert(it->first, it->second);
+    for (const auto & item : items) {
+      received_data.insert(item.first, item.second);
     }
 
     handleRedirection(received_data);
@@ -144,10 +144,10 @@ void OAuthHttpHandler::readReceivedData(QTcpSocket* socket) {
 bool OAuthHttpHandler::QHttpRequest::readMethod(QTcpSocket* socket) {
   bool finished = false;
 
-  while (socket->bytesAvailable() && !finished) {
+  while ((socket->bytesAvailable() != 0) && !finished) {
     const auto c = socket->read(1).at(0);
 
-    if (std::isupper(c) && m_fragment.size() < 6) {
+    if ((std::isupper(c) != 0) && m_fragment.size() < 6) {
       m_fragment += c;
     }
     else {
@@ -187,10 +187,10 @@ bool OAuthHttpHandler::QHttpRequest::readMethod(QTcpSocket* socket) {
 bool OAuthHttpHandler::QHttpRequest::readUrl(QTcpSocket* socket) {
   bool finished = false;
 
-  while (socket->bytesAvailable() && !finished) {
+  while ((socket->bytesAvailable() != 0) && !finished) {
     const auto c = socket->read(1).at(0);
 
-    if (std::isspace(c)) {
+    if (std::isspace(c) != 0) {
       finished = true;
     }
     else {
@@ -222,7 +222,7 @@ bool OAuthHttpHandler::QHttpRequest::readUrl(QTcpSocket* socket) {
 bool OAuthHttpHandler::QHttpRequest::readStatus(QTcpSocket* socket) {
   bool finished = false;
 
-  while (socket->bytesAvailable() && !finished) {
+  while ((socket->bytesAvailable() != 0) && !finished) {
     m_fragment += socket->read(1);
 
     if (m_fragment.endsWith("\r\n")) {
@@ -232,7 +232,7 @@ bool OAuthHttpHandler::QHttpRequest::readStatus(QTcpSocket* socket) {
   }
 
   if (finished) {
-    if (!std::isdigit(m_fragment.at(m_fragment.size() - 3)) || !std::isdigit(m_fragment.at(m_fragment.size() - 1))) {
+    if ((std::isdigit(m_fragment.at(m_fragment.size() - 3)) == 0) || (std::isdigit(m_fragment.at(m_fragment.size() - 1)) == 0)) {
       qWarning("OAuth HTTP handler: Invalid version");
       return false;
     }
@@ -246,7 +246,7 @@ bool OAuthHttpHandler::QHttpRequest::readStatus(QTcpSocket* socket) {
 }
 
 bool OAuthHttpHandler::QHttpRequest::readHeader(QTcpSocket* socket) {
-  while (socket->bytesAvailable()) {
+  while (socket->bytesAvailable() != 0) {
     m_fragment += socket->read(1);
 
     if (m_fragment.endsWith("\r\n")) {

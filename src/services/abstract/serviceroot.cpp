@@ -18,7 +18,7 @@ ServiceRoot::ServiceRoot(RootItem* parent) : RootItem(parent), m_recycleBin(new 
   setCreationDate(QDateTime::currentDateTime());
 }
 
-ServiceRoot::~ServiceRoot() {}
+ServiceRoot::~ServiceRoot() = default;
 
 bool ServiceRoot::deleteViaGui() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
@@ -34,7 +34,7 @@ bool ServiceRoot::deleteViaGui() {
 }
 
 bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
-  CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(this);
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(this);
 
   if (cache != nullptr) {
     cache->addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
@@ -424,8 +424,8 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
 QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange>& changes) {
   QStringList list;
 
-  for (int i = 0; i < changes.size(); i++) {
-    list.append(changes.at(i).first.m_customId);
+  for (const auto & change : changes) {
+    list.append(change.first.m_customId);
   }
 
   return list;

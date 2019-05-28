@@ -52,7 +52,7 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
   hookNetwork();
 }
 
-FormEditInoreaderAccount::~FormEditInoreaderAccount() {}
+FormEditInoreaderAccount::~FormEditInoreaderAccount() = default;
 
 void FormEditInoreaderAccount::testSetup() {
   if (m_oauth->clientId() != m_ui.m_txtAppId->lineEdit()->text() ||
@@ -178,7 +178,7 @@ void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) 
 }
 
 void FormEditInoreaderAccount::checkOAuthValue(const QString& value) {
-  LineEditWithStatus* line_edit = qobject_cast<LineEditWithStatus*>(sender()->parent());
+  auto* line_edit = qobject_cast<LineEditWithStatus*>(sender()->parent());
 
   if (line_edit != nullptr) {
     if (value.isEmpty()) {

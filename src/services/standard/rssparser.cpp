@@ -12,7 +12,7 @@
 
 RssParser::RssParser(const QString& data) : FeedParser(data) {}
 
-RssParser::~RssParser() {}
+RssParser::~RssParser() = default;
 
 QDomNodeList RssParser::messageElements() {
   QDomNode channel_elem = m_xml.namedItem(QSL("rss")).namedItem(QSL("channel"));

@@ -16,8 +16,7 @@
 #include "services/owncloud/owncloudserviceentrypoint.h"
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), CacheForServiceRoot(),
-  m_actionSyncIn(nullptr), m_serviceMenu(QList<QAction*>()), m_network(new OwnCloudNetworkFactory()) {
+  : ServiceRoot(parent), m_actionSyncIn(nullptr), m_network(new OwnCloudNetworkFactory()) {
   setIcon(OwnCloudServiceEntryPoint().icon());
 }
 

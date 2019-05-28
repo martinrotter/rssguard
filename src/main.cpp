@@ -35,6 +35,7 @@ extern void disableWindowTabbing();
 
 int main(int argc, char* argv[]) {
   for (int i = 0; i < argc; i++) {
+    // TODO: use process arg parser
     const QString str = QString::fromLocal8Bit(argv[i]);
 
     if (str == "-h") {
@@ -62,7 +63,7 @@ int main(int argc, char* argv[]) {
   // Instantiate base application object.
   Application application(APP_LOW_NAME, argc, argv);
 
-  if (application.arguments().contains(QL1S("-log"))) {
+  if (Application::arguments().contains(QL1S("-log"))) {
     Debugging::instance()->setTargetFile(IOFactory::getSystemFolder(QStandardPaths::TempLocation) +
                                          QDir::separator() + QL1S("rssguard.log"));
   }
@@ -71,7 +72,7 @@ int main(int argc, char* argv[]) {
   qDebug("Instantiated Application class.");
 
   // Check if another instance is running.
-  if (application.sendMessage((QStringList() << APP_IS_RUNNING << application.arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR))) {
+  if (application.sendMessage((QStringList() << APP_IS_RUNNING << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR))) {
     qWarning("Another instance of the application is already running. Notifying it.");
     return EXIT_FAILURE;
   }
@@ -137,7 +138,7 @@ int main(int argc, char* argv[]) {
   if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
     qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
                                                     "version by clicking this popup notification.").arg(APP_LONG_NAME),
-                         QSystemTrayIcon::NoIcon, 0, false, [] {
+                         QSystemTrayIcon::NoIcon, nullptr, false, [] {
       FormAbout(qApp->mainForm()).exec();
     });
   }

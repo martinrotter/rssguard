@@ -37,11 +37,11 @@ void FormOwnCloudFeedDetails::apply() {
     }
 
     // User edited auto-update status. Save it.
-    OwnCloudFeed* new_feed_data = new OwnCloudFeed();
+    auto* new_feed_data = new OwnCloudFeed();
 
     new_feed_data->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
                                                                          m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
-    new_feed_data->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
+    new_feed_data->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
     qobject_cast<OwnCloudFeed*>(m_editableFeed)->editItself(new_feed_data);
     delete new_feed_data;
 

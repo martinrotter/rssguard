@@ -15,6 +15,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPixmap>
+#include <utility>
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
@@ -23,7 +24,7 @@ OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
   m_urlDeleteFeed(QString()), m_urlRenameFeed(QString()), m_userId(QString()) {}
 
-OwnCloudNetworkFactory::~OwnCloudNetworkFactory() {}
+OwnCloudNetworkFactory::~OwnCloudNetworkFactory() = default;
 
 QString OwnCloudNetworkFactory::url() const {
   return m_url;
@@ -434,7 +435,7 @@ OwnCloudResponse::OwnCloudResponse(const QString& raw_content) {
   m_emptyString = raw_content.isEmpty();
 }
 
-OwnCloudResponse::~OwnCloudResponse() {}
+OwnCloudResponse::~OwnCloudResponse() = default;
 
 bool OwnCloudResponse::isLoaded() const {
   return !m_emptyString && !m_rawContent.isEmpty();
@@ -446,7 +447,7 @@ QString OwnCloudResponse::toString() const {
 
 OwnCloudUserResponse::OwnCloudUserResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
 
-OwnCloudUserResponse::~OwnCloudUserResponse() {}
+OwnCloudUserResponse::~OwnCloudUserResponse() = default;
 
 QString OwnCloudUserResponse::displayName() const {
   if (isLoaded()) {
@@ -491,7 +492,7 @@ QIcon OwnCloudUserResponse::avatar() const {
 
 OwnCloudStatusResponse::OwnCloudStatusResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
 
-OwnCloudStatusResponse::~OwnCloudStatusResponse() {}
+OwnCloudStatusResponse::~OwnCloudStatusResponse() = default;
 
 QString OwnCloudStatusResponse::version() const {
   if (isLoaded()) {
@@ -511,14 +512,14 @@ bool OwnCloudStatusResponse::misconfiguredCron() const {
   }
 }
 
-OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(const QString& raw_categories,
-                                                                       const QString& raw_feeds)
-  : m_contentCategories(raw_categories), m_contentFeeds(raw_feeds) {}
+OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(QString  raw_categories,
+                                                                       QString  raw_feeds)
+  : m_contentCategories(std::move(raw_categories)), m_contentFeeds(std::move(raw_feeds)) {}
 
-OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() {}
+OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() = default;
 
 RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons) const {
-  RootItem* parent = new RootItem();
+  auto* parent = new RootItem();
 
   QMap<QString, RootItem*> cats;
 
@@ -528,7 +529,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   // Process categories first, then process feeds.
   foreach (const QJsonValue& cat, QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray()) {
     QJsonObject item = cat.toObject();
-    Category* category = new Category();
+    auto* category = new Category();
 
     category->setTitle(item["name"].toString());
     category->setCustomId(QString::number(item["id"].toInt()));
@@ -541,7 +542,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   // We have categories added, now add all feeds.
   foreach (const QJsonValue& fed, QJsonDocument::fromJson(m_contentFeeds.toUtf8()).object()["feeds"].toArray()) {
     QJsonObject item = fed.toObject();
-    OwnCloudFeed* feed = new OwnCloudFeed();
+    auto* feed = new OwnCloudFeed();
 
     if (obtain_icons) {
       QString icon_path = item["faviconLink"].toString();
@@ -574,7 +575,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
 
 OwnCloudGetMessagesResponse::OwnCloudGetMessagesResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
 
-OwnCloudGetMessagesResponse::~OwnCloudGetMessagesResponse() {}
+OwnCloudGetMessagesResponse::~OwnCloudGetMessagesResponse() = default;
 
 QList<Message>OwnCloudGetMessagesResponse::messages() const {
   QList<Message>msgs;

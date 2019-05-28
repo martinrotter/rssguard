@@ -57,7 +57,7 @@ class RootItem;
 
 class OwnCloudGetFeedsCategoriesResponse {
   public:
-    explicit OwnCloudGetFeedsCategoriesResponse(const QString& raw_categories = QString(), const QString& raw_feeds = QString());
+    explicit OwnCloudGetFeedsCategoriesResponse(QString  raw_categories = QString(), QString  raw_feeds = QString());
     virtual ~OwnCloudGetFeedsCategoriesResponse();
 
     // Returns tree of feeds/categories.

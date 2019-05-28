@@ -14,7 +14,7 @@ OwnCloudFeed::OwnCloudFeed(RootItem* parent) : Feed(parent) {}
 
 OwnCloudFeed::OwnCloudFeed(const QSqlRecord& record) : Feed(record) {}
 
-OwnCloudFeed::~OwnCloudFeed() {}
+OwnCloudFeed::~OwnCloudFeed() = default;
 
 bool OwnCloudFeed::canBeEdited() const {
   return true;

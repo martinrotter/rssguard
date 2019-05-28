@@ -82,7 +82,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
         }
 
         case RootItemKind::Feed: {
-          StandardFeed* child_feed = static_cast<StandardFeed*>(child_item);
+          auto* child_feed = dynamic_cast<StandardFeed*>(child_item);
           QDomElement outline_feed = opml_document.createElement("outline");
 
           outline_feed.setAttribute(QSL("type"), QSL("rss"));
@@ -145,7 +145,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
   }
 
   int completed = 0, total = 0, succeded = 0, failed = 0;
-  StandardServiceRoot* root_item = new StandardServiceRoot();
+  auto* root_item = new StandardServiceRoot();
 
   QStack<RootItem*> model_items;
   model_items.push(root_item);
@@ -188,7 +188,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               QString feed_type = child_element.attribute(QSL("version"), DEFAULT_FEED_TYPE).toUpper();
               QString feed_description = child_element.attribute(QSL("description"));
               QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
-              StandardFeed* new_feed = new StandardFeed(active_model_item);
+              auto* new_feed = new StandardFeed(active_model_item);
 
               new_feed->setTitle(feed_title);
               new_feed->setDescription(feed_description);
@@ -234,7 +234,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
             }
           }
 
-          StandardCategory* new_category = new StandardCategory(active_model_item);
+          auto* new_category = new StandardCategory(active_model_item);
 
           new_category->setTitle(category_title);
           new_category->setIcon(category_icon);
@@ -275,7 +275,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
   setRootItem(nullptr);
   emit layoutChanged();
   int completed = 0, succeded = 0, failed = 0;
-  StandardServiceRoot* root_item = new StandardServiceRoot();
+  auto* root_item = new StandardServiceRoot();
 
   QList<QByteArray> urls = data.split('\n');
 
@@ -290,7 +290,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
         succeded++;
       }
       else {
-        StandardFeed* feed = new StandardFeed();
+        auto* feed = new StandardFeed();
 
         feed->setUrl(url);
         feed->setTitle(url);

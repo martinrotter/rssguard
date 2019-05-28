@@ -8,9 +8,7 @@
 #include <QDir>
 #include <QSet>
 
-CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new Mutex(QMutex::NonRecursive, nullptr)),
-  m_cachedStatesRead(QMap<RootItem::ReadStatus, QStringList>()),
-  m_cachedStatesImportant(QMap<RootItem::Importance, QList<Message>>()) {}
+CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new Mutex(QMutex::NonRecursive, nullptr)) {}
 
 CacheForServiceRoot::~CacheForServiceRoot() {
   m_cacheSaveMutex->deleteLater();

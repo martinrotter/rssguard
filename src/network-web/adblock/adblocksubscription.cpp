@@ -60,9 +60,10 @@
 #include <QNetworkReply>
 #include <QSaveFile>
 #include <QTimer>
+#include <utility>
 
-AdBlockSubscription::AdBlockSubscription(const QString& title, QObject* parent)
-  : QObject(parent), m_reply(0), m_title(title), m_updated(false) {}
+AdBlockSubscription::AdBlockSubscription(QString  title, QObject* parent)
+  : QObject(parent), m_reply(nullptr), m_title(std::move(title)), m_updated(false) {}
 
 QString AdBlockSubscription::title() const {
   return m_title;
@@ -134,11 +135,11 @@ void AdBlockSubscription::loadSubscription(const QStringList& disabledRules) {
 void AdBlockSubscription::saveSubscription() {}
 
 void AdBlockSubscription::updateSubscription() {
-  if (m_reply || !m_url.isValid()) {
+  if ((m_reply != nullptr) || !m_url.isValid()) {
     return;
   }
 
-  SilentNetworkAccessManager* mgs = new SilentNetworkAccessManager(this);
+  auto* mgs = new SilentNetworkAccessManager(this);
 
   m_reply = mgs->get(QNetworkRequest(m_url));
   connect(m_reply, &QNetworkReply::finished, this, &AdBlockSubscription::subscriptionDownloaded);
@@ -158,7 +159,7 @@ void AdBlockSubscription::subscriptionDownloaded() {
 
   m_reply->manager()->deleteLater();
   m_reply->deleteLater();
-  m_reply = 0;
+  m_reply = nullptr;
 
   if (error) {
     emit subscriptionError(tr("Cannot load subscription!"));
@@ -192,7 +193,7 @@ const AdBlockRule* AdBlockSubscription::rule(int offset) const {
     return m_rules[offset];
   }
   else {
-    return 0;
+    return nullptr;
   }
 }
 
@@ -211,13 +212,13 @@ const AdBlockRule* AdBlockSubscription::enableRule(int offset) {
     return rule;
   }
   else {
-    return 0;
+    return nullptr;
   }
 }
 
 const AdBlockRule* AdBlockSubscription::disableRule(int offset) {
   if (!IS_IN_ARRAY(offset, m_rules)) {
-    return 0;
+    return nullptr;
   }
 
   AdBlockRule* rule = m_rules[offset];
@@ -250,7 +251,7 @@ bool AdBlockSubscription::removeRule(int offset) {
 const AdBlockRule* AdBlockSubscription::replaceRule(AdBlockRule* rule, int offset) {
   Q_UNUSED(rule)
   Q_UNUSED(offset)
-  return 0;
+  return nullptr;
 }
 
 AdBlockSubscription::~AdBlockSubscription() {
@@ -378,7 +379,7 @@ bool AdBlockCustomList::removeRule(int offset) {
 
 const AdBlockRule* AdBlockCustomList::replaceRule(AdBlockRule* rule, int offset) {
   if (!IS_IN_ARRAY(offset, m_rules)) {
-    return 0;
+    return nullptr;
   }
 
   AdBlockRule* oldRule = m_rules.at(offset);

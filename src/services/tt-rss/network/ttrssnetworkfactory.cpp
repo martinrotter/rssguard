@@ -19,11 +19,8 @@
 
 TtRssNetworkFactory::TtRssNetworkFactory()
   : m_bareUrl(QString()), m_fullUrl(QString()), m_username(QString()), m_password(QString()), m_forceServerSideUpdate(false),
-  m_authIsUsed(false),
-  m_authUsername(QString()), m_authPassword(QString()), m_sessionId(QString()),
-  m_lastLoginTime(QDateTime()), m_lastError(QNetworkReply::NoError) {}
-
-TtRssNetworkFactory::~TtRssNetworkFactory() {}
+  m_authIsUsed(false), m_authUsername(QString()), m_authPassword(QString()), m_sessionId(QString()),
+  m_lastError(QNetworkReply::NoError) {}
 
 QString TtRssNetworkFactory::url() const {
   return m_bareUrl;
@@ -404,8 +401,7 @@ TtRssResponse::TtRssResponse(const QString& raw_content) {
   m_rawContent = QJsonDocument::fromJson(raw_content.toUtf8()).object();
 }
 
-TtRssResponse::~TtRssResponse() {}
-
+TtRssResponse::~TtRssResponse() = default;
 bool TtRssResponse::isLoaded() const {
   return !m_rawContent.isEmpty();
 }
@@ -438,8 +434,7 @@ QString TtRssResponse::toString() const {
 
 TtRssLoginResponse::TtRssLoginResponse(const QString& raw_content) : TtRssResponse(raw_content) {}
 
-TtRssLoginResponse::~TtRssLoginResponse() {}
-
+TtRssLoginResponse::~TtRssLoginResponse() = default;
 int TtRssLoginResponse::apiLevel() const {
   if (!isLoaded()) {
     return TTRSS_CONTENT_NOT_LOADED;
@@ -478,10 +473,9 @@ bool TtRssResponse::hasError() const {
 
 TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString& raw_content) : TtRssResponse(raw_content) {}
 
-TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() {}
-
+TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() = default;
 RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QString base_address) const {
-  RootItem* parent = new RootItem();
+  auto* parent = new RootItem();
 
   // Chop the "api/" from the end of the address.
   base_address.chop(4);
@@ -515,7 +509,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             }
           }
           else {
-            Category* category = new Category();
+            auto* category = new Category();
 
             category->setTitle(item["name"].toString());
             category->setCustomId(QString::number(item_id));
@@ -530,7 +524,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
         }
         else {
           // We have feed.
-          TtRssFeed* feed = new TtRssFeed();
+          auto* feed = new TtRssFeed();
 
           if (obtain_icons) {
             QString icon_path = item["icon"].type() == QJsonValue::String ? item["icon"].toString() : QString();
@@ -565,7 +559,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
 
 TtRssGetHeadlinesResponse::TtRssGetHeadlinesResponse(const QString& raw_content) : TtRssResponse(raw_content) {}
 
-TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() {}
+TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() = default;
 
 QList<Message> TtRssGetHeadlinesResponse::messages() const {
   QList<Message> messages;
@@ -580,8 +574,9 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
     message.m_contents = mapped["content"].toString();
 
     // Multiply by 1000 because Tiny Tiny RSS API does not include miliseconds in Unix
-    // date/time number. 
+    // date/time number.
     const qint64 t = static_cast<qint64>(mapped["updated"].toDouble()) * 1000;
+
     message.m_created = TextFactory::parseDateTime(t);
     message.m_createdFromFeed = true;
     message.m_customId = QString::number(mapped["id"].toInt());
@@ -609,7 +604,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
 
 TtRssUpdateArticleResponse::TtRssUpdateArticleResponse(const QString& raw_content) : TtRssResponse(raw_content) {}
 
-TtRssUpdateArticleResponse::~TtRssUpdateArticleResponse() {}
+TtRssUpdateArticleResponse::~TtRssUpdateArticleResponse() = default;
 
 QString TtRssUpdateArticleResponse::updateStatus() const {
   if (m_rawContent.contains(QSL("content"))) {
@@ -631,8 +626,7 @@ int TtRssUpdateArticleResponse::articlesUpdated() const {
 
 TtRssSubscribeToFeedResponse::TtRssSubscribeToFeedResponse(const QString& raw_content) : TtRssResponse(raw_content) {}
 
-TtRssSubscribeToFeedResponse::~TtRssSubscribeToFeedResponse() {}
-
+TtRssSubscribeToFeedResponse::~TtRssSubscribeToFeedResponse() = default;
 int TtRssSubscribeToFeedResponse::code() const {
   if (m_rawContent.contains(QSL("content"))) {
     return m_rawContent["content"].toObject()["status"].toObject()["code"].toInt();
@@ -644,8 +638,7 @@ int TtRssSubscribeToFeedResponse::code() const {
 
 TtRssUnsubscribeFeedResponse::TtRssUnsubscribeFeedResponse(const QString& raw_content) : TtRssResponse(raw_content) {}
 
-TtRssUnsubscribeFeedResponse::~TtRssUnsubscribeFeedResponse() {}
-
+TtRssUnsubscribeFeedResponse::~TtRssUnsubscribeFeedResponse() = default;
 QString TtRssUnsubscribeFeedResponse::code() const {
   if (m_rawContent.contains(QSL("content"))) {
     QJsonObject map = m_rawContent["content"].toObject();

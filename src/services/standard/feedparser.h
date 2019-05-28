@@ -10,7 +10,7 @@
 
 class FeedParser {
   public:
-    explicit FeedParser(const QString& data);
+    explicit FeedParser(QString  data);
     virtual ~FeedParser();
 
     virtual QList<Message> messages();

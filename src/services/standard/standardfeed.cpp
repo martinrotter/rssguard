@@ -282,7 +282,7 @@ Qt::ItemFlags StandardFeed::additionalFlags() const {
 }
 
 bool StandardFeed::performDragDropChange(RootItem* target_item) {
-  StandardFeed* feed_new = new StandardFeed(*this);
+  auto* feed_new = new StandardFeed(*this);
 
   feed_new->setParent(target_item);
 

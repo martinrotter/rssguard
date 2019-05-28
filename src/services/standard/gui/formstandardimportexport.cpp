@@ -33,7 +33,7 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
   connect(m_ui->m_btnUncheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::uncheckAllItems);
 }
 
-FormStandardImportExport::~FormStandardImportExport() {}
+FormStandardImportExport::~FormStandardImportExport() = default;
 
 void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode) {
   m_model->setMode(mode);
@@ -284,7 +284,7 @@ void FormStandardImportExport::importFeeds() {
   }
 }
 
-void FormStandardImportExport::loadCategories(const QList<Category*> categories, RootItem* root_item) {
+void FormStandardImportExport::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
   m_ui->m_cmbRootNode->addItem(root_item->icon(), root_item->title(), QVariant::fromValue((void*) root_item));
 
   foreach (Category* category, categories) {

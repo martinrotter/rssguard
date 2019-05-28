@@ -15,7 +15,7 @@ BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent)
   loadSettings();
 }
 
-BaseNetworkAccessManager::~BaseNetworkAccessManager() {}
+BaseNetworkAccessManager::~BaseNetworkAccessManager() = default;
 
 void BaseNetworkAccessManager::loadSettings() {
   QNetworkProxy new_proxy;

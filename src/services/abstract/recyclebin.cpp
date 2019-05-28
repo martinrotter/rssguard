@@ -12,7 +12,7 @@
 #include <QThread>
 
 RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCount(0),
-  m_unreadCount(0), m_contextMenu(QList<QAction*>()) {
+  m_unreadCount(0) {
   setKind(RootItemKind::Bin);
   setId(ID_RECYCLE_BIN);
   setIcon(qApp->icons()->fromTheme(QSL("user-trash")));
@@ -21,10 +21,10 @@ RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCo
   setCreationDate(QDateTime::currentDateTime());
 }
 
-RecycleBin::~RecycleBin() {}
+RecycleBin::~RecycleBin() = default;
 
 QString RecycleBin::additionalTooltip() const {
-  return tr("%n deleted message(s).", 0, countOfAllMessages());
+  return tr("%n deleted message(s).", nullptr, countOfAllMessages());
 }
 
 int RecycleBin::countOfUnreadMessages() const {
@@ -77,7 +77,7 @@ QList<Message> RecycleBin::undeletedMessages() const {
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   ServiceRoot* parent_root = getParentServiceRoot();
-  CacheForServiceRoot* cache = dynamic_cast<CacheForServiceRoot*>(parent_root);
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(parent_root);
 
   if (cache != nullptr) {
     cache->addMessageStatesToCache(parent_root->customIDSOfMessagesForItem(this), status);

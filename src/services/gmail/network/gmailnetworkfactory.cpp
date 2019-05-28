@@ -73,13 +73,13 @@ void GmailNetworkFactory::setUsername(const QString& username) {
 }
 
 Downloader* GmailNetworkFactory::downloadAttachment(const QString& msg_id, const QString& attachment_id) {
-  Downloader* downloader = new Downloader();
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
     return nullptr;
   }
   else {
+    auto* downloader = new Downloader();
     QString target_url = QString(GMAIL_API_GET_ATTACHMENT).arg(msg_id, attachment_id);
 
     downloader->appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
@@ -374,7 +374,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
 bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite_messages,
                                                       const QString& feed_id,
                                                       QList<Message>& full_messages) {
-  QHttpMultiPart* multi = new QHttpMultiPart();
+  auto* multi = new QHttpMultiPart();
 
   multi->setContentType(QHttpMultiPart::ContentType::MixedType);
 

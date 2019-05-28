@@ -33,7 +33,7 @@
 #include <QTimer>
 
 AdBlockIcon::AdBlockIcon(AdBlockManager* parent)
-  : QAction(parent), m_manager(parent), m_flashTimer(0), m_timerTicks(0), m_enabled(m_manager->isEnabled()) {
+  : QAction(parent), m_manager(parent), m_flashTimer(nullptr), m_timerTicks(0), m_enabled(m_manager->isEnabled()) {
   setToolTip(tr("AdBlock lets you block unwanted content on web pages"));
   setText(QSL("AdBlock"));
   setMenu(new QMenu());
@@ -59,7 +59,7 @@ void AdBlockIcon::popupBlocked(const QString& ruleString, const QUrl& url) {
   const QString filter = ruleString.mid(index + 2, ruleString.size() - index - 3);
   AdBlockSubscription* subscription = m_manager->subscriptionByName(subscriptionName);
 
-  if (filter.isEmpty() || !subscription) {
+  if (filter.isEmpty() || (subscription == nullptr)) {
     return;
   }
 
@@ -69,7 +69,7 @@ void AdBlockIcon::popupBlocked(const QString& ruleString, const QUrl& url) {
   m_blockedPopups.append(pair);
   qApp->showGuiMessage(tr("Blocked popup window"), tr("AdBlock blocked unwanted popup window."), QSystemTrayIcon::Information);
 
-  if (!m_flashTimer) {
+  if (m_flashTimer == nullptr) {
     m_flashTimer = new QTimer(this);
   }
 
@@ -83,10 +83,10 @@ void AdBlockIcon::popupBlocked(const QString& ruleString, const QUrl& url) {
 }
 
 void AdBlockIcon::createMenu(QMenu* menu) {
-  if (!menu) {
+  if (menu == nullptr) {
     menu = qobject_cast<QMenu*>(sender());
 
-    if (!menu) {
+    if (menu == nullptr) {
       return;
     }
   }
@@ -126,9 +126,9 @@ void AdBlockIcon::showMenu(const QPoint& pos) {
 }
 
 void AdBlockIcon::toggleCustomFilter() {
-  QAction* action = qobject_cast<QAction*>(sender());
+  auto* action = qobject_cast<QAction*>(sender());
 
-  if (!action) {
+  if (action == nullptr) {
     return;
   }
 
@@ -139,7 +139,7 @@ void AdBlockIcon::toggleCustomFilter() {
     customList->removeFilter(filter);
   }
   else {
-    AdBlockRule* rule = new AdBlockRule(filter, customList);
+    auto* rule = new AdBlockRule(filter, customList);
 
     customList->addRule(rule);
   }

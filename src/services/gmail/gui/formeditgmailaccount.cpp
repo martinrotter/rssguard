@@ -53,7 +53,7 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent) : QDialog(parent),
   hookNetwork();
 }
 
-FormEditGmailAccount::~FormEditGmailAccount() {}
+FormEditGmailAccount::~FormEditGmailAccount() = default;
 
 void FormEditGmailAccount::testSetup() {
   if (m_oauth->clientId() != m_ui.m_txtAppId->lineEdit()->text() ||
@@ -181,7 +181,7 @@ void FormEditGmailAccount::execForEdit(GmailServiceRoot* existing_root) {
 }
 
 void FormEditGmailAccount::checkOAuthValue(const QString& value) {
-  LineEditWithStatus* line_edit = qobject_cast<LineEditWithStatus*>(sender()->parent());
+  auto* line_edit = qobject_cast<LineEditWithStatus*>(sender()->parent());
 
   if (line_edit != nullptr) {
     if (value.isEmpty()) {

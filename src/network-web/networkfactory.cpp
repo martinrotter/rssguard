@@ -14,7 +14,7 @@
 #include <QTextDocument>
 #include <QTimer>
 
-NetworkFactory::NetworkFactory() {}
+NetworkFactory::NetworkFactory() = default;
 
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html) {
   QStringList feeds;
@@ -166,7 +166,7 @@ Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int
                                                          QList<QPair<QByteArray, QByteArray>> additional_headers,
                                                          bool protected_contents, const QString& username,
                                                          const QString& password) {
-  Downloader* downloader = new Downloader();
+  auto* downloader = new Downloader();
 
   QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
 

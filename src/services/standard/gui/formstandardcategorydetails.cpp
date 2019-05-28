@@ -94,7 +94,7 @@ int FormStandardCategoryDetails::addEditCategory(StandardCategory* input_categor
 
 void FormStandardCategoryDetails::apply() {
   RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-  StandardCategory* new_category = new StandardCategory();
+  auto* new_category = new StandardCategory();
 
   new_category->setTitle(m_ui->m_txtTitle->lineEdit()->text());
   new_category->setCreationDate(QDateTime::currentDateTime());
@@ -215,7 +215,7 @@ void FormStandardCategoryDetails::initialize() {
   m_ui->m_txtTitle->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
-void FormStandardCategoryDetails::loadCategories(const QList<Category*> categories,
+void FormStandardCategoryDetails::loadCategories(const QList<Category*>& categories,
                                                  RootItem* root_item,
                                                  StandardCategory* input_category) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),

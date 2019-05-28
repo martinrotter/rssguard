@@ -69,7 +69,7 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
   displayPassword(false);
 }
 
-FormEditOwnCloudAccount::~FormEditOwnCloudAccount() {}
+FormEditOwnCloudAccount::~FormEditOwnCloudAccount() = default;
 
 OwnCloudServiceRoot* FormEditOwnCloudAccount::execForCreate() {
   setWindowTitle(tr("Add new ownCloud News account"));
