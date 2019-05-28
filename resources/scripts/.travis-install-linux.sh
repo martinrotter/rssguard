@@ -42,6 +42,8 @@ fi
 mv "$imagename" "$imagenamenospace"
 imagename="$imagenamenospace"
 
+ls
+
 echo "File to upload: $imagename"
 echo "URL ending: $imagenamenospace"
 

@@ -1,4 +1,5 @@
 ls
+curl -v
 
 $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
 chcp 65001
