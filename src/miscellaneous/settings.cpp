@@ -65,6 +65,12 @@ DKEY Messages::EnableMessagePreview = "enable_message_preview";
 
 DVALUE(bool) Messages::EnableMessagePreviewDef = true;
 
+#if !defined (USE_WEBENGINE)
+DKEY Messages::DisplayImagePlaceholders = "display_image_placeholders";
+
+DVALUE(bool) Messages::DisplayImagePlaceholdersDef = false;
+#endif
+
 DKEY Messages::UseCustomDate = "use_custom_date";
 
 DVALUE(bool) Messages::UseCustomDateDef = false;

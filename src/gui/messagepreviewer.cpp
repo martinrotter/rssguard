@@ -241,19 +241,29 @@ QString MessagePreviewer::prepareHtmlForMessage(const Message& message) {
     html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc_url, enc.m_mimeType);
   }
 
-  QRegularExpression imgTagRegex("\\<img[^\\>]*src\\s*=\\s*\"([^\"]*)\"[^\\>]*\\>",
+  QRegularExpression imgTagRegex("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
                                  QRegularExpression::PatternOption::CaseInsensitiveOption |
                                  QRegularExpression::PatternOption::InvertedGreedinessOption);
   QRegularExpressionMatchIterator i = imgTagRegex.globalMatch(message.m_contents);
+  QString pictures_html;
 
   while (i.hasNext()) {
     QRegularExpressionMatch match = i.next();
 
     m_pictures.append(match.captured(1));
-    html += QString("[%1] <a href=\"%2\">%2</a><br/>").arg(tr("image"), match.captured(1));
+    pictures_html += QString("<br/>[%1] <a href=\"%2\">%2</a>").arg(tr("image"), match.captured(1));
   }
 
-  html += "<br/>";
-  html += message.m_contents;
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool()) {
+    html += message.m_contents;
+  }
+  else {
+    QString cnts = message.m_contents;
+
+    html += cnts.replace(imgTagRegex, QString());
+  }
+
+  html += pictures_html;
+
   return html;
 }

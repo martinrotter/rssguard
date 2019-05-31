@@ -88,6 +88,12 @@ namespace Messages {
 
   VALUE(bool) EnableMessagePreviewDef;
 
+#if !defined (USE_WEBENGINE)
+  KEY DisplayImagePlaceholders;
+
+  VALUE(bool) DisplayImagePlaceholdersDef;
+#endif
+
   KEY UseCustomDate;
 
   VALUE(bool) UseCustomDateDef;
