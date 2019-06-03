@@ -1865,7 +1865,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Usar ícone padrão do tema de ícones</translation>
     </message>
 </context>
 <context>
@@ -2273,7 +2273,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Doar...</translation>
     </message>
 </context>
 <context>
@@ -2520,7 +2520,7 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Usar ícone padrão do tema de ícones</translation>
     </message>
 </context>
 <context>
@@ -2666,11 +2666,11 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Exportar para arquivo</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Importar do arquivo</translation>
     </message>
 </context>
 <context>

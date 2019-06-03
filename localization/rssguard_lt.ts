@@ -1867,7 +1867,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti numatytąją piktogramą iš piktogramų temos</translation>
     </message>
 </context>
 <context>
@@ -2275,7 +2275,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Paaukoti...</translation>
     </message>
 </context>
 <context>
@@ -2522,7 +2522,7 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti numatytąją piktogramą iš piktogramų temos</translation>
     </message>
 </context>
 <context>
@@ -2668,11 +2668,11 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Eksportuoti į failą</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Importuoti iš failo</translation>
     </message>
 </context>
 <context>

@@ -91,11 +91,11 @@
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"/>
+        <translation>Zablokováno vyskakovací okno</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock zablokoval vyskakovací okno.</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
@@ -908,11 +908,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Stahuji přílohu...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Staženo: %1 kB</translation>
     </message>
 </context>
 <context>
@@ -1134,11 +1134,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No username entered.   </source>
-        <translation type="unfinished"/>
+        <translation>Nezadáno uživatelské jméno.</translation>
     </message>
     <message>
         <source>Some username entered.   </source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno zadáno.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -1150,7 +1150,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation type="unfinished"/>
+        <translation>Chyba. %1</translation>
     </message>
     <message>
         <source>Tested successfully.You may be prompted to login once more.</source>
@@ -1162,11 +1162,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový účet Gmail</translation>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Upravit existující účet Gmail</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
@@ -1178,11 +1178,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Musíte použít &quot;%1&quot; jako základní přesměrovací URL. Můžete použít vlastní číslo portu, abyste měli jistotu, že nekoliduje s jinou službou. Ujistěte se, že nastavení přesměrovací URL je konzistentní s nastavením na straně webové služby.</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>Předdefinovaná nastavení měňte pouze pokud opravdu víte co děláte.</translation>
     </message>
 </context>
 <context>
@@ -1285,7 +1285,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Musíte použít &quot;%1&quot; jako základní přesměrovací URL. Můžete použít vlastní číslo portu, abyste měli jistotu, že nekoliduje s jinou službou. Ujistěte se, že nastavení přesměrovací URL je konzistentní s nastavením na straně webové služby.</translation>
     </message>
 </context>
 <context>
@@ -1867,7 +1867,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Použít výchozí ikonu z tématu</translation>
     </message>
 </context>
 <context>
@@ -2271,11 +2271,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Povolit náhled zprávy</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Podpořit autora...</translation>
     </message>
 </context>
 <context>
@@ -2522,7 +2522,7 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Použít výchozí ikonu z tématu</translation>
     </message>
 </context>
 <context>
@@ -2668,11 +2668,11 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Exportovat do souboru</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Importovat ze souboru</translation>
     </message>
 </context>
 <context>

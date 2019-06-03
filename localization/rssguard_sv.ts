@@ -3,11 +3,11 @@
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation>(kategori)</translation>
+        <translation> (kategori)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation>(flöde)</translation>
+        <translation> (flöde)</translation>
     </message>
 </context>
 <context>
@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>URL</source>
-        <translation>URL </translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
@@ -68,7 +68,7 @@
     </message>
     <message>
         <source>Add subscription</source>
-        <translation>Lägg till prenumeration </translation>
+        <translation>Lägg till prenumeration</translation>
     </message>
     <message>
         <source>Remove subscription</source>
@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation> AdBlock blockerade oönskat popup-fönster.</translation>
+        <translation>AdBlock blockerade oönskat popup-fönster.</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
@@ -132,11 +132,11 @@
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation>Lägg till regel </translation>
+        <translation>Lägg till regel</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Ta bort regel </translation>
+        <translation>Ta bort regel</translation>
     </message>
     <message>
         <source>Add custom rule</source>
@@ -159,11 +159,11 @@
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>Programmet är redan startat</translation>
+        <translation>Programmet är redan startat.</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Utdatamappen är inte skrivbar</translation>
+        <translation>Utdatamappen är inte skrivbar.</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -505,7 +505,7 @@ Status: %2</translation>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>Kategori</translation>
+        <translation>Kategori </translation>
     </message>
 </context>
 <context>
@@ -1108,7 +1108,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation>meddelande(n)</translation>
+        <translation> meddelande(n)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -1132,11 +1132,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>No username entered.   </source>
-        <translation>Inget användarnamn angivet</translation>
+        <translation>Inget användarnamn angivet.   </translation>
     </message>
     <message>
         <source>Some username entered.   </source>
-        <translation>Användarnamn angivet</translation>
+        <translation>Användarnamn angivet.   </translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -1148,7 +1148,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation>Det finns fel. %1</translation>
+        <translation>Det finns fel. %1 </translation>
     </message>
     <message>
         <source>Tested successfully.You may be prompted to login once more.</source>
@@ -1207,7 +1207,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Dessa inställningar behöver INTE ändras från standardvärdena. Ändra dessa värden endast om du är avancerad användare och vet vad du gör.</translation>
+        <translation>Dessa inställningar behöver INTE ändras från standardvärdena. Ändra dessa värden endast om du är avancerad användare och vet vad du gör!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1215,7 +1215,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation>meddelande(n)</translation>
+        <translation> meddelande(n)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -1346,7 +1346,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>Redigera befintligt </translation>
+        <translation>Redigera befintligt ownCloud News-konto</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
@@ -1354,7 +1354,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Den valda ownCloud News-servern kör en version som inte stöds. </translation>
+        <translation>Den valda ownCloud News-servern kör en version som inte stöds.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1414,7 +1414,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation>= obegränsat</translation>
+        <translation> = obegränsat</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
@@ -1433,7 +1433,7 @@ att funktionen inte är implementerad än.</translation>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL </translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1493,7 +1493,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>URL för din TT-RSS-instans UTAN vidhängande &quot;/api/-sträng&quot;.</translation>
+        <translation>URL för din TT-RSS-instans UTAN vidhängande API-sträng</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -1509,7 +1509,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Redigera befintligt </translation>
+        <translation>Redigera befintligt Tiny Tiny RSS-konto</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
@@ -1569,7 +1569,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Användarnamnet är ok, eller behövs inte. </translation>
+        <translation>Användarnamnet är OK, eller behövs inte.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -1577,7 +1577,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Lösenordet är ok, eller behövs inte. </translation>
+        <translation>Lösenordet är OK, eller behövs inte.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
@@ -1624,7 +1624,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>Autouppdatering </translation>
+        <translation>Autouppdatering</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
@@ -1640,7 +1640,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL </translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
@@ -1664,11 +1664,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Användarnamn </translation>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Lösenord </translation>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -1712,19 +1712,19 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Användarnamnet är ok, eller behövs inte. </translation>
+        <translation>Användarnamnet är ok, eller behövs inte.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Användarnamn saknas. </translation>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Lösenordet är ok, eller behövs inte. </translation>
+        <translation>Lösenordet är ok, eller behövs inte.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Lösenord saknas. </translation>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
@@ -1865,7 +1865,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Använd standardikon från ikontemat</translation>
     </message>
 </context>
 <context>
@@ -2112,7 +2112,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation>Tar bort alla meddelanden från alla objekt</translation>
+        <translation>Tar bort smtliga meddelanden från alla objekt.</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
@@ -2216,7 +2216,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation>Ny webbläsarflik.</translation>
+        <translation>Ny webbläsarflik</translation>
     </message>
     <message>
         <source>Close all tabs</source>
@@ -2273,7 +2273,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Donera...</translation>
     </message>
 </context>
 <context>
@@ -2288,7 +2288,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flödet </translation>
+        <translation>Kan inte lägga till flöde</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
@@ -2520,7 +2520,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Använd standardikon från ikontemat</translation>
     </message>
 </context>
 <context>
@@ -2638,7 +2638,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation>Kan inte skriva till målfilen: %1</translation>
+        <translation>Kan inte skriva till målfilen: %1.</translation>
     </message>
     <message>
         <source>Root node</source>
@@ -2666,11 +2666,11 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Exportera till fil</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Importera från fil</translation>
     </message>
 </context>
 <context>
@@ -2685,7 +2685,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flödet </translation>
+        <translation>Kan inte lägga till flöde</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
@@ -2838,7 +2838,7 @@ Du måste installera det manuellt.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation>(storlek</translation>
+        <translation> (storlek </translation>
     </message>
     <message>
         <source>Available update files</source>
@@ -2946,7 +2946,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation>Inoreader: Autentiseringsfel </translation>
+        <translation>Inoreader: Autentiseringsfel</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -3020,7 +3020,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation>Den valda länken är ogiltig</translation>
+        <translation>Den valda hyperlänken är ogiltig.</translation>
     </message>
     <message>
         <source>Mark message as read</source>
@@ -3163,7 +3163,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation>Konto-ID för meddelandet</translation>
+        <translation>Konto-ID för meddelandet.</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
@@ -3440,7 +3440,9 @@ Inloggningstoken upphör: %2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>+ %n annat flöde.</numerusform><numerusform>
+        <translation><numerusform>
+
++ %n annat flöde.</numerusform><numerusform>
 
 + %n andra flöden.</numerusform></translation>
     </message>
@@ -3504,7 +3506,7 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation>Detta är integrering av Inoreader</translation>
+        <translation>Detta är integrering av Inoreader.</translation>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
@@ -3641,7 +3643,7 @@ Minst API-nivå %1 krävs.</translation>
  • %2 - body of selected message.</source>
         <translation>Platshållare:
  • %1 - titel för aktuellt meddelande
- • %2 - brödtext för </translation>
+ • %2 - brödtext för.</translation>
     </message>
     <message>
         <source>Proxy</source>
@@ -4285,7 +4287,7 @@ Denna kategori innehåller inga objekt.</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation>Metadata hämtades inte på grund av: %1</translation>
+        <translation>Metadata hämtades inte på grund av: %1.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
@@ -4315,7 +4317,8 @@ Uppdateringsstatus: %5</translation>
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation>Nätverksstatus: %1
+        <translation>
+Nätverksstatus: %1
 Kodning: %2
 Typ: %3</translation>
     </message>
@@ -4422,7 +4425,7 @@ Konto-ID: %1</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation>byte</translation>
+        <translation> byte</translation>
     </message>
 </context>
 <context>
@@ -4488,7 +4491,7 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source> and </source>
-        <translation>och</translation>
+        <translation> och </translation>
     </message>
 </context>
 <context>

@@ -3,6 +3,7 @@
 #include "core/messagesproxymodel.h"
 
 #include "core/messagesmodel.h"
+#include "miscellaneous/regexfactory.h"
 
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
   : QSortFilterProxyModel(parent), m_sourceModel(source_model) {
@@ -122,7 +123,7 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start, int role,
             break;
 
           case Qt::MatchWildcard:
-            if (QRegularExpression(QRegularExpression::wildcardToRegularExpression(entered_text),
+            if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
                                    QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
               result.append(idx);

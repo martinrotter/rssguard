@@ -5,6 +5,7 @@
 #include "core/feedsmodel.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/regexfactory.h"
 #include "services/abstract/rootitem.h"
 
 #include <QTimer>
@@ -74,7 +75,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
             break;
 
           case Qt::MatchWildcard:
-            if (QRegularExpression(QRegularExpression::wildcardToRegularExpression(entered_text),
+            if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
                                    QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
               result.append(idx);
