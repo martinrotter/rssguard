@@ -49,10 +49,16 @@ MessagesView::MessagesView(QWidget* parent) : QTreeView(parent), m_contextMenu(n
     TreeViewColumnsMenu mm(header());
     mm.exec(header()->mapToGlobal(point));
   });
+
+  reloadFontSettings();
 }
 
 MessagesView::~MessagesView() {
   qDebug("Destroying MessagesView instance.");
+}
+
+void MessagesView::reloadFontSettings() {
+  m_sourceModel->setupFonts();
 }
 
 void MessagesView::sort(int column, Qt::SortOrder order, bool repopulate_data, bool change_header, bool emit_changed_from_header) {

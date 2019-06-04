@@ -57,7 +57,18 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cmbCountsFeedList, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, &SettingsFeedsMessages::changeMessagesFont);
+
+  connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, [&]() {
+    changeFont(*m_ui->m_lblMessagesFont);
+  });
+
+  connect(m_ui->m_btnChangeFeedListFont, &QPushButton::clicked, this, [&]() {
+    changeFont(*m_ui->m_lblFeedListFont);
+  });
+
+  connect(m_ui->m_btnChangeMessageListFont, &QPushButton::clicked, this, [&]() {
+    changeFont(*m_ui->m_lblMessageListFont);
+  });
 
   if (!m_ui->m_spinFeedUpdateTimeout->suffix().startsWith(' ')) {
     m_ui->m_spinFeedUpdateTimeout->setSuffix(QSL(" ") + m_ui->m_spinFeedUpdateTimeout->suffix());
@@ -88,14 +99,14 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
   }
 }
 
-void SettingsFeedsMessages::changeMessagesFont() {
+void SettingsFeedsMessages::changeFont(QLabel& lbl) {
   bool ok;
-  QFont new_font = QFontDialog::getFont(&ok, m_ui->m_lblMessagesFont->font(),
-                                        this, tr("Select new font for message viewer"),
+  QFont new_font = QFontDialog::getFont(&ok, lbl.font(),
+                                        this, tr("Select new font"),
                                         QFontDialog::DontUseNativeDialog);
 
   if (ok) {
-    m_ui->m_lblMessagesFont->setFont(new_font);
+    lbl.setFont(new_font);
     dirtifySettings();
   }
 }
@@ -129,12 +140,28 @@ void SettingsFeedsMessages::loadSettings() {
     m_ui->m_cmbMessagesDateTimeFormat->setCurrentIndex(index_format);
   }
 
-  m_ui->m_lblMessagesFont->setText(tr("Font preview"));
   QFont fon;
 
   fon.fromString(settings()->value(GROUP(Messages),
                                    SETTING(Messages::PreviewerFontStandard)).toString());
   m_ui->m_lblMessagesFont->setFont(fon);
+
+  QFont fon2;
+
+  // Keep in sync with void MessagesModel::setupFonts().
+  fon2.fromString(settings()->value(GROUP(Messages),
+                                    Messages::ListFont,
+                                    Application::font("MessagesView").toString()).toString());
+  m_ui->m_lblMessageListFont->setFont(fon2);
+
+  QFont fon3;
+
+  // Keep in sync with void FeedsModel::setupFonts().
+  fon3.fromString(settings()->value(GROUP(Feeds),
+                                    Feeds::ListFont,
+                                    Application::font("FeedsView").toString()).toString());
+  m_ui->m_lblFeedListFont->setFont(fon3);
+
   onEndLoadSettings();
 }
 
@@ -164,12 +191,16 @@ void SettingsFeedsMessages::saveSettings() {
 
   // Save fonts.
   settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
-  qApp->feedReader()->updateAutoUpdateStatus();
+  settings()->setValue(GROUP(Messages), Messages::ListFont, m_ui->m_lblMessageListFont->font().toString());
+  settings()->setValue(GROUP(Feeds), Feeds::ListFont, m_ui->m_lblFeedListFont->font().toString());
 
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
+
+  qApp->feedReader()->updateAutoUpdateStatus();
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
 
   qApp->feedReader()->messagesModel()->updateDateFormat();
   qApp->feedReader()->messagesModel()->reloadWholeLayout();
+
   onEndSaveSettings();
 }

@@ -17,7 +17,7 @@ class FeedsModel : public QAbstractItemModel {
   Q_OBJECT
 
   public:
-    explicit FeedsModel(QObject* parent = 0);
+    explicit FeedsModel(QObject* parent = nullptr);
     virtual ~FeedsModel();
 
     // Model implementation.
@@ -86,6 +86,8 @@ class FeedsModel : public QAbstractItemModel {
     // Access to root item.
     RootItem* rootItem() const;
 
+    void setupFonts();
+
   public slots:
     void loadActivatedServiceAccounts();
 
@@ -150,10 +152,6 @@ class FeedsModel : public QAbstractItemModel {
     // There was some drag/drop operation, notify view about this.
     // NOTE: View will probably expand dropped index.
     void requireItemValidationAfterDragDrop(const QModelIndex& source_index);
-
-  private:
-    void updateItemHeight();
-    void setupFonts();
 
   private:
     RootItem* m_rootItem;

@@ -58,7 +58,8 @@ FeedMessageViewer::FeedMessageViewer(QWidget* parent) : TabContent(parent), m_to
 
   initialize();
   initializeViews();
-  loadMessageViewerFonts();
+
+  //loadMessageViewerFonts();
   createConnections();
 }
 
@@ -122,6 +123,8 @@ void FeedMessageViewer::loadSize() {
 
 void FeedMessageViewer::loadMessageViewerFonts() {
   m_messagesBrowser->reloadFontSettings();
+  m_messagesView->reloadFontSettings();
+  m_feedsView->reloadFontSettings();
 }
 
 bool FeedMessageViewer::areToolBarsEnabled() const {

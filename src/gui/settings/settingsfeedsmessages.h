@@ -22,8 +22,8 @@ class SettingsFeedsMessages : public SettingsPanel {
 
     void saveSettings();
 
-  private slots:
-    void changeMessagesFont();
+  private:
+    void changeFont(QLabel& lbl);
 
   private:
     void initializeMessageDateFormats();

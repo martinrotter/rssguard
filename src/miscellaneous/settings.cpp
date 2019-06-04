@@ -55,6 +55,8 @@ DKEY Feeds::ShowOnlyUnreadFeeds = "show_only_unread_feeds";
 
 DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef = false;
 
+DKEY Feeds::ListFont = "list_font";
+
 // Messages.
 DKEY Messages::ID = "messages";
 DKEY Messages::MessageHeadImageHeight = "message_head_image_height";
@@ -90,6 +92,8 @@ DVALUE(bool) Messages::KeepCursorInCenterDef = false;
 DKEY Messages::PreviewerFontStandard = "previewer_font_standard";
 
 NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef = QFont(QFont().family(), 12).toString();
+
+DKEY Messages::ListFont = "list_font";
 
 // GUI.
 DKEY GUI::ID = "gui";

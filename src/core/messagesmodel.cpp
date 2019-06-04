@@ -22,7 +22,6 @@ MessagesModel::MessagesModel(QObject* parent)
   setupIcons();
   setupHeaderData();
   updateDateFormat();
-  updateItemHeight();
   loadMessages(nullptr);
 }
 
@@ -35,17 +34,6 @@ void MessagesModel::setupIcons() {
   m_readIcon = qApp->icons()->fromTheme(QSL("mail-mark-read"));
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
-}
-
-void MessagesModel::updateItemHeight() {
-  m_itemHeight = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt();
-
-  if (m_itemHeight > 0) {
-    m_boldFont.setPixelSize(int(m_itemHeight * 0.6));
-    m_normalFont.setPixelSize(int(m_itemHeight * 0.6));
-    m_boldStrikedFont.setPixelSize(int(m_itemHeight * 0.6));
-    m_normalStrikedFont.setPixelSize(int(m_itemHeight * 0.6));
-  }
 }
 
 void MessagesModel::repopulate() {
@@ -68,13 +56,26 @@ bool MessagesModel::setData(const QModelIndex& index, const QVariant& value, int
 }
 
 void MessagesModel::setupFonts() {
-  m_normalFont = Application::font("MessagesView");
+  QFont fon;
+
+  fon.fromString(qApp->settings()->value(GROUP(Messages), Messages::ListFont, Application::font("MessagesView").toString()).toString());
+
+  m_normalFont = fon;
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
   m_normalStrikedFont = m_normalFont;
   m_boldStrikedFont = m_boldFont;
   m_normalStrikedFont.setStrikeOut(true);
   m_boldStrikedFont.setStrikeOut(true);
+
+  m_itemHeight = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt();
+
+  if (m_itemHeight > 0) {
+    m_boldFont.setPixelSize(int(m_itemHeight * 0.6));
+    m_normalFont.setPixelSize(int(m_itemHeight * 0.6));
+    m_boldStrikedFont.setPixelSize(int(m_itemHeight * 0.6));
+    m_normalStrikedFont.setPixelSize(int(m_itemHeight * 0.6));
+  }
 }
 
 void MessagesModel::loadMessages(RootItem* item) {

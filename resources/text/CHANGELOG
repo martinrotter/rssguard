@@ -1,3 +1,12 @@
+3.5.9
+—————
+
+Added:
+▪ Font in message and feed lists is now changeable, including its size. (#187)
+
+Fixed:
+▪ Broken backward compatibility to Qt 5.7.
+
 3.5.8
 —————
 

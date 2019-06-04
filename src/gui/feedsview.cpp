@@ -50,6 +50,10 @@ FeedsView::~FeedsView() {
   qDebug("Destroying FeedsView instance.");
 }
 
+void FeedsView::reloadFontSettings() {
+  m_sourceModel->setupFonts();
+}
+
 void FeedsView::setSortingEnabled(bool enable) {
   disconnect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
   QTreeView::setSortingEnabled(enable);

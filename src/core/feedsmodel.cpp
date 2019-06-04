@@ -47,7 +47,6 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_itemHeig
     << /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
 
   setupFonts();
-  updateItemHeight();
 }
 
 FeedsModel::~FeedsModel() {
@@ -466,12 +465,14 @@ void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
 }
 
 void FeedsModel::setupFonts() {
-  m_normalFont = Application::font("FeedsView");
+  QFont fon;
+
+  fon.fromString(qApp->settings()->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString()).toString());
+
+  m_normalFont = fon;
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
-}
 
-void FeedsModel::updateItemHeight() {
   m_itemHeight = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt();
 
   if (m_itemHeight > 0) {

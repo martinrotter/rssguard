@@ -29,7 +29,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     };
 
     // Constructors and destructors.
-    explicit MessagesModel(QObject* parent = 0);
+    explicit MessagesModel(QObject* parent = nullptr);
     virtual ~MessagesModel();
 
     // Fetches ALL available data to the model.
@@ -50,6 +50,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
 
     RootItem* loadedItem() const;
 
+    void setupFonts();
     void updateDateFormat();
     void reloadWholeLayout();
 
@@ -77,9 +78,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     bool setMessageReadById(int id, RootItem::ReadStatus read);
 
   private:
-    void updateItemHeight();
     void setupHeaderData();
-    void setupFonts();
     void setupIcons();
 
     MessagesModelCache* m_cache;

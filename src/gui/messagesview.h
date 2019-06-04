@@ -16,7 +16,7 @@ class MessagesView : public QTreeView {
   Q_OBJECT
 
   public:
-    explicit MessagesView(QWidget* parent = 0);
+    explicit MessagesView(QWidget* parent = nullptr);
     virtual ~MessagesView();
 
     // Model accessors.
@@ -27,6 +27,8 @@ class MessagesView : public QTreeView {
     inline MessagesModel* sourceModel() const {
       return m_sourceModel;
     }
+
+    void reloadFontSettings();
 
   public slots:
     void keyboardSearch(const QString& search);

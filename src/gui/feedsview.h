@@ -19,7 +19,7 @@ class FeedsView : public QTreeView {
   public:
 
     // Constructors and destructors.
-    explicit FeedsView(QWidget* parent = 0);
+    explicit FeedsView(QWidget* parent = nullptr);
     virtual ~FeedsView();
 
     // Fundamental accessors.
@@ -30,6 +30,8 @@ class FeedsView : public QTreeView {
     inline FeedsModel* sourceModel() const {
       return m_sourceModel;
     }
+
+    void reloadFontSettings();
 
     void setSortingEnabled(bool enable);
 

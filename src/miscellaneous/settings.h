@@ -75,6 +75,8 @@ namespace Feeds {
   KEY ShowOnlyUnreadFeeds;
 
   VALUE(bool) ShowOnlyUnreadFeedsDef;
+
+  KEY ListFont;
 }
 
 // Messages.
@@ -113,6 +115,8 @@ namespace Messages {
   KEY PreviewerFontStandard;
 
   NON_CONST_VALUE(QString) PreviewerFontStandardDef;
+
+  KEY ListFont;
 }
 
 // GUI.
