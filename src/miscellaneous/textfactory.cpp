@@ -130,9 +130,6 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
 
     try {
       s_encryptionKey = quint64(QString(IOFactory::readFile(encryption_file_path)).toULongLong());
-
-      auto aa = s_encryptionKey;
-      auto bb = false;
     }
     catch (ApplicationException&) {
       // Well, key does not exist or is invalid, generate and save one.
