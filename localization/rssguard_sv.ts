@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sv">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -279,9 +281,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller ett annat flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller ett annat flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -367,7 +372,7 @@ Denna webbsida innehåller %n flöden.</numerusform></translation>
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; är nedlladdad.
 Klicka här för att öppna målmappen.</translation>
@@ -393,11 +398,17 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -417,18 +428,14 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
+        <translation>
+            <numerusform>Laddar ner %n fil...</numerusform>
+            <numerusform>Laddar ner %n filer...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
     <name>Feed</name>
-    <message>
-        <source>%1%2
-
-Auto-update status: %3</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
@@ -437,12 +444,18 @@ Auto-update status: %3</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -498,7 +511,10 @@ Status: %2</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+        <translation>
+            <numerusform>Jag uppdaterar %n flöde automatiskt</numerusform>
+            <numerusform>Jag uppdaterar %n flöden automatiskt</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -686,10 +702,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>FULLT portabel</translation>
     </message>
     <message>
-        <source>PARTIALLY portable</source>
-        <translation type="vanished">PARTIELLT portabel</translation>
-    </message>
-    <message>
         <source>Resources</source>
         <translation>Resurser</translation>
     </message>
@@ -715,26 +727,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Add new account</source>
         <translation>Lägg till nytt konto</translation>
-    </message>
-    <message>
-        <source>Details</source>
-        <translation type="vanished">Detaljerat</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Namn</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="vanished">Version</translation>
-    </message>
-    <message>
-        <source>Author</source>
-        <translation type="vanished">Författare</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">Beskrivning</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
@@ -835,7 +827,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagar</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -914,173 +909,6 @@ att funktionen inte är implementerad än.</translation>
     </message>
 </context>
 <context>
-    <name>FormEditAccount</name>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="vanished">Vissa flöden kräver autentisering, inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentisering stöds.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation type="vanished">Autentisering</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="vanished">Användarnamn</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="vanished">Lösenord</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation type="vanished">Visa lösenord</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation type="vanished">Kräver HTTP-autentisering</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation type="vanished">URL</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation type="vanished">&amp;Testa inställning</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation type="vanished">Användarnamn för HTTP-autentisering</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation type="vanished">Lösenord för HTTP-autentisering</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation type="vanished">Lösenord för ditt TT RSS-konto</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation type="vanished">Användarnamn för ditt TT RSS-konto</translation>
-    </message>
-    <message>
-        <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="vanished">FULLSTÄNDIG URL till din TT RSS-instans MED efterföljande API-sträng</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation type="vanished">Inget test utfört ännu.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation type="vanished">Här visas resultat av anslutningstest.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation type="vanished">Lägg till nytt Tiny Tiny RSS-konto</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="vanished">Redigera befintligt </translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation type="vanished">API-åtkomst är inte aktiverad på den valda servern.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation type="vanished">Inloggningsuppgifter är felaktiga.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation type="vanished">Annat fel uppstod! Kontakta utvecklaren.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="vanished">Den valda Tiny Tiny RSS-servern kör en API-version (%1) som inte stöds. Minst API-nivå %2 krävs.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="vanished">Den valda Tiny Tiny RSS-servern kör en API-version som inte stöds.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="vanished">Tiny Tiny RSS-servern är okay. Den kör API-nivå %1 och minimikravet är nivå %2.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="vanished">Tiny Tiny RSS-servern är okay.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation type="vanished">Nätverksfel: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="vanished">Nätverksfel! Har du angett korrekt Tiny Tiny RSS API-slutpunkt och lösenord?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation type="vanished">Användarnamn saknas.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation type="vanished">Användarnamn okay.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="vanished">Lösenord saknas.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation type="vanished">Lösenord okay.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="vanished">Användarnamnet är ok, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation type="vanished">Användarnamn saknas.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="vanished">Lösenordet är ok, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation type="vanished">Lösenord saknas.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation type="vanished">URL saknas.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation type="vanished">URL okay.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation type="vanished">Notera att API-nivå %1 är miniminivå.</translation>
-    </message>
-    <message>
-        <source>URL should end with &quot;/api/&quot;.</source>
-        <translation type="vanished">URL skall avslutas med &quot;/api/&quot;.</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="vanished">Ospecificerat fel! Angav du korrekt URL?</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="vanished">Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="vanished">Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
-    </message>
-</context>
-<context>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
@@ -1151,10 +979,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Det finns fel. %1 </translation>
     </message>
     <message>
-        <source>Tested successfully.You may be prompted to login once more.</source>
-        <translation>Testat korrekt. Du kan behöva logga in en gång till.</translation>
-    </message>
-    <message>
         <source>Your access was approved.</source>
         <translation>Åtkomst beviljades.</translation>
     </message>
@@ -1181,6 +1005,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation>Fördefinierade inställningar BEHÖVER INTE ändras från standardinställning. Ändra dessa inställningar, endast om du räknar dig som avancerad användare och vet vad du gör!</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished">Testet lyckades. Du kan behöva logga in igen.</translation>
     </message>
 </context>
 <context>
@@ -1703,169 +1531,8 @@ att funktionen inte är implementerad än.</translation>
         <translation>URL:en är OK.</translation>
     </message>
     <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
-    </message>
-    <message>
         <source>The URL is empty.</source>
         <translation>URL saknas.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Användarnamnet är ok, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Användarnamn saknas.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Lösenordet är ok, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Lösenord saknas.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Välj ikonfil för flödet</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Välj ikon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Avbryt</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Sök i:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Ikonnamn:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Ikontyp:</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>All metadata hämtades korrekt.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Flödes- och ikonmetadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Resultat: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Flödes- eller ikonmetadata inte hämtad.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Fel: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Ingen metadata hämtades.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>Ikon hämtades.</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>Ikonmetadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Ikonmetadata inte hämtad.</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>Ikon hämtades inte.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Flödesnamn</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Ange flödets namn.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Flödesbeskrivning</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Beskriv flödet.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Flödets fullständiga URL inklusive schema</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Ange flödets URL.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Ange lösenord för att få åtkomst till flödet.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Ikonval</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Hämta ikon från fil...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation type="vanished">Använd ingen ikon</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation type="vanished">Använd standardikon</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Hämta ikon från flödet</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Ingen metadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Autouppdatering med globala intervall</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Uppdatera automatiskt varje</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Uppdatera inte automatiskt</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Använd standardikon från ikontemat</translation>
     </message>
 </context>
 <context>
@@ -2015,10 +1682,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>&amp;Kolumnrubriker</translation>
     </message>
     <message>
-        <source>&amp;Donate via PayPal</source>
-        <translation type="vanished">&amp;Donera via PayPal</translation>
-    </message>
-    <message>
         <source>Display &amp;wiki</source>
         <translation>Visa &amp;wiki</translation>
     </message>
@@ -2089,10 +1752,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Deletes all messages from selected items.</source>
         <translation>Tar bort alla meddelanden från markerade objekt.</translation>
-    </message>
-    <message>
-        <source>&amp;Mark all items as &amp;read</source>
-        <translation type="vanished">&amp;Märk alla objekt som &amp;lästa</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -2511,14 +2170,6 @@ Du måste starta om manuellt.</translation>
         <translation>Hämta ikon från fil...</translation>
     </message>
     <message>
-        <source>Do not use icon</source>
-        <translation type="vanished">Använd ingen ikon</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation type="vanished">Använd standardikon</translation>
-    </message>
-    <message>
         <source>Use default icon from icon theme</source>
         <translation>Använd standardikon från ikontemat</translation>
     </message>
@@ -2703,10 +2354,6 @@ Du måste starta om manuellt.</translation>
         <translation>Tillgänglig version</translation>
     </message>
     <message>
-        <source>Changes</source>
-        <translation type="vanished">Ändringar</translation>
-    </message>
-    <message>
         <source>Status</source>
         <translation>Status</translation>
     </message>
@@ -2747,34 +2394,12 @@ currently installed one.</source>
         <translation>Ladda ner ny installationsfil.</translation>
     </message>
     <message>
-        <source>Checking for updates failed.</source>
-        <translation type="vanished">Kunde inte söka efter uppdatering.</translation>
-    </message>
-    <message>
-        <source>Download installation file for your OS.</source>
-        <translation type="vanished">Ladda ner installationsfil för ditt system.</translation>
-    </message>
-    <message>
-        <source>Installation file is not available directly.
-Go to application website to obtain it manually.</source>
-        <translation type="vanished">Installationsfilen är inte direkt tillgänglig.
-Gå till programmets hemsida för att hämta den manuellt.</translation>
-    </message>
-    <message>
-        <source>No new update available.</source>
-        <translation type="vanished">Ingen ny uppdatering tillgänglig.</translation>
-    </message>
-    <message>
         <source>Cannot update application</source>
         <translation>Kan inte uppdatera programmet</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
         <translation>Kan inte navigera till installationsfilen. Sök ny installationsnedladdning manuellt, på projektets hemsida.</translation>
-    </message>
-    <message>
-        <source>Download update</source>
-        <translation type="vanished">Ladda ner uppdatering</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2805,12 +2430,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
 downloaded.</source>
         <translation>Detta är en ny version som kan
 laddas ner.</translation>
-    </message>
-    <message>
-        <source>Package was downloaded successfully.
-You must install it manually.</source>
-        <translation type="vanished">Paketet har laddats ner.
-Du måste installera det manuellt.</translation>
     </message>
     <message>
         <source>Install</source>
@@ -3357,7 +2976,10 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Visa fler meddelanden (%n återstår)</numerusform><numerusform>Visa fler meddelanden (%n återstår)</numerusform></translation>
+        <translation>
+            <numerusform>Visa fler meddelanden (%n återstår)</numerusform>
+            <numerusform>Visa fler meddelanden (%n återstår)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3440,11 +3062,14 @@ Inloggningstoken upphör: %2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n annat flöde.</numerusform><numerusform>
++ %n annat flöde.</numerusform>
+            <numerusform>
 
-+ %n andra flöden.</numerusform></translation>
++ %n andra flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3455,10 +3080,6 @@ version by clicking this popup notification.</source>
 
 Kolla in NYA grejer i den här versionen 
 genom att klicka på denna popup-avisering.</translation>
-    </message>
-    <message>
-        <source>Welcome to %1.</source>
-        <translation type="vanished">Välkommen till %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3475,10 +3096,6 @@ At least API level %1 is required.</source>
 Tiny Tiny RSS är en öppen källkods, webbaserad flödesläsare (RSS/Atom) och aggregator, designad för att låta dig läsa nyheter från valfri webbplats, med känslan så nära en riktig skrivbordsklient som möjligt.
 
 Minst API-nivå %1 krävs.</translation>
-    </message>
-    <message>
-        <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="vanished">Nyhetsappen är en RSS-/Atom-flödesaggregator. Den är en del av ownCloud-sviten. Denna insticksmodul implementerar API:n %1.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
@@ -3525,15 +3142,10 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
-    </message>
-    <message>
-        <source>Recycle bin
-
-%1</source>
-        <translation type="vanished">Papperskorg
-
-%1</translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3549,7 +3161,10 @@ Minst API-nivå %1 krävs.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -4006,16 +3621,8 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Använd anpassada datum-/tidsformat (undantar format inlästa från aktivt språksystem)</translation>
     </message>
     <message>
-        <source>Internal message browser fonts</source>
-        <translation>Teckensnitt för intern meddelandeläsare</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation>&amp;Ändra teckensnitt</translation>
-    </message>
-    <message>
-        <source>Select new font for message viewer</source>
-        <translation>Välj nytt teckensnitt för meddelandevyn</translation>
     </message>
     <message>
         <source>Font preview</source>
@@ -4040,6 +3647,26 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
         <translation>Höjd eller rader i meddelandelistan (-1 = standardhöjd)</translation>
+    </message>
+    <message>
+        <source>Feed list font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display placeholders to indicate locations of pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message list font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal message browser font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select new font</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4072,24 +3699,8 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Ikoner &amp;&amp; teman</translation>
     </message>
     <message>
-        <source>Icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Icon theme</source>
         <translation>Ikontema</translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -4260,24 +3871,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>This page was blocked by AdBlock</source>
         <translation>Denna sida blockerades av AdBlock</translation>
     </message>
-    <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation>Blockerad av uppsättning: &quot;%1&quot;&lt;br/&gt;Blockerad av filter: &quot;%2&quot;</translation>
-    </message>
-</context>
-<context>
-    <name>StandardCategory</name>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="vanished">%1 (kategori)%2%3</translation>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation type="vanished">
-Denna kategori innehåller inga objekt.</translation>
-    </message>
 </context>
 <context>
     <name>StandardFeed</name>
@@ -4288,29 +3881,6 @@ Denna kategori innehåller inga objekt.</translation>
     <message>
         <source>Metadata was not fetched because: %1.</source>
         <translation>Metadata hämtades inte på grund av: %1.</translation>
-    </message>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">uppdateras inte automatiskt</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">Globala inställningar</translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1 (%2)%3
-
-Nätverksstatus: %6
-Kodning: %4
-Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>
@@ -4348,14 +3918,6 @@ Typ: %3</translation>
     <message>
         <source>Import feeds</source>
         <translation>Importera flöden</translation>
-    </message>
-    <message>
-        <source>This is service account for standard RSS/RDF/ATOM feeds.
-
-Account ID: %1</source>
-        <translation type="vanished">Detta är ett tjänstkonto för standard RSS/RDF/ATOM-flöden.
-
-Konto-ID: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
@@ -4411,14 +3973,6 @@ Konto-ID: %1</translation>
 </context>
 <context>
     <name>SystemFactory</name>
-    <message>
-        <source>New version available</source>
-        <translation type="vanished">Ny tillgänglig version</translation>
-    </message>
-    <message>
-        <source>Click the bubble for more information.</source>
-        <translation type="vanished">Klicka på detta meddelande för mer information.</translation>
-    </message>
     <message>
         <source>anonymous</source>
         <translation>anonym</translation>
@@ -4483,11 +4037,17 @@ Olästa nyheter: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
+        <translation>
+            <numerusform>%n timma</numerusform>
+            <numerusform>%n timmar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
+        <translation>
+            <numerusform>%n minut</numerusform>
+            <numerusform>%n minuter</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -4553,45 +4113,7 @@ Olästa nyheter: %2</translation>
     </message>
 </context>
 <context>
-    <name>TtRssFeed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">uppdateras inte automatiskt</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">använder globala inställningar</translation>
-    </message>
-    <message>
-        <source>%1%2
-
-Auto-update status: %3</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1%2
-
-Autouppdateringsstatus: %3</translation>
-    </message>
-</context>
-<context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Tiny Tiny RSS
-
-Account ID: %3
-Username: %1
-Server: %2
-Last error: %4
-Last login on: %5</source>
-        <translation type="vanished">Tiny Tiny RSS
-
-Konto-ID: %3
-Användarnamn: %1
-Server: %2
-Senaste fel: %4
-Senast inloggad: %5</translation>
-    </message>
     <message>
         <source>Sync in</source>
         <translation>Synka i</translation>

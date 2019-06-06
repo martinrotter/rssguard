@@ -41,8 +41,8 @@ TARGET = rssguard
 
 message(rssguard: Welcome RSS Guard qmake script.)
 
-lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 7) {
-  warning(rssguard: At least Qt \"5.7.0\" is required!!!)
+lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 9) {
+  warning(rssguard: At least Qt \"5.9.0\" is required!!!)
 }
 
 APP_NAME                      = "RSS Guard"

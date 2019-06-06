@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="lt">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -279,11 +281,14 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalas.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalai.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalų.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalų.</numerusform></translation>
+        <translation>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalas.</numerusform>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalai.</numerusform>
+            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalų.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -369,7 +374,7 @@ This website contains %n feed(s).</source>
         <translation>Atsiuntimas užbaigtas</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Failas &quot;%1&quot; yra atsisiųstas.
 Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
@@ -395,11 +400,19 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>Liko %n minutė</numerusform><numerusform>Liko %n minutės</numerusform><numerusform>Liko %n minučių</numerusform><numerusform>Liko %n minučių</numerusform></translation>
+        <translation>
+            <numerusform>Liko %n minutė</numerusform>
+            <numerusform>Liko %n minutės</numerusform>
+            <numerusform>Liko %n minučių</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>Liko %n sekundė</numerusform><numerusform>Liko %n sekundės</numerusform><numerusform>Liko %n sekundžių</numerusform><numerusform>Liko %n sekundžių</numerusform></translation>
+        <translation>
+            <numerusform>Liko %n sekundė</numerusform>
+            <numerusform>Liko %n sekundės</numerusform>
+            <numerusform>Liko %n sekundžių</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -419,18 +432,15 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Atsiunčiamas %n failas...</numerusform><numerusform>Atsiunčiami %n failai...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform></translation>
+        <translation>
+            <numerusform>Atsiunčiamas %n failas...</numerusform>
+            <numerusform>Atsiunčiami %n failai...</numerusform>
+            <numerusform>Atsiunčiama %n failų...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
     <name>Feed</name>
-    <message>
-        <source>%1%2
-
-Auto-update status: %3</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
@@ -439,12 +449,20 @@ Auto-update status: %3</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
+        <translation>
+            <numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
+        <translation>
+            <numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
+            <numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -500,7 +518,11 @@ Būsena: %2</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
+        <translation>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform>
+            <numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -688,10 +710,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>PILNAI perkeliami</translation>
     </message>
     <message>
-        <source>PARTIALLY portable</source>
-        <translation type="vanished">DALINAI perkeliami</translation>
-    </message>
-    <message>
         <source>Resources</source>
         <translation>Ištekliai</translation>
     </message>
@@ -717,26 +735,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Add new account</source>
         <translation>Pridėti naują paskyrą</translation>
-    </message>
-    <message>
-        <source>Details</source>
-        <translation type="vanished">Išsamesnė informacija</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Pavadinimas</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="vanished">Versija</translation>
-    </message>
-    <message>
-        <source>Author</source>
-        <translation type="vanished">Autorius</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">Aprašas</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
@@ -837,7 +835,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> diena</numerusform><numerusform> dienos</numerusform><numerusform> dienų</numerusform><numerusform> dienų</numerusform></translation>
+        <translation>
+            <numerusform> diena</numerusform>
+            <numerusform> dienos</numerusform>
+            <numerusform> dienų</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -916,173 +918,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
 </context>
 <context>
-    <name>FormEditAccount</name>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="vanished">Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation type="vanished">Atpažinimas</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="vanished">Naudotojo vardas</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="vanished">Slaptažodis</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation type="vanished">Rodyti slaptažodį</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation type="vanished">Reikalauja HTTP atpažinimo</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation type="vanished">URL</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation type="vanished">&amp;Išbandyti sąranką</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation type="vanished">HTTP atpažinimo naudotojo vardas</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation type="vanished">HTTP atpažinimo slaptažodis</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation type="vanished">Jūsų TT-RSS paskyros slaptažodis</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation type="vanished">Jūsų TT-RSS paskyros naudotojo vardas</translation>
-    </message>
-    <message>
-        <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="vanished">PILNAS jūsų TT-RSS egzemplioriaus URL SU galine &quot;/api/&quot; eilute</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation type="vanished">Kol kas nebuvo atlikta jokių bandymų.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation type="vanished">Čia yra rodomi ryšio bandymo rezultatai.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation type="vanished">Pridėti naują Tiny Tiny RSS paskyrą</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="vanished">Taisyti esamą Tiny Tiny RSS paskyrą</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation type="vanished">API prieiga pasirinktame serveryje nėra įjungta.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation type="vanished">Įrašyti prisijungimo duomenys neteisingi.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation type="vanished">Įvyko kitokia klaida, susisiekite su kūrėjais.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="vanished">Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikomą API versiją (%1). Reikalinga bent %2 lygio API.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="vanished">Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikoma API versiją.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="vanished">Tiny Tiny RSS serveris veikia gerai, vykdomas, naudojant API lygį %1, tuo tarpu reikalingas bent API lygis %2.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="vanished">Tiny Tiny RSS serveris veikia gerai.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation type="vanished">Tinklo klaida: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="vanished">Tinklo klaida, ar jūs įrašėte teisingą Tiny Tiny RSS API galutinį tašką ir slaptažodį?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation type="vanished">Naudotojo vardas negali būti tuščias.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation type="vanished">Naudotojo vardas yra geras.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="vanished">Slaptažodis negali būti tuščias.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation type="vanished">Slaptažodis yra geras.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="vanished">Naudotojo vardas yra geras arba jo nereikia.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation type="vanished">Naudotojo vardas tuščias.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="vanished">Slaptažodis yra geras arba jo nereikia.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation type="vanished">Slaptažodis tuščias.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation type="vanished">URL negali būti tuščias.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation type="vanished">URL yra geras.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation type="vanished">Turėkite omenyje, kad yra reikalaujamas bent %1 API lygis.</translation>
-    </message>
-    <message>
-        <source>URL should end with &quot;/api/&quot;.</source>
-        <translation type="vanished">URL turėtų užsibaigti su &quot;/api/&quot;.</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="vanished">Neapibrėžta klaida, ar įrašėte teisingą URL?</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="vanished">Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="vanished">Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką.</translation>
-    </message>
-</context>
-<context>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
@@ -1153,10 +988,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Yra klaida. %1 </translation>
     </message>
     <message>
-        <source>Tested successfully.You may be prompted to login once more.</source>
-        <translation>Išbandyta sėkmingai.Jūsų gali būti paprašyta prisijungti dar kartą.</translation>
-    </message>
-    <message>
         <source>Your access was approved.</source>
         <translation>Jūsų prieiga buvo patvirtinta.</translation>
     </message>
@@ -1183,6 +1014,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation>Iš anksto apibrėžtų nustatymų NEREIKIA keisti iš numatytųjų reikšmių. Keiskite šias reikšmes tik tuo atveju, jeigu esate patyręs naudotojas ir žinote ką darote!</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished">Išbandyta sėkmingai. Jūsų gali būti paprašyta prisijungti dar kartą.</translation>
     </message>
 </context>
 <context>
@@ -1705,169 +1540,8 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>URL yra geras.</translation>
     </message>
     <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>URL neatitinka standartinio šablono. Ar jūsų URL prasideda &quot;http://&quot; ar &quot;https://&quot; priešdeliu.</translation>
-    </message>
-    <message>
         <source>The URL is empty.</source>
         <translation>URL yra tuščias.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Naudotojo vardas yra geras arba jo nereikia.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Naudotojo vardas tuščias.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Slaptažodis yra geras arba jo nereikia.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Slaptažodis tuščias.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Pasirinkite kanalui piktogramos failą</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Paveikslai (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Pasirinkti piktogramą</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Atsisakyti</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Ieškoti:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Piktogramos pavadinimas:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Piktogramos tipas:</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Visi metaduomenys sėkmingai gauti.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Kanalo ir piktogramos metaduomenys gauti.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Rezultatas: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Kanalo ar piktogramos metaduomenys negauti.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Klaida: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Negauta jokių metaduomenų.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>Piktograma sėkmingai gauta.</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>Piktogramos metaduomenys gauti.</translation>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Piktogramos metaduomenys negauti.</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>Negauta jokios piktogramos.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Kanalo antraštė</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Nustatykite savo kanalo antraštę.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Kanalo aprašas</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Nustatykite savo kanalo aprašą.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Pilnas kanalo url su schema</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Nustatykite savo kanalo URL.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Nustatykite naudotojo vardą, skirtą gauti prieigą prie kanalo.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Nustatykite slaptažodį, skirtą gauti prieigą prie kanalo.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Piktogramos pasirinkimas</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Įkelti piktogramą iš failo...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation type="vanished">Nenaudoti piktogramos</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation type="vanished">Naudoti numatytąją piktogramą</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Gauti piktogramą iš kanalo</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Kol kas negauta jokių metaduomenų.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatiškai atnaujinti, naudojant visuotinį intervalą</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatiškai atnaujinti kas</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Neatnaujinti automatiškai</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Naudoti numatytąją piktogramą iš piktogramų temos</translation>
     </message>
 </context>
 <context>
@@ -2017,10 +1691,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Ka&amp;nalų/žinučių sąrašo antraštės</translation>
     </message>
     <message>
-        <source>&amp;Donate via PayPal</source>
-        <translation type="vanished">&amp;Paaukoti per PayPal</translation>
-    </message>
-    <message>
         <source>Display &amp;wiki</source>
         <translation>Rodyti &amp;wiki</translation>
     </message>
@@ -2091,10 +1761,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Deletes all messages from selected items.</source>
         <translation>Ištrina visas žinutes iš pasirinktų elementų.</translation>
-    </message>
-    <message>
-        <source>&amp;Mark all items as &amp;read</source>
-        <translation type="vanished">Žymėti visus elementus kaip &amp;skaitytus</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -2513,14 +2179,6 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
         <translation>Įkelti piktogramą iš failo...</translation>
     </message>
     <message>
-        <source>Do not use icon</source>
-        <translation type="vanished">Nenaudoti piktogramos</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation type="vanished">Naudoti numatytąją piktogramą</translation>
-    </message>
-    <message>
         <source>Use default icon from icon theme</source>
         <translation>Naudoti numatytąją piktogramą iš piktogramų temos</translation>
     </message>
@@ -2705,10 +2363,6 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
         <translation>Prieinama laida</translation>
     </message>
     <message>
-        <source>Changes</source>
-        <translation type="vanished">Pakeitimai</translation>
-    </message>
-    <message>
         <source>Status</source>
         <translation>Būsena</translation>
     </message>
@@ -2750,34 +2404,12 @@ currently installed one.</source>
         <translation>Atsisiųsti naujus įdiegimo failus.</translation>
     </message>
     <message>
-        <source>Checking for updates failed.</source>
-        <translation type="vanished">Nepavyko patikrinti ar yra atnaujinimų.</translation>
-    </message>
-    <message>
-        <source>Download installation file for your OS.</source>
-        <translation type="vanished">Atsisiųsti įdiegimo failą, skirtą jūsų OS.</translation>
-    </message>
-    <message>
-        <source>Installation file is not available directly.
-Go to application website to obtain it manually.</source>
-        <translation type="vanished">Įdiegimo failas nėra prieinamas tiesiogiai.
-Pereikite į programos svetainę, kad jį gautumėte.</translation>
-    </message>
-    <message>
-        <source>No new update available.</source>
-        <translation type="vanished">Naujas atnaujinimas nėra prieinamas.</translation>
-    </message>
-    <message>
         <source>Cannot update application</source>
         <translation>Nepavyksta atnaujinti programos</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
         <translation>Nepavyksta naršyti į įdiegimo failą. Rankiniu būdu patikrinkite projekto svetainėje naujus įdiegimo atsisiuntimus.</translation>
-    </message>
-    <message>
-        <source>Download update</source>
-        <translation type="vanished">Atsisiųsti atnaujinimą</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2808,12 +2440,6 @@ Pereikite į programos svetainę, kad jį gautumėte.</translation>
 downloaded.</source>
         <translation>Tai yra nauja versija, kuri gali būti
 atsisiųsta.</translation>
-    </message>
-    <message>
-        <source>Package was downloaded successfully.
-You must install it manually.</source>
-        <translation type="vanished">Paketas buvo sėkmingai atsisiųstas.
-Jūs privalote jį įdiegti rankiniu būdu.</translation>
     </message>
     <message>
         <source>Install</source>
@@ -3360,7 +2986,11 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform></translation>
+        <translation>
+            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
+            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
+            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3443,15 +3073,17 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n kita žinutė.</numerusform><numerusform>
++ %n kita žinutė.</numerusform>
+            <numerusform>
 
-+ %n kitos žinutės.</numerusform><numerusform>
++ %n kitos žinutės.</numerusform>
+            <numerusform>
 
-+ %n kitų žinučių.</numerusform><numerusform>
-
-+ %n kitų žinučių.</numerusform></translation>
++ %n kitų žinučių.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3462,10 +3094,6 @@ version by clicking this popup notification.</source>
 
 Susipažinkite su NAUJOMIS šios
 versijos ypatybėmis, spusteldami šį pranešimą.</translation>
-    </message>
-    <message>
-        <source>Welcome to %1.</source>
-        <translation type="vanished">Sveiki atvykę į %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3482,10 +3110,6 @@ At least API level %1 is required.</source>
 Tiny Tiny RSS yra atvirojo kodo saitynu pagrįsta naujienų kanalų (RSS/Atom) skaitytuvė, kuri yra sukurta leisti jums skaityti naujienas iš bet kurios vietos ir tuo pačiu metu kaip įmanoma labiau būti panašia į tikrąją darbalaukio programą.
 
 Reikalingas bent API lygis %1.</translation>
-    </message>
-    <message>
-        <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="vanished">Naujienų programėlė yra RSS/Atom kanalų skaitytuvė. Ji yra ownCloud rinkinio dalis suite. Šis įskiepis įgyvendina %1 API.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
@@ -3532,15 +3156,11 @@ Reikalingas bent API lygis %1.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n ištrinta žinutė.</numerusform><numerusform>%n ištrintos žinutės.</numerusform><numerusform>%n ištrintų žinučių.</numerusform><numerusform>%n ištrintų žinučių.</numerusform></translation>
-    </message>
-    <message>
-        <source>Recycle bin
-
-%1</source>
-        <translation type="vanished">Šiukšlinė
-
-%1</translation>
+        <translation>
+            <numerusform>%n ištrinta žinutė.</numerusform>
+            <numerusform>%n ištrintos žinutės.</numerusform>
+            <numerusform>%n ištrintų žinučių.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3556,7 +3176,11 @@ Reikalingas bent API lygis %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n neskaityta žinutė.</numerusform><numerusform>%n neskaitytos žinutės.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform></translation>
+        <translation>
+            <numerusform>%n neskaityta žinutė.</numerusform>
+            <numerusform>%n neskaitytos žinutės.</numerusform>
+            <numerusform>%n neskaitytų žinučių.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -4012,16 +3636,8 @@ Vilkaduobės:
         <translation>Naudoti tinkintą datos/laiko formatą (nustelbia iš aktyvaus lokalizavimo įkeltą formatą)</translation>
     </message>
     <message>
-        <source>Internal message browser fonts</source>
-        <translation>Vidinės žinučių naršyklės šriftai</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation>&amp;Keisti šriftą</translation>
-    </message>
-    <message>
-        <source>Select new font for message viewer</source>
-        <translation>Pasirinkite naują šriftą žinučių žiūryklei</translation>
     </message>
     <message>
         <source>Font preview</source>
@@ -4046,6 +3662,26 @@ Vilkaduobės:
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
         <translation>Eilučių aukštis žinučių sąraše (-1 = numatytasis aukštis)</translation>
+    </message>
+    <message>
+        <source>Feed list font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display placeholders to indicate locations of pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message list font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal message browser font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select new font</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4078,24 +3714,8 @@ Vilkaduobės:
         <translation>Piktogramos ir apipavidalinimai</translation>
     </message>
     <message>
-        <source>Icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Icon theme</source>
         <translation>Piktogramų tema</translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -4266,24 +3886,6 @@ Vilkaduobės:
         <source>This page was blocked by AdBlock</source>
         <translation>Reklamos blokavimas užblokavo šį puslapį</translation>
     </message>
-    <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation>Užblokuota rinkinio: &quot;%1&quot;&lt;br/&gt;Užblokuota filtro: &quot;%2&quot;</translation>
-    </message>
-</context>
-<context>
-    <name>StandardCategory</name>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="vanished">%1 (kategorija)%2%3</translation>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation type="vanished">
-Šioje kategorijoje nėra jokių įdėtinių elementų.</translation>
-    </message>
 </context>
 <context>
     <name>StandardFeed</name>
@@ -4294,29 +3896,6 @@ This category does not contain any nested items.</source>
     <message>
         <source>Metadata was not fetched because: %1.</source>
         <translation>Metaduomenys nebuvo gauti todėl, kad: %1.</translation>
-    </message>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">nenaudoja automatinio atnaujinimo</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">naudoja visuotinius nustatymus</translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1 (%2)%3
-
-Tinklo būsena: %6
-Koduotė: %4
-Automatinio atnaujinimo būsena: %5</translation>
     </message>
     <message>
         <source>
@@ -4354,14 +3933,6 @@ Tipas: %3</translation>
     <message>
         <source>Import feeds</source>
         <translation>Importuoti kanalus</translation>
-    </message>
-    <message>
-        <source>This is service account for standard RSS/RDF/ATOM feeds.
-
-Account ID: %1</source>
-        <translation type="vanished">Tai yra paslaugos paskyra, skirta standartiniams RSS/RDF/ATOM kanalams.
-
-Paskyros ID: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
@@ -4417,14 +3988,6 @@ Paskyros ID: %1</translation>
 </context>
 <context>
     <name>SystemFactory</name>
-    <message>
-        <source>New version available</source>
-        <translation type="vanished">Yra prieinama nauja versija</translation>
-    </message>
-    <message>
-        <source>Click the bubble for more information.</source>
-        <translation type="vanished">Išsamesnei informacijai spustelėkite šį pranešimą.</translation>
-    </message>
     <message>
         <source>anonymous</source>
         <translation>anonimas</translation>
@@ -4489,11 +4052,19 @@ Neskaitytų naujienų: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n valandą</numerusform><numerusform>%n valandas</numerusform><numerusform>%n valandų</numerusform><numerusform>%n valandų</numerusform></translation>
+        <translation>
+            <numerusform>%n valandą</numerusform>
+            <numerusform>%n valandas</numerusform>
+            <numerusform>%n valandų</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minutę</numerusform><numerusform>%n minutes</numerusform><numerusform>%n minučių</numerusform><numerusform>%n minučių</numerusform></translation>
+        <translation>
+            <numerusform>%n minutę</numerusform>
+            <numerusform>%n minutes</numerusform>
+            <numerusform>%n minučių</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -4559,45 +4130,7 @@ Neskaitytų naujienų: %2</translation>
     </message>
 </context>
 <context>
-    <name>TtRssFeed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">nenaudoja automatinio atnaujinimo </translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">naudoja visuotinius nustatymus </translation>
-    </message>
-    <message>
-        <source>%1%2
-
-Auto-update status: %3</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1%2
-
-Automatinio atnaujinimo būsena: %3</translation>
-    </message>
-</context>
-<context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Tiny Tiny RSS
-
-Account ID: %3
-Username: %1
-Server: %2
-Last error: %4
-Last login on: %5</source>
-        <translation type="vanished">Tiny Tiny RSS
-
-Paskyros ID: %3
-Naudotojo vardas: %1
-Serveris: %2
-Paskutinė klaida: %4
-Paskutinis prisijungimas: %5</translation>
-    </message>
     <message>
         <source>Sync in</source>
         <translation>Sinchronizuoti </translation>

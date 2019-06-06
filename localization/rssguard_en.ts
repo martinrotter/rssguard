@@ -436,15 +436,6 @@ Click here to open parent directory.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <source>%1%2
-
-Auto-update status: %3</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="obsolete">%1%2
-
-Auto-update status: %3</translation>
-    </message>
-    <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"></translation>
@@ -709,10 +700,6 @@ or this functionality is not implemented yet.</translation>
         <translation>FULLY portable</translation>
     </message>
     <message>
-        <source>PARTIALLY portable</source>
-        <translation type="vanished">PARTIALLY portable</translation>
-    </message>
-    <message>
         <source>Resources</source>
         <translation>Resources</translation>
     </message>
@@ -738,26 +725,6 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>Add new account</source>
         <translation>Add new account</translation>
-    </message>
-    <message>
-        <source>Details</source>
-        <translation type="vanished">Details</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Name</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="vanished">Version</translation>
-    </message>
-    <message>
-        <source>Author</source>
-        <translation type="vanished">Author</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="vanished">Description</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
@@ -940,173 +907,6 @@ or this functionality is not implemented yet.</translation>
     </message>
 </context>
 <context>
-    <name>FormEditAccount</name>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="vanished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation type="vanished">Authentication</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="vanished">Username</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="vanished">Password</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation type="vanished">Show password</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation type="vanished">Requires HTTP authentication</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation type="vanished">URL</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation type="vanished">&amp;Test setup</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation type="vanished">HTTP authentication username</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation type="vanished">HTTP authentication password</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation type="vanished">Password for your TT-RSS account</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation type="vanished">Username for your TT-RSS account</translation>
-    </message>
-    <message>
-        <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="vanished">FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation type="vanished">No test done yet.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation type="vanished">Here, results of connection test are shown.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation type="vanished">Add new Tiny Tiny RSS account</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="vanished">Edit existing Tiny Tiny RSS account</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation type="vanished">API access on selected server is not enabled.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation type="vanished">Entered credentials are incorrect.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation type="vanished">Other error occurred, contact developers.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="vanished">Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="vanished">Selected Tiny Tiny RSS server is running unsupported version of API.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="vanished">Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="vanished">Tiny Tiny RSS server is okay.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation type="vanished">Network error: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="vanished">Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation type="vanished">Username cannot be empty.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation type="vanished">Username is okay.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="vanished">Password cannot be empty.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation type="vanished">Password is okay.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="vanished">Username is ok or it is not needed.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation type="vanished">Username is empty.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="vanished">Password is ok or it is not needed.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation type="vanished">Password is empty.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation type="vanished">URL cannot be empty.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation type="vanished">URL is okay.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation type="vanished">Note that at least API level %1 is required.</translation>
-    </message>
-    <message>
-        <source>URL should end with &quot;/api/&quot;.</source>
-        <translation type="vanished">URL should end with &quot;/api/&quot;.</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="vanished">Unspecified error, did you enter correct URL?</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="vanished">Force execution of server-side update when updating feeds from RSS Guard</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="vanished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</translation>
-    </message>
-</context>
-<context>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
@@ -1177,10 +977,6 @@ or this functionality is not implemented yet.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tested successfully.You may be prompted to login once more.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Your access was approved.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1206,6 +1002,10 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1729,169 +1529,8 @@ or this functionality is not implemented yet.</translation>
         <translation>The URL is ok.</translation>
     </message>
     <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</translation>
-    </message>
-    <message>
         <source>The URL is empty.</source>
         <translation>The URL is empty.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Username is ok or it is not needed.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Username is empty.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Password is ok or it is not needed.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Password is empty.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Select icon file for the feed</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Select icon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Cancel</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Look in:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Icon name:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Icon type:</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>All metadata fetched successfully.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Feed and icon metadata fetched.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Result: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Feed or icon metadata not fetched.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Error: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>No metadata fetched.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>Icon fetched successfully.</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>Icon metadata fetched.</translation>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Icon metadata not fetched.</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>No icon fetched.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Feed title</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Set title for your feed.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Feed description</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Set description for your feed.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Full feed url including scheme</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Set url for your feed.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Set username to access the feed.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Set password to access the feed.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Icon selection</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Load icon from file...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation type="vanished">Do not use icon</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation type="vanished">Use default icon</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Fetch icon from feed</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>No metadata fetched so far.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Auto-update using global interval</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Auto-update every</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Do not auto-update at all</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2041,10 +1680,6 @@ or this functionality is not implemented yet.</translation>
         <translation>&amp;Feed/message list headers</translation>
     </message>
     <message>
-        <source>&amp;Donate via PayPal</source>
-        <translation type="vanished">&amp;Donate via PayPal</translation>
-    </message>
-    <message>
         <source>Display &amp;wiki</source>
         <translation>Display &amp;wiki</translation>
     </message>
@@ -2115,10 +1750,6 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>Deletes all messages from selected items.</source>
         <translation>Deletes all messages from selected items.</translation>
-    </message>
-    <message>
-        <source>&amp;Mark all items as &amp;read</source>
-        <translation type="vanished">&amp;Mark all items as &amp;read</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -2534,14 +2165,6 @@ You have to restart manually.</source>
         <translation>Load icon from file...</translation>
     </message>
     <message>
-        <source>Do not use icon</source>
-        <translation type="vanished">Do not use icon</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation type="vanished">Use default icon</translation>
-    </message>
-    <message>
         <source>Use default icon from icon theme</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2726,10 +2349,6 @@ You have to restart manually.</source>
         <translation>Available release</translation>
     </message>
     <message>
-        <source>Changes</source>
-        <translation type="vanished">Changes</translation>
-    </message>
-    <message>
         <source>Status</source>
         <translation>Status</translation>
     </message>
@@ -2771,34 +2390,12 @@ currently installed one.</translation>
         <translation>Download new installation files.</translation>
     </message>
     <message>
-        <source>Checking for updates failed.</source>
-        <translation type="vanished">Checking for updates failed.</translation>
-    </message>
-    <message>
-        <source>Download installation file for your OS.</source>
-        <translation type="vanished">Download installation file for your OS.</translation>
-    </message>
-    <message>
-        <source>Installation file is not available directly.
-Go to application website to obtain it manually.</source>
-        <translation type="vanished">Installation file is not available directly.
-Go to application website to obtain it manually.</translation>
-    </message>
-    <message>
-        <source>No new update available.</source>
-        <translation type="vanished">No new update available.</translation>
-    </message>
-    <message>
         <source>Cannot update application</source>
         <translation>Cannot update application</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
         <translation>Cannot navigate to installation file. Check new installation downloads manually on project website.</translation>
-    </message>
-    <message>
-        <source>Download update</source>
-        <translation type="vanished">Download update</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2829,12 +2426,6 @@ Go to application website to obtain it manually.</translation>
 downloaded.</source>
         <translation>This is new version which can be
 downloaded.</translation>
-    </message>
-    <message>
-        <source>Package was downloaded successfully.
-You must install it manually.</source>
-        <translation type="vanished">Package was downloaded successfully.
-You must install it manually.</translation>
     </message>
     <message>
         <source>Install</source>
@@ -3480,10 +3071,6 @@ Please, check NEW stuff included in this
 version by clicking this popup notification.</translation>
     </message>
     <message>
-        <source>Welcome to %1.</source>
-        <translation type="vanished">Welcome to %1.</translation>
-    </message>
-    <message>
         <source>Load initial set of feeds</source>
         <translation>Load initial set of feeds</translation>
     </message>
@@ -3498,10 +3085,6 @@ At least API level %1 is required.</source>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</translation>
-    </message>
-    <message>
-        <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="vanished">The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
@@ -3552,14 +3135,6 @@ At least API level %1 is required.</translation>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Recycle bin
-
-%1</source>
-        <translation type="vanished">Recycle bin
-
-%1</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -4034,16 +3609,8 @@ Authors of this application are NOT responsible for lost data.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Internal message browser fonts</source>
-        <translation type="unfinished">Internal message browser fonts</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation type="unfinished">&amp;Change font</translation>
-    </message>
-    <message>
-        <source>Select new font for message viewer</source>
-        <translation type="unfinished">Select new font for message viewer</translation>
     </message>
     <message>
         <source>Font preview</source>
@@ -4067,6 +3634,26 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed list font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display placeholders to indicate locations of pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message list font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal message browser font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select new font</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4100,24 +3687,8 @@ Authors of this application are NOT responsible for lost data.</translation>
         <translation type="unfinished">Icons &amp;&amp; skins</translation>
     </message>
     <message>
-        <source>Icons</source>
-        <translation type="obsolete">Icons </translation>
-    </message>
-    <message>
         <source>Icon theme</source>
         <translation type="unfinished">Icon theme</translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation type="obsolete">Skins</translation>
-    </message>
-    <message>
-        <source>Active skin:</source>
-        <translation type="obsolete">Active skin </translation>
-    </message>
-    <message>
-        <source>Selected skin:</source>
-        <translation type="obsolete">Selected skin:</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
@@ -4288,24 +3859,6 @@ Authors of this application are NOT responsible for lost data.</translation>
         <source>This page was blocked by AdBlock</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>StandardCategory</name>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="vanished">%1 (category)%2%3</translation>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation type="vanished">
-This category does not contain any nested items.</translation>
-    </message>
 </context>
 <context>
     <name>StandardFeed</name>
@@ -4316,29 +3869,6 @@ This category does not contain any nested items.</translation>
     <message>
         <source>Metadata was not fetched because: %1.</source>
         <translation>Metadata was not fetched because: %1.</translation>
-    </message>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">does not use auto-update</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">uses global settings</translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</translation>
     </message>
     <message>
         <source>
@@ -4373,14 +3903,6 @@ Type: %3</source>
     <message>
         <source>Import feeds</source>
         <translation>Import feeds</translation>
-    </message>
-    <message>
-        <source>This is service account for standard RSS/RDF/ATOM feeds.
-
-Account ID: %1</source>
-        <translation type="vanished">This is service account for standard RSS/RDF/ATOM feeds.
-
-Account ID: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
@@ -4436,14 +3958,6 @@ Account ID: %1</translation>
 </context>
 <context>
     <name>SystemFactory</name>
-    <message>
-        <source>New version available</source>
-        <translation type="vanished">New version available</translation>
-    </message>
-    <message>
-        <source>Click the bubble for more information.</source>
-        <translation type="vanished">Click the bubble for more information.</translation>
-    </message>
     <message>
         <source>anonymous</source>
         <translation>anonymous</translation>
@@ -4584,45 +4098,7 @@ Unread news: %2</translation>
     </message>
 </context>
 <context>
-    <name>TtRssFeed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">does not use auto-update </translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="vanished">uses global settings </translation>
-    </message>
-    <message>
-        <source>%1%2
-
-Auto-update status: %3</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="vanished">%1%2
-
-Auto-update status: %3</translation>
-    </message>
-</context>
-<context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Tiny Tiny RSS
-
-Account ID: %3
-Username: %1
-Server: %2
-Last error: %4
-Last login on: %5</source>
-        <translation type="vanished">Tiny Tiny RSS
-
-Account ID: %3
-Username: %1
-Server: %2
-Last error: %4
-Last login on: %5</translation>
-    </message>
     <message>
         <source>Sync in</source>
         <translation>Sync in </translation>

@@ -10,9 +10,10 @@
 
 #include <QDir>
 #include <QLocale>
-#include <QRandomGenerator>
 #include <QString>
 #include <QStringList>
+
+#include <random>
 
 quint64 TextFactory::s_encryptionKey = 0x0;
 
@@ -128,7 +129,10 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
     QString encryption_file_path = qApp->settings()->pathName() + QDir::separator() + ENCRYPTION_FILE_NAME;
 
     try {
-      s_encryptionKey = quint64(QString(IOFactory::readFile(encryption_file_path)).toLongLong());
+      s_encryptionKey = quint64(QString(IOFactory::readFile(encryption_file_path)).toULongLong());
+
+      auto aa = s_encryptionKey;
+      auto bb = false;
     }
     catch (ApplicationException&) {
       // Well, key does not exist or is invalid, generate and save one.
@@ -148,5 +152,10 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
 }
 
 quint64 TextFactory::generateSecretEncryptionKey() {
-  return QRandomGenerator().generate64();
+  std::random_device rd;
+  std::mt19937 mt(rd());
+  std::uniform_int<quint64> dist(std::numeric_limits<quint64>().min() + 1000000UL,
+                                 std::numeric_limits<quint64>().max());
+
+  return dist(mt);
 }
