@@ -1,32 +1,32 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="uk" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation>(kategorie)</translation>
+        <translation>(категорія)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation>(zdroj)</translation>
+        <translation>(стрічка новин)</translation>
     </message>
 </context>
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation>Přidat seznam</translation>
+        <translation>Додати підписку</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation>Použit předdefinovaný seznam</translation>
+        <translation>Застосувати заздалегідь визначену підписку</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Nadpis</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation>Název seznamu</translation>
+        <translation>Назва підписки</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,345 +34,341 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation>URL k online umístění souboru seznamu</translation>
+        <translation>Абсолютний URL на файл online підписки</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation>Vlastní pravidla</translation>
+        <translation>Спеціальні правила</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation>AdBlock a jeho nastavení</translation>
+        <translation>Конфігурація AdBlock</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation>Povolit AdBlock</translation>
+        <translation>Активувати AdBlock</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation>Možnosti</translation>
+        <translation>Опції</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation>Přidat pravidlo</translation>
+        <translation>Додати правило</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Odstranit pravidlo</translation>
+        <translation>Видалити правило</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation>Přidat seznam</translation>
+        <translation>Додати підписку</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation>Smazat seznam</translation>
+        <translation>Видалити підписку</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation>Aktualizovat seznam</translation>
+        <translation>Оновити підписку</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation>Naučit se psát vlastní pravidla...</translation>
+        <translation>Довідатися про написання правил...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation>AdBlock vám umožňuje blokovat nevyžádaný obsah na webových stránkách.</translation>
+        <translation>AdBlock доозволяє блокувати небажаний контент на web сторінках</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation>Zablokováno vyskakovací okno</translation>
+        <translation>Заблоковано спливаючі вікна</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock zablokoval vyskakovací okno.</translation>
+        <translation>AdBlock заблокував небажані спдиваючі вікна</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation>Zobrazit nastavení &amp;AdBlocku</translation>
+        <translation>Показати налаштування AdBlock</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation>Zakázat na %1</translation>
+        <translation>Вимкнути для %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation>Zakázat pouze na této stránce</translation>
+        <translation>Відключити тільки на цій сторінці</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Chcete přidat seznam &lt;b&gt;%1&lt;/b&gt;?</translation>
+        <translation>Додати підписку &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation>Přidat seznam AdBlocku</translation>
+        <translation>Додати підписку AdBlock</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation>Nelze načíst seznam!</translation>
+        <translation>Неможливо завантажити підписку</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation>Přidat pravidlo</translation>
+        <translation>Додати правило</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Smazat pravidlo</translation>
+        <translation>Видалити правило</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation>Přidat vlastní pravidlo</translation>
+        <translation>Додати своє правило</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation>Zadejte nové pravidlo sem:</translation>
+        <translation>Введіть правило:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation>%1 (nedávno aktualizováno)</translation>
+        <translation>%1 (оновлено)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation>%1 (chyba: %2)</translation>
+        <translation>%1 (помилка: %2)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>Aplikace již běží</translation>
+        <translation>Програма вже виконується</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Nelze psát do cílové složky</translation>
+        <translation>Цільовий каталог недоступний для запису</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation>Soubor nastavení nebyl zkopírován do cílového adresáře.</translation>
+        <translation>Файл налаштувань не було скопійовано у цільовий каталог.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation>Soubor databáze nebyl zkopírován do cílového adresáře.</translation>
+        <translation>Файл бази не було скопійовано у цільовий каталог.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Obnovení databáze nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
+        <translation>Невдале відновлення бази. Перевірте можливість запису в цільовий каталог.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
+        <translation>Невдале відновлення налаштувань. Перевірте можливість запису в цільовий каталог.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Nelze přidat kanál</translation>
+        <translation>Неможливо додати підписку</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Kanál nelze přidat, protože standardní RSS/ATOM účet není povolen.</translation>
+        <translation>Потік не може бути доданий через те, що не активовано обліковий запис RSS/ATOM</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Staženy nové zprávy</translation>
+        <translation>Завантажено нові повідомлення</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation>Minimalizuji soubor databáze...</translation>
+        <translation>Стискання файлу бази...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation>Databázový soubor minimalizován...</translation>
+        <translation>Файл бази стиснуто...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation>Mažu přečtené zprávy...</translation>
+        <translation>Видалення прочитаних повідомлень...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation>Přečtené zprávy smazány...</translation>
+        <translation>Прочитані повідомлення видалено...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation>Koš vyčištěn...</translation>
+        <translation>Спорожнити кошик...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation>Mažu staré zprávy...</translation>
+        <translation>Видаляються старі повідомлення...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation>Čistím koš...</translation>
+        <translation>Спорожнюється кошик...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation>Staré zprávy smazány...</translation>
+        <translation>Старі повідомлення видалені...</translation>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation>MySQL server pracuje v pořádku.</translation>
+        <translation>Сервер MySQL працює згідно очікувань.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation>V daném umístění neběží žádný MySQL server.</translation>
+        <translation>На цільовій системі не знайдено працюючого сервера MySQL.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation>Přístup zamítnut. Nesprávne jméno či heslo.</translation>
+        <translation>Відмовлено в доступі. Невірне імя користувача або пароль.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>Neznámá chyba.</translation>
+        <translation>Невідома помилка</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (dedikovaná database)</translation>
+        <translation>MySQL/MariaDB (окрема база)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation>SQLite (embedded databáze)</translation>
+        <translation>SQLite ( вбудована база )</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Vybraná databáze doposud neexistuje, ale bude vytvořena při prvním použití.</translation>
+        <translation>Вказана база не існує. Базу буде створено. ( Це не є помилкою. )</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation>MySQL databáze není k dispozici</translation>
+        <translation>Нема доступу до бази MySQL</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 nemůže použít MySQL databází, není k dispozici. %1 se nyní přepne pro použití SQLite databáze. Pokud chcete opět použít MySQL, přepněte si to v nastavení.</translation>
+        <translation>Сховище MySQL не може бути використано. %1 буде використовувати SQLite базу. Стартуйте MySQL сервер та зробіть відповідні зміни в налаштуваннях.</translation>
     </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation>Tato stránka bohužel neobsahuje žádné kanály.</translation>
+        <translation>На цьому сайті немає потоків</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanál.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanály.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanálů.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanálů.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Nepodporováno</translation>
+        <translation>Не підтримується</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation>Tento účet nepodporuje přidávání kanálů.</translation>
+        <translation>Наданий акаунт не підтримує додавання потоків новин</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation>Ico</translation>
+        <translation>Значок</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation>Název souboru</translation>
+        <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation>Problém s otevřením souboru: %1</translation>
+        <translation>Помилка відкриття файлу: %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>&amp;Zkusit znovu</translation>
+        <translation>Спробуйте ще раз</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>Z&amp;astavit</translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>&amp;Otevřít soubor</translation>
+        <translation>Відкрити файл</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation>Zvolit cílové umístění pro stahovaný soubor</translation>
+        <translation>Вибрати каталог для завантаженого файлу</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation>Chyba: %1</translation>
+        <translation>Помилка: %1</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation>Cílový adresář nemohl být vytvořen</translation>
+        <translation>Неможливо створити каталог для завантажень</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation>Chyba při ukládání souboru: %1</translation>
+        <translation>Помилка під час спроби зберегти файл: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation>%1 of %2 (%3 za vteřinu) - %4</translation>
+        <translation>%1 of %2 (%3 за секунду) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation>%1 z %2 - stahování dokončeno</translation>
+        <translation>%1 з %2 - завантаження завершено</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>&amp;Otevřít adresář</translation>
+        <translation>Відкрити каталог</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation>Soubor nelze otevřít</translation>
+        <translation>Неможливо відкрити файл</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation>Výstupní soubor nelze otevří, otevřete jej ručně.</translation>
+        <translation>Неможливо відкрити файл. Відкрийте його вручну.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>Adresář nelze otevřít</translation>
+        <translation>Неможливо відкрити каталог</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Výstupní adresář nelze otevří, otevřete jej ručně.</translation>
+        <translation>Неможливо відкрити каталог. Відкрийте його вручну.</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation>Stahování dokončeno</translation>
+        <translation>Завантаження завершено</translation>
     </message>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation>Soubor &apos;%1&apos; je stažen.
-Klikněte sem pro otevření nadřazeného adresáře.</translation>
+        <translation>Завантажено файл %1
+Натисніть щоб відкрити батьківский каталог.</translation>
     </message>
     <message>
         <source>URL: %1</source>
@@ -380,46 +376,46 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation>Lokální soubor: %1</translation>
+        <translation>Локальний файл: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation>Výběr lokálního souboru zrušen.</translation>
+        <translation>Вибір файлу було відмінено.</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation>Vyčistit</translation>
+        <translation>Очистити</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minuta do konce</numerusform><numerusform>%n minuty do konce</numerusform><numerusform>%n minut do konce</numerusform><numerusform>%n minut do konce</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n vteřina do konce</numerusform><numerusform>%n vteřiny do konce</numerusform><numerusform>%n vteřin do konce</numerusform><numerusform>%n vteřin do konce</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation>bajtů</translation>
+        <translation>байт</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation>kB</translation>
+        <translation>кБ</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation>MB</translation>
+        <translation>МБ</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation>GB</translation>
+        <translation>ГБ</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Stahuji %n soubor...</numerusform><numerusform>Stahuji %n soubory...</numerusform><numerusform>Stahuji %n souborů...</numerusform><numerusform>Stahuji %n souborů...</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -427,667 +423,667 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>nepoužívá auto-aktualizace</translation>
+        <translation>Не використовувати автоматичне оновлення</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá globální nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform><numerusform>používá globální nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
-        <translation>žádné chyby</translation>
+        <translation>успішно</translation>
     </message>
     <message>
         <source>has new messages</source>
-        <translation>má nové zprávy</translation>
+        <translation>є нові повідомлення</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation>chyba autentifikace</translation>
+        <translation>помилка аутентіфікації</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation>chyba sítě</translation>
+        <translation>мережева помилка</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation>nespecifikovaná chyba</translation>
+        <translation>невизначена помилка</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation>Status auto-aktualizací: %1
-Status: %2</translation>
+        <translation>Статус автоматичного оновлення: %1
+Статус: %2</translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation>Panel zpráv</translation>
+        <translation>Панель інструментів для повідомлень</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>Panel kanálů</translation>
+        <translation>Панель інструментів для потоків</translation>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation>Nelze aktualizovat všechny položky</translation>
+        <translation>Неможливо оновити всі елементи</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Nelze obnovit všechny soubory protože právě probíhá jiná důležitá operace.</translation>
+        <translation>Неможливо оновити всі елементи, тому що триває інша важлива операція.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Zahajování automatického obnovení některých kanálů</translation>
+        <translation>Почати автоматичне оновлення деяких елементів</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>Kategorie</translation>
+        <translation>Категорія</translation>
     </message>
 </context>
 <context>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <translation>Nadpis</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation>Názvy kanálů/kategorií.</translation>
+        <translation>Заголовки потоків/категорій.</translation>
     </message>
     <message>
         <source>Root</source>
-        <translation>Kořen</translation>
+        <translation>Корінь</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation>Tažená položka nemůže přesunuta mezi různými účty, toto není podporováno.</translation>
+        <translation>Переміщення перетягнутого елемента в інший обліковий запис не підримується.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation>Drag &amp; drop operaci nelze provést</translation>
+        <translation>Неможливо виконати операцію переміщення</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation>Počet nepřečtených/všech zpráv.</translation>
+        <translation>Кількість непрочитаних/всіх повідомлень.</translation>
     </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Mezera</translation>
+        <translation>Розподілювач панелі інструментів</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation>Nelze upravit položku</translation>
+        <translation>Неможливо редагувати елемент</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation>Nelze smazat položku</translation>
+        <translation>Неможливо видалити елемент</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation>Kontextové menu pro prázdný prostor</translation>
+        <translation>Контекстне меню для вільного простору</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation>Nelze editovat vybranou položku, protože už běží jiná kritická operace.</translation>
+        <translation>Неможливо редагувати елемент, тому що триває інша важлива операція.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation>Nelze smazat vybranou položku, protože už běží jiná kritická operace.</translation>
+        <translation>Неможливо видалити елемент, тому що триває інша важлива операція.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation>Kontextové menu pro kategorie</translation>
+        <translation>Контекстне меню для категорій</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation>Zvolená položka nemůže být editována, toto (zatím?) není podporováno.</translation>
+        <translation>Неможливо редагувати елемент, це (ще?) не підтримується.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation>Mažu &quot;%1&quot;</translation>
+        <translation>Видаляється &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation>Chystáte se smazat položku &quot;%1&quot;.</translation>
+        <translation>Елемент &quot;%1&quot; буде повністю видалено.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation>Jste si jistý?</translation>
+        <translation>Ви впевнені?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation>Nelze smazat &quot;%1&quot;</translation>
+        <translation>Неможливо видалити &quot;%1&quot;</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation>Tato položka nemůže být smazána, protože něco selhalo. Nahlaste tento problém.</translation>
+        <translation>Неможливо видалити елемент через критичний сбій. Відішліть багрепорт.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation>Položka nemůže být smazána, protože to nepodporuje.</translation>
+        <translation>Для цього елементу не підтримується видалення
+або ж цей функціонал ще не імплементовано.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation>Kontextové menu pro ostatní položky</translation>
+        <translation>Контекстне меню для інших елементів</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Nepodpodováno</translation>
+        <translation>Не підтримується</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation>Vybraný účet nepodporuje přidávání nových kanálů.</translation>
+        <translation>Акаунт не підтримує додавання потоків новин</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation>Vybraný účet nepodporuje přidávání nových kategorií.</translation>
+        <translation>Акаунт не підтримує додавання нових категорій</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation>Kontextové menu pro odp. koše
-</translation>
+        <translation>Контекстне меню для кошиків</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation>Kontextové menu pro účty</translation>
+        <translation>Контекстне меню для облікових записів</translation>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
     <message>
         <source>Information</source>
-        <translation>Informace</translation>
+        <translation>Інформація</translation>
     </message>
     <message>
         <source>Licenses</source>
-        <translation>Licence</translation>
+        <translation>Ліцензії</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL Licence (pro kód programu RSS Guard)</translation>
+        <translation>Ліцензія GNU GPL ( стосується програмного коду RSS Guard )</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>GNU GPL Licence</translation>
+        <translation>Ліцензія GNU GPL</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD Licence (pro komponentu QtSingleApplication)</translation>
+        <translation>Ліцензія BSD ( стосується програмного коду QtSingleApplication )</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation>Stránka Licence je dostupná pouze v anglickém jazyce.</translation>
+        <translation>Сторінка ліцензій доступні лише англійською мовою</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Historie verzí</translation>
+        <translation>Changelog</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation>Historie verzí je dostupná pouze v anglickém jazyce.</translation>
+        <translation>Сторінка Changelog доступна лише англйською мовою</translation>
     </message>
     <message>
         <source>License not found.</source>
-        <translation>Licence nenalezena.</translation>
+        <translation>Ліцензію не знайдено</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation>Historie změn nenalezena.</translation>
+        <translation>Changelog не знайдено</translation>
     </message>
     <message>
         <source>About %1</source>
-        <translation>O aplikaci %1</translation>
+        <translation>About %1</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation>Typ nastavení</translation>
+        <translation>Тип налаштувань</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation>Soubor nastavení</translation>
+        <translation>Файл налаштувань</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation>Kořenový adresář databáze</translation>
+        <translation>Корінний шлях бази</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation>ZCELA portable</translation>
+        <translation>ПОВНІСТЮ портативно</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation>Zdroje</translation>
+        <translation>Ресурси</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 je (velmi) lehká čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojový kód pro %5 lze získat na jeho webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 невелика программа для перегляду потоків новин.&lt;br&gt;&lt;br&gt;Це програмне забезпечення розповсюджується на умовах GNU General Public License, версія 3.&lt;br&gt;&lt;br&gt;Контакти:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;Ви можете отримати програмні коди %5 на вебсайті.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (vytvořená %2/%3)&lt;br&gt;&lt;b&gt;Kontrola:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Datum buildu:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (kompilováno proti %7)&lt;br&gt;</translation>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Версія:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Редакція:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Дата створення:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (компіляція для %7)&lt;br&gt;</translation>
     </message>
     <message>
         <source>User skins root path</source>
-        <translation>Kořenový adresář uživatelských skinů</translation>
+        <translation>Корінний шлях до обкладинок</translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation>NEportable</translation>
+        <translation>НЕ портативно</translation>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Přidat nový účet</translation>
+        <translation>Додати новий обліковий запис</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>Tento účet může být přidán pouze jednou.</translation>
+        <translation>Цей обліковий запис може бути додано лише один раз.</translation>
     </message>
 </context>
 <context>
     <name>FormAddEditEmail</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Діалогове вікно</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation>Zálohovat databázi/nastavení</translation>
+        <translation>Створити резервну копію бази та налаштувань</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation>Vlastnosti zálohy</translation>
+        <translation>Параметри резервування</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation>Zálohované položky</translation>
+        <translation>Елементи для резервування</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation>Databáze</translation>
+        <translation>База</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Nastavení</translation>
+        <translation>Налаштування</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation>Název zálohy</translation>
+        <translation>Ім&apos;я резервної копії</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Výsledky operací</translation>
+        <translation>Результати виконання</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation>Společné jméno pro záložní soubory</translation>
+        <translation>Загальне ім&apos;я для файлів резервних копій</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Doposud neprovedena žádná operace.</translation>
+        <translation>Наразі не виконуються якісь операції.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation>Záloha byla vytvořena.</translation>
+        <translation>Резервну копію було успішно створено</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation>Název zálohy nemůže být prázdný.</translation>
+        <translation>Ім&apos;я резервної копії не може бути пустим</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation>Název zálohy je v pořádku.</translation>
+        <translation>Ім&apos;я резервної копії здається вірним</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation>Zálohování selhalo.</translation>
+        <translation>Резервне копіювання завершено невдало</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation>Výstupní adresář</translation>
+        <translation>Каталог для результатів</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Zvolit adresář</translation>
+        <translation>Виберіть каталог</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation>Záloha byla vytvořena a uložena ve výstupním adresáři.</translation>
+        <translation>Резервну копію було успішно створено і збережено в цільовому каталозі.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation>Zvolit výstupní adresář</translation>
+        <translation>Вибрати цільовий каталог</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation>Je zvolen vhodný výstupní adresář.</translation>
+        <translation>Надано прийнятливий цільовий каталог</translation>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation>Čištění databáze</translation>
+        <translation>Очистити базу</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation>Smazat zprávy starší než</translation>
+        <translation>Видалити всі повідомлення, старіші за</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> den</numerusform><numerusform> dny</numerusform><numerusform> dnů</numerusform><numerusform> dnů</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation>Smrsknout databázový soubor</translation>
+        <translation>Стиснути файл бази</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Informace o databázi</translation>
+        <translation>Інформаця про базу</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation>Velikost databázového souboru</translation>
+        <translation>Розмір файлу бази</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation>Typ databáze</translation>
+        <translation>Тип бази</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation>Postup</translation>
+        <translation>Прогрес</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation>Jsem připraven.</translation>
+        <translation>Готово</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation>Čištění databáze běží.</translation>
+        <translation>Виконується очищення бази.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation>Databáze byla vyčištěna.</translation>
+        <translation>Очищення бази завершено.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation>Čištění databáze selhalo.</translation>
+        <translation>Очищення бази завершено невдало.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation>Nastavení vyčištění (všechny vybrané položky jsou z databáze kompletně vymazány)</translation>
+        <translation>Налаштування очищення ( усі відмічені позиції будуть повністю видалені з бази ) </translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Vymazat všechny přečtené zprávy (ne ty z koše)</translation>
+        <translation>Видалити усі прочитані повідомлення ( не ті, що знаходяться у кошику )</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation>Vymazat všechny zprávy z koše</translation>
+        <translation>Видалити всі повідомлення з кошику</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Vymazat všechny důležité zprávy (včetně těch z koše)</translation>
+        <translation>Видалити усі помічені повідомлення ( включаючи й ті, що знаходяться у кошику )</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation>neznámá</translation>
+        <translation>невідомо</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation>soubor: %1, data: %2</translation>
+        <translation>файл: %1, дані: %2</translation>
     </message>
 </context>
 <context>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Діалогове вікно</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation>Stahuji přílohu...</translation>
+        <translation>Завантаження прикріплень</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation>Staženo: %1 kB</translation>
+        <translation>Завантажено: %1 кБ</translation>
     </message>
 </context>
 <context>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation>Nastaveni OAuth 2.0</translation>
+        <translation>Налаштування OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation>ID aplikace</translation>
+        <translation>Application ID</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation>Klíč aplikace</translation>
+        <translation>Application key</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation>Přesměrovací URL</translation>
+        <translation>URL перенаправлення</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation>Stahovat pouze X nejnovějších zpráv z kanálu</translation>
+        <translation>Завантажувати тільки X нових повідомлень на потік.</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation> zpráv</translation>
+        <translation>повідомлення(повідомлень)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Přihlásit se</translation>
+        <translation>&amp;Логін</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation>Neotestováno.</translation>
+        <translation>Ще не протестовано.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім&apos;я користувача, яке бачить користувач</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation>Již jste přihlášen.</translation>
+        <translation>Ви вже увійшли.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation>Přístup povolen.</translation>
+        <translation>Доступ надано.</translation>
     </message>
     <message>
         <source>No username entered.   </source>
-        <translation>Nezadáno uživatelské jméno.</translation>
+        <translation>Не вказано ім&apos;я користувача.</translation>
     </message>
     <message>
         <source>Some username entered.   </source>
-        <translation>Uživatelské jméno zadáno.</translation>
+        <translation>Введено ім&apos;я користувача.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation>Přístup NEpovolen.</translation>
+        <translation>Вам не надано доступ.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation>Byla chyba během testování.</translation>
+        <translation>Під час перевірки виникла помилка.</translation>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation>Chyba. %1</translation>
+        <translation>Виникла помилка. %1</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation>Přístup byl povolen.</translation>
+        <translation>Доступ надано</translation>
     </message>
     <message>
         <source>Add new Gmail account</source>
-        <translation>Přidat nový účet Gmail</translation>
+        <translation>Додати новий обліковий запис GMail</translation>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation>Upravit existující účet Gmail</translation>
+        <translation>Редагувати запис GMail</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation>Zadána prázdná hodnota.</translation>
+        <translation>Введено пусте значення</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation>Zadána nějaká hodnota.</translation>
+        <translation>Введено значення.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation>Musíte použít &quot;%1&quot; jako základní přesměrovací URL. Můžete použít vlastní číslo portu, abyste měli jistotu, že nekoliduje s jinou službou. Ujistěte se, že nastavení přesměrovací URL je konzistentní s nastavením na straně webové služby.</translation>
+        <translation>Ви повинні використовувати &quot;%1&quot; як базовий URL перенаправлення. Ви можете використовувати спеціальний порт для впевненості, що він не буде занято локальним сервісом. Переконайтеся, що цей URL перенаправлення відповідає URL перенаправлення програми, що використовується.</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Předdefinovaná nastavení měňte pouze pokud opravdu víte co děláte.</translation>
+        <translation>НЕ ПОТРІБНО змінювати значення налаштувань за замовченням. Змінювати ці значення слід у тому випадку, коли ви є досвідченим користувачем і добре розумієте, що ви робите!</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>Otestováno úspěšně.</translation>
+        <translation>Тест успішний. Можлийи потоврний запит для підключення.</translation>
     </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation>Nastaveni OAuth 2.0</translation>
+        <translation>Налаштування OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation>ID aplikace</translation>
+        <translation>Application ID</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation>Klíč aplikace</translation>
+        <translation>Application key</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation>Přesměrovací URL</translation>
+        <translation>URL перенаправлення</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Tato nestavení NEMUSÍ být měněna z jejich výchozích hodnot. Měňte tyto hodnoty pouze, pokud jste pokročilý uživatel.</translation>
+        <translation>НЕ ПОТРІБНО змінювати налаштування за замовченням. Змінювати ці значення слід у тому випадку, коли ви є досвідченим користувачем і добре розумієте, що ви робите!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation>Stahovat pouze X nejnovějších zpráv z kanálu</translation>
+        <translation>Завантажувати тільки X нових повідомлень на потік.</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation> zpráv</translation>
+        <translation>повідомлення(повідомлень)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Přihlásit se</translation>
+        <translation>&amp;Логін</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation>Neotestováno.</translation>
+        <translation>Ще не протестовано.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім&apos;я користувача, яке бачить користувач</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation>Již jste přihlášen.</translation>
+        <translation>Ви вже увійшли.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation>Přístup povolen.</translation>
+        <translation>Доступ надано.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation>Nezadáno uživ. jméno.</translation>
+        <translation>Не вказано ім&apos;я користувача.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation>Nějaké uživ. jméno zadáno.</translation>
+        <translation>Введено ім&apos;я користувача.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation>Přístup NEpovolen.</translation>
+        <translation>Вам не надано доступ.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation>Byla chyba během testování.</translation>
+        <translation>Під час перевірки виникла помилка.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation>Máme chybu: %1</translation>
+        <translation>Помилка %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>Otestováno úspěšně.</translation>
+        <translation>Тест успішний. Можлийи потоврний запит для підключення.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation>Přístup byl povolen.</translation>
+        <translation>Доступ надано</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation>Přidat nový účet Inoreader</translation>
+        <translation>Додати новий обліковий запис Inoreader</translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation>Upravit existující účet Inoreader</translation>
+        <translation>Редагувати обліковий запис Inoreader</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation>Zadána prázdná hodnota.</translation>
+        <translation>Введено пусте значення</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation>Zadána nějaká hodnota.</translation>
+        <translation>Введено значення.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation>Musíte použít &quot;%1&quot; jako základní přesměrovací URL. Můžete použít vlastní číslo portu, abyste měli jistotu, že nekoliduje s jinou službou. Ujistěte se, že nastavení přesměrovací URL je konzistentní s nastavením na straně webové služby.</translation>
+        <translation>Ви повинні використовувати &quot;%1&quot; як базовий URL перенаправлення. Ви можете використовувати спеціальний порт для впевненості, що він не буде занято локальним сервісом. Переконайтеся, що цей URL перенаправлення відповідає URL перенаправлення програми, що використовується.</translation>
     </message>
 </context>
 <context>
@@ -1098,139 +1094,139 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Vynutit aktualizace kanálů na straně serveru</translation>
+        <translation>Примусово запускати оновлення на боці серверу під час оновлення потоків з RSS Guard.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Některé kanály vyžadují autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+        <translation>Деякі потоки потребують аутентифікації, включаючи потоки GMail. Підтримуються BASIC, NTLM-2 та DIGEST-MD5 схеми аутентифікації.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Autentizace</translation>
+        <translation>Аутентифікація</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Zobrazit heslo</translation>
+        <translation>Показати пароль</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Otestovat nastavení</translation>
+        <translation>Протестувати налаштування</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Zapnutí této položky může výrazně zpomalit aktualizaci kanálů.</translation>
+        <translation>Активація цієї опцїї може викликати набагато повільніше виконання оновлення потоків і часто може призводити до перевищення строків очікування відповіді.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation>Je vyžadována minimálně verze %1.</translation>
+        <translation>Майте на увазі, що версія API має бути не нижче за %1.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation>URL vašeho ownCloud serveru, bez jakýchkoliv API koncovek.</translation>
+        <translation>URL вашого ownCloud серверу, без шляхів API</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Žádný test zatím neproveden.</translation>
+        <translation>Тестування ще не виконувалось</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Zde jsou zobrazeny výsledky testu spojení.</translation>
+        <translation>Результат перевірки підключення.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation>Přidat nový ownCloud News účet</translation>
+        <translation>Додати новий обліковий запис ownCloud News</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>Upravit existující účet ownCloudNews</translation>
+        <translation>Редагувати обліковий запис ownCloud News</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Vybraný server pro ownCloud News běží na nepodporované verzi (%1). Je třeba minimálně verze %2.</translation>
+        <translation>Обраний ownCloud News сервер використовує версію API (%1), що не підтримується. Необхіний рівень API має бути не нижчим за %2.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Vybraný ownCloud News server běží na nepodporované verzi.</translation>
+        <translation>Обраний ownCloud News сервер має версію, що не підтримується.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Síťová chyba: &apos;%1&apos;.</translation>
+        <translation>Мережева помилка: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>Síťová chyba, zadali jste správnou cestu k ownCloud a heslo?</translation>
+        <translation>Мережева помилка. Чи вірно ви вказали ownCloud ендпоінт та пароль?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Podivná chyba, zadali jste URL?</translation>
+        <translation>Невідома помилка, чи вірно вказано URL?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Login nemůže být prázdný.</translation>
+        <translation>Ім&apos;я користувача не може бути пустим</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Login je v pořádku.</translation>
+        <translation>Ім&apos;я користувача принято</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Heslo nemůže být prázdné.</translation>
+        <translation>Пароль не може бути пустим</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Heslo je v pořádku.</translation>
+        <translation>Пароль принято</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URL nemůže být prázdné.</translation>
+        <translation>URL не може бути пустим.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL je v pořádku.</translation>
+        <translation>URL принято</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation>Heslo k vašemu účtu ownCloud</translation>
+        <translation>Пароль для облікового запису ownCloud</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation>Uživatelské jméno pro ownCloud</translation>
+        <translation>Обліковий запис ownCloud</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>Server ownCloud News je v pořádku, běží na verzi %1, přičemž minimální vyžadovaná verze je %2.</translation>
+        <translation>Обраний ownCloud сервер має версію %1, тоді як версія має бути не нижчою за %2.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation>Server ownCloud News je v pořádku.</translation>
+        <translation>З ownCloud News сервером все гаразд.</translation>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation>Limitovat počet stahovaných zpráv na kanál</translation>
+        <translation>Обмежити кількість завантажених повідомлень на потік</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation>= neomezeno</translation>
+        <translation>= необмежено</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation>Omezení počtu stahovaných zpráv na kanál udělá aktualizaci kanálů rychleší, ale pokud váš kanál obsahuje více zpráv než je limit, tak se může stát, že některé zprávy se z kanálu nebudou stahovat.</translation>
+        <translation>Обмеження кількості завантажених повідомлень на потік робить оновлення потоку швидшим, але деякі повідомлення можеть бути не завантажені, якщо ваш потік має велику кількість повідомлень.</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation>= neomezeno</translation>
+        <translation>= необмежено</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation>zpráv</translation>
+        <translation>повідомлень</translation>
     </message>
 </context>
 <context>
@@ -1241,206 +1237,206 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+        <translation>Деякі потоки потребують аутентифікації, включаючи потоки GMail. Підтримуються BASIC, NTLM-2 та DIGEST-MD5 схеми аутентифікації.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Autentizace</translation>
+        <translation>Аутентифікація</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Zobrazit heslo</translation>
+        <translation>Показувати пароль</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Vyžaduje HTTP autentizaci</translation>
+        <translation>Потребує HTTP аутентифікації</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Otestovat nastavení</translation>
+        <translation>Протестувати налаштування</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Vynutit aktualizace kanálů na straně serveru.</translation>
+        <translation>Примусово запускати оновлення на боці серверу під час оновлення потоків з RSS Guard.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Zapnutí této položky může výrazně zpomalit aktualizaci kanálů.</translation>
+        <translation>Активація цієї опцїї може викликати набагато повільніше виконання оновлення потоків і часто може призводити до перевищення строків очікування відповіді.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation>Je vyžadována verze API %1 nebo vyšší.</translation>
+        <translation>Майте на увазі, що версія API має бути не нижче за %1.</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>Uživatelské jméno pro HTTP autentizaci</translation>
+        <translation>Ім&apos;я користувача для HTTP аутентифікації</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>Heslo pro HTTP autentizaci</translation>
+        <translation>Пароль користувача для HTTP аутентифікації</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>Heslo pro TT-RSS účet</translation>
+        <translation>Пароль для облікового запису TT-RSS</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>Uživatelské jméno pro TT-RSS účet</translation>
+        <translation>Обліковий запис TT-RSS</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>URL Vaší TT-RSS instance BEZ koncového &quot;/api/&quot; řetězce</translation>
+        <translation>URL вашого інстансу TT-RSS, БЕЗ кінцевої строки &quot;/api/&quot;</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Žádný test zatím neproveden.</translation>
+        <translation>Тестування ще не виконувалось</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation>Zde jsou zobrazeny výsledky testu spojení.</translation>
+        <translation>Результат перевірки підключення.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Přidat nový Tiny Tiny RSS účet</translation>
+        <translation>Додати новий обліковий запис Tiny Tiny RSS</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Upravit Tiny Tiny RSS účet</translation>
+        <translation>Редагувати обліковий запис Tiny Tiny RSS</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>Přístup přes API na tomto serveru není povolen.</translation>
+        <translation>API доступ на обраному сервері не активовано.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation>Zadané údaje jsou nekorektní.</translation>
+        <translation>Надані облікові дані не є вірними</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation>Došlo k jiné chybě, kontaktujte vývojáře.</translation>
+        <translation>Виникла інша помилка, зв&apos;яжіться з розробниками</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Zvolený Tiny Tiny RSS server běží na nepodporované verzi API (%1). Je vyžadováno minimálně API verze %2.</translation>
+        <translation>Обраний Tiny Tiny RSS сервер використовує версію API (%1), що не підтримується. Необхіний рівень API має бути не нижчим за %2.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Zvolený Tiny Tiny RSS server běží na nepodporované verzi API.</translation>
+        <translation>Обраний Tiny Tiny RSS сервер використовує версію API, що не підтримується.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS server je v pořádku, běží na API verze %1, přičemž minimální vyžadovaná verze API je %2.</translation>
+        <translation>Обраний Tiny Tiny RSS сервер використовує версію API (%1), тоді як рівень API має бути не нижчим за %2.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS server je v pořádku.</translation>
+        <translation>З Tiny Tiny RSS сервером все гаразд.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Síťová chyba: &apos;%1&apos;.</translation>
+        <translation>Мережева помилка: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Síťová chyba, zadali jste správnou cestu k Tiny Tiny RSS API a heslo?</translation>
+        <translation>Мережева помилка. Чи вірно ви вказали Tiny Tiny RSS API ендпоінт та пароль?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Podivná chyba, zadali jste URL?</translation>
+        <translation>Невідома помилка, чи вірно вказано URL?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Login nemůže být prázdný.</translation>
+        <translation>Ім&apos;я користувача не може бути пустим</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Login je v pořádku.</translation>
+        <translation>Ім&apos;я користувача принято</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Heslo nemůže být prázdné.</translation>
+        <translation>Пароль не може бути пустим</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Heslo je v pořádku.</translation>
+        <translation>Пароль принято</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Uživatelské jméno je v pořádku nebo není třeba.</translation>
+        <translation>Ім&apos;я користувача вірне або не потрібне.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Uživatelské jméno je prázdné.</translation>
+        <translation>Пусте ім&apos;я користувача</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Heslo je v pořádku nebo není třeba.</translation>
+        <translation>Пароль вірний, або він не потрібен.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Heslo je prázdné.</translation>
+        <translation>Пустий пароль</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation>URL nemůže být prázdné.</translation>
+        <translation>URL не може бути пустим.</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>URL by NEMĚLO končit na &quot;/api/&quot;.</translation>
+        <translation>URL НЕ ПОВИНЕН закінчуватись на &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL je v pořádku.</translation>
+        <translation>URL принято</translation>
     </message>
 </context>
 <context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Nadřazená kategorie</translation>
+        <translation>Батьківська категорія</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
+        <translation>Оберіть батьківський елемент для потоку</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Typ</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation>Zvolte typ standardního kanálu.</translation>
+        <translation>Оберіть тип звичайного потоку.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation>Kódování</translation>
+        <translation>Кодова сторінка</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Zvolte kódování kanálu. Pokud si nejste jisti, tak zvolte kódování &quot;UTF-8&quot;.</translation>
+        <translation>Оберіть кодову сторінку звичайного потоку. Якщо ви невпевнені, то оберіть кодову сторінку &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>Auto-aktualizace</translation>
+        <translation>Автоматичне оновлення</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
+        <translation>Оберіть стратегію автоматичного оновлення для потоку. СТратегія за замовченням означає, що потік буде автоматично оновлюватись через проміжок часу, що встановлено в налаштуваннях програми.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Nadpis</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Popis</translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <source>URL</source>
@@ -1448,1197 +1444,1198 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation>Načíst nyní</translation>
+        <translation>Завантажити зараз</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Ikona</translation>
+        <translation>Значок</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation>Zvolte ikonu pro Váš kanál.</translation>
+        <translation>Обрати значок для потоку.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+        <translation>Деякі потоки потребують аутентифікації, включаючи потоки GMail. Підтримуються BASIC, NTLM-2 та DIGEST-MD5 схеми аутентифікації.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Vyžaduje HTTP autentizaci</translation>
+        <translation>Потребує HTTP аутентифікації</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Načíst metadata</translation>
+        <translation>Завантажити метадані</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Přidat nový kanál</translation>
+        <translation>Додати новий потік</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation>Upravit kanál &apos;%1&apos;</translation>
+        <translation>Редагувати потік &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation>Název kanálu je v pořádku.</translation>
+        <translation>З ім&apos;ям потоку все гаразд.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation>Název kanálu je příliš krátký.</translation>
+        <translation>Ім&apos;я потоку занадто коротке.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Popis je prázdný.</translation>
+        <translation>Опис пустий.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Popis je v pořádku.</translation>
+        <translation>З описом все гаразд.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation>URL je v pořádku.</translation>
+        <translation>З URL все гаразд.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation>URL je prázdná.</translation>
+        <translation>URL пустий.</translation>
     </message>
 </context>
 <context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;Soubor</translation>
+        <translation>&amp;Файл</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Pomoc</translation>
+        <translation>Допомога</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>&amp;Zobrazit</translation>
+        <translation>&amp;Перегляд</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;Nástroje</translation>
+        <translation>Інструменти</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>&amp;Ukončit</translation>
+        <translation>&amp;Вихід</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>Na&amp;stavení</translation>
+        <translation>&amp;Налаштування</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation>&amp;Zprávy</translation>
+        <translation>&amp;Повідомлення</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation>Přepnout &amp;důležitost vybraných zpráv</translation>
+        <translation>Переключити важливість обраних повідомлень</translation>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation>Ukončit aplikaci.</translation>
+        <translation>Вийти з програми.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation>Zobrazit nastavení aplikace.</translation>
+        <translation>Відобразити налаштування програми.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation>Přepnout režim celé obrazovky.</translation>
+        <translation>Переключити режим відображення на повний екран.</translation>
     </message>
     <message>
         <source>No actions available</source>
-        <translation>Žádná dostupná akce</translation>
+        <translation>Дії недоступні</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation>Žádná akce není právě dostupná.</translation>
+        <translation>Наразі якісь дії недоступні</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation>Skryje hlavní ikno, je-li aktuálně viditelné. Jinak jej zobrazí.</translation>
+        <translation>Згортає головне вікно, якщо воно розгорнуте, та розгортає, якщо згорнуте.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation>Skryje nebo zobrazí seznam kanálů/kategorií.</translation>
+        <translation>Сховати або відображати перелік потоків та категорій.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation>Zkontrolovat, zda nejsou k dispozici aktualizace programu.</translation>
+        <translation>Перевірити чи доступне для завантаження оновлення програми.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>O &amp;aplikaci</translation>
+        <translation>О програмі.</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation>Zobrazí dodatečné informace o této aplikaci.</translation>
+        <translation>Показати додаткову інформацію про програму.</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation>Sma&amp;zat vybrané zprávy</translation>
+        <translation>Видалити обрані повідомлення.</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation>Skryje či zobrazí hlavní menu.</translation>
+        <translation>Ховає або показує головне меню.</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Označit vybrané zprávy jako &amp;přečtené</translation>
+        <translation>Відмітити &amp;обрані повідомлення як &amp;прочитані</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Označit vybrané zprávy jako &amp;nepřečtené</translation>
+        <translation>Відмітити &amp;обрані повідомлення як &amp;непрочитані</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation>&amp;Otevřít vybrané zdrojové články v externím prohlížeči</translation>
+        <translation>Відкрити обрану статтю-джерело в &amp;зовнішньому браузері</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation>&amp;Otevřít vybrané krátké články v interním prohlížeči</translation>
+        <translation>Відкрити обрані повідомлення у &amp;вбудованому браузері</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>Vybrat &amp;další zprávu</translation>
+        <translation>Обрати &amp;наступне повідомлення.</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation>Vybrat &amp;předchozí zprávu</translation>
+        <translation>Обрати &amp;попереднє повідомлення.</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>Ověřit dostupnost &amp;aktualizace</translation>
+        <translation>Перевірити &amp;оновлення.</translation>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation>Zobrazit/skrýt</translation>
+        <translation>Показати/сховати</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation>Seznam &amp;kanálů</translation>
+        <translation>Список &amp;потоків</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation>Hlavní &amp;menu</translation>
+        <translation>Головне меню</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation>Přepnout &amp;hlavní okno</translation>
+        <translation>Переключити видимість головного вікна</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation>Nelze otevřít externí prohlížeč webu</translation>
+        <translation>Неможливо відкрити зовнішній браузер</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Externí webový prohlížeč nelze otevřít. Zkontrolujte aktualizace ručně na webu programu.</translation>
+        <translation>Неможливо відкрити зовнішній браузер. Перейдіть до сайту програми вручну.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation>&amp;Nástrojové lišty</translation>
+        <translation>Панелі інструментів</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation>Přepnout viditelnost hlavnich nástrojových lišet.</translation>
+        <translation>Переключити видимість головної панелі інструментів.</translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation>&amp;Hlavičky seznamů zpráv/kanálů</translation>
+        <translation>Перелік заголовків потоків/повідомлень</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation>Zobrazit &amp;wiki</translation>
+        <translation>Показати wiki</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation>&amp;Obnovit databázi/nastavení</translation>
+        <translation>Відновити базу/налаштування</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation>&amp;Zálohovat databázi/nastavení</translation>
+        <translation>Створити резервну копію базі/налаштувань</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation>Přepnout orientaci rozložení seznamu zpráv</translation>
+        <translation>Переключити орієнтацію списку повідомлень</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation>&amp;Stahování</translation>
+        <translation>&amp;Завантаження</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation>Odeslat vybranou zprávu přes e-mail</translation>
+        <translation>Переслати обрані повідомлення з використанням e-mail</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation>&amp;Vyčistit databázi</translation>
+        <translation>Очистити базу</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation>Přidat &amp;novou položku</translation>
+        <translation>Додати новий елемент</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation>Aktualizov&amp;at všechny položky</translation>
+        <translation>Оновити усі елементи</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>Aktualizovat v&amp;ybrané položky</translation>
+        <translation>Оновити обрані елементи</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation>Upravit &amp;vybranou položku</translation>
+        <translation>Редагувати елемент</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation>&amp;Smazat vybranou položku</translation>
+        <translation>&amp;Видалити елемент</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation>&amp;Označit vybrané položky jako přečtené</translation>
+        <translation>&amp;Помітити елемент як прочитаний</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation>Označit všechny zprávy (bez filtrů) z vybraných položek jako přečtené.</translation>
+        <translation>Помітити всі повідомлення ( без накладання фільтрів ) з обраних елементів як прочитані.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation>&amp;Označit vybrané položky jako nepřečtené</translation>
+        <translation>&amp;Відмітити обрані елементи як непрочитані</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation>Označit všechny zprávy (bez filtrů) z vybraných položek jako nepřečtené.</translation>
+        <translation>Помітити всі повідомлення ( без накладання фільтрів ) з обраних елементів як непрочитані.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation>&amp;Vyčistit vybrané položky</translation>
+        <translation>&amp;Очистити обрані елементи</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation>Smaže všechny zprávy z vybraných položek.</translation>
+        <translation>Вадалити всі повідомленні в обраних елементах</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation>Označí úplně všechny zprávy jako přečtené.</translation>
+        <translation>Помітити усі повідомлення в усіх елементах я прочитані. При цьому не будуть братися до уваги фільтри повідомлень.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation>Zobrazit vybrané položky v &amp;novinovém náhledu</translation>
+        <translation>Переглянути обрані елементи в режимі &quot;газети&quot;</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation>Zobrazit všechny zprávy z vybraných položek v &quot;novinovém náhledu&quot;. Zprávy jsou následně označené jako přečtené.</translation>
+        <translation>Відображати всі повідомлення з обраних елементів у новій вкладці з &quot;газетним виглядом&quot;. Майте на увазі, що повідомлення не помічаються як прочитані в автоматичному режимі.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation>&amp;Vyčistit všechny položky</translation>
+        <translation>Очистити усі елементи</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation>Smaže zprávy ze všech položek.</translation>
+        <translation>Вадалити всі повідомленні в усіхі елементах</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation>Vybrat &amp;následující položku</translation>
+        <translation>Вибрати наступний елемент</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation>Vybrat &amp;předchozí položku</translation>
+        <translation>Вибрати попередній елемент</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation>Zobrazit použe nepřečtené položky</translation>
+        <translation>Відображати тільки непрочитані елементи</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation>&amp;Expandovat/složit vybranou položku</translation>
+        <translation>Розгорнути/згорнути відмічені елементи</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation>&amp;Obnovit vybrané zprávy</translation>
+        <translation>&amp;Відновити обрані повідомлення</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation>Žádná možná akce</translation>
+        <translation>Немає можливих дій</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation>&amp;Odpadkové koše</translation>
+        <translation>&amp;Кошик(и)</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation>&amp;Obnovit všechny koše</translation>
+        <translation>&amp;Відновити всі кошики.</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation>&amp;Vysypat všechny koše</translation>
+        <translation>&amp;Спорожнити всі кошики.</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation>Vybrat další &amp;nepřečtenou zprávu</translation>
+        <translation>Вибрати наступне енпрочитане повідомлення</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation>Žádný koš</translation>
+        <translation>Немає кошиків</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Kanály &amp;&amp; kategorie</translation>
+        <translation>Потоки та категорії</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation>&amp;Účty</translation>
+        <translation>&amp;Облікові записи</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation>&amp;Přidat nový účet</translation>
+        <translation>&amp;Додати новий облыковий запис</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation>Stavový řádek</translation>
+        <translation>Рядок стану</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>&amp;Upravit vybraný účet</translation>
+        <translation>&amp;Редагувати обліковий запис</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation>&amp;Smazat vybraný účet</translation>
+        <translation>&amp;Видалити обліковий запис</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation>Přidat nový kanál do vybraného účtu</translation>
+        <translation>Додати новий потік в обраний обліковий запис</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation>Přidat novou kategorii do vybraného účtu</translation>
+        <translation>Додати нову категорію в обраний обліковий запис</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Přidat novou kategorii</translation>
+        <translation>Додати нову категорію</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Přidat nový kanál</translation>
+        <translation>Додати новий потік</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation>Zastavit probíhající aktualizaci kanálů</translation>
+        <translation>Зупинити оновлення</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation>Žádná možná akce</translation>
+        <translation>Дії недоступні</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation>Webový prohlížeč a záložky</translation>
+        <translation>Браузер та вкладинки</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation>Nahlásit &amp;chybu programu...</translation>
+        <translation>Сповістити про &amp;помилку</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation>Nová záložka webového prohlížeče</translation>
+        <translation>Нова вкладинка браузера</translation>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation>Zavřít všechny záložky</translation>
+        <translation>Закрити всі вкладки</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation>Zavřít ostatní záložky</translation>
+        <translation>Закрити усі вкладки окрім поточної</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation>Zobrazit na &amp;celou obrazovku</translation>
+        <translation>Розгорнути на весь екран</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation>Nelze vyčistit databázi</translation>
+        <translation>Неможливо очистити базу</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation>Databázi nelze v současné době vyčistit, protože běží jiná kritická akce. Zkuste to později.</translation>
+        <translation>Неможливо очистити базу, тому що виконується інша важлива операція.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation>Spuštěna aktualizace kanálů</translation>
+        <translation>Стартовано оновлення потоку</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Aktualizován kanál &apos;%1&apos;</translation>
+        <translation>Оноволено потік &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>Panely</translation>
+        <translation>Вкладинки</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation>&amp;Označit všechny zprávy jako přečtené</translation>
+        <translation>&amp;Помітити всі елементи як прочитані</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation>&amp;Restartovat</translation>
+        <translation>&amp;Перезапустити</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation>Přejít na &amp;další tab</translation>
+        <translation>Перейти до &amp;наступної вкладинки</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation>Přejít na &amp;předchozí tab</translation>
+        <translation>Перейти до &amp;попередньої вкладинки</translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation>&amp;Povolit náhled zprávy</translation>
+        <translation>&amp;Активувати попередній перегляд повідомлення</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation>&amp;Podpořit autora...</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Kanál přidán</translation>
+        <translation>Потік додано</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation>Kanál přidán, spouštím synchronizaci celého účtu.</translation>
+        <translation>Потік додано, виконується сінхронізація</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Nelze přidat kanál</translation>
+        <translation>Неможливо додати підписку</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Kanál nepřidán kvůli chybě.</translation>
+        <translation>Потік не було додано через помилку</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation>Obnovit databázi/nastavení</translation>
+        <translation>Відновити базу/налаштування</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Výsledky operací</translation>
+        <translation>Результати виконання</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation>Obnovit databázi</translation>
+        <translation>Відновити базу</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation>Obnovit nastavení</translation>
+        <translation>Відновити налаштування</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Doposud neprovedena žádná operace.</translation>
+        <translation>Наразі не виконуються якісь операції.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation>Obnova byla spuštěna, pro její dokončení je třeba restart aplikace.</translation>
+        <translation>Ініційовано відновлення. Перезапустіть програму.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation>Pro dokončení procesu obnovení je třeba restartovat aplikaci.</translation>
+        <translation>Необхідно перезапустити програму для завершення процесу відновлення.</translation>
     </message>
     <message>
         <source>Source directory</source>
-        <translation>Zdrojový adresář</translation>
+        <translation>Початковий каталог</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Zvolit adresář</translation>
+        <translation>Виберіть каталог</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation>Nastavení a/nebo databáze nebyli kopírovány do obnovovacího adresáře úspěšně.</translation>
+        <translation>База та/або налаштування не було успішно скопійовано в відновлювальний каталог.</translation>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation>Zvolte zdrojový adresář</translation>
+        <translation>Оберіть початковий каталог</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation>Je zvolen správný zdrojový adresář.</translation>
+        <translation>Надано прийнятливий початковий каталог</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation>Restartovat</translation>
+        <translation>Перезапустити</translation>
     </message>
 </context>
 <context>
     <name>FormSettings</name>
     <message>
         <source>Settings</source>
-        <translation>Nastavení</translation>
+        <translation>Налаштування</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation>Kritická nastavení změněna</translation>
+        <translation>Було змінено критичні налаштування</translation>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation>Změněné kategorie nastavení:
-%1.</translation>
+        <translation>Змінено категорій налаштувань:
+%1</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation>Některá nastavení jsou změněna a budou ztracena</translation>
+        <translation>Деякі налаштування змінено і ці зміни буде втрачено</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation>Některá nastavení jsou změněna a zrušením tohoto dialogu o ně přijdete.</translation>
+        <translation>Деякі налаштування було змінено. Відмінивши це діалогове вікно ви втратите зміни налаштувань.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation>Opravdu chcete zavřít tento dialog bez uložení nastavení?</translation>
+        <translation>Ви дійсно бажаєте закрити це вікно не зберігаючі зміни в налаштуваннях?</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation>Některá kritická nastavení se změnila a budou aktivována až po restartu aplikace.
+        <translation>Було змінено деякі важливі налаштування, ці зміни будуть застосовані після перезапуску програми.
 
-Musíte restartovat manuálně.</translation>
+Ви повинні рестартвувати програму вручну.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation>Chcete restartovat nyní?</translation>
+        <translation>Перезапустити зараз?</translation>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Nadřazená kategorie</translation>
+        <translation>Батьківська категорія</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation>Zvolte nadřazenou kategorii pro Vaši kategorii.</translation>
+        <translation>Обрати юатьківскьий елемент для категорії</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Nadpis</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Popis</translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Ikona</translation>
+        <translation>Значок</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation>Zvolte ikonu pro Vaši kategorii.</translation>
+        <translation>Обрати значок для категорії</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Přidat novou kategorii</translation>
+        <translation>Додати нову категорію</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation>Upravit existující kategorii</translation>
+        <translation>Редагувати існуючу категорію</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Nelze přidat kategorii</translation>
+        <translation>Неможилво додати категорію</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation>Kategorie nebyla přidána kvůli chybě.</translation>
+        <translation>Категорію не було додано через помилку</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation>Nelze upravit kategorii</translation>
+        <translation>Неможливо редагувати категорію</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation>Kategorie nebyla upravena kvůli chybě.</translation>
+        <translation>Категорію не було відредаговано через помилку</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation>Název kategorie je v pořádku.</translation>
+        <translation>З ім&apos;ям категорії все гаразд.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation>Název kategorie je příliš krátký.</translation>
+        <translation>Ім&apos;я категорії занадто коротке.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Popis je prázdný.</translation>
+        <translation>Опис пустий.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Popis je v pořádku.</translation>
+        <translation>З описом все гаразд.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation>Zvolte ikonu pro Vaši kategorii</translation>
+        <translation>Оберіть значок для категорії</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Зображення (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Vybrat ikonu</translation>
+        <translation>Оберіть значок</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Скасувати</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Hledat v:</translation>
+        <translation>Шукати в:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Název ikony:</translation>
+        <translation>Ім&apos;я значку:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Typ ikony:</translation>
+        <translation>Тип значку:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation>Název kategorie</translation>
+        <translation>Назва категорії</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation>Zvolte název pro Vaši kategorii.</translation>
+        <translation>Вкажіть назву категорії</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation>Popis kategorie</translation>
+        <translation>Опис категорії</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation>Zvolte popis Vaší kategorie.</translation>
+        <translation>Вкажіть опис категорії</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation>Vybrat ikonu</translation>
+        <translation>Обрати значок</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Načíst ikonu ze souboru...</translation>
+        <translation>Завантажити значок з файлу...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation>Použít výchozí ikonu z tématu</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Cannot add feed</source>
-        <translation>Nelze přidat kanál</translation>
+        <translation>Неможливо додати підписку</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Kanál nepřidán kvůli chybě.</translation>
+        <translation>Потік не було додано через помилку</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation>Nelze upravit kanál</translation>
+        <translation>Неможливо редагувати потік</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation>Kanál nebyl upraven kvůli chybě.</translation>
+        <translation>Потік не було додано через помилку</translation>
     </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation>&amp;Zvolit soubor</translation>
+        <translation>&amp;Обрати файл</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation>&amp;Označit vše</translation>
+        <translation>&amp;Відмітити усі елементи</translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation>O&amp;dznačit vše</translation>
+        <translation>&amp;Зняти відмітку з усіх елементів</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation>Výsledky operací</translation>
+        <translation>Результати виконання</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation>Nevybrán žádný soubor.</translation>
+        <translation>Не обрано файл</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation>Doposud neprovedena žádná operace.</translation>
+        <translation>Наразі не виконуються якісь операції.</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation>Cílový soubor</translation>
+        <translation>Цільовий файл</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation>Zdrojové kanály &amp;&amp; kategorie</translation>
+        <translation>Початкові потоки та категорії</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Exportovat kanály</translation>
+        <translation>Експортувати підписки</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation>Zdrojový soubor</translation>
+        <translation>Початковий файл</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation>Cílové kanály &amp;&amp; kategorie</translation>
+        <translation>Цільові потоки та категорії</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importovat kanály</translation>
+        <translation>Импортувати підписки</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation>soubory OPML 2.0 (*.opml)</translation>
+        <translation>Файли OPML 2.0 ( *.opml )</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation>Zvolit soubor pro export kanálů</translation>
+        <translation>Оберіть файл для експорту підписок</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation>Soubor je vybrán.</translation>
+        <translation>Файл обрано</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation>Zvolit soubot pro import kanálů</translation>
+        <translation>Оберіть файл для імпорту підписок</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation>Zdrojový soubor nelze otevřít.</translation>
+        <translation>Неможливо відкрити початковий файл</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation>Kanály načteny.</translation>
+        <translation>Потоки завантажено</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation>Chyba, soubor nemá správný formát, zvolte jiný.</translation>
+        <translation>Помилка, файл невірно сформовано. Оберіть інший файл.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>Chyba, soubor nemá správný formát, zvolte jiný.</translation>
+        <translation>Сталася помилка, файл невірно сформовано. Оберіть інший файл.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation>Kanály byly úspěšně exportovány.</translation>
+        <translation>Підписки успішно експортовано</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation>Vyskytla se kritická chyba.</translation>
+        <translation>Сталася фатальна помилка</translation>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation>Zpracovávám data...</translation>
+        <translation>Обробка даних...</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation>Do cílového souboru nelze zapisovat: &apos;%1&apos;.</translation>
+        <translation>Неможливий запис у цільовий файл: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation>Kořenový uzel</translation>
+        <translation>Корінний вузол</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
+        <translation>Оберіть батьковський елемент для потоку.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation>TXT soubory [jedna URL na řádku] (*.txt)</translation>
+        <translation>Файли TXT [один URL в рядку] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation>Získat online metadata</translation>
+        <translation>Завантажити онлайнові метадані</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation>Metadata pro vaše kanály lze získat online. Mějte na paměti, že toto může trvat i několik minut.</translation>
+        <translation>Є можливість завантажити метадані для потоків. Майте на увазі, що в залежності від кількості підписок ця операція може тривати кілька хвилин.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation>Chcete načíst metadata online?</translation>
+        <translation>Завантажити метадані для потоку?</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation>&amp;Exportovat do souboru</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation>&amp;Importovat ze souboru</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Kanál přidán</translation>
+        <translation>Потік додано</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation>Kanál přidán, spouštím synchronizaci celého účtu.</translation>
+        <translation>Потік додано, виконується сінхронізація</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Nelze přidat kanál</translation>
+        <translation>Неможливо додати підписку</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Kanál nepřidán kvůli chybě.</translation>
+        <translation>Потік не було додано через помилку</translation>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation>Nainstalovaná verze</translation>
+        <translation>Поточна версія</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation>Dostupná verze</translation>
+        <translation>Доступна версія</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Статус</translation>
     </message>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation>neznámá</translation>
+        <translation>невідомо</translation>
     </message>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation>Seznam aktualizací nebyl úspěšně stažen.</translation>
+        <translation>Перелік оновлень, що
+не були успішно завантажені</translation>
     </message>
     <message>
         <source>New release available.</source>
-        <translation>Nová verze aplikace je dostupná.</translation>
+        <translation>Доступна нова версія</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation>Chyba: &apos;%1&apos;.</translation>
+        <translation>Помилка: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation>Žádná nová verze k dispozici.</translation>
+        <translation>Нові версії відсутні</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation>Toto vydání není novější než aktuálně nainstalované.</translation>
+        <translation>Ця версія не є новішою,
+ніж та, що встановлена.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Zkontrolovat aktualizace</translation>
+        <translation>Перевірка наявності оновлень</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation>Stáhnout instalační soubory nové verze.</translation>
+        <translation>Завантажити нові інсталяційні файли.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation>Nelze aktualizovat</translation>
+        <translation>Помилка оновленя програми</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Nelze přejít k instalačnímu souboru. Zkontrolujte nové instalační soubory ručně na webu aplikace.</translation>
+        <translation>Перейти до інсталяційного файлу неможливо. Перевірте наявність нових завантажень інсталяційних файлів вручну на сайті проекту.</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation>Staženo %1% (velikost aktualizace je %2 kB).</translation>
+        <translation>Завантажено %1% (розмір оновлення %2 kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation>Stahuji aktualizaci...</translation>
+        <translation>Завантажується оновлення...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation>Staženo úspěšně</translation>
+        <translation>Завантажено успішно</translation>
     </message>
     <message>
         <source>Error occured</source>
-        <translation>Vyskytla se chyba</translation>
+        <translation>Сталася помилка</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation>Během stahování aktualizace se vyskytla chyba.</translation>
+        <translation>Сталася помилка під час завантаження пакету оновлень.</translation>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation>Přejít na web aplikace</translation>
+        <translation>Перейти на сайт програми</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation>Toto je nová verze, která může být
-stažena.</translation>
+        <translation>Нова версія, яка може бути завантажена</translation>
     </message>
     <message>
         <source>Install</source>
-        <translation>Instalovat</translation>
+        <translation>Встановити</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation>Nebylo možné spustit externí updater. Aplikaci musíte updatovat sami.</translation>
+        <translation>Неможливо запустити зовнішній оновлювач. Оновіть програму вручну.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Historie verzí</translation>
+        <translation>Changelog</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation>Dostupné soubory</translation>
+        <translation>Доступні файли</translation>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation>Stáhnout vybranou aktualizaci</translation>
+        <translation>Завантажити обране оновлення</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation>Přejděte na web aplikace pro získání balíčku aktualizace manuálně.</translation>
+        <translation>Перейти на сайт програми для ручного завантаження пакетів оновлень.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation>(velikost</translation>
+        <translation>(розмір</translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation>Dostupné soubory aktualizace</translation>
+        <translation>Доступні файли оновлень</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation>Balíček byl úspěšně stažen.
-Nyní ho můžete nainstalovat.</translation>
+        <translation>Пакет успішно завантажено.
+Можна починати встановлення.</translation>
     </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation>Přihlášeno úspěšně.</translation>
+        <translation>Вхід виконано успішно</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Ваш вхід в Gmail було авторизовано.</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation>Pro opětovné přihlášení klikněte zde.</translation>
+        <translation>Натисніть ще раз для повторного входу. Помилка: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation>Klikně sem pro opětovné přihlášení.</translation>
+        <translation>Натисніть ще раз для повторного входу.</translation>
     </message>
     <message>
         <source>No subject</source>
-        <translation type="unfinished"/>
+        <translation>Нема заголовку</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Помилка аутентифікації Gmail</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Відмовлено в авторизації Gmail</translation>
     </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation>Příjaté</translation>
+        <translation>Вхідні</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation>Odeslané</translation>
+        <translation>Відправлені</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation>Koncepty</translation>
+        <translation>Чорнетки</translation>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"/>
+        <translation>Спам</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation>Status autentizace: %1
-Tokeny vyprší: %2</translation>
+        <translation>Статус аутентифікації: %1
+Взідний токен закінчується: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation>přihlášen</translation>
+        <translation>виконано вхід</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation>NEpřihlášen</translation>
+        <translation>вхід НЕ виконано</translation>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation>Zvolte soubor pro uložení přílohy</translation>
+        <translation>Оберіти файл для збереження вкладення</translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Написати нового листа</translation>
     </message>
 </context>
 <context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation>Soubor &apos;%1&apos; nelze otevřít pro čtení.</translation>
+        <translation>Неможливо відкрити &apos;%1&apos; для читання</translation>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>Nelze otevřít soubor &apos;%1&apos; pro zápis.</translation>
+        <translation>Неможливо відкрити &apos;%1&apos; для запису</translation>
     </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation>Přihlášeno úspěšně.</translation>
+        <translation>Вхід виконано успішно</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation>Přihlášení bylo potvrzeno.</translation>
+        <translation>Ваш вхід до Inoreader авторизований</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation>Inroeader: chyba autentizace</translation>
+        <translation>Помилка аутентифікації Inoreader</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation>Pro opětovné přihlášení klikněte zde.</translation>
+        <translation>Натисніть ще раз для повторного входу. Помилка: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: přistup nepovolen</translation>
+        <translation>Відмовлено в авторизації Inoreader</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation>Klikně sem pro opětovné přihlášení.</translation>
+        <translation>Натисніть ще раз для повторного входу.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation>Synchronizovat</translation>
+        <translation>Синхронізувати в</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation>Status autentizace: %1
-Tokeny vyprší: %2</translation>
+        <translation>Статус аутентифікації: %1
+Login tokens expiration: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation>přihlášen</translation>
+        <translation>виконано вхід</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation>NEpřihlášen</translation>
+        <translation>вхід НЕ виконано</translation>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation>Adresu webové stránky zadejte sem</translation>
+        <translation>Адреса веб сайту</translation>
     </message>
 </context>
 <context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation>Znovu toto upozornění nezobrazovat.</translation>
+        <translation>Більше не показувати це діалогове вікно</translation>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation>Klikli jste na odkaz. Můžete stáhnout obsah odkazu nebo ho otevřít v externím webovém prohlížeči.</translation>
+        <translation>Ви натиснули посилання. Ви можете завантажити вміст посилання або відкрити його в зовнішньому браузері</translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation>Co chcete dělat?</translation>
+        <translation>Які дії ви бажаєте виконати?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation>Otevřít v externím webovém prohlížeči</translation>
+        <translation>Відкрити в зовнішньому браузері</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation>Stáhnout</translation>
+        <translation>Завантажити</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation>Špatný odkaz</translation>
+        <translation>Невірне посилання</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation>Vybraný odkaz je neplatný</translation>
+        <translation>Некоректне обране посилання</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation>Označit zprávu jako přečtenou</translation>
+        <translation>Помітити повідомлення як прочитане</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation>Označit zprávu jako nepřečtenou</translation>
+        <translation>Помітити повідомлення як непрочитане</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation>Nastavit důležitost zprávy</translation>
+        <translation>Змінити ступінь важливості повідомлення</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation>Klikněte na tento odkaz pro stáhnutí jeho obsahu nebo pro jeho otevření v externím webovém prohlížeči.</translation>
+        <translation>Натисніть для завантажити вмісту посилання або щоб відкрити його в зовнішньому браузері</translation>
     </message>
     <message>
         <source>image</source>
-        <translation>obrázek</translation>
+        <translation>зображення</translation>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation>Vždy otevírat odkazy v ext. prohlížeči.</translation>
+        <translation>Завжди відкривати посилання в зовнішньому браузері.</translation>
     </message>
 </context>
 <context>
@@ -2649,217 +2646,217 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>Přečteno</translation>
+        <translation>Прочитане</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation>Smazáno</translation>
+        <translation>Видалене</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation>Důležité</translation>
+        <translation>Важливе</translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation>Kanál</translation>
+        <translation>Потік</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Nadpis</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <source>Url</source>
-        <translation>Url</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Autor</translation>
+        <translation>Автор</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation>Vytvořeno</translation>
+        <translation>Дата створення</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation>Obsah</translation>
+        <translation>Вміст</translation>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation>Id zprávy.</translation>
+        <translation>Id повідомлення</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation>Je zpráva přečtená?</translation>
+        <translation>Чи прочитане повідомлення?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation>Je zpráva smazaná?</translation>
+        <translation>Чи видалене повідомлення?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation>Je zpráva důležitá?</translation>
+        <translation>Повідомлення важливе?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation>Id kanálu, ke kterému zpráva náleží.</translation>
+        <translation>Id потоку, до якого належить повідомлення.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation>Nadpis zprávy.</translation>
+        <translation>Заголовок повідомлення.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation>Url zprávy.</translation>
+        <translation>URL повідомлення.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation>Autor zprávy.</translation>
+        <translation>Автор повідомлення.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation>Datum vytvoření zprávy.</translation>
+        <translation>Дата створення повідомлення.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation>Obsah zprávy.</translation>
+        <translation>Вміст повідомлення.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation>Permanentně smazáno</translation>
+        <translation>Видалено назавжди</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation>Je zpráva permanentně vysypána z koše?</translation>
+        <translation>Чи видалене повідомлення з кошику назавжди?</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation>Přílohy</translation>
+        <translation>Прикліплення</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation>Seznam příloh.</translation>
+        <translation>Перелік прикріплень.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation>Načtení zpráv selhalo, možná zprávy nemohly být staženy.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation>Načtení zpráv pro položku &apos;%1&apos; selhalo.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Account ID</source>
-        <translation>ID účtu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation>Zvláštní ID</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation>Account ID zprávy.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation>Custom ID of the message</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation>Zvláštní hash</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation>Zvlášnní hash zprávy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation>ID kanálu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
-        <translation>Zvláštní ID kanálu zprávy.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Has enclosures</source>
-        <translation>Má přílohy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Indication of enclosures presence within the message.</source>
-        <translation>Indikuje, zda zpráva obsahuje přílohy.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation>Hledat zprávy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message search box</source>
-        <translation>Hledací panel zpráv</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation>Menu pro zvýrazňování zpráv</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation>Nic nezvýrazňovat</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation>Zvýraznit nepřečtené zprávy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation>Zvýraznit důležité zprávy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation>Zobrazit všechny zprávy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation>Zvýrazňovač zpráv</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Mezera</translation>
+        <translation>Розподілювач панелі інструментів</translation>
     </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation>Kontextové menu pro zprávy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation>PRoblém s externím webovým prohlížečem</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation>Externí webový prohlížeč nebyl úspěšně spuštěn.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation>Problém se spuštěním externího e-mailového klienta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation>Externí e-mailový klient nemohl být úspěšně spuštěn.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation>Otevřít s externím nástrojem</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation>Nelze spustit externí nástroj</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation>Externí nástroj &apos;%1&apos; nelze spustit.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2867,118 +2864,118 @@ Tokeny vyprší: %2</translation>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation>chyba protokolu</translation>
+        <translation>помилка протоколу</translation>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>hostitel nenalezen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>spojení odmítnuto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation>spojení vypršelo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>SSL handshake selhal</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>spojení k proxy serveru odmítnuto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation>dočasný výpadek</translation>
+        <translation>тимчасова помилка</translation>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>autentifikace selhala</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation>proxy autentifikace selhala</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>proxy server nenalezen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>obsah nenalezen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation>neznámá chyba</translation>
+        <translation>невідома помилка</translation>
     </message>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation>žádné chyby</translation>
+        <translation>успішно</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation>přístup k obsahu zamítnut</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation>spojení vypršelo či bylo zrušeno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation>neznámý obsah</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation>Formulář</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform><numerusform>Zobrazit další zprávy (zbývá %n)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation>Nelze zobrazit více zpráv</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation>Nelze zobrazit zprávy protože kanál byl odebrán.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>OAuth2Service</name>
     <message>
         <source>Click here to login.</source>
-        <translation>Pro přihlášení klikněte zde.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation>Přihlašuji se přes OAuth 2.0...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation>Obnovuji přihlašovací tokeny pro &apos;%1&apos;...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation>Požadují povolení přístupu pro &apos;%1&apos;...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You have to login first</source>
@@ -2996,22 +2993,22 @@ Tokeny vyprší: %2</translation>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation>Povolení přístupu vyžadováno</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation>Synchronizovat</translation>
+        <translation>Синхронізувати</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Nelze přidat položku</translation>
+        <translation>Неможливо додати елемент</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
+        <translation>Неможливо додати потік, тому що триває інша важлива операція.</translation>
     </message>
 </context>
 <context>
@@ -3019,44 +3016,33 @@ Tokeny vyprší: %2</translation>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>cs</translation>
+        <translation>uk</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
-
-+ %n další kanál.</numerusform><numerusform>
-
-+ %n další kanály.</numerusform><numerusform>
-
-+ %n dalších kanálů.</numerusform><numerusform>
-
-+ %n dalších kanálů.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation>Vítá Vás %1.
-
-Prosím, zkontrolujte novinky kliknutím
-na tuto bublinu.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation>Načíst úvodní sadu kanálů</translation>
+        <translation>Завантажити початковий набір підписок</translation>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -3064,39 +3050,35 @@ na tuto bublinu.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation>Tento účet nabízí integraci s Tiny Tiny RSS.
-
-Tiny Tiny RSS je open source čtečka kanálů založená na webových technologiích. Umožňuje vám číst kanály odkudkoliv, ale zároveň vám dopřeje komfort desktopové aplikace.
-
-Je vyžadování verze API minimálně %1.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Standardní online kanály (RSS/RDF/ATOM)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
-        <translation>Tento účet nabízí integraci se standardními RSS/RDF/ATOM kanály.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation>Aplikace &quot;News&quot; je RSS/Atom agregátor. Je součástí balíku Nextcloud. Plugin implementuje %1 rozhraní.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Nová verze k dispozici</translation>
+        <translation>Доступна оновлена версія</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation>Klikněte na bublinu pro více informací.</translation>
+        <translation>Натисніть бульбашку щоб отримати більше інформації</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation>Reprezentace externího nástroje není správná.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation>Integrace Inoreaderu.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
@@ -3107,23 +3089,23 @@ Je vyžadování verze API minimálně %1.</translation>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation>Koš</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>Koš obsahuje všechny smazané zprávy ze všech kanálů.</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n smazaná zpráva.</numerusform><numerusform>%n smazané zprávy.</numerusform><numerusform>%n smazaných zpráv.</numerusform><numerusform>%n smazaných zpráv.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation>Obnovit koš</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation>Vysypat koš</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3131,150 +3113,148 @@ Je vyžadování verze API minimálně %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Очистити пошукову фразу</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Текст для пошуку</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Знайти попереднє входження</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Знайти наступне входження</translation>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
         <source>External web browser</source>
-        <translation>Externí webový prohlížeč</translation>
+        <translation>Зовнішній браузер</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pokud bude nezaškrtnuto, pak se použije výchozí systémový webový prohlížeč.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation>Použít vlastní webový prohlížeč</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation>Spouštěcí soubor</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation>Spouštěcí soubor prohlžeče webu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation>&amp;Procházet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation>Parametry spouštěče</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation>Parametry spouštěče</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation>Použít typické argumenty pro</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select browser</source>
-        <translation>Zvolte prohlížeč</translation>
+        <translation>Вибрати браузер</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>Mějte na vědomí, že &quot;%1&quot; (bez uvozovek) je zástupný symbol pro URL dané zprávy.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation>Externí e-mailový klient</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation>Použít vlastní e-mailový klient</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation>Spustitelný soubor e-mailového klienta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation>Spustitelný soubor e-mailového klienta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select client</source>
-        <translation>Zvolit klienta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation>Placeholdery:
- • %1 - název vybrané zprávy,
- • %2 - tělo vybrané zprávy.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation>Typ</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation>Server</translation>
+        <translation>Хост</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation>Webový název IP adresa proxy serveru</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>Порт</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation>Vaše uživatelské jméno pro autentifikaci</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation>Vaše heslo pro autentifikaci</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display password</source>
-        <translation>Zobrazit heslo</translation>
+        <translation>Показувати пароль</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Tato nastavení se projeví pouze na nově vytvořených spojeních.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation>Zvolit spouštěč webového externího prohlížeče</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Executables (*)</source>
@@ -3283,98 +3263,98 @@ Je vyžadování verze API minimálně %1.</translation>
 File filter for external e-mail selection dialog.
 ----------
 File filter for external tool selection dialog.</extracomment>
-        <translation>Spustitelné soubory (*)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation>Spouštěče (*.*)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation>Zvolit spouštěcí soubor e-mailového klienta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation>Opera 12 nebo starší</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation>Mozilla Thunderbird</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No proxy</source>
-        <translation>Bez proxy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>System proxy</source>
-        <translation>Systémová proxy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Socks5</source>
-        <translation>Socks5</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Http</source>
-        <translation>Http</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Webový prohlížeč &amp; e-mail &amp; proxy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation>Odkazy z jednoduchého interního prohlížeče vždy otevírat v externím webovém prohlížeči.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External tools</source>
-        <translation>Externá nástroje pro zprávy</translation>
+        <translation>Зовнішні інструменти</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation>Na této stránce si můžete nakonfigurovat seznam externích nástrojů pro otevírání URL ze zpráv.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation>Přidat ext. nástroj</translation>
+        <translation>Додати зовнішній інструмент</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation>Smazat vybraný ext. nástroj</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Executable</source>
-        <translation>Spouštěč</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Parameters</source>
-        <translation>Parametry</translation>
+        <translation>Параметри</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation>Vybrat externí nástroj</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation>Zadat parametry ext. nástroje</translation>
+        <translation>Редагувати параметри</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation>Zadejte (volitelné) parametry oddělené jednou mezerou, které budou předány nástroji při otevírání URL adres.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>VAROVÁNÍ: Mějte na paměti, že přepnutí z jednoho databázového backendu na jiný neprovede zkopírování dat mezi těmito backendy.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Database driver</source>
-        <translation>Datbázový ovladač</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation>Použít paměťovou datábázi jako pracovní datové uložiště</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -3388,223 +3368,213 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation>Použití paměťové databáze má hned několik výhod a nevýhod. Před povolením této funkce se ujistětě, že se s nimi seznámíte. Výhody:
-&lt;ul&gt;
-&lt;li&gt;vyšší rychlost při manipulaci se zprávami a kanály (obzvláště, pokud je zpráv hodně),&lt;/li&gt;
-&lt;li&gt;celá databáze je uložená v RAM, tedy pevný disk může více odpočívat.&lt;/li&gt;
-&lt;/ul&gt;
-Nevýhody:
-&lt;ul&gt;
-&lt;li&gt;pokud aplikace zhavaruje, tak Vaše změny z posledního sezení budou ztraceny,&lt;/li&gt;
-&lt;li&gt;start a vypnutí aplikace může trvat o něco déle (max. 2 vteřiny).&lt;/li&gt;
-&lt;/ul&gt;
-Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hostname</source>
-        <translation>Hostitel</translation>
+        <translation>Ім&apos;я системи</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>Порт</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation>Otestovat</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Mějte na paměti, že rychlost a latence použitého MySQL serveru těžce ovlivňuje svižnost aplikace. Použití pomalého databázového spojení může vést ke špatnému výkonu aplikace např. při prohlížení zpráv.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation>&amp;Zobrazit heslo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Working database</source>
-        <translation>Pracovní databáze</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation>Hostitel je prázdný.</translation>
+        <translation>Ім&apos;я систем пусте</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Hostitel je nejspíš v pořádku.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Uživatelské jméno je prázdné.</translation>
+        <translation>Пусте ім&apos;я користувача</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation>Uživatelské jméno se jeví být v pořádku.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Heslo je prázdné.</translation>
+        <translation>Пустий пароль</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation>Heslo vypadá dobře.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation>Pracovní databáze je prázdná.</translation>
+        <translation>Пуста робоча база</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation>Pracovní databáze je ok.</translation>
+        <translation>Робоча база доступна.</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation>Test připojení doposud nespuštěn.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation>Doposud nebyl probeden žádny test spojení.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation>Hostitel Vašeho MySQL serveru</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation>Uživatelské jméno</translation>
+        <translation>Ім&apos;я користувача для підключення</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation>Heslo</translation>
+        <translation>Пароль користувача</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation>Pracovní databáze, ke které máte plný přístup.</translation>
+        <translation>Робоча база до якої ви маєте повний доступ</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation>Uložiště dat</translation>
+        <translation>Сховище даних</translation>
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation>Zapnutí této možnosti udělá ukládání zpráv rychlejším, ale mohou se při tom občas objevit nějaké problémy.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation>Použít databázové transakce při ukládání zpráv</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation>Při začátku stahování otevírat správce stahování</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation>Cílový adresář pro stahované soubory</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation>Ptát se u každého stahovaného souboru</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation>Uložit všechny stahované soubory do</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation>Cílový adresář, kam jsou ukládány všechny stahované soubory</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation>&amp;Procházet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation>Zvolit cílový adresář pro uložení stahovaných souborů</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Stahování</translation>
+        <translation>&amp;Завантаження</translation>
     </message>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Kanály &amp;&amp; kategorie</translation>
+        <translation>Потоки та категорії</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation>Aktualizovat všechny kanály po startu aplikace</translation>
+        <translation>Оновлювати усі потоки при старті програми</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation>Auto-aktualizovat všechny kanály každých</translation>
+        <translation>Оновлювати усі потоки кожні</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation>Časový limit stažení souboru kanálu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation>Tento časový limit označuje čas, který si stahovací komponenta vyhradí pro získání souboru každého kanálu. Pokud tento čas vyprší a soubor doposud nebyl získán, tak se aktualizace kanálu ukončí a přejde se na další kanál.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> ms</source>
-        <translation>ms</translation>
+        <translation>мс</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation>Formát čítače zpráv v seznamu kanálů</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Zadejte formát pro čítače zpráv, které jsou zobrazeny u každého kanálu/kategorie. Použijte zástupné symboly &quot;%all&quot; a &quot;%unread&quot;, které představují aktuální hodnoty čítačů.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Zprávy</translation>
+        <translation>Повідомлення</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Vymazat všechny přečtené zprávy, když se aplikace vypíná</translation>
+        <translation>Видаляти усі повідомлення з усіх потоків при виході з програми</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Držet vybranou zprávu uprostřed seznamu zpráv při jejich procházení</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>Použít vlastní format datumu (přepíše formát načtený z lokalizace)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation>&amp;Změnit písmo</translation>
+        <translation>Змінити шрифт</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation>Náhled písma</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation>Kanály &amp; zprávy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation>Výška obrázkových příloh</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation>Povolit notifikace o startu automatického stažení nových zpráv</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
@@ -3639,114 +3609,114 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <name>SettingsGeneral</name>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation>Spustit %1 při spuštění operačního systému</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation>Kontrolovat aktualizace po startu programu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Vymazat odpadní Trolltech klíč v registru (HKCU\Software\Trolltech při ukončení aplikace (Používejte na vlastní riziko!)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation> (na této platformě nepodporováno)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>General</source>
-        <translation>Obecné</translation>
+        <translation>Загальні</translation>
     </message>
 </context>
 <context>
     <name>SettingsGui</name>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation>Ikony &amp;&amp; skiny</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation>Téma ikon</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation>Notifikační oblast</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation>Notifikační ikona</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation>Skrýt hlavní okno při jeho minimalizaci</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation>Spouštět aplikaci skrytou</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation>Povolit vyskakovací notifikační bubliny</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>Panely</translation>
+        <translation>Вкладинки</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation>Otevírat nové panely poklepáním na panelový pruh</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation>Skrýt přepínač tabů, je-li viditelný pouze jeden tab</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation>Zavírat panely pomocí</translation>
+        <translation>Закривати вкладки</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation>Dvojklik pravého tlačítka myši</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation>Prostředního tlačítka myši</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation>Nástrojové lišty</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation>Lišta seznamu kanálů</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation>Lišta seznamu zpráv</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation>Stavový pruh</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation>Styl nástrojové lišty</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation>Zvolte lištu, kterou chcete upravit</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Name</source>
-        <translation>Název</translation>
+        <translation>Ім&apos;я</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Verze</translation>
+        <translation>Версія</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Autor</translation>
+        <translation>Автор</translation>
     </message>
     <message>
         <source>E-mail</source>
@@ -3754,99 +3724,99 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation>(Tray ikona není dostupná.)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>žádné systémové téma nebo ikony</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon only</source>
-        <translation>Pouze ikony</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Text only</source>
-        <translation>Pouze texty</translation>
+        <translation>Тільки текст</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation>Texty vedle ikon</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation>Texty pod ikonami</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation>Podle nastavení systému</translation>
+        <translation>Відповідати стилю ОС</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation>Uživatelské rozhraní</translation>
+        <translation>Інтерфейс користувача</translation>
     </message>
     <message>
         <source>Style</source>
-        <translation>Styl</translation>
+        <translation>Стиль</translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation>Téma</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
     <message>
         <source>Language</source>
-        <translation>Lokalizace</translation>
+        <translation>Мова</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation>Kód</translation>
+        <translation>Код</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Autor</translation>
+        <translation>Автор</translation>
     </message>
 </context>
 <context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation>Klávesové zkratky</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation>Obnovit původní zkratku.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation>Vymazat současnou zkratku.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation>Klikněte a stiskněte novou zkratku.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation>Tato stránka byla zablokována AdBlockem</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation>Metadata nezískána</translation>
+        <translation>Метадані не завантажено</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation>Metadata nestažena, protože: %1.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>
@@ -3860,89 +3830,89 @@ Type: %3</source>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Toto je účet pro standardní RSS/RDF/ATOM kanály.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation>Chcete načíst úvodní set kanálů?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation>Chyba při načítání úvodních kanálů</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Načíst metadata</translation>
+        <translation>Завантажити метадані</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Exportovat kanály</translation>
+        <translation>Експортувати підписки</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importovat kanály</translation>
+        <translation>Импортувати підписки</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation>Tento nový účet doposud neobsahuje žádné kanály, chcete nyní přidat výchozí sadu kanálů?</translation>
+        <translation>Цей новий акаунт не містить жодних потоків. Зараз ви можете додати набір потоків за замовченням</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Nelze přidat položku</translation>
+        <translation>Неможливо додати елемент</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
+        <translation>Неможливо додати потік, тому що триває інша важлива операція.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Nelze přidat kategorii</translation>
+        <translation>Неможливо додати категорію</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation>Nelze přidat kategorii, protože probíhá jiná kritická operace.</translation>
+        <translation>Неможливо додати катгорію, тому що триває інша важлива операція.</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation>Import byl úspěšný, ale některé kanály či kategorie nebyly importovány kvůli chybě.</translation>
+        <translation>Імпорт завершено успішно, проте деякі потоки/категорії не було імопртовано через помилку.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation>Import byl úspěšný.</translation>
+        <translation>Імпортування успішно закінчено.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation>Průběhový pruh aktualizace kanálů</translation>
+        <translation>Прогрес індикатор оновлення потоку</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation>Popisek průběhového pruhu aktualizace kanálů</translation>
+        <translation>Ярлик оновлення потоку</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation>Průběhový pruh stahování souboru</translation>
+        <translation>Прогрес індикатор завантаження файлу</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation>Popisek stahování souboru</translation>
+        <translation>Ярлик завантаження файлу</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Mezera</translation>
+        <translation>Розподілювач панелі інструментів</translation>
     </message>
 </context>
 <context>
     <name>SystemFactory</name>
     <message>
         <source>anonymous</source>
-        <translation>anonym</translation>
+        <translation>аноним</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation>bajtů</translation>
+        <translation>байт</translation>
     </message>
 </context>
 <context>
@@ -3951,305 +3921,305 @@ Type: %3</source>
         <source>%1
 Unread news: %2</source>
         <translation>%1
-Nepřečtené zprávy: %2</translation>
+Непрочитаних новин: %2</translation>
     </message>
 </context>
 <context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation>Zavřít tento panel.</translation>
+        <translation>Закрити цю вкладку.</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation>Zavřít panel</translation>
+        <translation>Закрити вкладку</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation>Kanály</translation>
+        <translation>Підписки</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation>Procházet kanály a zprávy</translation>
+        <translation>Перегляд ваших потоків та повідомлень</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation>ZObrazí hlavní menu.</translation>
+        <translation>Відображати головне меню</translation>
     </message>
     <message>
         <source>Main menu</source>
-        <translation>Hlavní menu</translation>
+        <translation>Головне меню</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Stahování</translation>
+        <translation>Завантаження</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Novinový náhled</translation>
+        <translation>Газетний вигляд</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <translation>Webový prohlížeč</translation>
+        <translation>Браузер</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n hodina</numerusform><numerusform>%n hodiny</numerusform><numerusform>%n hodin</numerusform><numerusform>%n hodin</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuta</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform><numerusform>%n minut</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation> a </translation>
+        <translation>та</translation>
     </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation>Aktivované akce</translation>
+        <translation>Активовані дії</translation>
     </message>
     <message>
         <source>Available actions</source>
-        <translation>Dostupné akce</translation>
+        <translation>Доступні дії</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation>Vložit oddělovač</translation>
+        <translation>Вставити росподілювач</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation>Vložit mezeru</translation>
+        <translation>Вставити простір</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation>Oddělovač</translation>
+        <translation>Розподілювач</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Mezera</translation>
+        <translation>Розподілювач панелі інструментів</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation>Přesunout akci nahoru</translation>
+        <translation>Пересунути дію вище</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation>Přesunout akci dolů</translation>
+        <translation>Пересунути дію нижче</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation>Aktivovat zvolenou akci</translation>
+        <translation>Додати обрані дії</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation>Deaktivovat zvolenou akci</translation>
+        <translation>Видалити обрані дії</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation>Deaktivovat všechny akce</translation>
+        <translation>Видалити всі дії</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation>Vyresetovat</translation>
+        <translation>Скинути панель інструментів</translation>
     </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation>Nejdříve ukončete otevřené modální dialogy.</translation>
+        <translation>Сперше закрийте відкрити модальні діалогові вікна.</translation>
     </message>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation>Synchronizovat</translation>
+        <translation>Синхронізувати</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Nelze přidat položku</translation>
+        <translation>Неможливо додати елемент</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
+        <translation>Неможливо додати потік, тому що триває інша важлива операція.</translation>
     </message>
     <message>
         <source>Username: %1
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation>Uživ. jméno: %1
-Server: %2
-Poslední chyba: %3
-Poslední čas přihlášení: %4</translation>
+        <translation>Ім&apos;я користувача: %1
+Сервер: %2
+Остання помилка: %3
+Останній вхід: %4</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation>Navigační panel</translation>
+        <translation>Навігаційна панель</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>Bez názvu</translation>
+        <translation>Немає назви</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Zpět</translation>
+        <translation>Назад</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation>Jít zpět.</translation>
+        <translation>Перейти назад.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation>Vpřed</translation>
+        <translation>Вперед</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation>Jít vpřed.</translation>
+        <translation>Перейти вперед.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation>Obnovit</translation>
+        <translation>Перезавантажити</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Obnovit aktuální webovou stránku</translation>
+        <translation>Перезавнтажити поточну web сторінку</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Zastavit</translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation>Zastavit načítání aktuální webové stránky.</translation>
+        <translation>Зупинити завантаження web сторінки.</translation>
     </message>
 </context>
 <context>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation>Nastavení webového enginu</translation>
+        <translation>Налаштування Web-движку</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation>Načítat obrázky</translation>
+        <translation>Автоматичне завантаження зображень</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation>JS povolen</translation>
+        <translation>JavaScript ввімкнено</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation>JS může otevírat popup okna</translation>
+        <translation>JavaScript может створювати спливаючі вікна</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation>JS může přistupovat ke schránce</translation>
+        <translation>JavaScript має доступ до буферу обміну</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation>Odkazy mohou získat focus</translation>
+        <translation>Гіперпосилання можуть отримувати фокус</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation>Lokální uložiště povoleno</translation>
+        <translation>Локальне сховище активовано</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation>Lokální obsah může načítat vzdálené URL</translation>
+        <translation>Локальний контент має доступ до віддалених URL</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation>XSS auditing povolen</translation>
+        <translation>Активовано аудіт XSS</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation>Částečná navigace povolena</translation>
+        <translation>Активовано просторову навігацію</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation>Lokální obsah může přistupovat k lokálním souborům</translation>
+        <translation>Локальний контент має доступ до локальних файлів</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation>Auditing odkazů povolen</translation>
+        <translation>Активовано аудит гіперпосилань</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation>Animovat skrolování</translation>
+        <translation>Анімація прокрутки</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation>Chybové stránky povoleny</translation>
+        <translation>Активовано сторінки помилок</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation>Pluginy povoleny</translation>
+        <translation>Плагіни активовано</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation>Fullscreen povolen</translation>
+        <translation>На повний екран активовано</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation>Zachycení obrazovky povoleno</translation>
+        <translation>Захоплення екрану активовано</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation>WebGL povoleno</translation>
+        <translation>Ввімкнути WebGL</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation>Akcelerovat 2D plátno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation>Tisknout pozadí elementů</translation>
+        <translation>Роздруковувати фон елементу</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation>Povolit běh nezabezpečeného obsahu</translation>
+        <translation>Дозволити виконання небезпечного вмісту</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation>Povolit geolokaci nezabezpečeného původu</translation>
+        <translation>Дозволити геолокацію у небезпечних витоках</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation>Příloha</translation>
+        <translation>Прикріплення</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Napsal </translation>
+        <translation>Автор</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Novinový náhled</translation>
+        <translation>Газетний вигляд</translation>
     </message>
     <message>
         <source>unknown author</source>
-        <translation>neznámý autor</translation>
+        <translation>невідомий автор</translation>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Відкрити посилання у зовнішньому браузері</translation>
     </message>
 </context>
 </TS>

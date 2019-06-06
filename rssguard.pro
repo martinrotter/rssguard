@@ -51,7 +51,7 @@ APP_REVERSE_NAME              = "com.github.rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2019 $$APP_AUTHOR"
-APP_VERSION                   = "3.5.9"
+APP_VERSION                   = "3.5.10"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
 APP_URL                       = "https://github.com/martinrotter/rssguard"
@@ -621,6 +621,7 @@ TRANSLATIONS_WO_QT += $$PWD/localization/rssguard_cs.ts \
                       $$PWD/localization/rssguard_pl.ts \
                       $$PWD/localization/rssguard_pt.ts \
                       $$PWD/localization/rssguard_sv.ts \
+                      $$PWD/localization/rssguard_uk.ts \
                       $$PWD/localization/rssguard_zh.ts
 
 TRANSLATIONS += $$TRANSLATIONS_WO_QT \
@@ -636,6 +637,7 @@ TRANSLATIONS += $$TRANSLATIONS_WO_QT \
                 $$PWD/localization/qtbase_pl.ts \
                 $$PWD/localization/qtbase_pt.ts \
                 $$PWD/localization/qtbase_sv.ts \
+                $$PWD/localization/qtbase_uk.ts \
                 $$PWD/localization/qtbase_zh.ts
 
 load(uic)
