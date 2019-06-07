@@ -3612,23 +3612,23 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation>Teckensnitt för flödeslista</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Visa platshållare för att indikera bilder</translation>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"/>
+        <translation>Teckensnitt för meddelanden</translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Teckensnitt för intern meddelandehanterare</translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Välj nytt teckensnitt</translation>
     </message>
 </context>
 <context>

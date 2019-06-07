@@ -3612,23 +3612,23 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation>Fonte da lista de feeds</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Exibir espaços em branco para indicar o local de imagens</translation>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"/>
+        <translation>Fonte da lista de mensagens</translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Fonte do navegador interno de mensagens</translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Selecionar nova fonte</translation>
     </message>
 </context>
 <context>
