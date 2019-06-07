@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS Feeds (
   username        TEXT,
   password        TEXT,
   update_type     INTEGER(1)    NOT NULL CHECK (update_type >= 0),
-  update_interval INTEGER       NOT NULL DEFAULT 15 CHECK (update_interval >= 5),
+  update_interval INTEGER       NOT NULL DEFAULT 15 CHECK (update_interval >= 3),
   type            INTEGER,
   account_id      INTEGER       NOT NULL,
   custom_id       TEXT,

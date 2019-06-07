@@ -168,8 +168,11 @@ bool DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
   return q.exec();
 }
 
-QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db, const QString& custom_id, int account_id,
-                                                                            bool including_total_counts, bool* ok) {
+QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
+                                                                            const QString& custom_id,
+                                                                            int account_id,
+                                                                            bool including_total_counts,
+                                                                            bool* ok) {
   QMap<QString, QPair<int, int>> counts;
   QSqlQuery q(db);
 
@@ -331,7 +334,8 @@ int DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_
   }
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id, bool* ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
+                                                            bool* ok) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -1268,7 +1272,14 @@ bool DatabaseQueries::editFeed(const QSqlDatabase& db, int parent_id, int feed_i
   q.bindValue(QSL(":update_interval"), auto_update_interval);
   q.bindValue(QSL(":type"), feed_format);
   q.bindValue(QSL(":id"), feed_id);
-  return q.exec();
+
+  bool suc = q.exec();
+
+  if (!suc) {
+    qCritical("There was error when editing feed: %s", qPrintable(q.lastError().text()));
+  }
+
+  return suc;
 }
 
 bool DatabaseQueries::editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
