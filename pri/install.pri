@@ -175,21 +175,20 @@ win32 {
   lib.path = $$PREFIX
   lib.CONFIG = no_check_exist
 
-
-  qt_dlls_root.files = resources/binaries/windows/qt5-msvc2017/*.*
+  qt_dlls_root.files = ../../resources/binaries/windows/qt5-msvc2017/*.*
   qt_dlls_root.path = $$quote($$PREFIX/)
 
-  qt_dlls_plugins.files = resources/binaries/windows/qt5-msvc2017/*
+  qt_dlls_plugins.files = ../../resources/binaries/windows/qt5-msvc2017/*
   qt_dlls_plugins.path = $$quote($$PREFIX/)
 
   INSTALLS += target lib qt_dlls_root qt_dlls_plugins
 
   equals(USE_WEBENGINE, true) {
     # Copy extra resource files for QtWebEngine.
-    qtwebengine_dlls.files = resources/binaries/windows/qt5-msvc2017-webengine/*
+    qtwebengine_dlls.files = ../../resources/binaries/windows/qt5-msvc2017-webengine/*
     qtwebengine_dlls.path = $$quote($$PREFIX/)
 
-    qtwebengine.files = resources/binaries/windows/qt5-msvc2017-webengine/*.*
+    qtwebengine.files = ../../resources/binaries/windows/qt5-msvc2017-webengine/*.*
     qtwebengine.path = $$quote($$PREFIX/)
 
     INSTALLS += qtwebengine_dlls qtwebengine
@@ -202,17 +201,17 @@ win32 {
 unix:!mac:!android {
   target.path = $$PREFIX/bin
 
-  desktop_file.files = resources/desktop/$${APP_REVERSE_NAME}.desktop
+  desktop_file.files = ../../resources/desktop/$${APP_REVERSE_NAME}.desktop
   desktop_file.path = $$quote($$PREFIX/share/applications/)
 
-  appdata.files = resources/desktop/$${APP_REVERSE_NAME}.appdata.xml
+  appdata.files = ../../resources/desktop/$${APP_REVERSE_NAME}.appdata.xml
   appdata.path = $$quote($$PREFIX/share/metainfo/)
 
   lib.files = $$OUT_PWD/../librssguard/librssguard.so
   lib.path = $$quote($$PREFIX/lib/)
   lib.CONFIG = no_check_exist
 
-  desktop_icon.files = resources/graphics/$${TARGET}.png
+  desktop_icon.files = ../../resources/graphics/$${TARGET}.png
   desktop_icon.path = $$quote($$PREFIX/share/icons/hicolor/512x512/apps/)
 
   INSTALLS += target lib desktop_file desktop_icon appdata
@@ -223,7 +222,7 @@ unix:!mac:!android {
 mac {
   IDENTIFIER = $$APP_REVERSE_NAME
   CONFIG -= app_bundle
-  ICON = resources/macosx/$${TARGET}.icns
+  ICON = ../../resources/macosx/$${TARGET}.icns
   QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
   LIBS += -framework AppKit
 
@@ -236,11 +235,11 @@ mac {
   lib.CONFIG = no_check_exist
 
   # Install app icon.
-  icns_icon.files = resources/macosx/$${TARGET}.icns
+  icns_icon.files = ../../resources/macosx/$${TARGET}.icns
   icns_icon.path = $$quote($$PREFIX/Contents/Resources/)
 
   # Install Info.plist.
-  info_plist.files = resources/macosx/Info.plist.in
+  info_plist.files = ../../resources/macosx/Info.plist.in
   info_plist.path  = $$quote($$PREFIX/Contents/)
 
   # Process the just installed Info.plist.
