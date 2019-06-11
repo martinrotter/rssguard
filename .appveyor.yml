@@ -43,6 +43,7 @@ build_script:
   - lrelease.exe -compress C:\rssguard\rssguard.pro
   - qmake.exe C:\rssguard "%qmake_args%"
   - nmake
+  - cd src\rssguard
   - nmake windows_all
 
 on_success:

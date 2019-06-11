@@ -1,6 +1,8 @@
 ls
 curl -v
 
+cd rssguard-build\src\rssguard
+
 $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
 chcp 65001
 $OutputEncoding
