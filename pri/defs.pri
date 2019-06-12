@@ -20,7 +20,7 @@ DISTFILES += ../../resources/scripts/uncrustify/uncrustify.cfg
 CODECFORTR  = UTF-8
 CODECFORSRC = UTF-8
 
-exists(.git) {
+exists($PWD/../../.git) {
   APP_REVISION = $$system(git rev-parse --short HEAD)
 }
 
