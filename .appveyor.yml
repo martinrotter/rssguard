@@ -35,7 +35,7 @@ deploy:
 build_script:
   - git submodule update --init --recursive
   - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"'
-  - ps: C:\textosaurus\resources\scripts\.appveyor-build-win.ps1
+  - ps: .\..\resources\scripts\.appveyor-build-win.ps1
 
 on_success:
   - ps: .\..\resources\scripts\.appveyor-install-win.ps1
