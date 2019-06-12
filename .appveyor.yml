@@ -34,17 +34,8 @@ deploy:
 
 build_script:
   - git submodule update --init --recursive
-  - set "QT_PLUGIN_PATH=%QTDIR%\plugins"
-  - set "PATH=%QTDIR%\bin;%PATH%"
-  - '%COMPILERBAT%'
-  - dir
-  - mkdir rssguard-build
-  - cd rssguard-build
-  - lrelease.exe -compress C:\rssguard\rssguard.pro
-  - qmake.exe C:\rssguard "%qmake_args%"
-  - nmake
-  - cd src\rssguard
-  - nmake windows_all
+  - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"'
+  - ps: C:\textosaurus\resources\scripts\.appveyor-build-win.ps1
 
 on_success:
   - ps: .\..\resources\scripts\.appveyor-install-win.ps1

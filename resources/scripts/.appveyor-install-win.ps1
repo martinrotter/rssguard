@@ -1,13 +1,9 @@
 ls
-curl -v
-
-cd rssguard-build\src\rssguard
+cd "rssguard-build\src\rssguard"
 
 $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
-chcp 65001
-$OutputEncoding
 
-git clone -q --depth=1 https://github.com/martinrotter/rssguard.wiki.git C:\rssguard-wiki
+git clone -q --depth=1 https://github.com/martinrotter/rssguard.wiki.git "C:\rssguard-wiki"
 git config --global credential.helper store
 Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
 git config --global user.email "rotter.martinos@gmail.com"
@@ -42,7 +38,7 @@ $wikiline = "| Windows | $date | [$git_revision](https://github.com/martinrotter
 (Get-Content $wikifile) -replace $regex, $wikiline | Set-Content -Encoding "utf8" $wikifile
 
 
-cd C:\rssguard-wiki
+cd "C:\rssguard-wiki"
 git add *.*
 git commit -m "New files."
 git pull origin master
