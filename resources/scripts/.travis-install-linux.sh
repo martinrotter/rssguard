@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls
+ls -lha
 
 # Setup Qt build environment.
 source /opt/qt512/bin/qt512-env.sh
@@ -15,6 +15,10 @@ make install
 # Obtain linuxdeployqt.
 wget -c https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
 chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
+
+ls -lha
+
+ls -lha "./AppDir/usr/share/applications/"
 
 # Create AppImage.
 unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
