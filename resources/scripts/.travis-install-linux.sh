@@ -9,7 +9,7 @@ mkdir rssguard-build && cd rssguard-build
 # Build application.
 #lrelease -compress ../rssguard.pro
 qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
-make -j
+make
 make install
 cd src/rssguard
 
