@@ -3037,16 +3037,6 @@ Login tokens expiration: %2</source>
 + %n fuentes restantes.</numerusform></translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Bienvenido a %1.
-
-Por favor, consulte las NUEVAS funciones incluidas en esta
-versión pulsando en esta notificación emergente..</translation>
-    </message>
-    <message>
         <source>Load initial set of feeds</source>
         <translation>Cargar conjunto inicial de fuentes</translation>
     </message>

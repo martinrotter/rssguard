@@ -1257,7 +1257,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Zobrazit heslo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -1265,15 +1265,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Otestovat nastavení</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Vynutit aktualizace kanálů na straně serveru.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Zapnutí této položky může výrazně zpomalit aktualizaci kanálů.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
@@ -3043,16 +3043,6 @@ Tokeny vyprší: %2</translation>
 + %n dalších kanálů.</numerusform><numerusform>
 
 + %n dalších kanálů.</numerusform></translation>
-    </message>
-    <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Vítá Vás %1.
-
-Prosím, zkontrolujte novinky kliknutím
-na tuto bublinu.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<skin version="0.20">
+<skin version="0.21">
   <author>
     <name>Martin Rotter</name>
     <email>rotter.martinos@gmail.com</email>
   </author>
+  <palette>
+    <color key="1">#4891F0</color>
+  </palette>
 </skin>

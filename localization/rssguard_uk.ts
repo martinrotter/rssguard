@@ -1253,7 +1253,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Показувати пароль</translation>
+        <translation>Показати пароль</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -3032,13 +3032,6 @@ Login tokens expiration: %2</translation>
 
 + %n other feeds.</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Load initial set of feeds</source>

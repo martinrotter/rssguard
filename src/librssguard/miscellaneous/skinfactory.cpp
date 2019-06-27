@@ -11,8 +11,6 @@
 
 SkinFactory::SkinFactory(QObject* parent) : QObject(parent) {}
 
-SkinFactory::~SkinFactory() = default;
-
 void SkinFactory::loadCurrentSkin() {
   QList<QString> skin_names_to_try;
   skin_names_to_try.append(selectedSkinName());
@@ -110,6 +108,23 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       // Obtain other information.
       skin.m_baseName = skin_name;
 
+      // Obtain color palette.
+      QHash<Skin::PaletteColors, QColor> palette;
+      QDomNodeList colors_of_palette = skin_node.namedItem(QSL("palette")).toElement().elementsByTagName(QSL("color"));
+
+      for (int i = 0; i < colors_of_palette.size(); i++) {
+        QDomElement elem_clr = colors_of_palette.item(i).toElement();
+
+        Skin::PaletteColors key = Skin::PaletteColors(elem_clr.attribute(QSL("key")).toInt());
+        QColor value = elem_clr.text();
+
+        if (value.isValid()) {
+          palette.insert(key, value);
+        }
+      }
+
+      skin.m_colorPalette = palette;
+
       // Free resources.
       skin_file.close();
       skin_file.deleteLater();
@@ -169,4 +184,8 @@ QList<Skin> SkinFactory::installedSkins() const {
   }
 
   return skins;
+}
+
+uint qHash(const Skin::PaletteColors& key) {
+  return uint(key);
 }

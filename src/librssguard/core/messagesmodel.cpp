@@ -8,6 +8,7 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
@@ -283,14 +284,14 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
           QVariant dta = m_cache->containsData(idx_important.row()) ? m_cache->data(idx_important) : QSqlQueryModel::data(idx_important);
 
-          return dta.toInt() == 1 ? QColor(Qt::blue) : QVariant();
+          return dta.toInt() == 1 ? qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight] : QVariant();
         }
 
         case HighlightUnread: {
           QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
           QVariant dta = m_cache->containsData(idx_read.row()) ? m_cache->data(idx_read) : QSqlQueryModel::data(idx_read);
 
-          return dta.toInt() == 0 ? QColor(Qt::blue) : QVariant();
+          return dta.toInt() == 0 ? qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight] : QVariant();
         }
 
         case NoHighlighting:

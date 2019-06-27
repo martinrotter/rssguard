@@ -1267,7 +1267,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard</translation>
+        <translation>Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -3039,16 +3039,6 @@ Expiração dos tokens de login: %2</translation>
 + %n outro feed.</numerusform><numerusform>
 
 + %n outros feeds.</numerusform></translation>
-    </message>
-    <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Bem-vindo ao %1.
-
-Por favor, veja o NOVO conteúdo incluído nesta
-versão, clicando nesta notificação popup.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>

@@ -5,10 +5,16 @@
 
 #include <QObject>
 
+#include <QColor>
+#include <QHash>
 #include <QMetaType>
 #include <QStringList>
 
 struct RSSGUARD_DLLSPEC Skin {
+  enum class PaletteColors {
+    Highlight = 1
+  };
+
   QString m_baseName;
   QString m_visibleName;
   QString m_author;
@@ -20,7 +26,11 @@ struct RSSGUARD_DLLSPEC Skin {
   QString m_enclosureImageMarkup;
   QString m_layoutMarkup;
   QString m_enclosureMarkup;
+
+  QHash<Skin::PaletteColors, QColor> m_colorPalette;
 };
+
+uint qHash(const Skin::PaletteColors& key);
 
 Q_DECLARE_METATYPE(Skin)
 
@@ -28,19 +38,12 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
   Q_OBJECT
 
   public:
-
-    // Constructor.
     explicit SkinFactory(QObject* parent = nullptr);
-
-    // Destructor.
-    virtual ~SkinFactory();
+    virtual ~SkinFactory() = default;
 
     // Loads skin name from settings and sets it as active.
     void loadCurrentSkin();
-
-    inline Skin currentSkin() const {
-      return m_currentSkin;
-    }
+    Skin currentSkin() const;
 
     // Returns the name of the skin, that should be activated
     // after application restart.
@@ -67,5 +70,9 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     // Holds name of the current skin.
     Skin m_currentSkin;
 };
+
+inline Skin SkinFactory::currentSkin() const {
+  return m_currentSkin;
+}
 
 #endif // SKINFACTORY_H

@@ -3039,16 +3039,6 @@ Login tokens expiration: %2</source>
 + %n andere feeds.</numerusform></translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Welkom bij %1.
-
-Check voor NIEUW materiaal in deze versie
-door te clicken op deze popup melding.</translation>
-    </message>
-    <message>
         <source>Load initial set of feeds</source>
         <translation>Laad eerste set van de feeds</translation>
     </message>

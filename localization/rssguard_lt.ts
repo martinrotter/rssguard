@@ -1257,7 +1257,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Rodyti slaptažodį</translation>
+        <translation>Rodyti slaptažodį </translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -1265,15 +1265,15 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Išbandyti sąranką</translation>
+        <translation>&amp;Išbandyti sąranką </translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard</translation>
+        <translation>Priverstinai vykdyti serverio pusės atnaujinimus, kuomet atnaujinama iš RSS Guard.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką.</translation>
+        <translation>Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką. </translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
@@ -3047,16 +3047,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 + %n kitų žinučių.</numerusform></translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Sveiki atvykę į %1.
-
-Susipažinkite su NAUJOMIS šios
-versijos ypatybėmis, spusteldami šį pranešimą.</translation>
-    </message>
-    <message>
         <source>Load initial set of feeds</source>
         <translation>Įkelti pradinį kanalų rinkinį</translation>
     </message>
@@ -3618,23 +3608,23 @@ Vilkaduobės:
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation>Kanalų sąrašo šriftas</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Rodyti vietaženklius, siekiant nurodyti paveikslų vietas</translation>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"/>
+        <translation>Žinučių sąrašo šriftas</translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Vidinės žinučių naršyklės šriftas</translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkti naują šriftą</translation>
     </message>
 </context>
 <context>

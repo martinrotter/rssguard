@@ -1279,7 +1279,7 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show password </translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -1287,15 +1287,15 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Test setup </translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Force execution of server-side update when updating feeds from RSS Guard.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often. </translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
@@ -3059,16 +3059,6 @@ Login tokens expiration: %2</source>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>

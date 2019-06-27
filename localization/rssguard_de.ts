@@ -3034,16 +3034,6 @@ Ablauf des Login tokens: %2</translation>
         <translation><numerusform>+ %n anderer Feed.</numerusform><numerusform>+ %n andere Feeds.</numerusform></translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Willkommen bei %1.
-
-Bitte überprüfen Sie die in dieser Version enthaltene Neuerungen
-durch Klicken auf diese Benachrichtigung.</translation>
-    </message>
-    <message>
         <source>Load initial set of feeds</source>
         <translation>Zu Beginn standardmäßige Zusammenstellung von Feeds laden</translation>
     </message>

@@ -1261,15 +1261,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;测试设置</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>当从 RSS Guard 更新订阅时，强制执行服务器端更新</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>选择这个选项将导致订阅更新变得更慢，而且可能会经常超时。</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
@@ -3024,13 +3024,6 @@ Login tokens expiration: %2</source>
 
 + %n other feeds.</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Load initial set of feeds</source>

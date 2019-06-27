@@ -3032,16 +3032,6 @@ Login tokens expiration: %2</source>
         <translation><numerusform>+ %n feed lain.</numerusform></translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Selamat datang di %1.
-
-Silahkan, memeriksa hal BARU yang termasuk
-di versi ini dengan meng-klik popup notifikasi ini.</translation>
-    </message>
-    <message>
         <source>Load initial set of feeds</source>
         <translation>Memuat kumpulan awal dari feed</translation>
     </message>

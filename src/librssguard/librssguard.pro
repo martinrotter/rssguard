@@ -410,39 +410,10 @@ INCLUDEPATH +=  $$PWD/. \
                 $$PWD/gui/dialogs \
                 $$PWD/dynamic-shortcuts
 
-TRANSLATIONS_WO_QT += $$PWD/../../localization/rssguard_cs.ts \
-                      $$PWD/../../localization/rssguard_da.ts \
-                      $$PWD/../../localization/rssguard_de.ts \
-                      $$PWD/../../localization/rssguard_en.ts \
-                      $$PWD/../../localization/rssguard_es.ts \
-                      $$PWD/../../localization/rssguard_fr.ts \
-                      $$PWD/../../localization/rssguard_he.ts \
-                      $$PWD/../../localization/rssguard_id.ts \
-                      $$PWD/../../localization/rssguard_it.ts \
-                      $$PWD/../../localization/rssguard_ja.ts \
-                      $$PWD/../../localization/rssguard_lt.ts \
-                      $$PWD/../../localization/rssguard_nl.ts \
-                      $$PWD/../../localization/rssguard_pl.ts \
-                      $$PWD/../../localization/rssguard_pt.ts \
-                      $$PWD/../../localization/rssguard_sv.ts \
-                      $$PWD/../../localization/rssguard_uk.ts \
-                      $$PWD/../../localization/rssguard_zh.ts
+TRANSLATIONS_WO_QT += $$files($$PWD/../../localization/rssguard_*.ts, false)
 
 TRANSLATIONS += $$TRANSLATIONS_WO_QT \
-                $$PWD/../../localization/qtbase_cs.ts \
-                $$PWD/../../localization/qtbase_da.ts \
-                $$PWD/../../localization/qtbase_de.ts \
-                $$PWD/../../localization/qtbase_es.ts \
-                $$PWD/../../localization/qtbase_fr.ts \
-                $$PWD/../../localization/qtbase_he.ts \
-                $$PWD/../../localization/qtbase_it.ts \
-                $$PWD/../../localization/qtbase_ja.ts \
-                $$PWD/../../localization/qtbase_lt.ts \
-                $$PWD/../../localization/qtbase_pl.ts \
-                $$PWD/../../localization/qtbase_pt.ts \
-                $$PWD/../../localization/qtbase_sv.ts \
-                $$PWD/../../localization/qtbase_uk.ts \
-                $$PWD/../../localization/qtbase_zh.ts
+                $$files($$PWD/../../localization/qtbase_*.ts, false)
 
 load(uic)
 uic.commands -= -no-stringliteral

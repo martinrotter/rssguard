@@ -1267,7 +1267,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
+        <translation>Tvinga serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -3038,16 +3038,6 @@ Inloggningstoken upphör: %2</translation>
 + %n annat flöde.</numerusform><numerusform>
 
 + %n andra flöden.</numerusform></translation>
-    </message>
-    <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Välkommen till %1.
-
-Kolla in NYA grejer i den här versionen 
-genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
