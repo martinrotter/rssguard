@@ -11,14 +11,11 @@ mkdir rssguard-build && cd rssguard-build
 qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make
 make install
+cd src/rssguard
 
 # Obtain linuxdeployqt.
 wget -c https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
 chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
-
-ls -lha
-
-ls -lha "./AppDir/usr/share/applications/"
 
 # Create AppImage.
 unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
