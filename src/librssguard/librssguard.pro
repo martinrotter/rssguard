@@ -131,6 +131,7 @@ HEADERS += core/feeddownloader.h \
            services/gmail/gmailentrypoint.h \
            services/gmail/gmailfeed.h \
            services/gmail/gmailserviceroot.h \
+           services/gmail/gui/emailrecipientcontrol.h \
            services/gmail/gui/formeditgmailaccount.h \
            services/gmail/network/gmailnetworkfactory.h \
            services/inoreader/definitions.h \
@@ -269,6 +270,7 @@ SOURCES += core/feeddownloader.cpp \
            services/gmail/gmailentrypoint.cpp \
            services/gmail/gmailfeed.cpp \
            services/gmail/gmailserviceroot.cpp \
+           services/gmail/gui/emailrecipientcontrol.cpp \
            services/gmail/gui/formeditgmailaccount.cpp \
            services/gmail/network/gmailnetworkfactory.cpp \
            services/inoreader/gui/formeditinoreaderaccount.cpp \
