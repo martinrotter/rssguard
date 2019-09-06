@@ -47,6 +47,10 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
 
   if (summary.isEmpty()) {
     summary = textsFromPath(msg_element, m_atomNamespace, QSL("summary"), true).join(QSL(", "));
+
+    if (summary.isEmpty()) {
+      summary = mrssTextFromPath(msg_element, QSL("description"));
+    }
   }
 
   // Now we obtained maximum of information for title & description.
@@ -94,6 +98,9 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
       last_link_other = link.attribute(QSL("href"));
     }
   }
+
+  // Obtain MRSS enclosures.
+  new_message.m_enclosures.append(mrssGetEnclosures(msg_element));
 
   if (!last_link_alternate.isEmpty()) {
     new_message.m_url = last_link_alternate;

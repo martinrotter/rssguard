@@ -8,7 +8,7 @@
 #include <QRegularExpression>
 #include <utility>
 
-FeedParser::FeedParser(QString  data) : m_xmlData(std::move(data)) {
+FeedParser::FeedParser(QString data) : m_xmlData(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
   m_xml.setContent(m_xmlData, true);
 }
 
@@ -43,6 +43,41 @@ QList<Message> FeedParser::messages() {
   }
 
   return messages;
+}
+
+QList<Enclosure> FeedParser::mrssGetEnclosures(const QDomElement& msg_element) const {
+  QList<Enclosure> enclosures;
+
+  auto content_list = msg_element.elementsByTagNameNS(m_mrssNamespace, "content");
+
+  for (int i = 0; i < content_list.size(); i++) {
+    QDomElement elem_content = content_list.at(i).toElement();
+    QString url = elem_content.attribute(QSL("url"));
+    QString type = elem_content.attribute(QSL("type"));
+
+    if (!url.isEmpty() && !type.isEmpty()) {
+      enclosures.append(Enclosure(url, type));
+    }
+  }
+
+  auto thumbnail_list = msg_element.elementsByTagNameNS(m_mrssNamespace, "thumbnail");
+
+  for (int i = 0; i < thumbnail_list.size(); i++) {
+    QDomElement elem_content = thumbnail_list.at(i).toElement();
+    QString url = elem_content.attribute(QSL("url"));
+
+    if (!url.isEmpty()) {
+      enclosures.append(Enclosure(url, QSL("image/png")));
+    }
+  }
+
+  return enclosures;
+}
+
+QString FeedParser::mrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const {
+  QString text = msg_element.elementsByTagNameNS(m_mrssNamespace, xml_path).at(0).toElement().text();
+
+  return text;
 }
 
 QStringList FeedParser::textsFromPath(const QDomElement& element, const QString& namespace_uri,
