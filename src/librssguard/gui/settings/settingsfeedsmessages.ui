@@ -202,7 +202,7 @@
        <item row="3" column="0">
         <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
          <property name="text">
-          <string>Only update when application is unfocused</string>
+          <string>Only auto-update when application is unfocused</string>
          </property>
         </widget>
        </item>
