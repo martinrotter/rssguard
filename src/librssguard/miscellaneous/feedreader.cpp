@@ -88,6 +88,7 @@ void FeedReader::updateAutoUpdateStatus() {
   m_globalAutoUpdateInitialInterval = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt();
   m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
   m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool();
+  m_globalAutoUpdateOnlyUnfocused = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool();
 
   // Start global auto-update timer if it is not running yet.
   // NOTE: The timer must run even if global auto-update
@@ -144,6 +145,14 @@ MessagesModel* FeedReader::messagesModel() const {
 }
 
 void FeedReader::executeNextAutoUpdate() {
+  if (qApp->mainFormWidget()->isActiveWindow() && m_globalAutoUpdateOnlyUnfocused) {
+      qDebug("Delaying scheduled feed auto-update for one minute since window is focused and updates"
+             "while focused are disabled by the user.");
+
+      // Cannot update, quit.
+      return;
+  }
+
   if (!qApp->feedUpdateLock()->tryLock()) {
     qDebug("Delaying scheduled feed auto-updates for one minute due to another running update.");
 
