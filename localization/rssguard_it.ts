@@ -421,6 +421,25 @@ Fai clic qui per aprire la cartella genitrice.</translation>
     </message>
 </context>
 <context>
+    <name>EmailRecipientControl</name>
+    <message>
+        <source>To</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bcc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reply-to</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>Feed</name>
     <message>
         <source>does not use auto-update</source>
@@ -712,7 +731,27 @@ oppure questa funzionalità non è ancora implementata.</translation>
 <context>
     <name>FormAddEditEmail</name>
     <message>
-        <source>Dialog</source>
+        <source>Write e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>From</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name and address of this e-mail message sender</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of your e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new recipient.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1506,6 +1545,159 @@ oppure questa funzionalità non è ancora implementata.</translation>
     <message>
         <source>The URL is empty.</source>
         <translation>La URL è vuota.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>La URL non segue un pattern standard. La URL comincia col prefisso &quot;http://&quot; o &quot;https://&quot;?</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Il nome utente va bene o non è necessario.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Nome utente vuoto.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>La password va bene o non è necessaria.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>La password è vuota.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Seleziona icona per la fonte</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Immagini (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Seleziona icona</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annulla</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Guarda in:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Nome icona:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Tipo icona:</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Tutti i metadati recuperati con successo.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Fonti e metadati icona recuperati.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Risultato: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>Metadati fonti o icona non recuperati.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Errore: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Nessun metadato recuperato.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Icona recuperata con successo.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Metadati icona recuperati.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>Metadati icona non recuperati.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Nessuna icona recuperata.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Titolo fonte</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Imposta titolo per la fonte.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Descrizione fonte</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Imposta descrizione della fonte.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Url completa della fonte incluso lo schema</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Imposta url per la fonte.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Imposta nome utente per accedere alla fonte.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Imposta password per accedere alla fonte.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Selezione icona</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Carica icona dal file...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Recupera icona dalla fonte</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Nessun metadato recuperato finora.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Auto-aggiorna usando l&apos;intervallo globale</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Auto-aggiorna ogni</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Non auto-aggiornare per niente</translation>
     </message>
 </context>
 <context>
@@ -3530,6 +3722,10 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
         <translation>Auto-aggiorna tutte le fonti ogni</translation>
     </message>
     <message>
+        <source>Only auto-update when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Feed connection timeout</source>
         <translation>Scadenza connessione fonte</translation>
     </message>
@@ -3814,6 +4010,10 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
         <translation type="unfinished"/>
     </message>
 </context>

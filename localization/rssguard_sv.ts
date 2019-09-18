@@ -421,6 +421,25 @@ Klicka här för att öppna målmappen.</translation>
     </message>
 </context>
 <context>
+    <name>EmailRecipientControl</name>
+    <message>
+        <source>To</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bcc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reply-to</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>Feed</name>
     <message>
         <source>does not use auto-update</source>
@@ -713,8 +732,28 @@ att funktionen inte är implementerad än.</translation>
 <context>
     <name>FormAddEditEmail</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
+        <source>Write e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>From</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name and address of this e-mail message sender</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of your e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new recipient.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1507,6 +1546,159 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>The URL is empty.</source>
         <translation>URL saknas.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Användarnamnet är OK, eller behövs inte.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Användarnamn saknas.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Lösenordet är ok, eller behövs inte.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Lösenord saknas.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Välj ikonfil för flödet</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Välj ikon</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Avbryt</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Sök i:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Ikonnamn:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Ikontyp:</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>All metadata hämtades korrekt.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Flödes- och ikonmetadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Resultat: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>Flödes- eller ikonmetadata inte hämtad.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Fel: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Ingen metadata hämtades.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Ikon hämtades.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Ikonmetadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>Ikonmetadata inte hämtad.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Ikon hämtades inte.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Flödesnamn</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Ange flödets namn.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Flödesbeskrivning</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Beskriv flödet.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Flödets fullständiga URL inklusive schema</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Ange flödets URL.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Ange lösenord för att få åtkomst till flödet.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Ikonval</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Hämta ikon från fil...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation>Använd standardikon från ikontemat</translation>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Hämta ikon från flödet</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Ingen metadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Autouppdatering med globala intervall</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Uppdatera automatiskt varje</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Uppdatera inte automatiskt</translation>
     </message>
 </context>
 <context>
@@ -3537,6 +3729,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Auto-uppdatera alla flöden varje</translation>
     </message>
     <message>
+        <source>Only auto-update when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Feed connection timeout</source>
         <translation>Anslutnings-timeout för flöden</translation>
     </message>
@@ -3822,6 +4018,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>This page was blocked by AdBlock</source>
         <translation>Denna sida blockerades av AdBlock</translation>
+    </message>
+    <message>
+        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
+        <translation>Blockerad av uppsättning: &quot;%1&quot;&lt;br/&gt;Blockerad av filter: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>

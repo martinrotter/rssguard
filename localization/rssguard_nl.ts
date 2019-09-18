@@ -422,6 +422,25 @@ Klik hier om map te openen.</translation>
     </message>
 </context>
 <context>
+    <name>EmailRecipientControl</name>
+    <message>
+        <source>To</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bcc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reply-to</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>Feed</name>
     <message>
         <source>does not use auto-update</source>
@@ -713,8 +732,28 @@ of deze functie bestaat nog niet.</translation>
 <context>
     <name>FormAddEditEmail</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialoog</translation>
+        <source>Write e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>From</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name and address of this e-mail message sender</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of your e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new recipient.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1507,6 +1546,159 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>The URL is empty.</source>
         <translation>De URL is leeg.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Gebruikersnaam is leeg.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Paswoord is leeg.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Selecteer pictogram bestand voor je feed</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Selecteer pictogram</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annuleer</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Kijk in:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Pictogram naam:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Type pictogram:</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Alle metadata is succesvol opgehaald.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Metadata opgehaald voor feed en pictogram.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Resultaat: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>Metadata niet opgehaald voor feed en pictogram.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Fout: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Geen metadata opgehaald.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Pictogram met succes opgehaald.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Metadata pictogram opgehaald.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>Metadata pictogram niet opgehaald.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Geen pictogram opgehaald.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Feed naam</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Stel titel in voor je feed.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Feed omschrijving</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Stel omschrijving voor feed in.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Volledige feed url inclusief schema</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Stel url in voor je feed.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Stel paswoord in voor toegang tot feed.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Pictogram selectie</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Laad pictogram uit een bestand...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Pictogram opgehaald van feed</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Nog geen metadata opgehaald.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Automatisch bijwerken met behulp van globale interval</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Automatisch bijwerken elke</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Niet automatisch bijwerken </translation>
     </message>
 </context>
 <context>
@@ -3536,6 +3728,10 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Alle feeds automatisch bijwerken elke</translation>
     </message>
     <message>
+        <source>Only auto-update when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Feed connection timeout</source>
         <translation>Feed verbindings time-out</translation>
     </message>
@@ -3820,6 +4016,10 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
         <translation type="unfinished"/>
     </message>
 </context>

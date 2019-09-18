@@ -423,6 +423,25 @@ Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
     </message>
 </context>
 <context>
+    <name>EmailRecipientControl</name>
+    <message>
+        <source>To</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bcc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reply-to</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>Feed</name>
     <message>
         <source>does not use auto-update</source>
@@ -714,7 +733,27 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
 <context>
     <name>FormAddEditEmail</name>
     <message>
-        <source>Dialog</source>
+        <source>Write e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>From</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name and address of this e-mail message sender</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of your e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new recipient.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1508,6 +1547,159 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     <message>
         <source>The URL is empty.</source>
         <translation>Adres URL jest pusty.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>Adres URL nie spełnia standardowego wzorca. Czy twój URL zaczyna się prefiksem &quot;http://&quot; lub &quot;https://&quot;.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Nazwa użytkownika jest w porządku lub nie jest potrzebna.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Nazwa użytkownika jest pusta</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Hasło jest w porządku lub nie jest potrzebne.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Hasło jest puste.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Wybierz plik ikony dla twojego kanału</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Obrazy (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Wybierz ikonę</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Anuluj</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Nazwa ikony:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Typ ikony:</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Wszystkie metadane zostały pomyślnie pobrane.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Kanał i metadane ikony zostały pobrane.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Wynik: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>Kanał i metadane ikony nie zostały pobrane.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Błąd: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Nie pobrano metadanych.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Ikona została pomyślnie pobrana</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Metadane ikony pobrane.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>Metadane ikony nie zostały pobrane.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Nie pobrano ikony.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Tytuł kanału</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Ustaw tytuł swojego kanału.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Opis kanału</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Ustaw opis twojej kategorii.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Pełny URL kanału razem z schematem</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Ustaw adres URL twojego kanału.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Ustaw nazwę użytkownika do dostępu do kanału.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Ustaw hasło dostępu do kanału.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Wybór ikony</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Załaduj ikonę z pliku...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Pobierz ikonę z kanału</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Póki co nie pobrano metadanych.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Auto-aktualizacja z globalnymi odstępami</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Auto-aktualizacja co</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Bez auto-aktualizacji</translation>
     </message>
 </context>
 <context>
@@ -3537,6 +3729,10 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
         <translation>Auto-aktualizacja wszystkich kanałów co</translation>
     </message>
     <message>
+        <source>Only auto-update when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Feed connection timeout</source>
         <translation>Limit czasu łączenia z kanałem</translation>
     </message>
@@ -3821,6 +4017,10 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
         <translation type="unfinished"/>
     </message>
 </context>

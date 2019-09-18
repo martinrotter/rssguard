@@ -423,6 +423,25 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
 </context>
 <context>
+    <name>EmailRecipientControl</name>
+    <message>
+        <source>To</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bcc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reply-to</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>Feed</name>
     <message>
         <source>does not use auto-update</source>
@@ -715,8 +734,28 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
 <context>
     <name>FormAddEditEmail</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialogas</translation>
+        <source>Write e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>From</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name and address of this e-mail message sender</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of your e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new recipient.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1509,6 +1548,159 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>The URL is empty.</source>
         <translation>URL yra tuščias.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL neatitinka standartinio šablono. Ar jūsų URL prasideda &quot;http://&quot; ar &quot;https://&quot; priešdeliu.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Naudotojo vardas yra geras arba jo nereikia.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Naudotojo vardas tuščias.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Slaptažodis yra geras arba jo nereikia.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Slaptažodis tuščias.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Pasirinkite kanalui piktogramos failą</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Paveikslai (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Pasirinkti piktogramą</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Atsisakyti</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Ieškoti:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Piktogramos pavadinimas:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Piktogramos tipas:</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Visi metaduomenys sėkmingai gauti.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Kanalo ir piktogramos metaduomenys gauti.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Rezultatas: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>Kanalo ar piktogramos metaduomenys negauti.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Klaida: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Negauta jokių metaduomenų.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Piktograma sėkmingai gauta.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Piktogramos metaduomenys gauti.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>Piktogramos metaduomenys negauti.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Negauta jokios piktogramos.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Kanalo antraštė</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Nustatykite savo kanalo antraštę.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Kanalo aprašas</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Nustatykite savo kanalo aprašą.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Pilnas kanalo url su schema</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Nustatykite savo kanalo URL.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Nustatykite naudotojo vardą, skirtą gauti prieigą prie kanalo.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Nustatykite slaptažodį, skirtą gauti prieigą prie kanalo.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Piktogramos pasirinkimas</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Įkelti piktogramą iš failo...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation>Naudoti numatytąją piktogramą iš piktogramų temos</translation>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Gauti piktogramą iš kanalo</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Kol kas negauta jokių metaduomenų.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Automatiškai atnaujinti, naudojant visuotinį intervalą</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Automatiškai atnaujinti kas</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Neatnaujinti automatiškai</translation>
     </message>
 </context>
 <context>
@@ -3543,6 +3735,10 @@ Vilkaduobės:
         <translation>Automatiškai atnaujinti visus kanalus kas</translation>
     </message>
     <message>
+        <source>Only auto-update when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Feed connection timeout</source>
         <translation>Prisijungimui prie kanalo skirtas laikas</translation>
     </message>
@@ -3828,6 +4024,10 @@ Vilkaduobės:
     <message>
         <source>This page was blocked by AdBlock</source>
         <translation>Reklamos blokavimas užblokavo šį puslapį</translation>
+    </message>
+    <message>
+        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
+        <translation>Užblokuota rinkinio: &quot;%1&quot;&lt;br/&gt;Užblokuota filtro: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>

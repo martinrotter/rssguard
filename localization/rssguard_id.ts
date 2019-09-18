@@ -420,6 +420,25 @@ Klik disini untuk membuka direktori induk.</translation>
     </message>
 </context>
 <context>
+    <name>EmailRecipientControl</name>
+    <message>
+        <source>To</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bcc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reply-to</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>Feed</name>
     <message>
         <source>does not use auto-update</source>
@@ -711,7 +730,27 @@ atau fungsi ini belum diimplementasikan.</translation>
 <context>
     <name>FormAddEditEmail</name>
     <message>
-        <source>Dialog</source>
+        <source>Write e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>From</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name and address of this e-mail message sender</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of your e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new recipient.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1505,6 +1544,159 @@ atau fungsi ini belum diimplementasikan.</translation>
     <message>
         <source>The URL is empty.</source>
         <translation>URL kosong.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL tidak memenuhi pola standar. Apakah URL anda dimulai dengan awalan &quot;http://&quot; atau &quot;https://&quot;.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Nama pengguna ok atau ini tidak diperlukan.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Nama pengguna kosong.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Kata sandi ok atau ini tidak diperlukan.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Kata sandi kosong.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Pilih berkas ikon untuk feed</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Gambar (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Pilih ikon</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Batal</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Lihat ke dalam:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Nama ikon:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Jenis ikon:</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Semua metadata diambil dengan berhasil.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Metadata feed dan ikon diambil.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Hasil: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>Metadata feed atau ikon tidak diambil.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Eror: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Tidak ada metadata yang diambil.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Ikon berhasil diambil.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Metadata ikon diambil.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>Metadata ikon tidak diambil.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Tidak ada ikon yang diambil.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Judul feed</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Setel judul untuk feed anda.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Deskripsi feed</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Setel deskripsi untuk feed anda.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Url feed keseluruhan termasuk skema</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Setel url untuk feed anda.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Setel nama pengguna untuk mengakses feed.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Setel kata sandi untuk mengakses feed.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Pilihan ikon</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Memuat ikon dari berkas...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Mengambil ikon dari feed</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Tidak ada metadata yang diambil sejauh ini.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Pembaruan otomatis menggunakan jarak waktu global</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Otomatis pembaruan setiap</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Tanpa pembaruan otomatis sama sekali</translation>
     </message>
 </context>
 <context>
@@ -3527,6 +3719,10 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
         <translation>Pembaruan otomatis semua feed setiap</translation>
     </message>
     <message>
+        <source>Only auto-update when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Feed connection timeout</source>
         <translation>Batas waktu koneksi feed</translation>
     </message>
@@ -3811,6 +4007,10 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
         <translation type="unfinished"/>
     </message>
 </context>

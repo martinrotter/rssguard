@@ -419,6 +419,25 @@ Click here to open parent directory.</source>
     </message>
 </context>
 <context>
+    <name>EmailRecipientControl</name>
+    <message>
+        <source>To</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bcc</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reply-to</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>Feed</name>
     <message>
         <source>does not use auto-update</source>
@@ -711,8 +730,28 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormAddEditEmail</name>
     <message>
-        <source>Dialog</source>
-        <translation>Діалогове вікно</translation>
+        <source>Write e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>From</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name and address of this e-mail message sender</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of your e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new recipient.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1505,6 +1544,159 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>The URL is empty.</source>
         <translation>URL пустий.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL не відповідає стандартному вигляду. Чи починається URL з &quot;http://&quot; або &quot;https://&quot;.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Ім&apos;я користувача вірне, або воно не потрібне.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Пусте ім&apos;я користувача</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Пароль вірний, або він не потрібен.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Пустий пароль</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Обрати значок для потоку.</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Зображення (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Оберіть значок</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Скасувати</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Шукати в:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Ім&apos;я значку:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Тип значку:</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Всі метадані було успішно завантажено.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Потік та метадані завантажено.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Результат: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>Потік або метадані значку не завантажено.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Помилка: %1</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Не завантажено метадані.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Значок успішно завантажено.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Метадані значку завантажено.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>Метадані значку не завантажено.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Значок не завантажено.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Назва потоку</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Вкажіть назву потоку.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Опис потоку</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Опишіть потік.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Повний url потоку, включаючт схему</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Вкажіть url для потоку</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Вкажіть ім&apos;я користувача для доступу до потоку.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Встановити пароль для доступу до потоку.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Обрати значок</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Завантажити значок з файлу...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Завантажувати значок з потоку</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Метадані ще не завантажено</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Автоматично оновлювати з використанням глобального проміжку часу</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Автоматично оновлювати кожні</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Взагалі не оновлювати автоматично</translation>
     </message>
 </context>
 <context>
@@ -3514,6 +3706,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Оновлювати усі потоки кожні</translation>
     </message>
     <message>
+        <source>Only auto-update when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Feed connection timeout</source>
         <translation type="unfinished"/>
     </message>
@@ -3798,6 +3994,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
         <translation type="unfinished"/>
     </message>
 </context>
