@@ -79,6 +79,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     // Auto-update stuff.
     QTimer* m_autoUpdateTimer;
     bool m_globalAutoUpdateEnabled{};
+    bool m_globalAutoUpdateOnlyUnfocused{};
     int m_globalAutoUpdateInitialInterval{};
     int m_globalAutoUpdateRemainingInterval{};
     FeedDownloader* m_feedDownloader;

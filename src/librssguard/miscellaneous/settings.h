@@ -68,6 +68,10 @@ namespace Feeds {
 
   VALUE(bool) AutoUpdateEnabledDef;
 
+  KEY AutoUpdateOnlyUnfocused;
+
+  VALUE(bool) AutoUpdateOnlyUnfocusedDef;
+
   KEY FeedsUpdateOnStartup;
 
   VALUE(bool) FeedsUpdateOnStartupDef;

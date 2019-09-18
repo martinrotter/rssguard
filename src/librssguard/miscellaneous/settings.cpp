@@ -47,6 +47,10 @@ DKEY Feeds::AutoUpdateEnabled = "auto_update_enabled";
 
 DVALUE(bool) Feeds::AutoUpdateEnabledDef = false;
 
+DKEY Feeds::AutoUpdateOnlyUnfocused = "auto_update_only_unfocused";
+
+DVALUE(bool) Feeds::AutoUpdateOnlyUnfocusedDef = false;
+
 DKEY Feeds::FeedsUpdateOnStartup = "feeds_update_on_startup";
 
 DVALUE(bool) Feeds::FeedsUpdateOnStartupDef = false;
