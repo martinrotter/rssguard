@@ -1576,7 +1576,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>ביטול</translation>
     </message>
     <message>
         <source>Look in:</source>
@@ -1609,7 +1609,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>שגיאה: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -1633,7 +1633,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>כותרת ערוץ</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>

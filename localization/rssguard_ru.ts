@@ -1,32 +1,32 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="da" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source> (category)</source>
-        <translation>(kategori)</translation>
+        <translation>(категория)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation>(feed)</translation>
+        <translation>(канал)</translation>
     </message>
 </context>
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation>Tilføj abonnement</translation>
+        <translation>Добавить подписку</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation>Brug predefineret abonnement</translation>
+        <translation>Использовать предопределенную подписку</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation>Titel på abonnement</translation>
+        <translation>Заголовок подписки</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,340 +34,341 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>Абсолютный URL для файла онлайн-подписки</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation>Brugerdefinerede regler</translation>
+        <translation>Пользовательские правила</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation>AdBlock indstillinger</translation>
+        <translation>Конфигурация AdBlock</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation>Aktivér AdBlock</translation>
+        <translation>Включить AdBlock</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation>Indstillinger</translation>
+        <translation>Опции</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation>Tilføj regel</translation>
+        <translation>Добавить правило</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Fjern regel</translation>
+        <translation>Удалить правило</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation>Tilføj abonnement</translation>
+        <translation>Добавить подписку</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation>Fjern abonnement</translation>
+        <translation>Удалить подписку</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation>Ajourfør abonnement</translation>
+        <translation>Обновить подписки</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation>Lær at lave regler...</translation>
+        <translation>Узнайте о правилах написания ...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation>AdBlock lader dig blokere for uønsket indhold på hjemmesider</translation>
+        <translation>AdBlock позволяет блокировать нежелательный контент на веб-страницах</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation>Blokér popup-vinduer</translation>
+        <translation>Заблокировано всплывающее окно</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock blokerer uønskede popup vinduer</translation>
+        <translation>AdBlock заблокировал нежелательные всплывающие окна.</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation>Vis AdBlock ind&amp;stillinger</translation>
+        <translation>Показать настройки &amp;AdBlock</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation>Deaktivér ved %1</translation>
+        <translation>Отключить на % 1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation>Deaktivér kun på denne side.</translation>
+        <translation>Отключить только на этой странице</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Vil du tilføje &lt;b&gt;%1&lt;/b&gt; abonnement?</translation>
+        <translation>Хотите добавить  &lt;b&gt;% 1&lt;/b&gt; подписку?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation>Tilføj AdBlockabonnement</translation>
+        <translation>Добавить подписку AdBlock</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation>Kan ikke indlæse abonnement</translation>
+        <translation>Невозможно загрузить подписку!</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Add rule</source>
-        <translation>Tilføj regel</translation>
+        <translation>Добавить правило</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Fjern regel</translation>
+        <translation>Удалить правило</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation>Tilføj brugerdefineret regel</translation>
+        <translation>Добавить пользовательское правило</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation>Skriv venligst din regel her:</translation>
+        <translation>Пожалуйста, напишите правило здесь:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation>%1 (ajourført for nyligt)</translation>
+        <translation>%1 (недавно обновлено)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation>%1 (fejl: %2)</translation>
+        <translation>%1 (ошибка: %2)</translation>
     </message>
 </context>
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation>Programmet kører allerede</translation>
+        <translation>Приложение уже запущено</translation>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Målbiblioteket er ikke skrivbart</translation>
+        <translation>Выходной каталогне доступен для записи</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Файл настроек не скопирован в выходной каталог.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Файл базы данных не скопирован в выходной каталог.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Gendannelse af database ikke påbegyndt. Sørg for at målbiblioteket er skrivbart.</translation>
+        <translation>Восстановление базы данных не было начато. Убедитесь, что выходной каталог доступен для записи.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Gendannelse af indstillinger ikke påbegyndt. Sørg for at målbiblioteket er skrivbart.</translation>
+        <translation>Восстановление настроек не было начато. Убедитесь, что выходной каталог доступен для записи.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan ikke tilføje feed</translation>
+        <translation>Невозможно добавить канал</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>Канал не может быть добавлен, так как стандартный аккаунт RSS/ATOM не включен.</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Nye meddelelser er hentet</translation>
+        <translation>Новые сообщения загружены</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation>Krymper databasefil...</translation>
+        <translation>Сжатие файла базы данных ...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation>Databasefil krympet...</translation>
+        <translation>Файл базы данных сжат ...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation>Fjerner læst meddelelse...</translation>
+        <translation>Удаление прочитанных сообщений...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation>Der er ryddet op i læste meddelelser...</translation>
+        <translation>Прочитанные сообщения очищены ...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation>Skraldespanden er tømt...</translation>
+        <translation>Корзина очищена ...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation>Fjern gamle meddelelser...</translation>
+        <translation>Удаляются старые сообщения...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation>Tømmer skraldespand...</translation>
+        <translation>Очистка корзины ...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation>Der er ryddet op i gamle meddelelser...</translation>
+        <translation>Старые сообщения очищены ...</translation>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation>MySQL-server fungerer som forventet.</translation>
+        <translation>Сервер MySQL работает, как ожидалось.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation>Der er ikke fundet nogen MySQL server på målet.</translation>
+        <translation>Сервер MySQL не запущен в месте назначения.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Доступ запрещён. Неверное имя пользователя или пароль.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>Ukendt fejl.</translation>
+        <translation>Неизвестная ошибка.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (dedikeret database)</translation>
+        <translation>MySQL / MariaDB (специальная база данных)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation>SQLite (indlejret database)</translation>
+        <translation>SQLite (встроенная база данных)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Valgte database eksisterer ikke (endnu). Den vil blive oprettet. Det er okay.</translation>
+        <translation>Выбранная база данных не существует (пока). Будет создана. Это нормально.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation>MySQL-database ikke tilgængelig</translation>
+        <translation>База данных MySQL недоступна</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>% 1 не может использовать хранилище MySQL. Оно недоступно. %1 теперь переключается на базу данных SQLite. Запустите сервер MySQL и внесите изменения в настройках приложения.</translation>
     </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation>Denne hjemmeside indeholder ingen feeds.</translation>
+        <translation>Этот сайт не содержит каналов.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Uunderstøttet</translation>
+        <translation>Не поддерживается</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation>Den givne konto understøtter ikke tilføjelse af nye feeds.</translation>
+        <translation>Данный аккаунт не поддерживает добавление каналов.</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="unfinished"/>
+        <translation>Ico</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation>Filnavn</translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка открытия выходного файла: %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>&amp;Forsøg igen</translation>
+        <translation>&amp;Попробовать снова</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>&amp;Stop</translation>
+        <translation>&amp;Остановить</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>&amp;Åben fil</translation>
+        <translation>&amp;Открыть файл</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation>Vælg destination for hentet fil</translation>
+        <translation>Выберите место для загруженного файла</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation>Fejl: %1</translation>
+        <translation>Ошибка: %1</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"/>
+        <translation>Каталог для загрузки не создан</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation>Fejl ved skrivning til fil: %1</translation>
+        <translation>Ошибка сохранения файла: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation>%1af %2 (%3 i sekundet) - %4</translation>
+        <translation>%1 из %2 (%3 в секунду) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation>%1 af %2 - hentet</translation>
+        <translation>%1 из %2 - загрузка завершена</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>Åben &amp;bibliotek</translation>
+        <translation>Открыть &amp;директорию</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation>Kan ikke åbne fil</translation>
+        <translation>Ошибка открытия файла</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Не удается открыть файл. Откройте его вручную.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation>Kan ikke åbne bibliotek</translation>
+        <translation>Невозможно открыть директорию</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation type="unfinished"/>
+        <translation>Не удается открыть выходной кталог. Откройте его вручную.</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation>Fil hentet </translation>
+        <translation>Скачивание завершено</translation>
     </message>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation type="unfinished"/>
+        <translation>Файл &quot;%1&quot; загружен.
+Нажмите здесь, чтобы открыть.</translation>
     </message>
     <message>
         <source>URL: %1</source>
@@ -375,65 +376,65 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation>Lokal fil: %1</translation>
+        <translation>Локальный файл: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation type="unfinished"/>
+        <translation>Выбор локального файла отменён.</translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation>Ryd op</translation>
+        <translation>Очистить</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut tilbage</numerusform><numerusform>%n minutter tilbage</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund tilbage</numerusform><numerusform>%n sekunder tilbage</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation>bytes</translation>
+        <translation>байт</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation>kB</translation>
+        <translation>кб</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation>MB</translation>
+        <translation>мб</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation>GB</translation>
+        <translation>гб</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Henter %n fil</numerusform><numerusform>Henter %n fil(er)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
     <name>EmailRecipientControl</name>
     <message>
         <source>To</source>
-        <translation>Til</translation>
+        <translation>Кому</translation>
     </message>
     <message>
         <source>Cc</source>
-        <translation type="unfinished"/>
+        <translation>Копия</translation>
     </message>
     <message>
         <source>Bcc</source>
-        <translation type="unfinished"/>
+        <translation>Скрытая копия</translation>
     </message>
     <message>
         <source>Reply-to</source>
-        <translation>Svar-til</translation>
+        <translation>Ответ на</translation>
     </message>
 </context>
 <context>
@@ -441,298 +442,300 @@ Click here to open parent directory.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>bruger ikke automatisk ajourføring</translation>
+        <translation>не использовать авто-обновление</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
-        <translation>ingen fejl</translation>
+        <translation>нет ошибок
+</translation>
     </message>
     <message>
         <source>has new messages</source>
-        <translation>har nye meddelelser</translation>
+        <translation>есть новые сообщения</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation>godkendelsesfejl</translation>
+        <translation>ошибка аутентификации</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation>netværksfejl</translation>
+        <translation>ошибка сети</translation>
     </message>
     <message>
         <source>unspecified error</source>
-        <translation>uspecificeret fejl</translation>
+        <translation>неопределенная ошибка</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation>Состояние автообновления: % 1
+Статус:% 2</translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation>Værktøjslinie for meddelelser</translation>
+        <translation>Панель инструментов для сообщений</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>Værktøjslinie for feeds</translation>
+        <translation>Панель инструментов для каналов</translation>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation>Kan ikke ajourføre alle emner</translation>
+        <translation>Невозможно обновить все элементы</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Du kan ikke ajourføre alle emner fordi en anden kritisk operation er i gang.</translation>
+        <translation>Нельзя обновить все пункты, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation>Запущено авто-обновление некоторых каналов</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>Kategori</translation>
+        <translation>Категория</translation>
     </message>
 </context>
 <context>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation>Titel på feeds/kategorier.</translation>
+        <translation>Заголовки каналов/категорий</translation>
     </message>
     <message>
         <source>Root</source>
-        <translation>Administrator</translation>
+        <translation>Root</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"/>
+        <translation>Нельзя передать перетаскиваемый пункт в другой аккаунт, это не поддерживается.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно выполнить операцию перетаскивания</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation type="unfinished"/>
+        <translation>Количество непрочитанных / всех сообщений.</translation>
     </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Værktøjslinie afstandsstykke</translation>
+        <translation>Пространство панели инструментов</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation>Kan ikke redigere element</translation>
+        <translation>Невозможно редактировать элемент</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation>Kan ikke fjerne element</translation>
+        <translation>Невозможно удалить элемент</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для пустого пространства</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный пункт нельзя изменить, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный пункт нельзя удалить, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для категорий</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный пункт нельзя изменить, это не поддерживается (пока).</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation>Sletter &quot;%1&quot;</translation>
+        <translation>Удаление &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Вы собираетесь полностью удалить пункт &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation>Er du sikker?</translation>
+        <translation>Вы уверены?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation>Kan ikke slette  &quot;%1&quot;</translation>
+        <translation>Невозможно удалить &quot;%1&quot;</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="unfinished"/>
+        <translation>Этот элемент нельзя удалить, случилась критическая ошибка . Отправьте сообщение об ошибке.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="unfinished"/>
+        <translation>Этот пункт нельзя удалить, потому что это не поддерживается или функция ещё не реализована.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для других пунктов</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Ikke understøttet</translation>
+        <translation>Не поддерживается</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный аккаунт не поддерживает добавление новых каналов.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный аккаунт не поддерживает добавление новых категорий.</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для корзин</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для аккаунтов</translation>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <source>Licenses</source>
-        <translation>Licenser</translation>
+        <translation>Лицензии</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL licens (Gælder ved RSS Guard kildekode)</translation>
+        <translation>GNU GPL License (применяется к исходному коду RSS Guard)</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>GNU GPL Licens</translation>
+        <translation>Лицензия GNU GPL</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD Licens (for QtSingleApplication kildekode)</translation>
+        <translation>Лицензия BSD (применяется к исходному коду QtSingleApplication)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation>Siden med licensbeskrivelser er kun tilgængelig på engelsk.</translation>
+        <translation>Страница лицензий доступна только на английском языке.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Ændringslog</translation>
+        <translation>Список изменений</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation type="unfinished"/>
+        <translation>Список изменений доступен только на английском языке.</translation>
     </message>
     <message>
         <source>License not found.</source>
-        <translation>Licens ikke fundet.</translation>
+        <translation>Лицензия не найдена.</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation>Ændringslog ikke fundet.</translation>
+        <translation>Список изменений не найден</translation>
     </message>
     <message>
         <source>About %1</source>
-        <translation>Om %1</translation>
+        <translation>О %1</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation>Indstillingtype</translation>
+        <translation>Тип настроек</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation>Indstillingsfil</translation>
+        <translation>Файл настроек</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation type="unfinished"/>
+        <translation>Корневой путь БД</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation>FULDT portabel</translation>
+        <translation>ПОЛНОСТЬЮ портативный</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation>Resurser</translation>
+        <translation>Ресурсы</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 er en (meget) lille feedlæser.&lt;br&gt;&lt;br&gt;Dette programmel bliver distribueret under  GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Kontakter:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-post&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~hjemmeside&lt;/li&gt;&lt;/ul&gt;Du kan hente %5s kildekode fra hjemmesiden.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 это (очень) крохотное ПО для чтения rss каналов.&lt;br&gt;&lt;br&gt;Это ПО распространяется на условиях GNU General Public License, версия 3.&lt;br&gt;&lt;br&gt;Контакты:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1 &lt;/a&gt;~E-Mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2 ~сайт&lt;/li&gt;&lt;/ul&gt;Вы можете получить исходный код %5 на сайте.&lt;br&gt;&lt;br&gt;&lt;br&gt;Авторское право (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (bygget på %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Byggedato:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (oversat mod  %7)&lt;br&gt;</translation>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Версия:&lt;/b&gt; %1 (сборка для %2/%3&lt;br&gt;&lt;b&gt;Ревизия: %4&lt;br&gt;&lt;b&gt;Дата сборки:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (скомпилировано %7)&lt;br&gt;</translation>
     </message>
     <message>
         <source>User skins root path</source>
-        <translation type="unfinished"/>
+        <translation>Корневой путь пользовательской темы</translation>
     </message>
     <message>
         <source>NOT portable</source>
-        <translation>IKKE portabel</translation>
+        <translation>НЕ портативная</translation>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Tilføj ny konto</translation>
+        <translation>Добавить новый аккаунт</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>Denne konto kan kun tilføjes én gang.</translation>
+        <translation>Этот аккаунт может быть добавлен только один раз.</translation>
     </message>
 </context>
 <context>
     <name>FormAddEditEmail</name>
     <message>
         <source>Write e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Написать сообщение</translation>
     </message>
     <message>
         <source>From</source>
-        <translation>Fra</translation>
+        <translation>От</translation>
     </message>
     <message>
         <source>Name and address of this e-mail message sender</source>
@@ -740,50 +743,50 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Contents of your e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Содержимое вашего сообщения</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished"/>
+        <translation>...</translation>
     </message>
     <message>
         <source>Add new recipient.</source>
-        <translation>Tilføj ny modtager.</translation>
+        <translation>Добавить получателя</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation>Sikkerhedskopi database/indstillinger</translation>
+        <translation>Резервная копия БД/настроек</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation>Indstillinger for sikkerhedskopiering</translation>
+        <translation>Свойства резервной копии</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation>Emner der skal sikkerhedskopieres</translation>
-    </message>
-    <message>
-        <source>Database</source>
-        <translation>Database</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Indstillinger</translation>
-    </message>
-    <message>
-        <source>Backup name</source>
-        <translation>Backupnavn</translation>
-    </message>
-    <message>
-        <source>Operation results</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <source>Database</source>
+        <translation>База данных</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>Backup name</source>
+        <translation>Имя файла</translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation>Результаты операции</translation>
+    </message>
+    <message>
         <source>Common name for backup files</source>
-        <translation>Fællesnavn for sikkerhedskopifiler</translation>
+        <translation>Общее имя для файлов резервной копии</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -791,168 +794,168 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation>Sikkerhedskopi succesfuldt oprettet.</translation>
+        <translation>Бэкап успешно создан.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation>Navn på sikkerhedskopi kan ikke være tomt.</translation>
+        <translation>Имя бэкапа не может быть пустым.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation type="unfinished"/>
+        <translation>Имя резервной копии в норме.</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation>Aikkerhedskopi fejlet.</translation>
+        <translation>Сбой копирования.</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation>Målbibliotek</translation>
+        <translation>Выходная директория</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Vælg bibliotek</translation>
+        <translation>&amp;Обзор каталога</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation>En sikkerhedskopi blev oprettet og gemt i målbiblioteket.</translation>
+        <translation>Копия создана успешно и сохранена в целевом каталоге.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation>Vælg målbibliotek</translation>
+        <translation>Выберите каталог назначения</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation type="unfinished"/>
+        <translation>Указан хороший каталог назначения.</translation>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation>Rens database</translation>
+        <translation>Очистить БД</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation>Fjern alle meddelelser ældre end</translation>
+        <translation>Удалить все сообщения старше</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dage</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation>Krymp databasefil</translation>
+        <translation>Уменьшить файл базы данных</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Databaseinformation</translation>
+        <translation>Информация о базе данных</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation>Størrelse på filstørrelse</translation>
+        <translation>Размер файла базы данных</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation>Databasetype</translation>
+        <translation>Тип базы данных</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation>Status</translation>
+        <translation>Прогресс</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation>Jeg er klar.</translation>
+        <translation>Готово.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation>Renser database.</translation>
+        <translation>Очищение БД запущено.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation type="unfinished"/>
+        <translation>Очищение БД завершено.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation>Oprydning af database fejlet.</translation>
+        <translation>Очищение БД не удалось.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"/>
+        <translation>Очистка настроек (все выбранные пункты полностью удалены из БД)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Fjern alle læste meddelelser (ikke dem i papirkurven)</translation>
+        <translation>Удаление всех прочитанных сообщений (не из корзины)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation>Fjern alle meddelelser fra skraldespanden</translation>
+        <translation>Удалить все сообщения из корзины</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Fjern alle favoritmeddelelser (inklusiv dem i papirkurven)</translation>
+        <translation>Удалить все помеченные сообщения (включая корзину)</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation>ukendt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation>fil: %1, data: %2</translation>
+        <translation>файл: %1, данные: %2</translation>
     </message>
 </context>
 <context>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Диалог</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation>Henter vedhæftning...</translation>
+        <translation>Загрузка вложения ...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation>Hentede: %1 kB</translation>
+        <translation>Загружено: %1 Кб</translation>
     </message>
 </context>
 <context>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation>OAuth 2.0 indstillinger</translation>
+        <translation>Настройки OAuth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation>ProgramID</translation>
+        <translation>ID приложения</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation>Programnøgle</translation>
+        <translation>Ключ приложения</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Redirect URL</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только Х новейших сообщений для канала</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation>meddelelse(r)</translation>
+        <translation>сообщение(я)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Log på</translation>
+        <translation>&amp;Логин</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation>Endnu ikke testet.</translation>
+        <translation>Ещё не протестировано.</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -960,51 +963,51 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation>Du er allerede logget på.</translation>
+        <translation>Вход уже совершен.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation>Adgang givet.</translation>
+        <translation>Доступ разрешен.</translation>
     </message>
     <message>
         <source>No username entered.   </source>
-        <translation>Intet brugernavn indtastet.</translation>
+        <translation>Не введен логин.</translation>
     </message>
     <message>
         <source>Some username entered.   </source>
-        <translation>Et brugernavn er indtastet.</translation>
+        <translation>Введен некоторый логин.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation>Du har ikke fået adgang.</translation>
+        <translation>Отказано в доступе.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation>Der opstod en fejl under test.</translation>
+        <translation>Произошла ошибка во время тестирования.</translation>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation>Der er opstået følgende fejl. %1</translation>
+        <translation>Произошла ошибка. %1 </translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation>Du har fået adgang.</translation>
+        <translation>Ваш доступ одобрен.</translation>
     </message>
     <message>
         <source>Add new Gmail account</source>
-        <translation>Tilføj ny Gmail-konto</translation>
+        <translation>Добавить новый аккаунт Gmail</translation>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation>Redigér eksisterende Gmail konto</translation>
+        <translation>Изменить существующий аккаунт GMail</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation>Tom værdi indtastet.</translation>
+        <translation>Введено пустое значение.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation>En værdi er indtastet.</translation>
+        <translation>Введено некоторое значение.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
@@ -1016,30 +1019,30 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Протестировано успешно. Вам могут предложить войти ещё раз.</translation>
     </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation>OAuth 2.0 indstillinger</translation>
+        <translation>Настройки Oauth 2.0</translation>
     </message>
     <message>
         <source>Application ID</source>
-        <translation>ProgramID</translation>
+        <translation>ID приложения</translation>
     </message>
     <message>
         <source>Application key</source>
-        <translation>Programnøgle</translation>
+        <translation>Ключ приложения</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Redirect URL</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
@@ -1047,19 +1050,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только Х новейших сообщений для канала</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation>meddelelse(r)</translation>
+        <translation>сообщение(я)</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Log på</translation>
+        <translation>&amp;Логин</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation>Endnu ikke testet.</translation>
+        <translation>Ещё не протестировано.</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -1067,43 +1070,43 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation>Du er allerede logget på.</translation>
+        <translation>Вход уже совершен.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation>Adgang givet.</translation>
+        <translation>Доступ разрешен.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation>Intet brugernavn indtastet.</translation>
+        <translation>Нет логина.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation>Et brugernavn er indtastet.</translation>
+        <translation>Введен некоторый логин.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation>Du har ikke givet adgang.</translation>
+        <translation>Отказано в доступе.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation>Der opstod en fejl under test.</translation>
+        <translation>Произошла ошибка во время тестирования.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation>Dette er fejl. %1</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Протестировано успешно. Вам могут предложить войти ещё раз.</translation>
+    </message>
+    <message>
         <source>Your access was approved.</source>
-        <translation>Du har fået adgang.</translation>
+        <translation>Ваш доступ одобрен.</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation>Tilføj ny Inoreaderkonto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
@@ -1111,11 +1114,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation>En tom værdi er indtastet.</translation>
+        <translation>Введено пустое значение.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation>En værdi er indtastet.</translation>
+        <translation>Введено некоторое значение.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
@@ -1126,7 +1129,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -1138,23 +1141,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Godkendelse</translation>
+        <translation>Аутентификация</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Adgangskode</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Vis adgangskode</translation>
+        <translation>Показать пароль</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test opsætning</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -1162,7 +1165,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation>Bemærk, at mindst version %1 er påkrævet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
@@ -1170,7 +1173,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Endnu ikke testet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
@@ -1178,11 +1181,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation>Tilføj ny ownCloud Nyhedskonto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation>Redigér eksisterende ownCloud Nyhedskonto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
@@ -1190,15 +1193,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Den valgte ownCloud Nyhedsserver kører ikke en understøttet version.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netværksfejl: &apos;%1&apos;.</translation>
+        <translation>Ошибка сети: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>Netværksfejl, har du indtastet korrekt ownCloud-adresse og adgangskode?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1206,19 +1209,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Brugernavn skal udfyldes.</translation>
+        <translation>Логин не может быть пустым.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Brugernavn er okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Kodeord kan ikke være tomt.</translation>
+        <translation>Пароль не может быть пустым.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Kodeord er okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL cannot be empty.</source>
@@ -1226,23 +1229,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL er okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation>Kodeord til din ownCloud-konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation>Brugernavn til din ownCloud-konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>ownCloud Nyhedsserver er okay, kørende med version %1, mens version %2, som minimum er krævet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation>ownCloud nyhedsserver er okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
@@ -1250,7 +1253,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation>= ubegrænset</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
@@ -1258,11 +1261,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation>= ubegrænset</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>messages</source>
-        <translation>meddelelser</translation>
+        <translation>сообщения</translation>
     </message>
 </context>
 <context>
@@ -1273,31 +1276,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Godkendelse</translation>
+        <translation>Аутентификация</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation>Vis adgangskode</translation>
+        <translation>Показать пароль</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Kræver HTTP-godkendelse</translation>
+        <translation>Требуется аутентификация HTTP</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test opsætning</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -1313,19 +1316,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation>Brugernavn til HTTP-godkendelse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation>Adgangskode til HTTP-godkendelse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>Kodeord til din TT-RSS-konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>Brugernavn til din TT-RSS konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
@@ -1333,7 +1336,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation>Endnu ikke testet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
@@ -1341,15 +1344,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation>Tilføj ny Tiny Tiny RSS konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Rediger eksisterende Tiny Tiny RSS konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation>API-adgang på valgte server er ikke aktiveret.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
@@ -1361,27 +1364,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Valgte Tiny Tiny RSS server bruger en ikke understøttet version af API (%1). Der kræves mindst version %2.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Den valgte Tiny Tiny RSS server kører en ikke understøttet version.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS server er okay. Den kører med API niveau %1, mens der mindst kræves et API niveau på %2.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS server er okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netværksfejl: &apos;%1&apos;.</translation>
+        <translation>Ошибка сети: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Netværksfejl, har du indtastet korrekt Tiny Tiny RSS-adresse og adgangskode?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1389,35 +1392,35 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Brugernavn skal udfyldes.</translation>
+        <translation>Логин не может быть пустым.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation>Brugernavn er okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Kodeord kan ikke være tomt.</translation>
+        <translation>Пароль не может быть пустым.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation>Kodeord er okay.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Brugernavn ikke angivet.</translation>
+        <translation>Логин пуст.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Kodeordet er tomt.</translation>
+        <translation>Пароль пуст.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
@@ -1429,14 +1432,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL er okay.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Forældrekategori</translation>
+        <translation>Родительская категория</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -1444,7 +1447,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
@@ -1452,7 +1455,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Кодировка</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
@@ -1460,7 +1463,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation>Auto-ajourføring</translation>
+        <translation>Автоматическое обновление</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
@@ -1468,11 +1471,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivelse</translation>
+        <translation>Описание</translation>
     </message>
     <message>
         <source>URL</source>
@@ -1480,67 +1483,67 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation>Hent nu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Ikon</translation>
+        <translation>Иконка</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation>Vælg ikon til feed.</translation>
+        <translation>Выберите иконку для вашего канала.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation>Kræver HTTP-godkendelse</translation>
+        <translation>Требуется аутентификация HTTP</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Hent metadata</translation>
+        <translation>Получить метаданные</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Tilføj nyt feed</translation>
+        <translation>Добавить новый канал</translation>
     </message>
     <message>
         <source>Edit feed &apos;%1&apos;</source>
-        <translation>Rediger feed &apos;%1&apos;</translation>
+        <translation>Редактировать канал &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation>Feed navn er i orden.</translation>
+        <translation>Имя канала подходит.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation>Feednavn er for kort.</translation>
+        <translation>Имя канала слишком короткое.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Ingen beskrivelse.</translation>
+        <translation>Описание пустое.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Beskrivelsen er OK.</translation>
+        <translation>Описание подходит.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL подходит.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Нет URL.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
@@ -1548,48 +1551,48 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Brugernavn ikke angivet.</translation>
+        <translation>Логин пуст.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Kodeordet er tomt.</translation>
+        <translation>Пароль пуст.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation>Vælg ikonfil for dette feed</translation>
+        <translation>Выбрать файл иконки для канала</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
+        <translation>Изображения (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Vælg ikon</translation>
+        <translation>Выберите иконку</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annuller</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Kig i:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Ikonnavn:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Ikontype:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
@@ -1597,11 +1600,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation>Feed og ikon metadata hentet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation>Resultat: %1.</translation>
+        <translation>Результат: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
@@ -1609,15 +1612,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation>Fejl: %1.</translation>
+        <translation>Ошибка: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation>Ingen metadata hentet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation>Ikon hentet succesfuldt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
@@ -1629,23 +1632,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation>Ingen ikoner hentet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed title</source>
-        <translation>Feedtitel</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation>Sæt feedtitel</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed description</source>
-        <translation>Feedbeskrivelse</translation>
+        <translation>Описание канала</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation>Angiv  beskrivelse for dit feed.</translation>
+        <translation>Задайте описание для вашего канала.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
@@ -1665,23 +1668,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Выбор иконки</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Indlæs et ikon fra en fil...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation>Brug standardikonet fra ikontemaet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation>Hent ikon fra feed</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation>Indtil videre er der ikke hentet noget metadata.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1689,7 +1692,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation>Ajourfør hver</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do not auto-update at all</source>
@@ -1700,55 +1703,55 @@ or this functionality is not implemented yet.</source>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;Filer</translation>
+        <translation>&amp;Файл</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Hjælp</translation>
+        <translation>&amp;Помощь</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>&amp;Vis</translation>
+        <translation>&amp;Вид</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>Værk&amp;tøj</translation>
+        <translation>&amp;Инструменты</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>&amp;Afslut</translation>
+        <translation>&amp;Выход</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>Ind&amp;stillinger</translation>
+        <translation>&amp;Настройки</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation>&amp;Meddelelser</translation>
+        <translation>&amp;Сообщения</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation>Skift</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation>Afslut programmet.</translation>
+        <translation>Выход из приложения</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation>Vis programindstillinger.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation>Skift til fuldskærmstilstand.</translation>
+        <translation>Переключиться в полноэкранный режим.</translation>
     </message>
     <message>
         <source>No actions available</source>
-        <translation>Ingen tilgængelige handlinger</translation>
+        <translation>Нет доступных действий</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation>succesfuldt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
@@ -1764,11 +1767,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>Om &amp;Applikationen</translation>
+        <translation>&amp;О приложении</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation>Viser ekstra information om dette program.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
@@ -1776,11 +1779,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation>Skjuler eller viser hovedmenuen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Marker</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
@@ -1792,31 +1795,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation>Åben valgte beskeder i &amp;intern netlæser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>Vælg &amp;næste meddelelse</translation>
+        <translation>Выбрать &amp;следующее сообщение</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation>Vælg</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation>Tjek for</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation>Vis/skjul</translation>
+        <translation>Показать/спрятать</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation>&amp;Feedliste</translation>
+        <translation>&amp;Список каналов</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation>&amp;Hovedmenu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
@@ -1824,15 +1827,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation>Kan ikke starte ekstern netlæser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Kan ikke starte den eksterne netlæser. Naviger til programhjemmesiden manuelt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation>Værk&amp;tøjslinie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
@@ -1844,15 +1847,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation>Vis &amp;WiKi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation>&amp;Gendan database/indstillinger</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation>&amp;Backup database/indstillinger</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
@@ -1860,39 +1863,39 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation>&amp;Hentet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation>Send valgte meddelelser med e-post</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation>&amp;Rens databasen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation>Tilføj &amp;ny post</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation>Ajourfør &amp;alle poster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>Ajourfør valgte po&amp;ster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation>R&amp;ediger valgte post</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation>&amp;Slet valgt post</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation>&amp;Marker valgte post som læst</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
@@ -1900,7 +1903,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation>&amp;Markér valgte artikler som ulæste</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
@@ -1912,7 +1915,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation>Slet alle meddelelser fra valgte emner.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
@@ -1932,11 +1935,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation>Sletter alle meddelelser fra alle emner.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation>Vælg &amp;næste post</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select &amp;previous item</source>
@@ -1944,7 +1947,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation>Vis kun ulæste poster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
@@ -1960,7 +1963,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation>Sk&amp;raldespand(e)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
@@ -1976,27 +1979,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation>Ingen skraldespand</translation>
-    </message>
-    <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds</translation>
-    </message>
-    <message>
-        <source>&amp;Accounts</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation>Каналы &amp;и категории</translation>
+    </message>
+    <message>
+        <source>&amp;Accounts</source>
+        <translation>&amp;Аккаунты</translation>
+    </message>
+    <message>
         <source>&amp;Add new account</source>
-        <translation>&amp;Tilføj ny konto</translation>
+        <translation>&amp;Добавить новый аккаунт</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation>Statuslinie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>R&amp;ediger valgte konto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
@@ -2012,15 +2015,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Tilføj ny kategori</translation>
+        <translation>Добавить новую категорию</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Tilføj nyt feed</translation>
+        <translation>Добавить новый канал</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation>Stop igangværende ajourføre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No actions possible</source>
@@ -2028,19 +2031,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation>Netlæser &amp;&amp; faneblade</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation>Indrapporter en &amp;fejl...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation>Nyt faneblad i netlæser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close all tabs</source>
-        <translation>Luk alle faneblade</translation>
+        <translation>Закрыть все вкладки</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
@@ -2048,7 +2051,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation>Vis i &amp;fuldskærm</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -2069,7 +2072,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>Faneblade</translation>
+        <translation>Вкладки</translation>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
@@ -2077,7 +2080,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation>Gensta&amp;rt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
@@ -2093,14 +2096,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation>&amp;Donér...</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Feed tilføjet</translation>
+        <translation>Канал добавлен</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -2108,30 +2111,30 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan ikke tilføje feed</translation>
+        <translation>Невозможно добавить канал</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation>Gendan database/indstillinger</translation>
-    </message>
-    <message>
-        <source>Operation results</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <source>Operation results</source>
+        <translation>Результаты операции</translation>
+    </message>
+    <message>
         <source>Restore database</source>
-        <translation>Gendan database</translation>
+        <translation>Восстановить базу данных</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation>Gendan indstillinger</translation>
+        <translation>Восстановить настройки</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -2143,15 +2146,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation>Du skal genstarte programmet for at fuldføre gendannelsesprocessen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Source directory</source>
-        <translation>Kildebibliotek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Vælg bibliotek</translation>
+        <translation>&amp;Обзор каталога</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
@@ -2159,7 +2162,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation>Vælg kildebibliotek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Good source directory is specified.</source>
@@ -2167,18 +2170,18 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Restart</source>
-        <translation>Genstart</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormSettings</name>
     <message>
         <source>Settings</source>
-        <translation>Indstillinger</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation>Kritiske indstillinger blev ændret</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Changed categories of settings:
@@ -2195,7 +2198,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation>Vil du virkelig lukke denne dialog uden at gemme nogen indstillinger?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
@@ -2205,14 +2208,14 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation>Vil du genstarte nu?</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation>Forældrekategori</translation>
+        <translation>Родительская категория</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
@@ -2220,100 +2223,100 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivelse</translation>
+        <translation>Описание</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation>Ikon</translation>
+        <translation>Иконка</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation>Vælg ikon til denne kategori.</translation>
+        <translation>Выберите иконку для вашей категории</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation>Tilføj ny kategori</translation>
+        <translation>Добавить новую категорию</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation>Redigér ny kategori</translation>
+        <translation>Редактировать существующую категорию</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Kan ikke tilføje kategori</translation>
+        <translation>Невозможно добавить категорию</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation>Kategori blev ikke tilføjet på grund af en fejl.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation>Kan ikke redigere kategori</translation>
+        <translation>Невозможно редактировать категорию</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation>Kategorien blev ikke redigeret på grund af fejl.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation>Kategorinavn er ok.</translation>
+        <translation>Имя категории подходит.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation>Kategorinavn er for kort.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation>Ingen beskrivelse.</translation>
+        <translation>Описание пустое.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation>Beskrivelsen er OK.</translation>
+        <translation>Описание подходит.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation>Vælg ikon-fil for kategorien</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
+        <translation>Изображения (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation>Vælg ikon</translation>
+        <translation>Выберите иконку</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annuller</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Kig i:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation>Ikonnavn:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation>Ikontype:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category title</source>
-        <translation>Kategorinavn</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation>Sæt titel for din kategori.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Category description</source>
-        <translation>Kategoribeskrivelse</translation>
+        <translation>Описание категории</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
@@ -2321,41 +2324,41 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Выбор иконки</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation>Indlæs et ikon fra en fil...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation>Brug standardikonet fra ikontemaet</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan ikke tilføje feed</translation>
+        <translation>Невозможно добавить канал</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation>Kan ikke redigere feed</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation>Feed blev ikke redigeret på grund af en fejl.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation>&amp;Vælg fil</translation>
+        <translation>&amp;Выбрать файл</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
@@ -2367,11 +2370,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Результаты операции</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation>Ingen fil er udvalgt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -2379,7 +2382,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Destination file</source>
-        <translation>Målfil</translation>
+        <translation>Файл назначения</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
@@ -2387,11 +2390,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Eksportér feeds</translation>
+        <translation>Экспорт каналов</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation>Kildefil</translation>
+        <translation>Исходный файл</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
@@ -2399,11 +2402,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importér feeds</translation>
+        <translation>Импорт каналов</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation>OPML 2.0 filer (*.opml)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select file for feeds export</source>
@@ -2411,7 +2414,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation>Fil et valgt.</translation>
+        <translation>Файл выбран.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
@@ -2419,11 +2422,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation>Kan ikke åbne kildefil.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation>Feeds blev hentet</translation>
+        <translation>Каналы загружены.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
@@ -2435,15 +2438,15 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation>Feeds blev eksporteret succesfuldt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation>Kritisk fejl opstod.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation>Parser data...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
@@ -2463,7 +2466,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation>Hent online metadata.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
@@ -2475,18 +2478,18 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation>&amp;Eksportér til fil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation>&amp;Importér fra fil</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Feed tilføjet</translation>
+        <translation>Канал добавлен</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
@@ -2494,31 +2497,31 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan ikke tilføje feed</translation>
+        <translation>Невозможно добавить канал</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation>Aktuelle udgivelse</translation>
+        <translation>Текущий релиз</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation>Tilgængelig udgivelse</translation>
+        <translation>Доступный релиз</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Статус</translation>
     </message>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation>ukendt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>List with updates was not
@@ -2527,15 +2530,15 @@ downloaded successfully.</source>
     </message>
     <message>
         <source>New release available.</source>
-        <translation>Programopdatering tilgængelig.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation>Fejl: &apos;%1&apos;.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation>Ingen ny udgave tilgængelig.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This release is not newer than
@@ -2544,15 +2547,15 @@ currently installed one.</source>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>Tjek for opdateringer</translation>
+        <translation>Проверка обновлений</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation>Hent nye installationsfiler.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation>Kan ikke opdatere programmet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
@@ -2564,15 +2567,15 @@ currently installed one.</source>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation>Henter opdatering...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation>Hentet succesfuldt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error occured</source>
-        <translation>Der opstod en fejl</translation>
+        <translation>Произошла ошибка</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
@@ -2580,7 +2583,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation>Gå til programmets hjemmeside</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This is new version which can be
@@ -2589,7 +2592,7 @@ downloaded.</source>
     </message>
     <message>
         <source>Install</source>
-        <translation>Installér</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
@@ -2597,11 +2600,11 @@ downloaded.</source>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Ændringslog</translation>
+        <translation>Список изменений</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation>Tilgængelige filer</translation>
+        <translation>Доступные файлы</translation>
     </message>
     <message>
         <source>Download selected update</source>
@@ -2613,7 +2616,7 @@ downloaded.</source>
     </message>
     <message>
         <source> (size </source>
-        <translation>(størrelse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Available update files</source>
@@ -2645,34 +2648,34 @@ You can install it now.</source>
     </message>
     <message>
         <source>No subject</source>
-        <translation>Intet emne</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation>Gmail: godkendelsesfejl</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation>Gmail: tilladelse afvist</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation>Indbakke</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sent</source>
-        <translation>Sendt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Drafts</source>
-        <translation>Kladder</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Spam</source>
-        <translation>Spam</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication status: %1
@@ -2681,11 +2684,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>logged-in</source>
-        <translation>logget ind</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation>IKKE logget ind</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select attachment destination file</source>
@@ -2693,7 +2696,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation>Skriv ny e-postbesked</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2704,7 +2707,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>Kan ikke åbne filen &apos;%1&apos; for skrivning.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2747,25 +2750,25 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>logged-in</source>
-        <translation>logget ind</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation>IKKE logget ind</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation>Hjemmesideadresse indføres her</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation>Vis ikke denne dialog igen.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2780,15 +2783,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation>Åben i ekstern netlæser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Download</source>
-        <translation>Hent</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation>Неверная ссылка</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
@@ -2796,11 +2799,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation>Markér meddelelse som læst</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation>Markér meddelelse som ulæst</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch message importance</source>
@@ -2812,7 +2815,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>image</source>
-        <translation>billede</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Always open links in external browser.</source>
@@ -2827,55 +2830,55 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Read</source>
-        <translation>Læst</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Deleted</source>
-        <translation>Fjernet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Important</source>
-        <translation>Vigtigt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed</source>
-        <translation>Feed</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <source>Url</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
-        <translation>Udvikler</translation>
+        <translation>Автор</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation>Oprettet den</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Contents</source>
-        <translation>Indhold</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation>Meddelelses-ID</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation>Er meddelelsen læst?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation>Er meddelelsen slettet?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation>Er meddelelsen vigtig?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
@@ -2883,15 +2886,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation>Meddelelsesoverskrift</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation>Meddelelses-URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation>Beskedforfatter.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Creation date of the message.</source>
@@ -2899,23 +2902,23 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation>Indholdet af meddelelsen.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation>Permanent slettet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation>Er meddelelsen permanent slettet fra skraldespanden?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Attachments</source>
-        <translation>Vedhæftninger</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation>Liste af vedhæftninger.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
@@ -2927,7 +2930,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Account ID</source>
-        <translation>KontoID</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Custom ID</source>
@@ -2970,11 +2973,11 @@ Login tokens expiration: %2</source>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation>Søg i meddelelser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message search box</source>
-        <translation>Meddelelsessøgeboks</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
@@ -2986,7 +2989,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation>Fremhæv ulæste meddelelser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Highlight important messages</source>
@@ -2994,7 +2997,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation>Vis alle meddelelser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message highlighter</source>
@@ -3002,7 +3005,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Værktøjslinie afstandsstykke</translation>
+        <translation>Пространство панели инструментов</translation>
     </message>
 </context>
 <context>
@@ -3021,7 +3024,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation>Kan ikke starte eksternt postprogram</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
@@ -3029,11 +3032,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation>Åben med eksternt værktøj</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation>Kan ikke starte eksternt værktøj</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
@@ -3045,17 +3048,17 @@ Login tokens expiration: %2</source>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation>protokolfejl</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>vært ikke fundet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>forbindelse afvist</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>connection timed out</source>
@@ -3065,47 +3068,48 @@ Login tokens expiration: %2</source>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>SSL handshake mislykkedes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation>forbindelse til proxy server afvist</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation>midlertidig fejl</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation>godkendelse fejlede</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation>proxy-godkendelse kræves</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>ingen proxy server fundet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>indhold ikke fundet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation>ukendt fejl</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation>ingen fejl</translation>
+        <translation>нет ошибок
+</translation>
     </message>
     <message>
         <source>access to content was denied</source>
@@ -3118,7 +3122,7 @@ Login tokens expiration: %2</source>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation>ukendt indhold</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3129,11 +3133,11 @@ Login tokens expiration: %2</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Vis flere meddelelser (%n resterer)</numerusform><numerusform>Vis flere meddelelser (%n resterer)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation>Lam ikke vise flere meddelelser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
@@ -3144,11 +3148,11 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Click here to login.</source>
-        <translation>Klik her for at logge ind.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation>Log ind via OAuth 2.0...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
@@ -3160,7 +3164,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation>Du skal logge ind først.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3185,11 +3189,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kam ikke tilføje post</translation>
+        <translation>Невозможно добавить пункт</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно добавить канал, потому что выполняется другая важная операция.</translation>
     </message>
 </context>
 <context>
@@ -3197,12 +3201,12 @@ Login tokens expiration: %2</source>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>da</translation>
+        <translation>ru</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation>Мартин Роттер</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
@@ -3212,7 +3216,7 @@ Login tokens expiration: %2</source>
         <source>
 
 + %n other feeds.</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3224,11 +3228,7 @@ Login tokens expiration: %2</source>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation>Denne tjeneste  tilbyder integration med Tiny Tiny RSS.
-
-Tiny Tiny RSS er en open source netbaseret nyhedsfeed (RSS/Atom) læser, lavet til at gøre det muligt for dig at læse nyheder alle steder fra, men føles næsten som et rigtigt skrivebord sprogram.
-
-Mindst API niveau %1 er påkrævet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
@@ -3244,7 +3244,7 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Ny version er tilgængelig</translation>
+        <translation>Доступна новая версия</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
@@ -3267,7 +3267,7 @@ Mindst API niveau %1 er påkrævet.</translation>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation>Skraldespand</translation>
+        <translation>Корзина</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
@@ -3275,15 +3275,15 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation>Gendan skraldespand</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation>Tøm skraldespand</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3291,7 +3291,7 @@ Mindst API niveau %1 er påkrævet.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -3302,7 +3302,7 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation>Søgetekst</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Find previous occurence</source>
@@ -3317,7 +3317,7 @@ Mindst API niveau %1 er påkrævet.</translation>
     <name>SettingsBrowserMail</name>
     <message>
         <source>External web browser</source>
-        <translation>Ekstern netlæser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -3325,7 +3325,7 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation>Brug ekstern brugerdefineret  netlæser</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Web browser executable</source>
@@ -3333,11 +3333,11 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation>Netlæserens eksekverbare fil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Обзор</translation>
     </message>
     <message>
         <source>Executable parameters</source>
@@ -3345,7 +3345,7 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation>Programparametre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use sample arguments for</source>
@@ -3353,15 +3353,15 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation>Vælg netlæser</translation>
-    </message>
-    <message>
-        <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
+        <translation>Обратите внимание, что &quot;%1&quot; (без кавычек) - это поле для URL выбранного сообщения.</translation>
+    </message>
+    <message>
         <source>External e-mail client</source>
-        <translation>Eksterne e-post klient</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
@@ -3373,66 +3373,68 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation>Epost-klientens eksekverbare fil</translation>
+        <translation>Исполняемый файл почтового клиента</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation>Vælg klient</translation>
+        <translation>Выберите клиент</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"/>
+        <translation>Переменные командной строки для параметров приложения:
+• %1 - заголовок выбранного сообщения,
+• %2 - тело выбранного сообщения.</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation>Прокси</translation>
     </message>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation>Type</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation>Vært</translation>
+        <translation>Хост</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation>Værtsnavn eller IP på sin proxyserver</translation>
+        <translation>Хост или IP прокси сервера</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>Порт</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"/>
+        <translation>Ваше имя пользователя для аутентификации прокси-сервера</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"/>
+        <translation>Ваш пароль для аутентификации прокси-сервера</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation>Vis kodeord</translation>
+        <translation>Отобразить пароль</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"/>
+        <translation>Обратите внимание, что эти настройки применяются только на вновь созданных соединений.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"/>
+        <translation>Выберите вэб-браузер</translation>
     </message>
     <message>
         <source>Executables (*)</source>
@@ -3441,19 +3443,19 @@ Mindst API niveau %1 er påkrævet.</translation>
 File filter for external e-mail selection dialog.
 ----------
 File filter for external tool selection dialog.</extracomment>
-        <translation>Eksekverbare (*)</translation>
+        <translation>Исполняемые файлы (*)</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation>Eksekverbare (*.*)</translation>
+        <translation>Исполняемые файлы (*.*)</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation>Vælg e-post klient programfil</translation>
+        <translation>Выберите почтовый клиент</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation>Opera 12 eller ældre</translation>
+        <translation>Opera 12 или старше</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
@@ -3461,11 +3463,11 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>No proxy</source>
-        <translation>Ingen proxy</translation>
+        <translation>Без прокси</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation>Proxyserver</translation>
+        <translation>Прокси из настроек IE</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -3473,47 +3475,47 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Http</source>
-        <translation>Http</translation>
+        <translation>HTTP</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Netlæser &amp; e-post &amp; proxyserver</translation>
+        <translation>Вэб-браузер, e-mail и прокси</translation>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Всегда открывать ссылки из просто внутреннего текстового браузера во внешнем</translation>
     </message>
     <message>
         <source>External tools</source>
-        <translation>Eksternt værktøj</translation>
+        <translation>Внешние приложения</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>На этой странице вы можете установить список внешних приложений, которые могут открывать URL-ы в выбранных сообщениях.</translation>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation>Tilføj eksternt værktøj</translation>
+        <translation>Добавить</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation>Slet valgte eksterne værktøj</translation>
+        <translation>Удалить выбранные</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation>Kørbar</translation>
+        <translation>Приложение</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation>Parametre</translation>
+        <translation>Параметры</translation>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation>Vælg eksternt værktøj</translation>
+        <translation>Выбрать приложение</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation>Indfør parametre</translation>
+        <translation>Ввод параметров</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
@@ -3524,15 +3526,15 @@ File filter for external tool selection dialog.</extracomment>
     <name>SettingsDatabase</name>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>ADVARSEL: Bemærk, at et skifte til en anden datalagringstype IKKE vil kopiere eksisterende data fra den aktuelle aktive datalagring til den nye.</translation>
+        <translation>ВНИМАНИЕ: Обратите внимание, что переход на другой тип хранения данных не будет копировать существующие данные из текущего активного хранения данных для вновь выбранной.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation>Database drivprogramæ</translation>
+        <translation>Драйвер БД</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"/>
+        <translation>Использовать БД в памяти, как рабочую БД</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -3550,67 +3552,67 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Hostname</source>
-        <translation>Værtsnavn</translation>
+        <translation>Имя хоста</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>Порт</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kodeord</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation>Testsetup</translation>
+        <translation>Запуск теста</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"/>
+        <translation>Обратите внимание, что скорость используемого сервера MySQL и задержки используемого соединения СИЛЬНО влияет на конечную эффективность этого приложения. Использование медленных соединений с БД приводит к плохой производительности при просмотре каналов и сообщений.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation>Vi&amp;s adgangskode</translation>
+        <translation>&amp;Показать пароль</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"/>
+        <translation>Рабочая БД</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation>Værtsnavn er tomt</translation>
+        <translation>Хост пуст</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation>Værtsnavn ser ok ud.</translation>
+        <translation>Хост выглядит нормально.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Brugernavn ikke angivet.</translation>
+        <translation>Логин пуст.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation>Brugernavn ser OK ud.</translation>
+        <translation>Имя пользователя выглядит нормально.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Kodeordet er tomt.</translation>
+        <translation>Пароль пуст.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation>Kodeorder ser fint ud.</translation>
+        <translation>Пароль выглядит нормально.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation>Aktiv database er tom.</translation>
+        <translation>Рабочая БД пуста.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Рабочая БД в порядке.</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
@@ -3618,145 +3620,145 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"/>
+        <translation>Вы ещё не выполняли тест соединения</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation>Værtsnavn på din MySQL-server</translation>
+        <translation>Хост сервера MySQL</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation>Brugernavn til login</translation>
+        <translation>Имя пользователя</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation>Kodeord til dit brugernavn</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"/>
+        <translation>Рабочая БД, к которой у вас есть полный доступ.</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation>Datalager</translation>
+        <translation>Хранилище данных</translation>
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation>Обратите внимание, что ВКЛЮЧЕНИЕ этой опции сделает сохранение новых сообщений БЫСТРЕЕ, но это редко может вызывать некоторые проблемы с сохранением сообщений.</translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation>Использовать БД при сохранении загруженных сообщений</translation>
     </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
+        <translation>Открыть менеджер загрузок при старте новой загрузки</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"/>
+        <translation>Каталог для загруженных файлов</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"/>
+        <translation>Спрашивать перед каждой загрузкой</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation>Gem alle hentede filer i</translation>
+        <translation>Сохранять все загруженные файлы в</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"/>
+        <translation>Каталог, где сохраняются все загруженные файлы</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Обзор</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"/>
+        <translation>Выберите каталог для загрузок</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Hentet</translation>
+        <translation>Загрузки</translation>
     </message>
 </context>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds</translation>
+        <translation>Каналы &amp;и категории</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"/>
+        <translation>Обновлять все каналы при старте</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Обновление всех каналов каждые</translation>
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Авто-обновление только когда не в фокусе</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"/>
+        <translation>Таймаут соединения канала</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"/>
+        <translation>Тайм-аут соединения является интервалом времени, который зарезервирован для загрузки новых сообщений канала. Если этот интервал времени истечет, то процесс загрузки прерывается.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation> ms</translation>
+        <translation>мс</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"/>
+        <translation>Формат подсчёта rss-сообщений</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"/>
+        <translation>Введите формат для подсчета сообщений, отображаемого рядом с каждым каналом/категорией в списке каналов. Используйте строки &quot;%all&quot; и &quot;%unread%&quot;, которые являются меткой для фактического подсчета всех (или непрочитанных) сообщений.</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Meddelelser</translation>
+        <translation>Сообщения</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Fjern alle læste meddelelser fra alle feeds når programmet afsluttes</translation>
+        <translation>Удалять все прочитанные сообщения из всех каналов при выходе</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Сохранять выделение сообщения в среднем окне просмотра списка сообщений</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"/>
+        <translation>Использовать свой формат даты/времени (переопределение системного)</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Изменить</translation>
     </message>
     <message>
         <source>Font preview</source>
-        <translation>Forhåndsvisning af skrifttyper</translation>
+        <translation>Предпросмотр</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation>Feeds &amp; meddelelser</translation>
+        <translation>Каналы и сообщения</translation>
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="unfinished"/>
+        <translation>Высота вложений изображений</translation>
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation>Включить уведомление &quot;авто-обновление запущено&quot;</translation>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
@@ -3768,337 +3770,340 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feed list font</source>
-        <translation>Feedliste skrifttype</translation>
+        <translation>Шрифт списка каналов </translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Отображать поля для указания местоположения изображений</translation>
     </message>
     <message>
         <source>Message list font</source>
-        <translation>Meddelelsesliste skrifttype</translation>
+        <translation>Шрифт списка сообщений</translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Шрифт сообщения внутреннего браузера</translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation>Vælg ny skrifttype</translation>
+        <translation>Выберите новый шрифт</translation>
     </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation>Start %1 ved systemopstart</translation>
+        <translation>Запускать %1 при старте системы</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"/>
+        <translation>Проверять обновления при запуске</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"/>
+        <translation>Удалить хлам - ключ реестра Trolltech (HKCU\Software\Trolltech) при выходе из программы (Используйте на свой риск!)</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation>(ikke understøttet på denne platform)</translation>
+        <translation>(не поддерживается на этой платформе)</translation>
     </message>
     <message>
         <source>General</source>
-        <translation>Generelt</translation>
+        <translation>Основные</translation>
     </message>
 </context>
 <context>
     <name>SettingsGui</name>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation>Ikoner</translation>
+        <translation>Иконки &amp;и темы</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation>Ikontema</translation>
+        <translation>Тема иконок</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation>Systembakke &amp;&amp; meddelelser</translation>
+        <translation>Панель уведомлений</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation>Systemebakkeikon</translation>
+        <translation>Иконка в панели уведомлений</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"/>
+        <translation>Скрыть главное окно при минимизации</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation>Start programmet skjult</translation>
+        <translation>Минимизировать при запуске</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Включить всплывающие подсказки</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation>Faneblade</translation>
+        <translation>Вкладки</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"/>
+        <translation>Открыть новую вкладку левой мышкой двойным кликом на панели вкладок</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"/>
+        <translation>Скрыть панель вкладок, если она одна</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation>Luk faneblade med</translation>
+        <translation>Закрыть вкладки при помощи</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Правой мышки двойным кликом</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"/>
+        <translation>Средней мышки одиночным кликом</translation>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation>Værktøjslinier</translation>
+        <translation>Панели</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation>Værktøjslinie for feedliste</translation>
+        <translation>Панель для списка каналов</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation>Værktøjslinie for meddelelsesliste</translation>
+        <translation>Панель для списка сообщений</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation>Statuslinie</translation>
+        <translation>Панель статуса</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation>Knapstil for værktøjslinie</translation>
+        <translation>Стиль кнопок панели</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"/>
+        <translation>Панель для изменения</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Navn</translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>Version</translation>
+        <translation>Версия</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Udvikler</translation>
+        <translation>Автор</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation>E-post</translation>
+        <translation>E-Mail</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation>(Systembakke ikon er ikke tilgængelig.)</translation>
+        <translation>(Иконка трея не доступна)</translation>
     </message>
     <message>
         <source>no icon theme/system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Без иконок/Системная тема иконок</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation>Kun ikoner</translation>
+        <translation>Только иконка</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation>Kun tekst</translation>
+        <translation>Только текст</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation>Tekst ved siden af ikon</translation>
+        <translation>Текст рядом с иконкой</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation>Tekst under ikon</translation>
+        <translation>Текст под иконокй</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation>Brug OS-stil</translation>
+        <translation>Стиль ОС</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation>Brugergrænseflade</translation>
+        <translation>Интерфейс</translation>
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"/>
+        <translation>Стиль</translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="unfinished"/>
+        <translation>Тема</translation>
     </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
     <message>
         <source>Language</source>
-        <translation>Sprog</translation>
+        <translation>Язык</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"/>
+        <translation>Код</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Udvikler</translation>
+        <translation>Автор</translation>
     </message>
 </context>
 <context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation>Tastaturgenveje</translation>
+        <translation>Сочетания клавиш</translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset to original shortcut.</source>
-        <translation>Nulstil til original genvej.</translation>
+        <translation>Сбросить на оригинальное сочетание.</translation>
     </message>
     <message>
         <source>Clear current shortcut.</source>
-        <translation>Nulstil nuværende genvej.</translation>
+        <translation>Очистить текущее сочетание</translation>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation type="unfinished"/>
+        <translation>Кликните и нажмите новое сочетание</translation>
     </message>
 </context>
 <context>
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Эта страница заблокирована AdBlock</translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Заблокировано установкой: &quot;%1&quot;&lt;br/&gt;Заблокировано фильтром: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation>Metadata ikke hentet</translation>
+        <translation>Метаданные не получены</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Метаданные не получены, потому что: %1.</translation>
     </message>
     <message>
         <source>
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation>
+Статус сети: %1
+Кодирование: %2
+Тип: %3</translation>
     </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Это обязательная служба для каналов стандарта RSS/RDF/ATOM.</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"/>
+        <translation>Хотите загрузить исходный набор каналов?</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка при загрузке исходных каналов</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Hent metadata</translation>
+        <translation>Получить метаданные</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Eksportér feeds</translation>
+        <translation>Экспорт каналов</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importér feeds</translation>
+        <translation>Импорт каналов</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Этот аккаунт не содержит каналов. Вы можете добавить каналы по-умолчанию.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation>Kam ikke tilføje post</translation>
+        <translation>Невозможно добавить пункт</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно добавить канал, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation>Kan ikke tilføje kategori</translation>
+        <translation>Невозможно добавить категорию</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation>Kan ikke tilføje kategori, fordi en anden kritisk operation er under udførelse.</translation>
+        <translation>Невозможно добавить категорию, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Импорт успешен, но некоторые каналы/категории не импортированы из-за ошибки.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation>Импорт успешно завершён.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Индикатор обновления канала</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation>Метка обновления канала</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation>Filhentningsstatusbar</translation>
+        <translation>Индикатор загрузки файла</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation>Метка загруженного файла</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Værktøjslinie afstandsstykke</translation>
+        <translation>Пробел в панели инструментов</translation>
     </message>
 </context>
 <context>
     <name>SystemFactory</name>
     <message>
         <source>anonymous</source>
-        <translation>anonym</translation>
+        <translation>анонимный</translation>
     </message>
     <message>
         <source> bytes</source>
-        <translation> bytes</translation>
+        <translation>байт</translation>
     </message>
 </context>
 <context>
@@ -4107,305 +4112,305 @@ Type: %3</source>
         <source>%1
 Unread news: %2</source>
         <translation>%1
-Ulæste nyheder: %2</translation>
+Непрочитанных новостей: %2</translation>
     </message>
 </context>
 <context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation>Luk dette faneblad.</translation>
+        <translation>Закрыть эту вкладку</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation>Luk faneblad</translation>
+        <translation>Закрыть вкладку</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation>Feeds</translation>
+        <translation>Каналы</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation type="unfinished"/>
+        <translation>Обзор каналов и сообщений</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation>Viser hovedmenu</translation>
+        <translation>Отобразить главное меню.</translation>
     </message>
     <message>
         <source>Main menu</source>
-        <translation>Hovedmenu</translation>
+        <translation>Главное меню</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Hentet</translation>
+        <translation>Загрузки</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Avisfremvisning</translation>
+        <translation>Газетный вид</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <translation>Netlæser</translation>
+        <translation>Вэб-браузер</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n time</numerusform><numerusform>%n timer</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minut</numerusform><numerusform>%n minut(ter)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation>og</translation>
+        <translation>и</translation>
     </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation>Aktiverede handlinger</translation>
+        <translation>Активированные действия</translation>
     </message>
     <message>
         <source>Available actions</source>
-        <translation>Tilgængelige handlinger</translation>
+        <translation>Доступные действия</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation>Indsæt afstandsstykke</translation>
+        <translation>Вставить разделитель</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation>Indsæt afstandsstykke</translation>
+        <translation>Вставить пробел</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation>Afstandsstykke</translation>
+        <translation>Разделитель</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Værktøjslinie afstandsstykke</translation>
+        <translation>Пробел в панели инструментов</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation>Flyt handling op</translation>
+        <translation>Переместить действие вверх</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation>Flyt handling ned</translation>
+        <translation>Переместить действие вниз</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation>Tilføj valgte handling</translation>
+        <translation>Добавить выбранное действие</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation>Slet valgte handling</translation>
+        <translation>Удалить выбранное действие</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation>Slet alle handlinger</translation>
+        <translation>Удалить все действия</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation>Nulstil værktøjsbælte</translation>
+        <translation>Сбросить панель инструментов</translation>
     </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation>Сначала закройте открытые модальные диалоги.</translation>
     </message>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Синхронизация</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно добавить пункт</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно добавить канал, потому что выполняется еще одна важная операция.</translation>
     </message>
     <message>
         <source>Username: %1
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation>Brugernavn: %1
-Server: %2
-Sidste fejl: %3
-Sidst logget på: %4</translation>
+        <translation>Имя пользователя: %1
+Сервер: %2
+Последняя ошибка: %3
+Последний вход: %4</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"/>
+        <translation>Навигационная панель</translation>
     </message>
     <message>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
-        <translation>Ingen titel</translation>
+        <translation>Нет заголовка</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Tilbage</translation>
+        <translation>Назад</translation>
     </message>
     <message>
         <source>Go back.</source>
-        <translation>Go tilbage.</translation>
+        <translation>Перейти назад.</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation>Frem</translation>
+        <translation>Вперед</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation>Go frem</translation>
+        <translation>Перейти вперёд.</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation>Genindlæs</translation>
+        <translation>Перезагрузить</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Genindlæs nuværende hjemmeside.</translation>
+        <translation>Перезагрузить текущую вэб-страницу</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Остановить</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation>Stop indlæsning af hjemmeside.</translation>
+        <translation>Остановить загрузку вэб-страницы</translation>
     </message>
 </context>
 <context>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки вэб-движка</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation>Autoindlæs billeder</translation>
+        <translation>Автозагрузка изображений</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation>JS aktiveret</translation>
+        <translation>JS включён</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation>JS kan åbne popup vinduer</translation>
+        <translation>JS может открывать всплывающие окна</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation>JS kan tilgå udklipsholder</translation>
+        <translation>JS имеет доступ к буферу обмена</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Гиперссылки получили фокус</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation>Lokal-lager aktiveret</translation>
+        <translation>Локальное хранение включено</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>Локальное содержимое имеет доступ к URLs</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Аудит XSS включён</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation>Пространственная навигация включена</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>Локальное содержимое имеет доступ к локальным файлам</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Аудит гиперссылок включён</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"/>
+        <translation>Анимация прокрутки</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation>Fejlside aktiveret</translation>
+        <translation>Страницы ошибок включены</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation>Udvidelser aktiveret</translation>
+        <translation>Плагины включены</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation>Fuldskærm aktiveret</translation>
+        <translation>Полный экран включён</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Снятие скриншота включено</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation>WebGL aktiveret</translation>
+        <translation>WebGL включён</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation>Ускорение 2D канвас</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Печатать фоновые элементы</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation>Tillad kørsel af usikkert indhold</translation>
+        <translation>Разрешить запуск небесопасного содержимого</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Разрешить геолокацию в небезопасных источниках</translation>
     </message>
 </context>
 <context>
     <name>WebViewer</name>
     <message>
         <source>Attachment</source>
-        <translation>Vedhæftning</translation>
+        <translation>Вложение</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Skrevet af</translation>
+        <translation>Написано</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation>Avisfremvisning</translation>
+        <translation>Газетный вид</translation>
     </message>
     <message>
         <source>unknown author</source>
-        <translation>ukendt forfatter</translation>
+        <translation>автор неизвестен</translation>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation>Åben henvisning i ekstern netlæser</translation>
+        <translation>Открыть ссылку о внешнем браузере</translation>
     </message>
 </context>
 </TS>

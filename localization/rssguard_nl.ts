@@ -87,7 +87,7 @@
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"/>
+        <translation>Met AdBlock kunt u ongewenste inhoud op webpagina&apos;s blokkeren</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
@@ -114,7 +114,7 @@
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"/>
+        <translation>Wil je 1 %1 1 abonnement toevoegen? </translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
@@ -140,11 +140,11 @@
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste regels toevoegen</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"/>
+        <translation>Schrijf hier uw regel:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
@@ -425,7 +425,7 @@ Klik hier om map te openen.</translation>
     <name>EmailRecipientControl</name>
     <message>
         <source>To</source>
-        <translation type="unfinished"/>
+        <translation>Naar:</translation>
     </message>
     <message>
         <source>Cc</source>
@@ -437,7 +437,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>Reply-to</source>
-        <translation type="unfinished"/>
+        <translation>Beantwoord-naar</translation>
     </message>
 </context>
 <context>
@@ -737,7 +737,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>From</source>
-        <translation type="unfinished"/>
+        <translation>Van</translation>
     </message>
     <message>
         <source>Name and address of this e-mail message sender</source>
@@ -4341,11 +4341,11 @@ Last login on: %4</source>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JS heeft toegang tot klembord</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Koppelingen kunnen focus krijgen</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
@@ -4353,27 +4353,27 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>Lokale inhoud heeft toegang tot externe URL&apos;s</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Plugins ingeschakeld</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation>Ruimtelijke navigatie ingeschakeld</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>Lokale inhoud heeft toegang tot lokale bestanden</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Controle van hyperlinks ingeschakeld</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"/>
+        <translation>Animeer scrollen</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
@@ -4397,7 +4397,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation>Versnel 2D canvas</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
@@ -4405,11 +4405,11 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"/>
+        <translation>Sta onveilige inhoud toe</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Sta geolocatie op onzekere oorsprong toe</translation>
     </message>
 </context>
 <context>
