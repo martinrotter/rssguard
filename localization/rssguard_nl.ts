@@ -18,15 +18,15 @@
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation>Gebruik voorgeschreven inschrijving</translation>
+        <translation>Voorgeschreven abonnement gebruiken</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation>Titel van abonnement</translation>
+        <translation>Naam van abonnement</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>Volledige url naar een online-abonnementsbestand</translation>
     </message>
 </context>
 <context>
@@ -48,11 +48,11 @@
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
-        <translation>Adblock configuratie</translation>
+        <translation>Advertentieblokkeringsinstellingen</translation>
     </message>
     <message>
         <source>Enable AdBlock</source>
-        <translation>ADblock ingeschakeld</translation>
+        <translation>Advertenties blokkeren</translation>
     </message>
     <message>
         <source>Options</source>
@@ -64,7 +64,7 @@
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Verwijder regel</translation>
+        <translation>Regel verwijderen</translation>
     </message>
     <message>
         <source>Add subscription</source>
@@ -72,53 +72,53 @@
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation>Verwijder abonnement</translation>
+        <translation>Abonnement verwijderen</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation>Update abonnement</translation>
+        <translation>Abonnementen bijwerken</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation>Leer over het schrijvan van regels...</translation>
+        <translation>Lees meer over het opstellen van regels...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation>Met AdBlock kunt u ongewenste inhoud op webpagina&apos;s blokkeren</translation>
+        <translation>Met advertentieblokkering kun je ongewenste inhoud op webpagina&apos;s blokkeren</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation>Geblokte popup venster</translation>
+        <translation>Geblokkeerd pop-upvenster</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation>Adblock blokkeerde een ongewenste popup</translation>
+        <translation>Adblock heeft een ongewenst popup-venster geblokkeerd.</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation>Toon AdBlock &amp;instellingen</translation>
+        <translation>Advertentieblokkering&amp;sinstellingen tonen</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation>Uitgezet op %1</translation>
+        <translation>Uitschakelen op %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation>Op deze pagina uitzetten</translation>
+        <translation>Alleen uitschakelen op deze pagina</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Wil je 1 %1 1 abonnement toevoegen? </translation>
+        <translation>Wil je &lt;b&gt;%1&lt;/b&gt; abonnement toevoegen? </translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation>AdBlock inschrijving toevoegen</translation>
+        <translation>Abonnement toevoegen</translation>
     </message>
 </context>
 <context>
@@ -136,19 +136,19 @@
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Verwijder regel</translation>
+        <translation>Regel verwijderen</translation>
     </message>
     <message>
         <source>Add custom rule</source>
-        <translation>Aangepaste regels toevoegen</translation>
+        <translation>Aangepaste regel toevoegen</translation>
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation>Schrijf hier uw regel:</translation>
+        <translation>Stel je regel op:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation>%1 (onlangs geupdated)</translation>
+        <translation>%1 (onlangs bijgewerkt)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
@@ -163,67 +163,66 @@
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Uitvoermap is niet beschrijfbaar</translation>
+        <translation>De uitvoermap is niet beschrijfbaar</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation>Instellingen van bestand niet succesvol gekopieerd naar uitvoermap.</translation>
+        <translation>Het instellingenbestand is niet gekopieerd naar de uitvoermap.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation>Databasebestand niet succesvol gekopieerd naar uitvoermap.</translation>
+        <translation>Het databankbestand is niet gekopieerd naar de uitvoermap.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Database herstel werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
+        <translation>Databankherstel is niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>Herstel van de instellingen werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
+        <translation>Herstel van de instellingen is niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
+        <translation>Kan feed niet toevoegen</translation>
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Feed kan niet worden toegevoegd omdat standaard RSS / Atom account niet is ingeschakeld.</translation>
+        <translation>De feed kan niet worden toegevoegd omdat het standaard RSS-/Atom-account niet is ingeschakeld.</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation>Geen berichten gedownload</translation>
+        <translation>Nieuwe berichten opgehaald</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation>Krimpende databasebestand...</translation>
+        <translation>Bezig met comprimeren van databankbestand...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation>Databasebestand krimpt...</translation>
+        <translation>Databankbestand is gecomprimeerd...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation>Verwijder gelezen berichten...</translation>
+        <translation>Bezig met verwijderen van gelezen berichten...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation>
-Gelezen berichten gewist...</translation>
+        <translation>Gelezen berichten gewist...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation>Prullenbak gewist...</translation>
+        <translation>Prullenbak is geleegd...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation>Verwijder oude berichten...</translation>
+        <translation>Bezig met verwijderen van oude berichten...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation>Wis prullenbak...</translation>
+        <translation>Bezig met legen van prullenbak...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
@@ -234,16 +233,16 @@ Gelezen berichten gewist...</translation>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation>MySQL server werkt als verwacht.</translation>
+        <translation>De MySQL-server werkt zoals verwacht.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation>Geen MySQL server draait er in de doelbestemming.</translation>
+        <translation>Er is geen MySQL-server actief op de doelbestemming.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation>Toegang geweigerd. Ongeldig gebruikersnaam of paswoord gebruikt.</translation>
+        <translation>Toegang geweigerd. Ongeldige gebruikersnaam of wachtwoord ingevoerd.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
@@ -252,23 +251,23 @@ Gelezen berichten gewist...</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (specifieke database)</translation>
+        <translation>MySQL/MariaDB (specifieke databank)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation>SQLite (ingesloten database)</translation>
+        <translation>SQLite (ingesloten databank)</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Geselekteerde database bestaat (nog) niet. Het wordt aangemaakt. Dat is normaal.</translation>
+        <translation>De geselecteerde databank bestaat (nog) niet. Deze wordt nu aangemaakt - dit is normaal.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
-        <translation>MySQL database is niet beschikbaar</translation>
+        <translation>MySQL-databank is niet beschikbaar</translation>
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 kan geen gebruik maken van MySQL opslag, het is niet beschikbaar. %1 switch nu over naar de SQLite database. Start je MySQL server en maak aanpassingen in de programma-instellingen.</translation>
+        <translation>%1 kan geen gebruik maken van MySQL-opslag - het is niet beschikbaar. %1 schakelt nu over naar de SQLite-databank. Start je MySQL-server en maak aanpassingen in de programma-instellingen.</translation>
     </message>
 </context>
 <context>
@@ -280,9 +279,9 @@ Gelezen berichten gewist...</translation>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klik hier om feeds toe tevoegen van deze website.
-Deze website heeft %n feed.</numerusform><numerusform>Klik hier om feeds toe tevoegen van deze website.
-Deze website heeft %n feed(s).</numerusform></translation>
+        <translation><numerusform>Klik hier om feeds toe te voegen van deze website.
+Deze website bevat %n feed.</numerusform><numerusform>Klik hier om feeds toe te voegen van deze website.
+Deze website bevat %n feeds.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -290,14 +289,14 @@ Deze website heeft %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation>Dit account ondersteunt geen toevoeging van feeds.</translation>
+        <translation>Dit account heeft geen ondersteuning voor het toevoegen van feeds.</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation>Icon</translation>
+        <translation>Pictogram</translation>
     </message>
     <message>
         <source>Filename</source>
@@ -305,23 +304,23 @@ Deze website heeft %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation>Fout bij het openen van uitvoerbestand: %1</translation>
+        <translation>Fout bij openen van uitvoerbestand: %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>&amp;Probeer opnieuw</translation>
+        <translation>&amp;Opnieuw proberen</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>&amp;Stop</translation>
+        <translation>&amp;Stoppen</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>&amp;Open bestand</translation>
+        <translation>Bestand &amp;openen</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation>Kies bestemming voor het gedownloade bestand</translation>
+        <translation>Kies een bestemming voor het gedownloade bestand</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -329,11 +328,11 @@ Deze website heeft %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation>Download map kan niet worden aangemaakt</translation>
+        <translation>De downloadmap kan niet worden aangemaakt</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation>Fout bij het opslaan van bestand: %1</translation>
+        <translation>Fout bij opslaan van bestand: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
@@ -341,11 +340,11 @@ Deze website heeft %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation>%1 of %2 - download voltooid</translation>
+        <translation>%1 of %2 - downloaden voltooid</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>Open &amp;map</translation>
+        <translation>&amp;Map openen</translation>
     </message>
     <message>
         <source>Cannot open file</source>
@@ -353,7 +352,7 @@ Deze website heeft %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
+        <translation>Kan dit uitvoerbestand niet openen - open het handmatig.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
@@ -361,21 +360,21 @@ Deze website heeft %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
+        <translation>Kan de uitvoermap niet openen - open deze handmatig.</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation>Download klaar</translation>
+        <translation>Downloaden voltooid</translation>
     </message>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation>Bestand &apos;%1&apos; is klaar
-Klik hier om map te openen.</translation>
+        <translation>Het bestand &apos;%1&apos; is opgehaald.
+Klik hier om de bovenliggende map te openen.</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation>Url: %1</translation>
+        <translation>URL: %1</translation>
     </message>
     <message>
         <source>Local file: %1</source>
@@ -383,7 +382,7 @@ Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation>Selectie van lokaal bestand is geannuleerd.</translation>
+        <translation>Selectie van lokaal bestand afgebroken.</translation>
     </message>
 </context>
 <context>
@@ -394,11 +393,11 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation><numerusform>nog %n minuut te gaan</numerusform><numerusform>nog %n minuten te gaan</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation><numerusform>nog %n seconde te gaan</numerusform><numerusform>nog %n seconden te gaan</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -418,26 +417,26 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %n bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
+        <translation><numerusform>Bezig met downloaden van %n bestand...</numerusform><numerusform>Bezig met downloaden van %n bestanden...</numerusform></translation>
     </message>
 </context>
 <context>
     <name>EmailRecipientControl</name>
     <message>
         <source>To</source>
-        <translation>Naar:</translation>
+        <translation>Aan</translation>
     </message>
     <message>
         <source>Cc</source>
-        <translation type="unfinished"/>
+        <translation>Cc</translation>
     </message>
     <message>
         <source>Bcc</source>
-        <translation type="unfinished"/>
+        <translation>Bcc</translation>
     </message>
     <message>
         <source>Reply-to</source>
-        <translation>Beantwoord-naar</translation>
+        <translation>Antwoord aan</translation>
     </message>
 </context>
 <context>
@@ -445,17 +444,17 @@ Klik hier om map te openen.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>automatisch bijwerken niet gebruiken</translation>
+        <translation>maakt geen gebruik van automatisch bijwerken</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik algemene instellingen (%n minuut(en) tot volgende auto-update)</numerusform><numerusform>gebruik globale instellingen (%n minut(en) voor volgende automatische update)</numerusform></translation>
+        <translation><numerusform>gebruikt de globale instellingen (%n minuut tot aan de volgende automatische update)</numerusform><numerusform>gebruikt de globale instellingen (%n minuten tot aan de volgende automatische update)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut(en) tot volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minut(en) tot volgende auto-update)</numerusform></translation>
+        <translation><numerusform>gebruikt specifieke instellingen (%n minuut tot aan volgende automatische update)</numerusform><numerusform>gebruikt specifieke instellingen (%n minuten tot aan volgende automatische update)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
@@ -463,15 +462,15 @@ Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>has new messages</source>
-        <translation>heeft nieuwe berichten</translation>
+        <translation>bevat nieuwe berichten</translation>
     </message>
     <message>
         <source>authentication error</source>
-        <translation>verificatie fout</translation>
+        <translation>verificatiefout</translation>
     </message>
     <message>
         <source>network error</source>
-        <translation>netwerk fout</translation>
+        <translation>netwerkfout</translation>
     </message>
     <message>
         <source>unspecified error</source>
@@ -480,37 +479,38 @@ Klik hier om map te openen.</translation>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status van automatisch bijwerken: %1
+Status: %2</translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation>Werkbalk voor berichten</translation>
+        <translation>Berichtwerkbalk</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>Werkbalk voor feeds</translation>
+        <translation>Feedwerkbalk</translation>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
         <source>Cannot update all items</source>
-        <translation>Kan alle items niet bijwerken</translation>
+        <translation>Kan niet alle items bijwerken</translation>
     </message>
     <message>
         <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>U kunt niet alle items updaten omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Je kunt niet alle items bijwerken omdat er een andere kritieke operatie wordt uitgevoerd.</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Begint met auto-update van sommige feeds</translation>
+        <translation>Bezig met starten van automatisch bijwerken van sommige feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-update van %n feed(s).</numerusform><numerusform>Auto-update van %n feed(s).</numerusform></translation>
+        <translation><numerusform>Er wordt %n feed automatisch bijgewerkt.</numerusform><numerusform>Er worden %n feeds automatisch bijgewerkt.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -524,7 +524,7 @@ Status: %2</source>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
@@ -536,15 +536,15 @@ Status: %2</source>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation>Je kan geen gesleepte item overdragen naar een ander account, dir wordt niet ondersteunt.</translation>
+        <translation>Er is geen ondersteuning voor het verslepen van items naar een ander account.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation>Kan de drag &amp; drop bewerking niet uitvoeren</translation>
+        <translation>Slepen-en-neerzetten mislukt</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation>Aantal van alle ongelezen berichten.</translation>
+        <translation>Aantal ongelezen/alle berichten.</translation>
     </message>
 </context>
 <context>
@@ -566,31 +566,31 @@ Status: %2</source>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation>Contextmenu voor lege regels</translation>
+        <translation>Rechtermuisknopmenu van lege ruimte</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation>Geselecteerde item kunt u niet bewerken omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Het geselecteerde item kan niet worden bewerkt omdat er een andere kritieke operatie wordt uitgevoerd.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation>Geselecteerde item kunt u niet verwijderen omdat een andere kritieke operatie aan de gang is.</translation>
+        <translation>Het geselecteerde item kan niet worden verwijderd omdat er een andere kritieke operatie wordt uitgevoerd.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation>Contextmenu voor categorieën</translation>
+        <translation>Rechtermuisknopmenu van categorieën</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation>Geselecteerde item kun je niet bewerken,dit wordt nog (niet) ondersteunt.</translation>
+        <translation>Het geselecteerde item kan niet worden bewerkt, omdat hier (nog?) geen ondersteuning voor is.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation>Verwijder &quot;%1&quot;</translation>
+        <translation>Bezig met verwijderen van &apos;%1&apos;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation>Je staat op het punt om gehele item &quot;%1&quot; te verwijderen.</translation>
+        <translation>Je staat op het punt om het item &apos;%1&apos; volledig te verwijderen.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
@@ -598,41 +598,41 @@ Status: %2</source>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation>Kan &quot;%1&quot; niet verwijderen</translation>
+        <translation>Kan &apos;%1&apos; niet verwijderen</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation>Deze item kan niet worden verwijderd omdat het ergens fout ging. Meld deze bug.</translation>
+        <translation>Dit item kan niet worden verwijderd omdat er een fout is opgetreden. Meld deze bug.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation>Deze item kan niet worden verwijderd omdat het niet wordt ondersteunt
-of deze functie bestaat nog niet.</translation>
+        <translation>Dit item kan niet worden verwijderd omdat het niet wordt ondersteund,
+of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation>Invoegen van andere items</translation>
+        <translation>Rechtermuisknopmenu van andere items</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation>Niet ondersteund</translation>
+        <translation>Niet-ondersteund</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation>Geselecteerde account ondersteunt geen toevoeging van nieuwe feeds.</translation>
+        <translation>Dit account heeft geen ondersteuning voor het toevoegen van feeds.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation>Geselecteerde account ondersteunt geen toevoeging van nieuwe categorieën.</translation>
+        <translation>Dit account heeft geen ondersteuning voor het toevoegen van categorieën.</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Rechtermuisknopmenu van prullenbakken</translation>
     </message>
     <message>
         <source>Context menu for accounts</source>
-        <translation type="unfinished"/>
+        <translation>Rechtermuisknopmenu van accounts</translation>
     </message>
 </context>
 <context>
@@ -647,27 +647,27 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL Licentie (Geldt voor RSS Guard bron code)</translation>
+        <translation>GNU GPL-licentie (van toepassing op RSS Guard-broncode)</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation>GNU GPL Licentie</translation>
+        <translation>GNU GPL-licentie</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD licentie (Geldt voor QtSingleAplication bron code)</translation>
+        <translation>BSD-licentie (van toepassing op QtSingleApplication-broncode)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation>Licentie pagina is alleen beschikbaar in het Engels.</translation>
+        <translation>De licentiepagina is alleen beschikbaar in het Engels.</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Changelog</translation>
+        <translation>Wijzigingslog</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation>Changelog pagina is alleen beschikbaar in het Engels.</translation>
+        <translation>De wijzigingslogpagina is alleen beschikbaar in het Engels.</translation>
     </message>
     <message>
         <source>License not found.</source>
@@ -675,7 +675,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation>Changelog niet gevonden.</translation>
+        <translation>Geen wijzigingslog gevonden.</translation>
     </message>
     <message>
         <source>About %1</source>
@@ -687,15 +687,15 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation>Bestands instellingen</translation>
+        <translation>Bestandsinstellingen</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation>Database root pad</translation>
+        <translation>Hoofdpad van databank</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation>Volledig portable</translation>
+        <translation>VOLLEDIG portable</translation>
     </message>
     <message>
         <source>Resources</source>
@@ -703,15 +703,15 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License, versie 3.&lt;br&gt;&lt;br&gt;Contact:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~Website&lt;/li&gt;&lt;li&gt;U kunt de broncode voor %5 downloaden van de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 is een (zeer) makkelijk te gebruiken feedlezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder de voorwaarden van de GNU General Public License, versie 3.&lt;br&gt;&lt;br&gt;Contact:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;li&gt;Je kunt de broncode van %5 downloaden op de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versie:&lt;/b&gt; %1 (Gemaakt oo %2/%3)&lt;br&gt;&lt;b&gt;Revisie:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Bouw datum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (Gecompileerd met %7)&lt;br&gt;</translation>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versie:&lt;/b&gt; %1 (gemaakt op %2/%3)&lt;br&gt;&lt;b&gt;Revisie:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Bouwdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (gecompileerd met %7)&lt;br&gt;</translation>
     </message>
     <message>
         <source>User skins root path</source>
-        <translation>Gebruikers skins root pad </translation>
+        <translation>Hoofdmap met gebruikersthema&apos;s</translation>
     </message>
     <message>
         <source>NOT portable</source>
@@ -722,18 +722,18 @@ of deze functie bestaat nog niet.</translation>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation>Voeg nieuw account toe</translation>
+        <translation>Account toevoegen</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>Dit account kan maar 1 maal worden toegevoegd.</translation>
+        <translation>Dit account kan slechts eenmaal worden toegevoegd.</translation>
     </message>
 </context>
 <context>
     <name>FormAddEditEmail</name>
     <message>
         <source>Write e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>E-mail opstellen</translation>
     </message>
     <message>
         <source>From</source>
@@ -741,38 +741,38 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Name and address of this e-mail message sender</source>
-        <translation type="unfinished"/>
+        <translation>Naam en adres van de e-mailafzender</translation>
     </message>
     <message>
         <source>Contents of your e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Inhoud van het bericht</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished"/>
+        <translation>...</translation>
     </message>
     <message>
         <source>Add new recipient.</source>
-        <translation type="unfinished"/>
+        <translation>Ontvanger toevoegen</translation>
     </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation>Backup database/instellingen</translation>
+        <translation>Databank/Instellingen back-uppen</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation>Backup eigenschappen</translation>
+        <translation>Back-upeigenschappen</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation>Items voor backup</translation>
+        <translation>Te back-uppen items</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation>Database</translation>
+        <translation>Databank</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -780,7 +780,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation>Backup naam</translation>
+        <translation>Naam van back-up</translation>
     </message>
     <message>
         <source>Operation results</source>
@@ -788,7 +788,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation>Algemene naam voor backup bestanden</translation>
+        <translation>Algemene naam voor back-upbestanden</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -796,19 +796,19 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation>Back-up is gemaakt.</translation>
+        <translation>De back-up is gemaakt.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation>Backup naam kan niet leeg zijn.</translation>
+        <translation>Voer een naam in.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation>Backup naam is in orde.</translation>
+        <translation>De naam is in orde.</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation>Backup mislukt.</translation>
+        <translation>Back-up mislukt.</translation>
     </message>
     <message>
         <source>Output directory</source>
@@ -816,26 +816,26 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Selecteer map</translation>
+        <translation>Map &amp;kiezen</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation>Backup is succesvol aangemaakt en opgeslagen in de doelmap.</translation>
+        <translation>De back-up is gemaakt en opgeslagen in de doelmap.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation>Selecteer de doelmap</translation>
+        <translation>Doelmap kiezen</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation>Juiste bestemmingsmap is opgegeven.</translation>
+        <translation>Je heb de juiste bestemmingsmap opgegeven.</translation>
     </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation>Database opschonen</translation>
+        <translation>Databank opschonen</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
@@ -847,23 +847,23 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation>Databasebestand krimpt</translation>
+        <translation>Databankbestand verkleinen</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Database informatie</translation>
+        <translation>Databankinformatie</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation>Databasebestands grootte</translation>
+        <translation>Groote van databankbestand</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation>Database type</translation>
+        <translation>Soort databank</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation>Vordering</translation>
+        <translation>Voortgang</translation>
     </message>
     <message>
         <source>I am ready.</source>
@@ -871,27 +871,27 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation>Database opschonen loopt.</translation>
+        <translation>De databank wordt opgeschoond.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation>Database opschonen is klaar.</translation>
+        <translation>De databank is opgeschoond.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation>Database opschonen is mislukt.</translation>
+        <translation>De databank kan niet worden opgeschoond.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation>Opschonen van instellingen (alle gecontroleerde items worden volledig gewist uit de database)</translation>
+        <translation>Instellingen opschanen (alle aangekruiste items worden volledig gewist uit de databank)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Verwijder alle gelezen berichten(niet die van de prullenbak)</translation>
+        <translation>Alle gelezen berichten verwijderen (behalve die in de prullenbak)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation>Verwijder alle berichten van de prullenbak</translation>
+        <translation>Alle berichten verwijderen uit de prullenbak</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>

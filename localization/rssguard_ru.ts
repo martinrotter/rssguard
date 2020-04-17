@@ -114,7 +114,7 @@
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Хотите добавить  &lt;b&gt;% 1&lt;/b&gt; подписку?</translation>
+        <translation>Хотите добавить &lt;b&gt;%1&lt;/b&gt; подписку?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
@@ -163,7 +163,7 @@
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>Выходной каталогне доступен для записи</translation>
+        <translation>Выходной каталог не доступен для записи</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -267,7 +267,7 @@
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>% 1 не может использовать хранилище MySQL. Оно недоступно. %1 теперь переключается на базу данных SQLite. Запустите сервер MySQL и внесите изменения в настройках приложения.</translation>
+        <translation>%1 не может использовать хранилище MySQL. Оно недоступно. %1 теперь переключается на базу данных SQLite. Запустите сервер MySQL и внесите изменения в настройках приложения.</translation>
     </message>
 </context>
 <context>
@@ -279,7 +279,11 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -358,7 +362,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation>Не удается открыть выходной кталог. Откройте его вручную.</translation>
+        <translation>Не удается открыть выходной каталог. Откройте его вручную.</translation>
     </message>
     <message>
         <source>Download finished</source>
@@ -391,11 +395,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n минута осталась</numerusform><numerusform>%n минуты осталось</numerusform><numerusform>%n минут осталось</numerusform><numerusform>%n минуты осталось</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>осталась %n секунда</numerusform><numerusform>осталось %n секунды</numerusform><numerusform>осталось %n секунд</numerusform><numerusform>осталось %n секунды</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -403,19 +407,19 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>kB</source>
-        <translation>кб</translation>
+        <translation>Кб</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation>мб</translation>
+        <translation>МБ</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation>гб</translation>
+        <translation>ГБ</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Загрузка %n файла...</numerusform><numerusform>Загрузка %n файлов...</numerusform><numerusform>Загрузка %n файлов...</numerusform><numerusform>Загрузка %n файлов...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -447,17 +451,16 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
-        <translation>нет ошибок
-</translation>
+        <translation>нет ошибок</translation>
     </message>
     <message>
         <source>has new messages</source>
@@ -478,8 +481,8 @@ Click here to open parent directory.</source>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation>Состояние автообновления: % 1
-Статус:% 2</translation>
+        <translation>Состояние автообновления: %1
+Статус: %2</translation>
     </message>
 </context>
 <context>
@@ -509,7 +512,7 @@ Status: %2</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -601,7 +604,7 @@ Status: %2</source>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation>Этот элемент нельзя удалить, случилась критическая ошибка . Отправьте сообщение об ошибке.</translation>
+        <translation>Этот элемент нельзя удалить, случилась критическая ошибка. Отправьте сообщение об ошибке.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
@@ -705,7 +708,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Версия:&lt;/b&gt; %1 (сборка для %2/%3&lt;br&gt;&lt;b&gt;Ревизия: %4&lt;br&gt;&lt;b&gt;Дата сборки:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (скомпилировано %7)&lt;br&gt;</translation>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Версия:&lt;/b&gt; %1 (сборка для %2/%3)&lt;br&gt;&lt;b&gt;Ревизия: %4&lt;br&gt;&lt;b&gt;Дата сборки:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (скомпилировано %7)&lt;br&gt;</translation>
     </message>
     <message>
         <source>User skins root path</source>
@@ -739,7 +742,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Name and address of this e-mail message sender</source>
-        <translation type="unfinished"/>
+        <translation>Имя и адрес отправителя этого электронного письма</translation>
     </message>
     <message>
         <source>Contents of your e-mail message</source>
@@ -766,7 +769,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation type="unfinished"/>
+        <translation>Элементы для резервного копирования</translation>
     </message>
     <message>
         <source>Database</source>
@@ -790,7 +793,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Операция еще не выполнена.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
@@ -841,7 +844,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>день</numerusform><numerusform>дня</numerusform><numerusform>дней</numerusform><numerusform>дня</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -897,7 +900,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="unfinished"/>
+        <translation>неизвестно</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
@@ -959,7 +962,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя, видное для всех</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1011,11 +1014,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Вы должны использовать &quot;%1&quot; в качестве базового URL перенаправления. Вы можете использовать пользовательский порт, чтобы убедиться, что ни один локальный сервис не занимает его. Убедитесь, что этот URL-адрес перенаправления соответствует URL-адресу перенаправления используемого &quot;приложения&quot;.</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>Предопределенные настройки НЕ ДОЛЖНЫ быть изменены по сравнению со значениями по умолчанию. Изменяйте эти значения только вы опытный пользователь, и вы знаете, что вы делаете!</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
@@ -1046,7 +1049,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation>Эти настройки НЕ ДОЛЖНЫ быть изменены по сравнению со значениями по умолчанию. Изменяйте эти значения только вы опытный пользователь, и вы знаете, что вы делаете!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1066,7 +1069,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя, видное для всех</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1094,7 +1097,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Существует ошибка. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
@@ -1106,11 +1109,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новую учетную запись Inoreader</translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Изменить учетную запись Inoreader</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
@@ -1122,7 +1125,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Вы должны использовать &quot;%1&quot; в качестве базового URL перенаправления. Вы можете использовать пользовательский порт, чтобы убедиться, что ни один локальный сервис не занимает его. Убедитесь, что этот URL-адрес перенаправления соответствует URL-адресу перенаправления используемого &quot;приложения&quot;.</translation>
     </message>
 </context>
 <context>
@@ -1133,11 +1136,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Принудительное выполнение обновления на стороне сервера при обновлении каналов из RSS Guard.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые каналы требуют аутентификации, включая каналы GMail. Поддерживаются схемы проверки подлинности BASIC, NTLM-2 и DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1157,43 +1160,43 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Настройка теста (&amp;T)</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Если оставить этот параметр, обновления каналов будут, вероятно, намного медленнее и могут часто прерываться.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Обратите внимание, что требуется как минимум версия %1.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL вашего сервера ownCloud без указания пути к API</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Тест еще не сделан.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Здесь показаны результаты проверки соединения.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новый аккаунт ownCloud News</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Изменить существующий аккаунт ownCloud News</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный сервер новостей ownCloud работает с неподдерживаемой версией (%1). Требуется как минимум версия %2.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный сервер новостей ownCloud работает с неподдерживаемой версией.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1201,11 +1204,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка сети, вы ввели правильную конечную точку ownCloud и пароль?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Нетипичная ошибка, вы ввели правильный URL?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -1213,7 +1216,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя в порядке.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
@@ -1221,47 +1224,47 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Пароль в порядке.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL не может быть пустым.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL в порядке.</translation>
     </message>
     <message>
         <source>Password for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Пароль для вашей учетной записи ownCloud</translation>
     </message>
     <message>
         <source>Username for your ownCloud account</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя для вашей учетной записи ownCloud</translation>
     </message>
     <message>
         <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Сервер новостей ownCloud в порядке, работает с версией %1, хотя требуется как минимум версия %2.</translation>
     </message>
     <message>
         <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Сервер новостей ownCloud в порядке.</translation>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Ограничить количество загружаемых сообщений на канал</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation> = не ограниченно</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Ограничение количества загружаемых сообщений для одного канала ускоряет обновление каналов, но если ваш канал содержит большее количество сообщений, чем указанное ограничение, некоторые сообщения могут не загрузиться во время обновления канала.</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= не ограниченно</translation>
     </message>
     <message>
         <source>messages</source>
@@ -1276,7 +1279,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые каналы требуют аутентификации, включая каналы GMail. Поддерживаются схемы проверки подлинности BASIC, NTLM-2 и DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1300,83 +1303,83 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Настройка теста (&amp;T)</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Принудительное выполнение обновления на стороне сервера при обновлении каналов из RSS Guard.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Если оставить этот параметр, обновления каналов будут, вероятно, намного медленнее и могут часто прерываться.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Обратите внимание, что требуется как минимум уровень API %1.</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя для HTTP-аутентификации</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="unfinished"/>
+        <translation>Пароль аутентификации HTTP</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Пароль для вашей учетной записи TT-RSS</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя для вашей учетной записи TT-RSS</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>URL вашего экземпляра TT-RSS БЕЗ завершающей строки &quot;/api/&quot;</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Тест еще не сделан.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Здесь показаны результаты проверки соединения.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новый Tiny Tiny RSS аккаунт</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Изменить существующий Tiny Tiny RSS аккаунт</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>Доступ к API на выбранном сервере не включен.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation>Введенные учетные данные неверны.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation>Произошла другая ошибка, свяжитесь с разработчиками.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный Tiny Tiny RSS-сервер работает с неподдерживаемой версией API (%1). Требуется как минимум уровень API %2.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный Tiny Tiny RSS-сервер работает с неподдерживаемой версией API.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS-сервер в порядке, работает с уровнем API %1, хотя требуется как минимум версия API %2.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS-сервер в порядке.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1384,11 +1387,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка сети. Вы ввели правильную конечную точку Tiny Tiny RSS API и пароль?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Нетипичная ошибка, вы ввели правильный URL?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -1396,7 +1399,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя в порядке.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
@@ -1404,11 +1407,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Пароль в порядке.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя в порядке или не требуется.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -1416,7 +1419,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Пароль в порядке или не требуется.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
@@ -1424,15 +1427,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL не может быть пустым.</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL НЕ должен заканчиваться на &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL в порядке.</translation>
     </message>
 </context>
 <context>
@@ -1443,7 +1446,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Выберите родительский элемент для вашего канала.</translation>
     </message>
     <message>
         <source>Type</source>
@@ -1451,7 +1454,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Выберите тип стандартного канала.</translation>
     </message>
     <message>
         <source>Encoding</source>
@@ -1459,7 +1462,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Выберите кодировку стандартного канала. Если вы не уверены в кодировке, выберите кодировку &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
@@ -1467,7 +1470,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Выберите стратегию автоматического обновления для этого канала. Стратегия автоматического обновления по умолчанию означает, что канал будет обновляться через интервалы времени, установленные в настройках приложения.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -1483,7 +1486,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Получить сейчас</translation>
     </message>
     <message>
         <source>Icon</source>
@@ -1495,7 +1498,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые каналы требуют аутентификации, включая каналы GMail. Поддерживаются схемы проверки подлинности BASIC, NTLM-2 и DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -1547,11 +1550,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>URL не соответствует стандартному шаблону. Ваш URL должен начинается с префикса &quot;http://&quot; или &quot;https://&quot;.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя в порядке или не требуется.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -1559,7 +1562,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Пароль в порядке или не требуется.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
@@ -1584,23 +1587,23 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Искать в:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Имя иконки:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Тип иконки:</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Все метаданные получены успешно.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Получены метаданные канала и значка.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
@@ -1608,7 +1611,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Метаданные канала и значка не получены.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
@@ -1616,31 +1619,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Метаданные не получены.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Иконка получена успешно.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Получены метаданные иконки.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Метаданные иконки не получены.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Иконка не получена.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Заголовок канала</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Установите заголовок для вашего канала.</translation>
     </message>
     <message>
         <source>Feed description</source>
@@ -1652,19 +1655,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Полный URL канала, включая схему</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Установите URL для вашего канала.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Установите имя пользователя для доступа к каналу.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Установите пароль для доступа к каналу.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -1672,38 +1675,38 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Загрузить иконку из файла...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Использовать иконку по умолчанию из иконок темы.</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Получить иконку из канала</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Метаданные пока не получены.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Авто-обновление с использованием глобального интервала</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Авто-обновление каждые</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation>Не обновлять автоматически</translation>
     </message>
 </context>
 <context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;Файл</translation>
+        <translation>Файл (&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Help</source>
@@ -1731,7 +1734,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation type="unfinished"/>
+        <translation>Переключить важность выбранных сообщений (&amp;I)</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1739,7 +1742,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation type="unfinished"/>
+        <translation>Показать настройки приложения.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
@@ -1751,19 +1754,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation type="unfinished"/>
+        <translation>В данный момент нет доступных действий.</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"/>
+        <translation>Скрывает главное окно, если оно видно, и показывает его, если оно скрыто.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="unfinished"/>
+        <translation>Скрыть/показать список каналов/категорий.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation type="unfinished"/>
+        <translation>Проверить, доступно ли для загрузки новое обновление для приложения.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
@@ -1771,31 +1774,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation type="unfinished"/>
+        <translation>Отображает дополнительную информацию об этом приложении.</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"/>
+        <translation>Удалить выбранные сообщения (&amp;D)</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation type="unfinished"/>
+        <translation>Скрыть или показать главное меню.</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить &amp;выбранные сообщения как &amp;прочитанные</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Пометить &amp;выбранные сообщения как &amp;непрочитанные</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Открыть выбранные исходные статьи в внешнем браузере (&amp;E)</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Открыть выбранные исходные статьи в внутреннем браузере (&amp;I)</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
@@ -1803,11 +1806,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation type="unfinished"/>
+        <translation>Выбрать предыдущее сообщение (&amp;P)</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation type="unfinished"/>
+        <translation>Проверить обновления (&amp;U)</translation>
     </message>
     <message>
         <source>Show/hide</source>
@@ -1819,167 +1822,167 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation type="unfinished"/>
+        <translation>Главное меню (&amp;M)</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation type="unfinished"/>
+        <translation>Переключение видимости главного окна (&amp;W)</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation type="unfinished"/>
+        <translation>Не удается открыть внешний браузер</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation type="unfinished"/>
+        <translation>Не удается открыть внешний браузер. Перейдите на сайт приложения вручную.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation type="unfinished"/>
+        <translation>Панель инструментов (&amp;T)</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation type="unfinished"/>
+        <translation>Переключение видимости основных панелей инструментов.</translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation type="unfinished"/>
+        <translation>Заголовки списка каналов/сообщений (&amp;F)</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation type="unfinished"/>
+        <translation>Перейти в вики (&amp;W)</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Восстановить базу данных/настройки (&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Резервная копия базы данных/настроек (&amp;B)</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="unfinished"/>
+        <translation>Переключить ориентацию макета списка сообщений</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Скачать (&amp;D)</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Отправить выбранное сообщение по электронной почте</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Очистить базу данных (&amp;C)</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новый элемент (&amp;N)</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="unfinished"/>
+        <translation>Обновить все элементы (&amp;A)</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"/>
+        <translation>Обновить выбранные элементы (&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"/>
+        <translation>Изменить выбранный элемент (&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"/>
+        <translation>Удалить выбранный элемент (&amp;D)</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить выбранные элементы как прочитанные (&amp;M)</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="unfinished"/>
+        <translation>Отметить все сообщения (без фильтров сообщений) из выбранных элементов как прочитанные.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="unfinished"/>
+        <translation>Пометить выбранные элементы как непрочитанные (&amp;U)</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="unfinished"/>
+        <translation>Отметить все сообщения (без фильтров сообщений) из выбранных элементов как непрочитанные.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="unfinished"/>
+        <translation>Очистить выбранные элементы (&amp;C)</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation type="unfinished"/>
+        <translation>Удалить все сообщения из выбранного элемента.</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"/>
+        <translation>Отметить все сообщения во всех прочитанных элементах. Это действие не учитывает фильтры сообщений.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Просмотр выбранных элементов в режиме газеты (&amp;N)</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"/>
+        <translation>Отобразить все сообщения из выбранного элемента в новой вкладке в &quot;Режиме газеты&quot;. Обратите внимание, что сообщения не считаются автоматически прочитанными.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="unfinished"/>
+        <translation>Очистить все элементы (&amp;C)</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation type="unfinished"/>
+        <translation>Удалить все сообщения из всех элементов.</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation type="unfinished"/>
+        <translation>Выбрать следующий элемент (&amp;N)</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation type="unfinished"/>
+        <translation>Выбрать предыдущий элемент (&amp;P)</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation type="unfinished"/>
+        <translation>Показывать только непрочитанные элементы</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"/>
+        <translation>Развернуть/свернуть выбранный элемент (&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="unfinished"/>
+        <translation>Восстановить выбранные сообщения (&amp;R)</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"/>
+        <translation>Нет возможных действий</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation type="unfinished"/>
+        <translation>Корзина(ы) (&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Восстановить все корзины (&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Очистить все корзины (&amp;E)</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation type="unfinished"/>
+        <translation>Выбрать следующее непрочитанное сообщение (&amp;U)</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Нет корзины</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -1995,23 +1998,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Status bar</source>
-        <translation type="unfinished"/>
+        <translation>Строка состояния</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation type="unfinished"/>
+        <translation>Изменить выбранный аккаунт (&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation type="unfinished"/>
+        <translation>Удалить выбранный аккаунт (&amp;D)</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новый канал в выбранный аккаунт</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новую категорию в выбранный аккаунт</translation>
     </message>
     <message>
         <source>Add new category</source>
@@ -2023,23 +2026,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation type="unfinished"/>
+        <translation>Остановить запущенное обновление</translation>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Нет возможных действий</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Веб-браузер &amp;&amp; вкладки</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Сообщить об ошибке (&amp;B)...</translation>
     </message>
     <message>
         <source>New web browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Новая вкладка веб-браузера</translation>
     </message>
     <message>
         <source>Close all tabs</source>
@@ -2047,28 +2050,28 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Закрыть все вкладки кроме текущей</translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Просмотр в полноэкранном режиме (&amp;V)</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Не удается очистить базу данных</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Не удается очистить базу данных, т.к. выполняется другое критическое действие.</translation>
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"/>
+        <translation>Обновление ленты началось</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Обновление канала &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -2076,27 +2079,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark all items as read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить все элементы как прочитанные (&amp;M)</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"/>
+        <translation>Перезапустить (&amp;R)</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>Перейти к следующей вкладке (&amp;N)</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation>Перейти к предыдущей вкладке (&amp;P)</translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>Включить предпросмотр сообщений (&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"/>
+        <translation>Пожертвовать... (&amp;D)</translation>
     </message>
 </context>
 <context>
@@ -2107,7 +2110,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Канал был добавлен, вызвав синхронизацию, которая происходит сейчас.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2115,14 +2118,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Канал не был добавлен из-за ошибки.</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Восстановить базу данных/настройки</translation>
     </message>
     <message>
         <source>Operation results</source>
@@ -2138,19 +2141,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Операция еще не выполнена.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation type="unfinished"/>
+        <translation>Восстановление было начато. Перезапустите, чтобы продолжить.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation type="unfinished"/>
+        <translation>Вам необходимо перезапустить приложение для завершения процесса восстановления.</translation>
     </message>
     <message>
         <source>Source directory</source>
-        <translation type="unfinished"/>
+        <translation>Исходный каталог</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
@@ -2158,19 +2161,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation type="unfinished"/>
+        <translation>База данных и/или настройки не были успешно скопированы в каталог восстановления.</translation>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation type="unfinished"/>
+        <translation>Выбрать исходный каталог</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation type="unfinished"/>
+        <translation>Указан хороший исходный каталог.</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"/>
+        <translation>Перезапустить</translation>
     </message>
 </context>
 <context>
@@ -2181,34 +2184,37 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation type="unfinished"/>
+        <translation>Критические настройки были изменены</translation>
     </message>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation>Изменены категории настроек:
+%1.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые настройки изменены и будут потеряны</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые настройки были изменены, и, закрыв это диалоговое окно, вы потеряете эти изменения.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
-        <translation type="unfinished"/>
+        <translation>Вы действительно хотите закрыть это диалоговое окно без сохранения каких-либо настроек?</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые критические параметры были изменены и будут применены после перезапуска приложения. 
+
+Вы должны перезагрузить вручную.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"/>
+        <translation>Вы хотите перезагрузить сейчас?</translation>
     </message>
 </context>
 <context>
@@ -2219,7 +2225,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Выберите родительский элемент для вашей категории.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2251,7 +2257,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Категория не была добавлена из-за ошибки.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
@@ -2259,7 +2265,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Категория не была изменена из-за ошибки.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
@@ -2267,7 +2273,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Имя категории слишком короткое.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
@@ -2279,7 +2285,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Выберите файл иконки для категории</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -2296,23 +2302,23 @@ You have to restart manually.</source>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Искать в:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Имя иконки:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Тип иконки:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Заголовок категории</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Установите название для вашей категории.</translation>
     </message>
     <message>
         <source>Category description</source>
@@ -2320,7 +2326,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Задайте описание для вашей категории.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -2328,11 +2334,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Загрузить иконку из файла...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Использовать иконку по умолчанию из иконок темы.</translation>
     </message>
 </context>
 <context>
@@ -2343,30 +2349,30 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Канал не был добавлен из-за ошибки.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно изменить канал</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Канал не был изменен из-за ошибки.</translation>
     </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation>&amp;Выбрать файл</translation>
+        <translation>Выбрать файл (&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation type="unfinished"/>
+        <translation>Пометить все элементы (&amp;C)</translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation type="unfinished"/>
+        <translation>Снять пометку со всех элементов (&amp;U)</translation>
     </message>
     <message>
         <source>Operation results</source>
@@ -2374,11 +2380,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Файл не выбран.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Операция еще не выполнена.</translation>
     </message>
     <message>
         <source>Destination file</source>
@@ -2386,7 +2392,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Исходные каналы и категории</translation>
     </message>
     <message>
         <source>Export feeds</source>
@@ -2398,7 +2404,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Целевые каналы и категории</translation>
     </message>
     <message>
         <source>Import feeds</source>
@@ -2406,11 +2412,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation type="unfinished"/>
+        <translation>Файлы OPML 2.0 (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"/>
+        <translation>Выберите файл для экспорта каналов</translation>
     </message>
     <message>
         <source>File is selected.</source>
@@ -2418,11 +2424,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"/>
+        <translation>Выберите файл для импорта каналов</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation type="unfinished"/>
+        <translation>Не удается открыть исходный файл.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
@@ -2430,59 +2436,59 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка, файл не правильно сформирован. Выберите другой файл.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation>Возникла ошибка. Файл не правильно сформирован. Выберите другой файл.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Каналы были успешно экспортированы.</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"/>
+        <translation>Произошла критическая ошибка.</translation>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation type="unfinished"/>
+        <translation>Разбор данных...</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно записать в файл назначения: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation>Корневой узел</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Выберите родительский элемент для вашего канала.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>TXT файл [один URL в строке] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Получить онлайн метаданные</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Метаданные для ваших каналов можно получить онлайн в Интернете. Обратите внимание, что действие может занять несколько минут, в зависимости от количества каналов.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation type="unfinished"/>
+        <translation>Вы хотите получить метаданные канала онлайн?</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation>Экспорт в файл (&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation>Импорт из файла (&amp;I)</translation>
     </message>
 </context>
 <context>
@@ -2493,7 +2499,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Канал был добавлен, вызвав синхронизацию, которая происходит сейчас.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2501,7 +2507,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Канал не был добавлен из-за ошибки.</translation>
     </message>
 </context>
 <context>
@@ -2521,29 +2527,31 @@ You have to restart manually.</source>
     <message>
         <source>unknown</source>
         <extracomment>Unknown release.</extracomment>
-        <translation type="unfinished"/>
+        <translation>неизвестно</translation>
     </message>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Список с обновлением не был
+успешно загружен.</translation>
     </message>
     <message>
         <source>New release available.</source>
-        <translation type="unfinished"/>
+        <translation>Доступна новая версия.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation type="unfinished"/>
+        <translation>Нет новых версий.</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation type="unfinished"/>
+        <translation>Эта версия более ранняя, чем
+текущая установленная.</translation>
     </message>
     <message>
         <source>Check for updates</source>
@@ -2551,27 +2559,27 @@ currently installed one.</source>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation type="unfinished"/>
+        <translation>Загрузить новые файлы установки.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation type="unfinished"/>
+        <translation>Не удается обновить приложение</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>Не удается перейти к файлу установки. Проверьте доступность новых файлов установки вручную на сайте проекта.</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation type="unfinished"/>
+        <translation>Загружено %1% (размер обновления %2 kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"/>
+        <translation>Загрузка обновления...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation type="unfinished"/>
+        <translation>Загрузка успешна</translation>
     </message>
     <message>
         <source>Error occured</source>
@@ -2579,24 +2587,25 @@ currently installed one.</source>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation type="unfinished"/>
+        <translation>Произошла ошибка при загрузке пакета.</translation>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation type="unfinished"/>
+        <translation>Перейти на сайт приложения.</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Это новая версия, которая может быть
+загружена.</translation>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>Установить</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно запустить внешнюю программу обновления. Обновите приложение вручную.</translation>
     </message>
     <message>
         <source>Changelog</source>
@@ -2608,186 +2617,189 @@ downloaded.</source>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation>Скачать выбранное обновление</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation>Перейдите на веб-сайт приложения, чтобы получить пакеты обновлений вручную.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation type="unfinished"/>
+        <translation>(размер</translation>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation>Доступные файлы обновлений</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation>Пакет был успешно загружен.
+Вы можете установить его сейчас.</translation>
     </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Вы успешно вошли</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Ваш логин в Gmail был авторизован.</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите здесь, чтобы войти снова. Ошибка: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите здесь, чтобы войти снова.</translation>
     </message>
     <message>
         <source>No subject</source>
-        <translation type="unfinished"/>
+        <translation>Без темы</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: ошибка аутентификации</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: авторизация запрещена</translation>
     </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation type="unfinished"/>
+        <translation>Входящие</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation type="unfinished"/>
+        <translation>Отправленные</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation type="unfinished"/>
+        <translation>Черновики</translation>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"/>
+        <translation>Спам</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Состояние аутентификации: %1
+Срок действия токенов входа: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>вход выполнен</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>вход НЕ выполнен</translation>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"/>
+        <translation>Выберите файл назначения вложения</translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Написать новое сообщение e-mail</translation>
     </message>
 </context>
 <context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно открыть файл &apos;%1&apos; для чтения.</translation>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно открыть файл &apos;%1&apos; для записи.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Вы успешно вошли</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Ваш логин в Inoreader был авторизован.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: ошибка аутентификации</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите здесь, чтобы войти снова. Ошибка: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: авторизация отклонена</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите здесь, чтобы войти снова.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Синхронизация</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Состояние аутентификации: %1
+Срок действия токенов входа: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>вход выполнен</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>вход НЕ выполнен</translation>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"/>
+        <translation>Адрес сайта здесь</translation>
     </message>
 </context>
 <context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"/>
+        <translation>Больше не показывай этот диалог.</translation>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation>Вы нажали какую-то ссылку. Вы можете скачать содержимое ссылки или открыть ее во внешнем веб-браузере.</translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation>Какие действия вы хотите предпринять?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Открыть во внешнем браузере</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Загрузка</translation>
     </message>
     <message>
         <source>Incorrect link</source>
@@ -2795,54 +2807,54 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранная гиперссылка недействительна.</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить сообщение как прочитанное</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>Пометить сообщение как непрочитанное</translation>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>Переключить важность сообщения</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите на эту ссылку, чтобы скачать ее или открыть с помощью внешнего браузера.</translation>
     </message>
     <message>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>изображение</translation>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Всегда открывайте ссылки во внешнем браузере.</translation>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation>Идентификатор</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation>Чтение</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation type="unfinished"/>
+        <translation>Удалено</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"/>
+        <translation>Важное</translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation type="unfinished"/>
+        <translation>Канал</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2850,7 +2862,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Url</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
@@ -2858,150 +2870,150 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Дата создания</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"/>
+        <translation>Контент</translation>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Идентификатор сообщения.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation type="unfinished"/>
+        <translation>Сообщение прочитано?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation type="unfinished"/>
+        <translation>Сообщение удалено?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"/>
+        <translation>Это сообщение важно?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>Идентификатор канала, которому принадлежит это сообщение.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Тема сообщения</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation type="unfinished"/>
+        <translation>URL сообщения.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Автор сообщения.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Дата создания сообщения.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Содержимое сообщения.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="unfinished"/>
+        <translation>Удалить навсегда</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Навсегда удалить сообщение из корзины?</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"/>
+        <translation>Вложение</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"/>
+        <translation>Список вложений.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось загрузить сообщения, возможно, сообщения не загружаемы.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось загрузить сообщения из &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Account ID</source>
-        <translation type="unfinished"/>
+        <translation>ID аккаунта</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation type="unfinished"/>
+        <translation>ID аккаунта сообщения.</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский ID сообщения</translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский хэш</translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский хэш сообщения.</translation>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"/>
+        <translation>ID канала</translation>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский ID канала сообщения.</translation>
     </message>
     <message>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
+        <translation>Есть вложения</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the message.</source>
-        <translation type="unfinished"/>
+        <translation>Указание наличия вложений в сообщении.</translation>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation type="unfinished"/>
+        <translation>Поиск сообщений</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation type="unfinished"/>
+        <translation>Окно поиска сообщений</translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation type="unfinished"/>
+        <translation>Меню для подсветки сообщений</translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation type="unfinished"/>
+        <translation>Без дополнительной подсветки</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Подсвечивать непрочитанные сообщения</translation>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation type="unfinished"/>
+        <translation>Подсвечивать важные сообщения</translation>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation type="unfinished"/>
+        <translation>Показать все сообщения</translation>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation type="unfinished"/>
+        <translation>Подсветка сообщений</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3012,35 +3024,35 @@ Login tokens expiration: %2</source>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для сообщений</translation>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Проблема с запуском внешнего веб-браузера</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Внешний веб-браузер не может быть запущен.</translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Проблема с запуском внешнего e-mail клиента</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Внешний e-mail клиент не может быть запущен.</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Открыть с помощью внешнего инструмента</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Не удается открыть внешний инструмент</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Внешний инструмент &apos;%1&apos; не может быть запущен.</translation>
     </message>
 </context>
 <context>
@@ -3048,62 +3060,62 @@ Login tokens expiration: %2</source>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>ошибка протокола</translation>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>хост не найден</translation>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>в соединении отказано</translation>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>таймаут соединения</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>SSL подтверждение ошибочно</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>в соединении с прокси-сервером отказано</translation>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>временный сбой</translation>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>аутентификация не удалась</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>требуется аутентификация прокси</translation>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>прокси сервер не найден</translation>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>контент не найден</translation>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>неизвестная ошибка</translation>
     </message>
     <message>
         <source>no errors</source>
@@ -3113,79 +3125,79 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation type="unfinished"/>
+        <translation>доступ к контенту запрещен</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation type="unfinished"/>
+        <translation>время соединения истекло или было прервано</translation>
     </message>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>неизвестный контент</translation>
     </message>
 </context>
 <context>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Form</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно показать больше сообщений</translation>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно показать больше сообщений, поскольку родительский канал был удален.</translation>
     </message>
 </context>
 <context>
     <name>OAuth2Service</name>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите здесь, чтобы войти.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Вход через OAuth 2.0...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Обновление токенов входа для &apos;%1&apos;...</translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Запрос авторизации доступа для &apos;%1&apos;...</translation>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Вы должны вначале войти</translation>
     </message>
 </context>
 <context>
     <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Вы можете закрыть это окно сейчас. Вернуться к %1</translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation>Требуется авторизация для доступа к сервису</translation>
     </message>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Синхронизация</translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -3216,11 +3228,19 @@ Login tokens expiration: %2</source>
         <source>
 
 + %n other feeds.</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>
+
++ %n другой канал.</numerusform><numerusform>
+
++ %n других канала.</numerusform><numerusform>
+
++ %n других каналов.</numerusform><numerusform>
+
++ %n других каналов.</numerusform></translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation type="unfinished"/>
+        <translation>Загрузить начальный набор каналов</translation>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -3228,19 +3248,23 @@ Login tokens expiration: %2</source>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Этот сервис предлагает интеграцию с Tiny Tiny RSS.
+
+Tiny Tiny RSS - это программа для чтения и агрегации новостных лент с открытым исходным кодом (RSS/Atom), разработанная для того, чтобы вы могли читать новости из любого места, ощущая себя как можно ближе к настоящему настольному приложению.
+
+Требуется как минимум уровень API %1.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation type="unfinished"/>
+        <translation>Стандартные онлайн-каналы (RSS/RDF/ATOM)</translation>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
-        <translation type="unfinished"/>
+        <translation>Этот сервис предлагает интеграцию со стандартными онлайн-каналами RSS/RDF/ATOM и подкастами.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>Приложение News - агрегатор RSS / Atom. Это часть пакета Nextcloud. Этот плагин реализует API %1.</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -3248,19 +3272,19 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите на пузырек для получения дополнительной информации.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>Переданное внешнее представление инструмента недопустимо.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation>Это интеграция Inoreader.</translation>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-        <translation type="unfinished"/>
+        <translation>Простая интеграция с Gmail через JSON API. Позволяет также отправлять электронную почту.</translation>
     </message>
 </context>
 <context>
@@ -3271,19 +3295,19 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Корзина содержит все удаленные сообщения из всех каналов.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n удаленное сообщение.</numerusform><numerusform>%n удаленных сообщения.</numerusform><numerusform>%n удаленных сообщений.</numerusform><numerusform>%n удаленных сообщения.</numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Восстановить корзину</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Очистка корзины</translation>
     </message>
 </context>
 <context>
@@ -3291,49 +3315,49 @@ At least API level %1 is required.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform></translation>
     </message>
 </context>
 <context>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Очистить искомую фразу</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Найти текст</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Найти предыдущее вхождение</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Найти следующее вхождение</translation>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"/>
+        <translation>Внешний веб-браузер</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если этот флажок не установлен, используется общесистемный веб-браузер по умолчанию.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Использовать свой веб-браузер</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"/>
+        <translation>Исполняемый файл веб-браузера</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"/>
+        <translation>Исполняемый файл веб-браузера</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
@@ -3341,19 +3365,19 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"/>
+        <translation>Исполняемые параметры</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"/>
+        <translation>Параметры к исполняемому файлу</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"/>
+        <translation>Используйте примеры аргументов для</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"/>
+        <translation>Выбрать браузер</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
@@ -3361,15 +3385,15 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Внешний e-mail клиент</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Использовать свой внешний почтовый клиент</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"/>
+        <translation>Исполняемый файл почтового клиента</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
@@ -3434,7 +3458,7 @@ At least API level %1 is required.</source>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation>Выберите вэб-браузер</translation>
+        <translation>Выберите веб-браузер</translation>
     </message>
     <message>
         <source>Executables (*)</source>
@@ -3479,7 +3503,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Вэб-браузер, e-mail и прокси</translation>
+        <translation>Веб-браузер, e-mail и прокси</translation>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
@@ -3519,7 +3543,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation>Введите (необязательные) параметры, разделенные одним пробелом для отправки в исполняемый файл при открытии URL-адресов.</translation>
     </message>
 </context>
 <context>
@@ -3548,7 +3572,17 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"/>
+        <translation>Использование работающей в памяти базы данных имеет ряд преимуществ и подводных камней. Убедитесь, что вы знакомы с ними, прежде чем включать эту функцию. Преимущества:
+&lt;ul&gt;
+&lt;li&gt;более высокая скорость работы с каналами/сообщениями (особенно при отображении тысяч сообщений),&lt;/li&gt;
+&lt;li&gt;вся база данных хранится в оперативной памяти, поэтому ваш жесткий диск меньше нагружен.&lt;/li&gt;
+&lt;/ul&gt;
+Недостатки:
+&lt;ul&gt;
+&lt;li&gt;в случае сбоя приложения ваши изменения с последнего сеанса теряются,&lt;/li&gt;
+&lt;li&gt;запуск и завершение работы приложения может занять немного больше времени (максимум 2 секунды).&lt;/li&gt;
+&lt;/ul&gt;
+Авторы этого приложения не несут ответственности за потерянные данные.</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -3616,7 +3650,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"/>
+        <translation>До сих пор не запущен тест соединения.</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
@@ -3762,11 +3796,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Высота строк в списке каналов (-1 = высота по умолчанию)</translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Высота строк в списке сообщений (-1 = высота по умолчанию)</translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -3929,7 +3963,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation>Текст под иконокй</translation>
+        <translation>Текст под иконкой</translation>
     </message>
     <message>
         <source>Follow OS style</source>
@@ -4154,18 +4188,18 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Web browser</source>
-        <translation>Вэб-браузер</translation>
+        <translation>Веб-браузер</translation>
     </message>
 </context>
 <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -4288,7 +4322,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation>Перезагрузить текущую вэб-страницу</translation>
+        <translation>Перезагрузить текущую веб-страницу</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -4296,14 +4330,14 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation>Остановить загрузку вэб-страницы</translation>
+        <translation>Остановить загрузку веб-страницы</translation>
     </message>
 </context>
 <context>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation>Настройки вэб-движка</translation>
+        <translation>Настройки веб-движка</translation>
     </message>
     <message>
         <source>Auto-load images</source>

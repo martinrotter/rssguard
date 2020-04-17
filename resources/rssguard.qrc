@@ -15,12 +15,14 @@
         <file>graphics/misc/inoreader.png</file>
         <file>graphics/misc/nextcloud.png</file>
         <file>graphics/misc/tt-rss.png</file>
+        
         <file>graphics/misc/flags/cs.png</file>
         <file>graphics/misc/flags/da.png</file>
         <file>graphics/misc/flags/de.png</file>
         <file>graphics/misc/flags/en.png</file>
         <file>graphics/misc/flags/es.png</file>
         <file>graphics/misc/flags/fr.png</file>
+        <file>graphics/misc/flags/gl.png</file>
         <file>graphics/misc/flags/he.png</file>
         <file>graphics/misc/flags/id.png</file>
         <file>graphics/misc/flags/it.png</file>
@@ -61,6 +63,7 @@
         <file>../localization/rssguard_en.qm</file>
         <file>../localization/rssguard_es.qm</file>
         <file>../localization/rssguard_fr.qm</file>
+        <file>../localization/rssguard_gl.qm</file>
         <file>../localization/rssguard_he.qm</file>
         <file>../localization/rssguard_id.qm</file>
         <file>../localization/rssguard_it.qm</file>
