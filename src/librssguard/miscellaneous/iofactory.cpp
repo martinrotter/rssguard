@@ -26,7 +26,9 @@ bool IOFactory::isFolderWritable(const QString& folder) {
 }
 
 QString IOFactory::getSystemFolder(QStandardPaths::StandardLocation location) {
-  return QStandardPaths::writableLocation(location);
+  QStringList locations = QStandardPaths::standardLocations(location);
+
+  return locations.isEmpty() ? QString() : locations.at(0);
 }
 
 QString IOFactory::ensureUniqueFilename(const QString& name, const QString& append_format) {

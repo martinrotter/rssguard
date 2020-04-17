@@ -86,7 +86,7 @@ void IconFactory::loadCurrentIconTheme() {
   else {
     // Desired icon theme is not currently available.
     // Install "default" icon theme instead.
-    qWarning("Icon theme '%s' cannot be loaded because it is not installed. No icon theme (or default icon theme) is loaded now.",
+    qWarning("Icon theme '%s' cannot be loaded because it is not installed. No icon theme (or default/system icon theme) is loaded now.",
              qPrintable(theme_name_from_settings));
     QIcon::setThemeName(APP_NO_THEME);
   }

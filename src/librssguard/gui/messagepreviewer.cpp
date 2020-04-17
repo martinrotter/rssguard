@@ -9,6 +9,7 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QKeyEvent>
 #include <QScrollBar>
 #include <QToolBar>
 #include <QToolTip>

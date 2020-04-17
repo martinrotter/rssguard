@@ -26,8 +26,16 @@ int main(int argc, char* argv[]) {
     }
   }
 
+  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
   // Ensure that ini format is used as application settings storage on Mac OS.
   QSettings::setDefaultFormat(QSettings::IniFormat);
+
+#if defined (Q_OS_MAC)
+  QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
+  disableWindowTabbing();
+#endif
 
   // Instantiate base application object.
   Application application(APP_LOW_NAME, argc, argv);
@@ -44,13 +52,6 @@ int main(int argc, char* argv[]) {
   // Load localization and setup locale before any widget is constructed.
   qApp->localization()->loadActiveLanguage();
   qApp->setFeedReader(new FeedReader(&application));
-  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
-#if defined (Q_OS_MAC)
-  QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
-  disableWindowTabbing();
-#endif
 
   // Register needed metatypes.
   qRegisterMetaType<QList<Message>>("QList<Message>");
