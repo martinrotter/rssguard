@@ -3,6 +3,18 @@ QWidget {
   color: #c8c8c8;
 }
 
+QWidget::item:selected {
+  background-color: #1b8cbc;
+}
+
+QWidget::item:disabled {
+  background-color: #3a4047;
+}
+
+QMenu {
+  border: 1px solid #3a4047;
+}
+
 QTreeView::branch:has-siblings:!adjoins-item  {
   border-image: url(qss/dummy.png) 0;
 }
@@ -44,7 +56,7 @@ QTreeView::item {
 }
 
 QTreeView::item:hover {
-  background-color: #3e444c;
+  background-color: #1b8cbc;
   border: 1px transparent;
 }
 
@@ -59,9 +71,6 @@ QTreeView::item:selected:active{
 QTreeView::item:selected:!active {
   background-color: #3e444c;
 }
-
-
-
 
 QStatusBar::item {
   border: none;
