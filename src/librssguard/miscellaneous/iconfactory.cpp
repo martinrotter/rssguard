@@ -80,8 +80,18 @@ void IconFactory::loadCurrentIconTheme() {
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
+#if defined(Q_OS_LINUX)
+    if (theme_name_from_settings.isEmpty()) {
+      qDebug("Loading default system icon theme.");
+    }
+    else {
+      qDebug("Loading icon theme '%s'.", qPrintable(theme_name_from_settings));
+      QIcon::setThemeName(theme_name_from_settings);
+    }
+#else
     qDebug("Loading icon theme '%s'.", qPrintable(theme_name_from_settings));
     QIcon::setThemeName(theme_name_from_settings);
+#endif
   }
   else {
     // Desired icon theme is not currently available.
@@ -98,11 +108,7 @@ void IconFactory::loadCurrentIconTheme() {
 }
 
 QStringList IconFactory::installedIconThemes() const {
-  QStringList icon_theme_names;
-
-#if !defined(Q_OS_LINUX)
-  icon_theme_names << APP_NO_THEME;
-#endif
+  QStringList icon_theme_names; icon_theme_names << APP_NO_THEME;
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();
