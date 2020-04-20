@@ -4,6 +4,7 @@
 
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
+#include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
@@ -108,6 +109,16 @@ void Application::loadDynamicShortcuts() {
 void Application::showPolls() const {
   if (isFirstRun(APP_VERSION)) {
     //web()->openUrlInExternalBrowser(QSL("https://goo.gl/forms/7bJNr33Ii22Q1c3k2"));
+  }
+}
+
+void Application::offerChanges() const {
+  if (isFirstRun() || isFirstRun(APP_VERSION)) {
+    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                                                    "version by clicking this popup notification.").arg(APP_LONG_NAME),
+                         QSystemTrayIcon::NoIcon, nullptr, false, [] {
+      FormAbout(qApp->mainForm()).exec();
+    });
   }
 }
 

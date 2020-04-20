@@ -2,7 +2,6 @@
 
 #include "core/feedsmodel.h"
 #include "definitions/definitions.h"
-#include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
@@ -75,27 +74,15 @@ int main(int argc, char* argv[]) {
 
   qApp->reactOnForeignNotifications();
 
-  // Instantiate main application window.
   FormMain main_window;
 
   qApp->loadDynamicShortcuts();
   qApp->hideOrShowMainForm();
   qApp->showTrayIcon();
-
-  // Load activated accounts.
   qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
-
-  if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
-    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                                                    "version by clicking this popup notification.").arg(APP_LONG_NAME),
-                         QSystemTrayIcon::NoIcon, nullptr, false, [] {
-      FormAbout(qApp->mainForm()).exec();
-    });
-  }
-
+  qApp->offerChanges();
   qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
 
-  // Enter global event loop.
   return Application::exec();
 }

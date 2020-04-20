@@ -50,6 +50,7 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     void hideOrShowMainForm();
     void loadDynamicShortcuts();
     void showPolls() const;
+    void offerChanges() const;
 
     bool isAlreadyRunning();
 
