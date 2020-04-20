@@ -13,6 +13,7 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
+#define DESKTOP_FILE_NAME                     "com.github.rssguard.desktop"
 #define LOCALHOST_ADDRESS                     "http://localhost"
 #define ADBLOCK_ADBLOCKED_PAGE                "adblockedpage"
 #define ADBLOCK_HOWTO_FILTERS                 "http://adblockplus.org/en/filters"

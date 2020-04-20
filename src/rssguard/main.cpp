@@ -29,6 +29,10 @@ int main(int argc, char* argv[]) {
   QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+#if defined (Q_OS_LINUX)
+  QApplication::setDesktopFileName(DESKTOP_FILE_NAME);
+#endif
+
   // Ensure that ini format is used as application settings storage on Mac OS.
   QSettings::setDefaultFormat(QSettings::IniFormat);
 

@@ -463,10 +463,10 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
   // Here we have query which will check for existence of the "same" message in given feed.
   // The two message are the "same" if:
-  //   1) they belong to the same feed AND,
+  //   1) they belong to the SAME FEED AND,
   //   2) they have same URL AND,
   //   3) they have same AUTHOR AND,
-  //   4) they have same title.
+  //   4) they have same TITLE.
   query_select_with_url.setForwardOnly(true);
   query_select_with_url.prepare("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
                                 "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
