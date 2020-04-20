@@ -85,17 +85,24 @@ void IconFactory::loadCurrentIconTheme() {
   }
   else {
     // Desired icon theme is not currently available.
-    // Install "default" icon theme instead.
-    qWarning("Icon theme '%s' cannot be loaded because it is not installed. No icon theme (or default/system icon theme) is loaded now.",
+    // Activate "default" or "no" icon theme instead.
+#if defined(Q_OS_LINUX)
+    qWarning("Icon theme '%s' cannot be loaded. Activating \"system default\" icon theme.",
+             qPrintable(theme_name_from_settings));
+#else
+    qWarning("Icon theme '%s' cannot be loaded because it is not installed. Activating \"no\" icon theme.",
              qPrintable(theme_name_from_settings));
     QIcon::setThemeName(APP_NO_THEME);
+#endif
   }
 }
 
 QStringList IconFactory::installedIconThemes() const {
   QStringList icon_theme_names;
 
-  icon_theme_names << APP_NO_THEME; //<< QSL("Faenza");
+#if !defined(Q_OS_LINUX)
+  icon_theme_names << APP_NO_THEME;
+#endif
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();

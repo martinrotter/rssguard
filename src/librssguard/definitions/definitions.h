@@ -128,7 +128,13 @@
 #define APP_SKIN_DEFAULT    "vergilius"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 #define APP_STYLE_DEFAULT   "Fusion"
+
+#if defined(Q_OS_LINUX)
+#define APP_THEME_DEFAULT   ""
+#else
 #define APP_THEME_DEFAULT   "Faenza"
+#endif
+
 #define APP_NO_THEME        ""
 #define APP_THEME_SUFFIX    ".png"
 
