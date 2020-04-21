@@ -34,6 +34,7 @@ class TextFactory {
     static QDateTime parseDateTime(qint64 milis_from_epoch);
     static QString encrypt(const QString& text);
     static QString decrypt(const QString& text);
+    static QString newline();
 
     // Shortens input string according to given length limit.
     static QString shorten(const QString& input, int text_length_limit = TEXT_TITLE_LIMIT);

@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>1296</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -122,6 +122,7 @@
     <addaction name="m_actionMarkAllItemsRead"/>
     <addaction name="m_actionClearAllItems"/>
     <addaction name="separator"/>
+    <addaction name="m_actionCopyUrlSelectedFeed"/>
     <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkSelectedItemsAsRead"/>
     <addaction name="m_actionMarkSelectedItemsAsUnread"/>
@@ -742,6 +743,11 @@
    </property>
    <property name="text">
     <string>&amp;Enable message preview</string>
+   </property>
+  </action>
+  <action name="m_actionCopyUrlSelectedFeed">
+   <property name="text">
+    <string>&amp;Copy URLs of selected items</string>
    </property>
   </action>
  </widget>

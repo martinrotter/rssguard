@@ -48,6 +48,7 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
     void loadAllExpandStates();
 
   public slots:
+    void copyUrlOfSelectedFeeds() const;
     void sortByColumn(int column, Qt::SortOrder order);
 
     void addFeedIntoSelectedAccount();

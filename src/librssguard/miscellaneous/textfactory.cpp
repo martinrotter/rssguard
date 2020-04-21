@@ -114,6 +114,16 @@ QString TextFactory::decrypt(const QString& text) {
   return SimpleCrypt(initializeSecretEncryptionKey()).decryptToString(text);
 }
 
+QString TextFactory::newline() {
+#if defined(Q_OS_WIN)
+  return QSL("\r\n");
+#elif defined(Q_OS_MACOS)
+  return QSL("\r");
+#else
+  return QSL("\n");
+#endif
+}
+
 QString TextFactory::shorten(const QString& input, int text_length_limit) {
   if (input.size() > text_length_limit) {
     return input.left(text_length_limit - ELLIPSIS_LENGTH) + QString(ELLIPSIS_LENGTH, QL1C('.'));

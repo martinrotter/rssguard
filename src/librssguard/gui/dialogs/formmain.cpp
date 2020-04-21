@@ -41,6 +41,10 @@
 #include <QThread>
 #include <QTimer>
 
+#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
+#include <QScreen>
+#endif
+
 #if defined (USE_WEBENGINE)
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
@@ -164,6 +168,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionUpdateSelectedItems;
   actions << m_ui->m_actionStopRunningItemsUpdate;
   actions << m_ui->m_actionEditSelectedItem;
+  actions << m_ui->m_actionCopyUrlSelectedFeed;
   actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionServiceAdd;
   actions << m_ui->m_actionServiceEdit;
@@ -374,7 +379,7 @@ void FormMain::onFeedUpdatesStarted() {
 }
 
 void FormMain::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
-  statusBar()->showProgressFeeds((current * 100.0) / total,
+  statusBar()->showProgressFeeds(int((current * 100.0) / total),
 
                                  //: Text display in status bar when particular feed is updated.
                                  tr("Updated feed '%1'").arg(feed->title()));
@@ -411,6 +416,7 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionClearSelectedItems->setEnabled(anything_selected);
   m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
   m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
+  m_ui->m_actionCopyUrlSelectedFeed->setEnabled(service_selected || feed_selected || category_selected);
   m_ui->m_actionMarkSelectedItemsAsRead->setEnabled(anything_selected);
   m_ui->m_actionMarkSelectedItemsAsUnread->setEnabled(anything_selected);
   m_ui->m_actionUpdateAllItems->setEnabled(!critical_action_running);
@@ -492,6 +498,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionEditSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("document-edit")));
+  m_ui->m_actionCopyUrlSelectedFeed->setIcon(icon_theme_factory->fromTheme(QSL("edit-copy")));
   m_ui->m_actionMarkAllItemsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
@@ -530,7 +537,19 @@ void FormMain::setupIcons() {
 }
 
 void FormMain::loadSize() {
+#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
+  QScreen* scr = screen();
+
+  if (scr == nullptr) {
+    qWarning("Cannot load dialog size, because no screens are detected.");
+    return;
+  }
+
+  const QRect screen = scr->geometry();
+#else
   const QRect screen = qApp->desktop()->screenGeometry();
+#endif
+
   const Settings* settings = qApp->settings();
 
   // Reload main window size & position.
@@ -694,6 +713,8 @@ void FormMain::createConnections() {
           &QAction::triggered, qApp->feedReader(), &FeedReader::updateAllFeeds);
   connect(m_ui->m_actionStopRunningItemsUpdate,
           &QAction::triggered, qApp->feedReader(), &FeedReader::stopRunningFeedUpdate);
+  connect(m_ui->m_actionCopyUrlSelectedFeed,
+          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::copyUrlOfSelectedFeeds);
   connect(m_ui->m_actionEditSelectedItem,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::editSelectedItem);
   connect(m_ui->m_actionViewSelectedItemsNewspaperMode,

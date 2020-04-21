@@ -19,6 +19,7 @@
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 
+#include <QClipboard>
 #include <QContextMenuEvent>
 #include <QHeaderView>
 #include <QMenu>
@@ -125,6 +126,21 @@ void FeedsView::loadAllExpandStates() {
 
   sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
                static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
+}
+
+void FeedsView::copyUrlOfSelectedFeeds() const {
+  auto feeds = selectedFeeds();
+  QStringList urls;
+
+  for (const auto* feed : feeds) {
+    if (!feed->url().isEmpty()) {
+      urls << feed->url();
+    }
+  }
+
+  if (qApp->clipboard() != nullptr && !urls.isEmpty()) {
+    qApp->clipboard()->setText(urls.join(TextFactory::newline()));
+  }
 }
 
 void FeedsView::sortByColumn(int column, Qt::SortOrder order) {
@@ -441,6 +457,7 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
   m_contextMenuService->addActions(QList<QAction*>() <<
                                    qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                    qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
+                                   qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed <<
                                    qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                    qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
                                    qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
@@ -484,6 +501,7 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
   m_contextMenuCategories->addActions(QList<QAction*>() <<
                                       qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                       qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
+                                      qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed <<
                                       qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                       qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
                                       qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
@@ -509,6 +527,7 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
   m_contextMenuFeeds->addActions(QList<QAction*>() <<
                                  qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                  qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
+                                 qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed <<
                                  qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                  qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
                                  qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
