@@ -195,7 +195,7 @@ void FeedsView::expandCollapseCurrentItem() {
   if (selectionModel()->selectedRows().size() == 1) {
     QModelIndex index = selectionModel()->selectedRows().at(0);
 
-    if (!index.child(0, 0).isValid() && index.parent().isValid()) {
+    if (!model()->index(0, 0, index).isValid() && index.parent().isValid()) {
       setCurrentIndex(index.parent());
       index = index.parent();
     }
