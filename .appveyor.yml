@@ -1,6 +1,6 @@
 version: 666.{build}
 skip_tags: false
-os: Visual Studio 2017
+os: Visual Studio 2019
 clone_depth: 1
 clone_folder: C:\rssguard
 
