@@ -124,6 +124,33 @@ QString WebFactory::toSecondLevelDomain(const QUrl& url) {
   return domain + top_level_domain;
 }
 
+void WebFactory::updateProxy() {
+  const QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy),
+                                                                                                                     SETTING(Proxy::Type)).
+                                                                                             toInt());
+
+  if (selected_proxy_type == QNetworkProxy::NoProxy) {
+    QNetworkProxyFactory::setUseSystemConfiguration(false);
+    QNetworkProxy::setApplicationProxy(QNetworkProxy::NoProxy);
+  }
+  else if (selected_proxy_type == QNetworkProxy::DefaultProxy) {
+    QNetworkProxyFactory::setUseSystemConfiguration(true);
+  }
+  else {
+    const Settings* settings = qApp->settings();
+    QNetworkProxy new_proxy;
+
+    // Custom proxy is selected, set it up.
+    new_proxy.setType(selected_proxy_type);
+    new_proxy.setHostName(settings->value(GROUP(Proxy), SETTING(Proxy::Host)).toString());
+    new_proxy.setPort(quint16(settings->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt()));
+    new_proxy.setUser(settings->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
+    new_proxy.setPassword(settings->password(GROUP(Proxy), SETTING(Proxy::Password)).toString());
+
+    QNetworkProxy::setApplicationProxy(new_proxy);
+  }
+}
+
 #if defined (USE_WEBENGINE)
 QAction* WebFactory::engineSettingsAction() {
   if (m_engineSettings == nullptr) {

@@ -80,6 +80,8 @@ Application::Application(const QString& id, int& argc, char** argv)
     Debugging::instance()->setTargetFile(IOFactory::getSystemFolder(QStandardPaths::TempLocation) +
                                          QDir::separator() + QL1S("rssguard.log"));
   }
+
+  m_webFactory->updateProxy();
 }
 
 Application::~Application() {

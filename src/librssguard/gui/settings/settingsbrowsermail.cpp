@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/webfactory.h"
 
 #include <QFileDialog>
 #include <QInputDialog>
@@ -223,6 +224,8 @@ void SettingsBrowserMail::saveSettings() {
   auto tools = externalTools();
 
   ExternalTool::setToolsToSettings(tools);
+
+  qApp->web()->updateProxy();
 
   // Reload settings for all network access managers.
   SilentNetworkAccessManager::instance()->loadSettings();

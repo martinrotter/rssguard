@@ -38,6 +38,7 @@ class WebFactory : public QObject {
 #endif
 
   public slots:
+    void updateProxy();
     bool openUrlInExternalBrowser(const QString& url) const;
     bool sendMessageViaEmail(const Message& message);
 

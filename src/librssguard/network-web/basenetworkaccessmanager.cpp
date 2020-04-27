@@ -27,19 +27,8 @@ void BaseNetworkAccessManager::loadSettings() {
     // No extra setting is needed, set new proxy and exit this method.
     setProxy(QNetworkProxy::NoProxy);
   }
-  else if (selected_proxy_type == QNetworkProxy::DefaultProxy) {
-    setProxy(QNetworkProxy::applicationProxy());
-  }
   else {
-    const Settings* settings = qApp->settings();
-
-    // Custom proxy is selected, set it up.
-    new_proxy.setType(selected_proxy_type);
-    new_proxy.setHostName(settings->value(GROUP(Proxy), SETTING(Proxy::Host)).toString());
-    new_proxy.setPort(quint16(settings->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt()));
-    new_proxy.setUser(settings->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
-    new_proxy.setPassword(settings->password(GROUP(Proxy), SETTING(Proxy::Password)).toString());
-    setProxy(new_proxy);
+    setProxy(QNetworkProxy::applicationProxy());
   }
 
   qDebug("Settings of BaseNetworkAccessManager loaded.");
