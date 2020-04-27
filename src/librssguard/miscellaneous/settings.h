@@ -100,6 +100,10 @@ namespace Messages {
   VALUE(bool) DisplayImagePlaceholdersDef;
 #endif
 
+  KEY Zoom;
+
+  VALUE(qreal) ZoomDef;
+
   KEY UseCustomDate;
 
   VALUE(bool) UseCustomDateDef;

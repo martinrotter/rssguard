@@ -77,6 +77,10 @@ DKEY Messages::DisplayImagePlaceholders = "display_image_placeholders";
 DVALUE(bool) Messages::DisplayImagePlaceholdersDef = false;
 #endif
 
+DKEY Messages::Zoom = "zoom";
+
+DVALUE(qreal) Messages::ZoomDef = double(1.0f);
+
 DKEY Messages::UseCustomDate = "use_custom_date";
 
 DVALUE(bool) Messages::UseCustomDateDef = false;

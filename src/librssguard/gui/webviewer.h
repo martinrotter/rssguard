@@ -42,6 +42,7 @@ class WebViewer : public QWebEngineView {
     QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
 
     void wheelEvent(QWheelEvent* event);
+    bool event(QEvent* event);
     bool eventFilter(QObject* object, QEvent* event);
 
   signals:

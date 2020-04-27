@@ -13,6 +13,7 @@
 #include "network-web/webfactory.h"
 #include "network-web/webpage.h"
 
+#include <QOpenGLWidget>
 #include <QWebEngineContextMenuData>
 #include <QWheelEvent>
 
@@ -21,20 +22,28 @@ WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) 
 
   connect(page, &WebPage::messageStatusChangeRequested, this, &WebViewer::messageStatusChangeRequested);
   setPage(page);
-
-  const QList<QWidget*> children = findChildren<QWidget*>();
-
-  for (QWidget* child : children) {
-    child->installEventFilter(this);
-  }
+  resetWebPageZoom();
 }
 
 bool WebViewer::canIncreaseZoom() {
-  return zoomFactor() <= MAX_ZOOM_FACTOR - ZOOM_FACTOR_STEP;
+  return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
 }
 
 bool WebViewer::canDecreaseZoom() {
-  return zoomFactor() >= MIN_ZOOM_FACTOR + ZOOM_FACTOR_STEP;
+  return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
+}
+
+bool WebViewer::event(QEvent* event) {
+  if (event->type() == QEvent::Type::ChildAdded) {
+    QChildEvent* child_ev = static_cast<QChildEvent*>(event);
+    QWidget* w = qobject_cast<QWidget*>(child_ev->child());
+
+    if (w != nullptr) {
+      w->installEventFilter(this);
+    }
+  }
+
+  return QWebEngineView::event(event);
 }
 
 WebPage* WebViewer::page() const {
@@ -47,7 +56,8 @@ void WebViewer::displayMessage() {
 
 bool WebViewer::increaseWebPageZoom() {
   if (canIncreaseZoom()) {
-    setZoomFactor(zoomFactor() + ZOOM_FACTOR_STEP);
+    setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
+    qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, zoomFactor());
     return true;
   }
   else {
@@ -57,7 +67,8 @@ bool WebViewer::increaseWebPageZoom() {
 
 bool WebViewer::decreaseWebPageZoom() {
   if (canDecreaseZoom()) {
-    setZoomFactor(zoomFactor() - ZOOM_FACTOR_STEP);
+    setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
+    qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, zoomFactor());
     return true;
   }
   else {
@@ -66,7 +77,8 @@ bool WebViewer::decreaseWebPageZoom() {
 }
 
 bool WebViewer::resetWebPageZoom() {
-  const qreal new_factor = 1.0;
+  const qreal new_factor = qApp->settings()->value(GROUP(Messages),
+                                                   SETTING(Messages::Zoom)).toReal();
 
   if (new_factor != zoomFactor()) {
     setZoomFactor(new_factor);
@@ -178,19 +190,38 @@ QWebEngineView* WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
 void WebViewer::wheelEvent(QWheelEvent* event) {
   QWebEngineView::wheelEvent(event);
 
-  if ((event->modifiers() & Qt::ControlModifier) > 0) {
-    if (event->delta() > 0) {
-      increaseWebPageZoom();
-    }
-    else if (event->delta() < 0) {
-      decreaseWebPageZoom();
-    }
-  }
 }
 
 bool WebViewer::eventFilter(QObject* object, QEvent* event) {
+  Q_UNUSED(object)
+
   if (event->type() == QEvent::Type::Wheel) {
-    return true;
+    QWheelEvent* wh_event = static_cast<QWheelEvent*>(event);
+
+    if ((wh_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+      if (wh_event->delta() > 0) {
+        increaseWebPageZoom();
+        return true;
+      }
+      else if (wh_event->delta() < 0) {
+        decreaseWebPageZoom();
+        return true;
+      }
+    }
+  }
+  else if (event->type() == QEvent::Type::KeyPress) {
+    QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
+
+    if ((key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+      if (key_event->key() == Qt::Key::Key_Plus) {
+        increaseWebPageZoom();
+        return true;
+      }
+      else if (key_event->key() == Qt::Key::Key_Minus) {
+        decreaseWebPageZoom();
+        return true;
+      }
+    }
   }
 
   return false;
