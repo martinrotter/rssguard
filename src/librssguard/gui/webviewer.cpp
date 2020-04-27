@@ -21,6 +21,12 @@ WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) 
 
   connect(page, &WebPage::messageStatusChangeRequested, this, &WebViewer::messageStatusChangeRequested);
   setPage(page);
+
+  const QList<QWidget*> children = findChildren<QWidget*>();
+
+  for (QWidget* child : children) {
+    child->installEventFilter(this);
+  }
 }
 
 bool WebViewer::canIncreaseZoom() {
@@ -180,6 +186,14 @@ void WebViewer::wheelEvent(QWheelEvent* event) {
       decreaseWebPageZoom();
     }
   }
+}
+
+bool WebViewer::eventFilter(QObject* object, QEvent* event) {
+  if (event->type() == QEvent::Type::Wheel) {
+    return true;
+  }
+
+  return false;
 }
 
 RootItem* WebViewer::root() const {

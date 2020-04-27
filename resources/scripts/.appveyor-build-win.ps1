@@ -1,5 +1,7 @@
 # List startup folder.
 $old_pwd=$pwd.Path
+
+ls "$env:QTDIR"
 ls
 echo "Qmake args are: '$env:qmake_args'."
 
