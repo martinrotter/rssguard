@@ -1,7 +1,6 @@
 # List startup folder.
 $old_pwd=$pwd.Path
-
-ssl_bin="C:\OpenSSL-v111-Win64\bin"
+$ssl_bin = "C:\OpenSSL-v111-Win64\bin"
 
 ls "$ssl_bin"
 ls "C:\Program Files\MySQL\MySQL Server 5.7\lib"
