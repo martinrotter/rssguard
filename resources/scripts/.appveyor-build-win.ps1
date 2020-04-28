@@ -11,9 +11,11 @@ mkdir "rssguard-build"
 cd "rssguard-build"
 qmake.exe ..\build.pro "$env:qmake_args"
 nmake.exe
+
+cd "src\rssguard"
 nmake.exe install
 
-cd "src\rssguard\app"
+cd "app"
 windeployqt.exe --verbose 1 --compiler-runtime --no-translations --release rssguard.exe librssguard.dll
 cd ".."
 nmake.exe windows_all
