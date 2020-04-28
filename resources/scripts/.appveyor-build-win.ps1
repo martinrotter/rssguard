@@ -28,7 +28,7 @@ Invoke-WebRequest -Uri $qtbase_url -OutFile $output
 
 & "..\resources\scripts\7za\7za.exe" x $output
 
-$qt_mysql_dir = ".\qtbase-everywhere-src-5.14.2\src\plugins\sqldrivers"
+$qt_mysql_dir = "./qtbase-everywhere-src-5.14.2/src/plugins/sqldrivers"
 $mysql_d_rev = $mysql_dir.Replace('\', '/')
 $qmake_args_mysql = "MYSQL_INCDIR=`"$mysql_d_rev/include`" MYSQL_LIBDIR=`"$mysql_d_rev/lib`""
 
