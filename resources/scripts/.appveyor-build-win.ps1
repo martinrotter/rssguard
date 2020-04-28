@@ -24,6 +24,7 @@ $output = "qt.zip"
 mkdir "build-mysql"
 cd "build-mysql"
 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-WebRequest -Uri $qtbase_url -OutFile $output
 
 & "..\resources\scripts\7za\7za.exe" x $output
