@@ -1,6 +1,9 @@
 # List startup folder.
 $old_pwd=$pwd.Path
 
+ls "C:\OpenSSL-v111-Win64\bin"
+ls "C:\Program Files\MySQL\MySQL Server 5.7\lib"
+
 ls
 echo "Qmake args are: '$env:qmake_args'."
 
