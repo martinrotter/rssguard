@@ -36,7 +36,10 @@ cd "$qt_mysql_dir"
 qmake.exe -- MYSQL_INCDIR="$mysql_d_rev/include" MYSQL_LIBDIR="$mysql_d_rev/lib"
 
 nmake.exe sub-mysql
-ls
+Copy-Item -Path ".\plugins\sqldrivers\qsqlmysql.dll" -Destination "$old_pwd\build-mysql"
+
+ls "$old_pwd\build-mysql"
+cd "$old_pwd"
 
 mkdir "rssguard-build"
 cd "rssguard-build"
