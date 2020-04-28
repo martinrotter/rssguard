@@ -21,7 +21,7 @@ FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
 }
 
 FormAbout::~FormAbout() {
-  qDebug("Destroying FormAbout instance.");
+  qDebug() << QSslSocket::sslLibraryVersionString();
 }
 
 void FormAbout::loadSettingsAndPaths() {
