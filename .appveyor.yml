@@ -32,7 +32,7 @@ deploy:
     appveyor_repo_tag: true
 
 build_script:
-  - git submodule update --init --recursive
+  - git submodule update --init --recursive --remote
   - '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"'
   - ps: .\resources\scripts\.appveyor-build-win.ps1
 
