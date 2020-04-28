@@ -175,25 +175,8 @@ win32 {
   lib.path = $$PREFIX
   lib.CONFIG = no_check_exist
 
-  qt_dlls_root.files = ../../resources/binaries/windows/qt5-msvc2017/*.*
-  qt_dlls_root.path = $$quote($$PREFIX/)
+  INSTALLS += target lib
 
-  qt_dlls_plugins.files = ../../resources/binaries/windows/qt5-msvc2017/*
-  qt_dlls_plugins.path = $$quote($$PREFIX/)
-
-  INSTALLS += target lib qt_dlls_root qt_dlls_plugins
-
-  equals(USE_WEBENGINE, true) {
-    # Copy extra resource files for QtWebEngine.
-    qtwebengine_dlls.files = ../../resources/binaries/windows/qt5-msvc2017-webengine/*
-    qtwebengine_dlls.path = $$quote($$PREFIX/)
-
-    qtwebengine.files = ../../resources/binaries/windows/qt5-msvc2017-webengine/*.*
-    qtwebengine.path = $$quote($$PREFIX/)
-
-    INSTALLS += qtwebengine_dlls qtwebengine
-  }
-  
   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard/)
 }
 
