@@ -58,6 +58,7 @@ Copy-Item -Path "$ssl_bin\libcrypto*.dll" -Destination ".\app\"
 Copy-Item -Path "$ssl_bin\libssl*.dll" -Destination ".\app\"
 
 # Copy MySQL Qt plugin.
+Copy-Item -Path "$mysql_dir\lib\libmysql.dll" -Destination ".\app\"
 Copy-Item -Path "$old_pwd\build-mysql\qsqlmysql.dll" -Destination ".\app\sqldrivers\"
 
 nmake.exe windows_all
