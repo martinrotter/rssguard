@@ -5,43 +5,43 @@ $mysql_dir = "C:\Program Files\MySQL\MySQL Server 5.7"
 
 ls "$ssl_bin"
 ls "$mysql_dir\lib"
-
-ls "$env:QTDIR"
-ls "$env:QTDIR\.."
-
 ls
-echo "Qmake args are: '$env:qmake_args'."
+
+echo "qmake args are: '$env:qmake_args'."
 
 # Setup env path with qmake.
 $env:PATH = "$env:QTDIR\bin;" + $env:PATH
 
 # Build MySQL Qt plugin.
-$qt_ver = "5.14"
-$qt_rev = "2"
+$qt_ver = "$env:QTVER"
+$qt_rev = "$env:QTREV"
 $qtbase_url = "https://download.qt.io/archive/qt/$qt_ver/$qt_ver.$qt_rev/submodules/qtbase-everywhere-src-$qt_ver.$qt_rev.zip"
 $output = "qt.zip"
 
 mkdir "build-mysql"
 cd "build-mysql"
 
+echo "Building MySQL Qt plugin, downloading Qt '$qt_ver.$qt_rev'."
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-WebRequest -Uri $qtbase_url -OutFile $output
 
 & "..\resources\scripts\7za\7za.exe" x $output
 
-$qt_mysql_dir = "./qtbase-everywhere-src-5.14.2/src/plugins/sqldrivers"
+$qt_mysql_dir = "./qtbase-everywhere-src-$qt_ver.$qt_rev/src/plugins/sqldrivers"
 $mysql_d_rev = $mysql_dir.Replace('\', '/')
 
 cd "$qt_mysql_dir"
 
 qmake.exe -- MYSQL_INCDIR="$mysql_d_rev/include" MYSQL_LIBDIR="$mysql_d_rev/lib"
-
 nmake.exe sub-mysql
+
 Copy-Item -Path ".\plugins\sqldrivers\qsqlmysql.dll" -Destination "$old_pwd\build-mysql"
 
-ls "$old_pwd\build-mysql"
 cd "$old_pwd"
+ls "build-mysql"
 
+# Build RSS Guard itself.
 mkdir "rssguard-build"
 cd "rssguard-build"
 qmake.exe ..\build.pro "$env:qmake_args"
@@ -52,6 +52,7 @@ nmake.exe install
 
 cd "app"
 windeployqt.exe --verbose 1 --compiler-runtime --no-translations --release rssguard.exe librssguard.dll
+
 cd ".."
 
 # Copy OpenSSL.

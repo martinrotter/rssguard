@@ -5,6 +5,8 @@ clone_depth: 1
 clone_folder: C:\rssguard
 
 environment:
+  QTVER: '5.14'
+  QTREV: '2'
   QTDIR: 'C:\Qt\5.14.2\msvc2017_64'
   QMAKESPEC: win32-msvc
   access_token:
