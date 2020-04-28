@@ -34,7 +34,7 @@ $qmake_args_mysql = "MYSQL_INCDIR=`"$mysql_d_rev/include`" MYSQL_LIBDIR=`"$mysql
 
 echo "$qmake_args_mysql"
 
-qmake.exe "$qmake_args_mysql"
+qmake.exe "`"$qmake_args_mysql`""
 
 nmake.exe sub-mysql
 ls
