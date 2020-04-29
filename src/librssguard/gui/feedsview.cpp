@@ -544,7 +544,7 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
 QMenu* FeedsView::initializeContextMenuEmptySpace() {
   if (m_contextMenuEmptySpace == nullptr) {
     m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
-    m_contextMenuEmptySpace->addAction(qApp->mainForm()->m_ui->m_actionUpdateAllItems);
+    m_contextMenuEmptySpace->addMenu(qApp->mainForm()->m_ui->m_menuAddItem);
     m_contextMenuEmptySpace->addSeparator();
   }
 
