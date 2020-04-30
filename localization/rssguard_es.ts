@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -116,7 +114,7 @@
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Quieres agregar &lt;b&gt;%1&lt;/b&gt; suscripción?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
@@ -281,12 +279,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Pulse aquí para añadir la fuente de este sitio web.
-Este sitio web contiene %n fuente().</numerusform>
-            <numerusform>Pulse aquí para añadir las fuentes de este sitio web.
-Este sitio web contiene %n fuente(s).</numerusform>
-        </translation>
+        <translation><numerusform>Pulse aquí para añadir la fuente de este sitio web.
+Este sitio web contiene %n fuente().</numerusform><numerusform>Pulse aquí para añadir las fuentes de este sitio web.
+Este sitio web contiene %n fuente(s).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -372,7 +367,7 @@ Este sitio web contiene %n fuente(s).</numerusform>
         <translation>Descarga finalizada</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Archivo &apos;%1&apos; descargado.
 Pulse aquí para abrir la carpeta principal</translation>
@@ -398,17 +393,11 @@ Pulse aquí para abrir la carpeta principal</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minuto restante</numerusform>
-            <numerusform>%n minutos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto restante</numerusform><numerusform>%n minutos restantes</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n segundo restante</numerusform>
-            <numerusform>%n segundos restantes</numerusform>
-        </translation>
+        <translation><numerusform>%n segundo restante</numerusform><numerusform>%n segundos restantes</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -428,29 +417,26 @@ Pulse aquí para abrir la carpeta principal</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Descargando %n archivo()...</numerusform>
-            <numerusform>Descargando %n archivo(s)...</numerusform>
-        </translation>
+        <translation><numerusform>Descargando %n archivo()...</numerusform><numerusform>Descargando %n archivo(s)...</numerusform></translation>
     </message>
 </context>
 <context>
     <name>EmailRecipientControl</name>
     <message>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation>Para</translation>
     </message>
     <message>
         <source>Cc</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia</translation>
     </message>
     <message>
         <source>Bcc</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia ciega</translation>
     </message>
     <message>
         <source>Reply-to</source>
-        <translation type="unfinished"></translation>
+        <translation>Responder A</translation>
     </message>
 </context>
 <context>
@@ -463,18 +449,12 @@ Pulse aquí para abrir la carpeta principal</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>utilice configuración general (%n minuto() para la siguiente actualización automática)</numerusform>
-            <numerusform>utiliza la configuración general (%n minuto(s) para la siguiente actualización automática)</numerusform>
-        </translation>
+        <translation><numerusform>utilice configuración general (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración general (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>utilice configuración específica (%n minuto() para la siguiente actualización automática)</numerusform>
-            <numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform>
-        </translation>
+        <translation><numerusform>utilice configuración específica (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
@@ -529,10 +509,7 @@ Status: %2</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Voy a realizar la actualización automática de %n fuente().</numerusform>
-            <numerusform>Voy a realizar la actualización automática de %n fuente(s).</numerusform>
-        </translation>
+        <translation><numerusform>Voy a realizar la actualización automática de %n fuente().</numerusform><numerusform>Voy a realizar la actualización automática de %n fuente(s).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -755,27 +732,27 @@ o debido a que esta función aún no está implementada.</translation>
     <name>FormAddEditEmail</name>
     <message>
         <source>Write e-mail message</source>
-        <translation type="unfinished"></translation>
+        <translation>Escribir mensaje del correo electrónico</translation>
     </message>
     <message>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation>De</translation>
     </message>
     <message>
         <source>Name and address of this e-mail message sender</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre y dirección del remitente de este correo electrónico</translation>
     </message>
     <message>
         <source>Contents of your e-mail message</source>
-        <translation type="unfinished"></translation>
+        <translation>Contenido de su mensaje electrónico</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Add new recipient.</source>
-        <translation type="unfinished"></translation>
+        <translation>Añadir nuevo destinatario.</translation>
     </message>
 </context>
 <context>
@@ -865,10 +842,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>día()</numerusform>
-            <numerusform>día(s)</numerusform>
-        </translation>
+        <translation><numerusform>día()</numerusform><numerusform>día(s)</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -966,7 +940,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Redirigir URL</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -978,7 +952,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Acceder</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -986,7 +960,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de usuario visible</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1038,7 +1012,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Debes utilizar &quot;%1&quot; como URL de redireccionamiento base. Puedes utilizar un puerto personalizado para asegurarte que ningún servicio local lo está ocupando. Asegúrate que esta URL de redireccionamiento corresponde con la URL de redireccionamiento de la &quot;aplicación&quot; utilizada.</translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
@@ -1069,7 +1043,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Redirigir URL</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
@@ -1085,7 +1059,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Acceder</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -1093,7 +1067,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de usuario visible</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1149,7 +1123,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Debes utilizar &quot;%1&quot; como URL de redireccionamiento base. Puedes utilizar un puerto personalizado para asegurarte que ningún servicio local lo está ocupando. Asegúrate que esta URL de redireccionamiento corresponde con la URL de redireccionamiento de la &quot;aplicación&quot; utilizada.</translation>
     </message>
 </context>
 <context>
@@ -1703,7 +1677,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizar icono predeterminado del tema de iconos</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -2123,11 +2097,11 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Donar...</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2365,7 +2339,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizar icono predeterminado del tema de iconos</translation>
     </message>
 </context>
 <context>
@@ -2511,11 +2485,11 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Exportar a archivo</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Importar desde archivo</translation>
     </message>
 </context>
 <context>
@@ -2669,71 +2643,71 @@ Puede instalarlo ahora.</translation>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesión iniciada exitosamente.</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
-        <translation type="unfinished"></translation>
+        <translation>Se autorizó su acceso a Gmail.</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse aquí para iniciar sesión nuevamente. El error es: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse aquí para iniciar sesión nuevamente. </translation>
     </message>
     <message>
         <source>No subject</source>
-        <translation type="unfinished"></translation>
+        <translation>Sin asunto</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"></translation>
+        <translation>Gmail: Error de autenticación</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"></translation>
+        <translation>Gmail: Autorización denegada</translation>
     </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation type="unfinished"></translation>
+        <translation>Bandeja de entrada</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation type="unfinished"></translation>
+        <translation>Enviado</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2751,27 +2725,27 @@ Login tokens expiration: %2</source>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesión iniciada exitosamente.</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse aquí para iniciar sesión nuevamente. El error es: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse aquí para iniciar sesión nuevamente. </translation>
     </message>
 </context>
 <context>
@@ -2783,15 +2757,15 @@ Login tokens expiration: %2</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3169,10 +3143,7 @@ Login tokens expiration: %2</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Mostrar más mensajes (%n restante)</numerusform>
-            <numerusform>Mostrar más mensajes (%n restantes)</numerusform>
-        </translation>
+        <translation><numerusform>Mostrar más mensajes (%n restante)</numerusform><numerusform>Mostrar más mensajes (%n restantes)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3245,24 +3216,21 @@ Login tokens expiration: %2</source>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n fuente restante.</numerusform>
-            <numerusform>
++ %n fuente restante.</numerusform><numerusform>
 
-+ %n fuentes restantes.</numerusform>
-        </translation>
++ %n fuentes restantes.</numerusform></translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3302,22 +3270,22 @@ Se necesita como mínimo una API de nivel %1.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3332,10 +3300,7 @@ version by clicking this popup notification.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n mensaje() borrado.</numerusform>
-            <numerusform>%n mensaje(s) borrados.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensaje() borrado.</numerusform><numerusform>%n mensaje(s) borrados.</numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3351,10 +3316,7 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n mensaje() no leído.</numerusform>
-            <numerusform>%n mensaje(s) no leídos.</numerusform>
-        </translation>
+        <translation><numerusform>%n mensaje() no leído.</numerusform><numerusform>%n mensaje(s) no leídos.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3775,7 +3737,7 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -3843,23 +3805,23 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4017,16 +3979,16 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4070,11 +4032,11 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4092,7 +4054,7 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4239,17 +4201,11 @@ Noticias no leídas: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n hora()</numerusform>
-            <numerusform>%n hora(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n hora()</numerusform><numerusform>%n hora(s)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minuto()</numerusform>
-            <numerusform>%n minuto(s)</numerusform>
-        </translation>
+        <translation><numerusform>%n minuto()</numerusform><numerusform>%n minuto(s)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -4333,7 +4289,7 @@ Noticias no leídas: %2</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4420,7 +4376,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Local content can access local files</source>
@@ -4456,7 +4412,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Print element backgrounds</source>
@@ -4491,7 +4447,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

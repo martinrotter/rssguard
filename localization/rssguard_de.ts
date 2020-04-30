@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -281,12 +279,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
-Diese Webseite enhält %n Feed.</numerusform>
-            <numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
-Diese Webseite enhält %n Feeds.</numerusform>
-        </translation>
+        <translation><numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
+Diese Webseite enhält %n Feed.</numerusform><numerusform>Zum Hinzufügen der Feeds auf dieser Webseite hier klicken.
+Diese Webseite enhält %n Feeds.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -372,7 +367,7 @@ Diese Webseite enhält %n Feeds.</numerusform>
         <translation>Herunterladen abgeschlossen</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Datei &apos;%1&apos; wurde heruntergeladen. Zum Öffnen des übergeordneten Verzeichnisses hier klicken.</translation>
     </message>
@@ -397,17 +392,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>% Minute verbleibend</numerusform>
-            <numerusform>%n Minuten verbleibend</numerusform>
-        </translation>
+        <translation><numerusform>% Minute verbleibend</numerusform><numerusform>%n Minuten verbleibend</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n Sekunde verbleibend</numerusform>
-            <numerusform>%n Sekunden verbleibend</numerusform>
-        </translation>
+        <translation><numerusform>%n Sekunde verbleibend</numerusform><numerusform>%n Sekunden verbleibend</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -427,29 +416,26 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Lade %n Datei herunter...</numerusform>
-            <numerusform>Lade %n Dateien herunter...</numerusform>
-        </translation>
+        <translation><numerusform>Lade %n Datei herunter...</numerusform><numerusform>Lade %n Dateien herunter...</numerusform></translation>
     </message>
 </context>
 <context>
     <name>EmailRecipientControl</name>
     <message>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Bcc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Reply-to</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -462,18 +448,12 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>verwendet globale Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform>
-            <numerusform>verwendet globale Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform>
-        </translation>
+        <translation><numerusform>verwendet globale Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform><numerusform>verwendet globale Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform>
-            <numerusform>verwendet individuelle Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform>
-        </translation>
+        <translation><numerusform>verwendet individuelle Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform><numerusform>verwendet individuelle Einstellungen (noch %n Minute(n) bis zur nächsten Auto-Aktualisierung)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
@@ -529,10 +509,7 @@ Status: %2</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>1 Feed wird automatisch aktualisiert.</numerusform>
-            <numerusform>%n Feeds werden automatisch aktualisiert.</numerusform>
-        </translation>
+        <translation><numerusform>1 Feed wird automatisch aktualisiert.</numerusform><numerusform>%n Feeds werden automatisch aktualisiert.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -754,19 +731,19 @@ or this functionality is not implemented yet.</source>
     <name>FormAddEditEmail</name>
     <message>
         <source>Write e-mail message</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Name and address of this e-mail message sender</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Contents of your e-mail message</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>...</source>
@@ -774,7 +751,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new recipient.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -864,10 +841,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> Tag</numerusform>
-            <numerusform> Tage</numerusform>
-        </translation>
+        <translation><numerusform> Tag</numerusform><numerusform> Tage</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1702,7 +1676,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -2122,11 +2096,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2365,7 +2339,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2511,11 +2485,11 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3170,10 +3144,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Weitere Nachrichten anzeigen (%n verbleibend)</numerusform>
-            <numerusform>Weitere Nachrichten anzeigen (%n verbleibend)</numerusform>
-        </translation>
+        <translation><numerusform>Weitere Nachrichten anzeigen (%n verbleibend)</numerusform><numerusform>Weitere Nachrichten anzeigen (%n verbleibend)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3256,10 +3227,7 @@ Ablauf des Login tokens: %2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>+ %n anderer Feed.</numerusform>
-            <numerusform>+ %n andere Feeds.</numerusform>
-        </translation>
+        <translation><numerusform>+ %n anderer Feed.</numerusform><numerusform>+ %n andere Feeds.</numerusform></translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3315,7 +3283,7 @@ Das API muss mindestens in Stufe %1 verfügbar sein.</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3330,10 +3298,7 @@ version by clicking this popup notification.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n gelöschte Nachricht.</numerusform>
-            <numerusform>%n gelöschte Nachrichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n gelöschte Nachricht.</numerusform><numerusform>%n gelöschte Nachrichten.</numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3349,10 +3314,7 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ungelesene Nachricht.</numerusform>
-            <numerusform>%n ungelesene Nachrichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ungelesene Nachricht.</numerusform><numerusform>%n ungelesene Nachrichten.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3774,7 +3736,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -3842,23 +3804,23 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4016,16 +3978,16 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4241,17 +4203,11 @@ Ungelesene Nachrichten: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n Stunde</numerusform>
-            <numerusform>%n Stunden</numerusform>
-        </translation>
+        <translation><numerusform>%n Stunde</numerusform><numerusform>%n Stunden</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n Minute</numerusform>
-            <numerusform>%n Minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n Minute</numerusform><numerusform>%n Minuten</numerusform></translation>
     </message>
     <message>
         <source> and </source>

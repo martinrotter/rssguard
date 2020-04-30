@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="lt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -281,14 +279,11 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalas.</numerusform>
-            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalai.</numerusform>
-            <numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
-Šioje svetainėje yra %n kanalų.</numerusform>
-        </translation>
+        <translation><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalas.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalai.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalų.</numerusform><numerusform>Spustelėkite mane, kad pridėtumėte kanalus iš šios svetainės.
+Šioje svetainėje yra %n kanalų.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -374,7 +369,7 @@ This website contains %n feed(s).</source>
         <translation>Atsiuntimas užbaigtas</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Failas &quot;%1&quot; yra atsisiųstas.
 Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
@@ -400,19 +395,11 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>Liko %n minutė</numerusform>
-            <numerusform>Liko %n minutės</numerusform>
-            <numerusform>Liko %n minučių</numerusform>
-        </translation>
+        <translation><numerusform>Liko %n minutė</numerusform><numerusform>Liko %n minutės</numerusform><numerusform>Liko %n minučių</numerusform><numerusform>Liko %n minučių</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>Liko %n sekundė</numerusform>
-            <numerusform>Liko %n sekundės</numerusform>
-            <numerusform>Liko %n sekundžių</numerusform>
-        </translation>
+        <translation><numerusform>Liko %n sekundė</numerusform><numerusform>Liko %n sekundės</numerusform><numerusform>Liko %n sekundžių</numerusform><numerusform>Liko %n sekundžių</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -432,11 +419,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Atsiunčiamas %n failas...</numerusform>
-            <numerusform>Atsiunčiami %n failai...</numerusform>
-            <numerusform>Atsiunčiama %n failų...</numerusform>
-        </translation>
+        <translation><numerusform>Atsiunčiamas %n failas...</numerusform><numerusform>Atsiunčiami %n failai...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -468,20 +451,12 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
-        </translation>
+        <translation><numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform>
-            <numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform>
-        </translation>
+        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
@@ -537,11 +512,7 @@ Būsena: %2</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform>
-            <numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform>
-            <numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform>
-        </translation>
+        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -874,11 +845,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform> diena</numerusform>
-            <numerusform> dienos</numerusform>
-            <numerusform> dienų</numerusform>
-        </translation>
+        <translation><numerusform> diena</numerusform><numerusform> dienos</numerusform><numerusform> dienų</numerusform><numerusform> dienų</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -2137,7 +2104,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3182,11 +3149,7 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
-            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
-            <numerusform>Rodyti daugiau žinučių (liko %n)</numerusform>
-        </translation>
+        <translation><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3269,17 +3232,15 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n kita žinutė.</numerusform>
-            <numerusform>
++ %n kita žinutė.</numerusform><numerusform>
 
-+ %n kitos žinutės.</numerusform>
-            <numerusform>
++ %n kitos žinutės.</numerusform><numerusform>
 
-+ %n kitų žinučių.</numerusform>
-        </translation>
++ %n kitų žinučių.</numerusform><numerusform>
+
++ %n kitų žinučių.</numerusform></translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3334,7 +3295,10 @@ Reikalingas bent API lygis %1.</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sveiki atvykę į %1.
+
+Susipažinkite su NAUJOMIS šios
+versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     </message>
 </context>
 <context>
@@ -3349,11 +3313,7 @@ version by clicking this popup notification.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n ištrinta žinutė.</numerusform>
-            <numerusform>%n ištrintos žinutės.</numerusform>
-            <numerusform>%n ištrintų žinučių.</numerusform>
-        </translation>
+        <translation><numerusform>%n ištrinta žinutė.</numerusform><numerusform>%n ištrintos žinutės.</numerusform><numerusform>%n ištrintų žinučių.</numerusform><numerusform>%n ištrintų žinučių.</numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3369,11 +3329,7 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n neskaityta žinutė.</numerusform>
-            <numerusform>%n neskaitytos žinutės.</numerusform>
-            <numerusform>%n neskaitytų žinučių.</numerusform>
-        </translation>
+        <translation><numerusform>%n neskaityta žinutė.</numerusform><numerusform>%n neskaitytos žinutės.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -4036,16 +3992,16 @@ Vilkaduobės:
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4261,19 +4217,11 @@ Neskaitytų naujienų: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n valandą</numerusform>
-            <numerusform>%n valandas</numerusform>
-            <numerusform>%n valandų</numerusform>
-        </translation>
+        <translation><numerusform>%n valandą</numerusform><numerusform>%n valandas</numerusform><numerusform>%n valandų</numerusform><numerusform>%n valandų</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minutę</numerusform>
-            <numerusform>%n minutes</numerusform>
-            <numerusform>%n minučių</numerusform>
-        </translation>
+        <translation><numerusform>%n minutę</numerusform><numerusform>%n minutes</numerusform><numerusform>%n minučių</numerusform><numerusform>%n minučių</numerusform></translation>
     </message>
     <message>
         <source> and </source>
