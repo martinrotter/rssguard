@@ -420,6 +420,8 @@ TRANSLATIONS += $$TRANSLATIONS_WO_QT \
 load(uic)
 uic.commands -= -no-stringliteral
 
+TR_EXCLUDE += $(QTDIR) 3rd-party/*
+
 # Create new "make lupdate" target.
 lupdate.target = lupdate
 lupdate.commands = lupdate -no-obsolete -pro $$shell_quote($$shell_path($$PWD/librssguard.pro)) -ts $$TRANSLATIONS_WO_QT

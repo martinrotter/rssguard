@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -279,11 +281,14 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
-Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
-Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
-Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
-Этот сайт содержит %n канал(ов).</numerusform></translation>
+        <translation>
+            <numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform>
+            <numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform>
+            <numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -369,7 +374,7 @@ This website contains %n feed(s).</source>
         <translation>Скачивание завершено</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Файл &quot;%1&quot; загружен.
 Нажмите здесь, чтобы открыть.</translation>
@@ -395,11 +400,19 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n минута осталась</numerusform><numerusform>%n минуты осталось</numerusform><numerusform>%n минут осталось</numerusform><numerusform>%n минуты осталось</numerusform></translation>
+        <translation>
+            <numerusform>%n минута осталась</numerusform>
+            <numerusform>%n минуты осталось</numerusform>
+            <numerusform>%n минут осталось</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>осталась %n секунда</numerusform><numerusform>осталось %n секунды</numerusform><numerusform>осталось %n секунд</numerusform><numerusform>осталось %n секунды</numerusform></translation>
+        <translation>
+            <numerusform>осталась %n секунда</numerusform>
+            <numerusform>осталось %n секунды</numerusform>
+            <numerusform>осталось %n секунд</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -419,7 +432,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Загрузка %n файла...</numerusform><numerusform>Загрузка %n файлов...</numerusform><numerusform>Загрузка %n файлов...</numerusform><numerusform>Загрузка %n файлов...</numerusform></translation>
+        <translation>
+            <numerusform>Загрузка %n файла...</numerusform>
+            <numerusform>Загрузка %n файлов...</numerusform>
+            <numerusform>Загрузка %n файлов...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -451,12 +468,20 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform></translation>
+        <translation>
+            <numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
+            <numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
+            <numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform></translation>
+        <translation>
+            <numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
+            <numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
+            <numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -512,7 +537,11 @@ Status: %2</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform></translation>
+        <translation>
+            <numerusform>Будет автоматически обновляться %n канал(ов).</numerusform>
+            <numerusform>Будет автоматически обновляться %n канал(ов).</numerusform>
+            <numerusform>Будет автоматически обновляться %n канал(ов).</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -844,7 +873,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>день</numerusform><numerusform>дня</numerusform><numerusform>дней</numerusform><numerusform>дня</numerusform></translation>
+        <translation>
+            <numerusform>день</numerusform>
+            <numerusform>дня</numerusform>
+            <numerusform>дней</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -2101,6 +2134,10 @@ or this functionality is not implemented yet.</source>
         <source>&amp;Donate...</source>
         <translation>Пожертвовать... (&amp;D)</translation>
     </message>
+    <message>
+        <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3145,7 +3182,11 @@ Login tokens expiration: %2</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform></translation>
+        <translation>
+            <numerusform>Показать больше сообщений (осталось %n)</numerusform>
+            <numerusform>Показать больше сообщений (осталось %n)</numerusform>
+            <numerusform>Показать больше сообщений (осталось %n)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3228,15 +3269,17 @@ Login tokens expiration: %2</source>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n другой канал.</numerusform><numerusform>
++ %n другой канал.</numerusform>
+            <numerusform>
 
-+ %n других канала.</numerusform><numerusform>
++ %n других канала.</numerusform>
+            <numerusform>
 
-+ %n других каналов.</numerusform><numerusform>
-
-+ %n других каналов.</numerusform></translation>
++ %n других каналов.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3286,6 +3329,13 @@ Tiny Tiny RSS - это программа для чтения и агрегац�
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Простая интеграция с Gmail через JSON API. Позволяет также отправлять электронную почту.</translation>
     </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3299,7 +3349,11 @@ Tiny Tiny RSS - это программа для чтения и агрегац�
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n удаленное сообщение.</numerusform><numerusform>%n удаленных сообщения.</numerusform><numerusform>%n удаленных сообщений.</numerusform><numerusform>%n удаленных сообщения.</numerusform></translation>
+        <translation>
+            <numerusform>%n удаленное сообщение.</numerusform>
+            <numerusform>%n удаленных сообщения.</numerusform>
+            <numerusform>%n удаленных сообщений.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3315,7 +3369,11 @@ Tiny Tiny RSS - это программа для чтения и агрегац�
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform></translation>
+        <translation>
+            <numerusform>%n непрочитанное(ых) сообщение(й)</numerusform>
+            <numerusform>%n непрочитанное(ых) сообщение(й)</numerusform>
+            <numerusform>%n непрочитанное(ых) сообщение(й)</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3945,11 +4003,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>(Иконка трея не доступна)</translation>
     </message>
     <message>
-        <source>no icon theme/system icon theme</source>
-        <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>Без иконок/Системная тема иконок</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Только иконка</translation>
     </message>
@@ -3980,6 +4033,19 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Skin</source>
         <translation>Тема</translation>
+    </message>
+    <message>
+        <source>Use monochrome icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>system icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no icon theme</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4195,11 +4261,19 @@ Unread news: %2</source>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform></translation>
+        <translation>
+            <numerusform>%n час(ов)</numerusform>
+            <numerusform>%n час(ов)</numerusform>
+            <numerusform>%n час(ов)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform></translation>
+        <translation>
+            <numerusform>%n минут(а)</numerusform>
+            <numerusform>%n минут(а)</numerusform>
+            <numerusform>%n минут(а)</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>

@@ -2124,6 +2124,10 @@ or this functionality is not implemented yet.</translation>
         <source>&amp;Donate...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -3300,6 +3304,13 @@ At least API level %1 is required.</translation>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3965,11 +3976,6 @@ Authors of this application are NOT responsible for lost data.</translation>
         <translation type="unfinished">(Tray icon is not available.)</translation>
     </message>
     <message>
-        <source>no icon theme/system icon theme</source>
-        <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished">no icon theme/system icon theme</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation type="unfinished">Icon only</translation>
     </message>
@@ -3999,6 +4005,19 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
         <source>Skin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use monochrome icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>system icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no icon theme</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

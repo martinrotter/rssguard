@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -279,9 +281,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klik hier om feeds toe te voegen van deze website.
-Deze website bevat %n feed.</numerusform><numerusform>Klik hier om feeds toe te voegen van deze website.
-Deze website bevat %n feeds.</numerusform></translation>
+        <translation>
+            <numerusform>Klik hier om feeds toe te voegen van deze website.
+Deze website bevat %n feed.</numerusform>
+            <numerusform>Klik hier om feeds toe te voegen van deze website.
+Deze website bevat %n feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -367,7 +372,7 @@ Deze website bevat %n feeds.</numerusform></translation>
         <translation>Downloaden voltooid</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Het bestand &apos;%1&apos; is opgehaald.
 Klik hier om de bovenliggende map te openen.</translation>
@@ -393,11 +398,17 @@ Klik hier om de bovenliggende map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>nog %n minuut te gaan</numerusform><numerusform>nog %n minuten te gaan</numerusform></translation>
+        <translation>
+            <numerusform>nog %n minuut te gaan</numerusform>
+            <numerusform>nog %n minuten te gaan</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>nog %n seconde te gaan</numerusform><numerusform>nog %n seconden te gaan</numerusform></translation>
+        <translation>
+            <numerusform>nog %n seconde te gaan</numerusform>
+            <numerusform>nog %n seconden te gaan</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -417,7 +428,10 @@ Klik hier om de bovenliggende map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Bezig met downloaden van %n bestand...</numerusform><numerusform>Bezig met downloaden van %n bestanden...</numerusform></translation>
+        <translation>
+            <numerusform>Bezig met downloaden van %n bestand...</numerusform>
+            <numerusform>Bezig met downloaden van %n bestanden...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -449,12 +463,18 @@ Klik hier om de bovenliggende map te openen.</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruikt de globale instellingen (%n minuut tot aan de volgende automatische update)</numerusform><numerusform>gebruikt de globale instellingen (%n minuten tot aan de volgende automatische update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruikt de globale instellingen (%n minuut tot aan de volgende automatische update)</numerusform>
+            <numerusform>gebruikt de globale instellingen (%n minuten tot aan de volgende automatische update)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruikt specifieke instellingen (%n minuut tot aan volgende automatische update)</numerusform><numerusform>gebruikt specifieke instellingen (%n minuten tot aan volgende automatische update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruikt specifieke instellingen (%n minuut tot aan volgende automatische update)</numerusform>
+            <numerusform>gebruikt specifieke instellingen (%n minuten tot aan volgende automatische update)</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -510,7 +530,10 @@ Status: %2</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Er wordt %n feed automatisch bijgewerkt.</numerusform><numerusform>Er worden %n feeds automatisch bijgewerkt.</numerusform></translation>
+        <translation>
+            <numerusform>Er wordt %n feed automatisch bijgewerkt.</numerusform>
+            <numerusform>Er worden %n feeds automatisch bijgewerkt.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -843,7 +866,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> dag</numerusform><numerusform> dagen</numerusform></translation>
+        <translation>
+            <numerusform> dag</numerusform>
+            <numerusform> dagen</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -961,7 +987,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -969,11 +995,11 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No username entered.   </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Some username entered.   </source>
@@ -981,7 +1007,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>There was error during testing.</source>
@@ -993,7 +1019,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add new Gmail account</source>
@@ -1013,15 +1039,15 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1048,7 +1074,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1068,7 +1094,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1076,7 +1102,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -1088,7 +1114,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>There was error during testing.</source>
@@ -1100,19 +1126,19 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
@@ -1124,7 +1150,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1251,19 +1277,19 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>messages</source>
@@ -1678,7 +1704,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -2090,15 +2116,19 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2337,7 +2367,7 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2483,11 +2513,11 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2641,15 +2671,15 @@ Installeer het nu.</translation>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -2657,7 +2687,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>No subject</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
@@ -2680,7 +2710,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Spam</source>
@@ -2689,19 +2719,19 @@ Installeer het nu.</translation>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
@@ -2723,11 +2753,11 @@ Login tokens expiration: %2</source>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
@@ -2735,11 +2765,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -2755,15 +2785,15 @@ Login tokens expiration: %2</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2967,15 +2997,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3041,7 +3071,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
@@ -3049,7 +3079,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3141,7 +3171,10 @@ Login tokens expiration: %2</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Toon een bericht (%n resterende)</numerusform><numerusform>Toon meer berichten (%n resterende)</numerusform></translation>
+        <translation>
+            <numerusform>Toon een bericht (%n resterende)</numerusform>
+            <numerusform>Toon meer berichten (%n resterende)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3156,37 +3189,37 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3224,11 +3257,14 @@ Login tokens expiration: %2</source>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n andere feed.</numerusform><numerusform>
++ %n andere feed.</numerusform>
+            <numerusform>
 
-+ %n andere feeds.</numerusform></translation>
++ %n andere feeds.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3256,7 +3292,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New version available</source>
@@ -3268,15 +3304,22 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3291,7 +3334,10 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3307,14 +3353,17 @@ Een API niveau van tenminste %1 is vereist.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Seach text</source>
@@ -3322,11 +3371,11 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3507,7 +3556,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add external tool</source>
@@ -3535,7 +3584,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3729,7 +3778,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -3785,35 +3834,35 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3938,11 +3987,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>(Pictogram in systeemvak is niet beschikbaar.)</translation>
     </message>
     <message>
-        <source>no icon theme/system icon theme</source>
-        <extracomment>Label for disabling icon theme.</extracomment>
-        <translation>Geen icon thema/systeem icon thema</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Alleen pictogram</translation>
     </message>
@@ -3973,6 +4017,19 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     <message>
         <source>Skin</source>
         <translation>Skin</translation>
+    </message>
+    <message>
+        <source>Use monochrome icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>system icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no icon theme</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4016,11 +4073,11 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4038,7 +4095,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4186,11 +4243,17 @@ Ongelezen nieuws: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n uur</numerusform><numerusform>%n ur(en)</numerusform></translation>
+        <translation>
+            <numerusform>%n uur</numerusform>
+            <numerusform>%n ur(en)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuut</numerusform><numerusform>%n minut(en)</numerusform></translation>
+        <translation>
+            <numerusform>%n minuut</numerusform>
+            <numerusform>%n minut(en)</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
@@ -4245,7 +4308,7 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4274,7 +4337,7 @@ Ongelezen nieuws: %2</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4325,11 +4388,11 @@ Last login on: %4</source>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>JS enabled</source>
@@ -4337,7 +4400,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
