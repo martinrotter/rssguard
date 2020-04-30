@@ -114,9 +114,16 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
     QPainter tray_painter;
 
     tray_painter.begin(&background);
-    tray_painter.setPen(Qt::black);
-    tray_painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    tray_painter.setRenderHint(QPainter::TextAntialiasing, true);
+
+    if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool()) {
+      tray_painter.setPen(Qt::GlobalColor::white);
+    }
+    else {
+      tray_painter.setPen(Qt::GlobalColor::black);
+    }
+
+    tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
+    tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, true);
 
     // Numbers with more than 2 digits won't be readable, display
     // infinity symbol in that case.
@@ -140,7 +147,9 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
       }
 
       tray_painter.setFont(m_font);
-      tray_painter.drawText(QRect(0, 0, 128, 128), Qt::AlignVCenter | Qt::AlignCenter, QString::number(number));
+      tray_painter.drawText(QRect(0, 0, 128, 128),
+                            Qt::AlignmentFlag::AlignVCenter | Qt::AlignmentFlag::AlignCenter,
+                            QString::number(number));
     }
 
     tray_painter.end();

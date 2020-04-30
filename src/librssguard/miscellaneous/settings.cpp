@@ -176,6 +176,10 @@ DKEY GUI::HideMainWindowWhenMinimized = "hide_when_minimized";
 
 DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 
+DKEY GUI::MonochromeTrayIcon = "monochrome_tray_icon";
+
+DVALUE(bool) GUI::MonochromeTrayIconDef = false;
+
 DKEY GUI::UseTrayIcon = "use_tray_icon";
 
 DVALUE(bool) GUI::UseTrayIconDef = true;

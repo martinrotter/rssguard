@@ -6,8 +6,13 @@
         <file>text/COPYING_GNU_GPL_HTML</file>
         
         <file>graphics/rssguard.ico</file>
+
         <file>graphics/rssguard.png</file>
         <file>graphics/rssguard_plain.png</file>
+
+        <file>graphics/rssguard_mono.png</file>
+        <file>graphics/rssguard_plain_mono.png</file>
+
         <file>graphics/misc/adblock.png</file>
         <file>graphics/misc/adblock-disabled.png</file>
         <file>graphics/misc/gmail.png</file>

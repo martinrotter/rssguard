@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
 #if defined (Q_OS_LINUX)
-  QApplication::setDesktopFileName(DESKTOP_FILE_NAME);
+  QApplication::setDesktopFileName(APP_DESKTOP_ENTRY_FILE);
 #endif
 
   // Ensure that ini format is used as application settings storage on Mac OS.
@@ -78,8 +78,8 @@ int main(int argc, char* argv[]) {
 
   qApp->loadDynamicShortcuts();
   qApp->hideOrShowMainForm();
-  qApp->showTrayIcon();
   qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
+  qApp->showTrayIcon();
   qApp->offerChanges();
   qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();

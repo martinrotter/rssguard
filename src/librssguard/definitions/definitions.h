@@ -13,7 +13,6 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
-#define DESKTOP_FILE_NAME                     "com.github.rssguard.desktop"
 #define LOCALHOST_ADDRESS                     "http://localhost"
 #define ADBLOCK_ADBLOCKED_PAGE                "adblockedpage"
 #define ADBLOCK_HOWTO_FILTERS                 "http://adblockplus.org/en/filters"
@@ -228,8 +227,13 @@
 #define APP_THEME_PATH QSL(":/graphics")
 #define APP_SQL_PATH QSL(":/sql")
 #define APP_INFO_PATH QSL(":/text")
+
 #define APP_ICON_PATH QSL(":/graphics/rssguard.png")
 #define APP_ICON_PLAIN_PATH QSL(":/graphics/rssguard_plain.png")
+
+#define APP_ICON_MONO_PATH QSL(":/graphics/rssguard_mono.png")
+#define APP_ICON_MONO_PLAIN_PATH QSL(":/graphics/rssguard_plain_mono.png")
+
 #define APP_SKIN_PATH QSL(":/skins")
 #define APP_INITIAL_FEEDS_PATH QSL(":/initial_feeds")
 #define APP_LANG_PATH QSL(":/localization")

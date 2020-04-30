@@ -152,24 +152,31 @@
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::ExpandingFieldsGrow</enum>
           </property>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QCheckBox" name="m_checkHideWhenMinimized">
             <property name="text">
              <string>Hide main window when it is minimized</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0" colspan="2">
+          <item row="3" column="0" colspan="2">
            <widget class="QCheckBox" name="m_checkHidden">
             <property name="text">
              <string>Start application hidden</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
+          <item row="1" column="0">
            <widget class="QCheckBox" name="m_checkEnableNotifications">
             <property name="text">
              <string>Enable popup balloon tooltips</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="m_checkMonochromeIcons">
+            <property name="text">
+             <string>Use monochrome icon</string>
             </property>
            </widget>
           </item>
@@ -359,16 +366,17 @@
   <tabstop>m_cmbIconTheme</tabstop>
   <tabstop>m_listStyles</tabstop>
   <tabstop>m_treeSkins</tabstop>
+  <tabstop>m_grpTray</tabstop>
+  <tabstop>m_checkMonochromeIcons</tabstop>
+  <tabstop>m_checkEnableNotifications</tabstop>
   <tabstop>m_checkHideWhenMinimized</tabstop>
   <tabstop>m_checkHidden</tabstop>
-  <tabstop>m_checkEnableNotifications</tabstop>
-  <tabstop>m_checkNewTabDoubleClick</tabstop>
-  <tabstop>m_checkHideTabBarIfOneTabVisible</tabstop>
   <tabstop>m_checkCloseTabsDoubleClick</tabstop>
   <tabstop>m_checkCloseTabsMiddleClick</tabstop>
+  <tabstop>m_checkNewTabDoubleClick</tabstop>
+  <tabstop>m_checkHideTabBarIfOneTabVisible</tabstop>
   <tabstop>m_cmbToolbarButtonStyle</tabstop>
   <tabstop>m_cmbSelectToolBar</tabstop>
-  <tabstop>m_grpTray</tabstop>
  </tabstops>
  <resources/>
  <connections/>

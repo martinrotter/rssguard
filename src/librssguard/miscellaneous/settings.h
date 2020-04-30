@@ -196,6 +196,10 @@ namespace GUI {
 
   VALUE(bool) UseTrayIconDef;
 
+  KEY MonochromeTrayIcon;
+
+  VALUE(bool) MonochromeTrayIconDef;
+
   KEY EnableNotifications;
 
   VALUE(bool) EnableNotificationsDef;

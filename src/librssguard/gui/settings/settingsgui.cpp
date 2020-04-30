@@ -42,6 +42,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   connect(m_ui->m_grpTray, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkEnableNotifications, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHidden, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHideWhenMinimized, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHideTabBarIfOneTabVisible, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkCloseTabsDoubleClick, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -113,6 +114,8 @@ void SettingsGui::loadSettings() {
       m_ui->m_cmbIconTheme->addItem(icon_theme_name, icon_theme_name);
     }
   }
+
+  m_ui->m_checkMonochromeIcons->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool());
 
   // Mark active theme.
   if (current_theme == QSL(APP_NO_THEME)) {
@@ -202,6 +205,13 @@ void SettingsGui::saveSettings() {
     else {
       qApp->deleteTrayIcon();
     }
+  }
+
+  auto old_monochrome = settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool();
+
+  if (old_monochrome != m_ui->m_checkMonochromeIcons->isChecked()) {
+    requireRestart();
+    settings()->setValue(GROUP(GUI), GUI::MonochromeTrayIcon, m_ui->m_checkMonochromeIcons->isChecked());
   }
 
   settings()->setValue(GROUP(GUI), GUI::MainWindowStartsHidden, m_ui->m_checkHidden->isChecked());
