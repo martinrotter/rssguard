@@ -13,6 +13,7 @@ Added:
 ▪ QtWebEngine-based RSS Guard variant now should respect web proxy set in settings.
 
 Fixed/changed:
+▪ Feeds.url attribute in MySQL storage now has <=1000 length.
 ▪ Message viewer now responds to "zoom" action via mouse wheel + CTRL key and
   persistently saves the zoom level fixing the problem with small text in HIDPI
   screens.

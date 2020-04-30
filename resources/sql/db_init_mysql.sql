@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '11');
+INSERT INTO Information VALUES (1, 'schema_version', '12');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     PRIMARY KEY,
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS Feeds (
   icon            BLOB,
   category        INTEGER       NOT NULL CHECK (category >= -1),
   encoding        TEXT,
-  url             VARCHAR(100),
+  url             VARCHAR(1000),
   protected       INTEGER(1)    NOT NULL CHECK (protected >= 0 AND protected <= 1),
   username        TEXT,
   password        TEXT,
