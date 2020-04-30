@@ -1,3 +1,30 @@
+3.6.0
+—————
+
+Added:
+▪ UK, GL translation and some other localizations.
+▪ Executable is now separated from library, making it possible to write external
+  plugins for RSS Guard and distribute them separately as dll/lib/so/dylib file.
+▪ Fetch some M-RSS metadata when downloading RSS feeds.
+▪ Ability to postpone updates if main window is visible.
+▪ Switchable monochrome tray icons.
+▪ Windows icons on Linux/Wayland now should work.
+▪ Default system icon theme is now default for RSS Guard on all platforms.
+▪ QtWebEngine-based RSS Guard variant now should respect web proxy set in settings.
+
+Fixed/changed:
+▪ Message viewer now responds to "zoom" action via mouse wheel + CTRL key and
+  persistently saves the zoom level fixing the problem with small text in HIDPI
+  screens.
+▪ Minimum Qt version is now 5.9.0.
+▪ Translations synced with newest strings.
+▪ TT-RSS: Saving of message states now works (read/unread/important).
+▪ Many code cleanups, refactorings and regressions fixed.
+▪ Tray icon now shows correct number of unread messages upon app startup.
+▪ Some resources are now installed to correct locations when using NSIS installer.
+▪ Many fixes for build scripts for dev builds.
+▪ 
+
 3.5.9
 —————
 
