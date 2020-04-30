@@ -9,6 +9,7 @@ make
 make install
 
 # Make DMG image.
+cd "src/rssguard"
 make dmg
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
 
