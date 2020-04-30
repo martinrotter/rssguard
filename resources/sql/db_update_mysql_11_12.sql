@@ -1,0 +1,3 @@
+ALTER TABLE Feeds
+MODIFY url  VARCHAR(1000);
+-- !
