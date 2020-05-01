@@ -23,6 +23,17 @@ artifacts:
     name: rssguard7z
 
 deploy:
+  - provider: BinTray
+    username: martinrotter
+    api_key:
+      secure: T463Ei805xAQcxqvtTu7WDsfCmhqViVTdwzPQdyXVLovhTNLR3R5ZnPXMEuGCYJY
+    subject: martinrotter
+    repo: rssguard
+    package: Development
+    version: ${APPVEYOR_REPO_COMMIT}
+    publish: true
+    override: true
+    explode: false
   - provider: GitHub
     description: 'release by appveyor'
     auth_token:
@@ -37,6 +48,3 @@ build_script:
   - git submodule update --init --recursive --remote
   - '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"'
   - ps: .\resources\scripts\.appveyor-build-win.ps1
-
-on_success:
-  - ps: .\resources\scripts\.appveyor-install-win.ps1
