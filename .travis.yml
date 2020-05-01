@@ -13,15 +13,25 @@ compiler:
 notifications:
   email: false
 deploy:
-  provider: releases
-  file_glob: true
-  skip_cleanup: true
-  api_key: $GH_TOKEN
-  file:
-  - rssguard-build/rss*.AppImage
-  - rssguard-build/rss*.dmg
-  on:
-    tags: true
+  - provider: releases
+    file_glob: true
+    skip_cleanup: true
+    api_key: $GH_TOKEN
+    file:
+    - rssguard-build/rss*.AppImage
+    - rssguard-build/rss*.dmg
+    on:
+      tags: true
+      all_branches: true
+  - provider: bintray
+    file: .travis-bintray-desc.json
+    user: martinrotter
+    key: $BINTRAY_KEY
+    skip_cleanup: true
+    on:
+      tags: true
+      all_branches: true
+
 git:
   submodules: false
   depth: 40
