@@ -462,6 +462,7 @@ QSqlDatabase DatabaseFactory::connection(const QString& connection_name, Desired
 
     case UsedDriver::SQLITE:
     case UsedDriver::SQLITE_MEMORY:
+    default:
       return sqliteConnection(connection_name, desired_type);
   }
 }
