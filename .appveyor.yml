@@ -23,15 +23,15 @@ artifacts:
     name: rssguard7z
 
 deploy:
-  description: 'release by appveyor'
-  provider: GitHub
-  auth_token:
-    secure: oR2iY1h+Z5AF4t3yP1mxNW7HL8qhPm8y4Uupp4b03QSC7puVrkkCaO1E1NQA9q9K
-  artifact: rssguardexe, rssguard7z
-  draft: false
-  prerelease: false
-  on:
-    appveyor_repo_tag: true
+  - provider: GitHub
+    description: 'release by appveyor'
+    auth_token:
+      secure: oR2iY1h+Z5AF4t3yP1mxNW7HL8qhPm8y4Uupp4b03QSC7puVrkkCaO1E1NQA9q9K
+    artifact: rssguardexe, rssguard7z
+    draft: false
+    prerelease: false
+    on:
+      appveyor_repo_tag: true
 
 build_script:
   - git submodule update --init --recursive --remote
