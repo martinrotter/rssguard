@@ -15,10 +15,10 @@ if test "$TRAVIS_OS_NAME" = "osx"; then
 else
   # Linux.
   sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  sudo add-apt-repository ppa:beineri/opt-qt-5.12.2-xenial -y
+  sudo add-apt-repository ppa:beineri/opt-qt-5.14.2-xenial -y
   
   sudo apt-get update
-  sudo apt-get -y install gcc-7 g++-7 qt512tools qt512base qt512webengine qt512svg
+  sudo apt-get -y install gcc-7 g++-7 qt514tools qt514base qt514webengine qt514svg
   sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev 
   
   sudo update-alternatives --remove-all gcc 

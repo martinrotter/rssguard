@@ -18,8 +18,8 @@ deploy:
     skip_cleanup: true
     api_key: $GH_TOKEN
     file:
-    - rssguard-build/rss*.AppImage
-    - rssguard-build/rss*.dmg
+    - rssguard-build/src/rssguard/rss*.AppImage
+    - rssguard-build/src/rssguard/rss*.dmg
     on:
       tags: true
       all_branches: true
@@ -34,7 +34,7 @@ deploy:
 
 git:
   submodules: false
-  depth: 40
+  depth: 10
 before_install: "./resources/scripts/.travis-before-install.sh"
 install: true
 script:
