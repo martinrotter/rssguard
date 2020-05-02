@@ -1,0 +1,19 @@
+{
+    "package": {
+        "name": "Development",
+        "repo": "rssguard",
+        "subject": "martinrotter",
+        "vcs_url": "https://github.com/martinrotter/rssguard",
+        "licenses": ["GPL3"]
+    },
+
+    "version": {
+        "name": "LinuxMacOs"
+    },
+
+    "files":
+        [
+        {"includePattern": "\./rssguard-build/rss*.(AppImage|dmg)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "$1"}
+        ],
+    "publish": true
+}
