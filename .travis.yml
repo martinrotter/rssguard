@@ -29,7 +29,6 @@ deploy:
     key: $BINTRAY_KEY
     skip_cleanup: true
     on:
-      tags: true
       all_branches: true
 
 git:
