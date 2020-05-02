@@ -3,7 +3,7 @@
 ls -lha
 
 # Setup Qt build environment.
-source /opt/qt512/bin/qt512-env.sh
+source /opt/qt514/bin/qt514-env.sh
 mkdir rssguard-build && cd rssguard-build
 
 # Build application.
