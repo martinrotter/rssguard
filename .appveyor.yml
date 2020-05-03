@@ -30,7 +30,7 @@ deploy:
     subject: martinrotter
     repo: rssguard
     package: Development
-    version: ${APPVEYOR_REPO_COMMIT}
+    version: Windows
     publish: true
     override: true
     explode: false
