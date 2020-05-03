@@ -12,3 +12,4 @@ make install
 cd "src/rssguard"
 make dmg
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+ls
