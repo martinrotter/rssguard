@@ -13,7 +13,7 @@
 
     "files":
         [
-        {"includePattern": "\./rssguard-build/src/rssguard/rss*.(AppImage|dmg)", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "$1"}
+        {"includePattern": "\.\/rssguard-build\/src\/rssguard\/(rss.+(AppImage|dmg))", "excludePattern": ".*/do-not-deploy/.*", "uploadPattern": "$1"}
         ],
     "publish": true
 }
