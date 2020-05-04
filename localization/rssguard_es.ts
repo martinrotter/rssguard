@@ -913,7 +913,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation>Descargando adjunto...</translation>
+        <translation>Descargando archivo adjunto...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
@@ -964,7 +964,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation>Ya está registrado.</translation>
+        <translation>Ha iniciado sesión.</translation>
     </message>
     <message>
         <source>Access granted.</source>
@@ -1071,7 +1071,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation>Ya está registrado.</translation>
+        <translation>Ha iniciado sesión.</translation>
     </message>
     <message>
         <source>Access granted.</source>
@@ -2101,7 +2101,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Copiar URLs de elementos seleccionados</translation>
     </message>
 </context>
 <context>
@@ -2682,32 +2682,33 @@ Puede instalarlo ahora.</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation type="unfinished"/>
+        <translation>Borradores</translation>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"/>
+        <translation>Correo no solicitado</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Estado de autenticación: %1
+Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>sesión iniciada</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NO ha iniciado sesión</translation>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar archivo adjunto</translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Escribir nuevo mensaje electrónico</translation>
     </message>
 </context>
 <context>
@@ -2729,11 +2730,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Se autorizó tu inicio de sesión a Inoreader.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: error de autenticación</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -2741,7 +2742,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: autorización denegada</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -2757,15 +2758,16 @@ Login tokens expiration: %2</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Estado de autenticación: %1
+Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>sesión iniciada</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NO ha iniciado sesión</translation>
     </message>
 </context>
 <context>
@@ -3216,11 +3218,11 @@ Login tokens expiration: %2</source>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Martin Rotter</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
+        <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message numerus="yes">
         <source>
@@ -3270,22 +3272,25 @@ Se necesita como mínimo una API de nivel %1.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>La representación transmitida de la herramienta externa no es válida.</translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation>Esta es la integración con Inoreader.</translation>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-        <translation type="unfinished"/>
+        <translation>Integración simple con Gmail mediante JSON API. También permite enviar correos electrónicos.</translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Bienvenido a %1.
+
+Por favor, consulte las NUEVAS funciones incluidas en esta
+versión pulsando en esta notificación emergente..</translation>
     </message>
 </context>
 <context>
@@ -3737,7 +3742,7 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Solamente actualizar automáticamente cuando la aplicación está fuera de foco</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -3805,23 +3810,23 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de letra de la lista de fuentes</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar marcadores que señalen la ubicación de las imágenes</translation>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de letra de la lista de mensajes</translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de letra del explorador de mensajes internos</translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar nuevo tipo de letra</translation>
     </message>
 </context>
 <context>
@@ -3979,16 +3984,16 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation>Utilizar icono monocromático</translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>tema de iconos del sistema</translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation>ningún tema de iconos</translation>
     </message>
 </context>
 <context>
@@ -4032,11 +4037,11 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Esta página fue bloqueada por Adblock</translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Bloqueado por lista: &quot;%1&quot;&lt;br/&gt;Bloqueado por filtro: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -4054,7 +4059,10 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation>
+Estado de red: %1
+Codificación %2
+Clase: %3</translation>
     </message>
 </context>
 <context>
@@ -4289,7 +4297,10 @@ Noticias no leídas: %2</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario: %1
+Servidor: %2
+Ultimo error: %3
+Ultimo inicio de sesión: %4</translation>
     </message>
 </context>
 <context>
@@ -4376,7 +4387,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation>Exploración espacial habilitada</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
@@ -4412,7 +4423,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation>Acelerar lienzo 2D</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
@@ -4447,7 +4458,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Abrir enlace en explorador externo</translation>
     </message>
 </context>
 </TS>

@@ -3293,7 +3293,10 @@ Je vyžadování verze API minimálně %1.</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Vítá Vás %1.
+
+Prosím, zkontrolujte novinky kliknutím
+na tuto bublinu.</translation>
     </message>
 </context>
 <context>

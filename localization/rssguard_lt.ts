@@ -2104,7 +2104,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kopijuoti pasirinktų elementų URL</translation>
     </message>
 </context>
 <context>
@@ -3992,16 +3992,16 @@ Vilkaduobės:
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation>Naudoti nespalvotą piktogramą</translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>sistemos piktogramų tema</translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation>be piktogramų temos</translation>
     </message>
 </context>
 <context>

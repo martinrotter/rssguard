@@ -2102,7 +2102,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kopiera URL:er för markerade objekt</translation>
     </message>
 </context>
 <context>
@@ -3986,16 +3986,16 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation>Använd monokrom ikon</translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>systemets ikontema</translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation>inget ikontema</translation>
     </message>
 </context>
 <context>

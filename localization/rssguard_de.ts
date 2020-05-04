@@ -3283,7 +3283,10 @@ Das API muss mindestens in Stufe %1 verfügbar sein.</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Willkommen bei %1.
+
+Bitte überprüfen Sie die in dieser Version enthaltene Neuerungen
+durch Klicken auf diese Benachrichtigung.</translation>
     </message>
 </context>
 <context>
@@ -3987,7 +3990,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation>kein Icon Theme</translation>
     </message>
 </context>
 <context>
