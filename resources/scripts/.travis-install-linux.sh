@@ -28,7 +28,7 @@ set -- R*.AppImage
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 imagename="$1"
-git_tag=$(git describe --abbrev=0)
+git_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
 git_revision=$(git rev-parse --short HEAD)
 
 if [ "$USE_WEBENGINE" = true ]; then
