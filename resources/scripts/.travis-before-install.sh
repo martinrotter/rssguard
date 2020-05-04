@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git fetch --tags
+
 if test "$TRAVIS_OS_NAME" = "osx"; then
   # Mac OS X.
   brew update
