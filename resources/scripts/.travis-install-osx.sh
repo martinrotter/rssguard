@@ -12,4 +12,22 @@ make install
 cd "src/rssguard"
 make dmg
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+
+# Rename DMG.
+set -- *.dmg
+
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
+dmgname="$1"
+git_tag=$(git describe --abbrev=0)
+git_revision=$(git rev-parse --short HEAD)
+
+if [ "$USE_WEBENGINE" = true ]; then
+  dmgnewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
+else
+  dmgnewname="rssguard-${git_tag}-${git_revision}-nowebengine-mac64.dmg"
+fi
+
+mv "$dmgname" "$dmgnewname"
+
 ls
