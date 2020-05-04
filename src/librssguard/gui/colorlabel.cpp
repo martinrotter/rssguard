@@ -5,11 +5,9 @@
 #include <QPainter>
 #include <QPaintEvent>
 
-ColorLabel::ColorLabel(QWidget* parent) : QLabel(parent), m_color(QColor()) {
+ColorLabel::ColorLabel(QWidget* parent) : QLabel(parent) {
   setFixedWidth(20);
 }
-
-ColorLabel::~ColorLabel() {}
 
 QColor ColorLabel::color() const {
   return m_color;

@@ -68,7 +68,7 @@ class Message {
 QDataStream& operator<<(QDataStream& out, const Message& myObj);
 QDataStream& operator>>(QDataStream& in, Message& myObj);
 
-uint qHash(Message key, uint seed);
+uint qHash(const Message& key, uint seed);
 uint qHash(const Message& key);
 
 #endif // MESSAGE_H

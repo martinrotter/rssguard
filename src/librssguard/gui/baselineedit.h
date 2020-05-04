@@ -11,8 +11,8 @@ class BaseLineEdit : public QLineEdit {
   public:
 
     // Constructors and destructors.
-    explicit BaseLineEdit(QWidget* parent = 0);
-    virtual ~BaseLineEdit();
+    explicit BaseLineEdit(QWidget* parent = nullptr);
+    virtual ~BaseLineEdit() = default;
 
   public slots:
     void submit(const QString& text);

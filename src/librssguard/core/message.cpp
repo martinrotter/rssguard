@@ -120,11 +120,11 @@ QDataStream& operator>>(QDataStream& in, Message& myObj) {
   return in;
 }
 
-uint qHash(Message key, uint seed) {
+uint qHash(const Message& key, uint seed) {
   Q_UNUSED(seed)
-  return (key.m_accountId * 10000) + key.m_id;
+  return (uint(key.m_accountId) * 10000) + uint(key.m_id);
 }
 
 uint qHash(const Message& key) {
-  return (key.m_accountId * 10000) + key.m_id;
+  return (uint(key.m_accountId) * 10000) + uint(key.m_id);
 }

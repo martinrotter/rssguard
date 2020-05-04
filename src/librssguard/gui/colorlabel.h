@@ -9,8 +9,8 @@ class ColorLabel : public QLabel {
   Q_OBJECT
 
   public:
-    explicit ColorLabel(QWidget* parent = 0);
-    virtual ~ColorLabel();
+    explicit ColorLabel(QWidget* parent = nullptr);
+    virtual ~ColorLabel() = default;
 
     QColor color() const;
     void setColor(const QColor& color);

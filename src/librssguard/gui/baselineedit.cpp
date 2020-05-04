@@ -6,8 +6,6 @@
 
 BaseLineEdit::BaseLineEdit(QWidget* parent) : QLineEdit(parent) {}
 
-BaseLineEdit::~BaseLineEdit() {}
-
 void BaseLineEdit::submit(const QString& text) {
   setText(text);
   emit submitted(text);

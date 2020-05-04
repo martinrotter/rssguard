@@ -13,8 +13,8 @@ class ComboBoxWithStatus : public WidgetWithStatus {
   public:
 
     // Constructors and destructors.
-    explicit ComboBoxWithStatus(QWidget* parent = 0);
-    virtual ~ComboBoxWithStatus();
+    explicit ComboBoxWithStatus(QWidget* parent = nullptr);
+    virtual ~ComboBoxWithStatus() = default;
 
     inline QComboBox* comboBox() const {
       return static_cast<QComboBox*>(m_wdgInput);

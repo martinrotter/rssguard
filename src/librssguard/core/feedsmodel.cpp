@@ -545,7 +545,9 @@ void FeedsModel::loadActivatedServiceAccounts() {
   }
 
   if (serviceRoots().isEmpty()) {
-    QTimer::singleShot(3000, []() {
+    QTimer::singleShot(3000,
+                       qApp->mainForm(),
+                       []() {
       qApp->mainForm()->showAddAccountDialog();
     });
   }
