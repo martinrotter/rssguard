@@ -9,7 +9,7 @@ class SqueezeLabel : public QLabel {
   Q_OBJECT
 
   public:
-    explicit SqueezeLabel(QWidget* parent = 0);
+    explicit SqueezeLabel(QWidget* parent = nullptr);
 
   protected:
     void paintEvent(QPaintEvent* event);

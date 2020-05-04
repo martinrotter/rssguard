@@ -104,8 +104,18 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString& 
     }
   }
   else if (database.lastError().isValid()) {
-    // Connection failed, do cleanup and return specific error code.
-    return static_cast<MySQLError>(database.lastError().number());
+    auto nat = database.lastError().nativeErrorCode();
+    bool nat_converted = false;
+    auto nat_int = nat.toInt(&nat_converted);
+
+    if (nat_converted) {
+      return static_cast<MySQLError>(nat_int);
+    }
+    else {
+      qWarning("Failed to recognize MySQL error code: '%s'.", qPrintable(nat));
+
+      return MySQLError::MySQLUnknownError;
+    }
   }
   else {
     return MySQLError::MySQLUnknownError;

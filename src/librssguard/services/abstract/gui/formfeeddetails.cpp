@@ -330,7 +330,10 @@ void FormFeedDetails::initialize() {
   }
 
   // Sort encodings and add them.
-  qSort(encoded_encodings.begin(), encoded_encodings.end(), TextFactory::isCaseInsensitiveLessThan);
+  std::sort(encoded_encodings.begin(), encoded_encodings.end(), [](const QString& lhs, const QString& rhs) {
+    return lhs.toLower() < rhs.toLower();
+  });
+
   m_ui->m_cmbEncoding->addItems(encoded_encodings);
 
   // Setup menu & actions for icon selection.

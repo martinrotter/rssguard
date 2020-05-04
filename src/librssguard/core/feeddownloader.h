@@ -23,8 +23,6 @@ class FeedDownloadResults {
     void sort();
     void clear();
 
-    static bool lessThan(const QPair<QString, int>& lhs, const QPair<QString, int>& rhs);
-
   private:
 
     // QString represents title if the feed, int represents count of newly downloaded messages.

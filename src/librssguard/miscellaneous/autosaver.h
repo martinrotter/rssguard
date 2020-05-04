@@ -4,8 +4,8 @@
 #define AUTOSAVER_H
 
 #include <QBasicTimer>
+#include <QElapsedTimer>
 #include <QObject>
-#include <QTime>
 
 class AutoSaver : public QObject {
   Q_OBJECT
@@ -24,7 +24,7 @@ class AutoSaver : public QObject {
 
   private:
     QBasicTimer m_timer;
-    QTime m_firstChange;
+    QElapsedTimer m_firstChange;
 };
 
 #endif // AUTOSAVER_H

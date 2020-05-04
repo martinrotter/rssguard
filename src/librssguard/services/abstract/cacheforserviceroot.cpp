@@ -22,15 +22,15 @@ void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_m
 
   // Store changes, they will be sent to server later.
   list_act.append(ids_of_messages);
-  QSet<Message> set_act = list_act.toSet();
-  QSet<Message> set_other = list_other.toSet();
+  QSet<Message> set_act(list_act.begin(), list_act.end());
+  QSet<Message> set_other(list_other.begin(), list_other.end());
 
   // Now, we want to remove all IDS from list_other, which are contained in list.
   set_other -= set_act;
   list_act.clear();
-  list_act.append(set_act.toList());
+  list_act.append(set_act.values());
   list_other.clear();
-  list_other.append(set_other.toList());
+  list_other.append(set_other.values());
 
   m_cacheSaveMutex->unlock();
 }
@@ -43,15 +43,15 @@ void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_mess
 
   // Store changes, they will be sent to server later.
   list_act.append(ids_of_messages);
-  QSet<QString> set_act = list_act.toSet();
-  QSet<QString> set_other = list_other.toSet();
+  QSet<QString> set_act(list_act.begin(), list_act.end());
+  QSet<QString> set_other(list_other.begin(), list_other.end());
 
   // Now, we want to remove all IDS from list_other, which are contained in list.
   set_other -= set_act;
   list_act.clear();
-  list_act.append(set_act.toList());
+  list_act.append(set_act.values());
   list_other.clear();
-  list_other.append(set_other.toList());
+  list_other.append(set_other.values());
 
   m_cacheSaveMutex->unlock();
 }

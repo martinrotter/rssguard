@@ -15,12 +15,6 @@ class TextFactory {
     TextFactory();
 
   public:
-
-    // Returns true if lhs is smaller than rhs if case-insensitive string comparison is used.
-    static inline bool isCaseInsensitiveLessThan(const QString& lhs, const QString& rhs) {
-      return lhs.toLower() < rhs.toLower();
-    }
-
     static int stringHeight(const QString& string, const QFontMetrics& metrics);
     static int stringWidth(const QString& string, const QFontMetrics& metrics);
 

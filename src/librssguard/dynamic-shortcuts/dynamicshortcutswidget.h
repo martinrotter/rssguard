@@ -39,9 +39,6 @@ class DynamicShortcutsWidget : public QWidget {
     void setupChanged();
 
   private:
-    static bool lessThan(QAction* lhs, QAction* rhs);
-
-  private:
     QGridLayout* m_layout;
 
     QList<ActionBinding> m_actionBindings;

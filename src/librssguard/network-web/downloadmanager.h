@@ -9,6 +9,7 @@
 #include "gui/tabcontent.h"
 
 #include <QDateTime>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QNetworkReply>
 
@@ -27,7 +28,7 @@ class DownloadItem : public QWidget {
   public:
 
     // Constructors.
-    explicit DownloadItem(QNetworkReply* reply = 0, QWidget* parent = 0);
+    explicit DownloadItem(QNetworkReply* reply = 0, QWidget* parent = nullptr);
     virtual ~DownloadItem();
 
     bool downloading() const;
@@ -67,7 +68,7 @@ class DownloadItem : public QWidget {
     QFile m_output;
     QNetworkReply* m_reply;
     qint64 m_bytesReceived;
-    QTime m_downloadTime;
+    QElapsedTimer m_downloadTime;
     QTime m_lastProgressTime;
     bool m_requestFileName;
     bool m_startedSaving;
@@ -95,7 +96,7 @@ class DownloadManager : public TabContent {
 
     Q_ENUM(RemovePolicy)
 
-    explicit DownloadManager(QWidget* parent = 0);
+    explicit DownloadManager(QWidget* parent = nullptr);
     virtual ~DownloadManager();
 
 #if defined(USE_WEBENGINE)
@@ -159,7 +160,7 @@ class DownloadModel : public QAbstractListModel {
   friend class DownloadManager;
 
   public:
-    explicit DownloadModel(DownloadManager* download_manager, QObject* parent = 0);
+    explicit DownloadModel(DownloadManager* download_manager, QObject* parent = nullptr);
 
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex& parent = QModelIndex()) const;

@@ -43,8 +43,11 @@ void FeedDownloader::updateAvailableFeeds() {
   }
 
   while (!m_feeds.isEmpty()) {
-    connect(m_feeds.first(), &Feed::messagesObtained, this, &FeedDownloader::oneFeedUpdateFinished,
-            (Qt::ConnectionType)(Qt::UniqueConnection | Qt::AutoConnection));
+    connect(m_feeds.first(),
+            &Feed::messagesObtained,
+            this,
+            &FeedDownloader::oneFeedUpdateFinished,
+            Qt::ConnectionType(Qt::UniqueConnection | Qt::AutoConnection));
 
     if (m_threadPool->tryStart(m_feeds.first())) {
       m_feeds.removeFirst();
@@ -150,11 +153,9 @@ void FeedDownloadResults::appendUpdatedFeed(const QPair<QString, int>& feed) {
 }
 
 void FeedDownloadResults::sort() {
-  qSort(m_updatedFeeds.begin(), m_updatedFeeds.end(), FeedDownloadResults::lessThan);
-}
-
-bool FeedDownloadResults::lessThan(const QPair<QString, int>& lhs, const QPair<QString, int>& rhs) {
-  return lhs.second > rhs.second;
+  std::sort(m_updatedFeeds.begin(), m_updatedFeeds.end(), [](const QPair<QString, int>& lhs, const QPair<QString, int>& rhs) {
+    return lhs.second > rhs.second;
+  });
 }
 
 void FeedDownloadResults::clear() {
