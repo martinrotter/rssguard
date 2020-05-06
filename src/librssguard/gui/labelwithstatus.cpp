@@ -20,8 +20,6 @@ LabelWithStatus::LabelWithStatus(QWidget* parent)
   m_layout->addWidget(m_btnStatus);
 }
 
-LabelWithStatus::~LabelWithStatus() {}
-
 void LabelWithStatus::setStatus(WidgetWithStatus::StatusType status,
                                 const QString& label_text,
                                 const QString& status_text) {

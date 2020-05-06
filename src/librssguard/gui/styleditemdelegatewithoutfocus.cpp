@@ -4,14 +4,12 @@
 
 StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(QObject* parent) : QStyledItemDelegate(parent) {}
 
-StyledItemDelegateWithoutFocus::~StyledItemDelegateWithoutFocus() {}
-
 void StyledItemDelegateWithoutFocus::paint(QPainter* painter, const QStyleOptionViewItem& option,
                                            const QModelIndex& index) const {
   QStyleOptionViewItem itemOption(option);
 
-  if (itemOption.state & QStyle::State_HasFocus) {
-    itemOption.state = itemOption.state ^ QStyle::State_HasFocus;
+  if ((itemOption.state & QStyle::StateFlag::State_HasFocus) == QStyle::StateFlag::State_HasFocus) {
+    itemOption.state = itemOption.state ^ QStyle::StateFlag::State_HasFocus;
   }
 
   QStyledItemDelegate::paint(painter, itemOption, index);

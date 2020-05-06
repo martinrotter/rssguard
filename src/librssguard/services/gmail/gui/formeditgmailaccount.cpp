@@ -185,10 +185,10 @@ void FormEditGmailAccount::checkOAuthValue(const QString& value) {
 
   if (line_edit != nullptr) {
     if (value.isEmpty()) {
-      line_edit->setStatus(WidgetWithStatus::Error, tr("Empty value is entered."));
+      line_edit->setStatus(WidgetWithStatus::StatusType::Error, tr("Empty value is entered."));
     }
     else {
-      line_edit->setStatus(WidgetWithStatus::Ok, tr("Some value is entered."));
+      line_edit->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some value is entered."));
     }
   }
 }

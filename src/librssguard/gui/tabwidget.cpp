@@ -89,8 +89,8 @@ void TabWidget::checkTabBarVisibility() {
     m_btnMainMenu->setVisible(true);
   }
   else {
-    setCornerWidget(0, Qt::TopLeftCorner);
-    setCornerWidget(0, Qt::TopRightCorner);
+    setCornerWidget(nullptr, Qt::TopLeftCorner);
+    setCornerWidget(nullptr, Qt::TopRightCorner);
     m_btnMainMenu->setVisible(false);
   }
 
@@ -348,7 +348,7 @@ void TabWidget::fixContentsAfterMove(int from, int to) {
   to = qMax(from, to);
 
   for (; from <= to; from++) {
-    TabContent* content = static_cast<TabContent*>(widget(from));
+    auto* content = static_cast<TabContent*>(widget(from));
 
     content->setIndex(from);
   }

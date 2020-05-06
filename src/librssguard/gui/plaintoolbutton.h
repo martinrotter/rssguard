@@ -9,10 +9,7 @@ class PlainToolButton : public QToolButton {
   Q_OBJECT
 
   public:
-
-    // Contructors and destructors.
-    explicit PlainToolButton(QWidget* parent = 0);
-    virtual ~PlainToolButton();
+    explicit PlainToolButton(QWidget* parent = nullptr);
 
     // Padding changers.
     int padding() const;

@@ -11,8 +11,6 @@
 
 PlainToolButton::PlainToolButton(QWidget* parent) : QToolButton(parent), m_padding(0) {}
 
-PlainToolButton::~PlainToolButton() {}
-
 void PlainToolButton::paintEvent(QPaintEvent* e) {
   Q_UNUSED(e)
   QPainter p(this);

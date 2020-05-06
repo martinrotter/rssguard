@@ -10,7 +10,6 @@ class QHeaderView;
 class TreeViewColumnsMenu : public QMenu {
   public:
     explicit TreeViewColumnsMenu(QHeaderView* parent);
-    virtual ~TreeViewColumnsMenu();
 
   private slots:
     void prepareMenu();

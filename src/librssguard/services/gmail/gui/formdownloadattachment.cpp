@@ -21,7 +21,7 @@ FormDownloadAttachment::FormDownloadAttachment(const QString& target_file, Downl
   connect(downloader,
           &Downloader::completed,
           this,
-          [this, downloader, target_file](QNetworkReply::NetworkError status, QByteArray contents) {
+          [this, downloader, target_file](QNetworkReply::NetworkError status, const QByteArray& contents) {
     if (status == QNetworkReply::NetworkError::NoError) {
       QString data = QJsonDocument::fromJson(contents).object()["data"].toString();
 

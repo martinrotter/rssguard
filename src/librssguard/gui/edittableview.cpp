@@ -7,7 +7,7 @@
 EditTableView::EditTableView(QWidget* parent) : QTableView(parent) {}
 
 void EditTableView::keyPressEvent(QKeyEvent* event) {
-  if (model() && event->key() == Qt::Key_Delete) {
+  if (model() != nullptr && event->key() == Qt::Key::Key_Delete) {
     removeSelected();
     event->accept();
   }
@@ -17,7 +17,7 @@ void EditTableView::keyPressEvent(QKeyEvent* event) {
 }
 
 void EditTableView::removeSelected() {
-  if (!model() || !selectionModel() || !selectionModel()->hasSelection()) {
+  if (model() != nullptr || selectionModel() != nullptr || !selectionModel()->hasSelection()) {
     return;
   }
 

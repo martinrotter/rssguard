@@ -10,10 +10,10 @@
 #include "QFileDialog"
 
 FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent),
-  m_shouldRestart(false)                                                                         {
+  m_shouldRestart(false) {
   m_ui.setupUi(this);
   m_btnRestart = m_ui.m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ActionRole);
-  m_ui.m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
+  m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
   setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   connect(m_btnRestart, &QPushButton::clicked, this, [=]() {
@@ -42,11 +42,11 @@ void FormRestoreDatabaseSettings::performRestoration() {
                                   m_ui.m_listSettings->currentRow() >= 0 ? m_ui.m_listSettings->currentItem()->data(
                                     Qt::UserRole).toString() : QString());
     m_btnRestart->setEnabled(true);
-    m_ui.m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Restoration was initiated. Restart to proceed."),
+    m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("Restoration was initiated. Restart to proceed."),
                                 tr("You need to restart application for restoration process to finish."));
   }
   catch (const ApplicationException& ex) {
-    m_ui.m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(),
+    m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, ex.message(),
                                 tr("Database and/or settings were not copied to restoration directory successully."));
   }
 }
@@ -70,7 +70,8 @@ void FormRestoreDatabaseSettings::selectFolder(QString folder) {
   }
 
   if (!folder.isEmpty()) {
-    m_ui.m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(folder), tr("Good source directory is specified."));
+    m_ui.m_lblSelectFolder->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(folder),
+                                      tr("Good source directory is specified."));
   }
   else {
     return;

@@ -102,7 +102,7 @@ void MessagePreviewer::createConnections() {
   });
 }
 
-MessagePreviewer::MessagePreviewer(QWidget* parent) : QWidget(parent), m_pictures(QStringList()) {
+MessagePreviewer::MessagePreviewer(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
   m_ui.m_txtMessage->viewport()->setAutoFillBackground(true);
   m_toolBar = new QToolBar(this);
@@ -203,8 +203,8 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
 bool MessagePreviewer::eventFilter(QObject* watched, QEvent* event) {
   Q_UNUSED(watched)
 
-  if (event->type() == QEvent::KeyPress) {
-    QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
+  if (event->type() == QEvent::Type::KeyPress) {
+    auto* key_event = static_cast<QKeyEvent*>(event);
 
     if (key_event->matches(QKeySequence::StandardKey::Find)) {
       m_ui.m_searchWidget->clear();

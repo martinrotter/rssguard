@@ -23,7 +23,7 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your ownCloud account"));
   m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your ownCloud account"));
   m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your ownCloud server, without any API path"));
-  m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Information,
+  m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                    tr("No test done yet."),
                                    tr("Here, results of connection test are shown."));
   m_ui->m_lblLimitMessages->setText(
@@ -106,7 +106,7 @@ void FormEditOwnCloudAccount::performTest() {
 
   if (result.isLoaded()) {
     if (!SystemFactory::isVersionEqualOrNewer(result.version(), OWNCLOUD_MIN_VERSION)) {
-      m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+      m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                        tr(
                                          "Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.").arg(
                                          result.version(),
@@ -114,7 +114,7 @@ void FormEditOwnCloudAccount::performTest() {
                                        tr("Selected ownCloud News server is running unsupported version."));
     }
     else {
-      m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Ok,
+      m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                        tr(
                                          "ownCloud News server is okay, running with version %1, while at least version %2 is required.").arg(
                                          result.version(),
@@ -123,12 +123,12 @@ void FormEditOwnCloudAccount::performTest() {
     }
   }
   else if (factory.lastError()  != QNetworkReply::NoError) {
-    m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+    m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                      tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
                                      tr("Network error, have you entered correct ownCloud endpoint and password?"));
   }
   else {
-    m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+    m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                      tr("Unspecified error, did you enter correct URL?"),
                                      tr("Unspecified error, did you enter correct URL?"));
   }
@@ -166,10 +166,10 @@ void FormEditOwnCloudAccount::onUsernameChanged() {
   const QString username = m_ui->m_txtUsername->lineEdit()->text();
 
   if (username.isEmpty()) {
-    m_ui->m_txtUsername->setStatus(WidgetWithStatus::Error, tr("Username cannot be empty."));
+    m_ui->m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("Username cannot be empty."));
   }
   else {
-    m_ui->m_txtUsername->setStatus(WidgetWithStatus::Ok, tr("Username is okay."));
+    m_ui->m_txtUsername->setStatus(WidgetWithStatus::StatusType::Ok, tr("Username is okay."));
   }
 }
 
@@ -177,10 +177,10 @@ void FormEditOwnCloudAccount::onPasswordChanged() {
   const QString password = m_ui->m_txtPassword->lineEdit()->text();
 
   if (password.isEmpty()) {
-    m_ui->m_txtPassword->setStatus(WidgetWithStatus::Error, tr("Password cannot be empty."));
+    m_ui->m_txtPassword->setStatus(WidgetWithStatus::StatusType::Error, tr("Password cannot be empty."));
   }
   else {
-    m_ui->m_txtPassword->setStatus(WidgetWithStatus::Ok, tr("Password is okay."));
+    m_ui->m_txtPassword->setStatus(WidgetWithStatus::StatusType::Ok, tr("Password is okay."));
   }
 }
 
@@ -188,10 +188,10 @@ void FormEditOwnCloudAccount::onUrlChanged() {
   const QString url = m_ui->m_txtUrl->lineEdit()->text();
 
   if (url.isEmpty()) {
-    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL cannot be empty."));
+    m_ui->m_txtUrl->setStatus(WidgetWithStatus::StatusType::Error, tr("URL cannot be empty."));
   }
   else {
-    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Ok, tr("URL is okay."));
+    m_ui->m_txtUrl->setStatus(WidgetWithStatus::StatusType::Ok, tr("URL is okay."));
   }
 }
 

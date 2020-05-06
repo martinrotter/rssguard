@@ -157,7 +157,7 @@ void FeedMessageViewer::setListHeadersEnabled(bool enable) {
 }
 
 void FeedMessageViewer::switchFeedComponentVisibility() {
-  QAction* sen = qobject_cast<QAction*>(sender());
+  auto* sen = qobject_cast<QAction*>(sender());
 
   if (sen != nullptr) {
     m_feedsWidget->setVisible(sen->isChecked());
@@ -237,9 +237,9 @@ void FeedMessageViewer::initializeViews() {
   m_messageSplitter = new QSplitter(Qt::Vertical, this);
 
   // Instantiate needed components.
-  QVBoxLayout* central_layout = new QVBoxLayout(this);
-  QVBoxLayout* feed_layout = new QVBoxLayout(m_feedsWidget);
-  QVBoxLayout* message_layout = new QVBoxLayout(m_messagesWidget);
+  auto* central_layout = new QVBoxLayout(this);
+  auto* feed_layout = new QVBoxLayout(m_feedsWidget);
+  auto* message_layout = new QVBoxLayout(m_messagesWidget);
 
   // Set layout properties.
   central_layout->setMargin(0);

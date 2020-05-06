@@ -16,15 +16,10 @@ class MessagesToolBar : public BaseToolBar {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
-    explicit MessagesToolBar(const QString& title, QWidget* parent = 0);
-    virtual ~MessagesToolBar();
+    explicit MessagesToolBar(const QString& title, QWidget* parent = nullptr);
 
     // External access to search line edit.
-    inline MessagesSearchLineEdit* searchLineEdit() {
-      return m_txtSearchMessages;
-    }
+    inline MessagesSearchLineEdit* searchLineEdit();
 
     // Implementation of BaseToolBar interface.
     QList<QAction*> availableActions() const;
@@ -64,5 +59,9 @@ class MessagesToolBar : public BaseToolBar {
     QWidgetAction* m_actionSearchMessages;
     MessagesSearchLineEdit* m_txtSearchMessages;
 };
+
+inline MessagesSearchLineEdit* MessagesToolBar::searchLineEdit() {
+  return m_txtSearchMessages;
+}
 
 #endif // NEWSTOOLBAR_H

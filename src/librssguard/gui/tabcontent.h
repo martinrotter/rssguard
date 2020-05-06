@@ -14,21 +14,13 @@ class TabContent : public QWidget {
   Q_OBJECT
 
   public:
-
-    // Contructors.
-    explicit TabContent(QWidget* parent = 0);
-    virtual ~TabContent();
+    explicit TabContent(QWidget* parent = nullptr);
 
     // Gets/sets current index of this TabContent.
     // NOTE: This is the index under which this object lies
     // in parent tab widget.
-    inline virtual int index() const {
-      return m_index;
-    }
-
-    inline virtual void setIndex(int index) {
-      m_index = index;
-    }
+    virtual int index() const;
+    virtual void setIndex(int index);
 
 #if defined(USE_WEBENGINE)
 
@@ -40,5 +32,13 @@ class TabContent : public QWidget {
   protected:
     int m_index;
 };
+
+inline int TabContent::index() const {
+  return m_index;
+}
+
+inline void TabContent::setIndex(int index) {
+  m_index = index;
+}
 
 #endif // TABCONTENT_H

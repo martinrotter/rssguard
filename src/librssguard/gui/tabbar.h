@@ -27,7 +27,7 @@ class TabBar : public QTabBar {
     void setTabType(int index, const TabBar::TabType& type);
 
     inline TabBar::TabType tabType(int index) const {
-      return static_cast<TabBar::TabType>(tabData(index).value<int>());
+      return static_cast<TabBar::TabType>(tabData(index).toInt());
     }
 
   private slots:

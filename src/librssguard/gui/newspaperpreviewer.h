@@ -24,8 +24,7 @@ class NewspaperPreviewer : public TabContent {
   Q_OBJECT
 
   public:
-    explicit NewspaperPreviewer(RootItem* root, QList<Message> messages, QWidget* parent = 0);
-    virtual ~NewspaperPreviewer();
+    explicit NewspaperPreviewer(RootItem* root, QList<Message> messages, QWidget* parent = nullptr);
 
   private slots:
     void showMoreMessages();

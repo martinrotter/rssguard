@@ -11,10 +11,7 @@ class MessagesSearchLineEdit : public BaseLineEdit {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
-    explicit MessagesSearchLineEdit(QWidget* parent = 0);
-    virtual ~MessagesSearchLineEdit();
+    explicit MessagesSearchLineEdit(QWidget* parent = nullptr);
 };
 
 #endif // MESSAGESEARCHLINEEDIT_H

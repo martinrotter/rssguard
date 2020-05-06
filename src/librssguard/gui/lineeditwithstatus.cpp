@@ -21,5 +21,3 @@ LineEditWithStatus::LineEditWithStatus(QWidget* parent)
   m_layout->addWidget(m_wdgInput);
   m_layout->addWidget(m_btnStatus);
 }
-
-LineEditWithStatus::~LineEditWithStatus() {}

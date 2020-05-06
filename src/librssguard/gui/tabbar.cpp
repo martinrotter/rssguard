@@ -20,14 +20,14 @@ TabBar::~TabBar() {
 }
 
 void TabBar::setTabType(int index, const TabBar::TabType& type) {
-  const QTabBar::ButtonPosition button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
-                                                                                                 0,
-                                                                                                 this));
+  const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
+                                                                              nullptr,
+                                                                              this));
 
   switch (type) {
     case TabBar::DownloadManager:
     case TabBar::Closable: {
-      PlainToolButton* close_button = new PlainToolButton(this);
+      auto* close_button = new PlainToolButton(this);
 
       close_button->setIcon(qApp->icons()->fromTheme(QSL("application-exit")));
       close_button->setToolTip(tr("Close this tab."));
@@ -40,10 +40,8 @@ void TabBar::setTabType(int index, const TabBar::TabType& type) {
       break;
     }
 
-    case TabBar::NonClosable:
-    case TabBar::FeedReader:
     default:
-      setTabButton(index, button_position, 0);
+      setTabButton(index, button_position, nullptr);
       break;
   }
 
@@ -51,10 +49,10 @@ void TabBar::setTabType(int index, const TabBar::TabType& type) {
 }
 
 void TabBar::closeTabViaButton() {
-  const QAbstractButton* close_button = qobject_cast<QAbstractButton*>(sender());
-  const QTabBar::ButtonPosition button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
-                                                                                                 0,
-                                                                                                 this));
+  const auto* close_button = qobject_cast<QAbstractButton*>(sender());
+  const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
+                                                                              nullptr,
+                                                                              this));
 
   if (close_button != nullptr) {
     // Find index of tab for this close button.
@@ -91,6 +89,7 @@ void TabBar::wheelEvent(QWheelEvent* event) {
 
 void TabBar::mousePressEvent(QMouseEvent* event) {
   QTabBar::mousePressEvent(event);
+
   const int tab_index = tabAt(event->pos());
 
   // Check if user clicked on some tab or on empty space.
@@ -98,7 +97,8 @@ void TabBar::mousePressEvent(QMouseEvent* event) {
     // Check if user clicked tab with middle button.
     // NOTE: This needs to be done here because
     // destination does not know the original event.
-    if (event->button() & Qt::MiddleButton && qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool()) {
+    if ((event->button() & Qt::MiddleButton) == Qt::MiddleButton &&
+        qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool()) {
       if (tabType(tab_index) == TabBar::Closable || tabType(tab_index) == TabBar::DownloadManager) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
@@ -116,7 +116,8 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent* event) {
     // Check if user clicked tab with middle button.
     // NOTE: This needs to be done here because
     // destination does not know the original event.
-    if (event->button() & Qt::LeftButton && qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool()) {
+    if ((event->button() & Qt::LeftButton) == Qt::LeftButton &&
+        qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool()) {
       if ((tabType(tab_index) & (TabBar::Closable | TabBar::DownloadManager)) > 0) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);

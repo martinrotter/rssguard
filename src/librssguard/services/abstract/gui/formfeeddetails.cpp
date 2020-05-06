@@ -90,35 +90,35 @@ int FormFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_select, c
 
 void FormFeedDetails::onTitleChanged(const QString& new_title) {
   if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
-    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("Feed name is ok."));
+    m_ui->m_txtTitle->setStatus(LineEditWithStatus::StatusType::Ok, tr("Feed name is ok."));
   }
   else {
-    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Error, tr("Feed name is too short."));
+    m_ui->m_txtTitle->setStatus(LineEditWithStatus::StatusType::Error, tr("Feed name is too short."));
   }
 }
 
 void FormFeedDetails::onDescriptionChanged(const QString& new_description) {
   if (new_description.simplified().isEmpty()) {
-    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Description is empty."));
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::StatusType::Warning, tr("Description is empty."));
   }
   else {
-    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description is ok."));
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::StatusType::Ok, tr("The description is ok."));
   }
 }
 
 void FormFeedDetails::onUrlChanged(const QString& new_url) {
   if (QRegularExpression(URL_REGEXP).match(new_url).hasMatch()) {
     // New url is well-formed.
-    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Ok, tr("The URL is ok."));
+    m_ui->m_txtUrl->setStatus(LineEditWithStatus::StatusType::Ok, tr("The URL is ok."));
   }
   else if (!new_url.simplified().isEmpty()) {
     // New url is not well-formed but is not empty on the other hand.
-    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Warning,
+    m_ui->m_txtUrl->setStatus(LineEditWithStatus::StatusType::Warning,
                               tr(R"(The URL does not meet standard pattern. Does your URL start with "http://" or "https://" prefix.)"));
   }
   else {
     // New url is empty.
-    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Error, tr("The URL is empty."));
+    m_ui->m_txtUrl->setStatus(LineEditWithStatus::StatusType::Error, tr("The URL is empty."));
   }
 }
 
@@ -126,8 +126,8 @@ void FormFeedDetails::onUsernameChanged(const QString& new_username) {
   bool is_username_ok = !m_ui->m_gbAuthentication->isChecked() || !new_username.simplified().isEmpty();
 
   m_ui->m_txtUsername->setStatus(is_username_ok ?
-                                 LineEditWithStatus::Ok :
-                                 LineEditWithStatus::Warning,
+                                 LineEditWithStatus::StatusType::Ok :
+                                 LineEditWithStatus::StatusType::Warning,
                                  is_username_ok ?
                                  tr("Username is ok or it is not needed.") :
                                  tr("Username is empty."));
@@ -137,8 +137,8 @@ void FormFeedDetails::onPasswordChanged(const QString& new_password) {
   bool is_password_ok = !m_ui->m_gbAuthentication->isChecked() || !new_password.simplified().isEmpty();
 
   m_ui->m_txtPassword->setStatus(is_password_ok ?
-                                 LineEditWithStatus::Ok :
-                                 LineEditWithStatus::Warning,
+                                 LineEditWithStatus::StatusType::Ok :
+                                 LineEditWithStatus::StatusType::Warning,
                                  is_password_ok ?
                                  tr("Password is ok or it is not needed.") :
                                  tr("Password is empty."));
@@ -158,7 +158,6 @@ void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
       m_ui->m_spinAutoUpdateInterval->setEnabled(false);
       break;
 
-    case Feed::SpecificAutoUpdate:
     default:
       m_ui->m_spinAutoUpdateInterval->setEnabled(true);
   }
@@ -213,12 +212,12 @@ void FormFeedDetails::guessFeed() {
     }
 
     if (result.second == QNetworkReply::NoError) {
-      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,
+      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
                                           tr("All metadata fetched successfully."),
                                           tr("Feed and icon metadata fetched."));
     }
     else {
-      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Warning,
+      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
                                           tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
                                           tr("Feed or icon metadata not fetched."));
     }
@@ -228,7 +227,7 @@ void FormFeedDetails::guessFeed() {
   }
   else {
     // No feed guessed, even no icon available.
-    m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Error,
+    m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
                                         tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
                                         tr("No metadata fetched."));
   }
@@ -244,12 +243,12 @@ void FormFeedDetails::guessIconOnly() {
     m_ui->m_btnIcon->setIcon(result.first->icon());
 
     if (result.second == QNetworkReply::NoError) {
-      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,
+      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
                                           tr("Icon fetched successfully."),
                                           tr("Icon metadata fetched."));
     }
     else {
-      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Warning,
+      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
                                           tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
                                           tr("Icon metadata not fetched."));
     }
@@ -259,7 +258,7 @@ void FormFeedDetails::guessIconOnly() {
   }
   else {
     // No feed guessed, even no icon available.
-    m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Error,
+    m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
                                         tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
                                         tr("No icon fetched."));
   }
@@ -353,7 +352,7 @@ void FormFeedDetails::initialize() {
   m_ui->m_btnIcon->setMenu(m_iconMenu);
 
   // Set feed metadata fetch label.
-  m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Information,
+  m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Information,
                                       tr("No metadata fetched so far."),
                                       tr("No metadata fetched so far."));
 

@@ -24,9 +24,9 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
   connect(m_model, &FeedsImportExportModel::parsingFinished, this, &FormStandardImportExport::onParsingFinished);
   connect(m_model, &FeedsImportExportModel::parsingProgress, this, &FormStandardImportExport::onParsingProgress);
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Error, tr("No file is selected."), tr("No file is selected."));
+  m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Error, tr("No file is selected."), tr("No file is selected."));
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->disconnect();
-  m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
   connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormStandardImportExport::performAction);
   connect(m_ui->m_btnSelectFile, &QPushButton::clicked, this, &FormStandardImportExport::selectFile);
   connect(m_ui->m_btnCheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::checkAllItems);
@@ -92,7 +92,7 @@ void FormStandardImportExport::selectFile() {
 }
 
 void FormStandardImportExport::onParsingStarted() {
-  m_ui->m_lblResult->setStatus(WidgetWithStatus::Progress, tr("Parsing data..."), tr("Parsing data..."));
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Progress, tr("Parsing data..."), tr("Parsing data..."));
   m_ui->m_btnSelectFile->setEnabled(false);
   m_ui->m_groupFeeds->setEnabled(false);
   m_ui->m_progressBar->setValue(0);
@@ -108,7 +108,7 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
   m_model->checkAllItems();
 
   if (!parsing_error) {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were loaded."), tr("Feeds were loaded."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("Feeds were loaded."), tr("Feeds were loaded."));
     m_ui->m_groupFeeds->setEnabled(true);
     m_ui->m_btnSelectFile->setEnabled(true);
     m_ui->m_treeFeeds->setModel(m_model);
@@ -116,7 +116,7 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
   }
   else {
     m_ui->m_groupFeeds->setEnabled(false);
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error, file is not well-formed. Select another file."),
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Error, file is not well-formed. Select another file."),
                                  tr("Error occurred. File is not well-formed. Select another file."));
   }
 
@@ -157,10 +157,10 @@ void FormStandardImportExport::selectExportFile() {
       }
     }
 
-    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
+    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
   }
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(m_ui->m_lblSelectFile->status() == WidgetWithStatus::Ok);
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(m_ui->m_lblSelectFile->status() == WidgetWithStatus::StatusType::Ok);
 }
 
 void FormStandardImportExport::selectImportFile() {
@@ -184,7 +184,7 @@ void FormStandardImportExport::selectImportFile() {
       m_conversionType = TXTUrlPerLine;
     }
 
-    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
+    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
     QMessageBox::StandardButton answer = MessageBox::show(this,
                                                           QMessageBox::Warning,
                                                           tr("Get online metadata"),
@@ -207,7 +207,7 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
     input_file.close();
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot open source file."), tr("Cannot open source file."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Cannot open source file."), tr("Cannot open source file."));
     return;
   }
 
@@ -260,14 +260,15 @@ void FormStandardImportExport::exportFeeds() {
   if (result_export) {
     try {
       IOFactory::writeFile(m_ui->m_lblSelectFile->label()->text(), result_data);
-      m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were exported successfully."), tr("Feeds were exported successfully."));
+      m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("Feeds were exported successfully."),
+                                   tr("Feeds were exported successfully."));
     }
     catch (IOException& ex) {
-      m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot write into destination file: '%1'."), ex.message());
+      m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Cannot write into destination file: '%1'."), ex.message());
     }
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Critical error occurred."), tr("Critical error occurred."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Critical error occurred."), tr("Critical error occurred."));
   }
 }
 
@@ -277,10 +278,10 @@ void FormStandardImportExport::importFeeds() {
 
   if (m_serviceRoot->mergeImportExportModel(m_model, parent, output_message)) {
     m_serviceRoot->requestItemExpand(parent->getSubTree(), true);
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, output_message, output_message);
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, output_message, output_message);
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, output_message, output_message);
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, output_message, output_message);
   }
 }
 

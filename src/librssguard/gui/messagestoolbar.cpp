@@ -18,8 +18,6 @@ MessagesToolBar::MessagesToolBar(const QString& title, QWidget* parent)
   initializeHighlighter();
 }
 
-MessagesToolBar::~MessagesToolBar() {}
-
 QList<QAction*> MessagesToolBar::availableActions() const {
   QList<QAction*> available_actions = qApp->userActions();
   available_actions.append(m_actionSearchMessages);
@@ -47,7 +45,7 @@ QList<QAction*> MessagesToolBar::getSpecificActions(const QStringList& actions) 
 
   // Iterate action names and add respectable actions into the toolbar.
   foreach (const QString& action_name, actions) {
-    QAction* matching_action = findMatchingAction(action_name, available_actions);
+    auto* matching_action = findMatchingAction(action_name, available_actions);
 
     if (matching_action != nullptr) {
       // Add existing standard action.
@@ -55,7 +53,7 @@ QList<QAction*> MessagesToolBar::getSpecificActions(const QStringList& actions) 
     }
     else if (action_name == SEPARATOR_ACTION_NAME) {
       // Add new separator.
-      QAction* act = new QAction(this);
+      auto* act = new QAction(this);
 
       act->setSeparator(true);
       spec_actions.append(act);
@@ -70,10 +68,10 @@ QList<QAction*> MessagesToolBar::getSpecificActions(const QStringList& actions) 
     }
     else if (action_name == SPACER_ACTION_NAME) {
       // Add new spacer.
-      QWidget* spacer = new QWidget(this);
+      auto* spacer = new QWidget(this);
 
       spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-      QWidgetAction* action = new QWidgetAction(this);
+      auto* action = new QWidgetAction(this);
 
       action->setDefaultWidget(spacer);
       action->setIcon(qApp->icons()->fromTheme(QSL("go-jump")));

@@ -16,8 +16,6 @@ FeedsToolBar::FeedsToolBar(const QString& title, QWidget* parent) : BaseToolBar(
   setContentsMargins(margins);
 }
 
-FeedsToolBar::~FeedsToolBar() {}
-
 QList<QAction*> FeedsToolBar::availableActions() const {
   return qApp->userActions();
 }
@@ -45,17 +43,17 @@ QList<QAction*> FeedsToolBar::getSpecificActions(const QStringList& actions) {
     }
     else if (action_name == SEPARATOR_ACTION_NAME) {
       // Add new separator.
-      QAction* act = new QAction(this);
+      auto* act = new QAction(this);
 
       act->setSeparator(true);
       spec_actions.append(act);
     }
     else if (action_name == SPACER_ACTION_NAME) {
       // Add new spacer.
-      QWidget* spacer = new QWidget(this);
+      auto* spacer = new QWidget(this);
 
       spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-      QWidgetAction* action = new QWidgetAction(this);
+      auto* action = new QWidgetAction(this);
 
       action->setDefaultWidget(spacer);
       action->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
@@ -71,17 +69,16 @@ QList<QAction*> FeedsToolBar::getSpecificActions(const QStringList& actions) {
 void FeedsToolBar::loadSpecificActions(const QList<QAction*>& actions) {
   clear();
 
-  foreach (QAction* act, actions) {
+  for (QAction* act : actions) {
     addAction(act);
   }
 }
 
 QStringList FeedsToolBar::defaultActions() const {
-  return QString(GUI::FeedsToolbarActionsDef).split(',',
-                                                    QString::SkipEmptyParts);
+  return QString(GUI::FeedsToolbarActionsDef).split(',', QString::SkipEmptyParts);
 }
 
 QStringList FeedsToolBar::savedActions() const {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::FeedsToolbarActions)).toString().split(',',
-                                                                                                 QString::SkipEmptyParts);
+  return qApp->settings()->value(GROUP(GUI),
+                                 SETTING(GUI::FeedsToolbarActions)).toString().split(',', QString::SkipEmptyParts);
 }

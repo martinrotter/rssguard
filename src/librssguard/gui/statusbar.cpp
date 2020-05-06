@@ -135,7 +135,7 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
       }
       else if (matching_action != nullptr) {
         // Add originally toolbar action.
-        PlainToolButton* tool_button = new PlainToolButton(this);
+        auto* tool_button = new PlainToolButton(this);
 
         tool_button->reactOnActionChange(matching_action);
         widget_to_add = tool_button;

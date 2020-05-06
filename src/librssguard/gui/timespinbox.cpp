@@ -11,8 +11,6 @@ TimeSpinBox::TimeSpinBox(QWidget* parent) : QDoubleSpinBox(parent) {
   setMaximum(10000000.0);
 }
 
-TimeSpinBox::~TimeSpinBox() {}
-
 double TimeSpinBox::valueFromText(const QString& text) const {
   bool ok;
   double value = text.toDouble(&ok);

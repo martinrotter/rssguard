@@ -12,7 +12,7 @@
 #include <QLineEdit>
 
 EmailRecipientControl::EmailRecipientControl(const QString& recipient, QWidget* parent) : QWidget(parent) {
-  QHBoxLayout* lay = new QHBoxLayout(this);
+  auto* lay = new QHBoxLayout(this);
 
   lay->addWidget(m_cmbRecipientType = new QComboBox(this));
   lay->addWidget(m_txtRecipient = new QLineEdit(this), 1);

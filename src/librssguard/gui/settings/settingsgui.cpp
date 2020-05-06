@@ -66,8 +66,8 @@ SettingsGui::~SettingsGui() {
 bool SettingsGui::eventFilter(QObject* obj, QEvent* e) {
   Q_UNUSED(obj)
 
-  if (e->type() == QEvent::Drop) {
-    QDropEvent* drop_event = static_cast<QDropEvent*>(e);
+  if (e->type() == QEvent::Type::Drop) {
+    auto* drop_event = static_cast<QDropEvent*>(e);
 
     if (drop_event->keyboardModifiers() != Qt::NoModifier) {
       drop_event->setDropAction(Qt::MoveAction);
@@ -118,7 +118,7 @@ void SettingsGui::loadSettings() {
   m_ui->m_checkMonochromeIcons->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool());
 
   // Mark active theme.
-  if (current_theme == QSL(APP_NO_THEME)) {
+  if (current_theme == QL1S(APP_NO_THEME)) {
     // Because "no icon theme" lies at the index 0.
     m_ui->m_cmbIconTheme->setCurrentIndex(0);
   }

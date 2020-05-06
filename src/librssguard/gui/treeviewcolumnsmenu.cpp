@@ -8,8 +8,6 @@ TreeViewColumnsMenu::TreeViewColumnsMenu(QHeaderView* parent) : QMenu(parent) {
   connect(this, &TreeViewColumnsMenu::aboutToShow, this, &TreeViewColumnsMenu::prepareMenu);
 }
 
-TreeViewColumnsMenu::~TreeViewColumnsMenu() {}
-
 void TreeViewColumnsMenu::prepareMenu() {
   QHeaderView* header_view = header();
 
@@ -24,9 +22,11 @@ void TreeViewColumnsMenu::prepareMenu() {
 }
 
 void TreeViewColumnsMenu::actionTriggered(bool toggle) {
-  Q_UNUSED(toggle)
-  QAction * send_act = qobject_cast<QAction*>(sender());
+  auto* send_act = qobject_cast<QAction*>(sender());
+
   header()->setSectionHidden(send_act->data().toInt(), !send_act->isChecked());
+
+  Q_UNUSED(toggle)
 }
 
 QHeaderView* TreeViewColumnsMenu::header() {

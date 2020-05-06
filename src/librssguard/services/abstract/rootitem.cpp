@@ -12,7 +12,7 @@
 #include <QVariant>
 
 RootItem::RootItem(RootItem* parent_item)
-  : QObject(nullptr), m_kind(RootItemKind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QSL("")),
+  : QObject(nullptr), m_kind(RootItemKind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")),
   m_title(QString()), m_description(QString()), m_keepOnTop(false), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {

@@ -18,7 +18,7 @@
 #include "gui/settings/settingsshortcuts.h"
 
 FormSettings::FormSettings(QWidget& parent)
-  : QDialog(&parent), m_panels(QList<SettingsPanel*>()), m_settings(*qApp->settings()) {
+  : QDialog(&parent), m_settings(*qApp->settings()) {
   m_ui.setupUi(this);
 
   // Set flags and attributes.

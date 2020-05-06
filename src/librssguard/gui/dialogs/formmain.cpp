@@ -51,7 +51,7 @@
 #endif
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
-  : QMainWindow(parent, f), m_ui(new Ui::FormMain) {
+  : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
   qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
 
   m_ui->setupUi(this);
@@ -358,7 +358,7 @@ void FormMain::updateAccountsMenu() {
     m_ui->m_menuAccounts->addMenu(root_menu);
   }
 
-  if (m_ui->m_menuAccounts->actions().size() > 0) {
+  if (!m_ui->m_menuAccounts->actions().isEmpty()) {
     m_ui->m_menuAccounts->addSeparator();
   }
 
@@ -767,7 +767,7 @@ void FormMain::restoreDatabaseSettings() {
 void FormMain::changeEvent(QEvent* event) {
   switch (event->type()) {
     case QEvent::WindowStateChange: {
-      if (windowState() & Qt::WindowMinimized &&
+      if ((windowState() & Qt::WindowState::WindowMinimized) == Qt::WindowState::WindowMinimized &&
           SystemTrayIcon::isSystemTrayActivated() &&
           qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();

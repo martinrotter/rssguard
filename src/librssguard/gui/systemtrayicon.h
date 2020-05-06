@@ -24,7 +24,6 @@ class TrayIconMenu : public QMenu {
 
     // Constructors and destructors.
     explicit TrayIconMenu(const QString& title, QWidget* parent);
-    virtual ~TrayIconMenu();
 
   protected:
     bool event(QEvent* event);

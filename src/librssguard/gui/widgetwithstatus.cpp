@@ -21,32 +21,30 @@ WidgetWithStatus::WidgetWithStatus(QWidget* parent)
   // Set layout properties.
   m_layout->setMargin(0);
   setLayout(m_layout);
-  setStatus(Information, QString());
+  setStatus(StatusType::Information, QString());
 }
-
-WidgetWithStatus::~WidgetWithStatus() {}
 
 void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status, const QString& tooltip_text) {
   m_status = status;
 
   switch (status) {
-    case Information:
+    case StatusType::Information:
       m_btnStatus->setIcon(m_iconInformation);
       break;
 
-    case Progress:
+    case StatusType::Progress:
       m_btnStatus->setIcon(m_iconProgress);
       break;
 
-    case Warning:
+    case StatusType::Warning:
       m_btnStatus->setIcon(m_iconWarning);
       break;
 
-    case Error:
+    case StatusType::Error:
       m_btnStatus->setIcon(m_iconError);
       break;
 
-    case Ok:
+    case StatusType::Ok:
       m_btnStatus->setIcon(m_iconOk);
       break;
 

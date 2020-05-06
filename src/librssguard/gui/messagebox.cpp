@@ -14,11 +14,9 @@
 
 MessageBox::MessageBox(QWidget* parent) : QMessageBox(parent) {}
 
-MessageBox::~MessageBox() {}
-
 void MessageBox::setIcon(QMessageBox::Icon icon) {
   // Determine correct status icon size.
-  const int icon_size = qApp->style()->pixelMetric(QStyle::PM_MessageBoxIconSize, 0, this);
+  const int icon_size = qApp->style()->pixelMetric(QStyle::PM_MessageBoxIconSize, nullptr, this);
 
   // Setup status icon.
   setIconPixmap(iconForStatus(icon).pixmap(icon_size, icon_size));
@@ -26,7 +24,7 @@ void MessageBox::setIcon(QMessageBox::Icon icon) {
 
 void MessageBox::setCheckBox(QMessageBox* msg_box, const QString& text, bool* data) {
   // Add "don't show this again checkbox.
-  QCheckBox* check_box = new QCheckBox(msg_box);
+  auto* check_box = new QCheckBox(msg_box);
 
   check_box->setChecked(*data);
   check_box->setText(text);
@@ -50,7 +48,6 @@ QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
     case QMessageBox::Question:
       return qApp->icons()->fromTheme(QSL("dialog-question"));
 
-    case QMessageBox::NoIcon:
     default:
       return QIcon();
   }

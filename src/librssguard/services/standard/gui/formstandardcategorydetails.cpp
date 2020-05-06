@@ -136,20 +136,20 @@ void FormStandardCategoryDetails::apply() {
 void FormStandardCategoryDetails::onTitleChanged(const QString& new_title) {
   if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
-    m_ui->m_txtTitle->setStatus(WidgetWithStatus::Ok, tr("Category name is ok."));
+    m_ui->m_txtTitle->setStatus(WidgetWithStatus::StatusType::Ok, tr("Category name is ok."));
   }
   else {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-    m_ui->m_txtTitle->setStatus(WidgetWithStatus::Error, tr("Category name is too short."));
+    m_ui->m_txtTitle->setStatus(WidgetWithStatus::StatusType::Error, tr("Category name is too short."));
   }
 }
 
 void FormStandardCategoryDetails::onDescriptionChanged(const QString& new_description) {
   if (new_description.simplified().isEmpty()) {
-    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Description is empty."));
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::StatusType::Warning, tr("Description is empty."));
   }
   else {
-    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description is ok."));
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::StatusType::Ok, tr("The description is ok."));
   }
 }
 

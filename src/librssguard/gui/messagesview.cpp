@@ -520,7 +520,7 @@ void MessagesView::selectNextUnreadItem() {
 void MessagesView::searchMessages(const QString& pattern) {
   m_proxyModel->setFilterRegExp(pattern);
 
-  if (selectionModel()->selectedRows().size() == 0) {
+  if (selectionModel()->selectedRows().isEmpty()) {
     emit currentMessageRemoved();
   }
   else {
@@ -534,7 +534,7 @@ void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
 }
 
 void MessagesView::openSelectedMessagesWithExternalTool() {
-  QAction* sndr = qobject_cast<QAction*>(sender());
+  auto* sndr = qobject_cast<QAction*>(sender());
 
   if (sndr != nullptr) {
     auto tool = sndr->data().value<ExternalTool>();

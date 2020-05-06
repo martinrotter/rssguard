@@ -9,13 +9,11 @@
 #include <QScrollBar>
 
 NewspaperPreviewer::NewspaperPreviewer(RootItem* root, QList<Message> messages, QWidget* parent)
-  : TabContent(parent), m_ui(new Ui::NewspaperPreviewer), m_root(root), m_messages(messages) {
+  : TabContent(parent), m_ui(new Ui::NewspaperPreviewer), m_root(root), m_messages(std::move(messages)) {
   m_ui->setupUi(this);
   connect(m_ui->m_btnShowMoreMessages, &QPushButton::clicked, this, &NewspaperPreviewer::showMoreMessages);
   showMoreMessages();
 }
-
-NewspaperPreviewer::~NewspaperPreviewer() {}
 
 void NewspaperPreviewer::showMoreMessages() {
   if (!m_root.isNull()) {
@@ -23,7 +21,7 @@ void NewspaperPreviewer::showMoreMessages() {
 
     for (int i = 0; i < 10 && !m_messages.isEmpty(); i++) {
       Message msg = m_messages.takeFirst();
-      MessagePreviewer* prev = new MessagePreviewer(this);
+      auto* prev = new MessagePreviewer(this);
       QMargins margins = prev->layout()->contentsMargins();
 
       connect(prev, &MessagePreviewer::requestMessageListReload, this, &NewspaperPreviewer::requestMessageListReload);

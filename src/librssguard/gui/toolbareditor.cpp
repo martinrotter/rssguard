@@ -8,7 +8,7 @@
 #include <QKeyEvent>
 
 ToolBarEditor::ToolBarEditor(QWidget* parent)
-  : QWidget(parent), m_ui(new Ui::ToolBarEditor) {
+  : QWidget(parent), m_ui(new Ui::ToolBarEditor), m_toolBar(nullptr) {
   m_ui->setupUi(this);
 
   // Create connections.
@@ -33,10 +33,6 @@ ToolBarEditor::ToolBarEditor(QWidget* parent)
   m_ui->m_btnMoveActionDown->setIcon(qApp->icons()->fromTheme(QSL("down")));
   m_ui->m_btnMoveActionUp->setIcon(qApp->icons()->fromTheme(QSL("up")));
   m_ui->m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("reload")));
-}
-
-ToolBarEditor::~ToolBarEditor() {
-  qDebug("Destroying ToolBarEditor instance.");
 }
 
 void ToolBarEditor::loadFromToolBar(BaseBar* tool_bar) {
@@ -116,18 +112,18 @@ void ToolBarEditor::loadEditor(const QList<QAction*> activated_actions, const QL
 
 bool ToolBarEditor::eventFilter(QObject* object, QEvent* event) {
   if (object == m_ui->m_listActivatedActions) {
-    if (event->type() == QEvent::KeyPress) {
-      const QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
+    if (event->type() == QEvent::Type::KeyPress) {
+      const auto* key_event = static_cast<QKeyEvent*>(event);
 
       if (key_event->key() == Qt::Key_Delete) {
         deleteSelectedAction();
         return true;
       }
-      else if (key_event->key() == Qt::Key_Down && key_event->modifiers() & Qt::ControlModifier) {
+      else if (key_event->key() == Qt::Key_Down && (key_event->modifiers() & Qt::ControlModifier) == Qt::ControlModifier) {
         moveActionDown();
         return true;
       }
-      else if (key_event->key() == Qt::Key_Up && key_event->modifiers() & Qt::ControlModifier) {
+      else if (key_event->key() == Qt::Key_Up && (key_event->modifiers() & Qt::ControlModifier) == Qt::ControlModifier) {
         moveActionUp();
         return true;
       }
@@ -149,7 +145,7 @@ void ToolBarEditor::updateActionsAvailability() {
 
 void ToolBarEditor::insertSpacer() {
   const int current_row = m_ui->m_listActivatedActions->currentRow();
-  QListWidgetItem* item = new QListWidgetItem(tr("Toolbar spacer"));
+  auto* item = new QListWidgetItem(tr("Toolbar spacer"));
 
   item->setIcon(qApp->icons()->fromTheme(QSL("go-jump")));
   item->setData(Qt::UserRole, SPACER_ACTION_NAME);
@@ -239,7 +235,7 @@ void ToolBarEditor::deleteAllActions() {
   QListWidgetItem* taken_item;
   QString data_item;
 
-  while ((taken_item = m_ui->m_listActivatedActions->takeItem(0)) != 0) {
+  while ((taken_item = m_ui->m_listActivatedActions->takeItem(0)) != nullptr) {
     data_item = taken_item->data(Qt::UserRole).toString();
 
     if (data_item != SEPARATOR_ACTION_NAME && data_item != SPACER_ACTION_NAME) {

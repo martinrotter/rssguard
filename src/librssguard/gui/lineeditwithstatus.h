@@ -11,16 +11,14 @@ class LineEditWithStatus : public WidgetWithStatus {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
-    explicit LineEditWithStatus(QWidget* parent = 0);
-    virtual ~LineEditWithStatus();
+    explicit LineEditWithStatus(QWidget* parent = nullptr);
 
     // Access to line edit.
-    inline BaseLineEdit* lineEdit() const {
-      return static_cast<BaseLineEdit*>(m_wdgInput);
-    }
-
+    BaseLineEdit* lineEdit() const;
 };
+
+inline BaseLineEdit* LineEditWithStatus::lineEdit() const {
+  return static_cast<BaseLineEdit*>(m_wdgInput);
+}
 
 #endif // LINEEDITWITHSTATUS_H

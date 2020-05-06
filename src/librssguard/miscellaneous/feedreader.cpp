@@ -146,11 +146,11 @@ MessagesModel* FeedReader::messagesModel() const {
 
 void FeedReader::executeNextAutoUpdate() {
   if (qApp->mainFormWidget()->isActiveWindow() && m_globalAutoUpdateOnlyUnfocused) {
-      qDebug("Delaying scheduled feed auto-update for one minute since window is focused and updates"
-             "while focused are disabled by the user.");
+    qDebug("Delaying scheduled feed auto-update for one minute since window is focused and updates"
+           "while focused are disabled by the user.");
 
-      // Cannot update, quit.
-      return;
+    // Cannot update, quit.
+    return;
   }
 
   if (!qApp->feedUpdateLock()->tryLock()) {
@@ -203,7 +203,7 @@ void FeedReader::checkServicesForAsyncOperations() {
 
 void FeedReader::asyncCacheSaveFinished() {
   qDebug("I will start next check for cached service data in 30 seconds.");
-  QTimer::singleShot(60000, [&] {
+  QTimer::singleShot(60000, this, [&] {
     qDebug("Starting next check for cached service data in NOW.");
     checkServicesForAsyncOperations();
   });

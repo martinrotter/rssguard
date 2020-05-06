@@ -25,7 +25,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent) : QDialog(parent), m_u
   connect(&m_cleaner, &DatabaseCleaner::purgeFinished, this, &FormDatabaseCleanup::onPurgeFinished);
 
   m_ui->m_spinDays->setValue(DEFAULT_DAYS_TO_DELETE_MSG);
-  m_ui->m_lblResult->setStatus(WidgetWithStatus::Information, tr("I am ready."), tr("I am ready."));
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, tr("I am ready."), tr("I am ready."));
 
   loadDatabaseInfo();
 }
@@ -49,7 +49,7 @@ void FormDatabaseCleanup::keyPressEvent(QKeyEvent* event) {
 }
 
 void FormDatabaseCleanup::updateDaysSuffix(int number) {
-  m_ui->m_spinDays->setSuffix(tr(" day(s)", 0, number));
+  m_ui->m_spinDays->setSuffix(tr(" day(s)", nullptr, number));
 }
 
 void FormDatabaseCleanup::startPurging() {
@@ -61,6 +61,7 @@ void FormDatabaseCleanup::startPurging() {
   orders.m_removeReadMessages = m_ui->m_checkRemoveReadMessages->isChecked();
   orders.m_shrinkDatabase = m_ui->m_checkShrink->isEnabled() && m_ui->m_checkShrink->isChecked();
   orders.m_removeStarredMessages = m_ui->m_checkRemoveStarredMessages->isChecked();
+
   emit purgeRequested(orders);
 }
 
@@ -68,12 +69,13 @@ void FormDatabaseCleanup::onPurgeStarted() {
   m_ui->m_progressBar->setValue(0);
   m_ui->m_progressBar->setEnabled(true);
   m_ui->m_btnBox->setEnabled(false);
-  m_ui->m_lblResult->setStatus(WidgetWithStatus::Information, tr("Database cleanup is running."), tr("Database cleanup is running."));
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, tr("Database cleanup is running."),
+                               tr("Database cleanup is running."));
 }
 
 void FormDatabaseCleanup::onPurgeProgress(int progress, const QString& description) {
   m_ui->m_progressBar->setValue(progress);
-  m_ui->m_lblResult->setStatus(WidgetWithStatus::Information, description, description);
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, description, description);
 }
 
 void FormDatabaseCleanup::onPurgeFinished(bool finished) {
@@ -82,10 +84,12 @@ void FormDatabaseCleanup::onPurgeFinished(bool finished) {
   m_ui->m_btnBox->setEnabled(true);
 
   if (finished) {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Database cleanup is completed."), tr("Database cleanup is completed."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                 tr("Database cleanup is completed."),
+                                 tr("Database cleanup is completed."));
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Database cleanup failed."), tr("Database cleanup failed."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Database cleanup failed."), tr("Database cleanup failed."));
   }
 
   loadDatabaseInfo();

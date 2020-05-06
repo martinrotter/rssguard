@@ -27,7 +27,7 @@ void FormAddEditEmail::execForAdd() {
 }
 
 void FormAddEditEmail::removeRecipientRow() {
-  EmailRecipientControl* sndr = static_cast<EmailRecipientControl*>(sender());
+  auto* sndr = static_cast<EmailRecipientControl*>(sender());
 
   m_ui.m_layout->takeRow(sndr);
   m_recipientControls.removeOne(sndr);

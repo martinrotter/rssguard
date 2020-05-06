@@ -54,48 +54,48 @@ void SettingsDatabase::mysqlTestConnection() {
   switch (error_code) {
     case DatabaseFactory::MySQLError::MySQLOk:
     case DatabaseFactory::MySQLError::MySQLUnknownDatabase:
-      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Ok, interpretation, interpretation);
+      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Ok, interpretation, interpretation);
       break;
 
     default:
-      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Error, interpretation, interpretation);
+      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Error, interpretation, interpretation);
       break;
   }
 }
 
 void SettingsDatabase::onMysqlHostnameChanged(const QString& new_hostname) {
   if (new_hostname.isEmpty()) {
-    m_ui->m_txtMysqlHostname->setStatus(LineEditWithStatus::Warning, tr("Hostname is empty."));
+    m_ui->m_txtMysqlHostname->setStatus(LineEditWithStatus::StatusType::Warning, tr("Hostname is empty."));
   }
   else {
-    m_ui->m_txtMysqlHostname->setStatus(LineEditWithStatus::Ok, tr("Hostname looks ok."));
+    m_ui->m_txtMysqlHostname->setStatus(LineEditWithStatus::StatusType::Ok, tr("Hostname looks ok."));
   }
 }
 
 void SettingsDatabase::onMysqlUsernameChanged(const QString& new_username) {
   if (new_username.isEmpty()) {
-    m_ui->m_txtMysqlUsername->setStatus(LineEditWithStatus::Warning, tr("Username is empty."));
+    m_ui->m_txtMysqlUsername->setStatus(LineEditWithStatus::StatusType::Warning, tr("Username is empty."));
   }
   else {
-    m_ui->m_txtMysqlUsername->setStatus(LineEditWithStatus::Ok, tr("Username looks ok."));
+    m_ui->m_txtMysqlUsername->setStatus(LineEditWithStatus::StatusType::Ok, tr("Username looks ok."));
   }
 }
 
 void SettingsDatabase::onMysqlPasswordChanged(const QString& new_password) {
   if (new_password.isEmpty()) {
-    m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::Warning, tr("Password is empty."));
+    m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::StatusType::Warning, tr("Password is empty."));
   }
   else {
-    m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::Ok, tr("Password looks ok."));
+    m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::StatusType::Ok, tr("Password looks ok."));
   }
 }
 
 void SettingsDatabase::onMysqlDatabaseChanged(const QString& new_database) {
   if (new_database.isEmpty()) {
-    m_ui->m_txtMysqlDatabase->setStatus(LineEditWithStatus::Warning, tr("Working database is empty."));
+    m_ui->m_txtMysqlDatabase->setStatus(LineEditWithStatus::StatusType::Warning, tr("Working database is empty."));
   }
   else {
-    m_ui->m_txtMysqlDatabase->setStatus(LineEditWithStatus::Ok, tr("Working database is ok."));
+    m_ui->m_txtMysqlDatabase->setStatus(LineEditWithStatus::StatusType::Ok, tr("Working database is ok."));
   }
 }
 
@@ -120,7 +120,7 @@ void SettingsDatabase::switchMysqlPasswordVisiblity(bool visible) {
 void SettingsDatabase::loadSettings() {
   onBeginLoadSettings();
   m_ui->m_checkUseTransactions->setChecked(qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool());
-  m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information, tr("No connection test triggered so far."),
+  m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Information, tr("No connection test triggered so far."),
                                         tr("You did not executed any connection test yet."));
 
   // Load SQLite.
