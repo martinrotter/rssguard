@@ -8,7 +8,6 @@ Fixed/changed:
 ▪ Translations synced.
 ▪ Big code refactoring, fixed almost all usages of Qt deprecated code.
 ▪ Completely overhauled Appveyor/Travis build scripts which are now more reliable.
-▪ 
 
 3.6.0
 —————
@@ -36,7 +35,6 @@ Fixed/changed:
 ▪ Tray icon now shows correct number of unread messages upon app startup.
 ▪ Some resources are now installed to correct locations when using NSIS installer.
 ▪ Many fixes for build scripts for dev builds.
-▪ 
 
 3.5.9
 —————

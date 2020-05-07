@@ -1,6 +1,5 @@
 language: cpp
 osx_image: xcode9.4
-sudo: required
 dist: xenial
 os:
 - linux
@@ -15,7 +14,6 @@ notifications:
 deploy:
   - provider: releases
     file_glob: true
-    skip_cleanup: true
     api_key: $GH_TOKEN
     file:
     - rssguard-build/src/rssguard/rss*.AppImage
@@ -27,7 +25,6 @@ deploy:
     file: .travis-bintray-desc.json
     user: martinrotter
     key: $BINTRAY_KEY
-    skip_cleanup: true
     on:
       all_branches: true
 
