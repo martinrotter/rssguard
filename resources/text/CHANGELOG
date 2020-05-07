@@ -1,3 +1,15 @@
+3.6.1
+—————
+
+Added:
+▪ Development binaries now available on Bintray - https://bintray.com/martinrotter/rssguard/Development#files
+
+Fixed/changed:
+▪ Translations synced.
+▪ Big code refactoring, fixed almost all usages of Qt deprecated code.
+▪ Completely overhauled Appveyor/Travis build scripts which are now more reliable.
+▪ 
+
 3.6.0
 —————
 
