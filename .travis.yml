@@ -13,6 +13,7 @@ notifications:
   email: false
 deploy:
   - provider: releases
+    skip_cleanup: true
     file_glob: true
     api_key: $GH_TOKEN
     file:
@@ -22,6 +23,7 @@ deploy:
       tags: true
       all_branches: true
   - provider: bintray
+    skip_cleanup: true
     file: .travis-bintray-desc.json
     user: martinrotter
     key: $BINTRAY_KEY
