@@ -14,7 +14,6 @@ extern void disableWindowTabbing();
 
 int main(int argc, char* argv[]) {
   for (int i = 0; i < argc; i++) {
-    // TODO: use process arg parser
     const QString str = QString::fromLocal8Bit(argv[i]);
 
     if (str == "-h") {

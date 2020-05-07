@@ -464,8 +464,6 @@ void Application::onAboutToQuit() {
     finish();
     qDebug("Killing local peer connection to allow another instance to start.");
 
-    // TODO: Start RSS Guard with sleep before it cross-platform way if possible.
-    // sleep 5 && "<rssguard-start>".
     if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
       qDebug("New application instance was started.");
     }
