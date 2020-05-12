@@ -209,8 +209,6 @@ mac {
   QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
   LIBS += -framework AppKit
 
-  QMAKE_POST_LINK += $$system(install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" $$OUT_PWD/rssguard)
-
   target.path = $$quote($$PREFIX/Contents/MacOS/)
 
   lib.files = $$OUT_PWD/../librssguard/librssguard.dylib
@@ -239,13 +237,15 @@ mac {
   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/Contents/Resources/Include/libtextosaurus/)
 }
 
+message($$MSG_PREFIX: Prefix for headers is \"$$INSTALL_HEADERS_PREFIX\".)
+
 # Create install step for each folder of public headers.
 for(header, INSTALL_HEADERS) {
   path = $${INSTALL_HEADERS_PREFIX}/$${dirname(header)}
 
-  message($$MSG_PREFIX: Adding header \"$$header\" to \"make install\" step.)
+  message($$MSG_PREFIX: Adding header \"$$header\" to \"make install\" step with path \"$$path\".)
 
   eval(headers_$${dirname(header)}.files += $$header)
-  eval(headers_$${dirname(header)}.path = $$path)
+  eval(headers_$${dirname(header)}.path = $$quote($$path))
   eval(INSTALLS *= headers_$${dirname(header)})
 }

@@ -13,7 +13,11 @@ cd "src/rssguard"
 
 # Fix .dylib linking.
 install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "RSS Guard.app/Contents/MacOS/rssguard"
+install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "rssguard"
+
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+otool -L "rssguard"
+
 make dmg
 
 # Rename DMG.
