@@ -206,7 +206,7 @@ mac {
   IDENTIFIER = $$APP_REVERSE_NAME
   CONFIG -= app_bundle
   ICON = ../../resources/macosx/$${TARGET}.icns
-  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.10
   LIBS += -framework AppKit
 
   target.path = $$quote($$PREFIX/Contents/MacOS/)
