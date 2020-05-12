@@ -10,8 +10,11 @@ make install
 
 # Make DMG image.
 cd "src/rssguard"
-make dmg
+
+# Fix .dylib linking.
+install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "RSS Guard.app/Contents/MacOS/rssguard"
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+make dmg
 
 # Rename DMG.
 set -- *.dmg
