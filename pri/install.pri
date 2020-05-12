@@ -234,7 +234,7 @@ mac {
 
   INSTALLS += target lib icns_icon info_plist info_plist2 pkginfo
   
-  INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/Contents/Resources/Include/libtextosaurus/)
+  INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/Contents/Resources/Include/librssguard)
 }
 
 message($$MSG_PREFIX: Prefix for headers is \"$$INSTALL_HEADERS_PREFIX\".)
