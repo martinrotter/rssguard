@@ -177,7 +177,7 @@ win32 {
 
   INSTALLS += target lib
 
-  INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard/)
+  INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
 }
 
 # Install all files on Linux.
@@ -199,7 +199,7 @@ unix:!mac:!android {
 
   INSTALLS += target lib desktop_file desktop_icon appdata
   
-  INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard/)
+  INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
 }
 
 mac {
@@ -234,7 +234,7 @@ mac {
 
   INSTALLS += target lib icns_icon info_plist info_plist2 pkginfo
   
-  INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/Contents/Resources/Include/librssguard)
+  INSTALL_HEADERS_PREFIX = $$shell_quote($$PREFIX/Contents/Resources/Include/librssguard)
 }
 
 message($$MSG_PREFIX: Prefix for headers is \"$$INSTALL_HEADERS_PREFIX\".)
@@ -242,10 +242,11 @@ message($$MSG_PREFIX: Prefix for headers is \"$$INSTALL_HEADERS_PREFIX\".)
 # Create install step for each folder of public headers.
 for(header, INSTALL_HEADERS) {
   path = $${INSTALL_HEADERS_PREFIX}/$${dirname(header)}
+  path = $$shell_quote($$path)
 
   message($$MSG_PREFIX: Adding header \"$$header\" to \"make install\" step with path \"$$path\".)
 
   eval(headers_$${dirname(header)}.files += $$header)
-  eval(headers_$${dirname(header)}.path = $$quote($$path))
+  eval(headers_$${dirname(header)}.path = $$path)
   eval(INSTALLS *= headers_$${dirname(header)})
 }
