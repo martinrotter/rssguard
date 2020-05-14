@@ -4,7 +4,7 @@ You can contribute to RSS Guard project in a several different ways:
 
 - by translating RSS Guard to some other languages (see [here](https://github.com/martinrotter/rssguard/wiki#localizations)),
 - by submitting pathes and pull requests (see [here](https://github.com/martinrotter/rssguard/pulls)),
-- by donating some money to support and encourage developers (see below and [here](https://github.com/martinrotter/rssguard/wiki#donate)).
+- by donating some money to support and encourage developers (see **Sponsor** button on the top of this page).
 
 ### Donations
 RSS Guard does not have dedicated forums or home website. It uses GitHub to host all its sources and other artifacts. The donations are only a way to show that you (as a user) really like RSS Guard and I do my job with it right.
