@@ -15,7 +15,7 @@ class SilentNetworkAccessManager : public BaseNetworkAccessManager {
   public:
 
     // Constructors and destructors.
-    explicit SilentNetworkAccessManager(QObject* parent = 0);
+    explicit SilentNetworkAccessManager(QObject* parent = nullptr);
     virtual ~SilentNetworkAccessManager();
 
     // Returns pointer to global silent network manager

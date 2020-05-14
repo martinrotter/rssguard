@@ -45,7 +45,7 @@ class GoogleSuggest : public QObject {
   public:
 
     // Constructors.
-    explicit GoogleSuggest(LocationLineEdit* editor, QObject* parent = 0);
+    explicit GoogleSuggest(LocationLineEdit* editor, QObject* parent = nullptr);
     virtual ~GoogleSuggest();
 
     bool eventFilter(QObject* object, QEvent* event);

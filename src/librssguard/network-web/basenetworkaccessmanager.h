@@ -12,8 +12,7 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
   public:
 
     // Constructors and desctructors.
-    explicit BaseNetworkAccessManager(QObject* parent = 0);
-    virtual ~BaseNetworkAccessManager();
+    explicit BaseNetworkAccessManager(QObject* parent = nullptr);
 
   public slots:
 

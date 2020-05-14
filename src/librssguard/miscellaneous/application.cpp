@@ -110,7 +110,7 @@ void Application::loadDynamicShortcuts() {
 
 void Application::showPolls() const {
   if (isFirstRun(APP_VERSION)) {
-    //web()->openUrlInExternalBrowser(QSL("https://goo.gl/forms/7bJNr33Ii22Q1c3k2"));
+    web()->openUrlInExternalBrowser(QSL("https://forms.gle/GXw1gNksRZDfSccL7"));
   }
 }
 

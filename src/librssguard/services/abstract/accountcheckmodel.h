@@ -13,7 +13,7 @@ class AccountCheckModel : public QAbstractItemModel {
   public:
 
     // Constructors and destructors.
-    explicit AccountCheckModel(QObject* parent = 0);
+    explicit AccountCheckModel(QObject* parent = nullptr);
     virtual ~AccountCheckModel();
 
     QModelIndex index(int row, int column, const QModelIndex& parent) const;

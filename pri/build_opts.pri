@@ -46,7 +46,7 @@ MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/rcc
 UI_DIR = $$OUT_PWD/ui
 
-mac {
+mac:qtHaveModule(macextras) {
   QT *= macextras
 }
 

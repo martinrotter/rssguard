@@ -18,7 +18,7 @@ class WebPage : public QWebEnginePage {
       MarkUnstarred
     };
 
-    explicit WebPage(QObject* parent = 0);
+    explicit WebPage(QObject* parent = nullptr);
 
     WebViewer* view() const;
 
