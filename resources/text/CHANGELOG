@@ -1,3 +1,9 @@
+3.6.2
+—————
+
+Fixed/changed:
+▪ Added correct @executable_path to librssguard.dylib to make .dmg bundles running more correctly on Mac OS X.
+
 3.6.1
 —————
 
