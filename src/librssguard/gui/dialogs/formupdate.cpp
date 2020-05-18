@@ -230,7 +230,7 @@ void FormUpdate::startUpdate() {
     // Self-update and package are not available.
     if (!qApp->web()->openUrlInExternalBrowser(url_file)) {
       qApp->showGuiMessage(tr("Cannot update application"),
-                           tr("Cannot navigate to installation file. Check new installation downloads manually on project website."),
+                           tr("Cannot navigate to installation file. Download new installation file manually on project website."),
                            QSystemTrayIcon::Warning,
                            this, true);
     }

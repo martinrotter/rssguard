@@ -82,7 +82,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="m_lblExternalBrowserArguments">
             <property name="text">
-             <string>Executable parameters</string>
+             <string>Parameters</string>
             </property>
             <property name="buddy">
              <cstring>m_txtExternalBrowserArguments</cstring>
@@ -92,7 +92,7 @@
           <item row="1" column="1">
            <widget class="QLineEdit" name="m_txtExternalBrowserArguments">
             <property name="placeholderText">
-             <string>Parameters to executable</string>
+             <string>Parameters passed to executable</string>
             </property>
            </widget>
           </item>
@@ -194,7 +194,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="m_lblExternalEmailArguments">
             <property name="text">
-             <string>Executable parameters</string>
+             <string>Parameters</string>
             </property>
             <property name="buddy">
              <cstring>m_txtExternalEmailArguments</cstring>
@@ -204,7 +204,7 @@
           <item row="1" column="1">
            <widget class="QLineEdit" name="m_txtExternalEmailArguments">
             <property name="placeholderText">
-             <string>Parameters to executable</string>
+             <string>Parameters passed to executable</string>
             </property>
            </widget>
           </item>
@@ -244,6 +244,19 @@
           </item>
          </layout>
         </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -306,6 +319,19 @@
           </property>
          </column>
         </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -454,6 +480,19 @@
           <bool>true</bool>
          </property>
         </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>

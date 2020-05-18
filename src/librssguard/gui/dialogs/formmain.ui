@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>1296</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -271,7 +271,7 @@
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
    <property name="text">
-    <string>Mark &amp;selected messages as &amp;read</string>
+    <string>Mark selected messages as &amp;read</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -279,7 +279,7 @@
   </action>
   <action name="m_actionMarkSelectedMessagesAsUnread">
    <property name="text">
-    <string>Mark &amp;selected messages as &amp;unread</string>
+    <string>Mark selected messages as &amp;unread</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
