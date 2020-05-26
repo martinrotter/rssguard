@@ -144,6 +144,8 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   setEnabled(false);
   displayMessage();
   setEnabled(previously_enabled);
+
+  page()->runJavaScript(QSL("window.scrollTo(0, 0);"));
 }
 
 void WebViewer::clear() {

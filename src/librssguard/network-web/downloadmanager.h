@@ -14,8 +14,11 @@
 #include <QNetworkReply>
 
 class AutoSaver;
+
 class DownloadModel;
+
 class QFileIconProvider;
+
 class QMimeData;
 
 class DownloadItem : public QWidget {
@@ -78,8 +81,11 @@ class DownloadItem : public QWidget {
 };
 
 #if defined(USE_WEBENGINE)
+
 class WebBrowser;
 #endif
+
+class SilentNetworkAccessManager;
 
 class DownloadManager : public TabContent {
   Q_OBJECT
@@ -105,7 +111,7 @@ class DownloadManager : public TabContent {
     }
 #endif
 
-    QNetworkAccessManager* networkManager() const;
+    SilentNetworkAccessManager* networkManager() const;
 
     int totalDownloads() const;
     int activeDownloads() const;
@@ -146,7 +152,7 @@ class DownloadManager : public TabContent {
     QScopedPointer<Ui::DownloadManager> m_ui;
     AutoSaver* m_autoSaver;
     DownloadModel* m_model;
-    QNetworkAccessManager* m_networkManager;
+    SilentNetworkAccessManager* m_networkManager;
 
     QScopedPointer<QFileIconProvider> m_iconProvider;
     QList<DownloadItem*> m_downloads;

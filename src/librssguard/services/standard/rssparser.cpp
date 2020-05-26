@@ -60,6 +60,9 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
     new_message.m_enclosures.append(Enclosure(elem_enclosure, elem_enclosure_type));
     qDebug("Found enclosure '%s' for the message.", qPrintable(elem_enclosure));
   }
+  else {
+    new_message.m_enclosures.append(mrssGetEnclosures(msg_element));
+  }
 
   // Deal with link and author.
   new_message.m_url = msg_element.namedItem(QSL("link")).toElement().text();

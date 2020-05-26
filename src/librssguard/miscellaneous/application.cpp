@@ -69,7 +69,7 @@ Application::Application(const QString& id, int& argc, char** argv)
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
 #if defined(USE_WEBENGINE)
-  QWebEngineUrlScheme url_scheme(APP_LOW_NAME);
+  QWebEngineUrlScheme url_scheme(QByteArray(APP_LOW_NAME));
 
   url_scheme.setDefaultPort(QWebEngineUrlScheme::SpecialPort::PortUnspecified);
   url_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);

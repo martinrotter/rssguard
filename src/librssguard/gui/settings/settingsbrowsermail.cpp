@@ -228,7 +228,8 @@ void SettingsBrowserMail::saveSettings() {
   qApp->web()->updateProxy();
 
   // Reload settings for all network access managers.
-  SilentNetworkAccessManager::instance()->loadSettings();
+  qApp->downloadManager()->networkManager()->loadSettings();
+
   onEndSaveSettings();
 }
 

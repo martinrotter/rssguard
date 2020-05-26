@@ -7,8 +7,6 @@
 #include <QAuthenticator>
 #include <QNetworkReply>
 
-Q_GLOBAL_STATIC(SilentNetworkAccessManager, qz_silent_acmanager)
-
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent)
   : BaseNetworkAccessManager(parent) {
   connect(this, &SilentNetworkAccessManager::authenticationRequired,
@@ -17,10 +15,6 @@ SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent)
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
   qDebug("Destroying SilentNetworkAccessManager instance.");
-}
-
-SilentNetworkAccessManager* SilentNetworkAccessManager::instance() {
-  return qz_silent_acmanager();
 }
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator) {

@@ -18,9 +18,6 @@ class SilentNetworkAccessManager : public BaseNetworkAccessManager {
     explicit SilentNetworkAccessManager(QObject* parent = nullptr);
     virtual ~SilentNetworkAccessManager();
 
-    // Returns pointer to global silent network manager
-    static SilentNetworkAccessManager* instance();
-
   public slots:
 
     // This cannot do any GUI stuff.

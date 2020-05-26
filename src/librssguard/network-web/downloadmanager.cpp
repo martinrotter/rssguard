@@ -421,7 +421,7 @@ void DownloadItem::updateInfoAndUrlLabel() {
 
 DownloadManager::DownloadManager(QWidget* parent) : TabContent(parent), m_ui(new Ui::DownloadManager),
   m_autoSaver(new AutoSaver(this)), m_model(new DownloadModel(this)),
-  m_networkManager(SilentNetworkAccessManager::instance()), m_iconProvider(nullptr), m_removePolicy(Never) {
+  m_networkManager(new SilentNetworkAccessManager(this)), m_iconProvider(nullptr), m_removePolicy(Never) {
   m_ui->setupUi(this);
   m_ui->m_viewDownloads->setShowGrid(false);
   m_ui->m_viewDownloads->verticalHeader()->hide();
@@ -524,7 +524,7 @@ void DownloadManager::addItem(DownloadItem* item) {
   updateRow(item);
 }
 
-QNetworkAccessManager* DownloadManager::networkManager() const {
+SilentNetworkAccessManager* DownloadManager::networkManager() const {
   return m_networkManager;
 }
 
@@ -785,7 +785,6 @@ Qt::ItemFlags DownloadModel::flags(const QModelIndex& index) const {
 
 QMimeData* DownloadModel::mimeData(const QModelIndexList& indexes) const {
   auto* mimeData = new QMimeData();
-
   QList<QUrl> urls;
 
   foreach (const QModelIndex& index, indexes) {
