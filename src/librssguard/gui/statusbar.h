@@ -8,8 +8,11 @@
 #include "gui/basetoolbar.h"
 
 class QProgressBar;
+
 class PlainToolButton;
+
 class QLabel;
+
 class Mutex;
 
 class StatusBar : public QStatusBar, public BaseBar {
@@ -25,7 +28,7 @@ class StatusBar : public QStatusBar, public BaseBar {
     QStringList defaultActions() const;
     QStringList savedActions() const;
     QList<QAction*> getSpecificActions(const QStringList& actions);
-    void loadSpecificActions(const QList<QAction*>& actions);
+    void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
 
   public slots:
     void showProgressFeeds(int progress, const QString& label);

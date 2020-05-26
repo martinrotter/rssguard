@@ -36,6 +36,7 @@
 #include <QWebEngineProfile>
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
+#include <QWebEngineUrlScheme>
 #endif
 
 Application::Application(const QString& id, int& argc, char** argv)
@@ -68,10 +69,22 @@ Application::Application(const QString& id, int& argc, char** argv)
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
 #if defined(USE_WEBENGINE)
+  QWebEngineUrlScheme url_scheme(APP_LOW_NAME);
+
+  url_scheme.setDefaultPort(QWebEngineUrlScheme::SpecialPort::PortUnspecified);
+  url_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
+  url_scheme.setFlags(QWebEngineUrlScheme::Flag::LocalScheme |
+                      QWebEngineUrlScheme::Flag::LocalAccessAllowed |
+                      QWebEngineUrlScheme::Flag::ServiceWorkersAllowed |
+                      QWebEngineUrlScheme::Flag::ContentSecurityPolicyIgnored);
+
+  QWebEngineUrlScheme::registerScheme(url_scheme);
+
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 
   QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
   m_urlInterceptor->loadSettings();
+
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(QByteArray(APP_LOW_NAME),
                                                                new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
 #endif

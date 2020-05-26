@@ -83,7 +83,6 @@ QStringList StatusBar::savedActions() const {
 QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
   bool progress_visible = this->actions().contains(m_barProgressFeedsAction) && m_lblProgressFeeds->isVisible() &&
                           m_barProgressFeeds->isVisible();
-
   QList<QAction*> available_actions = availableActions();
   QList<QAction*> spec_actions;
 
@@ -162,7 +161,7 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
   return spec_actions;
 }
 
-void StatusBar::loadSpecificActions(const QList<QAction*>& actions) {
+void StatusBar::loadSpecificActions(const QList<QAction*>& actions, bool initial_load) {
   foreach (QAction* act, this->actions()) {
     QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
 
@@ -171,10 +170,13 @@ void StatusBar::loadSpecificActions(const QList<QAction*>& actions) {
     }
   }
 
-  removeWidget(m_barProgressDownload);
-  removeWidget(m_barProgressFeeds);
-  removeWidget(m_lblProgressDownload);
-  removeWidget(m_lblProgressFeeds);
+  if (!initial_load) {
+    removeWidget(m_barProgressDownload);
+    removeWidget(m_barProgressFeeds);
+    removeWidget(m_lblProgressDownload);
+    removeWidget(m_lblProgressFeeds);
+  }
+
   clear();
 
   foreach (QAction* act, actions) {

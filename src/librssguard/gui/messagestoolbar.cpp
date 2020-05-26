@@ -20,6 +20,7 @@ MessagesToolBar::MessagesToolBar(const QString& title, QWidget* parent)
 
 QList<QAction*> MessagesToolBar::availableActions() const {
   QList<QAction*> available_actions = qApp->userActions();
+
   available_actions.append(m_actionSearchMessages);
   available_actions.append(m_actionMessageHighlighter);
   return available_actions;
@@ -84,7 +85,9 @@ QList<QAction*> MessagesToolBar::getSpecificActions(const QStringList& actions) 
   return spec_actions;
 }
 
-void MessagesToolBar::loadSpecificActions(const QList<QAction*>& actions) {
+void MessagesToolBar::loadSpecificActions(const QList<QAction*>& actions, bool initial_load) {
+  Q_UNUSED(initial_load)
+
   clear();
 
   foreach (QAction* act, actions) {

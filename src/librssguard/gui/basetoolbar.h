@@ -26,7 +26,7 @@ class BaseBar {
     // Loads the toolbar state from settings.
     virtual void loadSavedActions();
     virtual QList<QAction*> getSpecificActions(const QStringList& actions) = 0;
-    virtual void loadSpecificActions(const QList<QAction*>& actions) = 0;
+    virtual void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false) = 0;
 
   protected:
     QAction* findMatchingAction(const QString& action, const QList<QAction*>& actions) const;

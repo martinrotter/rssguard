@@ -21,7 +21,7 @@ BaseToolBar::~BaseToolBar() {
 }
 
 void BaseBar::loadSavedActions() {
-  loadSpecificActions(getSpecificActions(savedActions()));
+  loadSpecificActions(getSpecificActions(savedActions()), true);
 }
 
 QAction* BaseBar::findMatchingAction(const QString& action, const QList<QAction*>& actions) const {

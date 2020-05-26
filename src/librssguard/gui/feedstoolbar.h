@@ -16,7 +16,7 @@ class FeedsToolBar : public BaseToolBar {
     void saveChangeableActions(const QStringList& actions);
 
     QList<QAction*> getSpecificActions(const QStringList& actions);
-    void loadSpecificActions(const QList<QAction*>& actions);
+    void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
 
     QStringList defaultActions() const;
     QStringList savedActions() const;

@@ -299,7 +299,6 @@ void FormMain::updateRecycleBinMenu() {
     root_menu->setIcon(activated_root->icon());
     root_menu->setToolTip(activated_root->description());
     RecycleBin* bin = activated_root->recycleBin();
-
     QList<QAction*> context_menu;
 
     if (bin == nullptr) {
@@ -751,6 +750,7 @@ void FormMain::createConnections() {
 
 void FormMain::backupDatabaseSettings() {
   QScopedPointer<FormBackupDatabaseSettings> form(new FormBackupDatabaseSettings(this));
+
   form->exec();
 }
 
@@ -796,6 +796,7 @@ void FormMain::showAddAccountDialog() {
   QScopedPointer<FormAddAccount> form_update(new FormAddAccount(qApp->feedReader()->feedServices(),
                                                                 qApp->feedReader()->feedsModel(),
                                                                 this));
+
   form_update->exec();
 }
 

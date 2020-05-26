@@ -8,8 +8,11 @@
 #include "core/messagesmodel.h"
 
 class MessagesSearchLineEdit;
+
 class QWidgetAction;
+
 class QToolButton;
+
 class QMenu;
 
 class MessagesToolBar : public BaseToolBar {
@@ -30,7 +33,7 @@ class MessagesToolBar : public BaseToolBar {
     // Loads actions as specified by external actions list.
     // NOTE: This is used primarily for reloading actions
     // when they are changed from settings.
-    void loadSpecificActions(const QList<QAction*>& actions);
+    void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
 
     QList<QAction*> getSpecificActions(const QStringList& actions);
 

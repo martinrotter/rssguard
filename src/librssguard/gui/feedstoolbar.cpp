@@ -66,7 +66,9 @@ QList<QAction*> FeedsToolBar::getSpecificActions(const QStringList& actions) {
   return spec_actions;
 }
 
-void FeedsToolBar::loadSpecificActions(const QList<QAction*>& actions) {
+void FeedsToolBar::loadSpecificActions(const QList<QAction*>& actions, bool initial_load) {
+  Q_UNUSED(initial_load)
+
   clear();
 
   for (QAction* act : actions) {
