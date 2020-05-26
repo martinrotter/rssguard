@@ -420,7 +420,7 @@ TRANSLATIONS += $$TRANSLATIONS_WO_QT \
 load(uic)
 uic.commands -= -no-stringliteral
 
-TR_EXCLUDE += $(QTDIR) 3rd-party/*
+TR_EXCLUDE += $(QTDIR)
 
 # Create new "make lupdate" target.
 lupdate.target = lupdate
