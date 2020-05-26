@@ -33,20 +33,21 @@
 
 #include <QObject>
 
+#include <QNetworkReply>
+
 class LocationLineEdit;
-class QNetworkReply;
+
 class QTimer;
+
 class QListWidget;
-class QNetworkAccessManager;
+
+class Downloader;
 
 class GoogleSuggest : public QObject {
   Q_OBJECT
 
   public:
-
-    // Constructors.
     explicit GoogleSuggest(LocationLineEdit* editor, QObject* parent = nullptr);
-    virtual ~GoogleSuggest();
 
     bool eventFilter(QObject* object, QEvent* event);
     void showCompletion(const QStringList& choices);
@@ -55,11 +56,11 @@ class GoogleSuggest : public QObject {
     void doneCompletion();
     void preventSuggest();
     void autoSuggest();
-    void handleNetworkData();
+    void handleNetworkData(QNetworkReply::NetworkError status, const QByteArray& contents);
 
   private:
     LocationLineEdit* editor;
-
+    QScopedPointer<Downloader> m_downloader;
     QScopedPointer<QListWidget> popup;
     QTimer* timer;
     QString m_enteredText;

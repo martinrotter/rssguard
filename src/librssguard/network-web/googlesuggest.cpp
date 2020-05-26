@@ -32,7 +32,7 @@
 
 #include "definitions/definitions.h"
 #include "gui/locationlineedit.h"
-#include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/downloader.h"
 
 #include <QDomDocument>
 #include <QKeyEvent>
@@ -44,7 +44,7 @@
 #include <QXmlStreamReader>
 
 GoogleSuggest::GoogleSuggest(LocationLineEdit* editor, QObject* parent)
-  : QObject(parent), editor(editor), popup(new QListWidget()), m_enteredText(QString()) {
+  : QObject(parent), editor(editor), m_downloader(new Downloader(this)), popup(new QListWidget()), m_enteredText(QString()) {
   popup->setWindowFlags(Qt::Popup);
   popup->setFocusPolicy(Qt::NoFocus);
   popup->setFocusProxy(editor);
@@ -56,12 +56,12 @@ GoogleSuggest::GoogleSuggest(LocationLineEdit* editor, QObject* parent)
   timer = new QTimer(this);
   timer->setSingleShot(true);
   timer->setInterval(500);
+
   connect(popup.data(), &QListWidget::itemClicked, this, &GoogleSuggest::doneCompletion);
   connect(timer, &QTimer::timeout, this, &GoogleSuggest::autoSuggest);
   connect(editor, &LocationLineEdit::textEdited, timer, static_cast<void (QTimer::*)()>(&QTimer::start));
+  connect(m_downloader.data(), &Downloader::completed, this, &GoogleSuggest::handleNetworkData);
 }
-
-GoogleSuggest::~GoogleSuggest() = default;
 
 bool GoogleSuggest::eventFilter(QObject* object, QEvent* event) {
   if (object != popup.data()) {
@@ -120,7 +120,7 @@ void GoogleSuggest::showCompletion(const QStringList& choices) {
   popup->setUpdatesEnabled(false);
   popup->clear();
 
-  foreach (const QString& choice, choices) {
+  for (const QString& choice : choices) {
     new QListWidgetItem(choice, popup.data());
   }
 
@@ -152,20 +152,16 @@ void GoogleSuggest::autoSuggest() {
   m_enteredText = QUrl::toPercentEncoding(editor->text());
   QString url = QString(GOOGLE_SUGGEST_URL).arg(m_enteredText);
 
-  connect(SilentNetworkAccessManager::instance()->get(QNetworkRequest(QString(url))), &QNetworkReply::finished,
-          this, &GoogleSuggest::handleNetworkData);
+  m_downloader->downloadFile(url);
 }
 
-void GoogleSuggest::handleNetworkData() {
-  QScopedPointer<QNetworkReply> reply(static_cast<QNetworkReply*>(sender()));
-
-  if (reply->error() == 0) {
+void GoogleSuggest::handleNetworkData(QNetworkReply::NetworkError status, const QByteArray& contents) {
+  if (status == QNetworkReply::NetworkError::NoError) {
     QStringList choices;
     QDomDocument xml;
-    QByteArray response = reply->readAll();
-    const QTextCodec* c = QTextCodec::codecForUtfText(response);
+    const QTextCodec* c = QTextCodec::codecForUtfText(contents);
 
-    xml.setContent(c->toUnicode(response));
+    xml.setContent(c->toUnicode(contents));
     QDomNodeList suggestions = xml.elementsByTagName(QSL("suggestion"));
 
     for (int i = 0; i < suggestions.size(); i++) {
