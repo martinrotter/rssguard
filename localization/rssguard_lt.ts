@@ -1786,14 +1786,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Slepia arba rodo pagrindinį meniu.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Žymėti &amp;pasirinktas žinutes kaip &amp;skaitytas</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Žymėti &amp;pasirinktas žinutes kaip &amp;neskaitytas</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Atverti pasirinkto šaltinio straipsnius iš&amp;orinėje naršyklėje</translation>
     </message>
@@ -2105,6 +2097,14 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>&amp;Copy URLs of selected items</source>
         <translation>&amp;Kopijuoti pasirinktų elementų URL</translation>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2571,10 +2571,6 @@ currently installed one.</source>
         <translation>Nepavyksta atnaujinti programos</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Nepavyksta naršyti į įdiegimo failą. Rankiniu būdu patikrinkite projekto svetainėje naujus įdiegimo atsisiuntimus.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation>Atsisiųsta %1% (atnaujinimo dydis yra %2 kB).</translation>
     </message>
@@ -2641,6 +2637,10 @@ atsisiųsta.</translation>
 You can install it now.</source>
         <translation>Paketas buvo sėkmingai atsisiųstas.
 Jūs dabar galite jį įdiegti.</translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3378,14 +3378,6 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
         <translation>&amp;Naršyti</translation>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Vykdomojo parametrai</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Vykdomajam skirti parametrai</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Naudoti pavyzdinius argumentus</translation>
     </message>
@@ -3558,6 +3550,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
         <translation>Įveskite (pasirinktinai) vienu tarpu atskirtus parametrus, kurie, atveriant URL adresus, bus persiunčiami vykdomiesiems.</translation>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3907,10 +3903,6 @@ Vilkaduobės:
         <translation>Užverti korteles...</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Dvikarčiu dešiniojo pelės mygtuko nuspaudimu</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Vienu vidurinio pelės mygtuko spustelėjimu</translation>
     </message>
@@ -4002,6 +3994,10 @@ Vilkaduobės:
     <message>
         <source>no icon theme</source>
         <translation>be piktogramų temos</translation>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

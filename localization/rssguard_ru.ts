@@ -1785,14 +1785,6 @@ or this functionality is not implemented yet.</source>
         <translation>Скрыть или показать главное меню.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Пометить &amp;выбранные сообщения как &amp;прочитанные</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Пометить &amp;выбранные сообщения как &amp;непрочитанные</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Открыть выбранные исходные статьи в внешнем браузере (&amp;E)</translation>
     </message>
@@ -2103,6 +2095,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2570,10 +2570,6 @@ currently installed one.</source>
         <translation>Не удается обновить приложение</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Не удается перейти к файлу установки. Проверьте доступность новых файлов установки вручную на сайте проекта.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation>Загружено %1% (размер обновления %2 kB).</translation>
     </message>
@@ -2640,6 +2636,10 @@ downloaded.</source>
 You can install it now.</source>
         <translation>Пакет был успешно загружен.
 Вы можете установить его сейчас.</translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3375,14 +3375,6 @@ version by clicking this popup notification.</source>
         <translation>&amp;Обзор</translation>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Исполняемые параметры</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Параметры к исполняемому файлу</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Используйте примеры аргументов для</translation>
     </message>
@@ -3555,6 +3547,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
         <translation>Введите (необязательные) параметры, разделенные одним пробелом для отправки в исполняемый файл при открытии URL-адресов.</translation>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3904,10 +3900,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Закрыть вкладки при помощи</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Правой мышки двойным кликом</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Средней мышки одиночным кликом</translation>
     </message>
@@ -3998,6 +3990,10 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>no icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -9,7 +9,7 @@ read -p "Password: " PASSWORD
 
 # Setup parameters.
 RESOURCE=../../../localization/rssguard_en.ts
-CODES="cs da de es fr gl he id it ja lt nl pl pt ru sv uk zh"
+CODES="cs da de es fr gl he id it ja lt nl pl pt ru sv uk zh_CN zh_TW"
 TRANSLATION='../../../localization/rssguard_$CODE.ts'
 
 declare PARAMS

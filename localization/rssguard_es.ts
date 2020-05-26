@@ -1783,14 +1783,6 @@ o debido a que esta función aún no está implementada.</translation>
         <translation>Oculta o muestra el menú principal.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Marcar los &amp;mensajes seleccionados como &amp;leídos</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Marcar los &amp;mensajes seleccionados como &amp;no leídos</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Abrir los mensajes seleccionados en un &amp;navegador externo</translation>
     </message>
@@ -2102,6 +2094,14 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <source>&amp;Copy URLs of selected items</source>
         <translation>&amp;Copiar URLs de elementos seleccionados</translation>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2567,10 +2567,6 @@ la actualmente instalada</translation>
         <translation>No es posible actualizar la aplicación</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>No es posible navegar hasta el archivo de instalación. Busque de forma manual nuevos archivos de instalación en el sitio web del proyecto.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation>Descargado %1% (el tamaño de la actualización es de %2 kB).</translation>
     </message>
@@ -2637,6 +2633,10 @@ descargarse.</translation>
 You can install it now.</source>
         <translation>El paquete se descargó satisfactoriamente.
 Puede instalarlo ahora.</translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3370,14 +3370,6 @@ versión pulsando en esta notificación emergente..</translation>
         <translation>&amp;Explorar</translation>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Parámetros del ejecutable</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Parámetros para el ejecutable</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Utilizar argumentos de la muestra para</translation>
     </message>
@@ -3550,6 +3542,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
         <translation>Introducir parámetros (opcionales) separados por un espacio simple para enviar al ejecutable cuando abra direcciones URL.</translation>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3899,10 +3895,6 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation>Cerrar pestañas con</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Pulsar dos veces con el botón derecho del ratón</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Pulsar una vez con el botón central del ratón</translation>
     </message>
@@ -3994,6 +3986,10 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <message>
         <source>no icon theme</source>
         <translation>ningún tema de iconos</translation>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -1784,14 +1784,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Dölj/Visa huvudmenyn.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Märk markerade &amp;meddelanden som &amp;lästa</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Märk markerade &amp;meddelanden som &amp;olästa</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Öppna markerade källartiklar i &amp;extern webbläsare</translation>
     </message>
@@ -2103,6 +2095,14 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>&amp;Copy URLs of selected items</source>
         <translation>&amp;Kopiera URL:er för markerade objekt</translation>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2568,10 +2568,6 @@ currently installed one.</source>
         <translation>Kan inte uppdatera programmet</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Kan inte navigera till installationsfilen. Sök ny installationsnedladdning manuellt, på projektets hemsida.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation>%1% nerladdat (uppdateringens storlek är %2 kB).</translation>
     </message>
@@ -2638,6 +2634,10 @@ laddas ner.</translation>
 You can install it now.</source>
         <translation>Paketet har laddats ner.
 Du kan installera det nu.</translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3371,14 +3371,6 @@ genom att klicka på denna popup-avisering.</translation>
         <translation>&amp;Bläddra</translation>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Startparametrar</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Parametrar för startfilen</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Använd argument för</translation>
     </message>
@@ -3551,6 +3543,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
         <translation>Ange parametrar (valfritt), separerade med enkelt mellanslag, som skall skickas till den körbara filen vid öppning av URL:er.</translation>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3901,10 +3897,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Stäng flikar med</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Dubbelklick på höger musknapp</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Enkelklick på mushjulsknappen</translation>
     </message>
@@ -3996,6 +3988,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>no icon theme</source>
         <translation>inget ikontema</translation>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

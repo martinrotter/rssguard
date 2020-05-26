@@ -1786,14 +1786,6 @@ or this functionality is not implemented yet.</source>
         <translation>Skryje či zobrazí hlavní menu.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Označit vybrané zprávy jako &amp;přečtené</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Označit vybrané zprávy jako &amp;nepřečtené</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>&amp;Otevřít vybrané zdrojové články v externím prohlížeči</translation>
     </message>
@@ -2104,6 +2096,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2569,10 +2569,6 @@ currently installed one.</source>
         <translation>Nelze aktualizovat</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Nelze přejít k instalačnímu souboru. Zkontrolujte nové instalační soubory ručně na webu aplikace.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation>Staženo %1% (velikost aktualizace je %2 kB).</translation>
     </message>
@@ -2639,6 +2635,10 @@ stažena.</translation>
 You can install it now.</source>
         <translation>Balíček byl úspěšně stažen.
 Nyní ho můžete nainstalovat.</translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3376,14 +3376,6 @@ na tuto bublinu.</translation>
         <translation>&amp;Procházet</translation>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Parametry spouštěče</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Parametry spouštěče</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Použít typické argumenty pro</translation>
     </message>
@@ -3556,6 +3548,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
         <translation>Zadejte (volitelné) parametry oddělené jednou mezerou, které budou předány nástroji při otevírání URL adres.</translation>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3905,10 +3901,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Zavírat panely pomocí</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Dvojklik pravého tlačítka myši</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Prostředního tlačítka myši</translation>
     </message>
@@ -3999,6 +3991,10 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>no icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
         <translation type="unfinished"/>
     </message>
 </context>

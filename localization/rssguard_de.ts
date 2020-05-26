@@ -1782,14 +1782,6 @@ or this functionality is not implemented yet.</source>
         <translation>Hauptmenü anzeigen oder verstecken.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Ausgewählte Nachrichten als ge&amp;lesen markieren</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Ausgewählte Nachrichten als &amp;ungelesen markieren</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Ausgewählte Artikel in &amp;externem Browser öffnen</translation>
     </message>
@@ -2100,6 +2092,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2567,10 +2567,6 @@ die aktuell installierte.</translation>
         <translation>Kann die Anwendung nicht aktualisieren</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Kann die Installationsdatei nicht abrufen. Bitte auf der Webseite des Projekts nach verfügbaren Aktualisierungen suchen und diese b. Bed. manuell herunterladen.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation>%1% heruntergeladen (gesamte Größe ist %2kB).</translation>
     </message>
@@ -2636,6 +2632,10 @@ downloaded.</source>
 You can install it now.</source>
         <translation>Paket wurde erfolgreich heruntergeladen.
 Sie können es jetzt installieren.</translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3366,14 +3366,6 @@ durch Klicken auf diese Benachrichtigung.</translation>
         <translation>&amp;Durchsuchen</translation>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Parameter der auszuführenden Datei</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Parameter für die auszuführende Datei</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Verwenden Sie Beispielargumente für</translation>
     </message>
@@ -3546,6 +3538,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
         <translation>Geben Sie (optionale) Parameter mit einer Leerzeile ein um Sie an das ausgeführte Programm zu übergeben, sobald eine URL geöffnet wird.</translation>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3896,10 +3892,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation>Schliesse die Reiter mit</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Doppelklick der rechten Maustaste</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Mittlere Maustaste Einfachklick</translation>
     </message>
@@ -3991,6 +3983,10 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
         <source>no icon theme</source>
         <translation>kein Icon Theme</translation>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

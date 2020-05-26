@@ -1785,14 +1785,6 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation>Ukrywa i pokazuje główne menu.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Oznacz wybraną wiadomość jako p&amp;rzeczytaną</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Oznacz wybraną wiadomość jako &amp;nieprzeczytaną</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Otwórz wybrany artykuł źródłowy w z&amp;ewnętrznej przeglądarce</translation>
     </message>
@@ -2103,6 +2095,14 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2568,10 +2568,6 @@ aktualnie zainstalowana.</translation>
         <translation>Nie można zaktualizować aplikacji</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Nie można przejść do pliku instalacyjnego. Sprawdź i pobierz aktualizacje ręcznie na stronie projektu.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation>Pobrano %1% (rozmiar aktualizacji to %2 kB).</translation>
     </message>
@@ -2636,6 +2632,10 @@ być pobrana.</translation>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3372,14 +3372,6 @@ tej wersji, klikając na to powiadomienie.</translation>
         <translation>&amp;Przeglądaj</translation>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Parametry</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Parametry dla pliku wykonywalnego</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Użyj przykładowych argumentów dla</translation>
     </message>
@@ -3551,6 +3543,10 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3901,10 +3897,6 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
         <translation>Zamknij karty przez</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Podwójne kliknięcie prawym przyciskiem myszy</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Pojedyncze kliknięcie środkowym przyciskiem myszy</translation>
     </message>
@@ -3995,6 +3987,10 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     </message>
     <message>
         <source>no icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
         <translation type="unfinished"/>
     </message>
 </context>

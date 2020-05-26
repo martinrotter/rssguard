@@ -1784,14 +1784,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Oculta ou exibe o menu principal.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Marcar mensagens selecionadas como &amp;lidas</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Marcar mensagens selecionadas como &amp;não lidas</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Abrir artigos fonte selecionados no navegador &amp;externo</translation>
     </message>
@@ -2103,6 +2095,14 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>&amp;Copy URLs of selected items</source>
         <translation>&amp;Copiar URLs dos itens selecionados</translation>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2569,10 +2569,6 @@ que a versão atual instalada.</translation>
         <translation>Não foi possível atualizar o aplicativo</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Não foi possível navegar até o arquivo de instalação. Verifique por novos arquivos de instalação no site do projeto.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation>%1% baixado (tamanho da atualização: %2 kB).</translation>
     </message>
@@ -2639,6 +2635,10 @@ baixada.</translation>
 You can install it now.</source>
         <translation>O pacote foi baixado com sucesso.
 Você pode instalá-lo agora.</translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3372,14 +3372,6 @@ versão, clicando nesta notificação popup.</translation>
         <translation>&amp;Procurar</translation>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Parâmetros do executável</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Parâmetros do executável</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Usar argumentos modelo para</translation>
     </message>
@@ -3552,6 +3544,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
         <translation>Entre os parâmetros (opcionais) separados por um simples espaço para enviar para o executável ao abrir URLs.</translation>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3901,10 +3897,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Fechar abas com</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Clique duplo do botão direito do mouse</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Um clique no botão do meio do mouse</translation>
     </message>
@@ -3996,6 +3988,10 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>no icon theme</source>
         <translation>nenhum tema de ícone</translation>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -1779,14 +1779,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation type="unfinished"/>
     </message>
@@ -2097,6 +2089,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2559,10 +2559,6 @@ currently installed one.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation type="unfinished"/>
     </message>
@@ -2626,6 +2622,10 @@ downloaded.</source>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3347,14 +3347,6 @@ version by clicking this popup notification.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation type="unfinished"/>
     </message>
@@ -3524,6 +3516,10 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3864,10 +3860,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation type="unfinished"/>
     </message>
@@ -3958,6 +3950,10 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>no icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -39,7 +39,8 @@
         <file>graphics/misc/flags/ru.png</file>
         <file>graphics/misc/flags/sv.png</file>
         <file>graphics/misc/flags/uk.png</file>
-        <file>graphics/misc/flags/zh.png</file>
+        <file>graphics/misc/flags/zh_CN.png</file>
+        <file>graphics/misc/flags/zh_TW.png</file>
         
         <file>skins/dark/html_adblocked.html</file>
         <file>skins/dark/html_enclosure_every.html</file>
@@ -80,7 +81,8 @@
         <file>../localization/rssguard_ru.qm</file>
         <file>../localization/rssguard_sv.qm</file>
         <file>../localization/rssguard_uk.qm</file>
-        <file>../localization/rssguard_zh.qm</file>
+        <file>../localization/rssguard_zh_CN.qm</file>
+        <file>../localization/rssguard_zh_TW.qm</file>
 
         <file>../localization/qtbase_cs.qm</file>
         <file>../localization/qtbase_da.qm</file>
@@ -95,6 +97,7 @@
         <file>../localization/qtbase_ru.qm</file>
         <file>../localization/qtbase_sv.qm</file>
         <file>../localization/qtbase_uk.qm</file>
-        <file>../localization/qtbase_zh.qm</file>
+        <file>../localization/qtbase_zh_CN.qm</file>
+        <file>../localization/qtbase_zh_TW.qm</file>
     </qresource>
 </RCC>

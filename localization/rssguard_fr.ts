@@ -1783,14 +1783,6 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <translation>Cacher ou montrer le menu principal.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected messages as &amp;read</source>
-        <translation>Marquer les messages &amp;sélectionnés comme &amp;lus</translation>
-    </message>
-    <message>
-        <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation>Marquer les messages &amp;sélectionner comme &amp;non lu</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Ouvrir les sources de l&apos;article sélectionnées dans le navigateur &amp;externe</translation>
     </message>
@@ -2101,6 +2093,14 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2565,20 +2565,16 @@ celle actuellement installée.</translation>
         <translation>Impossible de mettre à jour l&apos;application</translation>
     </message>
     <message>
-        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Impossible d&apos;aller récupérer le fichier d&apos;installation. Vérifiez le nouveau fichier d&apos;installation manuellement sur ​​le site web du projet.</translation>
-    </message>
-    <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargement de la mise à jour</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargement réussi</translation>
     </message>
     <message>
         <source>Error occured</source>
@@ -2599,7 +2595,7 @@ downloaded.</source>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"/>
+        <translation>Installation</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
@@ -2611,7 +2607,7 @@ downloaded.</source>
     </message>
     <message>
         <source>Available files</source>
-        <translation type="unfinished"/>
+        <translation>Fichiers disponibles</translation>
     </message>
     <message>
         <source>Download selected update</source>
@@ -2632,6 +2628,10 @@ downloaded.</source>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2790,27 +2790,27 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Ouvrir dans le navigateur externe</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargement</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation>Lien incorrect</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Le lien sélectionné est invalide.</translation>
     </message>
     <message>
         <source>Mark message as read</source>
-        <translation type="unfinished"/>
+        <translation>Marquer le message comme lu</translation>
     </message>
     <message>
         <source>Mark message as unread</source>
-        <translation type="unfinished"/>
+        <translation>Marquer le message non lu</translation>
     </message>
     <message>
         <source>Switch message importance</source>
@@ -2822,7 +2822,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>Image</translation>
     </message>
     <message>
         <source>Always open links in external browser.</source>
@@ -2913,7 +2913,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="unfinished"/>
+        <translation>Supprimé définitivement</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
@@ -2921,11 +2921,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"/>
+        <translation>Pièces jointes</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"/>
+        <translation>Liste des pièces jointes</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
@@ -3353,14 +3353,6 @@ version by clicking this popup notification.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Executable parameters</source>
-        <translation>Paramètres d&apos;exécution</translation>
-    </message>
-    <message>
-        <source>Parameters to executable</source>
-        <translation>Paramètres d&apos;exécution</translation>
-    </message>
-    <message>
         <source>Use sample arguments for</source>
         <translation>Utiliser des arguments de l&apos;échantillon pour</translation>
     </message>
@@ -3530,6 +3522,10 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parameters passed to executable</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3880,10 +3876,6 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
         <translation>Fermer les onglets avec</translation>
     </message>
     <message>
-        <source>Right mouse button double-click</source>
-        <translation>Double-clic du bouton droit de la souris</translation>
-    </message>
-    <message>
         <source>Middle mouse button single-click</source>
         <translation>Simple clic du mouton du milieu de la souris</translation>
     </message>
@@ -3974,6 +3966,10 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     </message>
     <message>
         <source>no icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
         <translation type="unfinished"/>
     </message>
 </context>
