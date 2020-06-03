@@ -75,7 +75,8 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
 
   do {
     TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId().toInt(), limit, skip,
-                                                                                 true, true, false, true);
+                                                                                 true, true, false,
+                                                                                 serviceRoot()->network()->downloadOnlyUnreadMessages());
 
     if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
       setStatus(Feed::NetworkError);
