@@ -126,7 +126,7 @@ QList<ExternalTool> SettingsBrowserMail::externalTools() const {
 }
 
 void SettingsBrowserMail::setExternalTools(const QList<ExternalTool>& list) {
-  foreach (const ExternalTool& tool, list) {
+  for (const ExternalTool& tool : list) {
     QTreeWidgetItem* item = new QTreeWidgetItem(m_ui->m_listTools,
                                                 QStringList() << tool.executable() << tool.parameters().join(QL1C(' ')));
 

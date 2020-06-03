@@ -83,7 +83,7 @@ void ServiceRoot::stop() {}
 void ServiceRoot::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
 
-  foreach (RootItem* child, getSubTree()) {
+  for (RootItem* child : getSubTree()) {
     if (child->kind() == RootItemKind::Feed) {
       feeds.append(child->toFeed());
     }
@@ -102,7 +102,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
   QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
 
   if (ok) {
-    foreach (Feed* feed, feeds) {
+    for (Feed* feed : feeds) {
       if (counts.contains(feed->customId())) {
         feed->setCountOfUnreadMessages(counts.value(feed->customId()).first);
 
@@ -137,7 +137,7 @@ void ServiceRoot::removeOldFeedTree(bool including_messages) {
 }
 
 void ServiceRoot::cleanAllItems() {
-  foreach (RootItem* top_level_item, childItems()) {
+  for (RootItem* top_level_item : childItems()) {
     if (top_level_item->kind() != RootItemKind::Bin) {
       requestItemRemoval(top_level_item);
     }
@@ -151,7 +151,7 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
     // Messages are cleared, now inform model about need to reload data.
     QList<RootItem*> itemss;
 
-    foreach (Feed* feed, items) {
+    for (Feed* feed : items) {
       feed->updateCounts(true);
       itemss.append(feed);
     }
@@ -239,7 +239,7 @@ void ServiceRoot::addNewCategory() {}
 QMap<QString, QVariant> ServiceRoot::storeCustomFeedsData() {
   QMap<QString, QVariant> custom_data;
 
-  foreach (const Feed* feed, getSubTreeFeeds()) {
+  for (const Feed* feed : getSubTreeFeeds()) {
     QVariantMap feed_custom_data;
 
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInitialInterval());
@@ -294,7 +294,7 @@ void ServiceRoot::syncIn() {
     // so remove left over messages.
     removeLeftOverMessages();
 
-    foreach (RootItem* top_level_item, new_tree->childItems()) {
+    for (RootItem* top_level_item : new_tree->childItems()) {
       top_level_item->setParent(nullptr);
       requestItemReassignment(top_level_item, this);
     }
@@ -309,7 +309,7 @@ void ServiceRoot::syncIn() {
     // Now we must refresh expand states.
     QList<RootItem*> items_to_expand;
 
-    foreach (RootItem* item, all_items) {
+    for (RootItem* item : all_items) {
       if (qApp->settings()->value(GROUP(CategoriesExpandStates), item->hashCode(), item->childCount() > 0).toBool()) {
         items_to_expand.append(item);
       }
@@ -340,7 +340,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
 
     switch (item->kind()) {
       case RootItemKind::Category: {
-        foreach (RootItem* child, item->childItems()) {
+        for (RootItem* child : item->childItems()) {
           list.append(customIDSOfMessagesForItem(child));
         }
 
@@ -383,7 +383,7 @@ bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus r
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     QList<RootItem*> itemss;
 
-    foreach (Feed* feed, items) {
+    for (Feed* feed : items) {
       feed->updateCounts(false);
       itemss.append(feed);
     }
@@ -402,7 +402,7 @@ QStringList ServiceRoot::textualFeedUrls(const QList<Feed*>& feeds) const {
 
   stringy_urls.reserve(feeds.size());
 
-  foreach (const Feed* feed, feeds) {
+  for (const Feed* feed : feeds) {
     stringy_urls.append(!feed->url().isEmpty() ? feed->url() : QL1S("no-url"));
   }
 
@@ -414,7 +414,7 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
 
   stringy_ids.reserve(feeds.size());
 
-  foreach (const Feed* feed, feeds) {
+  for (const Feed* feed : feeds) {
     stringy_ids.append(QString("'%1'").arg(feed->customId()));
   }
 
@@ -434,7 +434,7 @@ QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange>& chan
 QStringList ServiceRoot::customIDsOfMessages(const QList<Message>& messages) {
   QStringList list;
 
-  foreach (const Message& message, messages) {
+  for (const Message& message : messages) {
     list.append(message.m_customId);
   }
 
@@ -500,7 +500,7 @@ bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const
     QList<Message> mark_starred_msgs;
     QList<Message> mark_unstarred_msgs;
 
-    foreach (const ImportanceChange& pair, changes) {
+    for (const ImportanceChange& pair : changes) {
       if (pair.second == RootItem::Important) {
         mark_starred_msgs.append(pair.first);
       }
@@ -574,7 +574,7 @@ bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const 
 void ServiceRoot::assembleFeeds(Assignment feeds) {
   QHash<int, Category*> categories = getHashedSubTreeCategories();
 
-  foreach (const AssignmentItem& feed, feeds) {
+  for (const AssignmentItem& feed : feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
       // This is top-level feed, add it to the root item.
       appendChild(feed.second);

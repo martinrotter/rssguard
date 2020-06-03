@@ -57,7 +57,7 @@ QList<ExternalTool> ExternalTool::toolsFromSettings() {
 
   QList<ExternalTool> tools;
 
-  foreach (const QString& tool_encoded, tools_encoded) {
+  for (const QString& tool_encoded : tools_encoded) {
     tools.append(ExternalTool::fromString(tool_encoded));
   }
 
@@ -67,7 +67,7 @@ QList<ExternalTool> ExternalTool::toolsFromSettings() {
 void ExternalTool::setToolsToSettings(QList<ExternalTool>& tools) {
   QStringList encode;
 
-  foreach (ExternalTool tool, tools) {
+  for (ExternalTool tool : tools) {
     encode.append(tool.toString());
   }
 

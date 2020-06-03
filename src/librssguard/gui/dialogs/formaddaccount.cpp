@@ -50,7 +50,7 @@ ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
 }
 
 void FormAddAccount::loadEntryPoints() {
-  foreach (const ServiceEntryPoint* entry_point, m_entryPoints) {
+  for (const ServiceEntryPoint* entry_point : m_entryPoints) {
     QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
 
     if (entry_point->isSingleInstanceService() && m_model->containsServiceRootFromEntryPoint(entry_point)) {

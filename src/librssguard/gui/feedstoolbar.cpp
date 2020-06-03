@@ -34,7 +34,7 @@ QList<QAction*> FeedsToolBar::getSpecificActions(const QStringList& actions) {
   QList<QAction*> spec_actions;
 
   // Iterate action names and add respectable actions into the toolbar.
-  foreach (const QString& action_name, actions) {
+  for (const QString& action_name : actions) {
     QAction* matching_action = findMatchingAction(action_name, available_actions);
 
     if (matching_action != nullptr) {

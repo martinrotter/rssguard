@@ -32,7 +32,7 @@ SettingsLocalization::~SettingsLocalization() {
 void SettingsLocalization::loadSettings() {
   onBeginLoadSettings();
 
-  foreach (const Language& language, qApp->localization()->installedLanguages()) {
+  for (const Language& language : qApp->localization()->installedLanguages()) {
     auto* item = new QTreeWidgetItem(m_ui->m_treeLanguages);
 
     item->setText(0, language.m_name);

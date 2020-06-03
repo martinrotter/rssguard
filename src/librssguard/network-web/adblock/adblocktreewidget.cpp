@@ -235,7 +235,7 @@ void AdBlockTreeWidget::refresh() {
   const QVector<AdBlockRule*>& allRules = m_subscription->allRules();
   int index = 0;
 
-  foreach (const AdBlockRule* rule, allRules) {
+  for (const AdBlockRule* rule : allRules) {
     auto* item = new QTreeWidgetItem(m_topItem);
 
     item->setText(0, rule->filter());

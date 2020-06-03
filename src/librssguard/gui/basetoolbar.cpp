@@ -25,7 +25,7 @@ void BaseBar::loadSavedActions() {
 }
 
 QAction* BaseBar::findMatchingAction(const QString& action, const QList<QAction*>& actions) const {
-  foreach (QAction* act, actions) {
+  for (QAction* act : actions) {
     if (act->objectName() == action) {
       return act;
     }

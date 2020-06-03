@@ -53,7 +53,6 @@ void Downloader::manipulateData(const QString& url,
                                 const QString& password) {
   QNetworkRequest request;
   QString non_const_url = url;
-
   QHashIterator<QByteArray, QByteArray> i(m_customHeaders);
 
   while (i.hasNext()) {
@@ -102,6 +101,7 @@ void Downloader::finished() {
   auto* reply = qobject_cast<QNetworkReply*>(sender());
 
   QNetworkAccessManager::Operation reply_operation = reply->operation();
+
   m_timer->stop();
 
   // In this phase, some part of downloading process is completed.
@@ -182,12 +182,11 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
   QString boundary = content_type.mid(content_type.indexOf(QL1S("boundary=")) + 9);
   QRegularExpression regex(QL1S("--") + boundary + QL1S("(--)?(\\r\\n)?"));
   QStringList list = QString::fromUtf8(data).split(regex, QString::SplitBehavior::SkipEmptyParts);
-
   QList<HttpResponse> parts;
 
   parts.reserve(list.size());
 
-  foreach (const QString& http_response_str, list) {
+  for (const QString& http_response_str : list) {
     // We separate headers and body.
     HttpResponse new_part;
     int start_of_http = http_response_str.indexOf(QL1S("HTTP/1.1"));
@@ -198,7 +197,7 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
                                             start_of_body - start_of_headers).replace(QRegularExpression(QSL("[\\n\\r]+")),
                                                                                       QSL("\n"));
 
-    foreach (const QString& header_line, headers.split(QL1C('\n'), QString::SplitBehavior::SkipEmptyParts)) {
+    for (const QString& header_line : headers.split(QL1C('\n'), QString::SplitBehavior::SkipEmptyParts)) {
       int index_colon = header_line.indexOf(QL1C(':'));
 
       if (index_colon > 0) {

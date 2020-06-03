@@ -162,7 +162,7 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
   QStringList trimmed_ids;
   QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
 
-  foreach (const QString& id, custom_ids) {
+  for (const QString& id : custom_ids) {
     QString simplified_id = regex_short_id.match(id).captured();
 
     trimmed_ids.append(QString("i=") + simplified_id);
@@ -230,7 +230,7 @@ void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importanc
   QStringList trimmed_ids;
   QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
 
-  foreach (const QString& id, custom_ids) {
+  for (const QString& id : custom_ids) {
     QString simplified_id = regex_short_id.match(id).captured();
 
     trimmed_ids.append(QString("i=") + simplified_id);
@@ -305,7 +305,7 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
 
   messages.reserve(json.count());
 
-  foreach (const QJsonValue& obj, json) {
+  for (const QJsonValue& obj : json) {
     auto message_obj = obj.toObject();
     Message message;
 
@@ -319,7 +319,7 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
     auto enclosures = message_obj["enclosure"].toArray();
     auto categories = message_obj["categories"].toArray();
 
-    foreach (const QJsonValue& alt, alternates) {
+    for (const QJsonValue& alt : alternates) {
       auto alt_obj = alt.toObject();
       QString mime = alt_obj["type"].toString();
       QString href = alt_obj["href"].toString();
@@ -332,7 +332,7 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
       }
     }
 
-    foreach (const QJsonValue& enc, enclosures) {
+    for (const QJsonValue& enc : enclosures) {
       auto enc_obj = enc.toObject();
       QString mime = enc_obj["type"].toString();
       QString href = enc_obj["href"].toString();
@@ -340,7 +340,7 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
       message.m_enclosures.append(Enclosure(href, mime));
     }
 
-    foreach (const QJsonValue& cat, categories) {
+    for (const QJsonValue& cat : categories) {
       QString category = cat.toString();
 
       if (category.contains(INOREADER_STATE_READ)) {
@@ -367,7 +367,7 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
   QMap<QString, RootItem*> cats;
   cats.insert(QString(), parent);
 
-  foreach (const QJsonValue& obj, json) {
+  for (const QJsonValue& obj : json) {
     auto label = obj.toObject();
     QString label_id = label["id"].toString();
 
@@ -388,7 +388,7 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
 
   json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
-  foreach (const QJsonValue& obj, json) {
+  for (const QJsonValue& obj : json) {
     auto subscription = obj.toObject();
     QString id = subscription["id"].toString();
     QString title = subscription["title"].toString();
@@ -396,7 +396,7 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
     QString parent_label;
     QJsonArray categories = subscription["categories"].toArray();
 
-    foreach (const QJsonValue& cat, categories) {
+    for (const QJsonValue& cat : categories) {
       QString potential_id = cat.toObject()["id"].toString();
 
       if (potential_id.contains(QSL("/label/"))) {

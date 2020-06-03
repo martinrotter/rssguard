@@ -63,7 +63,7 @@ bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& ri
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& indexes, bool deep) const {
   QModelIndexList mapped_indexes;
 
-  foreach (const QModelIndex& index, indexes) {
+  for (const QModelIndex& index : indexes) {
     if (deep) {
       // Construct new source index.
       mapped_indexes << mapFromSource(m_sourceModel->index(index.row(), index.column()));
@@ -180,7 +180,7 @@ void MessagesProxyModel::sort(int column, Qt::SortOrder order) {
 QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList& indexes) const {
   QModelIndexList source_indexes;
 
-  foreach (const QModelIndex& index, indexes) {
+  for (const QModelIndex& index : indexes) {
     source_indexes << mapToSource(index);
   }
 

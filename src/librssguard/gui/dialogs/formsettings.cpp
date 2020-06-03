@@ -56,7 +56,7 @@ void FormSettings::applySettings() {
   m_settings.checkSettings();
   QStringList panels_for_restart;
 
-  foreach (SettingsPanel* panel, m_panels) {
+  for (SettingsPanel* panel : m_panels) {
     if (panel->isDirty()) {
       panel->saveSettings();
     }
@@ -92,7 +92,7 @@ void FormSettings::applySettings() {
 void FormSettings::cancelSettings() {
   QStringList changed_panels;
 
-  foreach (SettingsPanel* panel, m_panels) {
+  for (SettingsPanel* panel : m_panels) {
     if (panel->isDirty()) {
       changed_panels.append(panel->title().toLower());
     }

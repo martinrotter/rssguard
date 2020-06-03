@@ -289,14 +289,14 @@ void GmailNetworkFactory::onAuthFailed() {
 bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) {
   QHash<QString, QString> headers;
 
-  foreach (const QJsonValue& header, json["payload"].toObject()["headers"].toArray()) {
+  for (const QJsonValue& header : json["payload"].toObject()["headers"].toArray()) {
     headers.insert(header.toObject()["name"].toString(), header.toObject()["value"].toString());
   }
 
   msg.m_isRead = true;
 
   // Assign correct main labels/states.
-  foreach (const QVariant& label, json["labelIds"].toArray().toVariantList()) {
+  for (const QVariant& label : json["labelIds"].toArray().toVariantList()) {
     QString lbl = label.toString();
 
     if (lbl == QL1S(GMAIL_SYSTEM_LABEL_UNREAD)) {
@@ -338,7 +338,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     parts.append(json["payload"].toObject());
   }
 
-  foreach (const QJsonValue& part, parts) {
+  for (const QJsonValue& part : parts) {
     QJsonObject part_obj = part.toObject();
     QJsonObject body = part_obj["body"].toObject();
     QString filename = part_obj["filename"].toString();
@@ -380,7 +380,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
 
   QHash<QString, Message> msgs;
 
-  foreach (const Message& msg, lite_messages) {
+  for (const Message& msg : lite_messages) {
     QHttpPart part;
 
     part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
@@ -413,7 +413,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
 
   if (res.first == QNetworkReply::NetworkError::NoError) {
     // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
-    foreach (const HttpResponse& part, output) {
+    for (const HttpResponse& part : output) {
       QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
       QString msg_id = msg_doc["id"].toString();
 
@@ -442,7 +442,7 @@ QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_j
   next_page_token = top_object["nextPageToken"].toString();
   messages.reserve(json_msgs.count());
 
-  foreach (const QJsonValue& obj, json_msgs) {
+  for (const QJsonValue& obj : json_msgs) {
     auto message_obj = obj.toObject();
     Message message;
 
@@ -463,7 +463,7 @@ QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_j
    QMap<QString, RootItem*> cats;
    cats.insert(QString(), parent);
 
-   foreach (const QJsonValue& obj, json) {
+   for (const QJsonValue& obj : json) {
     auto label = obj.toObject();
     QString label_id = label["id"].toString();
     QString label_name = label["name"].toString();
@@ -499,7 +499,7 @@ QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_j
 
    json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
-   foreach (const QJsonValue& obj, json) {
+   for (const QJsonValue& obj : json) {
     auto subscription = obj.toObject();
     QString id = subscription["id"].toString();
     QString title = subscription["title"].toString();
@@ -507,7 +507,7 @@ QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_j
     QString parent_label;
     QJsonArray categories = subscription["categories"].toArray();
 
-    foreach (const QJsonValue& cat, categories) {
+    for (const QJsonValue& cat : categories) {
       QString potential_id = cat.toObject()["id"].toString();
 
       if (potential_id.contains(QSL("/label/"))) {

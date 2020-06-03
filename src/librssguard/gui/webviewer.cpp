@@ -94,11 +94,11 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
 
-  foreach (const Message& message, messages) {
+  for (const Message& message : messages) {
     QString enclosures;
     QString enclosure_images;
 
-    foreach (const Enclosure& enclosure, message.m_enclosures) {
+    for (const Enclosure& enclosure : message.m_enclosures) {
       QString enc_url;
 
       if (!enclosure.m_url.contains(QRegularExpression(QSL("^(http|ftp|\\/)")))) {

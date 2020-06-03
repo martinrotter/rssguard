@@ -51,7 +51,7 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
                        << Subscription(QSL("Anti-Adblock Killer"),
                   QSL("https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer-filters.txt"));
 
-  foreach (const Subscription& subscription, m_knownSubscriptions) {
+  for (const Subscription& subscription : m_knownSubscriptions) {
     m_ui->m_cmbPresets->addItem(subscription.m_title);
   }
 

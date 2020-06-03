@@ -324,7 +324,7 @@ void FormFeedDetails::initialize() {
   const QList<QByteArray> encodings = QTextCodec::availableCodecs();
   QStringList encoded_encodings;
 
-  foreach (const QByteArray& encoding, encodings) {
+  for (const QByteArray& encoding : encodings) {
     encoded_encodings.append(encoding);
   }
 
@@ -383,7 +383,7 @@ void FormFeedDetails::loadCategories(const QList<Category*>& categories, RootIte
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
 
-  foreach (Category* category, categories) {
+  for (Category* category : categories) {
     m_ui->m_cmbParentCategory->addItem(category->icon(),
                                        category->title(),
                                        QVariant::fromValue((void*) category));

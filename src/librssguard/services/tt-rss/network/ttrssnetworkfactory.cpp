@@ -487,7 +487,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
 
     QVector<QPair<RootItem*, QJsonValue>> pairs;
 
-    foreach (const QJsonValue& item, items_to_process) {
+    for (const QJsonValue& item : items_to_process) {
       pairs.append(QPair<RootItem*, QJsonValue>(parent, item));
     }
 
@@ -503,7 +503,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           if (item_id == 0) {
             // This is "Uncategorized" category, all its feeds belong to top-level root.
             if (item.contains("items")) {
-              foreach (const QJsonValue& child_feed, item["items"].toArray()) {
+              for (const QJsonValue& child_feed : item["items"].toArray()) {
                 pairs.append(QPair<RootItem*, QJsonValue>(parent, child_feed));
               }
             }
@@ -516,7 +516,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             act_parent->appendChild(category);
 
             if (item.contains("items")) {
-              foreach (const QJsonValue& child, item["items"].toArray()) {
+              for (const QJsonValue& child : item["items"].toArray()) {
                 pairs.append(QPair<RootItem*, QJsonValue>(category, child));
               }
             }
@@ -564,7 +564,7 @@ TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() = default;
 QList<Message> TtRssGetHeadlinesResponse::messages() const {
   QList<Message> messages;
 
-  foreach (const QJsonValue& item, m_rawContent["content"].toArray()) {
+  for (const QJsonValue& item : m_rawContent["content"].toArray()) {
     QJsonObject mapped = item.toObject();
     Message message;
 
@@ -586,7 +586,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
 
     if (mapped.contains(QSL("attachments"))) {
       // Process enclosures.
-      foreach (const QJsonValue& attachment, mapped["attachments"].toArray()) {
+      for (const QJsonValue& attachment : mapped["attachments"].toArray()) {
         QJsonObject mapped_attachemnt = attachment.toObject();
         Enclosure enclosure;
 

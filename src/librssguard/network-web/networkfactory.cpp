@@ -142,7 +142,7 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
 QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& urls, int timeout, QIcon& output) {
   QNetworkReply::NetworkError network_result = QNetworkReply::UnknownNetworkError;
 
-  foreach (const QString& url, urls) {
+  for (const QString& url : urls) {
     const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(QUrl(url).host());
     QByteArray icon_data;
 
@@ -170,7 +170,7 @@ Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int
 
   QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
 
-  foreach (const auto& header, additional_headers) {
+  for (const auto& header : additional_headers) {
     if (!header.first.isEmpty()) {
       downloader->appendRawHeader(header.first, header.second);
     }
@@ -192,7 +192,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int ti
   // We need to quit event loop when the download finishes.
   QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
-  foreach (const auto& header, additional_headers) {
+  for (const auto& header : additional_headers) {
     if (!header.first.isEmpty()) {
       downloader.appendRawHeader(header.first, header.second);
     }
@@ -223,7 +223,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   // We need to quit event loop when the download finishes.
   QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
-  foreach (const auto& header, additional_headers) {
+  for (const auto& header : additional_headers) {
     if (!header.first.isEmpty()) {
       downloader.appendRawHeader(header.first, header.second);
     }

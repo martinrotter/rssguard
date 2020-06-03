@@ -207,7 +207,7 @@ void MessagesView::initializeContextMenu() {
 
   menu->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
-  foreach (const ExternalTool& tool, ExternalTool::toolsFromSettings()) {
+  for (const ExternalTool& tool : ExternalTool::toolsFromSettings()) {
     QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu);
 
     act_tool->setIcon(icon_provider.icon(tool.executable()));
@@ -325,7 +325,7 @@ void MessagesView::loadItem(RootItem* item) {
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {
-  foreach (const QModelIndex& index, selectionModel()->selectedRows()) {
+  for (const QModelIndex& index : selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                    .m_url
                    .replace(QRegularExpression("[\\t\\n]"), QString());
@@ -347,7 +347,7 @@ void MessagesView::openSelectedSourceMessagesExternally() {
 void MessagesView::openSelectedMessagesInternally() {
   QList<Message> messages;
 
-  foreach (const QModelIndex& index, selectionModel()->selectedRows()) {
+  for (const QModelIndex& index : selectionModel()->selectedRows()) {
     messages << m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
   }
 
@@ -467,7 +467,7 @@ void MessagesView::reselectIndexes(const QModelIndexList& indexes) {
   if (indexes.size() < RESELECT_MESSAGE_THRESSHOLD) {
     QItemSelection selection;
 
-    foreach (const QModelIndex& index, indexes) {
+    for (const QModelIndex& index : indexes) {
       selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
     }
 
@@ -539,7 +539,7 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
   if (sndr != nullptr) {
     auto tool = sndr->data().value<ExternalTool>();
 
-    foreach (const QModelIndex& index, selectionModel()->selectedRows()) {
+    for (const QModelIndex& index : selectionModel()->selectedRows()) {
       const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                            .m_url
                            .replace(QRegularExpression("[\\t\\n]"), QString());

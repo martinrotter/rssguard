@@ -61,10 +61,10 @@ void DiscoverFeedsButton::linkTriggered(QAction* action) {
 void DiscoverFeedsButton::fillMenu() {
   menu()->clear();
 
-  foreach (const ServiceRoot* root, qApp->feedReader()->feedsModel()->serviceRoots()) {
+  for (const ServiceRoot* root : qApp->feedReader()->feedsModel()->serviceRoots()) {
     QMenu* root_menu = menu()->addMenu(root->icon(), root->title());
 
-    foreach (const QString& url, m_addresses) {
+    for (const QString& url : m_addresses) {
       if (root->supportsFeedAdding()) {
         QAction* url_action = root_menu->addAction(root->icon(), url);
 

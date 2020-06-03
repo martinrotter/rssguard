@@ -255,7 +255,7 @@ void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {
 QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList& indexes) const {
   QModelIndexList source_indexes;
 
-  foreach (const QModelIndex& index, indexes) {
+  for (const QModelIndex& index : indexes) {
     source_indexes << mapToSource(index);
   }
 

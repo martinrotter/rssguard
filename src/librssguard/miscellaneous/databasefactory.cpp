@@ -222,7 +222,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 
       database.transaction();
 
-      foreach (const QString& statement, statements) {
+      for (const QString& statement : statements) {
         query_db.exec(statement);
 
         if (query_db.lastError().isValid()) {
@@ -258,7 +258,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
       qFatal("Cannot obtain list of table names from file-base SQLite database.");
     }
 
-    foreach (const QString& table, tables) {
+    for (const QString& table : tables) {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
     }
 
@@ -331,7 +331,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
 
       database.transaction();
 
-      foreach (const QString& statement, statements) {
+      for (const QString& statement : statements) {
         query_db.exec(statement);
 
         if (query_db.lastError().isValid()) {
@@ -409,7 +409,7 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(const QSqlDatabase& database, c
 
     const QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
 
-    foreach (const QString& statement, statements) {
+    for (const QString& statement : statements) {
       QSqlQuery query = database.exec(statement);
 
       if (query.lastError().isValid()) {
@@ -449,7 +449,7 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(const QSqlDatabase& database,
 
     QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
 
-    foreach (QString statement, statements) {
+    for (QString statement : statements) {
       QSqlQuery query = database.exec(statement.replace(APP_DB_NAME_PLACEHOLDER, db_name));
 
       if (query.lastError().isValid()) {
@@ -536,7 +536,7 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
     qFatal("Cannot obtain list of table names from file-base SQLite database.");
   }
 
-  foreach (const QString& table, tables) {
+  for (const QString& table : tables) {
     copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table));
     copy_contents.exec(QString(QSL("INSERT INTO storage.%1 SELECT * FROM main.%1;")).arg(table));
   }
@@ -660,7 +660,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
 
       database.transaction();
 
-      foreach (QString statement, statements) {
+      for (QString statement : statements) {
         // Assign real database name and run the query.
         query_db.exec(statement.replace(APP_DB_NAME_PLACEHOLDER, database_name));
 

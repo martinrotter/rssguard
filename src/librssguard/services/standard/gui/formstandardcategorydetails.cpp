@@ -222,7 +222,7 @@ void FormStandardCategoryDetails::loadCategories(const QList<Category*>& categor
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
 
-  foreach (Category* category, categories) {
+  for (Category* category : categories) {
     if (input_category != nullptr && (category == input_category || category->isChildOf(input_category))) {
       // This category cannot be selected as the new
       // parent for currently edited category, so

@@ -494,7 +494,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     return updated_messages;
   }
 
-  foreach (Message message, messages) {
+  for (Message message : messages) {
     // Check if messages contain relative URLs and if they do, then replace them.
     if (message.m_url.startsWith(QL1S("//"))) {
       message.m_url = QString(URI_SCHEME_HTTP) + message.m_url.mid(2);
@@ -695,7 +695,7 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
     QSL("DELETE FROM Categories WHERE account_id = :account_id;") <<
     QSL("DELETE FROM Accounts WHERE id = :account_id;");
 
-  foreach (const QString& q, queries) {
+  for (const QString& q : queries) {
     query.prepare(q);
     query.bindValue(QSL(":account_id"), account_id);
 
@@ -791,7 +791,7 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
                      "VALUES (:title, :icon, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
 
   // Iterate all children.
-  foreach (RootItem* child, tree_root->getSubTree()) {
+  for (RootItem* child : tree_root->getSubTree()) {
     if (child->kind() == RootItemKind::Category) {
       query_category.bindValue(QSL(":parent_id"), child->parent()->id());
       query_category.bindValue(QSL(":title"), child->title());

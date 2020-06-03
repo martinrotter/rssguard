@@ -175,7 +175,7 @@ QList<Skin> SkinFactory::installedSkins() const {
                                                                  QDir::NoSymLinks |
                                                                  QDir::Readable));
 
-  foreach (const QString& base_directory, skin_directories) {
+  for (const QString& base_directory : skin_directories) {
     const Skin skin_info = skinInfo(base_directory, &skin_load_ok);
 
     if (skin_load_ok) {

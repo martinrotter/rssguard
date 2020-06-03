@@ -63,7 +63,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
     QDomElement active_element = elements_to_use.pop();
     RootItem* active_item = items_to_process.pop();
 
-    foreach (RootItem* child_item, active_item->childItems()) {
+    for (RootItem* child_item : active_item->childItems()) {
       if (!isItemChecked(child_item)) {
         continue;
       }
@@ -261,7 +261,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 }
 
 bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray& result) {
-  foreach (const Feed* const feed, m_rootItem->getSubTreeFeeds()) {
+  for (const Feed* const feed : m_rootItem->getSubTreeFeeds()) {
     result += feed->url() + QL1S("\n");
   }
 
@@ -279,7 +279,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 
   QList<QByteArray> urls = data.split('\n');
 
-  foreach (const QByteArray& url, urls) {
+  for (const QByteArray& url : urls) {
     if (!url.isEmpty()) {
       QPair<StandardFeed*, QNetworkReply::NetworkError> guessed;
 

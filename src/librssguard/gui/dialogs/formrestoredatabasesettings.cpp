@@ -90,14 +90,14 @@ void FormRestoreDatabaseSettings::selectFolder(QString folder) {
   m_ui.m_listDatabase->clear();
   m_ui.m_listSettings->clear();
 
-  foreach (const QFileInfo& database_file, available_databases) {
+  for (const QFileInfo& database_file : available_databases) {
     QListWidgetItem* database_item = new QListWidgetItem(database_file.fileName(), m_ui.m_listDatabase);
 
     database_item->setData(Qt::UserRole, database_file.absoluteFilePath());
     database_item->setToolTip(QDir::toNativeSeparators(database_file.absoluteFilePath()));
   }
 
-  foreach (const QFileInfo& settings_file, available_settings) {
+  for (const QFileInfo& settings_file : available_settings) {
     QListWidgetItem* settings_item = new QListWidgetItem(settings_file.fileName(), m_ui.m_listSettings);
 
     settings_item->setData(Qt::UserRole, settings_file.absoluteFilePath());

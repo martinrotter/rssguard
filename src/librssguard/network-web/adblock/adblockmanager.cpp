@@ -206,7 +206,7 @@ bool AdBlockManager::removeSubscription(AdBlockSubscription* subscription) {
 }
 
 AdBlockCustomList* AdBlockManager::customList() const {
-  foreach (AdBlockSubscription* subscription, m_subscriptions) {
+  for (AdBlockSubscription* subscription : m_subscriptions) {
     auto* list = qobject_cast<AdBlockCustomList*>(subscription);
 
     if (list != nullptr) {
@@ -243,7 +243,7 @@ void AdBlockManager::load() {
     QDir().mkpath(storedListsPath());
   }
 
-  foreach (const QString& fileName, adblockDir.entryList(QStringList("*.txt"), QDir::Files)) {
+  for (const QString& fileName : adblockDir.entryList(QStringList("*.txt"), QDir::Files)) {
     if (fileName == ADBLOCK_CUSTOMLIST_NAME) {
       continue;
     }
@@ -279,7 +279,7 @@ void AdBlockManager::load() {
   m_subscriptions.append(customList);
 
   // Load all subscriptions.
-  foreach (AdBlockSubscription* subscription, m_subscriptions) {
+  for (AdBlockSubscription* subscription : m_subscriptions) {
     subscription->loadSubscription(m_disabledRules);
     connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
   }
@@ -300,7 +300,7 @@ void AdBlockManager::updateMatcher() {
 }
 
 void AdBlockManager::updateAllSubscriptions() {
-  foreach (AdBlockSubscription* subscription, m_subscriptions) {
+  for (AdBlockSubscription* subscription : m_subscriptions) {
     subscription->updateSubscription();
   }
 
@@ -312,7 +312,7 @@ void AdBlockManager::save() {
     return;
   }
 
-  foreach (AdBlockSubscription* subscription, m_subscriptions) {
+  for (AdBlockSubscription* subscription : m_subscriptions) {
     subscription->saveSubscription();
   }
 
@@ -351,7 +351,7 @@ QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
 }
 
 AdBlockSubscription* AdBlockManager::subscriptionByName(const QString& name) const {
-  foreach (AdBlockSubscription* subscription, m_subscriptions) {
+  for (AdBlockSubscription* subscription : m_subscriptions) {
     if (subscription->title() == name) {
       return subscription;
     }

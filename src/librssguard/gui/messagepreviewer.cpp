@@ -229,7 +229,7 @@ QString MessagePreviewer::prepareHtmlForMessage(const Message& message) {
     html += QString("[url] <a href=\"%1\">%1</a><br/>").arg(message.m_url);
   }
 
-  foreach (const Enclosure& enc, message.m_enclosures) {
+  for (const Enclosure& enc : message.m_enclosures) {
     QString enc_url;
 
     if (!enc.m_url.contains(QRegularExpression(QSL("^(http|ftp|\\/)")))) {

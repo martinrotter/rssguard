@@ -88,7 +88,7 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
 
   // Iterate action names and add respectable
   // actions into the toolbar.
-  foreach (const QString& action_name, actions) {
+  for (const QString& action_name : actions) {
     QAction* matching_action = findMatchingAction(action_name, available_actions);
     QAction* action_to_add;
     QWidget* widget_to_add;
@@ -162,7 +162,7 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
 }
 
 void StatusBar::loadSpecificActions(const QList<QAction*>& actions, bool initial_load) {
-  foreach (QAction* act, this->actions()) {
+  for (QAction* act : this->actions()) {
     QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
 
     if (widget != nullptr) {
@@ -179,7 +179,7 @@ void StatusBar::loadSpecificActions(const QList<QAction*>& actions, bool initial
 
   clear();
 
-  foreach (QAction* act, actions) {
+  for (QAction* act : actions) {
     QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
 
     addAction(act);

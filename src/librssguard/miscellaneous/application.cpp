@@ -341,7 +341,7 @@ void Application::processExecutionMessage(const QString& message) {
     quit();
   }
   else {
-    foreach (const QString& msg, messages) {
+    for (const QString& msg : messages) {
       if (msg == APP_IS_RUNNING) {
         showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
         mainForm()->display();

@@ -116,7 +116,7 @@ void OwnCloudServiceRoot::saveAllCachedData(bool async) {
     if (!messages.isEmpty()) {
       QStringList feed_ids, guid_hashes;
 
-      foreach (const Message& msg, messages) {
+      for (const Message& msg : messages) {
         feed_ids.append(msg.m_feedId);
         guid_hashes.append(msg.m_customHash);
       }

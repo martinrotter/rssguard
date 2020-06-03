@@ -11,7 +11,7 @@ Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeT
 QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
   QList<Enclosure> enclosures;
 
-  foreach (const QString& single_enclosure, enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR, QString::SkipEmptyParts)) {
+  for (const QString& single_enclosure : enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR, QString::SkipEmptyParts)) {
     Enclosure enclosure;
 
     if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {
@@ -33,7 +33,7 @@ QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosure
 QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures) {
   QStringList enclosures_str;
 
-  foreach (const Enclosure& enclosure, enclosures) {
+  for (const Enclosure& enclosure : enclosures) {
     if (enclosure.m_mimeType.isEmpty()) {
       enclosures_str.append(enclosure.m_url.toLocal8Bit().toBase64());
     }

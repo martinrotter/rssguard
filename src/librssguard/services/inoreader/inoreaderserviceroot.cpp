@@ -192,7 +192,7 @@ void InoreaderServiceRoot::saveAllCachedData(bool async) {
     if (!messages.isEmpty()) {
       QStringList custom_ids;
 
-      foreach (const Message& msg, messages) {
+      for (const Message& msg : messages) {
         custom_ids.append(msg.m_customId);
       }
 

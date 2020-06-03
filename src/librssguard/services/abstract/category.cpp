@@ -37,7 +37,7 @@ Category::~Category() = default;
 void Category::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
 
-  foreach (RootItem* child, getSubTree()) {
+  for (RootItem* child : getSubTree()) {
     if (child->kind() == RootItemKind::Feed) {
       feeds.append(child->toFeed());
     }
@@ -60,7 +60,7 @@ void Category::updateCounts(bool including_total_count) {
                                                                                        &ok);
 
   if (ok) {
-    foreach (Feed* feed, feeds) {
+    for (Feed* feed : feeds) {
       if (counts.contains(feed->customId())) {
         feed->setCountOfUnreadMessages(counts.value(feed->customId()).first);
 

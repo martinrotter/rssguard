@@ -99,7 +99,7 @@ void FeedsView::saveExpandStates(RootItem* item) {
   QList<RootItem*> items = item->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot);
 
   // Iterate all categories and save their expand statuses.
-  foreach (const RootItem* item, items) {
+  for (const RootItem* item : items) {
     const QString setting_name = item->hashCode();
     QModelIndex source_index = sourceModel()->indexForItem(item);
     QModelIndex visible_index = model()->mapFromSource(source_index);
@@ -117,7 +117,7 @@ void FeedsView::loadAllExpandStates() {
   expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot));
 
   // Iterate all categories and save their expand statuses.
-  foreach (const RootItem* item, expandable_items) {
+  for (const RootItem* item : expandable_items) {
     const QString setting_name = item->hashCode();
 
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
@@ -677,7 +677,7 @@ void FeedsView::validateItemAfterDragDrop(const QModelIndex& source_index) {
 }
 
 void FeedsView::onItemExpandRequested(const QList<RootItem*>& items, bool exp) {
-  foreach (const RootItem* item, items) {
+  for (const RootItem* item : items) {
     QModelIndex source_index = m_sourceModel->indexForItem(item);
     QModelIndex proxy_index = m_proxyModel->mapFromSource(source_index);
 

@@ -245,14 +245,14 @@ bool AdBlockRule::matchDomain(const QString& domain) const {
   }
 
   if (m_blockedDomains.isEmpty()) {
-    foreach (const QString& d, m_allowedDomains) {
+    for (const QString& d : m_allowedDomains) {
       if (isMatchingDomain(domain, d)) {
         return true;
       }
     }
   }
   else if (m_allowedDomains.isEmpty()) {
-    foreach (const QString& d, m_blockedDomains) {
+    for (const QString& d : m_blockedDomains) {
       if (isMatchingDomain(domain, d)) {
         return false;
       }
@@ -261,13 +261,13 @@ bool AdBlockRule::matchDomain(const QString& domain) const {
     return true;
   }
   else {
-    foreach (const QString& d, m_blockedDomains) {
+    for (const QString& d : m_blockedDomains) {
       if (isMatchingDomain(domain, d)) {
         return false;
       }
     }
 
-    foreach (const QString& d, m_allowedDomains) {
+    for (const QString& d : m_allowedDomains) {
       if (isMatchingDomain(domain, d)) {
         return true;
       }
@@ -373,7 +373,7 @@ void AdBlockRule::parseFilter() {
     const QStringList options = parsedLine.mid(optionsIndex + 1).split(QL1C(','), QString::SkipEmptyParts);
     int handledOptions = 0;
 
-    foreach (const QString& option, options) {
+    for (const QString& option : options) {
       if (option.startsWith(QL1S("domain="))) {
         parseDomains(option.mid(7), QL1C('|'));
         ++handledOptions;
@@ -499,7 +499,7 @@ void AdBlockRule::parseFilter() {
 void AdBlockRule::parseDomains(const QString& domains, const QChar& separator) {
   QStringList domainsList = domains.split(separator, QString::SkipEmptyParts);
 
-  foreach (const QString domain, domainsList) {
+  for (const QString domain : domainsList) {
     if (domain.isEmpty()) {
       continue;
     }
@@ -621,7 +621,7 @@ QList<QStringMatcher> AdBlockRule::createStringMatchers(const QStringList& filte
   QList<QStringMatcher> matchers;
   matchers.reserve(filters.size());
 
-  foreach (const QString& filter, filters) {
+  for (const QString& filter : filters) {
     matchers.append(QStringMatcher(filter, m_caseSensitivity));
   }
 

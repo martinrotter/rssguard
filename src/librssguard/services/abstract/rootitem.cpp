@@ -67,7 +67,7 @@ bool RootItem::deleteViaGui() {
 bool RootItem::markAsReadUnread(ReadStatus status) {
   bool result = true;
 
-  foreach (RootItem* child, m_childItems) {
+  for (RootItem* child : m_childItems) {
     result &= child->markAsReadUnread(status);
   }
 
@@ -77,7 +77,7 @@ bool RootItem::markAsReadUnread(ReadStatus status) {
 QList<Message> RootItem::undeletedMessages() const {
   QList<Message> messages;
 
-  foreach (RootItem* child, m_childItems) {
+  for (RootItem* child : m_childItems) {
     messages.append(child->undeletedMessages());
   }
 
@@ -87,7 +87,7 @@ QList<Message> RootItem::undeletedMessages() const {
 bool RootItem::cleanMessages(bool clear_only_read) {
   bool result = true;
 
-  foreach (RootItem* child, m_childItems) {
+  for (RootItem* child : m_childItems) {
     if (child->kind() != RootItemKind::Bin) {
       result &= child->cleanMessages(clear_only_read);
     }
@@ -97,7 +97,7 @@ bool RootItem::cleanMessages(bool clear_only_read) {
 }
 
 void RootItem::updateCounts(bool including_total_count) {
-  foreach (RootItem* child, m_childItems) {
+  for (RootItem* child : m_childItems) {
     child->updateCounts(including_total_count);
   }
 }
@@ -212,7 +212,7 @@ bool RootItem::performDragDropChange(RootItem* target_item) {
 int RootItem::countOfAllMessages() const {
   int total_count = 0;
 
-  foreach (RootItem* child_item, m_childItems) {
+  for (RootItem* child_item : m_childItems) {
     total_count += child_item->countOfAllMessages();
   }
 
@@ -460,7 +460,7 @@ void RootItem::setKeepOnTop(bool keep_on_top) {
 int RootItem::countOfUnreadMessages() const {
   int total_count = 0;
 
-  foreach (RootItem* child_item, m_childItems) {
+  for (RootItem* child_item : m_childItems) {
     total_count += child_item->countOfUnreadMessages();
   }
 

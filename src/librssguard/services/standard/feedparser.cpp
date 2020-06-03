@@ -92,7 +92,7 @@ QStringList FeedParser::textsFromPath(const QDomElement& element, const QString&
     QList<QDomElement> next_elements;
     QString next_local_name = paths.takeFirst();
 
-    foreach (const QDomElement& elem, current_elements) {
+    for (const QDomElement& elem : current_elements) {
       QDomNodeList elements = elem.elementsByTagNameNS(namespace_uri, next_local_name);
 
       for (int i = 0; i < elements.size(); i++) {
@@ -112,7 +112,7 @@ QStringList FeedParser::textsFromPath(const QDomElement& element, const QString&
   }
 
   if (!current_elements.isEmpty()) {
-    foreach (const QDomElement& elem, current_elements) {
+    for (const QDomElement& elem : current_elements) {
       result.append(elem.text());
     }
   }

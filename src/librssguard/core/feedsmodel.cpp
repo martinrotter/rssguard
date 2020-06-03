@@ -25,7 +25,7 @@
 
 #include <algorithm>
 
-using RootItemPtr = RootItem *;
+using RootItemPtr = RootItem*;
 
 FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_itemHeight(-1) {
   setObjectName(QSL("FeedsModel"));
@@ -61,7 +61,7 @@ QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
   QByteArray encoded_data;
   QDataStream stream(&encoded_data, QIODevice::WriteOnly);
 
-  foreach (const QModelIndex& index, indexes) {
+  for (const QModelIndex& index : indexes) {
     if (index.column() != 0) {
       continue;
     }
@@ -293,7 +293,7 @@ void FeedsModel::reassignNodeToNewParent(RootItem* original_node, RootItem* new_
 QList<ServiceRoot*>FeedsModel::serviceRoots() const {
   QList<ServiceRoot*>roots;
 
-  foreach (RootItem* root, m_rootItem->childItems()) {
+  for (RootItem* root : m_rootItem->childItems()) {
     if (root->kind() == RootItemKind::ServiceRoot) {
       roots.append(root->toServiceRoot());
     }
@@ -303,7 +303,7 @@ QList<ServiceRoot*>FeedsModel::serviceRoots() const {
 }
 
 bool FeedsModel::containsServiceRootFromEntryPoint(const ServiceEntryPoint* point) const {
-  foreach (const ServiceRoot* root, serviceRoots()) {
+  for (const ServiceRoot* root : serviceRoots()) {
     if (root->code() == point->code()) {
       return true;
     }
@@ -313,7 +313,7 @@ bool FeedsModel::containsServiceRootFromEntryPoint(const ServiceEntryPoint* poin
 }
 
 StandardServiceRoot* FeedsModel::standardServiceRoot() const {
-  foreach (ServiceRoot* root, serviceRoots()) {
+  for (ServiceRoot* root : serviceRoots()) {
     StandardServiceRoot* std_service_root;
 
     if ((std_service_root = dynamic_cast<StandardServiceRoot*>(root)) != nullptr) {
@@ -327,7 +327,7 @@ StandardServiceRoot* FeedsModel::standardServiceRoot() const {
 QList<Feed*>FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   QList<Feed*>feeds_for_update;
 
-  foreach (Feed* feed, m_rootItem->getSubTreeFeeds()) {
+  for (Feed* feed : m_rootItem->getSubTreeFeeds()) {
     switch (feed->autoUpdateType()) {
       case Feed::DontAutoUpdate:
 
@@ -412,7 +412,7 @@ QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
 }
 
 bool FeedsModel::hasAnyFeedNewMessages() const {
-  foreach (const Feed* feed, m_rootItem->getSubTreeFeeds()) {
+  for (const Feed* feed : m_rootItem->getSubTreeFeeds()) {
     if (feed->status() == Feed::NewMessages) {
       return true;
     }
@@ -456,7 +456,7 @@ void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
   else {
     qDebug("There is request to reload feed model, reloading the %d items individually.", items.size());
 
-    foreach (RootItem* item, items) {
+    for (RootItem* item : items) {
       reloadChangedItem(item);
     }
   }
@@ -508,7 +508,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
 bool FeedsModel::restoreAllBins() {
   bool result = true;
 
-  foreach (ServiceRoot* root, serviceRoots()) {
+  for (ServiceRoot* root : serviceRoots()) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
@@ -522,7 +522,7 @@ bool FeedsModel::restoreAllBins() {
 bool FeedsModel::emptyAllBins() {
   bool result = true;
 
-  foreach (ServiceRoot* root, serviceRoots()) {
+  for (ServiceRoot* root : serviceRoots()) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
@@ -535,11 +535,11 @@ bool FeedsModel::emptyAllBins() {
 
 void FeedsModel::loadActivatedServiceAccounts() {
   // Iterate all globally available feed "service plugins".
-  foreach (const ServiceEntryPoint* entry_point, qApp->feedReader()->feedServices()) {
+  for (const ServiceEntryPoint* entry_point : qApp->feedReader()->feedServices()) {
     // Load all stored root nodes from the entry point and add those to the model.
     QList<ServiceRoot*>roots = entry_point->initializeSubtree();
 
-    foreach (ServiceRoot* root, roots) {
+    for (ServiceRoot* root : roots) {
       addServiceAccount(root, false);
     }
   }
@@ -554,7 +554,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
 }
 
 void FeedsModel::stopServiceAccounts() {
-  foreach (ServiceRoot* account, serviceRoots()) {
+  for (ServiceRoot* account : serviceRoots()) {
     account->stop();
   }
 }

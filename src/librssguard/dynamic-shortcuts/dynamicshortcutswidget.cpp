@@ -25,7 +25,7 @@ bool DynamicShortcutsWidget::areShortcutsUnique() const {
   QList<QKeySequence> all_shortcuts;
 
   // Obtain all shortcuts.
-  foreach (const ActionBinding& binding, m_actionBindings) {
+  for (const ActionBinding& binding : m_actionBindings) {
     const QKeySequence new_shortcut = binding.second->shortcut();
 
     if (!new_shortcut.isEmpty() && all_shortcuts.contains(new_shortcut)) {
@@ -41,7 +41,7 @@ bool DynamicShortcutsWidget::areShortcutsUnique() const {
 }
 
 void DynamicShortcutsWidget::updateShortcuts() {
-  foreach (const ActionBinding& binding, m_actionBindings) {
+  for (const ActionBinding& binding : m_actionBindings) {
     binding.first->setShortcut(binding.second->shortcut());
   }
 }
@@ -60,7 +60,7 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
   // This will be setup in FormMain::allActions().
   // Then here I will process actions into categories.
 
-  foreach (QAction* action, actions) {
+  for (QAction* action : actions) {
     // Create shortcut catcher for this action and set default shortcut.
     auto* catcher = new ShortcutCatcher(this);
 

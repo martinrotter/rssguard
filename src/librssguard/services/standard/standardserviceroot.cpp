@@ -143,7 +143,7 @@ void StandardServiceRoot::loadFromDatabase() {
 }
 
 void StandardServiceRoot::checkArgumentsForFeedAdding() {
-  foreach (const QString& arg, qApp->arguments().mid(1)) {
+  for (const QString& arg : qApp->arguments().mid(1)) {
     checkArgumentForFeedAdding(arg);
   }
 }
@@ -195,7 +195,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
     RootItem* target_parent = original_parents.pop();
     RootItem* source_parent = new_parents.pop();
 
-    foreach (RootItem* source_item, source_parent->childItems()) {
+    for (RootItem* source_item : source_parent->childItems()) {
       if (!model->isItemChecked(source_item)) {
         // We can skip this item, because it is not checked and should not be imported.
         // NOTE: All descendants are thus skipped too.
@@ -225,7 +225,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
           // add descendants to it.
           RootItem* existing_category = nullptr;
 
-          foreach (RootItem* child, target_parent->childItems()) {
+          for (RootItem* child : target_parent->childItems()) {
             if (child->kind() == RootItemKind::Category && child->title() == new_category_title) {
               existing_category = child;
             }

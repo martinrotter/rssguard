@@ -334,7 +334,7 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
     final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/unread/multiple";
   }
 
-  foreach (const QString& id, custom_ids) {
+  for (const QString& id : custom_ids) {
     ids.append(QJsonValue(id.toInt()));
   }
 
@@ -527,7 +527,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   cats.insert(QSL("0"), parent);
 
   // Process categories first, then process feeds.
-  foreach (const QJsonValue& cat, QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray()) {
+  for (const QJsonValue& cat : QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray()) {
     QJsonObject item = cat.toObject();
     auto* category = new Category();
 
@@ -540,7 +540,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   }
 
   // We have categories added, now add all feeds.
-  foreach (const QJsonValue& fed, QJsonDocument::fromJson(m_contentFeeds.toUtf8()).object()["feeds"].toArray()) {
+  for (const QJsonValue& fed : QJsonDocument::fromJson(m_contentFeeds.toUtf8()).object()["feeds"].toArray()) {
     QJsonObject item = fed.toObject();
     auto* feed = new OwnCloudFeed();
 
@@ -580,7 +580,7 @@ OwnCloudGetMessagesResponse::~OwnCloudGetMessagesResponse() = default;
 QList<Message>OwnCloudGetMessagesResponse::messages() const {
   QList<Message>msgs;
 
-  foreach (const QJsonValue& message, m_rawContent["items"].toArray()) {
+  for (const QJsonValue& message : m_rawContent["items"].toArray()) {
     QJsonObject message_map = message.toObject();
     Message msg;
 

@@ -45,7 +45,7 @@ QList<QAction*> MessagesToolBar::getSpecificActions(const QStringList& actions) 
   QList<QAction*> spec_actions;
 
   // Iterate action names and add respectable actions into the toolbar.
-  foreach (const QString& action_name, actions) {
+  for (const QString& action_name : actions) {
     auto* matching_action = findMatchingAction(action_name, available_actions);
 
     if (matching_action != nullptr) {
@@ -90,7 +90,7 @@ void MessagesToolBar::loadSpecificActions(const QList<QAction*>& actions, bool i
 
   clear();
 
-  foreach (QAction* act, actions) {
+  for (QAction* act : actions) {
     addAction(act);
   }
 }

@@ -288,7 +288,7 @@ void FormStandardImportExport::importFeeds() {
 void FormStandardImportExport::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
   m_ui->m_cmbRootNode->addItem(root_item->icon(), root_item->title(), QVariant::fromValue((void*) root_item));
 
-  foreach (Category* category, categories) {
+  for (Category* category : categories) {
     m_ui->m_cmbRootNode->addItem(category->icon(), category->title(), QVariant::fromValue((void*) category));
   }
 }

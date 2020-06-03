@@ -134,8 +134,8 @@ void AdBlockMatcher::update() {
   QHash<QString, const AdBlockRule*> cssRulesHash;
   QVector<const AdBlockRule*> exceptionCssRules;
 
-  foreach (AdBlockSubscription* subscription, m_manager->subscriptions()) {
-    foreach (const AdBlockRule* rule, subscription->allRules()) {
+  for (AdBlockSubscription* subscription : m_manager->subscriptions()) {
+    for (const AdBlockRule* rule : subscription->allRules()) {
       // Don't add internally disabled rules to cache.
       if (rule->isInternalDisabled()) {
         continue;
@@ -174,7 +174,7 @@ void AdBlockMatcher::update() {
     }
   }
 
-  foreach (const AdBlockRule* rule, exceptionCssRules) {
+  for (const AdBlockRule* rule : exceptionCssRules) {
     const AdBlockRule* originalRule = cssRulesHash.value(rule->cssSelector());
 
     // If we don't have this selector, the exception does nothing.

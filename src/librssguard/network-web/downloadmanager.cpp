@@ -443,7 +443,7 @@ DownloadManager::~DownloadManager() {
 int DownloadManager::activeDownloads() const {
   int count = 0;
 
-  foreach (const DownloadItem* download, m_downloads) {
+  for (const DownloadItem* download : m_downloads) {
     if (download->downloading()) {
       count++;
     }
@@ -456,7 +456,7 @@ int DownloadManager::downloadProgress() const {
   qint64 bytes_total = 0;
   qint64 bytes_received = 0;
 
-  foreach (const DownloadItem* download, m_downloads) {
+  for (const DownloadItem* download : m_downloads) {
     if (download->downloading()) {
       bytes_total += download->bytesTotal();
       bytes_received += download->bytesReceived();
@@ -787,7 +787,7 @@ QMimeData* DownloadModel::mimeData(const QModelIndexList& indexes) const {
   auto* mimeData = new QMimeData();
   QList<QUrl> urls;
 
-  foreach (const QModelIndex& index, indexes) {
+  for (const QModelIndex& index : indexes) {
     if (!index.isValid()) {
       continue;
     }

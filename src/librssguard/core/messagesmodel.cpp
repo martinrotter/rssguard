@@ -419,7 +419,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
   QList<QPair<Message, RootItem::Importance>> message_states;
 
   // Obtain IDs of all desired messages.
-  foreach (const QModelIndex& message, messages) {
+  for (const QModelIndex& message : messages) {
     const Message msg = messageAt(message.row());
 
     RootItem::Importance message_importance = messageImportance((message.row()));
@@ -454,7 +454,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
-  foreach (const QModelIndex& message, messages) {
+  for (const QModelIndex& message : messages) {
     const Message msg = messageAt(message.row());
 
     msgs.append(msg);
@@ -497,7 +497,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
   QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
-  foreach (const QModelIndex& message, messages) {
+  for (const QModelIndex& message : messages) {
     Message msg = messageAt(message.row());
 
     msgs.append(msg);
@@ -525,7 +525,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
-  foreach (const QModelIndex& message, messages) {
+  for (const QModelIndex& message : messages) {
     const Message msg = messageAt(message.row());
 
     msgs.append(msg);

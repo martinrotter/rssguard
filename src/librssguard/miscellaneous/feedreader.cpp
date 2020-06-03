@@ -197,7 +197,7 @@ void FeedReader::executeNextAutoUpdate() {
 }
 
 void FeedReader::checkServicesForAsyncOperations() {
-  foreach (ServiceRoot* service, m_feedsModel->serviceRoots()) {
+  for (ServiceRoot* service : m_feedsModel->serviceRoots()) {
     auto cache = dynamic_cast<CacheForServiceRoot*>(service);
 
     if (cache != nullptr) {

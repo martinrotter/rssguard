@@ -29,7 +29,7 @@ int TextFactory::stringWidth(const QString& string, const QFontMetrics& metrics)
   const QStringList lines = string.split(QL1C('\n'));
   int width = 0;
 
-  foreach (const QString& line, lines) {
+  for (const QString& line : lines) {
 #if QT_VERSION >= 0x050B00 // Qt >= 5.11.0
     int line_width = metrics.horizontalAdvance(line);
 #else
@@ -63,7 +63,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
                            << QSL("-hhmm") << QSL("+hh") << QSL("-hh");
 
   // Iterate over patterns and check if input date/time matches the pattern.
-  foreach (const QString& pattern, date_patterns) {
+  for (const QString& pattern : date_patterns) {
     dt = locale.toDateTime(input_date.left(pattern.size()), pattern);
 
     if (dt.isValid()) {
@@ -74,7 +74,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
       if (input_date.size() >= TIMEZONE_OFFSET_LIMIT) {
         QString offset_sanitized = input_date.mid(pattern.size()).replace(QL1S(" "), QString());
 
-        foreach (const QString& pattern_t, timezone_offset_patterns) {
+        for (const QString& pattern_t : timezone_offset_patterns) {
           time_zone_offset = QTime::fromString(offset_sanitized.left(pattern_t.size()), pattern_t);
 
           if (time_zone_offset.isValid()) {

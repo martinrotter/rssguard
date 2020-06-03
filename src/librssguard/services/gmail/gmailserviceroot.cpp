@@ -65,7 +65,7 @@ void GmailServiceRoot::loadFromDatabase() {
   assembleCategories(categories);
   assembleFeeds(feeds);
 
-  foreach (RootItem* feed, childItems()) {
+  for (RootItem* feed : childItems()) {
     if (feed->customId() == QL1S("INBOX")) {
       feed->setKeepOnTop(true);
     }
@@ -214,7 +214,7 @@ void GmailServiceRoot::saveAllCachedData(bool async) {
     if (!messages.isEmpty()) {
       QStringList custom_ids;
 
-      foreach (const Message& msg, messages) {
+      for (const Message& msg : messages) {
         custom_ids.append(msg.m_customId);
       }
 

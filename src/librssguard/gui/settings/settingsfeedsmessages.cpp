@@ -85,7 +85,7 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
   const QDateTime current_dt = QDateTime::currentDateTime();
   const QLocale current_locale = qApp->localization()->loadedLocale();
 
-  foreach (const Language& lang, qApp->localization()->installedLanguages()) {
+  for (const Language& lang : qApp->localization()->installedLanguages()) {
     QLocale locale(lang.m_code);
 
     best_formats << locale.dateTimeFormat(QLocale::LongFormat)
@@ -95,7 +95,7 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
 
   best_formats.removeDuplicates();
 
-  foreach (const QString& format, best_formats) {
+  for (const QString& format : best_formats) {
     m_ui->m_cmbMessagesDateTimeFormat->addItem(current_locale.toString(current_dt, format), format);
   }
 }

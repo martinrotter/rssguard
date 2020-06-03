@@ -242,7 +242,7 @@ void FormMain::updateAddItemMenu() {
   // NOTE: Clear here deletes items from memory but only those OWNED by the menu.
   m_ui->m_menuAddItem->clear();
 
-  foreach (ServiceRoot* activated_root, qApp->feedReader()->feedsModel()->serviceRoots()) {
+  for (ServiceRoot* activated_root : qApp->feedReader()->feedsModel()->serviceRoots()) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
 
     root_menu->setIcon(activated_root->icon());
@@ -293,7 +293,7 @@ void FormMain::updateAddItemMenu() {
 void FormMain::updateRecycleBinMenu() {
   m_ui->m_menuRecycleBin->clear();
 
-  foreach (const ServiceRoot* activated_root, qApp->feedReader()->feedsModel()->serviceRoots()) {
+  for (const ServiceRoot* activated_root : qApp->feedReader()->feedsModel()->serviceRoots()) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuRecycleBin);
 
     root_menu->setIcon(activated_root->icon());
@@ -335,7 +335,7 @@ void FormMain::updateRecycleBinMenu() {
 void FormMain::updateAccountsMenu() {
   m_ui->m_menuAccounts->clear();
 
-  foreach (ServiceRoot* activated_root, qApp->feedReader()->feedsModel()->serviceRoots()) {
+  for (ServiceRoot* activated_root : qApp->feedReader()->feedsModel()->serviceRoots()) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuAccounts);
 
     root_menu->setIcon(activated_root->icon());

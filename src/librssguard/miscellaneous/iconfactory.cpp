@@ -117,11 +117,11 @@ QStringList IconFactory::installedIconThemes() const {
   filters_index.append("index.theme");
   icon_themes_paths.removeDuplicates();
 
-  foreach (const QString& icon_path, icon_themes_paths) {
+  for (const QString& icon_path : icon_themes_paths) {
     const QDir icon_dir(icon_path);
 
     // Iterate all icon themes in this directory.
-    foreach (const QFileInfo& icon_theme_path, icon_dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot |
+    for (const QFileInfo& icon_theme_path : icon_dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot |
                                                                       QDir::Readable | QDir::CaseSensitive |
                                                                       QDir::NoSymLinks,
                                                                       QDir::Time)) {
