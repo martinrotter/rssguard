@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>651</width>
-    <height>478</height>
+    <height>497</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -34,30 +34,16 @@
       </attribute>
       <layout class="QFormLayout" name="formLayout_2">
        <item row="0" column="0">
-        <widget class="QCheckBox" name="m_checkUpdateAllFeedsOnStartup">
-         <property name="text">
-          <string>Update all feed on application startup</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QCheckBox" name="m_checkAutoUpdateNotification">
-         <property name="text">
-          <string>Enable &quot;auto-update started&quot; notification</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QCheckBox" name="m_checkAutoUpdate">
+          <widget class="QCheckBox" name="m_checkUpdateAllFeedsOnStartup">
            <property name="text">
-            <string>Auto-update all feeds every</string>
+            <string>Update all feed on application startup with initial delay of</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
+          <widget class="TimeSpinBox" name="m_spinStartupUpdateDelay">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -77,6 +63,20 @@
          </item>
         </layout>
        </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_checkAutoUpdateNotification">
+         <property name="text">
+          <string>Enable &quot;auto-update started&quot; notification</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
+         <property name="text">
+          <string>Only auto-update when application is unfocused</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="0">
         <widget class="QGroupBox" name="groupBox_6">
          <property name="title">
@@ -87,6 +87,9 @@
            <widget class="QLabel" name="m_lblFeedListFont">
             <property name="text">
              <string>Font preview</string>
+            </property>
+            <property name="buddy">
+             <cstring>m_btnChangeFeedListFont</cstring>
             </property>
            </widget>
           </item>
@@ -181,6 +184,36 @@
          </item>
         </layout>
        </item>
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QCheckBox" name="m_checkAutoUpdate">
+           <property name="text">
+            <string>Auto-update all feeds every</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>250</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="accelerated">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
        <item row="8" column="0" colspan="2">
         <widget class="QLabel" name="label_9">
          <property name="font">
@@ -199,12 +232,18 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
-         <property name="text">
-          <string>Only auto-update when application is unfocused</string>
+       <item row="9" column="0" colspan="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-        </widget>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -311,6 +350,9 @@
               <property name="text">
                <string>Font preview</string>
               </property>
+              <property name="buddy">
+               <cstring>m_btnChangeMessageListFont</cstring>
+              </property>
              </widget>
             </item>
             <item>
@@ -334,6 +376,9 @@
               <property name="text">
                <string>Font preview</string>
               </property>
+              <property name="buddy">
+               <cstring>m_btnChangeMessagesFont</cstring>
+              </property>
              </widget>
             </item>
             <item>
@@ -347,6 +392,19 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -364,9 +422,11 @@
  <tabstops>
   <tabstop>m_tabFeedsMessages</tabstop>
   <tabstop>m_checkUpdateAllFeedsOnStartup</tabstop>
+  <tabstop>m_spinStartupUpdateDelay</tabstop>
   <tabstop>m_checkAutoUpdateNotification</tabstop>
   <tabstop>m_checkAutoUpdate</tabstop>
   <tabstop>m_spinAutoUpdateInterval</tabstop>
+  <tabstop>m_checkAutoUpdateOnlyUnfocused</tabstop>
   <tabstop>m_btnChangeFeedListFont</tabstop>
   <tabstop>m_spinFeedUpdateTimeout</tabstop>
   <tabstop>m_spinHeightRowsFeeds</tabstop>

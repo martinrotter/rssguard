@@ -76,6 +76,10 @@ namespace Feeds {
 
   VALUE(bool) FeedsUpdateOnStartupDef;
 
+  KEY FeedsUpdateStartupDelay;
+
+  VALUE(double) FeedsUpdateStartupDelayDef;
+
   KEY ShowOnlyUnreadFeeds;
 
   VALUE(bool) ShowOnlyUnreadFeedsDef;

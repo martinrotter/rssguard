@@ -57,15 +57,11 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     int autoUpdateInitialInterval() const;
 
   public slots:
-
-    // Schedules all feeds from all accounts for update.
     void updateAllFeeds();
     void stopRunningFeedUpdate();
     void quit();
 
   private slots:
-
-    // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();
     void checkServicesForAsyncOperations();
     void asyncCacheSaveFinished();

@@ -55,6 +55,10 @@ DKEY Feeds::FeedsUpdateOnStartup = "feeds_update_on_startup";
 
 DVALUE(bool) Feeds::FeedsUpdateOnStartupDef = false;
 
+DKEY Feeds::FeedsUpdateStartupDelay = "feeds_update_on_startup_delay";
+
+DVALUE(double) Feeds::FeedsUpdateStartupDelayDef = STARTUP_UPDATE_DELAY;
+
 DKEY Feeds::ShowOnlyUnreadFeeds = "show_only_unread_feeds";
 
 DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef = false;
@@ -446,7 +450,6 @@ SettingsProperties Settings::determineProperties() {
   // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
   // settings was not initialized before.
 #if defined (Q_OS_LINUX) || defined (Q_OS_ANDROID) || defined (Q_OS_MACOS)
-
   // DO NOT use portable settings for Linux, it is really not used on that platform.
   const bool will_we_use_portable_settings = false;
 #else

@@ -35,7 +35,9 @@ FeedReader::FeedReader(QObject* parent)
 
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
-    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
+    QTimer::singleShot(qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay)).toDouble() * 1000,
+                       this,
+                       &FeedReader::updateAllFeeds);
   }
 }
 

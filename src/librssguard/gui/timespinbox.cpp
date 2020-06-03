@@ -5,10 +5,10 @@
 #include <QStringList>
 
 TimeSpinBox::TimeSpinBox(QWidget* parent) : QDoubleSpinBox(parent) {
-  setMinimum(3.0);
   setAccelerated(true);
-  setDecimals(0);
+  setMinimum(3.0);
   setMaximum(10000000.0);
+  setMode(TimeSpinBox::Mode::HoursMinutes);
 }
 
 double TimeSpinBox::valueFromText(const QString& text) const {
@@ -44,13 +44,26 @@ double TimeSpinBox::valueFromText(const QString& text) const {
 }
 
 QString TimeSpinBox::textFromValue(double val) const {
-  int minutes_total = int(val);
-  int minutes_val = minutes_total % 60;
-  int hours_val = (minutes_total - minutes_val) / 60;
-  QString hours = tr("%n hour(s)", "", hours_val);
-  QString minutes = tr("%n minute(s)", "", minutes_val);
+  if (mode() == TimeSpinBox::Mode::HoursMinutes) {
+    // "val" is number of minutes.
+    int minutes_total = int(val);
+    int minutes_val = minutes_total % 60;
+    int hours_val = (minutes_total - minutes_val) / 60;
+    QString hours = tr("%n hour(s)", "", hours_val);
+    QString minutes = tr("%n minute(s)", "", minutes_val);
 
-  return hours + tr(" and ") + minutes;
+    return hours + tr(" and ") + minutes;
+  }
+  else {
+    // "val" is number of seconds.
+    int seconds_val = int(val);
+    int minutes_total = seconds_val / 60;
+    int seconds_total = seconds_val - (minutes_total * 60);
+    QString seconds = tr("%n seconds(s)", "", seconds_total);
+    QString minutes = tr("%n minute(s)", "", minutes_total);
+
+    return minutes + tr(" and ") + seconds;
+  }
 }
 
 void TimeSpinBox::fixup(QString& input) const {
@@ -65,4 +78,14 @@ void TimeSpinBox::fixup(QString& input) const {
 QValidator::State TimeSpinBox::validate(QString& input, int& pos) const {
   Q_UNUSED(pos)
   return (valueFromText(input) != -1.0) ? QValidator::Acceptable : QValidator::Intermediate;
+}
+
+TimeSpinBox::Mode TimeSpinBox::mode() const {
+  return m_mode;
+}
+
+void TimeSpinBox::setMode(const TimeSpinBox::Mode& mode) {
+  m_mode = mode;
+
+  setValue(value());
 }
