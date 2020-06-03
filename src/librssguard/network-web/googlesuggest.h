@@ -33,6 +33,7 @@
 
 #include <QObject>
 
+#include <QListWidget>
 #include <QNetworkReply>
 
 #include "network-web/downloader.h"
@@ -40,8 +41,6 @@
 class LocationLineEdit;
 
 class QTimer;
-
-class QListWidget;
 
 class GoogleSuggest : public QObject {
   Q_OBJECT
