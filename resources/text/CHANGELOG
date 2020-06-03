@@ -1,3 +1,11 @@
+3.6.3
+—————
+
+Fixed/changed:
+▪ Fixed some compiler warnings.
+▪ Fixed application crash when doing some network operations when application exits.
+▪ Some localizations now have more precise country codes. Localizations were also synced.
+
 3.6.2
 —————
 
