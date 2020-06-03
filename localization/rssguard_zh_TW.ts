@@ -2097,11 +2097,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>標示所選消息成已讀(&amp;R)</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>標示所選消息成未讀(&amp;U)</translation>
     </message>
 </context>
 <context>
@@ -2637,7 +2637,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>無法定位安裝檔。請到專案網站手選下載新安裝檔。</translation>
     </message>
 </context>
 <context>
@@ -3544,7 +3544,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>傳給可執行檔的參元</translation>
     </message>
 </context>
 <context>
@@ -3989,7 +3989,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>雙點鼠左鍵</translation>
     </message>
 </context>
 <context>

@@ -2100,11 +2100,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Žymėti pasirinktas žinutes kaip &amp;skaitytas</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Žymėti pasirinktas žinutes kaip &amp;neskaitytas</translation>
     </message>
 </context>
 <context>
@@ -2640,7 +2640,7 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta naršyti į įdiegimo failą. Rankiniu būdu atsisiųskite naują įdiegimo failą iš projekto svetainės.</translation>
     </message>
 </context>
 <context>
@@ -3553,7 +3553,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>Vykdomajam perduoti parametrai</translation>
     </message>
 </context>
 <context>
@@ -3997,7 +3997,7 @@ Vilkaduobės:
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Dvikarčiu kairiojo pelės mygtuko nuspaudimu</translation>
     </message>
 </context>
 <context>

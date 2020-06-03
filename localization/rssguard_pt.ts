@@ -2098,11 +2098,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Marcar mensagens selecionadas como &amp;lidas</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Marcar mensagens selecionadas como &amp;não lidas</translation>
     </message>
 </context>
 <context>
@@ -2638,7 +2638,7 @@ Você pode instalá-lo agora.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível navegar até o arquivo de instalação. Baixe os novos arquivos de instalação manualmente no site do projeto.</translation>
     </message>
 </context>
 <context>
@@ -3547,7 +3547,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>Parâmetros passados ao executável</translation>
     </message>
 </context>
 <context>
@@ -3991,7 +3991,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Duplo clique do botão esquerdo do mouse</translation>
     </message>
 </context>
 <context>

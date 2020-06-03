@@ -167,7 +167,6 @@ void Feed::run() {
                      << QThread::currentThreadId() << "\'.";
 
   bool error_during_obtaining = false;
-
   QList<Message> msgs = obtainNewMessages(&error_during_obtaining);
 
   qDebug().nospace() << "Downloaded " << msgs.size() << " messages for feed ID "

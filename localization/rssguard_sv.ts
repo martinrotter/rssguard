@@ -2098,11 +2098,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Märk markerade meddelanden som &amp;lästa</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Märk markerade meddelanden som &amp;olästa</translation>
     </message>
 </context>
 <context>
@@ -2637,7 +2637,7 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte navigera till installationsfilen. Ladda ner ny installationsfil manuellt, från projektets webbplats.</translation>
     </message>
 </context>
 <context>
@@ -3546,7 +3546,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>Parametrar skickade till startfilen</translation>
     </message>
 </context>
 <context>
@@ -3991,7 +3991,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Dubbelklick på vänster musknapp</translation>
     </message>
 </context>
 <context>
