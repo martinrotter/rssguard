@@ -38,7 +38,7 @@
          <item>
           <widget class="QCheckBox" name="m_checkUpdateAllFeedsOnStartup">
            <property name="text">
-            <string>Update all feed on application startup with initial delay of</string>
+            <string>Update all feeds on application startup with initial delay of</string>
            </property>
           </widget>
          </item>

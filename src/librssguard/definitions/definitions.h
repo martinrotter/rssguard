@@ -52,7 +52,7 @@
 #define MIN_CATEGORY_NAME_LENGTH              1
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
 #define AUTO_UPDATE_INTERVAL                  60000
-#define STARTUP_UPDATE_DELAY                  3.0 // In seconds.
+#define STARTUP_UPDATE_DELAY                  15.0 // In seconds.
 #define TIMEZONE_OFFSET_LIMIT                 6
 #define CHANGE_EVENT_DELAY                    250
 #define FLAG_ICON_SUBFOLDER                   "flags"
