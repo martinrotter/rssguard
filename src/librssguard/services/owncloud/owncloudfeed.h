@@ -24,8 +24,6 @@ class OwnCloudFeed : public Feed {
     bool removeItself();
 
     OwnCloudServiceRoot* serviceRoot() const;
-
-  private:
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 

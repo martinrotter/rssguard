@@ -19,7 +19,6 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_url(QString()), m_status(Normal), m_autoUpdateType(DefaultAutoUpdate),
   m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL) {
   setKind(RootItemKind::Feed);
-  setAutoDelete(false);
 }
 
 Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
@@ -43,7 +42,6 @@ Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
 
 Feed::Feed(const Feed& other) : RootItem(other) {
   setKind(RootItemKind::Feed);
-  setAutoDelete(false);
 
   setCountOfAllMessages(other.countOfAllMessages());
   setCountOfUnreadMessages(other.countOfUnreadMessages());
@@ -159,37 +157,6 @@ void Feed::updateCounts(bool including_total_count) {
   }
 
   setCountOfUnreadMessages(DatabaseQueries::getMessageCountsForFeed(database, customId(), account_id, false));
-}
-
-void Feed::run() {
-  qDebug().nospace() << "Downloading new messages for feed ID "
-                     << customId() << " URL: " << url() << " title: " << title() << " in thread: \'"
-                     << QThread::currentThreadId() << "\'.";
-
-  bool error_during_obtaining = false;
-  QList<Message> msgs = obtainNewMessages(&error_during_obtaining);
-
-  qDebug().nospace() << "Downloaded " << msgs.size() << " messages for feed ID "
-                     << customId() << " URL: " << url() << " title: " << title() << " in thread: \'"
-                     << QThread::currentThreadId() << "\'.";
-
-  // Now, do some general operations on messages (tweak encoding etc.).
-  for (auto& msg : msgs) {
-    // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
-    msg.m_contents = QUrl::fromPercentEncoding(msg.m_contents.toUtf8());
-    msg.m_author = msg.m_author.toUtf8();
-
-    // Sanitize title. Remove newlines etc.
-    msg.m_title = QUrl::fromPercentEncoding(msg.m_title.toUtf8())
-
-                  // Replace all continuous white space.
-                  .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
-
-                  // Remove all newlines and leading white space.
-                  .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
-  }
-
-  emit messagesObtained(msgs, error_during_obtaining);
 }
 
 bool Feed::cleanMessages(bool clean_read_only) {

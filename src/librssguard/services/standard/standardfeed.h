@@ -67,6 +67,8 @@ class StandardFeed : public Feed {
 
     QNetworkReply::NetworkError networkError() const;
 
+    QList<Message> obtainNewMessages(bool* error_during_obtaining);
+
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
@@ -81,9 +83,6 @@ class StandardFeed : public Feed {
 
   public slots:
     void fetchMetadataForItself();
-
-  private:
-    QList<Message> obtainNewMessages(bool* error_during_obtaining);
 
   private:
     bool m_passwordProtected{};

@@ -13,8 +13,6 @@ class InoreaderFeed : public Feed {
     explicit InoreaderFeed(const QSqlRecord& record);
 
     InoreaderServiceRoot* serviceRoot() const;
-
-  private:
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 

@@ -10,7 +10,9 @@
 #include "core/message.h"
 
 class Feed;
+
 class QThreadPool;
+
 class QMutex;
 
 // Represents results of batch feed updates.
@@ -37,41 +39,22 @@ class FeedDownloader : public QObject {
   public:
 
     // Constructors and destructors.
-    explicit FeedDownloader(QObject* parent = 0);
+    explicit FeedDownloader();
     virtual ~FeedDownloader();
 
     bool isUpdateRunning() const;
 
   public slots:
-
-    // Performs update of all feeds from the "feeds" parameter.
-    // New messages are downloaded for each feed and they
-    // are stored persistently in the database.
-    // Appropriate signals are emitted.
     void updateFeeds(const QList<Feed*>& feeds);
-
-    // Stops running update.
     void stopRunningUpdate();
 
-  private slots:
-    void oneFeedUpdateFinished(const QList<Message>& messages, bool error_during_obtaining);
-
   signals:
-
-    // Emitted if feed updates started.
     void updateStarted();
-
-    // Emitted if all items from update queue are
-    // processed.
     void updateFinished(FeedDownloadResults updated_feeds);
-
-    // Emitted if any item is processed.
-    // "Current" number indicates count of processed feeds
-    // and "total" number indicates total number of feeds
-    // which were in the initial queue.
     void updateProgress(const Feed* feed, int current, int total);
 
   private:
+    void updateOneFeed(Feed* feed);
     void updateAvailableFeeds();
     void finalizeUpdate();
 
@@ -80,7 +63,6 @@ class FeedDownloader : public QObject {
     QThreadPool* m_threadPool;
     FeedDownloadResults m_results;
     int m_feedsUpdated;
-    int m_feedsUpdating;
     int m_feedsOriginalCount;
 };
 

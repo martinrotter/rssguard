@@ -452,13 +452,6 @@ void Application::onAboutToQuit() {
   system()->removeTrolltechJunkRegistryKeys();
 #endif
 
-  qApp->feedReader()->quit();
-  database()->saveDatabase();
-
-  if (mainForm() != nullptr) {
-    mainForm()->saveSize();
-  }
-
   if (locked_safely) {
     // Application obtained permission to close in a safe way.
     qDebug("Close lock was obtained safely.");
@@ -470,6 +463,13 @@ void Application::onAboutToQuit() {
     // Request for write lock timed-out. This means
     // that some critical action can be processed right now.
     qDebug("Close lock timed-out.");
+  }
+
+  qApp->feedReader()->quit();
+  database()->saveDatabase();
+
+  if (mainForm() != nullptr) {
+    mainForm()->saveSize();
   }
 
   // Now, we can check if application should just quit or restart itself.

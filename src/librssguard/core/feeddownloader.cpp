@@ -7,18 +7,15 @@
 #include "services/abstract/feed.h"
 
 #include <QDebug>
-#include <QMessageBox>
-#include <QMessageLogger>
 #include <QMutexLocker>
+#include <QRegularExpression>
 #include <QString>
 #include <QThread>
-#include <QThreadPool>
+#include <QUrl>
 
-FeedDownloader::FeedDownloader(QObject* parent)
-  : QObject(parent), m_mutex(new QMutex()), m_threadPool(new QThreadPool(this)),
-  m_feedsUpdated(0), m_feedsUpdating(0), m_feedsOriginalCount(0) {
+FeedDownloader::FeedDownloader()
+  : QObject(), m_mutex(new QMutex()), m_feedsUpdated(0), m_feedsOriginalCount(0) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
-  m_threadPool->setMaxThreadCount(2);
 }
 
 FeedDownloader::~FeedDownloader() {
@@ -29,11 +26,11 @@ FeedDownloader::~FeedDownloader() {
 }
 
 bool FeedDownloader::isUpdateRunning() const {
-  return !m_feeds.isEmpty() || m_feedsUpdating > 0;
+  return !m_feeds.isEmpty();
 }
 
 void FeedDownloader::updateAvailableFeeds() {
-  foreach (const Feed* feed, m_feeds) {
+  for (const Feed* feed : m_feeds) {
     auto* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
     if (cache != nullptr) {
@@ -43,22 +40,7 @@ void FeedDownloader::updateAvailableFeeds() {
   }
 
   while (!m_feeds.isEmpty()) {
-    connect(m_feeds.first(),
-            &Feed::messagesObtained,
-            this,
-            &FeedDownloader::oneFeedUpdateFinished,
-            Qt::ConnectionType(Qt::UniqueConnection | Qt::AutoConnection));
-
-    if (m_threadPool->tryStart(m_feeds.first())) {
-      m_feeds.removeFirst();
-      m_feedsUpdating++;
-    }
-    else {
-      qCritical("User wanted to update some feeds but all working threads are occupied.");
-
-      // We want to start update of some feeds but all working threads are occupied.
-      break;
-    }
+    updateOneFeed(m_feeds.takeFirst());
   }
 }
 
@@ -67,45 +49,64 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 
   if (feeds.isEmpty()) {
     qDebug("No feeds to update in worker thread, aborting update.");
-    finalizeUpdate();
   }
   else {
     qDebug().nospace() << "Starting feed updates from worker in thread: \'" << QThread::currentThreadId() << "\'.";
     m_feeds = feeds;
     m_feedsOriginalCount = m_feeds.size();
     m_results.clear();
-    m_feedsUpdated = m_feedsUpdating = 0;
+    m_feedsUpdated = 0;
 
     // Job starts now.
     emit updateStarted();
 
     updateAvailableFeeds();
   }
+
+  finalizeUpdate();
 }
 
 void FeedDownloader::stopRunningUpdate() {
-  m_threadPool->clear();
   m_feeds.clear();
+  m_feedsOriginalCount = m_feedsUpdated = 0;
 }
 
-void FeedDownloader::oneFeedUpdateFinished(const QList<Message>& messages, bool error_during_obtaining) {
-  QMutexLocker locker(m_mutex);
+void FeedDownloader::updateOneFeed(Feed* feed) {
+  qDebug().nospace() << "Downloading new messages for feed ID "
+                     << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
+                     << QThread::currentThreadId() << "\'.";
+
+  bool error_during_obtaining = false;
+  QList<Message> msgs = feed->obtainNewMessages(&error_during_obtaining);
+
+  qDebug().nospace() << "Downloaded " << msgs.size() << " messages for feed ID "
+                     << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
+                     << QThread::currentThreadId() << "\'.";
+
+  // Now, do some general operations on messages (tweak encoding etc.).
+  for (auto& msg : msgs) {
+    // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
+    msg.m_contents = QUrl::fromPercentEncoding(msg.m_contents.toUtf8());
+    msg.m_author = msg.m_author.toUtf8();
+
+    // Sanitize title. Remove newlines etc.
+    msg.m_title = QUrl::fromPercentEncoding(msg.m_title.toUtf8())
+
+                  // Replace all continuous white space.
+                  .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
+
+                  // Remove all newlines and leading white space.
+                  .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
+  }
 
   m_feedsUpdated++;
-  m_feedsUpdating--;
-  Feed* feed = qobject_cast<Feed*>(sender());
-
-  disconnect(feed, &Feed::messagesObtained, this, &FeedDownloader::oneFeedUpdateFinished);
-
-  // Now, we check if there are any feeds we would like to update too.
-  updateAvailableFeeds();
 
   // Now make sure, that messages are actually stored to SQL in a locked state.
   qDebug().nospace() << "Saving messages of feed ID "
                      << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  int updated_messages = feed->updateMessages(messages, error_during_obtaining);
+  int updated_messages = feed->updateMessages(msgs, error_during_obtaining);
 
   qDebug("%d messages for feed %s stored in DB.", updated_messages, qPrintable(feed->customId()));
 
@@ -115,10 +116,6 @@ void FeedDownloader::oneFeedUpdateFinished(const QList<Message>& messages, bool 
 
   qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).", m_feedsUpdated, m_feedsOriginalCount, feed->id());
   emit updateProgress(feed, m_feedsUpdated, m_feedsOriginalCount);
-
-  if (m_feeds.isEmpty() && m_feedsUpdating <= 0) {
-    finalizeUpdate();
-  }
 }
 
 void FeedDownloader::finalizeUpdate() {

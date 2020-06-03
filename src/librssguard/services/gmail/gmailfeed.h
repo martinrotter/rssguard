@@ -14,8 +14,6 @@ class GmailFeed : public Feed {
     explicit GmailFeed(const QSqlRecord& record);
 
     GmailServiceRoot* serviceRoot() const;
-
-  private:
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 

@@ -11,11 +11,18 @@
 #include <QFutureWatcher>
 
 class FeedsModel;
+
 class MessagesModel;
+
 class MessagesProxyModel;
+
 class FeedsProxyModel;
+
 class ServiceEntryPoint;
+
 class QTimer;
+
+class QThread;
 
 class RSSGUARD_DLLSPEC FeedReader : public QObject {
   Q_OBJECT
@@ -70,7 +77,6 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
 
   private:
     QList<ServiceEntryPoint*> m_feedServices;
-
     FeedsModel* m_feedsModel;
     FeedsProxyModel* m_feedsProxyModel;
     MessagesModel* m_messagesModel;
@@ -82,6 +88,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     bool m_globalAutoUpdateOnlyUnfocused{};
     int m_globalAutoUpdateInitialInterval{};
     int m_globalAutoUpdateRemainingInterval{};
+    QThread* m_feedDownloaderThread;
     FeedDownloader* m_feedDownloader;
 };
 

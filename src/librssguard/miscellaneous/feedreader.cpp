@@ -61,25 +61,33 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(tr("Cannot update all items"),
                          tr("You cannot update all items because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
+                         QSystemTrayIcon::MessageIcon::Warning, qApp->mainFormWidget(), true);
     return;
   }
 
   if (m_feedDownloader == nullptr) {
     qDebug("Creating FeedDownloader singleton.");
 
+    m_feedDownloaderThread = new QThread();
     m_feedDownloader = new FeedDownloader();
 
     // Downloader setup.
     qRegisterMetaType<QList<Feed*>>("QList<Feed*>");
 
+    m_feedDownloader->moveToThread(m_feedDownloaderThread);
+
+    connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloaderThread, &QThread::deleteLater);
+    connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloader, &FeedDownloader::deleteLater);
     connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::feedUpdatesFinished);
     connect(m_feedDownloader, &FeedDownloader::updateProgress, this, &FeedReader::feedUpdatesProgress);
     connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
     connect(m_feedDownloader, &FeedDownloader::updateFinished, qApp->feedUpdateLock(), &Mutex::unlock);
+
+    m_feedDownloaderThread->start();
   }
 
-  QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds", Q_ARG(QList<Feed*>, feeds));
+  QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds",
+                            Qt::ConnectionType::QueuedConnection, Q_ARG(QList<Feed*>, feeds));
 }
 
 void FeedReader::updateAutoUpdateStatus() {
@@ -123,8 +131,6 @@ void FeedReader::updateAllFeeds() {
 void FeedReader::stopRunningFeedUpdate() {
   if (m_feedDownloader != nullptr) {
     m_feedDownloader->stopRunningUpdate();
-
-    //QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate");
   }
 }
 
@@ -173,6 +179,7 @@ void FeedReader::executeNextAutoUpdate() {
   // should be updated in this pass.
   QList<Feed*> feeds_for_update = m_feedsModel->feedsForScheduledUpdate(m_globalAutoUpdateEnabled &&
                                                                         m_globalAutoUpdateRemainingInterval == 0);
+
   qApp->feedUpdateLock()->unlock();
 
   if (!feeds_for_update.isEmpty()) {
@@ -224,12 +231,9 @@ void FeedReader::quit() {
       connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
       loop.exec();
     }
-  }
 
-  // Close workers.
-  if (m_feedDownloader != nullptr) {
-    qDebug("Feed downloader exists. Deleting it from memory.");
-    m_feedDownloader->deleteLater();
+    // Both thread and downloader are auto-deleted when worker thread exits.
+    m_feedDownloaderThread->quit();
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {

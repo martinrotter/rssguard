@@ -7,11 +7,10 @@
 
 #include "core/message.h"
 
-#include <QRunnable>
 #include <QVariant>
 
 // Base class for "feed" nodes.
-class Feed : public RootItem, public QRunnable {
+class Feed : public RootItem {
   Q_OBJECT
 
   public:
@@ -68,11 +67,10 @@ class Feed : public RootItem, public QRunnable {
     QString url() const;
     void setUrl(const QString& url);
 
-    // Runs update in thread (thread pooled).
-    void run();
-
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clean_read_only);
+
+    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining) = 0;
 
   public slots:
     void updateCounts(bool including_total_count);
@@ -81,14 +79,6 @@ class Feed : public RootItem, public QRunnable {
   protected:
     QString getAutoUpdateStatusDescription() const;
     QString getStatusDescription() const;
-
-  signals:
-    void messagesObtained(QList<Message> messages, bool error_during_obtaining);
-
-  private:
-
-    // Performs synchronous obtaining of new messages for this feed.
-    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining) = 0;
 
   private:
     QString m_url;

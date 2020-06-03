@@ -27,7 +27,6 @@ class TtRssFeed : public Feed {
     bool editItself(TtRssFeed* new_feed_data);
     bool removeItself();
 
-  private:
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 
