@@ -42,14 +42,18 @@ class DatabaseQueries {
     static int getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool including_total_counts, bool* ok = nullptr);
 
     // Get messages (for newspaper view for example).
-    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id, bool* ok = nullptr);
+    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db,
+                                                      const QString& feed_custom_id,
+                                                      int account_id,
+                                                      bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Custom ID accumulators.
     static QStringList customIdsOfMessagesFromAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id, bool* ok = nullptr);
+    static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
+                                                   bool* ok = nullptr);
 
     // Common accounts methods.
     static int updateMessages(QSqlDatabase db, const QList<Message>& messages, const QString& feed_custom_id,
@@ -122,11 +126,12 @@ class DatabaseQueries {
     static bool deleteTtRssAccount(const QSqlDatabase& db, int account_id);
     static bool overwriteTtRssAccount(const QSqlDatabase& db, const QString& username, const QString& password,
                                       bool auth_protected, const QString& auth_username, const QString& auth_password,
-                                      const QString& url, bool force_server_side_feed_update, int account_id);
+                                      const QString& url, bool force_server_side_feed_update,
+                                      bool download_only_unread_messages, int account_id);
     static bool createTtRssAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
                                    const QString& password, bool auth_protected, const QString& auth_username,
                                    const QString& auth_password, const QString& url,
-                                   bool force_server_side_feed_update);
+                                   bool force_server_side_feed_update, bool download_only_unread_messages);
     static Assignment getTtRssFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
   private:

@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '12');
+INSERT INTO Information VALUES (1, 'schema_version', '13');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     PRIMARY KEY,
@@ -20,14 +20,15 @@ CREATE TABLE IF NOT EXISTS Accounts (
 );
 -- !
 CREATE TABLE IF NOT EXISTS TtRssAccounts (
-  id              INTEGER,
-  username        TEXT        NOT NULL,
-  password        TEXT,
-  auth_protected  INTEGER(1)  NOT NULL DEFAULT 0 CHECK (auth_protected >= 0 AND auth_protected <= 1),
-  auth_username   TEXT,
-  auth_password   TEXT,
-  url             TEXT        NOT NULL,
-  force_update    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (force_update >= 0 AND force_update <= 1),
+  id                    INTEGER,
+  username              TEXT        NOT NULL,
+  password              TEXT,
+  auth_protected        INTEGER(1)  NOT NULL DEFAULT 0 CHECK (auth_protected >= 0 AND auth_protected <= 1),
+  auth_username         TEXT,
+  auth_password         TEXT,
+  url                   TEXT        NOT NULL,
+  force_update          INTEGER(1)  NOT NULL DEFAULT 0 CHECK (force_update >= 0 AND force_update <= 1),
+  update_only_unread    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (update_only_unread >= 0 AND update_only_unread <= 1),
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );

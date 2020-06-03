@@ -35,13 +35,13 @@
 
 #include <QNetworkReply>
 
+#include "network-web/downloader.h"
+
 class LocationLineEdit;
 
 class QTimer;
 
 class QListWidget;
-
-class Downloader;
 
 class GoogleSuggest : public QObject {
   Q_OBJECT

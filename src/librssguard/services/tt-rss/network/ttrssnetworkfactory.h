@@ -11,6 +11,7 @@
 #include <QString>
 
 class RootItem;
+
 class TtRssFeed;
 
 class TtRssResponse {
@@ -123,6 +124,9 @@ class TtRssNetworkFactory {
     bool forceServerSideUpdate() const;
     void setForceServerSideUpdate(bool force_server_side_update);
 
+    bool downloadOnlyUnreadMessages() const;
+    void setDownloadOnlyUnreadMessages(bool download_only_unread_messages);
+
     // Metadata.
     QDateTime lastLoginTime() const;
     QNetworkReply::NetworkError lastError() const;
@@ -141,7 +145,7 @@ class TtRssNetworkFactory {
     // Gets headlines (messages) from the server.
     TtRssGetHeadlinesResponse getHeadlines(int feed_id, int limit, int skip,
                                            bool show_content, bool include_attachments,
-                                           bool sanitize);
+                                           bool sanitize, bool unread_only);
 
     TtRssUpdateArticleResponse updateArticles(const QStringList& ids, UpdateArticle::OperatingField field,
                                               UpdateArticle::Mode mode, bool async = true);
@@ -151,14 +155,13 @@ class TtRssNetworkFactory {
 
     TtRssUnsubscribeFeedResponse unsubscribeFeed(int feed_id);
 
-    //TtRssGetConfigResponse getConfig();
-
   private:
     QString m_bareUrl;
     QString m_fullUrl;
     QString m_username;
     QString m_password;
     bool m_forceServerSideUpdate;
+    bool m_downloadOnlyUnreadMessages;
     bool m_authIsUsed;
     QString m_authUsername;
     QString m_authPassword;

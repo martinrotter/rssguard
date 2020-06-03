@@ -78,8 +78,8 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   json["password"] = m_password;
 
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -112,8 +112,8 @@ TtRssResponse TtRssNetworkFactory::logout() {
     json["op"] = QSL("logout");
     json["sid"] = m_sessionId;
     QByteArray result_raw;
-
     QList<QPair<QByteArray, QByteArray>> headers;
+
     headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
     headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -152,8 +152,8 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   json["include_empty"] = true;
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -185,7 +185,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
 
 TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int limit, int skip,
                                                             bool show_content, bool include_attachments,
-                                                            bool sanitize) {
+                                                            bool sanitize, bool unread_only) {
   QJsonObject json;
 
   json["op"] = QSL("getHeadlines");
@@ -194,13 +194,14 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
   json["force_update"] = m_forceServerSideUpdate;
   json["limit"] = limit;
   json["skip"] = skip;
+  json["view_mode"] = unread_only ? QSL("unread") : QSL("all_articles");
   json["show_content"] = show_content;
   json["include_attachments"] = include_attachments;
   json["sanitize"] = sanitize;
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -246,8 +247,8 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   json["field"] = (int) field;
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -294,8 +295,8 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -333,8 +334,8 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
   json["feed_id"] = feed_id;
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -363,6 +364,14 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
 
   m_lastError = network_reply.first;
   return result;
+}
+
+bool TtRssNetworkFactory::downloadOnlyUnreadMessages() const {
+  return m_downloadOnlyUnreadMessages;
+}
+
+void TtRssNetworkFactory::setDownloadOnlyUnreadMessages(bool download_only_unread_messages) {
+  m_downloadOnlyUnreadMessages = download_only_unread_messages;
 }
 
 bool TtRssNetworkFactory::forceServerSideUpdate() const {
@@ -484,7 +493,6 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
   if (status() == TTRSS_API_STATUS_OK) {
     // We have data, construct object tree according to data.
     QJsonArray items_to_process = m_rawContent["content"].toObject()["categories"].toObject()["items"].toArray();
-
     QVector<QPair<RootItem*, QJsonValue>> pairs;
 
     for (const QJsonValue& item : items_to_process) {

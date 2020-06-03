@@ -583,8 +583,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                                                      message.m_isImportant != is_important_existing_message ||
                                                      message.m_feedId != feed_id_existing_message)) ||
 
-                  /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message
-                           && message.m_contents != contents_existing_message)) {
+          /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message
+                   && message.m_contents != contents_existing_message)) {
         // Message exists, it is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
@@ -898,7 +898,6 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
 
 QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
-
   QList<ServiceRoot*> roots;
 
   if (query.exec("SELECT * FROM OwnCloudAccounts;")) {
@@ -933,7 +932,6 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db,
 
 QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
-
   QList<ServiceRoot*> roots;
 
   if (query.exec("SELECT * FROM TtRssAccounts;")) {
@@ -949,6 +947,7 @@ QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(const QSqlDatabase& db, bo
       root->network()->setAuthPassword(TextFactory::decrypt(query.value(5).toString()));
       root->network()->setUrl(query.value(6).toString());
       root->network()->setForceServerSideUpdate(query.value(7).toBool());
+      root->network()->setDownloadOnlyUnreadMessages(query.value(8).toBool());
       root->updateTitle();
       roots.append(root);
     }
@@ -1298,8 +1297,8 @@ bool DatabaseQueries::editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::Au
 
 QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery q(db);
-
   QList<ServiceRoot*> roots;
+
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT id FROM Accounts WHERE type = :type;"));
   q.bindValue(QSL(":type"), SERVICE_CODE_STD_RSS);
@@ -1419,14 +1418,17 @@ bool DatabaseQueries::deleteTtRssAccount(const QSqlDatabase& db, int account_id)
   return q.exec();
 }
 
-bool DatabaseQueries::overwriteTtRssAccount(const QSqlDatabase& db, const QString& username, const QString& password,
-                                            bool auth_protected, const QString& auth_username, const QString& auth_password,
-                                            const QString& url, bool force_server_side_feed_update, int account_id) {
+bool DatabaseQueries::overwriteTtRssAccount(const QSqlDatabase& db, const QString& username,
+                                            const QString& password, bool auth_protected,
+                                            const QString& auth_username, const QString& auth_password,
+                                            const QString& url, bool force_server_side_feed_update,
+                                            bool download_only_unread_messages, int account_id) {
   QSqlQuery q(db);
 
   q.prepare("UPDATE TtRssAccounts "
             "SET username = :username, password = :password, url = :url, auth_protected = :auth_protected, "
-            "auth_username = :auth_username, auth_password = :auth_password, force_update = :force_update "
+            "auth_username = :auth_username, auth_password = :auth_password, force_update = :force_update, "
+            "update_only_unread = :update_only_unread "
             "WHERE id = :id;");
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":password"), TextFactory::encrypt(password));
@@ -1435,6 +1437,7 @@ bool DatabaseQueries::overwriteTtRssAccount(const QSqlDatabase& db, const QStrin
   q.bindValue(QSL(":auth_username"), auth_username);
   q.bindValue(QSL(":auth_password"), TextFactory::encrypt(auth_password));
   q.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
+  q.bindValue(QSL(":update_only_unread"), download_only_unread_messages ? 1 : 0);
   q.bindValue(QSL(":id"), account_id);
 
   if (q.exec()) {
@@ -1449,11 +1452,11 @@ bool DatabaseQueries::overwriteTtRssAccount(const QSqlDatabase& db, const QStrin
 bool DatabaseQueries::createTtRssAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
                                          const QString& password, bool auth_protected, const QString& auth_username,
                                          const QString& auth_password, const QString& url,
-                                         bool force_server_side_feed_update) {
+                                         bool force_server_side_feed_update, bool download_only_unread_messages) {
   QSqlQuery q(db);
 
-  q.prepare("INSERT INTO TtRssAccounts (id, username, password, auth_protected, auth_username, auth_password, url, force_update) "
-            "VALUES (:id, :username, :password, :auth_protected, :auth_username, :auth_password, :url, :force_update);");
+  q.prepare("INSERT INTO TtRssAccounts (id, username, password, auth_protected, auth_username, auth_password, url, force_update, update_only_unread) "
+            "VALUES (:id, :username, :password, :auth_protected, :auth_username, :auth_password, :url, :force_update, :update_only_unread);");
   q.bindValue(QSL(":id"), id_to_assign);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":password"), TextFactory::encrypt(password));
@@ -1462,6 +1465,7 @@ bool DatabaseQueries::createTtRssAccount(const QSqlDatabase& db, int id_to_assig
   q.bindValue(QSL(":auth_password"), TextFactory::encrypt(auth_password));
   q.bindValue(QSL(":url"), url);
   q.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
+  q.bindValue(QSL(":update_only_unread"), download_only_unread_messages ? 1 : 0);
 
   if (q.exec()) {
     return true;
@@ -1539,7 +1543,6 @@ Assignment DatabaseQueries::getGmailFeeds(const QSqlDatabase& db, int account_id
 
 QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
-
   QList<ServiceRoot*> roots;
 
   if (query.exec("SELECT * FROM GmailAccounts;")) {
@@ -1642,7 +1645,6 @@ bool DatabaseQueries::storeNewInoreaderTokens(const QSqlDatabase& db, const QStr
 
 QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
-
   QList<ServiceRoot*> roots;
 
   if (query.exec("SELECT * FROM InoreaderAccounts;")) {

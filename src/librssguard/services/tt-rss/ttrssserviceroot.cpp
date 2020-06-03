@@ -53,6 +53,7 @@ QString TtRssServiceRoot::code() const {
 
 bool TtRssServiceRoot::editViaGui() {
   QScopedPointer<FormEditTtRssAccount> form_pointer(new FormEditTtRssAccount(qApp->mainFormWidget()));
+
   form_pointer.data()->execForEdit(this);
   return true;
 }
@@ -92,6 +93,7 @@ void TtRssServiceRoot::addNewFeed(const QString& url) {
   }
 
   QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainFormWidget()));
+
   form_pointer.data()->addEditFeed(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();
 }
@@ -132,7 +134,6 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
   while (j.hasNext()) {
     j.next();
     auto key = j.key();
-
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
@@ -178,7 +179,8 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
     if (DatabaseQueries::overwriteTtRssAccount(database, m_network->username(), m_network->password(),
                                                m_network->authIsUsed(), m_network->authUsername(),
                                                m_network->authPassword(), m_network->url(),
-                                               m_network->forceServerSideUpdate(), accountId())) {
+                                               m_network->forceServerSideUpdate(), m_network->downloadOnlyUnreadMessages(),
+                                               accountId())) {
       updateTitle();
       itemChanged(QList<RootItem*>() << this);
     }
@@ -191,7 +193,8 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
       if (DatabaseQueries::createTtRssAccount(database, id_to_assign, m_network->username(),
                                               m_network->password(), m_network->authIsUsed(),
                                               m_network->authUsername(), m_network->authPassword(),
-                                              m_network->url(), m_network->forceServerSideUpdate())) {
+                                              m_network->url(), m_network->forceServerSideUpdate(),
+                                              m_network->downloadOnlyUnreadMessages())) {
         setId(id_to_assign);
         setAccountId(id_to_assign);
         updateTitle();

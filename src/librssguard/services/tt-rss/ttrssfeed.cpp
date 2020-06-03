@@ -14,8 +14,7 @@
 
 #include <QPointer>
 
-TtRssFeed::TtRssFeed(RootItem* parent)
-  : Feed(parent) {}
+TtRssFeed::TtRssFeed(RootItem* parent) : Feed(parent) {}
 
 TtRssFeed::TtRssFeed(const QSqlRecord& record) : Feed(record) {}
 
@@ -31,6 +30,7 @@ bool TtRssFeed::canBeEdited() const {
 
 bool TtRssFeed::editViaGui() {
   QPointer<FormTtRssFeedDetails> form_pointer = new FormTtRssFeedDetails(serviceRoot(), qApp->mainFormWidget());
+
   form_pointer.data()->addEditFeed(this, nullptr);
   delete form_pointer.data();
   return false;
@@ -75,7 +75,7 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
 
   do {
     TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId().toInt(), limit, skip,
-                                                                                 true, true, false);
+                                                                                 true, true, false, true);
 
     if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
       setStatus(Feed::NetworkError);
@@ -85,6 +85,7 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
     }
     else {
       QList<Message> new_messages = headlines.messages();
+
       messages.append(new_messages);
       newly_added_messages = new_messages.size();
       skip += newly_added_messages;

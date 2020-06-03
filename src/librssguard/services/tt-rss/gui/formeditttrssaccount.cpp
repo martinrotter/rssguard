@@ -87,6 +87,7 @@ void FormEditTtRssAccount::execForEdit(TtRssServiceRoot* existing_root) {
   m_ui->m_txtPassword->lineEdit()->setText(existing_root->network()->password());
   m_ui->m_txtUrl->lineEdit()->setText(existing_root->network()->url());
   m_ui->m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
+  m_ui->m_checkDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
   exec();
 }
 
@@ -108,6 +109,7 @@ void FormEditTtRssAccount::performTest() {
   factory.setAuthUsername(m_ui->m_txtHttpUsername->lineEdit()->text());
   factory.setAuthPassword(m_ui->m_txtHttpPassword->lineEdit()->text());
   factory.setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
+
   TtRssLoginResponse result = factory.login();
 
   if (result.isLoaded()) {
@@ -186,6 +188,8 @@ void FormEditTtRssAccount::onClickedOk() {
   m_editableRoot->network()->setAuthUsername(m_ui->m_txtHttpUsername->lineEdit()->text());
   m_editableRoot->network()->setAuthPassword(m_ui->m_txtHttpPassword->lineEdit()->text());
   m_editableRoot->network()->setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
+  m_editableRoot->network()->setDownloadOnlyUnreadMessages(m_ui->m_checkDownloadOnlyUnreadMessages->isChecked());
+
   m_editableRoot->saveAccountDataToDatabase();
   accept();
 
