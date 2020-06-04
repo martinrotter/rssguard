@@ -211,7 +211,8 @@ void FeedReader::checkServicesForAsyncOperations() {
 }
 
 void FeedReader::asyncCacheSaveFinished() {
-  qDebug("I will start next check for cached service data in 30 seconds.");
+  qDebug("I will start next check for cached service data in 60 seconds.");
+
   QTimer::singleShot(60000, this, [&] {
     qDebug("Starting next check for cached service data in NOW.");
     checkServicesForAsyncOperations();

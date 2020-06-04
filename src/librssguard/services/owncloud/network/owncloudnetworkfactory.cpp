@@ -84,8 +84,8 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::lastError() const {
 
 OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -107,8 +107,8 @@ OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
 
 OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -130,8 +130,8 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
 
 OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -173,8 +173,8 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
 bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
   QString final_url = m_urlDeleteFeed.arg(feed_id);
   QByteArray raw_output;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -202,8 +202,8 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
   json["folderId"] = parent_id;
 
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -234,6 +234,7 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, const QString& 
   json["feedTitle"] = new_name;
 
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -265,8 +266,8 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
                                         QString::number(batchSize() <= 0 ? -1 : batchSize()),
                                         QString::number(0));
   QByteArray result_raw;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -302,8 +303,8 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
 
   // Now, we can trigger the update.
   QByteArray raw_output;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -341,6 +342,7 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
   json["items"] = ids;
 
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -390,6 +392,7 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
   json["items"] = ids;
 
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
@@ -512,15 +515,14 @@ bool OwnCloudStatusResponse::misconfiguredCron() const {
   }
 }
 
-OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(QString  raw_categories,
-                                                                       QString  raw_feeds)
+OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(QString raw_categories,
+                                                                       QString raw_feeds)
   : m_contentCategories(std::move(raw_categories)), m_contentFeeds(std::move(raw_feeds)) {}
 
 OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() = default;
 
 RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons) const {
   auto* parent = new RootItem();
-
   QMap<QString, RootItem*> cats;
 
   // Top-level feed have "folderId" set to "0".
@@ -563,11 +565,29 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
       }
     }
 
-    feed->setUrl(item["link"].toString());
-    feed->setTitle(item["title"].toString());
     feed->setCustomId(QString::number(item["id"].toInt()));
-    qDebug("Custom ID of next fetched Nextcloud feed is '%s'.", qPrintable(feed->customId()));
+    feed->setUrl(item["url"].toString());
+
+    if (feed->url().isEmpty()) {
+      feed->setUrl(item["link"].toString());
+    }
+
+    feed->setTitle(item["title"].toString());
+
+    if (feed->title().isEmpty()) {
+      if (feed->url().isEmpty()) {
+        // We cannot add feed which has no title and no url to RSS Guard!!!
+        qCritical("Skipping feed with custom ID '%s' from adding to RSS Guard because it has no title and url.",
+                  qPrintable(feed->customId()));
+        continue;
+      }
+      else {
+        feed->setTitle(feed->url());
+      }
+    }
+
     cats.value(QString::number(item["folderId"].toInt()))->appendChild(feed);
+    qDebug("Custom ID of next fetched processed Nextcloud feed is '%s'.", qPrintable(feed->customId()));
   }
 
   return parent;
