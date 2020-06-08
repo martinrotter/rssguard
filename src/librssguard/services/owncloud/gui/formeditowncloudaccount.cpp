@@ -19,7 +19,6 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
   m_ui->m_lblTestResult->label()->setWordWrap(true);
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                      "of feeds will be probably much slower and may time-out often."));
-  m_ui->m_lblDescription->setText(tr("Note that at least version %1 is required.").arg(OWNCLOUD_MIN_VERSION));
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your ownCloud account"));
   m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your ownCloud account"));
   m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your ownCloud server, without any API path"));
@@ -41,7 +40,6 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
 
   GuiUtilities::setLabelAsNotice(*m_ui->m_lblLimitMessages, false);
   GuiUtilities::setLabelAsNotice(*m_ui->m_lblServerSideUpdateInformation, false);
-  GuiUtilities::setLabelAsNotice(*m_ui->m_lblDescription, false);
 
   setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_checkServerSideUpdate);
   setTabOrder(m_ui->m_checkServerSideUpdate, m_ui->m_spinLimitMessages);
