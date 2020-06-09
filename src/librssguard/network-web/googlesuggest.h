@@ -39,7 +39,6 @@
 #include "network-web/downloader.h"
 
 class LocationLineEdit;
-
 class QTimer;
 
 class GoogleSuggest : public QObject {

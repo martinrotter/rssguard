@@ -11,6 +11,7 @@
 
 class FeedsModel;
 class RecycleBin;
+class ImportantNode;
 class QAction;
 class MessagesModel;
 
@@ -37,6 +38,7 @@ class ServiceRoot : public RootItem {
 
     void setRecycleBin(RecycleBin* recycle_bin);
 
+    virtual ImportantNode* importantNode() const;
     virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
 
     QList<Message> undeletedMessages() const;
@@ -79,6 +81,18 @@ class ServiceRoot : public RootItem {
 
     // Removes all/read only messages from given underlying feeds.
     bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
+
+    void completelyRemoveAllData();
+    QStringList customIDSOfMessagesForItem(RootItem* item);
+    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
+
+    // Obvious methods to wrap signals.
+    void itemChanged(const QList<RootItem*>& items);
+    void requestReloadMessageList(bool mark_selected_messages_read);
+    void requestItemExpand(const QList<RootItem*>& items, bool expand);
+    void requestItemExpandStateSave(RootItem* subtree_root);
+    void requestItemReassignment(RootItem* item, RootItem* new_parent);
+    void requestItemRemoval(RootItem* item);
 
     // This method should prepare messages for given "item" (download them maybe?)
     // into predefined "Messages" table
@@ -137,18 +151,6 @@ class ServiceRoot : public RootItem {
     // Selected item is naturally recycle bin.
     virtual bool onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages);
 
-    void completelyRemoveAllData();
-    QStringList customIDSOfMessagesForItem(RootItem* item);
-    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
-
-    // Obvious methods to wrap signals.
-    void itemChanged(const QList<RootItem*>& items);
-    void requestReloadMessageList(bool mark_selected_messages_read);
-    void requestItemExpand(const QList<RootItem*>& items, bool expand);
-    void requestItemExpandStateSave(RootItem* subtree_root);
-    void requestItemReassignment(RootItem* item, RootItem* new_parent);
-    void requestItemRemoval(RootItem* item);
-
   public slots:
     virtual void addNewFeed(const QString& url = QString());
     virtual void addNewCategory();
@@ -197,6 +199,7 @@ class ServiceRoot : public RootItem {
 
   private:
     RecycleBin* m_recycleBin;
+    ImportantNode* m_importantNode;
     int m_accountId;
 };
 

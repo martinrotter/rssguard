@@ -209,11 +209,25 @@ bool RootItem::performDragDropChange(RootItem* target_item) {
   return false;
 }
 
+int RootItem::countOfUnreadMessages() const {
+  int total_count = 0;
+
+  for (RootItem* child_item : m_childItems) {
+    if (child_item->kind() != RootItemKind::Kind::Important) {
+      total_count += child_item->countOfUnreadMessages();
+    }
+  }
+
+  return total_count;
+}
+
 int RootItem::countOfAllMessages() const {
   int total_count = 0;
 
   for (RootItem* child_item : m_childItems) {
-    total_count += child_item->countOfAllMessages();
+    if (child_item->kind() != RootItemKind::Kind::Important) {
+      total_count += child_item->countOfAllMessages();
+    }
   }
 
   return total_count;
@@ -250,6 +264,7 @@ bool RootItem::isParentOf(const RootItem* child) const {
 QList<RootItem*> RootItem::getSubTree() const {
   QList<RootItem*> children;
   QList<RootItem*> traversable_items;
+
   traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
@@ -266,6 +281,7 @@ QList<RootItem*> RootItem::getSubTree() const {
 QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) const {
   QList<RootItem*> children;
   QList<RootItem*> traversable_items;
+
   traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
@@ -285,6 +301,7 @@ QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) const {
 QList<Category*> RootItem::getSubTreeCategories() const {
   QList<Category*> children;
   QList<RootItem*> traversable_items;
+
   traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
@@ -304,6 +321,7 @@ QList<Category*> RootItem::getSubTreeCategories() const {
 QHash<int, Category*> RootItem::getHashedSubTreeCategories() const {
   QHash<int, Category*> children;
   QList<RootItem*> traversable_items;
+
   traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
@@ -323,6 +341,7 @@ QHash<int, Category*> RootItem::getHashedSubTreeCategories() const {
 QHash<QString, Feed*> RootItem::getHashedSubTreeFeeds() const {
   QHash<QString, Feed*> children;
   QList<RootItem*> traversable_items;
+
   traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
@@ -342,6 +361,7 @@ QHash<QString, Feed*> RootItem::getHashedSubTreeFeeds() const {
 QList<Feed*> RootItem::getSubTreeFeeds() const {
   QList<Feed*> children;
   QList<RootItem*> traversable_items;
+
   traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
@@ -455,16 +475,6 @@ bool RootItem::keepOnTop() const {
 
 void RootItem::setKeepOnTop(bool keep_on_top) {
   m_keepOnTop = keep_on_top;
-}
-
-int RootItem::countOfUnreadMessages() const {
-  int total_count = 0;
-
-  for (RootItem* child_item : m_childItems) {
-    total_count += child_item->countOfUnreadMessages();
-  }
-
-  return total_count;
 }
 
 bool RootItem::removeChild(int index) {

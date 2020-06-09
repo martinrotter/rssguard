@@ -5,16 +5,15 @@
 
 #include <QSortFilterProxyModel>
 
+#include "services/abstract/rootitem.h"
+
 class FeedsModel;
-class RootItem;
 
 class FeedsProxyModel : public QSortFilterProxyModel {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
-    explicit FeedsProxyModel(FeedsModel* source_model, QObject* parent = 0);
+    explicit FeedsProxyModel(FeedsModel* source_model, QObject* parent = nullptr);
     virtual ~FeedsProxyModel();
 
     // Returns index list of items which "match" given value.
@@ -51,8 +50,8 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     FeedsModel* m_sourceModel;
     const RootItem* m_selectedItem;
     bool m_showUnreadOnly;
-
     QList<QPair<int, QModelIndex>> m_hiddenIndices;
+    QList<RootItemKind::Kind> m_priorities;
 };
 
 #endif // FEEDSPROXYMODEL_H

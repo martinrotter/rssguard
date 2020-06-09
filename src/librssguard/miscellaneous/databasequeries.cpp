@@ -171,14 +171,14 @@ bool DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
 QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
                                                                             const QString& custom_id,
                                                                             int account_id,
-                                                                            bool including_total_counts,
+                                                                            bool only_total_counts,
                                                                             bool* ok) {
   QMap<QString, QPair<int, int>> counts;
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
 
-  if (including_total_counts) {
+  if (only_total_counts) {
     q.prepare("SELECT feed, sum((is_read + 1) % 2), count(*) FROM Messages "
               "WHERE feed IN (SELECT custom_id FROM Feeds WHERE category = :category AND account_id = :account_id) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
               "GROUP BY feed;");
@@ -197,7 +197,7 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(cons
       QString feed_custom_id = q.value(0).toString();
       int unread_count = q.value(1).toInt();
 
-      if (including_total_counts) {
+      if (only_total_counts) {
         int total_count = q.value(2).toInt();
 
         counts.insert(feed_custom_id, QPair<int, int>(unread_count, total_count));
@@ -221,13 +221,13 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(cons
 }
 
 QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(const QSqlDatabase& db, int account_id,
-                                                                           bool including_total_counts, bool* ok) {
+                                                                           bool only_total_counts, bool* ok) {
   QMap<QString, QPair<int, int>> counts;
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
 
-  if (including_total_counts) {
+  if (only_total_counts) {
     q.prepare("SELECT feed, sum((is_read + 1) % 2), count(*) FROM Messages "
               "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
               "GROUP BY feed;");
@@ -245,7 +245,7 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(const
       QString feed_id = q.value(0).toString();
       int unread_count = q.value(1).toInt();
 
-      if (including_total_counts) {
+      if (only_total_counts) {
         int total_count = q.value(2).toInt();
 
         counts.insert(feed_id, QPair<int, int>(unread_count, total_count));
@@ -269,12 +269,12 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(const
 }
 
 int DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, const QString& feed_custom_id,
-                                             int account_id, bool including_total_counts, bool* ok) {
+                                             int account_id, bool only_total_counts, bool* ok) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
 
-  if (including_total_counts) {
+  if (only_total_counts) {
     q.prepare("SELECT count(*) FROM Messages "
               "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
   }
@@ -284,6 +284,38 @@ int DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, const QStri
   }
 
   q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec() && q.next()) {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+
+    return q.value(0).toInt();
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+
+    return 0;
+  }
+}
+
+int DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool only_total_counts, bool* ok) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+
+  if (only_total_counts) {
+    q.prepare("SELECT count(*) FROM Messages "
+              "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+  }
+  else {
+    q.prepare("SELECT count(*) FROM Messages "
+              "WHERE is_read = 0 AND is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+  }
+
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec() && q.next()) {

@@ -10,7 +10,7 @@ class RecycleBin : public RootItem {
 
   public:
     explicit RecycleBin(RootItem* parent_item = nullptr);
-    virtual ~RecycleBin();
+    virtual ~RecycleBin() = default;
 
     QString additionalTooltip() const;
 
@@ -32,7 +32,6 @@ class RecycleBin : public RootItem {
   private:
     int m_totalCount;
     int m_unreadCount;
-
     QList<QAction*> m_contextMenu;
 };
 

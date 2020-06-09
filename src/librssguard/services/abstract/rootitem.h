@@ -22,8 +22,10 @@ namespace RootItemKind {
     Feed = 4,
     Category = 8,
     ServiceRoot = 16,
-    LabelsRoot = 32
+    Labels = 32,
+    Important = 64
   };
+
   inline Kind operator|(Kind a, Kind b) {
     return static_cast<Kind>(static_cast<int>(a) | static_cast<int>(b));
   }
@@ -92,8 +94,6 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // If this method is called on "recycle bin" instance of your
     // service account, it should "empty" the recycle bin.
     virtual bool cleanMessages(bool clear_only_read);
-
-    // Updates counts of all/unread messages for this feed.
     virtual void updateCounts(bool including_total_count);
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
@@ -104,6 +104,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Returns counts of messages of all child items summed up.
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
+
     inline RootItem* parent() const {
       return m_parentItem;
     }
@@ -215,7 +216,6 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QIcon m_icon;
     QDateTime m_creationDate;
     bool m_keepOnTop;
-
     QList<RootItem*> m_childItems;
     RootItem* m_parentItem;
 };

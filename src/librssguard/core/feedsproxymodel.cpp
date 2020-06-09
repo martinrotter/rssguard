@@ -20,6 +20,18 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   setFilterRole(Qt::EditRole);
   setDynamicSortFilter(true);
   setSourceModel(m_sourceModel);
+
+  // Describes priorities of node types for sorting.
+  // Smaller index means that item is "smaller" which
+  // means it should be more on top when sorting
+  // in ascending order.
+  m_priorities = {
+    RootItemKind::Kind::Category,
+    RootItemKind::Kind::Feed,
+    RootItemKind::Kind::Labels,
+    RootItemKind::Kind::Important,
+    RootItemKind::Kind::Bin
+  };
 }
 
 FeedsProxyModel::~FeedsProxyModel() {
@@ -65,7 +77,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
         QString item_text = item_value.toString();
 
         switch (match_type) {
-          case Qt::MatchRegExp:
+          case Qt::MatchRegularExpression:
             if (QRegularExpression(entered_text,
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
                                    QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
@@ -141,13 +153,13 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
     // by item counts, depending on the sort column.
 
     if (left_item->keepOnTop()) {
-      return sortOrder() == Qt::AscendingOrder;
+      return sortOrder() == Qt::SortOrder::AscendingOrder;
     }
     else if (right_item->keepOnTop()) {
-      return sortOrder() == Qt::DescendingOrder;
+      return sortOrder() == Qt::SortOrder::DescendingOrder;
     }
     else if (left_item->kind() == right_item->kind()) {
-      // Both items are feeds or both items are categories.
+      // Both items are of the same type.
       if (left.column() == FDS_MODEL_COUNTS_INDEX) {
         // User wants to sort according to counts.
         return left_item->countOfUnreadMessages() < right_item->countOfUnreadMessages();
@@ -157,24 +169,14 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
         return QString::localeAwareCompare(left_item->title(), right_item->title()) < 0;
       }
     }
-    else if (left_item->kind() == RootItemKind::Bin) {
-      // Left item is recycle bin. Make sure it is "biggest" item if we have selected ascending order.
-      return sortOrder() == Qt::DescendingOrder;
-    }
-    else if (right_item->kind() == RootItemKind::Bin) {
-      // Right item is recycle bin. Make sure it is "smallest" item if we have selected descending order.
-      return sortOrder() == Qt::AscendingOrder;
-    }
-    else if (left_item->kind() == RootItemKind::Feed) {
-      // Left item is feed, right item is category.
-      return false;
-    }
     else {
-      // Left item is category, right item is feed.
-      // NOTE: Category is in fact "more" than feed but we consider it to be "less" because it should be "placed"
-      // above the "smalles" feed when ascending sort is used.
-      // NOTE: We need to keep recycle bin in first position.
-      return true;
+      // We sort using priorities.
+      auto left_priority = m_priorities.indexOf(left_item->kind());
+      auto right_priority = m_priorities.indexOf(right_item->kind());
+
+      return sortOrder() == Qt::SortOrder::AscendingOrder
+          ? left_priority < right_priority
+          : right_priority < left_priority;
     }
   }
   else {

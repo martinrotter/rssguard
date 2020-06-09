@@ -11,9 +11,11 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 
-ServiceRoot::ServiceRoot(RootItem* parent) : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_accountId(NO_PARENT_CATEGORY) {
+ServiceRoot::ServiceRoot(RootItem* parent)
+  : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)), m_accountId(NO_PARENT_CATEGORY) {
   setKind(RootItemKind::ServiceRoot);
   setCreationDate(QDateTime::currentDateTime());
 }
@@ -98,7 +100,6 @@ void ServiceRoot::updateCounts(bool including_total_count) {
 
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   bool ok;
-
   QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
 
   if (ok) {
@@ -161,6 +162,13 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
     if (bin != nullptr) {
       bin->updateCounts(true);
       itemss.append(bin);
+    }
+
+    ImportantNode* imp = importantNode();
+
+    if (imp != nullptr) {
+      imp->updateCounts(true);
+      itemss << imp;
     }
 
     itemChanged(itemss);
@@ -267,6 +275,10 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariant>& data, co
   }
 }
 
+ImportantNode* ServiceRoot::importantNode() const {
+  return m_importantNode;
+}
+
 void ServiceRoot::setRecycleBin(RecycleBin* recycle_bin) {
   m_recycleBin = recycle_bin;
 }
@@ -282,6 +294,7 @@ void ServiceRoot::syncIn() {
     // Purge old data from SQL and clean all model items.
     requestItemExpandStateSave(this);
     QMap<QString, QVariant> feed_custom_data = storeCustomFeedsData();
+
     removeOldFeedTree(false);
     cleanAllItems();
     restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
@@ -303,6 +316,7 @@ void ServiceRoot::syncIn() {
     new_tree->clearChildren();
     new_tree->deleteLater();
     QList<RootItem*> all_items = getSubTree();
+
     itemChanged(all_items);
     requestReloadMessageList(true);
 
@@ -388,6 +402,13 @@ bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus r
       itemss.append(feed);
     }
 
+    ImportantNode* imp = importantNode();
+
+    if (imp != nullptr) {
+      imp->updateCounts(true);
+      itemss << imp;
+    }
+
     itemChanged(itemss);
     requestReloadMessageList(read == RootItem::Read);
     return true;
@@ -424,7 +445,7 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
 QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange>& changes) {
   QStringList list;
 
-  for (const auto & change : changes) {
+  for (const auto& change : changes) {
     list.append(change.first.m_customId);
   }
 
@@ -452,6 +473,10 @@ void ServiceRoot::setAccountId(int account_id) {
 bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   if (item->kind() == RootItemKind::Bin) {
     model->setFilter(QString("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+                     .arg(QString::number(accountId())));
+  }
+  else if (item->kind() == RootItemKind::Kind::Important) {
+    model->setFilter(QString("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
   else {
@@ -485,8 +510,25 @@ bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item, const QList<M
 bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, RootItem::ReadStatus read) {
   Q_UNUSED(messages)
   Q_UNUSED(read)
-  selected_item->updateCounts(false);
-  itemChanged(QList<RootItem*>() << selected_item);
+
+  QList<RootItem*> items_to_reload;
+  ImportantNode* imp = importantNode();
+
+  if (imp == selected_item) {
+    updateCounts(true);
+    items_to_reload << getSubTree();
+  }
+  else {
+    selected_item->updateCounts(false);
+    items_to_reload << selected_item;
+  }
+
+  if (imp != nullptr && imp != selected_item) {
+    imp->updateCounts(true);
+    items_to_reload << imp;
+  }
+
+  itemChanged(items_to_reload);
   return true;
 }
 
@@ -524,6 +566,16 @@ bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const
 bool ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes) {
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
+
+  QList<RootItem*> items_to_reload;
+  ImportantNode* imp = importantNode();
+
+  if (imp != nullptr) {
+    imp->updateCounts(true);
+    items_to_reload << imp;
+  }
+
+  itemChanged(items_to_reload);
   return true;
 }
 
@@ -536,24 +588,26 @@ bool ServiceRoot::onBeforeMessagesDelete(RootItem* selected_item, const QList<Me
 bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
   Q_UNUSED(messages)
 
-  // User deleted some messages he selected in message list.
+  QList<RootItem*> items_to_reload;
+
   selected_item->updateCounts(true);
+  items_to_reload << selected_item;
 
-  if (selected_item->kind() == RootItemKind::Bin) {
-    itemChanged(QList<RootItem*>() << selected_item);
-  }
-  else {
-    RecycleBin* bin = recycleBin();
+  RecycleBin* bin = recycleBin();
 
-    if (bin != nullptr) {
-      bin->updateCounts(true);
-      itemChanged(QList<RootItem*>() << selected_item << bin);
-    }
-    else {
-      itemChanged(QList<RootItem*>() << selected_item);
-    }
+  if (bin != nullptr && bin != selected_item) {
+    bin->updateCounts(true);
+    items_to_reload << bin;
   }
 
+  ImportantNode* imp = importantNode();
+
+  if (imp != nullptr && imp != selected_item) {
+    imp->updateCounts(true);
+    items_to_reload << imp;
+  }
+
+  itemChanged(items_to_reload);
   return true;
 }
 
@@ -591,6 +645,7 @@ void ServiceRoot::assembleFeeds(Assignment feeds) {
 
 void ServiceRoot::assembleCategories(Assignment categories) {
   QHash<int, RootItem*> assignments;
+
   assignments.insert(NO_PARENT_CATEGORY, this);
 
   // Add top-level categories.

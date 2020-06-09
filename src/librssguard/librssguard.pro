@@ -123,6 +123,7 @@ HEADERS += core/feeddownloader.h \
            services/abstract/category.h \
            services/abstract/feed.h \
            services/abstract/gui/formfeeddetails.h \
+           services/abstract/importantnode.h \
            services/abstract/recyclebin.h \
            services/abstract/rootitem.h \
            services/abstract/serviceentrypoint.h \
@@ -263,6 +264,7 @@ SOURCES += core/feeddownloader.cpp \
            services/abstract/category.cpp \
            services/abstract/feed.cpp \
            services/abstract/gui/formfeeddetails.cpp \
+           services/abstract/importantnode.cpp \
            services/abstract/recyclebin.cpp \
            services/abstract/rootitem.cpp \
            services/abstract/serviceentrypoint.cpp \

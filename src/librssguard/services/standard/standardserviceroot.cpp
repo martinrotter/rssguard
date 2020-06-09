@@ -11,6 +11,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
+#include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
@@ -120,6 +121,7 @@ void StandardServiceRoot::addNewFeed(const QString& url) {
   }
 
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this, qApp->mainFormWidget()));
+
   form_pointer.data()->addEditFeed(nullptr, nullptr, url);
   qApp->feedUpdateLock()->unlock();
 }
@@ -139,6 +141,7 @@ void StandardServiceRoot::loadFromDatabase() {
 
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
+  appendChild(importantNode());
   updateCounts(true);
 }
 
@@ -185,8 +188,10 @@ QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {
 
 bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, RootItem* target_root_node, QString& output_message) {
   QStack<RootItem*> original_parents;
+
   original_parents.push(target_root_node);
   QStack<RootItem*> new_parents;
+
   new_parents.push(model->rootItem());
   bool some_feed_category_error = false;
 
@@ -280,18 +285,21 @@ void StandardServiceRoot::addNewCategory() {
   }
 
   QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this, qApp->mainFormWidget()));
+
   form_pointer.data()->addEditCategory(nullptr, nullptr);
   qApp->feedUpdateLock()->unlock();
 }
 
 void StandardServiceRoot::importFeeds() {
   QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));
+
   form.data()->setMode(FeedsImportExportModel::Import);
   form.data()->exec();
 }
 
 void StandardServiceRoot::exportFeeds() {
   QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));
+
   form.data()->setMode(FeedsImportExportModel::Export);
   form.data()->exec();
 }

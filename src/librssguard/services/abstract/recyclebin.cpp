@@ -21,8 +21,6 @@ RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCo
   setCreationDate(QDateTime::currentDateTime());
 }
 
-RecycleBin::~RecycleBin() = default;
-
 QString RecycleBin::additionalTooltip() const {
   return tr("%n deleted message(s).", nullptr, countOfAllMessages());
 }
