@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -279,8 +281,10 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>点此添加来自此网站的 Feed
-此网站包含 %n 个 Feed</numerusform></translation>
+        <translation>
+            <numerusform>点此添加来自此网站的 Feed
+此网站包含 %n 个 Feed</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -366,7 +370,7 @@ This website contains %n feed(s).</source>
         <translation>下载完成</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>文件 &apos;%1&apos; 下载完成
 点此打开所在目录</translation>
@@ -392,11 +396,15 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>剩余 %n 分钟</numerusform></translation>
+        <translation>
+            <numerusform>剩余 %n 分钟</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>剩余 %n 秒</numerusform></translation>
+        <translation>
+            <numerusform>剩余 %n 秒</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -416,7 +424,9 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>正在下载 %n 个文件…</numerusform></translation>
+        <translation>
+            <numerusform>正在下载 %n 个文件…</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -448,12 +458,16 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>使用全局设置（每 %n 分钟自动更新）</numerusform></translation>
+        <translation>
+            <numerusform>使用全局设置（每 %n 分钟自动更新）</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>使用指定设置（每 %n 分钟自动更新）</numerusform></translation>
+        <translation>
+            <numerusform>使用指定设置（每 %n 分钟自动更新）</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -509,7 +523,9 @@ Status: %2</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>即将更新 %n 个 Feed</numerusform></translation>
+        <translation>
+            <numerusform>即将更新 %n 个 Feed</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -841,7 +857,9 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>天</numerusform></translation>
+        <translation>
+            <numerusform>天</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1164,10 +1182,6 @@ or this functionality is not implemented yet.</source>
         <translation>启用此选项可能会使更新变慢或经常超时</translation>
     </message>
     <message>
-        <source>Note that at least version %1 is required.</source>
-        <translation>支持的最低版本为 %1</translation>
-    </message>
-    <message>
         <source>URL of your ownCloud server, without any API path</source>
         <translation>ownCloud 服务器 URL，不包括 API 路径</translation>
     </message>
@@ -1373,7 +1387,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
         <translation>Tiny Tiny RSS 服务器就绪，当前 API 级别 %1，所需最低级别 %2
- </translation>
+&#xa0;</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
@@ -1434,6 +1448,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>URL is okay.</source>
         <translation>URL 可用</translation>
+    </message>
+    <message>
+        <source>Download only unread messages.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2093,15 +2111,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2638,7 +2656,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2722,6 +2740,17 @@ Token 过期时间：%2</translation>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
         <translation>无法写入文件 &apos;%1&apos;</translation>
+    </message>
+</context>
+<context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can find all important messages here.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3147,7 +3176,9 @@ Token 过期时间：%2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>显示更多消息（剩余 %n 条）</numerusform></translation>
+        <translation>
+            <numerusform>显示更多消息（剩余 %n 条）</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3230,9 +3261,11 @@ Token 过期时间：%2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n 其它 Feed</numerusform></translation>
++ %n 其它 Feed</numerusform>
+        </translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3287,7 +3320,7 @@ Tiny Tiny RSS 是一个开源的基于 Web 的 RSS/Atom 阅读器，允许你以
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3302,7 +3335,9 @@ version by clicking this popup notification.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n 条被删除的消息</numerusform></translation>
+        <translation>
+            <numerusform>%n 条被删除的消息</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3318,7 +3353,9 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n 条未读消息</numerusform></translation>
+        <translation>
+            <numerusform>%n 条未读消息</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3542,7 +3579,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3727,10 +3764,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Feed &amp;&amp; 分类</translation>
     </message>
     <message>
-        <source>Update all feed on application startup</source>
-        <translation>程序启动时更新所有 Feed</translation>
-    </message>
-    <message>
         <source>Auto-update all feeds every</source>
         <translation>自动更新所有 Feed 每</translation>
     </message>
@@ -3821,6 +3854,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Select new font</source>
         <translation>选择新字体</translation>
+    </message>
+    <message>
+        <source>Update all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3974,20 +4011,20 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4203,15 +4240,25 @@ Unread news: %2</source>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n 小时</numerusform></translation>
+        <translation>
+            <numerusform>%n 小时</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n 分钟</numerusform></translation>
+        <translation>
+            <numerusform>%n 分钟</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
         <translation>又</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

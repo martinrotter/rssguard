@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_TW" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_TW">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -279,8 +281,10 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>點我以從此網站加入新聞源。
-此網站含 %n 新聞源。</numerusform></translation>
+        <translation>
+            <numerusform>點我以從此網站加入新聞源。
+此網站含 %n 新聞源。</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -366,7 +370,7 @@ This website contains %n feed(s).</source>
         <translation>下載完成</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>檔案 &apos;%1&apos; 已下載。
 點此開啟上層目錄。</translation>
@@ -392,11 +396,15 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>剩 %n 分</numerusform></translation>
+        <translation>
+            <numerusform>剩 %n 分</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>剩 %n 秒</numerusform></translation>
+        <translation>
+            <numerusform>剩 %n 秒</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -416,7 +424,9 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>下載 %n 的檔案…</numerusform></translation>
+        <translation>
+            <numerusform>下載 %n 的檔案…</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -448,12 +458,16 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>使用全局設定 (每 %n 分鍾自動更新)</numerusform></translation>
+        <translation>
+            <numerusform>使用全局設定 (每 %n 分鍾自動更新)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>使用指定設定 (每 %n 分鍾自動更新)</numerusform></translation>
+        <translation>
+            <numerusform>使用指定設定 (每 %n 分鍾自動更新)</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -509,7 +523,9 @@ Status: %2</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>將自動更新 %n 新聞源。</numerusform></translation>
+        <translation>
+            <numerusform>將自動更新 %n 新聞源。</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -842,7 +858,9 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>天</numerusform></translation>
+        <translation>
+            <numerusform>天</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1165,10 +1183,6 @@ or this functionality is not implemented yet.</source>
         <translation>啟用此選項，可能會使新聞源更新變較慢而且常逾時。</translation>
     </message>
     <message>
-        <source>Note that at least version %1 is required.</source>
-        <translation>注意，所需最低版本為 %1。</translation>
-    </message>
-    <message>
         <source>URL of your ownCloud server, without any API path</source>
         <translation>ownCloud 服務器 URL，不包括 API 路徑</translation>
     </message>
@@ -1434,6 +1448,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>URL is okay.</source>
         <translation>URL 無問題。</translation>
+    </message>
+    <message>
+        <source>Download only unread messages.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2724,6 +2742,17 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can find all important messages here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
@@ -3146,7 +3175,9 @@ Login tokens expiration: %2</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>顯示更多消息 (剩 %n 條)</numerusform></translation>
+        <translation>
+            <numerusform>顯示更多消息 (剩 %n 條)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3229,9 +3260,11 @@ Login tokens expiration: %2</source>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n 其他新聞源。</numerusform></translation>
++ %n 其他新聞源。</numerusform>
+        </translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3304,7 +3337,9 @@ version by clicking this popup notification.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n 條被刪的消息。</numerusform></translation>
+        <translation>
+            <numerusform>%n 條被刪的消息。</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3320,7 +3355,9 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n 未讀訊息。</numerusform></translation>
+        <translation>
+            <numerusform>%n 未讀訊息。</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3729,10 +3766,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>新聞源 &amp;&amp; 分類</translation>
     </message>
     <message>
-        <source>Update all feed on application startup</source>
-        <translation>於應用程式啟動時更新全部新聞源</translation>
-    </message>
-    <message>
         <source>Auto-update all feeds every</source>
         <translation>自動更新全部新聞源，每</translation>
     </message>
@@ -3823,6 +3856,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Select new font</source>
         <translation>選擇新字型</translation>
+    </message>
+    <message>
+        <source>Update all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4205,15 +4242,25 @@ Unread news: %2</source>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n 小時</numerusform></translation>
+        <translation>
+            <numerusform>%n 小時</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n 分</numerusform></translation>
+        <translation>
+            <numerusform>%n 分</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
         <translation>又</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

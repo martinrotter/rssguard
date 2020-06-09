@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sv">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -279,9 +281,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller ett annat flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller ett annat flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -367,7 +372,7 @@ Denna webbsida innehåller %n flöden.</numerusform></translation>
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; är nedlladdad.
 Klicka här för att öppna målmappen.</translation>
@@ -393,11 +398,17 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -417,7 +428,10 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
+        <translation>
+            <numerusform>Laddar ner %n fil...</numerusform>
+            <numerusform>Laddar ner %n filer...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -449,12 +463,18 @@ Klicka här för att öppna målmappen.</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -510,7 +530,10 @@ Status: %2</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+        <translation>
+            <numerusform>Jag uppdaterar %n flöde automatiskt</numerusform>
+            <numerusform>Jag uppdaterar %n flöden automatiskt</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -843,7 +866,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagar</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1166,10 +1192,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
     <message>
-        <source>Note that at least version %1 is required.</source>
-        <translation>Notera att lägst version %1 är ett krav.</translation>
-    </message>
-    <message>
         <source>URL of your ownCloud server, without any API path</source>
         <translation>URL för din ownCloud-server, utan API-sökväg</translation>
     </message>
@@ -1435,6 +1457,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>URL is okay.</source>
         <translation>URL okay.</translation>
+    </message>
+    <message>
+        <source>Download only unread messages.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2724,6 +2750,17 @@ Inloggningstoken upphör: %2</translation>
     </message>
 </context>
 <context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can find all important messages here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
@@ -3146,7 +3183,10 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Visa fler meddelanden (%n återstår)</numerusform><numerusform>Visa fler meddelanden (%n återstår)</numerusform></translation>
+        <translation>
+            <numerusform>Visa fler meddelanden (%n återstår)</numerusform>
+            <numerusform>Visa fler meddelanden (%n återstår)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3229,11 +3269,14 @@ Inloggningstoken upphör: %2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n annat flöde.</numerusform><numerusform>
++ %n annat flöde.</numerusform>
+            <numerusform>
 
-+ %n andra flöden.</numerusform></translation>
++ %n andra flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3306,7 +3349,10 @@ genom att klicka på denna popup-avisering.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3322,7 +3368,10 @@ genom att klicka på denna popup-avisering.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3731,10 +3780,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Flöden &amp;&amp; kategorier</translation>
     </message>
     <message>
-        <source>Update all feed on application startup</source>
-        <translation>Uppdatera alla flöden vid programstart</translation>
-    </message>
-    <message>
         <source>Auto-update all feeds every</source>
         <translation>Auto-uppdatera alla flöden varje</translation>
     </message>
@@ -3825,6 +3870,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Select new font</source>
         <translation>Välj nytt teckensnitt</translation>
+    </message>
+    <message>
+        <source>Update all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4207,15 +4256,28 @@ Olästa nyheter: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
+        <translation>
+            <numerusform>%n timma</numerusform>
+            <numerusform>%n timmar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
+        <translation>
+            <numerusform>%n minut</numerusform>
+            <numerusform>%n minuter</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
         <translation> och </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

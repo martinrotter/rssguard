@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="da" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="da">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -34,7 +36,7 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -279,7 +281,10 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -294,7 +299,7 @@ This website contains %n feed(s).</source>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Filename</source>
@@ -326,7 +331,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
@@ -365,7 +370,7 @@ This website contains %n feed(s).</source>
         <translation>Fil hentet </translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; er hentet.
 Klik her for at åbne forældrebibliotek.</translation>
@@ -391,11 +396,17 @@ Klik her for at åbne forældrebibliotek.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut tilbage</numerusform><numerusform>%n minutter tilbage</numerusform></translation>
+        <translation>
+            <numerusform>%n minut tilbage</numerusform>
+            <numerusform>%n minutter tilbage</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund tilbage</numerusform><numerusform>%n sekunder tilbage</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund tilbage</numerusform>
+            <numerusform>%n sekunder tilbage</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -415,7 +426,10 @@ Klik her for at åbne forældrebibliotek.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Henter %n fil</numerusform><numerusform>Henter %n fil(er)</numerusform></translation>
+        <translation>
+            <numerusform>Henter %n fil</numerusform>
+            <numerusform>Henter %n fil(er)</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -447,12 +461,18 @@ Klik her for at åbne forældrebibliotek.</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -477,7 +497,7 @@ Klik her for at åbne forældrebibliotek.</translation>
     <message>
         <source>Auto-update status: %1
 Status: %2</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -503,11 +523,14 @@ Status: %2</source>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -533,11 +556,11 @@ Status: %2</source>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -563,7 +586,7 @@ Status: %2</source>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
@@ -587,7 +610,7 @@ Status: %2</source>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Are you sure?</source>
@@ -663,7 +686,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>License not found.</source>
@@ -707,7 +730,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User skins root path</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>NOT portable</source>
@@ -780,7 +803,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Common name for backup files</source>
@@ -788,7 +811,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
@@ -839,7 +862,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dage</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dage</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -879,7 +905,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
@@ -937,7 +963,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -957,7 +983,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1009,11 +1035,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
@@ -1040,11 +1066,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1064,7 +1090,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1120,22 +1146,22 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">URL</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1159,11 +1185,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Note that at least version %1 is required.</source>
-        <translation>Bemærk, at mindst version %1 er påkrævet.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
@@ -1175,7 +1197,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
@@ -1203,7 +1225,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -1223,7 +1245,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>URL is okay.</source>
@@ -1247,7 +1269,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> = unlimited</source>
@@ -1255,7 +1277,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -1302,11 +1324,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
@@ -1330,7 +1352,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -1338,7 +1360,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
@@ -1386,7 +1408,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -1422,15 +1444,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>URL is okay.</source>
         <translation>URL er okay.</translation>
+    </message>
+    <message>
+        <source>Download only unread messages.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1441,7 +1467,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Type</source>
@@ -1449,7 +1475,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Encoding</source>
@@ -1457,7 +1483,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto-update</source>
@@ -1465,7 +1491,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Title</source>
@@ -1537,15 +1563,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
@@ -1594,7 +1620,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
@@ -1606,7 +1632,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error: %1.</source>
@@ -1622,11 +1648,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No icon fetched.</source>
@@ -1650,11 +1676,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
@@ -1666,7 +1692,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Load icon from file...</source>
@@ -1686,7 +1712,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto-update every</source>
@@ -1694,7 +1720,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1753,11 +1779,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
@@ -1773,7 +1799,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
@@ -1781,7 +1807,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
@@ -1813,7 +1839,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
@@ -1829,11 +1855,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Feed/message list headers</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -1849,7 +1875,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
@@ -1901,7 +1927,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
@@ -1913,15 +1939,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
@@ -1933,7 +1959,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Show only unread items</source>
@@ -1941,15 +1967,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
@@ -1957,11 +1983,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
@@ -1977,7 +2003,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
@@ -1993,11 +2019,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
@@ -2017,7 +2043,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
@@ -2037,7 +2063,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>View &amp;fullscreen</source>
@@ -2049,7 +2075,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed update started</source>
@@ -2074,15 +2100,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
@@ -2090,15 +2116,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2109,7 +2135,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2128,7 +2154,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Restore database</source>
@@ -2140,11 +2166,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
@@ -2160,7 +2186,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select source directory</source>
@@ -2168,7 +2194,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Restart</source>
@@ -2188,15 +2214,15 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Changed categories of settings:
 %1.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
@@ -2223,7 +2249,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Title</source>
@@ -2324,11 +2350,11 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Load icon from file...</source>
@@ -2366,15 +2392,15 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No file is selected.</source>
@@ -2382,7 +2408,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Destination file</source>
@@ -2390,7 +2416,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Export feeds</source>
@@ -2402,7 +2428,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Import feeds</source>
@@ -2414,7 +2440,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File is selected.</source>
@@ -2422,7 +2448,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
@@ -2434,11 +2460,11 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
@@ -2454,19 +2480,19 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Get online metadata</source>
@@ -2474,7 +2500,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
@@ -2497,7 +2523,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2530,7 +2556,7 @@ Du skal genstarte programmet manuelt.</translation>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New release available.</source>
@@ -2563,7 +2589,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Downloading update...</source>
@@ -2579,7 +2605,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Go to application website</source>
@@ -2596,7 +2622,7 @@ downloaded.</source>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Changelog</source>
@@ -2608,11 +2634,11 @@ downloaded.</source>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> (size </source>
@@ -2620,16 +2646,16 @@ downloaded.</source>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2644,11 +2670,11 @@ You can install it now.</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No subject</source>
@@ -2684,7 +2710,7 @@ You can install it now.</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>logged-in</source>
@@ -2696,7 +2722,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
@@ -2715,6 +2741,17 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can find all important messages here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
@@ -2722,35 +2759,35 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>logged-in</source>
@@ -2779,11 +2816,11 @@ Login tokens expiration: %2</source>
     <name>MessagePreviewer</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open in external browser</source>
@@ -2795,11 +2832,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark message as read</source>
@@ -2811,11 +2848,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>image</source>
@@ -2830,7 +2867,7 @@ Login tokens expiration: %2</source>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Read</source>
@@ -2886,7 +2923,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -2926,11 +2963,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Account ID</source>
@@ -2938,39 +2975,39 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom hash of the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom ID of feed of the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2985,11 +3022,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
@@ -2997,7 +3034,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Display all messages</source>
@@ -3005,7 +3042,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -3020,11 +3057,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
@@ -3032,7 +3069,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open with external tool</source>
@@ -3044,7 +3081,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3116,11 +3153,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>unknown content</source>
@@ -3132,11 +3169,14 @@ Login tokens expiration: %2</source>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Vis flere meddelelser (%n resterer)</numerusform><numerusform>Vis flere meddelelser (%n resterer)</numerusform></translation>
+        <translation>
+            <numerusform>Vis flere meddelelser (%n resterer)</numerusform>
+            <numerusform>Vis flere meddelelser (%n resterer)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3144,7 +3184,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Cannot show more messages because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3159,11 +3199,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You have to login first</source>
@@ -3174,21 +3214,21 @@ Login tokens expiration: %2</source>
     <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OAuthLogin</name>
     <message>
         <source>Access authorization to service is requested</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -3196,7 +3236,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3219,11 +3259,14 @@ Login tokens expiration: %2</source>
         <source>
 
 + %n other feeds.</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -3247,7 +3290,7 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New version available</source>
@@ -3259,11 +3302,11 @@ Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
         <source>Passed external tool representation is not valid.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
@@ -3274,7 +3317,7 @@ Mindst API niveau %1 er påkrævet.</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3285,11 +3328,14 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3305,14 +3351,17 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Seach text</source>
@@ -3335,7 +3384,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
@@ -3343,7 +3392,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
@@ -3351,11 +3400,11 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select browser</source>
@@ -3363,7 +3412,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>External e-mail client</source>
@@ -3375,7 +3424,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
@@ -3389,7 +3438,7 @@ version by clicking this popup notification.</source>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Proxy</source>
@@ -3434,11 +3483,11 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Executables (*)</source>
@@ -3487,7 +3536,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>External tools</source>
@@ -3495,7 +3544,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add external tool</source>
@@ -3523,11 +3572,11 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3542,7 +3591,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -3556,7 +3605,7 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -3580,7 +3629,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Show password</source>
@@ -3624,11 +3673,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
@@ -3652,7 +3701,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
@@ -3663,15 +3712,15 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SettingsDownloads</name>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
@@ -3679,15 +3728,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Downloads</source>
@@ -3701,16 +3750,12 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Feeds</translation>
     </message>
     <message>
-        <source>Update all feed on application startup</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -3718,7 +3763,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> ms</source>
@@ -3726,11 +3771,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Messages</source>
@@ -3742,15 +3787,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Font preview</source>
@@ -3762,19 +3807,19 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Height of image attachments</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -3782,7 +3827,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Message list font</source>
@@ -3795,6 +3840,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Select new font</source>
         <translation>Vælg ny skrifttype</translation>
+    </message>
+    <message>
+        <source>Update all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3809,7 +3858,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
@@ -3848,7 +3897,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -3856,11 +3905,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Close tabs with</source>
@@ -3868,7 +3917,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toolbars</source>
@@ -3892,7 +3941,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Name</source>
@@ -3940,28 +3989,28 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3972,7 +4021,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Author</source>
@@ -3998,18 +4047,18 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4020,29 +4069,29 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4058,7 +4107,7 @@ Type: %3</source>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -4066,7 +4115,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -4078,22 +4127,22 @@ Type: %3</source>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File download progress bar</source>
@@ -4101,7 +4150,7 @@ Type: %3</source>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -4147,7 +4196,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Displays main menu.</source>
@@ -4174,15 +4223,28 @@ Ulæste nyheder: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n time</numerusform><numerusform>%n timer</numerusform></translation>
+        <translation>
+            <numerusform>%n time</numerusform>
+            <numerusform>%n timer</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minut</numerusform><numerusform>%n minut(ter)</numerusform></translation>
+        <translation>
+            <numerusform>%n minut</numerusform>
+            <numerusform>%n minut(ter)</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
         <translation>og</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -4240,14 +4302,14 @@ Ulæste nyheder: %2</translation>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -4255,7 +4317,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Username: %1
@@ -4316,7 +4378,7 @@ Sidst logget på: %4</translation>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto-load images</source>
@@ -4336,7 +4398,7 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Local storage enabled</source>
@@ -4344,15 +4406,15 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Local content can access local files</source>
@@ -4360,7 +4422,7 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Animate scrolling</source>
@@ -4380,7 +4442,7 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>WebGL enabled</source>
@@ -4388,11 +4450,11 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
@@ -4400,7 +4462,7 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

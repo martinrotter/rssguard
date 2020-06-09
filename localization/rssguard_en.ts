@@ -1190,10 +1190,6 @@ or this functionality is not implemented yet.</translation>
         <translation>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often. </translation>
     </message>
     <message>
-        <source>Note that at least version %1 is required.</source>
-        <translation>Note that at least version %1 is required.</translation>
-    </message>
-    <message>
         <source>URL of your ownCloud server, without any API path</source>
         <translation>URL of your ownCloud server, without any API path</translation>
     </message>
@@ -1459,6 +1455,10 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>URL is okay.</source>
         <translation type="unfinished">URL is okay.</translation>
+    </message>
+    <message>
+        <source>Download only unread messages.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2744,6 +2744,17 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can find all important messages here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
@@ -3754,10 +3765,6 @@ Authors of this application are NOT responsible for lost data.</translation>
         <translation type="unfinished">Feeds &amp;&amp; categories</translation>
     </message>
     <message>
-        <source>Update all feed on application startup</source>
-        <translation type="unfinished">Update all feed on application startup</translation>
-    </message>
-    <message>
         <source>Auto-update all feeds every</source>
         <translation type="unfinished">Auto-update all feeds every</translation>
     </message>
@@ -3847,6 +3854,10 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
         <source>Select new font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update all feeds on application startup with initial delay of</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4242,6 +4253,13 @@ Unread news: %2</translation>
     <message>
         <source> and </source>
         <translation> and </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
