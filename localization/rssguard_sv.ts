@@ -1434,7 +1434,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Download only unread messages.</source>
-        <translation type="unfinished"/>
+        <translation>Ladda endast ner olästa meddelanden.</translation>
     </message>
 </context>
 <context>
@@ -2727,11 +2727,11 @@ Inloggningstoken upphör: %2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Viktiga meddelanden</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Du hittar alla viktiga meddelanden här.</translation>
     </message>
 </context>
 <context>
@@ -3835,7 +3835,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Uppdatera alla flöden vid programstart, med en inledande fördröjning på</translation>
     </message>
 </context>
 <context>
@@ -4230,7 +4230,7 @@ Olästa nyheter: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n seconds(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n sekund</numerusform><numerusform>%n sekunder</numerusform></translation>
     </message>
 </context>
 <context>

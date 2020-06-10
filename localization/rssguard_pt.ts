@@ -1434,7 +1434,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Download only unread messages.</source>
-        <translation type="unfinished"/>
+        <translation>Baixa somente as mensagens não lidas.</translation>
     </message>
 </context>
 <context>
@@ -2728,11 +2728,11 @@ Expiração dos tokens de login: %2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Mensagens importantes</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Aqui você pode encontrar todas as mensagens importantes.</translation>
     </message>
 </context>
 <context>
@@ -3835,7 +3835,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Atualizar todos os feeds ao iniciar aplicativo com atraso inicial de</translation>
     </message>
 </context>
 <context>
@@ -4230,7 +4230,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n seconds(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n segundo(s)</numerusform><numerusform>%n segundo(s)</numerusform></translation>
     </message>
 </context>
 <context>
