@@ -43,7 +43,6 @@ class MessagePreviewer : public QWidget {
   signals:
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
-    void requestMessageListReload(bool mark_current_as_read);
 
   private:
     void createConnections();
@@ -55,9 +54,7 @@ class MessagePreviewer : public QWidget {
     Ui::MessagePreviewer m_ui;
     Message m_message;
     QStringList m_pictures;
-
     QPointer<RootItem> m_root;
-
     QAction* m_actionMarkRead;
     QAction* m_actionMarkUnread;
     QAction* m_actionSwitchImportance;

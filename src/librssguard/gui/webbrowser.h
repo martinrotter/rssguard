@@ -79,7 +79,6 @@ class WebBrowser : public TabContent {
 
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
-    void requestMessageListReload(bool mark_current_as_read);
 
   private:
     void initializeLayout();
@@ -100,7 +99,6 @@ class WebBrowser : public TabContent {
     QAction* m_actionForward;
     QAction* m_actionReload;
     QAction* m_actionStop;
-
     QList<Message> m_messages;
     QPointer<RootItem> m_root;
 };

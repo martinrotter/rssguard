@@ -192,9 +192,9 @@ int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) 
 #else
   NewspaperPreviewer* prev = new NewspaperPreviewer(root, messages, this);
 
-  connect(prev, &MessagePreviewer::markMessageRead,
+  connect(prev, &NewspaperPreviewer::markMessageRead,
           m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);
-  connect(prev, &MessagePreviewer::markMessageImportant,
+  connect(prev, &NewspaperPreviewer::markMessageImportant,
           m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
 #endif
 

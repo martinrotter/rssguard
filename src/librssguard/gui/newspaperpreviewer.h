@@ -30,7 +30,8 @@ class NewspaperPreviewer : public TabContent {
     void showMoreMessages();
 
   signals:
-    void requestMessageListReload(bool mark_current_as_read);
+    void markMessageRead(int id, RootItem::ReadStatus read);
+    void markMessageImportant(int id, RootItem::Importance important);
 
   private:
     QScopedPointer<Ui::NewspaperPreviewer> m_ui;

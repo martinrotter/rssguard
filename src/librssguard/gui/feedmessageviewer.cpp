@@ -199,8 +199,8 @@ void FeedMessageViewer::createConnections() {
 #else
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
   connect(m_messagesBrowser, &MessagePreviewer::markMessageRead, m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
-  connect(m_messagesBrowser, &MessagePreviewer::markMessageImportant, m_messagesView->sourceModel(),
-          &MessagesModel::setMessageImportantById);
+  connect(m_messagesBrowser, &MessagePreviewer::markMessageImportant,
+          m_messagesView->sourceModel(), &MessagesModel::setMessageImportantById);
 #endif
 
   connect(m_messagesView, &MessagesView::currentMessageChanged, this, &FeedMessageViewer::displayMessage);

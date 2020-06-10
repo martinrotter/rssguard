@@ -24,7 +24,9 @@ void NewspaperPreviewer::showMoreMessages() {
       auto* prev = new MessagePreviewer(this);
       QMargins margins = prev->layout()->contentsMargins();
 
-      connect(prev, &MessagePreviewer::requestMessageListReload, this, &NewspaperPreviewer::requestMessageListReload);
+      connect(prev, &MessagePreviewer::markMessageRead, this, &NewspaperPreviewer::markMessageRead);
+      connect(prev, &MessagePreviewer::markMessageImportant, this, &NewspaperPreviewer::markMessageImportant);
+
       margins.setRight(0);
       prev->layout()->setContentsMargins(margins);
       prev->setFixedHeight(300);

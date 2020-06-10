@@ -362,8 +362,6 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 }
 
 bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
-  int a = 5;
-
   for (int i = 0; i < rowCount(); i++) {
     int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
 
