@@ -113,7 +113,11 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start, int role,
         QString item_text = item_value.toString();
 
         switch (match_type) {
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
           case Qt::MatchRegularExpression:
+#else
+          case Qt::MatchRegExp:
+#endif
             if (QRegularExpression(entered_text,
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
                                    QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
