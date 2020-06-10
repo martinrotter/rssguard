@@ -191,6 +191,13 @@ void ServiceRoot::storeNewFeedTree(RootItem* root) {
       appendChild(bin);
       bin->updateCounts(true);
     }
+
+    ImportantNode* imp = importantNode();
+
+    if (imp != nullptr && !childItems().contains(imp)) {
+      appendChild(imp);
+      imp->updateCounts(true);
+    }
   }
 }
 

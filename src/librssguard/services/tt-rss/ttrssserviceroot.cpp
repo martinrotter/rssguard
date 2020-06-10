@@ -9,6 +9,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
+#include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
@@ -214,6 +215,7 @@ void TtRssServiceRoot::loadFromDatabase() {
 
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
+  appendChild(importantNode());
   updateCounts(true);
 }
 

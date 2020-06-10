@@ -23,6 +23,7 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
+#include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
@@ -58,6 +59,7 @@ void InoreaderServiceRoot::loadFromDatabase() {
 
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
+  appendChild(importantNode());
   updateCounts(true);
 }
 
@@ -186,7 +188,6 @@ void InoreaderServiceRoot::saveAllCachedData(bool async) {
   while (j.hasNext()) {
     j.next();
     auto key = j.key();
-
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {

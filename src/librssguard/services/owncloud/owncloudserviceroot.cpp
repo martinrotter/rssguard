@@ -8,6 +8,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
 #include "services/owncloud/gui/formowncloudfeeddetails.h"
@@ -34,6 +35,7 @@ bool OwnCloudServiceRoot::canBeDeleted() const {
 
 bool OwnCloudServiceRoot::editViaGui() {
   QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
+
   form_pointer.data()->execForEdit(this);
   return true;
 }
@@ -110,7 +112,6 @@ void OwnCloudServiceRoot::saveAllCachedData(bool async) {
   while (j.hasNext()) {
     j.next();
     auto key = j.key();
-
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
@@ -173,6 +174,7 @@ void OwnCloudServiceRoot::addNewFeed(const QString& url) {
   }
 
   QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainFormWidget()));
+
   form_pointer.data()->addEditFeed(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();
 }
@@ -201,5 +203,6 @@ void OwnCloudServiceRoot::loadFromDatabase() {
 
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
+  appendChild(importantNode());
   updateCounts(true);
 }
