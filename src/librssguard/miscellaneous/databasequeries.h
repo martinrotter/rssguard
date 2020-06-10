@@ -14,6 +14,7 @@ class DatabaseQueries {
   public:
 
     // Mark read/unread/starred/delete messages.
+    static bool markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static bool markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
     static bool markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance);
     static bool markFeedsReadUnread(const QSqlDatabase& db, const QStringList& ids, int account_id, RootItem::ReadStatus read);
@@ -45,6 +46,9 @@ class DatabaseQueries {
     static int getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool including_total_counts, bool* ok = nullptr);
 
     // Get messages (for newspaper view for example).
+    static QList<Message> getUndeletedImportantMessages(const QSqlDatabase& db,
+                                                        int account_id,
+                                                        bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db,
                                                       const QString& feed_custom_id,
                                                       int account_id,
@@ -53,6 +57,7 @@ class DatabaseQueries {
     static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Custom ID accumulators.
+    static QStringList customIdsOfImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
@@ -63,6 +68,7 @@ class DatabaseQueries {
                               int account_id, const QString& url, bool* any_message_changed, bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, int account_id);
     static bool deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too);
+    static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
     static bool storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);
     static bool editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,

@@ -184,15 +184,27 @@ void TabWidget::closeAllTabs() {
 int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
 #if defined(USE_WEBENGINE)
   WebBrowser* prev = new WebBrowser(this);
+
+  connect(prev, &WebBrowser::markMessageRead,
+          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);
+  connect(prev, &WebBrowser::markMessageImportant,
+          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
 #else
   NewspaperPreviewer* prev = new NewspaperPreviewer(root, messages, this);
-#endif
-  int index = addTab(prev, qApp->icons()->fromTheme(QSL("format-justify-fill")), tr("Newspaper view"), TabBar::Closable);
 
+  connect(prev, &MessagePreviewer::markMessageRead,
+          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);
+  connect(prev, &MessagePreviewer::markMessageImportant,
+          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
+#endif
+
+  int index = addTab(prev, qApp->icons()->fromTheme(QSL("format-justify-fill")), tr("Newspaper view"), TabBar::Closable);
   setCurrentIndex(index);
+
 #if defined(USE_WEBENGINE)
   prev->loadMessages(messages, root);
 #endif
+
   return index;
 }
 
@@ -210,7 +222,6 @@ int TabWidget::addLinkedBrowser(const QString& initial_url) {
 
 int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url) {
 #if defined(USE_WEBENGINE)
-
   // Create new WebBrowser.
   WebBrowser* browser = new WebBrowser(this);
   int final_index;

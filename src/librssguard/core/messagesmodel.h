@@ -85,10 +85,8 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     MessageHighlighter m_messageHighlighter;
     QString m_customDateFormat;
     RootItem* m_selectedItem;
-
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
-
     QFont m_normalFont;
     QFont m_boldFont;
     QFont m_normalStrikedFont;

@@ -382,6 +382,13 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
         break;
       }
 
+      case RootItemKind::Important: {
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+        list = DatabaseQueries::customIdsOfImportantMessages(database, accountId());
+        break;
+      }
+
       default:
         break;
     }

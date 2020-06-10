@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QThread>
@@ -16,6 +17,12 @@ ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
   setTitle(tr("Important messages"));
   setDescription(tr("You can find all important messages here."));
   setCreationDate(QDateTime::currentDateTime());
+}
+
+QList<Message> ImportantNode::undeletedMessages() const {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  return DatabaseQueries::getUndeletedImportantMessages(database, getParentServiceRoot()->accountId());
 }
 
 void ImportantNode::updateCounts(bool including_total_count) {
@@ -30,6 +37,42 @@ void ImportantNode::updateCounts(bool including_total_count) {
   }
 
   m_unreadCount = DatabaseQueries::getImportantMessageCounts(database, account_id, false);
+}
+
+bool ImportantNode::cleanMessages(bool clean_read_only) {
+  ServiceRoot* service = getParentServiceRoot();
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  if (DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId())) {
+    service->updateCounts(true);
+    service->itemChanged(getSubTree());
+    service->requestReloadMessageList(true);
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
+  ServiceRoot* service = getParentServiceRoot();
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
+
+  if (cache != nullptr) {
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
+  }
+
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
+    service->updateCounts(true);
+    service->itemChanged(getSubTree());
+    service->requestReloadMessageList(status == RootItem::Read);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 int ImportantNode::countOfUnreadMessages() const {

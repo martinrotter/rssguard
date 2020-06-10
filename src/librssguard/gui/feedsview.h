@@ -114,18 +114,18 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
     QMenu* initializeContextMenuService(RootItem* clicked_item);
     QMenu* initializeContextMenuCategories(RootItem* clicked_item);
     QMenu* initializeContextMenuFeeds(RootItem* clicked_item);
+    QMenu* initializeContextMenuImportant(RootItem* clicked_item);
     QMenu* initializeContextMenuEmptySpace();
     QMenu* initializeContextMenuOtherItem(RootItem* clicked_item);
 
-    // Sets up appearance of this widget.
     void setupAppearance();
-
     void saveExpandStates(RootItem* item);
 
     QMenu* m_contextMenuService;
     QMenu* m_contextMenuBin;
     QMenu* m_contextMenuCategories;
     QMenu* m_contextMenuFeeds;
+    QMenu* m_contextMenuImportant;
     QMenu* m_contextMenuEmptySpace;
     QMenu* m_contextMenuOtherItems;
     FeedsModel* m_sourceModel;

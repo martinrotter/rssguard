@@ -29,7 +29,7 @@
 
 FeedsView::FeedsView(QWidget* parent)
   : QTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
-  m_contextMenuFeeds(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr) {
+  m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -95,7 +95,6 @@ void FeedsView::saveAllExpandStates() {
 
 void FeedsView::saveExpandStates(RootItem* item) {
   Settings* settings = qApp->settings();
-
   QList<RootItem*> items = item->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot);
 
   // Iterate all categories and save their expand statuses.
@@ -112,8 +111,8 @@ void FeedsView::saveExpandStates(RootItem* item) {
 
 void FeedsView::loadAllExpandStates() {
   const Settings* settings = qApp->settings();
-
   QList<RootItem*> expandable_items;
+
   expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot));
 
   // Iterate all categories and save their expand statuses.
@@ -432,6 +431,7 @@ QMenu* FeedsView::initializeContextMenuBin(RootItem* clicked_item) {
   }
 
   QList<QAction*> specific_actions = clicked_item->contextMenu();
+
   m_contextMenuBin->addActions(QList<QAction*>() <<
                                qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
@@ -454,6 +454,7 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
   }
 
   QList<QAction*> specific_actions = clicked_item->contextMenu();
+
   m_contextMenuService->addActions(QList<QAction*>() <<
                                    qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                    qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
@@ -484,7 +485,7 @@ void FeedsView::focusInEvent(QFocusEvent* event) {
 }
 
 void FeedsView::expandItemDelayed(const QModelIndex& idx) {
-  QTimer::singleShot(100, this, [ = ] {
+  QTimer::singleShot(100, this, [=] {
     setExpanded(m_proxyModel->mapFromSource(idx), true);
   });
 }
@@ -498,6 +499,7 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
   }
 
   QList<QAction*> specific_actions = clicked_item->contextMenu();
+
   m_contextMenuCategories->addActions(QList<QAction*>() <<
                                       qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                       qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
@@ -524,6 +526,7 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
   }
 
   QList<QAction*> specific_actions = clicked_item->contextMenu();
+
   m_contextMenuFeeds->addActions(QList<QAction*>() <<
                                  qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                  qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
@@ -539,6 +542,29 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
   }
 
   return m_contextMenuFeeds;
+}
+
+QMenu* FeedsView::initializeContextMenuImportant(RootItem* clicked_item) {
+  if (m_contextMenuImportant == nullptr) {
+    m_contextMenuImportant = new QMenu(tr("Context menu for important messages"), this);
+  }
+  else {
+    m_contextMenuImportant->clear();
+  }
+
+  QList<QAction*> specific_actions = clicked_item->contextMenu();
+
+  m_contextMenuImportant->addActions(QList<QAction*>() <<
+                                     qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
+                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
+                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
+
+  if (!specific_actions.isEmpty()) {
+    m_contextMenuImportant->addSeparator();
+    m_contextMenuImportant->addActions(specific_actions);
+  }
+
+  return m_contextMenuImportant;
 }
 
 QMenu* FeedsView::initializeContextMenuEmptySpace() {
@@ -627,6 +653,9 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     else if (clicked_item->kind() == RootItemKind::Feed) {
       // Display context menu for feeds.
       initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
+    }
+    else if (clicked_item->kind() == RootItemKind::Important) {
+      initializeContextMenuImportant(clicked_item)->exec(event->globalPos());
     }
     else if (clicked_item->kind() == RootItemKind::Bin) {
       initializeContextMenuBin(clicked_item)->exec(event->globalPos());
