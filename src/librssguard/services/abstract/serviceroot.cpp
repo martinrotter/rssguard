@@ -124,20 +124,20 @@ void ServiceRoot::updateCounts(bool including_total_count) {
 
 void ServiceRoot::completelyRemoveAllData() {
   // Purge old data from SQL and clean all model items.
-  removeOldFeedTree(true);
-  cleanAllItems();
+  removeOldAccountFromDatabase(true);
+  cleanAllItemsFromModel();
   updateCounts(true);
   itemChanged(QList<RootItem*>() << this);
   requestReloadMessageList(true);
 }
 
-void ServiceRoot::removeOldFeedTree(bool including_messages) {
+void ServiceRoot::removeOldAccountFromDatabase(bool including_messages) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   DatabaseQueries::deleteAccountData(database, accountId(), including_messages);
 }
 
-void ServiceRoot::cleanAllItems() {
+void ServiceRoot::cleanAllItemsFromModel() {
   for (RootItem* top_level_item : childItems()) {
     if (top_level_item->kind() != RootItemKind::Bin && top_level_item->kind() != RootItemKind::Important) {
       requestItemRemoval(top_level_item);
@@ -301,8 +301,8 @@ void ServiceRoot::syncIn() {
     QMap<QString, QVariant> feed_custom_data = storeCustomFeedsData();
 
     // Remove from feeds model, then from SQL but leave messages intact.
-    cleanAllItems();
-    removeOldFeedTree(false);
+    cleanAllItemsFromModel();
+    removeOldAccountFromDatabase(false);
     restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
 
     // Model is clean, now store new tree into DB and
