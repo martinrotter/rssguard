@@ -139,7 +139,7 @@ void ServiceRoot::removeOldFeedTree(bool including_messages) {
 
 void ServiceRoot::cleanAllItems() {
   for (RootItem* top_level_item : childItems()) {
-    if (top_level_item->kind() != RootItemKind::Bin) {
+    if (top_level_item->kind() != RootItemKind::Bin && top_level_item->kind() != RootItemKind::Important) {
       requestItemRemoval(top_level_item);
     }
   }
@@ -298,12 +298,11 @@ void ServiceRoot::syncIn() {
   RootItem* new_tree = obtainNewTreeForSyncIn();
 
   if (new_tree != nullptr) {
-    // Purge old data from SQL and clean all model items.
-    requestItemExpandStateSave(this);
     QMap<QString, QVariant> feed_custom_data = storeCustomFeedsData();
 
-    removeOldFeedTree(false);
+    // Remove from feeds model, then from SQL but leave messages intact.
     cleanAllItems();
+    removeOldFeedTree(false);
     restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
 
     // Model is clean, now store new tree into DB and
@@ -319,32 +318,15 @@ void ServiceRoot::syncIn() {
       requestItemReassignment(top_level_item, this);
     }
 
-    updateCounts(true);
     new_tree->clearChildren();
     new_tree->deleteLater();
-    QList<RootItem*> all_items = getSubTree();
 
-    itemChanged(all_items);
+    updateCounts(true);
     requestReloadMessageList(true);
-
-    // Now we must refresh expand states.
-    QList<RootItem*> items_to_expand;
-
-    for (RootItem* item : all_items) {
-      if (qApp->settings()->value(GROUP(CategoriesExpandStates), item->hashCode(), item->childCount() > 0).toBool()) {
-        items_to_expand.append(item);
-      }
-    }
-
-    if (!items_to_expand.contains(this)) {
-      items_to_expand.prepend(this);
-    }
-
-    requestItemExpand(items_to_expand, true);
   }
 
   setIcon(original_icon);
-  itemChanged(QList<RootItem*>() << this);
+  itemChanged(getSubTree());
 }
 
 RootItem* ServiceRoot::obtainNewTreeForSyncIn() const {
