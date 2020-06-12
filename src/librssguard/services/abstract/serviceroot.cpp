@@ -534,7 +534,7 @@ bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const
   auto cache = dynamic_cast<CacheForServiceRoot*>(this);
 
   if (cache != nullptr) {
-    // Now, we need to separate the changes because of ownCloud API limitations.
+    // Now, we need to separate the changes because of Nextcloud API limitations.
     QList<Message> mark_starred_msgs;
     QList<Message> mark_unstarred_msgs;
 

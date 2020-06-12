@@ -156,6 +156,7 @@ void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, cons
   }
 
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
 
@@ -224,6 +225,7 @@ void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importanc
   }
 
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
 
@@ -363,8 +365,8 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
 RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons) {
   auto* parent = new RootItem();
   QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
-
   QMap<QString, RootItem*> cats;
+
   cats.insert(QString(), parent);
 
   for (const QJsonValue& obj : json) {
@@ -380,8 +382,6 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
       category->setCustomId(label_id);
 
       cats.insert(category->customId(), category);
-
-      // All categories in ownCloud are top-level.
       parent->appendChild(category);
     }
   }

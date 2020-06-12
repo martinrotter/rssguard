@@ -623,7 +623,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     }
     else {
       // We can recognize existing messages via their custom ID.
-      // NOTE: This concerns messages from custom accounts, like TT-RSS or ownCloud News.
+      // NOTE: This concerns messages from custom accounts, like TT-RSS or Nextcloud News.
       query_select_with_id.bindValue(QSL(":account_id"), account_id);
       query_select_with_id.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
@@ -1119,7 +1119,7 @@ bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QSt
     return true;
   }
   else {
-    qWarning("ownCloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarning("Nextcloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
     return false;
   }
 }
@@ -1142,7 +1142,7 @@ bool DatabaseQueries::createOwnCloudAccount(const QSqlDatabase& db, int id_to_as
     return true;
   }
   else {
-    qWarning("ownCloud: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarning("Nextcloud: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
     return false;
   }
 }
@@ -1193,7 +1193,7 @@ Assignment DatabaseQueries::getOwnCloudFeeds(const QSqlDatabase& db, int account
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qFatal("ownCloud: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
+    qFatal("Nextcloud: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
 
     if (ok != nullptr) {
       *ok = false;

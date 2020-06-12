@@ -633,6 +633,10 @@ or this functionality is not implemented yet.</source>
         <source>Context menu for accounts</source>
         <translation>帳號之右鍵功能表</translation>
     </message>
+    <message>
+        <source>Context menu for important messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>

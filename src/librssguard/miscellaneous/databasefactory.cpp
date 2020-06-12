@@ -143,7 +143,7 @@ QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) const {
     default:
 
       //: Unknown MySQL error arised.
-      return tr("Unknown error.");
+      return tr("Unknown error: '%1'.").arg(int(error_code));
   }
 }
 

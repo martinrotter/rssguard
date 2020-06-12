@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '13');
+INSERT INTO Information VALUES (1, 'schema_version', '14');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     PRIMARY KEY,
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS OwnCloudAccounts (
   url             TEXT        NOT NULL,
   force_update    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (force_update >= 0 AND force_update <= 1),
   msg_limit       INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
+  update_only_unread    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (update_only_unread >= 0 AND update_only_unread <= 1),
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );

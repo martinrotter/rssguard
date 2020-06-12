@@ -14,14 +14,14 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
   m_ui->setupUi(this);
   m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
 
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("owncloud")));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("nextcloud")));
 
   m_ui->m_lblTestResult->label()->setWordWrap(true);
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                      "of feeds will be probably much slower and may time-out often."));
-  m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your ownCloud account"));
-  m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your ownCloud account"));
-  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your ownCloud server, without any API path"));
+  m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your Nextcloud account"));
+  m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your Nextcloud account"));
+  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your Nextcloud server, without any API path"));
   m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                    tr("No test done yet."),
                                    tr("Here, results of connection test are shown."));
@@ -70,13 +70,13 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
 FormEditOwnCloudAccount::~FormEditOwnCloudAccount() = default;
 
 OwnCloudServiceRoot* FormEditOwnCloudAccount::execForCreate() {
-  setWindowTitle(tr("Add new ownCloud News account"));
+  setWindowTitle(tr("Add new Nextcloud News account"));
   exec();
   return m_editableRoot;
 }
 
 void FormEditOwnCloudAccount::execForEdit(OwnCloudServiceRoot* existing_root) {
-  setWindowTitle(tr("Edit existing ownCloud News account"));
+  setWindowTitle(tr("Edit existing Nextcloud News account"));
 
   m_editableRoot = existing_root;
   m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->authUsername());
@@ -106,24 +106,24 @@ void FormEditOwnCloudAccount::performTest() {
     if (!SystemFactory::isVersionEqualOrNewer(result.version(), OWNCLOUD_MIN_VERSION)) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                        tr(
-                                         "Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.").arg(
+                                         "Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.").arg(
                                          result.version(),
                                          OWNCLOUD_MIN_VERSION),
-                                       tr("Selected ownCloud News server is running unsupported version."));
+                                       tr("Selected Nextcloud News server is running unsupported version."));
     }
     else {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                        tr(
-                                         "ownCloud News server is okay, running with version %1, while at least version %2 is required.").arg(
+                                         "Nextcloud News server is okay, running with version %1, while at least version %2 is required.").arg(
                                          result.version(),
                                          OWNCLOUD_MIN_VERSION),
-                                       tr("ownCloud News server is okay."));
+                                       tr("Nextcloud News server is okay."));
     }
   }
   else if (factory.lastError()  != QNetworkReply::NoError) {
     m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                      tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
-                                     tr("Network error, have you entered correct ownCloud endpoint and password?"));
+                                     tr("Network error, have you entered correct Nextcloud endpoint and password?"));
   }
   else {
     m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,

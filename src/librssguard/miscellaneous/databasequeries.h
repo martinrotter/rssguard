@@ -98,7 +98,7 @@ class DatabaseQueries {
                                        const QString& app_id, const QString& app_key, const QString& redirect_url,
                                        const QString& refresh_token, int batch_size);
 
-    // ownCloud account.
+    // Nextcloud account.
     static QList<ServiceRoot*> getOwnCloudAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool deleteOwnCloudAccount(const QSqlDatabase& db, int account_id);
     static bool overwriteOwnCloudAccount(const QSqlDatabase& db, const QString& username, const QString& password,

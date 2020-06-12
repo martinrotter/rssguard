@@ -636,6 +636,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Context menu for accounts</source>
         <translation>Kontekstinis meniu paskyroms</translation>
     </message>
+    <message>
+        <source>Context menu for important messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>

@@ -94,7 +94,6 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
   QEventLoop loop;
   QString bearer = m_oauth2->bearer().toLocal8Bit();
   QString next_page_token;
-
   QList<Message> messages;
 
   if (bearer.isEmpty()) {
@@ -126,7 +125,6 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
     if (downloader.lastOutputError() == QNetworkReply::NetworkError::NoError) {
       // We parse this chunk.
       QString messages_data = downloader.lastOutputData();
-
       QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id, next_page_token);
       QList<Message> full_messages;
 
@@ -166,6 +164,7 @@ void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QS
   }
 
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
@@ -218,6 +217,7 @@ void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, c
   }
 
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
@@ -492,7 +492,7 @@ QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_j
 
       cats.insert(category->customId(), category);
 
-      // All categories in ownCloud are top-level.
+      // All categories in Nextcloud are top-level.
       parent->appendChild(category);
     }
    }

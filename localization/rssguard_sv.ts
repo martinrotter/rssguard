@@ -634,6 +634,10 @@ att funktionen inte är implementerad än.</translation>
         <source>Context menu for accounts</source>
         <translation>Kontextmeny för konton</translation>
     </message>
+    <message>
+        <source>Context menu for important messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>

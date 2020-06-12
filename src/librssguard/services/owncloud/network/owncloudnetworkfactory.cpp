@@ -98,7 +98,7 @@ OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
   OwnCloudUserResponse user_response(QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Obtaining user info failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Obtaining user info failed with error %d.", network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -121,7 +121,7 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
   OwnCloudStatusResponse status_response(QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Obtaining status info failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Obtaining status info failed with error %d.", network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -143,7 +143,7 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
                                                                         headers);
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Obtaining of categories failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Obtaining of categories failed with error %d.", network_reply.first);
     m_lastError = network_reply.first;
     return OwnCloudGetFeedsCategoriesResponse();
   }
@@ -159,7 +159,7 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
                                                           headers);
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Obtaining of feeds failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Obtaining of feeds failed with error %d.", network_reply.first);
     m_lastError = network_reply.first;
     return OwnCloudGetFeedsCategoriesResponse();
   }
@@ -187,7 +187,7 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
   m_lastError = network_reply.first;
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Obtaining of categories failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Obtaining of categories failed with error %d.", network_reply.first);
     return false;
   }
   else {
@@ -218,7 +218,7 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
   m_lastError = network_reply.first;
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Creating of category failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Creating of category failed with error %d.", network_reply.first);
     return false;
   }
   else {
@@ -249,7 +249,7 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, const QString& 
   m_lastError = network_reply.first;
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Renaming of feed failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Renaming of feed failed with error %d.", network_reply.first);
     return false;
   }
   else {
@@ -280,7 +280,7 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
   OwnCloudGetMessagesResponse msgs_response(QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Obtaining messages failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Obtaining messages failed with error %d.", network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -317,7 +317,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
                                                                         headers);
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("ownCloud: Feeds update failed with error %d.", network_reply.first);
+    qWarning("Nextcloud: Feeds update failed with error %d.", network_reply.first);
   }
 
   return (m_lastError = network_reply.first);
@@ -537,7 +537,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     category->setCustomId(QString::number(item["id"].toInt()));
     cats.insert(category->customId(), category);
 
-    // All categories in ownCloud are top-level.
+    // All categories in Nextcloud are top-level.
     parent->appendChild(category);
   }
 

@@ -29,7 +29,7 @@ void FormOwnCloudFeedDetails::apply() {
     if (m_ui->m_txtTitle->lineEdit()->text() != m_editableFeed->title()) {
       if (!qobject_cast<OwnCloudServiceRoot*>(m_serviceRoot)->network()->renameFeed(m_ui->m_txtTitle->lineEdit()->text(),
                                                                                     m_editableFeed->customId())) {
-        qWarning("ownCloud: Problem with feed renaming ID '%s'.", qPrintable(m_editableFeed->customId()));
+        qWarning("Nextcloud: Problem with feed renaming ID '%s'.", qPrintable(m_editableFeed->customId()));
       }
       else {
         renamed = true;

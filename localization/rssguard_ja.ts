@@ -629,6 +629,10 @@ or this functionality is not implemented yet.</source>
         <source>Context menu for accounts</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Context menu for important messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>

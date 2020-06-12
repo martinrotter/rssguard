@@ -14,7 +14,7 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
   m_ui->setupUi(this);
   m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
 
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tinytinyrss")));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("tt-rss")));
 
   m_ui->m_lblTestResult->label()->setWordWrap(true);
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "

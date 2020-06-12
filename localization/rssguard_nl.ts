@@ -634,6 +634,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <source>Context menu for accounts</source>
         <translation>Rechtermuisknopmenu van accounts</translation>
     </message>
+    <message>
+        <source>Context menu for important messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
