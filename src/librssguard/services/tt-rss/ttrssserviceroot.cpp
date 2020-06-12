@@ -36,7 +36,7 @@ void TtRssServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  if (qApp->isFirstRun(QSL("3.1.1")) || (childCount() == 1 && child(0)->kind() == RootItemKind::Bin)) {
+  if (childCount() <= 2) {
     syncIn();
   }
 }

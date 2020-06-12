@@ -123,7 +123,7 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  if (childCount() <= 1) {
+  if (childCount() <= 2) {
     syncIn();
   }
   else {

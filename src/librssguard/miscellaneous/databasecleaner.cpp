@@ -16,7 +16,7 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
   // Inform everyone about the start of the process.
   emit purgeStarted();
   bool result = true;
-  const int difference = 99 / 8;
+  const int difference = 99 / 12;
   int progress = 0;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
@@ -48,6 +48,16 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
     result &= purgeOldMessages(database, which_data.m_barrierForRemovingOldMessagesInDays);
     progress += difference;
     emit purgeProgress(progress, tr("Old messages purged..."));
+  }
+
+  if (which_data.m_removeStarredMessages) {
+    progress += difference;
+    emit purgeProgress(progress, tr("Removing starred messages..."));
+
+    // Remove old messages.
+    result &= purgeStarredMessages(database);
+    progress += difference;
+    emit purgeProgress(progress, tr("Starred messages purged..."));
   }
 
   if (which_data.m_shrinkDatabase) {

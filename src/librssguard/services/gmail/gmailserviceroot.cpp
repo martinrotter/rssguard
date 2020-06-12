@@ -165,7 +165,7 @@ void GmailServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  if (childCount() <= 1) {
+  if (childCount() <= 2) {
     syncIn();
   }
 
@@ -208,7 +208,6 @@ void GmailServiceRoot::saveAllCachedData(bool async) {
   while (j.hasNext()) {
     j.next();
     auto key = j.key();
-
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
