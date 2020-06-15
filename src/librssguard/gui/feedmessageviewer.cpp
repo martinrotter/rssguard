@@ -167,6 +167,17 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
   }
 }
 
+void FeedMessageViewer::toggleShowOnlyUnreadMessages() {
+  const QAction* origin = qobject_cast<QAction*>(sender());
+
+  if (origin == nullptr) {
+    m_messagesView->model()->invalidateUnreadMessagesFilter(true, false);
+  }
+  else {
+    m_messagesView->model()->invalidateUnreadMessagesFilter(true, origin->isChecked());
+  }
+}
+
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
   const QAction* origin = qobject_cast<QAction*>(sender());
 

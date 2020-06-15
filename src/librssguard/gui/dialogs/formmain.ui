@@ -136,6 +136,7 @@
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
     <addaction name="m_actionSendMessageViaEmail"/>
     <addaction name="m_actionMessagePreviewEnabled"/>
+    <addaction name="m_actionShowOnlyUnreadMessages"/>
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextMessage"/>
     <addaction name="m_actionSelectPreviousMessage"/>
@@ -748,6 +749,14 @@
   <action name="m_actionCopyUrlSelectedFeed">
    <property name="text">
     <string>&amp;Copy URLs of selected items</string>
+   </property>
+  </action>
+  <action name="m_actionShowOnlyUnreadMessages">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show only &amp;unread messages</string>
    </property>
   </action>
  </widget>

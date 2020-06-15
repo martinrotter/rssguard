@@ -11,9 +11,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
-    explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = 0);
+    explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = nullptr);
     virtual ~MessagesProxyModel();
 
     QModelIndex getNextPreviousUnreadItemIndex(int default_row);
@@ -28,14 +26,21 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Performs sort of items.
     void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
+    bool showUnreadOnly() const;
+    void setShowUnreadOnly(bool show_unread_only);
+
+  public slots:
+    void invalidateUnreadMessagesFilter(bool set_new_value = false, bool show_unread_only = false);
+
   private:
     QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
 
-    // Compares two rows of data.
     bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
+    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
 
     // Source model pointer.
     MessagesModel* m_sourceModel;
+    bool m_showUnreadOnly;
 };
 
 #endif // MESSAGESPROXYMODEL_H

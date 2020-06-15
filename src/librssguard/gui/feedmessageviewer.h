@@ -64,7 +64,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     // toolbar.
     void switchFeedComponentVisibility();
 
-    // Toggles displayed feeds.
+    void toggleShowOnlyUnreadMessages();
     void toggleShowOnlyUnreadFeeds();
 
   private slots:

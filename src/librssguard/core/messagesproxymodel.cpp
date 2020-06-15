@@ -5,14 +5,19 @@
 #include "core/messagesmodel.h"
 #include "miscellaneous/regexfactory.h"
 
+#include <QTimer>
+
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_showUnreadOnly(false) {
   setObjectName(QSL("MessagesProxyModel"));
+
   setSortRole(Qt::EditRole);
   setSortCaseSensitivity(Qt::CaseInsensitive);
+
   setFilterCaseSensitivity(Qt::CaseInsensitive);
   setFilterKeyColumn(-1);
   setFilterRole(Qt::EditRole);
+
   setDynamicSortFilter(false);
   setSourceModel(m_sourceModel);
 }
@@ -58,6 +63,28 @@ bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& ri
 
   // NOTE: Comparisons are done by SQL servers itself, not client-side.
   return false;
+}
+
+bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
+  return
+    (!m_showUnreadOnly || !m_sourceModel->messageAt(source_row).m_isRead) &&
+    QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+}
+
+bool MessagesProxyModel::showUnreadOnly() const {
+  return m_showUnreadOnly;
+}
+
+void MessagesProxyModel::setShowUnreadOnly(bool show_unread_only) {
+  m_showUnreadOnly = show_unread_only;
+}
+
+void MessagesProxyModel::invalidateUnreadMessagesFilter(bool set_new_value, bool show_unread_only) {
+  if (set_new_value) {
+    setShowUnreadOnly(show_unread_only);
+  }
+
+  QTimer::singleShot(0, this, &MessagesProxyModel::invalidateFilter);
 }
 
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& indexes, bool deep) const {
