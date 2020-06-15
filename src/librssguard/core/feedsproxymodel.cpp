@@ -218,8 +218,8 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 
   const RootItem* item = m_sourceModel->itemForIndex(idx);
 
-  if (item->kind() == RootItemKind::Bin || item->kind() == RootItemKind::ServiceRoot) {
-    // Recycle bin is always displayed.
+  if (item->kind() != RootItemKind::Category && item->kind() != RootItemKind::Feed) {
+    // Some items are always visible.
     return true;
   }
   else if (item->isParentOf(m_selectedItem) /* || item->isChildOf(m_selectedItem)*/ || m_selectedItem == item) {
