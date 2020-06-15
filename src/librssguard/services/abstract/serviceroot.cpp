@@ -478,13 +478,19 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   else {
     QList<Feed*> children = item->getSubTreeFeeds();
     QString filter_clause = textualFeedIds(children).join(QSL(", "));
-    QString urls = textualFeedUrls(children).join(QSL(", "));
+
+    if (filter_clause.isEmpty()) {
+      filter_clause = QSL("null");
+    }
 
     model->setFilter(
       QString("Feeds.custom_id IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %2").arg(
         filter_clause,
         QString::
         number(accountId())));
+
+    QString urls = textualFeedUrls(children).join(QSL(", "));
+
     qDebug("Displaying messages from feeds IDs: %s and URLs: %s.", qPrintable(filter_clause), qPrintable(urls));
   }
 

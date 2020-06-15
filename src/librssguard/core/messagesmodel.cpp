@@ -43,6 +43,7 @@ void MessagesModel::repopulate() {
 
   if (lastError().isValid()) {
     qCritical() << "Error when setting new msg view query:" << lastError().text();
+    qCritical() << "Used SQL select statement:" << selectStatement();
   }
 
   while (canFetchMore()) {
