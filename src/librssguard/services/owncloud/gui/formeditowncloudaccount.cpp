@@ -82,6 +82,7 @@ void FormEditOwnCloudAccount::execForEdit(OwnCloudServiceRoot* existing_root) {
   m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->authUsername());
   m_ui->m_txtPassword->lineEdit()->setText(existing_root->network()->authPassword());
   m_ui->m_txtUrl->lineEdit()->setText(existing_root->network()->url());
+  m_ui->m_checkDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
   m_ui->m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
   m_ui->m_spinLimitMessages->setValue(existing_root->network()->batchSize());
 
@@ -147,6 +148,8 @@ void FormEditOwnCloudAccount::onClickedOk() {
   m_editableRoot->network()->setAuthPassword(m_ui->m_txtPassword->lineEdit()->text());
   m_editableRoot->network()->setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
   m_editableRoot->network()->setBatchSize(m_ui->m_spinLimitMessages->value());
+  m_editableRoot->network()->setDownloadOnlyUnreadMessages(m_ui->m_checkDownloadOnlyUnreadMessages->isChecked());
+
   m_editableRoot->saveAccountDataToDatabase();
   accept();
 

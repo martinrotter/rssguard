@@ -175,7 +175,7 @@
      <item row="2" column="0" colspan="2">
       <widget class="QCheckBox" name="m_checkDownloadOnlyUnreadMessages">
        <property name="text">
-        <string>Download only unread messages.</string>
+        <string>Download only unread messages</string>
        </property>
       </widget>
      </item>

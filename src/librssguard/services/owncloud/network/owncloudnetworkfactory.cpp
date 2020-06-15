@@ -18,7 +18,7 @@
 #include <utility>
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
-  : m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
+  : m_url(QString()), m_fixedUrl(QString()), m_downloadOnlyUnreadMessages(false), m_forceServerSideUpdate(false),
   m_authUsername(QString()), m_authPassword(QString()), m_batchSize(OWNCLOUD_UNLIMITED_BATCH_SIZE), m_urlUser(QString()), m_urlStatus(
     QString()),
   m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
@@ -45,7 +45,7 @@ void OwnCloudNetworkFactory::setUrl(const QString& url) {
   m_urlStatus = m_fixedUrl + OWNCLOUD_API_PATH + "status";
   m_urlFolders = m_fixedUrl + OWNCLOUD_API_PATH + "folders";
   m_urlFeeds = m_fixedUrl + OWNCLOUD_API_PATH + "feeds";
-  m_urlMessages = m_fixedUrl + OWNCLOUD_API_PATH + "items?id=%1&batchSize=%2&type=%3";
+  m_urlMessages = m_fixedUrl + OWNCLOUD_API_PATH + "items?id=%1&batchSize=%2&type=%3&getRead=%4";
   m_urlFeedsUpdate = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/update?userId=%1&feedId=%2";
   m_urlDeleteFeed = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/%1";
   m_urlRenameFeed = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/%1/rename";
@@ -264,7 +264,8 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
 
   QString final_url = m_urlMessages.arg(QString::number(feed_id),
                                         QString::number(batchSize() <= 0 ? -1 : batchSize()),
-                                        QString::number(0));
+                                        QString::number(0),
+                                        m_downloadOnlyUnreadMessages ? QSL("false") : QSL("true"));
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -423,6 +424,14 @@ int OwnCloudNetworkFactory::batchSize() const {
 
 void OwnCloudNetworkFactory::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
+}
+
+bool OwnCloudNetworkFactory::downloadOnlyUnreadMessages() const {
+  return m_downloadOnlyUnreadMessages;
+}
+
+void OwnCloudNetworkFactory::setDownloadOnlyUnreadMessages(bool dowload_only_unread_messages) {
+  m_downloadOnlyUnreadMessages = dowload_only_unread_messages;
 }
 
 QString OwnCloudNetworkFactory::userId() const {

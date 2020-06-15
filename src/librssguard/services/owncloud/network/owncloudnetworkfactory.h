@@ -57,7 +57,7 @@ class RootItem;
 
 class OwnCloudGetFeedsCategoriesResponse {
   public:
-    explicit OwnCloudGetFeedsCategoriesResponse(QString  raw_categories = QString(), QString  raw_feeds = QString());
+    explicit OwnCloudGetFeedsCategoriesResponse(QString raw_categories = QString(), QString raw_feeds = QString());
     virtual ~OwnCloudGetFeedsCategoriesResponse();
 
     // Returns tree of feeds/categories.
@@ -121,9 +121,13 @@ class OwnCloudNetworkFactory {
     int batchSize() const;
     void setBatchSize(int batch_size);
 
+    bool downloadOnlyUnreadMessages() const;
+    void setDownloadOnlyUnreadMessages(bool dowload_only_unread_messages);
+
   private:
     QString m_url;
     QString m_fixedUrl;
+    bool m_downloadOnlyUnreadMessages;
     bool m_forceServerSideUpdate;
     QString m_authUsername;
     QString m_authPassword;

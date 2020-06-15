@@ -63,7 +63,8 @@ class DatabaseQueries {
     static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
                                                    bool* ok = nullptr);
 
-    // Common accounts methods.
+    // Common account methods.
+    static int createAccount(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
     static int updateMessages(QSqlDatabase db, const QList<Message>& messages, const QString& feed_custom_id,
                               int account_id, const QString& url, bool* any_message_changed, bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, int account_id);
@@ -74,39 +75,6 @@ class DatabaseQueries {
     static bool editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
                              int auto_update_interval);
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-
-    // Gmail account.
-    static Assignment getGmailFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static bool deleteGmailAccount(const QSqlDatabase& db, int account_id);
-    static QList<ServiceRoot*> getGmailAccounts(const QSqlDatabase& db, bool* ok = nullptr);
-    static bool overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
-                                      const QString& app_key, const QString& redirect_url, const QString& refresh_token,
-                                      int batch_size, int account_id);
-    static bool createGmailAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
-                                   const QString& app_id, const QString& app_key, const QString& redirect_url,
-                                   const QString& refresh_token, int batch_size);
-
-    // Inoreader account.
-    static bool deleteInoreaderAccount(const QSqlDatabase& db, int account_id);
-    static Assignment getInoreaderFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static bool storeNewInoreaderTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
-    static QList<ServiceRoot*> getInoreaderAccounts(const QSqlDatabase& db, bool* ok = nullptr);
-    static bool overwriteInoreaderAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
-                                          const QString& app_key, const QString& redirect_url, const QString& refresh_token,
-                                          int batch_size, int account_id);
-    static bool createInoreaderAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
-                                       const QString& app_id, const QString& app_key, const QString& redirect_url,
-                                       const QString& refresh_token, int batch_size);
-
-    // Nextcloud account.
-    static QList<ServiceRoot*> getOwnCloudAccounts(const QSqlDatabase& db, bool* ok = nullptr);
-    static bool deleteOwnCloudAccount(const QSqlDatabase& db, int account_id);
-    static bool overwriteOwnCloudAccount(const QSqlDatabase& db, const QString& username, const QString& password,
-                                         const QString& url, bool force_server_side_feed_update, int batch_size, int account_id);
-    static bool createOwnCloudAccount(const QSqlDatabase& db, int id_to_assign, const QString& username, const QString& password,
-                                      const QString& url, bool force_server_side_feed_update, int batch_size);
-    static int createAccount(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
-    static Assignment getOwnCloudFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Standard account.
     static bool deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id);
@@ -130,6 +98,17 @@ class DatabaseQueries {
     static Assignment getStandardCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static Assignment getStandardFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
+    // Nextcloud account.
+    static QList<ServiceRoot*> getOwnCloudAccounts(const QSqlDatabase& db, bool* ok = nullptr);
+    static bool deleteOwnCloudAccount(const QSqlDatabase& db, int account_id);
+    static bool overwriteOwnCloudAccount(const QSqlDatabase& db, const QString& username, const QString& password,
+                                         const QString& url, bool force_server_side_feed_update, int batch_size,
+                                         bool download_only_unread_messages, int account_id);
+    static bool createOwnCloudAccount(const QSqlDatabase& db, int id_to_assign, const QString& username, const QString& password,
+                                      const QString& url, bool force_server_side_feed_update,
+                                      bool download_only_unread_messages, int batch_size);
+    static Assignment getOwnCloudFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+
     // TT-RSS acccount.
     static QList<ServiceRoot*> getTtRssAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool deleteTtRssAccount(const QSqlDatabase& db, int account_id);
@@ -142,6 +121,29 @@ class DatabaseQueries {
                                    const QString& auth_password, const QString& url,
                                    bool force_server_side_feed_update, bool download_only_unread_messages);
     static Assignment getTtRssFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+
+    // Gmail account.
+    static Assignment getGmailFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static bool deleteGmailAccount(const QSqlDatabase& db, int account_id);
+    static QList<ServiceRoot*> getGmailAccounts(const QSqlDatabase& db, bool* ok = nullptr);
+    static bool overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
+                                      const QString& app_key, const QString& redirect_url, const QString& refresh_token,
+                                      int batch_size, int account_id);
+    static bool createGmailAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
+                                   const QString& app_id, const QString& app_key, const QString& redirect_url,
+                                   const QString& refresh_token, int batch_size);
+
+    // Inoreader account.
+    static bool deleteInoreaderAccount(const QSqlDatabase& db, int account_id);
+    static Assignment getInoreaderFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static bool storeNewInoreaderTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
+    static QList<ServiceRoot*> getInoreaderAccounts(const QSqlDatabase& db, bool* ok = nullptr);
+    static bool overwriteInoreaderAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
+                                          const QString& app_key, const QString& redirect_url, const QString& refresh_token,
+                                          int batch_size, int account_id);
+    static bool createInoreaderAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
+                                       const QString& app_id, const QString& app_key, const QString& redirect_url,
+                                       const QString& refresh_token, int batch_size);
 
   private:
     static QString unnulifyString(const QString& str);

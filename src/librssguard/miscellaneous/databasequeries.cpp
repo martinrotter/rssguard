@@ -1036,6 +1036,8 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db,
       root->network()->setUrl(query.value(3).toString());
       root->network()->setForceServerSideUpdate(query.value(4).toBool());
       root->network()->setBatchSize(query.value(5).toInt());
+      root->network()->setDownloadOnlyUnreadMessages(query.value(6).toBool());
+
       root->updateTitle();
       roots.append(root);
     }
@@ -1073,6 +1075,7 @@ QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(const QSqlDatabase& db, bo
       root->network()->setUrl(query.value(6).toString());
       root->network()->setForceServerSideUpdate(query.value(7).toBool());
       root->network()->setDownloadOnlyUnreadMessages(query.value(8).toBool());
+
       root->updateTitle();
       roots.append(root);
     }
@@ -1102,11 +1105,13 @@ bool DatabaseQueries::deleteOwnCloudAccount(const QSqlDatabase& db, int account_
 }
 
 bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QString& username, const QString& password,
-                                               const QString& url, bool force_server_side_feed_update, int batch_size, int account_id) {
+                                               const QString& url, bool force_server_side_feed_update, int batch_size,
+                                               bool download_only_unread_messages, int account_id) {
   QSqlQuery query(db);
 
   query.prepare("UPDATE OwnCloudAccounts "
-                "SET username = :username, password = :password, url = :url, force_update = :force_update, msg_limit = :msg_limit "
+                "SET username = :username, password = :password, url = :url, force_update = :force_update, "
+                "msg_limit = :msg_limit, update_only_unread = :update_only_unread "
                 "WHERE id = :id;");
   query.bindValue(QSL(":username"), username);
   query.bindValue(QSL(":password"), TextFactory::encrypt(password));
@@ -1114,6 +1119,7 @@ bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QSt
   query.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
   query.bindValue(QSL(":id"), account_id);
   query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? OWNCLOUD_UNLIMITED_BATCH_SIZE : batch_size);
+  query.bindValue(QSL(":update_only_unread"), download_only_unread_messages ? 1 : 0);
 
   if (query.exec()) {
     return true;
@@ -1126,17 +1132,19 @@ bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QSt
 
 bool DatabaseQueries::createOwnCloudAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
                                             const QString& password, const QString& url,
-                                            bool force_server_side_feed_update, int batch_size) {
+                                            bool force_server_side_feed_update,
+                                            bool download_only_unread_messages, int batch_size) {
   QSqlQuery q(db);
 
-  q.prepare("INSERT INTO OwnCloudAccounts (id, username, password, url, force_update, msg_limit) "
-            "VALUES (:id, :username, :password, :url, :force_update, :msg_limit);");
+  q.prepare("INSERT INTO OwnCloudAccounts (id, username, password, url, force_update, msg_limit, update_only_unread) "
+            "VALUES (:id, :username, :password, :url, :force_update, :msg_limit, :update_only_unread);");
   q.bindValue(QSL(":id"), id_to_assign);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":password"), TextFactory::encrypt(password));
   q.bindValue(QSL(":url"), url);
   q.bindValue(QSL(":force_update"), force_server_side_feed_update ? 1 : 0);
   q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? OWNCLOUD_UNLIMITED_BATCH_SIZE : batch_size);
+  q.bindValue(QSL(":update_only_unread"), download_only_unread_messages ? 1 : 0);
 
   if (q.exec()) {
     return true;
