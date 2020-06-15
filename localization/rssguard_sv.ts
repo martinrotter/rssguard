@@ -636,7 +636,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmeny för viktiga meddelanden</translation>
     </message>
 </context>
 <context>

@@ -638,7 +638,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation>Svarbių žinučių kontekstinis meniu</translation>
     </message>
 </context>
 <context>
@@ -1440,7 +1440,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Download only unread messages.</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti tik neskaitytas žinutes.</translation>
     </message>
 </context>
 <context>
@@ -2734,11 +2734,11 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Svarbios žinutės</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Visas svarbias žinutes galite rasti čia.</translation>
     </message>
 </context>
 <context>
@@ -3845,7 +3845,7 @@ Vilkaduobės:
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Paleidus programą atnaujinti visus kanalus uždelsus</translation>
     </message>
 </context>
 <context>
@@ -4240,7 +4240,7 @@ Neskaitytų naujienų: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n seconds(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n sekundę</numerusform><numerusform>%n sekundes</numerusform><numerusform>%n sekundžių</numerusform><numerusform>%n sekundę</numerusform></translation>
     </message>
 </context>
 <context>

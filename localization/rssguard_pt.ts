@@ -636,7 +636,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation>Menu de contexto para mensagens importantes</translation>
     </message>
 </context>
 <context>
