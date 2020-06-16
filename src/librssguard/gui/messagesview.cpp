@@ -35,6 +35,7 @@
 #include <QProcess>
 #include <QScrollBar>
 #include <QTimer>
+#include <QTimer>
 
 MessagesView::MessagesView(QWidget* parent) : QTreeView(parent), m_contextMenu(nullptr), m_columnsAdjusted(false) {
   m_sourceModel = qApp->feedReader()->messagesModel();
@@ -322,6 +323,14 @@ void MessagesView::loadItem(RootItem* item) {
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
   emit currentMessageRemoved();
+}
+
+void MessagesView::switchShowUnreadOnly(bool set_new_value, bool show_unread_only) {
+  if (set_new_value) {
+    m_proxyModel->setShowUnreadOnly(show_unread_only);
+  }
+
+  reloadSelections();
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {

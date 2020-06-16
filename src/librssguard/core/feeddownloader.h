@@ -37,8 +37,6 @@ class FeedDownloader : public QObject {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit FeedDownloader();
     virtual ~FeedDownloader();
 

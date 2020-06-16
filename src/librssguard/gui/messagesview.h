@@ -61,6 +61,8 @@ class MessagesView : public QTreeView {
     void searchMessages(const QString& pattern);
     void filterMessages(MessagesModel::MessageHighlighter filter);
 
+    void switchShowUnreadOnly(bool set_new_value = false, bool show_unread_only = false);
+
   private slots:
     void openSelectedMessagesWithExternalTool();
 

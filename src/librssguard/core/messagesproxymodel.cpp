@@ -90,14 +90,6 @@ void MessagesProxyModel::setShowUnreadOnly(bool show_unread_only) {
   qApp->settings()->setValue(GROUP(Messages), Messages::ShowOnlyUnreadMessages, show_unread_only);
 }
 
-void MessagesProxyModel::invalidateUnreadMessagesFilter(bool set_new_value, bool show_unread_only) {
-  if (set_new_value) {
-    setShowUnreadOnly(show_unread_only);
-  }
-
-  QTimer::singleShot(0, this, &MessagesProxyModel::invalidateFilter);
-}
-
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& indexes, bool deep) const {
   QModelIndexList mapped_indexes;
 

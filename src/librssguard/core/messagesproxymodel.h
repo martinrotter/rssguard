@@ -29,9 +29,6 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     bool showUnreadOnly() const;
     void setShowUnreadOnly(bool show_unread_only);
 
-  public slots:
-    void invalidateUnreadMessagesFilter(bool set_new_value = false, bool show_unread_only = false);
-
   private:
     QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
 

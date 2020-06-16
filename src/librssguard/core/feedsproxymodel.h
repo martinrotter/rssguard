@@ -33,9 +33,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
   public slots:
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 
-  private slots:
-    void invalidateFilter();
-
   signals:
     void expandAfterFilterIn(QModelIndex idx) const;
 

@@ -267,7 +267,3 @@ QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList& indexes)
 
   return source_indexes;
 }
-
-void FeedsProxyModel::invalidateFilter() {
-  QSortFilterProxyModel::invalidateFilter();
-}
