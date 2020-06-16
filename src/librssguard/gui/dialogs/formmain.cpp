@@ -581,8 +581,11 @@ void FormMain::loadSize() {
   m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
   m_ui->m_actionSwitchStatusBar->setChecked(settings->value(GROUP(GUI), SETTING(GUI::StatusBarVisible)).toBool());
 
-  // Make sure that only unread feeds are shown if user has that feature set on.
-  m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
+  // Make sure that only unread feeds/messages are shown if user has that feature set on.
+  m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds),
+                                                                SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
+  m_ui->m_actionShowOnlyUnreadMessages->setChecked(settings->value(GROUP(Messages),
+                                                                   SETTING(Messages::ShowOnlyUnreadMessages)).toBool());
 }
 
 void FormMain::saveSize() {

@@ -49,6 +49,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     RootItem::Importance messageImportance(int row_index) const;
 
     RootItem* loadedItem() const;
+    MessagesModelCache* cache() const;
 
     void setupFonts();
     void updateDateFormat();

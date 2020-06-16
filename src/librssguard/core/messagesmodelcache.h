@@ -17,24 +17,27 @@ class MessagesModelCache : public QObject {
     explicit MessagesModelCache(QObject* parent = nullptr);
     virtual ~MessagesModelCache() = default;
 
-    inline bool containsData(int row_idx) const {
-      return m_msgCache.contains(row_idx);
-    }
-
-    inline QSqlRecord record(int row_idx) const {
-      return m_msgCache.value(row_idx);
-    }
-
-    inline void clear() {
-      m_msgCache.clear();
-    }
-
-    void setData(const QModelIndex& index, const QVariant& value, const QSqlRecord& record);
-
+    bool containsData(int row_idx) const;
+    QSqlRecord record(int row_idx) const;
     QVariant data(const QModelIndex& idx);
+
+    void clear();
+    void setData(const QModelIndex& index, const QVariant& value, const QSqlRecord& record);
 
   private:
     QHash<int, QSqlRecord> m_msgCache;
 };
+
+inline bool MessagesModelCache::containsData(int row_idx) const {
+  return m_msgCache.contains(row_idx);
+}
+
+inline QSqlRecord MessagesModelCache::record(int row_idx) const {
+  return m_msgCache.value(row_idx);
+}
+
+inline void MessagesModelCache::clear() {
+  m_msgCache.clear();
+}
 
 #endif // MESSAGESMODELCACHE_H

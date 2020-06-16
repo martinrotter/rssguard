@@ -3,7 +3,10 @@
 #include "core/messagesproxymodel.h"
 
 #include "core/messagesmodel.h"
+#include "core/messagesmodelcache.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/regexfactory.h"
+#include "miscellaneous/settings.h"
 
 #include <QTimer>
 
@@ -66,9 +69,16 @@ bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& ri
 }
 
 bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
+  // We want to show only regexped messages when "all" should be visible
+  // and we want to show only regexped AND unread messages when unread should be visible.
+  //
+  // But also, we want to see messages which have their dirty states cached, because
+  // otherwise they would just disappeaar from the list for example when batch marked as read
+  // which is distracting.
   return
-    (!m_showUnreadOnly || !m_sourceModel->messageAt(source_row).m_isRead) &&
-    QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+    QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) &&
+    (m_sourceModel->cache()->containsData(source_row) ||
+     (!m_showUnreadOnly || !m_sourceModel->messageAt(source_row).m_isRead));
 }
 
 bool MessagesProxyModel::showUnreadOnly() const {
@@ -77,6 +87,7 @@ bool MessagesProxyModel::showUnreadOnly() const {
 
 void MessagesProxyModel::setShowUnreadOnly(bool show_unread_only) {
   m_showUnreadOnly = show_unread_only;
+  qApp->settings()->setValue(GROUP(Messages), Messages::ShowOnlyUnreadMessages, show_unread_only);
 }
 
 void MessagesProxyModel::invalidateUnreadMessagesFilter(bool set_new_value, bool show_unread_only) {

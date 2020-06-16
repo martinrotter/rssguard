@@ -37,6 +37,11 @@ void MessagesModel::setupIcons() {
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
 }
 
+MessagesModelCache* MessagesModel::cache() const
+{
+  return m_cache;
+}
+
 void MessagesModel::repopulate() {
   m_cache->clear();
   setQuery(selectStatement(), m_db);

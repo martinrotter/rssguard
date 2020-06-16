@@ -101,6 +101,9 @@ DKEY Messages::KeepCursorInCenter = "keep_cursor_center";
 
 DVALUE(bool) Messages::KeepCursorInCenterDef = false;
 
+DKEY Messages::ShowOnlyUnreadMessages = "show_only_unread_messages";
+DVALUE(bool) Messages::ShowOnlyUnreadMessagesDef = false;
+
 DKEY Messages::PreviewerFontStandard = "previewer_font_standard";
 
 NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef = QFont(QFont().family(), 12).toString();

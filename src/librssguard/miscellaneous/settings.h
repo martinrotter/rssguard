@@ -113,19 +113,18 @@ namespace Messages {
   VALUE(bool) UseCustomDateDef;
 
   KEY CustomDateFormat;
-
   VALUE(char*) CustomDateFormatDef;
 
   KEY ClearReadOnExit;
-
   VALUE(bool) ClearReadOnExitDef;
 
   KEY KeepCursorInCenter;
-
   VALUE(bool) KeepCursorInCenterDef;
 
-  KEY PreviewerFontStandard;
+  KEY ShowOnlyUnreadMessages;
+  VALUE(bool) ShowOnlyUnreadMessagesDef;
 
+  KEY PreviewerFontStandard;
   NON_CONST_VALUE(QString) PreviewerFontStandardDef;
 
   KEY ListFont;
