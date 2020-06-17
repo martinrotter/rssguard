@@ -57,17 +57,16 @@ qint64 DatabaseFactory::getDatabaseDataSize() const {
   }
   else if (m_activeDatabaseDriver == UsedDriver::MYSQL) {
     QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DesiredType::FromSettings);
-    qint64 result = 1;
     QSqlQuery query(database);
 
-    if (query.exec("SELECT Round(Sum(data_length + index_length), 1) "
-                   "FROM information_schema.tables "
-                   "GROUP BY table_schema;")) {
-      while (query.next()) {
-        result *= query.value(0).value<qint64>();
-      }
+    query.prepare("SELECT Round(Sum(data_length + index_length), 1) "
+                  "FROM information_schema.tables "
+                  "WHERE table_schema = :db "
+                  "GROUP BY table_schema;");
+    query.bindValue(QSL(":db"), database.databaseName());
 
-      return result;
+    if (query.exec() && query.next()) {
+      return query.value(0).value<qint64>();
     }
     else {
       return 0;
