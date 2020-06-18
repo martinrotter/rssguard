@@ -7,6 +7,7 @@
 #include "services/abstract/feed.h"
 
 #include <QDebug>
+#include <QJSEngine>
 #include <QMutexLocker>
 #include <QRegularExpression>
 #include <QString>
@@ -98,6 +99,43 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                   // Remove all newlines and leading white space.
                   .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
   }
+
+  /*
+     ///// Initial PoC for JS-based msgs filtering engine.
+
+     // Perform per-message filtering.
+     QJSEngine filter_engine;
+
+     // Create JavaScript communication wrapper for the message.
+     MessageObject msg_obj;
+
+     // Register the wrapper.
+     auto js_object = filter_engine.newQObject(&msg_obj);
+
+     filter_engine.globalObject().setProperty("msg", js_object);
+
+     for (int i = 0; i < msgs.size(); i++) {
+     // Attach live message object to wrapper.
+     msg_obj.setMessage(&msgs[i]);
+
+     // Call the filtering logic, given function must return integer value from
+     // FilteringAction enumeration.
+     // All Qt properties of MessageObject class are accessible.
+     //   For example msg.title.includes("A") returns true if message's title includes "A" etc.
+     QJSValue filter_func = filter_engine.evaluate("(function() { "
+                                                  "msg.duplicationAttributeCheck = 3;"
+                                                  "return msg.isDuplicate ? 2 : 8; "
+                                                  "})");
+     auto filter_output = filter_func.call().toInt();
+     FilteringAction decision = FilteringAction(filter_output);
+
+     // Do something according to decision.
+     //bool should_skip = PerformFilteringAction(&msgs[i]);
+     //if (should_skip) {
+     //  msgs.removeAt(i--);
+     //}
+     }
+   */
 
   m_feedsUpdated++;
 

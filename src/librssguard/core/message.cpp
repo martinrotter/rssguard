@@ -128,3 +128,26 @@ uint qHash(const Message& key, uint seed) {
 uint qHash(const Message& key) {
   return (uint(key.m_accountId) * 10000) + uint(key.m_id);
 }
+
+MessageObject::MessageObject(QObject* parent) : QObject(parent), m_message(nullptr) {}
+
+void MessageObject::setMessage(const Message* message) {
+  m_message = message;
+}
+
+bool MessageObject::isDuplicate() const {
+  // TODO: Check database according to duplication attribute_check.
+  return m_duplicationAttributeCheck == 3;
+}
+
+QString MessageObject::title() const {
+  return m_message->m_title;
+}
+
+int MessageObject::duplicationAttributeCheck() const {
+  return m_duplicationAttributeCheck;
+}
+
+void MessageObject::setDuplicationAttributeCheck(int duplicationAttributeCheck) {
+  m_duplicationAttributeCheck = duplicationAttributeCheck;
+}

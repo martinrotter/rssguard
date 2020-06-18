@@ -46,7 +46,6 @@ class Message {
     QString m_customHash;
     bool m_isRead;
     bool m_isImportant;
-
     QList<Enclosure> m_enclosures;
 
     // Is true if "created" date was obtained directly
@@ -70,5 +69,46 @@ QDataStream& operator>>(QDataStream& in, Message& myObj);
 
 uint qHash(const Message& key, uint seed);
 uint qHash(const Message& key);
+
+enum class FilteringAction {
+  Accept = 1,
+  Ignore = 2,
+  MarkRead = 4,
+  MarkUnread = 8,
+  MarkImportant = 16,
+  MarkUnimportant = 32
+};
+
+enum class DuplicationAttributeCheck {
+  SameTitle = 1,
+  SameUrl = 2,
+  SameAuthor = 4,
+  SameFeed = 8,
+  SameDateCreated = 16
+};
+
+class MessageObject : public QObject {
+  Q_OBJECT
+  Q_PROPERTY(QString title READ title)
+  Q_PROPERTY(bool isDuplicate READ isDuplicate)
+  Q_PROPERTY(int duplicationAttributeCheck READ duplicationAttributeCheck WRITE setDuplicationAttributeCheck)
+
+  public:
+    explicit MessageObject(QObject* parent = nullptr);
+
+    void setMessage(const Message* message);
+
+    int duplicationAttributeCheck() const;
+    void setDuplicationAttributeCheck(int duplicationAttributeCheck);
+
+    bool isDuplicate() const;
+
+    // Generic Message's properties bindings.
+    QString title() const;
+
+  private:
+    const Message* m_message;
+    int m_duplicationAttributeCheck;
+};
 
 #endif // MESSAGE_H

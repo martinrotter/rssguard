@@ -2,7 +2,7 @@ CONFIG *= c++1z warn_on resources_big
 CONFIG -=  debug_and_release
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION
-QT *= core gui widgets sql network xml
+QT *= core gui widgets sql network xml qml
 
 equals(USE_WEBENGINE, true) {
   message($$MSG_PREFIX: Application will be compiled WITH QtWebEngine module.)
