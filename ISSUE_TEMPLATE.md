@@ -13,7 +13,7 @@ interested in reading this: http://www.chiark.greenend.org.uk/~sgtatham/bugs.htm
 2. 
 3. 
 
-#### What is the expected result?
+#### What was the expected result?
 
 <!--- Write expected results of above reproduction steps here. Remove this line, pls. -->
 
