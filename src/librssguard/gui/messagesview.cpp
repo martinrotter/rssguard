@@ -309,11 +309,11 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
     emit currentMessageRemoved();
   }
 
-  QTreeView::selectionChanged(selected, deselected);
-
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()) {
     scrollTo(currentIndex(), QAbstractItemView::PositionAtCenter);
   }
+
+  QTreeView::selectionChanged(selected, deselected);
 }
 
 void MessagesView::loadItem(RootItem* item) {
