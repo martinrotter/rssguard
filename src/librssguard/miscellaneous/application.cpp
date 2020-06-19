@@ -47,6 +47,7 @@ Application::Application(const QString& id, int& argc, char** argv)
 #endif
 
   m_feedReader(nullptr),
+  m_quitLogicDone(false),
   m_updateFeedsLock(new Mutex()), m_mainForm(nullptr),
   m_trayIcon(nullptr), m_settings(Settings::setupSettings(this)), m_webFactory(new WebFactory(this)),
   m_system(new SystemFactory(this)), m_skins(new SkinFactory(this)),
@@ -424,6 +425,9 @@ void Application::showGuiMessage(const QString& title, const QString& message,
 
 void Application::onCommitData(QSessionManager& manager) {
   qDebug("OS asked application to commit its data.");
+
+  onAboutToQuit();
+
   manager.setRestartHint(QSessionManager::RestartNever);
   manager.release();
 }
@@ -435,6 +439,13 @@ void Application::onSaveState(QSessionManager& manager) {
 }
 
 void Application::onAboutToQuit() {
+  if (m_quitLogicDone) {
+    qWarning("On-close logic is already done.");
+    return;
+  }
+
+  m_quitLogicDone = true;
+
   eliminateFirstRun();
   eliminateFirstRun(APP_VERSION);
 

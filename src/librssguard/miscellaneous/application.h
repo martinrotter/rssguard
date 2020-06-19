@@ -128,8 +128,6 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     void processExecutionMessage(const QString& message);
 
   private slots:
-
-    // Last-minute reactors.
     void onCommitData(QSessionManager& manager);
     void onSaveState(QSessionManager& manager);
     void onAboutToQuit();
@@ -151,6 +149,8 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
 #endif
 
     FeedReader* m_feedReader;
+
+    bool m_quitLogicDone;
 
     // This read-write lock is used by application on its close.
     // Application locks this lock for WRITING.
