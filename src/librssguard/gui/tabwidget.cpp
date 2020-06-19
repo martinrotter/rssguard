@@ -199,7 +199,9 @@ int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) 
 #endif
 
   int index = addTab(prev, qApp->icons()->fromTheme(QSL("format-justify-fill")), tr("Newspaper view"), TabBar::Closable);
-  setCurrentIndex(index);
+
+  // NOTE: Do not bring "newspaper" tabs to front anymore.
+  //setCurrentIndex(index);
 
 #if defined(USE_WEBENGINE)
   prev->loadMessages(messages, root);
