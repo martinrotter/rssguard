@@ -160,7 +160,7 @@ class DatabaseFactory : public QObject {
     QString m_sqliteDatabaseFilePath;
 
     // Is database file initialized?
-    bool m_sqliteFileBasedDatabaseinitialized;
+    bool m_sqliteFileBasedDatabaseInitialized;
     bool m_sqliteInMemoryDatabaseInitialized;
 };
 

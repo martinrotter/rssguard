@@ -16,7 +16,7 @@ DatabaseFactory::DatabaseFactory(QObject* parent)
   : QObject(parent),
   m_activeDatabaseDriver(UsedDriver::SQLITE),
   m_mysqlDatabaseInitialized(false),
-  m_sqliteFileBasedDatabaseinitialized(false),
+  m_sqliteFileBasedDatabaseInitialized(false),
   m_sqliteInMemoryDatabaseInitialized(false) {
   setObjectName(QSL("DatabaseFactory"));
   determineDriver();
@@ -186,7 +186,8 @@ void DatabaseFactory::sqliteAssemblyDatabaseFilePath() {
 QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER);
 
-  database.setDatabaseName(QSL(":memory:"));
+  database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
+  database.setDatabaseName(QSL("file::memory:"));
 
   if (!database.open()) {
     qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
@@ -370,7 +371,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
   }
 
   // Everything is initialized now.
-  m_sqliteFileBasedDatabaseinitialized = true;
+  m_sqliteFileBasedDatabaseInitialized = true;
   return database;
 }
 
@@ -517,8 +518,8 @@ QString DatabaseFactory::obtainBeginTransactionSql() const {
 void DatabaseFactory::sqliteSaveMemoryDatabase() {
   qDebug("Saving in-memory working database back to persistent file-based storage.");
 
-  QSqlDatabase database = sqliteConnection(objectName(), DesiredType::StrictlyInMemory);
-  QSqlDatabase file_database = sqliteConnection(objectName(), DesiredType::StrictlyFileBased);
+  QSqlDatabase database = sqliteConnection(QSL("SaveFromMemory"), DesiredType::StrictlyInMemory);
+  QSqlDatabase file_database = sqliteConnection(QSL("SaveToFile"), DesiredType::StrictlyFileBased);
   QSqlQuery copy_contents(database);
 
   // Attach database.
@@ -717,9 +718,20 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
       return sqliteInitializeInMemoryDatabase();
     }
     else {
-      QSqlDatabase database = QSqlDatabase::database();
+      QSqlDatabase database;
 
-      database.setDatabaseName(QSL(":memory:"));
+      if (QSqlDatabase::contains(connection_name)) {
+        qDebug("SQLite connection '%s' is already active.", qPrintable(connection_name));
+
+        // This database connection was added previously, no need to
+        // setup its properties.
+        database = QSqlDatabase::database(connection_name);
+      }
+      else {
+        database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
+        database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
+        database.setDatabaseName(QSL("file::memory:"));
+      }
 
       if (!database.isOpen() && !database.open()) {
         qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'.",
@@ -734,7 +746,7 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
   }
   else {
     // We request file-based database.
-    if (!m_sqliteFileBasedDatabaseinitialized) {
+    if (!m_sqliteFileBasedDatabaseInitialized) {
       // File-based database is not yet initialised.
       return sqliteInitializeFileBasedDatabase(connection_name);
     }
