@@ -71,12 +71,11 @@ uint qHash(const Message& key, uint seed);
 uint qHash(const Message& key);
 
 enum class FilteringAction {
+  // Message is normally accepted and stored in DB.
   Accept = 1,
-  Ignore = 2,
-  MarkRead = 4,
-  MarkUnread = 8,
-  MarkImportant = 16,
-  MarkUnimportant = 32
+
+  // Message is ignored and now stored in DB.
+  Ignore = 2
 };
 
 enum class DuplicationAttributeCheck {
@@ -89,26 +88,48 @@ enum class DuplicationAttributeCheck {
 
 class MessageObject : public QObject {
   Q_OBJECT
-  Q_PROPERTY(QString title READ title)
-  Q_PROPERTY(bool isDuplicate READ isDuplicate)
-  Q_PROPERTY(int duplicationAttributeCheck READ duplicationAttributeCheck WRITE setDuplicationAttributeCheck)
+  Q_PROPERTY(QString title READ title WRITE setTitle)
+  Q_PROPERTY(QString url READ url WRITE setUrl)
+  Q_PROPERTY(QString author READ author WRITE setAuthor)
+  Q_PROPERTY(QString contents READ contents WRITE setContents)
+  Q_PROPERTY(QDateTime created READ created WRITE setCreated)
+  Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
+  Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
 
   public:
     explicit MessageObject(QObject* parent = nullptr);
 
-    void setMessage(const Message* message);
+    void setMessage(Message* message);
 
-    int duplicationAttributeCheck() const;
-    void setDuplicationAttributeCheck(int duplicationAttributeCheck);
-
-    bool isDuplicate() const;
+    // Check if message is duplicate with another messages in DB.
+    // Parameter "attribute_check" is DuplicationAttributeCheck enum
+    // value casted to int.
+    Q_INVOKABLE bool isDuplicate(int attribute_check) const;
 
     // Generic Message's properties bindings.
     QString title() const;
+    void setTitle(const QString& title);
+
+    QString url() const;
+    void setUrl(const QString& url);
+
+    QString author() const;
+    void setAuthor(const QString& author);
+
+    QString contents() const;
+    void setContents(const QString& contents);
+
+    QDateTime created() const;
+    void setCreated(const QDateTime& created);
+
+    bool isRead() const;
+    void setIsRead(bool is_read);
+
+    bool isImportant() const;
+    void setIsImportant(bool is_important);
 
   private:
-    const Message* m_message;
-    int m_duplicationAttributeCheck;
+    Message* m_message;
 };
 
 #endif // MESSAGE_H

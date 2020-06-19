@@ -100,42 +100,47 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                   .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
   }
 
-  /*
-     ///// Initial PoC for JS-based msgs filtering engine.
+#if defined (DEBUG)
+  ///// Initial PoC for JS-based msgs filtering engine.
 
-     // Perform per-message filtering.
-     QJSEngine filter_engine;
+  // Perform per-message filtering.
+  QJSEngine filter_engine;
 
-     // Create JavaScript communication wrapper for the message.
-     MessageObject msg_obj;
+  // Create JavaScript communication wrapper for the message.
+  MessageObject msg_obj;
 
-     // Register the wrapper.
-     auto js_object = filter_engine.newQObject(&msg_obj);
+  // Register the wrapper.
+  auto js_object = filter_engine.newQObject(&msg_obj);
 
-     filter_engine.globalObject().setProperty("msg", js_object);
+  filter_engine.globalObject().setProperty("msg", js_object);
 
-     for (int i = 0; i < msgs.size(); i++) {
-     // Attach live message object to wrapper.
-     msg_obj.setMessage(&msgs[i]);
+  for (int i = 0; i < msgs.size(); i++) {
+    // Attach live message object to wrapper.
+    msg_obj.setMessage(&msgs[i]);
 
-     // Call the filtering logic, given function must return integer value from
-     // FilteringAction enumeration.
-     // All Qt properties of MessageObject class are accessible.
-     //   For example msg.title.includes("A") returns true if message's title includes "A" etc.
-     QJSValue filter_func = filter_engine.evaluate("(function() { "
-                                                  "msg.duplicationAttributeCheck = 3;"
-                                                  "return msg.isDuplicate ? 2 : 8; "
+    // Call the filtering logic, given function must return integer value from
+    // FilteringAction enumeration.
+    //
+    // 1. All Qt properties of MessageObject class are accessible.
+    //    For example msg.title.includes("A") returns true if message's title includes "A" etc.
+    // 2. Some Qt properties of MessageObject are writable, so you can alter your message!
+    //    For example msg.isImportant = true.
+    QJSValue filter_func = filter_engine.evaluate("(function() { "
+
+                                                  //"return msg.isDuplicate(4) ? 1 : 2; "
+                                                  "msg.isImportant = true;"
+                                                  "return 1;"
                                                   "})");
-     auto filter_output = filter_func.call().toInt();
-     FilteringAction decision = FilteringAction(filter_output);
+    auto filter_output = filter_func.call().toInt();
+    FilteringAction decision = FilteringAction(filter_output);
 
-     // Do something according to decision.
-     //bool should_skip = PerformFilteringAction(&msgs[i]);
-     //if (should_skip) {
-     //  msgs.removeAt(i--);
-     //}
-     }
-   */
+    // Do something according to decision.
+    //bool should_skip = PerformFilteringAction(&msgs[i]);
+    //if (should_skip) {
+    //  msgs.removeAt(i--);
+    //}
+  }
+#endif
 
   m_feedsUpdated++;
 

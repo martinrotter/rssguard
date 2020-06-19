@@ -100,6 +100,7 @@ class MessagesView : public QTreeView {
     void focusInEvent(QFocusEvent* event);
     void contextMenuEvent(QContextMenuEvent* event);
     void mousePressEvent(QMouseEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
     void keyPressEvent(QKeyEvent* event);
     void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
 

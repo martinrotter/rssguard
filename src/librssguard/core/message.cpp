@@ -131,23 +131,67 @@ uint qHash(const Message& key) {
 
 MessageObject::MessageObject(QObject* parent) : QObject(parent), m_message(nullptr) {}
 
-void MessageObject::setMessage(const Message* message) {
+void MessageObject::setMessage(Message* message) {
   m_message = message;
 }
 
-bool MessageObject::isDuplicate() const {
+bool MessageObject::isDuplicate(int attribute_check) const {
   // TODO: Check database according to duplication attribute_check.
-  return m_duplicationAttributeCheck == 3;
+  return int(attribute_check) == 4;
 }
 
 QString MessageObject::title() const {
   return m_message->m_title;
 }
 
-int MessageObject::duplicationAttributeCheck() const {
-  return m_duplicationAttributeCheck;
+void MessageObject::setTitle(const QString& title) {
+  m_message->m_title = title;
 }
 
-void MessageObject::setDuplicationAttributeCheck(int duplicationAttributeCheck) {
-  m_duplicationAttributeCheck = duplicationAttributeCheck;
+QString MessageObject::url() const {
+  return m_message->m_url;
+}
+
+void MessageObject::setUrl(const QString& url) {
+  m_message->m_url = url;
+}
+
+QString MessageObject::author() const {
+  return m_message->m_author;
+}
+
+void MessageObject::setAuthor(const QString& author) {
+  m_message->m_author = author;
+}
+
+QString MessageObject::contents() const {
+  return m_message->m_contents;
+}
+
+void MessageObject::setContents(const QString& contents) {
+  m_message->m_contents = contents;
+}
+
+QDateTime MessageObject::created() const {
+  return m_message->m_created;
+}
+
+void MessageObject::setCreated(const QDateTime& created) {
+  m_message->m_created = created;
+}
+
+bool MessageObject::isRead() const {
+  return m_message->m_isRead;
+}
+
+void MessageObject::setIsRead(bool is_read) {
+  m_message->m_isRead = is_read;
+}
+
+bool MessageObject::isImportant() const {
+  return m_message->m_isImportant;
+}
+
+void MessageObject::setIsImportant(bool is_important) {
+  m_message->m_isImportant = is_important;
 }
