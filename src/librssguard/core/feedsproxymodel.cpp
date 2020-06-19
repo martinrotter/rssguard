@@ -170,7 +170,7 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
       }
       else {
         // In other cases, sort by title.
-        return QString::localeAwareCompare(left_item->title(), right_item->title()) < 0;
+        return QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0;
       }
     }
     else {
