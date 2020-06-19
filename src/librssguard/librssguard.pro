@@ -33,6 +33,7 @@ HEADERS += core/feeddownloader.h \
            core/feedsmodel.h \
            core/feedsproxymodel.h \
            core/message.h \
+           core/messagefilter.h \
            core/messagesmodel.h \
            core/messagesmodelcache.h \
            core/messagesmodelsqllayer.h \
@@ -176,6 +177,7 @@ SOURCES += core/feeddownloader.cpp \
            core/feedsmodel.cpp \
            core/feedsproxymodel.cpp \
            core/message.cpp \
+           core/messagefilter.cpp \
            core/messagesmodel.cpp \
            core/messagesmodelcache.cpp \
            core/messagesmodelsqllayer.cpp \

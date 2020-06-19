@@ -516,6 +516,7 @@ QString DatabaseFactory::obtainBeginTransactionSql() const {
 
 void DatabaseFactory::sqliteSaveMemoryDatabase() {
   qDebug("Saving in-memory working database back to persistent file-based storage.");
+
   QSqlDatabase database = sqliteConnection(objectName(), DesiredType::StrictlyInMemory);
   QSqlDatabase file_database = sqliteConnection(objectName(), DesiredType::StrictlyFileBased);
   QSqlQuery copy_contents(database);

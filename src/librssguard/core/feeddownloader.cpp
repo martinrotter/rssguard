@@ -2,6 +2,7 @@
 
 #include "core/feeddownloader.h"
 
+#include "core/messagefilter.h"
 #include "definitions/definitions.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
@@ -45,7 +46,7 @@ void FeedDownloader::updateAvailableFeeds() {
   }
 }
 
-void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
+void FeedDownloader::updateFeeds(const QList<Feed*>& feeds, const QList<MessageFilter*>& msg_filters) {
   QMutexLocker locker(m_mutex);
 
   if (feeds.isEmpty()) {

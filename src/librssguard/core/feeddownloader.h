@@ -10,9 +10,7 @@
 #include "core/message.h"
 
 class Feed;
-
-class QThreadPool;
-
+class MessageFilter;
 class QMutex;
 
 // Represents results of batch feed updates.
@@ -43,7 +41,7 @@ class FeedDownloader : public QObject {
     bool isUpdateRunning() const;
 
   public slots:
-    void updateFeeds(const QList<Feed*>& feeds);
+    void updateFeeds(const QList<Feed*>& feeds, const QList<MessageFilter*>& msg_filters);
     void stopRunningUpdate();
 
   signals:
@@ -58,7 +56,6 @@ class FeedDownloader : public QObject {
 
     QList<Feed*> m_feeds;
     QMutex* m_mutex;
-    QThreadPool* m_threadPool;
     FeedDownloadResults m_results;
     int m_feedsUpdated;
     int m_feedsOriginalCount;

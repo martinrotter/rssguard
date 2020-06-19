@@ -6,22 +6,17 @@
 #include <QObject>
 
 #include "core/feeddownloader.h"
+#include "core/messagefilter.h"
 #include "services/abstract/feed.h"
 
 #include <QFutureWatcher>
 
 class FeedsModel;
-
 class MessagesModel;
-
 class MessagesProxyModel;
-
 class FeedsProxyModel;
-
 class ServiceEntryPoint;
-
 class QTimer;
-
 class QThread;
 
 class RSSGUARD_DLLSPEC FeedReader : public QObject {
@@ -73,6 +68,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
 
   private:
     QList<ServiceEntryPoint*> m_feedServices;
+    QList<MessageFilter*> m_messageFilters;
     FeedsModel* m_feedsModel;
     FeedsProxyModel* m_feedsProxyModel;
     MessagesModel* m_messagesModel;

@@ -44,6 +44,7 @@ FeedReader::FeedReader(QObject* parent)
 FeedReader::~FeedReader() {
   qDebug("Destroying FeedReader instance.");
   qDeleteAll(m_feedServices);
+  qDeleteAll(m_messageFilters);
 }
 
 QList<ServiceEntryPoint*> FeedReader::feedServices() {
@@ -74,6 +75,7 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
     m_feedDownloader = new FeedDownloader();
 
     // Downloader setup.
+    qRegisterMetaType<QList<MessageFilter*>>("QList<MessageFilter*>");
     qRegisterMetaType<QList<Feed*>>("QList<Feed*>");
 
     m_feedDownloader->moveToThread(m_feedDownloaderThread);
@@ -89,7 +91,9 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   }
 
   QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds",
-                            Qt::ConnectionType::QueuedConnection, Q_ARG(QList<Feed*>, feeds));
+                            Qt::ConnectionType::QueuedConnection,
+                            Q_ARG(QList<Feed*>, feeds),
+                            Q_ARG(QList<MessageFilter*>, m_messageFilters));
 }
 
 void FeedReader::updateAutoUpdateStatus() {
