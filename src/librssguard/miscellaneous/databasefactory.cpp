@@ -538,12 +538,31 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
   }
 
   for (const QString& table : tables) {
-    copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table));
-    copy_contents.exec(QString(QSL("INSERT INTO storage.%1 SELECT * FROM main.%1;")).arg(table));
+    if (copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table))) {
+      qDebug("Cleaning old data from 'storage.%s'.", qPrintable(table));
+    }
+    else {
+      qCritical("Failed to clean old data from 'storage.%s', error: '%s'.",
+                qPrintable(table), qPrintable(copy_contents.lastError().text()));
+    }
+
+    if (copy_contents.exec(QString(QSL("INSERT INTO storage.%1 SELECT * FROM main.%1;")).arg(table))) {
+      qDebug("Copying new data into 'main.%s'.", qPrintable(table));
+    }
+    else {
+      qCritical("Failed to copy new data to 'main.%s', error: '%s'.",
+                qPrintable(table), qPrintable(copy_contents.lastError().text()));
+    }
   }
 
   // Detach database and finish.
-  copy_contents.exec(QSL("DETACH 'storage'"));
+  if (copy_contents.exec(QSL("DETACH 'storage'"))) {
+    qDebug("Detaching persistent SQLite file.");
+  }
+  else {
+    qCritical("Failed to detach SQLite file, error: '%s'.", qPrintable(copy_contents.lastError().text()));
+  }
+
   copy_contents.finish();
 }
 
