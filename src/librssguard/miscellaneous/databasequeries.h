@@ -5,6 +5,7 @@
 
 #include "services/abstract/rootitem.h"
 
+#include "services/abstract/category.h"
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardfeed.h"
 
@@ -75,6 +76,8 @@ class DatabaseQueries {
     static bool storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);
     static bool editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
                              int auto_update_interval);
+
+    template<typename T>
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     template<typename T>
@@ -99,7 +102,6 @@ class DatabaseQueries {
                                  const QString& username, const QString& password, Feed::AutoUpdateType auto_update_type,
                                  int auto_update_interval, StandardFeed::Type feed_format);
     static QList<ServiceRoot*> getStandardAccounts(const QSqlDatabase& db, bool* ok = nullptr);
-    static Assignment getStandardCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     template<typename T>
     static void fillFeedData(T* feed, const QSqlRecord& sql_record);
@@ -172,6 +174,41 @@ inline void DatabaseQueries::fillFeedData(StandardFeed* feed, const QSqlRecord& 
       break;
     }
   }
+}
+
+template<typename T>
+Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id, bool* ok) {
+  Assignment categories;
+
+  // Obtain data for categories from the database.
+  QSqlQuery query_categories(db);
+
+  query_categories.setForwardOnly(true);
+  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
+  query_categories.bindValue(QSL(":account_id"), account_id);
+
+  if (!query_categories.exec()) {
+    qFatal("Query for obtaining categories failed. Error message: '%s'.", qPrintable(query_categories.lastError().text()));
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+
+  while (query_categories.next()) {
+    AssignmentItem pair;
+
+    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.second = new T(query_categories.record());
+    categories << pair;
+  }
+
+  return categories;
 }
 
 template<typename T>

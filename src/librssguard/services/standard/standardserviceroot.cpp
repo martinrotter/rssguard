@@ -132,7 +132,7 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
 
 void StandardServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getStandardCategories(database, accountId());
+  Assignment categories = DatabaseQueries::getCategories<StandardCategory>(database, accountId());
   Assignment feeds = DatabaseQueries::getFeeds<StandardFeed>(database, accountId());
 
   // All data are now obtained, lets create the hierarchy.

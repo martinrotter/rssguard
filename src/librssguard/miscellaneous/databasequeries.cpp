@@ -1425,41 +1425,6 @@ QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db,
   return roots;
 }
 
-Assignment DatabaseQueries::getStandardCategories(const QSqlDatabase& db, int account_id, bool* ok) {
-  Assignment categories;
-
-  // Obtain data for categories from the database.
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.",
-           qPrintable(q.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-
-  while (q.next()) {
-    AssignmentItem pair;
-
-    pair.first = q.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new StandardCategory(q.record());
-    categories << pair;
-  }
-
-  return categories;
-}
-
 bool DatabaseQueries::deleteTtRssAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
@@ -1526,40 +1491,6 @@ bool DatabaseQueries::createTtRssAccount(const QSqlDatabase& db, int id_to_assig
     qWarning("TT-RSS: Saving of new account failed: '%s'.", qPrintable(q.lastError().text()));
     return false;
   }
-}
-
-Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id, bool* ok) {
-  Assignment categories;
-
-  // Obtain data for categories from the database.
-  QSqlQuery query_categories(db);
-
-  query_categories.setForwardOnly(true);
-  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
-  query_categories.bindValue(QSL(":account_id"), account_id);
-
-  if (!query_categories.exec()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.", qPrintable(query_categories.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-
-  while (query_categories.next()) {
-    AssignmentItem pair;
-
-    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new Category(query_categories.record());
-    categories << pair;
-  }
-
-  return categories;
 }
 
 QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bool* ok) {
