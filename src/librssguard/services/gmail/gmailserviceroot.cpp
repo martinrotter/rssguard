@@ -59,7 +59,7 @@ void GmailServiceRoot::writeNewEmail() {
 void GmailServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories(database, accountId());
-  Assignment feeds = DatabaseQueries::getGmailFeeds(database, accountId());
+  Assignment feeds = DatabaseQueries::getFeeds<GmailFeed>(database, accountId());
 
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);

@@ -196,7 +196,7 @@ RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
 void OwnCloudServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories(database, accountId());
-  Assignment feeds = DatabaseQueries::getOwnCloudFeeds(database, accountId());
+  Assignment feeds = DatabaseQueries::getFeeds<OwnCloudFeed>(database, accountId());
 
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);

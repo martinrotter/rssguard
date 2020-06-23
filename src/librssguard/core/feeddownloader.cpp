@@ -31,7 +31,7 @@ bool FeedDownloader::isUpdateRunning() const {
   return !m_feeds.isEmpty();
 }
 
-void FeedDownloader::updateAvailableFeeds() {
+void FeedDownloader::updateAvailableFeeds(const QList<MessageFilter*>& msg_filters) {
   for (const Feed* feed : m_feeds) {
     auto* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
@@ -42,7 +42,7 @@ void FeedDownloader::updateAvailableFeeds() {
   }
 
   while (!m_feeds.isEmpty()) {
-    updateOneFeed(m_feeds.takeFirst());
+    updateOneFeed(m_feeds.takeFirst(), msg_filters);
   }
 }
 
@@ -62,7 +62,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds, const QList<MessageF
     // Job starts now.
     emit updateStarted();
 
-    updateAvailableFeeds();
+    updateAvailableFeeds(msg_filters);
   }
 
   finalizeUpdate();
@@ -73,7 +73,7 @@ void FeedDownloader::stopRunningUpdate() {
   m_feedsOriginalCount = m_feedsUpdated = 0;
 }
 
-void FeedDownloader::updateOneFeed(Feed* feed) {
+void FeedDownloader::updateOneFeed(Feed* feed, const QList<MessageFilter*>& msg_filters) {
   qDebug().nospace() << "Downloading new messages for feed ID "
                      << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
@@ -85,7 +85,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                      << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
 
-  // Now, do some general operations on messages (tweak encoding etc.).
+  // Now, sanitize messages (tweak encoding etc.).
   for (auto& msg : msgs) {
     // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
     msg.m_contents = QUrl::fromPercentEncoding(msg.m_contents.toUtf8());
@@ -101,47 +101,47 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                   .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
   }
 
-#if defined (DEBUG)
-  ///// Initial PoC for JS-based msgs filtering engine.
+  if (!msg_filters.isEmpty()) {
+    // Perform per-message filtering.
+    QJSEngine filter_engine;
 
-  // Perform per-message filtering.
-  QJSEngine filter_engine;
+    // Create JavaScript communication wrapper for the message.
+    MessageObject msg_obj;
 
-  // Create JavaScript communication wrapper for the message.
-  MessageObject msg_obj;
+    // Register the wrapper.
+    auto js_object = filter_engine.newQObject(&msg_obj);
 
-  // Register the wrapper.
-  auto js_object = filter_engine.newQObject(&msg_obj);
+    filter_engine.globalObject().setProperty("msg", js_object);
 
-  filter_engine.globalObject().setProperty("msg", js_object);
+    for (int i = 0; i < msgs.size(); i++) {
+      // Attach live message object to wrapper.
+      msg_obj.setMessage(&msgs[i]);
 
-  for (int i = 0; i < msgs.size(); i++) {
-    // Attach live message object to wrapper.
-    msg_obj.setMessage(&msgs[i]);
+      for (MessageFilter* msg_filter : msg_filters) {
+        // Call the filtering logic, given function must return integer value from
+        // FilteringAction enumeration.
+        //
+        // 1. All Qt properties of MessageObject class are accessible.
+        //    For example msg.title.includes("A") returns true if message's title includes "A" etc.
+        // 2. Some Qt properties of MessageObject are writable, so you can alter your message!
+        //    For example msg.isImportant = true.
+        FilteringAction decision = msg_filter->filterMessage(&filter_engine);
 
-    // Call the filtering logic, given function must return integer value from
-    // FilteringAction enumeration.
-    //
-    // 1. All Qt properties of MessageObject class are accessible.
-    //    For example msg.title.includes("A") returns true if message's title includes "A" etc.
-    // 2. Some Qt properties of MessageObject are writable, so you can alter your message!
-    //    For example msg.isImportant = true.
-    QJSValue filter_func = filter_engine.evaluate("(function() { "
+        switch (decision) {
+          case FilteringAction::Accept:
+            // Message is normally accepted, it could be tweaked by the filter.
+            continue;
 
-                                                  //"return msg.isDuplicate(4) ? 1 : 2; "
-                                                  "msg.isImportant = true;"
-                                                  "return 1;"
-                                                  "})");
-    auto filter_output = filter_func.call().toInt();
-    FilteringAction decision = FilteringAction(filter_output);
+          case FilteringAction::Ignore:
+            // Remove the message, we do not want it.
+            msgs.removeAt(i--);
+            break;
+        }
 
-    // Do something according to decision.
-    //bool should_skip = PerformFilteringAction(&msgs[i]);
-    //if (should_skip) {
-    //  msgs.removeAt(i--);
-    //}
+        break;
+      }
+    }
   }
-#endif
 
   m_feedsUpdated++;
 

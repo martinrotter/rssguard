@@ -26,7 +26,6 @@
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
-#include <QSqlError>
 #include <QUrl>
 #include <QVariant>
 
@@ -1192,37 +1191,6 @@ int DatabaseQueries::createAccount(const QSqlDatabase& db, const QString& code, 
   }
 }
 
-Assignment DatabaseQueries::getOwnCloudFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
-  Assignment feeds;
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    qFatal("Nextcloud: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  while (q.next()) {
-    AssignmentItem pair;
-
-    pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
-    pair.second = new OwnCloudFeed(q.record());
-    feeds << pair;
-  }
-
-  if (ok != nullptr) {
-    *ok = true;
-  }
-
-  return feeds;
-}
-
 bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id) {
   QSqlQuery q(db);
 
@@ -1244,7 +1212,7 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int
   return q.exec();
 }
 
-bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
+bool DatabaseQueries::deleteStandardCategory(const QSqlDatabase& db, int id) {
   QSqlQuery q(db);
 
   // Remove this category from database.
@@ -1254,9 +1222,9 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
   return q.exec();
 }
 
-int DatabaseQueries::addCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                                 const QString& description, const QDateTime& creation_date, const QIcon& icon,
-                                 bool* ok) {
+int DatabaseQueries::addStandardCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
+                                         const QString& description, const QDateTime& creation_date, const QIcon& icon,
+                                         bool* ok) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1296,8 +1264,8 @@ int DatabaseQueries::addCategory(const QSqlDatabase& db, int parent_id, int acco
   }
 }
 
-bool DatabaseQueries::editCategory(const QSqlDatabase& db, int parent_id, int category_id,
-                                   const QString& title, const QString& description, const QIcon& icon) {
+bool DatabaseQueries::editStandardCategory(const QSqlDatabase& db, int parent_id, int category_id,
+                                           const QString& title, const QString& description, const QIcon& icon) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1312,12 +1280,12 @@ bool DatabaseQueries::editCategory(const QSqlDatabase& db, int parent_id, int ca
   return q.exec();
 }
 
-int DatabaseQueries::addFeed(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                             const QString& description, const QDateTime& creation_date, const QIcon& icon,
-                             const QString& encoding, const QString& url, bool is_protected,
-                             const QString& username, const QString& password,
-                             Feed::AutoUpdateType auto_update_type,
-                             int auto_update_interval, StandardFeed::Type feed_format, bool* ok) {
+int DatabaseQueries::addStandardFeed(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
+                                     const QString& description, const QDateTime& creation_date, const QIcon& icon,
+                                     const QString& encoding, const QString& url, bool is_protected,
+                                     const QString& username, const QString& password,
+                                     Feed::AutoUpdateType auto_update_type,
+                                     int auto_update_interval, StandardFeed::Type feed_format, bool* ok) {
   QSqlQuery q(db);
 
   qDebug() << "Adding feed with title '" << title.toUtf8() << "' to DB.";
@@ -1372,12 +1340,12 @@ int DatabaseQueries::addFeed(const QSqlDatabase& db, int parent_id, int account_
   }
 }
 
-bool DatabaseQueries::editFeed(const QSqlDatabase& db, int parent_id, int feed_id, const QString& title,
-                               const QString& description, const QIcon& icon,
-                               const QString& encoding, const QString& url, bool is_protected,
-                               const QString& username, const QString& password,
-                               Feed::AutoUpdateType auto_update_type,
-                               int auto_update_interval, StandardFeed::Type feed_format) {
+bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, int feed_id, const QString& title,
+                                       const QString& description, const QIcon& icon,
+                                       const QString& encoding, const QString& url, bool is_protected,
+                                       const QString& username, const QString& password,
+                                       Feed::AutoUpdateType auto_update_type,
+                                       int auto_update_interval, StandardFeed::Type feed_format) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1428,7 +1396,7 @@ bool DatabaseQueries::editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::Au
   return q.exec();
 }
 
-QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, bool* ok) {
+QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery q(db);
   QList<ServiceRoot*> roots;
 
@@ -1492,53 +1460,6 @@ Assignment DatabaseQueries::getStandardCategories(const QSqlDatabase& db, int ac
   return categories;
 }
 
-Assignment DatabaseQueries::getStandardFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
-  Assignment feeds;
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
-           qPrintable(q.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  if (ok != nullptr) {
-    *ok = true;
-  }
-
-  while (q.next()) {
-    // Process this feed.
-    StandardFeed::Type type = static_cast<StandardFeed::Type>(q.value(FDS_DB_TYPE_INDEX).toInt());
-
-    switch (type) {
-      case StandardFeed::Atom10:
-      case StandardFeed::Rdf:
-      case StandardFeed::Rss0X:
-      case StandardFeed::Rss2X: {
-        AssignmentItem pair;
-
-        pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
-        pair.second = new StandardFeed(q.record());
-        qobject_cast<StandardFeed*>(pair.second)->setType(type);
-        feeds << pair;
-        break;
-      }
-
-      default:
-        break;
-    }
-  }
-
-  return feeds;
-}
-
 bool DatabaseQueries::deleteTtRssAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
@@ -1546,8 +1467,6 @@ bool DatabaseQueries::deleteTtRssAccount(const QSqlDatabase& db, int account_id)
   q.prepare(QSL("DELETE FROM TtRssAccounts WHERE id = :id;"));
   q.bindValue(QSL(":id"), account_id);
 
-  // Remove extra entry in "Tiny Tiny RSS accounts list" and then delete
-  // all the categories/feeds and messages.
   return q.exec();
 }
 
@@ -1643,37 +1562,6 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
   return categories;
 }
 
-Assignment DatabaseQueries::getGmailFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
-  Assignment feeds;
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    qFatal("Gmail: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  while (q.next()) {
-    AssignmentItem pair;
-
-    pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
-    pair.second = new GmailFeed(q.record());
-    feeds << pair;
-  }
-
-  if (ok != nullptr) {
-    *ok = true;
-  }
-
-  return feeds;
-}
-
 QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
   QList<ServiceRoot*> roots;
@@ -1725,37 +1613,6 @@ bool DatabaseQueries::deleteInoreaderAccount(const QSqlDatabase& db, int account
   q.prepare(QSL("DELETE FROM InoreaderAccounts WHERE id = :id;"));
   q.bindValue(QSL(":id"), account_id);
   return q.exec();
-}
-
-Assignment DatabaseQueries::getInoreaderFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
-  Assignment feeds;
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    qFatal("Inoreader: Query for obtaining feeds failed. Error message: '%s'.", qPrintable(q.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  while (q.next()) {
-    AssignmentItem pair;
-
-    pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
-    pair.second = new InoreaderFeed(q.record());
-    feeds << pair;
-  }
-
-  if (ok != nullptr) {
-    *ok = true;
-  }
-
-  return feeds;
 }
 
 bool DatabaseQueries::storeNewInoreaderTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
@@ -1909,40 +1766,6 @@ bool DatabaseQueries::createInoreaderAccount(const QSqlDatabase& db, int id_to_a
     qWarning("Inoreader: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
     return false;
   }
-}
-
-Assignment DatabaseQueries::getTtRssFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
-  Assignment feeds;
-
-  // All categories are now loaded.
-  QSqlQuery query_feeds(db);
-
-  query_feeds.setForwardOnly(true);
-  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  query_feeds.bindValue(QSL(":account_id"), account_id);
-
-  if (!query_feeds.exec()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query_feeds.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-
-  while (query_feeds.next()) {
-    AssignmentItem pair;
-
-    pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-    pair.second = new TtRssFeed(query_feeds.record());
-    feeds << pair;
-  }
-
-  return feeds;
 }
 
 QString DatabaseQueries::unnulifyString(const QString& str) {

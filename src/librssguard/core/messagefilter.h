@@ -7,6 +7,8 @@
 
 #include "core/message.h"
 
+class QJSEngine;
+
 // Class which represents one message filter.
 class MessageFilter : public QObject {
   Q_OBJECT
@@ -14,7 +16,15 @@ class MessageFilter : public QObject {
   public:
     explicit MessageFilter(QObject* parent = nullptr);
 
-    FilteringAction filterMessage();
+    FilteringAction filterMessage(QJSEngine* engine);
+
+    int id() const;
+
+    QString name() const;
+    void setName(const QString& name);
+
+    QString script() const;
+    void setScript(const QString& script);
 
   private:
     int m_id;

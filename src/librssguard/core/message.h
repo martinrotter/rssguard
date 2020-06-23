@@ -104,7 +104,7 @@ class MessageObject : public QObject {
     // Check if message is duplicate with another messages in DB.
     // Parameter "attribute_check" is DuplicationAttributeCheck enum
     // value casted to int.
-    Q_INVOKABLE bool isDuplicate(int attribute_check) const;
+    Q_INVOKABLE bool isDuplicateWithAttribute(int attribute_check) const;
 
     // Generic Message's properties bindings.
     QString title() const;

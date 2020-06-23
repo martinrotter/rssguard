@@ -8,6 +8,7 @@
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardfeed.h"
 
+#include <QSqlError>
 #include <QSqlQuery>
 
 class DatabaseQueries {
@@ -76,27 +77,32 @@ class DatabaseQueries {
                              int auto_update_interval);
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
+    template<typename T>
+    static Assignment getFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+
     // Standard account.
     static bool deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id);
-    static bool deleteCategory(const QSqlDatabase& db, int id);
-    static int addCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                           const QString& description, const QDateTime& creation_date, const QIcon& icon, bool* ok = nullptr);
-    static bool editCategory(const QSqlDatabase& db, int parent_id, int category_id,
-                             const QString& title, const QString& description, const QIcon& icon);
-    static int addFeed(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                       const QString& description, const QDateTime& creation_date, const QIcon& icon,
-                       const QString& encoding, const QString& url, bool is_protected,
-                       const QString& username, const QString& password,
-                       Feed::AutoUpdateType auto_update_type,
-                       int auto_update_interval, StandardFeed::Type feed_format, bool* ok = nullptr);
-    static bool editFeed(const QSqlDatabase& db, int parent_id, int feed_id, const QString& title,
-                         const QString& description, const QIcon& icon,
-                         const QString& encoding, const QString& url, bool is_protected,
-                         const QString& username, const QString& password, Feed::AutoUpdateType auto_update_type,
-                         int auto_update_interval, StandardFeed::Type feed_format);
-    static QList<ServiceRoot*> getAccounts(const QSqlDatabase& db, bool* ok = nullptr);
+    static bool deleteStandardCategory(const QSqlDatabase& db, int id);
+    static int addStandardCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
+                                   const QString& description, const QDateTime& creation_date, const QIcon& icon, bool* ok = nullptr);
+    static bool editStandardCategory(const QSqlDatabase& db, int parent_id, int category_id,
+                                     const QString& title, const QString& description, const QIcon& icon);
+    static int addStandardFeed(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
+                               const QString& description, const QDateTime& creation_date, const QIcon& icon,
+                               const QString& encoding, const QString& url, bool is_protected,
+                               const QString& username, const QString& password,
+                               Feed::AutoUpdateType auto_update_type,
+                               int auto_update_interval, StandardFeed::Type feed_format, bool* ok = nullptr);
+    static bool editStandardFeed(const QSqlDatabase& db, int parent_id, int feed_id, const QString& title,
+                                 const QString& description, const QIcon& icon,
+                                 const QString& encoding, const QString& url, bool is_protected,
+                                 const QString& username, const QString& password, Feed::AutoUpdateType auto_update_type,
+                                 int auto_update_interval, StandardFeed::Type feed_format);
+    static QList<ServiceRoot*> getStandardAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static Assignment getStandardCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static Assignment getStandardFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+
+    template<typename T>
+    static void fillFeedData(T* feed, const QSqlRecord& sql_record);
 
     // Nextcloud account.
     static QList<ServiceRoot*> getOwnCloudAccounts(const QSqlDatabase& db, bool* ok = nullptr);
@@ -107,7 +113,6 @@ class DatabaseQueries {
     static bool createOwnCloudAccount(const QSqlDatabase& db, int id_to_assign, const QString& username, const QString& password,
                                       const QString& url, bool force_server_side_feed_update,
                                       bool download_only_unread_messages, int batch_size);
-    static Assignment getOwnCloudFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // TT-RSS acccount.
     static QList<ServiceRoot*> getTtRssAccounts(const QSqlDatabase& db, bool* ok = nullptr);
@@ -120,10 +125,8 @@ class DatabaseQueries {
                                    const QString& password, bool auth_protected, const QString& auth_username,
                                    const QString& auth_password, const QString& url,
                                    bool force_server_side_feed_update, bool download_only_unread_messages);
-    static Assignment getTtRssFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Gmail account.
-    static Assignment getGmailFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static bool deleteGmailAccount(const QSqlDatabase& db, int account_id);
     static QList<ServiceRoot*> getGmailAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
@@ -135,7 +138,6 @@ class DatabaseQueries {
 
     // Inoreader account.
     static bool deleteInoreaderAccount(const QSqlDatabase& db, int account_id);
-    static Assignment getInoreaderFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static bool storeNewInoreaderTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static QList<ServiceRoot*> getInoreaderAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool overwriteInoreaderAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
@@ -150,5 +152,67 @@ class DatabaseQueries {
 
     explicit DatabaseQueries();
 };
+
+template<typename T>
+void DatabaseQueries::fillFeedData(T* feed, const QSqlRecord& sql_record) {
+  Q_UNUSED(feed)
+  Q_UNUSED(sql_record)
+}
+
+template<>
+inline void DatabaseQueries::fillFeedData(StandardFeed* feed, const QSqlRecord& sql_record) {
+  StandardFeed::Type type = static_cast<StandardFeed::Type>(sql_record.value(FDS_DB_TYPE_INDEX).toInt());
+
+  switch (type) {
+    case StandardFeed::Atom10:
+    case StandardFeed::Rdf:
+    case StandardFeed::Rss0X:
+    case StandardFeed::Rss2X: {
+      feed->setType(type);
+      break;
+    }
+  }
+}
+
+template<typename T>
+Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
+  Assignment feeds;
+
+  // All categories are now loaded.
+  QSqlQuery query_feeds(db);
+
+  query_feeds.setForwardOnly(true);
+  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  query_feeds.bindValue(QSL(":account_id"), account_id);
+
+  if (!query_feeds.exec()) {
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query_feeds.lastError().text()));
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+
+  while (query_feeds.next()) {
+    AssignmentItem pair;
+
+    pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
+
+    T* feed = new T(query_feeds.record());
+
+    fillFeedData<T>(feed, query_feeds.record());
+
+    pair.second = feed;
+
+    feeds << pair;
+  }
+
+  return feeds;
+}
 
 #endif // DATABASEQUERIES_H

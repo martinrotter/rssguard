@@ -50,8 +50,8 @@ class FeedDownloader : public QObject {
     void updateProgress(const Feed* feed, int current, int total);
 
   private:
-    void updateOneFeed(Feed* feed);
-    void updateAvailableFeeds();
+    void updateOneFeed(Feed* feed, const QList<MessageFilter*>& msg_filters);
+    void updateAvailableFeeds(const QList<MessageFilter*>& msg_filters);
     void finalizeUpdate();
 
     QList<Feed*> m_feeds;

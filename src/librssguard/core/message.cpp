@@ -135,7 +135,7 @@ void MessageObject::setMessage(Message* message) {
   m_message = message;
 }
 
-bool MessageObject::isDuplicate(int attribute_check) const {
+bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
   // TODO: Check database according to duplication attribute_check.
   return int(attribute_check) == 4;
 }

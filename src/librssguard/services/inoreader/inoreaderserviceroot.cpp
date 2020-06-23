@@ -27,7 +27,7 @@
 #include "services/abstract/recyclebin.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
+#include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
 InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent) : ServiceRoot(parent), m_network(network) {
@@ -51,7 +51,7 @@ void InoreaderServiceRoot::updateTitle() {
 void InoreaderServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories(database, accountId());
-  Assignment feeds = DatabaseQueries::getInoreaderFeeds(database, accountId());
+  Assignment feeds = DatabaseQueries::getFeeds<InoreaderFeed>(database, accountId());
 
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);
