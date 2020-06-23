@@ -41,7 +41,7 @@ class FeedDownloader : public QObject {
     bool isUpdateRunning() const;
 
   public slots:
-    void updateFeeds(const QList<Feed*>& feeds, const QList<MessageFilter*>& msg_filters);
+    void updateFeeds(const QList<Feed*>& feeds);
     void stopRunningUpdate();
 
   signals:
@@ -50,8 +50,8 @@ class FeedDownloader : public QObject {
     void updateProgress(const Feed* feed, int current, int total);
 
   private:
-    void updateOneFeed(Feed* feed, const QList<MessageFilter*>& msg_filters);
-    void updateAvailableFeeds(const QList<MessageFilter*>& msg_filters);
+    void updateOneFeed(Feed* feed);
+    void updateAvailableFeeds();
     void finalizeUpdate();
 
     QList<Feed*> m_feeds;

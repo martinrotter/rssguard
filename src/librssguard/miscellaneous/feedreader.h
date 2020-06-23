@@ -26,8 +26,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     explicit FeedReader(QObject* parent = nullptr);
     virtual ~FeedReader();
 
-    // List of all installed "feed service plugins", including obligatory
-    // "standard" service entry point.
+    // List of all installed "feed service plugins".
     QList<ServiceEntryPoint*> feedServices();
 
     // Access to DB cleaner.
@@ -50,6 +49,8 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     bool autoUpdateEnabled() const;
     int autoUpdateRemainingInterval() const;
     int autoUpdateInitialInterval() const;
+
+    void loadSaveMessageFilters();
 
   public slots:
     void updateAllFeeds();

@@ -31,7 +31,7 @@ bool FeedDownloader::isUpdateRunning() const {
   return !m_feeds.isEmpty();
 }
 
-void FeedDownloader::updateAvailableFeeds(const QList<MessageFilter*>& msg_filters) {
+void FeedDownloader::updateAvailableFeeds() {
   for (const Feed* feed : m_feeds) {
     auto* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
@@ -42,11 +42,11 @@ void FeedDownloader::updateAvailableFeeds(const QList<MessageFilter*>& msg_filte
   }
 
   while (!m_feeds.isEmpty()) {
-    updateOneFeed(m_feeds.takeFirst(), msg_filters);
+    updateOneFeed(m_feeds.takeFirst());
   }
 }
 
-void FeedDownloader::updateFeeds(const QList<Feed*>& feeds, const QList<MessageFilter*>& msg_filters) {
+void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   QMutexLocker locker(m_mutex);
 
   if (feeds.isEmpty()) {
@@ -62,7 +62,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds, const QList<MessageF
     // Job starts now.
     emit updateStarted();
 
-    updateAvailableFeeds(msg_filters);
+    updateAvailableFeeds();
   }
 
   finalizeUpdate();
@@ -73,7 +73,7 @@ void FeedDownloader::stopRunningUpdate() {
   m_feedsOriginalCount = m_feedsUpdated = 0;
 }
 
-void FeedDownloader::updateOneFeed(Feed* feed, const QList<MessageFilter*>& msg_filters) {
+void FeedDownloader::updateOneFeed(Feed* feed) {
   qDebug().nospace() << "Downloading new messages for feed ID "
                      << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
                      << QThread::currentThreadId() << "\'.";
@@ -101,7 +101,7 @@ void FeedDownloader::updateOneFeed(Feed* feed, const QList<MessageFilter*>& msg_
                   .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
   }
 
-  if (!msg_filters.isEmpty()) {
+  if (!feed->filters().isEmpty()) {
     // Perform per-message filtering.
     QJSEngine filter_engine;
 
@@ -117,7 +117,19 @@ void FeedDownloader::updateOneFeed(Feed* feed, const QList<MessageFilter*>& msg_
       // Attach live message object to wrapper.
       msg_obj.setMessage(&msgs[i]);
 
-      for (MessageFilter* msg_filter : msg_filters) {
+      auto feed_filters = feed->filters();
+
+      for (int i = 0; i < feed_filters.size(); i++) {
+        QPointer<MessageFilter> filter = feed_filters.at(i);
+
+        if (filter.isNull()) {
+          qWarning("Message filter was probably deleted, removing its pointer from list of filters.");
+          feed_filters.removeAt(i--);
+          continue;
+        }
+
+        MessageFilter* msg_filter = filter.data();
+
         // Call the filtering logic, given function must return integer value from
         // FilteringAction enumeration.
         //
@@ -129,10 +141,12 @@ void FeedDownloader::updateOneFeed(Feed* feed, const QList<MessageFilter*>& msg_
 
         switch (decision) {
           case FilteringAction::Accept:
+
             // Message is normally accepted, it could be tweaked by the filter.
             continue;
 
           case FilteringAction::Ignore:
+
             // Remove the message, we do not want it.
             msgs.removeAt(i--);
             break;

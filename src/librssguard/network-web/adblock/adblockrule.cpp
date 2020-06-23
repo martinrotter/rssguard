@@ -499,7 +499,7 @@ void AdBlockRule::parseFilter() {
 void AdBlockRule::parseDomains(const QString& domains, const QChar& separator) {
   QStringList domainsList = domains.split(separator, QString::SkipEmptyParts);
 
-  for (const QString domain : domainsList) {
+  for (const QString& domain : domainsList) {
     if (domain.isEmpty()) {
       continue;
     }
@@ -619,6 +619,7 @@ QString AdBlockRule::createRegExpFromFilter(const QString& filter) const {
 
 QList<QStringMatcher> AdBlockRule::createStringMatchers(const QStringList& filters) const {
   QList<QStringMatcher> matchers;
+
   matchers.reserve(filters.size());
 
   for (const QString& filter : filters) {

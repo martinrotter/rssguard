@@ -75,7 +75,6 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
     m_feedDownloader = new FeedDownloader();
 
     // Downloader setup.
-    qRegisterMetaType<QList<MessageFilter*>>("QList<MessageFilter*>");
     qRegisterMetaType<QList<Feed*>>("QList<Feed*>");
 
     m_feedDownloader->moveToThread(m_feedDownloaderThread);
@@ -92,8 +91,7 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
 
   QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds",
                             Qt::ConnectionType::QueuedConnection,
-                            Q_ARG(QList<Feed*>, feeds),
-                            Q_ARG(QList<MessageFilter*>, m_messageFilters));
+                            Q_ARG(QList<Feed*>, feeds));
 }
 
 void FeedReader::updateAutoUpdateStatus() {
@@ -128,6 +126,12 @@ int FeedReader::autoUpdateRemainingInterval() const {
 
 int FeedReader::autoUpdateInitialInterval() const {
   return m_globalAutoUpdateInitialInterval;
+}
+
+void FeedReader::loadSaveMessageFilters() {
+  // TODO: Load all message filters from database.
+  // All plugin services will hook active filters to
+  // all feeds.
 }
 
 void FeedReader::updateAllFeeds() {

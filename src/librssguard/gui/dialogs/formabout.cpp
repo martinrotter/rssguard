@@ -72,8 +72,8 @@ void FormAbout::loadLicenseAndInformation() {
   m_ui.m_lblDesc->setText(tr("<b>%8</b><br>" "<b>Version:</b> %1 (built on %2/%3)<br>" "<b>Revision:</b> %4<br>" "<b>Build date:</b> %5<br>"
                                                                                                                  "<b>Qt:</b> %6 (compiled against %7)<br>").arg(
                             qApp->applicationVersion(), APP_SYSTEM_NAME, APP_SYSTEM_VERSION, APP_REVISION,
-                            TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__,
-                                                                            __TIME__)).toString(Qt::DefaultLocaleShortDate),
+                            QLocale().toString(TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__, __TIME__)),
+                                               QLocale::FormatType::ShortFormat),
                             qVersion(), QT_VERSION_STR,
                             APP_NAME));
   m_ui.m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."

@@ -229,7 +229,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QDateTime dt = TextFactory::parseDateTime(QSqlQueryModel::data(idx, role).value<qint64>()).toLocalTime();
 
         if (m_customDateFormat.isEmpty()) {
-          return dt.toString(Qt::DefaultLocaleShortDate);
+          return QLocale().toString(dt, QLocale::FormatType::ShortFormat);
         }
         else {
           return dt.toString(m_customDateFormat);

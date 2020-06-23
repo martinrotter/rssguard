@@ -127,7 +127,7 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
                                                      message.m_author),
                                 message.m_url,
                                 message.m_contents,
-                                message.m_created.toString(Qt::DefaultLocaleShortDate),
+                                QLocale().toString(message.m_created, QLocale::FormatType::ShortFormat),
                                 enclosures,
                                 message.m_isRead ? "mark-unread" : "mark-read",
                                 message.m_isImportant ? "mark-unstarred" : "mark-starred",
@@ -201,11 +201,11 @@ bool WebViewer::eventFilter(QObject* object, QEvent* event) {
     QWheelEvent* wh_event = static_cast<QWheelEvent*>(event);
 
     if ((wh_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
-      if (wh_event->delta() > 0) {
+      if (wh_event->angleDelta().y() > 0) {
         increaseWebPageZoom();
         return true;
       }
-      else if (wh_event->delta() < 0) {
+      else if (wh_event->angleDelta().y() < 0) {
         decreaseWebPageZoom();
         return true;
       }

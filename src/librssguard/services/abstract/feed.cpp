@@ -18,7 +18,8 @@
 
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_url(QString()), m_status(Normal), m_autoUpdateType(DefaultAutoUpdate),
-  m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL) {
+  m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
+  m_filters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItemKind::Feed);
 }
 
@@ -51,6 +52,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateType(other.autoUpdateType());
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
+  setFilters(other.filters());
 }
 
 Feed::~Feed() = default;
@@ -241,9 +243,11 @@ QString Feed::getAutoUpdateStatusDescription() const {
     case DefaultAutoUpdate:
 
       //: Describes feed auto-update status.
-      auto_update_string = tr("uses global settings (%n minute(s) to next auto-update)",
-                              nullptr,
-                              qApp->feedReader()->autoUpdateRemainingInterval());
+      auto_update_string = qApp->feedReader()->autoUpdateEnabled()
+              ? tr("uses global settings (%n minute(s) to next auto-update)",
+                   nullptr,
+                   qApp->feedReader()->autoUpdateRemainingInterval())
+              : tr("uses global settings (global feed auto-updating is disabled)");
       break;
 
     case SpecificAutoUpdate:
@@ -276,7 +280,18 @@ QString Feed::getStatusDescription() const {
   }
 }
 
+QList<QPointer<MessageFilter>> Feed::filters() const {
+  return m_filters;
+}
+
+void Feed::setFilters(const QList<QPointer<MessageFilter>>& filters) {
+  m_filters = filters;
+}
+
 QString Feed::additionalTooltip() const {
   return tr("Auto-update status: %1\n"
-            "Status: %2").arg(getAutoUpdateStatusDescription(), getStatusDescription());
+            "Active message filters: %2\n"
+            "Status: %3").arg(getAutoUpdateStatusDescription(),
+                              QString::number(m_filters.size()),
+                              getStatusDescription());
 }

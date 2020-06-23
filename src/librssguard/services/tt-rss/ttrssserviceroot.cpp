@@ -163,9 +163,9 @@ QString TtRssServiceRoot::additionalTooltip() const {
             "Last error: %3\nLast login on: %4").arg(m_network->username(),
                                                      m_network->url(),
                                                      NetworkFactory::networkErrorText(m_network->lastError()),
-                                                     m_network->lastLoginTime().isValid() ?
-                                                     m_network->lastLoginTime().toString(Qt::DefaultLocaleShortDate) :
-                                                     QSL("-"));
+                                                     m_network->lastLoginTime().isValid()
+                                                     ? QLocale().toString(m_network->lastLoginTime(), QLocale::FormatType::ShortFormat)
+                                                     : QSL("-"));
 }
 
 TtRssNetworkFactory* TtRssServiceRoot::network() const {
