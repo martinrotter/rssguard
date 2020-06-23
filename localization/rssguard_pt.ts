@@ -230,11 +230,11 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"/>
+        <translation>Removendo mensagens com estrela...</translation>
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Mensagens com estrela removidas...</translation>
     </message>
 </context>
 <context>
@@ -275,7 +275,7 @@
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Erro desconhecido: &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -1239,47 +1239,47 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente mensagens não lidas</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Senha para sua conta Nextcloud</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Usuário para sua conta Nextcloud</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL para seu servidor Nexcloud, sem nenhum caminho API</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar nova conta Nextcloud News</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Editar conta Nextcloud News existente</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor Nextcloud News selecionado está executando uma versão não suportada (%1). Pelo menos a versão %2 é necessária.</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor Nextcloud News selecionado está executando uma versão não suportada.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor Nextcloud News está correto, sendo executado na versão %1, onde pelo menos a versão %2 é necessária.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor Nextcloud News está correto.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Erro de rede, você entrou o endpoint e senha correta do Nextcloud?</translation>
     </message>
 </context>
 <context>
@@ -1450,7 +1450,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente mensagens não lidas</translation>
     </message>
 </context>
 <context>
@@ -2122,7 +2122,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente mensagens &amp;não lidas</translation>
     </message>
 </context>
 <context>
