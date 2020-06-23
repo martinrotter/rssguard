@@ -228,6 +228,14 @@
         <source>Old messages purged...</source>
         <translation>Staré zprávy smazány...</translation>
     </message>
+    <message>
+        <source>Removing starred messages...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred messages purged...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
@@ -243,11 +251,6 @@
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Přístup zamítnut. Nesprávne jméno či heslo.</translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>Neznámá chyba.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
@@ -268,6 +271,11 @@
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
         <translation>%1 nemůže použít MySQL databází, není k dispozici. %1 se nyní přepne pro použití SQLite databáze. Pokud chcete opět použít MySQL, přepněte si to v nastavení.</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1172,10 +1180,6 @@ or this functionality is not implemented yet.</source>
         <translation>Zapnutí této položky může výrazně zpomalit aktualizaci kanálů.</translation>
     </message>
     <message>
-        <source>URL of your ownCloud server, without any API path</source>
-        <translation>URL vašeho ownCloud serveru, bez jakýchkoliv API koncovek.</translation>
-    </message>
-    <message>
         <source>No test done yet.</source>
         <translation>Žádný test zatím neproveden.</translation>
     </message>
@@ -1184,28 +1188,8 @@ or this functionality is not implemented yet.</source>
         <translation>Zde jsou zobrazeny výsledky testu spojení.</translation>
     </message>
     <message>
-        <source>Add new ownCloud News account</source>
-        <translation>Přidat nový ownCloud News účet</translation>
-    </message>
-    <message>
-        <source>Edit existing ownCloud News account</source>
-        <translation>Upravit existující účet ownCloudNews</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Vybraný server pro ownCloud News běží na nepodporované verzi (%1). Je třeba minimálně verze %2.</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Vybraný ownCloud News server běží na nepodporované verzi.</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Síťová chyba: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>Síťová chyba, zadali jste správnou cestu k ownCloud a heslo?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1236,22 +1220,6 @@ or this functionality is not implemented yet.</source>
         <translation>URL je v pořádku.</translation>
     </message>
     <message>
-        <source>Password for your ownCloud account</source>
-        <translation>Heslo k vašemu účtu ownCloud</translation>
-    </message>
-    <message>
-        <source>Username for your ownCloud account</source>
-        <translation>Uživatelské jméno pro ownCloud</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>Server ownCloud News je v pořádku, běží na verzi %1, přičemž minimální vyžadovaná verze je %2.</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay.</source>
-        <translation>Server ownCloud News je v pořádku.</translation>
-    </message>
-    <message>
         <source>Limit number of downloaded messages per feed</source>
         <translation>Limitovat počet stahovaných zpráv na kanál</translation>
     </message>
@@ -1270,6 +1238,50 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>messages</source>
         <translation>zpráv</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1439,7 +1451,7 @@ or this functionality is not implemented yet.</source>
         <translation>URL je v pořádku.</translation>
     </message>
     <message>
-        <source>Download only unread messages.</source>
+        <source>Download only unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2108,6 +2120,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only &amp;unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>

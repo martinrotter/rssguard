@@ -228,6 +228,14 @@
         <source>Old messages purged...</source>
         <translation>Старі повідомлення видалені...</translation>
     </message>
+    <message>
+        <source>Removing starred messages...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred messages purged...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
@@ -243,11 +251,6 @@
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Відмовлено в доступі. Невірне імя користувача або пароль.</translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>Невідома помилка</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
@@ -268,6 +271,11 @@
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
         <translation>Сховище MySQL не може бути використано. %1 буде використовувати SQLite базу. Стартуйте MySQL сервер та зробіть відповідні зміни в налаштуваннях.</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1168,10 +1176,6 @@ or this functionality is not implemented yet.</source>
         <translation>Активація цієї опцїї може викликати набагато повільніше виконання оновлення потоків і часто може призводити до перевищення строків очікування відповіді.</translation>
     </message>
     <message>
-        <source>URL of your ownCloud server, without any API path</source>
-        <translation>URL вашого ownCloud серверу, без шляхів API</translation>
-    </message>
-    <message>
         <source>No test done yet.</source>
         <translation>Тестування ще не виконувалось</translation>
     </message>
@@ -1180,28 +1184,8 @@ or this functionality is not implemented yet.</source>
         <translation>Результат перевірки підключення.</translation>
     </message>
     <message>
-        <source>Add new ownCloud News account</source>
-        <translation>Додати новий обліковий запис ownCloud News</translation>
-    </message>
-    <message>
-        <source>Edit existing ownCloud News account</source>
-        <translation>Редагувати обліковий запис ownCloud News</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Обраний ownCloud News сервер використовує версію API (%1), що не підтримується. Необхіний рівень API має бути не нижчим за %2.</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Обраний ownCloud News сервер має версію, що не підтримується.</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Мережева помилка: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>Мережева помилка. Чи вірно ви вказали ownCloud ендпоінт та пароль?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1232,22 +1216,6 @@ or this functionality is not implemented yet.</source>
         <translation>URL принято</translation>
     </message>
     <message>
-        <source>Password for your ownCloud account</source>
-        <translation>Пароль для облікового запису ownCloud</translation>
-    </message>
-    <message>
-        <source>Username for your ownCloud account</source>
-        <translation>Обліковий запис ownCloud</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>Обраний ownCloud сервер має версію %1, тоді як версія має бути не нижчою за %2.</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay.</source>
-        <translation>З ownCloud News сервером все гаразд.</translation>
-    </message>
-    <message>
         <source>Limit number of downloaded messages per feed</source>
         <translation>Обмежити кількість завантажених повідомлень на потік</translation>
     </message>
@@ -1266,6 +1234,50 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>messages</source>
         <translation>повідомлень</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1435,7 +1447,7 @@ or this functionality is not implemented yet.</source>
         <translation>URL принято</translation>
     </message>
     <message>
-        <source>Download only unread messages.</source>
+        <source>Download only unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2104,6 +2116,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only &amp;unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>

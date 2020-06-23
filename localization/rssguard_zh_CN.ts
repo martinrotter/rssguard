@@ -228,6 +228,14 @@
         <source>Old messages purged...</source>
         <translation>旧消息已删除…</translation>
     </message>
+    <message>
+        <source>Removing starred messages...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred messages purged...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
@@ -243,11 +251,6 @@
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>拒绝访问，用户名或密码无效</translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>未知错误</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
@@ -268,6 +271,11 @@
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
         <translation>MySQL 数据库不可用，%1 无法使用它，现在切换到 SQLite 数据库。请启动你的 MySQL 服务器，并调整应用设置。</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1168,10 +1176,6 @@ or this functionality is not implemented yet.</source>
         <translation>启用此选项可能会使更新变慢或经常超时</translation>
     </message>
     <message>
-        <source>URL of your ownCloud server, without any API path</source>
-        <translation>ownCloud 服务器 URL，不包括 API 路径</translation>
-    </message>
-    <message>
         <source>No test done yet.</source>
         <translation>尚未测试</translation>
     </message>
@@ -1180,28 +1184,8 @@ or this functionality is not implemented yet.</source>
         <translation>此处为连接测试的结果</translation>
     </message>
     <message>
-        <source>Add new ownCloud News account</source>
-        <translation>添加 ownCloud News 账户</translation>
-    </message>
-    <message>
-        <source>Edit existing ownCloud News account</source>
-        <translation>编辑已有的 ownCloud News 账户</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>当前 ownCloud News 服务器运行着不受支持的版本 (%1)，至少需要 %2</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>当前 ownCloud News 服务器运行着不受支持的版本</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>网络错误：&apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>网络错误，请确认你输入的 ownCloud 地址和密码是否正确？</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1232,22 +1216,6 @@ or this functionality is not implemented yet.</source>
         <translation>URL 可用</translation>
     </message>
     <message>
-        <source>Password for your ownCloud account</source>
-        <translation>ownCloud 账户密码</translation>
-    </message>
-    <message>
-        <source>Username for your ownCloud account</source>
-        <translation>ownCloud 账户用户名</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>ownCloud News 服务器就绪，当前版本 %1，所需最低版本 %2</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay.</source>
-        <translation>ownCloud News 服务器就绪</translation>
-    </message>
-    <message>
         <source>Limit number of downloaded messages per feed</source>
         <translation>限制每个 Feed 下载的消息数</translation>
     </message>
@@ -1266,6 +1234,50 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>messages</source>
         <translation>条消息</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1436,7 +1448,7 @@ or this functionality is not implemented yet.</source>
         <translation>URL 可用</translation>
     </message>
     <message>
-        <source>Download only unread messages.</source>
+        <source>Download only unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2105,6 +2117,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only &amp;unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>

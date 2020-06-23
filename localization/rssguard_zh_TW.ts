@@ -228,6 +228,14 @@
         <source>Old messages purged...</source>
         <translation>舊消息清空…</translation>
     </message>
+    <message>
+        <source>Removing starred messages...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred messages purged...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
@@ -243,11 +251,6 @@
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>存取被拒。用了無效的使用者名稱與密碼。</translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>未知的錯誤。</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
@@ -268,6 +271,11 @@
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
         <translation>%1 無法用 MySQL 儲存庫，不存在。 %1 現在切換到 SQLite 資料庫。請啟動您的 MySQL 伺服器，並調整應用程式設定。</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1169,10 +1177,6 @@ or this functionality is not implemented yet.</source>
         <translation>啟用此選項，可能會使新聞源更新變較慢而且常逾時。</translation>
     </message>
     <message>
-        <source>URL of your ownCloud server, without any API path</source>
-        <translation>ownCloud 服務器 URL，不包括 API 路徑</translation>
-    </message>
-    <message>
         <source>No test done yet.</source>
         <translation>尚未測試過。</translation>
     </message>
@@ -1181,28 +1185,8 @@ or this functionality is not implemented yet.</source>
         <translation>此處顯示連線測試的結果。</translation>
     </message>
     <message>
-        <source>Add new ownCloud News account</source>
-        <translation>新增 ownCloud 新聞帳號</translation>
-    </message>
-    <message>
-        <source>Edit existing ownCloud News account</source>
-        <translation>編輯既有的 ownCloud 新聞帳號</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>本程式不支援所選的 ownCloud News 伺服器執行的版本 (%1)。至少要 %2 才有支援。</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>本程式不支援所選的 ownCloud News 伺服器執行的版本 (%1)。</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>網路錯誤: &apos;%&apos;。</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>網絡錯誤，輸入的 ownCloud 網路終端點網址(endpoint)和密碼是否正確？</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1233,22 +1217,6 @@ or this functionality is not implemented yet.</source>
         <translation>URL 無問題。</translation>
     </message>
     <message>
-        <source>Password for your ownCloud account</source>
-        <translation>ownCloud 帳號的密碼</translation>
-    </message>
-    <message>
-        <source>Username for your ownCloud account</source>
-        <translation>ownCloud 帳號的使用者名稱</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>ownCloud 新聞伺服器無問題，執行 %1 版；不過本程式最低需 %2 版。</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay.</source>
-        <translation>ownCloud 新聞伺服器無問題。</translation>
-    </message>
-    <message>
         <source>Limit number of downloaded messages per feed</source>
         <translation>每個新聞源下載的消息數量限制</translation>
     </message>
@@ -1267,6 +1235,50 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>messages</source>
         <translation>消息</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1436,7 +1448,7 @@ or this functionality is not implemented yet.</source>
         <translation>URL 無問題。</translation>
     </message>
     <message>
-        <source>Download only unread messages.</source>
+        <source>Download only unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2106,6 +2118,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Mark selected messages as &amp;unread</source>
         <translation>標示所選消息成未讀(&amp;U)</translation>
+    </message>
+    <message>
+        <source>Show only &amp;unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

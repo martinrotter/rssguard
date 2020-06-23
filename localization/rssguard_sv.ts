@@ -228,6 +228,14 @@
         <source>Old messages purged...</source>
         <translation>Gamla meddelanden rensat...</translation>
     </message>
+    <message>
+        <source>Removing starred messages...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred messages purged...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
@@ -243,11 +251,6 @@
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Åtkomst nekad. Ogiltigt användarnamn eller lösenord.</translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>Okänt fel.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
@@ -268,6 +271,11 @@
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
         <translation>%1 kan inte använda MySQL-lagringen, den är inte tillgänglig. %1 växlar nu till SQLite databas. Starta din MySQL-server och justera programinställningarna.</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1170,10 +1178,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
     <message>
-        <source>URL of your ownCloud server, without any API path</source>
-        <translation>URL för din ownCloud-server, utan API-sökväg</translation>
-    </message>
-    <message>
         <source>No test done yet.</source>
         <translation>Inget test utfört ännu.</translation>
     </message>
@@ -1182,28 +1186,8 @@ att funktionen inte är implementerad än.</translation>
         <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
-        <source>Add new ownCloud News account</source>
-        <translation>Lägg till nytt ownCloud News-konto</translation>
-    </message>
-    <message>
-        <source>Edit existing ownCloud News account</source>
-        <translation>Redigera befintligt ownCloud News-konto</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Den valda ownCloud News-servern kör en version (%1) som inte stöds. Lägst version %2 är ett krav.</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation>Den valda ownCloud News-servern kör en version som inte stöds.</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Nätverksfel: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation>Nätverksfel! Har du angett korrekt ownCloud-slutpunkt och lösenord?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1234,22 +1218,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>URL okay.</translation>
     </message>
     <message>
-        <source>Password for your ownCloud account</source>
-        <translation>Lösenord för ditt ownCloud-konto</translation>
-    </message>
-    <message>
-        <source>Username for your ownCloud account</source>
-        <translation>Användarnamn för ditt ownCloud-konto</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>ownClouds nyhetsserver fungerar med version %1, då minst version %2 krävs.</translation>
-    </message>
-    <message>
-        <source>ownCloud News server is okay.</source>
-        <translation>ownClouds nyhetsserver är okay.</translation>
-    </message>
-    <message>
         <source>Limit number of downloaded messages per feed</source>
         <translation>Begränsa antalet nerladdade meddelanden per flöde</translation>
     </message>
@@ -1268,6 +1236,50 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>messages</source>
         <translation>meddelanden</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1437,8 +1449,8 @@ att funktionen inte är implementerad än.</translation>
         <translation>URL okay.</translation>
     </message>
     <message>
-        <source>Download only unread messages.</source>
-        <translation>Ladda endast ner olästa meddelanden.</translation>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2107,6 +2119,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Mark selected messages as &amp;unread</source>
         <translation>Märk markerade meddelanden som &amp;olästa</translation>
+    </message>
+    <message>
+        <source>Show only &amp;unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -228,6 +228,14 @@
         <source>Old messages purged...</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Removing starred messages...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred messages purged...</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
@@ -243,11 +251,6 @@
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation>不明なエラーです。</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
@@ -267,6 +270,11 @@
     </message>
     <message>
         <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1165,10 +1173,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>URL of your ownCloud server, without any API path</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>No test done yet.</source>
         <translation>まだテストが完了していません。</translation>
     </message>
@@ -1177,28 +1181,8 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Add new ownCloud News account</source>
-        <translation>新しいownCloudニュースアカウントを追加</translation>
-    </message>
-    <message>
-        <source>Edit existing ownCloud News account</source>
-        <translation>存在するownCloudニュースアカウントを編集</translation>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>ネットワークエラー: %1</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1229,22 +1213,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Password for your ownCloud account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username for your ownCloud account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>ownCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>ownCloud News server is okay.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Limit number of downloaded messages per feed</source>
         <translation type="unfinished"/>
     </message>
@@ -1262,6 +1230,50 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Nextcloud News account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1432,7 +1444,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download only unread messages.</source>
+        <source>Download only unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2101,6 +2113,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only &amp;unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
