@@ -15,8 +15,8 @@ OAuthHttpHandler::OAuthHttpHandler(QObject* parent) : QObject(parent) {
 
   connect(&m_httpServer, &QTcpServer::newConnection, this, &OAuthHttpHandler::clientConnected);
 
-  if (!m_httpServer.listen(m_listenAddress, 13377)) {
-    qCritical("OAuth HTTP handler: Failed to start listening.");
+  if (!m_httpServer.listen(m_listenAddress, OAUTH_REDIRECT_URI_PORT)) {
+    qCritical("OAuth HTTP handler: Failed to start listening on port '%d'.", OAUTH_REDIRECT_URI_PORT);
   }
 }
 
@@ -73,7 +73,7 @@ void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QUrl& url) {
     const QUrlQuery query(url.query());
     const auto items = query.queryItems();
 
-    for (const auto & item : items) {
+    for (const auto& item : items) {
       received_data.insert(item.first, item.second);
     }
 

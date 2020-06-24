@@ -230,11 +230,11 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"/>
+        <translation>Tar bort stjärnmärkta meddelanden...</translation>
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Stjärnmärkta meddelanden rensat...</translation>
     </message>
 </context>
 <context>
@@ -275,7 +275,7 @@
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Okänt fel: &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1239,47 +1239,47 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner olästa meddelanden</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord för ditt NextCloud-konto</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn för ditt NextCloud-konto</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL för din NextCloud-server, utan API-sökväg</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt NextCloud News-konto</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Redigera befintligt NextCloud News-konto</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda NextCloud News-servern kör en version (%1) som inte stöds. Lägst version %2 är ett krav.</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda NextCloud News-servern kör en version som inte stöds.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>NextClouds nyhetsserver fungerar med version %1, då minst version %2 krävs.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>NextClouds nyhetsserver är okay.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksfel! Har du angett korrekt NextCloud-slutpunkt och lösenord?</translation>
     </message>
 </context>
 <context>
@@ -1450,7 +1450,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner olästa meddelanden.</translation>
     </message>
 </context>
 <context>
@@ -2122,7 +2122,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Visa endast &amp;olästa meddelanden</translation>
     </message>
 </context>
 <context>

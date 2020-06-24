@@ -171,7 +171,8 @@ HEADERS += core/feeddownloader.h \
            network-web/httpresponse.h \
            services/gmail/gui/formdownloadattachment.h \
            services/gmail/gui/formaddeditemail.h \
-           gui/searchtextwidget.h
+           gui/searchtextwidget.h \
+           network-web/oauthhttphandler.h
 
 SOURCES += core/feeddownloader.cpp \
            core/feedsmodel.cpp \
@@ -309,7 +310,8 @@ SOURCES += core/feeddownloader.cpp \
            network-web/httpresponse.cpp \
            services/gmail/gui/formdownloadattachment.cpp \
            services/gmail/gui/formaddeditemail.cpp \
-           gui/searchtextwidget.cpp
+           gui/searchtextwidget.cpp \
+           network-web/oauthhttphandler.cpp
 
 mac {
   OBJECTIVE_SOURCES += miscellaneous/disablewindowtabbing.mm
@@ -352,8 +354,7 @@ equals(USE_WEBENGINE, true) {
              gui/discoverfeedsbutton.h \
              network-web/googlesuggest.h \
              network-web/webpage.h \
-             network-web/rssguardschemehandler.h \
-             gui/dialogs/oauthlogin.h
+             network-web/rssguardschemehandler.h
 
   SOURCES += gui/locationlineedit.cpp \
              gui/webviewer.cpp \
@@ -361,8 +362,7 @@ equals(USE_WEBENGINE, true) {
              gui/discoverfeedsbutton.cpp \
              network-web/googlesuggest.cpp \
              network-web/webpage.cpp \
-             network-web/rssguardschemehandler.cpp \
-             gui/dialogs/oauthlogin.cpp
+             network-web/rssguardschemehandler.cpp
 
   # Add AdBlock sources.
   HEADERS += network-web/adblock/adblockaddsubscriptiondialog.h \
@@ -393,19 +393,16 @@ equals(USE_WEBENGINE, true) {
              gui/treewidget.cpp
 
   FORMS += network-web/adblock/adblockaddsubscriptiondialog.ui \
-           network-web/adblock/adblockdialog.ui \
-           gui/dialogs/oauthlogin.ui
+           network-web/adblock/adblockdialog.ui
 }
 else {
   HEADERS += gui/messagepreviewer.h \
              gui/messagetextbrowser.h \
-             gui/newspaperpreviewer.h \
-             network-web/oauthhttphandler.h
+             gui/newspaperpreviewer.h
 
   SOURCES += gui/messagepreviewer.cpp \
              gui/messagetextbrowser.cpp \
-             gui/newspaperpreviewer.cpp \
-             network-web/oauthhttphandler.cpp
+             gui/newspaperpreviewer.cpp
 
   FORMS += gui/messagepreviewer.ui \
            gui/newspaperpreviewer.ui

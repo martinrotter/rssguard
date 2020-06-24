@@ -17,12 +17,9 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent) : QDialog(pa
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblAuthInfo, true);
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("inoreader")));
 
-#if !defined(USE_WEBENGINE)
-  m_ui.m_lblAuthInfo->setText(tr("You must use \"%1\" as base redirect URL. You can use custom port to make sure "
-                                 "that no local service occupies it. Make sure that this redirect URL matches redirect "
-                                 "URL of used \"application\".").arg(LOCALHOST_ADDRESS));
-#endif
-
+  m_ui.m_lblAuthInfo->setText(tr("You must use \"%1\" as redirect URL. It is important to leave this "
+                                 "URL intact, because %2 is waiting on specified port for "
+                                 "service tokens.").arg(OAUTH_REDIRECT_URI, APP_NAME));
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
                                   tr("Not tested yet."));
@@ -147,7 +144,7 @@ InoreaderServiceRoot* FormEditInoreaderAccount::execForCreate() {
 
   m_ui.m_txtAppId->lineEdit()->setText(INOREADER_OAUTH_CLI_ID);
   m_ui.m_txtAppKey->lineEdit()->setText(INOREADER_OAUTH_CLI_KEY);
-  m_ui.m_txtRedirectUrl->lineEdit()->setText(LOCALHOST_ADDRESS);
+  m_ui.m_txtRedirectUrl->lineEdit()->setText(OAUTH_REDIRECT_URI);
 
   exec();
 

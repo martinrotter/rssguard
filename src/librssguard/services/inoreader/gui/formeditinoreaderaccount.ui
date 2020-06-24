@@ -10,119 +10,115 @@
     <height>363</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <layout class="QFormLayout" name="formLayout">
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="m_lblUsername">
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="LineEditWithStatus" name="m_txtUsername" native="true"/>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>OAuth 2.0 settings</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_4">
+      <item row="0" column="0">
+       <widget class="QLabel" name="m_lblUsername_2">
+        <property name="text">
+         <string>Application ID</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="LineEditWithStatus" name="m_txtAppId" native="true"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="m_lblUsername_3">
+        <property name="text">
+         <string>Application key</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="LineEditWithStatus" name="m_txtAppKey" native="true"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="m_lblUsername_4">
+        <property name="text">
+         <string>Redirect URL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="LineEditWithStatus" name="m_txtRedirectUrl" native="true"/>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QLabel" name="m_lblAuthInfo">
+        <property name="text">
+         <string>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <layout class="QFormLayout" name="formLayout_3">
      <item row="0" column="0">
-      <widget class="QLabel" name="m_lblUsername">
+      <widget class="QLabel" name="label">
        <property name="text">
-        <string>Username</string>
+        <string>Only download newest X messages per feed</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="LineEditWithStatus" name="m_txtUsername" native="true"/>
-     </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QGroupBox" name="groupBox">
-       <property name="title">
-        <string>OAuth 2.0 settings</string>
+      <widget class="QSpinBox" name="m_spinLimitMessages">
+       <property name="maximumSize">
+        <size>
+         <width>140</width>
+         <height>16777215</height>
+        </size>
        </property>
-       <layout class="QFormLayout" name="formLayout_4">
-        <item row="0" column="0">
-         <widget class="QLabel" name="m_lblUsername_2">
-          <property name="text">
-           <string>Application ID</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="LineEditWithStatus" name="m_txtAppId" native="true"/>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="m_lblUsername_3">
-          <property name="text">
-           <string>Application key</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="LineEditWithStatus" name="m_txtAppKey" native="true"/>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="m_lblUsername_4">
-          <property name="text">
-           <string>Redirect URL</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="LineEditWithStatus" name="m_txtRedirectUrl" native="true"/>
-        </item>
-        <item row="3" column="0" colspan="2">
-         <widget class="QLabel" name="m_lblAuthInfo">
-          <property name="text">
-           <string>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</string>
-          </property>
-          <property name="wordWrap">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <property name="suffix">
+        <string> message(s)</string>
+       </property>
       </widget>
-     </item>
-     <item row="2" column="0" colspan="2">
-      <layout class="QFormLayout" name="formLayout_3">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Only download newest X messages per feed</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QSpinBox" name="m_spinLimitMessages">
-         <property name="maximumSize">
-          <size>
-           <width>140</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="suffix">
-          <string> message(s)</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="3" column="0" colspan="2">
-      <layout class="QFormLayout" name="formLayout_2">
-       <item row="0" column="0">
-        <widget class="QPushButton" name="m_btnTestSetup">
-         <property name="text">
-          <string>&amp;Login</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>1</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </item>
     </layout>
    </item>
-   <item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="m_btnTestSetup">
+       <property name="text">
+        <string>&amp;Login</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -131,6 +127,19 @@
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

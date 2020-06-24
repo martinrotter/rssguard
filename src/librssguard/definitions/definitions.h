@@ -13,7 +13,6 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
-#define LOCALHOST_ADDRESS                     "http://localhost"
 #define ADBLOCK_ADBLOCKED_PAGE                "adblockedpage"
 #define ADBLOCK_HOWTO_FILTERS                 "http://adblockplus.org/en/filters"
 #define ADBLOCK_UPDATE_DAYS_INTERVAL          5
@@ -51,6 +50,8 @@
 #define ELLIPSIS_LENGTH                       3
 #define MIN_CATEGORY_NAME_LENGTH              1
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
+#define OAUTH_REDIRECT_URI_PORT               13377
+#define OAUTH_REDIRECT_URI                    "http://localhost:13377"
 #define AUTO_UPDATE_INTERVAL                  60000
 #define STARTUP_UPDATE_DELAY                  15.0 // In seconds.
 #define TIMEZONE_OFFSET_LIMIT                 6

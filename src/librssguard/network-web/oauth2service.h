@@ -28,11 +28,8 @@
 #include <QObject>
 #include <QUrl>
 
-#include "network-web/silentnetworkaccessmanager.h"
-
-#if !defined(USE_WEBENGINE)
 #include "network-web/oauthhttphandler.h"
-#endif
+#include "network-web/silentnetworkaccessmanager.h"
 
 class OAuth2Service : public QObject {
   Q_OBJECT
@@ -43,10 +40,9 @@ class OAuth2Service : public QObject {
                            const QString& scope, QObject* parent = nullptr);
 
     // Returns bearer HTTP header value.
-    // NOTE: Only call this if isFullyLoggedIn()
-    // returns true. If isFullyLoggedIn() returns
-    // false, then you must call login() on
-    // main GUI thread.
+    // NOTE: If on working thread, then call this only if isFullyLoggedIn()
+    // returns true. If isFullyLoggedIn() returns false, then you must call login() on
+    // main GUI thread first.
     QString bearer();
     bool isFullyLoggedIn() const;
 
@@ -89,6 +85,7 @@ class OAuth2Service : public QObject {
     // Performs login if needed. If some refresh token is set, then
     // the initial "auth" step is skipped and attempt to refresh
     // access token is made.
+    //
     // Returns true, if user is already logged in (final state).
     // Returns false, if user is NOT logged in (asynchronous flow).
     //
@@ -119,12 +116,7 @@ class OAuth2Service : public QObject {
     QString m_authUrl;
     QString m_scope;
     SilentNetworkAccessManager m_networkManager;
-
-#if !defined(USE_WEBENGINE)
-
-    // Returns pointer to global silent network manager
     static OAuthHttpHandler* handler();
-#endif
 };
 
 #endif // OAUTH2SERVICE_H

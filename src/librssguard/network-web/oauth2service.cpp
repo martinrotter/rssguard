@@ -27,30 +27,26 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
+#include "network-web/oauthhttphandler.h"
 #include "network-web/webfactory.h"
 #include "services/inoreader/definitions.h"
 
-#if defined(USE_WEBENGINE)
-#include "gui/dialogs/oauthlogin.h"
-#else
-#include "network-web/oauthhttphandler.h"
-
-Q_GLOBAL_STATIC(OAuthHttpHandler, qz_silent_acmanager)
-#endif
-
-#include <cstdlib>
-
 #include <QDebug>
+#include <QInputDialog>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+
+#include <cstdlib>
 #include <utility>
+
+Q_GLOBAL_STATIC(OAuthHttpHandler, qz_silent_acmanager)
 
 OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, const QString& client_id,
                              const QString& client_secret, const QString& scope, QObject* parent)
   : QObject(parent), m_id(QString::number(std::rand())), m_timerId(-1) {
-  m_redirectUrl = QSL(LOCALHOST_ADDRESS);
+  m_redirectUrl = QSL(OAUTH_REDIRECT_URI);
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
   m_authUrl = auth_url;
@@ -60,8 +56,6 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
   m_scope = scope;
 
   connect(&m_networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(tokenRequestFinished(QNetworkReply*)));
-
-#if !defined(USE_WEBENGINE)
   connect(handler(), &OAuthHttpHandler::authGranted, [this](const QString& auth_code, const QString& id) {
     if (id.isEmpty() || id == m_id) {
       // We process this further only if handler (static singleton) responded to our original request.
@@ -76,7 +70,6 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
       emit authFailed();
     }
   });
-#endif
 }
 
 QString OAuth2Service::bearer() {
@@ -137,12 +130,9 @@ void OAuth2Service::setId(const QString& id) {
   m_id = id;
 }
 
-#if !defined(USE_WEBENGINE)
 OAuthHttpHandler* OAuth2Service::handler() {
   return qz_silent_acmanager();
 }
-
-#endif
 
 void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
   QNetworkRequest networkRequest;
@@ -270,7 +260,7 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
 }
 
 bool OAuth2Service::login() {
-  bool did_token_expire = tokensExpireIn().isNull() || tokensExpireIn() < QDateTime::currentDateTime();
+  bool did_token_expire = tokensExpireIn().isNull() || tokensExpireIn() < QDateTime::currentDateTime().addSecs(-120);
   bool does_token_exist = !refreshToken().isEmpty();
 
   // We refresh current tokens only if:
@@ -309,30 +299,20 @@ void OAuth2Service::killRefreshTimer() {
 }
 
 void OAuth2Service::retrieveAuthCode() {
-  QString auth_url = m_authUrl + QString("?client_id=%1&scope=%2&"
-                                         "redirect_uri=%3&response_type=code&state=%4&"
-                                         "prompt=consent&access_type=offline").arg(m_clientId,
-                                                                                   m_scope,
-                                                                                   m_redirectUrl,
-                                                                                   m_id);
-
-#if defined(USE_WEBENGINE)
-  OAuthLogin login_page(qApp->mainFormWidget());
-
-  connect(&login_page, &OAuthLogin::authGranted, this, &OAuth2Service::retrieveAccessToken);
-  connect(&login_page, &OAuthLogin::authRejected, this, [this]() {
-    logout();
-    emit authFailed();
-  });
-
-  qApp->showGuiMessage(tr("Logging in via OAuth 2.0..."),
-                       tr("Requesting access authorization for '%1'...").arg(m_authUrl),
-                       QSystemTrayIcon::MessageIcon::Information);
-
-  login_page.login(auth_url, m_redirectUrl);
-#else
+  QString auth_url = m_authUrl + QString("?client_id=%1&"
+                                         "scope=%2&"
+                                         "redirect_uri=%3&"
+                                         "response_type=code&"
+                                         "state=%4&"
+                                         "prompt=consent&"
+                                         "access_type=offline").arg(m_clientId, m_scope, m_redirectUrl, m_id);
 
   // We run login URL in external browser, response is caught by light HTTP server.
-  qApp->web()->openUrlInExternalBrowser(auth_url);
-#endif
+  if (qApp->web()->openUrlInExternalBrowser(auth_url)) {
+    QInputDialog::getText(qApp->mainFormWidget(),
+                          tr("Navigate to website"),
+                          tr("To login, you need to navigate to this website:"),
+                          QLineEdit::EchoMode::Normal,
+                          auth_url);
+  }
 }
