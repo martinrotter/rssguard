@@ -6,6 +6,7 @@
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
+#include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
@@ -27,9 +28,6 @@ GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* paren
 
   m_network->setService(this);
   setIcon(GmailEntryPoint().icon());
-
-  recycleBin()->deleteLater();
-  setRecycleBin(nullptr);
 }
 
 GmailServiceRoot::~GmailServiceRoot() = default;
@@ -71,7 +69,8 @@ void GmailServiceRoot::loadFromDatabase() {
     }
   }
 
-  // As the last item, add recycle bin, which is needed.
+  appendChild(recycleBin());
+  appendChild(importantNode());
   updateCounts(true);
 }
 

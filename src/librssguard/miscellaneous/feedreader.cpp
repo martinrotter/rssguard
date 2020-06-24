@@ -8,6 +8,7 @@
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/mutex.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
@@ -129,9 +130,16 @@ int FeedReader::autoUpdateInitialInterval() const {
 }
 
 void FeedReader::loadSaveMessageFilters() {
-  // TODO: Load all message filters from database.
+  // Load all message filters from database.
   // All plugin services will hook active filters to
   // all feeds.
+  QSqlDatabase database = qApp->database()->connection(QSL("FeedReader"));
+
+  m_messageFilters = DatabaseQueries::getMessageFilters(database);
+
+  for (auto* filter : m_messageFilters) {
+    filter->setParent(this);
+  }
 }
 
 void FeedReader::updateAllFeeds() {

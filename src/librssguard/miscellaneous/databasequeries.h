@@ -5,6 +5,7 @@
 
 #include "services/abstract/rootitem.h"
 
+#include "core/messagefilter.h"
 #include "services/abstract/category.h"
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardfeed.h"
@@ -15,7 +16,7 @@
 class DatabaseQueries {
   public:
 
-    // Mark read/unread/starred/delete messages.
+    // Message operators.
     static bool markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static bool markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
     static bool markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance);
@@ -35,7 +36,7 @@ class DatabaseQueries {
     static bool purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
     static bool purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
 
-    // Obtain counts of unread/all messages.
+    // Counts of unread/all messages.
     static QMap<QString, QPair<int, int>> getMessageCountsForCategory(const QSqlDatabase& db, const QString& custom_id,
                                                                       int account_id, bool only_total_counts,
                                                                       bool* ok = nullptr);
@@ -82,6 +83,9 @@ class DatabaseQueries {
 
     template<typename T>
     static Assignment getFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+
+    // Message filters operators.
+    static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db, bool* ok = nullptr);
 
     // Standard account.
     static bool deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id);

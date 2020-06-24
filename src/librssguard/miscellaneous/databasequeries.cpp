@@ -1396,6 +1396,37 @@ bool DatabaseQueries::editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::Au
   return q.exec();
 }
 
+QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db, bool* ok) {
+  QSqlQuery q(db);
+  QList<MessageFilter*> filters;
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM MessageFilters;"));
+
+  if (q.exec()) {
+    while (q.next()) {
+      auto rec = q.record();
+      auto* filter = new MessageFilter(rec.value(0).toInt());
+
+      filter->setName(rec.value(1).toString());
+      filter->setScript(rec.value(2).toString());
+
+      filters.append(filter);
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return filters;
+}
+
 QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery q(db);
   QList<ServiceRoot*> roots;

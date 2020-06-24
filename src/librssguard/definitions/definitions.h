@@ -39,6 +39,7 @@
 #define ICON_SIZE_SETTINGS                    16
 #define NO_PARENT_CATEGORY                    -1
 #define ID_RECYCLE_BIN                        -2
+#define ID_IMPORTANT                        -3
 #define TRAY_ICON_BUBBLE_TIMEOUT              20000
 #define CLOSE_LOCK_TIMEOUT                    500
 #define DOWNLOAD_TIMEOUT                      30000

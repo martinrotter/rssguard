@@ -12,7 +12,7 @@
 
 ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItemKind::Important);
-  setId(ID_RECYCLE_BIN);
+  setId(ID_IMPORTANT);
   setIcon(qApp->icons()->fromTheme(QSL("mail-mark-important")));
   setTitle(tr("Important messages"));
   setDescription(tr("You can find all important messages here."));
