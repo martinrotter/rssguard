@@ -10,6 +10,7 @@
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardfeed.h"
 
+#include <QMultiMap>
 #include <QSqlError>
 #include <QSqlQuery>
 
@@ -82,10 +83,12 @@ class DatabaseQueries {
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     template<typename T>
-    static Assignment getFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static Assignment getFeeds(const QSqlDatabase& db, const QList<MessageFilter*>& global_filters,
+                               int account_id, bool* ok = nullptr);
 
     // Message filters operators.
     static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db, bool* ok = nullptr);
+    static QMultiMap<QString, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Standard account.
     static bool deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id);
@@ -216,18 +219,20 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
 }
 
 template<typename T>
-Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db, const QList<MessageFilter*>& global_filters,
+                                     int account_id, bool* ok) {
   Assignment feeds;
 
   // All categories are now loaded.
-  QSqlQuery query_feeds(db);
+  QSqlQuery query(db);
+  auto filters_in_feeds = messageFiltersInFeeds(db, account_id);
 
-  query_feeds.setForwardOnly(true);
-  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  query_feeds.bindValue(QSL(":account_id"), account_id);
+  query.setForwardOnly(true);
+  query.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), account_id);
 
-  if (!query_feeds.exec()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query_feeds.lastError().text()));
+  if (!query.exec()) {
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query.lastError().text()));
 
     if (ok != nullptr) {
       *ok = false;
@@ -239,14 +244,24 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db, int account_id, boo
     }
   }
 
-  while (query_feeds.next()) {
+  while (query.next()) {
     AssignmentItem pair;
 
-    pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.first = query.value(FDS_DB_CATEGORY_INDEX).toInt();
 
-    T* feed = new T(query_feeds.record());
+    Feed* feed = new T(query.record());
 
-    fillFeedData<T>(feed, query_feeds.record());
+    if (filters_in_feeds.contains(feed->customId())) {
+      auto all_filters_for_this_feed = filters_in_feeds.values(feed->customId());
+
+      for (MessageFilter* fltr : global_filters) {
+        if (all_filters_for_this_feed.contains(fltr->id())) {
+          feed->appendMessageFilter(fltr);
+        }
+      }
+    }
+
+    fillFeedData<T>(static_cast<T*>(feed), query.record());
 
     pair.second = feed;
 

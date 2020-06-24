@@ -69,8 +69,9 @@ class Feed : public RootItem {
     QString url() const;
     void setUrl(const QString& url);
 
-    QList<QPointer<MessageFilter>> filters() const;
-    void setFilters(const QList<QPointer<MessageFilter>>& filters);
+    void appendMessageFilter(MessageFilter* filter);
+    QList<QPointer<MessageFilter>> messageFilters() const;
+    void setFilters(const QList<QPointer<MessageFilter>>& messageFilters);
 
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clean_read_only);
@@ -93,7 +94,7 @@ class Feed : public RootItem {
     int m_autoUpdateRemainingInterval{};
     int m_totalCount{};
     int m_unreadCount{};
-    QList<QPointer<MessageFilter>> m_filters;
+    QList<QPointer<MessageFilter>> m_messageFilters;
 };
 
 Q_DECLARE_METATYPE(Feed::AutoUpdateType)

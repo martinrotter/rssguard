@@ -101,7 +101,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                   .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
   }
 
-  if (!feed->filters().isEmpty()) {
+  if (!feed->messageFilters().isEmpty()) {
     // Perform per-message filtering.
     QJSEngine filter_engine;
 
@@ -117,7 +117,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
       // Attach live message object to wrapper.
       msg_obj.setMessage(&msgs[i]);
 
-      auto feed_filters = feed->filters();
+      auto feed_filters = feed->messageFilters();
 
       for (int i = 0; i < feed_filters.size(); i++) {
         QPointer<MessageFilter> filter = feed_filters.at(i);

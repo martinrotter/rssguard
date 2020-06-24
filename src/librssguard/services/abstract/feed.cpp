@@ -19,7 +19,7 @@
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_url(QString()), m_status(Normal), m_autoUpdateType(DefaultAutoUpdate),
   m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-  m_filters(QList<QPointer<MessageFilter>>()) {
+  m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItemKind::Feed);
 }
 
@@ -52,7 +52,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateType(other.autoUpdateType());
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
-  setFilters(other.filters());
+  setFilters(other.messageFilters());
 }
 
 Feed::~Feed() = default;
@@ -146,6 +146,10 @@ QString Feed::url() const {
 
 void Feed::setUrl(const QString& url) {
   m_url = url;
+}
+
+void Feed::appendMessageFilter(MessageFilter* filter) {
+  m_messageFilters.append(QPointer<MessageFilter>(filter));
 }
 
 void Feed::updateCounts(bool including_total_count) {
@@ -280,18 +284,18 @@ QString Feed::getStatusDescription() const {
   }
 }
 
-QList<QPointer<MessageFilter>> Feed::filters() const {
-  return m_filters;
+QList<QPointer<MessageFilter>> Feed::messageFilters() const {
+  return m_messageFilters;
 }
 
 void Feed::setFilters(const QList<QPointer<MessageFilter>>& filters) {
-  m_filters = filters;
+  m_messageFilters = filters;
 }
 
 QString Feed::additionalTooltip() const {
   return tr("Auto-update status: %1\n"
             "Active message filters: %2\n"
             "Status: %3").arg(getAutoUpdateStatusDescription(),
-                              QString::number(m_filters.size()),
+                              QString::number(m_messageFilters.size()),
                               getStatusDescription());
 }

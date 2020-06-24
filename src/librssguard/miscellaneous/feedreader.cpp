@@ -235,6 +235,10 @@ void FeedReader::asyncCacheSaveFinished() {
   });
 }
 
+QList<MessageFilter*> FeedReader::messageFilters() const {
+  return m_messageFilters;
+}
+
 void FeedReader::quit() {
   if (m_autoUpdateTimer->isActive()) {
     m_autoUpdateTimer->stop();

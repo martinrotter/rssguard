@@ -51,7 +51,7 @@ void InoreaderServiceRoot::updateTitle() {
 void InoreaderServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<InoreaderFeed>(database, accountId());
+  Assignment feeds = DatabaseQueries::getFeeds<InoreaderFeed>(database, qApp->feedReader()->messageFilters(), accountId());
 
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);

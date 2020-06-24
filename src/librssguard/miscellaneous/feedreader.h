@@ -52,6 +52,8 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
 
     void loadSaveMessageFilters();
 
+    QList<MessageFilter*> messageFilters() const;
+
   public slots:
     void updateAllFeeds();
     void stopRunningFeedUpdate();

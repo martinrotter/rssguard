@@ -1427,6 +1427,12 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db,
   return filters;
 }
 
+QMultiMap<QString, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
+  // TODO: return list of relations
+
+  return {};
+}
+
 QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery q(db);
   QList<ServiceRoot*> roots;

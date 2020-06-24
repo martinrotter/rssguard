@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS MessageFilters (
 -- !
 CREATE TABLE IF NOT EXISTS MessageFiltersInFeeds (
   filter                INTEGER     NOT NULL,
-  feed_custom_id        INTEGER     NOT NULL,
+  feed_custom_id        TEXT        NOT NULL,
   account_id            INTEGER     NOT NULL,
   
   FOREIGN KEY (filter) REFERENCES MessageFilters (id) ON DELETE CASCADE,
