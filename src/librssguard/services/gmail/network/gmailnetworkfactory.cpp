@@ -433,7 +433,8 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite
   }
 }
 
-QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, const QString& stream_id,
+QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data,
+                                                       const QString& stream_id,
                                                        QString& next_page_token) {
   QList<Message> messages;
   QJsonObject top_object = QJsonDocument::fromJson(messages_json_data.toUtf8()).object();

@@ -4,6 +4,9 @@
 
 #include "miscellaneous/textfactory.h"
 
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 #include <QVariant>
 
 Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeType(std::move(mime)) {}
@@ -129,15 +132,77 @@ uint qHash(const Message& key) {
   return (uint(key.m_accountId) * 10000) + uint(key.m_id);
 }
 
-MessageObject::MessageObject(QObject* parent) : QObject(parent), m_message(nullptr) {}
+MessageObject::MessageObject(QSqlDatabase* db, const QString& feed_custom_id, int account_id, QObject* parent)
+  : QObject(parent), m_db(db), m_feedCustomId(feed_custom_id), m_accountId(account_id), m_message(nullptr) {}
 
 void MessageObject::setMessage(Message* message) {
   m_message = message;
 }
 
 bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
-  // TODO: Check database according to duplication attribute_check.
-  return int(attribute_check) == 4;
+  if (attribute_check <= 0) {
+    qCritical("Bad DuplicationAttributeCheck value '%d' was passed from JS filter script.", attribute_check);
+    return true;
+  }
+
+  // Check database according to duplication attribute_check.
+  DuplicationAttributeCheck attrs = static_cast<DuplicationAttributeCheck>(attribute_check);
+  QSqlQuery q(*m_db);
+  QStringList where_clauses;
+  QList<QPair<QString, QVariant>> bind_values;
+
+  // Now we construct the query according to parameter.
+  if ((attrs& DuplicationAttributeCheck::SameTitle) == DuplicationAttributeCheck::SameTitle) {
+    where_clauses.append(QSL("title = :title"));
+    bind_values.append({":title", title()});
+  }
+
+  if ((attrs& DuplicationAttributeCheck::SameUrl) == DuplicationAttributeCheck::SameUrl) {
+    where_clauses.append(QSL("url = :url"));
+    bind_values.append({":url", url()});
+  }
+
+  if ((attrs& DuplicationAttributeCheck::SameAuthor) == DuplicationAttributeCheck::SameAuthor) {
+    where_clauses.append(QSL("author = :author"));
+    bind_values.append({":author", author()});
+  }
+
+  if ((attrs& DuplicationAttributeCheck::SameDateCreated) == DuplicationAttributeCheck::SameDateCreated) {
+    where_clauses.append(QSL("date_created = :date_created"));
+    bind_values.append({":date_created", created().toMSecsSinceEpoch()});
+  }
+
+  where_clauses.append(QSL("account_id = :account_id"));
+  bind_values.append({":account_id", accountId()});
+
+  if ((attrs& DuplicationAttributeCheck::AllFeedsSameAccount) != DuplicationAttributeCheck::AllFeedsSameAccount) {
+    // Limit to current feed.
+    where_clauses.append(QSL("feed = :feed"));
+    bind_values.append({":feed", feedCustomId()});
+  }
+
+  QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
+
+  q.setForwardOnly(true);
+  q.prepare(full_query);
+
+  for (const auto& bind : bind_values) {
+    q.bindValue(bind.first, bind.second);
+  }
+
+  if (q.exec() && q.next()) {
+    if (q.record().value(0).toInt() > 0) {
+      // Whoops, we have the "same" message in database.
+      qDebug("Message '%s' was identified as duplicate by filter script.", qPrintable(title()));
+      return true;
+    }
+  }
+  else if (q.lastError().isValid()) {
+    qWarning("Error when checking for duplicate messages via filtering system, error: '%s'.",
+             qPrintable(q.lastError().text()));
+  }
+
+  return false;
 }
 
 QString MessageObject::title() const {
@@ -194,4 +259,12 @@ bool MessageObject::isImportant() const {
 
 void MessageObject::setIsImportant(bool is_important) {
   m_message->m_isImportant = is_important;
+}
+
+QString MessageObject::feedCustomId() const {
+  return m_feedCustomId;
+}
+
+int MessageObject::accountId() const {
+  return m_accountId;
 }

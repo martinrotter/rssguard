@@ -4,6 +4,7 @@
 
 #include "core/messagefilter.h"
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 
@@ -79,11 +80,12 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                      << QThread::currentThreadId() << "\'.";
 
   bool error_during_obtaining = false;
+  QElapsedTimer tmr; tmr.start();
   QList<Message> msgs = feed->obtainNewMessages(&error_during_obtaining);
 
   qDebug().nospace() << "Downloaded " << msgs.size() << " messages for feed ID "
                      << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
-                     << QThread::currentThreadId() << "\'.";
+                     << QThread::currentThreadId() << "\'. Operation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
   // Now, sanitize messages (tweak encoding etc.).
   for (auto& msg : msgs) {
@@ -102,42 +104,51 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
   }
 
   if (!feed->messageFilters().isEmpty()) {
+    tmr.restart();
+
+    bool is_main_thread = QThread::currentThread() == qApp->thread();
+    QSqlDatabase database = is_main_thread ?
+                            qApp->database()->connection(metaObject()->className()) :
+                            qApp->database()->connection(QSL("feed_upd"));
+
     // Perform per-message filtering.
     QJSEngine filter_engine;
 
     // Create JavaScript communication wrapper for the message.
-    MessageObject msg_obj;
+    MessageObject msg_obj(&database, feed->customId(), feed->getParentServiceRoot()->accountId());
 
     // Register the wrapper.
     auto js_object = filter_engine.newQObject(&msg_obj);
 
     filter_engine.globalObject().setProperty("msg", js_object);
 
+    qDebug().nospace() << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
+
     for (int i = 0; i < msgs.size(); i++) {
+      tmr.restart();
+
       // Attach live message object to wrapper.
       msg_obj.setMessage(&msgs[i]);
+      qDebug().nospace() << "Hooking message took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
       auto feed_filters = feed->messageFilters();
 
-      for (int i = 0; i < feed_filters.size(); i++) {
-        QPointer<MessageFilter> filter = feed_filters.at(i);
+      for (int j = 0; j < feed_filters.size(); j++) {
+        QPointer<MessageFilter> filter = feed_filters.at(j);
 
         if (filter.isNull()) {
           qWarning("Message filter was probably deleted, removing its pointer from list of filters.");
-          feed_filters.removeAt(i--);
+          feed_filters.removeAt(j--);
           continue;
         }
 
         MessageFilter* msg_filter = filter.data();
 
-        // Call the filtering logic, given function must return integer value from
-        // FilteringAction enumeration.
-        //
-        // 1. All Qt properties of MessageObject class are accessible.
-        //    For example msg.title.includes("A") returns true if message's title includes "A" etc.
-        // 2. Some Qt properties of MessageObject are writable, so you can alter your message!
-        //    For example msg.isImportant = true.
+        tmr.restart();
+
         FilteringAction decision = msg_filter->filterMessage(&filter_engine);
+
+        qDebug().nospace() << "Running filter script, it took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
         switch (decision) {
           case FilteringAction::Accept:

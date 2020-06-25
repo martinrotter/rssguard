@@ -14,6 +14,7 @@
     <file>sql/db_update_mysql_11_12.sql</file>
     <file>sql/db_update_mysql_12_13.sql</file>
     <file>sql/db_update_mysql_13_14.sql</file>
+    <file>sql/db_update_mysql_14_15.sql</file>
 
     <file>sql/db_init_sqlite.sql</file>
     <file>sql/db_update_sqlite_1_2.sql</file>
@@ -29,5 +30,6 @@
     <file>sql/db_update_sqlite_11_12.sql</file>
     <file>sql/db_update_sqlite_12_13.sql</file>
     <file>sql/db_update_sqlite_13_14.sql</file>
+    <file>sql/db_update_sqlite_14_15.sql</file>
   </qresource>
 </RCC>

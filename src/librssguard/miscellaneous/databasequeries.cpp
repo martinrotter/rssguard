@@ -1428,9 +1428,32 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db,
 }
 
 QMultiMap<QString, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
-  // TODO: return list of relations
+  QSqlQuery q(db);
+  QMultiMap<QString, int> filters_in_feeds;
 
-  return {};
+  q.prepare("SELECT filter, feed_custom_id FROM MessageFiltersInFeeds WHERE account_id = :account_id;");
+
+  q.bindValue(QSL(":account_id"), account_id);
+  q.setForwardOnly(true);
+
+  if (q.exec()) {
+    while (q.next()) {
+      auto rec = q.record();
+
+      filters_in_feeds.insert(rec.value(1).toString(), rec.value(0).toInt());
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return filters_in_feeds;
 }
 
 QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db, bool* ok) {

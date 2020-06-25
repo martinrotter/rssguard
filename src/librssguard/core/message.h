@@ -10,6 +10,8 @@
 #include <QSqlRecord>
 #include <QStringList>
 
+class QSqlDatabase;
+
 // Represents single enclosure.
 struct Enclosure {
   public:
@@ -79,15 +81,35 @@ enum class FilteringAction {
 };
 
 enum class DuplicationAttributeCheck {
+  // Message with same title in DB.
   SameTitle = 1,
+
+  // Message with same URL in DB.
   SameUrl = 2,
+
+  // Message with same author in DB.
   SameAuthor = 4,
-  SameFeed = 8,
-  SameDateCreated = 16
+
+  // Messages with same creation date in DB.
+  SameDateCreated = 8,
+
+  // Compare with all messages from the account not only with messages from same feed.
+  AllFeedsSameAccount = 16
 };
+
+inline DuplicationAttributeCheck operator|(DuplicationAttributeCheck lhs, DuplicationAttributeCheck rhs) {
+  return static_cast<DuplicationAttributeCheck>(int(lhs) | int(rhs));
+}
+
+inline DuplicationAttributeCheck operator&(DuplicationAttributeCheck lhs, DuplicationAttributeCheck rhs) {
+  return static_cast<DuplicationAttributeCheck>(int(lhs) & int(rhs));
+}
 
 class MessageObject : public QObject {
   Q_OBJECT
+
+  Q_PROPERTY(QString feedCustomId READ feedCustomId)
+  Q_PROPERTY(int accountId READ accountId)
   Q_PROPERTY(QString title READ title WRITE setTitle)
   Q_PROPERTY(QString url READ url WRITE setUrl)
   Q_PROPERTY(QString author READ author WRITE setAuthor)
@@ -97,7 +119,7 @@ class MessageObject : public QObject {
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
 
   public:
-    explicit MessageObject(QObject* parent = nullptr);
+    explicit MessageObject(QSqlDatabase* db, const QString& feed_custom_id, int account_id, QObject* parent = nullptr);
 
     void setMessage(Message* message);
 
@@ -107,6 +129,9 @@ class MessageObject : public QObject {
     Q_INVOKABLE bool isDuplicateWithAttribute(int attribute_check) const;
 
     // Generic Message's properties bindings.
+    QString feedCustomId() const;
+    int accountId() const;
+
     QString title() const;
     void setTitle(const QString& title);
 
@@ -129,6 +154,9 @@ class MessageObject : public QObject {
     void setIsImportant(bool is_important);
 
   private:
+    QSqlDatabase* m_db;
+    QString m_feedCustomId;
+    int m_accountId;
     Message* m_message;
 };
 
