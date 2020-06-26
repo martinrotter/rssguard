@@ -10,6 +10,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/mutex.h"
+#include "gui/dialogs/formmessagefiltersmanager.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 #include "services/gmail/gmailentrypoint.h"
@@ -93,6 +94,11 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds",
                             Qt::ConnectionType::QueuedConnection,
                             Q_ARG(QList<Feed*>, feeds));
+}
+
+void FeedReader::showMessageFiltersManager() {
+  FormMessageFiltersManager manager(qApp->mainFormWidget());
+  manager.exec();
 }
 
 void FeedReader::updateAutoUpdateStatus() {

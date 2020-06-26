@@ -54,6 +54,7 @@ HEADERS += core/feeddownloader.h \
            gui/dialogs/formbackupdatabasesettings.h \
            gui/dialogs/formdatabasecleanup.h \
            gui/dialogs/formmain.h \
+           gui/dialogs/formmessagefiltersmanager.h \
            gui/dialogs/formrestoredatabasesettings.h \
            gui/dialogs/formsettings.h \
            gui/dialogs/formupdate.h \
@@ -198,6 +199,7 @@ SOURCES += core/feeddownloader.cpp \
            gui/dialogs/formbackupdatabasesettings.cpp \
            gui/dialogs/formdatabasecleanup.cpp \
            gui/dialogs/formmain.cpp \
+           gui/dialogs/formmessagefiltersmanager.cpp \
            gui/dialogs/formrestoredatabasesettings.cpp \
            gui/dialogs/formsettings.cpp \
            gui/dialogs/formupdate.cpp \
@@ -322,6 +324,7 @@ FORMS += gui/dialogs/formabout.ui \
          gui/dialogs/formbackupdatabasesettings.ui \
          gui/dialogs/formdatabasecleanup.ui \
          gui/dialogs/formmain.ui \
+         gui/dialogs/formmessagefiltersmanager.ui \
          gui/dialogs/formrestoredatabasesettings.ui \
          gui/dialogs/formsettings.ui \
          gui/dialogs/formupdate.ui \

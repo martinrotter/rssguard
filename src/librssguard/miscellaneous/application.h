@@ -115,9 +115,7 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
                         std::function<void()> functor = nullptr);
 
     // Returns pointer to "GOD" application singleton.
-    inline static Application* instance() {
-      return static_cast<Application*>(QCoreApplication::instance());
-    }
+    static Application* instance();
 
   public slots:
 
@@ -179,5 +177,9 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     DownloadManager* m_downloadManager;
     bool m_shouldRestart;
 };
+
+inline Application* Application::instance() {
+  return static_cast<Application*>(QCoreApplication::instance());
+}
 
 #endif // APPLICATION_H

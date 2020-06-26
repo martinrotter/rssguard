@@ -39,6 +39,8 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     // Schedules given feeds for update.
     void updateFeeds(const QList<Feed*>& feeds);
 
+    void showMessageFiltersManager();
+
     // True if feed update is running right now.
     bool isFeedUpdateRunning() const;
 

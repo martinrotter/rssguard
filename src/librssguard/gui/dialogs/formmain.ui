@@ -147,6 +147,8 @@
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
     <addaction name="m_actionRestoreSelectedMessages"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionMessageFilters"/>
    </widget>
    <widget class="QMenu" name="m_menuRecycleBin">
     <property name="title">
@@ -757,6 +759,11 @@
    </property>
    <property name="text">
     <string>Show only &amp;unread messages</string>
+   </property>
+  </action>
+  <action name="m_actionMessageFilters">
+   <property name="text">
+    <string>Message &amp;filters</string>
    </property>
   </action>
  </widget>
