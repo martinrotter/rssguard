@@ -59,7 +59,7 @@ QString TimeSpinBox::textFromValue(double val) const {
     int seconds_val = int(val);
     int minutes_total = seconds_val / 60;
     int seconds_total = seconds_val - (minutes_total * 60);
-    QString seconds = tr("%n seconds(s)", "", seconds_total);
+    QString seconds = tr("%n second(s)", "", seconds_total);
     QString minutes = tr("%n minute(s)", "", minutes_total);
 
     return minutes + tr(" and ") + seconds;

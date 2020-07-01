@@ -32,6 +32,7 @@
 #define RELEASES_LIST                         "https://api.github.com/repos/martinrotter/rssguard/releases"
 #define DEFAULT_LOCALE                        "en"
 #define DEFAULT_FEED_ENCODING                 "UTF-8"
+#define MSG_FILTERING_HELP                    "https://github.com/martinrotter/rssguard/wiki/Message-filtering"
 #define DEFAULT_FEED_TYPE                     "RSS"
 #define URL_REGEXP "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
 #define TEXT_TITLE_LIMIT                      30

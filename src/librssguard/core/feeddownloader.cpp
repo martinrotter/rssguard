@@ -120,6 +120,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     // Register the wrapper.
     auto js_object = filter_engine.newQObject(&msg_obj);
 
+    filter_engine.installExtensions(QJSEngine::Extension::ConsoleExtension);
     filter_engine.globalObject().setProperty("msg", js_object);
 
     qDebug().nospace() << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";

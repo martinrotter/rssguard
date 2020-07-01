@@ -184,6 +184,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSelectPreviousMessage;
   actions << m_ui->m_actionSelectNextUnreadMessage;
   actions << m_ui->m_actionExpandCollapseItem;
+  actions << m_ui->m_actionMessageFilters;
 
 #if defined(USE_WEBENGINE)
   actions << m_ui->m_actionTabNewWebBrowser;
@@ -525,6 +526,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
   m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml")));
   m_ui->m_actionAddCategoryIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder")));
+  m_ui->m_actionMessageFilters->setIcon(icon_theme_factory->fromTheme(QSL("view-list-details")));
 
   // Tabs & web browser.
   m_ui->m_actionTabNewWebBrowser->setIcon(icon_theme_factory->fromTheme(QSL("tab-new")));
@@ -753,6 +755,8 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), &FeedsModel::restoreAllBins);
   connect(m_ui->m_actionEmptyAllRecycleBins, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), &FeedsModel::emptyAllBins);
+  connect(m_ui->m_actionMessageFilters, &QAction::triggered,
+          qApp->feedReader(), &FeedReader::showMessageFiltersManager);
 }
 
 void FormMain::backupDatabaseSettings() {
