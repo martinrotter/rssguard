@@ -40,7 +40,7 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode)
   m_ui->m_progressBar->setVisible(false);
 
   switch (mode) {
-    case FeedsImportExportModel::Export: {
+    case FeedsImportExportModel::Mode::Export: {
       m_model->setRootItem(m_serviceRoot);
       m_model->checkAllItems();
       m_ui->m_treeFeeds->setModel(m_model);
@@ -55,7 +55,7 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode)
       break;
     }
 
-    case FeedsImportExportModel::Import: {
+    case FeedsImportExportModel::Mode::Import: {
       m_ui->m_groupFile->setTitle(tr("Source file"));
       m_ui->m_groupFeeds->setTitle(tr("Target feeds && categories"));
       m_ui->m_groupFeeds->setDisabled(true);
@@ -77,11 +77,11 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode)
 
 void FormStandardImportExport::selectFile() {
   switch (m_model->mode()) {
-    case FeedsImportExportModel::Import:
+    case FeedsImportExportModel::Mode::Import:
       selectImportFile();
       break;
 
-    case FeedsImportExportModel::Export: {
+    case FeedsImportExportModel::Mode::Export: {
       selectExportFile();
       break;
     }
@@ -194,6 +194,7 @@ void FormStandardImportExport::selectImportFile() {
                                                           QString(),
                                                           QMessageBox::Yes | QMessageBox::No,
                                                           QMessageBox::Yes);
+
     parseImportFile(selected_file, answer == QMessageBox::Yes);
   }
 }
@@ -227,11 +228,11 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
 
 void FormStandardImportExport::performAction() {
   switch (m_model->mode()) {
-    case FeedsImportExportModel::Import:
+    case FeedsImportExportModel::Mode::Import:
       importFeeds();
       break;
 
-    case FeedsImportExportModel::Export:
+    case FeedsImportExportModel::Mode::Export:
       exportFeeds();
       break;
 

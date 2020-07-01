@@ -9,13 +9,12 @@ class FeedsImportExportModel : public AccountCheckModel {
   Q_OBJECT
 
   public:
-    enum Mode {
+    enum class Mode {
       Import,
       Export
     };
 
-    // Constructors and destructors.
-    explicit FeedsImportExportModel(QObject* parent = 0);
+    explicit FeedsImportExportModel(QObject* parent = nullptr);
     virtual ~FeedsImportExportModel();
 
     // Exports to OPML 2.0

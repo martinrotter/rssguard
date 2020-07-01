@@ -52,9 +52,9 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     int autoUpdateRemainingInterval() const;
     int autoUpdateInitialInterval() const;
 
-    void loadSaveMessageFilters();
-
+    void loadSavedMessageFilters();
     QList<MessageFilter*> messageFilters() const;
+    MessageFilter* addMessageFilter(const QString& title, const QString& script);
 
   public slots:
     void updateAllFeeds();

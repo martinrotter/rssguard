@@ -293,14 +293,14 @@ void StandardServiceRoot::addNewCategory() {
 void StandardServiceRoot::importFeeds() {
   QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));
 
-  form.data()->setMode(FeedsImportExportModel::Import);
+  form.data()->setMode(FeedsImportExportModel::Mode::Import);
   form.data()->exec();
 }
 
 void StandardServiceRoot::exportFeeds() {
   QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));
 
-  form.data()->setMode(FeedsImportExportModel::Export);
+  form.data()->setMode(FeedsImportExportModel::Mode::Export);
   form.data()->exec();
 }
 

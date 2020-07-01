@@ -16,10 +16,10 @@
 #include <QStack>
 
 FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
-  : AccountCheckModel(parent), m_mode(Import) {}
+  : AccountCheckModel(parent), m_mode(Mode::Import) {}
 
 FeedsImportExportModel::~FeedsImportExportModel() {
-  if (m_rootItem != nullptr && m_mode == Import) {
+  if (m_rootItem != nullptr && m_mode == Mode::Import) {
     // Delete all model items, but only if we are in import mode. Export mode shares
     // root item with main feed model, thus cannot be deleted from memory now.
     delete m_rootItem;
@@ -52,10 +52,11 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
   elem_opml_head.appendChild(elem_opml_created);
   opml_document.documentElement().appendChild(elem_opml_head);
   QDomElement elem_opml_body = opml_document.createElement(QSL("body"));
-
   QStack<RootItem*> items_to_process;
+
   items_to_process.push(m_rootItem);
   QStack<QDomElement> elements_to_use;
+
   elements_to_use.push(elem_opml_body);
 
   // Process all unprocessed nodes.
@@ -146,10 +147,11 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 
   int completed = 0, total = 0, succeded = 0, failed = 0;
   auto* root_item = new StandardServiceRoot();
-
   QStack<RootItem*> model_items;
+
   model_items.push(root_item);
   QStack<QDomElement> elements_to_process;
+
   elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
 
   while (!elements_to_process.isEmpty()) {
@@ -276,7 +278,6 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
   emit layoutChanged();
   int completed = 0, succeded = 0, failed = 0;
   auto* root_item = new StandardServiceRoot();
-
   QList<QByteArray> urls = data.split('\n');
 
   for (const QByteArray& url : urls) {

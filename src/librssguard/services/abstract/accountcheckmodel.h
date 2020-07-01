@@ -7,12 +7,12 @@
 
 #include "services/abstract/rootitem.h"
 
+// This is common model which displays only categories/feeds
+// and allows user to place checkmarks.
 class AccountCheckModel : public QAbstractItemModel {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit AccountCheckModel(QObject* parent = nullptr);
     virtual ~AccountCheckModel();
 

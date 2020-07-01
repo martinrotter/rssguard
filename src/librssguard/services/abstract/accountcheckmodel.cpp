@@ -25,9 +25,7 @@ RootItem* AccountCheckModel::rootItem() const {
 }
 
 void AccountCheckModel::setRootItem(RootItem* root_item) {
-
   delete m_rootItem;
-
   m_rootItem = root_item;
 }
 
@@ -161,23 +159,17 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
     }
   }
   else if (role == Qt::DecorationRole) {
-    switch (item->kind()) {
-      case RootItemKind::Category:
-      case RootItemKind::Bin:
-      case RootItemKind::Feed:
-        return item->icon();
+    auto ic = item->icon();
 
-      default:
-        return QVariant();
-    }
+    return ic.isNull() ? QVariant() : ic;
   }
   else if (role == Qt::DisplayRole) {
     switch (item->kind()) {
       case RootItemKind::Category:
-        return QVariant(item->data(index.column(), role).toString() + tr(" (category)"));
+        return QVariant(item->data(index.column(), role).toString() + QSL(" ") + tr("(category)"));
 
       case RootItemKind::Feed:
-        return QVariant(item->data(index.column(), role).toString() + tr(" (feed)"));
+        return QVariant(item->data(index.column(), role).toString() + QSL(" ") + tr("(feed)"));
 
       default:
         return item->title();
@@ -243,7 +235,8 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
 }
 
 Qt::ItemFlags AccountCheckModel::flags(const QModelIndex& index) const {
-  if (!index.isValid() || itemForIndex(index)->kind() == RootItemKind::Bin) {
+  if (!index.isValid() || (itemForIndex(index)->kind() != RootItemKind::Kind::Category &&
+                           itemForIndex(index)->kind() != RootItemKind::Kind::Feed)) {
     return Qt::NoItemFlags;
   }
 

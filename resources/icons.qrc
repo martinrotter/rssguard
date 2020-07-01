@@ -25,6 +25,7 @@
     <file>./graphics/Faenza/actions/64/go-up.png</file>
     <file>./graphics/Faenza/actions/64/gtk-edit.png</file>
     <file>./graphics/Faenza/actions/64/help-about.png</file>
+    <file>./graphics/Faenza/actions/64/help-contents.png</file>
     <file>./graphics/Faenza/actions/64/insert-object.png</file>
     <file>./graphics/Faenza/actions/64/list-add.png</file>
     <file>./graphics/Faenza/actions/64/list-remove.png</file>
@@ -37,6 +38,7 @@
     <file>./graphics/Faenza/actions/64/mail-message-new.png</file>
     <file>./graphics/Faenza/actions/64/mail-send.png</file>
     <file>./graphics/Faenza/actions/64/mail-sent.png</file>
+    <file>./graphics/Faenza/actions/64/media-playback-start.png</file>
     <file>./graphics/Faenza/actions/64/process-stop.png</file>
     <file>./graphics/Faenza/actions/64/reload.png</file>
     <file>./graphics/Faenza/actions/64/system-search.png</file>

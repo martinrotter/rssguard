@@ -7,10 +7,10 @@
 #include "core/feedsproxymodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "gui/dialogs/formmessagefiltersmanager.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/mutex.h"
-#include "gui/dialogs/formmessagefiltersmanager.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 #include "services/gmail/gmailentrypoint.h"
@@ -97,7 +97,10 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
 }
 
 void FeedReader::showMessageFiltersManager() {
-  FormMessageFiltersManager manager(qApp->mainFormWidget());
+  FormMessageFiltersManager manager(qApp->feedReader(),
+                                    qApp->feedReader()->feedsModel()->serviceRoots(),
+                                    qApp->mainFormWidget());
+
   manager.exec();
 }
 
@@ -135,7 +138,7 @@ int FeedReader::autoUpdateInitialInterval() const {
   return m_globalAutoUpdateInitialInterval;
 }
 
-void FeedReader::loadSaveMessageFilters() {
+void FeedReader::loadSavedMessageFilters() {
   // Load all message filters from database.
   // All plugin services will hook active filters to
   // all feeds.
@@ -146,6 +149,17 @@ void FeedReader::loadSaveMessageFilters() {
   for (auto* filter : m_messageFilters) {
     filter->setParent(this);
   }
+}
+
+MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString& script) {
+  auto* fltr = new MessageFilter(12, this);
+
+  fltr->setName(title);
+  fltr->setScript(script);
+
+  // TODO: Save into database, then return.
+
+  return fltr;
 }
 
 void FeedReader::updateAllFeeds() {

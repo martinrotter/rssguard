@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
 
   qApp->loadDynamicShortcuts();
   qApp->hideOrShowMainForm();
-  qApp->feedReader()->loadSaveMessageFilters();
+  qApp->feedReader()->loadSavedMessageFilters();
   qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
   qApp->showTrayIcon();
   qApp->offerChanges();
