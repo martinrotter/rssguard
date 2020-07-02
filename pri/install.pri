@@ -175,7 +175,10 @@ win32 {
   lib.path = $$PREFIX
   lib.CONFIG = no_check_exist
 
-  INSTALLS += target lib
+  clng.files = ../../resources/scripts/clang-format/clang-format.exe
+  clng.path = $$PREFIX
+
+  INSTALLS += target lib clng
 
   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
 }

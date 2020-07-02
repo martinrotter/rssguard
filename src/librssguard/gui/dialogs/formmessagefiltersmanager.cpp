@@ -6,6 +6,7 @@
 #include "gui/dialogs/formmessagefiltersmanager.h"
 
 #include "core/messagefilter.h"
+#include "exceptions/filteringexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
@@ -38,6 +39,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
   connect(m_ui.m_btnTest, &QPushButton::clicked, this, &FormMessageFiltersManager::testFilter);
 
   initializeTestingMessage();
+  loadFilter();
 }
 
 FormMessageFiltersManager::~FormMessageFiltersManager() {
@@ -95,6 +97,12 @@ void FormMessageFiltersManager::loadFilter() {
 }
 
 void FormMessageFiltersManager::testFilter() {
+  // TODO: Add button to beautify JavaScript code, call clang-format and distribute
+  // it under windows. On other platforms, just try to call and raise messagebox
+  // error with "install clang-format" if not found.
+  // then call like this with qt process api.
+  // echo "script-code" | ./clang-format.exe --assume-filename="script.js" --style="Chromium"
+
   // Perform per-message filtering.
   QJSEngine filter_engine;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
@@ -113,8 +121,37 @@ void FormMessageFiltersManager::testFilter() {
   msg_obj.setMessage(&msg);
 
   auto* fltr = selectedFilter();
-  FilteringAction decision = fltr->filterMessage(&filter_engine);
-  int aa = 5;
+
+  try {
+    FilteringAction decision = fltr->filterMessage(&filter_engine);
+
+    m_ui.m_txtErrors->setTextColor(decision == FilteringAction::Accept ? Qt::GlobalColor::darkGreen : Qt::GlobalColor::red);
+
+    QString answer = tr("Message will be %1.\n").arg(decision == FilteringAction::Accept
+                                                   ? tr("accepted")
+                                                   : tr("rejected"));
+
+    answer += tr("Output (modified) message is:\n"
+                 "  Title = '%1'\n"
+                 "  URL = '%2'\n"
+                 "  Author = '%3'\n"
+                 "  Is read/important = '%4/%5'\n"
+                 "  Created on = '%6'\n"
+                 "  Contents = '%7'").arg(msg.m_title, msg.m_url, msg.m_author,
+                                          msg.m_isRead ? tr("yes") : tr("no"),
+                                          msg.m_isImportant ? tr("yes") : tr("no"),
+                                          QString::number(msg.m_created.toMSecsSinceEpoch()),
+                                          msg.m_contents);
+
+    m_ui.m_txtErrors->setPlainText(answer);
+  }
+  catch (const FilteringException& ex) {
+    m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);
+    m_ui.m_txtErrors->setPlainText(tr("JavaScript-based filter contains errors: '%1'.").arg(ex.message()));
+  }
+
+  // See output.
+  m_ui.m_tcMessage->setCurrentIndex(1);
 }
 
 void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
@@ -131,6 +168,8 @@ void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
     m_ui.m_gbDetails->setEnabled(true);
   }
 
+  // See message.
+  m_ui.m_tcMessage->setCurrentIndex(0);
   m_loadingFilter = false;
 }
 

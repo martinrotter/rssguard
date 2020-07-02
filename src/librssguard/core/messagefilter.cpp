@@ -3,6 +3,7 @@
 #include "core/messagefilter.h"
 
 #include "core/message.h"
+#include "exceptions/filteringexception.h"
 
 #include <QJSEngine>
 
@@ -43,15 +44,19 @@ FilteringAction MessageFilter::filterMessage(QJSEngine* engine) {
   QJSValue filter_func = engine->evaluate(m_script);
 
   if (filter_func.isError()) {
-    qCritical("Error when evaluating script from filter '%d'. Error is: '%s'", id(), qPrintable(filter_func.toString()));
-    return FilteringAction::Accept;
+    QJSValue::ErrorType error = filter_func.errorType();
+    QString message = filter_func.toString();
+
+    throw FilteringException(error, message);
   }
 
   auto filter_output = engine->evaluate(QSL("filterMessage()"));
 
   if (filter_output.isError()) {
-    qCritical("Error when calling filtering function '%d'. Error is: '%s'", id(), qPrintable(filter_output.toString()));
-    return FilteringAction::Accept;
+    QJSValue::ErrorType error = filter_output.errorType();
+    QString message = filter_output.toString();
+
+    throw FilteringException(error, message);
   }
 
   return FilteringAction(filter_output.toInt());

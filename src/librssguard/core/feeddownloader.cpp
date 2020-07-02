@@ -4,6 +4,7 @@
 
 #include "core/messagefilter.h"
 #include "definitions/definitions.h"
+#include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
@@ -147,23 +148,31 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
         tmr.restart();
 
-        FilteringAction decision = msg_filter->filterMessage(&filter_engine);
+        try {
+          FilteringAction decision = msg_filter->filterMessage(&filter_engine);
 
-        qDebug().nospace() << "Running filter script, it took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
+          qDebug().nospace() << "Running filter script, it took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
-        switch (decision) {
-          case FilteringAction::Accept:
+          switch (decision) {
+            case FilteringAction::Accept:
 
-            // Message is normally accepted, it could be tweaked by the filter.
-            continue;
+              // Message is normally accepted, it could be tweaked by the filter.
+              continue;
 
-          case FilteringAction::Ignore:
+            case FilteringAction::Ignore:
 
-            // Remove the message, we do not want it.
-            msgs.removeAt(i--);
-            break;
+              // Remove the message, we do not want it.
+              msgs.removeAt(i--);
+              break;
+          }
+        }
+        catch (const FilteringException& ex) {
+          qCritical("Error when evaluating filtering JS function: '%s'. Accepting message.", qPrintable(ex.message()));
+          continue;
         }
 
+        // If we reach this point. Then we ignore the message which is by now
+        // already removed, go to next message.
         break;
       }
     }

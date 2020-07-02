@@ -44,6 +44,7 @@ HEADERS += core/feeddownloader.h \
            dynamic-shortcuts/shortcutbutton.h \
            dynamic-shortcuts/shortcutcatcher.h \
            exceptions/applicationexception.h \
+           exceptions/filteringexception.h \
            exceptions/ioexception.h \
            gui/baselineedit.h \
            gui/basetoolbar.h \
@@ -189,6 +190,7 @@ SOURCES += core/feeddownloader.cpp \
            dynamic-shortcuts/shortcutbutton.cpp \
            dynamic-shortcuts/shortcutcatcher.cpp \
            exceptions/applicationexception.cpp \
+           exceptions/filteringexception.cpp \
            exceptions/ioexception.cpp \
            gui/baselineedit.cpp \
            gui/basetoolbar.cpp \
