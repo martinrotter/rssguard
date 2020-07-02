@@ -159,7 +159,12 @@ MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString&
 
   // TODO: Save into database, then return.
 
+  m_messageFilters.append(fltr);
   return fltr;
+}
+
+void FeedReader::updateMessageFilter(MessageFilter* filter) {
+  // TODO: Filter's name or script is changed, save to database.
 }
 
 void FeedReader::updateAllFeeds() {

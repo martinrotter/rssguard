@@ -25,7 +25,9 @@ class FormMessageFiltersManager : public QDialog {
 
   private slots:
     void addNewFilter();
+    void saveSelectedFilter();
     void loadFilter();
+    void testFilter();
 
     // Display filter title/contents.
     void showFilter(MessageFilter* filter);
@@ -34,11 +36,16 @@ class FormMessageFiltersManager : public QDialog {
     void updateFeedAssignments(MessageFilter* filter, ServiceRoot* account);
 
   private:
+    void initializeTestingMessage();
+    Message testingMessage() const;
+
+  private:
     Ui::FormMessageFiltersManager m_ui;
     AccountCheckModel* m_feedsModel;
     RootItem* m_rootItem;
     QList<ServiceRoot*> m_accounts;
     FeedReader* m_reader;
+    bool m_loadingFilter;
 };
 
 #endif // FORMMESSAGEFILTERSMANAGER_H

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>625</height>
+    <height>644</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,6 +117,12 @@
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
          </spacer>
         </item>
        </layout>
@@ -135,12 +141,6 @@
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QPlainTextEdit" name="m_txtScript">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>1</verstretch>
-           </sizepolicy>
-          </property>
           <property name="placeholderText">
            <string>Your JavaScript-based message filtering logic</string>
           </property>
@@ -155,14 +155,14 @@
            <item row="0" column="0" colspan="2">
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QCheckBox" name="checkBox">
+              <widget class="QCheckBox" name="m_cbSampleRead">
                <property name="text">
                 <string>Read</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBox_2">
+              <widget class="QCheckBox" name="m_cbSampleImportant">
                <property name="text">
                 <string>Important</string>
                </property>
@@ -189,12 +189,12 @@
               <string>Title</string>
              </property>
              <property name="buddy">
-              <cstring>lineEdit</cstring>
+              <cstring>m_txtSampleTitle</cstring>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QLineEdit" name="m_txtSampleTitle"/>
            </item>
            <item row="2" column="0">
             <widget class="QLabel" name="label_6">
@@ -202,12 +202,12 @@
               <string>URL</string>
              </property>
              <property name="buddy">
-              <cstring>lineEdit_2</cstring>
+              <cstring>m_txtSampleUrl</cstring>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_2"/>
+            <widget class="QLineEdit" name="m_txtSampleUrl"/>
            </item>
            <item row="3" column="0">
             <widget class="QLabel" name="label_7">
@@ -215,12 +215,12 @@
               <string>Author</string>
              </property>
              <property name="buddy">
-              <cstring>lineEdit_3</cstring>
+              <cstring>m_txtSampleAuthor</cstring>
              </property>
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_3"/>
+            <widget class="QLineEdit" name="m_txtSampleAuthor"/>
            </item>
            <item row="4" column="0">
             <widget class="QLabel" name="label_8">
@@ -228,12 +228,12 @@
               <string>Created on</string>
              </property>
              <property name="buddy">
-              <cstring>lineEdit_4</cstring>
+              <cstring>m_txtSampleCreatedOn</cstring>
              </property>
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_4"/>
+            <widget class="QLineEdit" name="m_txtSampleCreatedOn"/>
            </item>
            <item row="5" column="0">
             <widget class="QLabel" name="label_5">
@@ -241,12 +241,12 @@
               <string>Contents</string>
              </property>
              <property name="buddy">
-              <cstring>plainTextEdit</cstring>
+              <cstring>m_txtSampleContents</cstring>
              </property>
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QPlainTextEdit" name="plainTextEdit"/>
+            <widget class="QPlainTextEdit" name="m_txtSampleContents"/>
            </item>
           </layout>
          </widget>
@@ -258,7 +258,7 @@
         <item>
          <widget class="QPushButton" name="m_btnTest">
           <property name="text">
-           <string>&amp;Test</string>
+           <string>&amp;Test the script</string>
           </property>
          </widget>
         </item>
@@ -338,13 +338,13 @@
   <tabstop>m_txtScript</tabstop>
   <tabstop>m_btnTest</tabstop>
   <tabstop>m_btnDetailedHelp</tabstop>
-  <tabstop>checkBox</tabstop>
-  <tabstop>checkBox_2</tabstop>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>lineEdit_3</tabstop>
-  <tabstop>lineEdit_4</tabstop>
-  <tabstop>plainTextEdit</tabstop>
+  <tabstop>m_cbSampleRead</tabstop>
+  <tabstop>m_cbSampleImportant</tabstop>
+  <tabstop>m_txtSampleTitle</tabstop>
+  <tabstop>m_txtSampleUrl</tabstop>
+  <tabstop>m_txtSampleAuthor</tabstop>
+  <tabstop>m_txtSampleCreatedOn</tabstop>
+  <tabstop>m_txtSampleContents</tabstop>
   <tabstop>m_txtErrors</tabstop>
  </tabstops>
  <resources/>
