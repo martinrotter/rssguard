@@ -29,13 +29,18 @@ class FormMessageFiltersManager : public QDialog {
     void loadFilter();
     void testFilter();
 
+    // Load feeds/categories tree.
+    void loadSelectedAccount();
+
+    // Load checkmarks according to already active assignments.
+    void loadFilterFeedAssignments();
+
     // Display filter title/contents.
     void showFilter(MessageFilter* filter);
 
-    // Load feeds/categories of the account, place checkmarks where filter is used.
-    void updateFeedAssignments(MessageFilter* filter, ServiceRoot* account);
-
   private:
+    void loadAccounts();
+    void beautifyScript();
     void initializeTestingMessage();
     Message testingMessage() const;
 

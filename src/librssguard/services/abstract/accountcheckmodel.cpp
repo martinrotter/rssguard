@@ -24,9 +24,20 @@ RootItem* AccountCheckModel::rootItem() const {
   return m_rootItem;
 }
 
-void AccountCheckModel::setRootItem(RootItem* root_item) {
-  delete m_rootItem;
+void AccountCheckModel::setRootItem(RootItem* root_item, bool delete_previous_root, bool with_layout_change) {
+  if (with_layout_change) {
+    emit layoutAboutToBeChanged();
+  }
+
+  if (delete_previous_root && m_rootItem != nullptr) {
+    m_rootItem->deleteLater();
+  }
+
   m_rootItem = root_item;
+
+  if (with_layout_change) {
+    emit layoutChanged();
+  }
 }
 
 void AccountCheckModel::checkAllItems() {
@@ -162,6 +173,9 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
     auto ic = item->icon();
 
     return ic.isNull() ? QVariant() : ic;
+  }
+  else if (role == Qt::EditRole) {
+    return QVariant::fromValue(item);
   }
   else if (role == Qt::DisplayRole) {
     switch (item->kind()) {

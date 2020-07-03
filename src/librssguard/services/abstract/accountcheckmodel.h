@@ -37,7 +37,7 @@ class AccountCheckModel : public QAbstractItemModel {
     // Root item manipulators.
     RootItem* rootItem() const;
 
-    void setRootItem(RootItem* root_item);
+    void setRootItem(RootItem* root_item, bool delete_previous_root = true, bool with_layout_change = false);
 
   public slots:
     void checkAllItems();

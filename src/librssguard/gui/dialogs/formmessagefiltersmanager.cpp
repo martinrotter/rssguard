@@ -1,5 +1,6 @@
 #include <QDateTime>
 #include <QJSEngine>
+#include <QProcess>
 
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
@@ -8,6 +9,7 @@
 #include "core/messagefilter.h"
 #include "exceptions/filteringexception.h"
 #include "gui/guiutilities.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -21,8 +23,10 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("view-list-details")));
 
+  m_ui.m_treeFeeds->setModel(m_feedsModel);
   m_ui.m_btnAddNew->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_ui.m_btnRemoveSelected->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
+  m_ui.m_btnBeautify->setIcon(qApp->icons()->fromTheme(QSL("format-justify-fill")));
   m_ui.m_btnTest->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
   m_ui.m_btnDetailedHelp->setIcon(qApp->icons()->fromTheme(QSL("help-contents")));
   m_ui.m_txtScript->setFont(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont));
@@ -37,9 +41,16 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
   connect(m_ui.m_txtTitle, &QLineEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_txtScript, &QPlainTextEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_btnTest, &QPushButton::clicked, this, &FormMessageFiltersManager::testFilter);
+  connect(m_ui.m_btnBeautify, &QPushButton::clicked, this, &FormMessageFiltersManager::beautifyScript);
+  connect(m_ui.m_cmbAccounts, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, [this]() {
+    // Load feeds/categories of the account and check marks.
+    loadSelectedAccount();
+    loadFilterFeedAssignments();
+  });
 
   initializeTestingMessage();
   loadFilter();
+  loadAccounts();
 }
 
 FormMessageFiltersManager::~FormMessageFiltersManager() {
@@ -56,7 +67,9 @@ MessageFilter* FormMessageFiltersManager::selectedFilter() const {
 }
 
 ServiceRoot* FormMessageFiltersManager::selectedAccount() const {
-  return nullptr;
+  auto dat = m_ui.m_cmbAccounts->currentData(Qt::ItemDataRole::UserRole);
+
+  return dat.isNull() ? nullptr : dat.value<ServiceRoot*>();
 }
 
 void FormMessageFiltersManager::addNewFilter() {
@@ -93,16 +106,9 @@ void FormMessageFiltersManager::loadFilter() {
   auto* acc = selectedAccount();
 
   showFilter(filter);
-  updateFeedAssignments(filter, acc);
 }
 
 void FormMessageFiltersManager::testFilter() {
-  // TODO: Add button to beautify JavaScript code, call clang-format and distribute
-  // it under windows. On other platforms, just try to call and raise messagebox
-  // error with "install clang-format" if not found.
-  // then call like this with qt process api.
-  // echo "script-code" | ./clang-format.exe --assume-filename="script.js" --style="Chromium"
-
   // Perform per-message filtering.
   QJSEngine filter_engine;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
@@ -127,9 +133,9 @@ void FormMessageFiltersManager::testFilter() {
 
     m_ui.m_txtErrors->setTextColor(decision == FilteringAction::Accept ? Qt::GlobalColor::darkGreen : Qt::GlobalColor::red);
 
-    QString answer = tr("Message will be %1.\n").arg(decision == FilteringAction::Accept
-                                                   ? tr("accepted")
-                                                   : tr("rejected"));
+    QString answer = tr("Message will be %1.\n\n").arg(decision == FilteringAction::Accept
+                                                       ? tr("ACCEPTED")
+                                                       : tr("REJECTED"));
 
     answer += tr("Output (modified) message is:\n"
                  "  Title = '%1'\n"
@@ -154,6 +160,13 @@ void FormMessageFiltersManager::testFilter() {
   m_ui.m_tcMessage->setCurrentIndex(1);
 }
 
+void FormMessageFiltersManager::loadSelectedAccount() {
+  m_feedsModel->setRootItem(selectedAccount(), false, true);
+  m_ui.m_treeFeeds->expandAll();
+}
+
+void FormMessageFiltersManager::loadFilterFeedAssignments() {}
+
 void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
   m_loadingFilter = true;
 
@@ -173,7 +186,61 @@ void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
   m_loadingFilter = false;
 }
 
-void FormMessageFiltersManager::updateFeedAssignments(MessageFilter* filter, ServiceRoot* account) {}
+void FormMessageFiltersManager::loadAccounts() {
+  for (auto* acc : m_accounts) {
+    m_ui.m_cmbAccounts->addItem(acc->icon(),
+                                acc->title(),
+                                QVariant::fromValue(acc));
+  }
+}
+
+void FormMessageFiltersManager::beautifyScript() {
+  QProcess proc_clang_format(this);
+
+  proc_clang_format.setInputChannelMode(QProcess::InputChannelMode::ManagedInputChannel);
+  proc_clang_format.setArguments({"--assume-filename=script.js", "--style=Chromium"});
+
+#if defined (Q_OS_WIN)
+  proc_clang_format.setProgram(qApp->applicationDirPath() + QDir::separator() +
+                               QSL("clang-format") + QDir::separator() +
+                               QSL("clang-format.exe"));
+#else
+  proc_clang_format.setProgram(QSL("clang-format"));
+#endif
+
+  if (!proc_clang_format.open()) {
+    MessageBox::show(this, QMessageBox::Icon::Critical,
+                     tr("Cannot find 'clang-format'"),
+                     tr("Script was not beautified, because 'clang-format' tool was not found."));
+    return;
+  }
+
+  proc_clang_format.write(m_ui.m_txtScript->toPlainText().toUtf8());
+  proc_clang_format.closeWriteChannel();
+
+  if (proc_clang_format.waitForFinished(3000)) {
+    if (proc_clang_format.exitCode() == 0) {
+      auto script = proc_clang_format.readAllStandardOutput();
+
+      m_ui.m_txtScript->setPlainText(script);
+    }
+    else {
+      auto err = proc_clang_format.readAllStandardError();
+
+      MessageBox::show(this, QMessageBox::Icon::Critical,
+                       tr("Error"),
+                       tr("Script was not beautified, because 'clang-format' tool thrown error."),
+                       QString(),
+                       err);
+    }
+  }
+  else {
+    proc_clang_format.kill();
+    MessageBox::show(this, QMessageBox::Icon::Critical,
+                     tr("Beautifier was running for too long time"),
+                     tr("Script was not beautified, is 'clang-format' installed?"));
+  }
+}
 
 void FormMessageFiltersManager::initializeTestingMessage() {
   m_ui.m_cbSampleImportant->setChecked(true);

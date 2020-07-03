@@ -44,7 +44,11 @@
       </spacer>
      </item>
      <item row="0" column="0" colspan="3">
-      <widget class="QListWidget" name="m_listFilters"/>
+      <widget class="QListWidget" name="m_listFilters">
+       <property name="uniformItemSizes">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -56,12 +60,12 @@
         <string>Account</string>
        </property>
        <property name="buddy">
-        <cstring>comboBox</cstring>
+        <cstring>m_cmbAccounts</cstring>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="m_cmbAccounts"/>
      </item>
      <item row="1" column="0" colspan="2">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -73,6 +77,12 @@
            <height>150</height>
           </size>
          </property>
+         <property name="uniformRowHeights">
+          <bool>true</bool>
+         </property>
+         <attribute name="headerVisible">
+          <bool>false</bool>
+         </attribute>
         </widget>
        </item>
        <item>
@@ -339,7 +349,14 @@
         <item>
          <widget class="QPushButton" name="m_btnTest">
           <property name="text">
-           <string>&amp;Test the script</string>
+           <string>&amp;Test!</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_btnBeautify">
+          <property name="text">
+           <string>&amp;Beautify!</string>
           </property>
          </widget>
         </item>
@@ -387,13 +404,14 @@
   <tabstop>m_listFilters</tabstop>
   <tabstop>m_btnAddNew</tabstop>
   <tabstop>m_btnRemoveSelected</tabstop>
-  <tabstop>comboBox</tabstop>
+  <tabstop>m_cmbAccounts</tabstop>
   <tabstop>m_treeFeeds</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>m_txtTitle</tabstop>
   <tabstop>m_txtScript</tabstop>
   <tabstop>m_btnTest</tabstop>
+  <tabstop>m_btnBeautify</tabstop>
   <tabstop>m_btnDetailedHelp</tabstop>
   <tabstop>m_tcMessage</tabstop>
   <tabstop>m_cbSampleRead</tabstop>

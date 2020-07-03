@@ -175,7 +175,7 @@ win32 {
   lib.path = $$PREFIX
   lib.CONFIG = no_check_exist
 
-  clng.files = ../../resources/scripts/clang-format/clang-format.exe
+  clng.files = ../../resources/scripts/clang-format
   clng.path = $$PREFIX
 
   INSTALLS += target lib clng
