@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QObject>
+#include <QProcess>
 #include <QTemporaryFile>
 
 IOFactory::IOFactory() = default;
@@ -68,6 +69,18 @@ QString IOFactory::filterBadCharsFromFilename(const QString& name) {
   value.remove(QL1C('>'));
   value.remove(QL1C('|'));
   return value;
+}
+
+bool IOFactory::startProcessDetached(const QString& program, const QStringList& arguments,
+                                     const QString& native_arguments, const QString& working_directory) {
+  QProcess process;
+
+  process.setProgram(program);
+  process.setArguments(arguments);
+  process.setNativeArguments(native_arguments);
+  process.setWorkingDirectory(working_directory);
+
+  return process.startDetached(nullptr);
 }
 
 QByteArray IOFactory::readFile(const QString& file_path) {

@@ -489,7 +489,7 @@ void Application::onAboutToQuit() {
     finish();
     qDebug("Killing local peer connection to allow another instance to start.");
 
-    if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
+    if (QProcess::startDetached(QDir::toNativeSeparators(applicationFilePath()), {})) {
       qDebug("New application instance was started.");
     }
     else {

@@ -89,8 +89,7 @@ const AdBlockRule* AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInf
     return nullptr;
   }
 
-  QChar c = choppedUrlString.at(0);
-  Node* node = m_root->children.value(c);
+  Node* node = m_root->children.value(choppedUrlString.at(0));
 
   if (node == nullptr) {
     return nullptr;

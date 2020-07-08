@@ -370,7 +370,12 @@ void AdBlockRule::parseFilter() {
   int optionsIndex = parsedLine.indexOf(QL1C('$'));
 
   if (optionsIndex >= 0) {
-    const QStringList options = parsedLine.mid(optionsIndex + 1).split(QL1C(','), QString::SkipEmptyParts);
+    const QStringList options = parsedLine.mid(optionsIndex + 1).split(QL1C(','),
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                                       Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                                       QString::SkipEmptyParts);
+#endif
     int handledOptions = 0;
 
     for (const QString& option : options) {
@@ -497,7 +502,12 @@ void AdBlockRule::parseFilter() {
 }
 
 void AdBlockRule::parseDomains(const QString& domains, const QChar& separator) {
-  QStringList domainsList = domains.split(separator, QString::SkipEmptyParts);
+  QStringList domainsList = domains.split(separator,
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                          Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                          QString::SkipEmptyParts);
+#endif
 
   for (const QString& domain : domainsList) {
     if (domain.isEmpty()) {
@@ -618,15 +628,15 @@ QString AdBlockRule::createRegExpFromFilter(const QString& filter) const {
 }
 
 QList<QStringMatcher> AdBlockRule::createStringMatchers(const QStringList& filters) const {
-  QList<QStringMatcher> matchers;
+  QList<QStringMatcher> mtchrs;
 
-  matchers.reserve(filters.size());
+  mtchrs.reserve(filters.size());
 
   for (const QString& filter : filters) {
-    matchers.append(QStringMatcher(filter, m_caseSensitivity));
+    mtchrs.append(QStringMatcher(filter, m_caseSensitivity));
   }
 
-  return matchers;
+  return mtchrs;
 }
 
 int AdBlockRule::regexMatched(const QString& str, int offset) const {

@@ -22,7 +22,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
 
     // Enum which describes basic filtering schemes
     // for messages.
-    enum MessageHighlighter {
+    enum class MessageHighlighter {
       NoHighlighting = 100,
       HighlightUnread = 101,
       HighlightImportant = 102

@@ -62,7 +62,7 @@
 #include <QTimer>
 #include <utility>
 
-AdBlockSubscription::AdBlockSubscription(QString  title, QObject* parent)
+AdBlockSubscription::AdBlockSubscription(QString title, QObject* parent)
   : QObject(parent), m_reply(nullptr), m_title(std::move(title)), m_updated(false) {}
 
 QString AdBlockSubscription::title() const {
@@ -290,11 +290,11 @@ void AdBlockCustomList::loadSubscription(const QStringList& disabledRules) {
     stream.setCodec("UTF-8");
 
     if (!rules.contains(ddg1 + QL1S("\n"))) {
-      stream << ddg1 << endl;
+      stream << ddg1 << Qt::endl;
     }
 
     if (!rules.contains(QL1S("\n") + ddg2)) {
-      stream << ddg2 << endl;
+      stream << ddg2 << Qt::endl;
     }
   }
 
@@ -313,12 +313,12 @@ void AdBlockCustomList::saveSubscription() {
   QTextStream textStream(&file);
 
   textStream.setCodec("UTF-8");
-  textStream << "Title: " << title() << endl;
-  textStream << "Url: " << url().toString() << endl;
-  textStream << "[Adblock Plus 1.1.1]" << endl;
+  textStream << "Title: " << title() << Qt::endl;
+  textStream << "Url: " << url().toString() << Qt::endl;
+  textStream << "[Adblock Plus 1.1.1]" << Qt::endl;
 
   for (const AdBlockRule* rule : m_rules) {
-    textStream << rule->filter() << endl;
+    textStream << rule->filter() << Qt::endl;
   }
 
   file.close();

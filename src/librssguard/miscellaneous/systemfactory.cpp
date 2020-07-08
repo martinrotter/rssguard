@@ -59,7 +59,6 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
     return AutoStartStatus::Disabled;
   }
 #elif defined(Q_OS_LINUX)
-
   // Use proper freedesktop.org way to auto-start the application on Linux.
   // INFO: http://standards.freedesktop.org/autostart-spec/latest/
   const QString desktop_file_location = autostartDesktopFileLocation();
@@ -82,7 +81,6 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
     return AutoStartStatus::Disabled;
   }
 #else
-
   // Disable auto-start functionality on unsupported platforms.
   return AutoStartStatus::Unavailable;
 #endif
@@ -139,7 +137,6 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
       return false;
   }
 #elif defined(Q_OS_LINUX)
-
   // Note that we expect here that no other program uses
   // "rssguard.desktop" desktop file.
   const QString destination_file = autostartDesktopFileLocation();
@@ -279,7 +276,8 @@ bool SystemFactory::isVersionEqualOrNewer(const QString& new_version, const QStr
 
 bool SystemFactory::openFolderFile(const QString& file_path) {
 #if defined(Q_OS_WIN)
-  return QProcess::startDetached(QString("explorer.exe /select, \"") + QDir::toNativeSeparators(file_path) + "\"");
+  return QProcess::startDetached(QSL("explorer.exe"),
+                                 { "/select,", QDir::toNativeSeparators(file_path)});
 #else
   const QString folder = QDir::toNativeSeparators(QFileInfo(file_path).absoluteDir().absolutePath());
 

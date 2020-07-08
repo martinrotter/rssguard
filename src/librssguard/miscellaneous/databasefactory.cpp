@@ -218,7 +218,12 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
                qPrintable(APP_SQL_PATH));
       }
 
-      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                                        Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                                        QString::SkipEmptyParts);
+#endif
 
       database.transaction();
 
@@ -327,7 +332,12 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
                qPrintable(APP_SQL_PATH));
       }
 
-      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                                        Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                                        QString::SkipEmptyParts);
+#endif
 
       database.transaction();
 
@@ -407,7 +417,12 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(const QSqlDatabase& database, c
       qFatal("Updating of database schema failed. File '%s' cannot be opened.", qPrintable(QDir::toNativeSeparators(update_file_name)));
     }
 
-    const QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+    const QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT,
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                                               Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                                               QString::SkipEmptyParts);
+#endif
 
     for (const QString& statement : statements) {
       QSqlQuery query = database.exec(statement);
@@ -447,7 +462,12 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(const QSqlDatabase& database,
       qFatal("Updating of database schema failed. File '%s' cannot be opened.", qPrintable(QDir::toNativeSeparators(update_file_name)));
     }
 
-    QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+    QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT,
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                                         Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                                         QString::SkipEmptyParts);
+#endif
 
     for (QString statement : statements) {
       QSqlQuery query = database.exec(statement.replace(APP_DB_NAME_PLACEHOLDER, db_name));
@@ -676,7 +696,12 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
                qPrintable(APP_SQL_PATH));
       }
 
-      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                                        Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                                        QString::SkipEmptyParts);
+#endif
 
       database.transaction();
 

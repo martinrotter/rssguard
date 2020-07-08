@@ -73,11 +73,22 @@ void StatusBar::saveChangeableActions(const QStringList& actions) {
 }
 
 QStringList StatusBar::defaultActions() const {
-  return QString(GUI::StatusbarActionsDef).split(',', QString::SkipEmptyParts);
+  return QString(GUI::StatusbarActionsDef).split(',',
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                 Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                 QString::SkipEmptyParts);
+#endif
 }
 
 QStringList StatusBar::savedActions() const {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::StatusbarActions)).toString().split(',', QString::SkipEmptyParts);
+  return qApp->settings()->value(GROUP(GUI),
+                                 SETTING(GUI::StatusbarActions)).toString().split(',',
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                                                  Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                                                  QString::SkipEmptyParts);
+#endif
 }
 
 QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {

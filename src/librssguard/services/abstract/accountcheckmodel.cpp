@@ -33,6 +33,7 @@ void AccountCheckModel::setRootItem(RootItem* root_item, bool delete_previous_ro
     m_rootItem->deleteLater();
   }
 
+  m_checkStates.clear();
   m_rootItem = root_item;
 
   if (with_layout_change) {
@@ -172,7 +173,7 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
   else if (role == Qt::DecorationRole) {
     auto ic = item->icon();
 
-    return ic.isNull() ? QVariant() : ic;
+    return item->data(0, Qt::ItemDataRole::DecorationRole);
   }
   else if (role == Qt::EditRole) {
     return QVariant::fromValue(item);
@@ -206,6 +207,7 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
     // Change data for the actual item.
     m_checkStates[item] = static_cast<Qt::CheckState>(value.toInt());
     emit dataChanged(index, index);
+    emit checkStateChanged(item, m_checkStates[item]);
 
     if (m_recursiveChange) {
       return true;

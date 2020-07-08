@@ -118,11 +118,11 @@ void MessagesToolBar::initializeSearchBox() {
 void MessagesToolBar::initializeHighlighter() {
   m_menuMessageHighlighter = new QMenu(tr("Menu for highlighting messages"), this);
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                                      tr("No extra highlighting"))->setData(QVariant::fromValue(MessagesModel::NoHighlighting));
+                                      tr("No extra highlighting"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::NoHighlighting));
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-unread")),
-                                      tr("Highlight unread messages"))->setData(QVariant::fromValue(MessagesModel::HighlightUnread));
+                                      tr("Highlight unread messages"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightUnread));
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-important")),
-                                      tr("Highlight important messages"))->setData(QVariant::fromValue(MessagesModel::HighlightImportant));
+                                      tr("Highlight important messages"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightImportant));
   m_btnMessageHighlighter = new QToolButton(this);
   m_btnMessageHighlighter->setToolTip(tr("Display all messages"));
   m_btnMessageHighlighter->setMenu(m_menuMessageHighlighter);
@@ -138,12 +138,20 @@ void MessagesToolBar::initializeHighlighter() {
 }
 
 QStringList MessagesToolBar::defaultActions() const {
-  return QString(GUI::MessagesToolbarDefaultButtonsDef).split(',',
-                                                              QString::SkipEmptyParts);
+  return QString(GUI::MessagesToolbarDefaultButtonsDef).split(QL1C(','),
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                              Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                              QString::SplitBehavior::SkipEmptyParts);
+#endif
 }
 
 QStringList MessagesToolBar::savedActions() const {
   return qApp->settings()->value(GROUP(GUI),
-                                 SETTING(GUI::MessagesToolbarDefaultButtons)).toString().split(',',
-                                                                                               QString::SkipEmptyParts);
+                                 SETTING(GUI::MessagesToolbarDefaultButtons)).toString().split(QL1C(','),
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                                                               Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                                                               QString::SplitBehavior::SkipEmptyParts);
+#endif
 }

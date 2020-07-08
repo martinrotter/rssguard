@@ -33,8 +33,7 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
     const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
 
-    return QProcess::startDetached(QString("\"") + browser + QSL("\" ") + arguments.arg(message.m_title,
-                                                                                        stripTags(message.m_contents)));
+    return IOFactory::startProcessDetached(browser, {}, arguments.arg(message.m_title, stripTags(message.m_contents)));
   }
   else {
     // Send it via mailto protocol.
@@ -49,10 +48,11 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
     const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
-    const QString call_line = "\"" + browser + "\" \"" + arguments.arg(url) + "\"";
+    auto nice_args = arguments.arg(url);
 
-    qDebug("Running command '%s'.", qPrintable(call_line));
-    const bool result = QProcess::startDetached(call_line);
+    qDebug("Arguments for external browser: '%s'.", qPrintable(nice_args));
+
+    const bool result = IOFactory::startProcessDetached(browser, {}, nice_args);
 
     if (!result) {
       qDebug("External web browser call failed.");
@@ -75,7 +75,6 @@ QString WebFactory::escapeHtml(const QString& html) {
   }
 
   QString output = html;
-
   QMapIterator<QString, QString> i(m_escapes);
 
   while (i.hasNext()) {
@@ -92,7 +91,6 @@ QString WebFactory::deEscapeHtml(const QString& text) {
   }
 
   QString output = text;
-
   QMapIterator<QString, QString> i(m_deEscapes);
 
   while (i.hasNext()) {
@@ -174,6 +172,7 @@ void WebFactory::createMenu(QMenu* menu) {
 
   menu->clear();
   QList<QAction*> actions;
+
   actions << createEngineSettingsAction(tr("Auto-load images"), QWebEngineSettings::AutoLoadImages);
   actions << createEngineSettingsAction(tr("JS enabled"), QWebEngineSettings::JavascriptEnabled);
   actions << createEngineSettingsAction(tr("JS can open popup windows"), QWebEngineSettings::JavascriptCanOpenWindows);
@@ -204,6 +203,7 @@ void WebFactory::webEngineSettingChanged(bool enabled) {
   const QAction* const act = qobject_cast<QAction*>(sender());
 
   QWebEngineSettings::WebAttribute attribute = static_cast<QWebEngineSettings::WebAttribute>(act->data().toInt());
+
   qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
   QWebEngineProfile::defaultProfile()->settings()->setAttribute(attribute, act->isChecked());
 }

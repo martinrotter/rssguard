@@ -22,6 +22,7 @@ bool OwnCloudFeed::canBeEdited() const {
 
 bool OwnCloudFeed::editViaGui() {
   QPointer<FormOwnCloudFeedDetails> form_pointer = new FormOwnCloudFeedDetails(serviceRoot(), qApp->mainFormWidget());
+
   form_pointer.data()->addEditFeed(this, nullptr);
   delete form_pointer.data();
   return false;
@@ -79,6 +80,4 @@ QList<Message> OwnCloudFeed::obtainNewMessages(bool* error_during_obtaining) {
     *error_during_obtaining = false;
     return messages.messages();
   }
-
-  return QList<Message>();
 }

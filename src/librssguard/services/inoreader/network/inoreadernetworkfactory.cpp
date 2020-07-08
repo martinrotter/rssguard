@@ -394,9 +394,9 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
     QString title = subscription["title"].toString();
     QString url = subscription["htmlUrl"].toString();
     QString parent_label;
-    QJsonArray categories = subscription["categories"].toArray();
+    QJsonArray assigned_categories = subscription["categories"].toArray();
 
-    for (const QJsonValue& cat : categories) {
+    for (const QJsonValue& cat : assigned_categories) {
       QString potential_id = cat.toObject()["id"].toString();
 
       if (potential_id.contains(QSL("/label/"))) {

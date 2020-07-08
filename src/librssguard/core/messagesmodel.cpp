@@ -17,7 +17,7 @@
 #include <QSqlField>
 
 MessagesModel::MessagesModel(QObject* parent)
-  : QSqlQueryModel(parent), m_cache(new MessagesModelCache(this)), m_messageHighlighter(NoHighlighting),
+  : QSqlQueryModel(parent), m_cache(new MessagesModelCache(this)), m_messageHighlighter(MessageHighlighter::NoHighlighting),
   m_customDateFormat(QString()), m_selectedItem(nullptr), m_itemHeight(-1) {
   setupFonts();
   setupIcons();
@@ -286,21 +286,21 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 
     case Qt::ForegroundRole:
       switch (m_messageHighlighter) {
-        case HighlightImportant: {
+        case MessageHighlighter::HighlightImportant: {
           QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
           QVariant dta = m_cache->containsData(idx_important.row()) ? m_cache->data(idx_important) : QSqlQueryModel::data(idx_important);
 
           return dta.toInt() == 1 ? qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight] : QVariant();
         }
 
-        case HighlightUnread: {
+        case MessageHighlighter::HighlightUnread: {
           QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
           QVariant dta = m_cache->containsData(idx_read.row()) ? m_cache->data(idx_read) : QSqlQueryModel::data(idx_read);
 
           return dta.toInt() == 0 ? qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight] : QVariant();
         }
 
-        case NoHighlighting:
+        case MessageHighlighter::NoHighlighting:
         default:
           return QVariant();
       }

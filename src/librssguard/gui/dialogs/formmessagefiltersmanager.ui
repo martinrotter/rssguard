@@ -77,6 +77,9 @@
            <height>150</height>
           </size>
          </property>
+         <property name="rootIsDecorated">
+          <bool>false</bool>
+         </property>
          <property name="uniformRowHeights">
           <bool>true</bool>
          </property>
@@ -88,14 +91,14 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="m_btnCheckAll">
            <property name="text">
             <string>&amp;Check all</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="m_btnUncheckAll">
            <property name="text">
             <string>&amp;Uncheck all</string>
            </property>
@@ -406,8 +409,8 @@
   <tabstop>m_btnRemoveSelected</tabstop>
   <tabstop>m_cmbAccounts</tabstop>
   <tabstop>m_treeFeeds</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>m_btnCheckAll</tabstop>
+  <tabstop>m_btnUncheckAll</tabstop>
   <tabstop>m_txtTitle</tabstop>
   <tabstop>m_txtScript</tabstop>
   <tabstop>m_btnTest</tabstop>

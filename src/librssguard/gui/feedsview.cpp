@@ -98,9 +98,9 @@ void FeedsView::saveExpandStates(RootItem* item) {
   QList<RootItem*> items = item->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot);
 
   // Iterate all categories and save their expand statuses.
-  for (const RootItem* item : items) {
-    const QString setting_name = item->hashCode();
-    QModelIndex source_index = sourceModel()->indexForItem(item);
+  for (const RootItem* it : items) {
+    const QString setting_name = it->hashCode();
+    QModelIndex source_index = sourceModel()->indexForItem(it);
     QModelIndex visible_index = model()->mapFromSource(source_index);
 
     settings->setValue(GROUP(CategoriesExpandStates),

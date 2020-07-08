@@ -40,6 +40,10 @@ else {
   DEFINES *= DEBUG=1
   gcc:QMAKE_CXXFLAGS_DEBUG *= -Wall
   clang:QMAKE_CXXFLAGS_DEBUG *= -Wall
+  msvc:QMAKE_CXXFLAGS_DEBUG *= /W4 /wd4127
+  msvc:QMAKE_CXXFLAGS_WARN_ON = ""
+  msvc:QMAKE_CXXFLAGS_DEBUG -= /W3
+  msvc:QMAKE_CXXFLAGS -= /W3
 }
 
 MOC_DIR = $$OUT_PWD/moc

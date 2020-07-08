@@ -27,6 +27,10 @@ class IOFactory {
 
     // Filters out shit characters from filename.
     static QString filterBadCharsFromFilename(const QString& name);
+    static bool startProcessDetached(const QString& program,
+                                     const QStringList& arguments,
+                                     const QString& native_arguments = {},
+                                     const QString& working_directory = {});
 
     // Returns contents of a file.
     // Throws exception when no such file exists.

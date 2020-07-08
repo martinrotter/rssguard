@@ -72,17 +72,17 @@ void TabBar::wheelEvent(QWheelEvent* event) {
 
   // Make sure rotating works.
   if (number_of_tabs > 1) {
-    if (event->delta() > 0) {
+    if (event->angleDelta().y() > 0) {
       // Scroll to the LEFT tab.
-      setCurrentIndex(current_index == 0 ?
-                      number_of_tabs - 1 :
-                      current_index - 1);
+      setCurrentIndex(current_index == 0
+                      ? number_of_tabs - 1
+                      : current_index - 1);
     }
-    else if (event->delta() < 0) {
+    else if (event->angleDelta().y() < 0) {
       // Scroll to the RIGHT tab.
-      setCurrentIndex(current_index == number_of_tabs - 1 ?
-                      0 :
-                      current_index + 1);
+      setCurrentIndex(current_index == number_of_tabs - 1
+                      ? 0
+                      : current_index + 1);
     }
   }
 }

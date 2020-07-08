@@ -389,7 +389,7 @@ QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
     return QModelIndex();
   }
 
-  QStack<const RootItem*>chain;
+  QStack<const RootItem*> chain;
 
   while (item->kind() != RootItemKind::Root) {
     chain.push(item);
